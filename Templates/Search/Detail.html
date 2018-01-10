@@ -1,5 +1,6 @@
-{namespace s=Subugoe\Find\ViewHelpers}
-<f:layout name="Default"/>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"></head><body>{namespace s=Subugoe\Find\ViewHelpers}
+<f:layout name="Default">
 <f:comment>
   Template for a basic Detail view of all fields in the document.
 
@@ -13,18 +14,36 @@
 
 <f:section name="main">
   <s:page.title>{document.fields.id} – {config.pageTitle}</s:page.title>
-  <f:render partial="Page/Standard" arguments="{_all}"/>
-  <f:render partial="Components/DetailResultPager" arguments="{_all}"/>
+  <f:render partial="Page/Standard" arguments="{_all}" />
+  <f:render partial="Components/DetailResultPager" arguments="{_all}" />
 
   <article class="detail">
     <h1>
-      <f:render partial="Display/Field/Inline" arguments="{results:results, document:document, field:settings.standardFields.title, separator:', '}"/>
+      <f:render partial="Display/Field/Inline" arguments="{results:results, document:document, field:settings.standardFields.title, separator:', '}" />
     </h1>
 
-    <dl>
-      <f:for each="{document.fields}" as="value" key="fieldName">
-        <f:render partial="Display/DLField" arguments="{results:results, document:document, field:fieldName}"/>
-      </f:for>
-    </dl>
+    <f:if condition="{arguments.debug}">
+      <f:then>
+        <f:debug>{_all}</f:debug>
+        <dl>
+          <f:for each="{document.fields}" as="value" key="fieldName">
+            <f:render partial="Display/DLField" arguments="{results:results, document:document, field:fieldName}" />
+          </f:for>
+        </dl>
+      </f:then>
+      <f:else>
+            <dl>
+              <f:for each="{settings.detailViews}" as="detailView">
+                <f:if condition="{document.fields.listview_type} == {detailView.type}">
+                  <f:for each="{detailView.fields}" as="fieldName">
+                    {fieldName}<br />
+                    <f:render partial="Display/DLField" arguments="{results:results, document:document, field:fieldName}" />
+                  </f:for>
+                </f:if>
+              </f:for>
+            </dl>
+      </f:else>
+    </f:if>
   </article>
 </f:section>
+</f:layout></body></html>

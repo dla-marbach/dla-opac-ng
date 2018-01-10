@@ -1,5 +1,4 @@
 {namespace s=Subugoe\Find\ViewHelpers}
-{namespace t3jquery=Tx_T3jquery_ViewHelpers}
 <f:comment>
   Creates a map facet.
 
@@ -36,7 +35,10 @@
       }
     }
 </f:comment>
-<t3jquery:addJQueryAndScript jsfile="EXT:find/Resources/Public/JavaScript/js-geohash/geohash.js">
+
+<s:page.script file="fileadmin/opac-ng/geohash.js" name="find_geohash"/>
+
+<s:page.script name="find_geohash">
   tx_find_facetMap.init ({
     container: jQuery('.facet-id-{facetInfo.id} .mapContainer')[0],
     queryURLTemplate: {s:format.json(data:"{f:uri.action(
@@ -53,7 +55,8 @@
     facetData: {s:format.json(data:facetData.values)},
     facetFetchMaximum: {facetInfo.fetchMaximum}
   });
-</t3jquery:addJQueryAndScript>
+</s:page.script>
+
 <div class="facetMap-container">
   <div class="mapContainer"></div>
 </div>
