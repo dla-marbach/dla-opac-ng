@@ -20,11 +20,27 @@ plugin.tx_find {
 
     # Der Abschnitt "connection" definiert die Verbindung zum Solr-Server.
     # Wichtig ist die Angabe des zu verwendenden Solr-Cores in "path"!
+    connections {
+    default {
+        options {
+          host = www-test-ng.dla-marbach.de
+          port = 8983
+          path = /solr/opac-ng
+          scheme = http
+        }
+      }
+    }
+
     connection {
-      host = cww-test.dla-marbach.de
+      host = www-test-ng.dla-marbach.de
       port = 8983
-      path = /solr/opac_ng_1
+      path = /solr/opac-ng
       timeout = 10
+      scheme = http
+    }
+
+    paging.detailPagePaging {
+      count = 50
     }
 
     # Der Abschnitt "languageRootPath" definiert, wo die Übersetzungsdateien zu finden sind.
@@ -45,7 +61,7 @@ plugin.tx_find {
         id = default
         type = Text
         # setzt den Standardoperator auf ein logisches UND
-        query = {!q.op=AND}%s
+        query = {!q.op=AND}*:%s
         # schaltet die Maskierung von Steuerzeichen aus und erlaubt Phrasensuchen und Trunkierungen
         noescape = 1
       }
@@ -69,11 +85,12 @@ plugin.tx_find {
       }
     }
 
+
     # In den folgenden beiden Abschnitten wird die Behandlung von zu verlinkenden Feldern in der Detailansicht
     # konfiguriert.
     # "queryFieldForDataField" gibt an, in welchem Feld nach dem Inhalt des aktuellen Feldes gesucht werden soll.
     # "displayFieldForDataField" gibt an, welches Feld aus dem gefundenen Datensatz angezeigt werden soll.
-    queryFieldForDataField {
+      queryFieldForDataField {
       HSOKEY = H0001
       HSBFKY = B0001
       PE0100 = P0001
@@ -120,10 +137,11 @@ plugin.tx_find {
     # Der Abschnitt "standardFields" definiert die in der Trefferliste anzuzeigenden Felder in der Form
     # {$Partialsvariable} = {$Solrfeld}
     standardFields {
+      title = listview_title
       listview_type = listview_type
       listview_type_cardinality = listview_type_cardinality
       listview_associate = listview_associate
-      listview_title = listview_title
+      #listview_title = listview_title
       listview_additional1 = listview_additional1
       listview_additional2 = listview_additional2
       picture_mini = picture_mini
@@ -150,7 +168,7 @@ plugin.tx_find {
       }
       detail {
         default {
-          f0 = *
+          f0 = id
         }
         disallow {
           f0 = listview_type
@@ -210,5 +228,41 @@ plugin.tx_find {
       maximumPerPage = 100
       detailPagePaging = 0
     }
+
+    detailViews {
+
+      0 {
+        type = Bilder und Objekte
+        fields {
+          f0 = B51400
+          f1 = B51800
+          f2 = B51801
+          f3 = PEU100
+          f4 = XX_KS_K0800_KSE200
+          f5 = B52010
+          f6 = B02040
+          f7 = B0204A
+          f8 = B52020
+          f9 = B52010
+          f10 = B02050
+          f11 = B52001
+          f12 = B52002
+          f13 = B52003
+          f14 = B52004
+          f15 = B52011
+          f16 = B01610
+          f17 = B51420
+          f18 = XX_AK_A0331_AKY526
+          f19 = XX_TH_SWAF_THA720
+          f20 = XX_TH_SWAF_THA710
+          f21 = B02040
+          f22 = XX_BI_B51800_BIOKEY
+          f23 = picture_mini
+        }
+      }
+
+
+    }
+
   }
 }
