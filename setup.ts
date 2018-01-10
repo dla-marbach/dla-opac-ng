@@ -137,11 +137,11 @@ plugin.tx_find {
     # Der Abschnitt "standardFields" definiert die in der Trefferliste anzuzeigenden Felder in der Form
     # {$Partialsvariable} = {$Solrfeld}
     standardFields {
-      title = listview_title
+      #title = listview_title
       listview_type = listview_type
       listview_type_cardinality = listview_type_cardinality
       listview_associate = listview_associate
-      #listview_title = listview_title
+      listview_title = listview_title
       listview_additional1 = listview_additional1
       listview_additional2 = listview_additional2
       picture_mini = picture_mini
