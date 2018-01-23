@@ -1,0 +1,113 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+
+<f:comment>
+    Mediatype
+</f:comment>
+<dt class="dt-{field}">
+    Medienart
+</dt>
+<dd class="dd-{field}">
+    <f:render
+        partial="Display/Field/List"
+        arguments="{
+                document:document,
+                results:results,
+                field:'listview_type',
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+              }"/>
+</dd>
+
+<f:comment>
+    Objecttype
+    IF B51400  = "Anderes Objekt" OR "Anderes Konvolut" THEN B51410
+</f:comment>
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51400')}" name="B51400" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51410')}" name="B51410" />
+<f:if condition="{B51400} == 'Anderes Objekt' || {B51400} == 'Anderes Konvolut'">
+    <f:then>
+        <v:variable.set value="B51410" name="fieldName" />
+        <v:variable.set value="{B51410}" name="fieldValue" />
+    </f:then>
+    <f:else>
+        <v:variable.set value="B51400" name="fieldName" />
+        <v:variable.set value="{B51400}" name="fieldValue" />
+    </f:else>
+</f:if>
+<f:if condition="{fieldValue}">
+    <dt class="dt-{field}">
+        Objekttyp
+    </dt>
+    <dd class="dd-{field}">
+        <f:render
+            partial="Display/Field/List"
+            arguments="{
+                document:document,
+                results:results,
+                field:fieldName,
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+              }"/>
+    </dd>
+</f:if>
+
+<f:comment>
+    Title
+</f:comment>
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51800')}" name="B51800" />
+<f:if condition="{B51800}">
+    <dt class="dt-{field}">
+        Titel
+    </dt>
+    <dd class="dd-{field}">
+        <f:render
+            partial="Display/Field/List"
+            arguments="{
+                document:document,
+                results:results,
+                field:'B51800',
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+              }"/>
+    </dd>
+</f:if>
+
+<f:comment>
+    Original title
+</f:comment>
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51801')}" name="B51801" />
+<f:if condition="{B51801}">
+    <dt class="dt-{field}">
+        Originaltitel
+    </dt>
+    <dd class="dd-{field}">
+        <f:render
+            partial="Display/Field/List"
+            arguments="{
+                document:document,
+                results:results,
+                field:'B51801',
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+              }"/>
+    </dd>
+</f:if>
+
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PEE100')}" name="XX_PE_P0800_PEE100" />
+<f:if condition="{XX_PE_P0800_PEE100}">
+    <dt class="dt-{field}">
+        Person
+    </dt>
+    <dd class="dd-{field}">
+        <f:render
+                partial="Display/Field/List"
+                arguments="{
+                document:document,
+                results:results,
+                field:'XX_PE_P0800_PEE100',
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+              }"/>
+    </dd>
+</f:if>
