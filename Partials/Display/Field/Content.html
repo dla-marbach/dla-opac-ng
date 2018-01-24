@@ -84,7 +84,8 @@
                           config:config,
                           results:results,
                           document:solr,
-                          field:'{displayField}'
+                          field:'{displayField}',
+                          linkTextValue: linkTextValue
                         }"/>
                       </f:link.action>
                     </f:case>
@@ -189,13 +190,20 @@
   </f:then>
   <f:else>
     <f:format.raw>
-      <s:find.highlightField
-        field="{field}"
-        document="{document}"
-        results="{results}"
-        index="{iterator.index}"
-        alternateField="{s:data.valueForKey(array:config.highlight.alternateFields, key:field)}"
-      />
+      <f:if condition="{linkTextValue}">
+        <f:then>
+          {linkTextValue}
+        </f:then>
+        <f:else>
+          <s:find.highlightField
+            field="{field}"
+            document="{document}"
+            results="{results}"
+            index="{iterator.index}"
+            alternateField="{s:data.valueForKey(array:config.highlight.alternateFields, key:field)}"
+          />
+        </f:else>
+      </f:if>
     </f:format.raw>
   </f:else>
 </f:if>

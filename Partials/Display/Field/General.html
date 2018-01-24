@@ -29,6 +29,7 @@
       </f:if>
       <f:for each="{s:data.valueForKey(array:document.fields, key:field)}" as="value" iteration="iterator">
         {groupItemPrefix->f:format.raw()}{fieldPrefix->f:format.raw()}
+          <v:variable.set value="{linkTexts.{iterator.index}}" name="linkTextValue" />
           <f:render partial="Display/Field/Content" arguments="{_all}"/>
         {fieldSuffix->f:format.raw()}{f:if(condition:"{iterator.isLast}==0", then:separator)}{groupItemSuffix->f:format.raw()}
       </f:for>
@@ -40,7 +41,7 @@
         <span class="prefix-{field}">{prefixString}</span>
       </f:if>
       <f:alias map="{value:'{s:data.valueForKey(array:document.fields, key:field)}'}">
-        <f:render partial="Display/Field/Content" arguments="{_all}"/>
+          <f:render partial="Display/Field/Content" arguments="{_all}"/>
       </f:alias>
       {fieldSuffix->f:format.raw()}
     </f:else>

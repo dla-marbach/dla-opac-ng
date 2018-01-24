@@ -1,4 +1,6 @@
 {namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace s=Subugoe\Find\ViewHelpers}
 
 <f:comment>
     Mediatype
@@ -95,19 +97,69 @@
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PEE100')}" name="XX_PE_P0800_PEE100" />
-<f:if condition="{XX_PE_P0800_PEE100}">
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PEU100')}" name="XX_PE_P0800_PEU100" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PEA100')}" name="XX_PE_P0800_PEA100" />
+<f:if condition="{XX_PE_P0800_PEE100} || {XX_PE_P0800_PEU100} || {XX_PE_P0800_PEA100}">
     <dt class="dt-{field}">
         Person
     </dt>
     <dd class="dd-{field}">
-        <f:render
+        <f:if condition="{XX_PE_P0800_PEE100}">
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PEE100')}" name="XX_PE_P0800_PEE100" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'GFUPUE')}" name="GFUPUE" />
+
+            <s:data.newArray
+                    name="emptyArray"
+                    global="1"
+                    keys="{}"
+                    values="{}"
+            />
+
+
+            <v:variable.set value="{emptyArray}" name="linkTexts" />
+            <f:for each="{XX_PE_P0800_PEE100}" as="" iteration="iterator">
+                <v:variable.set value="{XX_PE_P0800_PEE100.{iterator.index}} [{GFUPUE.{iterator.index}}]" name="altContent" />
+                <s:data.newArray
+                        name="temp"
+                        global="1"
+                        keys="{0: '0'}"
+                        values="{0: '{XX_PE_P0800_PEE100.{iterator.index}} [{GFUPUE.{iterator.index}}]'}"
+                />
+                <v:variable.set value="{slub:data.mergeArrays(arrayOne:linkTexts, arrayTwo:temp)}" name="linkTexts" />
+            </f:for>
+
+            <f:render
                 partial="Display/Field/List"
                 arguments="{
+                    document:document,
+                    results:results,
+                    field:'PEE100',
+                    linkFieldContent:1,
+                    linkFacets:linkFacets,
+                    linkTexts: linkTexts
+                }"/>
+        </f:if>
+        <f:if condition="{XX_PE_P0800_PEU100}">
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
                 document:document,
                 results:results,
-                field:'XX_PE_P0800_PEE100',
-                linkFieldContent:linkFieldContent,
+                field:'PEU100',
+                linkFieldContent:1,
                 linkFacets:linkFacets
               }"/>
+        </f:if>
+        <f:if condition="{XX_PE_P0800_PEA100}">
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+                document:document,
+                results:results,
+                field:'PEA100',
+                linkFieldContent:1,
+                linkFacets:linkFacets
+              }"/>
+        </f:if>
     </dd>
 </f:if>
