@@ -100,6 +100,14 @@ plugin.tx_find {
       KSA200 = K0001
       KSC200 = K0001
       KSE200 = K0001
+      KSU200 = K0001
+      AKY526 = A0001
+      AKA451 = A0001
+      THA720 = THSISN
+      THA710 = THSISN
+      BFKEY = B0001
+      AUKEY = AUISN
+      HSKEY = H0001
       H0001 = HSOKEY
       P0001 = PE0100,PEA100,PEE100,PEU100
       B00001 = BIOKEY
@@ -119,10 +127,19 @@ plugin.tx_find {
       KSA200 = K0800
       KSC200 = K0800
       KSE200 = K0800
+      KSU200 = K0800
+      AKY526 = A0331
+      AKA451 = A0331
+      THA720 = SWVF
+      THA710 = SWVF
+      BFKEY = BFNAM
+      AUKEY = AKKEY
+      HSKEY = H41800
       H0001 = H41811,KUTIT
       P0001 = A0331,B51800,KUTIT
       B00001 = B41600,B41650,B51800,B04000
-      BIOKEY = B41600,B41650,B51800,B04000
+      #BIOKEY = B41600,B41650,B51800,B04000
+      BIOKEY = B51800
       SEISN = A0331
       SYNKEY = REGTIT
       VORKOP = VORKOP,NOTAT,TITEL
@@ -168,7 +185,7 @@ plugin.tx_find {
       }
       detail {
         default {
-          f0 = id
+          f0 = *
         }
         disallow {
           f0 = listview_type
@@ -234,6 +251,20 @@ plugin.tx_find {
       0 {
         type = Bilder und Objekte
         fields {
+
+
+
+          f0001 = A0410
+
+          f0002 = A0412
+          f0003 = A0425
+
+          f002 = XX_PE_listview_title
+          f003 = XX_PE_P0800_PEU100
+          f004 = XX_PE_P0800_PEE100
+          f005 = XX_PE_P0800_PEA100
+          f006 = XX_PE_P0800_PE0100
+          f007 = GFUPUE
           f0 = B51400
           f1 = B51800
           f2 = B51801
