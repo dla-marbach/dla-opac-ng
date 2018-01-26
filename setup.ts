@@ -85,7 +85,6 @@ plugin.tx_find {
       }
     }
 
-
     # In den folgenden beiden Abschnitten wird die Behandlung von zu verlinkenden Feldern in der Detailansicht
     # konfiguriert.
     # "queryFieldForDataField" gibt an, in welchem Feld nach dem Inhalt des aktuellen Feldes gesucht werden soll.
@@ -108,6 +107,9 @@ plugin.tx_find {
       BFKEY = B0001
       AUKEY = AUISN
       HSKEY = H0001
+      A0001 = AKKEY
+      INDKEY = MOISN
+      GWKEY = A0001
       H0001 = HSOKEY
       P0001 = PE0100,PEA100,PEE100,PEU100
       B00001 = BIOKEY
@@ -135,6 +137,9 @@ plugin.tx_find {
       BFKEY = BFNAM
       AUKEY = AKKEY
       HSKEY = H41800
+      A0001 = SIGNA
+      INDKEY = MOTITL
+      GWKEY = TITREG
       H0001 = H41811,KUTIT
       P0001 = A0331,B51800,KUTIT
       B00001 = B41600,B41650,B51800,B04000

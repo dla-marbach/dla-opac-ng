@@ -100,13 +100,20 @@
             </f:then>
             <f:else>
               <li>
-              <s:find.highlightField
-                field="{field}"
-                document="{document}"
-                results="{results}"
-                index="{iterator.index}"
-                alternateField="{s:data.valueForKey(array:config.highlight.alternateFields, key:field)}"
-              /><br />
+                <f:if condition="{linkTextValue}">
+                  <f:then>
+                    {linkTextValue}
+                  </f:then>
+                  <f:else>
+                    <s:find.highlightField
+                      field="{field}"
+                      document="{document}"
+                      results="{results}"
+                      index="{iterator.index}"
+                      alternateField="{s:data.valueForKey(array:config.highlight.alternateFields, key:field)}" />
+                  </f:else>
+                </f:if>
+              <br />
               <span style="color:lightgrey;">
                 Nothing found. Is {s:data.valueForKey(array:settings.queryFieldForDataField, key:field)} indexed and {s:data.valueForKey(array:settings.displayFieldForDataField, key:field)} stored?
               </span>

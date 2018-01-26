@@ -31,32 +31,23 @@
         </dl>
       </f:then>
       <f:else>
-          <f:if condition="{document.fields.listview_type} == 'Normdaten'">
-            <f:then>
-              <dl>
-                <f:for each="{document.fields}" as="value" key="fieldName">
-                  <f:render partial="Display/DLField" arguments="{results:results, document:document, field:fieldName}" />
-                </f:for>
-              </dl>
-            </f:then>
-            <f:else>
-              <dl>
-                <f:comment>
-                <f:for each="{settings.detailViews}" as="detailView">
-                  <f:if condition="{document.fields.listview_type}">
-                    <f:for each="{detailView.fields}" as="fieldName">
-                      {fieldName}<br />
-                      <f:render partial="Display/DLField" arguments="{results:results, document:document, field:fieldName}" />
-                    </f:for>
-                  </f:if>
-                </f:for>
-                </f:comment>
-
-                <f:render partial="Display/Detail/ImagesAndObjects/Details" arguments="{results:results, document:document}" />
-
-              </dl>
-            </f:else>
-          </f:if>
+        <dl>
+          <f:switch expression="{document.fields.source}">
+            <f:case value="BI">
+              <f:render partial="Display/Detail/ImagesAndObjects/Details" arguments="{results:results, document:document}" />
+            </f:case>
+            <f:case value="AK">
+              <f:render partial="Display/Detail/Library/Details" arguments="{results:results, document:document}" />
+            </f:case>
+            <f:case value="xBF"></f:case>
+            <f:case value="xHS"></f:case>
+            <f:defaultCase>
+              <f:for each="{document.fields}" as="value" key="fieldName">
+                <f:render partial="Display/DLField" arguments="{results:results, document:document, field:fieldName}" />
+              </f:for>
+           </f:defaultCase>
+          </f:switch>
+        </dl>
       </f:else>
     </f:if>
   </article>
