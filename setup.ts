@@ -109,6 +109,7 @@ plugin.tx_find {
       HSKEY = H0001
       A0001 = AKKEY
       INDKEY = MOISN
+      BUEBKY = B0001
       GWKEY = A0001
       H0001 = HSOKEY
       P0001 = PE0100,PEA100,PEE100,PEU100
@@ -139,6 +140,7 @@ plugin.tx_find {
       HSKEY = H41800
       A0001 = SIGNA
       INDKEY = MOTITL
+      BUEBKY = BFNAM
       GWKEY = TITREG
       H0001 = H41811,KUTIT
       P0001 = A0331,B51800,KUTIT
