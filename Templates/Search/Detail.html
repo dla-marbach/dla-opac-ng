@@ -42,7 +42,9 @@
             <f:case value="BF">
               <f:render partial="Display/Detail/Stock/Details" arguments="{results:results, document:document}" />
             </f:case>
-            <f:case value="xHS"></f:case>
+            <f:case value="HS">
+              <f:render partial="Display/Detail/Manuscripts/Details" arguments="{results:results, document:document}" />
+            </f:case>
             <f:defaultCase>
               <f:for each="{document.fields}" as="value" key="fieldName">
                 <f:render partial="Display/DLField" arguments="{results:results, document:document, field:fieldName}" />
