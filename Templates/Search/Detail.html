@@ -39,7 +39,9 @@
             <f:case value="AK">
               <f:render partial="Display/Detail/Library/Details" arguments="{results:results, document:document}" />
             </f:case>
-            <f:case value="xBF"></f:case>
+            <f:case value="BF">
+              <f:render partial="Display/Detail/Stock/Details" arguments="{results:results, document:document}" />
+            </f:case>
             <f:case value="xHS"></f:case>
             <f:defaultCase>
               <f:for each="{document.fields}" as="value" key="fieldName">
