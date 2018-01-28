@@ -5,6 +5,8 @@ page.includeJS.jquery = fileadmin/opac-ng/jquery-1.11.0.min.js
 page.includeJS.fa = https://use.fontawesome.com/96352f148e.js
 page.includeJS.find = EXT:find/Resources/Public/JavaScript/find.js
 
+page.includeCSS.opac-ng = fileadmin/opac-ng/opac-ng.css
+
 # Generell wird die gesamte Konfiguration in "plugin.tx_find" gebündelt
 plugin.tx_find {
 
