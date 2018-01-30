@@ -245,6 +245,19 @@ plugin.tx_find {
                 field = source
                 sortOrder = count
             }
+            40 {
+                id = Zeitraum
+                field = A0425
+                #type = Histogram
+                sortOrder = count
+                query = A0425("%s")
+            }
+            50 {
+                id = Standort
+                field = H02010
+                sortOrder = count
+                query = H02010("%s")
+            }
         }
 
     # Der Abschnitt "paging" definiert die Anzahl der Treffer pro Seite sowie das Navigieren durch das
