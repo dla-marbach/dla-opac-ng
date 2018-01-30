@@ -1,5 +1,6 @@
 {namespace v=FluidTYPO3\vhs\ViewHelpers}
 {namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
 {namespace s=Subugoe\Find\ViewHelpers}
 
 <f:comment>
@@ -79,7 +80,7 @@
         Urheber
     </dt>
     <dd class="dd-{field}">
-        <slub:data.joinFields
+        <dla:data.joinFields
                 fieldNames="{0:'XX_PE_P0800_PE0100',1:'GFUPE'}"
                 fieldWraps="{0:'%s',1:'[%s]'}"
                 fields="{document.fields}"
@@ -110,7 +111,7 @@
         Erschienen
     </dt>
     <dd class="dd-{field}">
-        <slub:data.joinFields
+        <dla:data.joinFields
                 fieldNames="{0:'A0410',1:'A0412',3:'A0425'}"
                 fieldWraps="{0:'%s',1:': [%s]',2:'%s'}"
                 fields="{document.fields}"
@@ -180,7 +181,7 @@
         Umfang
     </dt>
     <dd class="dd-{field}">
-        <slub:data.joinFields
+        <dla:data.joinFields
                 fieldNames="{0:'A0433',1:'A0434',3:'A0437'}"
                 fieldWraps="{0:'%s',1:': [%s]',2:'+ %s'}"
                 fields="{document.fields}"
@@ -207,7 +208,7 @@
         Physische Beschreibung
     </dt>
     <dd class="dd-{field}">
-        <slub:data.joinFields
+        <dla:data.joinFields
                 fieldNames="{0:'A0653',1:'AI653'}"
                 fieldWraps="{0:'%s',1:': (%s)'}"
                 fields="{document.fields}"
@@ -291,7 +292,7 @@
     </dt>
     <dd class="dd-{field}">
 
-        <slub:data.joinFields
+        <dla:data.joinFields
                 fieldNames="{0:'XX_AK_TITREG_AKA451',1:'A0455'}"
                 fieldWraps="{0:'%s',1:': %s'}"
                 fields="{document.fields}"
@@ -344,7 +345,7 @@
     </dt>
     <dd class="dd-{field}">
 
-        <slub:data.joinFields
+        <dla:data.joinFields
                 fieldNames="{0:'XX_AU_KLASS',1:'XX_AU_KLASS'}"
                 fieldWraps="{0:'%s',1:': %s'}"
                 fields="{document.fields}"
@@ -372,7 +373,7 @@
     </dt>
     <dd class="dd-{field}">
 
-        <slub:data.joinFields
+        <dla:data.joinFields
                 fieldNames="{0:'XX_AU_SIGNA_A0001'}"
                 fieldWraps="{0:'%s'}"
                 fields="{document.fields}"
@@ -469,7 +470,7 @@
     </dt>
     <dd class="dd-{field}">
 
-        <slub:data.joinFields
+        <dla:data.joinFields
                 fieldNames="{0:'XX_MM_MOTITL_INDKEY'}"
                 fieldWraps="{0:'%s'}"
                 fields="{document.fields}"
@@ -487,7 +488,7 @@
                 linkTexts:linkTexts
               }"/>
 
-        <slub:data.joinFields
+        <dla:data.joinFields
                 fieldNames="{0:'AURL',1:'BEMURL'}"
                 fieldWraps="{0:'%s',1:' (%s)'}"
                 fields="{document.fields}"
@@ -673,7 +674,7 @@
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0501')}" name="AM501" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AM501')}" name="AM501" />
-<slub:data.joinFields
+<dla:data.joinFields
         fieldNames="{0:'GHSART',1:'GHSNAM',3:'GHSDAT'}"
         fieldWraps="{0:'%s',1:', %s',2:', %s'}"
         fields="{document.fields}"

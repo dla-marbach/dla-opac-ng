@@ -1,5 +1,6 @@
 {namespace v=FluidTYPO3\vhs\ViewHelpers}
 {namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
 {namespace s=Subugoe\Find\ViewHelpers}
 
 <f:comment>
@@ -328,7 +329,7 @@
     </dt>
     <dd class="dd-{field}">
 
-        <slub:data.joinFields
+        <dla:data.joinFields
                 fieldNames="{0:'B52001',1:'B52002',2:'B52003',3:'B52004',4:'B52011'}"
                 fieldWraps="{0:'%s',1:'x %s',2:'x %s',3:'x %s',4:'(%s)'}"
                 fields="{document.fields}"
