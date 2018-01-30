@@ -23,7 +23,7 @@ plugin.tx_find {
     connections {
     default {
         options {
-          host = www-test-ng.dla-marbach.de
+          host = serene.dla-marbach.de
           port = 8983
           path = /solr/opac-ng
           scheme = http
@@ -32,7 +32,7 @@ plugin.tx_find {
     }
 
     connection {
-      host = www-test-ng.dla-marbach.de
+      host = serene.dla-marbach.de
       port = 8983
       path = /solr/opac-ng
       timeout = 10
