@@ -1,0 +1,23 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace s=Subugoe\Find\ViewHelpers}
+
+<f:if condition="{s:data.valueForKey(array:document.fields, key:{fieldToDisplay})}">
+
+    <slub:data.joinFields
+            fieldNames="{fieldNames}"
+            fieldWraps="{fieldWraps}"
+            fields="{document.fields}"
+            as="linkTexts"
+    />
+    <f:render
+            partial="Display/Field/List"
+            arguments="{
+                    document:document,
+                    results:results,
+                    field:field,
+                    linkFieldContent:1,
+                    linkFacets:linkFacets,
+                    linkTexts: linkTexts
+                }"/>
+</f:if>
