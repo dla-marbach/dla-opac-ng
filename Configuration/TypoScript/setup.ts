@@ -10,20 +10,20 @@ page.includeCSS.opac-ng =  EXT:dla_opac_ng/Resources/Public/CSS/opac-ng.css
 # Generell wird die gesamte Konfiguration in "plugin.tx_find" gebündelt
 plugin.tx_find {
 
-# Der Abschnitt "view" verweist auf die zu verwendenden Designtemplates und ViewHelper-Partials
-  # (siehe [[Definition eigener Designtemplates für die Ausgabe in Trefferliste und Detailanzeige]])
+    # Der Abschnitt "view" verweist auf die zu verwendenden Designtemplates und ViewHelper-Partials
+    # (siehe [[Definition eigener Designtemplates für die Ausgabe in Trefferliste und Detailanzeige]])
     view {
         templateRootPaths.10 = EXT:dla_opac_ng/Resources/Private/Templates/
         partialRootPaths.10 =  EXT:dla_opac_ng/Resources/Private/Partials/
     }
 
-  # Der Abschnitt "settings" enthält die Konfiguration der Plugin-Instanz
+    # Der Abschnitt "settings" enthält die Konfiguration der Plugin-Instanz
     settings {
 
-    # Der Abschnitt "connection" definiert die Verbindung zum Solr-Server.
-    # Wichtig ist die Angabe des zu verwendenden Solr-Cores in "path"!
+        # Der Abschnitt "connection" definiert die Verbindung zum Solr-Server.
+        # Wichtig ist die Angabe des zu verwendenden Solr-Cores in "path"!
         connections {
-        default {
+            default {
                 options {
                     host = serene.dla-marbach.de
                     port = 8983
@@ -45,53 +45,53 @@ plugin.tx_find {
             count = 50
         }
 
-    # Der Abschnitt "languageRootPath" definiert, wo die Übersetzungsdateien zu finden sind.
-            languageRootPath = EXT:dla_opac_ng/Resources/Private/Language/
+        # Der Abschnitt "languageRootPath" definiert, wo die Übersetzungsdateien zu finden sind.
+        languageRootPath = EXT:dla_opac_ng/Resources/Private/Language/
 
-    # Der Anschnitt "defaultQuery" legt fest, welche Suche initial ausgeführt werden soll, wenn
-    # ein Nutzer den Katalog aufruft. Da kein Trefferset erscheinen soll, ist hier eine Suche
-    # definiert, die garantiert keine Treffer erzeugt.
-            defaultQuery = *:*
+        # Der Anschnitt "defaultQuery" legt fest, welche Suche initial ausgeführt werden soll, wenn
+        # ein Nutzer den Katalog aufruft. Da kein Trefferset erscheinen soll, ist hier eine Suche
+        # definiert, die garantiert keine Treffer erzeugt.
+        defaultQuery = *:*
 
-    # Der Abschnitt "queryFields" definiert die zur Verfügung stehenden Suchfelder.
-    # Der Index "0" beschreibt den Standardsuchschlitz, weitere Indizes können zusätzliche
-    # Suchfelder (z.B. für eine erweiterte Suche) beinhalten.
-    # Zur Erläuterung der Parameter siehe die typo3-find-Dokumentation auf GitHub.
-            queryFields {
+        # Der Abschnitt "queryFields" definiert die zur Verfügung stehenden Suchfelder.
+        # Der Index "0" beschreibt den Standardsuchschlitz, weitere Indizes können zusätzliche
+        # Suchfelder (z.B. für eine erweiterte Suche) beinhalten.
+        # Zur Erläuterung der Parameter siehe die typo3-find-Dokumentation auf GitHub.
+        queryFields {
             0 {
-            # definiert das Solr-Feld für die Standardsuche
+                # definiert das Solr-Feld für die Standardsuche
                 id = default
                 type = Text
-        # setzt den Standardoperator auf ein logisches UND
+                # setzt den Standardoperator auf ein logisches UND
                 query = {!q.op=AND}*:%s
-        # schaltet die Maskierung von Steuerzeichen aus und erlaubt Phrasensuchen und Trunkierungen
+                # schaltet die Maskierung von Steuerzeichen aus und erlaubt Phrasensuchen und Trunkierungen
                 noescape = 1
             }
             1 {
-            # definiert exemplarisch ein Suchfeld für die erweiterte Suche
+                # definiert exemplarisch ein Suchfeld für die erweiterte Suche
                 id = Person
                 type = Text
                 query = XX_PE_P0800_PE0100:(%s)
                 noescape = 1
-        # zeigt das Suchfeld nur in der erweiterten Suche an
+                # zeigt das Suchfeld nur in der erweiterten Suche an
                 extended = 1
             }
             2 {
-            # definiert eine Intervall-Suche exemplarisch über Lebensdaten
+                # definiert eine Intervall-Suche exemplarisch über Lebensdaten
                 id = Lebensspanne
                 type = Range
                 query = PA8141:[* %2$s] AND PA8142:[%1$s TO *]
-            default.0 = *
-            default.1 = *
+                default.0 = *
+                default.1 = *
                 extended = 1
             }
         }
 
-    # In den folgenden beiden Abschnitten wird die Behandlung von zu verlinkenden Feldern in der Detailansicht
-    # konfiguriert.
-    # "queryFieldForDataField" gibt an, in welchem Feld nach dem Inhalt des aktuellen Feldes gesucht werden soll.
-    # "displayFieldForDataField" gibt an, welches Feld aus dem gefundenen Datensatz angezeigt werden soll.
-            queryFieldForDataField {
+        # In den folgenden beiden Abschnitten wird die Behandlung von zu verlinkenden Feldern in der Detailansicht
+        # konfiguriert.
+        # "queryFieldForDataField" gibt an, in welchem Feld nach dem Inhalt des aktuellen Feldes gesucht werden soll.
+        # "displayFieldForDataField" gibt an, welches Feld aus dem gefundenen Datensatz angezeigt werden soll.
+        queryFieldForDataField {
             HSOKEY = H0001
             HSBFKY = B0001
             PE0100 = P0001
@@ -147,7 +147,7 @@ plugin.tx_find {
             H0001 = H41811,KUTIT
             P0001 = A0331,B51800,KUTIT
             B00001 = B41600,B41650,B51800,B04000
-      #BIOKEY = B41600,B41650,B51800,B04000
+            #BIOKEY = B41600,B41650,B51800,B04000
             BIOKEY = B51800
             SEISN = A0331
             SYNKEY = REGTIT
@@ -155,15 +155,15 @@ plugin.tx_find {
             NACKOP = NOTAT,TITEL
         }
 
-    # Der Abschnitt "additionalFilters" definiert globale Suchfilter
+        # Der Abschnitt "additionalFilters" definiert globale Suchfilter
         additionalFilters {
             1 = NOT source:(AU OR MM)
         }
 
-    # Der Abschnitt "standardFields" definiert die in der Trefferliste anzuzeigenden Felder in der Form
-    # {$Partialsvariable} = {$Solrfeld}
+        # Der Abschnitt "standardFields" definiert die in der Trefferliste anzuzeigenden Felder in der Form
+        # {$Partialsvariable} = {$Solrfeld}
         standardFields {
-        #title = listview_title
+            #title = listview_title
             listview_type = listview_type
             listview_type_cardinality = listview_type_cardinality
             listview_associate = listview_associate
@@ -173,15 +173,15 @@ plugin.tx_find {
             picture_mini = picture_mini
         }
 
-    # Der Abschnitt "dataFields" bestimmt, welche Felder in den jeweiligen Ansichten geladen werden sollen.
-            dataFields {
-        default {
+        # Der Abschnitt "dataFields" bestimmt, welche Felder in den jeweiligen Ansichten geladen werden sollen.
+        dataFields {
             default {
+                default {
                     f0 = id
                 }
             }
             index {
-            default {
+                default {
                     f0 = id
                     f1 = listview_type
                     f2 = listview_type_cardinality
@@ -193,7 +193,7 @@ plugin.tx_find {
                 }
             }
             detail {
-            default {
+                default {
                     f0 = *
                 }
                 disallow {
@@ -209,8 +209,8 @@ plugin.tx_find {
             data < plugin.tx_find.settings.dataFields.detail
         }
 
-    # Der Abschnitt "sort" definiert die Sortierung der Trefferliste und die Nutzeroptionen.
-            sort {
+        # Der Abschnitt "sort" definiert die Sortierung der Trefferliste und die Nutzeroptionen.
+        sort {
             1 {
                 id = default
                 sortCriteria = score desc
@@ -225,9 +225,9 @@ plugin.tx_find {
             }
         }
 
-    # Der Abschnitt "facets" definiert die angebotenen Suchfacetten. Hier können auch Tabs konfiguriert werden.
-    # Zur Erläuterung der Parameter siehe die typo3-find-Dokumentation auf GitHub.
-            facets {
+        # Der Abschnitt "facets" definiert die angebotenen Suchfacetten. Hier können auch Tabs konfiguriert werden.
+        # Zur Erläuterung der Parameter siehe die typo3-find-Dokumentation auf GitHub.
+        facets {
             10 {
                 id = Medientyp
                 field = icon_facet
@@ -260,16 +260,15 @@ plugin.tx_find {
             }
         }
 
-    # Der Abschnitt "paging" definiert die Anzahl der Treffer pro Seite sowie das Navigieren durch das
-    # Trefferset in der Detailanzeige.
-            paging {
+        # Der Abschnitt "paging" definiert die Anzahl der Treffer pro Seite sowie das Navigieren durch das
+        # Trefferset in der Detailanzeige.
+        paging {
             perPage = 25
             maximumPerPage = 100
             detailPagePaging = 0
         }
 
         detailViews {
-
             0 {
                 type = Bilder und Objekte
                 fields {
@@ -308,7 +307,6 @@ plugin.tx_find {
                     f23 = picture_mini
                 }
             }
-
 
         }
 
