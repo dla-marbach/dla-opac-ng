@@ -78,8 +78,7 @@ class ValueForKeyFilteredViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abs
         for($i=0; $i<$arraySize; $i++) {
             if ($mustMatch) {
                 foreach ($filterValues as $filterValue) {
-
-                    if (($parallelArray[$i] === $filterValue) && $array[$i]) {
+                    if (($parallelArray[$i] == $filterValue) && $array[$i]) {
                         $result[$i] = $array[$i];
                         break;
                     }

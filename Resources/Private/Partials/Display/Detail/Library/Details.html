@@ -361,17 +361,21 @@
 </f:if>
 
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'ANUM')}" name="ANUM" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AMNUM')}" name="AMNUM" />
-<f:if condition="{slub:data.inArray(haystack:AMNUM, needle:'572z')}">
+
+<dla:data.valueForKeyFiltered
+        key="ANUM"
+        filterKey="AMNUM"
+        filterValues="{0:'572z'}"
+        fields="{document.fields}"
+        as="ANUM" />
+
+<f:if condition="{ANUM}">
     <dt class="dt-{field}">
         ZDB-ID
     </dt>
     <dd class="dd-{field}">
         <f:for each="{ANUM}" as="item" iteration="iterator">
-            <f:if condition="{AMNUM.{iterator.index}} && ({AMNUM.{iterator.index}} == '572z')}">
-                {ANUM.{iterator.index}}
-            </f:if>
+            <a href="http://ld.zdb-services.de/resource/{item}">{item}</a><br />
         </f:for>
     </dd>
 </f:if>
@@ -413,18 +417,20 @@
 
 
 
+<dla:data.valueForKeyFiltered
+        key="A0501"
+        filterKey="AM501"
+        filterValues="{0:'526n'}"
+        fields="{document.fields}"
+        as="A0501" />
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0501')}" name="A0501" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AM501')}" name="AM501" />
-<f:if condition="{slub:data.inArray(haystack:AM501, needle:'526n')}">
+<f:if condition="{A0501}">
     <dt class="dt-{field}">
         Anmerkungen
     </dt>
     <dd class="dd-{field}">
         <f:for each="{A0501}" as="item" iteration="iterator">
-            <f:if condition="{AM501.{iterator.index}} && ({AM501.{iterator.index}} == '526n')}">
-                {A0501.{iterator.index}}<br />
-            </f:if>
+            {item}<br />
         </f:for>
     </dd>
 </f:if>
@@ -601,50 +607,57 @@
 </f:if>
 
 
-
-
-
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'ATIT')}" name="ATIT" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AMTIT')}" name="AMTIT" />
-<f:if condition="{slub:data.inArray(haystack:AMTIT, needle:'303n')}">
+<f:comment>
+    Werk
+</f:comment>
+<dla:data.valueForKeyFiltered
+        key="ATIT"
+        filterKey="AMTIT"
+        filterValues="{0:'303n'}"
+        fields="{document.fields}"
+        as="ATIT" />
+<f:if condition="{ATIT}">
     <dt class="dt-{field}">
         Werk
     <dd class="dd-{field}">
         <f:for each="{ATIT}" as="item" iteration="iterator">
-            <f:if condition="{AMTIT.{iterator.index}} && ({AMTIT.{iterator.index}} == '303n')}">
-                {item}<br />
-            </f:if>
+            {item}<br />
         </f:for>
     </dd>
 </f:if>
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'ATIT')}" name="ATIT" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AMTIT')}" name="AMTIT" />
-<f:if condition="{slub:data.inArray(haystack:AMTIT, needle:'303t')}">
+
+<dla:data.valueForKeyFiltered
+        key="ATIT"
+        filterKey="AMTIT"
+        filterValues="{0:'303t'}"
+        fields="{document.fields}"
+        as="ATIT" />
+<f:if condition="{ATIT}">
     <dt class="dt-{field}">
         Teilwerke
     </dt>
     <dd class="dd-{field}">
         <f:for each="{ATIT}" as="item" iteration="iterator">
-            <f:if condition="{AMTIT.{iterator.index}} && ({AMTIT.{iterator.index}} == '303t')}">
-                {item}<br />
-            </f:if>
+            {item}<br />
         </f:for>
     </dd>
 </f:if>
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'ATIT')}" name="ATIT" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AMTIT')}" name="AMTIT" />
-<f:if condition="{slub:data.inArray(haystack:AMTIT, needle:'370n')}">
+
+<dla:data.valueForKeyFiltered
+        key="ATIT"
+        filterKey="AMTIT"
+        filterValues="{0:'370n'}"
+        fields="{document.fields}"
+        as="ATIT" />
+<f:if condition="{ATIT}">
     <dt class="dt-{field}">
         Weitere Titel
     </dt>
     <dd class="dd-{field}">
         <f:for each="{ATIT}" as="item" iteration="iterator">
-            <f:if condition="{AMTIT.{iterator.index}} && ({AMTIT.{iterator.index}} == '370n')}">
-                {item}<br />
-            </f:if>
+            {item}<br />
         </f:for>
     </dd>
 </f:if>
@@ -726,18 +739,19 @@
 </f:if>
 
 
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0501')}" name="A0501" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AM501')}" name="AM501" />
-<f:if condition="{slub:data.inArray(haystack:AM501, needle:'517n')}">
+<dla:data.valueForKeyFiltered
+        key="A0501"
+        filterKey="AM501"
+        filterValues="{0:'517n'}"
+        fields="{document.fields}"
+        as="A0501" />
+<f:if condition="{A0501}">
     <dt class="dt-{field}">
         Enthält
     </dt>
     <dd class="dd-{field}">
         <f:for each="{A0501}" as="item" iteration="iterator">
-            <f:if condition="{AM501.{iterator.index}} && ({AM501.{iterator.index}} == '517n')}">
-                {item}<br />
-            </f:if>
+            {item}<br />
         </f:for>
     </dd>
 </f:if>
@@ -763,69 +777,68 @@
 
 
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0501')}" name="AM501" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AM501')}" name="AM501" />
+<f:comment>
+    Anmerkungen (Hochschulschrift)
+</f:comment>
+
+<dla:data.valueForKeyFiltered
+        key="A0501"
+        filterKey="AM501"
+        filterValues="{0:'519'}"
+        fields="{document.fields}"
+        as="A0501" />
+
+
 <dla:data.joinFields
         fieldNames="{0:'GHSART',1:'GHSNAM',3:'GHSDAT'}"
         fieldWraps="{0:'%s',1:', %s',2:', %s'}"
         fields="{document.fields}"
-        as="altText"
+        as="altTextA0501"
 />
 
-<f:if condition="{slub:data.inArray(haystack:AM501, needle:'519')}">
+<f:if condition="{A0501} || {altTextA0501}">
     <f:then>
         <dt class="dt-{field}">
-            Hochschulschrift
+            Anmerkungen (Hochschulschrift)
         </dt>
         <dd class="dd-{field}">
-            <f:for each="{A0501}" as="item" iteration="iterator">
-                <f:if condition="{AM501.{iterator.index}} && ({AM501.{iterator.index}} == '519')}">
-                    {item}<br />
-                </f:if>
-            </f:for>
-        </dd>
-    </f:then>
-    <f:else>
-        <f:if condition="{altText}">
-        <dt class="dt-{field}">
-            Hochschulschrift
-        </dt>
-        <dd class="dd-{field}">
-            <f:for each="{altText}" as="item" iteration="iterator">
-                {item}
-            </f:for>
-        </dd>
-        </f:if>
-    </f:else>
-</f:if>
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0501')}" name="AM501" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AM501')}" name="AM501" />
-<f:if condition="
-    {slub:data.inArray(haystack:AM501, needle:'519')} ||
-    {slub:data.inArray(haystack:AM501, needle:'517n')} ||
-    {slub:data.inArray(haystack:AM501, needle:'526n')}">
-    <f:then>
-    </f:then>
-    <f:else>
-        <f:if condition="{A0501}">
-            <dt class="dt-{field}">
-                Diverse A0501
-            </dt>
-            <dd class="dd-{field}">
-                <f:for each="{A0501}" as="item" iteration="iterator">
-                    <f:if condition="
-                        {AM501.{iterator.index}} && ({AM501.{iterator.index}} != '519')} ||
-                        {AM501.{iterator.index}} && ({AM501.{iterator.index}} != '517n')}
-                        {AM501.{iterator.index}} && ({AM501.{iterator.index}} != '526n')}">
+            <f:if condition="{A0501}">
+                <f:then>
+                    <f:for each="{A0501}" as="item" iteration="iterator">
                         {item}<br />
-                    </f:if>
-                </f:for>
-            </dd>
-        </f:if>
-    </f:else>
+                    </f:for>
+                </f:then>
+                <f:else>
+                    <f:for each="{altTextA0501}" as="item" iteration="iterator">
+                        {item}<br />
+                    </f:for>
+                </f:else>
+            </f:if>
+        </dd>
+    </f:then>
 </f:if>
 
+<f:comment>
+    Anmerkungen (Diverse A0501)
+</f:comment>
+<dla:data.valueForKeyFiltered
+        key="A0501"
+        filterKey="AM501"
+        filterValues="{0:'526n',1:'517n',2:'519'}"
+        negateFilter="true"
+        fields="{document.fields}"
+        as="A0501" />
+
+<f:if condition="{A0501}">
+    <dt class="dt-{field}">
+        Anmerkungen (Diverse A0501)
+    </dt>
+    <dd class="dd-{field}">
+        <f:for each="{A0501}" as="item" iteration="iterator">
+            {item}<br />
+        </f:for>
+    </dd>
+</f:if>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_GWKEY')}" name="XX_AK_TITREG_GWKEY" />
@@ -867,14 +880,38 @@
     </dd>
 </f:if>
 
-<f:if condition="{}">
-    <dt class="dt-{field}">
-        Beziehungskennzeichnung
-    </dt>
-    <dd class="dd-{field}">
-    </dd>
-</f:if>
 
+
+<f:comment>
+Für die Feldbenennung:
+AKYTXT
+
+    Für den Feldinhalt
+    XX_AK_TITREG_AKY526
+
+
+        Die Datensatzverknüpfung erfolgt nur in eine Richtung, die
+    AKYTXT
+    wird nicht in beiden Sätzen belegt,
+        für die Anzeige im verknüpten Satz müssen die Werte aus
+    IND526
+    herangezogen werden,
+        dafür wurde eine Mappingtabelle. Die Lösung sollte so implementiert werden,
+        dass sie vom DLA weiter einfach weitergepflegt werden kann.
+    </f:comment>
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AKYTXT')}" name="AKYTXT" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKY526')}" name="XX_AK_TITREG_AKY526" />
+<f:if condition="{XX_AK_TITREG_AKY526}">
+    <f:for each="{AKYTXT}" as="labelItem" iteration="labelIterator">
+        <dt class="dt-{field}">
+            {labelItem}
+        </dt>
+        <dd class="dd-{field}">
+            {XX_AK_TITREG_AKY526.{labelIterator.index}}
+        </dd>
+    </f:for>
+</f:if>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_REGTIT_SYNKEY')}" name="XX_SE_REGTIT_SYNKEY" />
