@@ -7,8 +7,6 @@
   Adds a link to deselect the date range used for faceting if there is a selection.
 </f:comment>
 
-<s:page.script file="EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.flot.min.js" name="find-flot"/>
-<s:page.script file="EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.flot.selection.js" name="find-flot-selection"/>
 
 <div class="facetHistogram-container">
   <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, activeFacets:config.activeFacets)}">
@@ -43,6 +41,7 @@
       class="link-template hidden internal"
     />
     <div class="histogram" id="c-{config.uid}-histogram-{facetInfo.id}">
+        <f:format.raw>
       <script type="text/javascript">
       (function () {
         var histogramConfiguration = {
@@ -57,6 +56,7 @@
         tx_find.createHistogramForTermsInContainer(facetData, document.getElementById('c-{config.uid}-histogram-{facetInfo.id}'), histogramConfiguration);
       })();
       </script>
+        </f:format.raw>
     </div>
   </f:alias>
 </div>

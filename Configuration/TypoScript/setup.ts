@@ -1,6 +1,8 @@
 # Für einige Funktionen in der Anzeige benötigt die Extension das Javascript-Framework jQuery
 # Einbindung einer lokalen Kopie wegen Beschränkungen im internen Netz des DLA
 page.includeJS.jquery = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-1.11.0.min.js
+page.includeJS.jquery-plot = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.flot.min.js
+page.includeJS.jquery-plot-select = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.flot.selection.js
 # Zur Darstellung der Icons in der Trefferliste wird Font Awesome verwendet
 page.includeJS.fa = https://use.fontawesome.com/96352f148e.js
 page.includeJS.find = EXT:find/Resources/Public/JavaScript/find.js
@@ -248,7 +250,7 @@ plugin.tx_find {
             40 {
                 id = Zeitraum
                 field = A0425
-                #type = Histogram
+                type = Histogram
                 sortOrder = count
                 query = A0425("%s")
             }
