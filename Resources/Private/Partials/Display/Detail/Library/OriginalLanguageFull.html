@@ -1,0 +1,30 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace s=Subugoe\Find\ViewHelpers}
+
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0038')}" name="A0038" />
+
+<dt class="dt-{field}">
+    Sprache Original
+</dt>
+<dd class="dd-{field}">
+
+    <f:if condition="{A0038}">
+        <f:then>
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+                document:document,
+                results:results,
+                field:'A0038',
+                linkFieldContent:1,
+                linkFacets:linkFacets
+              }"/>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>

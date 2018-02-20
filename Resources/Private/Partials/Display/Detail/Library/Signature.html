@@ -1,0 +1,37 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace s=Subugoe\Find\ViewHelpers}
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_SIGNA_A0001')}" name="XX_AU_SIGNA_A0001" />
+
+<dla:data.joinFields
+        fieldNames="{0:'XX_AU_SIGNA_A0001'}"
+        fieldWraps="{0:'%s'}"
+        fields="{document.fields}"
+        as="linkTexts"
+/>
+
+<dt class="dt-{field}">
+    Signatur
+</dt>
+<dd class="dd-{field}">
+    Baustelle
+    <f:if condition="{XX_AU_SIGNA_A0001}">
+        <f:then>
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+                document:document,
+                results:results,
+                field:'A0001',
+                linkFieldContent:1,
+                linkFacets:linkFacets
+                linkTexts:linkTexts
+              }"/>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>

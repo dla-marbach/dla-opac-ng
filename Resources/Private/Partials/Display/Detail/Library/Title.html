@@ -1,0 +1,104 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace s=Subugoe\Find\ViewHelpers}
+
+<f:comment>Titel</f:comment>
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0331')}" name="A0331" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0335')}" name="A0335" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'TITREG')}" name="TITREG" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'DOKTYP')}" name="DOKTYP" />
+<dla:data.valueForKeyFiltered key="ATIT" filterKey="AMTIT" filterValues="{0:'340n'}" fields="{document.fields}" as="ATIT_340n" />
+<dla:data.valueForKeyFiltered key="ATIT" filterKey="AMTIT" filterValues="{0:'341n'}" fields="{document.fields}" as="ATIT_341n" />
+<dla:data.joinFieldArrays
+        arrays="{0:'{ATIT_340n}',1:'{ATIT_341n}'}"
+        fieldWraps="{0:'%s',1:': %s'}"
+        as="parallelTitle"
+/>
+<dla:data.implode
+        array="{parallelTitle}"
+        glue=" = "
+        as="parallelTitle"
+/>
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0359')}" name="A0359" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0369')}" name="A0369" />
+
+<dla:data.valueForKeyFiltered key="ATIT" filterKey="AMTIT" filterValues="{0:'361n'}" fields="{document.fields}" as="ATIT_361n" />
+<dla:data.valueForKeyFiltered key="ATIT" filterKey="AMTIT" filterValues="{0:'365n'}" fields="{document.fields}" as="ATIT_365n" />
+<dla:data.implode
+        array="{ATIT_361n}"
+        glue=". "
+        as="ATIT_361n"
+/>
+<dla:data.implode
+        array="{ATIT_365n}"
+        glue=". "
+        as="ATIT_365n"
+/>
+
+<f:if condition="{DOKTYP.0} == 'Zeitschriftenheft' || DOKTYP.0} == 'Zeitschriftenband') ">
+    <f:then>
+        <dla:data.joinFields
+                fieldNames="{0:'TITREG',1:'A0335'}"
+                fieldWraps="{0:'%s',1:':%s'}"
+                fields="{document.fields}"
+                as="title"
+        />
+    </f:then>
+    <f:else>
+        <f:if condition="{A0331}">
+            <f:then>
+                <dla:data.joinFields
+                        fieldNames="{0:'A0331',1:'A0335'}"
+                        fieldWraps="{0:'%s',1:': %s'}"
+                        fields="{document.fields}"
+                        as="title"
+                />
+            </f:then>
+            <f:else>
+                <dla:data.joinFields
+                        fieldNames="{0:'TITREG',1:'A0335'}"
+                        fieldWraps="{0:'%s',1:':%s'}"
+                        fields="{document.fields}"
+                        as="title"
+                />
+            </f:else>
+        </f:if>
+    </f:else>
+</f:if>
+
+
+<dt class="dt-{field}">
+    Titel
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{title} || {parallelTitle} || {A0359} || {A0369} || {ATIT_361n} || {ATIT_365n}">
+        <f:then>
+            {title.0}
+            <f:if condition="{parallelTitle}">
+                = {parallelTitle}
+            </f:if>
+            <f:if condition="{A0359}">
+                <f:then>
+                    / {A0359}.
+                </f:then>
+                <f:else>
+                    <f:if condition="{A0369}">
+                        / {A0369}.
+                    </f:if>
+                </f:else>
+            </f:if>
+            <f:if condition="{ATIT_361n}">
+                {ATIT_361n}.
+            </f:if>
+            <f:if condition="{ATIT_365n}">
+                {ATIT_365n}.
+            </f:if>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>
+

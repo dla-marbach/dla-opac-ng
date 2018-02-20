@@ -3,740 +3,74 @@
 {namespace dla=Dla\DlaOpacNg\ViewHelpers}
 {namespace s=Subugoe\Find\ViewHelpers}
 
-<f:comment>
-    Mediatype
-</f:comment>
+
+<f:render partial="Display/Detail/Library/Mediatype" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/Title" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/Author" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/Involved" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/Appeared" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/PublicationHistory" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/Edition" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/Scope" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/PhysicalDescription" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/ISBN" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/ISSN" arguments="{results:results, document:document}" />
+
 <dt class="dt-{field}">
-    Medienart
+    E-ISSN
 </dt>
 <dd class="dd-{field}">
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'listview_type',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
+    Baustelle
 </dd>
 
-<f:comment>
-    Titel
-</f:comment>
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0331')}" name="A0331" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0335')}" name="A0335" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'TITREG')}" name="TITREG" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'DOKTYP')}" name="DOKTYP" />
-<dla:data.valueForKeyFiltered key="ATIT" filterKey="AMTIT" filterValues="{0:'340n'}" fields="{document.fields}" as="ATIT_340n" />
-<dla:data.valueForKeyFiltered key="ATIT" filterKey="AMTIT" filterValues="{0:'341n'}" fields="{document.fields}" as="ATIT_341n" />
-<dla:data.joinFieldArrays
-        arrays="{0:'{ATIT_340n}',1:'{ATIT_341n}'}"
-        fieldWraps="{0:'%s',1:': %s'}"
-        as="parallelTitle"
-/>
-<dla:data.implode
-        array="{parallelTitle}"
-        glue=" = "
-        as="parallelTitle"
-/>
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0359')}" name="A0359" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0369')}" name="A0369" />
-
-<dla:data.valueForKeyFiltered key="ATIT" filterKey="AMTIT" filterValues="{0:'361n'}" fields="{document.fields}" as="ATIT_361n" />
-<dla:data.valueForKeyFiltered key="ATIT" filterKey="AMTIT" filterValues="{0:'365n'}" fields="{document.fields}" as="ATIT_365n" />
-<dla:data.implode
-        array="{ATIT_361n}"
-        glue=". "
-        as="ATIT_361n"
-/>
-<dla:data.implode
-        array="{ATIT_365n}"
-        glue=". "
-        as="ATIT_365n"
-/>
-
-<f:if condition="{DOKTYP.0} == 'Zeitschriftenheft' || DOKTYP.0} == 'Zeitschriftenband') ">
-    <f:then>
-        <dla:data.joinFields
-                fieldNames="{0:'TITREG',1:'A0335'}"
-                fieldWraps="{0:'%s',1:':%s'}"
-                fields="{document.fields}"
-                as="title"
-        />
-    </f:then>
-    <f:else>
-        <f:if condition="{A0331}">
-            <f:then>
-                <dla:data.joinFields
-                        fieldNames="{0:'A0331',1:'A0335'}"
-                        fieldWraps="{0:'%s',1:': %s'}"
-                        fields="{document.fields}"
-                        as="title"
-                />
-            </f:then>
-            <f:else>
-                <dla:data.joinFields
-                        fieldNames="{0:'TITREG',1:'A0335'}"
-                        fieldWraps="{0:'%s',1:':%s'}"
-                        fields="{document.fields}"
-                        as="title"
-                />
-            </f:else>
-        </f:if>
-    </f:else>
-</f:if>
+<f:render partial="Display/Detail/Library/ZDBID" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/PartOf" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/ContainedIn" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/Remarks" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/Usage" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/Signature" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/Provenance" arguments="{results:results, document:document}" />
 
 
-<f:if condition="{title} || {parallelTitle} || {A0359} || {A0369} || {ATIT_361n} || {ATIT_365n}">
-    <dt class="dt-{field}">
-        Titel
-    </dt>
-    <dd class="dd-{field}">
-        {title.0}
-        <f:if condition="{parallelTitle}">
-            = {parallelTitle}
-        </f:if>
-        <f:if condition="{A0359}">
-            <f:then>
-                / {A0359}.
-            </f:then>
-            <f:else>
-                <f:if condition="{A0369}">
-                    / {A0369}.
-                </f:if>
-            </f:else>
-        </f:if>
-        <f:if condition="{ATIT_361n}">
-            {ATIT_361n}.
-        </f:if>
-        <f:if condition="{ATIT_365n}">
-            {ATIT_365n}.
-        </f:if>
-    </dd>
-</f:if>
-
-
-<f:comment>
-    Urheber
-</f:comment>
-<dla:data.valueForKeyFiltered key="XX_PE_P0800_PE0100" filterKey="GFUPER" filterValues="{0:'_GS'}" mustMatch="false" fields="{document.fields}" as="XX_PE_P0800_PE0100" />
-<dla:data.valueForKeyFiltered key="GFUPE" filterKey="GFUPER" filterValues="{0:'_GS'}" mustMatch="false" fields="{document.fields}" as="GFUPE_GS" />
-<dla:data.joinFieldArrays
-        arrays="{0:'{XX_PE_P0800_PE0100}',1:'{GFUPE_GS}'}"
-        fieldWraps="{0:'%s',1:'[%s]'}"
-        as="author"
-/>
-
-<f:if condition="{author}">
-    <dt class="dt-{field}">
-        Urheber
-    </dt>
-    <dd class="dd-{field}">
-        <f:for each="{author}" as="item" iteration="iterator">
-            {item} <br />
-        </f:for>
-    </dd>
-</f:if>
-
-
-<f:comment>
-    Beteiligt
-</f:comment>
-<dla:data.valueForKeyFiltered
-        key="XX_PE_P0800_PE0100"
-        filterKey="GFUPER"
-        filterValues="{0:'_GS'}"
-        mustMatch="false"
-        negateFilter="true"
-        fields="{document.fields}"
-        as="XX_PE_P0800_PE0100" />
-
-<dla:data.valueForKeyFiltered
-        key="GFUPE"
-        filterKey="GFUPER"
-        filterValues="{0:'_GS'}"
-        mustMatch="false"
-        negateFilter="true"
-        fields="{document.fields}" as="GFUPE_NOT_GS" />
-<dla:data.joinFieldArrays
-        arrays="{0:'{XX_PE_P0800_PE0100}',1:'{GFUPE_NOT_GS}'}"
-        fieldWraps="{0:'%s',1:'[%s]'}"
-        as="involved"
-/>
-
-<f:if condition="{involved}">
-    <dt class="dt-{field}">
-        Beteiligt
-    </dt>
-    <dd class="dd-{field}">
-        <f:for each="{involved}" as="item" iteration="iterator">
-            {item} <br />
-        </f:for>
-    </dd>
-</f:if>
-
-<f:comment>
-    Erschienen
-</f:comment>
-
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS113')}" name="POS113" />
-
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0410')}" name="A0410" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0412')}" name="A0412" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0425')}" name="A0425" />
-<dla:data.joinFieldArrays
-        arrays="{0:'{A0410}',1:'{A0412}',2:'{A0425}'}"
-        fieldWraps="{0:'%s',1:': [%s]',2:' %s'}"
-        as="appeared"
-/>
-
-<f:if condition="{appeared}">
-    <dt class="dt-{field}">
-        Erschienen
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{POS113} == 'Fortlaufende Ressource / Jahrbuch' ||
-            {POS113} == 'Fortlaufende Ressource / Zeitschrift' ||
-            {POS113} == 'Fortlaufende Ressource / Serie, Reihe' ||
-            {POS113} == 'Fortlaufende Ressource / Zeitung'}">
-
-            <f:then>
-                <f:if condition="{iterator.index} > 0">
-                    <f:for each="{appeared}" as="item" iteration="iterator">
-                        <f:if condition="{iterator.index} == 0">
-                            {item}<br />
-                        </f:if>
-                        <f:if condition="{iterator.index} > 0">
-                            <span style="color:red;">{item}</span><br />
-                        </f:if>
-                    </f:for>
-                </f:if>
-            </f:then>
-            <f:else>
-                <f:for each="{appeared}" as="item" iteration="iterator">
-                    {item}<br />
-                </f:for>
-            </f:else>
-        </f:if>
-    </dd>
-</f:if>
-
-<f:comment>
-    Erscheinungsverlauf
-</f:comment>
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0405')}" name="A0405" />
-<f:if condition="{A0405}">
-    <dt class="dt-{field}">
-        Erscheinungsverlauf
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                    document:document,
-                    results:results,
-                    field:'A0405',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-    </dd>
-</f:if>
-
-<f:comment>
-    Ausgabe
-</f:comment>
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0403')}" name="A0403" />
-<f:if condition="{A0405}">
-    <dt class="dt-{field}">
-        Ausgabe
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                    document:document,
-                    results:results,
-                    field:'A0403',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-    </dd>
-</f:if>
-
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0433')}" name="A0433" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0434')}" name="A0434" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0437')}" name="A0437" />
-<f:if condition="{A0433} || {A0434} || {A0437}">
-    <dt class="dt-{field}">
-        Umfang
-    </dt>
-    <dd class="dd-{field}">
-        <dla:data.joinFields
-                fieldNames="{0:'A0433',1:'A0434',3:'A0437'}"
-                fieldWraps="{0:'%s',1:': [%s]',2:'+ %s'}"
-                fields="{document.fields}"
-                as="linkTexts"
-        />
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                    document:document,
-                    results:results,
-                    field:'A0433',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets,
-                    linkTexts:linkTexts
-                  }"/>
-    </dd>
-</f:if>
-
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0653')}" name="A0653" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AI653')}" name="AI653" />
-<f:if condition="{A0653} || {AI653}">
-    <dt class="dt-{field}">
-        Physische Beschreibung
-    </dt>
-    <dd class="dd-{field}">
-        <dla:data.joinFields
-                fieldNames="{0:'A0653',1:'AI653'}"
-                fieldWraps="{0:'%s',1:': (%s)'}"
-                fields="{document.fields}"
-                as="linkTexts"
-        />
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                    document:document,
-                    results:results,
-                    field:'A0653',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets,
-                    linkTexts:linkTexts
-                  }"/>
-    </dd>
-</f:if>
-
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0540')}" name="A0540" />
-<f:if condition="{A0540}">
-    <dt class="dt-{field}">
-        ISBN
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                    document:document,
-                    results:results,
-                    field:'A0540',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-    </dd>
-</f:if>
-
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0542')}" name="A0542" />
-<f:if condition="{A0542}">
-    <dt class="dt-{field}">
-        ISSN
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                    document:document,
-                    results:results,
-                    field:'A0542',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-    </dd>
-</f:if>
-
-
-
-<dla:data.valueForKeyFiltered
-        key="ANUM"
-        filterKey="AMNUM"
-        filterValues="{0:'572z'}"
-        fields="{document.fields}"
-        as="ANUM" />
-
-<f:if condition="{ANUM}">
-    <dt class="dt-{field}">
-        ZDB-ID
-    </dt>
-    <dd class="dd-{field}">
-        <f:for each="{ANUM}" as="item" iteration="iterator">
-            <a href="http://ld.zdb-services.de/resource/{item}">{item}</a><br />
-        </f:for>
-    </dd>
-</f:if>
-
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKA451')}" name="XX_AK_TITREG_AKA451" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0455')}" name="A0455" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'GESTYP')}" name="GESTYP" />
-
-<f:if condition="{XX_AK_TITREG_AKA451}">
-    <dt class="dt-{field}">
-        Teil von
-    </dt>
-    <dd class="dd-{field}">
-
-        <dla:data.joinFields
-                fieldNames="{0:'XX_AK_TITREG_AKA451',1:'A0455'}"
-                fieldWraps="{0:'%s',1:': %s'}"
-                fields="{document.fields}"
-                as="linkTexts"
-        />
-
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                    document:document,
-                    results:results,
-                    field:'AKA451',
-                    linkFieldContent:1,
-                    linkFacets:linkFacets
-                    linkTexts:linkTexts
-                  }"/>
-    </dd>
-</f:if>
-
-<f:comment>
-    Enthalten in ?
-</f:comment>
-
-
-
-<dla:data.valueForKeyFiltered
-        key="A0501"
-        filterKey="AM501"
-        filterValues="{0:'526n'}"
-        fields="{document.fields}"
-        as="A0501" />
-
-<f:if condition="{A0501}">
-    <dt class="dt-{field}">
-        Anmerkungen
-    </dt>
-    <dd class="dd-{field}">
-        <f:for each="{A0501}" as="item" iteration="iterator">
-            {item}<br />
-        </f:for>
-    </dd>
-</f:if>
-
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_KLASS')}" name="XX_AU_KLASS" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_STAND')}" name="XX_AU_STAND" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A01030')}" name="A01030" />
-<f:if condition="{XX_AU_KLASS} || {XX_AU_STAND}">
-    <f:then>
-        <v:variable.set value="{XX_AU_KLASS} {XX_AU_STAND}" name="usage" />
-    </f:then>
-    <f:else>
-        <f:if condition="{A01030} == 'Virtuelle Aufnahme'">
-            <v:variable.set value="nicht im Bestand des DLA" name="usage" />
-        </f:if>
-    </f:else>
-</f:if>
-<f:if condition="{usage}">
-    <dt class="dt-{field}">
-        Benutzung
-    </dt>
-    <dd class="dd-{field}">
-        {usage}
-    </dd>
-</f:if>
-
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_SIGNA_A0001')}" name="XX_AU_SIGNA_A0001" />
-<f:if condition="{XX_AU_SIGNA_A0001}">
-    <dt class="dt-{field}">
-        Signatur
-    </dt>
-    <dd class="dd-{field}">
-
-        <dla:data.joinFields
-                fieldNames="{0:'XX_AU_SIGNA_A0001'}"
-                fieldWraps="{0:'%s'}"
-                fields="{document.fields}"
-                as="linkTexts"
-        />
-
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                    document:document,
-                    results:results,
-                    field:'A0001',
-                    linkFieldContent:1,
-                    linkFacets:linkFacets
-                    linkTexts:linkTexts
-                  }"/>
-    </dd>
-</f:if>
-
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_WSIGNA_A0001')}" name="XX_AU_WSIGNA_A0001" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_PEU100_A001')}" name="XX_AU_PEU100_A001" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_FBTIT_A0001')}" name="XX_AU_FBTIT_A0001" />
-<f:if condition="{XX_AU_SIGNA_A0001}">
-    <dt class="dt-{field}">
-        Provenienz
-    </dt>
-    <dd class="dd-{field}">
-
-        <f:if condition="{XX_AU_WSIGNA_A0001}">
-            Bestand:
-            <f:render
-                partial="Display/Field/List"
-                arguments="{
-                    document:document,
-                    results:results,
-                    field:'XX_AU_WSIGNA_A0001',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                    linkTexts:linkTexts
-                  }"/>
-        </f:if>
-
-        <f:if condition="{XX_AU_PEU100_A001}">
-            <br />
-            Vorbesitzer:
-            <f:render
-                    partial="Display/Field/List"
-                    arguments="{
-                    document:document,
-                    results:results,
-                    field:'XX_AU_PEU100_A001',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                    linkTexts:linkTexts
-                  }"/>
-        </f:if>
-
-        <f:if condition="{XX_AU_FBTIT_A0001}">
-            <br />
-            <f:render
-                    partial="Display/Field/List"
-                    arguments="{
-                    document:document,
-                    results:results,
-                    field:'XX_AU_FBTIT_A0001',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                    linkTexts:linkTexts
-                  }"/>
-        </f:if>
-    </dd>
-</f:if>
-
-
-
-
-<f:comment>
+<dt class="dt-{field}">
     Sendeangaben
-    SENDER am SENDAT
-    Noch nicht vorhanden!
-</f:comment>
+</dt>
+<dd class="dd-{field}">
+    Baustelle
+</dd>
 
-
-
-
-<f:comment>
-    Digitales Objekt
-</f:comment>
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
-<v:variable.set value="{0:'Volltext',
-    1:'Langzeitarchivierung',
-    2:'Veranstaltung bei \"Dichterlesen.net\" nachhören',
-    3:'Zugang',
-    4:'CD-ROM aufrufen'
-}" name="bemurlValues"/>
-
-<dla:data.valueForKeyFiltered key="AURL" filterKey="BEMURL" filterValues="{bemurlValues}" fields="{document.fields}" as="AURL" />
-<dla:data.valueForKeyFiltered key="BEMURL" filterKey="BEMURL" filterValues="{bemurlValues}" fields="{document.fields}" as="BEMURL" />
-
-<dla:data.joinFieldArrays
-        arrays="{0:'{AURL}',1:'{BEMURL}'}"
-        fieldWraps="{0:'%s',1:'(%s)'}"
-        as="digitalObject"
-/>
-
-
-<f:if condition="{XX_MM_MOTITL_INDKEY} || {digitalObject} ">
-    <dt class="dt-{field}">
-        Digitales Objekt
-    </dt>
-    <dd class="dd-{field}">
-
-        <dla:data.joinFields
-                fieldNames="{0:'XX_MM_MOTITL_INDKEY'}"
-                fieldWraps="{0:'%s'}"
-                fields="{document.fields}"
-                as="linkTexts"
-        />
-
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                document:document,
-                results:results,
-                field: 'INDKEY',
-                linkFieldContent:1,
-                linkFacets:linkFacets,
-                linkTexts:linkTexts
-              }"/>
-
-        <f:for each="{digitalObject}" as="item" iteration="iterator">
-            <a href="{AURL.{iterator.index}}">{item}</a><br />
-        </f:for>
-
-    </dd>
-</f:if>
-
-
-<f:comment>
-    Werk
-</f:comment>
-<dla:data.valueForKeyFiltered
-        key="ATIT"
-        filterKey="AMTIT"
-        filterValues="{0:'303n'}"
-        fields="{document.fields}"
-        as="ATIT" />
-<f:if condition="{ATIT}">
-    <dt class="dt-{field}">
-        Werk
-    <dd class="dd-{field}">
-        <f:for each="{ATIT}" as="item" iteration="iterator">
-            {item}<br />
-        </f:for>
-    </dd>
-</f:if>
-
-
-<dla:data.valueForKeyFiltered
-        key="ATIT"
-        filterKey="AMTIT"
-        filterValues="{0:'303t'}"
-        fields="{document.fields}"
-        as="ATIT" />
-<f:if condition="{ATIT}">
-    <dt class="dt-{field}">
-        Teilwerke
-    </dt>
-    <dd class="dd-{field}">
-        <f:for each="{ATIT}" as="item" iteration="iterator">
-            {item}<br />
-        </f:for>
-    </dd>
-</f:if>
-
-
-<dla:data.valueForKeyFiltered
-        key="ATIT"
-        filterKey="AMTIT"
-        filterValues="{0:'370n'}"
-        fields="{document.fields}"
-        as="ATIT" />
-<f:if condition="{ATIT}">
-    <dt class="dt-{field}">
-        Weitere Titel
-    </dt>
-    <dd class="dd-{field}">
-        <f:for each="{ATIT}" as="item" iteration="iterator">
-            {item}<br />
-        </f:for>
-    </dd>
-</f:if>
-
-
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS122')}" name="POS122" />
-<f:if condition="{POS122}">
-    <dt class="dt-{field}">
-        Sprache	Text
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                    document:document,
-                    results:results,
-                    field:'POS122',
-                    linkFieldContent:1,
-                    linkFacets:linkFacets
-                  }"/>
-    </dd>
-</f:if>
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0038')}" name="A0038" />
-<f:if condition="{A0038}">
-    <dt class="dt-{field}">
-        Sprache Original
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                    document:document,
-                    results:results,
-                    field:'A0038',
-                    linkFieldContent:1,
-                    linkFacets:linkFacets
-                  }"/>
-    </dd>
-</f:if>
-
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0407')}" name="A0407" />
-<f:if condition="{A0407}">
-    <dt class="dt-{field}">
-        Maßstab	Text
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                    document:document,
-                    results:results,
-                    field:'A0407',
-                    linkFieldContent:1,
-                    linkFacets:linkFacets
-                  }"/>
-    </dd>
-</f:if>
+<f:render partial="Display/Detail/Library/DigitalObject" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/WorkFull" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/PartOfWorkFull" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/MoreTitlesFull" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/LanguageFull" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/OriginalLanguageFull" arguments="{results:results, document:document}" />
+<f:render partial="Display/Detail/Library/ScaleFull" arguments="{results:results, document:document}" />
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0431')}" name="A0431" />
-<f:if condition="{A0431}">
-    <dt class="dt-{field}">
-        Maßstab	Text
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                    document:document,
-                    results:results,
-                    field:'A0431',
-                    linkFieldContent:1,
-                    linkFacets:linkFacets
-                  }"/>
-    </dd>
-</f:if>
+
+<dt class="dt-{field}">
+    Register
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{A0431}">
+        <f:then>
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+                        document:document,
+                        results:results,
+                        field:'A0431',
+                        linkFieldContent:1,
+                        linkFacets:linkFacets
+                      }"/>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>
 
 
 <dla:data.valueForKeyFiltered
@@ -745,66 +79,67 @@
         filterValues="{0:'517n'}"
         fields="{document.fields}"
         as="A0501" />
-<f:if condition="{A0501}">
-    <dt class="dt-{field}">
-        Enthält
-    </dt>
-    <dd class="dd-{field}">
-        <f:for each="{A0501}" as="item" iteration="iterator">
-            {item}<br />
-        </f:for>
-    </dd>
-</f:if>
+
+<dt class="dt-{field}">
+    Enthält
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{A0501}">
+        <f:then>
+            <f:for each="{A0501}" as="item" iteration="iterator">
+                {item}<br />
+            </f:for>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>
 
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0654')}" name="A0654" />
-<f:if condition="{A0654}">
-    <dt class="dt-{field}">
-        Anmerkungen
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                    document:document,
-                    results:results,
-                    field:'A0654',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-    </dd>
-</f:if>
+<dt class="dt-{field}">
+    Anmerkungen
+</dt>
+<dd class="dd-{field}">
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0654')}" name="A0654" />
+    <f:if condition="{A0654}">
+        <f:then>
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+                        document:document,
+                        results:results,
+                        field:'A0654',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                      }"/>
+        </f:then>
+        <f:else>
+        </f:else>
+    </f:if>
 
 
+    <f:comment>
+        Anmerkungen (Hochschulschrift)
+    </f:comment>
+    <dla:data.valueForKeyFiltered
+            key="A0501"
+            filterKey="AM501"
+            filterValues="{0:'519'}"
+            fields="{document.fields}"
+            as="A0501_a" />
 
-<f:comment>
-    Anmerkungen (Hochschulschrift)
-</f:comment>
-
-<dla:data.valueForKeyFiltered
-        key="A0501"
-        filterKey="AM501"
-        filterValues="{0:'519'}"
-        fields="{document.fields}"
-        as="A0501" />
-
-
-<dla:data.joinFields
-        fieldNames="{0:'GHSART',1:'GHSNAM',3:'GHSDAT'}"
-        fieldWraps="{0:'%s',1:', %s',2:', %s'}"
-        fields="{document.fields}"
-        as="altTextA0501"
-/>
-
-<f:if condition="{A0501} || {altTextA0501}">
-    <f:then>
-        <dt class="dt-{field}">
-            Anmerkungen (Hochschulschrift)
-        </dt>
-        <dd class="dd-{field}">
-            <f:if condition="{A0501}">
+    <dla:data.joinFields
+            fieldNames="{0:'GHSART',1:'GHSNAM',3:'GHSDAT'}"
+            fieldWraps="{0:'%s',1:', %s',2:', %s'}"
+            fields="{document.fields}"
+            as="altTextA0501"
+    />
+    <f:if condition="{A0501_a} || {altTextA0501}">
+        <f:then>
+            <f:if condition="{A0501_a}">
                 <f:then>
-                    <f:for each="{A0501}" as="item" iteration="iterator">
+                    <f:for each="{A0501_a}" as="item" iteration="iterator">
                         {item}<br />
                     </f:for>
                 </f:then>
@@ -814,72 +149,91 @@
                     </f:for>
                 </f:else>
             </f:if>
-        </dd>
-    </f:then>
-</f:if>
+        </f:then>
+        <f:else>
+        </f:else>
+    </f:if>
 
-<f:comment>
-    Anmerkungen (Diverse A0501)
-</f:comment>
-<dla:data.valueForKeyFiltered
-        key="A0501"
-        filterKey="AM501"
-        filterValues="{0:'526n',1:'517n',2:'519'}"
-        negateFilter="true"
-        fields="{document.fields}"
-        as="A0501" />
-
-<f:if condition="{A0501}">
-    <dt class="dt-{field}">
+    <f:comment>
         Anmerkungen (Diverse A0501)
-    </dt>
-    <dd class="dd-{field}">
-        <f:for each="{A0501}" as="item" iteration="iterator">
-            {item}<br />
-        </f:for>
-    </dd>
-</f:if>
+    </f:comment>
+    <dla:data.valueForKeyFiltered
+            key="A0501"
+            filterKey="AM501"
+            filterValues="{0:'526n',1:'517n',2:'519'}"
+            negateFilter="true"
+            fields="{document.fields}"
+            as="A0501" />
+    <f:if condition="{A0501}">
+        <f:then>
+            <f:for each="{A0501}" as="item" iteration="iterator">
+                {item}<br />
+            </f:for>
+        </f:then>
+        <f:else>
+        </f:else>
+    </f:if>
+
+    <f:if condition="{A0654} || {A0501_a} || {altTextA0501} || {A0501}">
+        <f:then>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_GWKEY')}" name="XX_AK_TITREG_GWKEY" />
-<f:if condition="{XX_AK_TITREG_GWKEY}">
-    <dt class="dt-{field}">
-        Werk
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                document:document,
-                results:results,
-                field:'GWKEY',
-                linkFieldContent:1,
-                linkFacets:linkFacets,
-                linkTexts:XX_AK_TITREG_GWKEY
-              }"/>
-    </dd>
-</f:if>
+
+<dt class="dt-{field}">
+    Werk
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{XX_AK_TITREG_GWKEY}">
+        <f:then>
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+            document:document,
+            results:results,
+            field:'GWKEY',
+            linkFieldContent:1,
+            linkFacets:linkFacets,
+            linkTexts:XX_AK_TITREG_GWKEY
+          }"/>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>
 
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKE526')}" name="XX_AK_TITREG_AKE526" />
-<f:if condition="{XX_AK_TITREG_AKE526}">
-    <dt class="dt-{field}">
-        Teilwerke
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                document:document,
-                results:results,
-                field:'XX_AK_TITREG_AKE526',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    </dd>
-</f:if>
 
+<dt class="dt-{field}">
+    Teilwerke
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{XX_AK_TITREG_AKE526}">
+        <f:then>
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+            document:document,
+            results:results,
+            field:'XX_AK_TITREG_AKE526',
+            linkFieldContent:linkFieldContent,
+            linkFacets:linkFacets
+          }"/>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>
 
 
 <f:comment>
@@ -902,7 +256,7 @@ AKYTXT
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AKYTXT')}" name="AKYTXT" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKY526')}" name="XX_AK_TITREG_AKY526" />
-<f:if condition="{XX_AK_TITREG_AKY526}">
+
     <f:for each="{AKYTXT}" as="labelItem" iteration="labelIterator">
         <dt class="dt-{field}">
             {labelItem}
@@ -911,65 +265,81 @@ AKYTXT
             {XX_AK_TITREG_AKY526.{labelIterator.index}}
         </dd>
     </f:for>
+<f:if condition="{XX_AK_TITREG_AKY526}">
 </f:if>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_REGTIT_SYNKEY')}" name="XX_SE_REGTIT_SYNKEY" />
-<f:if condition="{XX_SE_REGTIT_SYNKEY}">
-    <dt class="dt-{field}">
-        Inhalt
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-        document:document,
-        results:results,
-        field:'SYNKEY',
-        linkFieldContent:1,
-        linkFacets:linkFacets,
-        linkTexts:XX_SE_REGTIT_SYNKEY
-      }"/>
-    </dd>
-</f:if>
+<dt class="dt-{field}">
+    Inhalt
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{XX_SE_REGTIT_SYNKEY}">
+        <f:then>
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+            document:document,
+            results:results,
+            field:'SYNKEY',
+            linkFieldContent:1,
+            linkFacets:linkFacets,
+            linkTexts:XX_SE_REGTIT_SYNKEY
+            }"/>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>
+
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0712')}" name="A0712" />
-<f:if condition="{A0712}">
-    <dt class="dt-{field}">
-        Inhalt
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-        document:document,
-        results:results,
-        field:'A0712',
-        linkFieldContent:linkFieldContent,
-        linkFacets:linkFacets
-        }"/>
+<dt class="dt-{field}">
+    Inhalt
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{A0712}">
+        <f:then>
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+            document:document,
+            results:results,
+            field:'A0712',
+            linkFieldContent:linkFieldContent,
+            linkFacets:linkFacets
+            }"/>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
     </dd>
-</f:if>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS114')}" name="POS114" />
-<f:if condition="{POS114}">
-    <dt class="dt-{field}">
-        Inhalt
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-        document:document,
-        results:results,
-        field:'POS114',
-        linkFieldContent:linkFieldContent,
-        linkFacets:linkFacets
-        }"/>
-    </dd>
-</f:if>
-
+<dt class="dt-{field}">
+    Inhalt
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{POS114}">
+        <f:then>
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+            document:document,
+            results:results,
+            field:'POS114',
+            linkFieldContent:linkFieldContent,
+            linkFacets:linkFacets
+            }"/>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>
 
 <f:comment>
     Inhalt BEMURL
@@ -990,55 +360,65 @@ AKYTXT
         as="contentBemurl"
 />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BEMURL')}" name="BEMURL" />
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AURL')}" name="AURL" />
-        <f:if condition="{contentBemurl}">
-            <dt class="dt-{field}">
-                Inhalt
-            </dt>
-            <dd class="dd-{field}">
-                <f:for each="{contentBemurl}" as="item" iteration="iterator">
-                    <a href="{AURL.{iterator.index}}">{item}</a><br />
-                </f:for>
-            </dd>
-        </f:if>
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AURL')}" name="AURL" />
+
+<dt class="dt-{field}">
+    Inhalt
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{contentBemurl}">
+        <f:then>
+            <f:for each="{contentBemurl}" as="item" iteration="iterator">
+                <a href="{AURL.{iterator.index}}">{item}</a><br />
+            </f:for>
+        </f:then>
+        <f:else>
+        </f:else>
+    </f:if>
+</dd>
+
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0711')}" name="A0711>" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'FREITX')}" name="FREITX" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_REGTIT_SYNKEY')}" name="XX_SE_REGTIT_SYNKEY" />
-<f:if condition="{A0711} || {AURL} || {XX_SE_REGTIT_SYNKEY}">
-    <dt class="dt-{field}">
-        Bibliographie
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
+<dt class="dt-{field}">
+    Bibliographie
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{A0711} || {AURL} || {XX_SE_REGTIT_SYNKEY}">
+        <f:then>
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+            document:document,
+            results:results,
+            field:'A0711',
+            linkFieldContent:linkFieldContent,
+            linkFacets:linkFacets
+            }"/>
+
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+            document:document,
+            results:results,
+            field:'AURL',
+            linkFieldContent:linkFieldContent,
+            linkFacets:linkFacets
+            }"/>
+
+            <f:render
                 partial="Display/Field/List"
                 arguments="{
-        document:document,
-        results:results,
-        field:'A0711',
-        linkFieldContent:linkFieldContent,
-        linkFacets:linkFacets
-        }"/>
-
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-        document:document,
-        results:results,
-        field:'AURL',
-        linkFieldContent:linkFieldContent,
-        linkFacets:linkFacets
-        }"/>
-
-        <f:render
-            partial="Display/Field/List"
-            arguments="{
-        document:document,
-        results:results,
-        field:'XX_SE_REGTIT_SYNKEY',
-        linkFieldContent:linkFieldContent,
-        linkFacets:linkFacets
-        }"/>
-
-    </dd>
-</f:if>
+            document:document,
+            results:results,
+            field:'XX_SE_REGTIT_SYNKEY',
+            linkFieldContent:linkFieldContent,
+            linkFacets:linkFacets
+            }"/>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>

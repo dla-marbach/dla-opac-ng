@@ -1,0 +1,25 @@
+
+<f:comment>Erscheinungsverlauf</f:comment>
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0405')}" name="A0405" />
+<dt class="dt-{field}">
+    Erscheinungsverlauf
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{A0405}">
+        <f:then>
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+                        document:document,
+                        results:results,
+                        field:'A0405',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                      }"/>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>

@@ -1,0 +1,38 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace s=Subugoe\Find\ViewHelpers}
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0433')}" name="A0433" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0434')}" name="A0434" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0437')}" name="A0437" />
+
+<dla:data.joinFields
+        fieldNames="{0:'A0433',1:'A0434',3:'A0437'}"
+        fieldWraps="{0:'%s',1:': [%s]',2:'+ %s'}"
+        fields="{document.fields}"
+        as="linkTexts"
+/>
+
+<dt class="dt-{field}">
+    Umfang
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{linkTexts}">
+        <f:then>
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+                        document:document,
+                        results:results,
+                        field:'A0433',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets,
+                        linkTexts:linkTexts
+                      }"/>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>

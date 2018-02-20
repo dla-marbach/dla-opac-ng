@@ -29,7 +29,7 @@
             fields="id,{s:data.valueForKey(array:settings.displayFieldForDataField, key:field)}"
             rows="10">
             <f:then>
-              <li>
+              <li>{displayField}
                 <ul>
                 <f:for each="{v:iterator.explode(content:'{s:data.valueForKey(array:settings.displayFieldForDataField, key:field)}', glue:',')}" as="displayField">
                   <li>

@@ -1,0 +1,27 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace s=Subugoe\Find\ViewHelpers}
+
+<dla:data.valueForKeyFiltered
+        key="ANUM"
+        filterKey="AMNUM"
+        filterValues="{0:'572z'}"
+        fields="{document.fields}"
+        as="ANUM" />
+
+<dt class="dt-{field}">
+    ZDB-ID
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{ANUM}">
+        <f:then>
+            <f:for each="{ANUM}" as="item" iteration="iterator">
+                <a href="http://ld.zdb-services.de/resource/{item}">{item}</a><br />
+            </f:for>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>

@@ -1,0 +1,26 @@
+
+<f:comment>Ausgabe</f:comment>
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0403')}" name="A0403" />
+
+<dt class="dt-{field}">
+    Ausgabe
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{A0403">
+        <f:then>
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+                        document:document,
+                        results:results,
+                        field:'A0403',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                      }"/>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>

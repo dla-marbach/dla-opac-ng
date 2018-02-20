@@ -1,0 +1,64 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace s=Subugoe\Find\ViewHelpers}
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_WSIGNA_A0001')}" name="XX_AU_WSIGNA_A0001" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_PEU100_A001')}" name="XX_AU_PEU100_A001" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_FBTIT_A0001')}" name="XX_AU_FBTIT_A0001" />
+
+<dt class="dt-{field}">
+    Provenienz
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{XX_AU_WSIGNA_A0001} || {XX_AU_PEU100_A001} || {XX_AU_FBTIT_A0001}">
+        <f:then>
+            <f:if condition="{XX_AU_WSIGNA_A0001}">
+                Bestand:
+                <f:render
+                        partial="Display/Field/List"
+                        arguments="{
+                        document:document,
+                        results:results,
+                        field:'XX_AU_WSIGNA_A0001',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                        linkTexts:linkTexts
+                      }"/>
+            </f:if>
+
+            <f:if condition="{XX_AU_PEU100_A001}">
+                <br />
+                Vorbesitzer:
+                <f:render
+                        partial="Display/Field/List"
+                        arguments="{
+                        document:document,
+                        results:results,
+                        field:'XX_AU_PEU100_A001',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                        linkTexts:linkTexts
+                      }"/>
+            </f:if>
+
+            <f:if condition="{XX_AU_FBTIT_A0001}">
+                <br />
+                <f:render
+                        partial="Display/Field/List"
+                        arguments="{
+                        document:document,
+                        results:results,
+                        field:'XX_AU_FBTIT_A0001',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                        linkTexts:linkTexts
+                      }"/>
+            </f:if>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>
+

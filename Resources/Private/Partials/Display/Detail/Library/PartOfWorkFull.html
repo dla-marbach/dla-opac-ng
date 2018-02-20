@@ -1,0 +1,27 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace s=Subugoe\Find\ViewHelpers}
+
+<dla:data.valueForKeyFiltered
+        key="ATIT"
+        filterKey="AMTIT"
+        filterValues="{0:'303t'}"
+        fields="{document.fields}"
+        as="ATIT" />
+
+<dt class="dt-{field}">
+    Teilwerke
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{ATIT}">
+        <f:then>
+            <f:for each="{ATIT}" as="item" iteration="iterator">
+                {item}<br />
+            </f:for>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>

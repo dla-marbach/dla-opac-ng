@@ -1,0 +1,29 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace s=Subugoe\Find\ViewHelpers}
+
+<dla:data.valueForKeyFiltered
+        key="A0501"
+        filterKey="AM501"
+        filterValues="{0:'526n'}"
+        fields="{document.fields}"
+        as="A0501" />
+
+
+<dt class="dt-{field}">
+    Anmerkungen
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{A0501}">
+        <f:then>
+            <f:for each="{A0501}" as="item" iteration="iterator">
+                {item}<br />
+            </f:for>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>
+

@@ -1,0 +1,28 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace s=Subugoe\Find\ViewHelpers}
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_KLASS')}" name="XX_AU_KLASS" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_STAND')}" name="XX_AU_STAND" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A01030')}" name="A01030" />
+<f:if condition="{XX_AU_KLASS} || {XX_AU_STAND}">
+    <f:then>
+        <v:variable.set value="{XX_AU_KLASS} {XX_AU_STAND}" name="usage" />
+    </f:then>
+    <f:else>
+        <f:if condition="{A01030} == 'Virtuelle Aufnahme'">
+            <v:variable.set value="nicht im Bestand des DLA" name="usage" />
+        </f:if>
+    </f:else>
+</f:if>
+
+<dt class="dt-{field}">
+    Benutzung
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{usage}">
+        <f:then>{usage}</f:then>
+        <f:else>-</f:else>
+    </f:if>
+</dd>

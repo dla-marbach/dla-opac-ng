@@ -1,0 +1,49 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace s=Subugoe\Find\ViewHelpers}
+
+<f:comment>Erschienen</f:comment>
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS113')}" name="POS113" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0410')}" name="A0410" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0412')}" name="A0412" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0425')}" name="A0425" />
+<dla:data.joinFieldArrays
+        arrays="{0:'{A0410}',1:'{A0412}',2:'{A0425}'}"
+        fieldWraps="{0:'%s',1:': [%s]',2:' %s'}"
+        as="appeared"
+/>
+
+<dt class="dt-{field}">
+    Erschienen
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{appeared}">
+        <f:then>
+            <f:if condition="{POS113} == 'Fortlaufende Ressource / Jahrbuch' ||
+                {POS113} == 'Fortlaufende Ressource / Zeitschrift' ||
+                {POS113} == 'Fortlaufende Ressource / Serie, Reihe' ||
+                {POS113} == 'Fortlaufende Ressource / Zeitung'}">
+                <f:then>
+                    <f:for each="{appeared}" as="item" iteration="iterator">
+                        <f:if condition="{iterator.index} == 0">
+                            {item}<br />
+                        </f:if>
+                        <f:if condition="{iterator.index} > 0">
+                            <span style="color:red;">{item}</span><br />
+                        </f:if>
+                    </f:for>
+                </f:then>
+                <f:else>
+                    <f:for each="{appeared}" as="item" iteration="iterator">
+                        {item}<br />
+                    </f:for>
+                </f:else>
+            </f:if>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>

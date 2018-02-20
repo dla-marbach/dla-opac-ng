@@ -1,0 +1,52 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace s=Subugoe\Find\ViewHelpers}
+
+<v:variable.set value="{0:'Einzelbestandteil / unselbständiges Werk'}" name="AKA451_Filter" />
+
+<dla:data.valueForKeyFiltered key="XX_AK_TITREG_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_TITREG_AKA451" />
+<dla:data.valueForKeyFiltered key="AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="AKA451" />
+<dla:data.valueForKeyFiltered key="A0455" filterKey="GESTYP" negateFilter="true" filterValues="{AKA451_Filter}" fields="{document.fields}" as="A0455" />
+
+<dla:data.joinFieldArrays
+        arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{A0455}'}"
+        fieldWraps="{0:'%s',1:': %s'}"
+        as="linkTexts"
+/>
+
+<dt class="dt-{field}">
+    Teil von
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{linkTexts}">
+        <f:then>
+            <f:for each="{linkTexts}" as="item" iteration="iterator">
+                <f:if condition="{AKA451.{iterator.index}} != '#NV'">
+                    <f:then>
+                        <slub:data.fromSolr
+                            query="A0001:(\"{AKA451.{iterator.index}}\")"
+                            fields="id"
+                            rows="10">
+                        <f:then>
+                            <f:link.action action="detail" arguments="{id:solr.id}" class="internal">
+                                {item}<br />
+                            </f:link.action>
+                        </f:then>
+                        <f:else>
+                            {item}<br />
+                        </f:else>
+                        </slub:data.fromSolr>
+                    </f:then>
+                    <f:else>
+                        {item}<br />
+                    </f:else>
+                </f:if>
+            </f:for>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>
+
