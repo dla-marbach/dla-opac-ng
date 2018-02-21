@@ -12,7 +12,7 @@
 <f:render partial="Form/QueryError.html" arguments="{_all}"/>
 
 <f:form name="c{config.uid}-form"
-    method="get"
+    method="post"
     section="{settings.jumpToID}"
     class="searchForm {f:if(condition:config.extendedSearch, then:'search-extended', else:'search-simple')}">
 
