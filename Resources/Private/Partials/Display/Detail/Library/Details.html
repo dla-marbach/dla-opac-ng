@@ -314,3 +314,152 @@ AKYTXT
         </f:else>
     </f:if>
 </dd>
+
+
+
+
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AKA451')}" name="AKA451" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
+
+<dla:data.joinFieldArrays
+        arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{USEIT}'}"
+        fieldWraps="{0:'%s',1:': %s'}"
+        as="linkTexts"
+/>
+
+
+<dt class="dt-{field}">
+</dt>
+<dd class="dd-{field}">
+    <slub:data.fromSolr
+        query="AKA451:(\"{A0001}\")"
+        fields="id"
+        rows="1">
+    <f:then>
+        <s:data.newArray
+                name="includedContributionsQuery"
+                global="1"
+                keys="{0:'raw'}"
+                values="{0:'AKA451:{A0001}'}"
+        />
+
+        <f:link.action action="detail" arguments="{q:includedContributionsQuery}" class="internal">
+            >Enthaltene Beiträge
+            <v:variable.set value="true" name="includedContributions" />
+        </f:link.action>
+    </f:then>
+    <f:else>
+    </f:else>
+    </slub:data.fromSolr>
+
+    <f:if condition="{includedContributions}">
+        <f:then>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>
+
+<dt class="dt-{field}">
+</dt>
+<dd class="dd-{field}">
+    <slub:data.fromSolr
+            query="AKA451:(\"{A0001}\")"
+    fields="id"
+    rows="1">
+    <f:then>
+        <s:data.newArray
+                name="includedVolumesQuery"
+                global="1"
+                keys="{0:'raw'}"
+                values="{0:'AKA451:{A0001}'}"
+        />
+
+        <f:link.action action="detail" arguments="{q:includedVolumesQuery}" class="internal">
+            >Enthaltene Bände
+            <v:variable.set value="true" name="includedVolumes" />
+        </f:link.action>
+    </f:then>
+    <f:else>
+    </f:else>
+    </slub:data.fromSolr>
+
+    <f:if condition="{includedVolumes}">
+        <f:then>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>
+
+
+<dt class="dt-{field}">
+</dt>
+<dd class="dd-{field}">
+    <slub:data.fromSolr
+            query="AKY526:(\"{A0001}\")"
+    fields="id"
+    rows="1">
+    <f:then>
+        <s:data.newArray
+                name="reviewsQuery"
+                global="1"
+                keys="{0:'raw'}"
+                values="{0:'AKY526:{A0001}'}"
+        />
+
+        <f:link.action action="detail" arguments="{q:reviewsQuery}" class="internal">
+            >Rezensionen
+            <v:variable.set value="true" name="reviews" />
+        </f:link.action>
+    </f:then>
+    <f:else>
+    </f:else>
+    </slub:data.fromSolr>
+
+    <f:if condition="{reviews}">
+        <f:then>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>
+
+
+
+<dt class="dt-{field}">
+</dt>
+<dd class="dd-{field}">
+    <slub:data.fromSolr
+            query="AKA451:(\"{A0001}\")"
+    fields="id"
+    rows="1">
+    <f:then>
+        <s:data.newArray
+                name="volumesBookletsQuery"
+                global="1"
+                keys="{0:'raw'}"
+                values="{0:'AKA451:{A0001}'}"
+        />
+
+        <f:link.action action="detail" arguments="{q:volumesBookletsQuery}" class="internal">
+            >Bände und Hefte
+            <v:variable.set value="true" name="volumesBooklets" />
+        </f:link.action>
+    </f:then>
+    <f:else>
+    </f:else>
+    </slub:data.fromSolr>
+
+    <f:if condition="{volumesBooklets}">
+        <f:then>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
+</dd>
