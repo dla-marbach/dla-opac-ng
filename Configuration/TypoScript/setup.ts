@@ -55,6 +55,8 @@ plugin.tx_find {
         # definiert, die garantiert keine Treffer erzeugt.
         defaultQuery = *:*
 
+        features.eDisMax = 1
+
         # Der Abschnitt "queryFields" definiert die zur Verfügung stehenden Suchfelder.
         # Der Index "0" beschreibt den Standardsuchschlitz, weitere Indizes können zusätzliche
         # Suchfelder (z.B. für eine erweiterte Suche) beinhalten.
