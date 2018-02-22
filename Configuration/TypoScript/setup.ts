@@ -96,6 +96,8 @@ plugin.tx_find {
         # "queryFieldForDataField" gibt an, in welchem Feld nach dem Inhalt des aktuellen Feldes gesucht werden soll.
         # "displayFieldForDataField" gibt an, welches Feld aus dem gefundenen Datensatz angezeigt werden soll.
         queryFieldForDataField {
+            BIKEY = B00001
+            XX_AU_AKKEY_AUKEY = A0001
             HSOKEY = H0001
             HSBFKY = B0001
             PE0100 = P0001
@@ -127,6 +129,8 @@ plugin.tx_find {
             NACKOP = SYISN
         }
         displayFieldForDataField {
+            BIKEY = B51800
+            XX_AU_AKKEY_AUKEY = TITREG
             HSOKEY = H41811,KUTIT
             HSBFKY = BFNAM
             PE0100 = P0800
