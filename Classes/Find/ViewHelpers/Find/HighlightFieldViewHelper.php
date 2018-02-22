@@ -131,10 +131,12 @@ class HighlightFieldViewHelper extends AbstractViewHelper
             $highlighting = $arguments['results']->getHighlighting();
 
             if ($highlighting) {
-                if ($arguments['alternateField']) {
-                    $highlightInfo += $highlighting->getResult($documentID)->getField($arguments['alternateField']);
-                } else {
-                    $highlightInfo += $highlighting->getResult($documentID)->getField($arguments['field']);
+                if (!empty($highlighting->getResult($documentID))) {
+                    if ($arguments['alternateField']) {
+                        $highlightInfo += $highlighting->getResult($documentID)->getField($arguments['alternateField']);
+                    } else {
+                        $highlightInfo += $highlighting->getResult($documentID)->getField($arguments['field']);
+                    }
                 }
             }
         }
