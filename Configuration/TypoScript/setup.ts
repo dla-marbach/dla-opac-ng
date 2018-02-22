@@ -5,7 +5,7 @@ page.includeJS.jquery-plot = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.
 page.includeJS.jquery-plot-select = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.flot.selection.js
 # Zur Darstellung der Icons in der Trefferliste wird Font Awesome verwendet
 page.includeJS.fa = https://use.fontawesome.com/96352f148e.js
-page.includeJS.find = EXT:find/Resources/Public/JavaScript/find.js
+page.includeJSFooter.find = EXT:find/Resources/Public/JavaScript/find.js
 
 page.includeCSS.opac-ng =  EXT:dla_opac_ng/Resources/Public/CSS/opac-ng.css
 
@@ -273,7 +273,7 @@ plugin.tx_find {
         paging {
             perPage = 25
             maximumPerPage = 100
-            detailPagePaging = 0
+            detailPagePaging = 1
         }
 
         detailViews {
