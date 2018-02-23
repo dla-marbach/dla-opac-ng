@@ -34,17 +34,9 @@
             fields="{document.fields}"
             as="linkTexts"
     />
-
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'B4164E',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets,
-                linkTexts:linkTexts
-              }"/>
+    <f:for each="{linkTexts}" as="item">
+        {item}
+    </f:for>
 </dd>
 </f:if>
 
@@ -383,7 +375,7 @@
         document:document,
         results:results,
         field:'INDKEY',
-        linkFieldContent:1,
+        linkFieldContent:linkFieldContent,
         linkFacets:linkFacets,
         linkTexts:linkTexts
       }"/>
@@ -393,7 +385,7 @@
 
 <f:if condition="{}">
     <dt class="dt-{field}">
-        In diesem Bestand xxx Unterbestände
+        In diesem Bestand xxx Unterbestände (Baustelle)
     </dt>
     <dd class="dd-{field}">
     </dd>
@@ -401,7 +393,7 @@
 
 <f:if condition="{}">
     <dt class="dt-{field}">
-        "In diesem Bestand xxx ...."
+        "In diesem Bestand xxx ...." (Baustelle)
     </dt>
     <dd class="dd-{field}">
     </dd>

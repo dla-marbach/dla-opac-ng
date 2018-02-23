@@ -41,6 +41,7 @@
         <span class="prefix-{field}">{prefixString}</span>
       </f:if>
       <f:alias map="{value:'{s:data.valueForKey(array:document.fields, key:field)}'}">
+          <v:variable.set value="{linkTexts.0}" name="linkTextValue" />
           <f:render partial="Display/Field/Content" arguments="{_all}"/>
       </f:alias>
       {fieldSuffix->f:format.raw()}
