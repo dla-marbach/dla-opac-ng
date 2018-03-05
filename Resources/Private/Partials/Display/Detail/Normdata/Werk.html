@@ -4,22 +4,14 @@
 {namespace s=Subugoe\Find\ViewHelpers}
 
 <dt class="dt-{field}">
-    Medienart
+    Icon
 </dt>
 <dd class="dd-{field}">
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'listview_type',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
+    <i class="fa fa-stack-1x fa-address-card" title="Normdaten"></i>
 </dd>
 
 <dt class="dt-{field}">
-    GND (Baustelle)
+    Typ
 </dt>
 <dd class="dd-{field}">
     <f:render
@@ -34,7 +26,7 @@
 </dd>
 
 <dt class="dt-{field}">
-    Person
+    Titel des Werkes
 </dt>
 <dd class="dd-{field}">
     <f:render
@@ -42,57 +34,45 @@
             arguments="{
                 document:document,
                 results:results,
-                field:'P0800',
+                field:'TITREG',
                 linkFieldContent:linkFieldContent,
                 linkFacets:linkFacets
               }"/>
 </dd>
 
 <dt class="dt-{field}">
-    Person
+    Urheber
 </dt>
 <dd class="dd-{field}">
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'P0830',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    (
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'PI830',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    )
 </dd>
 
-
 <dt class="dt-{field}">
-    Geschlecht
+    Beteiligt
 </dt>
 <dd class="dd-{field}">
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'P00651',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
 </dd>
 
+<dt class="dt-{field}">
+    Weitere Titel
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{document.fields.AMTIT} == '303n'">
+        <f:then>
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+                    document:document,
+                    results:results,
+                    field:'ATIT',
+                    linkFieldContent:linkFieldContent,
+                    linkFacets:linkFacets
+                  }"/>
+        </f:then>
+    </f:if>
+</dd>
 
 <dt class="dt-{field}">
-    Lebensdaten:
+    Form des Werks
 </dt>
 <dd class="dd-{field}">
     <f:render
@@ -100,50 +80,20 @@
             arguments="{
                 document:document,
                 results:results,
-                field:'PA8141',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    -
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'PA8142',
+                field:'A0712',
                 linkFieldContent:linkFieldContent,
                 linkFacets:linkFacets
               }"/>
 </dd>
 
 <dt class="dt-{field}">
-    Wirkungsdaten:
+    Zeit
 </dt>
 <dd class="dd-{field}">
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'PB814A',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    -
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'PB814B',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
 </dd>
 
-
 <dt class="dt-{field}">
-    Land
+    Sprache
 </dt>
 <dd class="dd-{field}">
     <f:render
@@ -151,23 +101,7 @@
             arguments="{
                 document:document,
                 results:results,
-                field:'PA037',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-</dd>
-
-
-<dt class="dt-{field}">
-    Normsatz (Baustelle)
-</dt>
-<dd class="dd-{field}">
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'AI710',
+                field:'POS122',
                 linkFieldContent:linkFieldContent,
                 linkFacets:linkFacets
               }"/>
@@ -182,27 +116,58 @@
             arguments="{
                 document:document,
                 results:results,
-                field:'P0801',
+                field:'A0801',
                 linkFieldContent:linkFieldContent,
                 linkFacets:linkFacets
               }"/>
-
-    (
     <f:render
             partial="Display/Field/List"
             arguments="{
                 document:document,
                 results:results,
-                field:'PI801',
+                field:'BEMURL',
                 linkFieldContent:linkFieldContent,
                 linkFacets:linkFacets
               }"/>
-    )
+    <f:render
+            partial="Display/Field/List"
+            arguments="{
+                document:document,
+                results:results,
+                field:'AURL',
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+              }"/>
 </dd>
 
+<dt class="dt-{field}">
+    Erläuterung
+</dt>
+<dd class="dd-{field}">
+    <f:if condition="{document.fields.AI659} == '678'">
+        <f:then>
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+                    document:document,
+                    results:results,
+                    field:'A0659',
+                    linkFieldContent:linkFieldContent,
+                    linkFacets:linkFacets
+                  }"/>
+        </f:then>
+    </f:if>
+</dd>
 
 <dt class="dt-{field}">
-
+    <f:if condition="{document.fields.AV710.0}">
+        <f:then>
+            {document.fields.AV710.0}
+        </f:then>
+        <f:else>
+            Kein Wert für [AV710]
+        </f:else>
+    </f:if>
 </dt>
 <dd class="dd-{field}">
     <f:render
@@ -210,57 +175,30 @@
             arguments="{
                 document:document,
                 results:results,
-                field:'PEURL',
+                field:'A0710',
                 linkFieldContent:linkFieldContent,
                 linkFacets:linkFacets
               }"/>
-
-    (
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'PEURLB',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    )
 </dd>
 
+<dt class="dt-{field}">
+    Dieses Werk in
+</dt>
+<dd class="dd-{field}">
+</dd>
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PIU814')}" name="PIU814" />
-<f:if condition="{PIU814} == 'b'">
-    <dt class="dt-{field}">
-        Erläuterung
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                document:document,
-                results:results,
-                field:'PU814',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    </dd>
-</f:if>
+<dt class="dt-{field}">
+    Übersetzungen dieses Werks
+</dt>
+<dd class="dd-{field}">
+</dd>
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PI808')}" name="PI808" />
-<f:if condition="{PI808} == '678'">
-    <dt class="dt-{field}">
-        Erläuterung
-    </dt>
-    <dd class="dd-{field}">
-        <f:render
-                partial="Display/Field/List"
-                arguments="{
-                document:document,
-                results:results,
-                field:'P0808',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    </dd>
-</f:if>
+<dt class="dt-{field}">
+    Über dieses Werk
+</dt>
+<dd class="dd-{field}">
+</dd>
+
+<div>
+<f:debug title="document">{document}</f:debug>
+</div>
