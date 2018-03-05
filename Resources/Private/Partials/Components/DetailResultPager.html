@@ -7,32 +7,34 @@
     <p class="queryAndPager">
       <span class="underlyingQuery">
         <span class="backToResultList">
-          <s:data.newArray
-            name="linkArguments"
-            keys="{0:'q', 1:'sort', 2:'count', 3:'facet', 4:'extended', 5:'page'}"
-            values="{
-              0:arguments.underlyingQuery.q,
-              1:arguments.underlyingQuery.sort,
-              2:arguments.underlyingQuery.count,
-              3:arguments.underlyingQuery.facet,
-              4:arguments.extended,
-              5:'{s:find.pageNumberForResultNumber(
-                resultNumber:arguments.underlyingQuery.position,
-                resultsPerPage:settings.paging.perPage
-              )}'
-            }"
-            omitEmptyFields="1"
-          >
-            <f:link.action
-              action="index"
-              arguments="{linkArguments}"
-              section="c{config.uid}-result-{document.fields.id}"
-              noCacheHash="1"
-              class="icon-level-up internal"
+          <f:format.raw>
+            <s:data.newArray
+              name="linkArguments"
+              keys="{0:'q', 1:'sort', 2:'count', 3:'facet', 4:'extended', 5:'page'}"
+              values="{
+                0:arguments.underlyingQuery.q,
+                1:arguments.underlyingQuery.sort,
+                2:arguments.underlyingQuery.count,
+                3:arguments.underlyingQuery.facet,
+                4:arguments.extended,
+                5:'{s:find.pageNumberForResultNumber(
+                  resultNumber:arguments.underlyingQuery.position,
+                  resultsPerPage:settings.paging.perPage
+                )}'
+              }"
+              omitEmptyFields="1"
             >
-              <f:translate key="Return to results list"/>
-            </f:link.action>
-          </s:data.newArray>
+              <f:link.action
+                action="index"
+                arguments="{linkArguments}"
+                section="c{config.uid}-result-{document.fields.id}"
+                noCacheHash="1"
+                class="icon-level-up internal"
+              >
+                <f:translate key="Return to results list"/>
+              </f:link.action>
+            </s:data.newArray>
+          </f:format.raw>
         </span>
 
         <span class="query">
