@@ -34,11 +34,14 @@
         <dl>
           <f:if condition="{document.fields.listview_type} == 'Normdaten'">
             <f:then>
-              <f:if condition="{document.fields.source} == 'PE'">
-                <f:then>
+              <f:switch expression="{document.fields.source}">
+                <f:case value="PE">
                   <f:render partial="Display/Detail/Normdata/Person" arguments="{results:results, document:document}" />
-                </f:then>
-              </f:if>
+                </f:case>
+                <f:case value="AK">
+                  <f:render partial="Display/Detail/Normdata/Werk" arguments="{results:results, document:document}" />
+                </f:case>
+              </f:switch>
             </f:then>
             <f:else>
               <f:switch expression="{document.fields.source}">
