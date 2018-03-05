@@ -32,11 +32,15 @@
       </f:then>
       <f:else>
         <dl>
-          <!--<f:if condition="{document.fields.listview_type} == 'Normdaten'">-->
-            <!--<f:then>-->
-              <!--<f:render partial="Display/Detail/Normdata/Details" arguments="{results:results, document:document}" />-->
-            <!--</f:then>-->
-            <!--<f:else>-->
+          <f:if condition="{document.fields.listview_type} == 'Normdaten'">
+            <f:then>
+              <f:if condition="{document.fields.source} == 'PE'">
+                <f:then>
+                  <f:render partial="Display/Detail/Normdata/Person" arguments="{results:results, document:document}" />
+                </f:then>
+              </f:if>
+            </f:then>
+            <f:else>
               <f:switch expression="{document.fields.source}">
                 <f:case value="BI">
                   <f:render partial="Display/Detail/ImagesAndObjects/Details" arguments="{results:results, document:document}" />
@@ -56,8 +60,8 @@
                   </f:for>
                 </f:defaultCase>
               </f:switch>
-            <!--</f:else>-->
-          <!--</f:if>-->
+            </f:else>
+          </f:if>
 
         </dl>
       </f:else>
