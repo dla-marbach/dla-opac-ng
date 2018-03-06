@@ -1,3 +1,65 @@
+lib.dynamicContent = COA
+lib.dynamicContent {
+    10 = LOAD_REGISTER
+    10.colPos.cObject = TEXT
+    10.colPos.cObject {
+        field = colPos
+        ifEmpty.cObject = TEXT
+        ifEmpty.cObject {
+            value.current = 1
+            ifEmpty = 0
+        }
+    }
+    20 = CONTENT
+    20 {
+        table = tt_content
+        select {
+            orderBy = sorting
+            where = colPos={register:colPos}
+            where.insertData = 1
+        }
+    }
+    90 = RESTORE_REGISTER
+}
+
+page = PAGE
+page.typeNum = 0
+page.10 = FLUIDTEMPLATE
+page.10 {
+
+    #templateName = Default
+    templateName = TEXT
+    templateName.stdWrap {
+        cObject = TEXT
+        cObject {
+            data = levelfield:-2,backend_layout_next_level,slide
+            override.field = backend_layout
+            split {
+                token = pagets__
+                1.current = 1
+                1.wrap = |
+            }
+        }
+        ifEmpty = StartPage
+    }
+
+
+    layoutRootPaths {
+        10 = EXT:dla_opac_ng/Resources/Private/Page/Layouts
+    }
+    partialRootPaths {
+        10 = EXT:dla_opac_ng/Resources/Private/Page/Partials
+    }
+    templateRootPaths {
+        10 = EXT:dla_opac_ng/Resources/Private/Page/Templates
+    }
+
+}
+
+
+
+
+
 # Für einige Funktionen in der Anzeige benötigt die Extension das Javascript-Framework jQuery
 # Einbindung einer lokalen Kopie wegen Beschränkungen im internen Netz des DLA
 page.includeJS.jquery = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-1.11.0.min.js
@@ -8,6 +70,7 @@ page.includeJS.fa = https://use.fontawesome.com/96352f148e.js
 page.includeJSFooter.find = EXT:find/Resources/Public/JavaScript/find.js
 
 page.includeCSS.opac-ng =  EXT:dla_opac_ng/Resources/Public/CSS/opac-ng.css
+
 
 # Generell wird die gesamte Konfiguration in "plugin.tx_find" gebündelt
 plugin.tx_find {
