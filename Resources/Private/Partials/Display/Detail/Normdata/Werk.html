@@ -56,17 +56,12 @@
     Weitere Titel
 </dt>
 <dd class="dd-{field}">
-    <f:if condition="{document.fields.AMTIT} == '303n'">
+    <dla:data.valueForKeyFiltered key="ATIT" filterKey="AMTIT" filterValues="{0:'303n'}" mustMatch="false" fields="{document.fields}" as="ATIT" />
+    <f:if condition="{ATIT}">
         <f:then>
-            <f:render
-                    partial="Display/Field/List"
-                    arguments="{
-                    document:document,
-                    results:results,
-                    field:'ATIT',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
+            <f:for each="{ATIT}" as="item" iteration="iterator">
+                {item} <br />
+            </f:for>
         </f:then>
     </f:if>
 </dd>
@@ -144,17 +139,12 @@
     Erläuterung
 </dt>
 <dd class="dd-{field}">
-    <f:if condition="{document.fields.AI659} == '678'">
+    <dla:data.valueForKeyFiltered key="A0659" filterKey="AI659" filterValues="{0:'678'}" mustMatch="false" fields="{document.fields}" as="A0659" />
+    <f:if condition="{A0659}">
         <f:then>
-            <f:render
-                    partial="Display/Field/List"
-                    arguments="{
-                    document:document,
-                    results:results,
-                    field:'A0659',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
+            <f:for each="{A0659}" as="item" iteration="iterator">
+                {item} <br />
+            </f:for>
         </f:then>
     </f:if>
 </dd>
