@@ -91,9 +91,6 @@
     </f:if>
 </dd>
 
-
-
-
 <dt class="dt-{field}">
     Geschlecht
 </dt>
@@ -192,31 +189,36 @@
               }"/>
 </dd>
 
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0801')}" name="P0801" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PI801')}" name="PI801" />
 <dt class="dt-{field}">
     Quelle
 </dt>
 <dd class="dd-{field}">
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'P0801',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
+    <f:if condition="{P0801} || {PI801}">
+        <f:then>
+            <dla:data.joinFields
+                    fieldNames="{0:'P0801',1:'PI801'}"
+                    fieldWraps="{0:'%s',1:', (%s)'}"
+                    fields="{document.fields}"
+                    as="linkTexts"
+            />
 
-    (
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'PI801',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    )
+            <f:render
+                    partial="Display/Field/List"
+                    arguments="{
+                    document:document,
+                    results:results,
+                    field:'P0801',
+                    linkFieldContent:linkFieldContent,
+                    linkFacets:linkFacets,
+                    linkTexts:linkTexts
+                  }"/>
+        </f:then>
+        <f:else>
+            -
+        </f:else>
+    </f:if>
 </dd>
 
 
