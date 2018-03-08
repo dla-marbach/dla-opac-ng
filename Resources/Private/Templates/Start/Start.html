@@ -1,0 +1,83 @@
+{namespace s=Subugoe\Find\ViewHelpers}
+
+
+<f:form name="c{config.uid}-form"
+        method="post"
+        section="{settings.jumpToID}"
+        class="searchForm {f:if(condition:config.extendedSearch, then:'search-extended', else:'search-simple')}"
+        pluginName="find"
+        pageUid="112"
+        controller="Search">
+
+
+<figure class="ctg-header ctg-header-home">
+  <section class="ctg-hd-meta">
+    <div class="ctg-catalog-title">
+      <strong>Kallías</strong> – der Online-Katalog des Deutschen Literaturarchivs Marbach
+    </div>
+    <div class="ctg-hd-meta-menu">
+      <ul>
+        <li>
+          <a href="#" title="Merkliste"><span class="icon bel-stern02"></span>Merkliste</a>
+        </li>
+        <li>
+          <a href="#" title="Feedback"><span class="icon bel-sprache01"></span>Feedback</a>
+        </li>
+        <li>
+          <a href="#" title="Mein Konto"><span class="icon bel-nutzer"></span>Mein Konto</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ctg-hd-search">
+    <form action="">
+      <ul>
+        <li>
+          <a href="#" title="Gesamtbestand" class="ctg-hd-active"><span class="icon bel-mkombo06"></span>Gesamtbestand</a>
+        </li>
+        <li>
+          <a href="#" title="Gedrucktes"><span class="icon bel-mag"></span>Gedrucktes</a>
+        </li>
+        <li>
+          <a href="#" title="Handschriften"><span class="icon bel-schreiben"></span>Handschriften</a>
+        </li>
+        <li>
+          <a href="#" title="Bilder & Objekte"><span class="icon bel-foto"></span>Bilder & Objekte</a>
+        </li>
+        <li>
+          <a href="#" title="Audio & Video"><span class="icon bel-note"></span>Audio & Video</a>
+        </li>
+      </ul>
+
+      <div class="ctg-hd-search-form">
+        <f:form.textfield
+                id="c{config.uid}-field-{fieldInfo.id}"
+                class="inputType-text"
+                name="q[default]"
+                value=""
+                placeholder="Wonach suchen Sie?"
+        /><button type="submit"><span class="icon bel-lupe"></span>Jetzt suchen</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="ctg-hd-addon">
+    <ul>
+      <li>
+        <a href="#" title="Expertensuche"><span class="icon bel-regler01"></span><span class="ctg-hd-addon-term">Expertensuche</span></a>
+      </li>
+      <li>
+        <a href="#" title="Bestandsübersicht"><span class="icon bel-inhalt"></span><span class="ctg-hd-addon-term">Bestandsübersicht</span></a>
+      </li>
+      <li>
+        <a href="#" title="Suchverlauf"><span class="icon bel-zurueck02"></span><span class="ctg-hd-addon-term">Suchverlauf</span></a>
+      </li>
+      <li>
+        <a href="#" title="Hilfe & Auskunft"><span class="icon bel-info"></span><span class="ctg-hd-addon-term">Hilfe & Auskunft</span></a>
+      </li>
+    </ul>
+  </section>
+</figure>
+
+</f:form>

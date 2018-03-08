@@ -150,8 +150,6 @@ bodyTagCObject.wrap = <body class="page-|">
 
 
 
-
-
 # Generell wird die gesamte Konfiguration in "plugin.tx_find" gebündelt
 plugin.tx_find {
 

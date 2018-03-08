@@ -1,9 +1,231 @@
 <f:layout name="Startseite" />
 
-<f:comment>
-<f:section name="main">
-    <f:format.raw>
-        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '0'}" />
-    </f:format.raw>
+<div class="row">
+    <div class="small-12">
+        <f:section name="headerSearch">
+            <f:format.raw>
+                <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '3'}" />
+            </f:format.raw>
+        </f:section>
+    </div>
+</div>
+
+<f:section name="pageContent">
+    <!--TYPO3SEARCH_begin-->
+    <div class="row page-content">
+        <section class="small-12 column content content-index" role="main">
+            <div class="row">
+                <div class="small-12 column">
+                    <div class="row">
+                        <div class="small-6 large-4 column">
+
+                            <figure class="teaser teaser-index ctg-image-teaser">
+                                <div class="ctg-it-content" style="background: url(Start%20-%20DLA%20Marbach-Dateien/ctg-schiller.jpg); background-size: cover;">
+                                    <h4><a href="">Objekt der Monats</a></h4>
+                                    <h3><a href="">Schillers Gedichte</a></h3>
+                                </div>
+                            </figure>
+
+                        </div><!--
+                                --><div class="small-6 large-4 column">
+
+                        <figure class="teaser teaser-index ctg-image-teaser">
+                            <div class="ctg-it-content" style="background: url(Start%20-%20DLA%20Marbach-Dateien/ctg-hesse.jpg); background-size: cover;">
+                                <h4><a href="">Sammlung</a></h4>
+                                <h3><a href="">Briefe von Hermann Hesse</a></h3>
+                            </div>
+                        </figure>
+
+                    </div><!--
+                                --><div class="small-6 large-4 column">
+
+                        <figure class="teaser teaser-index ctg-image-teaser">
+                            <div class="ctg-it-content" style="background: url(Start%20-%20DLA%20Marbach-Dateien/ctg-handke.jpg); background-size: cover;">
+                                <h4><a href="">Sammlung</a></h4>
+                                <h3><a href="">Tagebücher von Peter Handke</a></h3>
+                            </div>
+                        </figure>
+
+                    </div><!--
+                            </div>
+                            <div class="row">
+                                --><div class="small-6 large-4 column">
+
+                        <figure class="teaser teaser-index teaser-static ctg-text-teaser">
+
+                            <h3>Tipps & Empfehlungen</h3>
+                            <ul class="list-links">
+                                <li>
+                                    <a href="#">A falsis, elogium audax compater.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Sunt indexes captis bi-color, barbatus voxes.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Bulla faveres, tanquam emeritis orgia.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Sunt indexes captis bi-color, barbatus voxes.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Velox repressors ducunt ad cursus.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Regius orgias ducunt ad compater.</a>
+                                </li>
+                            </ul>
+
+                        </figure>
+
+                    </div><!--
+                                --><div class="small-6 large-4 column">
+
+                        <figure class="teaser teaser-index teaser-static ctg-text-teaser">
+
+                            <h3>Bedeutende Kunstwerke</h3>
+                            <ul class="list-links">
+                                <li>
+                                    <a href="#">A falsis, elogium audax compater.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Sunt indexes captis bi-color, barbatus voxes.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Bulla faveres, tanquam emeritis orgia.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Velox repressors ducunt ad cursus.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Regius orgias ducunt ad compater.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Sunt indexes captis bi-color, barbatus voxes.</a>
+                                </li>
+                            </ul>
+
+                        </figure>
+
+                    </div><!--
+                                --><div class="small-6 large-4 column">
+
+                        <figure class="teaser teaser-index teaser-static ctg-text-teaser">
+
+                            <h3>Neu im Katalog</h3>
+                            <ul class="list-links">
+                                <li>
+                                    <a href="#">A falsis, elogium audax compater.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Sunt indexes captis bi-color, barbatus voxes.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Bulla faveres, tanquam emeritis orgia.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Velox repressors ducunt ad cursus.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Sunt indexes captis bi-color, barbatus voxes.</a>
+                                </li>
+                                <li>
+                                    <a href="#">Regius orgias ducunt ad compater.</a>
+                                </li>
+                            </ul>
+
+                        </figure>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!--TYPO3SEARCH_end-->
 </f:section>
-</f:comment>
+
+<f:section name="importantInfo">
+    <div class="row">
+        <div class="small-12">
+            <section class="ctg-important-info">
+                <f:format.raw>
+                    <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '7'}" />
+                </f:format.raw>
+                <h3>Hinweise zu unseren Beständen</h3>
+                <p>Quisque rutrum. Bitte beachten Sie aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas
+                    tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
+            </section>
+        </div>
+    </div>
+</f:section>
+
+<f:section name="footer">
+    <div class="row ctg-footer">
+        <div class="small-6 column">
+            <section style="background: url(Start%20-%20DLA%20Marbach-Dateien/ctg-footer-01.jpg); background-size: cover;">
+                <f:format.raw>
+                    <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '8'}" />
+                </f:format.raw>
+                <h3>Kallías</h3>
+                <p>Die Sammlungen des Deutschen Literaturarchivs Marbach werden im
+                    Online-Katalog Kallías erschlossen und für die Benutzung zugänglich
+                    gemacht. Bereits registrierte Benutzerinnen und Benutzer haben die
+                    Möglichkeit, Bestellungen im Voraus via Internet aufzugeben. Lorem
+                    ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                    ligula eget dolor.</p>
+            </section>
+        </div>
+        <div class="small-6 column">
+            <section>
+                <f:format.raw>
+                    <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '9'}" />
+                </f:format.raw>
+                <h3>Kontakt</h3>
+                <div class="ctg-footer-table">
+                    <p class="ctg-footer-td"><strong>Auskunftsdienst Archiv</strong><br/>
+                        Telefon <a href="tel:+497144848425">+49 (0) 7144 / 848-425</a><br/>
+                        Telefax +49 (0) 7144 / 848-490<br/>
+                        <a href="mailto:auskhss@dla-marbach.de">auskhss@dla-marbach.de</a><br/><br/>
+                        Montag - Freitag, 8:30h bis 18:00h</p>
+
+                    <p class="ctg-footer-td"><strong>Auskunftsdienst Bibliothek</strong><br/>
+                        Telefon <a href="tel:+497144848318">+49 (0) 7144 / 848-318</a><br/>
+                        Telefax +49 (0) 7144 / 848-390<br/>
+                        <a href="bibliothek@dla-marbach.de">bibliothek@dla-marbach.de</a><br/><br/>
+                        Montag - Freitag, 8:30h bis 17:30h</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</f:section>
+
+<f:section name="footerNotice">
+    <div class="row ctg-footer-notice">
+        <div class="small-6 column">
+            <section>
+
+                <f:format.raw>
+                    <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '10'}" />
+                </f:format.raw>
+
+                <span class="icon bel-daten"></span>
+                <h3>435.234 Digitalisate</h3>
+                <p>Täglich aktuell: Neue Digitalisate integer tincidunt. Cras dapibus.
+                    Vivamus elementum semper nisi. Aenean vulputate eleifend.</p>
+            </section>
+        </div>
+        <div class="small-6 column">
+            <section style="background: url(Start%20-%20DLA%20Marbach-Dateien/ctg-footer-02.jpg); background-size: cover;">
+
+                <f:format.raw>
+                    <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '11'}" />
+                </f:format.raw>
+
+                <span class="icon bel-frage"></span>
+                <h3>Sie haben das Gesuchte nicht gefunden?</h3>
+                <p>Sprechen Sie uns an: Aenean massa. Cum sociis natoque penati
+                    montes, nascetur ridiculus mus. Donec quam felis, ultricies nec.</p>
+            </section>
+        </div>
+    </div>
+</f:section>
