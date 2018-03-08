@@ -1,0 +1,820 @@
+/*----------------------------------------------------------------------
+catalog - search
+----------------------------------------------------------------------*/
+
+.ctg-header {
+    background: url(ctg-header-bg.jpg) no-repeat;
+    background-size: cover;
+    color: #fff;
+    padding: 1rem;
+}
+
+.ctg-hd-meta {
+    display: table;
+    width: 100%;
+    border-bottom: solid 1px rgba(255,255,255,0.5);
+    padding-bottom: 1rem;
+}
+
+.ctg-catalog-title {
+    display: table-cell;
+    width: 50%;
+}
+
+.ctg-hd-meta-menu {
+    display: table-cell;
+    text-align: right;
+    width: 50%;
+}
+
+.ctg-hd-meta-menu li {
+    list-style-type: none;
+    display: inline;
+    padding-left: 1rem;
+}
+
+.ctg-hd-meta-menu li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.ctg-header-home .ctg-hd-search {
+    padding: 7rem 0;
+}
+
+.ctg-header-follow .ctg-hd-search {
+    padding: 1rem 0;
+}
+
+.ctg-hd-search form {
+    margin: 0;
+}
+
+.ctg-hd-meta-menu ul,
+.ctg-hd-search ul {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    line-height: 1.7;    
+}
+
+.ctg-hd-search ul {
+    text-align: center;
+    padding: 0 1rem 1rem 0;
+}
+
+.ctg-hd-search li {
+    list-style-type: none;
+    display: inline;
+    padding-left: 1rem;
+}
+
+.ctg-hd-meta-menu .icon,
+.ctg-hd-search .icon {
+    margin-right: 0.8rem;
+}
+
+.ctg-hd-search li a {
+    color: #aeaeae;
+    text-decoration: none;
+}
+
+.ctg-hd-search-form {
+    display: table;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 5px;
+    background: #fff;
+    padding-top: 1px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+.ctg-hd-search-form input {
+    width: calc(100% - 180px);
+    display: inline-block;
+    border-radius: 5px 0 0 5px;
+    height: 3rem;
+    font-size: 100%;
+    color: #000;
+    box-shadow: inset 0 0 0;
+    border: 0;
+    padding: 0 1rem;
+}
+
+.ctg-hd-search-form button {
+    display: inline-block;
+    width: 180px;
+    border-radius: 0 5px 5px 0;
+    background-color: #b61f24;
+    color: #fff;
+    margin: 0;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    height: 3rem;
+    font-size: 100%;
+    text-decoration: none;
+}
+
+.ctg-hd-search-form button:hover {
+    background-color: #A31A21;
+}
+
+.ctg-hd-search-form button .icon {
+    font-size: 3rem;
+    margin-right: 1.8rem;
+}
+
+.ctg-hd-addon ul {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.ctg-hd-addon li {
+    list-style-type: none;
+    display: inline;
+    padding: 1rem;
+}
+
+.ctg-hd-addon a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.ctg-hd-meta-menu li a:hover {
+    color: #aeaeae;
+    text-decoration: underline;
+}
+
+.ctg-hd-addon a:hover {
+    color: #aeaeae;
+    text-decoration: none;
+}
+
+.ctg-hd-addon .icon {
+    display: table-row;
+    font-size: 3rem;
+}
+
+.ctg-hd-addon-term {
+    display: table-row;
+}
+
+.ctg-hd-search li a.ctg-hd-active {
+    color: #fff;
+    position: relative;   
+}
+
+.ctg-hd-search li a.ctg-hd-active:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 2rem;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 8px solid #fff;
+    clear: both;
+}
+
+.ctg-hd-search li a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.ctg-header-follow .ctg-hd-addon .icon {
+    font-size: 2rem;
+    display: inline;
+}
+
+.ctg-header-follow .ctg-hd-addon li {
+    padding: 0;
+    padding: 0.2rem;
+}
+
+.ctg-header-follow .ctg-hd-addon a:hover .ctg-hd-addon-term {
+    text-decoration: underline;
+}
+
+.ctg-header-follow .ctg-hd-addon li:first-child {
+    border-top: 0px;
+}
+
+
+/*----------------------------------------------------------------------
+catalog home - teaser
+----------------------------------------------------------------------*/
+
+.ctg-image-teaser {
+    height: 250px;
+    background: #000;
+    display: table;
+    width: 100%;
+    vertical-align: bottom;
+    margin-bottom: 1rem;
+}
+
+.ctg-it-content {
+    display: table-cell;    
+    vertical-align: bottom;
+}
+
+.ctg-image-teaser h3 {
+    background: #fff;
+    margin: 0 1rem 1rem 1rem;
+    padding: 0.5rem 1rem;
+}
+
+.ctg-image-teaser h4 {
+    background: #f5f5f5;
+    margin: 0 1rem 0.3rem 1rem;
+    padding: 0.5rem 1rem;
+}
+
+
+.ctg-text-teaser {
+    border: 1px solid #dadada;
+    padding: 1rem;
+}
+
+
+/*----------------------------------------------------------------------
+catalog home - footer
+----------------------------------------------------------------------*/
+
+.ctg-important-info {
+    background-color: #b61f24;
+    color: #fff;
+    padding: 2rem;
+}
+
+.ctg-important-info h3,
+.ctg-footer h3,
+.ctg-footer-notice h3{
+    color: #fff;
+}
+
+.ctg-footer {
+    background: #333;
+    color: #fff;
+}
+
+.ctg-footer-notice {
+    background: #000;
+    color: #fff;
+}
+
+.ctg-footer .column,
+.ctg-footer-notice .column {
+    padding: 0;
+}
+
+.ctg-footer section,
+.ctg-footer-notice section {
+    padding: 2rem;
+}
+
+.ctg-footer-table {
+    display: table;
+    width: 100%;
+}
+
+.ctg-footer-td {
+    display: table-cell;
+    width: 50%;
+}
+
+.ctg-footer a,
+.ctg-footer-notice a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.ctg-footer a:hover,
+.ctg-footer-notice a:hover {
+    color: #f5f5f5;
+    text-decoration: underline;
+}
+
+.ctg-footer-notice .icon {
+    font-size: 3rem;
+    float: left;
+    line-height: 2rem;
+    margin: 0 2rem 0 -0.8rem;
+}
+
+
+/*----------------------------------------------------------------------
+catalog follow list
+----------------------------------------------------------------------*/
+
+.ctg-info-actions {
+    padding: 1rem 0;
+}
+
+.ctg-info-text {
+    padding: 0.5rem 0;
+}
+
+.ctg-ia-scnd {
+    text-align: right;
+}
+
+mark {
+    color: #fff;
+    background: #B61F24;
+    border-radius: 5px;
+    padding: 0px 3px;
+}
+
+.ctg-button {
+    display: inline-block;
+    height: 2.3125rem;
+    min-width: 2.3125rem;
+    text-align: center;
+    margin: 0;
+    padding: 0.5rem 0;
+    background-color: #fff;
+    font-family: inherit;
+    border: 1px solid #ccc;
+    font-size: 0.875rem;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    transition: all 0.15s linear;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.ctg-button .icon {
+    width: auto;
+}
+
+.ctg-button:hover {
+    border-color: #999;
+}
+
+button.ctg-button {
+    border-radius: 0;
+}
+
+button.ctg-button:hover {
+    color: #b61f24;
+}
+
+.ctg-bu-active {
+    background-color: #dadada;
+}
+
+.ctg-bu-active:hover {
+    color: #000;
+}
+
+.ctg-bu-disable,
+.ctg-bu-disable:hover {
+    color: #dadada;
+    cursor: not-allowed;
+    border-color: #ccc;
+}
+
+.ctg-follow-content {
+    border-top: 1px solid #dadada;
+}
+
+.ctg-follow-content .column {
+    padding: 0;
+}
+
+.ctg-follow-content .small-9 {
+    border-right: 3px double #dadada;
+}
+
+.ctg-pager-actions {
+    padding: 1rem;
+    border-bottom: 1px solid #dadada;
+    display: table;
+    width: 100%;
+}
+
+.ctg-pager {
+    display: table-cell;
+    width: 60%;
+}
+
+.ctg-pager-aside {
+    text-align: right;
+    display: table-cell;
+    width: 40%;
+}
+
+.ctg-pager-aside select {
+    width: auto;
+    margin-left: 0.5rem;
+}
+
+.ctg-result-item {
+    border-bottom: 1px solid #dadada;
+    width: 100%;
+    transition: all 0.3s linear;
+}
+
+.ctg-result-item:hover {
+    background: #000;
+    color: #fff;
+}
+
+.ctg-ri-icon {
+    display: table-cell;
+    vertical-align: top;
+    padding: 1rem 0 1rem 0.5rem;
+    width: 50px;
+    box-sizing: border-box;
+}
+
+.ctg-ri-icon .icon {
+    font-size: 3rem;
+}
+
+.ctg-ri-text {
+    display: table-cell;
+    width: calc(70% - 50px);
+    vertical-align: top;
+    padding: 0.5rem 1rem 1rem 1rem;
+    box-sizing: border-box;
+}
+
+.ctg-ri-text h2 a {
+    text-decoration: none;
+}
+
+.ctg-result-item:hover h2 a,
+.ctg-result-item:hover .ctg-rid-row a {
+    color: #fff;
+}
+
+.ctg-result-item:hover h2 a:hover,
+.ctg-result-item:hover .ctg-rid-row a:hover {
+    text-decoration: underline;
+    color: #aeaeae;
+}
+
+.ctg-ri-text p {
+    margin: 0;
+}
+
+.ctg-ri-image {
+    display: table-cell;
+    width: 20%;
+    vertical-align: top;
+    text-align: right;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.ctg-ri-image img {
+    width: 100%;
+}
+
+.ctg-ri-actions {
+    width: 10%;
+    display: table-cell;    
+    text-align: right;
+    vertical-align: top;
+    padding: 1rem 1rem 0.5rem 0;
+    box-sizing: border-box;
+}
+
+.ctg-ri-actions ul {
+    margin: 0;
+}
+
+.ctg-ri-actions li {
+    list-style-type: none;
+    display: block;
+    padding-bottom: 0.5rem;
+}
+
+.ctg-ri-details {
+    display: block;
+    margin: 0 1rem 0.5rem 1rem;
+}
+
+.ctg-rid-row {
+    border-top: 1px dotted #dadada;
+    width: 100%;
+    display: table;
+    font-size: 0.875rem;
+}
+
+.ctg-rid-label {
+    display: table-cell;
+    width: 40%;
+    font-weight: bold;
+    padding: 0.5rem 0 0.5rem 50px;
+    box-sizing: border-box;
+}
+
+.ctg-rid-content {
+    display: table-cell;
+    width: 60%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+.ctg-this-fav,
+.ctg-this-fav:hover {
+    color: #fff;
+    background: #B61F24;
+    border-color: #B61F24;
+}
+
+
+/*----------------------------------------------------------------------
+catalog follow facet
+----------------------------------------------------------------------*/
+
+.ctg-facet {
+    border-bottom: 1px solid #dadada;  
+    padding: 1rem;
+}
+
+.ctg-facet h3 {
+    padding: 0;
+    margin: 0;
+}
+
+.ctg-facet h3 a,
+.ctg-facet-other h3 a {
+    float: right;
+}
+
+.ctg-facet ul,
+.ctg-facet-other ul {
+    margin: 0.5rem 0 0 0;
+    padding: 0;
+}
+
+.ctg-facet li,
+.ctg-facet-other li {
+    list-style-type: none;
+    margin-left: -0.5rem;
+}
+
+.ctg-facet li a,
+.ctg-facet-other li a {
+    text-decoration: none;
+    display: table-cell;
+}
+
+.ctg-facet li a:hover,
+.ctg-facet-other a:hover {
+    text-decoration: underline;
+}
+
+.ctg-facet li em {
+    font-style: normal;
+    color: #B61F24;
+}
+
+.ctg-facet li .icon,
+.ctg-facet-other li .icon {
+    margin-right: 1rem;
+}
+
+.ctg-facet li.ctg-facet-l2 {
+    margin-left: 1.2rem;
+}
+
+.ctg-facet-prestige {
+    background: #dadada;
+    padding: 1rem;
+    margin-top: 1px;
+}
+
+.ctg-facet-other {
+    padding: 1rem;
+}
+
+
+/*----------------------------------------------------------------------
+max 1080px
+----------------------------------------------------------------------*/
+
+@media only screen and (max-width: 1080px) {
+
+    .ctg-header-home .ctg-hd-search {
+        padding: 4rem 0;
+    }
+
+    .ctg-hd-meta-menu ul,
+    .ctg-hd-search ul {
+        font-size: 0%;
+    }
+
+    .ctg-hd-search li a.ctg-hd-active:after {
+        content: '';
+        position: absolute;
+        left: 25%;
+        top: 1.2rem;
+        width: 0;
+        height: 0;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-bottom: 8px solid #fff;
+        clear: both;
+    }
+    
+    .ctg-hd-meta-menu .icon,
+    .ctg-hd-search .icon {
+        font-size: 3rem;
+        margin-right: 1.8rem;
+    }
+}
+
+
+/*----------------------------------------------------------------------
+max 1000px
+----------------------------------------------------------------------*/
+
+@media only screen and (max-width: 1000px) {
+
+    .ctg-content-column {
+        width: 100%;
+        float: none;
+    }
+    
+    .ctg-follow-content .small-9 {
+        border-right: 0px;
+    }
+    
+    aside.ctg-facet-colum {
+        width: 100%;
+        float: none;
+    }
+  
+    .ctg-ri-text {
+        width: 70%;
+    }  
+
+    .ctg-ri-icon {
+        width: 8%;
+    }
+
+    .ctg-rid-label {
+        padding: 0.5rem 0 0.5rem 8%;
+    }
+    
+}
+
+
+/*----------------------------------------------------------------------
+max 650px
+----------------------------------------------------------------------*/
+
+@media only screen and (max-width: 650px) {
+
+    .ctg-catalog-title {
+        display: none;
+    }
+
+    .ctg-hd-meta-menu {
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+
+    .ctg-header-home .ctg-hd-search {
+        padding: 2rem 0 1rem 0;
+    }
+
+    .ctg-hd-search-form {
+        width: 100%;
+    }
+
+    .ctg-hd-search-form input {
+        width: calc(100% - 50px);
+        display: inline-block;
+        border-radius: 5px 0 0 5px;
+        height: 3rem;
+        font-size: 100%;
+        color: #000;
+        box-shadow: inset 0 0 0;
+        border: 0;
+        padding: 0 1rem;
+    }
+
+    .ctg-hd-search-form button {
+        width: 50px;
+        background-color: #fff;
+        color: #b61f24;
+        margin: 0;
+        padding: 0 0 0 0;
+        font-size: 0;
+        text-decoration: none;
+    }
+    
+    .ctg-hd-search-form button:hover {
+        background-color: #fff;
+    }
+
+    .small-6 {
+        width: 100%;
+    }
+        
+    .ctg-footer-td {
+        display: block;
+        width: 100%;
+    }
+    
+    .ctg-hd-addon .icon,
+    .ctg-header-follow .ctg-hd-addon .icon{
+        display: none;
+    }
+
+    .ctg-header-follow .ctg-hd-addon a:hover .ctg-hd-addon-term {
+        text-decoration: none;
+    }
+
+    .ctg-hd-addon li {
+        display: block;
+        border-top: solid 1px rgba(255,255,255,0.5);
+        padding: 0.2rem;
+    }
+
+    .ctg-hd-addon li:first-child {
+        border-top: 0px;
+    }
+
+    .ctg-hd-addon-term {
+        width: 100%;
+        display: block;
+        border-radius: 5px;
+    }
+    
+    .ctg-hd-search ul {
+        padding: 0 0 1rem 0;
+    }
+    
+    .ctg-hd-search li {
+        padding-left: 0;
+    }
+    
+    .ctg-hd-search li a.ctg-hd-active:after {
+        display: none;
+    }
+
+    .ctg-ia-scnd {
+        text-align: left;
+    }
+
+    .ctg-pager {
+        display: block;
+        width: 100%;
+    }
+
+    .ctg-pa-nomob {
+        display: none;
+    }
+
+    .ctg-info-text,
+    .ctg-pager-aside {
+        display: none;
+    }
+
+    .ctg-result-item {
+        position: relative;
+    }
+    
+    .ctg-ri-image,
+    .ctg-ri-icon {
+        display: none;
+    }
+
+    .ctg-ri-text {
+        width: 100%;
+    }  
+    
+    .ctg-ri-actions {
+        width: auto; 
+    }
+
+    .ctg-rid-label {
+        padding: 0.5rem 0 0 0;
+        display: block;
+        width: 100%;
+    }
+    
+    .ctg-rid-content {
+        display: block;
+        width: 100%;
+        padding: 0 0 0.5rem 0;
+    }
+
+}
+
+
+
+
+
+
+

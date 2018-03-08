@@ -1,27 +1,98 @@
-mod {
-    web_layout {
-        BackendLayouts {
-            startPage {
-                title = Start
-                config {
-                    backend_layout {
-                        colCount = 1
-                        rowCount = 1
-                        rows {
-                            1 {
-                                columns {
-                                    1 {
-                                        name = Inhalt
-                                        colPos = 0
-                                        colspan = 1
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                #icon =
+mod.web_layout.BackendLayouts {
+  startPage {
+    title = Katalog-Startseite
+    #icon = EXT:example_extension/Resources/Public/Images/BackendLayouts/default.gif
+    config {
+      backend_layout {
+        colCount = 12
+        rowCount = 6
+        rows {
+          1 {
+            columns {
+              1 {
+                name = Header
+                colspan = 12
+                colPos = 3
+              }
             }
+          }
+          2 {
+            columns {
+              1 {
+                name = Teaser links oben
+                colspan = 4
+                colPos = 1
+              }
+              2 {
+                name = Teaser mitte oben
+                colspan = 4
+                colPos = 0
+              }
+              3 {
+                name = Teaser rechts oben
+                colspan = 4
+                colPos = 2
+              }
+            }
+          }
+          3 {
+            columns {
+              1 {
+                name = Teaser links unten
+                colspan = 4
+                colPos = 4
+              }
+              2 {
+                name = Teaser mitte unten
+                colspan = 4
+                colPos = 5
+              }
+              3 {
+                name = Teaser rechts unten
+                colspan = 4
+                colPos = 6
+              }
+            }
+          }
+          4 {
+            columns {
+              1 {
+                name = Info
+                colspan = 12
+                colPos = 7
+              }
+            }
+          }
+          5 {
+            columns {
+              1 {
+                name = Footer links oben
+                colspan = 6
+                colPos = 8
+              }
+              2 {
+                name = Footer rechts oben
+                colspan = 6
+                colPos = 9
+              }
+            }
+          }
+          6 {
+            columns {
+              1 {
+                name = Footer links unten
+                colspan = 6
+                colPos = 10
+              }
+              2 {
+                name = Footer rechts unten
+                colspan = 6
+                colPos = 11
+              }
+            }
+          }
         }
+      }
     }
+  }
 }

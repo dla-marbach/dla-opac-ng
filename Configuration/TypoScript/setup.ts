@@ -27,23 +27,6 @@ page.typeNum = 0
 page.10 = FLUIDTEMPLATE
 page.10 {
 
-    #templateName = Default
-    templateName = TEXT
-    templateName.stdWrap {
-        cObject = TEXT
-        cObject {
-            data = levelfield:-2,backend_layout_next_level,slide
-            override.field = backend_layout
-            split {
-                token = pagets__
-                1.current = 1
-                1.wrap = |
-            }
-        }
-        ifEmpty = StartPage
-    }
-
-
     layoutRootPaths {
         10 = EXT:dla_opac_ng/Resources/Private/Page/Layouts
     }
@@ -54,22 +37,119 @@ page.10 {
         10 = EXT:dla_opac_ng/Resources/Private/Page/Templates
     }
 
+    file.cObject = CASE
+    file.cObject {
+        key {
+            data = levelfield:-1, backend_layout_next_level, slide
+            override.field = backend_layout
+        }
+
+        default = TEXT
+        default.value = EXT:dla_opac_ng/Resources/Private/Page/Templates/Default.html
+
+        pagets__dlaOpacNgDefault = TEXT
+        pagets__dlaOpacNgDefault.value = EXT:dla_opac_ng/Resources/Private/Page/Templates/DlaOpacNgDefault.html
+
+        pagets__startPage = TEXT
+        pagets__startPage.value = EXT:dla_opac_ng/Resources/Private/Page/Templates/StartPage.html
+    }
 }
-
-
-
-
 
 # Für einige Funktionen in der Anzeige benötigt die Extension das Javascript-Framework jQuery
 # Einbindung einer lokalen Kopie wegen Beschränkungen im internen Netz des DLA
+
+
 page.includeJS.jquery = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-1.11.0.min.js
 page.includeJS.jquery-plot = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.flot.min.js
 page.includeJS.jquery-plot-select = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.flot.selection.js
 # Zur Darstellung der Icons in der Trefferliste wird Font Awesome verwendet
-page.includeJS.fa = https://use.fontawesome.com/96352f148e.js
+#page.includeJS.fa = https://use.fontawesome.com/96352f148e.js
 page.includeJSFooter.find = EXT:find/Resources/Public/JavaScript/find.js
 
 page.includeCSS.opac-ng =  EXT:dla_opac_ng/Resources/Public/CSS/opac-ng.css
+
+#page.includeCSS.site =  https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/css/site.min.css
+#page.includeCSS.belugino =  EXT:dla_opac_ng/Resources/Public/CSS/belugino.css
+#page.includeCSS.catalog =  EXT:dla_opac_ng/Resources/Public/CSS/catalog.css
+
+
+
+page {
+
+#bodyTag >
+bodyTagCObject = TEXT
+bodyTagCObject.field = uid
+bodyTagCObject.wrap = <body class="page-|">
+
+    headerData {
+
+    10 = TEXT
+    10 {
+        value = {page:title}
+        wrap = <title>|&#32;- DLA Marbach</title>
+        insertData = 1
+    }
+
+		## Meta viewport
+		##---------------------------------------
+
+        11 = TEXT
+    11.value (
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+)
+
+
+    50 = TEXT
+    50.value (
+
+        <link rel="stylesheet" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/css/site.min.css" media="all">
+        <link rel="stylesheet" href="typo3conf/ext/dla_opac_ng/Resources/Public/CSS/belugino.css" media="all">
+        <link rel="stylesheet" href="typo3conf/ext/dla_opac_ng/Resources/Public/CSS/catalog.css" media="all">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="DLA Marbach">
+    <meta name="application-name" content="DLA Marbach">
+
+    <!--<script src="https://www-test-ng.dla-marbach.de/typo3conf/ext/lombego_setup/Resources/Public/Build/JavaScript/vendor/modernizr-2.7.1.min.js"></script>-->
+    <script src="//use.typekit.net/jvr5rnf.js"></script>
+        <script>try{Typekit.load();}catch(e){}</script>
+)
+
+    70 = TEXT
+    70.value (
+    <link rel="apple-touch-icon" sizes="57x57" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/manifest.json">
+    <link rel="mask-icon" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/safari-pinned-tab.svg" color="#96ba3a">
+    <link rel="shortcut icon" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/mstile-144x144.png">
+    <meta name="msapplication-config" content="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+)
+}
+9999 = TEXT
+9999 {
+    value (
+        <script src="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/js/init-live.min.js"></script>
+    )
+}
+}
+
+
+
 
 
 # Generell wird die gesamte Konfiguration in "plugin.tx_find" gebündelt
