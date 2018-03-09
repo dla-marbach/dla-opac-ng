@@ -1,0 +1,26 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+
+<f:layout name="None"/>
+
+<f:section name="main">
+
+    <section>
+        <h3>{field.header}</h3>
+        <div class="ctg-footer-table">
+            <f:for each="{field.contact}" as="dis" iteration="iterator">
+                <f:if condition="{iterator.index} < 2">
+                    <p class="ctg-footer-td"><strong>{dis.contactName}</strong><br>
+                        Telefon
+                        <f:if condition="{dis.phoneHref}">
+                            <f:then><a href="tel:{dis.phoneHref}">{dis.phone}</a></f:then>
+                            <f:else>{dis.phone}</f:else>
+                        </f:if><br>
+                        Telefax {dis.fax}<br>
+                        <a href="mailto:{field.email}">{dis.email}</a><br><br>
+                        {dis.openingHours}</p>
+                </f:if>
+            </f:for>
+        </div>
+    </section>
+
+</f:section>         

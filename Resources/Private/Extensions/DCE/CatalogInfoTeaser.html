@@ -1,0 +1,45 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+
+<f:layout name="None"/>
+
+<f:section name="main">
+    <f:if condition="{field.image}">
+        <f:then>
+            <f:for each="{dce:fal(field: 'image', contentObject:contentObject)}" as="fileReference" iteration="iterator">
+                <f:if condition="{iterator.isFirst}">
+                    <section style="background: url({f:uri.image(src:'{fileReference.uid}',treatIdAsReference:'1')}); background-size: cover;">
+                        <f:switch expression="{field.icon}">
+                            <f:case value="data">
+                                <span class="icon bel-daten"></span>
+                            </f:case>
+                            <f:case value="question">
+                                <span class="icon bel-frage"></span>
+                            </f:case>
+                            <f:defaultCase>
+                            </f:defaultCase>
+                        </f:switch>
+                        <h3>{field.header}</h3>
+                        <p>{field.text}</p>
+                    </section>
+                </f:if>
+            </f:for>
+        </f:then>
+        <f:else>
+            <section>
+                <f:switch expression="{field.icon}">
+                    <f:case value="data">
+                        <span class="icon bel-daten"></span>
+                    </f:case>
+                    <f:case value="question">
+                        <span class="icon bel-frage"></span>
+                    </f:case>
+                    <f:defaultCase>
+                    </f:defaultCase>
+                </f:switch>
+                <h3>{field.header}</h3>
+                <p>{field.text}</p>
+            </section>
+        </f:else>
+    </f:if>
+
+</f:section>

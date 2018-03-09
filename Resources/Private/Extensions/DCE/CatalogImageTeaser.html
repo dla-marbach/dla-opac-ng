@@ -1,0 +1,39 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+
+<f:layout name="None"/>
+
+<f:section name="main">
+    <figure class="teaser teaser-index ctg-image-teaser">
+        <f:if condition="{field.image}">
+            <f:then>
+                <f:for each="{dce:fal(field: 'image', contentObject:contentObject)}" as="fileReference" iteration="iterator">
+                    <f:if condition="{iterator.isFirst}">
+                        <div class="ctg-it-content" style="background: url({f:uri.image(src:'{fileReference.uid}',treatIdAsReference:'1')}); background-size: cover;">
+                            <f:for each="{field.link}" as="dis" iteration="iterator">
+                                <f:if condition="{iterator.index} == 0">
+                                    <h4><f:link.typolink parameter="{dis.url}">{dis.title}</f:link.typolink></h4>
+                                </f:if>
+                                <f:if condition="{iterator.index} == 1">
+                                    <h3><f:link.typolink parameter="{dis.url}">{dis.title}</f:link.typolink></h3>
+                                </f:if>
+                            </f:for>
+                        </div>
+                    </f:if>
+                </f:for>
+            </f:then>
+            <f:else>
+                <div class="ctg-it-content">
+                    <f:for each="{field.link}" as="dis" iteration="iterator">
+                        <f:if condition="{iterator.index} == 0">
+                            <h4><f:link.typolink parameter="{dis.url}">{dis.title}</f:link.typolink></h4>
+                        </f:if>
+                        <f:if condition="{iterator.index} == 1">
+                            <h3><f:link.typolink parameter="{dis.url}">{dis.title}</f:link.typolink></h3>
+                        </f:if>
+                    </f:for>
+                </div>
+            </f:else>
+        </f:if>
+    </figure>
+</f:section>
+
