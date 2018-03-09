@@ -1,16 +1,16 @@
 <f:layout name="Startseite" />
 
-<div class="row">
-    <div class="small-12">
-        <f:section name="headerSearch">
+
+<f:section name="main">
+
+    <div class="row">
+        <div class="small-12">
             <f:format.raw>
                 <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{colPos: '3'}" />
             </f:format.raw>
-        </f:section>
+        </div>
     </div>
-</div>
 
-<f:section name="pageContent">
     <!--TYPO3SEARCH_begin-->
     <div class="row page-content">
         <section class="small-12 column content content-index" role="main">
@@ -50,12 +50,9 @@
                     </div>
                 </div>
             </div>
-        </section>
     </div>
     <!--TYPO3SEARCH_end-->
-</f:section>
 
-<f:section name="importantInfo">
     <div class="row">
         <div class="small-12">
             <f:format.raw>
@@ -63,9 +60,7 @@
             </f:format.raw>
         </div>
     </div>
-</f:section>
 
-<f:section name="footer">
     <div class="row ctg-footer">
         <div class="small-6 column">
             <f:format.raw>
@@ -78,9 +73,7 @@
             </f:format.raw>
         </div>
     </div>
-</f:section>
 
-<f:section name="footerNotice">
     <div class="row ctg-footer-notice">
         <div class="small-6 column">
             <f:format.raw>
@@ -93,4 +86,5 @@
             </f:format.raw>
         </div>
     </div>
+
 </f:section>
