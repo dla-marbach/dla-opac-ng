@@ -10,31 +10,153 @@
 
   This result display is sufficient for basic result lists.
 </f:comment>
-
 <f:section name="main">
   <s:page.title>
     <f:render partial="Components/QueryString" arguments="{query:arguments.q, facets:config.activeFacets}"/>
     –
     {config.pageTitle}
   </s:page.title>
+
   <f:render partial="Page/Standard" arguments="{_all}"/>
 
-  <div class="results">
-    <div class="navigation top">
-      <f:render partial="Components/ResultCount" arguments="{_all}"/>
-      <f:render partial="Pager/ListPager" arguments="{_all}"/>
+
+    <div class="row ctg-info-actions">
+      <div class="small-6 column">
+        <div class="ctg-info-text">
+          <f:render partial="Components/ResultCount" arguments="{_all}"/>
+        </div>
+      </div>
+      <div class="small-6 column ctg-ia-scnd">
+        <a class="ctg-button" title="versenden"><span class="icon bel-brief01"></span></a>
+        <a class="ctg-button" title="teilen"><span class="icon bel-link01"></span></a>
+        <a class="ctg-button" title="exportieren"><span class="icon bel-postin"></span></a>
+      </div>
     </div>
 
-    <f:render partial="Facets/Facets" arguments="{_all}"/>
+  <!--TYPO3SEARCH_begin-->
+  <div class="row ctg-follow-content">
+    <section class="small-9 column ctg-content-column">
+      <div class="ctg-pager-actions">
+        <f:render partial="Pager/ListPager" arguments="{_all}"/>
 
-    <ol id="c{config.uid}-resultList" class="resultList" start="{config.counterStart}">
+        <f:if condition="{f:count(subject:config.sortOptions.menu)} > 1">
+          <div class="ctg-pager-aside">
+            <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.sort"/>
+            <f:form.select id="c{config.uid}-sortSelect" name="sort" options="{config.sortOptions.menu}" value="{config.sortOptions.selected}"/>
+          </div>
+        </f:if>
+      </div>
+
+      <!-- begin results -->
+
+      <f:comment>
+        <ol id="c{config.uid}-resultList" class="resultList" start="{config.counterStart}">
+        </ol>
+      </f:comment>
+
       <f:for each="{results.documents}" as="document">
         <f:render partial="Display/Result" arguments="{_all}"/>
       </f:for>
-    </ol>
 
-    <div class="navigation bottom">
-      <f:render partial="Pager/ListPager" arguments="{_all}"/>
-    </div>
+      <!-- end results -->
+
+      <div class="ctg-pager-actions">
+        <f:render partial="Pager/ListPager" arguments="{_all}"/>
+        <f:comment>
+          <f:if condition="{f:count(subject:config.resultCountOptions.menu)} > 1">
+            <div class="ctg-pager-aside">
+              <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.count"/>
+              <f:form.select id="c{config.uid}-resultCountSelect" name="count" options="{config.resultCountOptions.menu}" value="{config.resultCountOptions.selected}"/>
+            </div>
+          </f:if>
+        </f:comment>
+        <div class="ctg-pager-aside">
+          <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.count"/>
+          <f:form.select id="c{config.uid}-resultCountSelect" name="count" options="{config.resultCountOptions.menu}" value="{config.resultCountOptions.selected}"/>
+        </div>
+      </div>
+    </section>
+
+    <aside class="small-3 column ctg-facet-colum">
+
+      <f:render partial="Facets/Facets" arguments="{_all}"/>
+
+      <section class="ctg-facet">
+        <h3>Medientyp <a title="schließen"><span class="icon bel-pfeil-o01"></span></a></h3>
+        <ul>
+          <li><a title=""><span class="icon bel-ok01"></span></a><a title="">Gesamtbestand <em>(2.000.000)</em></a></li>
+          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Gedrucktes <em>(500.000)</em></a></li>
+          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Handschriften <em>(500.000)</em></a></li>
+          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Bilder &amp; Objekte <em>(500.000)</em></a></li>
+          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Audio &amp; Video <em>(500.000)</em></a></li>
+        </ul>
+      </section>
+
+      <section class="ctg-facet">
+        <h3>Sprache <a title="schließen"><span class="icon bel-pfeil-o01"></span></a></h3>
+        <ul>
+          <li><a title=""><span class="icon bel-ok01"></span></a><a title="">alle <em>(2.000.000)</em></a></li>
+          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Deutsch <em>(500.000)</em></a></li>
+          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Englisch <em>(500.000)</em></a></li>
+          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Französisch <em>(500.000)</em></a></li>
+          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Latein <em>(500.000)</em></a></li>
+          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Mehrsprachig <em>(500.000)</em></a></li>
+          <li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li>
+        </ul>
+      </section>
+
+      <section class="ctg-facet">
+        <h3>Person <a title="schließen"><span class="icon bel-pfeil-o01"></span></a></h3>
+        <ul>
+          <li><a title=""><span class="icon bel-ok01"></span></a><a title="">Friedrich Schiller <em>(500.000)</em></a></li>
+          <li class="ctg-facet-l2"><a title=""><span class="icon bel-kreis01"></span></a><a title="">Autor <em>(500.000)</em></a></li>
+          <li class="ctg-facet-l2"><a title=""><span class="icon bel-kreis01"></span></a><a title="">Herausgeber <em>(500.000)</em></a></li>
+          <li class="ctg-facet-l2"><a title=""><span class="icon bel-kreis01"></span></a><a title="">Empfänger <em>(500.000)</em></a></li>
+          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Max Mustermann <em>(500.000)</em></a></li>
+          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Daniel Muster <em>(500.000)</em></a></li>
+        </ul>
+      </section>
+
+      <section class="ctg-facet">
+        <h3>Erscheinungsjahr <a title="schließen"><span class="icon bel-pfeil-u01"></span></a></h3>
+      </section>
+
+      <section class="ctg-facet">
+        <h3>Herkunft <a title="schließen"><span class="icon bel-pfeil-u01"></span></a></h3>
+      </section>
+
+      <section class="ctg-facet">
+        <h3>Schlagwörter <a title="schließen"><span class="icon bel-pfeil-u01"></span></a></h3>
+      </section>
+
+      <section class="ctg-facet-prestige">
+        <h3>Sie haben das Gesuchte nicht gefunden?</h3>
+        <p>Sprechen Sie uns an: Aenean massa. Cum sociis natoque penati montes, nascetur ridiculus mus donec quam.</p>
+      </section>
+
+      <section class="ctg-facet-prestige">
+        <h3>Kontakt</h3>
+        <p><strong>Auskunftsdienst Archiv</strong><br>
+          Telefon <a href="tel:+497144848425">+49 (0) 7144 / 848-425</a><br>
+          <a href="mailto:auskhss@dla-marbach.de">auskhss@dla-marbach.de</a><br>
+          Montag - Freitag, 8:30h bis 18:00h</p>
+
+        <p><strong>Auskunftsdienst Bibliothek</strong><br>
+          Telefon <a href="tel:+497144848318">+49 (0) 7144 / 848-318</a><br>
+          <a href="bibliothek@dla-marbach.de">bibliothek@dla-marbach.de</a><br>
+          Montag - Freitag, 8:30h bis 17:30h</p>
+      </section>
+
+      <section class="ctg-facet-other">
+        <h3>Andere Fundorte <a title="schließen"><span class="icon bel-pfeil-o01"></span></a></h3>
+        <ul>
+          <li><a title=""><span class="icon bel-link03"></span></a><a title="">Wikipedia "Friedrich Stiller"</a></li>
+          <li><a title=""><span class="icon bel-link03"></span></a><a title="">Wikipedia "Stiller"</a></li>
+          <li><a title=""><span class="icon bel-link03"></span></a><a title="">Webarchive "Stiller, Friedrich"</a></li>
+        </ul>
+      </section>
+    </aside>
   </div>
+  <!--TYPO3SEARCH_end-->
+
 </f:section>

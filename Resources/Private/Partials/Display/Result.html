@@ -5,72 +5,64 @@
   It uses the standardFields configured in settings, result highlighting
   (if configured) and a link to the document’s page.
 </f:comment>
-<li id="c{config.uid}-result-{document.id}">
-  <article>
-    <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_associate)}">
-      <p>
-        <f:render
-          partial="Display/Field/Inline"
-          arguments="{
-            config:config,
-            results:results,
-            document:document,
-            field:settings.standardFields.listview_associate,
-            separator:'; '
-          }"/>
-      </p>
+
+<div class="ctg-result-item" id="c{config.uid}-result-{document.id}">
+  <div class="ctg-ri-icon">
+    <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_type)}">
+
+      <f:comment>
+        <f:switch expression="{document.listview_type_cardinality}">
+          <f:case value="N">
+            <i class="fa fa-stack-2x fa-files-o" style="color:#d3d3d3;"></i>
+          </f:case>
+          <f:case value="1">
+            <i class="fa fa-stack-2x fa-file-o" style="color:#d3d3d3;"></i>
+          </f:case>
+        </f:switch>
+      </f:comment>
+
+      <f:switch expression="{document.listview_type}">
+        <f:case value="AV-Medien">
+          <span class="icon bel-film" title="AV-Medien"></span>
+        </f:case>
+        <f:case value="Bilder und Objekte">
+          <span class="icon bel-foto" title="Bilder & Objekte"></span>
+        </f:case>
+        <f:case value="Daten">
+          <span class="icon bel-daten" title="Daten"></span>
+        </f:case>
+        <f:case value="Gedrucktes">
+          <span class="icon bel-buch" title="Gedrucktes"></span>
+        </f:case>
+        <f:case value="Handschriften">
+          <span class="icon bel-schreiben" title="Handschriften"></span>
+        </f:case>
+        <f:case value="Normdaten">
+          <span class="icon bel-mag" title="Normdaten"></span>
+        </f:case>
+        <f:case default="TRUE">
+          <span class="icon bel-leer" title="Sonstiges"></span>
+        </f:case>
+      </f:switch>
     </f:if>
-    <h1>
+  </div>
+
+  <div class="ctg-ri-text">
+    <h2>
       <f:link.action
-        action="detail"
-        arguments="{id:document.id}"
-        section="{settings.jumpToID}"
-        noCacheHash="1"
-        class="internal no-change"
-        onclick="{f:if(
-          condition:'{settings.paging.detailPagePaging} == 1',
-          then:'return tx_find.detailViewWithPaging(this);'
-        )}">
-        <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_type)}">
-          <span class="fa-stack fa-fw">
-          <f:switch expression="{document.listview_type_cardinality}">
-            <f:case value="N">
-              <i class="fa fa-stack-2x fa-files-o" style="color:#d3d3d3;"></i>
-            </f:case>
-            <f:case value="1">
-              <i class="fa fa-stack-2x fa-file-o" style="color:#d3d3d3;"></i>
-            </f:case>
-          </f:switch>
-          <f:switch expression="{document.listview_type}">
-            <f:case value="AV-Medien">
-              <i class="fa fa-stack-1x fa-music" title="AV-Medien"></i>
-            </f:case>
-            <f:case value="Bilder & Objekte">
-              <i class="fa fa-stack-1x fa-image" title="Bilder & Objekte"></i>
-            </f:case>
-            <f:case value="Daten">
-              <i class="fa fa-stack-1x fa-database" title="Daten"></i>
-            </f:case>
-            <f:case value="Gedrucktes">
-              <i class="fa fa-stack-1x fa-book" title="Gedrucktes"></i>
-            </f:case>
-            <f:case value="Handschriften">
-              <i class="fa fa-stack-1x fa-pencil" title="Handschriften"></i>
-            </f:case>
-            <f:case value="Normdaten">
-              <i class="fa fa-stack-1x fa-address-card" title="Normdaten"></i>
-            </f:case>
-            <f:case default="TRUE">
-              <i class="fa fa-stack-1x fa-archive" title="Sonstiges"></i>
-            </f:case>
-          </f:switch>
-          </span>
-        </f:if>
+              action="detail"
+              arguments="{id:document.id}"
+              section="{settings.jumpToID}"
+              noCacheHash="1"
+              onclick="{f:if(
+                condition:'{settings.paging.detailPagePaging} == 1}',
+                then:'return tx_find.detailViewWithPaging(this);'
+      )}">
         <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_title)}">
           <f:then>
             <f:render
-              partial="Display/Field/Inline"
-              arguments="{
+                    partial="Display/Field/Inline"
+                    arguments="{
                 config:config,
                 results:results,
                 document:document,
@@ -83,38 +75,92 @@
           </f:else>
         </f:if>
       </f:link.action>
-    </h1>
+    </h2>
     <p>
-      <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.picture_mini)}">
-        <f:for each="{document.picture_mini}" as="picture" key="key">
-          <f:if condition="{key} == 0">
-            <img src="{picture}" alt="" /><br />
-          </f:if>
-        </f:for>
-      </f:if>
-      <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional1)}">
+      <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_associate)}">
         <f:render
-          partial="Display/Field/Inline"
-          arguments="{
+                partial="Display/Field/Inline"
+                arguments="{
+            config:config,
+            results:results,
+            document:document,
+            field:settings.standardFields.listview_associate,
+            separator:'; '
+          }"/>
+      </f:if><f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_associate)}">,</f:if>
+      Impressum, 00.00.0000</p>
+    <p>Inventarnummer 00.0000.0000.0000</p>
+  </div>
+
+  <div class="ctg-ri-image">
+    <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.picture_mini)}">
+      <f:for each="{document.picture_mini}" as="picture" key="key">
+        <f:if condition="{key} == 0">
+          <img src="{picture}" alt="" />
+        </f:if>
+      </f:for>
+    </f:if>
+  </div>
+
+  <div class="ctg-ri-actions">
+    <ul>
+      <li><a class="ctg-button" title="merken"><span class="icon bel-stern01"></span></a></li>
+      <li><a class="ctg-button" title="Details"><span class="icon bel-pfeil-o01"></span></a></li>
+    </ul>
+  </div>
+  <div class="ctg-ri-details">
+    <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_type)}">
+      <div class="ctg-rid-row">
+        <div class="ctg-rid-label">
+          Medientyp
+        </div>
+        <div class="ctg-rid-content">
+          {document.listview_type}
+        </div>
+      </div>
+    </f:if>
+    <div class="ctg-rid-row">
+      <div class="ctg-rid-label">
+        Technik
+      </div>
+      <div class="ctg-rid-content">
+        Baustelle
+      </div>
+    </div>
+    <div class="ctg-rid-row">
+      <div class="ctg-rid-label">
+        Benutzungszugang
+      </div>
+      <div class="ctg-rid-content">
+        Baustelle: nicht ausleihbar, <a href="">weiterer Hinweis hier</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<f:comment>
+  <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional1)}">
+    <f:render
+            partial="Display/Field/Inline"
+            arguments="{
             config:config,
             results:results,
             document:document,
             field:settings.standardFields.listview_additional1,
             separator:'; '
           }"/>
-      </f:if>
-      <br />
-      <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional2)}">
-        <f:render
-          partial="Display/Field/Inline"
-          arguments="{
+  </f:if>
+  <br />
+  <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional2)}">
+    <f:render
+            partial="Display/Field/Inline"
+            arguments="{
             config:config,
             results:results,
             document:document,
             field:settings.standardFields.listview_additional2,
             separator:'; '
           }"/>
-      </f:if>
-    </p>
-  </article>
-</li>
+  </f:if>
+</f:comment>
+

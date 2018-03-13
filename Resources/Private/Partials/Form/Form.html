@@ -11,93 +11,169 @@
 </f:comment>
 <f:render partial="Form/QueryError.html" arguments="{_all}"/>
 
-<f:form name="c{config.uid}-form"
-    method="post"
-    section="{settings.jumpToID}"
-    class="searchForm {f:if(condition:config.extendedSearch, then:'search-extended', else:'search-simple')}">
 
-  <f:for each="{formFacets}" as="facet" key="facetID">
-    <f:for each="{facet}" as="unused" key="facetValue">
-      <f:form.hidden name="facet[{facetID}][{facetValue}]" value="1"/>
-    </f:for>
-  </f:for>
+<div class="row">
+  <div class="small-12">
 
-  <div class="formFields">
-    <f:for each="{settings.queryFields}" as="fieldInfo">
-      <f:if condition="{fieldInfo.type}">
-        <f:then>
-          <f:if condition="{s:logic.or(conditions:'{
-            0:\"{s:logic.not(condition:fieldInfo.hidden)}\",
-            1:\"{s:data.valueForKey(array:arguments.q, key:fieldInfo.id)}\"
-          }')}">
-            <div class="fieldContainer fieldType-{fieldInfo.type} field-{fieldInfo.id} field-mode-{f:if(condition:'{fieldInfo.extended}', then:'extended', else:'simple')}">
-              <f:alias map="{queryParameter:'{s:data.valueForKey(array:config.query, key:fieldInfo.id)}'}">
-                <f:render partial="Form/Fields/{fieldInfo.type}" arguments="{_all}"/>
-              </f:alias>
-            </div>
-          </f:if>
-        </f:then>
-        <f:else>
-          <div class="fieldContainer error">
-            <f:translate key="Missing type in configuration for queryField %s." arguments="{0:fieldInfo.id}"/>
+    <figure class="ctg-header ctg-header-follow">
+      <section class="ctg-hd-meta">
+        <div class="ctg-catalog-title">
+          <strong>Kallías</strong> – der Online-Katalog des Deutschen Literaturarchivs Marbach
+        </div>
+        <div class="ctg-hd-meta-menu">
+          <ul>
+            <li>
+              <a href="#" title="Merkliste"><span class="icon bel-stern01"></span>Merkliste (3)</a>
+            </li>
+            <li>
+              <a href="#" title="Feedback"><span class="icon bel-sprache01"></span>Feedback</a>
+            </li>
+            <li>
+              <a href="#" title="Mein Konto"><span class="icon bel-nutzer"></span>Mein Konto</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="ctg-hd-search">
+        <f:form name="c{config.uid}-form"
+                  method="post"
+                  section="{settings.jumpToID}"
+                  class="searchForm {f:if(condition:config.extendedSearch, then:'search-extended', else:'search-simple')}">
+
+          <f:for each="{formFacets}" as="facet" key="facetID">
+            <f:for each="{facet}" as="unused" key="facetValue">
+              <f:form.hidden name="facet[{facetID}][{facetValue}]" value="1"/>
+            </f:for>
+          </f:for>
+
+
+          <ul>
+            <li>
+              <a href="#" title="Gesamtbestand" class="ctg-hd-active"><span class="icon bel-mkombo06"></span>Gesamtbestand</a>
+            </li>
+            <li>
+              <a href="#" title="Gedrucktes"><span class="icon bel-mag"></span>Gedrucktes</a>
+            </li>
+            <li>
+              <a href="#" title="Handschriften"><span class="icon bel-schreiben"></span>Handschriften</a>
+            </li>
+            <li>
+              <a href="#" title="Bilder &amp; Objekte"><span class="icon bel-foto"></span>Bilder &amp; Objekte</a>
+            </li>
+            <li>
+              <a href="#" title="Audio &amp; Video"><span class="icon bel-note"></span>Audio &amp; Video</a>
+            </li>
+          </ul>
+
+          <div class="ctg-hd-search-form">
+
+            <f:comment>
+                TODO: the planned functioning of the extended search must be clarified
+
+                <f:for each="{settings.queryFields}" as="fieldInfo">
+                  <f:if condition="{fieldInfo.type}">
+                    <f:then>
+                      <f:if condition="{s:logic.or(conditions:'{
+                0:\"{s:logic.not(condition:fieldInfo.hidden)}\",
+                      1:\"{s:data.valueForKey(array:arguments.q, key:fieldInfo.id)}\"
+                      }')}">
+                      <div class="fieldContainer fieldType-{fieldInfo.type} field-{fieldInfo.id} field-mode-{f:if(condition:'{fieldInfo.extended}', then:'extended', else:'simple')}">
+                        <f:alias map="{queryParameter:'{s:data.valueForKey(array:config.query, key:fieldInfo.id)}'}">
+                          <f:render partial="Form/Fields/{fieldInfo.type}" arguments="{_all}"/>
+                        </f:alias>
+                      </div>
+                  </f:if>
+                  </f:then>
+                  <f:else>
+                    <div class="fieldContainer error">
+                      <f:translate key="Missing type in configuration for queryField %s." arguments="{0:fieldInfo.id}"/>
+                    </div>
+                  </f:else>
+                  </f:if>
+                </f:for>
+            </f:comment>
+
+            <f:alias map="{queryParameter:'{s:data.valueForKey(array:config.query, key:settings.queryFields.0.id)}'}">
+            <f:form.textfield
+                    id="c{config.uid}-field-{settings.queryFields.0.id}"
+                    class="inputType-text"
+                    name="q[{settings.queryFields.0.id}]{f:if(
+        condition:hasAlternate,
+        then:'[term]'
+      )}"
+                    value="{f:if(
+        condition:hasAlternate,
+        then:queryParameter.term,
+        else:queryParameter
+      )}"
+                    placeholder="{f:translate(key:'LLL:{settings.languageRootPath}locallang-form.xml:input.{settings.queryFields.0.id}.placeholder')}"
+                    additionalAttributes="<f:if condition='{settings.queryFields.0.autocomplete}==1'><f:then>{autocompleteURL:\"{f:uri.action(
+                    arguments:{dictionary:fieldInfo.autocompleteDictionary, q:'%%%%'},
+            action:'suggest',
+            pageType:'1369315139',
+            format:'data',
+            noCacheHash:'1'
+            )}\"}</f:then><f:else>{a:1}</f:else></f:if>"
+            /></f:alias><button type="submit"><span class="icon bel-lupe"></span>Jetzt suchen</button>
           </div>
-        </f:else>
-      </f:if>
-    </f:for>
+        </f:form>
+      </section>
+
+      <section class="ctg-hd-addon">
+        <ul>
+          <li>
+
+            <f:comment>
+              TODO: the planned functioning of the extended search must be clarified
+                <f:groupedFor each="{settings.queryFields}" as="fieldsByType" groupBy="extended" groupKey="extended">
+                  <f:if condition="{0:extended} == {0:1}">
+                    <f:if condition="{config.extendedSearch}">
+                      <f:then>
+                        <f:link.action
+                                addQueryString="TRUE"
+                                argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[extendedSearch]'}"
+                                class="extendedSearch internal"
+                                additionalAttributes="{
+                    simpleString:'{f:translate(key:\"extended Search\")}',
+                        extendedString:'{f:translate(key:\"basic Search\")}'
+                        }">
+                        <f:translate key="basic Search"/>
+                        </f:link.action>
+                      </f:then>
+                      <f:else>
+                        <f:link.action
+                                addQueryString="TRUE"
+                                arguments="{extendedSearch: 1}"
+                                class="extendedSearch internal"
+                                additionalAttributes="{
+                    simplestring:'{f:translate(key:\"extended Search\")}',
+                        extendedstring:'{f:translate(key:\"basic Search\")}'
+                        }">
+                        <f:translate key="extended Search"/>
+                        </f:link.action>
+                      </f:else>
+                    </f:if>
+                  </f:if>
+                </f:groupedFor>
+            </f:comment>
+
+
+
+            <a href="#" title="Expertensuche"><span class="icon bel-regler01"></span><span class="ctg-hd-addon-term">Expertensuche</span></a>
+          </li>
+          <li>
+            <a href="#" title="Bestandsübersicht"><span class="icon bel-inhalt"></span><span class="ctg-hd-addon-term">Bestandsübersicht</span></a>
+          </li>
+          <li>
+            <a href="#" title="Suchverlauf"><span class="icon bel-zurueck02"></span><span class="ctg-hd-addon-term">Suchverlauf</span></a>
+          </li>
+          <li>
+            <a href="#" title="Hilfe &amp; Auskunft"><span class="icon bel-info"></span><span class="ctg-hd-addon-term">Hilfe &amp; Auskunft</span></a>
+          </li>
+        </ul>
+      </section>
+    </figure>
+
   </div>
-
-  <div class="controls">
-    <f:form.submit value="{f:translate(key:'Search')}" class="submit"/>
-
-    <f:groupedFor each="{settings.queryFields}" as="fieldsByType" groupBy="extended" groupKey="extended">
-      <f:if condition="{0:extended} == {0:1}">
-        <f:if condition="{config.extendedSearch}">
-          <f:then>
-            <f:link.action
-              addQueryString="TRUE"
-              argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[extendedSearch]'}"
-              class="extendedSearch internal"
-              additionalAttributes="{
-                simpleString:'{f:translate(key:\"extended Search\")}',
-                extendedString:'{f:translate(key:\"basic Search\")}'
-              }">
-              <f:translate key="basic Search"/>
-            </f:link.action>
-          </f:then>
-          <f:else>
-            <f:link.action
-              addQueryString="TRUE"
-              arguments="{extendedSearch: 1}"
-              class="extendedSearch internal"
-              additionalAttributes="{
-                simplestring:'{f:translate(key:\"extended Search\")}',
-                extendedstring:'{f:translate(key:\"basic Search\")}'
-              }">
-              <f:translate key="extended Search"/>
-            </f:link.action>
-          </f:else>
-        </f:if>
-      </f:if>
-    </f:groupedFor>
-  </div>
-
-  <f:if condition="{f:count(subject:config.sortOptions.menu)} > 1">
-    <div class="sortOrder">
-      <label for="c{config.uid}-sortSelect">
-        <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.sort"/>
-      </label>
-      <f:form.select id="c{config.uid}-sortSelect" name="sort" options="{config.sortOptions.menu}" value="{config.sortOptions.selected}"/>
-    </div>
-  </f:if>
-
-  <f:if condition="{f:count(subject:config.resultCountOptions.menu)} > 1">
-    <div class="resultCountPicker">
-      <label for="c{config.uid}-resultCountSelect">
-        <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.count"/>
-      </label>
-      <f:form.select id="c{config.uid}-resultCountSelect" name="count" options="{config.resultCountOptions.menu}" value="{config.resultCountOptions.selected}"/>
-    </div>
-  </f:if>
-
-  <div class="clear"></div>
-</f:form>
+</div>

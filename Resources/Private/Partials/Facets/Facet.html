@@ -8,12 +8,23 @@
   facet’s configured type (deaulting to  »List«).
 </f:comment>
 <f:if condition="{f:count(subject:facetData.values)} > 0">
-  <article class="facet facet-id-{facetInfo.id}{f:if(condition:facetInfo.type, then:' facet-type-{facetInfo.type}')}">
-    <h1>
+  <section class="ctg-facet">
+
+    <f:comment>
+      <article class="facet facet-id-{facetInfo.id}{f:if(condition:facetInfo.type, then:' facet-type-{facetInfo.type}')}">
+      </article>
+    </f:comment>
+
+    <h3>
       <f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}" default="{facetInfo.id}"/>
-    </h1>
+      <a title="schließen"><span class="icon bel-pfeil-o01"></span></a>
+    </h3>
     <f:alias map="{facetType:'{f:if(condition:facetInfo.type, then:facetInfo.type, else:\"List\")}'}">
       <f:render partial="Facets/Facet/{facetType}" arguments="{_all}"/>
     </f:alias>
-  </article>
+  </section>
 </f:if>
+
+
+
+

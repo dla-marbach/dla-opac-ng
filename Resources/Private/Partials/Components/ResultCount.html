@@ -4,7 +4,7 @@
   It displays the current range and total number of results as appropriate.
   If an error occurred it indicates the error.
 </f:comment>
-<div class="resultCount">
+
   <f:if condition="{results.numfound}==0">
     <f:then>
       <f:if condition="{error}">
@@ -27,13 +27,15 @@
               {results.numfound} <f:translate key="results"/>
             </f:then>
             <f:else>
-              {config.counterStart}-{config.counterEnd}
+              <strong>
+                <f:translate key="results"/>
+                {config.counterStart}-{config.counterEnd}
+              </strong>
               <f:translate key="of"/>
               {results.numfound}
             </f:else>
           </f:if>
-        </f:else>
+    </f:else>
       </f:if>
     </f:else>
   </f:if>
-</div>

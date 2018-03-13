@@ -4,13 +4,14 @@
   the Facet partial.
 </f:comment>
 <f:if condition="{results.components.facetset.facets}">
-  <section class="facets">
-    <h3 class="invisible">
+  <f:comment>
+     <h3 class="invisible">
       <f:translate key="Facets"/>
       <a href="#c{config.uid}-resultList">
         <f:translate key="Jump to results"/>
       </a>
     </h3>
+  </f:comment>
     <f:for each="{config.facets}" as="facetInfo" key="facetKey">
       <f:if condition="{facetInfo.hidden}!=1">
         <f:render
@@ -22,5 +23,4 @@
           }"/>
       </f:if>
     </f:for>
-  </section>
 </f:if>
