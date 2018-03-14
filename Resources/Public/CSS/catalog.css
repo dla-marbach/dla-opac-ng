@@ -411,11 +411,19 @@ button.ctg-button:hover {
     width: auto;
     margin-left: 0.5rem;
 }
+ol.ctg-result-list {
+    margin: 0 !important;
+    padding: 0 !important;
+}
 
 .ctg-result-item {
     border-bottom: 1px solid #dadada;
     width: 100%;
     transition: all 0.3s linear;
+}
+
+li.ctg-result-item {
+    list-style: none;
 }
 
 .ctg-result-item:hover {

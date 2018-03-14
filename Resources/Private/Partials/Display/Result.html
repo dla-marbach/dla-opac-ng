@@ -5,8 +5,7 @@
   It uses the standardFields configured in settings, result highlighting
   (if configured) and a link to the document’s page.
 </f:comment>
-
-<div class="ctg-result-item" id="c{config.uid}-result-{document.id}">
+<li class="ctg-result-item" id="c{config.uid}-result-{document.id}">
   <div class="ctg-ri-icon">
     <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_type)}">
 
@@ -55,7 +54,7 @@
               section="{settings.jumpToID}"
               noCacheHash="1"
               onclick="{f:if(
-                condition:'{settings.paging.detailPagePaging} == 1}',
+                condition:'{settings.paging.detailPagePaging} == 1',
                 then:'return tx_find.detailViewWithPaging(this);'
       )}">
         <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_title)}">
@@ -136,7 +135,7 @@
       </div>
     </div>
   </div>
-</div>
+</li>
 
 <f:comment>
   <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional1)}">

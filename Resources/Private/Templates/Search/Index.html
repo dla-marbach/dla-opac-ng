@@ -49,14 +49,14 @@
 
       <!-- begin results -->
 
-      <f:comment>
-        <ol id="c{config.uid}-resultList" class="resultList" start="{config.counterStart}">
-        </ol>
-      </f:comment>
+        <ol id="c{config.uid}-resultList" class="ctg-result-list" start="{config.counterStart}">
+          <f:for each="{results.documents}" as="document">
+            <f:render partial="Display/Result" arguments="{_all}"/>
+          </f:for>
 
-      <f:for each="{results.documents}" as="document">
-        <f:render partial="Display/Result" arguments="{_all}"/>
-      </f:for>
+        </ol>
+
+
 
       <!-- end results -->
 
