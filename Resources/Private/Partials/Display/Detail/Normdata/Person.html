@@ -251,7 +251,8 @@
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PIU814')}" name="PIU814" />
-<f:if condition="{PIU814} == 'b'">
+<f:comment>PI808.0 because this field is an array</f:comment>
+<f:if condition="{PIU814.0} == 'Biografische Angaben'">
     <dt class="dt-{field}">
         Erläuterung
     </dt>
@@ -269,7 +270,8 @@
 </f:if>
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PI808')}" name="PI808" />
-<f:if condition="{PI808} == '678'">
+<f:comment>PI808.0 because this field is an array</f:comment>
+<f:if condition="{PI808.0} == 'Geschichte des Werks'">
     <dt class="dt-{field}">
         Erläuterung
     </dt>
