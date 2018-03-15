@@ -42,7 +42,7 @@
         <f:if condition="{f:count(subject:config.sortOptions.menu)} > 1">
           <div class="ctg-pager-aside">
             <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.sort"/>
-            <f:form.select id="c{config.uid}-sortSelect" name="sort" options="{config.sortOptions.menu}" value="{config.sortOptions.selected}"/>
+            <f:form.select additionalAttributes='{data-id:"c{config.uid}-sortSelect",data-sort:"1"}' name="sort" options="{config.sortOptions.menu}" value="{config.sortOptions.selected}"/>
           </div>
         </f:if>
       </div>
@@ -80,54 +80,6 @@
     <aside class="small-3 column ctg-facet-colum">
 
       <f:render partial="Facets/Facets" arguments="{_all}"/>
-
-      <section class="ctg-facet">
-        <h3>Medientyp <a title="schließen"><span class="icon bel-pfeil-o01"></span></a></h3>
-        <ul>
-          <li><a title=""><span class="icon bel-ok01"></span></a><a title="">Gesamtbestand <em>(2.000.000)</em></a></li>
-          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Gedrucktes <em>(500.000)</em></a></li>
-          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Handschriften <em>(500.000)</em></a></li>
-          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Bilder &amp; Objekte <em>(500.000)</em></a></li>
-          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Audio &amp; Video <em>(500.000)</em></a></li>
-        </ul>
-      </section>
-
-      <section class="ctg-facet">
-        <h3>Sprache <a title="schließen"><span class="icon bel-pfeil-o01"></span></a></h3>
-        <ul>
-          <li><a title=""><span class="icon bel-ok01"></span></a><a title="">alle <em>(2.000.000)</em></a></li>
-          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Deutsch <em>(500.000)</em></a></li>
-          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Englisch <em>(500.000)</em></a></li>
-          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Französisch <em>(500.000)</em></a></li>
-          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Latein <em>(500.000)</em></a></li>
-          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Mehrsprachig <em>(500.000)</em></a></li>
-          <li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li>
-        </ul>
-      </section>
-
-      <section class="ctg-facet">
-        <h3>Person <a title="schließen"><span class="icon bel-pfeil-o01"></span></a></h3>
-        <ul>
-          <li><a title=""><span class="icon bel-ok01"></span></a><a title="">Friedrich Schiller <em>(500.000)</em></a></li>
-          <li class="ctg-facet-l2"><a title=""><span class="icon bel-kreis01"></span></a><a title="">Autor <em>(500.000)</em></a></li>
-          <li class="ctg-facet-l2"><a title=""><span class="icon bel-kreis01"></span></a><a title="">Herausgeber <em>(500.000)</em></a></li>
-          <li class="ctg-facet-l2"><a title=""><span class="icon bel-kreis01"></span></a><a title="">Empfänger <em>(500.000)</em></a></li>
-          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Max Mustermann <em>(500.000)</em></a></li>
-          <li><a title=""><span class="icon bel-kreis01"></span></a><a title="">Daniel Muster <em>(500.000)</em></a></li>
-        </ul>
-      </section>
-
-      <section class="ctg-facet">
-        <h3>Erscheinungsjahr <a title="schließen"><span class="icon bel-pfeil-u01"></span></a></h3>
-      </section>
-
-      <section class="ctg-facet">
-        <h3>Herkunft <a title="schließen"><span class="icon bel-pfeil-u01"></span></a></h3>
-      </section>
-
-      <section class="ctg-facet">
-        <h3>Schlagwörter <a title="schließen"><span class="icon bel-pfeil-u01"></span></a></h3>
-      </section>
 
       <section class="ctg-facet-prestige">
         <h3>Sie haben das Gesuchte nicht gefunden?</h3>

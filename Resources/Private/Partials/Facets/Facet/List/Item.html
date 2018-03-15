@@ -30,9 +30,9 @@
               argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
               section="{settings.jumpToID}"
               noCacheHash="1"
-              class="icon-cancel facetRemove internal"
+              class=""
               title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
-        <span class="icon bel-kreis01"></span>
+        <span class="icon bel-ok01"></span>
       </f:link.action>
 
       <f:link.action
@@ -40,9 +40,12 @@
         argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
         section="{settings.jumpToID}"
         noCacheHash="1"
-        class="icon-cancel facetRemove internal"
+        class=""
         title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
-        <span class="facetName"><f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}" default="{facetTermDisplay}"/></span></f:link.action>
+        <f:translate
+          key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
+          default="{facetTermDisplay}"/><em>({itemCount})</em>
+      </f:link.action>
     </f:then>
     <f:else>
       <f:link.action
@@ -63,7 +66,7 @@
         class="facetAdd internal">
         <f:translate
           key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
-          default="{facetTermDisplay}"/>&nbsp;<span class="facetCount">{itemCount}</span>
+          default="{facetTermDisplay}"/><em>({itemCount})</em>
       </f:link.action>
     </f:else>
   </f:if>

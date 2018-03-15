@@ -66,6 +66,9 @@ page.includeJS.jquery-plot-select = EXT:dla_opac_ng/Resources/Public/JavaScript/
 #page.includeJS.fa = https://use.fontawesome.com/96352f148e.js
 page.includeJSFooter.find = EXT:find/Resources/Public/JavaScript/find.js
 
+page.includeJSFooter.dla_opac_ng = EXT:dla_opac_ng/Resources/Public/JavaScript/dla-opac-ng.js
+
+
 page.includeCSS.opac-ng =  EXT:dla_opac_ng/Resources/Public/CSS/opac-ng.css
 
 #page.includeCSS.site =  https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/css/site.min.css

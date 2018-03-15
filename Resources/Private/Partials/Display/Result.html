@@ -99,15 +99,22 @@
         </f:if>
       </f:for>
     </f:if>
+    <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.audio)}">
+      <f:for each="{document.picture_mini}" as="audio" key="key">
+        <f:if condition="{key} == 0">
+          <audio id="player" src="{audio}"></audio>
+        </f:if>
+      </f:for>
+    </f:if>
   </div>
 
   <div class="ctg-ri-actions">
     <ul>
       <li><a class="ctg-button" title="merken"><span class="icon bel-stern01"></span></a></li>
-      <li><a class="ctg-button" title="Details"><span class="icon bel-pfeil-o01"></span></a></li>
+      <li><a class="ctg-button" title="Details" data-details-toggle="1"><span class="icon bel-pfeil-u01"></span></a></li>
     </ul>
   </div>
-  <div class="ctg-ri-details">
+  <div class="ctg-ri-details" style="display:none;">
     <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_type)}">
       <div class="ctg-rid-row">
         <div class="ctg-rid-label">
