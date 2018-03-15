@@ -13,11 +13,9 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-
-    //$("[data-sort]").change(function(){
-
-//        $(document).find("#"+$(this).data("id")).val($(this).val());
-  //      $(document).find(".searchForm").submit();
+    $("[data-sort]").change(function(){
+        var uri = $(document).find("#sortUri"+$(this).find(":selected").index()).attr('uri');
+        $(location).attr('href',uri);
     });
 });
 

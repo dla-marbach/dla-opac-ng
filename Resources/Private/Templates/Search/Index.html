@@ -44,6 +44,19 @@
             <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.sort"/>
             <f:form.select additionalAttributes='{data-id:"c{config.uid}-sortSelect",data-sort:"1"}' name="sort" options="{config.sortOptions.menu}" value="{config.sortOptions.selected}"/>
           </div>
+
+          <f:for each="{config.sortOptions.menu}" as="sortOption" key="key" iteration="iterator">
+            <span
+              id="sortUri{iterator.index}"
+              style="display:none;"
+              uri='<f:uri.action
+              addQueryString="TRUE"
+              arguments="{sort:'{key}'}"
+            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+            section="{settings.jumpToID}"
+            noCacheHash="1">
+            </f:uri.action>'></span>
+          </f:for>
         </f:if>
       </div>
 
