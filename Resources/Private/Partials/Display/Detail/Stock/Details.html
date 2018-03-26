@@ -382,23 +382,57 @@
     </dd>
 </f:if>
 
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B0001')}" name="B0001" />
+<dt class="dt-{field}">
+    Beziehungen
+</dt>
+<dd class="dd-{field}">
 
-<f:if condition="{}">
-    <dt class="dt-{field}">
-        In diesem Bestand xxx Unterbestände (Baustelle)
-    </dt>
-    <dd class="dd-{field}">
-    </dd>
-</f:if>
+    <s:data.newArray
+            name="query"
+            global="1"
+            keys="{0:'raw'}"
+            values="{0:'BUEBKY:\"{B0001}\"'}"
+    />
 
-<f:if condition="{}">
-    <dt class="dt-{field}">
-        "In diesem Bestand xxx ...." (Baustelle)
-    </dt>
-    <dd class="dd-{field}">
-    </dd>
-</f:if>
+    <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+        <span style="color:lightgrey;">In diesem Bestand xxx Unterbestände (Baustelle)</span>
+        <f:render
+                partial="Display/Field/Inline"
+                arguments="{
+                          config:config,
+                          results:results,
+                          document:solr,
+                          field:'{displayField}'
+                        }"/>
+    </f:link.action>
+</dd>
 
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B0001')}" name="B0001" />
+<dt class="dt-{field}">
+    Beziehungen
+</dt>
+<dd class="dd-{field}">
+
+    <s:data.newArray
+            name="query"
+            global="1"
+            keys="{0:'raw'}"
+            values="{0:'HSBFKY:\"{B0001}\" OR BFKEY:\"{B0001}\"'}"
+    />
+
+    <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+        <span style="color:lightgrey;">In diesem Bestand xxx Handschriften oder Anderes (Baustelle)</span>
+        <f:render
+                partial="Display/Field/Inline"
+                arguments="{
+                          config:config,
+                          results:results,
+                          document:solr,
+                          field:'{displayField}'
+                        }"/>
+    </f:link.action>
+</dd>
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_TH_SWAF_THA710')}" name="XX_TH_SWAF_THA710" />
 <f:if condition="{XX_TH_SWAF_THA710}">
