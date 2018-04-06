@@ -515,6 +515,12 @@
         Inhalt
     </dt>
     <dd class="dd-{field}">
+        <f:for each="{URLBEM}" as="item" iteration="iterator">
+            <a href="{B00220.{iterator.index}}">
+                {item}
+            </a>
+        </f:for>
+
     </dd>
 </f:if>
 
