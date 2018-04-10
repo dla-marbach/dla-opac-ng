@@ -10,11 +10,10 @@
         fields="{document.fields}"
         as="A0501" />
 
-
-<dt class="dt-{field}">
+<div class="ctg-dtvt-label">
     Anmerkungen
-</dt>
-<dd class="dd-{field}">
+</div>
+<div class="ctg-dtvt-content">
     <f:if condition="{A0501}">
         <f:then>
             <f:for each="{A0501}" as="item" iteration="iterator">
@@ -25,5 +24,5 @@
             -
         </f:else>
     </f:if>
-</dd>
+</div>
 

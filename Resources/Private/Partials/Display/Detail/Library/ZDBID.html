@@ -10,10 +10,10 @@
         fields="{document.fields}"
         as="ANUM" />
 
-<dt class="dt-{field}">
+<div class="ctg-dtvt-label">
     ZDB-ID
-</dt>
-<dd class="dd-{field}">
+</div>
+<div class="ctg-dtvt-content">
     <f:if condition="{ANUM}">
         <f:then>
             <f:for each="{ANUM}" as="item" iteration="iterator">
@@ -24,4 +24,4 @@
             -
         </f:else>
     </f:if>
-</dd>
+</div>

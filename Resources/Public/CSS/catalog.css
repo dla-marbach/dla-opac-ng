@@ -315,7 +315,7 @@ catalog follow list
 }
 
 .ctg-info-text {
-    padding: 0.5rem 0;
+    padding: 0.5rem 0.5rem 0 0;
 }
 
 .ctg-ia-scnd {
@@ -360,6 +360,10 @@ button.ctg-button {
 
 button.ctg-button:hover {
     color: #b61f24;
+}
+
+.ctg-button-textnicon {
+    padding: 0.5rem 0.5rem 0.5rem 0.25rem;
 }
 
 .ctg-bu-active {
@@ -546,9 +550,11 @@ catalog follow facet
     padding: 1rem;
 }
 
-.ctg-facet h3 {
+.ctg-facet h3,
+.ctg-facet-other h3 {
     padding: 0;
     margin: 0;
+    font-size: 1rem;
 }
 
 .ctg-facet h3 a,
@@ -601,6 +607,111 @@ catalog follow facet
 
 .ctg-facet-other {
     padding: 1rem;
+}
+
+
+/*----------------------------------------------------------------------
+catalog detailview
+----------------------------------------------------------------------*/
+
+.ctg-detailview {
+    border-bottom: 1px solid #dadada;
+}
+
+.ctg-ia-scnd-detail {
+    text-align: right;
+}
+
+.ctg-detailview-head {
+    width: 100%;
+    display: table;
+}
+
+.ctg-dvh-main {
+    display: table-cell;
+    width: 70%;
+    vertical-align: top;
+}
+
+.ctg-dvh-aside {
+    display: table-cell;
+    width: 30%;
+    vertical-align: top;
+    text-align: right;
+    padding: 1rem;
+}
+
+.ctg-dvh-aside li {
+    list-style-type: none;
+    display: inline;
+}
+
+.ctg-detailview-media {
+    margin: 0 1rem;
+}
+
+.ctg-detailview-media img {
+    width: 100%;
+}
+
+.ctg-detailview-tabs {
+    margin: 1rem;
+    border: 1px solid #dadada;
+}
+
+.ctg-dtvt-menu {
+    background: #dadada;
+    margin: 0;
+    padding: 0;
+}
+
+.ctg-dtvt-menu li {
+    list-style-type: none;
+    display: inline;
+}
+
+.ctg-dtvt-menu li a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-right: 1px solid #fff;
+}
+
+.ctg-dtvt-menu li a:hover {
+    text-decoration: underline;
+}
+
+.ctg-dtvt-menu-active {
+    background: #fff;
+}
+
+.ctg-dtvt-details {
+    margin: 1rem 1rem 0 1rem;
+    font-size: 0.875rem;
+}
+
+.ctg-dtvt-row {
+    border-bottom: 1px dotted #dadada;
+    display: table;
+    width: 100%;
+    margin-bottom: -1px;
+}
+
+.ctg-dtvt-label {
+    display: table-cell;
+    width: 40%;
+    font-weight: bold;
+    padding: 0.5rem 0;
+    box-sizing: border-box;   
+    vertical-align: top;
+}
+
+.ctg-dtvt-content {
+    display: table-cell;
+    width: 60%;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+    vertical-align: top;
 }
 
 
@@ -806,22 +917,57 @@ max 650px
         width: auto; 
     }
 
-    .ctg-rid-label {
+    .ctg-rid-label,
+    .ctg-dtvt-label {
         padding: 0.5rem 0 0 0;
         display: block;
         width: 100%;
     }
     
-    .ctg-rid-content {
+    .ctg-rid-content,
+    .ctg-dtvt-content {
         display: block;
         width: 100%;
         padding: 0 0 0.5rem 0;
     }
 
+    .ctg-info-actions {
+        position: relative;
+    }
+
+    .ctg-ia-scnd-detail {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding-top: 1rem;
+        width: 40%;
+    }
+
+    .ctg-dtvt-menu {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .ctg-dtvt-menu li {
+        list-style-type: none;
+        display: block;
+    }
+    
+    .ctg-dtvt-menu li a {
+        display: block;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        border: 1px solid #999;
+        margin: -1px;
+    }
+
+    .ctg-dvh-aside li {
+        display: block;
+        float: right;
+        margin: 0 0 4px 4px;
+    }
+
 }
-
-
-
 
 
 

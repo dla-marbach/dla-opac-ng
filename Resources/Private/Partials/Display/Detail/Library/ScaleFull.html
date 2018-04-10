@@ -4,11 +4,10 @@
 {namespace s=Subugoe\Find\ViewHelpers}
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0407')}" name="A0407" />
-
-<dt class="dt-{field}">
+<div class="ctg-dtvt-label">
     Maßstab	Text
-</dt>
-<dd class="dd-{field}">
+</div>
+<div class="ctg-dtvt-content">
     <f:if condition="{A0407}">
         <f:then>
             <f:render
@@ -25,4 +24,4 @@
             -
         </f:else>
     </f:if>
-</dd>
+</div>

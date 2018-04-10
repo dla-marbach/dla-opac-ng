@@ -15,10 +15,10 @@
         as="linkTexts"
 />
 
-<dt class="dt-{field}">
+<div class="ctg-dtvt-label">
     Teil von
-</dt>
-<dd class="dd-{field}">
+</div>
+<div class="ctg-dtvt-content">
     <f:if condition="{linkTexts}">
         <f:then>
             <f:for each="{linkTexts}" as="item" iteration="iterator">
@@ -48,5 +48,5 @@
             -
         </f:else>
     </f:if>
-</dd>
+</div>
 

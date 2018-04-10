@@ -2,11 +2,11 @@
 <f:comment>
   Creates the result pager used on detail pages.
 </f:comment>
+
 <f:if condition="{settings.paging.detailPagePaging}">
   <f:if condition="{arguments.underlyingQuery}">
-    <p class="queryAndPager">
-      <span class="underlyingQuery">
-        <span class="backToResultList">
+    <div class="row ctg-info-actions">
+      <div class="small-6 column">
           <f:format.raw>
             <s:data.newArray
               name="linkArguments"
@@ -29,28 +29,33 @@
                 arguments="{linkArguments}"
                 section="c{config.uid}-result-{document.fields.id}"
                 noCacheHash="1"
-                class="icon-level-up internal"
+                class="ctg-button ctg-button-textnicon"
               >
-                <f:translate key="Return to results list"/>
+                <span class="icon bel-ende02"></span><f:translate key="Return to results list"/>
               </f:link.action>
             </s:data.newArray>
           </f:format.raw>
-        </span>
 
-        <span class="query">
-          <f:render partial="Components/QueryString" arguments="{query:arguments.underlyingQuery.q, facets:arguments.underlyingQuery.facets}"/>
-        </span>
-      </span>
+        <f:comment>
+          TODO: The new Design doesn't contain this.
 
-      <span class="resultPager">
-        <span class="position">
-          <f:translate key="result"/>
-          <span class="resultPosition">{arguments.underlyingQuery.position}</span>
+          <span class="query">
+            <f:render partial="Components/QueryString" arguments="{query:arguments.underlyingQuery.q, facets:arguments.underlyingQuery.facets}"/>
+          </span>
+        </f:comment>
+      </div>
+
+      <div class="small-6 column ctg-ia-scnd-detail">
+        <span class="ctg-info-text">
+          <strong>
+            <f:translate key="result"/>
+            {arguments.underlyingQuery.position}
+          </strong>
           <f:translate key="of"/>
-          <span class="resultTotalCount">{results.numfound}</span>
+          {results.numfound}
         </span>
 
-        <span class="pager">
+
           <f:if condition="{document-previous}">
             <f:then>
               <f:link.action
@@ -58,12 +63,13 @@
                 arguments="{id: document-previous.fields.id}"
                 section="{settings.jumpToID}"
                 noCacheHash="1"
-                class="previous icon-left-dir internal no-change"
+                class="ctg-button"
                 onclick="return tx_find.detailViewWithPaging(this, {document-previous-number});"
-                title="{f:translate(key:'previous')}: {s:data.valueForKey(array:document-previous.fields, key:settings.standardFields.title)}"/>
+                title="{f:translate(key:'previous')}: {s:data.valueForKey(array:document-previous.fields, key:settings.standardFields.title)}"
+              ><span class="icon bel-pfeil-r01"></span></f:link.action>
             </f:then>
             <f:else>
-              <a class="icon-left-dir"></a>
+              <a class="ctg-button ctg-bu-disable" title="{f:translate(key:'previous')}"><span class="icon bel-pfeil-r01"></span></a>
             </f:else>
           </f:if>
           <f:if condition="{document-next}">
@@ -73,15 +79,16 @@
                 arguments="{id: document-next.fields.id}"
                 section="{settings.jumpToID}"
                 noCacheHash="1"
-                class="next icon-right-dir internal no-change"
-                onclick="return tx_find.detailViewWithPaging(this, {document-next-number});" title="{f:translate(key:'next')}: {s:data.valueForKey(array:document-next.fields, key:settings.standardFields.title)}"/>
+                class="ctg-button"
+                onclick="return tx_find.detailViewWithPaging(this, {document-next-number});" title="{f:translate(key:'next')}: {s:data.valueForKey(array:document-next.fields, key:settings.standardFields.title)}"
+              ><span class="icon bel-pfeil-l01"></span></f:link.action>
             </f:then>
             <f:else>
-              <a class="icon-right-dir"></a>
+              <a class="ctg-button ctg-bu-disable" title="{f:translate(key:'next')}"><span class="icon bel-pfeil-l01"></span></a>
             </f:else>
           </f:if>
-        </span>
-      </span>
-    </p>
+
+      </div>
+    </div>
   </f:if>
 </f:if>

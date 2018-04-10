@@ -2,10 +2,10 @@
 <f:comment>Erscheinungsverlauf</f:comment>
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0405')}" name="A0405" />
-<dt class="dt-{field}">
+<div class="ctg-dtvt-label">
     Erscheinungsverlauf
-</dt>
-<dd class="dd-{field}">
+</div>
+<div class="ctg-dtvt-content">
     <f:if condition="{A0405}">
         <f:then>
             <f:render
@@ -22,4 +22,4 @@
             -
         </f:else>
     </f:if>
-</dd>
+</div>

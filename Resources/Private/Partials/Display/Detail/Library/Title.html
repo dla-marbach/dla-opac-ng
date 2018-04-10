@@ -68,37 +68,31 @@
     </f:else>
 </f:if>
 
-
-<dt class="dt-{field}">
-    Titel
-</dt>
-<dd class="dd-{field}">
-    <f:if condition="{title} || {parallelTitle} || {A0359} || {A0369} || {ATIT_361n} || {ATIT_365n}">
-        <f:then>
-            {title.0}
-            <f:if condition="{parallelTitle}">
-                = {parallelTitle}
-            </f:if>
-            <f:if condition="{A0359}">
-                <f:then>
-                    / {A0359}
-                </f:then>
-                <f:else>
-                    <f:if condition="{A0369}">
-                        / {A0369}
-                    </f:if>
-                </f:else>
-            </f:if>
-            <f:if condition="{ATIT_361n}">
-                . {ATIT_361n}
-            </f:if>
-            <f:if condition="{ATIT_365n}">
-                . {ATIT_365n}
-            </f:if>
-        </f:then>
-        <f:else>
-            -
-        </f:else>
-    </f:if>
-</dd>
+<f:if condition="{title} || {parallelTitle} || {A0359} || {A0369} || {ATIT_361n} || {ATIT_365n}">
+    <f:then>
+        {title.0}
+        <f:if condition="{parallelTitle}">
+            = {parallelTitle}
+        </f:if>
+        <f:if condition="{A0359}">
+            <f:then>
+                / {A0359}
+            </f:then>
+            <f:else>
+                <f:if condition="{A0369}">
+                    / {A0369}
+                </f:if>
+            </f:else>
+        </f:if>
+        <f:if condition="{ATIT_361n}">
+            . {ATIT_361n}
+        </f:if>
+        <f:if condition="{ATIT_365n}">
+            . {ATIT_365n}
+        </f:if>
+    </f:then>
+    <f:else>
+        -
+    </f:else>
+</f:if>
 

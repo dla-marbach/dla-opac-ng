@@ -5,10 +5,10 @@
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0540')}" name="A0540" />
 
-<dt class="dt-{field}">
+<div class="ctg-dtvt-label">
     ISBN
-</dt>
-<dd class="dd-{field}">
+</div>
+<div class="ctg-dtvt-content">
     <f:if condition="{A0540}">
         <f:then>
             <f:render
@@ -25,5 +25,5 @@
             -
         </f:else>
     </f:if>
-</dd>
+</div>
 

@@ -18,6 +18,8 @@
   <f:render partial="Page/Standard" arguments="{_all}" />
   <f:render partial="Components/DetailResultPager" arguments="{_all}" />
 
+  <!--TYPO3SEARCH_begin-->
+
   <article class="detail">
     <h1>
       <f:render partial="Display/Field/Inline" arguments="{results:results, document:document, field:settings.standardFields.title, separator:', '}" />
@@ -32,43 +34,75 @@
         </dl>
       </f:then>
       <f:else>
-        <dl>
-          <f:if condition="{document.fields.listview_type} == 'Normdaten'">
-            <f:then>
-              <f:switch expression="{document.fields.source}">
-                <f:case value="PE">
-                  <f:render partial="Display/Detail/Normdata/Person" arguments="{results:results, document:document}" />
-                </f:case>
-                <f:case value="AK">
-                  <f:render partial="Display/Detail/Normdata/Werk" arguments="{results:results, document:document}" />
-                </f:case>
-              </f:switch>
-            </f:then>
-            <f:else>
-              <f:switch expression="{document.fields.source}">
-                <f:case value="BI">
-                  <f:render partial="Display/Detail/ImagesAndObjects/Details" arguments="{results:results, document:document}" />
-                </f:case>
-                <f:case value="AK">
-                  <f:render partial="Display/Detail/Library/Details" arguments="{results:results, document:document}" />
-                </f:case>
-                <f:case value="BF">
-                  <f:render partial="Display/Detail/Inventory/Details" arguments="{results:results, document:document}" />
-                </f:case>
-                <f:case value="HS">
-                  <f:render partial="Display/Detail/Manuscripts/Details" arguments="{results:results, document:document}" />
-                </f:case>
-                <f:defaultCase>
-                  <f:for each="{document.fields}" as="value" key="fieldName">
-                    <f:render partial="Display/DLField" arguments="{results:results, document:document, field:fieldName}" />
-                  </f:for>
-                </f:defaultCase>
-              </f:switch>
-            </f:else>
-          </f:if>
+        <div class="row ctg-follow-content">
+          <section class="small-9 column ctg-content-column ctg-detailview">
 
-        </dl>
+              <f:if condition="{document.fields.listview_type} == 'Normdaten'">
+                <f:then>
+                  <f:switch expression="{document.fields.source}">
+                    <f:case value="PE">
+                      <f:render partial="Display/Detail/Normdata/Person" arguments="{results:results, document:document}" />
+                    </f:case>
+                    <f:case value="AK">
+                      <f:render partial="Display/Detail/Normdata/Werk" arguments="{results:results, document:document}" />
+                    </f:case>
+                  </f:switch>
+                </f:then>
+                <f:else>
+                  <f:switch expression="{document.fields.source}">
+                    <f:case value="BI">
+                      <f:render partial="Display/Detail/ImagesAndObjects/Details" arguments="{results:results, document:document}" />
+                    </f:case>
+                    <f:case value="AK">
+                      <f:render partial="Display/Detail/Library/Details" arguments="{results:results, document:document}" />
+                    </f:case>
+                    <f:case value="BF">
+                      <f:render partial="Display/Detail/Inventory/Details" arguments="{results:results, document:document}" />
+                    </f:case>
+                    <f:case value="HS">
+                      <f:render partial="Display/Detail/Manuscripts/Details" arguments="{results:results, document:document}" />
+                    </f:case>
+                    <f:defaultCase>
+                      <f:for each="{document.fields}" as="value" key="fieldName">
+                        <f:render partial="Display/DLField" arguments="{results:results, document:document, field:fieldName}" />
+                      </f:for>
+                    </f:defaultCase>
+                  </f:switch>
+                </f:else>
+              </f:if>
+          </section>
+            <aside class="small-3 column ctg-facet-colum">
+              <section class="ctg-facet">
+                <h3><a title="schließen"><span class="icon bel-pfeil-o01"></span></a>Gleicher Künstler</h3>
+                <ul>
+                  <li><a title=""><span class="icon bel-foto"></span></a><a title="">Lorem lorem lorem</a></li>
+                  <li><a title=""><span class="icon bel-foto"></span></a><a title="">Lorem lorem lorem</a></li>
+                  <li><a title=""><span class="icon bel-foto"></span></a><a title="">Lorem lorem lorem</a></li>
+                  <li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li>
+                </ul>
+              </section>
+
+              <section class="ctg-facet">
+                <h3><a title="schließen"><span class="icon bel-pfeil-o01"></span></a>Gleicher Nachlass</h3>
+                <ul>
+                  <li><a title=""><span class="icon bel-foto"></span></a><a title="">Lorem lorem lorem</a></li>
+                  <li><a title=""><span class="icon bel-schreiben"></span></a><a title="">Lorem lorem lorem</a></li>
+                  <li><a title=""><span class="icon bel-schreiben"></span></a><a title="">Lorem lorem lorem</a></li>
+                  <li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 35</a></li>
+                </ul>
+              </section>
+
+              <section class="ctg-facet">
+                <h3><a title="schließen"><span class="icon bel-pfeil-u01"></span></a>Ähnliche Fundstücke</h3>
+              </section>
+
+              <section class="ctg-facet">
+                <h3><a title="schließen"><span class="icon bel-pfeil-u01"></span></a>Bestandsübersicht</h3>
+              </section>
+            </aside>
+        </div>
       </f:else>
     </f:if>
   </article>
+  <!--TYPO3SEARCH_end-->
 </f:section>

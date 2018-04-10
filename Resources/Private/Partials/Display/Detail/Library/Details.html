@@ -4,73 +4,195 @@
 {namespace s=Subugoe\Find\ViewHelpers}
 
 
-<f:render partial="Display/Detail/Library/Mediatype" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/Title" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/Author" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/Involved" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/Appeared" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/PublicationHistory" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/Edition" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/Scope" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/PhysicalDescription" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/ISBN" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/ISSN" arguments="{results:results, document:document}" />
+<div class="ctg-detailview-head">
+    <div class="ctg-dvh-main">
+        <div class="ctg-ri-icon">
+            <span class="icon bel-mag"></span>
+        </div>
+        <div class="ctg-ri-text">
+            <h2><f:render partial="Display/Detail/Library/Title" arguments="{results:results, document:document}" /></h2>
+            <p>
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_associate)}">
+                    <f:render
+                        partial="Display/Field/Inline"
+                        arguments="{
+                            config:config,
+                            results:results,
+                            document:document,
+                            field:settings.standardFields.listview_associate,
+                            separator:'; '
+                    }"/>
+                </f:if>
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_associate)}">,</f:if>
+            </p>
+            <p>
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional1)}">
+                    <f:render
+                        partial="Display/Field/Inline"
+                        arguments="{
+                            config:config,
+                            results:results,
+                            document:document,
+                            field:settings.standardFields.listview_additional1,
+                            separator:'; '
+                    }"/>
+                </f:if>
+            </p>
+            <p>
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional2)}">
+                    <f:render
+                        partial="Display/Field/Inline"
+                        arguments="{
+                            config:config,
+                            results:results,
+                            document:document,
+                            field:settings.standardFields.listview_additional2,
+                            separator:'; '
+                    }"/>
+                </f:if>
+            </p>
+        </div>
+        <div class="ctg-ri-image">
 
-<dt class="dt-{field}">
-    E-ISSN
-</dt>
-<dd class="dd-{field}">
-    Baustelle
-</dd>
+        </div>
+    </div>
 
-<f:render partial="Display/Detail/Library/ZDBID" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/PartOf" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/ContainedIn" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/Remarks" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/Usage" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/Signature" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/Provenance" arguments="{results:results, document:document}" />
+    <ul class="ctg-dvh-aside">
+        <li><a class="ctg-button" title="merken"><span class="icon bel-stern01"></span></a></li>
+        <li><a class="ctg-button" title="versenden"><span class="icon bel-brief01"></span></a></li>
+        <li><a class="ctg-button" title="teilen"><span class="icon bel-link01"></span></a></li>
+        <li><a class="ctg-button" title="exportieren"><span class="icon bel-postin"></span></a></li>
+    </ul>
+</div>
 
+<div class="ctg-detailview-media">
+    <img src="Start%20-%20DLA%20Marbach-Dateien/platzhalter-bild.jpg" alt="">
+</div>
 
-<dt class="dt-{field}">
-    Sendeangaben
-</dt>
-<dd class="dd-{field}">
-    Baustelle
-</dd>
+<div class="ctg-detailview-tabs">
+    <ul class="ctg-dtvt-menu">
+        <li><a href="" class="ctg-dtvt-menu-active"><span>Details</span></a></li><li><a href=""><span>Zugang</span></a></li><li><a href=""><span>Platzhalter 1</span></a></li><li><a href=""><span>Platzhalter 2</span></a></li>
+    </ul>
 
+    <div class="ctg-dtvt-details">
+        <div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/Mediatype" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/Author" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/Involved" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/Appeared" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/PublicationHistory" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/Edition" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/Scope" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/PhysicalDescription" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/ISBN" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/ISSN" arguments="{results:results, document:document}" />
+</div>
+
+<div class="ctg-dtvt-row">
+    <div class="ctg-dtvt-label">
+        E-ISSN
+    </div>
+    <div class="ctg-dtvt-content">
+        Baustelle
+    </div>
+</div>
+
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/ZDBID" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/PartOf" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/ContainedIn" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/Remarks" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/Usage" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/Signature" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/Provenance" arguments="{results:results, document:document}" />
+</div>
+
+        <div class="ctg-dtvt-row">
+    <div class="ctg-dtvt-label">
+        Sendeangaben
+    </div>
+    <div class="ctg-dtvt-content">
+        Baustelle
+    </div>
+</div>
+
+<div class="ctg-dtvt-row">
 <f:render partial="Display/Detail/Library/DigitalObject" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/WorkFull" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/PartOfWorkFull" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/MoreTitlesFull" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/LanguageFull" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/OriginalLanguageFull" arguments="{results:results, document:document}" />
-<f:render partial="Display/Detail/Library/ScaleFull" arguments="{results:results, document:document}" />
-
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/WorkFull" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/PartOfWorkFull" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/MoreTitlesFull" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/LanguageFull" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/OriginalLanguageFull" arguments="{results:results, document:document}" />
+</div>
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/ScaleFull" arguments="{results:results, document:document}" />
+</div>
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0431')}" name="A0431" />
 
-<dt class="dt-{field}">
-    Register
-</dt>
-<dd class="dd-{field}">
-    <f:if condition="{A0431}">
-        <f:then>
-            <f:render
-                    partial="Display/Field/List"
-                    arguments="{
-                        document:document,
-                        results:results,
-                        field:'A0431',
-                        linkFieldContent:1,
-                        linkFacets:linkFacets
-                      }"/>
-        </f:then>
-        <f:else>
-            -
-        </f:else>
-    </f:if>
-</dd>
+<div class="ctg-dtvt-row">
+    <div class="ctg-dtvt-label">
+        Register
+    </div>
+    <div class="ctg-dtvt-content">
+        <f:if condition="{A0431}">
+            <f:then>
+                <f:render
+                        partial="Display/Field/List"
+                        arguments="{
+                            document:document,
+                            results:results,
+                            field:'A0431',
+                            linkFieldContent:1,
+                            linkFacets:linkFacets
+                          }"/>
+            </f:then>
+            <f:else>
+                -
+            </f:else>
+        </f:if>
+    </div>
+</div>
 
 
 <dla:data.valueForKeyFiltered
@@ -80,160 +202,168 @@
         fields="{document.fields}"
         as="A0501" />
 
-<dt class="dt-{field}">
-    Enthält
-</dt>
-<dd class="dd-{field}">
-    <f:if condition="{A0501}">
-        <f:then>
-            <f:for each="{A0501}" as="item" iteration="iterator">
-                {item}<br />
-            </f:for>
-        </f:then>
-        <f:else>
-            -
-        </f:else>
-    </f:if>
-</dd>
+<div class="ctg-dtvt-row">
+    <div class="ctg-dtvt-label">
+        Enthält
+    </div>
+    <div class="ctg-dtvt-content">
+        <f:if condition="{A0501}">
+            <f:then>
+                <f:for each="{A0501}" as="item" iteration="iterator">
+                    {item}<br />
+                </f:for>
+            </f:then>
+            <f:else>
+                -
+            </f:else>
+        </f:if>
+    </div>
+</div>
 
 
-<dt class="dt-{field}">
-    Anmerkungen
-</dt>
-<dd class="dd-{field}">
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0654')}" name="A0654" />
-    <f:if condition="{A0654}">
-        <f:then>
-            <f:render
-                    partial="Display/Field/List"
-                    arguments="{
-                        document:document,
-                        results:results,
-                        field:'A0654',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                      }"/>
-        </f:then>
-        <f:else>
-        </f:else>
-    </f:if>
+<div class="ctg-dtvt-row">
+    <div class="ctg-dtvt-label">
+        Anmerkungen
+    </div>
+    <div class="ctg-dtvt-content">
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0654')}" name="A0654" />
+        <f:if condition="{A0654}">
+            <f:then>
+                <f:render
+                        partial="Display/Field/List"
+                        arguments="{
+                            document:document,
+                            results:results,
+                            field:'A0654',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+            </f:then>
+            <f:else>
+            </f:else>
+        </f:if>
 
 
-    <f:comment>
-        Anmerkungen (Hochschulschrift)
-    </f:comment>
-    <dla:data.valueForKeyFiltered
-            key="A0501"
-            filterKey="AM501"
-            filterValues="{0:'519'}"
-            fields="{document.fields}"
-            as="A0501_a" />
+        <f:comment>
+            Anmerkungen (Hochschulschrift)
+        </f:comment>
+        <dla:data.valueForKeyFiltered
+                key="A0501"
+                filterKey="AM501"
+                filterValues="{0:'519'}"
+                fields="{document.fields}"
+                as="A0501_a" />
 
-    <dla:data.joinFields
-            fieldNames="{0:'GHSART',1:'GHSNAM',3:'GHSDAT'}"
-            fieldWraps="{0:'%s',1:', %s',2:', %s'}"
-            fields="{document.fields}"
-            as="altTextA0501"
-    />
-    <f:if condition="{A0501_a} || {altTextA0501}">
-        <f:then>
-            <f:if condition="{A0501_a}">
-                <f:then>
-                    <f:for each="{A0501_a}" as="item" iteration="iterator">
-                        {item}<br />
-                    </f:for>
-                </f:then>
-                <f:else>
-                    <f:for each="{altTextA0501}" as="item" iteration="iterator">
-                        {item}<br />
-                    </f:for>
-                </f:else>
-            </f:if>
-        </f:then>
-        <f:else>
-        </f:else>
-    </f:if>
+        <dla:data.joinFields
+                fieldNames="{0:'GHSART',1:'GHSNAM',3:'GHSDAT'}"
+                fieldWraps="{0:'%s',1:', %s',2:', %s'}"
+                fields="{document.fields}"
+                as="altTextA0501"
+        />
+        <f:if condition="{A0501_a} || {altTextA0501}">
+            <f:then>
+                <f:if condition="{A0501_a}">
+                    <f:then>
+                        <f:for each="{A0501_a}" as="item" iteration="iterator">
+                            {item}<br />
+                        </f:for>
+                    </f:then>
+                    <f:else>
+                        <f:for each="{altTextA0501}" as="item" iteration="iterator">
+                            {item}<br />
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </f:then>
+            <f:else>
+            </f:else>
+        </f:if>
 
-    <f:comment>
-        Anmerkungen (Diverse A0501)
-    </f:comment>
-    <dla:data.valueForKeyFiltered
-            key="A0501"
-            filterKey="AM501"
-            filterValues="{0:'526n',1:'517n',2:'519'}"
-            negateFilter="true"
-            fields="{document.fields}"
-            as="A0501" />
-    <f:if condition="{A0501}">
-        <f:then>
-            <f:for each="{A0501}" as="item" iteration="iterator">
-                {item}<br />
-            </f:for>
-        </f:then>
-        <f:else>
-        </f:else>
-    </f:if>
+        <f:comment>
+            Anmerkungen (Diverse A0501)
+        </f:comment>
+        <dla:data.valueForKeyFiltered
+                key="A0501"
+                filterKey="AM501"
+                filterValues="{0:'526n',1:'517n',2:'519'}"
+                negateFilter="true"
+                fields="{document.fields}"
+                as="A0501" />
+        <f:if condition="{A0501}">
+            <f:then>
+                <f:for each="{A0501}" as="item" iteration="iterator">
+                    {item}<br />
+                </f:for>
+            </f:then>
+            <f:else>
+            </f:else>
+        </f:if>
 
-    <f:if condition="{A0654} || {A0501_a} || {altTextA0501} || {A0501}">
-        <f:then>
-        </f:then>
-        <f:else>
-            -
-        </f:else>
-    </f:if>
-</dd>
+        <f:if condition="{A0654} || {A0501_a} || {altTextA0501} || {A0501}">
+            <f:then>
+            </f:then>
+            <f:else>
+                -
+            </f:else>
+        </f:if>
+    </div>
+</div>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_GWKEY')}" name="XX_AK_TITREG_GWKEY" />
 
-<dt class="dt-{field}">
-    Werk
-</dt>
-<dd class="dd-{field}">
-    <f:if condition="{XX_AK_TITREG_GWKEY}">
-        <f:then>
-            <f:render
-                    partial="Display/Field/List"
-                    arguments="{
-            document:document,
-            results:results,
-            field:'GWKEY',
-            linkFieldContent:1,
-            linkFacets:linkFacets,
-            linkTexts:XX_AK_TITREG_GWKEY
-          }"/>
-        </f:then>
-        <f:else>
-            -
-        </f:else>
-    </f:if>
-</dd>
+<div class="ctg-dtvt-row">
+    <div class="ctg-dtvt-label">
+        Werk
+    </div>
+    <div class="ctg-dtvt-content">
+        <f:if condition="{XX_AK_TITREG_GWKEY}">
+            <f:then>
+                <f:render
+                        partial="Display/Field/List"
+                        arguments="{
+                document:document,
+                results:results,
+                field:'GWKEY',
+                linkFieldContent:1,
+                linkFacets:linkFacets,
+                linkTexts:XX_AK_TITREG_GWKEY
+              }"/>
+            </f:then>
+            <f:else>
+                -
+            </f:else>
+        </f:if>
+    </div>
+</div>
 
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKE526')}" name="XX_AK_TITREG_AKE526" />
 
-<dt class="dt-{field}">
-    Teilwerke
-</dt>
-<dd class="dd-{field}">
-    <f:if condition="{XX_AK_TITREG_AKE526}">
-        <f:then>
-            <f:render
-                    partial="Display/Field/List"
-                    arguments="{
-            document:document,
-            results:results,
-            field:'XX_AK_TITREG_AKE526',
-            linkFieldContent:linkFieldContent,
-            linkFacets:linkFacets
-          }"/>
-        </f:then>
-        <f:else>
-            -
-        </f:else>
-    </f:if>
-</dd>
+<div class="ctg-dtvt-row">
+    <div class="ctg-dtvt-label">
+        Teilwerke
+    </div>
+    <div class="ctg-dtvt-content">
+        <f:if condition="{XX_AK_TITREG_AKE526}">
+            <f:then>
+                <f:render
+                        partial="Display/Field/List"
+                        arguments="{
+                document:document,
+                results:results,
+                field:'XX_AK_TITREG_AKE526',
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+              }"/>
+            </f:then>
+            <f:else>
+                -
+            </f:else>
+        </f:if>
+    </div>
+</div>
 
 
 <f:comment>
@@ -258,62 +388,68 @@ AKYTXT
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKY526')}" name="XX_AK_TITREG_AKY526" />
 
     <f:for each="{AKYTXT}" as="labelItem" iteration="labelIterator">
-        <dt class="dt-{field}">
-            {labelItem}
-        </dt>
-        <dd class="dd-{field}">
-            {XX_AK_TITREG_AKY526.{labelIterator.index}}
-        </dd>
+        <div class="ctg-dtvt-row">
+            <div class="ctg-dtvt-label">
+                {labelItem}
+            </div>
+            <div class="ctg-dtvt-content">
+                {XX_AK_TITREG_AKY526.{labelIterator.index}}
+            </div>
+        </div>
     </f:for>
 <f:if condition="{XX_AK_TITREG_AKY526}">
 </f:if>
 
-<f:render partial="Display/Detail/Library/ContentFull" arguments="{results:results, document:document}" />
+<div class="ctg-dtvt-row">
+    <f:render partial="Display/Detail/Library/ContentFull" arguments="{results:results, document:document}" />
+</div>
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0711')}" name="A0711>" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'FREITX')}" name="FREITX" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_REGTIT_SYNKEY')}" name="XX_SE_REGTIT_SYNKEY" />
-<dt class="dt-{field}">
-    Bibliographie
-</dt>
-<dd class="dd-{field}">
-    <f:if condition="{A0711} || {AURL} || {XX_SE_REGTIT_SYNKEY}">
-        <f:then>
-            <f:render
+<div class="ctg-dtvt-row">
+    <div class="ctg-dtvt-label">
+        Bibliographie
+    </div>
+    <div class="ctg-dtvt-content">
+        <f:if condition="{A0711} || {AURL} || {XX_SE_REGTIT_SYNKEY}">
+            <f:then>
+                <f:render
+                        partial="Display/Field/List"
+                        arguments="{
+                document:document,
+                results:results,
+                field:'A0711',
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+                }"/>
+
+                <f:render
+                        partial="Display/Field/List"
+                        arguments="{
+                document:document,
+                results:results,
+                field:'AURL',
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+                }"/>
+
+                <f:render
                     partial="Display/Field/List"
                     arguments="{
-            document:document,
-            results:results,
-            field:'A0711',
-            linkFieldContent:linkFieldContent,
-            linkFacets:linkFacets
-            }"/>
-
-            <f:render
-                    partial="Display/Field/List"
-                    arguments="{
-            document:document,
-            results:results,
-            field:'AURL',
-            linkFieldContent:linkFieldContent,
-            linkFacets:linkFacets
-            }"/>
-
-            <f:render
-                partial="Display/Field/List"
-                arguments="{
-            document:document,
-            results:results,
-            field:'XX_SE_REGTIT_SYNKEY',
-            linkFieldContent:linkFieldContent,
-            linkFacets:linkFacets
-            }"/>
-        </f:then>
-        <f:else>
-            -
-        </f:else>
-    </f:if>
-</dd>
+                document:document,
+                results:results,
+                field:'XX_SE_REGTIT_SYNKEY',
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+                }"/>
+            </f:then>
+            <f:else>
+                -
+            </f:else>
+        </f:if>
+    </div>
+</div>
 
 
 
@@ -329,137 +465,148 @@ AKYTXT
 />
 
 
-<dt class="dt-{field}">
-</dt>
-<dd class="dd-{field}">
-    <slub:data.fromSolr
-        query="AKA451:(\"{A0001}\")"
+<div class="ctg-dtvt-row">
+    <div class="ctg-dtvt-label">
+    </div>
+    <div class="ctg-dtvt-content">
+        <slub:data.fromSolr
+            query="AKA451:(\"{A0001}\")"
+            fields="id"
+            rows="1">
+        <f:then>
+            <s:data.newArray
+                    name="includedContributionsQuery"
+                    global="1"
+                    keys="{0:'raw'}"
+                    values="{0:'AKA451:{A0001}'}"
+            />
+
+            <f:link.action action="detail" arguments="{q:includedContributionsQuery}" class="internal">
+                >Enthaltene Beiträge
+                <v:variable.set value="true" name="includedContributions" />
+            </f:link.action>
+        </f:then>
+        <f:else>
+        </f:else>
+        </slub:data.fromSolr>
+
+        <f:if condition="{includedContributions}">
+            <f:then>
+            </f:then>
+            <f:else>
+                -
+            </f:else>
+        </f:if>
+    </div>
+</div>
+
+<div class="ctg-dtvt-row">
+    <div class="ctg-dtvt-label">
+    </div>
+    <div class="ctg-dtvt-content">
+        <slub:data.fromSolr
+                query="AKA451:(\"{A0001}\")"
         fields="id"
         rows="1">
-    <f:then>
-        <s:data.newArray
-                name="includedContributionsQuery"
-                global="1"
-                keys="{0:'raw'}"
-                values="{0:'AKA451:{A0001}'}"
-        />
-
-        <f:link.action action="detail" arguments="{q:includedContributionsQuery}" class="internal">
-            >Enthaltene Beiträge
-            <v:variable.set value="true" name="includedContributions" />
-        </f:link.action>
-    </f:then>
-    <f:else>
-    </f:else>
-    </slub:data.fromSolr>
-
-    <f:if condition="{includedContributions}">
         <f:then>
+            <s:data.newArray
+                    name="includedVolumesQuery"
+                    global="1"
+                    keys="{0:'raw'}"
+                    values="{0:'AKA451:{A0001}'}"
+            />
+
+            <f:link.action action="detail" arguments="{q:includedVolumesQuery}" class="internal">
+                >Enthaltene Bände
+                <v:variable.set value="true" name="includedVolumes" />
+            </f:link.action>
         </f:then>
         <f:else>
-            -
         </f:else>
-    </f:if>
-</dd>
+        </slub:data.fromSolr>
 
-<dt class="dt-{field}">
-</dt>
-<dd class="dd-{field}">
-    <slub:data.fromSolr
-            query="AKA451:(\"{A0001}\")"
-    fields="id"
-    rows="1">
-    <f:then>
-        <s:data.newArray
-                name="includedVolumesQuery"
-                global="1"
-                keys="{0:'raw'}"
-                values="{0:'AKA451:{A0001}'}"
-        />
+        <f:if condition="{includedVolumes}">
+            <f:then>
+            </f:then>
+            <f:else>
+                -
+            </f:else>
+        </f:if>
+    </div>
+</div>
 
-        <f:link.action action="detail" arguments="{q:includedVolumesQuery}" class="internal">
-            >Enthaltene Bände
-            <v:variable.set value="true" name="includedVolumes" />
-        </f:link.action>
-    </f:then>
-    <f:else>
-    </f:else>
-    </slub:data.fromSolr>
 
-    <f:if condition="{includedVolumes}">
+<div class="ctg-dtvt-row">
+    <div class="ctg-dtvt-label">
+    </div>
+    <div class="ctg-dtvt-content">
+        <slub:data.fromSolr
+                query="AKY526:(\"{A0001}\")"
+        fields="id"
+        rows="1">
         <f:then>
+            <s:data.newArray
+                    name="reviewsQuery"
+                    global="1"
+                    keys="{0:'raw'}"
+                    values="{0:'AKY526:{A0001}'}"
+            />
+
+            <f:link.action action="detail" arguments="{q:reviewsQuery}" class="internal">
+                >Rezensionen
+                <v:variable.set value="true" name="reviews" />
+            </f:link.action>
         </f:then>
         <f:else>
-            -
         </f:else>
-    </f:if>
-</dd>
+        </slub:data.fromSolr>
+
+        <f:if condition="{reviews}">
+            <f:then>
+            </f:then>
+            <f:else>
+                -
+            </f:else>
+        </f:if>
+    </div>
+</div>
 
 
-<dt class="dt-{field}">
-</dt>
-<dd class="dd-{field}">
-    <slub:data.fromSolr
-            query="AKY526:(\"{A0001}\")"
-    fields="id"
-    rows="1">
-    <f:then>
-        <s:data.newArray
-                name="reviewsQuery"
-                global="1"
-                keys="{0:'raw'}"
-                values="{0:'AKY526:{A0001}'}"
-        />
 
-        <f:link.action action="detail" arguments="{q:reviewsQuery}" class="internal">
-            >Rezensionen
-            <v:variable.set value="true" name="reviews" />
-        </f:link.action>
-    </f:then>
-    <f:else>
-    </f:else>
-    </slub:data.fromSolr>
-
-    <f:if condition="{reviews}">
+<div class="ctg-dtvt-row">
+    <div class="ctg-dtvt-label">
+    </div>
+    <div class="ctg-dtvt-content">
+        <slub:data.fromSolr
+                query="AKA451:(\"{A0001}\")"
+        fields="id"
+        rows="1">
         <f:then>
+            <s:data.newArray
+                    name="volumesBookletsQuery"
+                    global="1"
+                    keys="{0:'raw'}"
+                    values="{0:'AKA451:{A0001}'}"
+            />
+
+            <f:link.action action="detail" arguments="{q:volumesBookletsQuery}" class="internal">
+                >Bände und Hefte
+                <v:variable.set value="true" name="volumesBooklets" />
+            </f:link.action>
         </f:then>
         <f:else>
-            -
         </f:else>
-    </f:if>
-</dd>
+        </slub:data.fromSolr>
 
+        <f:if condition="{volumesBooklets}">
+            <f:then>
+            </f:then>
+            <f:else>
+                -
+            </f:else>
+        </f:if>
+    </div>
+</div>
 
-
-<dt class="dt-{field}">
-</dt>
-<dd class="dd-{field}">
-    <slub:data.fromSolr
-            query="AKA451:(\"{A0001}\")"
-    fields="id"
-    rows="1">
-    <f:then>
-        <s:data.newArray
-                name="volumesBookletsQuery"
-                global="1"
-                keys="{0:'raw'}"
-                values="{0:'AKA451:{A0001}'}"
-        />
-
-        <f:link.action action="detail" arguments="{q:volumesBookletsQuery}" class="internal">
-            >Bände und Hefte
-            <v:variable.set value="true" name="volumesBooklets" />
-        </f:link.action>
-    </f:then>
-    <f:else>
-    </f:else>
-    </slub:data.fromSolr>
-
-    <f:if condition="{volumesBooklets}">
-        <f:then>
-        </f:then>
-        <f:else>
-            -
-        </f:else>
-    </f:if>
-</dd>
+    </div>
+</div>

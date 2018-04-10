@@ -12,9 +12,10 @@
         fields="{document.fields}"
         as="ATIT" />
 
-<dt class="dt-{field}">
+<div class="ctg-dtvt-label">
     Werk
-<dd class="dd-{field}">
+</div>
+<div class="ctg-dtvt-content">
     <f:if condition="{ATIT}">
         <f:then>
             <f:for each="{ATIT}" as="item" iteration="iterator">
@@ -25,4 +26,4 @@
             -
         </f:else>
     </f:if>
-</dd>
+</div>
