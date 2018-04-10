@@ -86,9 +86,36 @@
             field:settings.standardFields.listview_associate,
             separator:'; '
           }"/>
-      </f:if><f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_associate)}">,</f:if>
-      Impressum, 00.00.0000</p>
-    <p>Inventarnummer 00.0000.0000.0000</p>
+      </f:if>
+      <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_associate)}">,</f:if>
+    </p>
+    <p>
+      <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional1)}">
+        <f:render
+                partial="Display/Field/Inline"
+                arguments="{
+            config:config,
+            results:results,
+            document:document,
+            field:settings.standardFields.listview_additional1,
+            separator:'; '
+          }"/>
+      </f:if>
+    </p>
+
+    <p>
+      <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional2)}">
+        <f:render
+                partial="Display/Field/Inline"
+                arguments="{
+            config:config,
+            results:results,
+            document:document,
+            field:settings.standardFields.listview_additional2,
+            separator:'; '
+          }"/>
+      </f:if>
+    </p>
   </div>
 
   <div class="ctg-ri-image">
