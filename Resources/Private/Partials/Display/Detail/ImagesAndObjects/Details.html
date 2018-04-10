@@ -3,23 +3,117 @@
 {namespace dla=Dla\DlaOpacNg\ViewHelpers}
 {namespace s=Subugoe\Find\ViewHelpers}
 
+
+<div class="ctg-detailview-head">
+    <div class="ctg-dvh-main">
+        <div class="ctg-ri-icon">
+            <span class="icon bel-foto"></span>
+        </div>
+        <div class="ctg-ri-text">
+            <h2>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51800')}" name="B51800" />
+                <f:if condition="{B51800}">
+                    <f:then>
+                        <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                                document:document,
+                                results:results,
+                                field:'B51800',
+                                linkFieldContent:linkFieldContent,
+                                linkFacets:linkFacets
+                        }"/>
+                    </f:then>
+                    <f:else>
+                        -
+                    </f:else>
+                </f:if>
+            </h2>
+            <p>
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_associate)}">
+                    <f:render
+                            partial="Display/Field/Inline"
+                            arguments="{
+                            config:config,
+                            results:results,
+                            document:document,
+                            field:settings.standardFields.listview_associate,
+                            separator:'; '
+                    }"/>
+                </f:if>
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_associate)}">,</f:if>
+            </p>
+            <p>
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional1)}">
+                    <f:render
+                            partial="Display/Field/Inline"
+                            arguments="{
+                            config:config,
+                            results:results,
+                            document:document,
+                            field:settings.standardFields.listview_additional1,
+                            separator:'; '
+                    }"/>
+                </f:if>
+            </p>
+            <p>
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional2)}">
+                    <f:render
+                            partial="Display/Field/Inline"
+                            arguments="{
+                            config:config,
+                            results:results,
+                            document:document,
+                            field:settings.standardFields.listview_additional2,
+                            separator:'; '
+                    }"/>
+                </f:if>
+            </p>
+        </div>
+        <div class="ctg-ri-image">
+
+        </div>
+    </div>
+
+    <ul class="ctg-dvh-aside">
+        <li><a class="ctg-button" title="merken"><span class="icon bel-stern01"></span></a></li>
+        <li><a class="ctg-button" title="versenden"><span class="icon bel-brief01"></span></a></li>
+        <li><a class="ctg-button" title="teilen"><span class="icon bel-link01"></span></a></li>
+        <li><a class="ctg-button" title="exportieren"><span class="icon bel-postin"></span></a></li>
+    </ul>
+</div>
+
+<div class="ctg-detailview-media">
+    <img src="Start%20-%20DLA%20Marbach-Dateien/platzhalter-bild.jpg" alt="">
+</div>
+
+
+<div class="ctg-detailview-tabs">
+    <ul class="ctg-dtvt-menu">
+        <li><a href="" class="ctg-dtvt-menu-active"><span>Details</span></a></li><li><a href=""><span>Zugang</span></a></li><li><a href=""><span>Platzhalter 1</span></a></li><li><a href=""><span>Platzhalter 2</span></a></li>
+    </ul>
+
+    <div class="ctg-dtvt-details">
+
 <f:comment>
     Mediatype
 </f:comment>
-<dt class="dt-{field}">
-    Medienart
-</dt>
-<dd class="dd-{field}">
-    <f:render
-        partial="Display/Field/List"
-        arguments="{
-                document:document,
-                results:results,
-                field:'listview_type',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-</dd>
+<div class="ctg-dtvt-row">
+    <div class="ctg-dtvt-label">
+        Medienart
+    </div>
+    <div class="ctg-dtvt-content">
+        <f:render
+            partial="Display/Field/List"
+            arguments="{
+                    document:document,
+                    results:results,
+                    field:'listview_type',
+                    linkFieldContent:linkFieldContent,
+                    linkFacets:linkFacets
+                  }"/>
+    </div>
+</div>
 
 <f:comment>
     Objecttype
@@ -38,45 +132,19 @@
     </f:else>
 </f:if>
 
-<dt class="dt-{field}">
-    Objekttyp
-</dt>
-<dd class="dd-{field}">
-    <f:if condition="{fieldValue}">
-        <f:then>
-            <f:render
-                partial="Display/Field/List"
-                arguments="{
-                    document:document,
-                    results:results,
-                    field:fieldName,
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-        </f:then>
-        <f:else>
-            -
-        </f:else>
-    </f:if>
-</dd>
-
-
-<f:comment>
-    Title
-</f:comment>
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51800')}" name="B51800" />
-    <dt class="dt-{field}">
-        Titel
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{B51800}">
+<div class="ctg-dtvt-row">
+    <div class="ctg-dtvt-label">
+        Objekttyp
+    </div>
+    <div class="ctg-dtvt-content">
+        <f:if condition="{fieldValue}">
             <f:then>
                 <f:render
                     partial="Display/Field/List"
                     arguments="{
                         document:document,
                         results:results,
-                        field:'B51800',
+                        field:fieldName,
                         linkFieldContent:linkFieldContent,
                         linkFacets:linkFacets
                       }"/>
@@ -85,99 +153,103 @@
                 -
             </f:else>
         </f:if>
-    </dd>
-
+    </div>
+</div>
 
 <f:comment>
     Original title
 </f:comment>
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51801')}" name="B51801" />
-    <dt class="dt-{field}">
-        Originaltitel
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{B51801}">
-            <f:then>
-                <f:render
-                    partial="Display/Field/List"
-                    arguments="{
-                        document:document,
-                        results:results,
-                        field:'B51801',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                      }"/>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Originaltitel
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{B51801}">
+                <f:then>
+                    <f:render
+                        partial="Display/Field/List"
+                        arguments="{
+                            document:document,
+                            results:results,
+                            field:'B51801',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
-    <dt class="dt-{field}">
-        Person
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="
-            {s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PEE100')} ||
-            {s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PEU100')} ||
-            {s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PEA100')} ||
-            {s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PE0100')}
-        ">
-            <f:then>
-                <f:render
-                    partial="Display/Detail/LookupLink"
-                    arguments="{
-                        document:document,
-                        results:results,
-                        field:'PEE100',
-                        fieldToDisplay: 'XX_PE_P0800_PEE100',
-                        fieldNames: '{0:\'XX_PE_P0800_PEE100\', 1:\'GFUPUE\', 2:\'PERPOS\'}',
-                        fieldWraps: '{0:\'%s\',1:\'[%s]\',2:\'(%s)\'}'
-                    }"
-                />
-
-                <f:render
-                    partial="Display/Detail/LookupLink"
-                    arguments="{
-                        document:document,
-                        results:results,
-                        field:'PE0100',
-                        fieldToDisplay: 'XX_PE_P0800_PE0100',
-                        fieldNames: '{0:\'XX_PE_P0800_PE0100\', 1:\'GFUPER\', 2:\'AFUPER\'}',
-                        fieldWraps: '{0:\'%s\',1:\'[%s]\',2:\'(%s)\'}'
-                    }"
-                />
-
-                <f:render
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Person
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="
+                {s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PEE100')} ||
+                {s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PEU100')} ||
+                {s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PEA100')} ||
+                {s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PE0100')}
+            ">
+                <f:then>
+                    <f:render
                         partial="Display/Detail/LookupLink"
                         arguments="{
-                        document:document,
-                        results:results,
-                        field:'PEA100',
-                        fieldToDisplay: 'XX_PE_P0800_PEA100',
-                        fieldNames: '{0:\'XX_PE_P0800_PEA100\'}',
-                        fieldWraps: '{0:\'%s [Widmungsempfänger]\'}'
-                    }"
-                />
+                            document:document,
+                            results:results,
+                            field:'PEE100',
+                            fieldToDisplay: 'XX_PE_P0800_PEE100',
+                            fieldNames: '{0:\'XX_PE_P0800_PEE100\', 1:\'GFUPUE\', 2:\'PERPOS\'}',
+                            fieldWraps: '{0:\'%s\',1:\'[%s]\',2:\'(%s)\'}'
+                        }"
+                    />
 
-                <f:render
+                    <f:render
                         partial="Display/Detail/LookupLink"
                         arguments="{
-                        document:document,
-                        results:results,
-                        field:'PEU100',
-                        fieldToDisplay: 'XX_PE_P0800_PEU100',
-                        fieldNames: '{0:\'XX_PE_P0800_PEU100\'}',
-                        fieldWraps: '{0:\'%s [Vorbesitzer]\'}'
-                    }"
-                />
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+                            document:document,
+                            results:results,
+                            field:'PE0100',
+                            fieldToDisplay: 'XX_PE_P0800_PE0100',
+                            fieldNames: '{0:\'XX_PE_P0800_PE0100\', 1:\'GFUPER\', 2:\'AFUPER\'}',
+                            fieldWraps: '{0:\'%s\',1:\'[%s]\',2:\'(%s)\'}'
+                        }"
+                    />
+
+                    <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'PEA100',
+                            fieldToDisplay: 'XX_PE_P0800_PEA100',
+                            fieldNames: '{0:\'XX_PE_P0800_PEA100\'}',
+                            fieldWraps: '{0:\'%s [Widmungsempfänger]\'}'
+                        }"
+                    />
+
+                    <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'PEU100',
+                            fieldToDisplay: 'XX_PE_P0800_PEU100',
+                            fieldNames: '{0:\'XX_PE_P0800_PEU100\'}',
+                            fieldWraps: '{0:\'%s [Vorbesitzer]\'}'
+                        }"
+                    />
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 
@@ -185,89 +257,93 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_K0800_KSC200')}" name="XX_KS_K0800_KSC200" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_K0800_KSA200')}" name="XX_KS_K0800_KSA200" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_K0800_KSU200')}" name="XX_KS_K0800_KSU200" />
-    <dt class="dt-{field}">
-        Körperschaft
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{XX_KS_K0800_KSE200} || {XX_KS_K0800_KSC200} || {XX_KS_K0800_KSA200} || {XX_KS_K0800_KSU200}">
-            <f:then>
-                <f:render
-                        partial="Display/Detail/LookupLink"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'KSE200',
-                        fieldToDisplay: 'XX_KS_K0800_KSE200',
-                        fieldNames: '{0:\'XX_KS_K0800_KSE200\', 1:\'GFUKSE\', 2:\'AFUKSE\'}',
-                        fieldWraps: '{0:\'%s\',1:\'[%s]\',2:\'(%s)\'}'
-                    }"
-                />
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Körperschaft
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{XX_KS_K0800_KSE200} || {XX_KS_K0800_KSC200} || {XX_KS_K0800_KSA200} || {XX_KS_K0800_KSU200}">
+                <f:then>
+                    <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'KSE200',
+                            fieldToDisplay: 'XX_KS_K0800_KSE200',
+                            fieldNames: '{0:\'XX_KS_K0800_KSE200\', 1:\'GFUKSE\', 2:\'AFUKSE\'}',
+                            fieldWraps: '{0:\'%s\',1:\'[%s]\',2:\'(%s)\'}'
+                        }"
+                    />
 
-                <f:render
-                        partial="Display/Detail/LookupLink"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'KSC200',
-                        fieldToDisplay: 'XX_KS_K0800_KSC200',
-                        fieldNames: '{0:\'XX_KS_K0800_KSC200\', 1:\'AFUKSE\'}',
-                        fieldWraps: '{0:\'%s [Urheber]\',1:\'(%s)\'}'
-                    }"
-                />
+                    <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'KSC200',
+                            fieldToDisplay: 'XX_KS_K0800_KSC200',
+                            fieldNames: '{0:\'XX_KS_K0800_KSC200\', 1:\'AFUKSE\'}',
+                            fieldWraps: '{0:\'%s [Urheber]\',1:\'(%s)\'}'
+                        }"
+                    />
 
-                <f:render
-                        partial="Display/Detail/LookupLink"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'KSA200',
-                        fieldToDisplay: 'XX_KS_K0800_KSA200',
-                        fieldNames: '{0:\'XX_KS_K0800_KSA200\'}',
-                        fieldWraps: '{0:\'%s [Widmungsempfänger]\'}'
-                    }"
-                />
+                    <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'KSA200',
+                            fieldToDisplay: 'XX_KS_K0800_KSA200',
+                            fieldNames: '{0:\'XX_KS_K0800_KSA200\'}',
+                            fieldWraps: '{0:\'%s [Widmungsempfänger]\'}'
+                        }"
+                    />
 
-                <f:render
-                        partial="Display/Detail/LookupLink"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'KSU00',
-                        fieldToDisplay: 'XX_KS_K0800_KSU200',
-                        fieldNames: '{0:\'XX_KS_K0800_KSU200\'}',
-                        fieldWraps: '{0:\'%s [Vorbesitzer]\'}'
-                    }"
-                />
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+                    <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'KSU00',
+                            fieldToDisplay: 'XX_KS_K0800_KSU200',
+                            fieldNames: '{0:\'XX_KS_K0800_KSU200\'}',
+                            fieldWraps: '{0:\'%s [Vorbesitzer]\'}'
+                        }"
+                    />
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B52010')}" name="B52010" />
-    <dt class="dt-{field}">
-        Allgemeine Beschreibung
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{B52010}">
-            <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'B52010',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                      }"/>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Allgemeine Beschreibung
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{B52010}">
+                <f:then>
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'B52010',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 
@@ -275,104 +351,112 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B02040')}" name="B02040" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B02040')}" name="B0204A" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B02000')}" name="B02000" />
-    <dt class="dt-{field}">
-        Entstehungszeit
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{B02040} || {B0204A}">
-            <f:then>
-                <f:if condition="{B02040}">
-                    {B02040}
-                    <f:if condition="{B02000.0}">
-                        ({B02000.0})
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Entstehungszeit
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{B02040} || {B0204A}">
+                <f:then>
+                    <f:if condition="{B02040}">
+                        {B02040}
+                        <f:if condition="{B02000.0}">
+                            ({B02000.0})
+                        </f:if>
+                        <br />
                     </f:if>
-                    <br />
-                </f:if>
 
-                <f:if condition="{B0204A}">
-                    {B0204A}
-                    <f:if condition="{B02000.1}">
-                        ({B02000.1})
+                    <f:if condition="{B0204A}">
+                        {B0204A}
+                        <f:if condition="{B02000.1}">
+                            ({B02000.1})
+                        </f:if>
                     </f:if>
-                </f:if>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B52020')}" name="B52020" />
-    <dt class="dt-{field}">
-        Bezeichnung
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{B52020}">
-            <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'B52020',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                      }"/>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Bezeichnung
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{B52020}">
+                <f:then>
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'B52020',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B52010')}" name="B52010" />
-    <dt class="dt-{field}">
-        Technik
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{B52010}">
-            <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'B52010',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                      }"/>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Technik
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{B52010}">
+                <f:then>
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'B52010',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B02050')}" name="B02050" />
-    <dt class="dt-{field}">
-        Umfang
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{B02050}">
-            <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'B02050',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                      }"/>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Umfang
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{B02050}">
+                <f:then>
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'B02050',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B52001')}" name="height" />
@@ -380,252 +464,272 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B52003')}" name="depth" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B52004')}" name="diameter" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B52011')}" name="B52011" />
-    <dt class="dt-{field}">
-        Maße [in cm]
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{height} || {width} || {depth} || {diameter} || {B52011}">
-            <f:then>
-                <dla:data.joinFields
-                        fieldNames="{0:'B52001',1:'B52002',2:'B52003',3:'B52004',4:'B52011'}"
-                        fieldWraps="{0:'%s',1:'x %s',2:'x %s',3:'x %s',4:'(%s)'}"
-                        fields="{document.fields}"
-                        as="linkTexts"
-                />
-                {linkTexts.0} (
-                <f:if condition="{height}">Höhe</f:if>
-                <f:if condition="{width}">x Breite</f:if>
-                <f:if condition="{depth}">x Tiefe</f:if>
-                <f:if condition="{diameter}">x Durchmesserhe</f:if>)
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Maße [in cm]
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{height} || {width} || {depth} || {diameter} || {B52011}">
+                <f:then>
+                    <dla:data.joinFields
+                            fieldNames="{0:'B52001',1:'B52002',2:'B52003',3:'B52004',4:'B52011'}"
+                            fieldWraps="{0:'%s',1:'x %s',2:'x %s',3:'x %s',4:'(%s)'}"
+                            fields="{document.fields}"
+                            as="linkTexts"
+                    />
+                    {linkTexts.0} (
+                    <f:if condition="{height}">Höhe</f:if>
+                    <f:if condition="{width}">x Breite</f:if>
+                    <f:if condition="{depth}">x Tiefe</f:if>
+                    <f:if condition="{diameter}">x Durchmesserhe</f:if>)
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B01610')}" name="B01610" />
-    <dt class="dt-{field}">
-        Erhaltungszustand
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{B01610}">
-            <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'B01610',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                      }"/>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Erhaltungszustand
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{B01610}">
+                <f:then>
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'B01610',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51420')}" name="B51420" />
-    <dt class="dt-{field}">
-        Objekt- und Konvoluttypen
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{B51420}">
-            <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'B51420',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                      }"/>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Objekt- und Konvoluttypen
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{B51420}">
+                <f:then>
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'B51420',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0331_AKY526')}" name="XX_AK_A0331_AKY526" />
-    <dt class="dt-{field}">
-        Werk
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{XX_AK_A0331_AKY526}">
-            <f:then>
-                <f:render
-                        partial="Display/Detail/LookupLink"
-                        arguments="{
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Werk
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{XX_AK_A0331_AKY526}">
+                <f:then>
+                    <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'AKY526',
+                            fieldToDisplay: 'XX_AK_A0331_AKY526',
+                            fieldNames: '{0:\'XX_AK_A0331_AKY526\'}',
+                            fieldWraps: '{0:\'%s\'}'
+                        }"
+                    />
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
+
+
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Ort
+        </div>
+        <div class="ctg-dtvt-content">
+            Baustelle <br />
+            <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_TH_SWAF_THA720')}">
+                <f:then>
+                    <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'THA720',
+                            fieldToDisplay: 'XX_TH_SWAF_THA720',
+                            fieldNames: '{0:\'XX_TH_SWAF_THA720\',1:'GFORT',2:'AFORT'}',
+                            fieldWraps: '{0:\'%s\',1:'[%s]',2:'(%s)'}'
+                        }"
+                    />
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
+
+
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Sachschlagwort
+        </div>
+        <div class="ctg-dtvt-content">
+            Baustelle <br />
+            <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_TH_SWAF_THA710')}">
+                <f:then>
+                    <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'THA710',
+                            fieldToDisplay: 'XX_TH_SWAF_THA710',
+                            fieldNames: '{0:\'XX_TH_SWAF_THA710\',1:'GFSWVF'}',
+                            fieldWraps: '{0:\'%s\',1:'[%s]'}'
+                        }"
+                    />
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
+
+
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Bestand
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_BF_BFNAM_BFKEY')}">
+                <f:then>
+                    <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'BFKEY',
+                            fieldToDisplay: 'XX_BF_BFNAM_BFKEY',
+                            fieldNames: '{0:\'XX_BF_BFNAM_BFKEY\'}',
+                            fieldWraps: '{0:\'%s\'}'
+                        }"
+                    />
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
+
+
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Buchexemplar
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AU_AKKEY_AUKEY')}">
+                <f:then>
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
                         document:document,
                         results:results,
-                        field:'AKY526',
-                        fieldToDisplay: 'XX_AK_A0331_AKY526',
-                        fieldNames: '{0:\'XX_AK_A0331_AKY526\'}',
-                        fieldWraps: '{0:\'%s\'}'
-                    }"
-                />
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+                        field: 'XX_AU_AKKEY_AUKEY',
+                        linkFieldContent:1,
+                        linkFacets:linkFacets
+                    }"/>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
-    <dt class="dt-{field}">
-        Ort
-    </dt>
-    <dd class="dd-{field}">
-        Baustelle <br />
-        <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_TH_SWAF_THA720')}">
-            <f:then>
-                <f:render
-                        partial="Display/Detail/LookupLink"
-                        arguments="{
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Bibliothek
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0331_AKA451')}">
+                <f:then>
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
                         document:document,
                         results:results,
-                        field:'THA720',
-                        fieldToDisplay: 'XX_TH_SWAF_THA720',
-                        fieldNames: '{0:\'XX_TH_SWAF_THA720\',1:'GFORT',2:'AFORT'}',
-                        fieldWraps: '{0:\'%s\',1:'[%s]',2:'(%s)'}'
-                    }"
-                />
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+                        field: 'AKA451',
+                        linkFieldContent:1,
+                        linkFacets:linkFacets,
+                        linkTexts:XX_AK_A0331_AKA451
+                    }"/>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
-    <dt class="dt-{field}">
-        Sachschlagwort
-    </dt>
-    <dd class="dd-{field}">
-        Baustelle <br />
-        <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_TH_SWAF_THA710')}">
-            <f:then>
-                <f:render
-                        partial="Display/Detail/LookupLink"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'THA710',
-                        fieldToDisplay: 'XX_TH_SWAF_THA710',
-                        fieldNames: '{0:\'XX_TH_SWAF_THA710\',1:'GFSWVF'}',
-                        fieldWraps: '{0:\'%s\',1:'[%s]'}'
-                    }"
-                />
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
-
-
-    <dt class="dt-{field}">
-        Bestand
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_BF_BFNAM_BFKEY')}">
-            <f:then>
-                <f:render
-                        partial="Display/Detail/LookupLink"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'BFKEY',
-                        fieldToDisplay: 'XX_BF_BFNAM_BFKEY',
-                        fieldNames: '{0:\'XX_BF_BFNAM_BFKEY\'}',
-                        fieldWraps: '{0:\'%s\'}'
-                    }"
-                />
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
-
-
-    <dt class="dt-{field}">
-        Buchexemplar
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AU_AKKEY_AUKEY')}">
-            <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                    document:document,
-                    results:results,
-                    field: 'XX_AU_AKKEY_AUKEY',
-                    linkFieldContent:1,
-                    linkFacets:linkFacets
-                }"/>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
-
-
-    <dt class="dt-{field}">
-        Bibliothek
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0331_AKA451')}">
-            <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                    document:document,
-                    results:results,
-                    field: 'AKA451',
-                    linkFieldContent:1,
-                    linkFacets:linkFacets,
-                    linkTexts:XX_AK_A0331_AKA451
-                }"/>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
-
-
-    <dt class="dt-{field}">
-        Handschriften
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_HS_H41800_HSKEY')}">
-            <f:then>
-                <f:render
-                        partial="Display/Detail/LookupLink"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'HSKEY',
-                        fieldToDisplay: 'XX_HS_H41800_HSKEY',
-                        fieldNames: '{0:\'XX_HS_H41800_HSKEY\'}',
-                        fieldWraps: '{0:\'%s\'}'
-                    }"
-                />
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Handschriften
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_HS_H41800_HSKEY')}">
+                <f:then>
+                    <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'HSKEY',
+                            fieldToDisplay: 'XX_HS_H41800_HSKEY',
+                            fieldNames: '{0:\'XX_HS_H41800_HSKEY\'}',
+                            fieldWraps: '{0:\'%s\'}'
+                        }"
+                    />
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 
@@ -633,250 +737,270 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B02630')}" name="B02630" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B52007')}" name="B52007" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B01660')}" name="B01660" />
-    <dt class="dt-{field}">
-        Anmerkungen
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{B52030} || {B02630} || {B52007} || {B01660}">
-            <f:then>
-                <f:if condition="{B52030}">{B52030}</f:if>
-                <br />
-                <f:if condition="{B02630}">{B02630}</f:if>
-                <br />
-                <f:if condition="{B52007}"><v:format.trim content="{B52007}" characters="."></v:format.trim></f:if>
-                <br />
-                <f:if condition="{B01660}">{B01660}</f:if>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Anmerkungen
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{B52030} || {B02630} || {B52007} || {B01660}">
+                <f:then>
+                    <f:if condition="{B52030}">{B52030}</f:if>
+                    <br />
+                    <f:if condition="{B02630}">{B02630}</f:if>
+                    <br />
+                    <f:if condition="{B52007}"><v:format.trim content="{B52007}" characters="."></v:format.trim></f:if>
+                    <br />
+                    <f:if condition="{B01660}">{B01660}</f:if>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B01630')}" name="B01630" />
-    <dt class="dt-{field}">
-        Literatur
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{B01630}">
-            <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'B01630',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                      }"/>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Literatur
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{B01630}">
+                <f:then>
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'B01630',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
-    <dt class="dt-{field}">
-        In
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_BI_B51800_BIOKEY')}">
-            <f:then>
-                <f:render
-                        partial="Display/Detail/LookupLink"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'BIOKEY',
-                        fieldToDisplay: 'XX_BI_B51800_BIOKEY',
-                        fieldNames: '{0:\'XX_BI_B51800_BIOKEY>\'}',
-                        fieldWraps: '{0:\'%s\'}'
-                    }"
-                />
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            In
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_BI_B51800_BIOKEY')}">
+                <f:then>
+                    <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'BIOKEY',
+                            fieldToDisplay: 'XX_BI_B51800_BIOKEY',
+                            fieldNames: '{0:\'XX_BI_B51800_BIOKEY>\'}',
+                            fieldWraps: '{0:\'%s\'}'
+                        }"
+                    />
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B04000')}" name="B04000" />
-    <dt class="dt-{field}">
-        Inventarnummer
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{B04000}">
-            <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'B04000',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                      }"/>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Inventarnummer
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{B04000}">
+                <f:then>
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'B04000',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_BE_E05080')}" name="XX_BE_E05080" />
-    <dt class="dt-{field}">
-        Erwerbungsnummer
-    </dt>
-    <dd class="dd-{field}">
-        Baustelle <br />
-        <f:if condition="{XX_BE_E05080}">
-            <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'XX_BE_E05080',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                      }"/>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Erwerbungsnummer
+        </div>
+        <div class="ctg-dtvt-content">
+            Baustelle <br />
+            <f:if condition="{XX_BE_E05080}">
+                <f:then>
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'XX_BE_E05080',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'picture_midi')}" name="picture_midi" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B04100')}" name="B04100" />
-    <dt class="dt-{field}">
-        Digitales Objekt
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{picture_midi} || {B04100} ">
-            <f:then>
-                <f:render
-                    partial="Display/Field/ImageList"
-                    arguments="{
-                        document:document,
-                        results:results,
-                        field:'picture_midi',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                      }"/>
-
-                <f:render
-                        partial="Display/Field/List"
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Digitales Objekt
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{picture_midi} || {B04100} ">
+                <f:then>
+                    <f:render
+                        partial="Display/Field/ImageList"
                         arguments="{
-                        document:document,
-                        results:results,
-                        field:'B04100',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                      }"/>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+                            document:document,
+                            results:results,
+                            field:'picture_midi',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'B04100',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOPFAD_INDKEY')}" name="XX_MM_MOPFAD_INDKEY" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
 
-    <dt class="dt-{field}">
-        Inhalt
-    </dt>
-    <dd class="dd-{field}">
-        Baustelle <br />
-        <f:if condition="{XX_MM_MOPFAD_INDKEY} || {XX_MM_MOTITL_INDKEY} ">
-            <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'XX_MM_MOPFAD_INDKEY',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                      }"/>
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Inhalt
+        </div>
+        <div class="ctg-dtvt-content">
+            Baustelle <br />
+            <f:if condition="{XX_MM_MOPFAD_INDKEY} || {XX_MM_MOTITL_INDKEY} ">
+                <f:then>
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'XX_MM_MOPFAD_INDKEY',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
 
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'XX_MM_MOTITL_INDKEY',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                      }"/>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                            document:document,
+                            results:results,
+                            field:'XX_MM_MOTITL_INDKEY',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AUSTAT')}" name="AUSTAT" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KLASS')}" name="KLASS" />
-    <dt class="dt-{field}">
-        Benutzung
-    </dt>
-    <dd class="dd-{field}">
-        <f:if condition="{AUSTAT} || {KLASS} ">
-            <f:then>
-               <f:if condition="{AUSTAT} != 'Am Standort' || {KLASS} == 'beschränkt benutzbar'">
-                   <f:then>
-                       Beschränkt benutzbar. Bitte 3 Wochen im Voraus bestellen!
-                   </f:then>
-                   <f:else>
-                       <f:if condition="{KLASS} == 'nicht benutzbar'">
-                           <f:then>
-                                Nicht benutzbar
-                           </f:then>
-                           <f:else>
-                               {AUSTAT}
-                           </f:else>
-                       </f:if>
-                   </f:else>
-               </f:if>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </dd>
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            Benutzung
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:if condition="{AUSTAT} || {KLASS} ">
+                <f:then>
+                   <f:if condition="{AUSTAT} != 'Am Standort' || {KLASS} == 'beschränkt benutzbar'">
+                       <f:then>
+                           Beschränkt benutzbar. Bitte 3 Wochen im Voraus bestellen!
+                       </f:then>
+                       <f:else>
+                           <f:if condition="{KLASS} == 'nicht benutzbar'">
+                               <f:then>
+                                    Nicht benutzbar
+                               </f:then>
+                               <f:else>
+                                   {AUSTAT}
+                               </f:else>
+                           </f:if>
+                       </f:else>
+                   </f:if>
+                </f:then>
+                <f:else>
+                    -
+                </f:else>
+            </f:if>
+        </div>
+</div>
 
 
 
 <f:comment>XX_BI_B51800_BIOKEY</f:comment>
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BIOKEY')}" name="BIOKEY" />
-<dt class="dt-{field}">
-    Darin
-</dt>
-<dd class="dd-{field}">
-    <f:if condition="{BIOKEY}">
-        <f:then>
-            <f:render
-                    partial="Display/Field/List"
-                    arguments="{
-                        document:document,
-                        results:results,
-                        field:'BIOKEY',
-                        linkFieldContent:1,
-                        linkFacets:linkFacets
-                      }"/>
-        </f:then>
-        <f:else>
-            -
-        </f:else>
-    </f:if>
-</dd>
+<div class="ctg-dtvt-row">
+    <div class="ctg-dtvt-label">
+        Darin
+    </div>
+    <div class="ctg-dtvt-content">
+        <f:if condition="{BIOKEY}">
+            <f:then>
+                <f:render
+                        partial="Display/Field/List"
+                        arguments="{
+                            document:document,
+                            results:results,
+                            field:'BIOKEY',
+                            linkFieldContent:1,
+                            linkFacets:linkFacets
+                          }"/>
+            </f:then>
+            <f:else>
+                -
+            </f:else>
+        </f:if>
+    </div>
+</div>
 
+    </div>
+</div>
