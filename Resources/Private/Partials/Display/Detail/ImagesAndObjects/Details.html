@@ -544,31 +544,29 @@
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0331_AKY526')}" name="XX_AK_A0331_AKY526" />
-    <div class="ctg-dtvt-row">
-        <div class="ctg-dtvt-label">
-            Werk
-        </div>
-        <div class="ctg-dtvt-content">
-            <f:if condition="{XX_AK_A0331_AKY526}">
-                <f:then>
-                    <f:render
-                            partial="Display/Detail/LookupLink"
-                            arguments="{
-                            document:document,
-                            results:results,
-                            field:'AKY526',
-                            fieldToDisplay: 'XX_AK_A0331_AKY526',
-                            fieldNames: '{0:\'XX_AK_A0331_AKY526\'}',
-                            fieldWraps: '{0:\'%s\'}'
-                        }"
-                    />
-                </f:then>
-                <f:else>
-                    -
-                </f:else>
-            </f:if>
-        </div>
-</div>
+    <dt class="dt-{field}">
+        Werk
+    </dt>
+    <dd class="dd-{field}">
+        <f:if condition="{XX_AK_A0331_AKY526}">
+            <f:then>
+                <f:render
+                        partial="Display/Detail/LookupLink"
+                        arguments="{
+                        document:document,
+                        results:results,
+                        field:'AKY526',
+                        fieldToDisplay: 'XX_AK_A0331_AKY526',
+                        fieldNames: '{0:\'XX_AK_A0331_AKY526\'}',
+                        fieldWraps: '{0:\'%s\'}'
+                    }"
+                />
+            </f:then>
+            <f:else>
+                -
+            </f:else>
+        </f:if>
+    </dd>
 
 
     <div class="ctg-dtvt-row">
@@ -577,7 +575,7 @@
         </div>
         <div class="ctg-dtvt-content">
             Baustelle <br />
-            <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_TH_SWAF_THA720')}">
+            <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_TH_SWVF_THA720')}">
                 <f:then>
                     <f:render
                             partial="Display/Detail/LookupLink"
@@ -585,8 +583,8 @@
                             document:document,
                             results:results,
                             field:'THA720',
-                            fieldToDisplay: 'XX_TH_SWAF_THA720',
-                            fieldNames: '{0:\'XX_TH_SWAF_THA720\',1:'GFORT',2:'AFORT'}',
+                            fieldToDisplay: 'XX_TH_SWVF_THA720',
+                            fieldNames: '{0:\'XX_TH_SWVF_THA720\',1:'GFORT',2:'AFORT'}',
                             fieldWraps: '{0:\'%s\',1:'[%s]',2:'(%s)'}'
                         }"
                     />
@@ -605,7 +603,7 @@
         </div>
         <div class="ctg-dtvt-content">
             Baustelle <br />
-            <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_TH_SWAF_THA710')}">
+            <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_TH_SWVF_THA710')}">
                 <f:then>
                     <f:render
                             partial="Display/Detail/LookupLink"
@@ -613,8 +611,8 @@
                             document:document,
                             results:results,
                             field:'THA710',
-                            fieldToDisplay: 'XX_TH_SWAF_THA710',
-                            fieldNames: '{0:\'XX_TH_SWAF_THA710\',1:'GFSWVF'}',
+                            fieldToDisplay: 'XX_TH_SWVF_THA710',
+                            fieldNames: '{0:\'XX_TH_SWVF_THA710\',1:'GFSWVF'}',
                             fieldWraps: '{0:\'%s\',1:'[%s]'}'
                         }"
                     />
