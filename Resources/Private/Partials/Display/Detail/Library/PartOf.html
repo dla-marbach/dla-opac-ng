@@ -5,16 +5,66 @@
 
 <v:variable.set value="{0:'Einzelbestandteil / unselbständiges Werk'}" name="AKA451_Filter" />
 
+<dla:data.valueForKeyFiltered key="GESTYP" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="GESTYP" />
+<dla:data.valueForKeyFiltered key="HBKEY" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="HBKEY" />
+
 <dla:data.valueForKeyFiltered key="XX_AK_TITREG_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_TITREG_AKA451" />
+<dla:data.valueForKeyFiltered key="XX_AK_A0359_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_A0359_AKA451" />
+<dla:data.valueForKeyFiltered key="listview_additional1" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="listview_additional1" />
+<dla:data.valueForKeyFiltered key="XX_AK_A0331_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_A0331_AKA451" />
+<dla:data.valueForKeyFiltered key="XX_AK_TITREG_HBKEY" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_TITREG_HBKEY" />
+
 <dla:data.valueForKeyFiltered key="AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="AKA451" />
 <dla:data.valueForKeyFiltered key="A0455" filterKey="GESTYP" negateFilter="true" filterValues="{AKA451_Filter}" fields="{document.fields}" as="A0455" />
+<dla:data.valueForKeyFiltered key="A0451" filterKey="GESTYP" negateFilter="true" filterValues="{AKA451_Filter}" fields="{document.fields}" as="A0451" />
 
-<dla:data.joinFieldArrays
-        arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{A0455}'}"
-        fieldWraps="{0:'%s',1:': %s'}"
-        as="linkTexts"
-/>
+<f:if condition="{GESTYP.0} == 'Teil mit abhängigem Titel'">
+    <f:then>
+        <dla:data.joinFieldArrays
+            arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{XX_AK_A0359_AKA451}',2:'{listview_additional1}' ,3:'{A0455}'}"
+            fieldWraps="{0:'%s',1:'\ %s',2:'. - %s' ,3:'; %s'}"
+            as="linkTexts"/>
+    </f:then>
+    <f:else if="{GESTYP.0} == 'Band/Teil mit unabhängigem Titel: gezählt' ||
+                {GESTYP.0} == 'Band/Teil mit unabhängigem Titel: ungezählt'">
+        <f:if condition="{A0451.0}">
+            <f:then>
+                <dla:data.joinFieldArrays
+                    arrays="{0:'{A0451}'}"
+                    fieldWraps="{0:'%s'}"
+                    as="linkTexts"/>
+            </f:then>
+            <f:else>
+                <dla:data.joinFieldArrays
+                    arrays="{0:'{XX_AK_TITREG_AKA451}', 1:'{A0455}'}"
+                    fieldWraps="{0:'%s', 1:'; %s'}"
+                    as="linkTexts"/>
+            </f:else>
+        </f:if>
 
+    </f:else>
+    <f:else>
+        <f:if condition="!{HBKEY}">
+            <f:then>
+                <dla:data.joinFieldArrays
+                    arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{A0455}'}"
+                    fieldWraps="{0:'%s',1:': %s'}"
+                    as="linkTexts"
+                />
+            </f:then>
+            <f:else>
+                <dla:data.joinFieldArrays
+                    arrays="{0:'{XX_AK_TITREG_HBKEY}'}"
+                    fieldWraps="{0:'%s'}"
+                    as="linkTexts"
+                />
+            </f:else>
+        </f:if>
+
+    </f:else>
+</f:if>
+
+<f:debug>{document.fields}</f:debug>
 <div class="ctg-dtvt-label">
     Teil von
 </div>
@@ -22,6 +72,7 @@
     <f:if condition="{linkTexts}">
         <f:then>
             <f:for each="{linkTexts}" as="item" iteration="iterator">
+                <f:debug>{iterator.index}</f:debug>
                 <f:if condition="{AKA451.{iterator.index}} != '#NV'">
                     <f:then>
                         <slub:data.fromSolr
@@ -30,16 +81,16 @@
                             rows="10">
                         <f:then>
                             <f:link.action action="detail" arguments="{id:solr.id}" class="internal">
-                                {item}<br />
+                                {item}
                             </f:link.action>
                         </f:then>
                         <f:else>
-                            {item}<br />
+                            {item}
                         </f:else>
                         </slub:data.fromSolr>
                     </f:then>
                     <f:else>
-                        {item}<br />
+                        {item}
                     </f:else>
                 </f:if>
             </f:for>
@@ -48,5 +99,6 @@
             -
         </f:else>
     </f:if>
+
 </div>
 
