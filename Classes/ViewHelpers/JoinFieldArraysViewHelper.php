@@ -73,7 +73,9 @@ class JoinFieldArraysViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstrac
             $row = array();
             for ($i=0; $i<sizeof($arrays); $i++) {
                 if ($arrays[$i][$j]) {
-                    $row[] = sprintf($wraps[$i], $arrays[$i][$j]);
+                    if ($arrays[$i][$j] != "␞") {
+                        $row[] = sprintf($wraps[$i], $arrays[$i][$j]);
+                    }
                 }
             }
             $result[] = implode(" ",$row);
