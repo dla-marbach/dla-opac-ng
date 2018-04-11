@@ -1,0 +1,46 @@
+{namespace s=Subugoe\Find\ViewHelpers}
+
+<f:switch expression="{listview_type}">
+    <f:case value="AV-Medien">
+        <span class="icon bel-note" title="AV-Medien"></span>
+        <f:if condition="{listview_type_cardinality} == 'N'">
+          <span class="icon bel-note" style="margin-left: 4px; margin-top: -33px;" title="AV-Medien"></span>
+        </f:if>
+    </f:case>
+    <f:case value="Bilder und Objekte">
+        <span class="icon bel-foto" title="Bilder & Objekte"></span>
+        <f:if condition="{listview_type_cardinality} == 'N'">
+            <span class="icon bel-foto" style="margin-left: 4px; margin-top: -36px;" title="Bilder & Objekte"></span>
+        </f:if>
+    </f:case>
+    <f:case value="Daten">
+        <span class="icon bel-daten" title="Daten"></span>
+        <f:if condition="{listview_type_cardinality} == 'N'">
+            <span class="icon bel-daten" style="margin-left: 4px; margin-top: -36px;" title="Daten"></span>
+        </f:if>
+    </f:case>
+    <f:case value="Gedrucktes">
+        <span class="icon bel-mag" title="Gedrucktes"></span>
+        <f:if condition="{listview_type_cardinality} == 'N'">
+            <span class="icon bel-mag" style="margin-left: 4px; margin-top: -34px;" title="Gedrucktes"></span>
+        </f:if>
+    </f:case>
+    <f:case value="Handschriften">
+        <span class="icon bel-schreiben" title="Handschriften"></span>
+        <f:if condition="{listview_type_cardinality} == 'N'">
+            <span class="icon bel-schreiben" style="margin-left: 7px; margin-top: -33px;" title="Handschriften"></span>
+        </f:if>
+    </f:case>
+    <f:case value="Normdaten">
+        <span class="icon bel-papier" title="Normdaten"></span>
+        <f:if condition="{listview_type_cardinality} == 'N'">
+            <span class="icon bel-papier" style="margin-left: 4px; margin-top: -36px;" title="Normdaten"></span>
+        </f:if>
+    </f:case>
+    <f:case default="TRUE">
+        <span class="icon bel-leer" title="Sonstiges"></span>
+        <f:if condition="{listview_type_cardinality} == 'N'">
+            <span class="icon bel-unbek" style="margin-left: 4px; margin-top: -36px;" title="Sonstiges"></span>
+        </f:if>
+    </f:case>
+</f:switch>
