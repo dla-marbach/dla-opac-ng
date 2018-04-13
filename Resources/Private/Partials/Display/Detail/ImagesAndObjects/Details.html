@@ -84,7 +84,10 @@
 </div>
 
 <div class="ctg-detailview-media">
-    <img src="Start%20-%20DLA%20Marbach-Dateien/platzhalter-bild.jpg" alt="">
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'picture_midi')}" name="picture_midi" />
+    <f:if condition="{picture_midi.0}">
+        <img src="{picture_midi.0}" alt="">
+    </f:if>
 </div>
 
 
