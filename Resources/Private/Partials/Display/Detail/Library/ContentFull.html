@@ -9,6 +9,8 @@
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0712')}" name="A0712" />
 
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0750')}" name="A0750" />
+
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS114')}" name="POS114" />
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
@@ -18,77 +20,97 @@
 }" name="bemurlValues"/>
 
 <dla:data.valueForKeyFiltered key="AURL" filterKey="BEMURL" filterValues="{bemurlValues}" fields="{document.fields}" as="AURL" />
-<dla:data.valueForKeyFiltered key="BEMURL" filterKey="BEMURL" filterValues="{bemurlValues}" fields="{document.fields}" as="BEMURL" />
+<dla:data.valueForKeyFiltered key="BEMURL" filterKey="BEMURL" negateFilter="true" filterValues="{bemurlValues}" fields="{document.fields}" as="BEMURL" />
 
 <dla:data.joinFieldArrays
-        arrays="{0:'{AURL}',1:'{BEMURL}'}"
-        fieldWraps="{0:'%s',1:'(%s)'}"
+        arrays="{0:'{BEMURL}'}"
+        fieldWraps="{0:'%s'}"
         as="contentBemurl"
 />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BEMURL')}" name="BEMURL" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AURL')}" name="AURL" />
 
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_TYP_SYNKEY')}" name="XX_SE_TYP_SYNKEY" />
+
 <div class="ctg-dtvt-label">
     Inhalt
 </div>
 <div class="ctg-dtvt-content">
-    <f:if condition="{XX_SE_REGTIT_SYNKEY} || {A0712} || {POS114} || {contentBemurl}">
-       <f:then>
-            <f:if condition="{XX_SE_REGTIT_SYNKEY}">
-                <f:then>
-                    <f:render
-                            partial="Display/Field/List"
-                            arguments="{
-                    document:document,
-                    results:results,
-                    field:'SYNKEY',
-                    linkFieldContent:1,
-                    linkFacets:linkFacets,
-                    linkTexts:XX_SE_REGTIT_SYNKEY
-                    }"/>
-                </f:then>
-            </f:if>
+
+            <f:if condition="{XX_SE_REGTIT_SYNKEY} || {A0712} || {POS114} || {contentBemurl}">
+               <f:then>
+                   <f:if condition="{XX_SE_TYP_SYNKEY} == 'Kette Bibliothek'">
+                       <f:then>
+                            <f:if condition="{XX_SE_REGTIT_SYNKEY}">
+                                <f:then>
+                                    <f:render
+                                            partial="Display/Field/List"
+                                            arguments="{
+                                    document:document,
+                                    results:results,
+                                    field:'SYNKEY',
+                                    linkFieldContent:1,
+                                    linkFacets:linkFacets,
+                                    linkTexts:XX_SE_REGTIT_SYNKEY
+                                    }"/>
+                                </f:then>
+                            </f:if>
+                       </f:then>
+                   </f:if>
+
+                   <f:if condition="{A0750}">
+                       <f:then>
+                           <f:render
+                                   partial="Display/Field/List"
+                                   arguments="{
+                        document:document,
+                        results:results,
+                        field:'A0750',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                        }"/>
+                       </f:then>
+                   </f:if>
+
+                <f:if condition="{A0712}">
+                    <f:then>
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                        document:document,
+                        results:results,
+                        field:'A0712',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                        }"/>
+                    </f:then>
+                </f:if>
+
+                <f:if condition="{POS114}">
+                    <f:then>
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                        document:document,
+                        results:results,
+                        field:'POS114',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                        }"/>
+                    </f:then>
+                </f:if>
 
 
-            <f:if condition="{A0712}">
-                <f:then>
-                    <f:render
-                            partial="Display/Field/List"
-                            arguments="{
-                    document:document,
-                    results:results,
-                    field:'A0712',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                    }"/>
-                </f:then>
-            </f:if>
-
-            <f:if condition="{POS114}">
-                <f:then>
-                    <f:render
-                            partial="Display/Field/List"
-                            arguments="{
-                    document:document,
-                    results:results,
-                    field:'POS114',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                    }"/>
-                </f:then>
-            </f:if>
-
-
-            <f:if condition="{contentBemurl}">
-                <f:then>
-                    <f:for each="{contentBemurl}" as="item" iteration="iterator">
-                        <a href="{AURL.{iterator.index}}">{item}</a><br />
-                    </f:for>
-                </f:then>
-            </f:if>
-        </f:then>
-        <f:else>
-            -
-        </f:else>
-    </f:if>
+                <f:if condition="{contentBemurl}">
+                    <f:then>
+                        <f:for each="{contentBemurl}" as="item" iteration="iterator">
+                            <a href="{AURL.{iterator.index}}">{item}</a><br />
+                        </f:for>
+                    </f:then>
+                </f:if>
+            </f:then>
+            <f:else>
+                -
+            </f:else>
+        </f:if>
 </div>

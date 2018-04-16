@@ -14,12 +14,12 @@
 4:'CD-ROM aufrufen'
 }" name="bemurlValues"/>
 
-<dla:data.valueForKeyFiltered key="AURL" filterKey="BEMURL" filterValues="{bemurlValues}" fields="{document.fields}" as="AURL" />
-<dla:data.valueForKeyFiltered key="BEMURL" filterKey="BEMURL" filterValues="{bemurlValues}" fields="{document.fields}" as="BEMURL" />
+<dla:data.valueForKeyFiltered key="AURL" filterKey="BEMURL" negateFilter="true" filterValues="{bemurlValues}" fields="{document.fields}" as="AURL" />
+<dla:data.valueForKeyFiltered key="BEMURL" filterKey="BEMURL" negateFilter="true" filterValues="{bemurlValues}" fields="{document.fields}" as="BEMURL" />
 
 <dla:data.joinFieldArrays
-        arrays="{0:'{AURL}',1:'{BEMURL}'}"
-        fieldWraps="{0:'%s',1:'(%s)'}"
+        arrays="{0:'{BEMURL}'}"
+        fieldWraps="{0:'%s'}"
         as="digitalObject"
 />
 
@@ -27,7 +27,6 @@
     Digitales Objekt
 </div>
 <div class="ctg-dtvt-content">
-
     <f:if condition="{XX_MM_MOTITL_INDKEY} || {digitalObject} ">
         <f:then>
             <dla:data.joinFields

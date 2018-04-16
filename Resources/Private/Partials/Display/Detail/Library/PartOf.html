@@ -64,7 +64,6 @@
     </f:else>
 </f:if>
 
-<f:debug>{document.fields}</f:debug>
 <div class="ctg-dtvt-label">
     Teil von
 </div>
@@ -72,7 +71,6 @@
     <f:if condition="{linkTexts}">
         <f:then>
             <f:for each="{linkTexts}" as="item" iteration="iterator">
-                <f:debug>{iterator.index}</f:debug>
                 <f:if condition="{AKA451.{iterator.index}} != '#NV'">
                     <f:then>
                         <slub:data.fromSolr

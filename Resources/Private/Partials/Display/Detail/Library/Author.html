@@ -12,6 +12,7 @@
         fieldWraps="{0:'%s',1:'[%s]'}"
         as="author"
 />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
 
 <div class="ctg-dtvt-label">
     Urheber
@@ -20,7 +21,16 @@
     <f:if condition="{author}">
         <f:then>
             <f:for each="{author}" as="item" iteration="iterator">
-                {item} <br />
+                <f:render
+                        partial="Display/Field/List"
+                        arguments="{
+                document:document,
+                results:results,
+                field:'PE0100',
+                linkFieldContent:1,
+                linkFacets:linkFacets,
+                linkTexts:item
+              }"/>
             </f:for>
         </f:then>
         <f:else>

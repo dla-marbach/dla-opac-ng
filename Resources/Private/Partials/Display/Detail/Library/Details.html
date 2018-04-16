@@ -144,7 +144,24 @@
         Sendeangaben
     </div>
     <div class="ctg-dtvt-content">
-        Baustelle
+        <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDER_A0001')}">
+            <f:render
+                    partial="Display/Field/Inline"
+                    arguments="{
+                            config:config,
+                            results:results,
+                            document:document,
+                            field:'XX_AU_SENDER_A0001',
+                            separator:'; '
+                    }"/>
+        </f:if>
+        <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDAT_A0001')}">
+            <dla:data.dateFormat
+                dateValue="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDAT_A0001')}"
+                as="dateFormat"
+            />
+            <f:format.date date="{dateFormat}" format="d.m.Y"></f:format.date>
+        </f:if>
     </div>
 </div>
 
@@ -266,11 +283,13 @@
             <f:then>
                 <f:if condition="{A0501_a}">
                     <f:then>
+                        Hochschulschrift:
                         <f:for each="{A0501_a}" as="item" iteration="iterator">
                             {item}<br />
                         </f:for>
                     </f:then>
                     <f:else>
+                        Hochschulschrift:
                         <f:for each="{altTextA0501}" as="item" iteration="iterator">
                             {item}<br />
                         </f:for>
@@ -342,6 +361,7 @@
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKE526')}" name="XX_AK_TITREG_AKE526" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AKE526')}" name="AKE526" />
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
@@ -350,14 +370,18 @@
     <div class="ctg-dtvt-content">
         <f:if condition="{XX_AK_TITREG_AKE526}">
             <f:then>
+                <f:format.raw>
+                    <dla:data.partOfWorkLink field="AKE526" linkTexts="{XX_AK_TITREG_AKE526}" workIds="{AKE526}"/>
+                </f:format.raw>
                 <f:render
                         partial="Display/Field/List"
                         arguments="{
                 document:document,
                 results:results,
-                field:'XX_AK_TITREG_AKE526',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
+                field:'AKE526',
+                linkFieldContent:1,
+                linkFacets:linkFacets,
+                linkTexts:XX_AK_TITREG_AKE526
               }"/>
             </f:then>
             <f:else>
@@ -388,6 +412,8 @@ AKYTXT
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AKYTXT')}" name="AKYTXT" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKY526')}" name="XX_AK_TITREG_AKY526" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0359_AKY526')}" name="XX_AK_A0359_AKY526" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_listview_additional1_AKY526')}" name="XX_AK_listview_additional1_AKY526" />
 
     <f:for each="{AKYTXT}" as="labelItem" iteration="labelIterator">
         <div class="ctg-dtvt-row">
@@ -395,7 +421,7 @@ AKYTXT
                 {labelItem}
             </div>
             <div class="ctg-dtvt-content">
-                {XX_AK_TITREG_AKY526.{labelIterator.index}}
+                {XX_AK_TITREG_AKY526.{labelIterator.index}} / {XX_AK_A0359_AKY526.{labelIterator.index}} . - {XX_AK_listview_additional1_AKY526.{labelIterator.index}}
             </div>
         </div>
     </f:for>
@@ -413,6 +439,7 @@ AKYTXT
     <div class="ctg-dtvt-label">
         Bibliographie
     </div>
+
     <div class="ctg-dtvt-content">
         <f:if condition="{A0711} || {AURL} || {XX_SE_REGTIT_SYNKEY}">
             <f:then>
@@ -436,15 +463,19 @@ AKYTXT
                 linkFacets:linkFacets
                 }"/>
 
-                <f:render
-                    partial="Display/Field/List"
-                    arguments="{
-                document:document,
-                results:results,
-                field:'XX_SE_REGTIT_SYNKEY',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-                }"/>
+                <f:if condition="{XX_SE_TYP_SYNKEY} == 'Bibliographie-Kette'">
+                    <f:then>
+                        <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                        document:document,
+                        results:results,
+                        field:'XX_SE_REGTIT_SYNKEY',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                        }"/>
+                    </f:then>
+                </f:if>
             </f:then>
             <f:else>
                 -
@@ -610,5 +641,81 @@ AKYTXT
     </div>
 </div>
 
-    </div>
-</div>
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
+<dt class="dt-{field}">
+    Beziehungen (Baustelle)
+</dt>
+<dd class="dd-{field}">
+
+    <s:data.newArray
+            name="query"
+            global="1"
+            keys="{0:'raw'}"
+            values="{0:'AKA451:\'{A0001}\' AND GESTYP:\'Einzelbestandteil / unselbständiges Werk\''}"
+    />
+
+    <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+        <span style="color:lightgrey;">Enthaltene Beiträge</span>
+        <f:render
+                partial="Display/Field/Inline"
+                arguments="{
+                          config:config,
+                          results:results,
+                          document:solr,
+                          field:'{displayField}'
+                        }"/>
+    </f:link.action>
+</dd>
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
+<dt class="dt-{field}">
+    Beziehungen (Baustelle)
+</dt>
+<dd class="dd-{field}">
+
+    <s:data.newArray
+            name="query"
+            global="1"
+            keys="{0:'raw'}"
+            values="{0:'AKA451:\'{A0001}\' AND (\'Mehrteilige Monografie / nicht Teil eines Gesamtwerks\' OR \'Mehrteilige Monografie / Teil eines Gesamtwerks\' OR \'Fortlaufende Ressource / Serie, Reihe\')'}"
+    />
+
+    <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+        <span style="color:lightgrey;">Enthaltene Bände</span>
+        <f:render
+                partial="Display/Field/Inline"
+                arguments="{
+                          config:config,
+                          results:results,
+                          document:solr,
+                          field:'{displayField}'
+                        }"/>
+    </f:link.action>
+</dd>
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
+<dt class="dt-{field}">
+    Beziehungen (Baustelle)
+</dt>
+<dd class="dd-{field}">
+
+    <s:data.newArray
+            name="query"
+            global="1"
+            keys="{0:'raw'}"
+            values="{0:'AKY526:\'{A0001}\' AND NOT AKYTXT:\'Bezug: Rezension von\''}"
+    />
+
+    <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+        <span style="color:lightgrey;">Suche nach Rezensionen</span>
+        <f:render
+                partial="Display/Field/Inline"
+                arguments="{
+                          config:config,
+                          results:results,
+                          document:solr,
+                          field:'{displayField}'
+                        }"/>
+    </f:link.action>
+</dd>
