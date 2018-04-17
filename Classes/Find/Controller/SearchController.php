@@ -93,6 +93,11 @@ class SearchController extends ActionController
      */
     public function indexAction()
     {
+        if(!array_key_exists('start', $this->requestArguments)) {
+            $params = array('start' => '1');
+            $this->redirect('index', NULL, NULL, array_merge($this->requestArguments, $params));
+        }
+
         if (array_key_exists('id', $this->requestArguments)) {
             $this->forward('detail');
         } else {
