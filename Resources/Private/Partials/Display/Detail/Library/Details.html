@@ -432,6 +432,7 @@ AKYTXT
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0711')}" name="A0711>" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'FREITX')}" name="FREITX" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_REGTIT_SYNKEY')}" name="XX_SE_REGTIT_SYNKEY" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_TYP_SYNKEY')}" name="XX_SE_TYP_SYNKEY" />
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
         Bibliographie
@@ -460,19 +461,13 @@ AKYTXT
                 linkFacets:linkFacets
                 }"/>
 
-                <f:if condition="{XX_SE_TYP_SYNKEY} == 'Bibliographie-Kette'">
-                    <f:then>
-                        <f:render
-                            partial="Display/Field/List"
-                            arguments="{
-                        document:document,
-                        results:results,
-                        field:'XX_SE_REGTIT_SYNKEY',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                        }"/>
-                    </f:then>
-                </f:if>
+                <f:for each="{XX_SE_TYP_SYNKEY}" as="typKey" iteration="iterator">
+                    <f:if condition="{typKey} == 'Bibliographie-Kette'">
+                        <f:then>
+                            {XX_SE_REGTIT_SYNKEY.{iterator.index}}
+                        </f:then>
+                    </f:if>
+                </f:for>
             </f:then>
             <f:else>
                 -

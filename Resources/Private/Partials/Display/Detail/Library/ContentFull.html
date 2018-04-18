@@ -39,24 +39,13 @@
 
             <f:if condition="{XX_SE_REGTIT_SYNKEY} || {A0712} || {POS114} || {contentBemurl}">
                <f:then>
-                   <f:if condition="{XX_SE_TYP_SYNKEY} == 'Kette Bibliothek'">
-                       <f:then>
-                            <f:if condition="{XX_SE_REGTIT_SYNKEY}">
-                                <f:then>
-                                    <f:render
-                                            partial="Display/Field/List"
-                                            arguments="{
-                                    document:document,
-                                    results:results,
-                                    field:'SYNKEY',
-                                    linkFieldContent:1,
-                                    linkFacets:linkFacets,
-                                    linkTexts:XX_SE_REGTIT_SYNKEY
-                                    }"/>
-                                </f:then>
-                            </f:if>
-                       </f:then>
-                   </f:if>
+                   <f:for each="{XX_SE_TYP_SYNKEY}" as="typKey" iteration="iterator">
+                       <f:if condition="{typKey} == 'Kette Bibliothek'">
+                           <f:then>
+                               {XX_SE_REGTIT_SYNKEY.{iterator.index}}
+                           </f:then>
+                       </f:if>
+                   </f:for>
 
                    <f:if condition="{A0750}">
                        <f:then>
