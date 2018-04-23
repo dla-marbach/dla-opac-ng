@@ -144,20 +144,20 @@
         Sendeangaben
     </div>
     <div class="ctg-dtvt-content">
-        <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDER_A0001')}">
+        <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDER_AUKEY')}">
             <f:render
                     partial="Display/Field/Inline"
                     arguments="{
                             config:config,
                             results:results,
                             document:document,
-                            field:'XX_AU_SENDER_A0001',
+                            field:'XX_AU_SENDER_AUKEY',
                             separator:'; '
                     }"/>
         </f:if>
-        <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDAT_A0001')}">
+        <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDAT_AUKEY')}">
             <dla:data.dateFormat
-                dateValue="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDAT_A0001')}"
+                dateValue="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDAT_AUKEY')}"
                 as="dateFormat"
             />
             <f:format.date date="{dateFormat}" format="d.m.Y"></f:format.date>

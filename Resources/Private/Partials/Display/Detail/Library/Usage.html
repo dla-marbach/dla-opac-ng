@@ -3,12 +3,12 @@
 {namespace dla=Dla\DlaOpacNg\ViewHelpers}
 {namespace s=Subugoe\Find\ViewHelpers}
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_KLASS')}" name="XX_AU_KLASS" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_STAND')}" name="XX_AU_STAND" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_KLASS_AUKEY')}" name="XX_AU_KLASS_AUKEY" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_STAND_AUKEY')}" name="XX_AU_STAND_AUKEY" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A01030')}" name="A01030" />
-<f:if condition="{XX_AU_KLASS} || {XX_AU_STAND}">
+<f:if condition="{XX_AU_KLASS_AUKEY} || {XX_AU_STAND_AUKEY}">
     <f:then>
-        <v:variable.set value="{XX_AU_KLASS} {XX_AU_STAND}" name="usage" />
+        <v:variable.set value="{XX_AU_KLASS_AUKEY} {XX_AU_STAND_AUKEY}" name="usage" />
     </f:then>
     <f:else>
         <f:if condition="{A01030} == 'Virtuelle Aufnahme'">
