@@ -1,177 +1,177 @@
 {namespace s=Subugoe\Find\ViewHelpers}
 <f:comment>
-  Creates a list item for document stored in the document variable.
+    Creates a list item for document stored in the document variable.
 
-  It uses the standardFields configured in settings, result highlighting
-  (if configured) and a link to the document’s page.
+    It uses the standardFields configured in settings, result highlighting
+    (if configured) and a link to the document’s page.
 </f:comment>
 <li class="ctg-result-item" id="c{config.uid}-result-{document.id}">
-  <div class="ctg-ri-icon">
-    <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_type)}">
+    <div class="ctg-ri-icon">
+        <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_type)}">
 
-      <f:comment>
-        <f:switch expression="{document.listview_type_cardinality}">
-          <f:case value="N">
-            <i class="fa fa-stack-2x fa-files-o" style="color:#d3d3d3;"></i>
-          </f:case>
-          <f:case value="1">
-            <i class="fa fa-stack-2x fa-file-o" style="color:#d3d3d3;"></i>
-          </f:case>
-        </f:switch>
-      </f:comment>
+            <f:comment>
+                <f:switch expression="{document.listview_type_cardinality}">
+                    <f:case value="N">
+                        <i class="fa fa-stack-2x fa-files-o" style="color:#d3d3d3;"></i>
+                    </f:case>
+                    <f:case value="1">
+                        <i class="fa fa-stack-2x fa-file-o" style="color:#d3d3d3;"></i>
+                    </f:case>
+                </f:switch>
+            </f:comment>
 
-      <f:render partial="Display/MediatypeIcon" arguments="{listview_type:document.listview_type, listview_type_cardinality:document.listview_type_cardinality}" />
-    </f:if>
-  </div>
+            <f:render partial="Display/MediatypeIcon" arguments="{listview_type:document.listview_type, listview_type_cardinality:document.listview_type_cardinality}" />
+        </f:if>
+    </div>
 
-  <div class="ctg-ri-text">
-    <h2>
-      <f:link.action
-              action="detail"
-              arguments="{id:document.id}"
-              section="{settings.jumpToID}"
-              noCacheHash="1"
-              onclick="{f:if(
+    <div class="ctg-ri-text">
+        <h2>
+            <f:link.action
+                    action="detail"
+                    arguments="{id:document.id}"
+                    section="{settings.jumpToID}"
+                    noCacheHash="1"
+                    onclick="{f:if(
                 condition:'{settings.paging.detailPagePaging} == 1',
                 then:'return tx_find.detailViewWithPaging(this);'
       )}">
-        <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_title)}">
-          <f:then>
-            <f:render
-                    partial="Display/Field/Inline"
-                    arguments="{
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_title)}">
+                    <f:then>
+                        <f:render
+                                partial="Display/Field/Inline"
+                                arguments="{
                 config:config,
                 results:results,
                 document:document,
                 field:settings.standardFields.listview_title,
                 separator:''
               }"/>
-          </f:then>
-          <f:else>
-            ID: {document.id}
-          </f:else>
-        </f:if>
-      </f:link.action>
-    </h2>
-    <p>
-      <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_associate)}">
-        <f:render
-                partial="Display/Field/Inline"
-                arguments="{
+                    </f:then>
+                    <f:else>
+                        ID: {document.id}
+                    </f:else>
+                </f:if>
+            </f:link.action>
+        </h2>
+        <p>
+            <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_associate)}">
+                <f:render
+                        partial="Display/Field/Inline"
+                        arguments="{
             config:config,
             results:results,
             document:document,
             field:settings.standardFields.listview_associate,
             separator:'; '
           }"/>
-      </f:if>
-      <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_associate)}">,</f:if>
-    </p>
-    <p>
-      <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional1)}">
-        <f:render
-                partial="Display/Field/Inline"
-                arguments="{
+            </f:if>
+            <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_associate)}">,</f:if>
+        </p>
+        <p>
+            <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional1)}">
+                <f:render
+                        partial="Display/Field/Inline"
+                        arguments="{
             config:config,
             results:results,
             document:document,
             field:settings.standardFields.listview_additional1,
             separator:'; '
           }"/>
-      </f:if>
-    </p>
+            </f:if>
+        </p>
 
-    <p>
-      <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional2)}">
-        <f:render
-                partial="Display/Field/Inline"
-                arguments="{
+        <p>
+            <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional2)}">
+                <f:render
+                        partial="Display/Field/Inline"
+                        arguments="{
             config:config,
             results:results,
             document:document,
             field:settings.standardFields.listview_additional2,
             separator:'; '
           }"/>
-      </f:if>
-    </p>
-  </div>
-
-  <div class="ctg-ri-image">
-    <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.picture_mini)}">
-      <f:for each="{document.picture_mini}" as="picture" key="key">
-        <f:if condition="{key} == 0">
-          <img src="{picture}" alt="" />
-        </f:if>
-      </f:for>
-    </f:if>
-    <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.audio)}">
-      <f:for each="{document.picture_mini}" as="audio" key="key">
-        <f:if condition="{key} == 0">
-          <audio id="player" src="{audio}"></audio>
-        </f:if>
-      </f:for>
-    </f:if>
-  </div>
-
-  <div class="ctg-ri-actions">
-    <ul>
-      <li><a class="ctg-button" title="merken"><span class="icon bel-stern01"></span></a></li>
-      <li><a class="ctg-button" title="Details" data-details-toggle="1"><span class="icon bel-pfeil-u01"></span></a></li>
-    </ul>
-  </div>
-  <div class="ctg-ri-details" style="display:none;">
-    <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_type)}">
-      <div class="ctg-rid-row">
-        <div class="ctg-rid-label">
-          Medientyp
-        </div>
-        <div class="ctg-rid-content">
-          {document.listview_type}
-        </div>
-      </div>
-    </f:if>
-    <div class="ctg-rid-row">
-      <div class="ctg-rid-label">
-        Technik
-      </div>
-      <div class="ctg-rid-content">
-        Baustelle
-      </div>
+            </f:if>
+        </p>
     </div>
-    <div class="ctg-rid-row">
-      <div class="ctg-rid-label">
-        Benutzungszugang
-      </div>
-      <div class="ctg-rid-content">
-        Baustelle: nicht ausleihbar, <a href="">weiterer Hinweis hier</a>
-      </div>
+
+    <div class="ctg-ri-image">
+        <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.picture_mini)}">
+            <f:for each="{document.picture_mini}" as="picture" key="key">
+                <f:if condition="{key} == 0">
+                    <img src="{picture}" alt="" />
+                </f:if>
+            </f:for>
+        </f:if>
+        <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.audio)}">
+            <f:for each="{document.picture_mini}" as="audio" key="key">
+                <f:if condition="{key} == 0">
+                    <audio id="player" src="{audio}"></audio>
+                </f:if>
+            </f:for>
+        </f:if>
     </div>
-  </div>
+
+    <div class="ctg-ri-actions">
+        <ul>
+            <li><a class="ctg-button" title="merken"><span class="icon bel-stern01"></span></a></li>
+            <li><a class="ctg-button" title="Details" data-details-toggle="1"><span class="icon bel-pfeil-u01"></span></a></li>
+        </ul>
+    </div>
+    <div class="ctg-ri-details" style="display:none;">
+        <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_type)}">
+            <div class="ctg-rid-row">
+                <div class="ctg-rid-label">
+                    Medientyp
+                </div>
+                <div class="ctg-rid-content">
+                    {document.listview_type}
+                </div>
+            </div>
+        </f:if>
+        <div class="ctg-rid-row">
+            <div class="ctg-rid-label">
+                Technik
+            </div>
+            <div class="ctg-rid-content">
+                Baustelle
+            </div>
+        </div>
+        <div class="ctg-rid-row">
+            <div class="ctg-rid-label">
+                Benutzungszugang
+            </div>
+            <div class="ctg-rid-content">
+                Baustelle: nicht ausleihbar, <a href="">weiterer Hinweis hier</a>
+            </div>
+        </div>
+    </div>
 </li>
 
 <f:comment>
-  <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional1)}">
-    <f:render
-            partial="Display/Field/Inline"
-            arguments="{
+    <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional1)}">
+        <f:render
+                partial="Display/Field/Inline"
+                arguments="{
             config:config,
             results:results,
             document:document,
             field:settings.standardFields.listview_additional1,
             separator:'; '
           }"/>
-  </f:if>
-  <br />
-  <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional2)}">
-    <f:render
-            partial="Display/Field/Inline"
-            arguments="{
+    </f:if>
+    <br />
+    <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_additional2)}">
+        <f:render
+                partial="Display/Field/Inline"
+                arguments="{
             config:config,
             results:results,
             document:document,
             field:settings.standardFields.listview_additional2,
             separator:'; '
           }"/>
-  </f:if>
+    </f:if>
 </f:comment>
 
