@@ -22,9 +22,15 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('.dla-toggle-facets').on('click', function(e){
         e.preventDefault();
-        var containingList =  $(this).parents('ul')[0];
-        jQuery('.hidden', containingList).slideDown(300);
-        $(this).parent().fadeOut(200);
+        var containingList = $(this).parents('ul')[0];
+        if ($(this).hasClass('dla-toggle-facets-collapsed')) {
+            jQuery('.hidden', containingList).slideDown(300);
+            $(this).html($(this).data('translate-show-less'));
+        } else {
+            jQuery('.hidden', containingList).slideUp(300);
+            $(this).html($(this).data('translate-show-all'));
+        }
+        $(this).toggleClass('dla-toggle-facets-collapsed');
     });
 });
 

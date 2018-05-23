@@ -41,6 +41,7 @@
       <label index="remove filter">remove filter</label>
       <label index="remove filter %s">remove filter “%s”</label>
       <label index="show all">show all</label>
+      <label index="show less">show less</label>
 
       <label index="Show Detail Page">Details</label>
 
@@ -82,6 +83,7 @@
       <label index="remove filter">Filter aufheben</label>
       <label index="remove filter %s">Filter „%s“ aufheben</label>
       <label index="show all">alle zeigen</label>
+      <label index="show less">weniger zeigen</label>
 
       <label index="Show Detail Page">Details</label>
 
