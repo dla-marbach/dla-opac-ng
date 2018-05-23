@@ -1457,8 +1457,8 @@ AKYTXT
     <s:data.newArray
             name="query"
             global="1"
-            keys="{0:'raw'}"
-            values="{0:'AKA451:\'{A0001}\' AND GESTYP:\'Einzelbestandteil \/ unselbständiges Werk\''}"
+            keys="{0:'raw', 1:'phrase'}"
+            values="{0:'AKA451:(\'{A0001}\') AND GESTYP:(\'Einzelbestandteil \/ unselbständiges Werk\')', 1:1}"
     />
 
     <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
@@ -1483,8 +1483,8 @@ AKYTXT
     <s:data.newArray
             name="query"
             global="1"
-            keys="{0:'raw'}"
-            values="{0:'AKA451:\'{A0001}\' AND (\'Mehrteilige Monografie \/ nicht Teil eines Gesamtwerks\' OR \'Mehrteilige Monografie / Teil eines Gesamtwerks\' OR \'Fortlaufende Ressource / Serie, Reihe\')'}"
+            keys="{0:'raw', 1:'phrase'}"
+            values="{0:'AKA451:\'{A0001}\' AND (\'Mehrteilige Monografie \/ nicht Teil eines Gesamtwerks\' OR \'Mehrteilige Monografie / Teil eines Gesamtwerks\' OR \'Fortlaufende Ressource / Serie, Reihe\')', 1:1}"
     />
 
     <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
@@ -1509,8 +1509,8 @@ AKYTXT
     <s:data.newArray
             name="query"
             global="1"
-            keys="{0:'raw'}"
-            values="{0:'AKY526:\'{A0001}\' AND NOT AKYTXT\:\'Bezug: Rezension von\''}"
+            keys="{0:'raw', 1:'phrase'}"
+            values="{0:'AKY526:\'{A0001}\' AND NOT AKYTXT\:\'Bezug: Rezension von\'', 1:1}"
     />
 
     <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
