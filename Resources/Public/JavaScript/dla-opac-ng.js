@@ -19,3 +19,12 @@ $(document).ready(function(){
     });
 });
 
+$(document).ready(function(){
+    $('.dla-toggle-facets').on('click', function(e){
+        e.preventDefault();
+        var containingList =  $(this).parents('ul')[0];
+        jQuery('.hidden', containingList).slideDown(300);
+        $(this).parent().fadeOut(200);
+    });
+});
+
