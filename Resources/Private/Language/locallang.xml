@@ -209,7 +209,7 @@
       <label index="">Datenschutzerklärung</label>
       -->
 
-      <!-- Resources/Private/Partials/Display/Detail/ImagesAndObjects/Details.html -->
+      <!-- Resources/Private/... -->
       <!--
       <label index="">merken</label>
       <label index="">versenden</label>
@@ -219,6 +219,11 @@
       <label index="">Zugang</label>
       <label index="">Medienart</label>
       <label index="">Objekttyp</label>
+      <label index="">Medientyp</label>
+      -->
+
+      <!-- Resources/Private/Partials/Display/Detail/ImagesAndObjects/Details.html -->
+      <!--
       <label index="">Originaltitel</label>
       <label index="">Person</label>
       <label index="">Körperschaft</label>
@@ -250,13 +255,6 @@
 
       <!-- Resources/Private/Partials/Display/Detail/Inventory/Details.html -->
       <!--
-      <label index="">merken</label>
-      <label index="">versenden</label>
-      <label index="">teilen</label>
-      <label index="">exportieren</label>
-      <label index="">Details</label>
-      <label index="">Zugang</label>
-      <label index="">Medienart</label>
       <label index="">Bestandsart</label>
       <label index="">Bestandsbildner</label>
       <label index="">Entstehungszeit</label>
@@ -283,13 +281,6 @@
 
       <!-- Resources/Private/Partials/Display/Detail/Library/Details.html -->
       <!--
-      <label index="">merken</label>
-      <label index="">versenden</label>
-      <label index="">teilen</label>
-      <label index="">exportieren</label>
-      <label index="">Details</label>
-      <label index="">Zugang</label>
-      <label index="">Medientyp</label>
       <label index="">Urheber</label>
       <label index="">Beteiligt</label>
       <label index="">Erschienen</label>
@@ -331,13 +322,6 @@
 
       <!-- Resources/Private/Partials/Display/Detail/Manuscripts/Details.html -->
       <!--
-      <label index="">merken</label>
-      <label index="">versenden</label>
-      <label index="">teilen</label>
-      <label index="">exportieren</label>
-      <label index="">Details</label>
-      <label index="">Zugang</label>
-      <label index="">Medienart</label>
       <label index="">Gattung</label>
       <label index="">Weitere Gattung</label>
       <label index="">VON/AN</label>
@@ -373,13 +357,6 @@
 
       <!-- Resources/Private/Partials/Display/Detail/Normdata/Person.html -->
       <!--
-      <label index="">merken</label>
-      <label index="">versenden</label>
-      <label index="">teilen</label>
-      <label index="">exportieren</label>
-      <label index="">Details</label>
-      <label index="">Zugang</label>
-      <label index="">Medienart</label>
       <label index="">GND</label>
       <label index="">Person</label>
       <label index="">Andere Namen</label>
@@ -394,12 +371,6 @@
 
       <!-- Resources/Private/Partials/Display/Detail/Normdata/Werk.html -->
       <!--
-      <label index="">merken</label>
-      <label index="">versenden</label>
-      <label index="">teilen</label>
-      <label index="">exportieren</label>
-      <label index="">Details</label>
-      <label index="">Zugang</label>
       <label index="">Icon</label>
       <label index="">Typ</label>
       <label index="">Titel des Werkes</label>
@@ -447,7 +418,6 @@
 
       <!-- Resources/Private/Partials/Display/Field/Result.html -->
       <!--
-      <label index="">Medientyp</label>
       <label index="">Technik</label>
       <label index="">Benutzungszugang</label>
       <label index="">nicht ausleihbar,</label>
