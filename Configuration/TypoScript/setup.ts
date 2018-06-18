@@ -381,6 +381,13 @@ plugin.tx_find {
                 sortOrder = count
                 query = icon_facet:("%s")
             }
+            11 {
+                id = Medientypen
+                field = icon_facet
+                type = Bar
+                sortOrder = count
+                query = icon_facet:("%s")
+            }
             20 {
                 id = Gattung/Form
                 field = type_facet
