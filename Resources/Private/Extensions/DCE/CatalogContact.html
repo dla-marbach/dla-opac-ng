@@ -10,12 +10,12 @@
             <f:for each="{field.contact}" as="dis" iteration="iterator">
                 <f:if condition="{iterator.index} < 2">
                     <p class="ctg-footer-td"><strong>{dis.contactName}</strong><br>
-                        <f:translate key='Phone' extensionName='dla_opac_ng'/>
+                        <f:translate key='Telefon' extensionName='dla_opac_ng'/>
                         <f:if condition="{dis.phoneHref}">
                             <f:then><a href="tel:{dis.phoneHref}">{dis.phone}</a></f:then>
                             <f:else>{dis.phone}</f:else>
                         </f:if><br>
-                        <f:translate key='Fax' extensionName='dla_opac_ng'/> {dis.fax}<br>
+                        <f:translate key='Telefax' extensionName='dla_opac_ng'/> {dis.fax}<br>
                         <a href="mailto:{field.email}">{dis.email}</a><br><br>
                         {dis.openingHours}</p>
                 </f:if>
