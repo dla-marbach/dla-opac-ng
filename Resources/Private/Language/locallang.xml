@@ -410,13 +410,13 @@
       <label index="Gesamtbestand">Gesamtbestand</label>
       <label index="Gedrucktes">Gedrucktes</label>
       <label index="Handschriften">Handschriften</label>
-      <label index="Bilder &amp; Objekte">Bilder &amp; Objekte</label>
-      <label index="Audio &amp; Video">Audio &amp; Video</label>
+      <label index="Bilder und Objekte">Bilder &amp; Objekte</label>
+      <label index="Audio und Video">Audio &amp; Video</label>
       <label index="Jetzt suchen">Jetzt suchen</label>
       <label index="Expertensuche">Expertensuche</label>
       <label index="Bestandsübersicht">Bestandsübersicht</label>
       <label index="Suchverlauf">Suchverlauf</label>
-      <label index="Hilfe &amp; Auskunft">Hilfe &amp; Auskunft</label>
+      <label index="Hilfe und Auskunft">Hilfe &amp; Auskunft</label>
 
       <!-- Resources/Private/Templates/Search/Detail.html -->
       <label index="Gleicher Künstler">Gleicher Künstler</label>
