@@ -57,6 +57,39 @@
             links[$.trim($(this).text())] = $(this).attr('href');
         });
 
+        Chart.plugins.register({
+            afterDatasetsDraw: function(chart) {
+                var ctx = chart.ctx;
+
+                chart.data.datasets.forEach(function(dataset, i) {
+                    var meta = chart.getDatasetMeta(i);
+                    if (!meta.hidden) {
+                        meta.data.forEach(function(element, index) {
+                            // Draw the text in black, with the specified font
+                            ctx.fillStyle = 'rgb(0, 0, 0)';
+
+                            var fontSize = 12;
+                            var fontStyle = 'normal';
+                            var fontFamily = 'Helvetica Neue';
+                            ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
+
+                            // Just naively convert to string for now
+                            var dataString = dataset.data[index].toString();
+
+                            // Make sure alignment settings are correct
+                            ctx.textAlign = 'left';
+                            ctx.textBaseline = 'middle';
+
+                            var padding = -5;
+                            var leftPadding = 5;
+                            var position = element.tooltipPosition();
+                            ctx.fillText(dataString, position.x + leftPadding, position.y - (fontSize / 2) - padding);
+                        });
+                    }
+                });
+            }
+        });
+
         var canvas = document.getElementById("myChart");
         var ctx = canvas.getContext('2d');
         var myChart = new Chart(ctx, {
@@ -81,9 +114,6 @@
                         'rgba(182, 31, 36, 1)',
                     ],
                     borderWidth: 1
-                },
-                {
-                    data: sum
                 }
 
                 ]
@@ -92,29 +122,41 @@
                 scales: {
                     yAxes: [{
                         ticks: {
+                            fontSize: 12,
                             beginAtZero:true
                         },
-                        barThickness: 20,
-                        stacked: true
+                        gridLines: {
+                            display: false
+                        },
+                        // barThickness: 20,
+                        categoryPercentage: 0.7,
+                        barPercentage: 0.9,
                     }],
                     xAxes: [{
-                        barThickness: 20,
-                        stacked: true
-                    }]
+                        display: false
+                    }],
                 },
                 legend: {
                     display:false
+                },
+                tooltips: {
+                    enabled: false
+                },
+                layout: {
+                    padding: {
+                        right: 40
+                    }
                 }
             }
         });
 
-        canvas.onclick = function(evt) {
-            var activePoints = myChart.getElementsAtEvent(evt);
-            console.log("Clicked");
-            console.log(activePoints);
-            if (activePoints[0]) {
-                var chartData = activePoints[0]['_chart'].config.data;
-                var idx = activePoints[0]['_index'];
+        canvas.onclick = function(evt){
+            var ctx = document.getElementById("myChart").getContext("2d");
+
+            var activeElements = myChart.getElementsAtEventForMode(evt, 'nearest', {intersect: false, axis: 'y'});
+            if (activeElements[0]) {
+                var chartData = activeElements[0]['_chart'].config.data;
+                var idx = activeElements[0]['_index'];
 
                 var label = chartData.labels[idx];
                 var value = chartData.datasets[0].data[idx];
@@ -123,6 +165,8 @@
 
                 window.location.href = url;
             }
+
+
         };
 </script>
 
