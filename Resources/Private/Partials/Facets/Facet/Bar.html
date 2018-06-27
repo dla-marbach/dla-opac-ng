@@ -11,13 +11,17 @@
     Facets/Facet/List/Autocomplete partial.
 </f:comment>
 <div class="facetList">
-    <canvas id="myChart" width="400" height="400"></canvas>
+
 
     <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, activeFacets:config.activeFacets)}">
         <f:then>
+            <canvas id="myChart" width="400" height="100"></canvas>
+
             <ul class="facetChartList facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}">
         </f:then>
         <f:else>
+            <canvas id="myChart" width="400" height="300"></canvas>
+
             <ul class="facetChartList hidden facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}">
         </f:else>
     </f:if>
