@@ -10,35 +10,35 @@
     A potentially configured autocomplete popup is created by the
     Facets/Facet/List/Autocomplete partial.
 </f:comment>
+<div class="facetList">
+    <canvas id="myChart" width="400" height="400"></canvas>
 
-<canvas id="myChart" width="400" height="400"></canvas>
+    <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, activeFacets:config.activeFacets)}">
+        <f:then>
+            <ul class="facetChartList facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}">
+        </f:then>
+        <f:else>
+            <ul class="facetChartList hidden facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}">
+        </f:else>
+    </f:if>
 
-<f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, activeFacets:config.activeFacets)}">
-    <f:then>
-        <ul class="facetChartList facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}">
-    </f:then>
-    <f:else>
-        <ul class="facetChartList hidden facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}">
-    </f:else>
-</f:if>
-
-    <f:for each="{facetData.values}" as="itemCount" key="facetTerm" iteration="iterator">
-        <f:alias map="{
-      facetTermDisplay:'{f:if(
-        condition:facetInfo.sortPrefixSeparator,
-        then:\"{s:format.regexp(
-                 string:facetTerm,
-                 match:\'/^.*?{facetInfo.sortPrefixSeparator}/\',
-        replace:\'\'
-        )}\",
-        else:facetTerm
-        )}'
-        }">
-        <f:render partial="Facets/Facet/List/Item" arguments="{_all}"/>
-        </f:alias>
-    </f:for>
-</ul>
-
+        <f:for each="{facetData.values}" as="itemCount" key="facetTerm" iteration="iterator">
+            <f:alias map="{
+          facetTermDisplay:'{f:if(
+            condition:facetInfo.sortPrefixSeparator,
+            then:\"{s:format.regexp(
+                     string:facetTerm,
+                     match:\'/^.*?{facetInfo.sortPrefixSeparator}/\',
+            replace:\'\'
+            )}\",
+            else:facetTerm
+            )}'
+            }">
+            <f:render partial="Facets/Facet/List/Item" arguments="{_all}"/>
+            </f:alias>
+        </f:for>
+    </ul>
+</div>
 <dla:ChartValue labelAs="chartLabels" valueAs="chartValues" countAs="countDocuments" array="{facetData.values}" />
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
