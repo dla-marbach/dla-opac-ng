@@ -18,6 +18,7 @@ class ChartValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
         $this->registerArgument('valueAs', 'string', 'name of the value result variable', true, array());
         $this->registerArgument('labelAs', 'string', 'name of the label result variable', true, array());
         $this->registerArgument('countAs', 'string', 'name of the label result variable', true, array());
+        $this->registerArgument('itemCount', 'integer', 'number of facet item', true, array());
     }
 
     /**
@@ -31,7 +32,7 @@ class ChartValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
         $resultLabel = '';
         $countValues = 0;
         foreach ($array as $key => $value) {
-            if ($i < 5) {
+            if ($i < $this->arguments['itemCount']) {
                 if ($i == 0) {
                     $resultValue .= $value;
                     $resultLabel .= '"'.$key.'"';
