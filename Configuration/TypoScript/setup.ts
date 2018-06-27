@@ -375,12 +375,6 @@ plugin.tx_find {
         # Der Abschnitt "facets" definiert die angebotenen Suchfacetten. Hier können auch Tabs konfiguriert werden.
         # Zur Erläuterung der Parameter siehe die typo3-find-Dokumentation auf GitHub.
         facets {
-            10 {
-                id = Medientyp
-                field = icon_facet
-                sortOrder = count
-                query = icon_facet:("%s")
-            }
             11 {
                 id = Medientypen
                 field = icon_facet
