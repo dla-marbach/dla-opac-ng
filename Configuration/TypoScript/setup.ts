@@ -193,7 +193,9 @@ plugin.tx_find {
         # Der Anschnitt "defaultQuery" legt fest, welche Suche initial ausgeführt werden soll, wenn
         # ein Nutzer den Katalog aufruft. Da kein Trefferset erscheinen soll, ist hier eine Suche
         # definiert, die garantiert keine Treffer erzeugt.
-        defaultQuery = default:*
+        defaultQuery = *:*
+
+        features.eDisMax = 1
 
         # Der Abschnitt "queryFields" definiert die zur Verfügung stehenden Suchfelder.
         # Der Index "0" beschreibt den Standardsuchschlitz, weitere Indizes können zusätzliche
@@ -206,7 +208,7 @@ plugin.tx_find {
                 type = Text
                 # setzt den Standardoperator auf ein logisches UND
                 //query = {!q.op=AND}*:%s
-                query = {!q.op=AND}default:%s
+                query = *:%s
                 # schaltet die Maskierung von Steuerzeichen aus und erlaubt Phrasensuchen und Trunkierungen
                 noescape = 1
             }
