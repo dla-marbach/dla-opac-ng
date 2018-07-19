@@ -182,9 +182,6 @@
       <label index="Autorenbibliotheken">Autorenbibliotheken</label>
       <label index="Exil">Exil</label>
       <label index="Germanisten- und Gelehrtennachlässe">Germanisten- und Gelehrtennachlässe</label>
-      <label index="Mediendokumentation">Mediendokumentation</label>
-      <label index="Porträtgalerie">Porträtgalerie</label>
-      <label index="Verlagsarchive">Verlagsarchive</label>
       <label index="Wiss. Kooperationen">Wiss. Kooperationen</label>
       <label index="Internationale Partneruniversitäten">Internationale Partneruniversitäten</label>
       <label index="Forschungsverbund MWW">Forschungsverbund MWW</label>
@@ -203,7 +200,6 @@
       <label index="Neuerwerbungen">Neuerwerbungen</label>
       <label index="Raumvermietung">Raumvermietung</label>
       <label index="Newsletter">Newsletter</label>
-      <label index="Deutsches Literaturarchiv Marbach">Deutsches Literaturarchiv Marbach</label>
       <label index="Impressum">Impressum</label>
       <label index="Datenschutzerklärung">Datenschutzerklärung</label>
 
@@ -235,8 +231,6 @@
       <label index="Sachschlagwort">Sachschlagwort</label>
       <label index="Bestand">Bestand</label>
       <label index="Buchexemplar">Buchexemplar</label>
-      <label index="Bibliothek">Bibliothek</label>
-      <label index="Handschriften">Handschriften</label>
       <label index="Anmerkungen">Anmerkungen</label>
       <label index="Literatur">Literatur</label>
       <label index="In">In</label>
@@ -250,11 +244,8 @@
       <!-- Resources/Private/Partials/Display/Detail/Inventory/Details.html -->
       <label index="Bestandsart">Bestandsart</label>
       <label index="Bestandsbildner">Bestandsbildner</label>
-      <label index="Entstehungszeit">Entstehungszeit</label>
       <label index="Abteilung">Abteilung</label>
       <label index="Signatur">Signatur</label>
-      <label index="In">In</label>
-      <label index="Umfang">Umfang</label>
       <label index="Inhaltsangabe">Inhaltsangabe</label>
       <label index="Literaturangaben">Literaturangaben</label>
       <label index="Übersicht">Übersicht</label>
@@ -263,12 +254,10 @@
       <label index="Bemerkungen">Bemerkungen</label>
       <label index="Ordnung">Ordnung</label>
       <label index="Verzeichnung">Verzeichnung</label>
-      <label index="Digitales Objekt">Digitales Objekt</label>
       <label index="Beziehungen">Beziehungen</label>
       <label index="Schlagwort">Schlagwort</label>
       <label index="Person Über">Person Über</label>
       <label index="Körperschaft Über">Körperschaft Über</label>
-      <label index="Inhalt">Inhalt</label>
       <label index="Tektonik">Tektonik</label>
 
       <!-- Resources/Private/Partials/Display/Detail/Library/Details.html -->
@@ -277,7 +266,6 @@
       <label index="Erschienen">Erschienen</label>
       <label index="Erscheinungsverlauf">Erscheinungsverlauf</label>
       <label index="Ausgabe">Ausgabe</label>
-      <label index="Umfang">Umfang</label>
       <label index="Physische Beschreibung">Physische Beschreibung</label>
       <label index="ISBN">ISBN</label>
       <label index="ISSN">ISSN</label>
@@ -285,13 +273,8 @@
       <label index="ZDB-ID">ZDB-ID</label>
       <label index="Teil von">Teil von</label>
       <label index="Enthalten in">Enthalten in</label>
-      <label index="Anmerkungen">Anmerkungen</label>
-      <label index="Benutzung">Benutzung</label>
-      <label index="Signatur">Signatur</label>
       <label index="Provenienz">Provenienz</label>
       <label index="Sendeangaben">Sendeangaben</label>
-      <label index="Digitales Objekt">Digitales Objekt</label>
-      <label index="Werk">Werk</label>
       <label index="Teilwerke">Teilwerke</label>
       <label index="Weitere Titel">Weitere Titel</label>
       <label index="Sprache">Sprache</label>
@@ -299,16 +282,11 @@
       <label index="Maßstab">Maßstab</label>
       <label index="Register">Register</label>
       <label index="Enthält">Enthält</label>
-      <label index="Anmerkungen">Anmerkungen</label>
-      <label index="Werk">Werk</label>
-      <label index="Teilwerke">Teilwerke</label>
-      <label index="Inhalt">Inhalt</label>
       <label index="Bibliographie">Bibliographie</label>
       <label index="Enthaltene Beiträge">Enthaltene Beiträge</label>
       <label index="Enthaltene Bände">Enthaltene Bände</label>
       <label index="Rezensionen">Rezensionen</label>
       <label index="Bände und Hefte">Bände und Hefte</label>
-      <label index="Beziehungen">Beziehungen</label>
 
       <!-- Resources/Private/Partials/Display/Detail/Manuscripts/Details.html -->
       <label index="Gattung">Gattung</label>
@@ -319,32 +297,21 @@
       <label index="ÜBER">ÜBER</label>
       <label index="Vorliegende Namensform">Vorliegende Namensform</label>
       <label index="Titel">Titel</label>
-      <label index="Weitere Titel">Weitere Titel</label>
-      <label index="Entstehungszeit">Entstehungszeit</label>
       <label index="Umfang, Beilagen">Umfang, Beilagen</label>
-      <label index="Sprache">Sprache</label>
       <label index="Objektart">Objektart</label>
-      <label index="Inhalt">Inhalt</label>
-      <label index="Anmerkungen">Anmerkungen</label>
-      <label index="Schlagwort">Schlagwort</label>
-      <label index="Werk">Werk</label>
       <label index="Bei / Auf / In">Bei / Auf / In</label>
       <label index="Dabei / Darauf / Darin">Dabei / Darauf / Darin</label>
       <label index="Bilder &amp; Objekte">Bilder &amp; Objekte</label>
       <label index="Bestandssignatur">Bestandssignatur</label>
       <label index="Zugangsnummer">Zugangsnummer</label>
-      <label index="Mediennummer">Mediennummer</label>
       <label index="Übernommene Sigel">Übernommene Sigel</label>
       <label index="Mikrofiche">Mikrofiche</label>
       <label index="Repro">Repro</label>
       <label index="Kasten">Kasten</label>
       <label index="Mappe">Mappe</label>
-      <label index="Benutzung">Benutzung</label>
-      <label index="Digitales Objekt">Digitales Objekt</label>
 
       <!-- Resources/Private/Partials/Display/Detail/Normdata/Person.html -->
       <label index="GND">GND</label>
-      <label index="Person">Person</label>
       <label index="Andere Namen">Andere Namen</label>
       <label index="Geschlecht">Geschlecht</label>
       <label index="Lebensdaten">Lebensdaten:</label>
@@ -358,24 +325,16 @@
       <label index="Icon">Icon</label>
       <label index="Typ">Typ</label>
       <label index="Titel des Werkes">Titel des Werkes</label>
-      <label index="Urheber">Urheber</label>
-      <label index="Beteiligt">Beteiligt</label>
-      <label index="Weitere Titel">Weitere Titel</label>
       <label index="Form des Werks">Form des Werks</label>
       <label index="Zeit">Zeit</label>
-      <label index="Sprache">Sprache</label>
-      <label index="Quelle">Quelle</label>
-      <label index="Erläuterung">Erläuterung</label>
       <label index="Dieses Werk in">Dieses Werk in</label>
       <label index="Übersetzungen dieses Werks">Übersetzungen dieses Werks</label>
       <label index="Über dieses Werk">Über dieses Werk</label>
 
       <!-- Resources/Private/Partials/Display/Detail/MediatypeIcon.html -->
       <label index="AV-Medien">AV-Medien</label>
-      <label index="Bilder &amp; Objekte">Bilder &amp; Objekte</label>
       <label index="Daten">Daten</label>
       <label index="Gedrucktes">Gedrucktes</label>
-      <label index="Handschriften">Handschriften</label>
       <label index="Normdaten">Normdaten</label>
       <label index="Sonstiges">Sonstiges</label>
 
@@ -387,16 +346,8 @@
       -->
 
       <!-- Resources/Private/Partials/Display/Field/MediatypeIcon.html -->
-      <label index="AV-Medien">AV-Medien</label>
-      <label index="Bilder &amp; Objekte">Bilder &amp; Objekte</label>
-      <label index="Daten">Daten</label>
-      <label index="Gedrucktes">Gedrucktes</label>
-      <label index="Handschriften">Handschriften</label>
-      <label index="Normdaten">Normdaten</label>
-      <label index="Sonstiges">Sonstiges</label>
 
       <!-- Resources/Private/Partials/Display/Field/Result.html -->
-      <label index="Technik">Technik</label>
       <label index="Benutzungszugang">Benutzungszugang</label>
       <label index="nicht ausleihbar">nicht ausleihbar,</label>
       <label index="weiterer Hinweis hier">weiterer Hinweis hier</label>
@@ -408,9 +359,6 @@
       <label index="Feedback">Feedback</label>
       <label index="Mein Konto">Mein Konto</label>
       <label index="Gesamtbestand">Gesamtbestand</label>
-      <label index="Gedrucktes">Gedrucktes</label>
-      <label index="Handschriften">Handschriften</label>
-      <label index="Bilder &amp; Objekte">Bilder &amp; Objekte</label>
       <label index="Audio &amp; Video">Audio &amp; Video</label>
       <label index="Jetzt suchen">Jetzt suchen</label>
       <label index="Expertensuche">Expertensuche</label>
@@ -422,12 +370,10 @@
       <label index="Gleicher Künstler">Gleicher Künstler</label>
       <label index="Gleicher Nachlass">Gleicher Nachlass</label>
       <label index="Ähnliche Fundstücke">Ähnliche Fundstücke</label>
-      <label index="Bestandsübersicht">Bestandsübersicht</label>
 
       <!-- Resources/Private/Templates/Search/Index.html -->
       <label index="Sie haben das Gesuchte nicht gefunden?">Sie haben das Gesuchte nicht gefunden?</label>
       <label index="Sprechen Sie uns an: Aenean massa. Cum sociis natoque penati montes, nascetur ridiculus mus donec quam.">Sprechen Sie uns an: Aenean massa. Cum sociis natoque penati montes, nascetur ridiculus mus donec quam.</label>
-      <label index="Kontakt">Kontakt</label>
       <label index="Auskunftsdienst Archiv">Auskunftsdienst Archiv</label>
       <label index="Telefon &lt;a href='tel:+497144848425'&gt;+49 (0) 7144 / 848-425&lt;/a&gt;&lt;br/&gt;&lt;a href='mailto:auskhss@dla-marbach.de'&gt;auskhss@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 18:00h">Telefon &lt;a href="tel:+497144848425"&gt;+49 (0) 7144 / 848-425&lt;/a&gt;&lt;br/&gt;&lt;a href="mailto:auskhss@dla-marbach.de"&gt;auskhss@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 18:00h</label>
       <label index="Auskunftsdienst Bibliothek">Auskunftsdienst Bibliothek</label>
@@ -436,20 +382,6 @@
       <label index="schließen">schließen</label>
 
       <!-- Resources/Private/Templates/Start/Start.html -->
-      <label index="Kallías">Kallías</label>
-      <label index="der Online-Katalog des Deutschen Literaturarchivs Marbach">der Online-Katalog des Deutschen Literaturarchivs Marbach</label>
-      <label index="Merkliste">Merkliste</label>
-      <label index="Feedback">Feedback</label>
-      <label index="Mein Konto">Mein Konto</label>
-      <label index="Gesamtbestand">Gesamtbestand</label>
-      <label index="Gedrucktes">Gedrucktes</label>
-      <label index="Handschriften">Handschriften</label>
-      <label index="Bilder &amp; Objekte">Bilder &amp; Objekte</label>
-      <label index="Audio &amp; Video">Audio &amp; Video</label>
-      <label index="Jetzt suchen">Jetzt suchen</label>
-      <label index="Expertensuche">Expertensuche</label>
-      <label index="Bestandsübersicht">Bestandsübersicht</label>
-      <label index="Suchverlauf">Suchverlauf</label>
       <label index="Hilfe &amp; Auskunft">Hilfe &amp; Auskunft</label>
 
     </languageKey>
