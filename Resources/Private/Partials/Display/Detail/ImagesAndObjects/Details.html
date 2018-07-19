@@ -76,10 +76,10 @@
     </div>
 
     <ul class="ctg-dvh-aside">
-        <li><a class="ctg-button" title="merken"><span class="icon bel-stern01"></span></a></li>
-        <li><a class="ctg-button" title="versenden"><span class="icon bel-brief01"></span></a></li>
-        <li><a class="ctg-button" title="teilen"><span class="icon bel-link01"></span></a></li>
-        <li><a class="ctg-button" title="exportieren"><span class="icon bel-postin"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='merken' extensionName='dla_opac_ng'/>"><span class="icon bel-stern01"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='versenden' extensionName='dla_opac_ng'/>"><span class="icon bel-brief01"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='teilen' extensionName='dla_opac_ng'/>"><span class="icon bel-link01"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='exportieren' extensionName='dla_opac_ng'/>"><span class="icon bel-postin"></span></a></li>
     </ul>
 </div>
 
@@ -93,7 +93,7 @@
 
 <div class="ctg-detailview-tabs">
     <ul class="ctg-dtvt-menu">
-        <li><a href="" class="ctg-dtvt-menu-active"><span>Details</span></a></li><li><a href=""><span>Zugang (?)</span></a></li><li><a href=""><span>Platzhalter 1</span></a></li><li><a href=""><span>Platzhalter 2</span></a></li>
+        <li><a href="" class="ctg-dtvt-menu-active"><span><f:translate key='Details' extensionName='dla_opac_ng'/></span></a></li><li><a href=""><span><f:translate key='Zugang' extensionName='dla_opac_ng'/> (?)</span></a></li><li><a href=""><span>Platzhalter 1</span></a></li><li><a href=""><span>Platzhalter 2</span></a></li>
     </ul>
 
     <div class="ctg-dtvt-details">
@@ -103,7 +103,7 @@
 </f:comment>
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        Medienart
+        <f:translate key='Medienart' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:render
@@ -137,7 +137,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        Objekttyp
+        <f:translate key='Objekttyp' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{fieldValue}">
@@ -165,7 +165,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51801')}" name="B51801" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Originaltitel
+            <f:translate key='Originaltitel' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{B51801}">
@@ -189,7 +189,7 @@
 
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Person
+            <f:translate key='Person' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="
@@ -262,7 +262,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_K0800_KSU200')}" name="XX_KS_K0800_KSU200" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Körperschaft
+            <f:translate key='Körperschaft' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{XX_KS_K0800_KSE200} || {XX_KS_K0800_KSC200} || {XX_KS_K0800_KSA200} || {XX_KS_K0800_KSU200}">
@@ -326,7 +326,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B52010')}" name="B52010" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Allgemeine Beschreibung
+            <f:translate key='Allgemeine Beschreibung' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{B52010}">
@@ -356,7 +356,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B02000')}" name="B02000" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Entstehungszeit
+            <f:translate key='Entstehungszeit' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{B02040} || {B0204A}">
@@ -387,7 +387,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B52020')}" name="B52020" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Bezeichnung
+            <f:translate key='Bezeichnung' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{B52020}">
@@ -413,7 +413,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B52010')}" name="B52010" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Technik
+            <f:translate key='Technik' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{B52010}">
@@ -439,7 +439,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B02050')}" name="B02050" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Umfang
+            <f:translate key='Umfang' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{B02050}">
@@ -469,7 +469,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B52011')}" name="B52011" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Maße [in cm]
+            <f:translate key='Maße [in cm]' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{height} || {width} || {depth} || {diameter} || {B52011}">
@@ -497,7 +497,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B01610')}" name="B01610" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Erhaltungszustand
+            <f:translate key='Erhaltungszustand' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{B01610}">
@@ -523,7 +523,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51420')}" name="B51420" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Objekt- und Konvoluttypen
+            <f:translate key='Objekt- und Konvoluttypen' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{B51420}">
@@ -549,7 +549,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0331_AKY526')}" name="XX_AK_A0331_AKY526" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Werk
+            <f:translate key='Werk' extensionName='dla_opac_ng'/>
         </div>
 
         <div class="ctg-dtvt-content">
@@ -577,7 +577,7 @@
 
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Ort
+            <f:translate key='Ort' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             Baustelle <br />
@@ -605,7 +605,7 @@
 
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Sachschlagwort
+            <f:translate key='Sachschlagwort' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             Baustelle <br />
@@ -633,7 +633,7 @@
 
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Bestand
+            <f:translate key='Bestand' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_BF_BFNAM_BFKEY')}">
@@ -660,7 +660,7 @@
 
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Buchexemplar
+            <f:translate key='Buchexemplar' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AU_AKKEY_AUKEY')}">
@@ -685,7 +685,7 @@
 
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Bibliothek
+            <f:translate key='Bibliothek' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0331_AKA451')}">
@@ -711,7 +711,7 @@
 
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Handschriften
+            <f:translate key='Handschriften' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_HS_H41800_HSKEY')}">
@@ -743,7 +743,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B01660')}" name="B01660" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Anmerkungen
+            <f:translate key='Anmerkungen' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{B52030} || {B02630} || {B52007} || {B01660}">
@@ -767,7 +767,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B01630')}" name="B01630" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Literatur
+            <f:translate key='Literatur' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{B01630}">
@@ -792,7 +792,7 @@
 
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            In
+            <f:translate key='In' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_BI_B51800_BIOKEY')}">
@@ -820,7 +820,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B04000')}" name="B04000" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Inventarnummer
+            <f:translate key='Inventarnummer' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{B04000}">
@@ -846,7 +846,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_BE_E05080')}" name="XX_BE_E05080" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Erwerbungsnummer
+            <f:translate key='Erwerbungsnummer' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             Baustelle <br />
@@ -874,7 +874,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B04100')}" name="B04100" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Digitales Objekt
+            <f:translate key='Digitales Objekt' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{picture_midi} || {B04100} ">
@@ -912,7 +912,7 @@
 
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Inhalt
+            <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             Baustelle <br />
@@ -950,7 +950,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KLASS')}" name="KLASS" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Benutzung
+            <f:translate key='Benutzung' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="{AUSTAT} || {KLASS} ">
@@ -984,7 +984,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BIOKEY')}" name="BIOKEY" />
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        Darin
+        <f:translate key='Darin' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{BIOKEY}">

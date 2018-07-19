@@ -348,7 +348,7 @@
       <label index="Andere Namen">Andere Namen</label>
       <label index="Geschlecht">Geschlecht</label>
       <label index="Lebensdaten">Lebensdaten:</label>
-      <label index="Wirkungsdaten:">Wirkungsdaten:</label>
+      <label index="Wirkungsdaten">Wirkungsdaten:</label>
       <label index="Land">Land</label>
       <label index="Normsatz">Normsatz</label>
       <label index="Quelle">Quelle</label>
@@ -398,7 +398,7 @@
       <!-- Resources/Private/Partials/Display/Field/Result.html -->
       <label index="Technik">Technik</label>
       <label index="Benutzungszugang">Benutzungszugang</label>
-      <label index="nicht ausleihbar,">nicht ausleihbar,</label>
+      <label index="nicht ausleihbar">nicht ausleihbar,</label>
       <label index="weiterer Hinweis hier">weiterer Hinweis hier</label>
 
       <!-- Resources/Private/Partials/Form/Form.html -->
@@ -410,8 +410,8 @@
       <label index="Gesamtbestand">Gesamtbestand</label>
       <label index="Gedrucktes">Gedrucktes</label>
       <label index="Handschriften">Handschriften</label>
-      <label index="Bilder und Objekte">Bilder &amp; Objekte</label>
-      <label index="Audio und Video">Audio &amp; Video</label>
+      <label index="Bilder &amp; Objekte">Bilder &amp; Objekte</label>
+      <label index="Audio &amp; Video">Audio &amp; Video</label>
       <label index="Jetzt suchen">Jetzt suchen</label>
       <label index="Expertensuche">Expertensuche</label>
       <label index="Bestandsübersicht">Bestandsübersicht</label>
@@ -425,9 +425,6 @@
       <label index="Bestandsübersicht">Bestandsübersicht</label>
 
       <!-- Resources/Private/Templates/Search/Index.html -->
-      <label index="versenden">versenden</label>
-      <label index="teilen">teilen</label>
-      <label index="exportieren">exportieren</label>
       <label index="Sie haben das Gesuchte nicht gefunden?">Sie haben das Gesuchte nicht gefunden?</label>
       <label index="Sprechen Sie uns an: Aenean massa. Cum sociis natoque penati montes, nascetur ridiculus mus donec quam.">Sprechen Sie uns an: Aenean massa. Cum sociis natoque penati montes, nascetur ridiculus mus donec quam.</label>
       <label index="Kontakt">Kontakt</label>

@@ -488,3 +488,5 @@ config {
     htmlTag_setParams = lang="en" dir="ltr" class="no-js"
 }
 [global]
+
+page.config.contentObjectExceptionHandler = 0

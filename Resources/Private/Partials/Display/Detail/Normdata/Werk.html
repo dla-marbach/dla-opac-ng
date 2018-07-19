@@ -68,10 +68,10 @@
     </div>
 
     <ul class="ctg-dvh-aside">
-        <li><a class="ctg-button" title="merken"><span class="icon bel-stern01"></span></a></li>
-        <li><a class="ctg-button" title="versenden"><span class="icon bel-brief01"></span></a></li>
-        <li><a class="ctg-button" title="teilen"><span class="icon bel-link01"></span></a></li>
-        <li><a class="ctg-button" title="exportieren"><span class="icon bel-postin"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='merken' extensionName='dla_opac_ng'/>"><span class="icon bel-stern01"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='versenden' extensionName='dla_opac_ng'/>"><span class="icon bel-brief01"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='teilen' extensionName='dla_opac_ng'/>"><span class="icon bel-link01"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='exportieren' extensionName='dla_opac_ng'/>"><span class="icon bel-postin"></span></a></li>
     </ul>
 </div>
 
@@ -83,14 +83,14 @@
 
 <div class="ctg-detailview-tabs">
     <ul class="ctg-dtvt-menu">
-        <li><a href="" class="ctg-dtvt-menu-active"><span>Details</span></a></li><li><a href=""><span>Zugang (?)</span></a></li><li><a href=""><span>Platzhalter 1</span></a></li><li><a href=""><span>Platzhalter 2</span></a></li>
+        <li><a href="" class="ctg-dtvt-menu-active"><span><f:translate key='Details' extensionName='dla_opac_ng'/></span></a></li><li><a href=""><span><f:translate key='Zugang' extensionName='dla_opac_ng'/> (?)</span></a></li><li><a href=""><span>Platzhalter 1</span></a></li><li><a href=""><span>Platzhalter 2</span></a></li>
     </ul>
 
     <div class="ctg-dtvt-details">
 
 
 <dt class="dt-{field}">
-    Icon
+    <f:translate key='Icon' extensionName='dla_opac_ng'/>
 </dt>
 <dd class="dd-{field}">
     <i class="fa fa-stack-1x fa-address-card" title="Normdaten"></i>
@@ -98,7 +98,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Typ
+    <f:translate key='Typ' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     <f:render
@@ -115,7 +115,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Titel des Werkes
+    <f:translate key='Titel des Werkes' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     <f:render
@@ -132,7 +132,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Urheber
+        <f:translate key='Urheber' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     </div>
@@ -140,7 +140,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Beteiligt
+        <f:translate key='Beteiligt' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     </div>
@@ -148,7 +148,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Weitere Titel
+        <f:translate key='Weitere Titel' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     <dla:data.valueForKeyFiltered key="ATIT" filterKey="AMTIT" filterValues="{0:'303n'}" mustMatch="false" fields="{document.fields}" as="ATIT" />
@@ -164,7 +164,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Form des Werks
+    <f:translate key='Form des Werks' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     <f:render
@@ -181,7 +181,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Zeit
+    <f:translate key='Zeit' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     </div>
@@ -189,7 +189,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Sprache
+        <f:translate key='Sprache' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     <f:render
@@ -206,7 +206,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Quelle
+        <f:translate key='Quelle' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     <f:render
@@ -241,7 +241,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Erläuterung
+        <f:translate key='Erläuterung' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     <dla:data.valueForKeyFiltered key="A0659" filterKey="AI659" filterValues="{0:'678'}" mustMatch="false" fields="{document.fields}" as="A0659" />
@@ -281,7 +281,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Dieses Werk in
+    <f:translate key='Dieses Werk in' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     </div>
@@ -289,7 +289,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Übersetzungen dieses Werks
+    <f:translate key='Übersetzungen dieses Werks' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     </div>
@@ -297,7 +297,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Über dieses Werk
+    <f:translate key='Über dieses Werk' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     </div>

@@ -17,7 +17,7 @@
 
     <h3>
       <f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}" default="{facetInfo.id}"/>
-      <a title="schließen" data-facet-toggle="1"><span class="icon bel-pfeil-o01"></span></a>
+      <a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>" data-facet-toggle="1"><span class="icon bel-pfeil-o01"></span></a>
     </h3>
     <f:alias map="{facetType:'{f:if(condition:facetInfo.type, then:facetInfo.type, else:\"List\")}'}">
       <f:render partial="Facets/Facet/{facetType}" arguments="{_all}"/>

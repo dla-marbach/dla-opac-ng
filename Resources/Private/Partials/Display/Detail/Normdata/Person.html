@@ -68,10 +68,10 @@
     </div>
 
     <ul class="ctg-dvh-aside">
-        <li><a class="ctg-button" title="merken"><span class="icon bel-stern01"></span></a></li>
-        <li><a class="ctg-button" title="versenden"><span class="icon bel-brief01"></span></a></li>
-        <li><a class="ctg-button" title="teilen"><span class="icon bel-link01"></span></a></li>
-        <li><a class="ctg-button" title="exportieren"><span class="icon bel-postin"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='merken' extensionName='dla_opac_ng'/>"><span class="icon bel-stern01"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='versenden' extensionName='dla_opac_ng'/>"><span class="icon bel-brief01"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='teilen' extensionName='dla_opac_ng'/>"><span class="icon bel-link01"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='exportieren' extensionName='dla_opac_ng'/>"><span class="icon bel-postin"></span></a></li>
     </ul>
 </div>
 
@@ -83,7 +83,7 @@
 
 <div class="ctg-detailview-tabs">
     <ul class="ctg-dtvt-menu">
-        <li><a href="" class="ctg-dtvt-menu-active"><span>Details</span></a></li><li><a href=""><span>Zugang (?)</span></a></li><li><a href=""><span>Platzhalter 1</span></a></li><li><a href=""><span>Platzhalter 2</span></a></li>
+        <li><a href="" class="ctg-dtvt-menu-active"><span><f:translate key='Details' extensionName='dla_opac_ng'/></span></a></li><li><a href=""><span><f:translate key='Zugang' extensionName='dla_opac_ng'/> (?)</span></a></li><li><a href=""><span>Platzhalter 1</span></a></li><li><a href=""><span>Platzhalter 2</span></a></li>
     </ul>
 
     <div class="ctg-dtvt-details">
@@ -91,7 +91,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Medienart
+        <f:translate key='Medienart' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     <f:render
@@ -108,7 +108,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    GND (Baustelle)
+        <f:translate key='GND' extensionName='dla_opac_ng'/> (Baustelle)
 </div>
 <div class="ctg-dtvt-content">
     <f:render
@@ -136,7 +136,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Person
+        <f:translate key='Person' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     <f:render
@@ -155,7 +155,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PI830')}" name="PI830" />
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Andere Namen
+    <f:translate key='Andere Namen' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     <f:if condition="{P0830} || {PI830}">
@@ -187,7 +187,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Geschlecht
+    <f:translate key='Geschlecht' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     <f:render
@@ -205,7 +205,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Lebensdaten:
+    <f:translate key='Lebensdaten' extensionName='dla_opac_ng'/>:
 </div>
 <div class="ctg-dtvt-content">
     <f:render
@@ -232,7 +232,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Wirkungsdaten:
+    <f:translate key='Wirkungsdaten' extensionName='dla_opac_ng'/>:
 </div>
 <div class="ctg-dtvt-content">
     <f:render
@@ -260,7 +260,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Land
+    <f:translate key='Land' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     <f:render
@@ -278,7 +278,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Normsatz (Baustelle)
+    <f:translate key='Normsatz' extensionName='dla_opac_ng'/> (Baustelle)
 </div>
 <div class="ctg-dtvt-content">
     <f:render
@@ -297,7 +297,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PI801')}" name="PI801" />
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-    Quelle
+    <f:translate key='Quelle' extensionName='dla_opac_ng'/>
 </div>
 <div class="ctg-dtvt-content">
     <f:if condition="{P0801} || {PI801}">
@@ -363,7 +363,7 @@
 <f:if condition="{PIU814.0} == 'Biografische Angaben'">
     <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        Erläuterung
+        <f:translate key='Erläuterung' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:render
@@ -384,7 +384,7 @@
 <f:if condition="{PI808.0} == 'Geschichte des Werks'">
     <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        Erläuterung
+        <f:translate key='Erläuterung' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:render

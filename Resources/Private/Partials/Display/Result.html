@@ -115,15 +115,15 @@
 
     <div class="ctg-ri-actions">
         <ul>
-            <li><a class="ctg-button" title="merken"><span class="icon bel-stern01"></span></a></li>
-            <li><a class="ctg-button" title="Details" data-details-toggle="1"><span class="icon bel-pfeil-u01"></span></a></li>
+            <li><a class="ctg-button" title="<f:translate key='merken' extensionName='dla_opac_ng'/>"><span class="icon bel-stern01"></span></a></li>
+            <li><a class="ctg-button" title="<f:translate key='Details' extensionName='dla_opac_ng'/>" data-details-toggle="1"><span class="icon bel-pfeil-u01"></span></a></li>
         </ul>
     </div>
     <div class="ctg-ri-details" style="display:none;">
         <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_type)}">
             <div class="ctg-rid-row">
                 <div class="ctg-rid-label">
-                    Medientyp
+                    <f:translate key='Medientyp' extensionName='dla_opac_ng'/>
                 </div>
                 <div class="ctg-rid-content">
                     {document.listview_type}
@@ -132,7 +132,7 @@
         </f:if>
         <div class="ctg-rid-row">
             <div class="ctg-rid-label">
-                Technik
+                <f:translate key='Technik' extensionName='dla_opac_ng'/>
             </div>
             <div class="ctg-rid-content">
                 Baustelle
@@ -140,10 +140,10 @@
         </div>
         <div class="ctg-rid-row">
             <div class="ctg-rid-label">
-                Benutzungszugang
+                <f:translate key='Benutzungszugang' extensionName='dla_opac_ng'/>
             </div>
             <div class="ctg-rid-content">
-                Baustelle: nicht ausleihbar, <a href="">weiterer Hinweis hier</a>
+                Baustelle: <f:translate key='nicht ausleihbar' extensionName='dla_opac_ng'/>, <a href=""><f:translate key='weiterer Hinweis hier' extensionName='dla_opac_ng'/></a>
             </div>
         </div>
     </div>

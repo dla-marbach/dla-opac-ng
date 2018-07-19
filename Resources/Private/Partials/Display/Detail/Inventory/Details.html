@@ -68,10 +68,10 @@
     </div>
 
     <ul class="ctg-dvh-aside">
-        <li><a class="ctg-button" title="merken"><span class="icon bel-stern01"></span></a></li>
-        <li><a class="ctg-button" title="versenden"><span class="icon bel-brief01"></span></a></li>
-        <li><a class="ctg-button" title="teilen"><span class="icon bel-link01"></span></a></li>
-        <li><a class="ctg-button" title="exportieren"><span class="icon bel-postin"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='merken' extensionName='dla_opac_ng'/>"><span class="icon bel-stern01"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='versenden' extensionName='dla_opac_ng'/>"><span class="icon bel-brief01"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='teilen' extensionName='dla_opac_ng'/>"><span class="icon bel-link01"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='exportieren' extensionName='dla_opac_ng'/>"><span class="icon bel-postin"></span></a></li>
     </ul>
 </div>
 
@@ -84,14 +84,14 @@
 
 <div class="ctg-detailview-tabs">
     <ul class="ctg-dtvt-menu">
-        <li><a href="" class="ctg-dtvt-menu-active"><span>Details</span></a></li><li><a href=""><span>Zugang (?)</span></a></li><li><a href=""><span>Platzhalter 1</span></a></li><li><a href=""><span>Platzhalter 2</span></a></li>
+        <li><a href="" class="ctg-dtvt-menu-active"><span><f:translate key='Details' extensionName='dla_opac_ng'/></span></a></li><li><a href=""><span><f:translate key='Zugang' extensionName='dla_opac_ng'/> (?)</span></a></li><li><a href=""><span>Platzhalter 1</span></a></li><li><a href=""><span>Platzhalter 2</span></a></li>
     </ul>
 
     <div class="ctg-dtvt-details">
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        Medienart
+        <f:translate key='Medienart' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:render
@@ -113,7 +113,7 @@
 <f:if condition="{B4164E} || {B41640} || {B41650}">
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        Bestandsart
+        <f:translate key='Bestandsart' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <dla:data.joinFields
@@ -137,7 +137,7 @@
 <f:if condition="{XX_PE_P0800_PEU100} || {XX_KS_K0800_KSU200}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Bestandsbildner
+            <f:translate key='Bestandsbildner' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
 
@@ -170,7 +170,7 @@
 <f:if condition="{H02035} || {H02040} || {PB814}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Entstehungszeit
+            <f:translate key='Entstehungszeit' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <dla:data.joinFields
@@ -199,7 +199,7 @@
 <f:if condition="{DLAABT}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Abteilung
+            <f:translate key='Abteilung' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:render
@@ -220,7 +220,7 @@
 <f:if condition="{B41600}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Signatur
+            <f:translate key='Signatur' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:render
@@ -241,7 +241,7 @@
 <f:if condition="{XX_BF_BFNAM_BUEBKY}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            In
+            <f:translate key='In' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:render
@@ -262,7 +262,7 @@
 <f:if condition="{B99998}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Umfang
+            <f:translate key='Umfang' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:render
@@ -283,7 +283,7 @@
 <f:if condition="{B01600}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Inhaltsangabe
+            <f:translate key='Inhaltsangabe' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:render
@@ -305,7 +305,7 @@
 <f:if condition="{B02420}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Literaturangaben
+            <f:translate key='Literaturangaben' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:render
@@ -328,7 +328,7 @@
 <f:if condition="{B41660}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Übersicht
+            <f:translate key='Übersicht' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:render
@@ -349,7 +349,7 @@
 <f:if condition="{BUCHN}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Mediennummer
+            <f:translate key='Mediennummer' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:render
@@ -372,7 +372,7 @@
 <f:if condition="{AUSTAT} || {KLASS} || {B04030}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Benutzungshinweis
+            <f:translate key='Benutzungshinweis' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <dla:data.joinFields
@@ -401,7 +401,7 @@
 <f:if condition="{BEMEXT}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Bemerkungen
+            <f:translate key='Bemerkungen' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:render
@@ -424,7 +424,7 @@
 <f:if condition="{B01610} || {B01611} || {B01612}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Ordnung
+            <f:translate key='Ordnung' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <dla:data.joinFields
@@ -455,7 +455,7 @@
 <f:if condition="{B02610} || {B02611} || {B02612}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Verzeichnung
+            <f:translate key='Verzeichnung' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <dla:data.joinFields
@@ -484,7 +484,7 @@
 <f:if condition="{XX_MM_MOTITL_INDKEY}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Digitales Objekt
+            <f:translate key='Digitales Objekt' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:render
@@ -504,7 +504,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B0001')}" name="B0001" />
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        Beziehungen
+        <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
 
@@ -532,7 +532,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B0001')}" name="B0001" />
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        Beziehungen
+        <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
 
@@ -561,7 +561,7 @@
 <f:if condition="{XX_TH_SWAF_THA710}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Schlagwort
+            <f:translate key='Schlagwort' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:render
@@ -583,7 +583,7 @@
 <f:if condition="{XX_PE_listview_titel_PEE100}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Person Über
+            <f:translate key='Person Über' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <dla:data.joinFields
@@ -613,7 +613,7 @@
 <f:if condition="{XX_KS_listview_titel_KSE200}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Körperschaft Über
+            <f:translate key='Körperschaft Über' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <dla:data.joinFields
@@ -642,7 +642,7 @@
 <f:if condition="{URLBEM} || {B00220}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Inhalt
+            <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:for each="{URLBEM}" as="item" iteration="iterator">
@@ -657,7 +657,7 @@
 <f:if condition="{}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            Tektonik
+            <f:translate key='Tektonik' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             unklar!

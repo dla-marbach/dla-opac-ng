@@ -148,10 +148,10 @@
     </div>
 
     <ul class="ctg-dvh-aside">
-        <li><a class="ctg-button" title="merken"><span class="icon bel-stern01"></span></a></li>
-        <li><a class="ctg-button" title="versenden"><span class="icon bel-brief01"></span></a></li>
-        <li><a class="ctg-button" title="teilen"><span class="icon bel-link01"></span></a></li>
-        <li><a class="ctg-button" title="exportieren"><span class="icon bel-postin"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='merken' extensionName='dla_opac_ng'/>"><span class="icon bel-stern01"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='versenden' extensionName='dla_opac_ng'/>"><span class="icon bel-brief01"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='teilen' extensionName='dla_opac_ng'/>"><span class="icon bel-link01"></span></a></li>
+        <li><a class="ctg-button" title="<f:translate key='exportieren' extensionName='dla_opac_ng'/>"><span class="icon bel-postin"></span></a></li>
     </ul>
 </div>
 
@@ -163,13 +163,13 @@
 
 <div class="ctg-detailview-tabs">
     <ul class="ctg-dtvt-menu">
-        <li><a href="" class="ctg-dtvt-menu-active"><span>Details</span></a></li><li><a href=""><span>Zugang (?)</span></a></li><li><a href=""><span>Platzhalter 1</span></a></li><li><a href=""><span>Platzhalter 2</span></a></li>
+        <li><a href="" class="ctg-dtvt-menu-active"><span><f:translate key='Details' extensionName='dla_opac_ng'/></span></a></li><li><a href=""><span><f:translate key='Zugang' extensionName='dla_opac_ng'/> (?)</span></a></li><li><a href=""><span>Platzhalter 1</span></a></li><li><a href=""><span>Platzhalter 2</span></a></li>
     </ul>
 
     <div class="ctg-dtvt-details">
         <div class="ctg-dtvt-row">
             <div class="ctg-dtvt-label">
-                Medientyp
+                <f:translate key='Medientyp' extensionName='dla_opac_ng'/>
             </div>
             <div class="ctg-dtvt-content">
                 <f:render
@@ -198,7 +198,7 @@
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
 
     <div class="ctg-dtvt-label">
-        Urheber
+        <f:translate key='Urheber' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{author}">
@@ -249,7 +249,7 @@
     />
 
     <div class="ctg-dtvt-label">
-        Beteiligt
+        <f:translate key='Beteiligt' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{involved}">
@@ -288,7 +288,7 @@
     />
 
     <div class="ctg-dtvt-label">
-        Erschienen
+        <f:translate key='Erschienen' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{appeared}">
@@ -326,7 +326,7 @@
 
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0405')}" name="A0405" />
     <div class="ctg-dtvt-label">
-        Erscheinungsverlauf
+        <f:translate key='Erscheinungsverlauf' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{A0405}">
@@ -354,7 +354,7 @@
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0403')}" name="A0403" />
 
     <div class="ctg-dtvt-label">
-        Ausgabe
+        <f:translate key='Ausgabe' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{A0403}">
@@ -390,7 +390,7 @@
     />
 
     <div class="ctg-dtvt-label">
-        Umfang
+        <f:translate key='Umfang' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{linkTexts}">
@@ -426,7 +426,7 @@
     />
 
     <div class="ctg-dtvt-label">
-        Physische Beschreibung
+        <f:translate key='Physische Beschreibung' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{A0653} || {AI653}">
@@ -454,7 +454,7 @@
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0540')}" name="A0540" />
 
     <div class="ctg-dtvt-label">
-        ISBN
+        <f:translate key='ISBN' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{A0540}">
@@ -479,7 +479,7 @@
 <div class="ctg-dtvt-row">
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0542')}" name="A0542" />
     <div class="ctg-dtvt-label">
-        ISSN
+        <f:translate key='ISSN' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{A0542}">
@@ -503,7 +503,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        E-ISSN
+        <f:translate key='E-ISSN' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         Baustelle
@@ -519,7 +519,7 @@
             as="ANUM" />
 
     <div class="ctg-dtvt-label">
-        ZDB-ID
+        <f:translate key='ZDB-ID' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{ANUM}">
@@ -598,7 +598,7 @@
     </f:if>
 
     <div class="ctg-dtvt-label">
-        Teil von
+        <f:translate key='Teil von' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{linkTexts}">
@@ -678,7 +678,7 @@
     </f:if>
 
     <div class="ctg-dtvt-label">
-        Enthalten in
+        <f:translate key='Enthalten in' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{linkTexts}">
@@ -716,7 +716,7 @@
             as="A0501" />
 
     <div class="ctg-dtvt-label">
-        Anmerkungen
+        <f:translate key='Anmerkungen' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{A0501}">
@@ -748,7 +748,7 @@
     </f:if>
 
     <div class="ctg-dtvt-label">
-        Benutzung
+        <f:translate key='Benutzung' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{usage}">
@@ -769,7 +769,7 @@
     />
 
     <div class="ctg-dtvt-label">
-        Signatur
+        <f:translate key='Signatur' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         Baustelle
@@ -799,13 +799,13 @@
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_FBTIT_AUKEY')}" name="XX_AU_FBTIT_AUKEY" />
 
     <div class="ctg-dtvt-label">
-        Provenienz
+        <f:translate key='Provenienz' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{XX_AU_WSIGNA_AUKEY} || {XX_AU_PEU100_AUKEY} || {XX_AU_FBTIT_AUKEY}">
             <f:then>
                 <f:if condition="{XX_AU_WSIGNA_AUKEY}">
-                    Bestand:
+                    <f:translate key='Bestand' extensionName='dla_opac_ng'/>:
                     <f:render
                         partial="Display/Field/List"
                         arguments="{
@@ -856,7 +856,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        Sendeangaben
+        <f:translate key='Sendeangaben' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDER_AUKEY')}">
@@ -901,7 +901,7 @@
     />
 
     <div class="ctg-dtvt-label">
-        Digitales Objekt
+        <f:translate key='Digitales Objekt' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{XX_MM_MOTITL_INDKEY} || {digitalObject} ">
@@ -946,7 +946,7 @@
             as="ATIT" />
 
     <div class="ctg-dtvt-label">
-        Werk
+        <f:translate key='Werk' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{ATIT}">
@@ -971,7 +971,7 @@
             as="ATIT" />
 
     <div class="ctg-dtvt-label">
-        Teilwerke
+        <f:translate key='Teilwerke' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{ATIT}">
@@ -996,7 +996,7 @@
             as="ATIT" />
 
     <div class="ctg-dtvt-label">
-        Weitere Titel
+        <f:translate key='Weitere Titel' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{ATIT}">
@@ -1016,7 +1016,7 @@
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS122')}" name="POS122" />
 
     <div class="ctg-dtvt-label">
-        Sprache
+        <f:translate key='Sprache' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{POS122}">
@@ -1043,7 +1043,7 @@
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0038')}" name="A0038" />
 
     <div class="ctg-dtvt-label">
-        Sprache Original
+        <f:translate key='Sprache Original' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
 
@@ -1069,7 +1069,7 @@
 <div class="ctg-dtvt-row">
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0407')}" name="A0407" />
     <div class="ctg-dtvt-label">
-        Maßstab
+        <f:translate key='Maßstab' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{A0407}">
@@ -1095,7 +1095,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        Register
+        <f:translate key='Register' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{A0431}">
@@ -1127,7 +1127,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        Enthält
+        <f:translate key='Enthält' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{A0501}">
@@ -1146,7 +1146,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        Anmerkungen
+        <f:translate key='Anmerkungen' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0654')}" name="A0654" />
@@ -1239,7 +1239,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        Werk
+        <f:translate key='Werk' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{XX_AK_TITREG_GWKEY}">
@@ -1269,7 +1269,7 @@
 
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        Teilwerke
+        <f:translate key='Teilwerke' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
         <f:if condition="{XX_AK_TITREG_AKE526}">
@@ -1358,7 +1358,7 @@ AKYTXT
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_TYP_SYNKEY')}" name="XX_SE_TYP_SYNKEY" />
 
     <div class="ctg-dtvt-label">
-        Inhalt
+        <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
 
@@ -1436,7 +1436,7 @@ AKYTXT
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_TYP_SYNKEY')}" name="XX_SE_TYP_SYNKEY" />
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
-        Bibliographie
+        <f:translate key='Bibliographie' extensionName='dla_opac_ng'/>
     </div>
 
     <div class="ctg-dtvt-content">
@@ -1508,7 +1508,7 @@ AKYTXT
             />
 
             <f:link.action action="detail" arguments="{q:includedContributionsQuery}" class="internal">
-                >Enthaltene Beiträge
+                ><f:translate key='Enthaltene Beiträge' extensionName='dla_opac_ng'/>
                 <v:variable.set value="true" name="includedContributions" />
             </f:link.action>
         </f:then>
@@ -1543,7 +1543,7 @@ AKYTXT
             />
 
             <f:link.action action="detail" arguments="{q:includedVolumesQuery}" class="internal">
-                >Enthaltene Bände
+                ><f:translate key='Enthaltene Bände' extensionName='dla_opac_ng'/>
                 <v:variable.set value="true" name="includedVolumes" />
             </f:link.action>
         </f:then>
@@ -1579,7 +1579,7 @@ AKYTXT
             />
 
             <f:link.action action="detail" arguments="{q:reviewsQuery}" class="internal">
-                >Rezensionen
+                ><f:translate key='Rezensionen' extensionName='dla_opac_ng'/>
                 <v:variable.set value="true" name="reviews" />
             </f:link.action>
         </f:then>
@@ -1616,7 +1616,7 @@ AKYTXT
             />
 
             <f:link.action action="detail" arguments="{q:volumesBookletsQuery}" class="internal">
-                >Bände und Hefte
+                ><f:translate key='Bände und Hefte' extensionName='dla_opac_ng'/>
                 <v:variable.set value="true" name="volumesBooklets" />
             </f:link.action>
         </f:then>
@@ -1637,7 +1637,7 @@ AKYTXT
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
 <dt class="dt-{field}">
-    Beziehungen
+    <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
 </dt>
 <dd class="dd-{field}">
 
@@ -1663,7 +1663,7 @@ AKYTXT
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
 <dt class="dt-{field}">
-    Beziehungen
+    <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
 </dt>
 <dd class="dd-{field}">
 
@@ -1689,7 +1689,7 @@ AKYTXT
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
 <dt class="dt-{field}">
-    Beziehungen
+    <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
 </dt>
 <dd class="dd-{field}">
 
