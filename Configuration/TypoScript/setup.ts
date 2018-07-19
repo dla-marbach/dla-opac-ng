@@ -193,7 +193,9 @@ plugin.tx_find {
         # Der Anschnitt "defaultQuery" legt fest, welche Suche initial ausgeführt werden soll, wenn
         # ein Nutzer den Katalog aufruft. Da kein Trefferset erscheinen soll, ist hier eine Suche
         # definiert, die garantiert keine Treffer erzeugt.
-        defaultQuery = default:*
+        defaultQuery = *:*
+
+        features.eDisMax = 1
 
         # Der Abschnitt "queryFields" definiert die zur Verfügung stehenden Suchfelder.
         # Der Index "0" beschreibt den Standardsuchschlitz, weitere Indizes können zusätzliche
@@ -206,7 +208,7 @@ plugin.tx_find {
                 type = Text
                 # setzt den Standardoperator auf ein logisches UND
                 //query = {!q.op=AND}*:%s
-                query = {!q.op=AND}default:%s
+                query = *:%s
                 # schaltet die Maskierung von Steuerzeichen aus und erlaubt Phrasensuchen und Trunkierungen
                 noescape = 1
             }
@@ -376,10 +378,11 @@ plugin.tx_find {
         # Zur Erläuterung der Parameter siehe die typo3-find-Dokumentation auf GitHub.
         facets {
             10 {
-                id = Medientyp
-                field = icon_facet
-                sortOrder = count
-                query = icon_facet:("%s")
+                id = Digital
+                field = filter_digital
+                type = Switch
+                text = Nur digital
+                query = filter_digital:true
             }
             11 {
                 id = Medientypen
@@ -388,29 +391,63 @@ plugin.tx_find {
                 sortOrder = count
                 query = icon_facet:("%s")
             }
+            15 {
+                id = Sammlung
+                field = filter_collection
+                query = filter_collection:("%s")
+            }
             20 {
-                id = Gattung/Form
-                field = type_facet
+                id = Medium
+                field = facet_medium
                 sortOrder = count
-                query = type_facet:("%s")
+                query = facet_medium:("%s")
             }
             30 {
-                id = Bestand
-                field = source
-                sortOrder = count
+                id = Form und Inhalt
+                field = facet_form_content
+                query = facet_form_content("%s")
             }
-            #40 {
-            #    id = Zeitraum
-            #    field = A0425
-            #    type = Histogram
-            #    sortOrder = count
-            #    query = A0425("%s")
-            #}
+
+            40 {
+                id = Personen Köperschaften
+                field = facet_names
+                query = facet_names("%s")
+            }
+
             50 {
-                id = Standort
-                field = H02010
-                sortOrder = count
-                query = H02010("%s")
+                id = Personen Köperschaften Funktionsbezeichnung
+                field = facet_roles
+                query = facet_roles("%s")
+            }
+
+            60 {
+                id = Sprache
+                field = facet_language
+                query = facet_language("%s")
+            }
+
+            70 {
+                id = Zeit
+                field = facet_time
+                query = facet_time("%s")
+            }
+
+            80 {
+                id = Datenbestand
+                field = facet_source
+                query = facet_source("%s")
+            }
+
+            90 {
+                id = Ort
+                field = facet_location
+                query = facet_location("%s")
+            }
+
+            100 {
+                id = Thema
+                field = facet_subject
+                query = facet_subject("%s")
             }
         }
 

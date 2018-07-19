@@ -10,36 +10,40 @@
     A potentially configured autocomplete popup is created by the
     Facets/Facet/List/Autocomplete partial.
 </f:comment>
+<div class="facetList">
 
-<canvas id="myChart" width="400" height="400"></canvas>
 
-<f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, activeFacets:config.activeFacets)}">
-    <f:then>
-        <ul class="facetChartList facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}">
-    </f:then>
-    <f:else>
-        <ul class="facetChartList hidden facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}">
-    </f:else>
-</f:if>
+    <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, activeFacets:config.activeFacets)}">
+        <f:then>
+            <canvas id="myChart" width="400" height="100"></canvas>
 
-    <f:for each="{facetData.values}" as="itemCount" key="facetTerm" iteration="iterator">
-        <f:alias map="{
-      facetTermDisplay:'{f:if(
-        condition:facetInfo.sortPrefixSeparator,
-        then:\"{s:format.regexp(
-                 string:facetTerm,
-                 match:\'/^.*?{facetInfo.sortPrefixSeparator}/\',
-        replace:\'\'
-        )}\",
-        else:facetTerm
-        )}'
-        }">
-        <f:render partial="Facets/Facet/List/Item" arguments="{_all}"/>
-        </f:alias>
-    </f:for>
-</ul>
+            <ul class="facetChartList facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}">
+        </f:then>
+        <f:else>
+            <canvas id="myChart" width="400" height="300"></canvas>
 
-<dla:ChartValue labelAs="chartLabels" valueAs="chartValues" countAs="countDocuments" array="{facetData.values}" />
+            <ul class="facetChartList hidden facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}">
+        </f:else>
+    </f:if>
+
+        <f:for each="{facetData.values}" as="itemCount" key="facetTerm" iteration="iterator">
+            <f:alias map="{
+          facetTermDisplay:'{f:if(
+            condition:facetInfo.sortPrefixSeparator,
+            then:\"{s:format.regexp(
+                     string:facetTerm,
+                     match:\'/^.*?{facetInfo.sortPrefixSeparator}/\',
+            replace:\'\'
+            )}\",
+            else:facetTerm
+            )}'
+            }">
+            <f:render partial="Facets/Facet/List/Item" arguments="{_all}"/>
+            </f:alias>
+        </f:for>
+    </ul>
+</div>
+<dla:ChartValue labelAs="chartLabels" valueAs="chartValues" countAs="countDocuments" array="{facetData.values}" itemCount="7"/>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 <script>
@@ -55,6 +59,39 @@
         var linkElements = $('.facetChartList li a:nth-child(2)');
         linkElements.each(function() {
             links[$.trim($(this).text())] = $(this).attr('href');
+        });
+
+        Chart.plugins.register({
+            afterDatasetsDraw: function(chart) {
+                var ctx = chart.ctx;
+
+                chart.data.datasets.forEach(function(dataset, i) {
+                    var meta = chart.getDatasetMeta(i);
+                    if (!meta.hidden) {
+                        meta.data.forEach(function(element, index) {
+                            // Draw the text in black, with the specified font
+                            ctx.fillStyle = 'rgb(0, 0, 0)';
+
+                            var fontSize = 12;
+                            var fontStyle = 'normal';
+                            var fontFamily = 'Helvetica Neue';
+                            ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
+
+                            // Just naively convert to string for now
+                            var dataString = dataset.data[index].toString();
+
+                            // Make sure alignment settings are correct
+                            ctx.textAlign = 'left';
+                            ctx.textBaseline = 'middle';
+
+                            var padding = -5;
+                            var leftPadding = 5;
+                            var position = element.tooltipPosition();
+                            ctx.fillText(dataString, position.x + leftPadding, position.y - (fontSize / 2) - padding);
+                        });
+                    }
+                });
+            }
         });
 
         var canvas = document.getElementById("myChart");
@@ -81,9 +118,6 @@
                         'rgba(182, 31, 36, 1)',
                     ],
                     borderWidth: 1
-                },
-                {
-                    data: sum
                 }
 
                 ]
@@ -92,29 +126,41 @@
                 scales: {
                     yAxes: [{
                         ticks: {
+                            fontSize: 12,
                             beginAtZero:true
                         },
-                        barThickness: 20,
-                        stacked: true
+                        gridLines: {
+                            display: false
+                        },
+                        // barThickness: 20,
+                        categoryPercentage: 0.7,
+                        barPercentage: 0.9,
                     }],
                     xAxes: [{
-                        barThickness: 20,
-                        stacked: true
-                    }]
+                        display: false
+                    }],
                 },
                 legend: {
                     display:false
+                },
+                tooltips: {
+                    enabled: false
+                },
+                layout: {
+                    padding: {
+                        right: 40
+                    }
                 }
             }
         });
 
-        canvas.onclick = function(evt) {
-            var activePoints = myChart.getElementsAtEvent(evt);
-            console.log("Clicked");
-            console.log(activePoints);
-            if (activePoints[0]) {
-                var chartData = activePoints[0]['_chart'].config.data;
-                var idx = activePoints[0]['_index'];
+        canvas.onclick = function(evt){
+            var ctx = document.getElementById("myChart").getContext("2d");
+
+            var activeElements = myChart.getElementsAtEventForMode(evt, 'nearest', {intersect: false, axis: 'y'});
+            if (activeElements[0]) {
+                var chartData = activeElements[0]['_chart'].config.data;
+                var idx = activeElements[0]['_index'];
 
                 var label = chartData.labels[idx];
                 var value = chartData.datasets[0].data[idx];
@@ -123,6 +169,8 @@
 
                 window.location.href = url;
             }
+
+
         };
 </script>
 

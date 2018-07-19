@@ -1,0 +1,36 @@
+{namespace s=Subugoe\Find\ViewHelpers}
+<f:comment>
+    Renders the facet as a list.
+    If there are more than displayDefault list items, additional ones are hidden
+    with a JavaScript link to show them.
+
+    Each list item is created by the Facets/Facet/List/Item partial.
+    A potentially configured autocomplete popup is created by the
+    Facets/Facet/List/Autocomplete partial.
+</f:comment>
+<ul class="facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}">
+    <f:for each="{facetData.values}" as="itemCount" key="facetTerm" iteration="iterator">
+        <f:if condition="{iterator.isFirst} == 1">
+            <f:alias map="{
+          facetTermDisplay:'{f:if(
+            condition:facetInfo.sortPrefixSeparator,
+            then:\"{s:format.regexp(
+                     string:facetTerm,
+                     match:\'/^.*?{facetInfo.sortPrefixSeparator}/\',
+            replace:\'\'
+            )}\",
+            else:facetInfo.text
+            )}'
+            }">
+                <f:render partial="Facets/Facet/List/Item" arguments="{_all}"/>
+            </f:alias>
+        </f:if>
+    </f:for>
+    <f:if condition="{f:count(subject:facetData.values)} > {facetInfo.displayDefault}">
+        <li class="facetShowAll">
+            <a href="#" class="dla-toggle-facets dla-toggle-facets-collapsed" data-translate-show-all="<f:translate key='show all' extensionName='dla_opac_ng'/>" data-translate-show-less="<f:translate key='show less' extensionName='dla_opac_ng'/>">
+                <f:translate key="show all"/>
+            </a>
+        </li>
+    </f:if>
+</ul>
