@@ -383,6 +383,7 @@ plugin.tx_find {
                 type = Switch
                 text = Nur digital
                 query = filter_digital:true
+                removeHeadline = true
             }
             11 {
                 id = Medientypen
