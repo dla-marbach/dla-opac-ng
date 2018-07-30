@@ -208,7 +208,7 @@ plugin.tx_find {
                 type = Text
                 # setzt den Standardoperator auf ein logisches UND
                 //query = {!q.op=AND}*:%s
-                query = *:%s
+                query = %s
                 # schaltet die Maskierung von Steuerzeichen aus und erlaubt Phrasensuchen und Trunkierungen
                 noescape = 1
             }
