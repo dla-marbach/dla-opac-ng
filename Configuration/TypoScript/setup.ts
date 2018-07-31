@@ -186,6 +186,7 @@ plugin.tx_find {
             scheme = http
         }
 
+        mainQueryOperator = OR
 
         # Der Abschnitt "languageRootPath" definiert, wo die Übersetzungsdateien zu finden sind.
         languageRootPath = EXT:dla_opac_ng/Resources/Private/Language/
