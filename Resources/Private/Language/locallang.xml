@@ -135,6 +135,8 @@
       <label index="Gelehrte, Philosophen, Germanisten">Gelehrte, Philosophen, Germanisten</label>
       <label index="Index der Handschriften-Bestände">Index der Handschriften-Bestände</label>
       <label index="Bilder und Objekte">Bilder und Objekte</label>
+      <label index="Audio und Video">Audio &amp; Video</label>
+      <label index="Namen und Werke">Namen &amp; Werke</label>
       <label index="Porträtgalerie">Porträtgalerie</label>
       <label index="Projekte">Projekte</label>
       <label index="Mediendokumentation">Mediendokumentation</label>
@@ -360,6 +362,7 @@
       <label index="Mein Konto">Mein Konto</label>
       <label index="Gesamtbestand">Gesamtbestand</label>
       <label index="Audio &amp; Video">Audio &amp; Video</label>
+      <label index="Namen &amp; Werke">Namen &amp; Werke</label>
       <label index="Jetzt suchen">Jetzt suchen</label>
       <label index="Expertensuche">Expertensuche</label>
       <label index="Bestandsübersicht">Bestandsübersicht</label>
