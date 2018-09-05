@@ -231,6 +231,41 @@ plugin.tx_find {
                 default.1 = *
                 extended = 1
             }
+            # {0:'AKA451:(\'{A0001}\') AND GESTYP:(\'Einzelbestandteil \/ unselbständiges Werk\')', 1:1}
+            96 {
+                # search for relation article
+                id = relation_article
+                type = Text
+                #query = AKA451:("%1$s") AND GESTYP:("Einzelbestandteil / unselbständiges Werk")
+                query = AKA451:("%1$s") AND GESTYP:("Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)" OR "Teil einer monografischen Zusammenstellung, unselbständiges Stück" OR "Fortlaufende Ressource / Serie, Reihe")
+                noescape = 1
+                hidden = 1
+            }
+            #{0:'AKA451:\'{A0001}\' AND (\'Mehrteilige Monografie \/ nicht Teil eines Gesamtwerks\' OR \'Mehrteilige Monografie / Teil eines Gesamtwerks\' OR \'Fortlaufende Ressource / Serie, Reihe\')', 1:1}"
+            97 {
+            # search for relation bände
+                id = relation_volume
+                type = Text
+                query = AKA451:("%1$s") AND NOT GESTYP:("Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)" OR "Teil einer monografischen Zusammenstellung, unselbständiges Stück" OR "Begleitmaterial / Beilage")
+                noescape = 1
+                hidden = 1
+            }
+            # {0:'AKY526:\'{A0001}\' AND NOT AKYTXT\:\'Bezug: Rezension von\'', 1:1}
+            98 {
+            # search for relation rezensionen
+                id = relation_review
+                type = Text
+                query = AKY526:("%1$s") AND AKYTXT:("Bezug: Rezension von")
+                noescape = 1
+                hidden = 1
+            }
+
+            99 {
+            # search for relation volume and booklet
+                id = relation_volume_and_booklet
+                type = Text
+                query = AKA451:("%1$s") AND NOT GESTYP:("Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)" OR "Teil einer monografischen Zusammenstellung, unselbständiges Stück" OR "Begleitmaterial / Beilage")
+            }
         }
 
         # In den folgenden beiden Abschnitten wird die Behandlung von zu verlinkenden Feldern in der Detailansicht
