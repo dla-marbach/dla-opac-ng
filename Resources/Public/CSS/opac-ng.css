@@ -31,3 +31,32 @@
 canvas#myChart {
     cursor: pointer;
 }
+
+.noUi-connect {
+    background: #dadada !important;
+}
+
+.histogram-slider-input {
+    width: 50px !important;
+}
+
+#myHistogram {
+    padding-bottom: 5px;
+}
+
+#from-histogramm {
+    float:left;
+}
+
+#till-histogramm {
+    float:right;
+}
+
+.histogram-inputs {
+    padding-top:10px;
+    padding-bottom: 50px;
+}
+
+.noUi-connect-active {
+    background-color:#b61f24 !important;
+}
