@@ -64,12 +64,15 @@ page.includeJS.jquery-plot = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.
 page.includeJS.jquery-plot-select = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.flot.selection.js
 # Zur Darstellung der Icons in der Trefferliste wird Font Awesome verwendet
 #page.includeJS.fa = https://use.fontawesome.com/96352f148e.js
-page.includeJSFooter.find = EXT:find/Resources/Public/JavaScript/find.js
+page.includeJS.find = EXT:find/Resources/Public/JavaScript/find.js
 
 page.includeJSFooter.dla_opac_ng = EXT:dla_opac_ng/Resources/Public/JavaScript/dla-opac-ng.js
 
+page.includeJS.nouislider = EXT:dla_opac_ng/Resources/Public/JavaScript/nouislider.js
+page.includeCSS.nouislider =  EXT:dla_opac_ng/Resources/Public/CSS/nouislider.css
 
 page.includeCSS.opac-ng =  EXT:dla_opac_ng/Resources/Public/CSS/opac-ng.css
+
 
 #page.includeCSS.site =  https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/css/site.min.css
 #page.includeCSS.belugino =  EXT:dla_opac_ng/Resources/Public/CSS/belugino.css
@@ -485,6 +488,15 @@ plugin.tx_find {
                 id = Thema
                 field = facet_subject
                 query = facet_subject("%s")
+            95 {
+                id = filter_new
+                type = Histogramslider
+                field = filter_new
+                facettype = date_range
+                start = NOW/YEAR-35YEARS
+                end = NOW
+                gap = +1YEAR
+                displayDateFormat = Y
             }
         }
 
