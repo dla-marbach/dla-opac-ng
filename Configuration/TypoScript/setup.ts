@@ -484,10 +484,13 @@ plugin.tx_find {
                 query = facet_location("%s")
             }
 
-            100 {
-                id = Thema
-                field = facet_subject
-                query = facet_subject("%s")
+            100
+            {
+            id = Thema
+            field = facet_subject
+            query = facet_subject("%s")
+            }
+            
             95 {
                 id = filter_new
                 type = Histogramslider
