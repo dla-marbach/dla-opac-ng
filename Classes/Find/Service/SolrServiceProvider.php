@@ -352,6 +352,16 @@ class SolrServiceProvider extends AbstractServiceProvider
                                 );
                             }
                         }
+                    } elseif (array_key_exists('facettype', $facet)) {
+                        if ($facet['facettype'] == 'date_range') {
+                            if ($facet['start'] && $facet['end'] && $facet['gap']) {
+                                $queryForFacet = $facetSet->createFacetRange($facet['field'] ? $facetID : $facet['field']);
+                                $queryForFacet->setField($facet['field'] ? $facet['field'] : $facetID)
+                                    ->setStart($facet['start'])
+                                    ->setEnd($facet['end'])
+                                    ->setGap($facet['gap']);
+                            }
+                        }
                     } else {
                         $queryForFacet = $facetSet->createFacetField($facetID);
                         $queryForFacet->setField($facet['field'] ? $facet['field'] : $facetID)
