@@ -436,12 +436,25 @@ plugin.tx_find {
                 field = filter_collection
                 query = filter_collection:("%s")
             }
+
             20 {
                 id = Medium
                 field = facet_medium
                 sortOrder = count
                 query = facet_medium:("%s")
             }
+
+            25 {
+                id = filter_new
+                type = Histogramslider
+                field = filter_new
+                facettype = date_range
+                start = NOW/YEAR-35YEARS
+                end = NOW
+                gap = +1YEAR
+                displayDateFormat = Y
+            }
+
             30 {
                 id = Form und Inhalt
                 field = facet_form_content
@@ -486,21 +499,11 @@ plugin.tx_find {
 
             100
             {
-            id = Thema
-            field = facet_subject
-            query = facet_subject("%s")
+                id = Thema
+                field = facet_subject
+                query = facet_subject("%s")
             }
-            
-            95 {
-                id = filter_new
-                type = Histogramslider
-                field = filter_new
-                facettype = date_range
-                start = NOW/YEAR-35YEARS
-                end = NOW
-                gap = +1YEAR
-                displayDateFormat = Y
-            }
+
         }
 
         # Der Abschnitt "paging" definiert die Anzahl der Treffer pro Seite sowie das Navigieren durch das
