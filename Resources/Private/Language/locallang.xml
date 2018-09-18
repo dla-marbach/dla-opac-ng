@@ -134,8 +134,10 @@
       <label index="Verlagsarchive">Verlagsarchive</label>
       <label index="Gelehrte, Philosophen, Germanisten">Gelehrte, Philosophen, Germanisten</label>
       <label index="Index der Handschriften-Bestände">Index der Handschriften-Bestände</label>
-      <label index="Bilder und Objekte">Bilder und Objekte</label>
+      <label index="Bilder und Objekte">Bilder &amp; Objekte</label>
       <label index="Audio und Video">Audio &amp; Video</label>
+      <label index="Audio">Audio</label>
+      <label index="Video">Video</label>
       <label index="Namen und Werke">Namen &amp; Werke</label>
       <label index="Porträtgalerie">Porträtgalerie</label>
       <label index="Projekte">Projekte</label>

@@ -38,19 +38,82 @@
                         <a href="#" title="<f:translate key='Gesamtbestand' extensionName='dla_opac_ng'/>" class="ctg-hd-active"><span class="icon bel-mkombo06"></span><f:translate key='Gesamtbestand' extensionName='dla_opac_ng'/></a>
                     </li>
                     <li>
-                        <a href="#" title="<f:translate key='Gedrucktes' extensionName='dla_opac_ng'/>"><span class="icon bel-mag"></span><f:translate key='Gedrucktes' extensionName='dla_opac_ng'/></a>
+                        <f:alias map="{gedrucktes:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Gedrucktes\", mode:\"add\", activeFacets:config.activeFacets)}'}">
+                            <f:link.action
+                                    id="gedrucktes"
+                                    pageUid="{settings.indexPageUid}"
+                                    additionalParams="{tx_find_find: gedrucktes}"
+                                    section="{settings.jumpToID}"
+                                    addQueryString="TRUE"
+                                    argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
+                                    noCacheHash="1"
+                                    class="{f:if(condition:'{config.activeFacets.Medientypen.Gedrucktes}',then:'ctg-hd-active',else:'')}">
+                                <span class="icon bel-mag"></span><f:translate key='Gedrucktes' extensionName='dla_opac_ng'/>
+                            </f:link.action>
+                        </f:alias>
                     </li>
                     <li>
-                        <a href="#" title="<f:translate key='Handschriften' extensionName='dla_opac_ng'/>"><span class="icon bel-schreiben"></span><f:translate key='Handschriften' extensionName='dla_opac_ng'/></a>
+                        <f:alias map="{handschriften:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Handschriften\", mode:\"add\", activeFacets:config.activeFacets)}'}">
+                            <f:link.action
+                                id="handschriften"
+                                pageUid="{settings.indexPageUid}"
+                                additionalParams="{tx_find_find: handschriften}"
+                                section="{settings.jumpToID}"
+                                addQueryString="TRUE"
+                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
+                                noCacheHash="1"
+                                class="{f:if(condition:'{config.activeFacets.Medientypen.Handschriften}',then:'ctg-hd-active',else:'')}">
+                                <span class="icon bel-schreiben"></span><f:translate key='Handschriften' extensionName='dla_opac_ng'/>
+                            </f:link.action>
+                        </f:alias>
                     </li>
                     <li>
                         <a href="#" title="<f:translate key='Namen und Werke' extensionName='dla_opac_ng'/>"><span class="icon bel-idkarte"></span><f:translate key='Namen und Werke' extensionName='dla_opac_ng'/></a>
                     </li>
                     <li>
-                        <a href="#" title="<f:translate key='Bilder &amp; Objekte' extensionName='dla_opac_ng'/>"><span class="icon bel-foto"></span><f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/></a>
+                        <f:alias map="{picsandobjects:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Bilder und Objekte\", mode:\"add\", activeFacets:config.activeFacets)}'}">
+                            <f:link.action
+                                id="picsandobjects"
+                                pageUid="{settings.indexPageUid}"
+                                additionalParams="{tx_find_find: picsandobjects}"
+                                section="{settings.jumpToID}"
+                                addQueryString="TRUE"
+                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
+                                noCacheHash="1"
+                                class="{f:if(condition:'{s:data.valueForKey(array:config.activeFacets.Medientypen, key:\"Bilder und Objekte\")}',then:'ctg-hd-active',else:'')}">
+                                <span class="icon bel-foto"></span><f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/>
+                            </f:link.action>
+                        </f:alias>
                     </li>
                     <li>
-                        <a href="#" title="<f:translate key='Audio &amp; Video' extensionName='dla_opac_ng'/>"><span class="icon bel-note"></span><f:translate key='Audio und Video' extensionName='dla_opac_ng'/></a>
+                        <f:alias map="{audio:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Audio\", mode:\"add\", activeFacets:config.activeFacets)}'}">
+                            <f:link.action
+                                id="audio"
+                                pageUid="{settings.indexPageUid}"
+                                additionalParams="{tx_find_find: audio}"
+                                section="{settings.jumpToID}"
+                                addQueryString="TRUE"
+                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
+                                noCacheHash="1"
+                                class="{f:if(condition:'{s:data.valueForKey(array:config.activeFacets.Medientypen, key:\"Audio\")}',then:'ctg-hd-active',else:'')}">
+                                <span class="icon bel-ton"></span><f:translate key='Audio' extensionName='dla_opac_ng'/>
+                            </f:link.action>
+                        </f:alias>
+                    </li>
+                    <li>
+                        <f:alias map="{video:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Video\", mode:\"add\", activeFacets:config.activeFacets)}'}">
+                            <f:link.action
+                                id="video"
+                                pageUid="{settings.indexPageUid}"
+                                additionalParams="{tx_find_find: video}"
+                                section="{settings.jumpToID}"
+                                addQueryString="TRUE"
+                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
+                                noCacheHash="1"
+                                class="{f:if(condition:'{s:data.valueForKey(array:config.activeFacets.Medientypen, key:\"Video\")}',then:'ctg-hd-active',else:'')}">
+                                <span class="icon bel-pcfilm"></span><f:translate key='Video' extensionName='dla_opac_ng'/>
+                            </f:link.action>
+                        </f:alias>
                     </li>
                 </ul>
 
