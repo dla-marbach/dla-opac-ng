@@ -497,8 +497,7 @@ plugin.tx_find {
                 query = facet_location("%s")
             }
 
-            100
-            {
+            100 {
                 id = Thema
                 field = facet_subject
                 query = facet_subject("%s")
