@@ -214,7 +214,7 @@ plugin.tx_find {
                 //query = {!q.op=AND}*:%s
                 query = %s
                 # schaltet die Maskierung von Steuerzeichen aus und erlaubt Phrasensuchen und Trunkierungen
-                noescape = 1
+                # noescape = 1
             }
             1 {
                 # definiert exemplarisch ein Suchfeld für die erweiterte Suche
