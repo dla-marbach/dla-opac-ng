@@ -445,7 +445,7 @@ plugin.tx_find {
             }
 
             25 {
-                id = filter_new
+                id = NeuImKatalog
                 type = Histogramslider
                 field = filter_new
                 facettype = date_range
@@ -456,7 +456,7 @@ plugin.tx_find {
             }
 
             30 {
-                id = Form und Inhalt
+                id = FormUndInhalt
                 field = facet_form_content
                 query = facet_form_content("%s")
             }
