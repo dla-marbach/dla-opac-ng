@@ -82,20 +82,32 @@
                             </f:alias>
                         </li>
                         <li>
-                            <a href="#" title="<f:translate key='Namen und Werke' extensionName='dla_opac_ng'/>"><span class="icon bel-idkarte"></span><f:translate key='Namen und Werke' extensionName='dla_opac_ng'/></a>
+                            <f:alias map="{normdaten:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Normdaten\", mode:\"add\", activeFacets:config.activeFacets)}'}">
+                                <f:link.action
+                                        id="normdaten"
+                                        pageUid="{settings.indexPageUid}"
+                                        additionalParams="{tx_find_find: normdaten}"
+                                        section="{settings.jumpToID}"
+                                        addQueryString="TRUE"
+                                        argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
+                                        noCacheHash="1"
+                                        class="{f:if(condition:'{config.activeFacets.Medientypen.Normdaten}',then:'ctg-hd-active',else:'')}">
+                                    <span class="icon bel-idkarte"></span><f:translate key='Namen und Werke' extensionName='dla_opac_ng'/>
+                                </f:link.action>
+                            </f:alias>
                         </li>
                         <li>
                             <f:alias map="{picsandobjects:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Bilder und Objekte\", mode:\"add\", activeFacets:config.activeFacets)}'}">
-                            <f:link.action
-                                id="picsandobjects"
-                                arguments="{picsandobjects}"
-                                section="{settings.jumpToID}"
-                                addQueryString="TRUE"
-                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
-                                noCacheHash="1"
-                                class="{f:if(condition:'{s:data.valueForKey(array:config.activeFacets.Medientypen, key:\"Bilder und Objekte\")}',then:'ctg-hd-active',else:'')}">
-                                <span class="icon bel-foto"></span><f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/>
-                            </f:link.action>
+                                <f:link.action
+                                    id="picsandobjects"
+                                    arguments="{picsandobjects}"
+                                    section="{settings.jumpToID}"
+                                    addQueryString="TRUE"
+                                    argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
+                                    noCacheHash="1"
+                                    class="{f:if(condition:'{s:data.valueForKey(array:config.activeFacets.Medientypen, key:\"Bilder und Objekte\")}',then:'ctg-hd-active',else:'')}">
+                                    <span class="icon bel-foto"></span><f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/>
+                                </f:link.action>
                             </f:alias>
                         </li>
                         <li>
