@@ -68,15 +68,6 @@
           key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
           default="{facetTermDisplay}"/><em>({itemCount})</em>
       </f:link.action>
-      <f:comment><f:link.action
-              addQueryString="TRUE"
-              arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, modifier:'not')}"
-              argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
-              section="{settings.jumpToID}"
-              noCacheHash="1"
-              class="facetExclude facetRemoveIcon hide-text">Entferne <f:translate
-              key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
-              default="{facetTermDisplay}"/></f:link.action></f:comment>
     </f:else>
   </f:if>
 </li>
