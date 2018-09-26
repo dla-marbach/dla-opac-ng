@@ -35,7 +35,19 @@
             <form action="">
                 <ul>
                     <li>
-                        <a href="#" title="<f:translate key='Gesamtbestand' extensionName='dla_opac_ng'/>" class="ctg-hd-active"><span class="icon bel-mkombo06"></span><f:translate key='Gesamtbestand' extensionName='dla_opac_ng'/></a>
+                        <f:alias map="{gedrucktes:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Gedrucktes\", mode:\"add\", activeFacets:config.activeFacets)}'}">
+                            <f:link.action
+                                id="gesamtbestand"
+                                pageUid="{settings.indexPageUid}"
+                                additionalParams=""
+                                section="{settings.jumpToID}"
+                                addQueryString="TRUE"
+                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
+                                noCacheHash="1"
+                                class="{f:if(condition:'{config.activeFacets.Medientypen}',then:'',else:'ctg-hd-active')}">
+                                <span class="icon bel-mkombo06"></span><f:translate key='Gesamtbestand' extensionName='dla_opac_ng'/>
+                            </f:link.action>
+                        </f:alias>
                     </li>
                     <li>
                         <f:alias map="{gedrucktes:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Gedrucktes\", mode:\"add\", activeFacets:config.activeFacets)}'}">
