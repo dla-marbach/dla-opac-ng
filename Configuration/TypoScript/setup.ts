@@ -431,10 +431,11 @@ plugin.tx_find {
                 sortOrder = count
                 query = icon_facet:("%s")
             }
+
             15 {
-                id = Sammlung
-                field = filter_collection
-                query = filter_collection:("%s")
+                id = FormUndInhalt
+                field = facet_form_content
+                query = facet_form_content("%s")
             }
 
             20 {
@@ -445,6 +446,27 @@ plugin.tx_find {
             }
 
             25 {
+                id = Ort
+                field = facet_location
+                query = facet_location("%s")
+                collapse = 1
+            }
+
+            30 {
+                id = Thema
+                field = facet_subject
+                query = facet_subject("%s")
+                collapse = 1
+            }
+
+            35 {
+                id = Sprache
+                field = facet_language
+                query = facet_language("%s")
+                collapse = 1
+            }
+
+            40 {
                 id = NeuImKatalog
                 type = Histogramslider
                 field = filter_new
@@ -453,54 +475,38 @@ plugin.tx_find {
                 end = NOW
                 gap = +1YEAR
                 displayDateFormat = Y
+                collapse = 1
             }
 
-            30 {
-                id = FormUndInhalt
-                field = facet_form_content
-                query = facet_form_content("%s")
+            45 {
+                id = Sammlung
+                field = filter_collection
+                query = filter_collection:("%s")
+                collapse = 1
             }
 
-            40 {
+            50 {
                 id = Personen Köperschaften
                 field = facet_names
                 query = facet_names("%s")
             }
 
-            50 {
+            55 {
                 id = Personen Köperschaften Funktionsbezeichnung
                 field = facet_roles
                 query = facet_roles("%s")
             }
 
             60 {
-                id = Sprache
-                field = facet_language
-                query = facet_language("%s")
-            }
-
-            70 {
                 id = Zeit
                 field = facet_time
                 query = facet_time("%s")
             }
 
-            80 {
+            65 {
                 id = Datenbestand
                 field = facet_source
                 query = facet_source("%s")
-            }
-
-            90 {
-                id = Ort
-                field = facet_location
-                query = facet_location("%s")
-            }
-
-            100 {
-                id = Thema
-                field = facet_subject
-                query = facet_subject("%s")
             }
 
         }
