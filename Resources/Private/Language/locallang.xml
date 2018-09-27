@@ -230,6 +230,7 @@
       <label index="Maße [in cm]">Maße [in cm]</label>
       <label index="Erhaltungszustand">Erhaltungszustand</label>
       <label index="Objekt- und Konvoluttypen">Objekt- und Konvoluttypen</label>
+      <label index="Objekttypen">Objekttypen</label>
       <label index="Werk">Werk</label>
       <label index="Ort">Ort</label>
       <label index="Sachschlagwort">Sachschlagwort</label>

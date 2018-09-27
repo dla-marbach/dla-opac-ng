@@ -286,7 +286,7 @@
                             results:results,
                             field:'KSC200',
                             fieldToDisplay: 'XX_KS_K0800_KSC200',
-                            fieldNames: '{0:\'XX_KS_K0800_KSC200\', 1:\'AFUKSE\'}',
+                            fieldNames: '{0:\'XX_KS_K0800_KSC200\', 1:\'AFUKS\'}',
                             fieldWraps: '{0:\'%s [Urheber]\',1:\'(%s)\'}'
                         }"
                     />
@@ -308,7 +308,7 @@
                             arguments="{
                             document:document,
                             results:results,
-                            field:'KSU00',
+                            field:'KSU200',
                             fieldToDisplay: 'XX_KS_K0800_KSU200',
                             fieldNames: '{0:\'XX_KS_K0800_KSU200\'}',
                             fieldWraps: '{0:\'%s [Vorbesitzer]\'}'
@@ -322,8 +322,9 @@
         </div>
 </div>
 
-
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B00140')}" name="B00140" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B52010')}" name="B52010" />
+<f:if condition="{B00140} == 'Konvolut'">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
             <f:translate key='Allgemeine Beschreibung' extensionName='dla_opac_ng'/>
@@ -331,28 +332,20 @@
         <div class="ctg-dtvt-content">
             <f:if condition="{B52010}">
                 <f:then>
-                    <f:render
-                            partial="Display/Field/List"
-                            arguments="{
-                            document:document,
-                            results:results,
-                            field:'B52010',
-                            linkFieldContent:linkFieldContent,
-                            linkFacets:linkFacets
-                          }"/>
+                    <f:format.nl2br>
+                        {B52010}
+                    </f:format.nl2br>
                 </f:then>
                 <f:else>
                     -
                 </f:else>
             </f:if>
         </div>
-</div>
-
-
-
+    </div>
+</f:if>
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B02040')}" name="B02040" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B02040')}" name="B0204A" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B0204A')}" name="B0204A" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B02000')}" name="B02000" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
@@ -409,8 +402,9 @@
         </div>
 </div>
 
-
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B00140')}" name="B00140" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B52010')}" name="B52010" />
+<f:if condition="{B00140} == 'Einzelobjekt'">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
             <f:translate key='Technik' extensionName='dla_opac_ng'/>
@@ -433,7 +427,8 @@
                 </f:else>
             </f:if>
         </div>
-</div>
+    </div>
+</f:if>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B02050')}" name="B02050" />
@@ -476,15 +471,19 @@
                 <f:then>
                     <dla:data.joinFields
                             fieldNames="{0:'B52001',1:'B52002',2:'B52003',3:'B52004',4:'B52011'}"
-                            fieldWraps="{0:'%s',1:'x %s',2:'x %s',3:'x %s',4:'(%s)'}"
+                            fieldWraps="{0:'%s',1:'x %s',2:'x %s',3:'x %s',4:'%s'}"
                             fields="{document.fields}"
                             as="linkTexts"
                     />
-                    {linkTexts.0} (
-                    <f:if condition="{height}">Höhe</f:if>
-                    <f:if condition="{width}">x Breite</f:if>
-                    <f:if condition="{depth}">x Tiefe</f:if>
-                    <f:if condition="{diameter}">x Durchmesserhe</f:if>)
+                    <f:for each="{linkTexts}" as="field" iteration="iterator">
+                        {field}
+                        (
+                        <f:if condition="{v:variable.get(name: 'height.{iterator.index}')}">Höhe</f:if>
+                        <f:if condition="{v:variable.get(name: 'width.{iterator.index}')}">x Breite</f:if>
+                        <f:if condition="{v:variable.get(name: 'depth.{iterator.index}')}">x Tiefe</f:if>
+                        )
+                        <br/>
+                    </f:for>
                 </f:then>
                 <f:else>
                     -
@@ -520,30 +519,60 @@
 </div>
 
 
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51430')}" name="B51430" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51420')}" name="B51420" />
-    <div class="ctg-dtvt-row">
-        <div class="ctg-dtvt-label">
-            <f:translate key='Objekt- und Konvoluttypen' extensionName='dla_opac_ng'/>
+<f:if condition="{B51420.0} == 'Anderes Objekt'">
+    <f:then>
+        <div class="ctg-dtvt-row">
+            <div class="ctg-dtvt-label">
+                <f:translate key='Objekt- und Konvoluttypen' extensionName='dla_opac_ng'/>
+            </div>
+            <div class="ctg-dtvt-content">
+                <f:if condition="{B51430}">
+                    <f:then>
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                                document:document,
+                                results:results,
+                                field:'B51430',
+                                linkFieldContent:linkFieldContent,
+                                linkFacets:linkFacets
+                              }"/>
+                    </f:then>
+                    <f:else>
+                        -
+                    </f:else>
+                </f:if>
+            </div>
         </div>
-        <div class="ctg-dtvt-content">
-            <f:if condition="{B51420}">
-                <f:then>
-                    <f:render
-                            partial="Display/Field/List"
-                            arguments="{
-                            document:document,
-                            results:results,
-                            field:'B51420',
-                            linkFieldContent:linkFieldContent,
-                            linkFacets:linkFacets
-                          }"/>
-                </f:then>
-                <f:else>
-                    -
-                </f:else>
-            </f:if>
+    </f:then>
+    <f:else>
+        <div class="ctg-dtvt-row">
+            <div class="ctg-dtvt-label">
+                <f:translate key='Objekttypen' extensionName='dla_opac_ng'/>
+            </div>
+            <div class="ctg-dtvt-content">
+                <f:if condition="{B51420}">
+                    <f:then>
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                                document:document,
+                                results:results,
+                                field:'B51420',
+                                linkFieldContent:linkFieldContent,
+                                linkFacets:linkFacets
+                              }"/>
+                    </f:then>
+                    <f:else>
+                        -
+                    </f:else>
+                </f:if>
+            </div>
         </div>
-</div>
+    </f:else>
+</f:if>
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0331_AKY526')}" name="XX_AK_A0331_AKY526" />
@@ -580,7 +609,6 @@
             <f:translate key='Ort' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
-            Baustelle <br />
             <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_TH_SWVF_THA720')}">
                 <f:then>
                     <f:render
@@ -590,8 +618,8 @@
                             results:results,
                             field:'THA720',
                             fieldToDisplay: 'XX_TH_SWVF_THA720',
-                            fieldNames: '{0:\'XX_TH_SWVF_THA720\',1:'GFORT',2:'AFORT'}',
-                            fieldWraps: '{0:\'%s\',1:'[%s]',2:'(%s)'}'
+                            fieldNames: '{0:\'XX_TH_SWVF_THA720\',1:\'GFORT\',2:\'AFORT\'}',
+                            fieldWraps: '{0:\'%s\',1:\'[%s]\',2:\'(%s)\'}'
                         }"
                     />
                 </f:then>
@@ -608,7 +636,6 @@
             <f:translate key='Sachschlagwort' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
-            Baustelle <br />
             <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_TH_SWVF_THA710')}">
                 <f:then>
                     <f:render
@@ -618,8 +645,8 @@
                             results:results,
                             field:'THA710',
                             fieldToDisplay: 'XX_TH_SWVF_THA710',
-                            fieldNames: '{0:\'XX_TH_SWVF_THA710\',1:'GFSWVF'}',
-                            fieldWraps: '{0:\'%s\',1:'[%s]'}'
+                            fieldNames: '{0:\'XX_TH_SWVF_THA710\',1:\'GFSWVF\'}',
+                            fieldWraps: '{0:\'%s\', 1:\'[%s]\'}'
                         }"
                     />
                 </f:then>
@@ -741,25 +768,19 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B02630')}" name="B02630" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B52007')}" name="B52007" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B01660')}" name="B01660" />
+<v:variable.set value="{0:'{B52030}',1:'{B02630}',2:'{B52007}', 3:'{B01660}'}" name="valueArray" />
+<dla:arrayRemoveNull array="{valueArray}" as="valueArrayCleaned"/>
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
             <f:translate key='Anmerkungen' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
-            <f:if condition="{B52030} || {B02630} || {B52007} || {B01660}">
-                <f:then>
-                    <f:if condition="{B52030}">{B52030}</f:if>
-                    <br />
-                    <f:if condition="{B02630}">{B02630}</f:if>
-                    <br />
-                    <f:if condition="{B52007}"><v:format.trim content="{B52007}" characters="."></v:format.trim></f:if>
-                    <br />
-                    <f:if condition="{B01660}">{B01660}</f:if>
-                </f:then>
-                <f:else>
-                    -
-                </f:else>
-            </f:if>
+            <f:for each="{valueArrayCleaned}" as="value" iteration="iterator">
+                {value}
+                <f:if condition="{iterator.isLast} != 1">
+                    <hr/>
+                </f:if>
+            </f:for>
         </div>
 </div>
 
@@ -879,7 +900,11 @@
         <div class="ctg-dtvt-content">
             <f:if condition="{picture_midi} || {B04100} ">
                 <f:then>
-                    <f:render
+                    <f:for each="{picture_midi}" as="pic" iteration="iterator">
+                        <image src="{pic}"/>
+                        <v:variable.get name="B04100.{iterator.index}" />
+                    </f:for>
+                    <f:comment><f:render
                         partial="Display/Field/ImageList"
                         arguments="{
                             document:document,
@@ -898,6 +923,7 @@
                             linkFieldContent:linkFieldContent,
                             linkFacets:linkFacets
                           }"/>
+                    </f:comment>
                 </f:then>
                 <f:else>
                     -
