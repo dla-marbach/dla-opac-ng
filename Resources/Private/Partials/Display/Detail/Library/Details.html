@@ -190,6 +190,7 @@
 
     <dla:data.valueForKeyFiltered key="XX_PE_P0800_PE0100" filterKey="GFUPER" filterValues="{0:'_GS'}" mustMatch="false" fields="{document.fields}" as="XX_PE_P0800_PE0100" />
     <dla:data.valueForKeyFiltered key="GFUPE" filterKey="GFUPER" filterValues="{0:'_GS'}" mustMatch="false" fields="{document.fields}" as="GFUPE_GS" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'GFUPER')}" name="GFUPER" />
     <dla:data.joinFieldArrays
             arrays="{0:'{XX_PE_P0800_PE0100}',1:'{GFUPE_GS}'}"
             fieldWraps="{0:'%s',1:'[%s]'}"
@@ -201,19 +202,19 @@
         <f:translate key='Urheber' extensionName='dla_opac_ng'/>
     </div>
     <div class="ctg-dtvt-content">
-        <f:if condition="{author}">
+        <f:if condition="{PE0100}">
             <f:then>
-                <f:for each="{author}" as="item" iteration="iterator">
-                    <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                            document:document,
-                            results:results,
-                            field:'PE0100',
-                            linkFieldContent:1,
-                            linkFacets:linkFacets,
-                            linkTexts:item
-                        }"/>
+                <f:for each="{PE0100}" as="item" iteration="iterator">
+
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'id'}"
+                            values="{0:'PE{item}'}"
+                    />
+                    <f:link.action action="index" arguments="{query}" class="internal" noCacheHash="1">
+                        {author.{iterator.index}}<br/>
+                    </f:link.action>
                 </f:for>
             </f:then>
             <f:else>
@@ -248,6 +249,29 @@
             as="involved"
     />
 
+    <dla:data.valueForKeyFiltered
+            key="XX_KS_listview_title_KSC200"
+            filterKey="GFUPER"
+            filterValues="{0:'_GS'}"
+            mustMatch="false"
+            negateFilter="true"
+            fields="{document.fields}"
+            as="XX_KS_listview_title_KSC200" />
+    <dla:data.valueForKeyFiltered
+            key="GFUPER"
+            filterKey="GFUPER"
+            filterValues="{0:'_GS'}"
+            mustMatch="false"
+            negateFilter="true"
+            fields="{document.fields}" as="GFUPE_NOT_GS" />
+
+    <dla:data.joinFieldArrays
+            arrays="{0:'{XX_KS_listview_title_KSC200}',1:'{GFUPE_NOT_GS}'}"
+            fieldWraps="{0:'%s',1:'[%s]'}"
+            as="involvedKS"
+    />
+
+
     <div class="ctg-dtvt-label">
         <f:translate key='Beteiligt' extensionName='dla_opac_ng'/>
     </div>
@@ -263,6 +287,16 @@
                         linkFieldContent:1,
                         linkFacets:linkFacets,
                         linkTexts:involved
+                      }"/>
+                <f:render
+                        partial="Display/Field/List"
+                        arguments="{
+                        document:document,
+                        results:results,
+                        field:'KSC200',
+                        linkFieldContent:1,
+                        linkFacets:linkFacets,
+                        linkTexts:involvedKS
                       }"/>
             </f:then>
             <f:else>
@@ -281,8 +315,10 @@
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0410')}" name="A0410" />
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0412')}" name="A0412" />
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0425')}" name="A0425" />
+    <v:variable.set value="{0: '{A0425}'}" name="A0425_2" />
+
     <dla:data.joinFieldArrays
-            arrays="{0:'{A0410}',1:'{A0412}',2:'{A0425}'}"
+            arrays="{0:'{A0410}',1:'{A0412}',2:'{A0425_2}'}"
             fieldWraps="{0:'%s',1:': %s',2:', %s'}"
             as="appeared"
     />
@@ -607,7 +643,7 @@
                     <f:if condition="{AKA451.{iterator.index}} != '#NV'">
                         <f:then>
                             <slub:data.fromSolr
-                                    query="A0001:(\"{AKA451.{iterator.index}}\")"
+                                    query="A0001:{AKA451.{iterator.index}}"
                             fields="id"
                             rows="10">
                             <f:then>
@@ -646,11 +682,14 @@
     <dla:data.valueForKeyFiltered key="GESTYP" filterKey="GESTYP" negateFilter="true" filterValues="{AKA451_Filter}" fields="{document.fields}" as="GESTYP" />
 
     <dla:data.valueForKeyFiltered key="XX_AK_TITREG_AKA451" filterKey="GESTYP" negateFilter="false"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_TITREG_AKA451" />
+
     <dla:data.valueForKeyFiltered key="AKA451" filterKey="GESTYP" negateFilter="false"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="AKA451" />
     <dla:data.valueForKeyFiltered key="USEIT" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="USEIT" />
     <dla:data.valueForKeyFiltered key="listview_additional1" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="listview_additional1" />
     <dla:data.valueForKeyFiltered key="XX_AK_A0359_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_A0359_AKA451" />
 
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKA451')}" name="XX_AK_TITREG_AKA451" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0359_AKA451')}" name="XX_AK_A0359_AKA451" />
 
     <f:if condition="{GESTYP.0} == 'Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)' ||
                  {GESTYP.0} == 'Begleitmaterial / Beilage'">
@@ -738,7 +777,7 @@
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A01030')}" name="A01030" />
     <f:if condition="{XX_AU_KLASS_AUKEY} || {XX_AU_STAND_AUKEY}">
         <f:then>
-            <v:variable.set value="{XX_AU_KLASS_AUKEY} {XX_AU_STAND_AUKEY}" name="usage" />
+            <v:variable.set value="{XX_AU_KLASS_AUKEY.0} {XX_AU_STAND_AUKEY.0}" name="usage" />
         </f:then>
         <f:else>
             <f:if condition="{A01030} == 'Virtuelle Aufnahme'">
@@ -780,7 +819,7 @@
                         arguments="{
                 document:document,
                 results:results,
-                field:'A0001',
+                field:'AUKEY',
                 linkFieldContent:1,
                 linkFacets:linkFacets
                 linkTexts:linkTexts
@@ -946,7 +985,7 @@
     <dla:data.valueForKeyFiltered
             key="ATIT"
             filterKey="AMTIT"
-            filterValues="{0:'303n'}"
+            filterValues="{0:'303n', 1:'304'}"
             fields="{document.fields}"
             as="ATIT" />
 
@@ -1367,7 +1406,7 @@ AKYTXT
     </div>
     <div class="ctg-dtvt-content">
 
-        <f:if condition="{XX_SE_REGTIT_SYNKEY} || {A0712} || {POS114} || {contentBemurl}">
+        <f:if condition="{XX_SE_REGTIT_SYNKEY} || {A0712} || {POS114} || {BEMURL}">
             <f:then>
                 <f:for each="{XX_SE_TYP_SYNKEY}" as="typKey" iteration="iterator">
                     <f:if condition="{typKey} == 'Kette Bibliothek'">
@@ -1419,11 +1458,13 @@ AKYTXT
                     </f:then>
                 </f:if>
 
-
-                <f:if condition="{contentBemurl}">
+                <f:if condition="{POS114}">
                     <f:then>
-                        <f:for each="{contentBemurl}" as="item" iteration="iterator">
-                            <a href="{AURL.{iterator.index}}">{item}</a><br />
+                        <f:for each="{AURL}" as="link" iteration="linkIterator">
+                            <a href="{AURL.{linkIterator.index}}">
+                                {BEMURL.{linkIterator.index}}
+                            </a>
+                            <br/>
                         </f:for>
                     </f:then>
                 </f:if>
@@ -1437,8 +1478,16 @@ AKYTXT
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0711')}" name="A0711>" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'FREITX')}" name="FREITX" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AURL')}" name="AURL" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BEMURL')}" name="BEMURL" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_REGTIT_SYNKEY')}" name="XX_SE_REGTIT_SYNKEY" />
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_TYP_SYNKEY')}" name="XX_SE_TYP_SYNKEY" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_TYP_SYNKEY')}" name="XX_SE_TYP_SYNKEY" />
+
+<v:variable.set value="{0:'Bibliographie-Kette'}" name="synkeyValues"/>
+
+<dla:data.valueForKeyFiltered key="SYNKEY" filterKey="XX_SE_TYP_SYNKEY" filterValues="{synkeyValues}" fields="{document.fields}" as="SYNKEY_BIBLIOGRAPHIE" />
+<dla:data.valueForKeyFiltered key="XX_SE_REGTIT_SYNKEY" filterKey="XX_SE_TYP_SYNKEY" filterValues="{synkeyValues}" fields="{document.fields}" as="REGTIT_SYNKEY_BIBLIOGRAPHIE" />
+
 <div class="ctg-dtvt-row">
     <div class="ctg-dtvt-label">
         <f:translate key='Bibliographie' extensionName='dla_opac_ng'/>
@@ -1457,16 +1506,19 @@ AKYTXT
                 linkFacets:linkFacets
                 }"/>
 
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                document:document,
-                results:results,
-                field:'AURL',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-                }"/>
+                <f:for each="{SYNKEY_BIBLIOGRAPHIE}" as="synKey" iteration="iterator">
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'raw'}"
+                            values="{0:'SYNKEY:{synKey}'}"
+                    />
+                    <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                        {REGTIT_SYNKEY_BIBLIOGRAPHIE.{iterator.index}}<br/>
+                    </f:link.action>
+                </f:for>
 
+                <f:comment>
                 <f:for each="{XX_SE_TYP_SYNKEY}" as="typKey" iteration="iterator">
                     <f:if condition="{typKey} == 'Bibliographie-Kette'">
                         <f:then>
@@ -1474,6 +1526,7 @@ AKYTXT
                         </f:then>
                     </f:if>
                 </f:for>
+                </f:comment>
             </f:then>
             <f:else>
                 -
