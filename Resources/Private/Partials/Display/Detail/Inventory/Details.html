@@ -296,16 +296,11 @@
         <div class="ctg-dtvt-label">
             <f:translate key='Literaturangaben' extensionName='dla_opac_ng'/>
         </div>
+        <dla:replaceBreaks text="{B02420}" as="textNew"/>
         <div class="ctg-dtvt-content">
-            <f:render
-            partial="Display/Field/List"
-            arguments="{
-            document:document,
-            results:results,
-            field:'B02420',
-            linkFieldContent:linkFieldContent,
-            linkFacets:linkFacets
-          }"/>
+            <f:format.raw>
+                {textNew}
+            </f:format.raw>
         </div>
     </div>
 </f:if>
