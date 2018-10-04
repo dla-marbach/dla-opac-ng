@@ -195,7 +195,14 @@
             arguments:'{1:fieldName, 2:fieldContent}'
           )}"
         >
-          {highlightedFieldContent->f:format.raw()}
+          <f:if condition="{linkTextValue}">
+            <f:then>
+              {linkTextValue}
+            </f:then>
+            <f:else>
+              {highlightedFieldContent->f:format.raw()}
+            </f:else>
+          </f:if>
         </f:link.action>
         </f:alias>
       </f:else>
