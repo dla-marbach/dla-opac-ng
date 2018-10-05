@@ -485,6 +485,7 @@ plugin.tx_find {
 
             40 {
                 id = NeuImKatalog
+                label = Neu im Katalog
                 type = Histogramslider
                 field = filter_new
                 facettype = date_range
