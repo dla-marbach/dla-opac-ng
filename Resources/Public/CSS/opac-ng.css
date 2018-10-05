@@ -60,3 +60,7 @@ canvas#myChart {
 .noUi-connect-active {
     background-color:#b61f24 !important;
 }
+
+.ctg-facet li em {
+    padding-left: 5px;
+}
