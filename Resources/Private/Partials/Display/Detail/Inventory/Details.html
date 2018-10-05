@@ -175,10 +175,12 @@
         <div class="ctg-dtvt-label">
             <f:translate key='Entstehungszeit' extensionName='dla_opac_ng'/>
         </div>
+        <dla:formatDate date="{H02035}" as="outputH02035" />
+        <dla:formatDate date="{H02040}" as="outputH02040" />
         <div class="ctg-dtvt-content">
-            {outputH2035}
-            <f:if condition="{H02040}">
-                - {outputH2040}
+            {outputH02035}
+            <f:if condition="{outputH02040}">
+                - {outputH02040}
             </f:if>
 
             <f:if condition="{PB814}">
