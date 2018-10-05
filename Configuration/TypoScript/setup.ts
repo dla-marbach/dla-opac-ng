@@ -269,6 +269,22 @@ plugin.tx_find {
                 type = Text
                 query = AKA451:("%1$s") AND NOT GESTYP:("Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)" OR "Teil einer monografischen Zusammenstellung, unselbständiges Stück" OR "Begleitmaterial / Beilage")
             }
+
+            100 {
+                id = relation_subinventory
+                type = Text
+                query = BUEBKY:("%1$s")
+                noescape = 1
+                hidden = 1
+            }
+
+            105 {
+                id = relation_subinventory_hs
+                type = Text
+                query = HSBFKY:("%1$s") OR BFKEY:("%1$s")
+                noescape = 1
+                hidden = 1
+            }
         }
 
         # In den folgenden beiden Abschnitten wird die Behandlung von zu verlinkenden Feldern in der Detailansicht
