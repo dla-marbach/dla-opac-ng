@@ -451,7 +451,7 @@ plugin.tx_find {
             15 {
                 id = FormUndInhalt
                 field = facet_form_content
-                query = facet_form_content("%s")
+                query = facet_form_content:("%s")
                 label = Form und Inhalt
             }
 
@@ -465,21 +465,21 @@ plugin.tx_find {
             25 {
                 id = Ort
                 field = facet_location
-                query = facet_location("%s")
+                query = facet_location:("%s")
                 collapse = 1
             }
 
             30 {
                 id = Thema
                 field = facet_subject
-                query = facet_subject("%s")
+                query = facet_subject:("%s")
                 collapse = 1
             }
 
             35 {
                 id = Sprache
                 field = facet_language
-                query = facet_language("%s")
+                query = facet_language:("%s")
                 collapse = 1
             }
 
@@ -506,25 +506,25 @@ plugin.tx_find {
             50 {
                 id = Personen Köperschaften
                 field = facet_names
-                query = facet_names("%s")
+                query = facet_names:("%s")
             }
 
             55 {
                 id = Personen Köperschaften Funktionsbezeichnung
                 field = facet_roles
-                query = facet_roles("%s")
+                query = facet_roles:("%s")
             }
 
             60 {
                 id = Zeit
                 field = facet_time
-                query = facet_time("%s")
+                query = facet_time:("%s")
             }
 
             65 {
                 id = Datenbestand
                 field = facet_source
-                query = facet_source("%s")
+                query = facet_source:("%s")
             }
 
         }
