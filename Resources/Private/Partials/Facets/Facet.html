@@ -15,15 +15,30 @@
       </article>
     </f:comment>
     <f:if condition="{facetInfo.removeHeadline} != true">
-      <h3>
-        <f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}" default="{facetInfo.id}"/>
-        <a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>" data-facet-toggle="1">
-          <f:if condition="{facetInfo.collapse}">
-            <f:then><span class="icon bel-pfeil-u01"></span></f:then>
-            <f:else><span class="icon bel-pfeil-o01"></span></f:else>
-          </f:if>
-        </a>
-      </h3>
+      <f:if condition="{facetInfo.label}">
+        <f:then>
+          <h3>
+            {facetInfo.label}
+            <a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>" data-facet-toggle="1">
+              <f:if condition="{facetInfo.collapse}">
+                <f:then><span class="icon bel-pfeil-u01"></span></f:then>
+                <f:else><span class="icon bel-pfeil-o01"></span></f:else>
+              </f:if>
+            </a>
+          </h3>
+        </f:then>
+        <f:else>
+          <h3>
+            <f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}" default="{facetInfo.id}"/>
+            <a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>" data-facet-toggle="1">
+              <f:if condition="{facetInfo.collapse}">
+                <f:then><span class="icon bel-pfeil-u01"></span></f:then>
+                <f:else><span class="icon bel-pfeil-o01"></span></f:else>
+              </f:if>
+            </a>
+          </h3>
+        </f:else>
+      </f:if>
     </f:if>
     <f:alias map="{facetType:'{f:if(condition:facetInfo.type, then:facetInfo.type, else:\"List\")}'}">
       <f:render partial="Facets/Facet/{facetType}" arguments="{_all}"/>

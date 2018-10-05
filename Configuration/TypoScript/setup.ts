@@ -436,6 +436,7 @@ plugin.tx_find {
                 id = FormUndInhalt
                 field = facet_form_content
                 query = facet_form_content("%s")
+                label = Form und Inhalt
             }
 
             20 {
