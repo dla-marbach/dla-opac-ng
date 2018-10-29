@@ -810,7 +810,7 @@
         </div>
 </div>
 
-
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BIOKEY')}" name="BIOKEY" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
             <f:translate key='In' extensionName='dla_opac_ng'/>
@@ -829,6 +829,12 @@
                             fieldWraps: '{0:\'%s\'}'
                         }"
                     />
+                    <slub:data.fromSolr
+                            query="id:BI{BIOKEY}"
+                            fields="B51400"
+                            rows="10">
+                        ({solr.B51400})
+                    </slub:data.fromSolr>
                 </f:then>
                 <f:else>
                     -
