@@ -870,21 +870,20 @@
 </div>
 
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_BE_E05080')}" name="XX_BE_E05080" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_BE_E05080_BEKEY')}" name="XX_BE_E05080_BEKEY" />
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
             <f:translate key='Erwerbungsnummer' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
-            Baustelle <br />
-            <f:if condition="{XX_BE_E05080}">
+            <f:if condition="{XX_BE_E05080_BEKEY}">
                 <f:then>
                     <f:render
                             partial="Display/Field/List"
                             arguments="{
                             document:document,
                             results:results,
-                            field:'XX_BE_E05080',
+                            field:'XX_BE_E05080_BEKEY',
                             linkFieldContent:linkFieldContent,
                             linkFacets:linkFacets
                           }"/>
