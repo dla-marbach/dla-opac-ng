@@ -283,8 +283,10 @@
             <f:translate key='Inhaltsangabe' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
+            <dla:replaceBreaks text="{B01600}" as="textNew"/>
+            <f:debug>{textNew}</f:debug>
             <f:format.raw>
-                {B01600}
+                {textNew}
             </f:format.raw>
         </div>
     </div>

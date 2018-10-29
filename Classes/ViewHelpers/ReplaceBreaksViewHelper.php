@@ -25,6 +25,7 @@ class ReplaceBreaksViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
     {
         $resultValue = str_replace("/SP/", "<br/>", $this->arguments['text']);
         $resultValue = str_replace("/BR/", "<br/>", $resultValue);
+        $resultValue = str_replace("\u{0085}", "<br/>", $resultValue);
 
         if (is_array($resultValue)) {
             $resultValue = $resultValue[0];
