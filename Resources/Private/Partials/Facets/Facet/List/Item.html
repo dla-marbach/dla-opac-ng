@@ -23,57 +23,73 @@
   value="{facetTerm}"
   label="{f:translate(key:'LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTerm}', default:facetTerm)}"
   count="{itemCount}">
-  <f:if condition="{facetTerm} == ''">
-    <f:then>
-      <v:variable.set value="{facetInfo.labelmissing}" name="facetTerm" />
-      <v:variable.set value="{facetInfo.labelmissing}" name="facetTermDisplay" />
-    </f:then>
-  </f:if>
-  <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}">
-    <f:then>
-      <f:link.action
-              addQueryString="TRUE"
-              argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
-              section="{settings.jumpToID}"
-              noCacheHash="1"
-              class=""
-              title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
-        <span class="icon bel-ok01"></span>
-      </f:link.action>
+    <f:if condition="{itemCount} == 0">
+        <f:then></f:then>
+        <f:else>
+            <f:if condition="{facetTerm} == ''">
+                <f:then>
+                    <f:debug>{_all}</f:debug>
+                    <v:variable.set value="{facetInfo.labelmissing}" name="facetTerm" />
+                    <v:variable.set value="{facetInfo.labelmissing}" name="facetTermDisplay" />
+                </f:then>
+            </f:if>
 
-      <f:link.action
-        addQueryString="TRUE"
-        argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
-        section="{settings.jumpToID}"
-        noCacheHash="1"
-        class=""
-        title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
-        <f:translate
-          key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
-          default="{facetTermDisplay}"/><em>({itemCount})</em>
-      </f:link.action>
-    </f:then>
-    <f:else>
-      <f:link.action
-              addQueryString="TRUE"
-              arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
-              argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
-              section="{settings.jumpToID}"
-              noCacheHash="1"
-              class="facetAdd internal">
-        <span class="icon bel-kreis01"></span>
-      </f:link.action>
-      <f:link.action
-        addQueryString="TRUE"
-        arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
-        argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
-        section="{settings.jumpToID}"
-        noCacheHash="1"
-        class="facetAdd internal">
-        <f:translate
-          key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
-          default="{facetTermDisplay}"/><em>({itemCount})</em>
-      </f:link.action>
-    </f:else>
-  </f:if>
+            <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}">
+                <f:then>
+                    <f:link.action
+                            addQueryString="TRUE"
+                            argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
+                            section="{settings.jumpToID}"
+                            noCacheHash="1"
+                            class=""
+                            title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
+                        <span class="icon bel-ok01"></span>
+                    </f:link.action>
+
+                    <f:link.action
+                            addQueryString="TRUE"
+                            argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
+                            section="{settings.jumpToID}"
+                            noCacheHash="1"
+                            class=""
+                            title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
+                        <f:translate
+                                key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
+                                default="{facetTermDisplay}"/><em>({itemCount})</em>
+                    </f:link.action>
+                </f:then>
+                <f:else>
+                    <f:link.action
+                            addQueryString="TRUE"
+                            arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
+                            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                            section="{settings.jumpToID}"
+                            noCacheHash="1"
+                            class="facetAdd internal">
+                        <span class="icon bel-kreis01"></span>
+                    </f:link.action>
+                    <f:link.action
+                            addQueryString="TRUE"
+                            arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
+                            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                            section="{settings.jumpToID}"
+                            noCacheHash="1"
+                            class="facetAdd internal">
+                        <f:translate
+                                key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
+                                default="{facetTermDisplay}"/><em>({itemCount})</em>
+                    </f:link.action>
+                    <f:comment><f:link.action
+                            addQueryString="TRUE"
+                            arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, modifier:'not')}"
+                            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                            section="{settings.jumpToID}"
+                            noCacheHash="1"
+                            class="facetExclude facetRemoveIcon hide-text">Entferne <f:translate
+                            key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
+                            default="{facetTermDisplay}"/></f:link.action></f:comment>
+                </f:else>
+            </f:if>
+        </f:else>
+    </f:if>
 </li>
