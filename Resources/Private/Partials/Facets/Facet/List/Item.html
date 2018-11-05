@@ -23,6 +23,12 @@
   value="{facetTerm}"
   label="{f:translate(key:'LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTerm}', default:facetTerm)}"
   count="{itemCount}">
+  <f:if condition="{facetTerm} == ''">
+    <f:then>
+      <v:variable.set value="{facetInfo.labelmissing}" name="facetTerm" />
+      <v:variable.set value="{facetInfo.labelmissing}" name="facetTermDisplay" />
+    </f:then>
+  </f:if>
   <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}">
     <f:then>
       <f:link.action

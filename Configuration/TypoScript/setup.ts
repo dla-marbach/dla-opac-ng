@@ -453,6 +453,9 @@ plugin.tx_find {
                 field = facet_form_content
                 query = facet_form_content:("%s")
                 label = Form und Inhalt
+                # Shows a facet value which includes all "not known" items
+                showmissing = 1
+                labelmissing = unbekannt
             }
 
             20 {
