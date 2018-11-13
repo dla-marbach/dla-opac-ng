@@ -16,12 +16,12 @@
 
     <script>
         $( document ).ready(function() {
-            var slider = document.getElementById('slider-histogramm');
-            var firstDate = {firstDate};
             var facetInfo = "{facetInfo.id}";
+            var slider = document.getElementById('slider-histogramm-'+facetInfo);
+            var firstDate = {firstDate};
 
-            var frominput = document.getElementById('from-histogramm');
-            var tillinput = document.getElementById('till-histogramm');
+            var frominput = document.getElementById('from-histogramm-'+facetInfo);
+            var tillinput = document.getElementById('till-histogramm-'+facetInfo);
             <f:format.raw>
                 noUiSlider.create(slider, {
                     start: [firstDate, (new Date()).getFullYear()],
@@ -69,19 +69,19 @@
                 });
 
                 function adjustLink(min, max) {
-                    var url = decodeURIComponent($('#publishDateFacetSubmit').attr('href'));
+                    var url = decodeURIComponent($('#publishDateFacetSubmit-'+facetInfo).attr('href'));
                     var re = new RegExp("\\["+ facetInfo +"]\\[.*?]", "g");
                     url = url.replace(re, "["+facetInfo+"][RANGE " + min + " TO " + max + "]");
                     url = url.replace(/ & /g, " %26 ");
-                    $('#publishDateFacetSubmit').attr('href', url);
+                    $('#publishDateFacetSubmit-'+facetInfo).attr('href', url);
                 }
             });
         </f:format.raw>
     </script>
 
-    <canvas id="myHistogram" width="400" height="300"></canvas>
+    <canvas id="myHistogram-{facetInfo.id}" width="400" height="300"></canvas>
 
-    <div id="slider-histogramm"></div>
+    <div id="slider-histogramm-{facetInfo.id}"></div>
 
     <f:alias map="{
         addArguments:'{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:\"RANGE%20%20TO%20\", mode:\"add\", activeFacets:config.activeFacets)}',
@@ -95,20 +95,20 @@
             <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, activeFacets:config.activeFacets)}">
                 <f:then>
                     <f:for each="{s:data.valueForKey(array:config.activeFacets, key:facetInfo.id)}" as="termInfo" key="term">
-                        <span><input type="text" id="from-histogramm" class="histogram-slider-input" value="{s:format.regexp(match:'/RANGE ([0-9]*) TO ([0-9]*)/', replace:'\1', string:term)}"></span>
-                        <span><input type="text" id="till-histogramm" class="histogram-slider-input" value="{s:format.regexp(match:'/RANGE ([0-9]*) TO ([0-9]*)/', replace:'\2', string:term)}"></span>
+                        <span><input type="text" id="from-histogramm-{facetInfo.id}" class="histogram-slider-input" value="{s:format.regexp(match:'/RANGE ([0-9]*) TO ([0-9]*)/', replace:'\1', string:term)}"></span>
+                        <span><input type="text" id="till-histogramm-{facetInfo.id}" class="histogram-slider-input histogram-input-right" value="{s:format.regexp(match:'/RANGE ([0-9]*) TO ([0-9]*)/', replace:'\2', string:term)}"></span>
                     </f:for>
                 </f:then>
                 <f:else>
-                    <span><input type="text" id="from-histogramm" class="histogram-slider-input"></span>
-                    <span><input type="text" id="till-histogramm" class="histogram-slider-input"></span>
+                    <span><input type="text" id="from-histogramm-{facetInfo.id}" class="histogram-slider-input"></span>
+                    <span><input type="text" id="till-histogramm-{facetInfo.id}" class="histogram-slider-input histogram-input-right"></span>
                 </f:else>
             </f:if>
         </div>
         <div style="padding-bottom:30px;">
             <div style="float:left;">
                 <f:link.action
-                        id="publishDateFacetSubmit"
+                        id="publishDateFacetSubmit-{facetInfo.id}"
                         addQueryString="TRUE"
                         arguments="{addArguments}"
                         argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
@@ -160,7 +160,7 @@
             links[$.trim($(this).text())] = $(this).attr('href');
         });
 
-        var canvas = document.getElementById("myHistogram");
+        var canvas = document.getElementById("myHistogram-{facetInfo.id}");
         var ctx = canvas.getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
