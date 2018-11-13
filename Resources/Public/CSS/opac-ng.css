@@ -38,6 +38,11 @@ canvas#myChart {
 
 .histogram-slider-input {
     width: 50px !important;
+    display: inline !important;
+}
+
+.histogram-input-right {
+    float:right;
 }
 
 #myHistogram {
