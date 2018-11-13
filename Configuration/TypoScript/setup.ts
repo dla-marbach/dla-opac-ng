@@ -520,8 +520,15 @@ plugin.tx_find {
 
             60 {
                 id = Zeit
+                label = Zeit
+                type = Histogramslider
                 field = facet_time
-                query = facet_time:("%s")
+                facettype = date_range
+                start = NOW/YEAR-35YEARS
+                end = NOW
+                gap = +1YEAR
+                displayDateFormat = Y
+                collapse = 1
             }
 
             65 {
