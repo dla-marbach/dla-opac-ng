@@ -335,17 +335,29 @@
                 {POS113} == 'Fortlaufende Ressource / Zeitung'}">
                     <f:then>
                         <f:for each="{appeared}" as="item" iteration="iterator">
-                            <f:if condition="{iterator.index} == 0">
-                                {item}<br />
-                            </f:if>
-                            <f:if condition="{iterator.index} > 0">
-                                <span style="color:red;">{item}</span><br />
+                            <dla:replaceNullValue text="{item}" as="output"/>
+                            <f:if condition="{output}">
+                                <f:if condition="{iterator.index} == 0">
+                                    {output}<br />
+                                </f:if>
+                                <f:if condition="{iterator.index} > 0">
+                                    <span style="color:red;">
+                                        {output}
+                                    </span><br />
+                                </f:if>
                             </f:if>
                         </f:for>
                     </f:then>
                     <f:else>
                         <f:for each="{appeared}" as="item" iteration="iterator">
-                            {item}<br />
+                            <f:comment>Removing nullValue #NV</f:comment>
+                            <f:if condition="{item} != '#NV'">
+                                <f:then>
+                                    <dla:replaceNullValue text="{item}" as="output"/>
+                                    {output}<br />
+                                </f:then>
+                            </f:if>
+
                         </f:for>
                     </f:else>
                 </f:if>
