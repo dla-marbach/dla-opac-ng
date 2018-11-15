@@ -463,6 +463,9 @@ plugin.tx_find {
                 field = facet_medium
                 sortOrder = count
                 query = facet_medium:("%s")
+                # Shows a facet value which includes all "not known" items
+                showmissing = 1
+                labelmissing = unbekannt
             }
 
             25 {
@@ -470,6 +473,9 @@ plugin.tx_find {
                 field = facet_location
                 query = facet_location:("%s")
                 collapse = 1
+                # Shows a facet value which includes all "not known" items
+                showmissing = 1
+                labelmissing = unbekannt
             }
 
             30 {
@@ -477,6 +483,9 @@ plugin.tx_find {
                 field = facet_subject
                 query = facet_subject:("%s")
                 collapse = 1
+                # Shows a facet value which includes all "not known" items
+                showmissing = 1
+                labelmissing = unbekannt
             }
 
             35 {
@@ -484,6 +493,9 @@ plugin.tx_find {
                 field = facet_language
                 query = facet_language:("%s")
                 collapse = 1
+                # Shows a facet value which includes all "not known" items
+                showmissing = 1
+                labelmissing = unbekannt
             }
 
             40 {
@@ -504,18 +516,31 @@ plugin.tx_find {
                 field = filter_collection
                 query = filter_collection:("%s")
                 collapse = 1
+                # Shows a facet value which includes all "not known" items
+                showmissing = 1
+                labelmissing = unbekannt
             }
 
             50 {
-                id = Personen Köperschaften
+                id = PersonenKöperschaften
+                label = Personen & Körperschaften
                 field = facet_names
                 query = facet_names:("%s")
+                collapse = 1
+                # Shows a facet value which includes all "not known" items
+                showmissing = 1
+                labelmissing = unbekannt
             }
 
             55 {
-                id = Personen Köperschaften Funktionsbezeichnung
+                id = PersonenKöperschaftenFunktionsbezeichnung
+                label = Funktionsbezeichnung
                 field = facet_roles
                 query = facet_roles:("%s")
+                collapse = 1
+                # Shows a facet value which includes all "not known" items
+                showmissing = 1
+                labelmissing = unbekannt
             }
 
             60 {
@@ -535,6 +560,10 @@ plugin.tx_find {
                 id = Datenbestand
                 field = facet_source
                 query = facet_source:("%s")
+                collapse = 1
+                # Shows a facet value which includes all "not known" items
+                showmissing = 1
+                labelmissing = unbekannt
             }
 
         }
