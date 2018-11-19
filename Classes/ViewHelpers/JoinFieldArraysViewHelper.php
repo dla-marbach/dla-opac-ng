@@ -78,7 +78,7 @@ class JoinFieldArraysViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstrac
                     }
                 }
             }
-            $result[] = implode(" ",$row);
+            $result[] = implode("",$row);
         }
 
         return $result;
