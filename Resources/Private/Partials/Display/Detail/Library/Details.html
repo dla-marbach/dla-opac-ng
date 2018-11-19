@@ -338,14 +338,7 @@
                     <f:then>
                         <f:for each="{appeared}" as="item" iteration="iterator">
                             <f:if condition="{item}">
-                                <f:if condition="{iterator.index} == 0">
-                                    {item}<br />
-                                </f:if>
-                                <f:if condition="{iterator.index} > 0">
-                                    <span style="color:red;">
-                                        {item}
-                                    </span><br />
-                                </f:if>
+                                {item}<br />
                             </f:if>
                         </f:for>
                     </f:then>
@@ -437,16 +430,9 @@
     <div class="ctg-dtvt-content">
         <f:if condition="{linkTexts}">
             <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'A0433',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets,
-                        linkTexts:linkTexts
-                      }"/>
+                <f:for each="{linkTexts}" as="item" iteration="iterator">
+                    {item}
+                </f:for>
             </f:then>
             <f:else>
                 -
