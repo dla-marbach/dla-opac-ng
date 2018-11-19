@@ -322,6 +322,8 @@
             fieldWraps="{0:'%s',1:': %s',2:', %s'}"
             as="appeared"
     />
+    <f:comment>replace #NV</f:comment>
+    <dla:replaceNullValue array="{appeared}" as="appeared"/>
 
     <div class="ctg-dtvt-label">
         <f:translate key='Erschienen' extensionName='dla_opac_ng'/>
@@ -335,14 +337,13 @@
                 {POS113} == 'Fortlaufende Ressource / Zeitung'}">
                     <f:then>
                         <f:for each="{appeared}" as="item" iteration="iterator">
-                            <dla:replaceNullValue text="{item}" as="output"/>
-                            <f:if condition="{output}">
+                            <f:if condition="{item}">
                                 <f:if condition="{iterator.index} == 0">
-                                    {output}<br />
+                                    {item}<br />
                                 </f:if>
                                 <f:if condition="{iterator.index} > 0">
                                     <span style="color:red;">
-                                        {output}
+                                        {item}
                                     </span><br />
                                 </f:if>
                             </f:if>
@@ -350,14 +351,7 @@
                     </f:then>
                     <f:else>
                         <f:for each="{appeared}" as="item" iteration="iterator">
-                            <f:comment>Removing nullValue #NV</f:comment>
-                            <f:if condition="{item} != '#NV'">
-                                <f:then>
-                                    <dla:replaceNullValue text="{item}" as="output"/>
-                                    {output}<br />
-                                </f:then>
-                            </f:if>
-
+                            {item}<br />
                         </f:for>
                     </f:else>
                 </f:if>

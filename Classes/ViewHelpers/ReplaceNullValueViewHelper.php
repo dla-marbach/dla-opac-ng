@@ -14,7 +14,8 @@ class ReplaceNullValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstra
     public function initializeArguments()
     {
         parent::initializeArguments();
-        $this->registerArgument('text', 'string', 'Text', true, 'string');
+        $this->registerArgument('text', 'string', 'Text', false, null);
+        $this->registerArgument('array', 'array', 'Array', false, null);
         $this->registerArgument('as', 'string', 'name of the label result variable', true, 'string');
     }
 
@@ -23,11 +24,20 @@ class ReplaceNullValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstra
      */
     public function render()
     {
-        $resultValue = str_replace("#NV : #NV", "", $this->arguments['text']);
-        $resultValue = str_replace("#NV :", "", $resultValue);
+        if ($this->arguments['text']) {
+            $resultValue = str_replace("#NV : #NV", "", $this->arguments['text']);
+            $resultValue = str_replace("#NV :", "", $resultValue);
 
-        if (is_array($resultValue)) {
-            $resultValue = $resultValue[0];
+            if (is_array($resultValue)) {
+                $resultValue = $resultValue[0];
+            }
+        } else if (is_array($this->arguments['array'])) {
+            foreach ($this->arguments['array'] as $key => $value) {
+                preg_match('/\#NV/', $value, $matches);
+                if (empty($matches)) {
+                    $resultValue[] = $value;
+                }
+            }
         }
 
         $valueName = $this->arguments['as'];
