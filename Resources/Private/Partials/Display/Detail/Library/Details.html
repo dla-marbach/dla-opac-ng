@@ -900,12 +900,14 @@
                             field:'XX_AU_SENDER_AUKEY'
                     }"/>
         </f:if>
-        <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDAT_AUKEY')}">
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDAT_AUKEY')}" name="XX_AU_SENDAT_AUKEY" />
+        <f:if condition="{XX_AU_SENDAT_AUKEY}">
             <f:for each="{XX_AU_SENDAT_AUKEY}" as="value" iteration="iterator">
                 <f:if condition="{value->f:format.urlencode()} != '%E2%90%9E'">
                     <f:then>
                         <dla:data.dateFormat
-                                dateValue="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDAT_AUKEY')}"
+                                dateValue="{XX_AU_SENDAT_AUKEY}"
                                 as="dateFormat"
                         />
                         <f:format.date date="{dateFormat}" format="d.m.Y"></f:format.date>
