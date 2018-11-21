@@ -1403,6 +1403,7 @@ AKYTXT
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AURL')}" name="AURL" />
 
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_TYP_SYNKEY')}" name="XX_SE_TYP_SYNKEY" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'SYNKEY')}" name="SYNKEY" />
 
     <div class="ctg-dtvt-label">
         <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
@@ -1414,7 +1415,15 @@ AKYTXT
                 <f:for each="{XX_SE_TYP_SYNKEY}" as="typKey" iteration="iterator">
                     <f:if condition="{typKey} == 'Kette Bibliothek'">
                         <f:then>
-                            {XX_SE_REGTIT_SYNKEY.{iterator.index}} <br />
+                            <s:data.newArray
+                                    name="detailpage"
+                                    global="1"
+                                    keys="{0:'id'}"
+                                    values="{0:'SE{SYNKEY.{iterator.index}}'}"
+                            />
+                            <f:link.action action="index" arguments="{detailpage}" class="internal" noCacheHash="1">
+                                {XX_SE_REGTIT_SYNKEY.{iterator.index}}<br/>
+                            </f:link.action>
                         </f:then>
                     </f:if>
                 </f:for>
@@ -1511,12 +1520,12 @@ AKYTXT
 
                 <f:for each="{SYNKEY_BIBLIOGRAPHIE}" as="synKey" iteration="iterator">
                     <s:data.newArray
-                            name="query"
+                            name="detailpage"
                             global="1"
-                            keys="{0:'raw'}"
-                            values="{0:'SYNKEY:{synKey}'}"
+                            keys="{0:'id'}"
+                            values="{0:'SE{SYNKEY.{iterator.index}}'}"
                     />
-                    <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                    <f:link.action action="index" arguments="{detailpage}" class="internal" noCacheHash="1">
                         {REGTIT_SYNKEY_BIBLIOGRAPHIE.{iterator.index}}<br/>
                     </f:link.action>
                 </f:for>
