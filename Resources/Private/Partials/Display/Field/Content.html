@@ -159,6 +159,9 @@
             />
           </f:else>
         </f:if>
+        <f:if condition="{s:data.isArray(subject:'{s:data.valueForKey(array:document.fields, key:fieldContent.0)}">
+          <v:variable.set value="{fieldContent.0.0}" name="fieldContent.0" />
+        </f:if>
         <s:data.newArray
           name="queryArray"
           global="1"
