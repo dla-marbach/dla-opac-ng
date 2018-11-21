@@ -188,11 +188,11 @@
 <div class="ctg-dtvt-row">
     <f:comment>Urheber</f:comment>
 
-    <dla:data.valueForKeyFiltered key="XX_PE_P0800_PE0100" filterKey="GFUPER" filterValues="{0:'_GS'}" mustMatch="false" fields="{document.fields}" as="XX_PE_P0800_PE0100" />
+    <dla:data.valueForKeyFiltered key="XX_PE_listview_title_PE0100" filterKey="GFUPER" filterValues="{0:'_GS'}" mustMatch="false" fields="{document.fields}" as="XX_PE_listview_title_PE0100" />
     <dla:data.valueForKeyFiltered key="GFUPE" filterKey="GFUPER" filterValues="{0:'_GS'}" mustMatch="false" fields="{document.fields}" as="GFUPE_GS" />
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'GFUPER')}" name="GFUPER" />
     <dla:data.joinFieldArrays
-            arrays="{0:'{XX_PE_P0800_PE0100}',1:'{GFUPE_GS}'}"
+            arrays="{0:'{XX_PE_listview_title_PE0100}',1:'{GFUPE_GS}'}"
             fieldWraps="{0:'%s',1:'[%s]'}"
             as="author"
     />
@@ -1360,7 +1360,16 @@ AKYTXT
                 {labelItem}
             </div>
             <div class="ctg-dtvt-content">
-                {XX_AK_TITREG_AKY526.{labelIterator.index}} / {XX_AK_A0359_AKY526.{labelIterator.index}} . - {XX_AK_listview_additional1_AKY526.{labelIterator.index}}
+                <f:render
+                        partial="Display/Field/List"
+                        arguments="{
+                document:document,
+                results:results,
+                field:'AKY526',
+                linkFieldContent:1,
+                linkFacets:linkFacets,
+                linkTexts:'{XX_AK_TITREG_AKY526.{labelIterator.index}} / {XX_AK_A0359_AKY526.{labelIterator.index}} . - {XX_AK_listview_additional1_AKY526.{labelIterator.index}}'
+              }"/>
             </div>
         </div>
     </f:for>
