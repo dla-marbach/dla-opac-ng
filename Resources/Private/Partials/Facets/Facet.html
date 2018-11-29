@@ -7,43 +7,53 @@
   Each facet is created by the partial in Facets/Facet with the name of the
   facet’s configured type (deaulting to  »List«).
 </f:comment>
+<f:comment>This identifies if the facet only conatins the missing facet element</f:comment>
+<f:if condition="{f:count(subject:facetData.values)} == 1">
+    <f:for each="{facetData.values}" as="itemCount" key="key" iteration="iterator">
+        <v:variable.set value="{key}" name="facetkey" />
+    </f:for>
+</f:if>
 <f:if condition="{f:count(subject:facetData.values)} > 0">
-  <section class="ctg-facet">
-
-    <f:comment>
-      <article class="facet facet-id-{facetInfo.id}{f:if(condition:facetInfo.type, then:' facet-type-{facetInfo.type}')}">
-      </article>
-    </f:comment>
-    <f:if condition="{facetInfo.removeHeadline} != true">
-      <f:if condition="{facetInfo.label}">
-        <f:then>
-          <h3>
-            {facetInfo.label}
-            <a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>" data-facet-toggle="1">
-              <f:if condition="{facetInfo.collapse}">
-                <f:then><span class="icon bel-pfeil-u01"></span></f:then>
-                <f:else><span class="icon bel-pfeil-o01"></span></f:else>
-              </f:if>
-            </a>
-          </h3>
-        </f:then>
+    <f:if condition="{f:count(subject:facetData.values)} == 1 && {facetkey} == ''">
+        <f:then></f:then>
         <f:else>
-          <h3>
-            <f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}" default="{facetInfo.id}"/>
-            <a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>" data-facet-toggle="1">
-              <f:if condition="{facetInfo.collapse}">
-                <f:then><span class="icon bel-pfeil-u01"></span></f:then>
-                <f:else><span class="icon bel-pfeil-o01"></span></f:else>
-              </f:if>
-            </a>
-          </h3>
+            <section class="ctg-facet">
+                <f:comment>
+                    <article class="facet facet-id-{facetInfo.id}{f:if(condition:facetInfo.type, then:' facet-type-{facetInfo.type}')}">
+                    </article>
+                </f:comment>
+                <f:if condition="{facetInfo.removeHeadline} != true">
+                    <f:if condition="{facetInfo.label}">
+                        <f:then>
+                            <h3>
+                                {facetInfo.label}
+                                <a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>" data-facet-toggle="1">
+                                    <f:if condition="{facetInfo.collapse}">
+                                        <f:then><span class="icon bel-pfeil-u01"></span></f:then>
+                                        <f:else><span class="icon bel-pfeil-o01"></span></f:else>
+                                    </f:if>
+                                </a>
+                            </h3>
+                        </f:then>
+                        <f:else>
+                            <h3>
+                                <f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}" default="{facetInfo.id}"/>
+                                <a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>" data-facet-toggle="1">
+                                    <f:if condition="{facetInfo.collapse}">
+                                        <f:then><span class="icon bel-pfeil-u01"></span></f:then>
+                                        <f:else><span class="icon bel-pfeil-o01"></span></f:else>
+                                    </f:if>
+                                </a>
+                            </h3>
+                        </f:else>
+                    </f:if>
+                </f:if>
+                <f:alias map="{facetType:'{f:if(condition:facetInfo.type, then:facetInfo.type, else:\"List\")}'}">
+                    <f:render partial="Facets/Facet/{facetType}" arguments="{_all}"/>
+                </f:alias>
+            </section>
         </f:else>
-      </f:if>
     </f:if>
-    <f:alias map="{facetType:'{f:if(condition:facetInfo.type, then:facetInfo.type, else:\"List\")}'}">
-      <f:render partial="Facets/Facet/{facetType}" arguments="{_all}"/>
-    </f:alias>
-  </section>
 </f:if>
 
 
