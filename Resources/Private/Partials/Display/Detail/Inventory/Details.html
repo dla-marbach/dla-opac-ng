@@ -284,7 +284,6 @@
         </div>
         <div class="ctg-dtvt-content">
             <dla:replaceBreaks text="{B01600}" as="textNew"/>
-            <f:debug>{textNew}</f:debug>
             <f:format.raw>
                 {textNew}
             </f:format.raw>
@@ -459,22 +458,42 @@
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'INDKEY')}" name="INDKEY" />
+
 <f:if condition="{XX_MM_MOTITL_INDKEY}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
             <f:translate key='Digitales Objekt' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
+
+            <f:for each="{INDKEY}" as="item" iteration="iterator">
+                <s:data.newArray
+                        name="query"
+                        global="1"
+                        keys="{0:'id'}"
+                        values="{0:'MM{item}'}"
+                />
+                <f:link.action action="index" arguments="{query}" class="internal" noCacheHash="1">
+                    {XX_MM_MOTITL_INDKEY.{iterator.index}}<br/>
+                </f:link.action>
+            </f:for>
+
+            <f:comment>
             <f:render
                     partial="Display/Field/List"
                     arguments="{
             document:document,
             results:results,
             field:'INDKEY',
-            linkFieldContent:linkFieldContent,
+            linkFieldContent:1,
             linkFacets:linkFacets,
             linkTexts:XX_MM_MOTITL_INDKEY
-          }"/>
+          }"/></f:comment>
+
+            <f:for each="{digitalObject}" as="item" iteration="iterator">
+                <a href="{AURL.{iterator.index}}">{item}</a><br />
+            </f:for>
         </div>
     </div>
 </f:if>
