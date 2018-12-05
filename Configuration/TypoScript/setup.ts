@@ -273,7 +273,7 @@ plugin.tx_find {
             100 {
                 id = relation_subinventory
                 type = Text
-                query = BUEBKY:("%1$s")
+                query = BUEBKY:("%1$s") OR BFKEY:("%1$s")
                 noescape = 1
                 hidden = 1
             }
@@ -281,7 +281,7 @@ plugin.tx_find {
             105 {
                 id = relation_subinventory_hs
                 type = Text
-                query = HSBFKY:("%1$s") OR BFKEY:("%1$s")
+                query = HSBFKY:("%1$s") OR XX_AU_BFKEY_AUKEY:("%1$s")
                 noescape = 1
                 hidden = 1
             }
