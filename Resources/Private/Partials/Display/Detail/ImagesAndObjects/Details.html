@@ -86,7 +86,9 @@
 <div class="ctg-detailview-media">
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'picture_midi')}" name="picture_midi" />
     <f:if condition="{picture_midi.0}">
-        <img src="{picture_midi.0}" alt="">
+        <div class="image-container">
+            <img src="{picture_midi.0}" alt="">
+        </div>
     </f:if>
 </div>
 
