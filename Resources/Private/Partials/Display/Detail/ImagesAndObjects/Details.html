@@ -770,6 +770,7 @@
         </div>
         <div class="ctg-dtvt-content">
             <f:for each="{valueArrayCleaned}" as="value" iteration="iterator">
+                <dla:removeTrailingDot string="{value}" as="value"/>
                 {value}
                 <f:if condition="{iterator.isLast} != 1">
                     <hr/>
