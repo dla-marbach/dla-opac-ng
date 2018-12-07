@@ -234,7 +234,7 @@
                             field:'PEA100',
                             fieldToDisplay: 'XX_PE_P0800_PEA100',
                             fieldNames: '{0:\'XX_PE_P0800_PEA100\'}',
-                            fieldWraps: '{0:\'%s [Widmungsempfänger]\'}'
+                            fieldWraps: '{0:\'%s [Widmungsempfänger/in]\'}'
                         }"
                     />
 
@@ -246,7 +246,7 @@
                             field:'PEU100',
                             fieldToDisplay: 'XX_PE_P0800_PEU100',
                             fieldNames: '{0:\'XX_PE_P0800_PEU100\'}',
-                            fieldWraps: '{0:\'%s [Vorbesitzer]\'}'
+                            fieldWraps: '{0:\'%s [Vorbesitzer/in]\'}'
                         }"
                     />
                 </f:then>
@@ -290,7 +290,7 @@
                             field:'KSC200',
                             fieldToDisplay: 'XX_KS_K0800_KSC200',
                             fieldNames: '{0:\'XX_KS_K0800_KSC200\', 1:\'AFUKS\'}',
-                            fieldWraps: '{0:\'%s [Urheber]\',1:\'(%s)\'}'
+                            fieldWraps: '{0:\'%s [Urheber/in]\',1:\'(%s)\'}'
                         }"
                     />
 
@@ -302,7 +302,7 @@
                             field:'KSA200',
                             fieldToDisplay: 'XX_KS_K0800_KSA200',
                             fieldNames: '{0:\'XX_KS_K0800_KSA200\'}',
-                            fieldWraps: '{0:\'%s [Widmungsempfänger]\'}'
+                            fieldWraps: '{0:\'%s [Widmungsempfänger/in]\'}'
                         }"
                     />
 
@@ -314,7 +314,7 @@
                             field:'KSU200',
                             fieldToDisplay: 'XX_KS_K0800_KSU200',
                             fieldNames: '{0:\'XX_KS_K0800_KSU200\'}',
-                            fieldWraps: '{0:\'%s [Vorbesitzer]\'}'
+                            fieldWraps: '{0:\'%s [Vorbesitzer/in]\'}'
                         }"
                     />
                 </f:then>
@@ -335,9 +335,10 @@
         <div class="ctg-dtvt-content">
             <f:if condition="{B52010}">
                 <f:then>
-                    <f:format.nl2br>
+                    <dla:replaceBreaks text="{B52010}" as="B52010" />
+                    <f:format.raw>
                         {B52010}
-                    </f:format.nl2br>
+                    </f:format.raw>
                 </f:then>
                 <f:else>
                     -
@@ -909,8 +910,8 @@
             <f:if condition="{picture_midi} || {B04100} ">
                 <f:then>
                     <f:for each="{picture_midi}" as="pic" iteration="iterator">
-                        <image src="{pic}"/>
-                        <v:variable.get name="B04100.{iterator.index}" />
+                        <div class="detail-do-image"><image src="{pic}"/></div>
+                        <span class="detail-do-description"><v:variable.get name="B04100.{iterator.index}" /></span>
                     </f:for>
                     <f:comment><f:render
                         partial="Display/Field/ImageList"
