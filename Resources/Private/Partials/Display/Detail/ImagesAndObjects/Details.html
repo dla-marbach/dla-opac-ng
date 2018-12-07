@@ -196,10 +196,10 @@
         </div>
         <div class="ctg-dtvt-content">
             <f:if condition="
-                {s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PEE100')} ||
-                {s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PEU100')} ||
-                {s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PEA100')} ||
-                {s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PE0100')}
+                {s:data.valueForKey(array:document.fields, key:'XX_PE_listview_title_PEE100')} ||
+                {s:data.valueForKey(array:document.fields, key:'XX_PE_listview_title_PEU100')} ||
+                {s:data.valueForKey(array:document.fields, key:'XX_PE_listview_title_PEA100')} ||
+                {s:data.valueForKey(array:document.fields, key:'XX_PE_listview_title_PE0100')}
             ">
                 <f:then>
                     <f:render
@@ -208,8 +208,8 @@
                             document:document,
                             results:results,
                             field:'PEE100',
-                            fieldToDisplay: 'XX_PE_P0800_PEE100',
-                            fieldNames: '{0:\'XX_PE_P0800_PEE100\', 1:\'GFUPUE\', 2:\'PERPOS\'}',
+                            fieldToDisplay: 'XX_PE_listview_title_PEE100',
+                            fieldNames: '{0:\'XX_PE_listview_title_PEE100\', 1:\'GFUPUE\', 2:\'PERPOS\'}',
                             fieldWraps: '{0:\'%s\',1:\'[%s]\',2:\'(%s)\'}'
                         }"
                     />
@@ -220,8 +220,8 @@
                             document:document,
                             results:results,
                             field:'PE0100',
-                            fieldToDisplay: 'XX_PE_P0800_PE0100',
-                            fieldNames: '{0:\'XX_PE_P0800_PE0100\', 1:\'GFUPER\', 2:\'AFUPER\'}',
+                            fieldToDisplay: 'XX_PE_listview_title_PE0100',
+                            fieldNames: '{0:\'XX_PE_listview_title_PE0100\', 1:\'GFUPER\', 2:\'AFUPER\'}',
                             fieldWraps: '{0:\'%s\',1:\'[%s]\',2:\'(%s)\'}'
                         }"
                     />
@@ -232,8 +232,8 @@
                             document:document,
                             results:results,
                             field:'PEA100',
-                            fieldToDisplay: 'XX_PE_P0800_PEA100',
-                            fieldNames: '{0:\'XX_PE_P0800_PEA100\'}',
+                            fieldToDisplay: 'XX_PE_listview_title_PEA100',
+                            fieldNames: '{0:\'XX_PE_listview_title_PEA100\'}',
                             fieldWraps: '{0:\'%s [Widmungsempfänger/in]\'}'
                         }"
                     />
@@ -244,8 +244,8 @@
                             document:document,
                             results:results,
                             field:'PEU100',
-                            fieldToDisplay: 'XX_PE_P0800_PEU100',
-                            fieldNames: '{0:\'XX_PE_P0800_PEU100\'}',
+                            fieldToDisplay: 'XX_PE_listview_title_PEU100',
+                            fieldNames: '{0:\'XX_PE_listview_title_PEU100\'}',
                             fieldWraps: '{0:\'%s [Vorbesitzer/in]\'}'
                         }"
                     />
