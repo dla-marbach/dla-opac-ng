@@ -473,20 +473,10 @@
         <div class="ctg-dtvt-content">
             <f:if condition="{height} || {width} || {depth} || {diameter} || {B52011}">
                 <f:then>
-                    <dla:data.joinFields
-                            fieldNames="{0:'B52001',1:'B52002',2:'B52003',3:'B52004',4:'B52011'}"
-                            fieldWraps="{0:'%s',1:'x %s',2:'x %s',3:'x %s',4:'%s'}"
-                            fields="{document.fields}"
-                            as="linkTexts"
-                    />
-                    <f:for each="{linkTexts}" as="field" iteration="iterator">
-                        {field}
-                        (
-                        <f:if condition="{v:variable.get(name: 'height.{iterator.index}')}">Höhe</f:if>
-                        <f:if condition="{v:variable.get(name: 'width.{iterator.index}')}">x Breite</f:if>
-                        <f:if condition="{v:variable.get(name: 'depth.{iterator.index}')}">x Tiefe</f:if>
-                        )
-                        <br/>
+                    <dla:dimension height="{height}" width="{width}" depth="{depth}" diameter="{diameter}" description="{B52011}" as="dimension"/>
+
+                    <f:for each="{dimension}" as="field" iteration="iterator">
+                        <div>{field}</div>
                     </f:for>
                 </f:then>
                 <f:else>
