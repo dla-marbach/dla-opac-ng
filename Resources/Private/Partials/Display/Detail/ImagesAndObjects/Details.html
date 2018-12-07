@@ -360,7 +360,7 @@
                 <f:then>
                     <f:if condition="{B02040}">
                         {B02040}
-                        <f:if condition="{B02000.0}">
+                        <f:if condition="{B02000.0}!='#NV'">
                             ({B02000.0})
                         </f:if>
                         <br />
@@ -368,7 +368,7 @@
 
                     <f:if condition="{B0204A}">
                         {B0204A}
-                        <f:if condition="{B02000.1}">
+                        <f:if condition="{B02000.1}!='#NV'">
                             ({B02000.1})
                         </f:if>
                     </f:if>

@@ -27,6 +27,7 @@ class ReplaceNullValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstra
         if ($this->arguments['text']) {
             $resultValue = str_replace("#NV : #NV", "", $this->arguments['text']);
             $resultValue = str_replace("#NV :", "", $resultValue);
+            $resultValue = str_replace("#NV", "", $resultValue);
 
             if (is_array($resultValue)) {
                 $resultValue = $resultValue[0];
@@ -36,10 +37,14 @@ class ReplaceNullValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstra
                 preg_match('/\#NV/', $value, $matches);
                 if (empty($matches)) {
                     $resultValue[] = $value;
+                } else {
+                    $value = str_replace("#NV", "", $value);
+                    if (!empty($value)) {
+                        $resultValue[] = $value;
+                    }
                 }
             }
         }
-
         $valueName = $this->arguments['as'];
         if ($valueName !== null) {
             if ($this->templateVariableContainer->exists($valueName)) {

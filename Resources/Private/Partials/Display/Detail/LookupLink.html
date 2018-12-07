@@ -11,6 +11,7 @@
             fields="{document.fields}"
             as="linkTexts"
     />
+    <dla:replaceNullValue array="{linkTexts}" as="linkTexts"/>
     <f:render
             partial="Display/Field/List"
             arguments="{
