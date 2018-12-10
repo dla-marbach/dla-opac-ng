@@ -775,20 +775,22 @@
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B01660')}" name="B01660" />
         <v:variable.set value="{0:'{B52030}',1:'{B02630}',2:'{B52007}', 3:'{B01660}'}" name="valueArray" />
         <dla:arrayRemoveNull array="{valueArray}" as="valueArrayCleaned"/>
-        <div class="ctg-dtvt-row">
-            <div class="ctg-dtvt-label">
-                <f:translate key='Anmerkungen' extensionName='dla_opac_ng'/>
+        <f:if condition="{valueArrayCleaned}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key='Anmerkungen' extensionName='dla_opac_ng'/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    <f:for each="{valueArrayCleaned}" as="value" iteration="iterator">
+                        <dla:removeTrailingDot string="{value}" as="value"/>
+                        {value}
+                        <f:if condition="{iterator.isLast} != 1">
+                            <hr/>
+                        </f:if>
+                    </f:for>
+                </div>
             </div>
-            <div class="ctg-dtvt-content">
-                <f:for each="{valueArrayCleaned}" as="value" iteration="iterator">
-                    <dla:removeTrailingDot string="{value}" as="value"/>
-                    {value}
-                    <f:if condition="{iterator.isLast} != 1">
-                        <hr/>
-                    </f:if>
-                </f:for>
-            </div>
-        </div>
+        </f:if>
 
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B01630')}" name="B01630" />
