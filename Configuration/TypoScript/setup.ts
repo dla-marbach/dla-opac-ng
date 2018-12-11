@@ -420,12 +420,17 @@ plugin.tx_find {
                 sortCriteria = score desc
             }
             2 {
-                id = Alphabetisch
-                sortCriteria = listview_title asc
+                id = Jahr aufsteigend
+                sortCriteria = A0425 asc,H02035 asc,B02040 asc,PA8141 asc,PA8142 asc,KA805 asc
             }
             3 {
-                id = Geburtstag
-                sortCriteria = PA8141 asc
+                id = Jahr absteigend
+                sortCriteria = A0425 desc,H02035 desc,B02040 desc,PA8141 desc,PA8142 desc,KA805 desc
+            }
+
+            4 {
+                id = Titel (A-Z)
+                sortCriteria = listview_title asc
             }
         }
 
