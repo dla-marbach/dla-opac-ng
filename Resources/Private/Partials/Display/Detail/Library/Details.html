@@ -220,6 +220,13 @@
                 fieldWraps="{0:'%s',1:'[%s]'}"
                 as="author"
         />
+        <f:if condition="{author -> f:count()} < 1">
+            <dla:data.joinFieldArrays
+                    arrays="{0:'{XX_PE_P0800_PE0100}',1:'{GFUPE_GS}'}"
+                    fieldWraps="{0:'%s',1:'[%s]'}"
+                    as="author"
+            />
+        </f:if>
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
         <f:if condition="{PE0100}">
             <f:then>
@@ -595,7 +602,7 @@
 
         <dla:data.valueForKeyFiltered key="XX_AK_TITREG_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_TITREG_AKA451" />
         <dla:data.valueForKeyFiltered key="XX_AK_A0359_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_A0359_AKA451" />
-        <dla:data.valueForKeyFiltered key="listview_additional1" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="listview_additional1" />
+        <dla:data.valueForKeyFiltered key="XX_AK_listview_additional1_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_listview_additional1_AKA451" />
         <dla:data.valueForKeyFiltered key="XX_AK_A0331_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_A0331_AKA451" />
         <dla:data.valueForKeyFiltered key="XX_AK_TITREG_HBKEY" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_TITREG_HBKEY" />
 
@@ -608,7 +615,7 @@
         <f:if condition="{GESTYP.0} == 'Teil mit abhängigem Titel'">
             <f:then>
                 <dla:data.joinFieldArrays
-                        arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{XX_AK_A0359_AKA451}',2:'{listview_additional1}' ,3:'{A0455}'}"
+                        arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{XX_AK_A0359_AKA451}',2:'{XX_AK_listview_additional1_AKA451}' ,3:'{A0455}'}"
                         fieldWraps="{0:'%s',1:'\ %s',2:'. - %s' ,3:'; %s'}"
                         as="linkTexts"/>
             </f:then>
@@ -640,11 +647,13 @@
                                 />
                             </f:then>
                             <f:else>
-                                <dla:data.joinFieldArrays
-                                        arrays="{0:'{XX_AK_TITREG_HBKEY}'}"
-                                        fieldWraps="{0:'%s'}"
-                                        as="linkTexts"
-                                />
+                                <f:if condition="{XX_AK_TITREG_HBKEY.0}">
+                                    <dla:data.joinFieldArrays
+                                            arrays="{0:'{XX_AK_TITREG_HBKEY}'}"
+                                            fieldWraps="{0:'%s'}"
+                                            as="linkTexts"
+                                    />
+                                </f:if>
                             </f:else>
                         </f:if>
                     </f:else>
@@ -699,7 +708,7 @@
 
         <dla:data.valueForKeyFiltered key="AKA451" filterKey="GESTYP" negateFilter="false"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="AKA451" />
         <dla:data.valueForKeyFiltered key="USEIT" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="USEIT" />
-        <dla:data.valueForKeyFiltered key="listview_additional1" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="listview_additional1" />
+        <dla:data.valueForKeyFiltered key="XX_AK_listview_additional1_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_listview_additional1_AKA451" />
         <dla:data.valueForKeyFiltered key="XX_AK_A0359_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_A0359_AKA451" />
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKA451')}" name="XX_AK_TITREG_AKA451" />
@@ -709,7 +718,7 @@
                  {GESTYP.0} == 'Begleitmaterial / Beilage'">
             <f:then>
                 <dla:data.joinFieldArrays
-                        arrays="{0:'{listview_additional1}'}"
+                        arrays="{0:'{XX_AK_listview_additional1_AKA451}'}"
                         fieldWraps="{0:'%s'}"
                         as="linkTexts"
                 />
@@ -718,7 +727,7 @@
                 <f:if condition="{GESTYP.0} == 'Teil einer monografischen Zusammenstellung, unselbständiges Stück'">
                     <f:then>
                         <dla:data.joinFieldArrays
-                                arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{XX_AK_A0359_AKA451}',2:'{listview_additional1}', 3:'{USEIT}'}"
+                                arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{XX_AK_A0359_AKA451}',2:'{XX_AK_listview_additional1_AKA451}', 3:'{USEIT}'}"
                                 fieldWraps="{0:'%s',1:'\ %s', 2:'%s . - ', 3:'; %s'}"
                                 as="linkTexts"
                         />
@@ -1514,7 +1523,7 @@
         <dla:data.valueForKeyFiltered key="SYNKEY" filterKey="XX_SE_TYP_SYNKEY" filterValues="{synkeyValues}" fields="{document.fields}" as="SYNKEY_BIBLIOGRAPHIE" />
         <dla:data.valueForKeyFiltered key="XX_SE_REGTIT_SYNKEY" filterKey="XX_SE_TYP_SYNKEY" filterValues="{synkeyValues}" fields="{document.fields}" as="REGTIT_SYNKEY_BIBLIOGRAPHIE" />
 
-        <f:if condition="{A0711} || {AURL} || {XX_SE_REGTIT_SYNKEY}">
+        <f:if condition="{A0711} || {AURL} || {SYNKEY_BIBLIOGRAPHIE}">
             <f:then>
                 <div class="ctg-dtvt-row">
                     <div class="ctg-dtvt-label">
