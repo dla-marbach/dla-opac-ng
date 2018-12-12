@@ -3,7 +3,7 @@
 {namespace dla=Dla\DlaOpacNg\ViewHelpers}
 {namespace s=Subugoe\Find\ViewHelpers}
 
-<div class="ctg-detailview-head">
+<div class="ctg-detailview-head" xmlns:f="http://www.w3.org/1999/html">
     <div class="ctg-dvh-main">
         <div class="ctg-ri-icon">
             <f:render partial="Display/Detail/MediatypeIcon" arguments="{listview_type:document.listview_type, listview_type_cardinality:document.listview_type_cardinality}" />
@@ -156,25 +156,50 @@
 </div>
 
 <f:comment>
-<div class="ctg-detailview-media">
-    <img src="Start%20-%20DLA%20Marbach-Dateien/platzhalter-bild.jpg" alt="">
-</div>
+    <div class="ctg-detailview-media">
+        <img src="Start%20-%20DLA%20Marbach-Dateien/platzhalter-bild.jpg" alt="">
+    </div>
 </f:comment>
 
 <div class="ctg-detailview-tabs">
+
     <ul class="ctg-dtvt-menu">
-        <li><a href="" class="ctg-dtvt-menu-active"><span><f:translate key='Details' extensionName='dla_opac_ng'/></span></a></li><li><a href=""><span><f:translate key='Zugang' extensionName='dla_opac_ng'/> (?)</span></a></li><li><a href=""><span>Platzhalter 1</span></a></li><li><a href=""><span>Platzhalter 2</span></a></li>
+        <li>
+            <a href="" class="ctg-dtvt-menu-active">
+                <span>
+                    <f:translate key='Details' extensionName='dla_opac_ng'/>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <span>
+                    <f:translate key='Zugang' extensionName='dla_opac_ng'/> (?)
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <span>Platzhalter 1</span>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <span>Platzhalter 2</span>
+            </a>
+        </li>
     </ul>
 
     <div class="ctg-dtvt-details">
+
         <div class="ctg-dtvt-row">
             <div class="ctg-dtvt-label">
                 <f:translate key='Medientyp' extensionName='dla_opac_ng'/>
             </div>
             <div class="ctg-dtvt-content">
                 <f:render
-                    partial="Display/Field/List"
-                    arguments="{
+                        partial="Display/Field/List"
+                        arguments="{
                         document:document,
                         results:results,
                         field:'listview_type',
@@ -182,105 +207,106 @@
                         linkFacets:linkFacets
                         }"/>
             </div>
-
         </div>
 
-<div class="ctg-dtvt-row">
-    <f:comment>Urheber</f:comment>
-
-    <dla:data.valueForKeyFiltered key="XX_PE_listview_title_PE0100" filterKey="GFUPER" filterValues="{0:'_GS'}" mustMatch="false" fields="{document.fields}" as="XX_PE_listview_title_PE0100" />
-    <dla:data.valueForKeyFiltered key="GFUPE" filterKey="GFUPER" filterValues="{0:'_GS'}" mustMatch="false" fields="{document.fields}" as="GFUPE_GS" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'GFUPER')}" name="GFUPER" />
-    <dla:data.joinFieldArrays
-            arrays="{0:'{XX_PE_listview_title_PE0100}',1:'{GFUPE_GS}'}"
-            fieldWraps="{0:'%s',1:'[%s]'}"
-            as="author"
-    />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
-
-    <div class="ctg-dtvt-label">
-        <f:translate key='Urheber' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
+        <f:comment>
+            Urheber
+        </f:comment>
+        <dla:data.valueForKeyFiltered key="XX_PE_listview_title_PE0100" filterKey="GFUPER" filterValues="{0:'_GS'}" mustMatch="false" fields="{document.fields}" as="XX_PE_listview_title_PE0100" />
+        <dla:data.valueForKeyFiltered key="GFUPE" filterKey="GFUPER" filterValues="{0:'_GS'}" mustMatch="false" fields="{document.fields}" as="GFUPE_GS" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'GFUPER')}" name="GFUPER" />
+        <dla:data.joinFieldArrays
+                arrays="{0:'{XX_PE_listview_title_PE0100}',1:'{GFUPE_GS}'}"
+                fieldWraps="{0:'%s',1:'[%s]'}"
+                as="author"
+        />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
         <f:if condition="{PE0100}">
             <f:then>
-                <f:for each="{PE0100}" as="item" iteration="iterator">
+                <div class="ctg-dtvt-row">
 
-                    <s:data.newArray
-                            name="query"
-                            global="1"
-                            keys="{0:'id'}"
-                            values="{0:'PE{item}'}"
-                    />
-                    <f:link.action action="index" arguments="{query}" class="internal" noCacheHash="1">
-                        {author.{iterator.index}}<br/>
-                    </f:link.action>
-                </f:for>
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Urheber' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:for each="{PE0100}" as="item" iteration="iterator">
+
+                            <s:data.newArray
+                                    name="query"
+                                    global="1"
+                                    keys="{0:'id'}"
+                                    values="{0:'PE{item}'}"
+                            />
+                            <f:link.action action="index" arguments="{query}" class="internal" noCacheHash="1">
+                                {author.{iterator.index}}<br/>
+                            </f:link.action>
+                        </f:for>
+
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
-
-<div class="ctg-dtvt-row">
-    <f:comment>Beteiligt</f:comment>
-
-    <dla:data.valueForKeyFiltered
-            key="XX_PE_P0800_PE0100"
-            filterKey="GFUPER"
-            filterValues="{0:'_GS'}"
-            mustMatch="false"
-            negateFilter="true"
-            fields="{document.fields}"
-            as="XX_PE_P0800_PE0100" />
-
-    <dla:data.valueForKeyFiltered
-            key="GFUPE"
-            filterKey="GFUPER"
-            filterValues="{0:'_GS'}"
-            mustMatch="false"
-            negateFilter="true"
-            fields="{document.fields}" as="GFUPE_NOT_GS" />
-    <dla:data.joinFieldArrays
-            arrays="{0:'{XX_PE_P0800_PE0100}',1:'{GFUPE_NOT_GS}'}"
-            fieldWraps="{0:'%s',1:'[%s]'}"
-            as="involved"
-    />
-
-    <dla:data.valueForKeyFiltered
-            key="XX_KS_listview_title_KSC200"
-            filterKey="GFUPER"
-            filterValues="{0:'_GS'}"
-            mustMatch="false"
-            negateFilter="true"
-            fields="{document.fields}"
-            as="XX_KS_listview_title_KSC200" />
-    <dla:data.valueForKeyFiltered
-            key="GFUPER"
-            filterKey="GFUPER"
-            filterValues="{0:'_GS'}"
-            mustMatch="false"
-            negateFilter="true"
-            fields="{document.fields}" as="GFUPE_NOT_GS" />
-
-    <dla:data.joinFieldArrays
-            arrays="{0:'{XX_KS_listview_title_KSC200}',1:'{GFUPE_NOT_GS}'}"
-            fieldWraps="{0:'%s',1:'[%s]'}"
-            as="involvedKS"
-    />
 
 
-    <div class="ctg-dtvt-label">
-        <f:translate key='Beteiligt' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
+
+        <f:comment>Beteiligt</f:comment>
+
+        <dla:data.valueForKeyFiltered
+                key="XX_PE_P0800_PE0100"
+                filterKey="GFUPER"
+                filterValues="{0:'_GS'}"
+                mustMatch="false"
+                negateFilter="true"
+                fields="{document.fields}"
+                as="XX_PE_P0800_PE0100" />
+
+        <dla:data.valueForKeyFiltered
+                key="GFUPE"
+                filterKey="GFUPER"
+                filterValues="{0:'_GS'}"
+                mustMatch="false"
+                negateFilter="true"
+                fields="{document.fields}" as="GFUPE_NOT_GS" />
+        <dla:data.joinFieldArrays
+                arrays="{0:'{XX_PE_P0800_PE0100}',1:'{GFUPE_NOT_GS}'}"
+                fieldWraps="{0:'%s',1:'[%s]'}"
+                as="involved"
+        />
+
+        <dla:data.valueForKeyFiltered
+                key="XX_KS_listview_title_KSC200"
+                filterKey="GFUPER"
+                filterValues="{0:'_GS'}"
+                mustMatch="false"
+                negateFilter="true"
+                fields="{document.fields}"
+                as="XX_KS_listview_title_KSC200" />
+        <dla:data.valueForKeyFiltered
+                key="GFUPER"
+                filterKey="GFUPER"
+                filterValues="{0:'_GS'}"
+                mustMatch="false"
+                negateFilter="true"
+                fields="{document.fields}" as="GFUPE_NOT_GS" />
+
+        <dla:data.joinFieldArrays
+                arrays="{0:'{XX_KS_listview_title_KSC200}',1:'{GFUPE_NOT_GS}'}"
+                fieldWraps="{0:'%s',1:'[%s]'}"
+                as="involvedKS"
+        />
+
         <f:if condition="{involved}">
             <f:then>
-                <f:render
-                    partial="Display/Field/List"
-                    arguments="{
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Beteiligt' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
                         document:document,
                         results:results,
                         field:'PE0100',
@@ -288,9 +314,9 @@
                         linkFacets:linkFacets,
                         linkTexts:involved
                       }"/>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
                         document:document,
                         results:results,
                         field:'KSC200',
@@ -298,170 +324,165 @@
                         linkFacets:linkFacets,
                         linkTexts:involvedKS
                       }"/>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
 
-</div>
 
-<div class="ctg-dtvt-row">
+        <f:comment>Erschienen</f:comment>
 
-    <f:comment>Erschienen</f:comment>
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS113')}" name="POS113" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0410')}" name="A0410" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0412')}" name="A0412" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0425')}" name="A0425" />
+        <v:variable.set value="{0: '{A0425}'}" name="A0425_2" />
 
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS113')}" name="POS113" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0410')}" name="A0410" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0412')}" name="A0412" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0425')}" name="A0425" />
-    <v:variable.set value="{0: '{A0425}'}" name="A0425_2" />
-
-    <dla:data.joinFieldArrays
-            arrays="{0:'{A0410}',1:'{A0412}',2:'{A0425_2}'}"
-            fieldWraps="{0:'%s',1:': %s',2:', %s'}"
-            as="appeared"
-    />
-    <f:comment>replace #NV</f:comment>
-    <dla:replaceNullValue array="{appeared}" as="appeared"/>
-
-    <div class="ctg-dtvt-label">
-        <f:translate key='Erschienen' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
+        <dla:data.joinFieldArrays
+                arrays="{0:'{A0410}',1:'{A0412}',2:'{A0425_2}'}"
+                fieldWraps="{0:'%s',1:': %s',2:', %s'}"
+                as="appeared"
+        />
+        <f:comment>replace #NV</f:comment>
+        <dla:replaceNullValue array="{appeared}" as="appeared"/>
         <f:if condition="{appeared}">
             <f:then>
-                <f:if condition="{POS113} == 'Fortlaufende Ressource / Jahrbuch' ||
-                {POS113} == 'Fortlaufende Ressource / Zeitschrift' ||
-                {POS113} == 'Fortlaufende Ressource / Serie, Reihe' ||
-                {POS113} == 'Fortlaufende Ressource / Zeitung'}">
-                    <f:then>
-                        <f:for each="{appeared}" as="item" iteration="iterator">
-                            <f:if condition="{item}">
-                                {item}<br />
-                            </f:if>
-                        </f:for>
-                    </f:then>
-                    <f:else>
-                        <f:for each="{appeared}" as="item" iteration="iterator">
-                            {item}<br />
-                        </f:for>
-                    </f:else>
-                </f:if>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Erschienen' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:if condition="{POS113} == 'Fortlaufende Ressource / Jahrbuch' ||
+                                        {POS113} == 'Fortlaufende Ressource / Zeitschrift' ||
+                                        {POS113} == 'Fortlaufende Ressource / Serie, Reihe' ||
+                                        {POS113} == 'Fortlaufende Ressource / Zeitung'}">
+                            <f:then>
+                                <f:for each="{appeared}" as="item" iteration="iterator">
+                                    <f:if condition="{item}">
+                                        {item}<br />
+                                    </f:if>
+                                </f:for>
+                            </f:then>
+                            <f:else>
+                                <f:for each="{appeared}" as="item" iteration="iterator">
+                                    {item}<br />
+                                </f:for>
+                            </f:else>
+                        </f:if>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <f:comment>Erscheinungsverlauf</f:comment>
 
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0405')}" name="A0405" />
-    <div class="ctg-dtvt-label">
-        <f:translate key='Erscheinungsverlauf' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
+        <f:comment>Erscheinungsverlauf</f:comment>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0405')}" name="A0405" />
+
         <f:if condition="{A0405}">
             <f:then>
-                <f:render
-                    partial="Display/Field/List"
-                    arguments="{
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Erscheinungsverlauf' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
                         document:document,
                         results:results,
                         field:'A0405',
                         linkFieldContent:linkFieldContent,
                         linkFacets:linkFacets
                       }"/>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <f:comment>Ausgabe</f:comment>
 
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0403')}" name="A0403" />
+        <f:comment>Ausgabe</f:comment>
 
-    <div class="ctg-dtvt-label">
-        <f:translate key='Ausgabe' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0403')}" name="A0403" />
+
         <f:if condition="{A0403}">
             <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Ausgabe' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
                         document:document,
                         results:results,
                         field:'A0403',
                         linkFieldContent:linkFieldContent,
                         linkFacets:linkFacets
                       }"/>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
 
-</div>
 
-<div class="ctg-dtvt-row">
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0433')}" name="A0433" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0434')}" name="A0434" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0437')}" name="A0437" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0433')}" name="A0433" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0434')}" name="A0434" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0437')}" name="A0437" />
 
-    <dla:data.joinFields
-            fieldNames="{0:'A0433',1:'A0434',3:'A0437'}"
-            fieldWraps="{0:'%s',1:': %s',2:'+ %s'}"
-            fields="{document.fields}"
-            as="linkTexts"
-    />
+        <dla:data.joinFields
+                fieldNames="{0:'A0433',1:'A0434',3:'A0437'}"
+                fieldWraps="{0:'%s',1:': %s',2:'+ %s'}"
+                fields="{document.fields}"
+                as="linkTexts"
+        />
 
-    <div class="ctg-dtvt-label">
-        <f:translate key='Umfang' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
         <f:if condition="{linkTexts}">
             <f:then>
-                <f:for each="{linkTexts}" as="item" iteration="iterator">
-                    {item}
-                </f:for>
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Umfang' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:for each="{linkTexts}" as="item" iteration="iterator">
+                            {item}
+                        </f:for>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
 
-</div>
 
-<div class="ctg-dtvt-row">
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0653')}" name="A0653" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AI653')}" name="AI653" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0653')}" name="A0653" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AI653')}" name="AI653" />
 
-    <dla:data.joinFields
-            fieldNames="{0:'A0653',1:'AI653'}"
-            fieldWraps="{0:'%s',1:': (%s)'}"
-            fields="{document.fields}"
-            as="linkTexts"
-    />
+        <dla:data.joinFields
+                fieldNames="{0:'A0653',1:'AI653'}"
+                fieldWraps="{0:'%s',1:': (%s)'}"
+                fields="{document.fields}"
+                as="linkTexts"
+        />
 
-    <div class="ctg-dtvt-label">
-        <f:translate key='Physische Beschreibung' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
         <f:if condition="{A0653} || {AI653}">
             <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Physische Beschreibung' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
                         document:document,
                         results:results,
                         field:'A0653',
@@ -469,172 +490,260 @@
                         linkFacets:linkFacets,
                         linkTexts:linkTexts
                       }"/>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
 
-</div>
 
-<div class="ctg-dtvt-row">
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0540')}" name="A0540" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0540')}" name="A0540" />
 
-    <div class="ctg-dtvt-label">
-        <f:translate key='ISBN' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
         <f:if condition="{A0540}">
             <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='ISBN' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
                     document:document,
                     results:results,
                     field:'A0540',
                     linkFieldContent:linkFieldContent,
                     linkFacets:linkFacets
                   }"/>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0542')}" name="A0542" />
-    <div class="ctg-dtvt-label">
-        <f:translate key='ISSN' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0542')}" name="A0542" />
+
         <f:if condition="{A0542}">
             <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='ISSN' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
                         document:document,
                         results:results,
                         field:'A0542',
                         linkFieldContent:linkFieldContent,
                         linkFacets:linkFacets
                       }"/>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-        <f:translate key='E-ISSN' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
-        Baustelle
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <dla:data.valueForKeyFiltered
-            key="ANUM"
-            filterKey="AMNUM"
-            filterValues="{0:'572z'}"
-            fields="{document.fields}"
-            as="ANUM" />
+        <f:comment>
+            <f:comment>
+                E-ISSN EZB-Daten noch nicht im Open Refine
+            </f:comment>
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key='E-ISSN' extensionName='dla_opac_ng'/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    Baustelle
+                </div>
+            </div>
+        </f:comment>
 
-    <div class="ctg-dtvt-label">
-        <f:translate key='ZDB-ID' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
+
+        <dla:data.valueForKeyFiltered
+                key="ANUM"
+                filterKey="AMNUM"
+                filterValues="{0:'572z'}"
+                fields="{document.fields}"
+                as="ANUM" />
+
         <f:if condition="{ANUM}">
             <f:then>
-                <f:for each="{ANUM}" as="item" iteration="iterator">
-                    <a href="http://ld.zdb-services.de/resource/{item}">{item}</a><br />
-                </f:for>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='ZDB-ID' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:for each="{ANUM}" as="item" iteration="iterator">
+                            <a href="http://ld.zdb-services.de/resource/{item}">{item}</a><br />
+                        </f:for>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+
+        <v:variable.set value="{0:'Einzelbestandteil / unselbständiges Werk'}" name="AKA451_Filter" />
+
+        <dla:data.valueForKeyFiltered key="GESTYP" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="GESTYP" />
+        <dla:data.valueForKeyFiltered key="HBKEY" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="HBKEY" />
+
+        <dla:data.valueForKeyFiltered key="XX_AK_TITREG_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_TITREG_AKA451" />
+        <dla:data.valueForKeyFiltered key="XX_AK_A0359_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_A0359_AKA451" />
+        <dla:data.valueForKeyFiltered key="listview_additional1" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="listview_additional1" />
+        <dla:data.valueForKeyFiltered key="XX_AK_A0331_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_A0331_AKA451" />
+        <dla:data.valueForKeyFiltered key="XX_AK_TITREG_HBKEY" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_TITREG_HBKEY" />
+
+        <dla:data.valueForKeyFiltered key="AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="AKA451" />
+        <dla:data.valueForKeyFiltered key="A0455" filterKey="GESTYP" negateFilter="true" filterValues="{AKA451_Filter}" fields="{document.fields}" as="A0455" />
+        <dla:data.valueForKeyFiltered key="A0451" filterKey="GESTYP" negateFilter="true" filterValues="{AKA451_Filter}" fields="{document.fields}" as="A0451" />
+
+
+
+        <f:if condition="{GESTYP.0} == 'Teil mit abhängigem Titel'">
+            <f:then>
+                <dla:data.joinFieldArrays
+                        arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{XX_AK_A0359_AKA451}',2:'{listview_additional1}' ,3:'{A0455}'}"
+                        fieldWraps="{0:'%s',1:'\ %s',2:'. - %s' ,3:'; %s'}"
+                        as="linkTexts"/>
             </f:then>
             <f:else>
-                -
+                <f:if condition="{GESTYP.0} == 'Band/Teil mit unabhängigem Titel: gezählt' || {GESTYP.0} == 'Band/Teil mit unabhängigem Titel: ungezählt'">
+                    <f:then>
+                        <f:if condition="{A0451.0}">
+                            <f:then>
+                                <dla:data.joinFieldArrays
+                                        arrays="{0:'{A0451}'}"
+                                        fieldWraps="{0:'%s'}"
+                                        as="linkTexts"/>
+                            </f:then>
+                            <f:else>
+                                <dla:data.joinFieldArrays
+                                        arrays="{0:'{XX_AK_TITREG_AKA451}', 1:'{A0455}'}"
+                                        fieldWraps="{0:'%s', 1:'; %s'}"
+                                        as="linkTexts"/>
+                            </f:else>
+                        </f:if>
+                    </f:then>
+                    <f:else>
+                        <f:if condition="!{HBKEY}">
+                            <f:then>
+                                <dla:data.joinFieldArrays
+                                        arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{A0455}'}"
+                                        fieldWraps="{0:'%s',1:': %s'}"
+                                        as="linkTexts"
+                                />
+                            </f:then>
+                            <f:else>
+                                <dla:data.joinFieldArrays
+                                        arrays="{0:'{XX_AK_TITREG_HBKEY}'}"
+                                        fieldWraps="{0:'%s'}"
+                                        as="linkTexts"
+                                />
+                            </f:else>
+                        </f:if>
+                    </f:else>
+                </f:if>
             </f:else>
         </f:if>
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <v:variable.set value="{0:'Einzelbestandteil / unselbständiges Werk'}" name="AKA451_Filter" />
-
-    <dla:data.valueForKeyFiltered key="GESTYP" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="GESTYP" />
-    <dla:data.valueForKeyFiltered key="HBKEY" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="HBKEY" />
-
-    <dla:data.valueForKeyFiltered key="XX_AK_TITREG_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_TITREG_AKA451" />
-    <dla:data.valueForKeyFiltered key="XX_AK_A0359_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_A0359_AKA451" />
-    <dla:data.valueForKeyFiltered key="listview_additional1" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="listview_additional1" />
-    <dla:data.valueForKeyFiltered key="XX_AK_A0331_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_A0331_AKA451" />
-    <dla:data.valueForKeyFiltered key="XX_AK_TITREG_HBKEY" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_TITREG_HBKEY" />
-
-    <dla:data.valueForKeyFiltered key="AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="AKA451" />
-    <dla:data.valueForKeyFiltered key="A0455" filterKey="GESTYP" negateFilter="true" filterValues="{AKA451_Filter}" fields="{document.fields}" as="A0455" />
-    <dla:data.valueForKeyFiltered key="A0451" filterKey="GESTYP" negateFilter="true" filterValues="{AKA451_Filter}" fields="{document.fields}" as="A0451" />
-
-    <f:if condition="{GESTYP.0} == 'Teil mit abhängigem Titel'">
-        <f:then>
-            <dla:data.joinFieldArrays
-                    arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{XX_AK_A0359_AKA451}',2:'{listview_additional1}' ,3:'{A0455}'}"
-                    fieldWraps="{0:'%s',1:'\ %s',2:'. - %s' ,3:'; %s'}"
-                    as="linkTexts"/>
-        </f:then>
-        <f:else>
-            <f:if condition="{GESTYP.0} == 'Band/Teil mit unabhängigem Titel: gezählt' || {GESTYP.0} == 'Band/Teil mit unabhängigem Titel: ungezählt'">
-                <f:then>
-                    <f:if condition="{A0451.0}">
-                        <f:then>
-                            <dla:data.joinFieldArrays
-                                    arrays="{0:'{A0451}'}"
-                                    fieldWraps="{0:'%s'}"
-                                    as="linkTexts"/>
-                        </f:then>
-                        <f:else>
-                            <dla:data.joinFieldArrays
-                                    arrays="{0:'{XX_AK_TITREG_AKA451}', 1:'{A0455}'}"
-                                    fieldWraps="{0:'%s', 1:'; %s'}"
-                                    as="linkTexts"/>
-                        </f:else>
-                    </f:if>
-                </f:then>
-                <f:else>
-                    <f:if condition="!{HBKEY}">
-                        <f:then>
-                            <dla:data.joinFieldArrays
-                                    arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{A0455}'}"
-                                    fieldWraps="{0:'%s',1:': %s'}"
-                                    as="linkTexts"
-                            />
-                        </f:then>
-                        <f:else>
-                            <dla:data.joinFieldArrays
-                                    arrays="{0:'{XX_AK_TITREG_HBKEY}'}"
-                                    fieldWraps="{0:'%s'}"
-                                    as="linkTexts"
-                            />
-                        </f:else>
-                    </f:if>
-                </f:else>
-            </f:if>
-        </f:else>
-    </f:if>
-
-    <div class="ctg-dtvt-label">
-        <f:translate key='Teil von' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
         <f:if condition="{linkTexts}">
             <f:then>
-                <f:for each="{linkTexts}" as="item" iteration="iterator">
-                    <f:if condition="{AKA451.{iterator.index}} != '#NV'">
-                        <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Teil von' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:for each="{linkTexts}" as="item" iteration="iterator">
+                            <f:if condition="{AKA451.{iterator.index}} != '#NV'">
+                                <f:then>
+                                    <f:if condition="{AKA451.{iterator.index}}">
+                                        <f:then>
+                                            <f:link.action action="detail" arguments="{id:'AK{AKA451.{iterator.index}}'}" class="internal">
+                                                {item}
+                                            </f:link.action>
+                                        </f:then>
+                                        <f:else>
+                                            {item}
+                                        </f:else>
+                                    </f:if>
+                                </f:then>
+                                <f:else>
+                                    {item}
+                                </f:else>
+                            </f:if>
+                        </f:for>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <f:comment>Enthalten in</f:comment>
+
+        <v:variable.set value="{0:'Einzelbestandteil / unselbständiges Werk'}" name="AKA451_Filter" />
+
+        <f:comment>
+            <v:variable.set value="{0:'Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)'}" name="AKA451_Filter" />
+        </f:comment>
+
+        <dla:data.valueForKeyFiltered key="GESTYP" filterKey="GESTYP" negateFilter="true" filterValues="{AKA451_Filter}" fields="{document.fields}" as="GESTYP" />
+
+        <dla:data.valueForKeyFiltered key="XX_AK_TITREG_AKA451" filterKey="GESTYP" negateFilter="false"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_TITREG_AKA451" />
+
+        <dla:data.valueForKeyFiltered key="AKA451" filterKey="GESTYP" negateFilter="false"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="AKA451" />
+        <dla:data.valueForKeyFiltered key="USEIT" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="USEIT" />
+        <dla:data.valueForKeyFiltered key="listview_additional1" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="listview_additional1" />
+        <dla:data.valueForKeyFiltered key="XX_AK_A0359_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_A0359_AKA451" />
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKA451')}" name="XX_AK_TITREG_AKA451" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0359_AKA451')}" name="XX_AK_A0359_AKA451" />
+
+        <f:if condition="{GESTYP.0} == 'Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)' ||
+                 {GESTYP.0} == 'Begleitmaterial / Beilage'">
+            <f:then>
+                <dla:data.joinFieldArrays
+                        arrays="{0:'{listview_additional1}'}"
+                        fieldWraps="{0:'%s'}"
+                        as="linkTexts"
+                />
+            </f:then>
+            <f:else>
+                <f:if condition="{GESTYP.0} == 'Teil einer monografischen Zusammenstellung, unselbständiges Stück'">
+                    <f:then>
+                        <dla:data.joinFieldArrays
+                                arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{XX_AK_A0359_AKA451}',2:'{listview_additional1}', 3:'{USEIT}'}"
+                                fieldWraps="{0:'%s',1:'\ %s', 2:'%s . - ', 3:'; %s'}"
+                                as="linkTexts"
+                        />
+                    </f:then>
+                    <f:else>
+                        <f:comment><dla:data.joinFieldArrays
+                                arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{USEIT}'}"
+                                fieldWraps="{0:'%s',1:': %s'}"
+                                as="linkTexts"
+                        /></f:comment>
+                        <v:variable.set value="" name="linkTexts" />
+                    </f:else>
+                </f:if>
+            </f:else>
+        </f:if>
+
+        <f:if condition="{linkTexts}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Enthalten in' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:for each="{linkTexts}" as="item" iteration="iterator">
                             <f:if condition="{AKA451.{iterator.index}}">
                                 <f:then>
                                     <f:link.action action="detail" arguments="{id:'AK{AKA451.{iterator.index}}'}" class="internal">
@@ -645,169 +754,91 @@
                                     {item}
                                 </f:else>
                             </f:if>
-                        </f:then>
-                        <f:else>
-                            {item}
-                        </f:else>
-                    </f:if>
-                </f:for>
+                        </f:for>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
 
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <f:comment>Enthalten in</f:comment>
-
-    <v:variable.set value="{0:'Einzelbestandteil / unselbständiges Werk'}" name="AKA451_Filter" />
-
-    <f:comment>
-        <v:variable.set value="{0:'Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)'}" name="AKA451_Filter" />
-    </f:comment>
-
-    <dla:data.valueForKeyFiltered key="GESTYP" filterKey="GESTYP" negateFilter="true" filterValues="{AKA451_Filter}" fields="{document.fields}" as="GESTYP" />
-
-    <dla:data.valueForKeyFiltered key="XX_AK_TITREG_AKA451" filterKey="GESTYP" negateFilter="false"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_TITREG_AKA451" />
-
-    <dla:data.valueForKeyFiltered key="AKA451" filterKey="GESTYP" negateFilter="false"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="AKA451" />
-    <dla:data.valueForKeyFiltered key="USEIT" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="USEIT" />
-    <dla:data.valueForKeyFiltered key="listview_additional1" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="listview_additional1" />
-    <dla:data.valueForKeyFiltered key="XX_AK_A0359_AKA451" filterKey="GESTYP" negateFilter="true"  filterValues="{AKA451_Filter}" fields="{document.fields}" as="XX_AK_A0359_AKA451" />
-
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKA451')}" name="XX_AK_TITREG_AKA451" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0359_AKA451')}" name="XX_AK_A0359_AKA451" />
-
-    <f:if condition="{GESTYP.0} == 'Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)' ||
-                 {GESTYP.0} == 'Begleitmaterial / Beilage'">
-        <f:then>
-            <dla:data.joinFieldArrays
-                    arrays="{0:'{listview_additional1}'}"
-                    fieldWraps="{0:'%s'}"
-                    as="linkTexts"
-            />
-        </f:then>
-        <f:else>
-            <f:if condition="{GESTYP.0} == 'Teil einer monografischen Zusammenstellung, unselbständiges Stück'">
-                <f:then>
-                    <dla:data.joinFieldArrays
-                            arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{XX_AK_A0359_AKA451}',2:'{listview_additional1}', 3:'{USEIT}'}"
-                            fieldWraps="{0:'%s',1:'\ %s', 2:'%s . - ', 3:'; %s'}"
-                            as="linkTexts"
-                    />
-                </f:then>
-                <f:else>
-                    <dla:data.joinFieldArrays
-                            arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{USEIT}'}"
-                            fieldWraps="{0:'%s',1:': %s'}"
-                            as="linkTexts"
-                    />
-                </f:else>
-            </f:if>
-        </f:else>
-    </f:if>
-    <div class="ctg-dtvt-label">
-        <f:translate key='Enthalten in' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
-        <f:if condition="{linkTexts}">
-            <f:then>
-                <f:for each="{linkTexts}" as="item" iteration="iterator">
-                    <f:if condition="{AKA451.{iterator.index}}">
-                        <f:then>
-                            <f:link.action action="detail" arguments="{id:'AK{AKA451.{iterator.index}}'}" class="internal">
-                                {item}
-                            </f:link.action>
-                        </f:then>
-                        <f:else>
-                            {item}
-                        </f:else>
-                    </f:if>
-
-                    <br />
-                </f:for>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </div>
-</div>
-
-<div class="ctg-dtvt-row">
-    <dla:data.valueForKeyFiltered
+        <dla:data.valueForKeyFiltered
             key="A0501"
             filterKey="AM501"
             filterValues="{0:'526n'}"
             fields="{document.fields}"
             as="A0501" />
 
-    <div class="ctg-dtvt-label">
-        <f:translate key='Anmerkungen' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
         <f:if condition="{A0501}">
             <f:then>
-                <f:for each="{A0501}" as="item" iteration="iterator">
-                    {item}<br />
-                </f:for>
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Anmerkungen' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:for each="{A0501}" as="item" iteration="iterator">
+                            {item}<br />
+                        </f:for>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_KLASS_AUKEY')}" name="XX_AU_KLASS_AUKEY" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_STAND_AUKEY')}" name="XX_AU_STAND_AUKEY" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A01030')}" name="A01030" />
+
+
+
+        <f:if condition="{XX_AU_KLASS_AUKEY} || {XX_AU_STAND_AUKEY}">
+            <f:then>
+                <v:variable.set value="{XX_AU_KLASS_AUKEY.0} {XX_AU_STAND_AUKEY.0}" name="usage" />
             </f:then>
             <f:else>
-                -
+                <f:if condition="{A01030} == 'Virtuelle Aufnahme'">
+                    <v:variable.set value="nicht im Bestand des DLA" name="usage" />
+                </f:if>
             </f:else>
         </f:if>
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_KLASS_AUKEY')}" name="XX_AU_KLASS_AUKEY" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_STAND_AUKEY')}" name="XX_AU_STAND_AUKEY" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A01030')}" name="A01030" />
-    <f:if condition="{XX_AU_KLASS_AUKEY} || {XX_AU_STAND_AUKEY}">
-        <f:then>
-            <v:variable.set value="{XX_AU_KLASS_AUKEY.0} {XX_AU_STAND_AUKEY.0}" name="usage" />
-        </f:then>
-        <f:else>
-            <f:if condition="{A01030} == 'Virtuelle Aufnahme'">
-                <v:variable.set value="nicht im Bestand des DLA" name="usage" />
-            </f:if>
-        </f:else>
-    </f:if>
-
-    <div class="ctg-dtvt-label">
-        <f:translate key='Benutzung' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
         <f:if condition="{usage}">
-            <f:then>{usage}</f:then>
-            <f:else>-</f:else>
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Benutzung' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        {usage}
+                    </div>
+                </div>
+            </f:then>
         </f:if>
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_SIGNA_AUKEY')}" name="XX_AU_SIGNA_AUKEY" />
 
-    <dla:data.joinFields
-            fieldNames="{0:'XX_AU_SIGNA_AUKEY'}"
-            fieldWraps="{0:'%s'}"
-            fields="{document.fields}"
-            as="linkTexts"
-    />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_SIGNA_AUKEY')}" name="XX_AU_SIGNA_AUKEY" />
 
-    <div class="ctg-dtvt-label">
-        <f:translate key='Signatur' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
-        Baustelle
+        <dla:data.joinFields
+                fieldNames="{0:'XX_AU_SIGNA_AUKEY'}"
+                fieldWraps="{0:'%s'}"
+                fields="{document.fields}"
+                as="linkTexts"
+        />
+
         <f:if condition="{XX_AU_SIGNA_AUKEY}">
             <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Signatur' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        Baustelle
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
                 document:document,
                 results:results,
                 field:'AUKEY',
@@ -815,30 +846,30 @@
                 linkFacets:linkFacets
                 linkTexts:linkTexts
               }"/>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_WSIGNA_AUKEY')}" name="XX_AU_WSIGNA_AUKEY" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_PEU100_AUKEY')}" name="XX_AU_PEU100_AUKEY" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_FBTIT_AUKEY')}" name="XX_AU_FBTIT_AUKEY" />
 
-    <div class="ctg-dtvt-label">
-        <f:translate key='Provenienz' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_WSIGNA_AUKEY')}" name="XX_AU_WSIGNA_AUKEY" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_PEU100_AUKEY')}" name="XX_AU_PEU100_AUKEY" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_FBTIT_AUKEY')}" name="XX_AU_FBTIT_AUKEY" />
+
         <f:if condition="{XX_AU_WSIGNA_AUKEY} || {XX_AU_PEU100_AUKEY} || {XX_AU_FBTIT_AUKEY}">
             <f:then>
-                <f:if condition="{XX_AU_WSIGNA_AUKEY}">
-                    <f:translate key='Bestand' extensionName='dla_opac_ng'/>:
-                    <f:render
-                        partial="Display/Field/List"
-                        arguments="{
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Provenienz' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:if condition="{XX_AU_WSIGNA_AUKEY}">
+                            <f:translate key='Bestand' extensionName='dla_opac_ng'/>:
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
                         document:document,
                         results:results,
                         field:'XX_AU_WSIGNA_AUKEY',
@@ -846,14 +877,14 @@
                         linkFacets:linkFacets
                         linkTexts:linkTexts
                       }"/>
-                </f:if>
+                        </f:if>
 
-                <f:if condition="{XX_AU_PEU100_AUKEY}">
-                    <br />
-                    Vorbesitzer:
-                    <f:render
-                        partial="Display/Field/List"
-                        arguments="{
+                        <f:if condition="{XX_AU_PEU100_AUKEY}">
+                            <br />
+                            Vorbesitzer:
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
                         document:document,
                         results:results,
                         field:'XX_AU_PEU100_AUKEY',
@@ -861,13 +892,13 @@
                         linkFacets:linkFacets
                         linkTexts:linkTexts
                       }"/>
-                </f:if>
+                        </f:if>
 
-                <f:if condition="{XX_AU_FBTIT_AUKEY}">
-                    <br />
-                    <f:render
-                        partial="Display/Field/List"
-                        arguments="{
+                        <f:if condition="{XX_AU_FBTIT_AUKEY}">
+                            <br />
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
                         document:document,
                         results:results,
                         field:'XX_AU_FBTIT_AUKEY',
@@ -875,84 +906,85 @@
                         linkFacets:linkFacets
                         linkTexts:linkTexts
                       }"/>
-                </f:if>
+                        </f:if>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-        <f:translate key='Sendeangaben' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
-        <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDER_AUKEY')}">
-            <f:render
-                    partial="Display/Field/Inline"
-                    arguments="{
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDAT_AUKEY')}" name="XX_AU_SENDAT_AUKEY" />
+
+        <f:if condition="{XX_AU_SENDAT_AUKEY}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key='Sendeangaben' extensionName='dla_opac_ng'/>
+                </div>
+                <div class="ctg-dtvt-content">
+
+                    <f:render
+                            partial="Display/Field/Inline"
+                            arguments="{
                             config:config,
                             results:results,
                             document:document,
                             field:'XX_AU_SENDER_AUKEY'
                     }"/>
+
+                    <f:for each="{XX_AU_SENDAT_AUKEY}" as="value" iteration="iterator">
+                        <f:if condition="{value->f:format.urlencode()} != '%E2%90%9E'">
+                            <f:then>
+                                <dla:data.dateFormat
+                                        dateValue="{XX_AU_SENDAT_AUKEY}"
+                                        as="dateFormat"
+                                />
+                                <f:format.date date="{dateFormat}" format="d.m.Y"></f:format.date>
+                            </f:then>
+                        </f:if>
+                    </f:for>
+                </div>
+            </div>
         </f:if>
 
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDAT_AUKEY')}" name="XX_AU_SENDAT_AUKEY" />
-        <f:if condition="{XX_AU_SENDAT_AUKEY}">
-            <f:for each="{XX_AU_SENDAT_AUKEY}" as="value" iteration="iterator">
-                <f:if condition="{value->f:format.urlencode()} != '%E2%90%9E'">
-                    <f:then>
-                        <dla:data.dateFormat
-                                dateValue="{XX_AU_SENDAT_AUKEY}"
-                                as="dateFormat"
-                        />
-                        <f:format.date date="{dateFormat}" format="d.m.Y"></f:format.date>
-                    </f:then>
-                </f:if>
-            </f:for>
-        </f:if>
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <f:comment>Digitales Objekt</f:comment>
+        <f:comment>Digitales Objekt</f:comment>
 
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
-    <v:variable.set value="{0:'Volltext',
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
+        <v:variable.set value="{0:'Volltext',
     1:'Langzeitarchivierung',
     2:'Veranstaltung bei \"Dichterlesen.net\" nachhören',
-    3:'Zugang',
-    4:'CD-ROM aufrufen'
-    }" name="bemurlValues"/>
+        3:'Zugang',
+        4:'CD-ROM aufrufen'
+        }" name="bemurlValues"/>
 
-    <dla:data.valueForKeyFiltered key="AURL" filterKey="BEMURL" negateFilter="true" filterValues="{bemurlValues}" fields="{document.fields}" as="AURL" />
-    <dla:data.valueForKeyFiltered key="BEMURL" filterKey="BEMURL" negateFilter="true" filterValues="{bemurlValues}" fields="{document.fields}" as="BEMURL" />
+        <dla:data.valueForKeyFiltered key="AURL" filterKey="BEMURL" negateFilter="true" filterValues="{bemurlValues}" fields="{document.fields}" as="AURL" />
+        <dla:data.valueForKeyFiltered key="BEMURL" filterKey="BEMURL" negateFilter="true" filterValues="{bemurlValues}" fields="{document.fields}" as="BEMURL" />
 
-    <dla:data.joinFieldArrays
-            arrays="{0:'{BEMURL}'}"
-            fieldWraps="{0:'%s'}"
-            as="digitalObject"
-    />
+        <dla:data.joinFieldArrays
+                arrays="{0:'{BEMURL}'}"
+                fieldWraps="{0:'%s'}"
+                as="digitalObject"
+        />
 
-    <div class="ctg-dtvt-label">
-        <f:translate key='Digitales Objekt' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
         <f:if condition="{XX_MM_MOTITL_INDKEY} || {digitalObject} ">
             <f:then>
-                <dla:data.joinFields
-                        fieldNames="{0:'XX_MM_MOTITL_INDKEY'}"
-                        fieldWraps="{0:'%s'}"
-                        fields="{document.fields}"
-                        as="linkTexts"
-                />
+                <div class="ctg-dtvt-row">
 
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Digitales Objekt' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <dla:data.joinFields
+                                fieldNames="{0:'XX_MM_MOTITL_INDKEY'}"
+                                fieldWraps="{0:'%s'}"
+                                fields="{document.fields}"
+                                as="linkTexts"
+                        />
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
                     document:document,
                     results:results,
                     field: 'INDKEY',
@@ -961,248 +993,222 @@
                     linkTexts:linkTexts
                   }"/>
 
-                <f:for each="{digitalObject}" as="item" iteration="iterator">
-                    <a href="{AURL.{iterator.index}}">{item}</a><br />
-                </f:for>
+                        <f:for each="{digitalObject}" as="item" iteration="iterator">
+                            <a href="{AURL.{iterator.index}}">{item}</a><br />
+                        </f:for>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <f:comment>Werk</f:comment>
+        <f:comment>Werk</f:comment>
 
-    <dla:data.valueForKeyFiltered
-            key="ATIT"
-            filterKey="AMTIT"
-            filterValues="{0:'303n', 1:'304'}"
-            fields="{document.fields}"
-            as="ATIT" />
+        <dla:data.valueForKeyFiltered
+                key="ATIT"
+                filterKey="AMTIT"
+                filterValues="{0:'303n', 1:'304'}"
+                fields="{document.fields}"
+                as="ATIT" />
 
-    <div class="ctg-dtvt-label">
-        <f:translate key='Werk' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
         <f:if condition="{ATIT}">
             <f:then>
-                <f:for each="{ATIT}" as="item" iteration="iterator">
-                    {item}<br />
-                </f:for>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Werk' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:for each="{ATIT}" as="item" iteration="iterator">
+                            {item}<br />
+                        </f:for>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <dla:data.valueForKeyFiltered
-            key="ATIT"
-            filterKey="AMTIT"
-            filterValues="{0:'303t'}"
-            fields="{document.fields}"
-            as="ATIT" />
 
-    <div class="ctg-dtvt-label">
-        <f:translate key='Teilwerke' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
+        <dla:data.valueForKeyFiltered
+                key="ATIT"
+                filterKey="AMTIT"
+                filterValues="{0:'303t'}"
+                fields="{document.fields}"
+                as="ATIT" />
+
         <f:if condition="{ATIT}">
             <f:then>
-                <f:for each="{ATIT}" as="item" iteration="iterator">
-                    {item}<br />
-                </f:for>
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Teilwerke' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:for each="{ATIT}" as="item" iteration="iterator">
+                            {item}<br />
+                        </f:for>
+
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <dla:data.valueForKeyFiltered
-            key="ATIT"
-            filterKey="AMTIT"
-            filterValues="{0:'370n'}"
-            fields="{document.fields}"
-            as="ATIT" />
 
-    <div class="ctg-dtvt-label">
-        <f:translate key='Weitere Titel' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
+        <dla:data.valueForKeyFiltered
+                key="ATIT"
+                filterKey="AMTIT"
+                filterValues="{0:'370n'}"
+                fields="{document.fields}"
+                as="ATIT" />
+
         <f:if condition="{ATIT}">
             <f:then>
-                <f:for each="{ATIT}" as="item" iteration="iterator">
-                    {item}<br />
-                </f:for>
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Weitere Titel' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:for each="{ATIT}" as="item" iteration="iterator">
+                            {item}<br />
+                        </f:for>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS122')}" name="POS122" />
 
-    <div class="ctg-dtvt-label">
-        <f:translate key='Sprache' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS122')}" name="POS122" />
+
         <f:if condition="{POS122}">
             <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
+                <div class="ctg-dtvt-row">
+
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Sprache' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
                 document:document,
                 results:results,
                 field:'POS122',
                 linkFieldContent:0,
                 linkFacets:linkFacets
               }"/>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
 
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0038')}" name="A0038" />
-
-    <div class="ctg-dtvt-label">
-        <f:translate key='Sprache Original' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0038')}" name="A0038" />
 
         <f:if condition="{A0038}">
             <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Sprache Original' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
                 document:document,
                 results:results,
                 field:'A0038',
                 linkFieldContent:1,
                 linkFacets:linkFacets
               }"/>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
-<div class="ctg-dtvt-row">
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0407')}" name="A0407" />
-    <div class="ctg-dtvt-label">
-        <f:translate key='Maßstab' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0407')}" name="A0407" />
+
         <f:if condition="{A0407}">
             <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Maßstab' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
                         document:document,
                         results:results,
                         field:'A0407',
                         linkFieldContent:1,
                         linkFacets:linkFacets
                       }"/>
+
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0431')}" name="A0431" />
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-        <f:translate key='Register' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0431')}" name="A0431" />
+
         <f:if condition="{A0431}">
             <f:then>
-                <f:render
-                    partial="Display/Field/List"
-                    arguments="{
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Register' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
                         document:document,
                         results:results,
                         field:'A0431',
                         linkFieldContent:1,
                         linkFacets:linkFacets
                       }"/>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
 
-<dla:data.valueForKeyFiltered
-        key="A0501"
-        filterKey="AM501"
-        filterValues="{0:'517n'}"
-        fields="{document.fields}"
-        as="A0501" />
+        <dla:data.valueForKeyFiltered
+                key="A0501"
+                filterKey="AM501"
+                filterValues="{0:'517n'}"
+                fields="{document.fields}"
+                as="A0501" />
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-        <f:translate key='Enthält' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
         <f:if condition="{A0501}">
             <f:then>
-                <f:for each="{A0501}" as="item" iteration="iterator">
-                    {item}<br />
-                </f:for>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Enthält' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:for each="{A0501}" as="item" iteration="iterator">
+                            {item}<br />
+                        </f:for>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-        <f:translate key='Anmerkungen' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0654')}" name="A0654" />
-        <f:if condition="{A0654}">
-            <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                            document:document,
-                            results:results,
-                            field:'A0654',
-                            linkFieldContent:linkFieldContent,
-                            linkFacets:linkFacets
-                          }"/>
-            </f:then>
-            <f:else>
-            </f:else>
-        </f:if>
-
 
         <f:comment>
             Anmerkungen (Hochschulschrift)
@@ -1220,26 +1226,6 @@
                 fields="{document.fields}"
                 as="altTextA0501"
         />
-        <f:if condition="{A0501_a} || {altTextA0501}">
-            <f:then>
-                <f:if condition="{A0501_a}">
-                    <f:then>
-                        Hochschulschrift:
-                        <f:for each="{A0501_a}" as="item" iteration="iterator">
-                            {item}<br />
-                        </f:for>
-                    </f:then>
-                    <f:else>
-                        Hochschulschrift:
-                        <f:for each="{altTextA0501}" as="item" iteration="iterator">
-                            {item}<br />
-                        </f:for>
-                    </f:else>
-                </f:if>
-            </f:then>
-            <f:else>
-            </f:else>
-        </f:if>
 
         <f:comment>
             Anmerkungen (Diverse A0501)
@@ -1251,69 +1237,106 @@
                 negateFilter="true"
                 fields="{document.fields}"
                 as="A0501" />
-        <f:if condition="{A0501}">
-            <f:then>
-                <f:for each="{A0501}" as="item" iteration="iterator">
-                    {item}<br />
-                </f:for>
-            </f:then>
-            <f:else>
-            </f:else>
-        </f:if>
 
         <f:if condition="{A0654} || {A0501_a} || {altTextA0501} || {A0501}">
             <f:then>
+
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Anmerkungen' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:if condition="{A0654}">
+                            <f:then>
+                                <f:render
+                                        partial="Display/Field/List"
+                                        arguments="{
+                            document:document,
+                            results:results,
+                            field:'A0654',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+                            </f:then>
+                        </f:if>
+
+                        <f:if condition="{A0501_a} || {altTextA0501}">
+                            <f:then>
+                                <f:if condition="{A0501_a}">
+                                    <f:then>
+                                        Hochschulschrift:
+                                        <f:for each="{A0501_a}" as="item" iteration="iterator">
+                                            {item}<br />
+                                        </f:for>
+                                    </f:then>
+                                    <f:else>
+                                        Hochschulschrift:
+                                        <f:for each="{altTextA0501}" as="item" iteration="iterator">
+                                            {item}<br />
+                                        </f:for>
+                                    </f:else>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                            </f:else>
+                        </f:if>
+
+                        <f:if condition="{A0501}">
+                            <f:then>
+                                <f:for each="{A0501}" as="item" iteration="iterator">
+                                    {item}<br />
+                                </f:for>
+                            </f:then>
+                            <f:else>
+                            </f:else>
+                        </f:if>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_GWKEY')}" name="XX_AK_TITREG_GWKEY" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_GWKEY')}" name="XX_AK_TITREG_GWKEY" />
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-        <f:translate key='Werk' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
         <f:if condition="{XX_AK_TITREG_GWKEY}">
             <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                document:document,
-                results:results,
-                field:'GWKEY',
-                linkFieldContent:1,
-                linkFacets:linkFacets,
-                linkTexts:XX_AK_TITREG_GWKEY
-              }"/>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Werk' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                            document:document,
+                            results:results,
+                            field:'GWKEY',
+                            linkFieldContent:1,
+                            linkFacets:linkFacets,
+                            linkTexts:XX_AK_TITREG_GWKEY
+                          }"/>
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
 
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKE526')}" name="XX_AK_TITREG_AKE526" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AKE526')}" name="AKE526" />
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKE526')}" name="XX_AK_TITREG_AKE526" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AKE526')}" name="AKE526" />
-
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-        <f:translate key='Teilwerke' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
         <f:if condition="{XX_AK_TITREG_AKE526}">
             <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Teilwerke' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
                 document:document,
                 results:results,
                 field:'AKE526',
@@ -1321,47 +1344,45 @@
                 linkFacets:linkFacets,
                 linkTexts:XX_AK_TITREG_AKE526
               }"/>
+
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
 
 
-<f:comment>
-Für die Feldbenennung:
-AKYTXT
+        <f:comment>
+            Für die Feldbenennung:
+            AKYTXT
 
-    Für den Feldinhalt
-    XX_AK_TITREG_AKY526
+            Für den Feldinhalt
+            XX_AK_TITREG_AKY526
 
 
-        Die Datensatzverknüpfung erfolgt nur in eine Richtung, die
-    AKYTXT
-    wird nicht in beiden Sätzen belegt,
-        für die Anzeige im verknüpten Satz müssen die Werte aus
-    IND526
-    herangezogen werden,
-        dafür wurde eine Mappingtabelle. Die Lösung sollte so implementiert werden,
-        dass sie vom DLA weiter einfach weitergepflegt werden kann.
-    </f:comment>
+            Die Datensatzverknüpfung erfolgt nur in eine Richtung, die
+            AKYTXT
+            wird nicht in beiden Sätzen belegt,
+            für die Anzeige im verknüpten Satz müssen die Werte aus
+            IND526
+            herangezogen werden,
+            dafür wurde eine Mappingtabelle. Die Lösung sollte so implementiert werden,
+            dass sie vom DLA weiter einfach weitergepflegt werden kann.
+        </f:comment>
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AKYTXT')}" name="AKYTXT" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKY526')}" name="XX_AK_TITREG_AKY526" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0359_AKY526')}" name="XX_AK_A0359_AKY526" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_listview_additional1_AKY526')}" name="XX_AK_listview_additional1_AKY526" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AKYTXT')}" name="AKYTXT" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKY526')}" name="XX_AK_TITREG_AKY526" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0359_AKY526')}" name="XX_AK_A0359_AKY526" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_listview_additional1_AKY526')}" name="XX_AK_listview_additional1_AKY526" />
 
-    <f:for each="{AKYTXT}" as="labelItem" iteration="labelIterator">
-        <div class="ctg-dtvt-row">
-            <div class="ctg-dtvt-label">
-                {labelItem}
-            </div>
-            <div class="ctg-dtvt-content">
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
+        <f:for each="{AKYTXT}" as="labelItem" iteration="labelIterator">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    {labelItem}
+                </div>
+                <div class="ctg-dtvt-content">
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
                 document:document,
                 results:results,
                 field:'AKY526',
@@ -1369,51 +1390,150 @@ AKYTXT
                 linkFacets:linkFacets,
                 linkTexts:'{XX_AK_TITREG_AKY526.{labelIterator.index}} / {XX_AK_A0359_AKY526.{labelIterator.index}} . - {XX_AK_listview_additional1_AKY526.{labelIterator.index}}'
               }"/>
+                </div>
             </div>
-        </div>
-    </f:for>
-<f:if condition="{XX_AK_TITREG_AKY526}">
-</f:if>
+        </f:for>
 
-<div class="ctg-dtvt-row">
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_REGTIT_SYNKEY')}" name="XX_SE_REGTIT_SYNKEY" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_REGTIT_SYNKEY')}" name="XX_SE_REGTIT_SYNKEY" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0712')}" name="A0712" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0750')}" name="A0750" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS114')}" name="POS114" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
+        <v:variable.set value="{0:'Rezension',
+                                1:'Inhaltstext',
+                                2:'Inhaltsverzeichnis'}" name="bemurlValues"
+        />
 
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0712')}" name="A0712" />
+        <dla:data.valueForKeyFiltered key="AURL" filterKey="BEMURL" filterValues="{bemurlValues}" fields="{document.fields}" as="AURL" />
+        <dla:data.valueForKeyFiltered key="BEMURL" filterKey="BEMURL" negateFilter="true" filterValues="{bemurlValues}" fields="{document.fields}" as="BEMURL" />
 
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0750')}" name="A0750" />
+        <dla:data.joinFieldArrays
+                arrays="{0:'{BEMURL}'}"
+                fieldWraps="{0:'%s'}"
+                as="contentBemurl"
+        />
 
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS114')}" name="POS114" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BEMURL')}" name="BEMURL" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AURL')}" name="AURL" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_TYP_SYNKEY')}" name="XX_SE_TYP_SYNKEY" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'SYNKEY')}" name="SYNKEY" />
 
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
-    <v:variable.set value="{0:'Rezension',
-    1:'Inhaltstext',
-    2:'Inhaltsverzeichnis'
-}" name="bemurlValues"/>
-
-    <dla:data.valueForKeyFiltered key="AURL" filterKey="BEMURL" filterValues="{bemurlValues}" fields="{document.fields}" as="AURL" />
-    <dla:data.valueForKeyFiltered key="BEMURL" filterKey="BEMURL" negateFilter="true" filterValues="{bemurlValues}" fields="{document.fields}" as="BEMURL" />
-
-    <dla:data.joinFieldArrays
-            arrays="{0:'{BEMURL}'}"
-            fieldWraps="{0:'%s'}"
-            as="contentBemurl"
-    />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BEMURL')}" name="BEMURL" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AURL')}" name="AURL" />
-
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_TYP_SYNKEY')}" name="XX_SE_TYP_SYNKEY" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'SYNKEY')}" name="SYNKEY" />
-
-    <div class="ctg-dtvt-label">
-        <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
-    </div>
-    <div class="ctg-dtvt-content">
 
         <f:if condition="{XX_SE_REGTIT_SYNKEY} || {A0712} || {POS114} || {BEMURL}">
             <f:then>
-                <f:for each="{XX_SE_TYP_SYNKEY}" as="typKey" iteration="iterator">
-                    <f:if condition="{typKey} == 'Kette Bibliothek'">
-                        <f:then>
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:for each="{XX_SE_TYP_SYNKEY}" as="typKey" iteration="iterator">
+                            <f:if condition="{typKey} == 'Kette Bibliothek'">
+                                <f:then>
+                                    <s:data.newArray
+                                            name="detailpage"
+                                            global="1"
+                                            keys="{0:'id'}"
+                                            values="{0:'SE{SYNKEY.{iterator.index}}'}"
+                                    />
+                                    <f:link.action action="index" arguments="{detailpage}" class="internal" noCacheHash="1">
+                                        {XX_SE_REGTIT_SYNKEY.{iterator.index}}<br/>
+                                    </f:link.action>
+                                </f:then>
+                            </f:if>
+                        </f:for>
+
+                        <f:if condition="{A0750}">
+                            <f:then>
+                                <f:render
+                                        partial="Display/Field/List"
+                                        arguments="{
+                        document:document,
+                        results:results,
+                        field:'A0750',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                        }"/>
+                            </f:then>
+                        </f:if>
+
+                        <f:if condition="{A0712}">
+                            <f:then>
+                                <f:render
+                                        partial="Display/Field/List"
+                                        arguments="{
+                        document:document,
+                        results:results,
+                        field:'A0712',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                        }"/>
+                            </f:then>
+                        </f:if>
+
+                        <f:if condition="{POS114}">
+                            <f:then>
+                                <f:render
+                                        partial="Display/Field/List"
+                                        arguments="{
+                        document:document,
+                        results:results,
+                        field:'POS114',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                        }"/>
+                            </f:then>
+                        </f:if>
+
+                        <f:if condition="{POS114}">
+                            <f:then>
+                                <f:for each="{AURL}" as="link" iteration="linkIterator">
+                                    <a href="{AURL.{linkIterator.index}}">
+                                        {BEMURL.{linkIterator.index}}
+                                    </a>
+                                    <br/>
+                                </f:for>
+                            </f:then>
+                        </f:if>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0711')}" name="A0711>" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'FREITX')}" name="FREITX" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AURL')}" name="AURL" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BEMURL')}" name="BEMURL" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_REGTIT_SYNKEY')}" name="XX_SE_REGTIT_SYNKEY" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_TYP_SYNKEY')}" name="XX_SE_TYP_SYNKEY" />
+
+        <v:variable.set value="{0:'Bibliographie-Kette'}" name="synkeyValues"/>
+
+        <dla:data.valueForKeyFiltered key="SYNKEY" filterKey="XX_SE_TYP_SYNKEY" filterValues="{synkeyValues}" fields="{document.fields}" as="SYNKEY_BIBLIOGRAPHIE" />
+        <dla:data.valueForKeyFiltered key="XX_SE_REGTIT_SYNKEY" filterKey="XX_SE_TYP_SYNKEY" filterValues="{synkeyValues}" fields="{document.fields}" as="REGTIT_SYNKEY_BIBLIOGRAPHIE" />
+
+        <f:if condition="{A0711} || {AURL} || {XX_SE_REGTIT_SYNKEY}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Bibliographie' extensionName='dla_opac_ng'/>
+                    </div>
+
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                                document:document,
+                                results:results,
+                                field:'A0711',
+                                linkFieldContent:linkFieldContent,
+                                linkFacets:linkFacets
+                                }"/>
+
+                        <f:for each="{SYNKEY_BIBLIOGRAPHIE}" as="synKey" iteration="iterator">
                             <s:data.newArray
                                     name="detailpage"
                                     global="1"
@@ -1421,322 +1541,159 @@ AKYTXT
                                     values="{0:'SE{SYNKEY.{iterator.index}}'}"
                             />
                             <f:link.action action="index" arguments="{detailpage}" class="internal" noCacheHash="1">
-                                {XX_SE_REGTIT_SYNKEY.{iterator.index}}<br/>
+                                {REGTIT_SYNKEY_BIBLIOGRAPHIE.{iterator.index}}<br/>
                             </f:link.action>
-                        </f:then>
-                    </f:if>
-                </f:for>
-
-                <f:if condition="{A0750}">
-                    <f:then>
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                        document:document,
-                        results:results,
-                        field:'A0750',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                        }"/>
-                    </f:then>
-                </f:if>
-
-                <f:if condition="{A0712}">
-                    <f:then>
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                        document:document,
-                        results:results,
-                        field:'A0712',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                        }"/>
-                    </f:then>
-                </f:if>
-
-                <f:if condition="{POS114}">
-                    <f:then>
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                        document:document,
-                        results:results,
-                        field:'POS114',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                        }"/>
-                    </f:then>
-                </f:if>
-
-                <f:if condition="{POS114}">
-                    <f:then>
-                        <f:for each="{AURL}" as="link" iteration="linkIterator">
-                            <a href="{AURL.{linkIterator.index}}">
-                                {BEMURL.{linkIterator.index}}
-                            </a>
-                            <br/>
                         </f:for>
-                    </f:then>
-                </f:if>
+
+                        <f:comment>
+                            <f:for each="{XX_SE_TYP_SYNKEY}" as="typKey" iteration="iterator">
+                                <f:if condition="{typKey} == 'Bibliographie-Kette'">
+                                    <f:then>
+                                        {XX_SE_REGTIT_SYNKEY.{iterator.index}} <br />
+                                    </f:then>
+                                </f:if>
+                            </f:for>
+                        </f:comment>
+
+                    </div>
+                </div>
             </f:then>
-            <f:else>
-                -
-            </f:else>
         </f:if>
-    </div>
-</div>
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0711')}" name="A0711>" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'FREITX')}" name="FREITX" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AURL')}" name="AURL" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BEMURL')}" name="BEMURL" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_REGTIT_SYNKEY')}" name="XX_SE_REGTIT_SYNKEY" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_TYP_SYNKEY')}" name="XX_SE_TYP_SYNKEY" />
-
-<v:variable.set value="{0:'Bibliographie-Kette'}" name="synkeyValues"/>
-
-<dla:data.valueForKeyFiltered key="SYNKEY" filterKey="XX_SE_TYP_SYNKEY" filterValues="{synkeyValues}" fields="{document.fields}" as="SYNKEY_BIBLIOGRAPHIE" />
-<dla:data.valueForKeyFiltered key="XX_SE_REGTIT_SYNKEY" filterKey="XX_SE_TYP_SYNKEY" filterValues="{synkeyValues}" fields="{document.fields}" as="REGTIT_SYNKEY_BIBLIOGRAPHIE" />
-
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-        <f:translate key='Bibliographie' extensionName='dla_opac_ng'/>
-    </div>
-
-    <div class="ctg-dtvt-content">
-        <f:if condition="{A0711} || {AURL} || {XX_SE_REGTIT_SYNKEY}">
-            <f:then>
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
-                document:document,
-                results:results,
-                field:'A0711',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-                }"/>
-
-                <f:for each="{SYNKEY_BIBLIOGRAPHIE}" as="synKey" iteration="iterator">
-                    <s:data.newArray
-                            name="detailpage"
-                            global="1"
-                            keys="{0:'id'}"
-                            values="{0:'SE{SYNKEY.{iterator.index}}'}"
-                    />
-                    <f:link.action action="index" arguments="{detailpage}" class="internal" noCacheHash="1">
-                        {REGTIT_SYNKEY_BIBLIOGRAPHIE.{iterator.index}}<br/>
-                    </f:link.action>
-                </f:for>
-
-                <f:comment>
-                <f:for each="{XX_SE_TYP_SYNKEY}" as="typKey" iteration="iterator">
-                    <f:if condition="{typKey} == 'Bibliographie-Kette'">
-                        <f:then>
-                            {XX_SE_REGTIT_SYNKEY.{iterator.index}} <br />
-                        </f:then>
-                    </f:if>
-                </f:for>
-                </f:comment>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </div>
-</div>
 
 
 
 
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AKA451')}" name="AKA451" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AKA451')}" name="AKA451" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
 
-<dla:data.joinFieldArrays
-        arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{USEIT}'}"
-        fieldWraps="{0:'%s',1:': %s'}"
-        as="linkTexts"
-/>
+        <dla:data.joinFieldArrays
+                arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{USEIT}'}"
+                fieldWraps="{0:'%s',1:': %s'}"
+                as="linkTexts"
+        />
 
-
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-    </div>
-    <div class="ctg-dtvt-content">
-        <slub:data.fromSolr
-            query="AKA451:(\"{A0001}\")"
-            fields="id"
-            rows="1">
-        <f:then>
-            <s:data.newArray
-                    name="includedContributionsQuery"
-                    global="1"
-                    keys="{0:'raw'}"
-                    values="{0:'AKA451:{A0001}'}"
-            />
-
-            <f:link.action action="detail" arguments="{q:includedContributionsQuery}" class="internal">
-                ><f:translate key='Enthaltene Beiträge' extensionName='dla_opac_ng'/>
-                <v:variable.set value="true" name="includedContributions" />
-            </f:link.action>
-        </f:then>
-        <f:else>
-        </f:else>
-        </slub:data.fromSolr>
-
-        <f:if condition="{includedContributions}">
-            <f:then>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </div>
-</div>
-
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-    </div>
-    <div class="ctg-dtvt-content">
         <slub:data.fromSolr
                 query="AKA451:(\"{A0001}\")"
         fields="id"
         rows="1">
         <f:then>
-            <s:data.newArray
-                    name="includedVolumesQuery"
-                    global="1"
-                    keys="{0:'raw'}"
-                    values="{0:'AKA451:{A0001}'}"
-            />
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                </div>
+                <div class="ctg-dtvt-content">
 
-            <f:link.action action="detail" arguments="{q:includedVolumesQuery}" class="internal">
-                ><f:translate key='Enthaltene Bände' extensionName='dla_opac_ng'/>
-                <v:variable.set value="true" name="includedVolumes" />
-            </f:link.action>
+                    <s:data.newArray
+                            name="includedContributionsQuery"
+                            global="1"
+                            keys="{0:'raw'}"
+                            values="{0:'AKA451:{A0001}'}"
+                    />
+
+                    <f:link.action action="detail" arguments="{q:includedContributionsQuery}" class="internal">
+                        ><f:translate key='Enthaltene Beiträge' extensionName='dla_opac_ng'/>
+                        <v:variable.set value="true" name="includedContributions" />
+                    </f:link.action>
+
+                </div>
+            </div>
         </f:then>
         <f:else>
         </f:else>
         </slub:data.fromSolr>
 
-        <f:if condition="{includedVolumes}">
-            <f:then>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </div>
-</div>
+
+        <slub:data.fromSolr
+                query="AKA451:(\"{A0001}\")"
+        fields="id"
+        rows="1">
+        <f:then>
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                </div>
+                <div class="ctg-dtvt-content">
+
+                    <s:data.newArray
+                            name="includedVolumesQuery"
+                            global="1"
+                            keys="{0:'raw'}"
+                            values="{0:'AKA451:{A0001}'}"
+                    />
+
+                    <f:link.action action="detail" arguments="{q:includedVolumesQuery}" class="internal">
+                        ><f:translate key='Enthaltene Bände' extensionName='dla_opac_ng'/>
+                        <v:variable.set value="true" name="includedVolumes" />
+                    </f:link.action>
+
+                </div>
+            </div>
+        </f:then>
+        <f:else>
+        </f:else>
+        </slub:data.fromSolr>
 
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-    </div>
-    <div class="ctg-dtvt-content">
         <slub:data.fromSolr
                 query="AKY526:(\"{A0001}\")"
         fields="id"
         rows="1">
         <f:then>
-            <s:data.newArray
-                    name="reviewsQuery"
-                    global="1"
-                    keys="{0:'raw'}"
-                    values="{0:'AKY526:{A0001}'}"
-            />
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                </div>
+                <div class="ctg-dtvt-content">
 
-            <f:link.action action="detail" arguments="{q:reviewsQuery}" class="internal">
-                ><f:translate key='Rezensionen' extensionName='dla_opac_ng'/>
-                <v:variable.set value="true" name="reviews" />
-            </f:link.action>
+                    <s:data.newArray
+                            name="reviewsQuery"
+                            global="1"
+                            keys="{0:'raw'}"
+                            values="{0:'AKY526:{A0001}'}"
+                    />
+
+                    <f:link.action action="detail" arguments="{q:reviewsQuery}" class="internal">
+                        ><f:translate key='Rezensionen' extensionName='dla_opac_ng'/>
+                        <v:variable.set value="true" name="reviews" />
+                    </f:link.action>
+
+                </div>
+            </div>
         </f:then>
         <f:else>
         </f:else>
         </slub:data.fromSolr>
 
-        <f:if condition="{reviews}">
-            <f:then>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </div>
-</div>
 
-
-
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-    </div>
-    <div class="ctg-dtvt-content">
         <slub:data.fromSolr
                 query="AKA451:(\"{A0001}\")"
         fields="id"
         rows="1">
         <f:then>
-            <s:data.newArray
-                    name="volumesBookletsQuery"
-                    global="1"
-                    keys="{0:'raw'}"
-                    values="{0:'AKA451:{A0001}'}"
-            />
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                </div>
+                <div class="ctg-dtvt-content">
 
-            <f:link.action action="detail" arguments="{q:volumesBookletsQuery}" class="internal">
-                ><f:translate key='Bände und Hefte' extensionName='dla_opac_ng'/>
-                <v:variable.set value="true" name="volumesBooklets" />
-            </f:link.action>
+                    <s:data.newArray
+                            name="volumesBookletsQuery"
+                            global="1"
+                            keys="{0:'raw'}"
+                            values="{0:'AKA451:{A0001}'}"
+                    />
+
+                    <f:link.action action="detail" arguments="{q:volumesBookletsQuery}" class="internal">
+                        ><f:translate key='Bände und Hefte' extensionName='dla_opac_ng'/>
+                        <v:variable.set value="true" name="volumesBooklets" />
+                    </f:link.action>
+
+                </div>
+            </div>
         </f:then>
         <f:else>
         </f:else>
         </slub:data.fromSolr>
 
-        <f:if condition="{volumesBooklets}">
-            <f:then>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-    </div>
-</div>
 
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
-<dt class="dt-{field}">
-    <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
-</dt>
-<dd class="dd-{field}">
-
-    <s:data.newArray
-            name="query"
-            global="1"
-            keys="{0:'relation_article'}"
-            values="{0:'{A0001}'}"
-    />
-
-    <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-        <span style="color:lightgrey;">Enthaltene Beiträge</span>
-        <f:render
-                partial="Display/Field/Inline"
-                arguments="{
-                          config:config,
-                          results:results,
-                          document:solr,
-                          field:'{displayField}'
-                        }"/>
-    </f:link.action>
-</dd>
-
-
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS113')}" name="POS113" />
-<f:if condition="{POS113} == 'Mehrteilige Monografie / nicht Teil eines Gesamtwerks' ||
-                {POS113} == 'Mehrteilige Monografie / Teil eines Gesamtwerks' ||
-                {POS113} == 'Fortlaufende Ressource / Serie, Reihe'}">
-    <f:then>
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
         <dt class="dt-{field}">
             <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
@@ -1746,59 +1703,60 @@ AKYTXT
             <s:data.newArray
                     name="query"
                     global="1"
-                    keys="{0:'relation_volume'}"
+                    keys="{0:'relation_article'}"
                     values="{0:'{A0001}'}"
             />
 
             <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                <span style="color:lightgrey;">Enthaltene Bände</span>
+                <span style="color:lightgrey;">Enthaltene Beiträge</span>
                 <f:render
                         partial="Display/Field/Inline"
                         arguments="{
+                          config:config,
+                          results:results,
+                          document:solr,
+                          field:'{displayField}'
+                        }"/>
+            </f:link.action>
+        </dd>
+
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS113')}" name="POS113" />
+        <f:if condition="{POS113} == 'Mehrteilige Monografie / nicht Teil eines Gesamtwerks' ||
+                {POS113} == 'Mehrteilige Monografie / Teil eines Gesamtwerks' ||
+                {POS113} == 'Fortlaufende Ressource / Serie, Reihe'}">
+            <f:then>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
+                <dt class="dt-{field}">
+                    <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
+                </dt>
+                <dd class="dd-{field}">
+
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'relation_volume'}"
+                            values="{0:'{A0001}'}"
+                    />
+
+                    <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                        <span style="color:lightgrey;">Enthaltene Bände</span>
+                        <f:render
+                                partial="Display/Field/Inline"
+                                arguments="{
                                   config:config,
                                   results:results,
                                   document:solr,
                                   field:'{displayField}'
                                 }"/>
-            </f:link.action>
-        </dd>
-    </f:then>
-</f:if>
+                    </f:link.action>
+                </dd>
+            </f:then>
+        </f:if>
 
 
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
-<dt class="dt-{field}">
-    <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
-</dt>
-<dd class="dd-{field}">
-
-    <s:data.newArray
-            name="query"
-            global="1"
-            keys="{0:'relation_review'}"
-            values="{0:'{A0001}'}"
-    />
-
-    <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-        <span style="color:lightgrey;">Suche nach Rezensionen</span>
-        <f:render
-                partial="Display/Field/Inline"
-                arguments="{
-                          config:config,
-                          results:results,
-                          document:solr,
-                          field:'{displayField}'
-                        }"/>
-    </f:link.action>
-</dd>
-
-
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS113')}" name="POS113" />
-<f:if condition="{POS113} == 'Fortlaufende Ressource / Zeitschrift' ||
-                {POS113} == 'Fortlaufende Ressource / Zeitung' ||
-                {POS113} == 'Fortlaufende Ressource / Jahrbuch'}">
-    <f:then>
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
         <dt class="dt-{field}">
             <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
@@ -1808,12 +1766,12 @@ AKYTXT
             <s:data.newArray
                     name="query"
                     global="1"
-                    keys="{0:'relation_volume_and_booklet'}"
+                    keys="{0:'relation_review'}"
                     values="{0:'{A0001}'}"
             />
 
             <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                <span style="color:lightgrey;">Enthaltene Bände und Hefte</span>
+                <span style="color:lightgrey;">Suche nach Rezensionen</span>
                 <f:render
                         partial="Display/Field/Inline"
                         arguments="{
@@ -1824,5 +1782,40 @@ AKYTXT
                         }"/>
             </f:link.action>
         </dd>
-    </f:then>
-</f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS113')}" name="POS113" />
+        <f:if condition="{POS113} == 'Fortlaufende Ressource / Zeitschrift' ||
+                {POS113} == 'Fortlaufende Ressource / Zeitung' ||
+                {POS113} == 'Fortlaufende Ressource / Jahrbuch'}">
+            <f:then>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
+                <dt class="dt-{field}">
+                    <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
+                </dt>
+                <dd class="dd-{field}">
+
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'relation_volume_and_booklet'}"
+                            values="{0:'{A0001}'}"
+                    />
+
+                    <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                        <span style="color:lightgrey;">Enthaltene Bände und Hefte</span>
+                        <f:render
+                                partial="Display/Field/Inline"
+                                arguments="{
+                          config:config,
+                          results:results,
+                          document:solr,
+                          field:'{displayField}'
+                        }"/>
+                    </f:link.action>
+                </dd>
+            </f:then>
+        </f:if>
+
+    </div>
+</div>
