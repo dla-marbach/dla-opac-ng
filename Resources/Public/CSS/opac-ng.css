@@ -75,3 +75,8 @@ canvas#myChart {
     margin-left: auto;
     margin-right: auto;
 }
+
+.tx_find em.highlight {
+    font-style: normal !important;
+    color: #c50017 !important;
+}
