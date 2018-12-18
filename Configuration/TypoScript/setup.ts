@@ -71,6 +71,8 @@ page.includeJSFooter.dla_opac_ng = EXT:dla_opac_ng/Resources/Public/JavaScript/d
 page.includeJS.nouislider = EXT:dla_opac_ng/Resources/Public/JavaScript/nouislider.js
 page.includeCSS.nouislider =  EXT:dla_opac_ng/Resources/Public/CSS/nouislider.css
 
+page.includeJS.detailtabs = EXT:dla_opac_ng/Resources/Public/JavaScript/detailtabs.js
+
 page.includeCSS.opac-ng =  EXT:dla_opac_ng/Resources/Public/CSS/opac-ng.css
 
 
@@ -258,7 +260,7 @@ plugin.tx_find {
             # search for relation rezensionen
                 id = relation_review
                 type = Text
-                query = AKY526:("%1$s") AND AKYTXT:("Bezug: Rezension von")
+                query = AKY526:("%1$s") AND AKYTXT:("Rezension von")
                 noescape = 1
                 hidden = 1
             }
