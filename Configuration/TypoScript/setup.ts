@@ -270,6 +270,8 @@ plugin.tx_find {
                 id = relation_volume_and_booklet
                 type = Text
                 query = AKA451:("%1$s") AND NOT GESTYP:("Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)" OR "Teil einer monografischen Zusammenstellung, unselbständiges Stück" OR "Begleitmaterial / Beilage")
+                noescape = 1
+                hidden = 1
             }
 
             100 {
