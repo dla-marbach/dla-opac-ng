@@ -499,66 +499,71 @@
 </f:if>
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B0001')}" name="B0001" />
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-        <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
+
+<s:data.newArray
+        name="query"
+        global="1"
+        keys="{0:'relation_subinventory'}"
+        values="{0:'{B0001}'}"
+/>
+
+<dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+<dla:countFromSolr query="{solvedQuery}" />
+
+<f:if condition="{solrcount}>0">
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
+        </div>
+        <div class="ctg-dtvt-content">
+
+            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                <span style="color:lightgrey;">In diesem Bestand {solrcount} Unterbestände</span>
+                <f:render
+                        partial="Display/Field/Inline"
+                        arguments="{
+                                  config:config,
+                                  results:results,
+                                  document:solr,
+                                  field:'{displayField}'
+                                }"/>
+            </f:link.action>
+        </div>
     </div>
-    <div class="ctg-dtvt-content">
-
-        <s:data.newArray
-                name="query"
-                global="1"
-                keys="{0:'relation_subinventory'}"
-                values="{0:'{B0001}'}"
-        />
-
-        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
-        <dla:countFromSolr query="{solvedQuery}" />
-
-        <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-            <span style="color:lightgrey;">In diesem Bestand {solrcount} Unterbestände</span>
-            <f:render
-                    partial="Display/Field/Inline"
-                    arguments="{
-                              config:config,
-                              results:results,
-                              document:solr,
-                              field:'{displayField}'
-                            }"/>
-        </f:link.action>
-    </div>
-</div>
+</f:if>
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B0001')}" name="B0001" />
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-        <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
+<s:data.newArray
+        name="query"
+        global="1"
+        keys="{0:'relation_subinventory_hs'}"
+        values="{0:'{B0001}'}"
+/>
+
+<dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+<dla:countFromSolr query="{solvedQuery}" />
+
+<f:if condition="{solrcount}>0">
+    <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-label">
+            <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
+        </div>
+        <div class="ctg-dtvt-content">
+
+            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                <span style="color:lightgrey;">In diesem Bestand {solrcount} Handschriften oder Anderes</span>
+                <f:render
+                        partial="Display/Field/Inline"
+                        arguments="{
+                                  config:config,
+                                  results:results,
+                                  document:solr,
+                                  field:'{displayField}'
+                                }"/>
+            </f:link.action>
+        </div>
     </div>
-    <div class="ctg-dtvt-content">
-
-        <s:data.newArray
-                name="query"
-                global="1"
-                keys="{0:'relation_subinventory_hs'}"
-                values="{0:'{B0001}'}"
-        />
-
-        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
-        <dla:countFromSolr query="{solvedQuery}" />
-
-        <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-            <span style="color:lightgrey;">In diesem Bestand {solrcount} Handschriften oder Anderes</span>
-            <f:render
-                    partial="Display/Field/Inline"
-                    arguments="{
-                              config:config,
-                              results:results,
-                              document:solr,
-                              field:'{displayField}'
-                            }"/>
-        </f:link.action>
-    </div>
-</div>
+</f:if>
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_TH_SWAF_THA710')}" name="XX_TH_SWAF_THA710" />
 <f:if condition="{XX_TH_SWAF_THA710}">

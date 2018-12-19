@@ -1704,138 +1704,149 @@
 
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
-        <dt class="dt-{field}">
-            <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
-        </dt>
-        <dd class="dd-{field}">
 
-            <s:data.newArray
-                    name="query"
-                    global="1"
-                    keys="{0:'relation_article'}"
-                    values="{0:'{A0001}'}"
-            />
+        <s:data.newArray
+                name="query"
+                global="1"
+                keys="{0:'relation_article'}"
+                values="{0:'{A0001}'}"
+        />
 
-            <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
-            <dla:countFromSolr query="{solvedQuery}" />
+        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+        <dla:countFromSolr query="{solvedQuery}" />
 
-            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                <span style="color:lightgrey;">Enthaltene Beiträge ({solrcount})</span>
-                <f:render
-                        partial="Display/Field/Inline"
-                        arguments="{
-                          config:config,
-                          results:results,
-                          document:solr,
-                          field:'{displayField}'
-                        }"/>
-            </f:link.action>
-        </dd>
+        <f:if condition="{solrcount} > 0">
+            <dt class="dt-{field}">
+                <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
+            </dt>
+            <dd class="dd-{field}">
 
+                <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                    <span style="color:lightgrey;">Enthaltene Beiträge ({solrcount})</span>
+                    <f:render
+                            partial="Display/Field/Inline"
+                            arguments="{
+                              config:config,
+                              results:results,
+                              document:solr,
+                              field:'{displayField}'
+                            }"/>
+                </f:link.action>
+            </dd>
+        </f:if>
 
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS113')}" name="POS113" />
-        <f:if condition="{POS113} == 'Mehrteilige Monografie / nicht Teil eines Gesamtwerks' ||
-                {POS113} == 'Mehrteilige Monografie / Teil eines Gesamtwerks' ||
-                {POS113} == 'Fortlaufende Ressource / Serie, Reihe'}">
-            <f:then>
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
-                <dt class="dt-{field}">
-                    <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
-                </dt>
-                <dd class="dd-{field}">
 
-                    <s:data.newArray
-                            name="query"
-                            global="1"
-                            keys="{0:'relation_volume'}"
-                            values="{0:'{A0001}'}"
-                    />
+        <s:data.newArray
+                name="query"
+                global="1"
+                keys="{0:'relation_volume'}"
+                values="{0:'{A0001}'}"
+        />
 
-                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
-                    <dla:countFromSolr query="{solvedQuery}" />
+        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+        <dla:countFromSolr query="{solvedQuery}" />
 
-                    <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                        <span style="color:lightgrey;">Enthaltene Bände ({solrcount})</span>
-                        <f:render
-                                partial="Display/Field/Inline"
-                                arguments="{
-                                  config:config,
-                                  results:results,
-                                  document:solr,
-                                  field:'{displayField}'
-                                }"/>
-                    </f:link.action>
-                </dd>
-            </f:then>
+        <f:if condition="{solrcount} > 0">
+            <f:if condition="{POS113} == 'Mehrteilige Monografie / nicht Teil eines Gesamtwerks' ||
+                    {POS113} == 'Mehrteilige Monografie / Teil eines Gesamtwerks' ||
+                    {POS113} == 'Fortlaufende Ressource / Serie, Reihe'}">
+                <f:then>
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
+                    <dt class="dt-{field}">
+                        <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
+                    </dt>
+                    <dd class="dd-{field}">
+
+
+                        <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                            <span style="color:lightgrey;">Enthaltene Bände ({solrcount})</span>
+                            <f:render
+                                    partial="Display/Field/Inline"
+                                    arguments="{
+                                      config:config,
+                                      results:results,
+                                      document:solr,
+                                      field:'{displayField}'
+                                    }"/>
+                        </f:link.action>
+                    </dd>
+                </f:then>
+            </f:if>
         </f:if>
 
 
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
-        <dt class="dt-{field}">
-            <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
-        </dt>
-        <dd class="dd-{field}">
 
-            <s:data.newArray
-                    name="query"
-                    global="1"
-                    keys="{0:'relation_review'}"
-                    values="{0:'{A0001}'}"
-            />
+        <s:data.newArray
+                name="query"
+                global="1"
+                keys="{0:'relation_review'}"
+                values="{0:'{A0001}'}"
+        />
 
-            <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
-            <dla:countFromSolr query="{solvedQuery}" />
+        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+        <dla:countFromSolr query="{solvedQuery}" />
 
-            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                <span style="color:lightgrey;">Suche nach Rezensionen ({solrcount})</span>
-                <f:render
-                        partial="Display/Field/Inline"
-                        arguments="{
-                          config:config,
-                          results:results,
-                          document:solr,
-                          field:'{displayField}'
-                        }"/>
-            </f:link.action>
-        </dd>
+        <f:if condition="{solrcount} > 0">
+            <dt class="dt-{field}">
+                <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
+            </dt>
+            <dd class="dd-{field}">
 
+                <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                    <span style="color:lightgrey;">Suche nach Rezensionen ({solrcount})</span>
+                    <f:render
+                            partial="Display/Field/Inline"
+                            arguments="{
+                              config:config,
+                              results:results,
+                              document:solr,
+                              field:'{displayField}'
+                            }"/>
+                </f:link.action>
+            </dd>
+        </f:if>
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS113')}" name="POS113" />
-        <f:if condition="{POS113} == 'Fortlaufende Ressource / Zeitschrift' ||
-                {POS113} == 'Fortlaufende Ressource / Zeitung' ||
-                {POS113} == 'Fortlaufende Ressource / Jahrbuch'}">
-            <f:then>
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
-                <dt class="dt-{field}">
-                    <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
-                </dt>
-                <dd class="dd-{field}">
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
 
-                    <s:data.newArray
-                            name="query"
-                            global="1"
-                            keys="{0:'relation_volume_and_booklet'}"
-                            values="{0:'{A0001}'}"
-                    />
+        <s:data.newArray
+                name="query"
+                global="1"
+                keys="{0:'relation_volume_and_booklet'}"
+                values="{0:'{A0001}'}"
+        />
 
-                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
-                    <dla:countFromSolr query="{solvedQuery}" />
+        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+        <dla:countFromSolr query="{solvedQuery}" />
 
-                    <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                        <span style="color:lightgrey;">Enthaltene Bände und Hefte ({solrcount})</span>
-                        <f:render
-                                partial="Display/Field/Inline"
-                                arguments="{
-                          config:config,
-                          results:results,
-                          document:solr,
-                          field:'{displayField}'
-                        }"/>
-                    </f:link.action>
-                </dd>
-            </f:then>
+        <f:if condition="{solrcount} > 0">
+            <f:if condition="{POS113} == 'Fortlaufende Ressource / Zeitschrift' ||
+                    {POS113} == 'Fortlaufende Ressource / Zeitung' ||
+                    {POS113} == 'Fortlaufende Ressource / Jahrbuch'}">
+                <f:then>
+                    <dt class="dt-{field}">
+                        <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
+                    </dt>
+                    <dd class="dd-{field}">
+
+                        <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                            <span style="color:lightgrey;">Enthaltene Bände und Hefte ({solrcount})</span>
+                            <f:render
+                                    partial="Display/Field/Inline"
+                                    arguments="{
+                              config:config,
+                              results:results,
+                              document:solr,
+                              field:'{displayField}'
+                            }"/>
+                        </f:link.action>
+                    </dd>
+                </f:then>
+            </f:if>
         </f:if>
 
     </div>
