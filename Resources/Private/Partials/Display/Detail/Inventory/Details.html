@@ -512,8 +512,11 @@
                 values="{0:'{B0001}'}"
         />
 
+        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+        <dla:countFromSolr query="{solvedQuery}" />
+
         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-            <span style="color:lightgrey;">In diesem Bestand xxx Unterbestände</span>
+            <span style="color:lightgrey;">In diesem Bestand {solrcount} Unterbestände</span>
             <f:render
                     partial="Display/Field/Inline"
                     arguments="{
@@ -540,8 +543,11 @@
                 values="{0:'{B0001}'}"
         />
 
+        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+        <dla:countFromSolr query="{solvedQuery}" />
+
         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-            <span style="color:lightgrey;">In diesem Bestand xxx Handschriften oder Anderes</span>
+            <span style="color:lightgrey;">In diesem Bestand {solrcount} Handschriften oder Anderes</span>
             <f:render
                     partial="Display/Field/Inline"
                     arguments="{

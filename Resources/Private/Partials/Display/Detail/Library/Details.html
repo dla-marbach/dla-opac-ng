@@ -1716,8 +1716,11 @@
                     values="{0:'{A0001}'}"
             />
 
+            <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+            <dla:countFromSolr query="{solvedQuery}" />
+
             <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                <span style="color:lightgrey;">Enthaltene Beiträge</span>
+                <span style="color:lightgrey;">Enthaltene Beiträge ({solrcount})</span>
                 <f:render
                         partial="Display/Field/Inline"
                         arguments="{
@@ -1749,8 +1752,11 @@
                             values="{0:'{A0001}'}"
                     />
 
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
                     <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                        <span style="color:lightgrey;">Enthaltene Bände</span>
+                        <span style="color:lightgrey;">Enthaltene Bände ({solrcount})</span>
                         <f:render
                                 partial="Display/Field/Inline"
                                 arguments="{
@@ -1779,8 +1785,11 @@
                     values="{0:'{A0001}'}"
             />
 
+            <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+            <dla:countFromSolr query="{solvedQuery}" />
+
             <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                <span style="color:lightgrey;">Suche nach Rezensionen</span>
+                <span style="color:lightgrey;">Suche nach Rezensionen ({solrcount})</span>
                 <f:render
                         partial="Display/Field/Inline"
                         arguments="{
@@ -1811,8 +1820,11 @@
                             values="{0:'{A0001}'}"
                     />
 
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
                     <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                        <span style="color:lightgrey;">Enthaltene Bände und Hefte</span>
+                        <span style="color:lightgrey;">Enthaltene Bände und Hefte ({solrcount})</span>
                         <f:render
                                 partial="Display/Field/Inline"
                                 arguments="{
