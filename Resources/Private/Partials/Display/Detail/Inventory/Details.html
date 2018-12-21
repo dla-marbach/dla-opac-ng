@@ -196,7 +196,7 @@
 <f:if condition="{DLAABT}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
-            <f:translate key='Abteilung' extensionName='dla_opac_ng'/>
+            <f:translate key='Sammlung' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <f:render
@@ -586,16 +586,16 @@
 </f:if>
 
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_PE_listview_titel_PEE100')}" name="XX_PE_listview_titel_PEE100" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_PE_listview_title_PEE100')}" name="XX_PE_listview_title_PEE100" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'GFUPUE')}" name="GFUPUE" />
-<f:if condition="{XX_PE_listview_titel_PEE100}">
+<f:if condition="{XX_PE_listview_title_PEE100}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
             <f:translate key='Person Über' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <dla:data.joinFields
-                        fieldNames="{0:'XX_PE_listview_titel_PEE100',1:'GFUPUE'}"
+                        fieldNames="{0:'XX_PE_listview_title_PEE100',1:'GFUPUE'}"
                         fieldWraps="{0:'%s',1:'[%s]'}"
                         fields="{document.fields}"
                         as="linkTexts"
@@ -616,16 +616,16 @@
 </f:if>
 
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_listview_titel_KSE200')}" name="XX_KS_listview_titel_KSE200" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_listview_title_KSE200')}" name="XX_KS_listview_title_KSE200" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'GFUKSE')}" name="GFUKSE" />
-<f:if condition="{XX_KS_listview_titel_KSE200}">
+<f:if condition="{XX_KS_listview_title_KSE200}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
             <f:translate key='Körperschaft Über' extensionName='dla_opac_ng'/>
         </div>
         <div class="ctg-dtvt-content">
             <dla:data.joinFields
-                    fieldNames="{0:'XX_KS_listview_titel_KSE200',1:'GFUKSE'}"
+                    fieldNames="{0:'XX_KS_listview_title_KSE200',1:'GFUKSE'}"
                     fieldWraps="{0:'%s',1:'[%s]'}"
                     fields="{document.fields}"
                     as="linkTexts"

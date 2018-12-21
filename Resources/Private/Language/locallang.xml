@@ -249,7 +249,7 @@
       <!-- Resources/Private/Partials/Display/Detail/Inventory/Details.html -->
       <label index="Bestandsart">Bestandsart</label>
       <label index="Bestandsbildner">Bestandsbildner</label>
-      <label index="Abteilung">Abteilung</label>
+      <label index="Sammlung">Sammlung</label>
       <label index="Signatur">Signatur</label>
       <label index="Inhaltsangabe">Inhaltsangabe</label>
       <label index="Literaturangaben">Literaturangaben</label>
