@@ -57,6 +57,14 @@
             <f:if condition="{prefixString}">
                 <span class="prefix-{field}">{prefixString}</span>
             </f:if>
+            <f:if condition="{s:data.isArray(subject: linkTexts)}">
+                <f:then>
+                    <v:variable.set value="{linkTexts.{iterator.index}}" name="linkTextValue" />
+                </f:then>
+                <f:else>
+                    <v:variable.set value="{linkTexts}" name="linkTextValue" />
+                </f:else>
+            </f:if>
             <f:alias map="{value:'{s:data.valueForKey(array:document.fields, key:field)}'}">
                 <f:render partial="Display/Field/Content" arguments="{_all}"/>
             </f:alias>
