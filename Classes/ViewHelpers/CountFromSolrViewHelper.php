@@ -62,13 +62,38 @@ class CountFromSolrViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
     public function initializeArguments() {
         parent::initializeArguments();
         $this->registerArgument('query', 'string|array', 'Solr querystring or array of query fields and their query values.', TRUE);
+        $this->registerArgument('activeFacets',  'array', 'Array with active facets', FALSE);
     }
 
     /**
      */
     public function render() {
 
-        $query = $this->createQuery($this->arguments['query']);
+        $findParameter = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('tx_find_find');
+
+        $activeFacets = $this->arguments['activeFacets'];
+        $queryConcat = $this->arguments['queryConcat'];
+
+        $newQuery = $this->arguments['query'];
+
+        if ($findParameter['q']['default']) {
+            $newQuery = $newQuery . ' AND ' . $findParameter['q']['default'];
+        }
+
+        if ($activeFacets) {
+            foreach ($activeFacets as $facetInfo) {
+                foreach ($facetInfo as $facet) {
+                    $newQuery = $newQuery . " AND " . $facet['query'];
+                }
+            }
+        }
+
+        if ($queryConcat) {
+            $newQuery .= " AND " . $queryConcat;
+        }
+
+        $query = $this->createQuery($newQuery);
+
         $query->setRows(0);
 
 

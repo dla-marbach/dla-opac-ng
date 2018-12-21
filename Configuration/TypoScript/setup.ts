@@ -510,13 +510,14 @@ plugin.tx_find {
             40 {
                 id = NeuImKatalog
                 label = Neu im Katalog
-                type = Histogramslider
+                type = Timerange
                 field = filter_new
-                facettype = date_range
-                start = NOW/YEAR-35YEARS
-                end = NOW
-                gap = +1YEAR
-                displayDateFormat = Y
+                query = filter_new:%s
+                showmissing = 1
+                #start = NOW/YEAR-35YEARS
+                #end = NOW
+                #gap = +1YEAR
+                #displayDateFormat = Y
                 collapse = 1
             }
 

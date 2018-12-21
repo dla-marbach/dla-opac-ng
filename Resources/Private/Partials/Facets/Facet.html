@@ -8,13 +8,13 @@
   facet’s configured type (deaulting to  »List«).
 </f:comment>
 <f:comment>This identifies if the facet only conatins the missing facet element</f:comment>
-<f:if condition="{f:count(subject:facetData.values)} == 1">
+<f:if condition="{f:count(subject:facetData.values)} == 1 || {facetInfo.type} == 'Timerange'">
     <f:for each="{facetData.values}" as="itemCount" key="key" iteration="iterator">
         <v:variable.set value="{key}" name="facetkey" />
     </f:for>
 </f:if>
-<f:if condition="{f:count(subject:facetData.values)} > 0">
-    <f:if condition="{f:count(subject:facetData.values)} == 1 && {facetkey} == ''">
+<f:if condition="{f:count(subject:facetData.values)} > 0  || {facetInfo.type} == 'Timerange'">
+    <f:if condition="{f:count(subject:facetData.values)} == 1 && {facetkey} == '' && {facetInfo.type} != 'Timerange'">
         <f:then></f:then>
         <f:else>
             <section class="ctg-facet">

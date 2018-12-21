@@ -1,0 +1,198 @@
+{namespace s=Subugoe\Find\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+
+<f:comment>
+    Uses facet data to draw a histogram of the distribution of the (numeric) facet terms.
+    Includes the required JavaScript libraries (jQuery.flot) and hooks up the script
+    functions to enable interaction.
+    Adds a link to deselect the date range used for faceting if there is a selection.
+</f:comment>
+
+<f:comment>Write viewHelper to get the first year (first element of value array)</f:comment>
+
+<div class="facetList" style="{f:if(condition:facetInfo.collapse, then:'display:none;')}">
+
+    <div id="slider-histogramm-{facetInfo.id}"></div>
+
+    <f:alias map="{
+        addArguments:'{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:\"RANGE%20%20TO%20\", mode:\"add\", activeFacets:config.activeFacets)}',
+    removeArguments:'{f:if(
+    condition:\"{s:data.valueForKey(array:config.arguments.facet, key:facetInfo.id)}\",
+    then:\"{s:find.facetLinkArguments(facetID:facetInfo.id, mode:\'remove\', activeFacets:config.activeFacets)}\",
+    else:\"{0:\'{config.prefixID}[page]\'}\"
+    )}'
+    }">
+
+        <div style="padding-bottom:40px;">
+            <div style="">
+                <ul class="facetlist">
+                    <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}">
+                        <f:then>
+
+                            <li>
+                                <f:link.action
+                                        addQueryString="TRUE"
+                                        argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
+                                        section="{settings.jumpToID}"
+                                        noCacheHash="1"
+                                        class=""
+                                        title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
+                                    <span class="icon bel-ok01"></span>
+                                </f:link.action>
+
+                                <f:link.action
+                                        addQueryString="TRUE"
+                                        argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
+                                        section="{settings.jumpToID}"
+                                        noCacheHash="1"
+                                        class=""
+                                        title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
+                                    1 Woche
+                                    <f:translate
+                                            key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
+                                            default="{facetTermDisplay}"/>
+                                </f:link.action>
+                            </li>
+                        </f:then>
+                        <f:else>
+                            <li>
+                                <dla:countFromSolr query="filter_new:[NOW-7DAY TO NOW]" activeFacets="{config.activeFacets}"/>
+                                <f:if condition="{solrcount} > 0">
+                                    <f:link.action
+                                            addQueryString="TRUE"
+                                            arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
+                                            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                                            section="{settings.jumpToID}"
+                                            noCacheHash="1"
+                                            class="facetAdd internal">
+                                        <span class="icon bel-kreis01"></span>
+                                    </f:link.action>
+                                    <f:link.action
+                                            addQueryString="TRUE"
+                                            arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
+                                            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                                            section="{settings.jumpToID}"
+                                            noCacheHash="1"
+                                            class="facetAdd internal">
+                                        1 Woche
+                                        <f:translate
+                                                key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
+                                                default="{facetTermDisplay}"/><em>({solrcount})</em>
+                                    </f:link.action>
+                                </f:if>
+                            </li>
+                            <li>
+                                <dla:countFromSolr query="filter_new:[NOW-1MONTH TO NOW]" activeFacets="{config.activeFacets}"/>
+                                <f:if condition="{solrcount} > 0">
+                                    <v:variable.set value="RANGE NOW-1MONTH TO NOW" name="facetTerm" />
+
+                                    <f:link.action
+                                            addQueryString="TRUE"
+                                            arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
+                                            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                                            section="{settings.jumpToID}"
+                                            noCacheHash="1"
+                                            class="facetAdd internal">
+                                        <span class="icon bel-kreis01"></span>
+                                    </f:link.action>
+                                    <f:link.action
+                                            addQueryString="TRUE"
+                                            arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
+                                            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                                            section="{settings.jumpToID}"
+                                            noCacheHash="1"
+                                            class="facetAdd internal">
+                                        1 Monat
+                                        <f:translate
+                                                key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
+                                                default="{facetTermDisplay}"/><em>({solrcount})</em>
+                                    </f:link.action>
+                                </f:if>
+                            </li>
+                            <li>
+                                <dla:countFromSolr query="filter_new:[NOW-3MONTH TO NOW]" activeFacets="{config.activeFacets}"/>
+                                <f:if condition="{solrcount} > 0">
+                                    <f:link.action
+                                            addQueryString="TRUE"
+                                            arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
+                                            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                                            section="{settings.jumpToID}"
+                                            noCacheHash="1"
+                                            class="facetAdd internal">
+                                        <span class="icon bel-kreis01"></span>
+                                    </f:link.action>
+                                    <f:link.action
+                                            addQueryString="TRUE"
+                                            arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
+                                            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                                            section="{settings.jumpToID}"
+                                            noCacheHash="1"
+                                            class="facetAdd internal">
+                                        1 Quartal
+                                        <f:translate
+                                                key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
+                                                default="{facetTermDisplay}"/><em>({solrcount})</em>
+                                    </f:link.action>
+                                </f:if>
+                            </li>
+                            <li>
+                                <dla:countFromSolr query="filter_new:[NOW-6MONTH TO NOW]" activeFacets="{config.activeFacets}"/>
+                                <f:if condition="{solrcount} > 0">
+                                    <f:link.action
+                                            addQueryString="TRUE"
+                                            arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
+                                            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                                            section="{settings.jumpToID}"
+                                            noCacheHash="1"
+                                            class="facetAdd internal">
+                                        <span class="icon bel-kreis01"></span>
+                                    </f:link.action>
+                                    <f:link.action
+                                            addQueryString="TRUE"
+                                            arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
+                                            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                                            section="{settings.jumpToID}"
+                                            noCacheHash="1"
+                                            class="facetAdd internal">
+                                        1 Halbjahr
+                                        <f:translate
+                                                key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
+                                                default="{facetTermDisplay}"/><em>({solrcount})</em>
+                                    </f:link.action>
+                                </f:if>
+                            </li>
+                            <li>
+                                <dla:countFromSolr query="filter_new:[NOW-12MONTH TO NOW]" activeFacets="{config.activeFacets}"/>
+                                <f:if condition="{solrcount} > 0">
+                                    <f:link.action
+                                            addQueryString="TRUE"
+                                            arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
+                                            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                                            section="{settings.jumpToID}"
+                                            noCacheHash="1"
+                                            class="facetAdd internal">
+                                        <span class="icon bel-kreis01"></span>
+                                    </f:link.action>
+                                    <f:link.action
+                                            addQueryString="TRUE"
+                                            arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
+                                            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                                            section="{settings.jumpToID}"
+                                            noCacheHash="1"
+                                            class="facetAdd internal">
+                                        1 Jahr
+                                        <f:translate
+                                                key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
+                                                default="{facetTermDisplay}"/><em>({solrcount})</em>
+                                    </f:link.action>
+                                </f:if>
+                            </li>
+                        </f:else>
+                    </f:if>
+                </ul>
+            </div>
+        </div>
+
+    </f:alias>
+</div>
