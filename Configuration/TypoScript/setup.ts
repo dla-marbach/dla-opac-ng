@@ -332,7 +332,7 @@ plugin.tx_find {
             BIKEY = B51800
             XX_AU_AKKEY_AUKEY = TITREG
             HSOKEY = H41811,KUTIT
-            HSBFKY = BFNAM
+            HSBFKY = B41600
             PE0100 = P0800
             PEA100 = P0800
             PEE100 = P0800
@@ -345,12 +345,12 @@ plugin.tx_find {
             AKA451 = A0331
             THA720 = SWVF
             THA710 = SWVF
-            BFKEY = BFNAM
+            BFKEY = B41600
             AUKEY = AKKEY
             HSKEY = H41800
             A0001 = SIGNA
             INDKEY = MOTITL
-            BUEBKY = BFNAM
+            BUEBKY = B41600
             GWKEY = TITREG
             H0001 = H41811,KUTIT
             P0001 = A0331,B51800,KUTIT
