@@ -29,7 +29,6 @@
                 <ul class="facetlist">
                     <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}">
                         <f:then>
-
                             <li>
                                 <f:link.action
                                         addQueryString="TRUE"
@@ -48,17 +47,44 @@
                                         noCacheHash="1"
                                         class=""
                                         title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
-                                    1 Woche
+                                    <f:for each="{config.activeFacets.{facetInfo.id}}" as="activeTimeFacet" iteration="iterator">
+                                        <f:if condition="{activeTimeFacet.term}=='RANGE NOW-7DAYS TO NOW'">
+                                            <f:then>1 Woche</f:then>
+                                            <f:else>
+                                                <f:if condition="{activeTimeFacet.term}=='RANGE NOW-1MONTH TO NOW'">
+                                                    <f:then>1 Monat</f:then>
+                                                    <f:else>
+                                                        <f:if condition="{activeTimeFacet.term}=='RANGE NOW-3MONTH TO NOW'">
+                                                            <f:then>1 Quartal</f:then>
+                                                            <f:else>
+                                                                <f:if condition="{activeTimeFacet.term}=='RANGE NOW-6MONTH TO NOW'">
+                                                                    <f:then>1 Halbjahr</f:then>
+                                                                    <f:else>
+                                                                        <f:if condition="{activeTimeFacet.term}=='RANGE NOW-12MONTH TO NOW'">
+                                                                            <f:then>1 Jahr</f:then>
+                                                                            <f:else> - </f:else>
+                                                                        </f:if>
+                                                                    </f:else>
+                                                                </f:if>
+                                                            </f:else>
+                                                        </f:if>
+                                                    </f:else>
+                                                </f:if>
+                                            </f:else>
+                                        </f:if>
+                                    </f:for>
                                     <f:translate
                                             key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
                                             default="{facetTermDisplay}"/>
                                 </f:link.action>
+
                             </li>
                         </f:then>
                         <f:else>
                             <li>
                                 <dla:countFromSolr query="filter_new:[NOW-7DAY TO NOW]" activeFacets="{config.activeFacets}"/>
                                 <f:if condition="{solrcount} > 0">
+                                    <v:variable.set value="RANGE NOW-7DAY TO NOW" name="facetTerm" />
                                     <f:link.action
                                             addQueryString="TRUE"
                                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
@@ -113,6 +139,7 @@
                             <li>
                                 <dla:countFromSolr query="filter_new:[NOW-3MONTH TO NOW]" activeFacets="{config.activeFacets}"/>
                                 <f:if condition="{solrcount} > 0">
+                                    <v:variable.set value="RANGE NOW-3MONTH TO NOW" name="facetTerm" />
                                     <f:link.action
                                             addQueryString="TRUE"
                                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
@@ -139,6 +166,7 @@
                             <li>
                                 <dla:countFromSolr query="filter_new:[NOW-6MONTH TO NOW]" activeFacets="{config.activeFacets}"/>
                                 <f:if condition="{solrcount} > 0">
+                                    <v:variable.set value="RANGE NOW-6MONTH TO NOW" name="facetTerm" />
                                     <f:link.action
                                             addQueryString="TRUE"
                                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
@@ -165,6 +193,7 @@
                             <li>
                                 <dla:countFromSolr query="filter_new:[NOW-12MONTH TO NOW]" activeFacets="{config.activeFacets}"/>
                                 <f:if condition="{solrcount} > 0">
+                                    <v:variable.set value="RANGE NOW-12MONTH TO NOW" name="facetTerm" />
                                     <f:link.action
                                             addQueryString="TRUE"
                                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"

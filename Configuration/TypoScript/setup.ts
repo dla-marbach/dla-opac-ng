@@ -512,7 +512,7 @@ plugin.tx_find {
                 label = Neu im Katalog
                 type = Timerange
                 field = filter_new
-                query = filter_new:%s
+                #query = filter_new:%s
                 showmissing = 1
                 #start = NOW/YEAR-35YEARS
                 #end = NOW
