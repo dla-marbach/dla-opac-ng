@@ -1720,8 +1720,7 @@
                 <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
             </dt>
             <dd class="dd-{field}">
-
-                <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                <f:link.action action="index" arguments="{q:query, sort:'AA425 desc'}" class="internal" noCacheHash="1">
                     <span style="color:lightgrey;">Enthaltene Beiträge ({solrcount})</span>
                     <f:render
                             partial="Display/Field/Inline"
@@ -1760,7 +1759,7 @@
                     <dd class="dd-{field}">
 
 
-                        <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                        <f:link.action action="index" arguments="{q:query, sort:'A0456 asc'}" class="internal" noCacheHash="1">
                             <span style="color:lightgrey;">Enthaltene Bände ({solrcount})</span>
                             <f:render
                                     partial="Display/Field/Inline"
@@ -1796,7 +1795,7 @@
             </dt>
             <dd class="dd-{field}">
 
-                <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                <f:link.action action="index" arguments="{q:query, sort:'AA425 desc'}" class="internal" noCacheHash="1">
                     <span style="color:lightgrey;">Suche nach Rezensionen ({solrcount})</span>
                     <f:render
                             partial="Display/Field/Inline"
@@ -1833,7 +1832,7 @@
                     </dt>
                     <dd class="dd-{field}">
 
-                        <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                        <f:link.action action="index" arguments="{q:query, sort:'AA425 desc'}" class="internal" noCacheHash="1">
                             <span style="color:lightgrey;">Enthaltene Bände und Hefte ({solrcount})</span>
                             <f:render
                                     partial="Display/Field/Inline"
