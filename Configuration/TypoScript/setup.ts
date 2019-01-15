@@ -215,8 +215,10 @@ plugin.tx_find {
                 # setzt den Standardoperator auf ein logisches UND
                 //query = {!q.op=AND}*:%s
                 query = %s
-                # schaltet die Maskierung von Steuerzeichen aus und erlaubt Phrasensuchen und Trunkierungen
-                noescape = 1
+                # schaltet die Maskierung von Steuerzeichen auf den Modus 2 um.
+                # Gemeinsam mit escapechar werden dann die entsprechenden Zeichen maskiert
+                noescape = 2
+                escapechar = :
             }
             1 {
                 # definiert exemplarisch ein Suchfeld für die erweiterte Suche
