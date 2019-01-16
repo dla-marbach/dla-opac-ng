@@ -1009,31 +1009,34 @@
             </f:then>
         </f:if>
 
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B00001')}" name="B00001" />
 
+        <s:data.newArray
+                name="query"
+                global="1"
+                keys="{0:'relation_inside_biokey'}"
+                values="{0:'{B00001}'}"
+        />
 
-        <f:comment>XX_BI_B51800_BIOKEY</f:comment>
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BIOKEY')}" name="BIOKEY" />
-        <f:if condition="{BIOKEY}">
-            <f:then>
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Darin' extensionName='dla_opac_ng'/>
-                    </div>
-                    <div class="ctg-dtvt-content">
-
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                            document:document,
-                            results:results,
-                            field:'BIOKEY',
-                            linkFieldContent:1,
-                            linkFacets:linkFacets
-                          }"/>
-
-                    </div>
-                </div>
-            </f:then>
+        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+        <dla:countFromSolr query="{solvedQuery}" />
+        <f:if condition="{solrcount} > 0">
+            <dt class="dt-{field}">
+                <f:translate key='Darin' extensionName='dla_opac_ng'/>
+            </dt>
+            <dd class="dd-{field}">
+                <f:link.action action="index" arguments="{q:query, sort:'AA425 desc'}" class="internal" noCacheHash="1">
+                    <span>Darin {solrcount} Objekte</span>
+                    <f:render
+                            partial="Display/Field/Inline"
+                            arguments="{
+                              config:config,
+                              results:results,
+                              document:solr,
+                              field:'{displayField}'
+                            }"/>
+                </f:link.action>
+            </dd>
         </f:if>
 
     </div>

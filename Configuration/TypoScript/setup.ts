@@ -291,6 +291,14 @@ plugin.tx_find {
                 noescape = 1
                 hidden = 1
             }
+
+            110 {
+                id = relation_inside_biokey
+                type = Text
+                query = BIOKEY:("%1$s")
+                noescape = 1
+                hidden = 1
+            }
         }
 
         # In den folgenden beiden Abschnitten wird die Behandlung von zu verlinkenden Feldern in der Detailansicht
