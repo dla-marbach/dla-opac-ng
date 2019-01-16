@@ -362,11 +362,36 @@ class SolrServiceProvider extends AbstractServiceProvider
                     } elseif (array_key_exists('facettype', $facet)) {
                         if ($facet['facettype'] == 'date_range') {
                             if ($facet['start'] && $facet['end'] && $facet['gap']) {
+
+                                $query = $this->query;
+
+                                $stats = $query->getStats();
+                                $stats->createField('facet_time_stat');
+
+                                $resultset = $this->connection->select($query);
+                                $statsResult = $resultset->getStats();
+                                $minValue = $statsResult->getResult('facet_time_stat')->getMin();
+
+                                $date = new \DateTime($minValue);
+                                $nowDate = new \DateTime('now');
+
+                                $years = date_diff($date, $nowDate);
+
+                                $start = 'NOW/YEAR-'. $years->y .'YEARS';
+
                                 $queryForFacet = $facetSet->createFacetRange($facet['field'] ? $facetID : $facet['field']);
                                 $queryForFacet->setField($facet['field'] ? $facet['field'] : $facetID)
-                                    ->setStart($facet['start'])
-                                    ->setEnd($facet['end'])
-                                    ->setGap($facet['gap']);
+                                    ->setStart($start)
+                                    ->setEnd('NOW');
+
+                                if ($years->y < 50) {
+                                    $queryForFacet->setGap('+1YEAR');
+                                } else if ($years->y < 500){
+                                    $queryForFacet->setGap('+10YEAR');
+                                } else {
+                                    $queryForFacet->setGap('+40YEAR');
+                                }
+
                             }
                         }
                     } else {
