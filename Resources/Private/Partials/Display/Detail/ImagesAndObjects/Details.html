@@ -12,15 +12,14 @@
         <div class="ctg-ri-text">
             <h2>
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51800')}" name="B51800" />
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
-                <f:if condition="{listview_title}">
+                <f:if condition="{B51800}">
                     <f:then>
                         <f:render
-                            partial="Display/Field/List"
-                            arguments="{
+                                partial="Display/Field/List"
+                                arguments="{
                                 document:document,
                                 results:results,
-                                field:'listview_title',
+                                field:'B51800',
                                 linkFieldContent:linkFieldContent,
                                 linkFacets:linkFacets
                         }"/>
