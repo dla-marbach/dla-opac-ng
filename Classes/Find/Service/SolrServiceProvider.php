@@ -383,13 +383,12 @@ class SolrServiceProvider extends AbstractServiceProvider
                                 $queryForFacet->setField($facet['field'] ? $facet['field'] : $facetID)
                                     ->setStart($start)
                                     ->setEnd('NOW');
-
+                                
                                 if ($years->y < 50) {
                                     $queryForFacet->setGap('+1YEAR');
-                                } else if ($years->y < 500){
-                                    $queryForFacet->setGap('+10YEAR');
                                 } else {
-                                    $queryForFacet->setGap('+40YEAR');
+                                    $gap = round($years->y / 50);
+                                    $queryForFacet->setGap('+'.$gap.'YEAR');
                                 }
 
                             }
