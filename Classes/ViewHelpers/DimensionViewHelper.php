@@ -57,29 +57,35 @@ class DimensionViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewH
                 } else {
                     $result = $diameters[$i] . " x " . $result;
                 }
+            } else {
+                $nextNoX = true;
             }
             if($depths[$i] && $depths[$i] != '#NV') {
                 if($nextNoX) {
-                    $result = $depths[$i] . " " . $result;
+                    $result = $depths[$i] . " (Tiefe) " . $result;
                     $nextNoX = false;
                 } else {
-                    $result = $depths[$i] . " x " . $result;
+                    $result = $depths[$i] . " (Tiefe) x " . $result;
                 }
+            } else {
+                $nextNoX = true;
             }
             if($widths[$i] && $widths[$i] != '#NV') {
                 if($nextNoX) {
-                    $result = $widths[$i] . " " . $result;
+                    $result = $widths[$i] . " (Breite) " . $result;
                     $nextNoX = false;
                 } else {
-                    $result = $widths[$i] . " x " . $result;
+                    $result = $widths[$i] . " (Breite) x " . $result;
                 }
+            } else {
+                $nextNoX = true;
             }
             if($heights[$i] && $heights[$i] != '#NV') {
                 if($nextNoX) {
-                    $result = $heights[$i] . " " . $result;
+                    $result = $heights[$i] . " (Höhe) " . $result;
                     $nextNoX = false;
                 } else {
-                    $result = $heights[$i] . " x " . $result;
+                    $result = $heights[$i] . " (Höhe) x " . $result;
                 }
             }
 
