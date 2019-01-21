@@ -474,7 +474,7 @@ plugin.tx_find {
                 label = Form und Inhalt
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
-                labelmissing = unbekannt
+                labelmissing = nicht bestimmt
             }
 
             20 {
@@ -484,7 +484,7 @@ plugin.tx_find {
                 query = facet_medium:("%s")
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
-                labelmissing = unbekannt
+                labelmissing = nicht bestimmt
             }
 
             25 {
@@ -494,7 +494,7 @@ plugin.tx_find {
                 collapse = 1
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
-                labelmissing = unbekannt
+                labelmissing = nicht bestimmt
             }
 
             30 {
@@ -504,7 +504,7 @@ plugin.tx_find {
                 collapse = 1
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
-                labelmissing = unbekannt
+                labelmissing = nicht bestimmt
             }
 
             35 {
@@ -514,7 +514,7 @@ plugin.tx_find {
                 collapse = 1
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
-                labelmissing = unbekannt
+                labelmissing = nicht bestimmt
             }
 
             40 {
@@ -538,7 +538,7 @@ plugin.tx_find {
                 collapse = 1
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
-                labelmissing = unbekannt
+                labelmissing = nicht bestimmt
             }
 
             50 {
@@ -549,7 +549,7 @@ plugin.tx_find {
                 collapse = 1
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
-                labelmissing = unbekannt
+                labelmissing = nicht bestimmt
             }
 
             55 {
@@ -560,7 +560,7 @@ plugin.tx_find {
                 collapse = 1
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
-                labelmissing = unbekannt
+                labelmissing = nicht bestimmt
             }
 
             60 {
@@ -583,7 +583,7 @@ plugin.tx_find {
                 collapse = 1
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
-                labelmissing = unbekannt
+                labelmissing = nicht bestimmt
             }
 
         }
