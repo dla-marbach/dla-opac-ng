@@ -25,7 +25,8 @@ class ReplaceNullValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstra
     public function render()
     {
         if ($this->arguments['text']) {
-            $resultValue = str_replace("#NV : #NV", "", $this->arguments['text']);
+            $resultValue = str_replace("(#NV)", "", $this->arguments['text']);
+            $resultValue = str_replace("#NV : #NV", "", $resultValue);
             $resultValue = str_replace("#NV :", "", $resultValue);
             $resultValue = str_replace("#NV", "", $resultValue);
 
@@ -34,6 +35,9 @@ class ReplaceNullValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstra
             }
         } else if (is_array($this->arguments['array'])) {
             foreach ($this->arguments['array'] as $key => $value) {
+
+                $value = str_replace("(#NV)", "", $value);
+
                 preg_match('/\#NV/', $value, $matches);
                 if (empty($matches)) {
                     $resultValue[] = $value;
