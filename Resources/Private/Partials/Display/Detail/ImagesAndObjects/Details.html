@@ -380,16 +380,20 @@
 
                         <f:if condition="{B02040}">
                             {B02040}
-                            <f:if condition="{B02000.0}!='#NV'">
-                                ({B02000.0})
+                            <f:if condition="{B02000.0}">
+                                <f:if condition="{B02000.0}!='#NV'">
+                                    ({B02000.0})
+                                </f:if>
                             </f:if>
                             <br />
                         </f:if>
 
                         <f:if condition="{B0204A}">
                             {B0204A}
-                            <f:if condition="{B02000.1}!='#NV'">
-                                ({B02000.1})
+                            <f:if condition="{B02000.1}">
+                                <f:if condition="{B02000.1}!='#NV'">
+                                    ({B02000.1})
+                                </f:if>
                             </f:if>
                         </f:if>
 
@@ -910,8 +914,14 @@
                     <div class="ctg-dtvt-content">
 
                         <f:for each="{picture_midi}" as="pic" iteration="iterator">
-                            <div class="detail-do-image"><image src="{pic}"/></div>
-                            <span class="detail-do-description"><v:variable.get name="B04100.{iterator.index}" /></span>
+                            <div class="detail-do-image">
+                                <image src="{pic}"/>
+                            </div>
+                            <f:if condition="{B04100.{iterator.index}}!='#NV'">
+                                <span class="detail-do-description">
+                                    <v:variable.get name="B04100.{iterator.index}" />
+                                </span>
+                            </f:if>
                         </f:for>
                         <f:comment><f:render
                                 partial="Display/Field/ImageList"
