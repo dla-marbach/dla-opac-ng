@@ -220,24 +220,6 @@ plugin.tx_find {
                 noescape = 2
                 escapechar = :
             }
-            1 {
-                # definiert exemplarisch ein Suchfeld für die erweiterte Suche
-                id = Person
-                type = Text
-                query = XX_PE_P0800_PE0100:(%s)
-                noescape = 1
-                # zeigt das Suchfeld nur in der erweiterten Suche an
-                extended = 1
-            }
-            2 {
-                # definiert eine Intervall-Suche exemplarisch über Lebensdaten
-                id = Lebensspanne
-                type = Range
-                query = PA8141:[* %2$s] AND PA8142:[%1$s TO *]
-                default.0 = *
-                default.1 = *
-                extended = 1
-            }
             # {0:'AKA451:(\'{A0001}\') AND GESTYP:(\'Einzelbestandteil \/ unselbständiges Werk\')', 1:1}
             96 {
                 # search for relation article
