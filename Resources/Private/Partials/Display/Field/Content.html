@@ -1,6 +1,7 @@
 {namespace s=Subugoe\Find\ViewHelpers}
 {namespace v=FluidTYPO3\vhs\ViewHelpers}
 {namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
 <f:comment>
     This partial renders the actual field content. It is invoked from the
     Display/Field/General partial and uses the variables passed from there.
@@ -227,13 +228,14 @@
                             {linkTexts.0}
                         </f:then>
                         <f:else>
-                            <s:find.highlightField
-                                    field="{field}"
-                                    document="{document}"
-                                    results="{results}"
-                                    index="{iterator.index}"
-                                    alternateField="{s:data.valueForKey(array:config.highlight.alternateFields, key:field)}"
-                            />
+                            <dla:replaceBreaks text="{s:find.highlightField(
+                                        field:field,
+                                        document:document,
+                                        results:results,
+                                        index:iterator.index,
+                                        alternateField:'{s:data.valueForKey(array:config.highlight.alternateFields, key:field)}'
+                                        )}" as="textNew"/>
+                            {textNew}
                         </f:else>
                     </f:if>
                 </f:else>
