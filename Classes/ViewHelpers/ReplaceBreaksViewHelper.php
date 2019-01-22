@@ -14,7 +14,7 @@ class ReplaceBreaksViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
     public function initializeArguments()
     {
         parent::initializeArguments();
-        $this->registerArgument('text', 'string', 'Text', true, 'string');
+        $this->registerArgument('text', 'string', 'Text', true, '');
         $this->registerArgument('as', 'string', 'name of the label result variable', true, 'string');
     }
 
