@@ -46,6 +46,14 @@
                         <f:form.hidden name="facet[Medientypen][{itemkey}]" value="1"/>
                     </f:for>
 
+                    <f:for each="{arguments.facet.MedientypenHidden}" as="mediatype" key="itemkey">
+                        <f:form.hidden name="facet[MedientypenHidden][{itemkey}]" value="1"/>
+                    </f:for>
+
+                    <f:for each="{arguments.facet.DatenbestandHidden}" as="mediatype" key="itemkey">
+                        <f:form.hidden name="facet[DatenbestandHidden][{itemkey}]" value="1"/>
+                    </f:for>
+
                     <f:for each="{formFacets}" as="facet" key="facetID">
                         <f:for each="{facet}" as="unused" key="facetValue">
                             <f:form.hidden name="facet[{facetID}][{facetValue}]" value="1"/>
