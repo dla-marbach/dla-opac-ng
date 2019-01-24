@@ -284,9 +284,22 @@ class SolrServiceProvider extends AbstractServiceProvider
         $activeFacets = $this->getActiveFacets($arguments);
         $activeFacetsForTemplate = [];
         foreach ($activeFacets as $facetID => $facets) {
+            $concatFacetTerm = "";
+            $i = 0;
             foreach ($facets as $facetTerm => $facetInfo) {
                 $facetQuery = $this->getFacetQuery($this->getFacetConfig($facetID), $facetTerm);
-                if ('and' === $facetInfo['config']['queryStyle']) {
+
+                // multi select facet
+                if ($facetInfo['config']['facettype'] == 'multi_select_facet') {
+                    if ($concatFacetTerm == "") {
+                        $concatFacetTerm = $facetTerm;
+                    } else {
+                        $concatFacetTerm = $concatFacetTerm . ' ' .$facetTerm;
+                    }
+                    $i++;
+                }
+
+                if ($facetInfo['config']['queryStyle'] === 'and') {
                     // TODO: Do we really use this part of the condition? Can it be removed?
                     // Alternative query style: adding a conjunction to the main query.
                     // Can be useful when using {!join} to filter on the underlying
@@ -314,8 +327,21 @@ class SolrServiceProvider extends AbstractServiceProvider
                         $this->query->createFilterQuery($queryInfo)
                             ->setQuery("-".str_replace('("%s")','[* TO *]', $facetInfo['config']['query']));
                     } else {
-                        $this->query->createFilterQuery($queryInfo)
-                            ->setQuery($facetQuery);
+
+                        if ($facetInfo['config']['facettype'] == 'multi_select_facet') {
+
+                            if ($i == count($facets)) {
+                                $facetQuery = str_replace('"%s"', $concatFacetTerm, $facetInfo['config']['query']);
+                                $this->query->createFilterQuery($queryInfo)->setQuery($facetQuery);
+                            } else {
+                                continue;
+                            }
+
+                        } else {
+                            $this->query->createFilterQuery($queryInfo)
+                                ->setQuery($facetQuery);
+                        }
+
                     }
 
                 }
@@ -383,7 +409,7 @@ class SolrServiceProvider extends AbstractServiceProvider
                                 $queryForFacet->setField($facet['field'] ? $facet['field'] : $facetID)
                                     ->setStart($start)
                                     ->setEnd('NOW');
-                                
+
                                 if ($years->y < 50) {
                                     $queryForFacet->setGap('+1YEAR');
                                 } else {
