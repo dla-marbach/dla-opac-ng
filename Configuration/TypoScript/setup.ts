@@ -568,6 +568,25 @@ plugin.tx_find {
                 labelmissing = nicht bestimmt
             }
 
+            # Die nächsten konfigurierten Facetten sind für die Sucheinschränkung oberhalb des Suchschlitzes
+            # Konkret für Audio & Video und Namen & Werke
+            66 {
+                id = DatenbestandHidden
+                facettype = multi_select_facet
+                field = facet_source
+                query = facet_source:("%s")
+                hidden = 1
+                fetchMinimum = 0
+            }
+
+            77 {
+                id = MedientypenHidden
+                facettype = multi_select_facet
+                field = icon_facet
+                sortOrder = count
+                query = icon_facet:("%s")
+            }
+
         }
 
         # Der Abschnitt "paging" definiert die Anzahl der Treffer pro Seite sowie das Navigieren durch das
