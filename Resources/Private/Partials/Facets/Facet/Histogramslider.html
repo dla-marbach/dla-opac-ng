@@ -46,8 +46,6 @@
                     tillinput.value = Math.round(lastDate);
                 } else {
                     slider.noUiSlider.set([frominput.value, tillinput.value]);
-                    console.log(frominput.value);
-                    console.log(tillinput.value);
                 }
 
                 slider.noUiSlider.on('slide', function( values, handle ) {
@@ -77,7 +75,6 @@
                     var re = new RegExp("\\["+ facetInfo +"]\\[.*?]", "g");
                     url = url.replace(re, "["+facetInfo+"][RANGE " + min + " TO " + max + "]");
                     url = url.replace(/ & /g, " %26 ");
-                    console.log("["+facetInfo+"][RANGE " + min + " TO " + max + "]");
                     $('#publishDateFacetSubmit-'+facetInfo).attr('href', url);
                 }
             });
