@@ -397,18 +397,23 @@ class SolrServiceProvider extends AbstractServiceProvider
                                 $resultset = $this->connection->select($query);
                                 $statsResult = $resultset->getStats();
                                 $minValue = $statsResult->getResult('facet_time_stat')->getMin();
+                                $maxValue = $statsResult->getResult('facet_time_stat')->getMax();
 
                                 $date = new \DateTime($minValue);
+                                $maxDate = new \DateTime($maxValue);
+
                                 $nowDate = new \DateTime('now');
 
                                 $years = date_diff($date, $nowDate);
+                                $maxYears = date_diff($maxDate, $nowDate);
 
                                 $start = 'NOW/YEAR-'. $years->y .'YEARS';
+                                $end = 'NOW/YEAR-'. $maxYears->y .'YEARS';
 
                                 $queryForFacet = $facetSet->createFacetRange($facet['field'] ? $facetID : $facet['field']);
                                 $queryForFacet->setField($facet['field'] ? $facet['field'] : $facetID)
                                     ->setStart($start)
-                                    ->setEnd('NOW');
+                                    ->setEnd($end);
 
                                 if ($years->y < 50) {
                                     $queryForFacet->setGap('+1YEAR');
