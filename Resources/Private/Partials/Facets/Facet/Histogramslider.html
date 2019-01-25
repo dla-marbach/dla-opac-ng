@@ -64,11 +64,12 @@
 
                 tillinput.addEventListener('change', function(){
                     slider.noUiSlider.set([null, this.value]);
-
+                    adjustLink(frominput.value, this.value);
                 });
 
                 frominput.addEventListener('change', function(){
                     slider.noUiSlider.set([this.value, null]);
+                    adjustLink(this.value, tillinput.value);
                 });
 
                 function adjustLink(min, max) {
@@ -76,6 +77,7 @@
                     var re = new RegExp("\\["+ facetInfo +"]\\[.*?]", "g");
                     url = url.replace(re, "["+facetInfo+"][RANGE " + min + " TO " + max + "]");
                     url = url.replace(/ & /g, " %26 ");
+                    console.log("["+facetInfo+"][RANGE " + min + " TO " + max + "]");
                     $('#publishDateFacetSubmit-'+facetInfo).attr('href', url);
                 }
             });
