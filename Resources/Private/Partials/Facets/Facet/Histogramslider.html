@@ -25,7 +25,7 @@
             var tillinput = document.getElementById('till-histogramm-'+facetInfo);
             <f:format.raw>
                 noUiSlider.create(slider, {
-                    start: [firstDate, (new Date()).getFullYear()],
+                    start: [firstDate, lastDate],
                     connect: true,
                     range: {
                         'min': firstDate,
@@ -63,12 +63,12 @@
                 });
 
                 tillinput.addEventListener('change', function(){
-                    slider.noUiSlider.set([this.value, null]);
+                    slider.noUiSlider.set([null, this.value]);
 
                 });
 
                 frominput.addEventListener('change', function(){
-                    slider.noUiSlider.set([null, this.value]);
+                    slider.noUiSlider.set([this.value, null]);
                 });
 
                 function adjustLink(min, max) {
