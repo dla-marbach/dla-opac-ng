@@ -28,17 +28,21 @@ class HistogramValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstract
         $array = $this->arguments['array'];
         $resultValue = date($this->arguments['dateFormat'], strtotime(min(array_keys($array))));
 
+        foreach ($array as $key => $value) {
+            if ($value > 0) {
+                $timeArray[] = $key;
+            }
+        }
+
         $valueName = $this->arguments['firstValueAs'];
         if ($valueName !== null) {
             if ($this->templateVariableContainer->exists($valueName)) {
                 $this->templateVariableContainer->remove($valueName);
             }
             $this->templateVariableContainer->add($valueName, $resultValue);
-//            $result = $this->renderChildren();
         }
 
-
-        $resultValue = date($this->arguments['dateFormat'], strtotime(max(array_keys($array))));
+        $resultValue = date($this->arguments['dateFormat'], strtotime(max($timeArray)));
 
         $valueName = $this->arguments['lastValueAs'];
         if ($valueName !== null) {
@@ -46,7 +50,6 @@ class HistogramValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstract
                 $this->templateVariableContainer->remove($valueName);
             }
             $this->templateVariableContainer->add($valueName, $resultValue);
-//            $result = $this->renderChildren();
         }
     }
 
