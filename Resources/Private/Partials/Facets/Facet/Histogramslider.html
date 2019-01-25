@@ -12,13 +12,14 @@
 <f:comment>Write viewHelper to get the first year (first element of value array)</f:comment>
 
 <div class="facetList" style="{f:if(condition:facetInfo.collapse, then:'display:none;')}">
-    <dla:HistogramValue firstValueAs="firstDate" array="{facetData.values}" dateFormat="{facetData.displayDateFormat}"/>
+    <dla:HistogramValue firstValueAs="firstDate" lastValueAs="lastDate" array="{facetData.values}" dateFormat="{facetData.displayDateFormat}"/>
 
     <script>
         $( document ).ready(function() {
             var facetInfo = "{facetInfo.id}";
             var slider = document.getElementById('slider-histogramm-'+facetInfo);
             var firstDate = {firstDate};
+            var lastDate = {lastDate};
 
             var frominput = document.getElementById('from-histogramm-'+facetInfo);
             var tillinput = document.getElementById('till-histogramm-'+facetInfo);
@@ -28,7 +29,7 @@
                     connect: true,
                     range: {
                         'min': firstDate,
-                        'max': (new Date()).getFullYear()
+                        'max': lastDate
                     }
                 });
 
@@ -42,9 +43,11 @@
                 }
 
                 if(!tillinput.value) {
-                    tillinput.value = Math.round((new Date()).getFullYear());
+                    tillinput.value = Math.round(lastDate);
                 } else {
-                    slider.noUiSlider.set([frominput.value, tillinput.value])
+                    slider.noUiSlider.set([frominput.value, tillinput.value]);
+                    console.log(frominput.value);
+                    console.log(tillinput.value);
                 }
 
                 slider.noUiSlider.on('slide', function( values, handle ) {

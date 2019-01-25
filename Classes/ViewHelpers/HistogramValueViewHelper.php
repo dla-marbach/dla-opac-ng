@@ -15,7 +15,8 @@ class HistogramValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstract
     {
         parent::initializeArguments();
         $this->registerArgument('array', 'array', 'List of fields', true, array());
-        $this->registerArgument('firstValueAs', 'string', 'name of the value result variable', true, array());
+        $this->registerArgument('firstValueAs', 'string', 'name of the value result variable', true, "firstValue");
+        $this->registerArgument('lastValueAs', 'string', 'name of the value result variable', true, "lastValue");
         $this->registerArgument('dateFormat', 'string', 'returns date in the given format default is Y', false, "Y");
     }
 
@@ -37,6 +38,16 @@ class HistogramValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstract
         }
 
 
+        $resultValue = date($this->arguments['dateFormat'], strtotime(max(array_keys($array))));
+
+        $valueName = $this->arguments['lastValueAs'];
+        if ($valueName !== null) {
+            if ($this->templateVariableContainer->exists($valueName)) {
+                $this->templateVariableContainer->remove($valueName);
+            }
+            $this->templateVariableContainer->add($valueName, $resultValue);
+//            $result = $this->renderChildren();
+        }
     }
 
 }
