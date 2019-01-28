@@ -256,6 +256,31 @@
         </f:if>
 
 
+        <f:comment>
+            Urheber
+        </f:comment>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_urheber')}" name="detail_urheber" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
+
+        <f:if condition="{detail_urheber}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Urheber' extensionName='dla_opac_ng'/> (neu)
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:for each="{detail_urheber}" as="item" iteration="iterator">
+                            {item}<br/>
+                        </f:for>
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
 
         <f:comment>Beteiligt</f:comment>
 
@@ -331,6 +356,26 @@
                         linkFacets:linkFacets,
                         linkTexts:involvedKS
                       }"/>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <f:comment>Beteiligt</f:comment>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_beteiligt')}" name="detail_beteiligt" />
+
+        <f:if condition="{detail_beteiligt}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Beteiligt' extensionName='dla_opac_ng'/> (neu)
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        <f:for each="{detail_beteiligt}" as="item" iteration="iterator">
+                            {item}<br/>
+                        </f:for>
                     </div>
                 </div>
             </f:then>
