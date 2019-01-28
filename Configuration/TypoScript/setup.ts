@@ -437,7 +437,7 @@ plugin.tx_find {
                 id = Digital
                 field = filter_digital
                 type = Switch
-                text = Nur digital
+                text = digital
                 query = filter_digital:true
                 removeHeadline = true
             }
