@@ -798,25 +798,26 @@
         </f:if>
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'H0001')}" name="H0001" />
-        <div class="ctg-dtvt-row">
-            <div class="ctg-dtvt-label">
-                <f:translate key='Dabei / Darauf / Darin' extensionName='dla_opac_ng'/>
-            </div>
-            <div class="ctg-dtvt-content">
-                <slub:data.fromSolr query="HSOKEY:\"{H0001}\"" fields="id,listview_title" rows="10">
-                <f:then>
-                    <f:link.action
-                            action="detail"
-                            arguments="{id: solr.fields.id}"
-                    >
-                        <div>
-                            {solr.fields.listview_title}
-                        </div>
-                    </f:link.action>
-                </f:then>
-                </slub:data.fromSolr>
-            </div>
-        </div>
+        <slub:data.fromSolr query="HSOKEY:\"{H0001}\"" fields="id,listview_title" rows="10">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Dabei / Darauf / Darin' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:link.action
+                                action="detail"
+                                arguments="{id: solr.fields.id}"
+                        >
+                            <div>
+                                {solr.fields.listview_title}
+                            </div>
+                        </f:link.action>
+                    </div>
+                </div>
+            </f:then>
+        </slub:data.fromSolr>
 
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_AKKEY_AUKEY')}" name="XX_AU_AKKEY_AUKEY" />
