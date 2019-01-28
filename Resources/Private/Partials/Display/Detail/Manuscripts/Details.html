@@ -156,6 +156,8 @@
                                 as="linkTexts"
                         />
 
+                        <dla:replaceNullValue array="{linkTexts}" as="linkTexts"/>
+
                         <f:render
                                 partial="Display/Field/List"
                                 arguments="{
@@ -382,9 +384,6 @@
                             </div>
                         </div>
                     </f:then>
-                    <f:else>
-                        -
-                    </f:else>
                 </f:if>
             </f:else>
         </f:if>
