@@ -923,6 +923,9 @@
 
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDAT_AUKEY')}" name="XX_AU_SENDAT_AUKEY" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDER_AUKEY')}" name="XX_AU_SENDER_AUKEY" />
+
+        <dla:removeFromArray array="{XX_AU_SENDAT_AUKEY}" array2="{XX_AU_SENDER_AUKEY}" as="XX_AU_SENDAT_AUKEY" as2="XX_AU_SENDER_AUKEY"/>
 
         <f:if condition="{XX_AU_SENDAT_AUKEY}">
             <div class="ctg-dtvt-row">
@@ -931,23 +934,17 @@
                 </div>
                 <div class="ctg-dtvt-content">
 
-                    <f:render
-                            partial="Display/Field/Inline"
-                            arguments="{
-                            config:config,
-                            results:results,
-                            document:document,
-                            field:'XX_AU_SENDER_AUKEY'
-                    }"/>
-
                     <f:for each="{XX_AU_SENDAT_AUKEY}" as="value" iteration="iterator">
                         <f:if condition="{value->f:format.urlencode()} != '%E2%90%9E'">
                             <f:then>
-                                <dla:data.dateFormat
-                                        dateValue="{XX_AU_SENDAT_AUKEY}"
-                                        as="dateFormat"
-                                />
-                                <f:format.date date="{dateFormat}" format="d.m.Y"></f:format.date>
+                                <div>
+                                    <dla:data.dateFormat
+                                            dateValue="{XX_AU_SENDAT_AUKEY}"
+                                            as="dateFormat"
+                                    />
+                                    {XX_AU_SENDER_AUKEY.{iterator.index}}
+                                    <f:format.date date="{dateFormat}" format="d.m.Y"></f:format.date>
+                                </div>
                             </f:then>
                         </f:if>
                     </f:for>
@@ -991,19 +988,23 @@
                                 as="linkTexts"
                         />
 
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                    document:document,
-                    results:results,
-                    field: 'INDKEY',
-                    linkFieldContent:1,
-                    linkFacets:linkFacets,
-                    linkTexts:linkTexts
-                  }"/>
+                        <f:if condition="{linkTexts} != '␞'">
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
+                                    document:document,
+                                    results:results,
+                                    field: 'INDKEY',
+                                    linkFieldContent:1,
+                                    linkFacets:linkFacets,
+                                    linkTexts:linkTexts
+                            }"/>
+                        </f:if>
 
                         <f:for each="{digitalObject}" as="item" iteration="iterator">
-                            <a href="{AURL.{iterator.index}}">{item}</a><br />
+                            <f:if condition="{AURL.{iterator.index}} != '#NV' && {item} != '#NV'">
+                                <a href="{AURL.{iterator.index}}">{item}</a><br />
+                            </f:if>
                         </f:for>
                     </div>
                 </div>

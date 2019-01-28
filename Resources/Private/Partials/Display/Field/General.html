@@ -28,21 +28,22 @@
                 <span class="prefix-{field}">{prefixString}</span>
             </f:if>
             <f:for each="{s:data.valueForKey(array:document.fields, key:field)}" as="value" iteration="iterator">
+                {groupItemPrefix->f:format.raw()}{fieldPrefix->f:format.raw()}
+                <f:if condition="{s:data.isArray(subject: linkTexts)}">
+                    <f:then>
+                        <v:variable.set value="{linkTexts.{iterator.index}}" name="linkTextValue" />
+                    </f:then>
+                    <f:else>
+                        <v:variable.set value="{linkTexts}" name="linkTextValue" />
+                    </f:else>
+                </f:if>
+
                 <f:comment> Removing record separator (RS) with %E2%90%9E</f:comment>
-                <f:if condition="{value->f:format.urlencode()} != '%E2%90%9E'">
+                <f:if condition="{value->f:format.urlencode()} != '%E2%90%9E' && {linkTextValue->f:format.urlencode()} != '%E2%90%9E'">
                     <f:then>
                         <f:comment>Removing nullValue #NV</f:comment>
-                        <f:if condition="{value} != '#NV'">
+                        <f:if condition="{value} != '#NV' && {linkTextValue} != '#NV'">
                             <f:then>
-                                {groupItemPrefix->f:format.raw()}{fieldPrefix->f:format.raw()}
-                                <f:if condition="{s:data.isArray(subject: linkTexts)}">
-                                    <f:then>
-                                        <v:variable.set value="{linkTexts.{iterator.index}}" name="linkTextValue" />
-                                    </f:then>
-                                    <f:else>
-                                        <v:variable.set value="{linkTexts}" name="linkTextValue" />
-                                    </f:else>
-                                </f:if>
                                 <f:render partial="Display/Field/Content" arguments="{_all}"/>
                                 {fieldSuffix->f:format.raw()}{f:if(condition:"{iterator.isLast}==0", then:separator)}{groupItemSuffix->f:format.raw()}
                             </f:then>
