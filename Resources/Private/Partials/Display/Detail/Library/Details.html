@@ -1616,6 +1616,39 @@
         </f:if>
 
 
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'enthaltene_materialien')}" name="enthaltene_materialien" />
+        <f:if condition="{enthaltene_materialien}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    Enthaltene Materialien
+                </div>
+                <div class="ctg-dtvt-content">
+
+                    <f:for each="{enthaltene_materialien}" as="material" iteration="iterator">
+                        <s:data.newArray
+                                name="query"
+                                global="1"
+                                keys="{0:'id'}"
+                                values="{0:'{material}'}"
+                        />
+                        <div>
+                            <slub:data.fromSolr
+                                    query="{query}"
+                                    fields="listview_title"
+                                    rows="1">
+                                <f:link.action action="detail" arguments="{q:query}" class="internal">
+                                    ({solr.listview_title})
+                                </f:link.action>
+
+                            </slub:data.fromSolr>
+                        </div>
+                        <br/>
+                    </f:for>
+                </div>
+            </div>
+        </f:if>
+
+
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
 
         <s:data.newArray
