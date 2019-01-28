@@ -118,10 +118,12 @@
                                             alternateField="{s:data.valueForKey(array:config.highlight.alternateFields, key:field)}" />
                                     </f:else>
                                 </f:if>
+                                <f:comment>
                                 <br />
                                 <span style="color:lightgrey;">
                                     Nothing found. Is {s:data.valueForKey(array:settings.queryFieldForDataField, key:field)} indexed and {s:data.valueForKey(array:settings.displayFieldForDataField, key:field)} stored?
                                 </span>
+                                </f:comment>
                             </li>
                         </f:else>
                         </slub:data.fromSolr>
