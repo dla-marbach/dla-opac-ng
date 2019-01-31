@@ -1649,15 +1649,14 @@
                                 values="{0:'{material}'}"
                         />
                         <div>
-                            <slub:data.fromSolr
-                                    query="{query}"
-                                    fields="listview_title"
-                                    rows="1">
-                                <f:link.action action="detail" arguments="{q:query}" class="internal">
-                                    ({solr.listview_title})
-                                </f:link.action>
+                            <dla:fromSolr
+                                query="{query}"
+                                fields="id,listview_title"
+                                rows="1" />
 
-                            </slub:data.fromSolr>
+                            <f:link.action action="detail" arguments="{id:solr.0.id}" class="internal">
+                                ({solr.0.listview_title})
+                            </f:link.action>
                         </div>
                         <br/>
                     </f:for>
