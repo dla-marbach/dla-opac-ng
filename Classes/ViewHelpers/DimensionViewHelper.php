@@ -88,7 +88,7 @@ class DimensionViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewH
                     $result = $heights[$i] . " (Höhe) x " . $result;
                 }
             }
-
+            $result = str_replace(".", ",", $result);
             $resultValue[] = $result;
         }
 
