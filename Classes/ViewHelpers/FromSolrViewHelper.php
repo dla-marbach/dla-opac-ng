@@ -101,26 +101,6 @@ class FromSolrViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHe
 
         /** @var DocumentInterface $result */
         $results = $resultSet->getDocuments();
-var_dump($results);
-        $out = '';
-
-//        if($results) {
-//
-//            foreach ($results as $result) {
-//
-//                if ($this->templateVariableContainer->exists('solr')) {
-//                    $this->templateVariableContainer->remove('solr');
-//                }
-//                $this->templateVariableContainer->add('solr', $result);
-//                $out .= $this->renderThenChild();
-//            }
-//        } else {
-//            $out .= $this->renderElseChild();
-//        }
-//
-//
-//        return $out;
-
 
         if ($this->templateVariableContainer->exists("solr")) {
             $this->templateVariableContainer->remove("solr");
