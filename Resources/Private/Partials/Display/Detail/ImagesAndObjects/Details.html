@@ -11,23 +11,7 @@
         </div>
         <div class="ctg-ri-text">
             <h2>
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51800')}" name="B51800" />
-                <f:if condition="{B51800}">
-                    <f:then>
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                                document:document,
-                                results:results,
-                                field:'B51800',
-                                linkFieldContent:linkFieldContent,
-                                linkFacets:linkFacets
-                        }"/>
-                    </f:then>
-                    <f:else>
-                        -
-                    </f:else>
-                </f:if>
+                {document.listview_title}
             </h2>
             <p>
                 <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_associate)}">
@@ -134,6 +118,36 @@
                      }"/>
             </div>
         </div>
+
+        <f:comment>
+            Titel
+        </f:comment>
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51800')}" name="B51800" />
+        <f:if condition="{B51800}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Titel' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                                document:document,
+                                results:results,
+                                field:'B51800',
+                                linkFieldContent:linkFieldContent,
+                                linkFacets:linkFacets
+                        }"/>
+
+                    </div>
+                </div>
+            </f:then>
+            <f:else>
+                -
+            </f:else>
+        </f:if>
 
         <f:comment>
             Objecttype
