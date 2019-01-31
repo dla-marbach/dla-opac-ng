@@ -105,7 +105,7 @@
 
         <div class="ctg-dtvt-row">
             <div class="ctg-dtvt-label">
-                <f:translate key='Medientyp' extensionName='dla_opac_ng'/>
+                <f:translate key='Medium' extensionName='dla_opac_ng'/>
             </div>
             <div class="ctg-dtvt-content">
                 <f:render
@@ -113,7 +113,7 @@
                         arguments="{
                         document:document,
                         results:results,
-                        field:'listview_type',
+                        field:'facet_medium',
                         linkFieldContent:linkFieldContent,
                         linkFacets:linkFacets
                         }"/>
@@ -402,7 +402,7 @@
 
         <dla:data.joinFieldArrays
                 arrays="{0:'{A0410}',1:'{A0412}',2:'{A0425_2}'}"
-                fieldWraps="{0:'%s',1:': %s',2:', %s'}"
+                fieldWraps="{0:'%s',1:' : %s',2:', %s'}"
                 as="appeared"
         />
         <f:comment>replace #NV</f:comment>
@@ -768,6 +768,7 @@
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKA451')}" name="XX_AK_TITREG_AKA451" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0359_AKA451')}" name="XX_AK_A0359_AKA451" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AKA451')}" name="AKA451" />
 
         <f:if condition="{GESTYP.0} == 'Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)' ||
                  {GESTYP.0} == 'Begleitmaterial / Beilage'">
@@ -810,12 +811,16 @@
                         <f:for each="{linkTexts}" as="item" iteration="iterator">
                             <f:if condition="{AKA451.{iterator.index}}">
                                 <f:then>
-                                    <f:link.action action="detail" arguments="{id:'AK{AKA451.{iterator.index}}'}" class="internal">
-                                        {item}
-                                    </f:link.action>
+                                    <div>
+                                        <f:link.action action="detail" arguments="{id:'AK{AKA451.{iterator.index}}'}" class="internal">
+                                            {item}
+                                        </f:link.action>
+                                    </div>
                                 </f:then>
                                 <f:else>
-                                    {item}
+                                    <div>
+                                        {item}
+                                    </div>
                                 </f:else>
                             </f:if>
                         </f:for>
@@ -850,6 +855,7 @@
         </f:if>
 
 
+        <f:comment>
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_KLASS_AUKEY')}" name="XX_AU_KLASS_AUKEY" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_STAND_AUKEY')}" name="XX_AU_STAND_AUKEY" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A01030')}" name="A01030" />
@@ -975,7 +981,7 @@
                 </div>
             </f:then>
         </f:if>
-
+        </f:comment>
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDAT_AUKEY')}" name="XX_AU_SENDAT_AUKEY" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_SENDER_AUKEY')}" name="XX_AU_SENDER_AUKEY" />
@@ -997,8 +1003,7 @@
                                             dateValue="{XX_AU_SENDAT_AUKEY}"
                                             as="dateFormat"
                                     />
-                                    {XX_AU_SENDER_AUKEY.{iterator.index}}
-                                    <f:format.date date="{dateFormat}" format="d.m.Y"></f:format.date>
+                                    {XX_AU_SENDER_AUKEY.{iterator.index}} am <f:format.date date="{dateFormat}" format="d.m.Y"></f:format.date>
                                 </div>
                             </f:then>
                         </f:if>
@@ -1624,7 +1629,6 @@
                 </div>
             </f:then>
         </f:if>
-
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'enthaltene_materialien')}" name="enthaltene_materialien" />
         <f:if condition="{enthaltene_materialien}">
