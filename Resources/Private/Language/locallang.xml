@@ -217,6 +217,7 @@
       <label index="Medienart">Medienart</label>
       <label index="Objekttyp">Objekttyp</label>
       <label index="Medientyp">Medientyp</label>
+      <label index="Medium">Medium</label>
 
       <!-- Resources/Private/Partials/Display/Detail/ImagesAndObjects/Details.html -->
       <label index="Originaltitel">Originaltitel</label>
