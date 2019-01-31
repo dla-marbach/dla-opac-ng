@@ -79,7 +79,20 @@
 
 <div class="ctg-detailview-tabs">
     <ul class="ctg-dtvt-menu">
-        <li><a href="" class="ctg-dtvt-menu-active"><span><f:translate key='Details' extensionName='dla_opac_ng'/></span></a></li><li><a href=""><span><f:translate key='Zugang' extensionName='dla_opac_ng'/> (?)</span></a></li><li><a href=""><span>Platzhalter 1</span></a></li><li><a href=""><span>Platzhalter 2</span></a></li>
+        <li>
+            <a href="#tab-detail-link" class="ctg-dtvt-menu-active" id="tab-detail-link">
+                <span>
+                    <f:translate key='Details' extensionName='dla_opac_ng'/>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#tab-detail-link" id="tab-access-link">
+                <span>
+                    <f:translate key='Zugang' extensionName='dla_opac_ng'/>
+                </span>
+            </a>
+        </li>
     </ul>
 
     <div class="ctg-dtvt-details tab-access" style="display:none;">
@@ -120,36 +133,6 @@
         </div>
 
         <f:comment>
-            Titel
-        </f:comment>
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51800')}" name="B51800" />
-        <f:if condition="{B51800}">
-            <f:then>
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Titel' extensionName='dla_opac_ng'/>
-                    </div>
-                    <div class="ctg-dtvt-content">
-
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                                document:document,
-                                results:results,
-                                field:'B51800',
-                                linkFieldContent:linkFieldContent,
-                                linkFacets:linkFacets
-                        }"/>
-
-                    </div>
-                </div>
-            </f:then>
-            <f:else>
-                -
-            </f:else>
-        </f:if>
-
-        <f:comment>
             Objecttype
             IF B51400  = "Anderes Objekt" OR "Anderes Konvolut" THEN B51410
         </f:comment>
@@ -186,6 +169,36 @@
                     </div>
                 </div>
             </f:then>
+        </f:if>
+
+        <f:comment>
+            Titel
+        </f:comment>
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B51800')}" name="B51800" />
+        <f:if condition="{B51800}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Titel' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                                document:document,
+                                results:results,
+                                field:'B51800',
+                                linkFieldContent:linkFieldContent,
+                                linkFacets:linkFacets
+                        }"/>
+
+                    </div>
+                </div>
+            </f:then>
+            <f:else>
+                -
+            </f:else>
         </f:if>
 
         <f:comment>
