@@ -1407,17 +1407,15 @@
                     </div>
                     <div class="ctg-dtvt-content">
 
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                document:document,
-                results:results,
-                field:'AKE526',
-                linkFieldContent:1,
-                linkFacets:linkFacets,
-                linkTexts:XX_AK_TITREG_AKE526
-              }"/>
+                        <f:debug>{XX_AK_TITREG_AKE526}</f:debug>
 
+                        <f:for each="{XX_AK_TITREG_AKE526}" as="titreg" iteration="iterator">
+                            <div>
+                                <f:link.action action="detail" arguments="{id: '{AKE526.{iterator.index}}'}" class="internal">
+                                    {titreg}
+                                </f:link.action>
+                            </div>
+                        </f:for>
                     </div>
                 </div>
             </f:then>
