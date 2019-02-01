@@ -1027,7 +1027,7 @@
         }" name="bemurlValues"/>
 
         <dla:data.valueForKeyFiltered key="AURL" filterKey="BEMURL" negateFilter="true" filterValues="{bemurlValues}" fields="{document.fields}" as="AURL" />
-        <dla:data.valueForKeyFiltered key="BEMURL" filterKey="BEMURL" negateFilter="true" filterValues="{bemurlValues}" fields="{document.fields}" as="BEMURL" />
+        <dla:data.valueForKeyFiltered key="BEMURL" filterKey="BEMURL" negateFilter="false" filterValues="{bemurlValues}" fields="{document.fields}" as="BEMURL" />
 
         <dla:data.joinFieldArrays
                 arrays="{0:'{BEMURL}'}"
@@ -1474,7 +1474,7 @@
         />
 
         <dla:data.valueForKeyFiltered key="AURL" filterKey="BEMURL" filterValues="{bemurlValues}" fields="{document.fields}" as="AURL" />
-        <dla:data.valueForKeyFiltered key="BEMURL" filterKey="BEMURL" negateFilter="true" filterValues="{bemurlValues}" fields="{document.fields}" as="BEMURL" />
+        <dla:data.valueForKeyFiltered key="BEMURL" filterKey="BEMURL" negateFilter="false" filterValues="{bemurlValues}" fields="{document.fields}" as="BEMURL" />
 
         <dla:data.joinFieldArrays
                 arrays="{0:'{BEMURL}'}"
@@ -1488,7 +1488,7 @@
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'SYNKEY')}" name="SYNKEY" />
 
 
-        <f:if condition="{XX_SE_REGTIT_SYNKEY} || {A0712} || {POS114} || {BEMURL}">
+        <f:if condition="{XX_SE_REGTIT_SYNKEY} || {A0712} || {POS114} || {contentBemurl}">
             <f:then>
                 <div class="ctg-dtvt-row">
 
@@ -1555,7 +1555,7 @@
                             </f:then>
                         </f:if>
 
-                        <f:if condition="{POS114}">
+                        <f:if condition="{contentBemurl}">
                             <f:then>
                                 <f:for each="{AURL}" as="link" iteration="linkIterator">
                                     <a href="{AURL.{linkIterator.index}}">
