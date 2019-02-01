@@ -29,9 +29,7 @@ class HistogramValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstract
         $resultValue = date($this->arguments['dateFormat'], strtotime(min(array_keys($array))));
 
         foreach ($array as $key => $value) {
-            if ($value > 0) {
-                $timeArray[] = $key;
-            }
+            $timeArray[] = $key;
         }
 
         $valueName = $this->arguments['firstValueAs'];
