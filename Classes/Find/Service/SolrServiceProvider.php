@@ -412,10 +412,16 @@ class SolrServiceProvider extends AbstractServiceProvider
                                     $gap = round($years->y / 50);
                                 }
 
-                                $start = 'NOW/YEAR-'. $years->y .'YEARS';
+                                // calculate start date so the gap divide evenly
+                                $mod = $years->y % $gap;
+                                $adding = $gap - $mod;
 
-                                $end = $maxDate
-                                    ->add(new \DateInterval('P' . $gap . 'Y'))
+                                $startTimeYears = $years->y + $adding;
+
+                                $start = 'NOW/YEAR-'. $startTimeYears .'YEARS';
+
+                                $end = $nowDate
+                                    ->add(new \DateInterval('P1Y'))
                                     ->format('Y-m-d\TH:i:s\Z');
 
                                 $queryForFacet = $facetSet->createFacetRange($facet['field'] ? $facetID : $facet['field']);
