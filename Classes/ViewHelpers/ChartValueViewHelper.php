@@ -30,15 +30,43 @@ class ChartValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
         $i = 0;
         $resultValue = '';
         $resultLabel = '';
+        $previousYear = '';
         $countValues = 0;
         foreach ($array as $key => $value) {
             if ($i < $this->arguments['itemCount']) {
                 if ($i == 0) {
                     $resultValue .= $value;
-                    $resultLabel .= '"'.$key.'"';
+
+                    if($date = date_create_from_format('Y-m-d\TH:i:s\Z', $key)) {
+                        $year = $date->format('Y');
+                        $previousYear = $year;
+                    } else {
+                        $resultLabel .= '"'.$key.'"';
+                    }
                 } else {
-                    $resultValue .= ', ' . $value;
-                    $resultLabel .= ', "' . $key . '"';
+
+                    if($date = date_create_from_format('Y-m-d\TH:i:s\Z', $key)) {
+
+                        $resultValue .= ', ' . $value;
+
+                        $year = $date->format('Y');
+
+                        $yearLabel = $previousYear . ' - ' . $year;
+                        $previousYear = '';
+
+                        if ($i == 1) {
+                            $resultLabel .= '"' . $yearLabel . '"';
+                        } else {
+                            $resultLabel .= ', "' . $yearLabel . '"';
+                        }
+
+                        $previousYear = $year;
+
+                    } else {
+                        $resultValue .= ', ' . $value;
+
+                        $resultLabel .= ', "' . $key . '"';
+                    }
                 }
             }
 
