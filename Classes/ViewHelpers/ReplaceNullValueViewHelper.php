@@ -37,6 +37,7 @@ class ReplaceNullValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstra
             foreach ($this->arguments['array'] as $key => $value) {
 
                 $value = str_replace("(#NV)", "", $value);
+                $value = str_replace("␞", "", $value);
 
                 preg_match('/\#NV/', $value, $matches);
                 if (empty($matches)) {
