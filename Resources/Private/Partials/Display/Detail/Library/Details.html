@@ -136,8 +136,7 @@
                         <f:translate key='Urheber' extensionName='dla_opac_ng'/>
                     </div>
                     <div class="ctg-dtvt-content">
-
-                        <f:debug>{detail_urheber_ids}</f:debug>
+                        
                         <f:for each="{detail_urheber}" as="item" iteration="iterator">
                             <f:link.action action="detail" arguments="{id: '{detail_urheber_ids.{iterator.index}}'}">
                                 {item}
