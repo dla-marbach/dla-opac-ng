@@ -123,23 +123,12 @@
         <f:comment>
             Urheber
         </f:comment>
-        <dla:data.valueForKeyFiltered key="XX_PE_listview_title_PE0100" filterKey="GFUPER" filterValues="{0:'_GS'}" mustMatch="false" fields="{document.fields}" as="XX_PE_listview_title_PE0100" />
-        <dla:data.valueForKeyFiltered key="GFUPE" filterKey="GFUPER" filterValues="{0:'_GS'}" mustMatch="false" fields="{document.fields}" as="GFUPE_GS" />
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'GFUPER')}" name="GFUPER" />
-        <dla:data.joinFieldArrays
-                arrays="{0:'{XX_PE_listview_title_PE0100}',1:'{GFUPE_GS}'}"
-                fieldWraps="{0:'%s',1:'[%s]'}"
-                as="author"
-        />
-        <f:if condition="{author -> f:count()} < 1">
-            <dla:data.joinFieldArrays
-                    arrays="{0:'{XX_PE_P0800_PE0100}',1:'{GFUPE_GS}'}"
-                    fieldWraps="{0:'%s',1:'[%s]'}"
-                    as="author"
-            />
-        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_urheber')}" name="detail_urheber" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_urheber_ids')}" name="detail_urheber_ids" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
-        <f:if condition="{PE0100}">
+
+        <f:if condition="{detail_urheber}">
             <f:then>
                 <div class="ctg-dtvt-row">
 
@@ -148,43 +137,12 @@
                     </div>
                     <div class="ctg-dtvt-content">
 
-                        <f:for each="{PE0100}" as="item" iteration="iterator">
-
-                            <s:data.newArray
-                                    name="query"
-                                    global="1"
-                                    keys="{0:'id'}"
-                                    values="{0:'PE{item}'}"
-                            />
-                            <f:link.action action="index" arguments="{query}" class="internal" noCacheHash="1">
-                                {author.{iterator.index}}<br/>
-                            </f:link.action>
-                        </f:for>
-
-                    </div>
-                </div>
-            </f:then>
-        </f:if>
-
-
-        <f:comment>
-            Urheber
-        </f:comment>
-
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_urheber')}" name="detail_urheber" />
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
-
-        <f:if condition="{detail_urheber}">
-            <f:then>
-                <div class="ctg-dtvt-row">
-
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Urheber' extensionName='dla_opac_ng'/> (neu)
-                    </div>
-                    <div class="ctg-dtvt-content">
-
+                        <f:debug>{detail_urheber_ids}</f:debug>
                         <f:for each="{detail_urheber}" as="item" iteration="iterator">
-                            {item}<br/>
+                            <f:link.action action="detail" arguments="{id: '{detail_urheber_ids.{iterator.index}}'}">
+                                {item}
+                            </f:link.action>
+                            <br/>
                         </f:for>
 
                     </div>
@@ -291,100 +249,23 @@
             </div>
         </div>
 
-
         <f:comment>Beteiligt</f:comment>
 
-        <dla:data.valueForKeyFiltered
-                key="XX_PE_P0800_PE0100"
-                filterKey="GFUPER"
-                filterValues="{0:'_GS'}"
-                mustMatch="false"
-                negateFilter="true"
-                fields="{document.fields}"
-                as="XX_PE_P0800_PE0100" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_beteiligt')}" name="detail_beteiligt" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_beteiligt_ids')}" name="detail_beteiligt_ids" />
 
-        <dla:data.valueForKeyFiltered
-                key="GFUPE"
-                filterKey="GFUPER"
-                filterValues="{0:'_GS'}"
-                mustMatch="false"
-                negateFilter="true"
-                fields="{document.fields}" as="GFUPE_NOT_GS" />
-        <dla:data.joinFieldArrays
-                arrays="{0:'{XX_PE_P0800_PE0100}',1:'{GFUPE_NOT_GS}'}"
-                fieldWraps="{0:'%s',1:'[%s]'}"
-                as="involved"
-        />
-
-        <dla:data.valueForKeyFiltered
-                key="XX_KS_listview_title_KSC200"
-                filterKey="GFUPER"
-                filterValues="{0:'_GS'}"
-                mustMatch="false"
-                negateFilter="true"
-                fields="{document.fields}"
-                as="XX_KS_listview_title_KSC200" />
-        <dla:data.valueForKeyFiltered
-                key="GFUPER"
-                filterKey="GFUPER"
-                filterValues="{0:'_GS'}"
-                mustMatch="false"
-                negateFilter="true"
-                fields="{document.fields}" as="GFUPE_NOT_GS" />
-
-        <dla:data.joinFieldArrays
-                arrays="{0:'{XX_KS_listview_title_KSC200}',1:'{GFUPE_NOT_GS}'}"
-                fieldWraps="{0:'%s',1:'[%s]'}"
-                as="involvedKS"
-        />
-
-        <f:if condition="{involved}">
+        <f:if condition="{detail_beteiligt}">
             <f:then>
                 <div class="ctg-dtvt-row">
                     <div class="ctg-dtvt-label">
                         <f:translate key='Beteiligt' extensionName='dla_opac_ng'/>
                     </div>
                     <div class="ctg-dtvt-content">
-
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                        document:document,
-                        results:results,
-                        field:'PE0100',
-                        linkFieldContent:1,
-                        linkFacets:linkFacets,
-                        linkTexts:involved
-                      }"/>
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                        document:document,
-                        results:results,
-                        field:'KSC200',
-                        linkFieldContent:1,
-                        linkFacets:linkFacets,
-                        linkTexts:involvedKS
-                      }"/>
-                    </div>
-                </div>
-            </f:then>
-        </f:if>
-
-
-        <f:comment>Beteiligt</f:comment>
-
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_beteiligt')}" name="detail_beteiligt" />
-
-        <f:if condition="{detail_beteiligt}">
-            <f:then>
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Beteiligt' extensionName='dla_opac_ng'/> (neu)
-                    </div>
-                    <div class="ctg-dtvt-content">
                         <f:for each="{detail_beteiligt}" as="item" iteration="iterator">
-                            {item}<br/>
+                            <f:link.action action="detail" arguments="{id: '{detail_beteiligt_ids.{iterator.index}}'}">
+                                {item}
+                            </f:link.action>
+                            <br/>
                         </f:for>
                     </div>
                 </div>
