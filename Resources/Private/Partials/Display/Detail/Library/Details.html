@@ -937,6 +937,7 @@
                 as="digitalObject"
         />
 
+        <dla:replaceNullValue array="{XX_MM_MOTITL_INDKEY}" as="XX_MM_MOTITL_INDKEY"/>
         <f:if condition="{XX_MM_MOTITL_INDKEY} || {digitalObject} ">
             <f:then>
                 <div class="ctg-dtvt-row">
@@ -1485,7 +1486,7 @@
         <dla:data.valueForKeyFiltered key="SYNKEY" filterKey="XX_SE_TYP_SYNKEY" filterValues="{synkeyValues}" fields="{document.fields}" as="SYNKEY_BIBLIOGRAPHIE" />
         <dla:data.valueForKeyFiltered key="XX_SE_REGTIT_SYNKEY" filterKey="XX_SE_TYP_SYNKEY" filterValues="{synkeyValues}" fields="{document.fields}" as="REGTIT_SYNKEY_BIBLIOGRAPHIE" />
 
-        <f:if condition="{A0711} || {AURL} || {SYNKEY_BIBLIOGRAPHIE}">
+        <f:if condition="{A0711} || {SYNKEY_BIBLIOGRAPHIE}">
             <f:then>
                 <div class="ctg-dtvt-row">
                     <div class="ctg-dtvt-label">
