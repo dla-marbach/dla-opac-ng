@@ -928,8 +928,10 @@
         4:'CD-ROM aufrufen'
         }" name="bemurlValues"/>
 
-        <dla:data.valueForKeyFiltered key="AURL" filterKey="BEMURL" negateFilter="true" filterValues="{bemurlValues}" fields="{document.fields}" as="AURL" />
-        <dla:data.valueForKeyFiltered key="BEMURL" filterKey="BEMURL" negateFilter="false" filterValues="{bemurlValues}" fields="{document.fields}" as="BEMURL" />
+        <f:comment><dla:data.valueForKeyFiltered key="AURL" filterKey="BEMURL" negateFilter="true" filterValues="{bemurlValues}" fields="{document.fields}" as="AURL" />
+            <dla:data.valueForKeyFiltered key="BEMURL" filterKey="BEMURL" negateFilter="false" filterValues="{bemurlValues}" fields="{document.fields}" as="BEMURL" /></f:comment>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BEMURL')}" name="BEMURL" />
 
         <dla:data.joinFieldArrays
                 arrays="{0:'{BEMURL}'}"
@@ -937,8 +939,10 @@
                 as="digitalObject"
         />
 
+        <dla:checkArrayValueExists array="{BEMURL}" arrayValues="{bemurlValues}" as="checkArray" isTrue="check"/>
+
         <dla:replaceNullValue array="{XX_MM_MOTITL_INDKEY}" as="XX_MM_MOTITL_INDKEY"/>
-        <f:if condition="{XX_MM_MOTITL_INDKEY} || {digitalObject} ">
+        <f:if condition="{XX_MM_MOTITL_INDKEY} || {check} ">
             <f:then>
                 <div class="ctg-dtvt-row">
 
