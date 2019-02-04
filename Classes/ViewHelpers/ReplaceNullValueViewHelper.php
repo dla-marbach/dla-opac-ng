@@ -40,7 +40,10 @@ class ReplaceNullValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstra
 
                 preg_match('/\#NV/', $value, $matches);
                 if (empty($matches)) {
-                    $resultValue[] = $value;
+                    if (!empty($value)) {
+                        $resultValue[] = $value;
+                    }
+
                 } else {
                     $value = str_replace("#NV", "", $value);
                     if (!empty($value)) {
