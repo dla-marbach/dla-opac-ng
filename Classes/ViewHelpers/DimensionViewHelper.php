@@ -48,7 +48,7 @@ class DimensionViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewH
             $nextNoX = false;
             if($descriptions[$i] && $descriptions[$i] != '#NV') {
                 $nextNoX = true;
-                $result = $descriptions[$i];
+                $description = $descriptions[$i];
             }
             if($diameters[$i] && $diameters[$i] != '#NV') {
                 if($nextNoX) {
@@ -89,6 +89,7 @@ class DimensionViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewH
                 }
             }
             $result = str_replace(".", ",", $result);
+            $result = $result . ' ' . $description;
             $resultValue[] = $result;
         }
 
