@@ -976,42 +976,44 @@
             </f:then>
         </f:if>
 
-
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOPFAD_INDKEY')}" name="XX_MM_MOPFAD_INDKEY" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
-        <f:if condition="{XX_MM_MOPFAD_INDKEY} || {XX_MM_MOTITL_INDKEY} ">
-            <f:then>
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B00140')}" name="B00140" />
+
+        <f:if condition="{B00140}=='Konvolut'">
+            <f:if condition="{XX_MM_MOPFAD_INDKEY} || {XX_MM_MOTITL_INDKEY} ">
+                <f:then>
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
+                                document:document,
+                                results:results,
+                                field:'XX_MM_MOPFAD_INDKEY',
+                                linkFieldContent:linkFieldContent,
+                                linkFacets:linkFacets
+                              }"/>
+
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
+                                document:document,
+                                results:results,
+                                field:'XX_MM_MOTITL_INDKEY',
+                                linkFieldContent:linkFieldContent,
+                                linkFacets:linkFacets
+                              }"/>
+
+                        </div>
                     </div>
-                    <div class="ctg-dtvt-content">
-
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                            document:document,
-                            results:results,
-                            field:'XX_MM_MOPFAD_INDKEY',
-                            linkFieldContent:linkFieldContent,
-                            linkFacets:linkFacets
-                          }"/>
-
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                            document:document,
-                            results:results,
-                            field:'XX_MM_MOTITL_INDKEY',
-                            linkFieldContent:linkFieldContent,
-                            linkFacets:linkFacets
-                          }"/>
-
-                    </div>
-                </div>
-            </f:then>
+                </f:then>
+            </f:if>
         </f:if>
-
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AUSTAT')}" name="AUSTAT" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KLASS')}" name="KLASS" />
