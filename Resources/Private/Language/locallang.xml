@@ -380,11 +380,13 @@
 
       <!-- Resources/Private/Templates/Search/Index.html -->
       <label index="Sie haben das Gesuchte nicht gefunden?">Sie haben das Gesuchte nicht gefunden?</label>
-      <label index="Sprechen Sie uns an: Aenean massa. Cum sociis natoque penati montes, nascetur ridiculus mus donec quam.">Sprechen Sie uns an: Aenean massa. Cum sociis natoque penati montes, nascetur ridiculus mus donec quam.</label>
+      <label index="search_help">Unter &quot;Hilfe &amp; Auskunft&quot; finden Sie Tipps zur Suche. Oder Sie wenden sich direkt an uns.</label>
       <label index="Auskunftsdienst Archiv">Auskunftsdienst Archiv</label>
       <label index="Telefon &lt;a href='tel:+497144848425'&gt;+49 (0) 7144 / 848-425&lt;/a&gt;&lt;br/&gt;&lt;a href='mailto:auskhss@dla-marbach.de'&gt;auskhss@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 18:00h">Telefon &lt;a href="tel:+497144848425"&gt;+49 (0) 7144 / 848-425&lt;/a&gt;&lt;br/&gt;&lt;a href="mailto:auskhss@dla-marbach.de"&gt;auskhss@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 18:00h</label>
       <label index="Auskunftsdienst Bibliothek">Auskunftsdienst Bibliothek</label>
       <label index="Telefon &lt;a href='tel:+497144848318'&gt;+49 (0) 7144 / 848-318&lt;/a&gt;&lt;br/&gt;&lt;a href='bibliothek@dla-marbach.de'&gt;bibliothek@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 17:30h">Telefon &lt;a href="tel:+497144848318"&gt;+49 (0) 7144 / 848-318&lt;/a&gt;&lt;br/&gt;&lt;a href="bibliothek@dla-marbach.de"&gt;bibliothek@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 17:30h</label>
+      <label index="Auskunftsdienst Bilder und Objekte">Auskunftsdienst Bilder und Objekte</label>
+      <label index="Telefon Auskunftsdienst Bilder und Objekte">Telefon &lt;a href="tel:+497144848500"&gt;+49 (0) 7144 / 848-500&lt;/a&gt;&lt;br/&gt;Telefax &lt;a href="tel:+497144848490"&gt;+49 (0) 7144 / 848-490&lt;/a&gt;&lt;br/&gt;&lt;a href="bilder-und-objekte@dla-marbach.de"&gt;bilder-und-objekte@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 18:00h</label>
       <label index="Andere Fundorte">Andere Fundorte</label>
       <label index="schließen">schließen</label>
 

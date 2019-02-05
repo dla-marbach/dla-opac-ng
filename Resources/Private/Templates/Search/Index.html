@@ -1,127 +1,161 @@
 {namespace s=Subugoe\Find\ViewHelpers}
 <f:layout name="Default"/>
 <f:comment>
-  Template for a the search results view.
+    Template for a the search results view.
 
-  Sets up the page with its title, the search form, pager and result count
-  information. Then displays the configured facets and a result list using the
-  fields configured as standardFields.title and standardFields.snippet.
-  Results are linked to the respective documents’ detail pages.
+    Sets up the page with its title, the search form, pager and result count
+    information. Then displays the configured facets and a result list using the
+    fields configured as standardFields.title and standardFields.snippet.
+    Results are linked to the respective documents’ detail pages.
 
-  This result display is sufficient for basic result lists.
+    This result display is sufficient for basic result lists.
 </f:comment>
 <f:section name="main">
-  <s:page.title>
-    <f:render partial="Components/QueryString" arguments="{query:arguments.q, facets:config.activeFacets}"/>
-    –
-    {config.pageTitle}
-  </s:page.title>
+    <s:page.title>
+        <f:render partial="Components/QueryString" arguments="{query:arguments.q, facets:config.activeFacets}"/>
+        –
+        {config.pageTitle}
+    </s:page.title>
 
-  <f:render partial="Page/Standard" arguments="{_all}"/>
+    <f:render partial="Page/Standard" arguments="{_all}"/>
 
 
     <div class="row ctg-info-actions">
-      <div class="small-6 column">
-        <div class="ctg-info-text">
-          <f:render partial="Components/ResultCount" arguments="{_all}"/>
+        <div class="small-6 column">
+            <div class="ctg-info-text">
+                <f:render partial="Components/ResultCount" arguments="{_all}"/>
+            </div>
         </div>
-      </div>
-      <div class="small-6 column ctg-ia-scnd">
-        <a class="ctg-button" title="versenden"><span class="icon bel-brief01"></span></a>
-        <a class="ctg-button" title="teilen"><span class="icon bel-link01"></span></a>
-        <a class="ctg-button" title="exportieren"><span class="icon bel-postin"></span></a>
-      </div>
+        <div class="small-6 column ctg-ia-scnd">
+            <a class="ctg-button" title="versenden"><span class="icon bel-brief01"></span></a>
+            <a class="ctg-button" title="teilen"><span class="icon bel-link01"></span></a>
+            <a class="ctg-button" title="exportieren"><span class="icon bel-postin"></span></a>
+        </div>
     </div>
 
-  <!--TYPO3SEARCH_begin-->
-  <div class="row ctg-follow-content">
-    <section class="small-9 column ctg-content-column">
-      <div class="ctg-pager-actions">
-        <f:render partial="Pager/ListPager" arguments="{_all}"/>
+    <div class="row ctg-info-actions active-facet-container">
+        <div class="column">
+            <f:for each="{config.facets}" as="facetInfo" key="facetKey">
+                <f:if condition="{facetInfo.hidden}!=1">
+                    <v:variable.set value="{s:data.valueForKey(array:results.components.facetset.facets, key:facetInfo.id)}" name="facetData" />
+                    <f:for each="{facetData.values}" as="itemCount" key="facetTerm" iteration="iterator">
+                        <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}">
+                            <f:link.action
+                                    addQueryString="TRUE"
+                                    argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
+                                    section="{settings.jumpToID}"
+                                    noCacheHash="1"
+                                    class=""
+                                    style="text-decoration:none;"
+                                    title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
+                                <span class="active-facets">
+                                    {facetTerm}
+                                    <span class="icon bel-ende01"></span>
+                                </span>
+                            </f:link.action>
+                        </f:if>
+                    </f:for>
+                </f:if>
+            </f:for>
+        </div>
+    </div>
 
-        <f:if condition="{f:count(subject:config.sortOptions.menu)} > 1">
-          <div class="ctg-pager-aside">
-            <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.sort"/>
-            <f:form.select additionalAttributes='{data-id:"c{config.uid}-sortSelect",data-sort:"1"}' name="sort" options="{config.sortOptions.menu}" value="{config.sortOptions.selected}"/>
-          </div>
+    <!--TYPO3SEARCH_begin-->
+    <div class="row ctg-follow-content">
+        <section class="small-9 column ctg-content-column">
+            <div class="ctg-pager-actions">
+                <f:render partial="Pager/ListPager" arguments="{_all}"/>
 
-          <f:for each="{config.sortOptions.menu}" as="sortOption" key="key" iteration="iterator">
+                <f:if condition="{f:count(subject:config.sortOptions.menu)} > 1">
+                    <div class="ctg-pager-aside">
+                        <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.sort"/>
+                        <f:form.select additionalAttributes='{data-id:"c{config.uid}-sortSelect",data-sort:"1"}' name="sort" options="{config.sortOptions.menu}" value="{config.sortOptions.selected}"/>
+                    </div>
+
+                    <f:for each="{config.sortOptions.menu}" as="sortOption" key="key" iteration="iterator">
             <span
-              id="sortUri{iterator.index}"
-              style="display:none;"
-              uri='<f:uri.action
+                    id="sortUri{iterator.index}"
+                    style="display:none;"
+                    uri='<f:uri.action
               addQueryString="TRUE"
               arguments="{sort:'{key}'}"
-            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
-            section="{settings.jumpToID}"
-            noCacheHash="1">
-            </f:uri.action>'></span>
-          </f:for>
-        </f:if>
-      </div>
-
-      <!-- begin results -->
-
-        <ol id="c{config.uid}-resultList" class="ctg-result-list" start="{config.counterStart}">
-          <f:for each="{results.documents}" as="document">
-            <f:render partial="Display/Result" arguments="{_all}"/>
-          </f:for>
-
-        </ol>
-
-
-
-      <!-- end results -->
-
-      <div class="ctg-pager-actions">
-        <f:render partial="Pager/ListPager" arguments="{_all}"/>
-        <f:comment>
-          <f:if condition="{f:count(subject:config.resultCountOptions.menu)} > 1">
-            <div class="ctg-pager-aside">
-              <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.count"/>
-              <f:form.select id="c{config.uid}-resultCountSelect" name="count" options="{config.resultCountOptions.menu}" value="{config.resultCountOptions.selected}"/>
+                        argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                        section="{settings.jumpToID}"
+                        noCacheHash="1">
+                        </f:uri.action>'></span>
+                    </f:for>
+                </f:if>
             </div>
-          </f:if>
-        </f:comment>
-        <div class="ctg-pager-aside">
-          <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.count"/>
-          <f:form.select id="c{config.uid}-resultCountSelect" name="count" options="{config.resultCountOptions.menu}" value="{config.resultCountOptions.selected}"/>
-        </div>
-      </div>
-    </section>
 
-    <aside class="small-3 column ctg-facet-colum">
+            <!-- begin results -->
 
-      <f:render partial="Facets/Facets" arguments="{_all}"/>
+            <ol id="c{config.uid}-resultList" class="ctg-result-list" start="{config.counterStart}">
+                <f:for each="{results.documents}" as="document">
+                    <f:render partial="Display/Result" arguments="{_all}"/>
+                </f:for>
 
-      <section class="ctg-facet-prestige">
-        <h3><f:translate key='Sie haben das Gesuchte nicht gefunden?' extensionName='dla_opac_ng'/></h3>
-        <p><f:translate key='Sprechen Sie uns an: Aenean massa. Cum sociis natoque penati montes, nascetur ridiculus mus donec quam.' extensionName='dla_opac_ng'/></p>
-      </section>
+            </ol>
 
-      <section class="ctg-facet-prestige">
-        <h3><f:translate key='Kontakt' extensionName='dla_opac_ng'/></h3>
-        <p><strong><f:translate key='Auskunftsdienst Archiv' extensionName='dla_opac_ng'/></strong><br>
-          Telefon <a href="tel:+497144848425">+49 (0) 7144 / 848-425</a><br>
-          <a href="mailto:auskhss@dla-marbach.de">auskhss@dla-marbach.de</a><br>
-          Montag - Freitag, 8:30h bis 18:00h</p>
 
-        <p><strong><f:translate key='Auskunftsdienst Bibliothek' extensionName='dla_opac_ng'/></strong><br>
-          Telefon <a href="tel:+497144848318">+49 (0) 7144 / 848-318</a><br>
-          <a href="bibliothek@dla-marbach.de">bibliothek@dla-marbach.de</a><br>
-          Montag - Freitag, 8:30h bis 17:30h</p>
-      </section>
 
-      <section class="ctg-facet-other">
-        <h3><f:translate key='Andere Fundorte' extensionName='dla_opac_ng'/> (?)<a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a></h3>
-        <ul>
-          <li><a title=""><span class="icon bel-link03"></span></a><a title="">Wikipedia "Friedrich Stiller" (?)</a></li>
-          <li><a title=""><span class="icon bel-link03"></span></a><a title="">Wikipedia "Stiller" (?)</a></li>
-          <li><a title=""><span class="icon bel-link03"></span></a><a title="">Webarchive "Stiller, Friedrich" (?)</a></li>
-        </ul>
-      </section>
-    </aside>
-  </div>
-  <!--TYPO3SEARCH_end-->
+            <!-- end results -->
+
+            <div class="ctg-pager-actions">
+                <f:render partial="Pager/ListPager" arguments="{_all}"/>
+                <f:comment>
+                    <f:if condition="{f:count(subject:config.resultCountOptions.menu)} > 1">
+                        <div class="ctg-pager-aside">
+                            <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.count"/>
+                            <f:form.select id="c{config.uid}-resultCountSelect" name="count" options="{config.resultCountOptions.menu}" value="{config.resultCountOptions.selected}"/>
+                        </div>
+                    </f:if>
+                </f:comment>
+                <div class="ctg-pager-aside">
+                    <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.count"/>
+                    <f:form.select id="c{config.uid}-resultCountSelect" name="count" options="{config.resultCountOptions.menu}" value="{config.resultCountOptions.selected}"/>
+                </div>
+            </div>
+        </section>
+
+        <aside class="small-3 column ctg-facet-colum">
+
+            <f:render partial="Facets/Facets" arguments="{_all}"/>
+
+            <section class="ctg-facet-prestige">
+                <h3><f:translate key='Sie haben das Gesuchte nicht gefunden?' extensionName='dla_opac_ng'/></h3>
+                <p><f:translate key='search_help' extensionName='dla_opac_ng'/></p>
+            </section>
+
+            <section class="ctg-facet-prestige">
+                <h3><f:translate key='Kontakt' extensionName='dla_opac_ng'/></h3>
+                <p><strong><f:translate key='Auskunftsdienst Archiv' extensionName='dla_opac_ng'/></strong><br>
+                    Telefon <a href="tel:+497144848425">+49 (0) 7144 / 848-425</a><br>
+                    <a href="mailto:auskhss@dla-marbach.de">auskhss@dla-marbach.de</a><br>
+                    Montag - Freitag, 8:30h bis 18:00h</p>
+
+                <p><strong><f:translate key='Auskunftsdienst Bibliothek' extensionName='dla_opac_ng'/></strong><br>
+                    Telefon <a href="tel:+497144848318">+49 (0) 7144 / 848-318</a><br>
+                    <a href="bibliothek@dla-marbach.de">bibliothek@dla-marbach.de</a><br>
+                    Montag - Freitag, 8:30h bis 17:30h</p>
+
+                <p><strong><f:translate key='Auskunftsdienst Bilder und Objekte' extensionName='dla_opac_ng'/></strong><br>
+                    Telefon <a href="tel:+497144848500">+49 (0) 7144 / 848-500</a><br>
+                    Telefax <a href="tel:+497144848490">+49 (0) 7144 / 848-490</a><br>
+                    <a href="bibliothek@dla-marbach.de">bilder-und-objekte@dla-marbach.de</a><br>
+                    Montag - Freitag, 8:30h bis 18:00h
+                </p>
+            </section>
+
+            <section class="ctg-facet-other">
+                <h3><f:translate key='Andere Fundorte' extensionName='dla_opac_ng'/> (?)<a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a></h3>
+                <ul>
+                    <li><a title=""><span class="icon bel-link03"></span></a><a title="">Andere Fundorte (?)</a></li>
+                    <li><a title=""><span class="icon bel-link03"></span></a><a title="">Kalliope (?)</a></li>
+                    <li><a title=""><span class="icon bel-link03"></span></a><a title="">Wikipedia (?)</a></li>
+                </ul>
+            </section>
+        </aside>
+    </div>
+    <!--TYPO3SEARCH_end-->
 
 </f:section>
