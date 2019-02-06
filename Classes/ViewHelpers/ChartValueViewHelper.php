@@ -40,6 +40,9 @@ class ChartValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
                     if($date = date_create_from_format('Y-m-d\TH:i:s\Z', $key)) {
                         $year = $date->format('Y');
                         $previousYear = $year;
+                    } else if($date = date_create_from_format('-Y-m-d\TH:i:s\Z', $key)) {
+                        $year = '-'.$date->format('Y');
+                        $previousYear = $year;
                     } else {
                         $resultLabel .= '"'.$key.'"';
                     }
