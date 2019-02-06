@@ -375,7 +375,9 @@
 
       <!-- Resources/Private/Templates/Search/Detail.html -->
       <label index="Gleicher Künstler">Gleicher Künstler</label>
-      <label index="Gleicher Nachlass">Gleicher Nachlass</label>
+      <label index="Aus demselben Nachlass">Aus demselben Nachlass</label>
+      <label index="Aus der selben Sammlung">Aus der selben Sammlung</label>
+      <label index="Aus demselben Archiv">Aus demselben Archiv</label>
       <label index="Ähnliche Fundstücke">Ähnliche Fundstücke</label>
 
       <!-- Resources/Private/Templates/Search/Index.html -->
