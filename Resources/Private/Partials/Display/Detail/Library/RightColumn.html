@@ -1,0 +1,136 @@
+<section class="ctg-facet">
+    <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
+        Vom selben Verfasser / Urheber
+    </h3>
+    <ul>
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_urheber_ids')}" name="detail_urheber_ids" />
+        <f:for each="{detail_urheber_ids}" as="urheber_id" key="fieldName" iteration="iterator">
+            <f:if condition="{iterator.isFirst}">
+                <f:then>
+                    <v:variable.set value="{urheber_id}" name="urheber_query" />
+                </f:then>
+                <f:else>
+                    <v:variable.set value="{urheber_query} OR {urheber_id}" name="urheber_query" />
+                </f:else>
+            </f:if>
+        </f:for>
+        <dla:fromSolr
+                query="detail_urheber_ids:{urheber_query}"
+                fields="id,listview_title,listview_type"
+                rows="5" />
+        <f:for each="{solr}" as="solrResult">
+            <li>
+                <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
+                    <span class="icon bel-mag"></span>
+                </f:link.action>
+                <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
+                    <f:format.crop maxCharacters="60" respectWordBoundaries="TRUE" respectHtml="TRUE">
+                        {solrResult.listview_title}
+                    </f:format.crop>
+                </f:link.action>
+            </li>
+
+        </f:for>
+
+        <f:if condition="{f:count(subject: solr)} > 0">
+            <f:then>
+                <f:comment><li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li></f:comment>
+                <li>
+                    <f:link.action action="index" arguments="{q:{raw: 'detail_urheber_ids:({urheber_query})'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                        <span class="icon bel-lupe"></span>
+                    </f:link.action>
+                    <f:link.action action="index" arguments="{q:{raw: 'detail_urheber_ids:({urheber_query})'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                        Alle Treffer durchsuchen
+                    </f:link.action>
+                </li>
+            </f:then>
+            <f:else>
+                <li>
+                    <span class="icon"></span>
+                    Keine Treffer vorhanden
+                </li>
+            </f:else>
+        </f:if>
+    </ul>
+</section>
+
+<section class="ctg-facet">
+    <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
+        Ähnliche Themen
+    </h3>
+    <ul>
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'SYNKEY')}" name="SYNKEY" />
+        <v:variable.set value="" name="SYNKEY_query" />
+        <f:for each="{SYNKEY}" as="synkey" key="key" iteration="iterator">
+            <f:if condition="{iterator.isFirst}">
+                <f:then>
+                    <v:variable.set value="{synkey}" name="SYNKEY_query" />
+                </f:then>
+                <f:else>
+                    <v:variable.set value="{SYNKEY_query} OR {synkey}" name="SYNKEY_query" />
+                </f:else>
+            </f:if>
+        </f:for>
+
+        <dla:fromSolr
+                query="SYNKEY:({SYNKEY_query})"
+                fields="id,listview_title,listview_type"
+                rows="5" />
+        <f:for each="{solr}" as="solrResult">
+            <li>
+                <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
+                    <span class="icon bel-mag"></span>
+                </f:link.action>
+                <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
+                    <f:format.crop maxCharacters="60" respectWordBoundaries="TRUE" respectHtml="TRUE">
+                        {solrResult.listview_title}
+                    </f:format.crop>
+                </f:link.action>
+            </li>
+        </f:for>
+
+        <f:if condition="{f:count(subject: solr)} > 0">
+            <f:then>
+                <f:comment><li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li></f:comment>
+                <li>
+                    <f:link.action action="index" arguments="{q:{raw: 'SYNKEY:({SYNKEY_query})'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                        <span class="icon bel-lupe"></span>
+                    </f:link.action>
+                    <f:link.action action="index" arguments="{q:{raw: 'SYNKEY:({SYNKEY_query})'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                        Alle Treffer durchsuchen
+                    </f:link.action>
+                </li>
+            </f:then>
+            <f:else>
+                <li>
+                    <span class="icon"></span>
+                    Keine Treffer vorhanden
+                </li>
+            </f:else>
+        </f:if>
+    </ul>
+</section>
+
+<section class="ctg-facet">
+    <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
+        <f:translate key='Aus demselben Nachlass' extensionName='dla_opac_ng'/> (?)
+    </h3>
+    <ul>
+        <li><a title=""><span class="icon bel-foto"></span></a><a title="">Lorem lorem lorem</a></li>
+        <li><a title=""><span class="icon bel-schreiben"></span></a><a title="">Lorem lorem lorem</a></li>
+        <li><a title=""><span class="icon bel-schreiben"></span></a><a title="">Lorem lorem lorem</a></li>
+        <li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 35</a></li>
+    </ul>
+</section>
+
+<section class="ctg-facet">
+    <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
+        <f:translate key='Aus der selben Sammlung' extensionName='dla_opac_ng'/> (?)
+    </h3>
+</section>
+
+<section class="ctg-facet">
+    <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
+        <f:translate key='Aus demselben Archiv' extensionName='dla_opac_ng'/> (?)
+    </h3>
+</section>
