@@ -200,7 +200,7 @@
 
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'H41410')}" name="H41410" />
-        <f:if condition="{H41410} == 'Briefwechsel' || {H41410} == 'Briefwechsel ohne Bestandsbildner'">
+        <f:if condition="{H41410} != 'Briefwechsel' || {H41410} != 'Briefwechsel ohne Bestandsbildner'">
             <f:then>
                 <f:if condition="{XX_PE_listview_title_PE0100} || {XX_KS_K0800_KSC200} || {XX_PE_listview_title_PEA100} || {XX_KS_K0800_KSA200}">
                     <f:then>
@@ -299,7 +299,7 @@
 
                                 <dla:data.joinFields
                                         fieldNames="{0:'XX_PE_listview_title_PE0100',1:'GFUPE',2:'PE0ZU'}"
-                                        fieldWraps="{0:'%s',1:'%s',2:'[%S]'}"
+                                        fieldWraps="{0:'%s',1:'%s',2:'[%s]'}"
                                         fields="{document.fields}"
                                         as="linkTexts"
                                 />
@@ -317,7 +317,7 @@
 
                                 <dla:data.joinFields
                                         fieldNames="{0:'XX_KS_K0800_KSC200',1:'GFUKS',2:'KSCZU'}"
-                                        fieldWraps="{0:'%s',1:'%s',2:'[%S]'}"
+                                        fieldWraps="{0:'%s',1:'%s',2:'[%s]'}"
                                         fields="{document.fields}"
                                         as="linkTexts"
                                 />
@@ -488,12 +488,24 @@
                     </div>
                     <div class="ctg-dtvt-content">
 
-                        <dla:data.joinFields
-                                fieldNames="{0:'H41801',1:'H41800',2:'H41802',3:'H41820'}"
-                                fieldWraps="{0:'%s',1:': %s',2:'(%s)',3:'[%s]'}"
-                                fields="{document.fields}"
-                                as="linkTexts"
-                        />
+                        <f:if condition="{H41801}">
+                            <f:then>
+                                <dla:data.joinFields
+                                        fieldNames="{0:'H41801',1:'H41800',2:'H41802',3:'H41820'}"
+                                        fieldWraps="{0:'%s',1:': %s',2:'(%s)',3:'[%s]'}"
+                                        fields="{document.fields}"
+                                        as="linkTexts"
+                                />
+                            </f:then>
+                            <f:else>
+                                <dla:data.joinFields
+                                        fieldNames="{0:'H41800',1:'H41802',2:'H41820'}"
+                                        fieldWraps="{0:'%s',1:'(%s)',2:'[%s]'}"
+                                        fields="{document.fields}"
+                                        as="linkTexts"
+                                />
+                            </f:else>
+                        </f:if>
 
                         <f:for each="{linkTexts}" as="item" iteration="iterator">
                             {item}<br />
@@ -504,7 +516,7 @@
         </f:if>
 
 
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'H41801')}" name="H41841" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'H41841')}" name="H41841" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'H41840')}" name="H41840" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'H41842')}" name="H41842" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'H41850')}" name="H41850" />
@@ -517,16 +529,20 @@
                     </div>
                     <div class="ctg-dtvt-content">
 
-                        <dla:data.joinFields
-                                fieldNames="{0:'H41841',1:'H41840',2:'H41842',3:'H41850'}"
-                                fieldWraps="{0:'%s',1:': %s',2:'(%s)',3:'[%s]'}"
-                                fields="{document.fields}"
-                                as="linkTexts"
-                        />
-
-                        <f:for each="{linkTexts}" as="item" iteration="iterator">
-                            {item}<br />
+                        <f:for each="{H41840}" as="h41840_item" iteration="iterator">
+                            <f:if condition="{H41841.{iterator.index}}">
+                                {H41841.{iterator.index}}:
+                            </f:if>
+                            {h41840_item}
+                            <f:if condition="{H41842.{iterator.index}">
+                                ({H41842.{iterator.index}})
+                            </f:if>
+                            <f:if condition="{H41850.{iterator.index}}">
+                             [{H41850.{iterator.index}}]
+                            </f:if>
+                            <br />
                         </f:for>
+
                     </div>
                 </div>
             </f:then>
@@ -561,6 +577,23 @@
                             [{PB814.1}]
                         </f:if>
 
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'H02010')}" name="H02010" />
+        <f:if condition="{H02010}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Entstehungsort' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        <f:for each="{H02010}" as="place">
+                            {place}
+                        </f:for>
                     </div>
                 </div>
             </f:then>
@@ -798,37 +831,38 @@
         </f:if>
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'H0001')}" name="H0001" />
-        <slub:data.fromSolr query="HSOKEY:\"{H0001}\"" fields="id,listview_title" rows="10">
-            <f:then>
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Dabei / Darauf / Darin' extensionName='dla_opac_ng'/>
-                    </div>
-                    <div class="ctg-dtvt-content">
+        <dla:fromSolr query="HSOKEY:\"{H0001}\"" fields="id,listview_title" rows="10" />
+        <f:if condition="{solr}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key='Dabei / Darauf / Darin' extensionName='dla_opac_ng'/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    <f:for each="{solr}" as="solrItem">
 
                         <f:link.action
                                 action="detail"
-                                arguments="{id: solr.fields.id}"
+                                arguments="{id: solrItem.fields.id}"
                         >
                             <div>
-                                {solr.fields.listview_title}
+                                {solrItem.fields.listview_title}
                             </div>
                         </f:link.action>
-                    </div>
+                    </f:for>
                 </div>
-            </f:then>
-        </slub:data.fromSolr>
+            </div>
+        </f:if>
 
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_AKKEY_AUKEY')}" name="XX_AU_AKKEY_AUKEY" />
-        <f:if condition="{XX_BI_B51800_BIKEY}">
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_AK_TITREG_XX_AU_AKKEY_AUKEY')}" name="XXX_AK_TITREG_XX_AU_AKKEY_AUKEY" />
+        <f:if condition="{XX_AU_AKKEY_AUKEY}">
             <f:then>
                 <div class="ctg-dtvt-row">
                     <div class="ctg-dtvt-label">
                         <f:translate key='Bibliothek' extensionName='dla_opac_ng'/>
                     </div>
                     <div class="ctg-dtvt-content">
-                        Baustelle <br />
 
                         <f:render
                                 partial="Display/Field/List"
@@ -837,7 +871,8 @@
                             results:results,
                             field:'XX_AU_AKKEY_AUKEY',
                             linkFieldContent:1,
-                            linkFacets:linkFacets
+                            linkFacets:linkFacets,
+                            linkTexts:XXX_AK_TITREG_XX_AU_AKKEY_AUKEY
                           }"/>
                     </div>
                 </div>
@@ -850,10 +885,9 @@
             <f:then>
                 <div class="ctg-dtvt-row">
                     <div class="ctg-dtvt-label">
-                        <f:translate key='Bilder &amp; Objekte' extensionName='dla_opac_ng'/>
+                        <f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/>
                     </div>
                     <div class="ctg-dtvt-content">
-                        Baustelle<br />
 
                         <f:render
                                 partial="Display/Field/List"
