@@ -585,7 +585,7 @@ plugin.tx_find {
             # Facette zur Selektion der beiden relevantesten Normdatentreffern zum aktuellen Trefferset
             99 {
                 id = entities
-                field = entities_ids
+                field = entity_ids
                 # Wir benötigen nur die ersten zwei Treffer
                 fetchMaximum = 2
                 # nicht als Facette anzeigen
