@@ -370,7 +370,7 @@ plugin.tx_find {
             listview_title = listview_title
             listview_additional1 = listview_additional1
             listview_additional2 = listview_additional2
-            picture_mini = picture_mini
+            picture_mini = picture_midi
         }
 
         # Der Abschnitt "dataFields" bestimmt, welche Felder in den jeweiligen Ansichten geladen werden sollen.
@@ -382,28 +382,18 @@ plugin.tx_find {
             }
             index {
                 default {
-                    f0 = id
-                    f1 = listview_type
-                    f2 = listview_type_cardinality
-                    f3 = listview_associate
-                    f4 = listview_title
-                    f5 = listview_additional1
-                    f6 = listview_additional2
-                    f7 = picture_mini
-                }
-            }
-            detail {
-                default {
-                    f0 = *
-                }
-                disallow {
                     f0 = listview_type
                     f1 = listview_type_cardinality
                     f2 = listview_associate
                     f3 = listview_title
                     f4 = listview_additional1
                     f5 = listview_additional2
-                    f6 = picture_mini
+                    f6 = picture_midi
+                }
+            }
+            detail {
+                default {
+                    f0 = *
                 }
             }
             data < plugin.tx_find.settings.dataFields.detail
