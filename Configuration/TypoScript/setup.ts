@@ -592,6 +592,16 @@ plugin.tx_find {
                 query = icon_facet:("%s")
             }
 
+            # Facette zur Selektion der beiden relevantesten Normdatentreffern zum aktuellen Trefferset
+            99 {
+                id = entities
+                field = entities_ids
+                # Wir benötigen nur die ersten zwei Treffer
+                fetchMaximum = 2
+                # nicht als Facette anzeigen
+                hidden = 1
+            }
+
         }
 
         # Der Abschnitt "paging" definiert die Anzahl der Treffer pro Seite sowie das Navigieren durch das
