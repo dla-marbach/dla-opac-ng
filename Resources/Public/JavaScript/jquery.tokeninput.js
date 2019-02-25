@@ -309,7 +309,7 @@ $.TokenList = function (input, url_or_data, settings) {
 
 
     $( document ).ready(function() {
-        var url = 'http://localhost/index.php?eID=getEntity&q=';
+        var url = window.location.origin + '/index.php?eID=getEntity&q=';
         var value = hidden_input.val();
 
         if (value != "") {
