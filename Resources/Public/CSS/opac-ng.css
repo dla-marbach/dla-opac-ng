@@ -84,6 +84,15 @@ li.token-input-token {
     display:block !important;
 }
 
+.ctg-catalog-title a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.ctg-catalog-title a:hover {
+    color: #aeaeae;
+    text-decoration: underline;
+}
 ul.token-input-list {
     display: inline-block;
 }
