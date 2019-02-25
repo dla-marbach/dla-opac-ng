@@ -14,7 +14,11 @@
     <figure class="ctg-header ctg-header-home">
         <section class="ctg-hd-meta">
             <div class="ctg-catalog-title">
-                <strong><f:translate key='Kallías' extensionName='dla_opac_ng'/></strong> – <f:translate key='der Online-Katalog des Deutschen Literaturarchivs Marbach' extensionName='dla_opac_ng'/>
+                <f:link.action pageUid="{settings.mainPageUid}">
+                    <strong>
+                        <f:translate key='Kallías' extensionName='dla_opac_ng'/>
+                    </strong> – <f:translate key='der Online-Katalog des Deutschen Literaturarchivs Marbach' extensionName='dla_opac_ng'/>
+                </f:link.action>
             </div>
             <div class="ctg-hd-meta-menu">
                 <ul>
