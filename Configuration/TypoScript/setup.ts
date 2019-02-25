@@ -386,13 +386,14 @@ plugin.tx_find {
             }
             index {
                 default {
-                    f0 = listview_type
-                    f1 = listview_type_cardinality
-                    f2 = listview_associate
-                    f3 = listview_title
-                    f4 = listview_additional1
-                    f5 = listview_additional2
-                    f6 = picture_midi
+                    f0 = id
+                    f1 = listview_type
+                    f2 = listview_type_cardinality
+                    f3 = listview_associate
+                    f4 = listview_title
+                    f5 = listview_additional1
+                    f6 = listview_additional2
+                    f7 = picture_midi
                 }
             }
             detail {
