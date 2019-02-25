@@ -80,3 +80,10 @@ canvas#myChart {
     font-style: normal !important;
     color: #c50017 !important;
 }
+li.token-input-token {
+    display:block !important;
+}
+
+ul.token-input-list {
+    display: inline-block;
+}

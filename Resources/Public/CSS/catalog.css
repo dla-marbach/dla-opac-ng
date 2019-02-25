@@ -202,6 +202,37 @@ catalog - search
     border-top: 0px;
 }
 
+ul.token-input-list {
+    margin: 5px 0 0 0;
+    padding: 0;
+    border-radius: 5px;
+    border-bottom: 1px solid #aeaeae;
+    text-align: left;
+}
+
+li.token-input-input-token {
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0 0 5px 5px;
+    padding: 0;
+}
+
+li.token-input-input-token a {
+    background: #dadada;
+    border-radius: 5px;
+    color: #000;
+    border: 1px solid #999;
+    text-decoration: none;
+    padding: 5px 0 3px 5px;
+    transition: all 300ms ease-out;
+    vertical-align: middle;
+}
+
+li.token-input-input-token a:hover {
+    background-color: #A31A21;
+    border-color: #A31A21;
+    text-decoration: none;
+}
 
 /*----------------------------------------------------------------------
 catalog home - teaser
@@ -770,6 +801,10 @@ max 1080px
         font-size: 0%;
     }
 
+    ul.token-input-list {
+        font-size: inherit;
+    }
+
     .ctg-hd-search li a.ctg-hd-active:after {
         content: '';
         position: absolute;
@@ -926,6 +961,16 @@ max 650px
 
     .ctg-hd-search li a.ctg-hd-active:after {
         display: none;
+    }
+
+    ul.token-input-list {
+        padding: 0;
+    }
+
+    li.token-input-input-token {
+        width: auto;
+        margin: 0 0 5px 5px;
+        padding: 0;
     }
 
     .ctg-ia-scnd {
