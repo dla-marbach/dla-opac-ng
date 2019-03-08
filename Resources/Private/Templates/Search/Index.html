@@ -1,4 +1,5 @@
 {namespace s=Subugoe\Find\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
 <f:layout name="Default"/>
 <f:comment>
     Template for a the search results view.
@@ -90,6 +91,54 @@
             <!-- begin results -->
 
             <ol id="c{config.uid}-resultList" class="ctg-result-list" start="{config.counterStart}">
+                <!-- normdata -->
+                <f:for each="{results.components.facetset.facets.entities.values}" as="normdataValue" key="normdata">
+                    <dla:normdataResolver id="{normdata}" valueAs="objectData" />
+                    <div class="ctg-result-item ctg-result-normdata">
+                        <div class="ctg-ri-icon">
+                            <span class="icon bel-idkarte"></span>
+                        </div>
+                        <div class="ctg-ri-text">
+                            <h3>Relevante Namen &amp; Werke</h3>
+                            <h2>
+                                <f:link.action
+                                        action="detail"
+                                        arguments="{id:normdata}"
+                                        section="{settings.jumpToID}"
+                                        noCacheHash="1"
+                                        onclick="{f:if(
+                                            condition:'{settings.paging.detailPagePaging} == 1',
+                                            then:'return tx_find.detailViewWithPaging(this);'
+                                )}">
+                                    {objectData.listview_title}
+                                </f:link.action>
+                            </h2>
+                            <p>
+                                <f:if condition="{objectData.listview_associate}">
+                                    {objectData.listview_associate}
+                                </f:if>
+                            </p>
+
+                            <p>
+                                <f:if condition="{objectData.listview_additional1}">
+                                    {objectData.listview_associate}
+                                </f:if>
+                            </p>
+
+                            <p>
+                                <f:if condition="{objectData.listview_additional2}">
+                                    {objectData.listview_associate}
+                                </f:if>
+                            </p>
+                        </div>
+                        <f:if condition="{objectData.picture_midi}">
+                            <div class="ctg-ri-image">
+                                <img src="{objectData.picture_midi}" alt="">
+                            </div>
+                        </f:if>
+                    </div>
+                </f:for>
+
                 <f:for each="{results.documents}" as="document">
                     <f:render partial="Display/Result" arguments="{_all}"/>
                 </f:for>

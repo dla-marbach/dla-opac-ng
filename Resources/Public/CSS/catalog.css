@@ -476,6 +476,15 @@ li.ctg-result-item {
     background: #f5f5f5;
 }
 
+.ctg-result-normdata {
+    background: #dadada;
+    border: 1px solid #999;
+    margin-bottom: 1px;
+}
+
+.ctg-result-normdata h3 {
+    font-size: 14px;
+}
 
 .ctg-ri-icon {
     display: table-cell;
