@@ -263,18 +263,18 @@ $.TokenList = function (input, url_or_data, settings) {
                     }
                     break;
 
-                case KEY.TAB:
-                case KEY.ENTER:
-                case KEY.NUMPAD_ENTER:
-                case KEY.COMMA:
-                  if(selected_dropdown_item) {
-                    add_token($(selected_dropdown_item).data("tokeninput"));
-                    hidden_input.change();
-                    return false;
-                  } else {
-                      hidden_input.val(hidden_input.val() + " " + input_box.val());
-                  }
-                  break;
+                // case KEY.TAB:
+                // case KEY.ENTER:
+                // case KEY.NUMPAD_ENTER:
+                // case KEY.COMMA:
+                //   if(selected_dropdown_item) {
+                //     add_token($(selected_dropdown_item).data("tokeninput"));
+                //     hidden_input.change();
+                //     return false;
+                //   } else {
+                //       hidden_input.val(hidden_input.val() + " " + input_box.val());
+                //   }
+                //   break;
 
                 case KEY.ESCAPE:
                   hide_dropdown();
