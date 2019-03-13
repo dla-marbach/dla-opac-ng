@@ -115,19 +115,46 @@
                             </h2>
                             <p>
                                 <f:if condition="{objectData.listview_associate}">
-                                    {objectData.listview_associate}
+                                    <f:for each="{objectData.listview_associate}" as="associate" iteration="iterator">
+                                        <f:if condition="{iterator.isFirst}">
+                                            <f:then>
+                                                {associate}
+                                            </f:then>
+                                            <f:else>
+                                                , {associate}
+                                            </f:else>
+                                        </f:if>
+                                    </f:for>
                                 </f:if>
                             </p>
 
                             <p>
                                 <f:if condition="{objectData.listview_additional1}">
-                                    {objectData.listview_associate}
+                                    <f:for each="{objectData.listview_additional1}" as="additional1" iteration="iterator">
+                                        <f:if condition="{iterator.isFirst}">
+                                            <f:then>
+                                                {additional1}
+                                            </f:then>
+                                            <f:else>
+                                                , {additional1}
+                                            </f:else>
+                                        </f:if>
+                                    </f:for>
                                 </f:if>
                             </p>
 
                             <p>
                                 <f:if condition="{objectData.listview_additional2}">
-                                    {objectData.listview_associate}
+                                    <f:for each="{objectData.listview_additional2}" as="additional2" iteration="iterator">
+                                        <f:if condition="{iterator.isFirst}">
+                                            <f:then>
+                                                {additional2}
+                                            </f:then>
+                                            <f:else>
+                                                , {additional2}
+                                            </f:else>
+                                        </f:if>
+                                    </f:for>
                                 </f:if>
                             </p>
                         </div>
