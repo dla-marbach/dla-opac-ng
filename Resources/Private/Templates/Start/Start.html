@@ -135,13 +135,21 @@
                 </ul>
 
                 <div class="ctg-hd-search-form">
-                    <f:form.textfield
-                            id="c{config.uid}-field-{fieldInfo.id}"
-                            class="inputType-text"
-                            name="q[default]"
-                            value=""
-                            placeholder="Wonach suchen Sie?"
-                    /><button type="submit"><span class="icon bel-lupe"></span><f:translate key='Jetzt suchen' extensionName='dla_opac_ng'/></button>
+                    <div class="ctg-search-autocomplete">
+                        <f:form.textfield
+                                id="c{config.uid}-field-{fieldInfo.id}"
+                                class="inputType-text"
+                                name="q[default]"
+                                value=""
+                                placeholder="Wonach suchen Sie?"
+                        />
+                    </div>
+                    <div class="ctg-search-autocomplete-button">
+                        <button type="submit">
+                            <span class="icon bel-lupe"></span>
+                            <f:translate key='Jetzt suchen' extensionName='dla_opac_ng'/>
+                        </button>
+                    </div>
                 </div>
             </form>
         </section>

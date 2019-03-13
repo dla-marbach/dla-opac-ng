@@ -80,8 +80,30 @@ canvas#myChart {
     font-style: normal !important;
     color: #c50017 !important;
 }
-li.token-input-token {
-    display:block !important;
+
+ul.token-input-list {
+    display: inline-block;
+}
+section.active-facets {
+    background-color: #b51f23;
+    color: white;
+}
+
+section.active-facets h3 {
+    color: white;
+}
+
+section.active-facets a {
+    color: white;
+}
+
+section.active-facets a:hover {
+    color: #aeaeae;
+    text-decoration: underline;
+}
+
+.active-facet-container {
+    padding-top:0px !important;
 }
 
 .ctg-catalog-title a {
@@ -93,6 +115,15 @@ li.token-input-token {
     color: #aeaeae;
     text-decoration: underline;
 }
+
+.active-facet-hr {
+    margin: 0.5rem;
+}
+
+.active-facet-reset {
+    margin-bottom:10px;
+}
+
 ul.token-input-list {
     display: inline-block;
 }

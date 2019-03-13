@@ -161,55 +161,63 @@
                     </ul>
 
                     <div class="ctg-hd-search-form">
+                        <div class="ctg-search-autocomplete">
 
-                        <f:comment>
-                            TODO: the planned functioning of the extended search must be clarified
+                            <f:comment>
+                                TODO: the planned functioning of the extended search must be clarified
 
-                            <f:for each="{settings.queryFields}" as="fieldInfo">
-                                <f:if condition="{fieldInfo.type}">
-                                    <f:then>
-                                        <f:if condition="{s:logic.or(conditions:'{
-                0:\"{s:logic.not(condition:fieldInfo.hidden)}\",
-                                        1:\"{s:data.valueForKey(array:arguments.q, key:fieldInfo.id)}\"
-                                        }')}">
-                                        <div class="fieldContainer fieldType-{fieldInfo.type} field-{fieldInfo.id} field-mode-{f:if(condition:'{fieldInfo.extended}', then:'extended', else:'simple')}">
-                                            <f:alias map="{queryParameter:'{s:data.valueForKey(array:config.query, key:fieldInfo.id)}'}">
-                                                <f:render partial="Form/Fields/{fieldInfo.type}" arguments="{_all}"/>
-                                            </f:alias>
+                                <f:for each="{settings.queryFields}" as="fieldInfo">
+                                    <f:if condition="{fieldInfo.type}">
+                                        <f:then>
+                                            <f:if condition="{s:logic.or(conditions:'{
+                    0:\"{s:logic.not(condition:fieldInfo.hidden)}\",
+                                            1:\"{s:data.valueForKey(array:arguments.q, key:fieldInfo.id)}\"
+                                            }')}">
+                                            <div class="fieldContainer fieldType-{fieldInfo.type} field-{fieldInfo.id} field-mode-{f:if(condition:'{fieldInfo.extended}', then:'extended', else:'simple')}">
+                                                <f:alias map="{queryParameter:'{s:data.valueForKey(array:config.query, key:fieldInfo.id)}'}">
+                                                    <f:render partial="Form/Fields/{fieldInfo.type}" arguments="{_all}"/>
+                                                </f:alias>
+                                            </div>
+                                    </f:if>
+                                    </f:then>
+                                    <f:else>
+                                        <div class="fieldContainer error">
+                                            <f:translate key="Missing type in configuration for queryField %s." arguments="{0:fieldInfo.id}"/>
                                         </div>
-                                </f:if>
-                                </f:then>
-                                <f:else>
-                                    <div class="fieldContainer error">
-                                        <f:translate key="Missing type in configuration for queryField %s." arguments="{0:fieldInfo.id}"/>
-                                    </div>
-                                </f:else>
-                                </f:if>
-                            </f:for>
-                        </f:comment>
+                                    </f:else>
+                                    </f:if>
+                                </f:for>
+                            </f:comment>
 
-                        <f:alias map="{queryParameter:'{s:data.valueForKey(array:config.query, key:settings.queryFields.0.id)}'}">
-                            <f:form.textfield
-                                    id="c{config.uid}-field-{settings.queryFields.0.id}"
-                                    class="inputType-text"
-                                    name="q[{settings.queryFields.0.id}]{f:if(
-        condition:hasAlternate,
-        then:'[term]'
-      )}"
-                                    value="{f:if(
-        condition:hasAlternate,
-        then:queryParameter.term,
-        else:queryParameter
-      )}"
-                                    placeholder="{f:translate(key:'LLL:{settings.languageRootPath}locallang-form.xml:input.{settings.queryFields.0.id}.placeholder')}"
-                                    additionalAttributes="<f:if condition='{settings.queryFields.0.autocomplete}==1'><f:then>{autocompleteURL:\"{f:uri.action(
-                                    arguments:{dictionary:fieldInfo.autocompleteDictionary, q:'%%%%'},
-                            action:'suggest',
-                            pageType:'1369315139',
-                            format:'data',
-                            noCacheHash:'1'
-                            )}\"}</f:then><f:else>{a:1}</f:else></f:if>"
-                            /></f:alias><button type="submit"><span class="icon bel-lupe"></span><f:translate key='Jetzt suchen' extensionName='dla_opac_ng'/></button>
+                            <f:alias map="{queryParameter:'{s:data.valueForKey(array:config.query, key:settings.queryFields.0.id)}'}">
+                                <f:form.textfield
+                                        id="c{config.uid}-field-{settings.queryFields.0.id}"
+                                        class="inputType-text"
+                                        name="q[{settings.queryFields.0.id}]{f:if(
+            condition:hasAlternate,
+            then:'[term]'
+          )}"
+                                        value="{f:if(
+            condition:hasAlternate,
+            then:queryParameter.term,
+            else:queryParameter
+          )}"
+                                        placeholder="{f:translate(key:'LLL:{settings.languageRootPath}locallang-form.xml:input.{settings.queryFields.0.id}.placeholder')}"
+                                        additionalAttributes="<f:if condition='{settings.queryFields.0.autocomplete}==1'><f:then>{autocompleteURL:\"{f:uri.action(
+                                        arguments:{dictionary:fieldInfo.autocompleteDictionary, q:'%%%%'},
+                                action:'suggest',
+                                pageType:'1369315139',
+                                format:'data',
+                                noCacheHash:'1'
+                                )}\"}</f:then><f:else>{a:1}</f:else></f:if>"
+                                /></f:alias>
+                        </div>
+                        <div class="ctg-search-autocomplete-button">
+                            <button type="submit">
+                                <span class="icon bel-lupe"></span>
+                                <f:translate key='Jetzt suchen' extensionName='dla_opac_ng'/>
+                            </button>
+                        </div>
                     </div>
                 </f:form>
             </section>
