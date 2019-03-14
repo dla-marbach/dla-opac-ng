@@ -90,8 +90,7 @@
 
             <!-- begin results -->
 
-            <ol id="c{config.uid}-resultList" class="ctg-result-list" start="{config.counterStart}">
-                <!-- normdata -->
+            <ol class="ctg-result-list">
                 <f:for each="{results.components.facetset.facets.entities.values}" as="normdataValue" key="normdata">
                     <dla:normdataResolver id="{normdata}" valueAs="objectData" />
                     <div class="ctg-result-item ctg-result-normdata">
@@ -115,46 +114,19 @@
                             </h2>
                             <p>
                                 <f:if condition="{objectData.listview_associate}">
-                                    <f:for each="{objectData.listview_associate}" as="associate" iteration="iterator">
-                                        <f:if condition="{iterator.isFirst}">
-                                            <f:then>
-                                                {associate}
-                                            </f:then>
-                                            <f:else>
-                                                , {associate}
-                                            </f:else>
-                                        </f:if>
-                                    </f:for>
+                                    {objectData.listview_associate}
                                 </f:if>
                             </p>
 
                             <p>
                                 <f:if condition="{objectData.listview_additional1}">
-                                    <f:for each="{objectData.listview_additional1}" as="additional1" iteration="iterator">
-                                        <f:if condition="{iterator.isFirst}">
-                                            <f:then>
-                                                {additional1}
-                                            </f:then>
-                                            <f:else>
-                                                , {additional1}
-                                            </f:else>
-                                        </f:if>
-                                    </f:for>
+                                    {objectData.listview_associate}
                                 </f:if>
                             </p>
 
                             <p>
                                 <f:if condition="{objectData.listview_additional2}">
-                                    <f:for each="{objectData.listview_additional2}" as="additional2" iteration="iterator">
-                                        <f:if condition="{iterator.isFirst}">
-                                            <f:then>
-                                                {additional2}
-                                            </f:then>
-                                            <f:else>
-                                                , {additional2}
-                                            </f:else>
-                                        </f:if>
-                                    </f:for>
+                                    {objectData.listview_associate}
                                 </f:if>
                             </p>
                         </div>
@@ -165,6 +137,10 @@
                         </f:if>
                     </div>
                 </f:for>
+            </ol>
+
+            <ol id="c{config.uid}-resultList" class="ctg-result-list" start="{config.counterStart}">
+                <!-- normdata -->
 
                 <f:for each="{results.documents}" as="document">
                     <f:render partial="Display/Result" arguments="{_all}"/>
