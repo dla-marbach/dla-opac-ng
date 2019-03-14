@@ -444,6 +444,12 @@ plugin.tx_find {
                 id = Titel (A-Z bibliographisch)
                 sortCriteria = sorted_listview_title_s asc
             }
+
+            # is used as a static parameter in "Namen und Werke"
+            6 {
+                id = Normdaten absteigend
+                sortCriteria = entity_score desc
+            }
         }
 
         # Der Abschnitt "facets" definiert die angebotenen Suchfacetten. Hier können auch Tabs konfiguriert werden.

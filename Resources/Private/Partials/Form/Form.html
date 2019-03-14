@@ -145,6 +145,7 @@
                             corporation: '{s:find.facetLinkArguments(facetID:\"DatenbestandHidden\", facetTerm:\"Körperschaften\", mode:\"add\", activeFacets:config.activeFacets)}'}">
 
                             <dla:arrayMerge array1="{werke}" array2="{person}" array3="{corporation}" as="newArray" />
+                            <dla:arrayMerge array1="{newArray}" array2="{sort: 'entity_score desc'}" as="newArray" />
                             <f:link.action
                                     id="normdaten"
                                     pageUid="{settings.indexPageUid}"
