@@ -16,7 +16,7 @@ class ArrayMergeViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
         parent::initializeArguments();
         $this->registerArgument('array1', 'array', 'List of fields', true, array());
         $this->registerArgument('array2', 'array', 'List of fields', true, array());
-        $this->registerArgument('array3', 'array', 'List of fields', true, array());
+        $this->registerArgument('array3', 'array', 'List of fields', false, array());
         $this->registerArgument('as', 'string', 'name of the label result variable', true, array());
     }
 
