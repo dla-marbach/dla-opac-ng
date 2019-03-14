@@ -405,6 +405,21 @@ plugin.tx_find {
             data < plugin.tx_find.settings.dataFields.detail
         }
 
+        highlight {
+            default {
+                fields {
+                    f0 = id
+                    f1 = listview_type
+                    f2 = listview_type_cardinality
+                    f3 = listview_associate
+                    f4 = listview_title
+                    f5 = listview_additional1
+                    f6 = listview_additional2
+                    f7 = picture_midi
+                }
+            }
+        }
+
         # Der Abschnitt "sort" definiert die Sortierung der Trefferliste und die Nutzeroptionen.
         sort {
             1 {
