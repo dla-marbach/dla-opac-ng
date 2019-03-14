@@ -362,6 +362,7 @@ plugin.tx_find {
         # Der Abschnitt "additionalFilters" definiert globale Suchfilter
         additionalFilters {
             1 = NOT source:(AU OR MM)
+            2 = NOT filter_hidden:true
         }
 
         # Der Abschnitt "standardFields" definiert die in der Trefferliste anzuzeigenden Felder in der Form
