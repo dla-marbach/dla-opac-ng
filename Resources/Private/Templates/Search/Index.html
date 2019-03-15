@@ -120,10 +120,12 @@
                                     <f:for each="{objectData.listview_associate}" as="associate" iteration="iterator">
                                         <f:if condition="{iterator.isFirst}">
                                             <f:then>
-                                                {associate}
+                                                <f:format.raw>
+                                                    {associate}
+                                                </f:format.raw>
                                             </f:then>
                                             <f:else>
-                                                , {associate}
+                                                , <f:format.raw>{associate}</f:format.raw>
                                             </f:else>
                                         </f:if>
                                     </f:for>
@@ -135,10 +137,12 @@
                                     <f:for each="{objectData.listview_additional1}" as="additional1" iteration="iterator">
                                         <f:if condition="{iterator.isFirst}">
                                             <f:then>
-                                                {additional1}
+                                                <f:format.raw>
+                                                    {additional1}
+                                                </f:format.raw>
                                             </f:then>
                                             <f:else>
-                                                , {additional1}
+                                                , <f:format.raw>{additional1}</f:format.raw>
                                             </f:else>
                                         </f:if>
                                     </f:for>
@@ -150,10 +154,12 @@
                                     <f:for each="{objectData.listview_additional2}" as="additional2" iteration="iterator">
                                         <f:if condition="{iterator.isFirst}">
                                             <f:then>
-                                                {additional2}
+                                                <f:format.raw>
+                                                    {additional2}
+                                                </f:format.raw>
                                             </f:then>
                                             <f:else>
-                                                , {additional2}
+                                                , <f:format.raw>{additional2}</f:format.raw>
                                             </f:else>
                                         </f:if>
                                     </f:for>
