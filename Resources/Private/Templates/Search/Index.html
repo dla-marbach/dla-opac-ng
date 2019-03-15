@@ -90,6 +90,7 @@
 
             <!-- begin results -->
 
+            <!-- normdata -->
             <ol class="ctg-result-list">
                 <f:for each="{results.components.facetset.facets.entities.values}" as="normdataValue" key="normdata">
                     <dla:normdataResolver id="{normdata}" valueAs="objectData" />
@@ -158,18 +159,18 @@
                             </p>
 
                         </div>
+                        <f:debug>{objectData.picture_midi}</f:debug>
                         <f:if condition="{objectData.picture_midi}">
                             <div class="ctg-ri-image">
-                                <img src="{objectData.picture_midi}" alt="">
+                                <img src="{objectData.picture_midi.0}" alt="">
                             </div>
                         </f:if>
                     </div>
                 </f:for>
             </ol>
+            <!-- normdata end -->
 
             <ol id="c{config.uid}-resultList" class="ctg-result-list" start="{config.counterStart}">
-                <!-- normdata -->
-
                 <f:for each="{results.documents}" as="document">
                     <f:render partial="Display/Result" arguments="{_all}"/>
                 </f:for>

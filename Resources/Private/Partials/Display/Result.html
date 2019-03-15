@@ -96,15 +96,15 @@
     </div>
 
     <div class="ctg-ri-image">
-        <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.picture_mini)}">
-            <f:for each="{document.picture_mini}" as="picture" key="key">
+        <f:if condition="{document.picture_midi}">
+            <f:for each="{document.picture_midi}" as="picture" key="key">
                 <f:if condition="{key} == 0">
                     <img src="{picture}" alt="" />
                 </f:if>
             </f:for>
         </f:if>
         <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.audio)}">
-            <f:for each="{document.picture_mini}" as="audio" key="key">
+            <f:for each="{document.picture_midi}" as="audio" key="key">
                 <f:if condition="{key} == 0">
                     <audio id="player" src="{audio}"></audio>
                 </f:if>
