@@ -239,6 +239,12 @@ $.TokenList = function (input, url_or_data, settings) {
                         if(dropdown_item.length) {
                             select_dropdown_item(dropdown_item);
                         }
+
+                        if(dropdown_item.length === 0) {
+                            dropdown_item = $($(".autocomplete-list-li")[0]);
+                            select_dropdown_item(dropdown_item);
+                        }
+
                         return false;
                     }
                     break;
@@ -264,17 +270,17 @@ $.TokenList = function (input, url_or_data, settings) {
                     break;
 
                 // case KEY.TAB:
-                // case KEY.ENTER:
+                case KEY.ENTER:
                 // case KEY.NUMPAD_ENTER:
                 // case KEY.COMMA:
-                //   if(selected_dropdown_item) {
-                //     add_token($(selected_dropdown_item).data("tokeninput"));
-                //     hidden_input.change();
-                //     return false;
-                //   } else {
-                //       hidden_input.val(hidden_input.val() + " " + input_box.val());
-                //   }
-                //   break;
+                  if(selected_dropdown_item) {
+                    add_token($(selected_dropdown_item).data("tokeninput"));
+                    hidden_input.change();
+                    return false;
+                  } else {
+                      // hidden_input.val(hidden_input.val() + " " + input_box.val());
+                  }
+                  break;
 
                 case KEY.ESCAPE:
                   hide_dropdown();
