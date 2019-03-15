@@ -110,7 +110,9 @@
                                             condition:'{settings.paging.detailPagePaging} == 1',
                                             then:'return tx_find.detailViewWithPaging(this);'
                                 )}">
-                                    {objectData.listview_title}
+                                    <f:format.raw>
+                                        {objectData.listview_title}
+                                    </f:format.raw>
                                 </f:link.action>
                             </h2>
                             <p>
@@ -159,7 +161,6 @@
                             </p>
 
                         </div>
-                        <f:debug>{objectData.picture_midi}</f:debug>
                         <f:if condition="{objectData.picture_midi}">
                             <div class="ctg-ri-image">
                                 <img src="{objectData.picture_midi.0}" alt="">
