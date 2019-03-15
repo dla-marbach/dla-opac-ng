@@ -205,8 +205,8 @@ $.TokenList = function (input, url_or_data, settings) {
             var next_token;
 
             switch(event.keyCode) {
-                case KEY.LEFT:
-                case KEY.RIGHT:
+                // case KEY.LEFT:
+                // case KEY.RIGHT:
                 case KEY.UP:
                 case KEY.DOWN:
                     if(!$(this).val()) {
@@ -725,7 +725,7 @@ $.TokenList = function (input, url_or_data, settings) {
                 }
 
                 if(index === 0) {
-                    select_dropdown_item(this_li);
+                    // select_dropdown_item(this_li);
                 }
 
                 $.data(this_li.get(0), "tokeninput", value);
