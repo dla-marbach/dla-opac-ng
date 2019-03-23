@@ -114,7 +114,7 @@ bodyTagCObject.wrap = <body class="page-|">
     50 = TEXT
     50.value (
 
-        <link rel="stylesheet" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/css/site.min.css" media="all">
+        <link rel="stylesheet" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/css/site.min.css" media="all">
         <link rel="stylesheet" href="typo3conf/ext/dla_opac_ng/Resources/Public/CSS/belugino.css" media="all">
         <link rel="stylesheet" href="typo3conf/ext/dla_opac_ng/Resources/Public/CSS/catalog.css" media="all">
 
@@ -129,32 +129,32 @@ bodyTagCObject.wrap = <body class="page-|">
 
     70 = TEXT
     70.value (
-    <link rel="apple-touch-icon" sizes="57x57" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-180x180.png">
-    <link rel="icon" type="image/png" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/android-chrome-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/png" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/manifest.json">
-    <link rel="mask-icon" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/safari-pinned-tab.svg" color="#96ba3a">
-    <link rel="shortcut icon" href="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/manifest.json">
+    <link rel="mask-icon" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/safari-pinned-tab.svg" color="#96ba3a">
+    <link rel="shortcut icon" href="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/favicon.ico">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/mstile-144x144.png">
-    <meta name="msapplication-config" content="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/images/favicons/browserconfig.xml">
+    <meta name="msapplication-TileImage" content="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/mstile-144x144.png">
+    <meta name="msapplication-config" content="https://www-test.dla-marbach.de/fileadmin/lombego/layout/images/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 )
 }
 9999 = TEXT
 9999 {
     value (
-        <script src="https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/js/init-live.min.js"></script>
+        <script src="https://www-test.dla-marbach.de/fileadmin/lombego/layout/js/init-live.min.js"></script>
     )
 }
 }
