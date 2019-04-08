@@ -440,18 +440,18 @@ plugin.tx_find {
                 sortCriteria = facet_time_stat desc
             }
 
-            4 {
-                id = Titel (A-Z)
-                sortCriteria = listview_title asc
-            }
-
             5 {
-                id = Titel (A-Z bibliographisch)
+                id = Titel (A-Z)
                 sortCriteria = sorted_listview_title_s asc
             }
 
-            # is used as a static parameter in "Namen und Werke"
             6 {
+                id = Titel(Z-A)
+                sortCriteria = sorted_listview_title_s desc
+            }
+
+            # is used as a static parameter in "Namen und Werke"
+            7 {
                 id = Normdaten absteigend
                 sortCriteria = entity_score desc
             }
