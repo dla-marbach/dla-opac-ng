@@ -1137,9 +1137,15 @@ class SolrServiceProvider extends AbstractServiceProvider
                     if ($fieldInfo["noescape"] == 2) {
                         $chars = explode(',',$fieldInfo["escapechar"]);
                         foreach ($queryTerms as $key => $term) {
+                            $queryTerm = $term;
                             foreach ($chars as $char) {
-                                $queryTerms[$key] = str_replace($char, "\\".$char, $term);
+                                $queryTerm = str_replace($char, '\\'.$char, $queryTerm);
                             }
+                            foreach ($fieldInfo['replaceAfterEscape'] as $find => $replace) {
+                                $queryTerm = str_replace($find, $replace, $queryTerm);
+                            }
+                            $queryTerms[$key] = $queryTerm;
+
                         }
                         $queryPart = vsprintf($queryFormat, $queryTerms);
                     } else {
