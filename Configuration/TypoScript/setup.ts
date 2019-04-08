@@ -433,11 +433,11 @@ plugin.tx_find {
             }
             2 {
                 id = Jahr aufsteigend
-                sortCriteria = A0425 asc,H02035 asc,B02040 asc,PA8141 asc,PA8142 asc,KA805 asc
+                sortCriteria = facet_time_stat asc
             }
             3 {
                 id = Jahr absteigend
-                sortCriteria = A0425 desc,H02035 desc,B02040 desc,PA8141 desc,PA8142 desc,KA805 desc
+                sortCriteria = facet_time_stat desc
             }
 
             4 {
