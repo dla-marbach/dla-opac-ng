@@ -416,6 +416,7 @@ plugin.tx_find {
                     f5 = listview_additional1
                     f6 = listview_additional2
                     f7 = picture_midi
+                    f8 = B41660
                 }
             }
         }
