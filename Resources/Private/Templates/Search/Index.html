@@ -206,7 +206,55 @@
         </section>
 
         <aside class="small-3 column ctg-facet-colum">
-
+            <f:if condition="{arguments.facet}">
+                <section class="ctg-facet active-facets">
+                    <h3>
+                        Aktive Facetten
+                        <a title="schließen" data-facet-toggle="1">
+                            <span class="icon bel-pfeil-o01"></span>
+                        </a>
+                    </h3>
+                    <div class="facetList">
+                        <ul>
+                            <li class="active-facet-reset">
+                                <f:link.action
+                                        addQueryString="TRUE"
+                                        argumentsToBeExcludedFromQueryString="{1: 'tx_find_find[facet]'}"
+                                        section="{settings.jumpToID}"
+                                        noCacheHash="1"
+                                        class=""
+                                        title="alle Filter zurücksetzen">
+                                    <span class="icon bel-ende01"></span>
+                                    alle Filter zurücksetzen
+                                </f:link.action>
+                            </li>
+                            <f:for each="{config.facets}" as="facetInfo" key="facetKey">
+                                <f:if condition="{facetInfo.hidden}!=1">
+                                    <v:variable.set value="{s:data.valueForKey(array:results.components.facetset.facets, key:facetInfo.id)}" name="facetData" />
+                                    <f:for each="{facetData.values}" as="itemCount" key="facetTerm" iteration="iterator">
+                                        <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}">
+                                            <f:comment><hr class="active-facet-hr"/></f:comment>
+                                            <li>
+                                                <f:link.action
+                                                        addQueryString="TRUE"
+                                                        argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
+                                                        section="{settings.jumpToID}"
+                                                        noCacheHash="1"
+                                                        class=""
+                                                        title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
+                                                    <span class="icon bel-ende01"></span>
+                                                    {facetTerm}
+                                                </f:link.action>
+                                            </li>
+                                        </f:if>
+                                    </f:for>
+                                </f:if>
+                            </f:for>
+                        </ul>
+                    </div>
+                </section>
+            </f:if>
+            
             <f:render partial="Facets/Facets" arguments="{_all}"/>
 
             <section class="ctg-facet-prestige">
