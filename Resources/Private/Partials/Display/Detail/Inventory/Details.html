@@ -317,7 +317,14 @@
         <div class="ctg-dtvt-label">
             <f:translate key='Übersicht' extensionName='dla_opac_ng'/>
         </div>
-        <dla:replaceBreaks text="{B41660}" as="textNew"/>
+        <dla:replaceBreaks
+            text="{s:find.highlightField(
+                field:'B41660',
+                document:document,
+                results:results,
+                index:0,
+                alternateField:'{s:data.valueForKey(array:config.highlight.alternateFields, key:field)}'
+                )}" as="textNew"/>
         <div class="ctg-dtvt-content">
             <f:format.raw>
                 {textNew}
