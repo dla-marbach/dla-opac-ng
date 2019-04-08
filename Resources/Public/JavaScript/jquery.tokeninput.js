@@ -297,8 +297,10 @@ $.TokenList = function (input, url_or_data, settings) {
 
     // form
     var form = $(".searchForm").submit(function (event) {
-        if (input_box.val() != "") {
+        if (input_box.val() != "" && hidden_input.val() != "") {
             hidden_input.val(hidden_input.val().trim() + " " + input_box.val().trim());
+        } else if (input_box.val() != "") {
+            hidden_input.val(input_box.val().trim());
         }
     });
 
