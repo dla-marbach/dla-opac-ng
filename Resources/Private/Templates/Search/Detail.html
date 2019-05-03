@@ -37,9 +37,9 @@
                 <div class="row ctg-follow-content">
                     <section class="small-9 column ctg-content-column ctg-detailview">
 
-                        <f:if condition="{document.fields.listview_type} == 'Normdaten'">
+                        <f:if condition="{results.documents.0.fields.listview_type.0} == 'Normdaten'">
                             <f:then>
-                                <f:switch expression="{document.fields.source}">
+                                <f:switch expression="{results.documents.0.fields.source}">
                                     <f:case value="PE">
                                         <f:render partial="Display/Detail/Normdata/Person" arguments="{results:results, document:document}" />
                                     </f:case>
@@ -49,6 +49,7 @@
                                 </f:switch>
                             </f:then>
                             <f:else>
+                                <f:debug>{_all}</f:debug>
                                 <f:switch expression="{document.fields.source}">
                                     <f:case value="BI">
                                         <f:render partial="Display/Detail/ImagesAndObjects/Details" arguments="{results:results, document:document}" />
@@ -72,39 +73,50 @@
                         </f:if>
                     </section>
                     <aside class="small-3 column ctg-facet-colum">
-                        <f:switch expression="{document.fields.source}">
-                            <f:case value="BI">
-                                <f:render partial="Display/Detail/ImagesAndObjects/RightColumn" arguments="{results:results, document:document}" />
-                            </f:case>
-                            <f:case value="AK">
-                                <f:render partial="Display/Detail/Library/RightColumn" arguments="{results:results, document:document}" />
-                            </f:case>
-                            <f:defaultCase>
-                                <section class="ctg-facet">
-                                    <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
-                                        <f:translate key='Aus demselben Nachlass' extensionName='dla_opac_ng'/> (?)
-                                    </h3>
-                                    <ul>
-                                        <li><a title=""><span class="icon bel-foto"></span></a><a title="">Lorem lorem lorem</a></li>
-                                        <li><a title=""><span class="icon bel-schreiben"></span></a><a title="">Lorem lorem lorem</a></li>
-                                        <li><a title=""><span class="icon bel-schreiben"></span></a><a title="">Lorem lorem lorem</a></li>
-                                        <li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 35</a></li>
-                                    </ul>
-                                </section>
+                        <f:if condition="{results.documents.0.fields.listview_type.0} == 'Normdaten'">
+                            <f:then>
+                                <f:switch expression="{results.documents.0.fields.source}">
+                                    <f:case value="PE">
+                                        <f:render partial="Display/Detail/Normdata/PersonRightColumn" arguments="{results:results, document:document}" />
+                                    </f:case>
+                                </f:switch>
+                            </f:then>
+                            <f:else>
+                                <f:switch expression="{document.fields.source}">
+                                    <f:case value="BI">
+                                        <f:render partial="Display/Detail/ImagesAndObjects/RightColumn" arguments="{results:results, document:document}" />
+                                    </f:case>
+                                    <f:case value="AK">
+                                        <f:render partial="Display/Detail/Library/RightColumn" arguments="{results:results, document:document}" />
+                                    </f:case>
+                                    <f:defaultCase>
+                                        <section class="ctg-facet">
+                                            <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
+                                                <f:translate key='Aus demselben Nachlass' extensionName='dla_opac_ng'/> (?)
+                                            </h3>
+                                            <ul>
+                                                <li><a title=""><span class="icon bel-foto"></span></a><a title="">Lorem lorem lorem</a></li>
+                                                <li><a title=""><span class="icon bel-schreiben"></span></a><a title="">Lorem lorem lorem</a></li>
+                                                <li><a title=""><span class="icon bel-schreiben"></span></a><a title="">Lorem lorem lorem</a></li>
+                                                <li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 35</a></li>
+                                            </ul>
+                                        </section>
 
-                                <section class="ctg-facet">
-                                    <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
-                                        <f:translate key='Aus der selben Sammlung' extensionName='dla_opac_ng'/> (?)
-                                    </h3>
-                                </section>
+                                        <section class="ctg-facet">
+                                            <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
+                                                <f:translate key='Aus der selben Sammlung' extensionName='dla_opac_ng'/> (?)
+                                            </h3>
+                                        </section>
 
-                                <section class="ctg-facet">
-                                    <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
-                                        <f:translate key='Aus demselben Archiv' extensionName='dla_opac_ng'/> (?)
-                                    </h3>
-                                </section>
-                            </f:defaultCase>
-                        </f:switch>
+                                        <section class="ctg-facet">
+                                            <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
+                                                <f:translate key='Aus demselben Archiv' extensionName='dla_opac_ng'/> (?)
+                                            </h3>
+                                        </section>
+                                    </f:defaultCase>
+                                </f:switch>
+                            </f:else>
+                        </f:if>
                     </aside>
                 </div>
             </f:else>

@@ -301,6 +301,7 @@
       <label index="VON">VON</label>
       <label index="AN">AN</label>
       <label index="ÜBER">ÜBER</label>
+      <label index="Entstehungsort">Entstehungsort</label>
       <label index="Vorliegende Namensform">Vorliegende Namensform</label>
       <label index="Titel">Titel</label>
       <label index="Umfang, Beilagen">Umfang, Beilagen</label>
@@ -320,8 +321,8 @@
       <label index="GND">GND</label>
       <label index="Andere Namen">Andere Namen</label>
       <label index="Geschlecht">Geschlecht</label>
-      <label index="Lebensdaten">Lebensdaten:</label>
-      <label index="Wirkungsdaten">Wirkungsdaten:</label>
+      <label index="Lebensdaten">Lebensdaten</label>
+      <label index="Wirkungsdaten">Wirkungsdaten</label>
       <label index="Land">Land</label>
       <label index="Normsatz">Normsatz</label>
       <label index="Quelle">Quelle</label>

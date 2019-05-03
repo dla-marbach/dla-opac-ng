@@ -812,6 +812,51 @@ catalog detailview
     background: #dadada;
 }
 
+.ctg-detailview-teaser {
+    margin: 0 0 1rem 0;
+}
+
+.ctg-detailview-teaser section {
+    margin: 0 0 0 1rem;
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+}
+
+.ctg-detailview-teaser article {
+    background: #fff;
+    border: 1px solid #dadada;
+    padding: 1rem;
+    margin: 1rem 1rem 0 0;
+}
+
+.ctg-detailview-teaser article ul {
+    margin: 0;
+    padding: 0;
+}
+
+.ctg-detailview-teaser i {
+    display: block;
+    color: #999;
+    font-size: 0.875rem;
+    margin-bottom: -0.2rem;
+}
+
+article.ctg-detail-showall {
+    background: transparent;
+    border: 1px solid #999;
+}
+
+article.ctg-detail-showall span.icon {
+    margin: 0 0 1rem 0;
+    font-size: 50px;
+    line-height: 50px;
+    width: auto;
+    height: auto;
+    display: block;
+    float: left;
+}
+
+
 
 /*----------------------------------------------------------------------
 max 1080px
