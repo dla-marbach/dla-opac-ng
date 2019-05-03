@@ -49,7 +49,6 @@
                                 </f:switch>
                             </f:then>
                             <f:else>
-                                <f:debug>{_all}</f:debug>
                                 <f:switch expression="{document.fields.source}">
                                     <f:case value="BI">
                                         <f:render partial="Display/Detail/ImagesAndObjects/Details" arguments="{results:results, document:document}" />
