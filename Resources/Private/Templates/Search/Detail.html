@@ -39,14 +39,7 @@
 
                         <f:if condition="{results.documents.0.fields.listview_type.0} == 'Normdaten'">
                             <f:then>
-                                <f:switch expression="{results.documents.0.fields.source}">
-                                    <f:case value="PE">
-                                        <f:render partial="Display/Detail/Normdata/Person" arguments="{results:results, document:document}" />
-                                    </f:case>
-                                    <f:case value="AK">
-                                        <f:render partial="Display/Detail/Normdata/Werk" arguments="{results:results, document:document}" />
-                                    </f:case>
-                                </f:switch>
+                                <f:render partial="Display/Detail/Normdata/Person" arguments="{results:results, document:document}" />
                             </f:then>
                             <f:else>
                                 <f:switch expression="{document.fields.source}">
@@ -74,11 +67,7 @@
                     <aside class="small-3 column ctg-facet-colum">
                         <f:if condition="{results.documents.0.fields.listview_type.0} == 'Normdaten'">
                             <f:then>
-                                <f:switch expression="{results.documents.0.fields.source}">
-                                    <f:case value="PE">
-                                        <f:render partial="Display/Detail/Normdata/PersonRightColumn" arguments="{results:results, document:document}" />
-                                    </f:case>
-                                </f:switch>
+                                <f:render partial="Display/Detail/Normdata/PersonRightColumn" arguments="{results:results, document:document}" />
                             </f:then>
                             <f:else>
                                 <f:switch expression="{document.fields.source}">
