@@ -18,10 +18,10 @@
 
         <f:if condition="{iterator.isFirst}">
             <f:then>
-                <v:variable.set value="{facetId}:\"{facetChoice}\"" name="activeFacetsParams" />
+                <v:variable.set value="{facetDetail.config.field}:\"{facetChoice}\"" name="activeFacetsParams" />
             </f:then>
             <f:else>
-                <v:variable.set value="{activeFacetsParams} AND {facetId}:\"{facetChoice}\"" name="activeFacetsParams" />
+                <v:variable.set value="{activeFacetsParams} AND {facetDetail.config.field}:\"{facetChoice}\"" name="activeFacetsParams" />
             </f:else>
         </f:if>
     </f:for>
