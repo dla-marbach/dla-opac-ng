@@ -13,9 +13,13 @@ $prefix = $_GET['p'];
 
 $activeFacets = $_GET['activeFacets'];
 
+if ($activeFacets) {
+    $query = $query . ' AND ' . $activeFacets;
+}
+
 // Get relations
 $responseRelations = file_get_contents(
-    $solr_select_url.'?facet.field=facet_names_relations&facet.mincount=1&facet=on&facet.prefix='.urlencode($prefix).'&q='.urlencode($query . ' AND ' . $activeFacets).'&rows=0',
+    $solr_select_url.'?facet.field=facet_names_relations&facet.mincount=1&facet=on&facet.prefix='.urlencode($prefix).'&q='.urlencode($query).'&rows=0',
     FALSE,
     stream_context_create([
         'method' => 'GET',
@@ -25,7 +29,7 @@ $responseRelations = file_get_contents(
 );
 
 $responseRoles = file_get_contents(
-    $solr_select_url.'?facet.field=facet_names_roles&facet=on&facet.mincount=1&facet.prefix='.urlencode($prefix).'&q='.urlencode($query . ' AND ' . $activeFacets).'&rows=0',
+    $solr_select_url.'?facet.field=facet_names_roles&facet=on&facet.mincount=1&facet.prefix='.urlencode($prefix).'&q='.urlencode($query).'&rows=0',
     FALSE,
     stream_context_create([
         'method' => 'GET',
