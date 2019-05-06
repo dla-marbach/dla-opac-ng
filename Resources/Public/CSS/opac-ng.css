@@ -142,3 +142,19 @@ ul.token-input-list {
     color: white;
     text-decoration: none;
 }
+
+.decisiontree-person {
+    margin: 0.5rem;
+}
+
+ul.rolerelation li {
+    margin-left: 1rem;
+}
+
+.rolerelation hr {
+    border-width: 2px 0 0;
+}
+
+a.activeFacet {
+    font-weight: bold;
+}

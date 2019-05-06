@@ -1,0 +1,180 @@
+{namespace s=Subugoe\Find\ViewHelpers}
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+<f:comment>
+    Renders the facet as a list.
+    If there are more than displayDefault list items, additional ones are hidden
+    with a JavaScript link to show them.
+
+    Each list item is created by the Facets/Facet/List/Item partial.
+    A potentially configured autocomplete popup is created by the
+    Facets/Facet/List/Autocomplete partial.
+</f:comment>
+
+<f:comment>
+    Get all active facets for ajax request
+</f:comment>
+<f:for each="{config.activeFacets}" as="facets" key="facetId" iteration="iterator">
+    <f:for each="{facets}" as="facetDetail" key="facetChoice" iteration="detailIterator">
+
+        <f:if condition="{iterator.isFirst}">
+            <f:then>
+                <v:variable.set value="{facetId}:\"{facetChoice}\"" name="activeFacetsParams" />
+            </f:then>
+            <f:else>
+                <v:variable.set value="{activeFacetsParams} AND {facetId}:\"{facetChoice}\"" name="activeFacetsParams" />
+            </f:else>
+        </f:if>
+    </f:for>
+</f:for>
+
+
+<f:if condition="{facetInfo.autocomplete}">
+    <f:if condition="{f:count(subject:facetData.values)} > {facetInfo.displayDefault}">
+        <f:render partial="Facets/Facet/List/Autocomplete" arguments="{_all}"/>
+    </f:if>
+</f:if>
+<ul class="facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}" style="{f:if(condition:facetInfo.collapse, then:'display:none;')}">
+    <f:for each="{facetData.values}" as="itemCount" key="facetTerm" iteration="iterator">
+        <f:alias map="{
+      facetTermDisplay:'{f:if(
+        condition:facetInfo.sortPrefixSeparator,
+        then:\"{s:format.regexp(
+                 string:facetTerm,
+                 match:\'/^.*?{facetInfo.sortPrefixSeparator}/\',
+        replace:\'\'
+        )}\",
+        else:facetTerm
+        )}'
+        }">
+
+        <li class='index-{iterator.cycle} count-{itemCount}
+  <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}">
+    <f:then>facetActive</f:then>
+  </f:if>
+  <f:if condition="{facetInfo.displayDefault}">
+    <f:then>
+      <f:if condition="{iterator.cycle} > {facetInfo.displayDefault}">
+        <f:then>hidden</f:then>
+      </f:if>
+    </f:then>
+    <f:else>
+      <f:if condition="{iterator.cycle} > {settings.facetDefaults.displayDefault}">
+        <f:then>hidden</f:then>
+      </f:if>
+    </f:else>
+  </f:if>'
+            value="{facetTerm}"
+            label="{f:translate(key:'LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTerm}', default:facetTerm)}"
+            count="{itemCount}">
+            <f:if condition="{itemCount} == 0">
+                <f:then></f:then>
+                <f:else>
+                    <f:if condition="{facetTerm} == ''">
+                        <f:then>
+                            <v:variable.set value="{facetInfo.labelmissing}" name="facetTerm" />
+                            <v:variable.set value="{facetInfo.labelmissing}" name="facetTermDisplay" />
+                        </f:then>
+                    </f:if>
+
+                    <f:for each="{config.activeFacets}" as="activeFacets" key="activeFacetKey" iteration="activeFacetIterator">
+                        <v:variable.set name="activeFacetParams" value="{activeFacets}" />
+                    </f:for>
+
+                    <div class="decisiontree-person">
+                    <a class="decisiontree" href="#test" data-url="index.php?eID=decisiontree&q={config.queryString}&p={facetTerm}&activeFacets={activeFacetsParams}">
+                        {facetTerm}
+                    </a>
+                    </div>
+
+                </f:else>
+            </f:if>
+        </li>
+
+
+        </f:alias>
+    </f:for>
+    <f:if condition="{f:count(subject:facetData.values)} > {facetInfo.displayDefault}">
+        <li class="facetShowAll">
+            <a href="#" class="dla-toggle-facets dla-toggle-facets-collapsed" data-translate-show-all="<f:translate key='show all' extensionName='dla_opac_ng'/>" data-translate-show-less="<f:translate key='show less' extensionName='dla_opac_ng'/>">
+                <f:translate key="show all"/>
+            </a>
+        </li>
+    </f:if>
+
+    <script>
+        $( document ).ready(function() {
+            $('.decisiontree').click(function() {
+                var currentElement = $(this);
+                if (currentElement.parent("div").children('ul.rolerelation').length == 0) {
+                    $.ajax({
+                        url: $(this).data("url"),
+                        dataType: "json",
+                    }).done(function(data) {
+                        currentElement.parent("div").append('<ul class="rolerelation"></ul>');
+                        var listElement = currentElement.parent("div").children(".rolerelation");
+                        $(data).each(function(a) {
+                            var persons = $(this);
+                            persons.each(function (index) {
+                                if (index%2 == 0) {
+                                    if (typeof data !== "undefined") {
+                                        output = this.split('␝');
+
+                                        var active = false;
+
+                                        var url = new URL(window.location.href);
+                                        var location = window.location;
+                                        var linkUrl = location.origin + location.pathname + location.search;
+
+                                        if (a == 0) {
+                                            var c = url.searchParams.get("tx_find_find[facet][facet_names_relations]["+this+"]");
+
+                                            if (c != 1) {
+                                                // relations
+                                                var addParameter = "&tx_find_find%5Bfacet%5D%5Bfacet_names_relations%5D%5B" + encodeURI(this) + "%5D=1";
+
+                                                linkUrl = linkUrl + addParameter;
+                                            } else {
+                                                url.searchParams.delete("tx_find_find[facet][facet_names_relations]["+this+"]");
+                                                active = true;
+                                            }
+
+
+                                        } else if (a == 1){
+                                            var c = url.searchParams.get("tx_find_find[facet][facet_names_roles]["+this+"]");
+
+                                            if (c != 1) {
+                                                // roles
+                                                var addParameter = "&tx_find_find%5Bfacet%5D%5Bfacet_names_roles%5D%5B" + encodeURI(this) + "%5D=1";
+
+                                                linkUrl = linkUrl + addParameter;
+                                            } else {
+
+                                                url.searchParams.delete("tx_find_find[facet][facet_names_roles]["+this+"]");
+                                                active = true;
+                                            }
+
+                                            if (index == 0) {
+                                                listElement.append('<hr>');
+                                            }
+                                        }
+
+                                        if (active) {
+                                            listElement.append('<li><a href="' + url + '" data-completefacet="' + this + '" class="activeFacet">' + output[1] + '<em>(' + persons[index+1] + ')</em></a></li>');
+                                        } else {
+                                            listElement.append('<li><a href="' + linkUrl + '" data-completefacet="' + this + '">' + output[1] + '<em>(' + persons[index+1] + ')</em></a></li>');
+                                        }
+
+                                    }
+                                } else {
+
+                                }
+                            });
+                        });
+                    });
+                } else {
+                    $(this).siblings('.rolerelation').toggle();
+                }
+            });
+        });
+    </script>
+</ul>

@@ -614,6 +614,30 @@ plugin.tx_find {
                 query = icon_facet:("%s")
             }
 
+            88 {
+                id = Personen
+                label = Personen & Köperschaften
+                type = Decisiontree
+                field = facet_names
+                query = facet_names:("%s")
+            }
+
+            89 {
+                id = facet_names_roles
+                type = List
+                field = facet_names_roles
+                query = facet_names_roles:("%s")
+                hidden = 1
+            }
+
+            90 {
+                id = facet_names_relations
+                type = List
+                field = facet_names_relations
+                query = facet_names_relations:("%s")
+                hidden = 1
+            }
+
             # Facette zur Selektion der beiden relevantesten Normdatentreffern zum aktuellen Trefferset
             99 {
                 id = entities
