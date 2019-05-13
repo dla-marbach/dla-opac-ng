@@ -927,10 +927,9 @@
         3:'Zugang',
         4:'CD-ROM aufrufen'
         }" name="bemurlValues"/>
+        
 
-        <f:comment><dla:data.valueForKeyFiltered key="AURL" filterKey="BEMURL" negateFilter="true" filterValues="{bemurlValues}" fields="{document.fields}" as="AURL" />
-            <dla:data.valueForKeyFiltered key="BEMURL" filterKey="BEMURL" negateFilter="false" filterValues="{bemurlValues}" fields="{document.fields}" as="BEMURL" /></f:comment>
-
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AURL')}" name="AURL" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BEMURL')}" name="BEMURL" />
 
         <dla:data.joinFieldArrays
@@ -950,6 +949,8 @@
                         <f:translate key='Digitales Objekt' extensionName='dla_opac_ng'/>
                     </div>
                     <div class="ctg-dtvt-content">
+
+                        <f:debug>{XX_MM_MOTITL_INDKEY}</f:debug>
 
                         <dla:data.joinFields
                                 fieldNames="{0:'XX_MM_MOTITL_INDKEY'}"
