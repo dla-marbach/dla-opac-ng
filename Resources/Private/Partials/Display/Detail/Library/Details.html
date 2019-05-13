@@ -1480,6 +1480,7 @@
 
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0711')}" name="A0711>" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'FREIND')}" name="FREIND" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'FREITX')}" name="FREITX" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AURL')}" name="AURL" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BEMURL')}" name="BEMURL" />
@@ -1520,6 +1521,10 @@
                             <f:link.action action="index" arguments="{detailpage}" class="internal" noCacheHash="1">
                                 {REGTIT_SYNKEY_BIBLIOGRAPHIE.{iterator.index}}<br/>
                             </f:link.action>
+                        </f:for>
+
+                        <f:for each="{FREITX}" as="freitx" iteration="iterator">
+                            {FREIND.{iterator.index}} : {freitx} <br />
                         </f:for>
 
                         <f:comment>
