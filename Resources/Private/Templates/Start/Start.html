@@ -7,9 +7,9 @@
         class="searchForm {f:if(condition:config.extendedSearch, then:'search-extended', else:'search-simple')}"
         pluginName="find"
         pageUid="{settings.indexPageUid}"
-        controller="Search">
-
-
+        controller="Search"
+        addQueryString="TRUE"
+        argumentsToBeExcludedFromQueryString="{1:'id]'}">
 
     <figure class="ctg-header ctg-header-home">
         <section class="ctg-hd-meta">
@@ -42,12 +42,11 @@
                         <f:alias map="{gedrucktes:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Gedrucktes\", mode:\"add\", activeFacets:config.activeFacets)}'}">
                             <f:link.action
                                 id="gesamtbestand"
-                                pageUid="{settings.indexPageUid}"
                                 section="{settings.jumpToID}"
                                 addQueryString="TRUE"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
                                 noCacheHash="1"
-                                class="{f:if(condition:'{config.activeFacets.Medientypen}',then:'',else:'ctg-hd-active')}">
+                                class="{f:if(condition:'{config.activeFacets.Medientypen}',then:'',else:'ctg-hd-active')} gesamt">
                                 <span class="icon bel-mkombo06"></span><f:translate key='Gesamtbestand' extensionName='dla_opac_ng'/>
                             </f:link.action>
                         </f:alias>
@@ -56,13 +55,12 @@
                         <f:alias map="{gedrucktes:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Gedrucktes\", mode:\"add\", activeFacets:config.activeFacets)}'}">
                             <f:link.action
                                     id="gedrucktes"
-                                    pageUid="{settings.indexPageUid}"
                                     additionalParams="{tx_find_find: gedrucktes}"
                                     section="{settings.jumpToID}"
                                     addQueryString="TRUE"
                                     argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
                                     noCacheHash="1"
-                                    class="{f:if(condition:'{config.activeFacets.Medientypen.Gedrucktes}',then:'ctg-hd-active',else:'')}">
+                                    class="{f:if(condition:'{config.activeFacets.Medientypen.Gedrucktes}',then:'ctg-hd-active',else:'')} gedrucktes">
                                 <span class="icon bel-mag"></span><f:translate key='Gedrucktes' extensionName='dla_opac_ng'/>
                             </f:link.action>
                         </f:alias>
@@ -71,13 +69,12 @@
                         <f:alias map="{handschriften:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Handschriften\", mode:\"add\", activeFacets:config.activeFacets)}'}">
                             <f:link.action
                                 id="handschriften"
-                                pageUid="{settings.indexPageUid}"
                                 additionalParams="{tx_find_find: handschriften}"
                                 section="{settings.jumpToID}"
                                 addQueryString="TRUE"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
                                 noCacheHash="1"
-                                class="{f:if(condition:'{config.activeFacets.Medientypen.Handschriften}',then:'ctg-hd-active',else:'')}">
+                                class="{f:if(condition:'{config.activeFacets.Medientypen.Handschriften}',then:'ctg-hd-active',else:'')} handschriften">
                                 <span class="icon bel-schreiben"></span><f:translate key='Handschriften' extensionName='dla_opac_ng'/>
                             </f:link.action>
                         </f:alias>
@@ -86,13 +83,12 @@
                         <f:alias map="{picsandobjects:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Bilder und Objekte\", mode:\"add\", activeFacets:config.activeFacets)}'}">
                             <f:link.action
                                 id="picsandobjects"
-                                pageUid="{settings.indexPageUid}"
                                 additionalParams="{tx_find_find: picsandobjects}"
                                 section="{settings.jumpToID}"
                                 addQueryString="TRUE"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
                                 noCacheHash="1"
-                                class="{f:if(condition:'{s:data.valueForKey(array:config.activeFacets.Medientypen, key:\"Bilder und Objekte\")}',then:'ctg-hd-active',else:'')}">
+                                class="{f:if(condition:'{s:data.valueForKey(array:config.activeFacets.Medientypen, key:\"Bilder und Objekte\")}',then:'ctg-hd-active',else:'')} bilder">
                                 <span class="icon bel-foto"></span><f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/>
                             </f:link.action>
                         </f:alias>
@@ -100,15 +96,16 @@
                     <li>
                         <f:alias map="{audio:'{s:find.facetLinkArguments(facetID:\"MedientypenHidden\", facetTerm:\"Audio\", mode:\"add\", activeFacets:config.activeFacets)}',
                         video:'{s:find.facetLinkArguments(facetID:\"MedientypenHidden\", facetTerm:\"Video\", mode:\"add\", activeFacets:config.activeFacets)}'}">
+
+                        <dla:arrayMerge array1="{audio}" array2="{video}" as="newArray" />
                         <f:link.action
                                 id="audio"
-                                arguments="{audio}"
-                                additionalParams="{tx_find_find: video}"
+                                additionalParams="{tx_find_find: newArray}"
                                 section="{settings.jumpToID}"
                                 addQueryString="TRUE"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
                                 noCacheHash="1"
-                                class="{f:if(condition:'{s:data.valueForKey(array:config.activeFacets.Medientypen, key:\"Audio\")}',then:'ctg-hd-active',else:'')}">
+                                class="{f:if(condition:'{s:data.valueForKey(array:config.activeFacets.Medientypen, key:\"Audio\")}',then:'ctg-hd-active',else:'')} audio">
                         <span class="icon bel-ton"></span><f:translate key='Audio & Video' extensionName='dla_opac_ng'/>
                         </f:link.action>
                         </f:alias>
@@ -122,13 +119,12 @@
                         <dla:arrayMerge array1="{newArray}" array2="{sort: 'entity_score desc'}" as="newArray" />
                         <f:link.action
                                 id="normdaten"
-                                pageUid="{settings.indexPageUid}"
                                 additionalParams="{tx_find_find: newArray}"
                                 section="{settings.jumpToID}"
                                 addQueryString="TRUE"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
                                 noCacheHash="1"
-                                class="{f:if(condition:'{config.activeFacets.Medientypen.Normdaten}',then:'ctg-hd-active',else:'')}">
+                                class="{f:if(condition:'{config.activeFacets.Medientypen.Normdaten}',then:'ctg-hd-active',else:'')} namen">
                             <span class="icon bel-idkarte"></span><f:translate key='Namen und Werke' extensionName='dla_opac_ng'/>
                         </f:link.action>
                         </f:alias>
@@ -154,6 +150,29 @@
                 </div>
             </form>
         </section>
+
+        <script>
+            $( document ).ready(function() {
+                var url = new URL(window.location.href);
+
+                $('.gesamt').removeClass("ctg-hd-active");
+
+                if (url.searchParams.get("tx_find_find[facet][Medientypen][Gedrucktes]")) {
+                    $('.gedrucktes').addClass("ctg-hd-active");
+                } else if (url.searchParams.get("tx_find_find[facet][Medientypen][Handschriften]")) {
+                    $('.handschriften').addClass("ctg-hd-active");
+                } else if (url.searchParams.get("tx_find_find[facet][Medientypen][Bilder und Objekte]")) {
+                    $('.bilder').addClass("ctg-hd-active");
+                } else if (url.searchParams.get("tx_find_find[facet][MedientypenHidden][Video]")) {
+                    $('.audio').addClass("ctg-hd-active");
+                } else if (url.searchParams.get("tx_find_find[facet][DatenbestandHidden][Werke]")) {
+                    $('.namen').addClass("ctg-hd-active");
+                } else {
+                    $('.gesamt').addClass("ctg-hd-active");
+                }
+
+            });
+        </script>
 
         <section class="ctg-hd-addon">
             <ul>
