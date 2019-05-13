@@ -497,19 +497,23 @@ plugin.tx_find {
             }
 
             25 {
-                id = Ort
-                field = facet_location
-                query = facet_location:("%s")
+                id = Zeit
+                label = Zeit
+                type = Histogramslider
+                field = facet_time
+                facettype = date_range
+                start = NOW/YEAR-35YEARS
+                end = NOW
+                gap = +1YEAR
+                displayDateFormat = Y
                 collapse = 1
-                # Shows a facet value which includes all "not known" items
-                showmissing = 1
-                labelmissing = nicht bestimmt
             }
 
             30 {
-                id = Thema
-                field = facet_subject
-                query = facet_subject:("%s")
+                id = PersonenKöperschaften
+                label = Personen & Körperschaften
+                field = facet_names
+                query = facet_names:("%s")
                 collapse = 1
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
@@ -517,9 +521,9 @@ plugin.tx_find {
             }
 
             35 {
-                id = Sprache
-                field = facet_language
-                query = facet_language:("%s")
+                id = Thema
+                field = facet_subject
+                query = facet_subject:("%s")
                 collapse = 1
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
@@ -533,6 +537,7 @@ plugin.tx_find {
                 field = filter_new
                 #query = filter_new:%s
                 showmissing = 1
+
                 #start = NOW/YEAR-35YEARS
                 #end = NOW
                 #gap = +1YEAR
@@ -541,6 +546,26 @@ plugin.tx_find {
             }
 
             45 {
+                id = Sprache
+                field = facet_language
+                query = facet_language:("%s")
+                collapse = 1
+                # Shows a facet value which includes all "not known" items
+                showmissing = 1
+                labelmissing = nicht bestimmt
+            }
+
+            50 {
+                id = Ort
+                field = facet_location
+                query = facet_location:("%s")
+                collapse = 1
+                # Shows a facet value which includes all "not known" items
+                showmissing = 1
+                labelmissing = nicht bestimmt
+            }
+
+            53 {
                 id = Sammlung
                 field = filter_collection
                 query = filter_collection:("%s")
@@ -550,16 +575,6 @@ plugin.tx_find {
                 labelmissing = nicht bestimmt
             }
 
-            50 {
-                id = PersonenKöperschaften
-                label = Personen & Körperschaften
-                field = facet_names
-                query = facet_names:("%s")
-                collapse = 1
-                # Shows a facet value which includes all "not known" items
-                showmissing = 1
-                labelmissing = nicht bestimmt
-            }
 
             55 {
                 id = PersonenKöperschaftenFunktionsbezeichnung
@@ -570,19 +585,6 @@ plugin.tx_find {
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
                 labelmissing = nicht bestimmt
-            }
-
-            60 {
-                id = Zeit
-                label = Zeit
-                type = Histogramslider
-                field = facet_time
-                facettype = date_range
-                start = NOW/YEAR-35YEARS
-                end = NOW
-                gap = +1YEAR
-                displayDateFormat = Y
-                collapse = 1
             }
 
             65 {
