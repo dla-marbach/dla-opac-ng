@@ -520,6 +520,17 @@ plugin.tx_find {
                 labelmissing = nicht bestimmt
             }
 
+            32 {
+                id = PersonenKöperschaftenFunktionsbezeichnung
+                label = Funktionsbezeichnung
+                field = facet_roles
+                query = facet_roles:("%s")
+                collapse = 1
+                # Shows a facet value which includes all "not known" items
+                showmissing = 1
+                labelmissing = nicht bestimmt
+            }
+
             35 {
                 id = Thema
                 field = facet_subject
@@ -569,18 +580,6 @@ plugin.tx_find {
                 id = Sammlung
                 field = filter_collection
                 query = filter_collection:("%s")
-                collapse = 1
-                # Shows a facet value which includes all "not known" items
-                showmissing = 1
-                labelmissing = nicht bestimmt
-            }
-
-
-            55 {
-                id = PersonenKöperschaftenFunktionsbezeichnung
-                label = Funktionsbezeichnung
-                field = facet_roles
-                query = facet_roles:("%s")
                 collapse = 1
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
