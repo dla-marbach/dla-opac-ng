@@ -111,4 +111,12 @@
         </f:if>
     </article>
     <!--TYPO3SEARCH_end-->
+    <script>
+        $('em.highlight').each(function() {
+            var html = $('.ctg-detailview').html();
+            var re = new RegExp($(this).text(), 'g');
+            html = html.replace(re, '<em class="highlight">' + $(this).text() + '</em>');
+            $('.ctg-detailview').html(html);
+        });
+    </script>
 </f:section>
