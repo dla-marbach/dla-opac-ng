@@ -184,27 +184,7 @@
                     </ol>
                 </f:then>
                 <f:else>
-                    <div>
-                    <div style="margin:1rem;">
-                        <b>Keine Treffer</b> bedeutet, dass die Recherche erfolglos war, aber nicht unbedingt, dass das Werk im DLA Marbach nicht vorhanden ist.
-                        <ul>
-                            <li>Vergewissern Sie sich, dass die Suchwörter richtig geschrieben sind.</li>
-                            <li>Sie können Ihre Suche erweitern, in dem Sie weniger Suchbegriffe eingeben oder Sie trunkieren (Wortanfang und „*“).</li>
-                            <li>Wenn Sie im Suchschlitz die Begriffe in Anführungszeichen setzen, stehen diese im Ergebnis in der von Ihnen gewählten Reihenfolge neben einander</li>
-                            <li>Bitte prüfen Sie, ob Filter ausgewählt sind, die Ihr Suchergebnis einschränken.</li>
-                            <li>Vielleicht befindet sich das Gesuchte in einem noch nicht vollständig katalogisierten Bestand (Nachlass, Sammlung, Verlagsarchiv, ...)? Dann sollten Sie Ihre Suche verändern und nach dem Bestand suchen. Im Bestandstreffer erhalten Sie Informationen über Inhalt und Zugang (ggfs. mit Strg+f die Seite durchsuchen).</li>
-                            <li>Sie sehen: das Thema ist anfangs komplex. Fragen Sie die Auskunft, um Recherchetipps zu bekommen oder schicken Sie uns eine E-Mail</li>
-                        </ul>
-                    </div>
-                    <div style="margin:1rem;">
-                        Bitte E-Mail hinterlegen mit: info@dla-marbach.de.
-                    </div>
-                    <div style="margin:1rem;">
-                        Vielen Dank und Grüße
-                    </div>
-                    <div style="margin:1rem;">
-                        Heike Albrecht und Karin Schmidgall
-                    </div>
+                    <f:render partial="Display/Static/NoHitMessage" arguments="{_all}"/>
                 </f:else>
             </f:if>
 
@@ -279,30 +259,7 @@
 
             <f:render partial="Facets/Facets" arguments="{_all}"/>
 
-            <section class="ctg-facet-prestige">
-                <h3><f:translate key='Sie haben das Gesuchte nicht gefunden?' extensionName='dla_opac_ng'/></h3>
-                <p><f:translate key='search_help' extensionName='dla_opac_ng'/></p>
-            </section>
-
-            <section class="ctg-facet-prestige">
-                <h3><f:translate key='Kontakt' extensionName='dla_opac_ng'/></h3>
-                <p><strong><f:translate key='Auskunftsdienst Archiv' extensionName='dla_opac_ng'/></strong><br>
-                    Telefon <a href="tel:+497144848425">+49 (0) 7144 / 848-425</a><br>
-                    <a href="mailto:auskhss@dla-marbach.de">auskhss@dla-marbach.de</a><br>
-                    Montag - Freitag, 8:30h bis 18:00h</p>
-
-                <p><strong><f:translate key='Auskunftsdienst Bibliothek' extensionName='dla_opac_ng'/></strong><br>
-                    Telefon <a href="tel:+497144848318">+49 (0) 7144 / 848-318</a><br>
-                    <a href="bibliothek@dla-marbach.de">bibliothek@dla-marbach.de</a><br>
-                    Montag - Freitag, 8:30h bis 17:30h</p>
-
-                <p><strong><f:translate key='Auskunftsdienst Bilder und Objekte' extensionName='dla_opac_ng'/></strong><br>
-                    Telefon <a href="tel:+497144848500">+49 (0) 7144 / 848-500</a><br>
-                    Telefax <a href="tel:+497144848490">+49 (0) 7144 / 848-490</a><br>
-                    <a href="bibliothek@dla-marbach.de">bilder-und-objekte@dla-marbach.de</a><br>
-                    Montag - Freitag, 8:30h bis 18:00h
-                </p>
-            </section>
+            <f:render partial="Display/Static/RightColumn" arguments="{_all}"/>
 
             <section class="ctg-facet-other">
                 <h3><f:translate key='Andere Fundorte' extensionName='dla_opac_ng'/> (?)<a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a></h3>
