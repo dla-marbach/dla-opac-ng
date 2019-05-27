@@ -245,13 +245,77 @@
                                                         class=""
                                                         title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
                                                     <span class="icon bel-ende01"></span>
-                                                    {facetTerm}
+                                                    <f:if condition="{facetTerm} == 'true'">
+                                                        <f:then>
+                                                            {facetInfo.text}
+                                                        </f:then>
+                                                        <f:else>
+                                                            {facetTerm}
+                                                        </f:else>
+                                                    </f:if>
+
                                                 </f:link.action>
                                             </li>
                                         </f:if>
                                     </f:for>
                                 </f:if>
                             </f:for>
+                            <f:if condition="{config.activeFacets.Zeit}">
+                                <f:for each="{config.activeFacets.Zeit}" as="config">
+                                    <li>
+                                        <f:link.action
+                                                addQueryString="TRUE"
+                                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet][Zeit]'}"
+                                                section="{settings.jumpToID}"
+                                                noCacheHash="1"
+                                                class=""
+                                                title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
+                                            <span class="icon bel-ende01"></span>
+                                            {config.term}
+                                        </f:link.action>
+                                    </li>
+                                </f:for>
+                            </f:if>
+                            <f:if condition="{config.activeFacets.NeuImKatalog}">
+                                <f:for each="{config.activeFacets.NeuImKatalog}" as="config">
+                                    <li>
+                                        <f:link.action
+                                                addQueryString="TRUE"
+                                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet][Zeit]'}"
+                                                section="{settings.jumpToID}"
+                                                noCacheHash="1"
+                                                class=""
+                                                title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
+                                            <span class="icon bel-ende01"></span>
+                                            <f:if condition="{config.term}=='RANGE NOW-7DAYS TO NOW'">
+                                                <f:then>Woche</f:then>
+                                                <f:else>
+                                                    <f:if condition="{config.term}=='RANGE NOW-1MONTH TO NOW'">
+                                                        <f:then>Monat</f:then>
+                                                        <f:else>
+                                                            <f:if condition="{config.term}=='RANGE NOW-3MONTH TO NOW'">
+                                                                <f:then>Quartal</f:then>
+                                                                <f:else>
+                                                                    <f:if condition="{config.term}=='RANGE NOW-6MONTH TO NOW'">
+                                                                        <f:then>Halbjahr</f:then>
+                                                                        <f:else>
+                                                                            <f:if condition="{config.term}=='RANGE NOW-12MONTH TO NOW'">
+                                                                                <f:then>Jahr</f:then>
+                                                                                <f:else> - </f:else>
+                                                                            </f:if>
+                                                                        </f:else>
+                                                                    </f:if>
+                                                                </f:else>
+                                                            </f:if>
+                                                        </f:else>
+                                                    </f:if>
+                                                </f:else>
+                                            </f:if>
+
+                                        </f:link.action>
+                                    </li>
+                                </f:for>
+                            </f:if>
                         </ul>
                     </div>
                 </section>
