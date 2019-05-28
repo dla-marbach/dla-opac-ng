@@ -617,7 +617,7 @@ plugin.tx_find {
 
             88 {
                 id = Personen
-                label = Personen & Köperschaften
+                label = Personen & Körperschaften
                 type = Decisiontree
                 field = facet_names
                 query = facet_names:("%s")
