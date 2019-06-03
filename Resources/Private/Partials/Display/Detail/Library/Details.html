@@ -1328,6 +1328,32 @@
         </f:if>
 
 
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_relation_title')}" name="detail_relation_title" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_relation_ids')}" name="detail_relation_ids" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_relation_type')}" name="detail_relation_type" />
+
+        <f:if condition="{detail_relation_type}">
+            <f:then>
+                <f:for each="{detail_relation_type}" as="fieldName" iteration="fieldIterator">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            {fieldName}
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <div>
+                                <f:link.action action="detail" arguments="{id: '{detail_relation_ids.{fieldIterator.index}}'}" class="internal">
+                                    {detail_relation_title.{fieldIterator.index}}
+                                </f:link.action>
+                            </div>
+                        </div>
+                    </div>
+                </f:for>
+            </f:then>
+        </f:if>
+
+
+
         <f:comment>
             Für die Feldbenennung:
             AKYTXT
