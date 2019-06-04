@@ -82,7 +82,7 @@
 
                     <div class="decisiontree-person">
                     <a class="decisiontree" href="#test" data-url="index.php?eID=decisiontree&q={config.queryString}&p={facetTerm}␝&activeFacets={activeFacetsParams}">
-                        {facetTerm}
+                        {facetTerm} <em>({itemCount})</em>
                     </a>
                     </div>
 
@@ -159,9 +159,9 @@
                                         }
 
                                         if (active) {
-                                            listElement.append('<li><a href="' + url + '" data-completefacet="' + this + '" class="activeFacet">' + output[1] + '<em>(' + persons[index+1] + ')</em></a></li>');
+                                            listElement.append('<li><a href="' + url + '" data-completefacet="' + this + '" class="activeFacet"><span class="icon bel-ok01"></span>' + output[1] + '<em>(' + persons[index+1] + ')</em></a></li>');
                                         } else {
-                                            listElement.append('<li><a href="' + linkUrl + '" data-completefacet="' + this + '">' + output[1] + '<em>(' + persons[index+1] + ')</em></a></li>');
+                                            listElement.append('<li><a href="' + linkUrl + '" data-completefacet="' + this + '"><span class="icon bel-kreis01"></span>' + output[1] + '<em>(' + persons[index+1] + ')</em></a></li>');
                                         }
 
                                     }

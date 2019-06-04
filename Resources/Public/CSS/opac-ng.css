@@ -144,7 +144,11 @@ ul.token-input-list {
 }
 
 .decisiontree-person {
-    margin: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+ul.rolerelation {
+    margin-bottom: 1rem !important;
 }
 
 ul.rolerelation li {
