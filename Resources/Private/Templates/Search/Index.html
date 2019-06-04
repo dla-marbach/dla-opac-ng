@@ -1,5 +1,6 @@
 {namespace s=Subugoe\Find\ViewHelpers}
 {namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
 <f:layout name="Default"/>
 <f:comment>
     Template for a the search results view.
@@ -250,7 +251,7 @@
                                                             {facetInfo.text}
                                                         </f:then>
                                                         <f:else>
-                                                            {facetTerm}
+                                                            <v:format.replace substring="␝" content="{facetTerm}" replacement=" als " />
                                                         </f:else>
                                                     </f:if>
 
