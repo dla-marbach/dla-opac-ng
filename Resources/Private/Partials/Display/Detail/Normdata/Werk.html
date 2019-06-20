@@ -76,236 +76,457 @@
 </div>
 
 <f:comment>
-<div class="ctg-detailview-media">
-    <img src="Start%20-%20DLA%20Marbach-Dateien/platzhalter-bild.jpg" alt="">
-</div>
+    <div class="ctg-detailview-media">
+        <img src="Start%20-%20DLA%20Marbach-Dateien/platzhalter-bild.jpg" alt="">
+    </div>
 </f:comment>
 
 <div class="ctg-detailview-tabs">
-    <ul class="ctg-dtvt-menu">
-        <li><a href="" class="ctg-dtvt-menu-active"><span><f:translate key='Details' extensionName='dla_opac_ng'/></span></a></li><li><a href=""><span><f:translate key='Zugang' extensionName='dla_opac_ng'/> (?)</span></a></li><li><a href=""><span>Platzhalter 1</span></a></li><li><a href=""><span>Platzhalter 2</span></a></li>
-    </ul>
+
 
     <div class="ctg-dtvt-details">
 
+        <input type="checkbox" class="ctg-hackbox ctg-readmore" id="ctg-readmore-now">
+        <label class="ctg-readmore ctg-button ctg-button-textnicon" for="ctg-readmore-now">weitere Details</label>
+        <span class="ctg-readmore-content">
 
-<dt class="dt-{field}">
-    <f:translate key='Icon' extensionName='dla_opac_ng'/>
-</dt>
-<dd class="dd-{field}">
-    <i class="fa fa-stack-1x fa-address-card" title="Normdaten"></i>
-</dd>
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key='Medienart' extensionName='dla_opac_ng'/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                        document:document,
+                        results:results,
+                        field:'listview_type',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                      }"/>
+                </div>
+            </div>
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-    <f:translate key='Typ' extensionName='dla_opac_ng'/>
-</div>
-<div class="ctg-dtvt-content">
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'ENTTYP',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    </div>
-</div>
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key='Titel des Werkes' extensionName='dla_opac_ng'/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                        document:document,
+                        results:results,
+                        field:'A0331',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                      }"/>
+                </div>
+            </div>
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-    <f:translate key='Titel des Werkes' extensionName='dla_opac_ng'/>
-</div>
-<div class="ctg-dtvt-content">
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'TITREG',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    </div>
-</div>
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_urheber')}" name="detail_urheber" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_urheber_ids')}" name="detail_urheber_ids" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-        <f:translate key='Urheber' extensionName='dla_opac_ng'/>
-</div>
-<div class="ctg-dtvt-content">
-    </div>
-</div>
+            <f:if condition="{detail_urheber}">
+                <f:then>
+                    <div class="ctg-dtvt-row">
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-        <f:translate key='Beteiligt' extensionName='dla_opac_ng'/>
-</div>
-<div class="ctg-dtvt-content">
-    </div>
-</div>
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Urheber' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-        <f:translate key='Weitere Titel' extensionName='dla_opac_ng'/>
-</div>
-<div class="ctg-dtvt-content">
-    <dla:data.valueForKeyFiltered key="ATIT" filterKey="AMTIT" filterValues="{0:'303n'}" mustMatch="false" fields="{document.fields}" as="ATIT" />
-    <f:if condition="{ATIT}">
-        <f:then>
-            <f:for each="{ATIT}" as="item" iteration="iterator">
-                {item} <br />
-            </f:for>
-        </f:then>
-    </f:if>
-    </div>
-</div>
+                            <f:for each="{detail_urheber}" as="item" iteration="iterator">
+                                <f:link.action action="detail" arguments="{id: '{detail_urheber_ids.{iterator.index}}'}">
+                                    {item}
+                                </f:link.action>
+                                <br/>
+                            </f:for>
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-    <f:translate key='Form des Werks' extensionName='dla_opac_ng'/>
-</div>
-<div class="ctg-dtvt-content">
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'A0712',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    </div>
-</div>
+                        </div>
+                    </div>
+                </f:then>
+            </f:if>
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-    <f:translate key='Zeit' extensionName='dla_opac_ng'/>
-</div>
-<div class="ctg-dtvt-content">
-    </div>
-</div>
+            <f:comment>Beteiligt</f:comment>
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-        <f:translate key='Sprache' extensionName='dla_opac_ng'/>
-</div>
-<div class="ctg-dtvt-content">
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'POS122',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    </div>
-</div>
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_beteiligt')}" name="detail_beteiligt" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_beteiligt_ids')}" name="detail_beteiligt_ids" />
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-        <f:translate key='Quelle' extensionName='dla_opac_ng'/>
-</div>
-<div class="ctg-dtvt-content">
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'A0801',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'BEMURL',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'AURL',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    </div>
-</div>
+            <f:if condition="{detail_beteiligt}">
+                <f:then>
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Beteiligt' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:for each="{detail_beteiligt}" as="item" iteration="iterator">
+                                <f:link.action action="detail" arguments="{id: '{detail_beteiligt_ids.{iterator.index}}'}">
+                                    {item}
+                                </f:link.action>
+                                <br/>
+                            </f:for>
+                        </div>
+                    </div>
+                </f:then>
+            </f:if>
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-        <f:translate key='Erläuterung' extensionName='dla_opac_ng'/>
-</div>
-<div class="ctg-dtvt-content">
-    <dla:data.valueForKeyFiltered key="A0659" filterKey="AI659" filterValues="{0:'678'}" mustMatch="false" fields="{document.fields}" as="A0659" />
-    <f:if condition="{A0659}">
-        <f:then>
-            <f:for each="{A0659}" as="item" iteration="iterator">
-                {item} <br />
-            </f:for>
-        </f:then>
-    </f:if>
-    </div>
-</div>
+            <dla:data.valueForKeyFiltered key="ATIT" filterKey="AMTIT" filterValues="{0:'303n'}" mustMatch="false" fields="{document.fields}" as="ATIT" />
+            <f:if condition="{ATIT}">
+                <f:then>
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Weitere Titel' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-    <f:if condition="{document.fields.AV710.0}">
-        <f:then>
-            {document.fields.AV710.0}
-        </f:then>
-        <f:else>
-            Kein Wert für [AV710]
-        </f:else>
-    </f:if>
-</div>
-<div class="ctg-dtvt-content">
-    <f:render
-            partial="Display/Field/List"
-            arguments="{
-                document:document,
-                results:results,
-                field:'A0710',
-                linkFieldContent:linkFieldContent,
-                linkFacets:linkFacets
-              }"/>
-    </div>
-</div>
+                            <f:for each="{ATIT}" as="item" iteration="iterator">
+                                {item} <br />
+                            </f:for>
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-    <f:translate key='Dieses Werk in' extensionName='dla_opac_ng'/>
-</div>
-<div class="ctg-dtvt-content">
-    </div>
-</div>
+                        </div>
+                    </div>
+                </f:then>
+            </f:if>
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-    <f:translate key='Übersetzungen dieses Werks' extensionName='dla_opac_ng'/>
-</div>
-<div class="ctg-dtvt-content">
-    </div>
-</div>
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key='Form des Werks' extensionName='dla_opac_ng'/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                    document:document,
+                    results:results,
+                    field:'A0712',
+                    linkFieldContent:linkFieldContent,
+                    linkFacets:linkFacets
+                  }"/>
+                </div>
+            </div>
 
-<div class="ctg-dtvt-row">
-    <div class="ctg-dtvt-label">
-    <f:translate key='Über dieses Werk' extensionName='dla_opac_ng'/>
-</div>
-<div class="ctg-dtvt-content">
-    </div>
-</div>
 
-<div>
 
-</div>
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AI412')}" name="AI412" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0425')}" name="A0425" />
+
+            <f:if condition="{AI412} || {A0425}">
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Zeit' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        <f:for each="{AI412}" as="value" iteration="iterator">
+                            {value}:{A0425}
+                        </f:for>
+                    </div>
+                </div>
+            </f:if>
+
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS122')}" name="POS122" />
+            <f:if condition="{POS122}">
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Sprache' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                        document:document,
+                        results:results,
+                        field:'POS122',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                      }"/>
+                    </div>
+                </div>
+            </f:if>
+
+
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0801')}" name="A0801" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AI801')}" name="AI801" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BEMURL')}" name="BEMURL" />
+            <f:if condition="{A0801} || {BEMURL}">
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Quelle' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        <f:for each="{A0801}" as="item" iteration="iterator">
+                            {item} ({AI801.{iterator.index}}) <br/>
+                        </f:for>
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                        document:document,
+                        results:results,
+                        field:'BEMURL',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                      }"/>
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                        document:document,
+                        results:results,
+                        field:'AURL',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                      }"/>
+                    </div>
+                </div>
+            </f:if>
+
+
+            <dla:data.valueForKeyFiltered key="A0659" filterKey="AI659" filterValues="{0:'678'}" mustMatch="false" fields="{document.fields}" as="A0659" />
+            <f:if condition="{A0659}">
+                <f:then>
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Erläuterung' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+
+                            <f:for each="{A0659}" as="item" iteration="iterator">
+                                {item} <br />
+                            </f:for>
+                        </div>
+                    </div>
+                    </f:then>
+            </f:if>
+        </span>
+
+        <div class="ctg-detailview-teaser">
+            <section>
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="box_title" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
+
+                <article>
+                    <i><strong>von</strong> {box_title} ...</i>
+                    <ul class="list-links">
+
+
+                        <s:data.newArray
+                                name="query"
+                                global="1"
+                                keys="{0:'detail_werke_in_gedrucktes'}"
+                                values="{0:'{A0001}'}"
+                        />
+                        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                        <dla:countFromSolr query="{solvedQuery}" />
+
+                        <li>
+                            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                                Gedrucktes ({solrcount})
+                            </f:link.action>
+                        </li>
+
+
+                        <s:data.newArray
+                                name="query"
+                                global="1"
+                                keys="{0:'detail_werke_in_handschriften'}"
+                                values="{0:'{A0001}'}"
+                        />
+                        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                        <dla:countFromSolr query="{solvedQuery}" />
+
+                        <li>
+                            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                                Handschriften ({solrcount})
+                            </f:link.action>
+                        </li>
+
+
+                        <s:data.newArray
+                                name="query"
+                                global="1"
+                                keys="{0:'detail_werke_in_aundv'}"
+                                values="{0:'{A0001}'}"
+                        />
+                        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                        <dla:countFromSolr query="{solvedQuery}" />
+
+                        <li>
+                            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                                Audio und Video ({solrcount})
+                            </f:link.action>
+                        </li>
+
+
+
+                    </ul>
+                </article>
+
+                <article>
+                    <i><strong>Übersetzung</strong> {box_title} ...</i>
+                    <ul class="list-links">
+
+                        <s:data.newArray
+                                name="query"
+                                global="1"
+                                keys="{0:'detail_werke_translation_gedrucktes'}"
+                                values="{0:'{A0001}'}"
+                        />
+                        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                        <dla:countFromSolr query="{solvedQuery}" />
+
+                        <li>
+                            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                                Gedrucktes ({solrcount})
+                            </f:link.action>
+                        </li>
+
+
+                        <s:data.newArray
+                                name="query"
+                                global="1"
+                                keys="{0:'detail_werke_translation_handschriften'}"
+                                values="{0:'{A0001}'}"
+                        />
+                        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                        <dla:countFromSolr query="{solvedQuery}" />
+
+                        <li>
+                            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                                Handschriften ({solrcount})
+                            </f:link.action>
+                        </li>
+
+
+                        <s:data.newArray
+                                name="query"
+                                global="1"
+                                keys="{0:'detail_werke_translation_aundv'}"
+                                values="{0:'{A0001}'}"
+                        />
+                        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                        <dla:countFromSolr query="{solvedQuery}" />
+
+                        <li>
+                            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                                Audio und Video ({solrcount})
+                            </f:link.action>
+                        </li>
+                    </ul>
+                </article>
+
+                <article>
+                    <i><strong>über</strong> {box_title} ...</i>
+                    <ul class="list-links">
+                        <s:data.newArray
+                                name="query"
+                                global="1"
+                                keys="{0:'detail_werke_ueber_gedrucktes'}"
+                                values="{0:'{A0001}'}"
+                        />
+                        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                        <dla:countFromSolr query="{solvedQuery}" />
+
+                        <li>
+                            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                                Gedrucktes ({solrcount})
+                            </f:link.action>
+                        </li>
+
+
+                        <s:data.newArray
+                                name="query"
+                                global="1"
+                                keys="{0:'detail_werke_ueber_handschriften'}"
+                                values="{0:'{A0001}'}"
+                        />
+                        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                        <dla:countFromSolr query="{solvedQuery}" />
+
+                        <li>
+                            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                                Handschriften ({solrcount})
+                            </f:link.action>
+                        </li>
+
+
+                        <s:data.newArray
+                                name="query"
+                                global="1"
+                                keys="{0:'detail_werke_ueber_bundo'}"
+                                values="{0:'{A0001}'}"
+                        />
+                        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                        <dla:countFromSolr query="{solvedQuery}" />
+
+                        <li>
+                            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                                Bilder und Objekte ({solrcount})
+                            </f:link.action>
+                        </li>
+
+
+                        <s:data.newArray
+                                name="query"
+                                global="1"
+                                keys="{0:'detail_werke_ueber_aundv'}"
+                                values="{0:'{A0001}'}"
+                        />
+                        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                        <dla:countFromSolr query="{solvedQuery}" />
+
+                        <li>
+                            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                                Audio und Video ({solrcount})
+                            </f:link.action>
+                        </li>
+
+                    </ul>
+                </article>
+
+                <article>
+                    <i>mögliche weitere Treffer</i>
+                    <ul class="list-links">
+                        <li><a href="">Gedrucktes</a></li>
+                        <li><a href="">Handschriften</a></li>
+                        <li><a href="">Bilder und Objekte</a></li>
+                        <li><a href="">Audio und Video</a></li>
+                    </ul>
+                </article>
+
+                <article class="ctg-detail-showall">
+                    <span class="icon bel-frage"></span> Nicht die richtige Kategorie dabei?
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_werke_all'}"
+                            values="{0:'{A0001}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <f:link.action action="index" arguments="{q:query}" noCacheHash="1" class="ctg-button ctg-button-textnicon" title="alles zu diesem Werk">
+                        alles zu diesem Werk ({solrcount})
+                    </f:link.action>
+
+                </article>
+
+                <!--
+                <article>
+                    <i><strong>andere Fundorte</strong></i>
+                    <ul class="list-links">
+                        <li><a title=""><span class="icon bel-link03"></span></a> <a title="">Wikipedia "Friedrich Stiller"</a></li>
+                        <li><a title=""><span class="icon bel-link03"></span></a> <a title="">Wikipedia "Stiller"</a></li>
+                        <li><a title=""><span class="icon bel-link03"></span></a> <a title="">Webarchive "Stiller, Friedrich"</a></li>
+                    </ul>
+                </article>
+                -->
+            </section>
+
+        </div>
 
     </div>
 </div>

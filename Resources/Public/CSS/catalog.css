@@ -793,7 +793,7 @@ catalog detailview
 
 .ctg-dtvt-label {
     display: table-cell;
-    width: 40%;
+    width: 30%;
     font-weight: bold;
     padding: 0.5rem 0;
     box-sizing: border-box;
@@ -817,10 +817,20 @@ catalog detailview
 }
 
 .ctg-detailview-teaser section {
-    margin: 0 0 0 1rem;
+    margin: 1rem 1rem 0 1rem;
+    display: -ms-grid;
     display: grid;
-    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    -ms-flex-align: stretch;
 }
+
+/*.ctg-detailview-teaser section {*/
+/*    margin: 0 0 0 1rem;*/
+/*    display: grid;*/
+/*    grid-template-columns: 33.33% 33.33% 33.33%;*/
+/*}*/
 
 .ctg-detailview-teaser article {
     background: #fff;
@@ -830,8 +840,17 @@ catalog detailview
 }
 
 .ctg-detailview-teaser article ul {
-    margin: 0;
+    margin: 1rem 0 0 0;
     padding: 0;
+}
+
+/*.ctg-detailview-teaser article ul {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+
+.ctg-detailview-teaser article li .icon {
+    padding-right: 2rem !important;
 }
 
 .ctg-detailview-teaser i {
@@ -856,6 +875,50 @@ article.ctg-detail-showall span.icon {
     float: left;
 }
 
+
+
+/*----------------------------------------------------------------------
+catalog detailview – checkbox-hack
+----------------------------------------------------------------------*/
+
+input.ctg-hackbox {
+    display: none;
+}
+
+span.ctg-readmore-content {
+    display: none;
+}
+
+label.ctg-readmore {
+    color: #000;
+    vertical-align: middle;
+}
+
+label.ctg-readmore:hover {
+    color: #b61f24;
+}
+
+label.ctg-readmore::before {
+    font-family: 'belugino' !important;
+    content: "\e92a";
+    font-size: 2rem;
+    line-height: 1rem;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+input.ctg-readmore:checked ~ span.ctg-readmore-content {
+    display: block;
+    margin: 1rem 0;
+}
+
+input.ctg-readmore:checked ~ label.ctg-readmore::before {
+    content: "\e92b";
+}
+
+.ctg-detail-normdata .ctg-dtvt-row {
+    border-bottom: 1px dotted #000;
+}
 
 
 /*----------------------------------------------------------------------
@@ -936,6 +999,10 @@ max 1000px
 
     .ctg-image-teaser-rc {
         min-height: 600px;
+    }
+
+    .ctg-detailview-teaser section {
+        grid-template-columns: 1fr;
     }
 }
 

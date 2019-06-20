@@ -35,13 +35,26 @@
             </f:then>
             <f:else>
                 <div class="row ctg-follow-content">
-                    <section class="small-9 column ctg-content-column ctg-detailview">
 
-                        <f:if condition="{results.documents.0.fields.listview_type.0} == 'Normdaten'">
-                            <f:then>
-                                <f:render partial="Display/Detail/Normdata/Person" arguments="{results:results, document:document}" />
-                            </f:then>
-                            <f:else>
+                    <f:if condition="{results.documents.0.fields.listview_type.0} == 'Normdaten'">
+                        <f:then>
+                            <section class="small-9 column ctg-content-column ctg-detailview ctg-detail-normdata">
+                                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'facet_source')}" name="facet_source" />
+                                <f:switch expression="{facet_source}">
+                                    <f:case value="Personen">
+                                        <f:render partial="Display/Detail/Normdata/Person" arguments="{results:results, document:document}" />
+                                    </f:case>
+                                    <f:case value="Werke">
+                                        <f:render partial="Display/Detail/Normdata/Werk" arguments="{results:results, document:document}" />
+                                    </f:case>
+                                    <f:case value="Körperschaften">
+                                        <f:render partial="Display/Detail/Normdata/Corporation" arguments="{results:results, document:document}" />
+                                    </f:case>
+                                </f:switch>
+                            </section>
+                        </f:then>
+                        <f:else>
+                            <section class="small-9 column ctg-content-column ctg-detailview">
                                 <f:switch expression="{document.fields.source}">
                                     <f:case value="BI">
                                         <f:render partial="Display/Detail/ImagesAndObjects/Details" arguments="{results:results, document:document}" />
@@ -61,9 +74,10 @@
                                         </f:for>
                                     </f:defaultCase>
                                 </f:switch>
-                            </f:else>
-                        </f:if>
-                    </section>
+                            </section>
+                        </f:else>
+                    </f:if>
+
                     <aside class="small-3 column ctg-facet-colum">
                         <f:if condition="{results.documents.0.fields.listview_type.0} == 'Normdaten'">
                             <f:then>
@@ -114,7 +128,7 @@
     <script>
         $('em.highlight').each(function() {
             var html = $('.ctg-detailview').html();
-            var re = new RegExp($(this).text(), 'g');
+            var re = new RegExp($(this).text()+'+(?![^<]*>)', 'gm');
             html = html.replace(re, '<em class="highlight">' + $(this).text() + '</em>');
             $('.ctg-detailview').html(html);
         });

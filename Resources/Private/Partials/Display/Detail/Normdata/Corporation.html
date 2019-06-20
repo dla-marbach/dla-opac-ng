@@ -3,7 +3,7 @@
 {namespace dla=Dla\DlaOpacNg\ViewHelpers}
 {namespace s=Subugoe\Find\ViewHelpers}
 
-<div class="ctg-detailview-head">
+<div class="ctg-detailview-head" xmlns:f="http://www.w3.org/1999/html">
     <div class="ctg-dvh-main">
         <div class="ctg-ri-icon">
             <f:render partial="Display/Detail/MediatypeIcon" arguments="{listview_type:document.listview_type, listview_type_cardinality:document.listview_type_cardinality}" />
@@ -61,6 +61,7 @@
                 </f:if>
             </p>
         </div>
+
         <div class="ctg-ri-image">
 
         </div>
@@ -76,8 +77,8 @@
                     </div>
                     <div class="ctg-dtvt-content">
                         <f:render
-                            partial="Display/Field/List"
-                            arguments="{
+                                partial="Display/Field/List"
+                                arguments="{
                                 document:document,
                                 results:results,
                                 field:'listview_type',
@@ -87,287 +88,234 @@
                     </div>
                 </div>
 
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0800')}" name="K0800" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KTYP')}" name="KTYP" />
+
                 <div class="ctg-dtvt-row">
                     <div class="ctg-dtvt-label">
-                        <f:translate key='Person' extensionName='dla_opac_ng'/>
+                        {KTYP.0}
                     </div>
                     <div class="ctg-dtvt-content">
                         <f:render
-                            partial="Display/Field/List"
-                            arguments="{
+                                partial="Display/Field/List"
+                                arguments="{
                                 document:document,
                                 results:results,
-                                field:'P0800',
+                                field:'K0800',
                                 linkFieldContent:linkFieldContent,
                                 linkFacets:linkFacets
                         }"/>
                     </div>
                 </div>
 
-
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0830')}" name="P0830" />
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PI830')}" name="PI830" />
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Andere Namen' extensionName='dla_opac_ng'/>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_K0800_KANSHS')}" name="XX_KS_K0800_KANSHS" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KANSHS')}" name="KANSHS" />
+                <f:if condition="{XX_KS_K0800_KANSHS}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            Siehe auch
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:for each="{XX_KS_K0800_KANSHS}" as="item" iteration="iterator">
+                                <f:link.action action="detail" arguments="{id:'KS{KANSHS.{iterator.index}}'}">
+                                    {item}
+                                </f:link.action>
+                                <br />
+                            </f:for>
+                        </div>
                     </div>
-                    <div class="ctg-dtvt-content">
-                        <f:if condition="{P0830} || {PI830}">
-                            <f:then>
-                                <dla:data.joinFields
-                                        fieldNames="{0:'P0830',1:'PI830'}"
-                                        fieldWraps="{0:'%s',1:', (%s)'}"
-                                        fields="{document.fields}"
-                                        as="linkTexts"
-                                />
+                </f:if>
 
-                                <f:render
-                                        partial="Display/Field/List"
-                                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'P0830',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets,
-                        linkTexts:linkTexts
-                      }"/>
-                            </f:then>
-                            <f:else>
-                                -
-                            </f:else>
-                        </f:if>
-                    </div>
-                </div>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0810')}" name="K0810" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KI810')}" name="KI810" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0811')}" name="K0811" />
 
                 <div class="ctg-dtvt-row">
                     <div class="ctg-dtvt-label">
-                        <f:translate key='Geschlecht' extensionName='dla_opac_ng'/>
+                        Andere Namen
                     </div>
                     <div class="ctg-dtvt-content">
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                    document:document,
-                    results:results,
-                    field:'P00651',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
+                        <f:for each="{K0810}" as="item" iteration="iterator">
+                            {item}
+                            <f:if condition="{KI810.{iterator.index}}">
+                                {KI810.{iterator.index}}
+                            </f:if>
+                            <f:if condition="{K0811.{iterator.index}}">
+                                {K0811.{iterator.index}}
+                            </f:if>
+                            <br />
+                        </f:for>
                     </div>
                 </div>
 
 
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Lebensdaten' extensionName='dla_opac_ng'/>
-                    </div>
-                    <div class="ctg-dtvt-content">
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                    document:document,
-                    results:results,
-                    field:'PA8141',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-                        -
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                    document:document,
-                    results:results,
-                    field:'PA8142',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-                    </div>
-                </div>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_K0800_KA850')}" name="XX_KS_K0800_KA850" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KA850')}" name="KA850" />
 
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Wirkungsdaten' extensionName='dla_opac_ng'/>
+                <f:if condition="{XX_KS_K0800_KA850}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            Vorgänger
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:for each="{XX_KS_K0800_KA850}" as="item" iteration="iterator">
+                                <f:link.action action="detail" arguments="{id:'KS{KA850.{iterator.index}}'}">
+                                    {item}
+                                </f:link.action>
+                                <br />
+                            </f:for>
+                        </div>
                     </div>
-                    <div class="ctg-dtvt-content">
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                    document:document,
-                    results:results,
-                    field:'PB814A',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-                        -
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                    document:document,
-                    results:results,
-                    field:'PB814B',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
+                </f:if>
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_K0800_KC850')}" name="XX_KS_K0800_KC850" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KC850')}" name="KC850" />
+
+                <f:if condition="{XX_KS_K0800_KC850}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            Nachfolger
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:for each="{XX_KS_K0800_KC850}" as="item" iteration="iterator">
+                                <f:link.action action="detail" arguments="{id:'KS{KC850.{iterator.index}}'}">
+                                    {item}
+                                </f:link.action>
+                                <br />
+                            </f:for>
+                        </div>
                     </div>
-                </div>
+                </f:if>
 
 
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Land' extensionName='dla_opac_ng'/>
-                    </div>
-                    <div class="ctg-dtvt-content">
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                    document:document,
-                    results:results,
-                    field:'PA037',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-                    </div>
-                </div>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_relation_type')}" name="detail_relation_type" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_relation_title')}" name="detail_relation_title" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_relation_ids')}" name="detail_relation_ids" />
 
+                <f:if condition="{detail_relation_type}">
 
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Normsatz' extensionName='dla_opac_ng'/> (Baustelle)
-                    </div>
-                    <div class="ctg-dtvt-content">
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                    document:document,
-                    results:results,
-                    field:'AI710',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-                    </div>
-                </div>
-
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0801')}" name="P0801" />
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PI801')}" name="PI801" />
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Quelle' extensionName='dla_opac_ng'/>
-                    </div>
-                    <div class="ctg-dtvt-content">
-                        <f:if condition="{P0801} || {PI801}">
-                            <f:then>
-                                <dla:data.joinFields
-                                        fieldNames="{0:'P0801',1:'PI801'}"
-                                        fieldWraps="{0:'%s',1:', (%s)'}"
-                                        fields="{document.fields}"
-                                        as="linkTexts"
-                                />
-
-                                <f:render
-                                        partial="Display/Field/List"
-                                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'P0801',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets,
-                        linkTexts:linkTexts
-                      }"/>
-                            </f:then>
-                            <f:else>
-                                -
-                            </f:else>
-                        </f:if>
-                    </div>
-                </div>
-
-
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PEURL')}" name="PEURL" />
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PEURLB')}" name="PEURLB" />
-                <f:if condition="{PEURL}">
-                    <f:then>
+                    <f:for each="{detail_relation_type}" as="item" iteration="iterator">
                         <div class="ctg-dtvt-row">
                             <div class="ctg-dtvt-label">
-
+                                {item}
                             </div>
                             <div class="ctg-dtvt-content">
-                                <dla:data.joinFields
-                                        fieldNames="{0:'PEURL',1:'PEURLB'}"
-                                        fieldWraps="{0:'%s',1:', (%s)'}"
-                                        fields="{document.fields}"
-                                        as="linkTexts"
-                                />
-                                <f:render
-                                        partial="Display/Field/List"
-                                        arguments="{
-                            document:document,
-                            results:results,
-                            field:'PEURL',
-                            linkFieldContent:linkFieldContent,
-                            linkFacets:linkFacets,
-                            linkTexts:linkTexts
-                          }"/>
+                                <f:link.action action="detail" arguments="{id:'{detail_relation_ids.{iterator.index}}'}">
+                                    {detail_relation_title.{iterator.index}}
+                                </f:link.action>
+                            </div>
+                        </div>
+                    </f:for>
+                </f:if>
 
-                                (
-                                <f:render
-                                        partial="Display/Field/List"
-                                        arguments="{
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KA805')}" name="KA805" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KB805')}" name="KB805" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KW805A')}" name="KW805A" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KW805B')}" name="KW805B" />
+
+                <f:if condition="{KA805} || {KB805} || {KW805A} || {KW805B}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Zeit' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:if condition="{KA805}">
+                                Gründung: {KA805}
+                            </f:if>
+                            <f:if condition="{KA805} && {KB805}">
+                                <br/>
+                            </f:if>
+                            <f:if condition="{KB805}">
+                                Auflösung: {KB805}
+                            </f:if>
+                            <f:if condition="{KW805A}">
+                                <f:if condition="{KA805} || {KB805}">
+                                    <br />
+                                </f:if>
+                                Wirkungszeit: {KW805A} - {KW805B}
+                            </f:if>
+
+                        </div>
+                    </div>
+                </f:if>
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0036')}" name="K0036" />
+                <f:if condition="{K0036}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            Land
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
+                                    document:document,
+                                    results:results,
+                                    field:'K0036',
+                                    linkFieldContent:linkFieldContent,
+                                    linkFacets:linkFacets
+                            }"/>
+                        </div>
+                    </div>
+                </f:if>
+
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0801')}" name="K0801" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KI801')}" name="KI801" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KSURL')}" name="KSURL" />
+                <f:if condition="{K0801} || {KSURL}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Quelle' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:for each="{K0801}" as="item" iteration="iterator">
+                                {item} ({KI801.{iterator.index}}) <br/>
+                            </f:for>
+
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
                             document:document,
                             results:results,
-                            field:'PEURLB',
+                            field:'KSURL',
                             linkFieldContent:linkFieldContent,
                             linkFacets:linkFacets
                           }"/>
-                                )
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
+                            document:document,
+                            results:results,
+                            field:'KSURLB',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+                        </div>
+                    </div>
+                </f:if>
+
+
+                <dla:data.valueForKeyFiltered key="K0808" filterKey="KI808" filterValues="{0:'Biografische, historische und andere Angaben'}" mustMatch="false" fields="{document.fields}" as="K0808" />
+                <f:if condition="{K0808}">
+                    <f:then>
+                        <div class="ctg-dtvt-row">
+                            <div class="ctg-dtvt-label">
+                                <f:translate key='Erläuterung' extensionName='dla_opac_ng'/>
+                            </div>
+                            <div class="ctg-dtvt-content">
+
+                                <f:for each="{K0808}" as="item" iteration="iterator">
+                                    {item} <br />
+                                </f:for>
                             </div>
                         </div>
-                    </f:then>
+                        </f:then>
                 </f:if>
 
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PIU814')}" name="PIU814" />
-                <f:comment>PI808.0 because this field is an array</f:comment>
-                <f:if condition="{PIU814.0} == 'Biografische Angaben'">
-                    <div class="ctg-dtvt-row">
-                        <div class="ctg-dtvt-label">
-                            <f:translate key='Erläuterung' extensionName='dla_opac_ng'/>
-                        </div>
-                        <div class="ctg-dtvt-content">
-                            <f:render
-                                    partial="Display/Field/List"
-                                    arguments="{
-                    document:document,
-                    results:results,
-                    field:'PU814',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-                        </div>
-                    </div>
-                </f:if>
 
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PI808')}" name="PI808" />
-                <f:comment>PI808.0 because this field is an array</f:comment>
-                <f:if condition="{PI808.0} == 'Geschichte des Werks'">
-                    <div class="ctg-dtvt-row">
-                        <div class="ctg-dtvt-label">
-                            <f:translate key='Erläuterung' extensionName='dla_opac_ng'/>
-                        </div>
-                        <div class="ctg-dtvt-content">
-                            <f:render
-                                    partial="Display/Field/List"
-                                    arguments="{
-                    document:document,
-                    results:results,
-                    field:'P0808',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-                        </div>
-                    </div>
-                </f:if>
-
-            </div>
-        </span>
+            </span>
+        </div>
     </div>
 
     <ul class="ctg-dvh-aside">
@@ -376,84 +324,22 @@
     </ul>
 </div>
 
-<div class="ctg-detailview-teaser">
-
-    <f:comment>
-    <section class="ctg-facet">
-        <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
-            Ähnliche Themen
-        </h3>
-        <ul>
-            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'SYNKEY')}" name="SYNKEY" />
-            <v:variable.set value="" name="SYNKEY_query" />
-            <f:for each="{SYNKEY}" as="synkey" key="key" iteration="iterator">
-                <f:if condition="{iterator.isFirst}">
-                    <f:then>
-                        <v:variable.set value="{synkey}" name="SYNKEY_query" />
-                    </f:then>
-                    <f:else>
-                        <v:variable.set value="{SYNKEY_query} OR {synkey}" name="SYNKEY_query" />
-                    </f:else>
-                </f:if>
-            </f:for>
-
-            <dla:fromSolr
-                    query="SYNKEY:({SYNKEY_query})"
-                    fields="id,listview_title,listview_type"
-                    rows="5" />
-            <f:for each="{solr}" as="solrResult">
-                <li>
-                    <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
-                        <span class="icon bel-mag"></span>
-                    </f:link.action>
-                    <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
-                        <f:format.crop maxCharacters="60" respectWordBoundaries="TRUE" respectHtml="TRUE">
-                            {solrResult.listview_title}
-                        </f:format.crop>
-                    </f:link.action>
-                </li>
-            </f:for>
-
-            <f:if condition="{f:count(subject: solr)} > 0">
-                <f:then>
-                    <f:comment><li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li></f:comment>
-                    <li>
-                        <f:link.action action="index" arguments="{q:{raw: 'SYNKEY:({SYNKEY_query})'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
-                            <span class="icon bel-lupe"></span>
-                        </f:link.action>
-                        <f:link.action action="index" arguments="{q:{raw: 'SYNKEY:({SYNKEY_query})'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
-                            Alle anzeigen
-                        </f:link.action>
-                    </li>
-                </f:then>
-                <f:else>
-                    <li>
-                        <span class="icon"></span>
-                        Keine Treffer vorhanden
-                    </li>
-                </f:else>
-            </f:if>
-        </ul>
-    </section>
-    </f:comment>
-
-
-
+<div>
     <div class="ctg-detailview-teaser">
         <section>
 
-            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0800')}" name="box_title" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0800')}" name="box_title" />
 
             <article>
                 <i><strong>von</strong> {box_title} ...</i>
                 <ul class="list-links">
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                     <s:data.newArray
                             name="query"
                             global="1"
-                            keys="{0:'detail_von_gedrucktes'}"
-                            values="{0:'{P0001}'}"
+                            keys="{0:'detail_ks_von_gedrucktes'}"
+                            values="{0:'{K0001}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -465,12 +351,12 @@
                     </li>
 
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                     <s:data.newArray
                             name="query"
                             global="1"
-                            keys="{0:'detail_von_handschriften'}"
-                            values="{0:'{P0001}'}"
+                            keys="{0:'detail_ks_von_handschriften'}"
+                            values="{0:'{K0001}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -483,12 +369,12 @@
 
 
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                     <s:data.newArray
                             name="query"
                             global="1"
-                            keys="{0:'detail_von_bundo'}"
-                            values="{0:'{P0001}'}"
+                            keys="{0:'detail_ks_von_bundo'}"
+                            values="{0:'{K0001}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -500,12 +386,12 @@
                     </li>
 
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                     <s:data.newArray
                             name="query"
                             global="1"
-                            keys="{0:'detail_von_aundv'}"
-                            values="{0:'{P0001}'}"
+                            keys="{0:'detail_ks_von_aundv'}"
+                            values="{0:'{K0001}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -525,12 +411,12 @@
                 <i><strong>an</strong> {box_title} ...</i>
                 <ul class="list-links">
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                     <s:data.newArray
                             name="query"
                             global="1"
-                            keys="{0:'detail_an_gedrucktes'}"
-                            values="{0:'{P0001}'}"
+                            keys="{0:'detail_ks_an_gedrucktes'}"
+                            values="{0:'{K0001}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -542,12 +428,12 @@
                     </li>
 
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                     <s:data.newArray
                             name="query"
                             global="1"
-                            keys="{0:'detail_an_handschriften'}"
-                            values="{0:'{P0001}'}"
+                            keys="{0:'detail_ks_an_handschriften'}"
+                            values="{0:'{K0001}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -559,12 +445,12 @@
                     </li>
 
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                     <s:data.newArray
                             name="query"
                             global="1"
-                            keys="{0:'detail_an_bundo'}"
-                            values="{0:'{P0001}'}"
+                            keys="{0:'detail_ks_an_bundo'}"
+                            values="{0:'{K0001}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -576,12 +462,12 @@
                     </li>
 
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                     <s:data.newArray
                             name="query"
                             global="1"
-                            keys="{0:'detail_an_aundv'}"
-                            values="{0:'{P0001}'}"
+                            keys="{0:'detail_ks_an_aundv'}"
+                            values="{0:'{K0001}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -597,12 +483,12 @@
             <article>
                 <i><strong>über</strong> {box_title} ...</i>
                 <ul class="list-links">
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                     <s:data.newArray
                             name="query"
                             global="1"
-                            keys="{0:'detail_ueber_gedrucktes'}"
-                            values="{0:'{P0001}'}"
+                            keys="{0:'detail_ks_ueber_gedrucktes'}"
+                            values="{0:'{K0001}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -614,12 +500,12 @@
                     </li>
 
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                     <s:data.newArray
                             name="query"
                             global="1"
-                            keys="{0:'detail_ueber_handschriften'}"
-                            values="{0:'{P0001}'}"
+                            keys="{0:'detail_ks_ueber_handschriften'}"
+                            values="{0:'{K0001}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -631,12 +517,12 @@
                     </li>
 
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                     <s:data.newArray
                             name="query"
                             global="1"
-                            keys="{0:'detail_von_bundo'}"
-                            values="{0:'{P0001}'}"
+                            keys="{0:'detail_ks_ueber_bundo'}"
+                            values="{0:'{K0001}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -648,12 +534,12 @@
                     </li>
 
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                     <s:data.newArray
                             name="query"
                             global="1"
-                            keys="{0:'detail_ueber_aundv'}"
-                            values="{0:'{P0001}'}"
+                            keys="{0:'detail_ks_ueber_aundv'}"
+                            values="{0:'{K0001}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -665,12 +551,12 @@
                     </li>
 
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                     <s:data.newArray
                             name="query"
                             global="1"
-                            keys="{0:'detail_ueber_bestaende'}"
-                            values="{0:'{P0001}'}"
+                            keys="{0:'detail_ks_ueber_bestaende'}"
+                            values="{0:'{K0001}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -688,12 +574,12 @@
                 <ul class="list-links">
                     <ul class="list-links">
 
-                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                         <s:data.newArray
                                 name="query"
                                 global="1"
-                                keys="{0:'detail_unter_bestaende'}"
-                                values="{0:'{P0001}'}"
+                                keys="{0:'detail_ks_unter_bestaende'}"
+                                values="{0:'{K0001}'}"
                         />
                         <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                         <dla:countFromSolr query="{solvedQuery}" />
@@ -704,12 +590,12 @@
                             </f:link.action>
                         </li>
 
-                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                         <s:data.newArray
                                 name="query"
                                 global="1"
-                                keys="{0:'detail_unter_bundo'}"
-                                values="{0:'{P0001}'}"
+                                keys="{0:'detail_ks_unter_bundo'}"
+                                values="{0:'{K0001}'}"
                         />
                         <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                         <dla:countFromSolr query="{solvedQuery}" />
@@ -720,12 +606,12 @@
                             </f:link.action>
                         </li>
 
-                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                         <s:data.newArray
                                 name="query"
                                 global="1"
-                                keys="{0:'detail_unter_exemplare'}"
-                                values="{0:'{P0001}'}"
+                                keys="{0:'detail_ks_unter_exemplare'}"
+                                values="{0:'{K0001}'}"
                         />
                         <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                         <dla:countFromSolr query="{solvedQuery}" />
@@ -743,6 +629,24 @@
             <article>
                 <i>mögliche weitere Treffer</i>
                 <ul class="list-links">
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_ks_weitere_gedrucktes'}"
+                            values="{0:{0:'KS00000001', 1:'Körperschaften'}}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                            Gedrucktes ({solrcount})
+                        </f:link.action>
+                    </li>
+
                     <li><a href="">Gedrucktes</a></li>
                     <li><a href="">Handschriften</a></li>
                     <li><a href="">Bilder und Objekte</a></li>
@@ -753,12 +657,12 @@
             <article class="ctg-detail-showall">
                 <span class="icon bel-frage"></span> Nicht die richtige Kategorie dabei?
 
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                 <s:data.newArray
                         name="query"
                         global="1"
-                        keys="{0:'detail_werke_all'}"
-                        values="{0:'{P0001}'}"
+                        keys="{0:'detail_ks_all'}"
+                        values="{0:'{K0001}'}"
                 />
                 <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                 <dla:countFromSolr query="{solvedQuery}" />
@@ -766,7 +670,6 @@
                 <f:link.action action="index" arguments="{q:query}" noCacheHash="1" class="ctg-button ctg-button-textnicon" title="alles zu diesem Werk">
                     alles zu diesem Werk ({solrcount})
                 </f:link.action>
-
             </article>
 
             <!--
