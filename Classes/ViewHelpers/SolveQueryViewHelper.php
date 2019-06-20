@@ -29,8 +29,15 @@ class SolveQueryViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
 
         foreach ($settings['queryFields'] as $queryField) {
             if ($array[$queryField['id']]) {
-                $resultValue = str_replace('%1$s', $array[$queryField['id']], $queryField['query']);
+                if (is_array($array[$queryField['id']])) {
+                    $resultValue = $queryField['query'];
+                    for ($i=0;$i < sizeof($array[$queryField['id']]);$i++) {
+                        $resultValue = str_replace('%' . ($i + 1) . '$s', $array[$queryField['id']][$i], $resultValue);
 
+                    }
+                } else {
+                    $resultValue = str_replace('%1$s', $array[$queryField['id']], $queryField['query']);
+                }
             }
         }
 
