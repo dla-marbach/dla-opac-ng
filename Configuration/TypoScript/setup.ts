@@ -289,6 +289,372 @@ plugin.tx_find {
                 noescape = 1
                 hidden = 1
             }
+
+            ## Personen ##
+            111 {
+                id = detail_von_gedrucktes
+                type = Text
+                query = PE0100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND NOT GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter") AND source:("AK")
+                noescape = 1
+                hidden = 1
+            }
+            112 {
+                id = detail_von_handschriften
+                type = Text
+                query = PE0100:("%1$s") AND source:("HS")
+                noescape = 1
+                hidden = 1
+            }
+            113 {
+                id = detail_von_bundo
+                type = Text
+                query = PE0100:("%1$s") AND source:("BI")
+                noescape = 1
+                hidden = 1
+            }
+            114 {
+                id = detail_von_aundv
+                type = Text
+                query = PE0100:("%1$s") AND DOKTYP:("Ton- und Bildträger") AND NOT GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
+                noescape = 1
+                hidden = 1
+            }
+            115 {
+                id = detail_an_gedrucktes
+                type = Text
+                query = PE0100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
+                noescape = 1
+                hidden = 1
+            }
+            116 {
+                id = detail_an_handschriften
+                type = Text
+                query = PEA100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
+                noescape = 1
+                hidden = 1
+            }
+            117 {
+                id = detail_an_bundo
+                type = Text
+                query = PEA100:("%1$s") AND source:("BI")
+                noescape = 1
+                hidden = 1
+            }
+            118 {
+                id = detail_an_aundv
+                type = Text
+                query = PE0100:("%1$s") AND DOKTYP:("Ton- und Bildträger") AND GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
+                noescape = 1
+                hidden = 1
+            }
+            119 {
+                id = detail_ueber_gedrucktes
+                type = Text
+                query = PEE100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger")
+                noescape = 1
+                hidden = 1
+            }
+            120 {
+                id = detail_ueber_handschriften
+                type = Text
+                query = PEE100:("%1$s") AND source:("HS")
+                noescape = 1
+                hidden = 1
+            }
+            121 {
+                id = detail_ueber_bundo
+                type = Text
+                query = PEE100:("%1$s") AND source:("BI")
+                noescape = 1
+                hidden = 1
+            }
+            122 {
+                id = detail_ueber_aundv
+                type = Text
+                query = PEE100:("%1$s") AND DOKTYP:("Ton- und Bildträger")
+                noescape = 1
+                hidden = 1
+            }
+            123 {
+                id = detail_ueber_bestaende
+                type = Text
+                query = PEE100:("%1$s") AND source:("BF")
+                noescape = 1
+                hidden = 1
+            }
+            124 {
+                id = detail_unter_bestaende
+                type = Text
+                query = PEU100:("%1$s") AND source:("BF")
+                noescape = 1
+                hidden = 1
+            }
+            125 {
+                id = detail_unter_bundo
+                type = Text
+                query = PEU100:("%1$s") AND source:("BI")
+                noescape = 1
+                hidden = 1
+            }
+            126 {
+                id = detail_unter_exemplare
+                type = Text
+                query = XX_AU_PEU00_AUKEY:("%1$s") AND source:("AK")
+                noescape = 1
+                hidden = 1
+            }
+
+            127 {
+                id = detail_all
+                type = Text
+                query = PE0100:("%1$s") OR PEA100:("%1$s") OR PEE100:("%1$s") OR PEU100:("%1$s")
+                noescape = 1
+                hidden = 1
+            }
+
+            ## Werke ##
+
+            130 {
+                id = detail_werke_in_gedrucktes
+                type = Text
+                query = (GWKEY:("%1$s") OR AKE526:("%1$s")) AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger")
+                noescape = 1
+                hidden = 1
+            }
+            131 {
+                id = detail_werke_in_handschriften
+                type = Text
+                query = GWKEY:("%1$s") AND source:("HS")
+                noescape = 1
+                hidden = 1
+            }
+            132 {
+                id = detail_werke_in_aundv
+                type = Text
+                query = (GWKEY:("%1$s") OR AKE526:("%1$s")) AND DOKTYP:("Ton- und Bildträger")
+                noescape = 1
+                hidden = 1
+            }
+
+            133 {
+                id = detail_werke_translation_gedrucktes
+                type = Text
+                query = (GWKEY:("%1$s") OR AKE526:("%1$s")) AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND fact_form_content:("Übersetzung" OR "Übersetzung, deutsch" OR "Übersetzung, fremdsprachig")
+                noescape = 1
+                hidden = 1
+            }
+            134 {
+                id = detail_werke_translation_handschriften
+                type = Text
+                query = GWKEY:("%1$s") AND source:("HS") AND fact_form_content:("Übersetzung" OR "Übersetzung, deutsch" OR "Übersetzung, fremdsprachig")
+                noescape = 1
+                hidden = 1
+            }
+            135 {
+                id = detail_werke_translation_aundv
+                type = Text
+                query = (GWKEY:("%1$s") OR AKE526:("%1$s")) AND DOKTYP:("Ton- und Bildträger") AND fact_form_content:("Übersetzung" OR "Übersetzung, deutsch" OR "Übersetzung, fremdsprachig")
+                noescape = 1
+                hidden = 1
+            }
+
+            136 {
+                id = detail_werke_ueber_gedrucktes
+                type = Text
+                query = AKEKEY:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger")
+                noescape = 1
+                hidden = 1
+            }
+            137 {
+                id = detail_werke_ueber_handschriften
+                type = Text
+                query = AKY526:("%1$s") AND source:("HS")
+                noescape = 1
+                hidden = 1
+            }
+            139 {
+                id = detail_werke_ueber_bundo
+                type = Text
+                query = AKY526:("%1$s") AND source:("BI")
+                noescape = 1
+                hidden = 1
+            }
+            140 {
+                id = detail_werke_ueber_aundv
+                type = Text
+                query = AKEKEY:("%1$s") AND DOKTYP:("Ton- und Bildträger")
+                noescape = 1
+                hidden = 1
+            }
+            ### Baustelle ###
+            141 {
+                id = detail_werke_weitere_gedrucktes
+                type = Text
+                query = (NOT GWKEY:("%1$s") OR NOT AKE526:("%1$s")) AND (A0331:("%2$s") OR  ATIT:("%2$s")) AND detail_urheber_ids:("%3$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger")
+                noescape = 1
+                hidden = 1
+            }
+            142 {
+                id = detail_werke_weitere_handschriften
+                type = Text
+                query = AKY526:("%1$s") AND source:("HS")
+                noescape = 1
+                hidden = 1
+            }
+            143 {
+                id = detail_werke_weitere_aundv
+                type = Text
+                query = AKEKEY:("%1$s") AND DOKTYP:("Ton- und Bildträger")
+                noescape = 1
+                hidden = 1
+            }
+            ### Baustelle ###
+            144 {
+                id = detail_werke_all
+                type = Text
+                query = GWKEY:("%1$s") OR AKE526:("%1$s") OR AKY526:("%1$s") OR AKEKEY:("%1$s")
+                noescape = 1
+                hidden = 1
+            }
+
+
+            ### Köperschaften ###
+
+            150 {
+                id = detail_ks_von_gedrucktes
+                type = Text
+                query = KSC200:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND NOT GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter") AND source:("AK")
+                noescape = 1
+                hidden = 1
+            }
+            151 {
+                id = detail_ks_von_handschriften
+                type = Text
+                query = KSC200:("%1$s") AND source:("HS")
+                noescape = 1
+                hidden = 1
+            }
+            152 {
+                id = detail_ks_von_bundo
+                type = Text
+                query = KSC200:("%1$s") AND source:("BI")
+                noescape = 1
+                hidden = 1
+            }
+            153 {
+                id = detail_ks_von_aundv
+                type = Text
+                query = KSC200:("%1$s") AND DOKTYP:("Ton- und Bildträger") AND NOT GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
+                noescape = 1
+                hidden = 1
+            }
+
+            154 {
+                id = detail_ks_an_gedrucktes
+                type = Text
+                query = KSC200:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
+                noescape = 1
+                hidden = 1
+            }
+            155 {
+                id = detail_ks_an_handschriften
+                type = Text
+                query = KSA200:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
+                noescape = 1
+                hidden = 1
+            }
+            156 {
+                id = detail_ks_an_bundo
+                type = Text
+                query = KSA200:("%1$s") AND source:("BI")
+                noescape = 1
+                hidden = 1
+            }
+            157 {
+                id = detail_ks_an_aundv
+                type = Text
+                query = KSC200:("%1$s") AND DOKTYP:("Ton- und Bildträger") AND GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
+                noescape = 1
+                hidden = 1
+            }
+            158 {
+                id = detail_ks_ueber_gedrucktes
+                type = Text
+                query = KSE200:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger")
+                noescape = 1
+                hidden = 1
+            }
+            159 {
+                id = detail_ks_ueber_handschriften
+                type = Text
+                query = KSE200:("%1$s") AND source:("HS")
+                noescape = 1
+                hidden = 1
+            }
+            160 {
+                id = detail_ks_ueber_bundo
+                type = Text
+                query = KSE200:("%1$s") AND source:("BI")
+                noescape = 1
+                hidden = 1
+            }
+            161 {
+                id = detail_ks_ueber_aundv
+                type = Text
+                query = KSE200:("%1$s") AND DOKTYP:("Ton- und Bildträger")
+                noescape = 1
+                hidden = 1
+            }
+            162 {
+                id = detail_ks_ueber_bestaende
+                type = Text
+                query = KSE200:("%1$s") AND source:("BF")
+                noescape = 1
+                hidden = 1
+            }
+            163 {
+                id = detail_ks_unter_bestaende
+                type = Text
+                query = KSU200:("%1$s") AND source:("BF")
+                noescape = 1
+                hidden = 1
+            }
+            164 {
+                id = detail_ks_unter_bundo
+                type = Text
+                query = KSU200:("%1$s") AND source:("BI")
+                noescape = 1
+                hidden = 1
+            }
+            165 {
+                id = detail_ks_unter_exemplare
+                type = Text
+                query = XX_AU_KSU200_AUKEY:("%1$s") AND source:("AK")
+                noescape = 1
+                hidden = 1
+            }
+
+            166 {
+                id = detail_ks_weitere_gedrucktes
+                type = Text
+                #query = NOT KSC200:("%1$s") NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_names:("%2$s")
+                query = id:("%1$s") NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_source:("%2$s")
+                noescape = 1
+                hidden = 1
+            }
+
+
+
+            170 {
+                id = detail_ks_all
+                type = Text
+                query = KSC200:("%1$s") OR KSA200:("%1$s") OR KSE200:("%1$s") OR KSU200:("%1$s")
+                noescape = 1
+                hidden = 1
+            }
+
+
+
         }
 
         # In den folgenden beiden Abschnitten wird die Behandlung von zu verlinkenden Feldern in der Detailansicht
