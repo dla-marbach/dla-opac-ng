@@ -270,7 +270,12 @@
                         </div>
                         <div class="ctg-dtvt-content">
                             <f:for each="{K0801}" as="item" iteration="iterator">
-                                {item} ({KI801.{iterator.index}}) <br/>
+                                {item}
+                                <dla:replaceNullValue text="{KI801.{iterator.index}}" as="output"/>
+                                <f:if condition="{output}">
+                                    ({output})
+                                </f:if>
+                                <br/>
                             </f:for>
 
                             <f:render
@@ -310,7 +315,7 @@
                                 </f:for>
                             </div>
                         </div>
-                        </f:then>
+                    </f:then>
                 </f:if>
 
 
@@ -636,7 +641,7 @@
                             name="query"
                             global="1"
                             keys="{0:'detail_ks_weitere_gedrucktes'}"
-                            values="{0:{0:'KS00000001', 1:'Körperschaften'}}"
+                            values="{0:{0:'{K0001}', 1:'{listview_title}'}}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -647,10 +652,60 @@
                         </f:link.action>
                     </li>
 
-                    <li><a href="">Gedrucktes</a></li>
-                    <li><a href="">Handschriften</a></li>
-                    <li><a href="">Bilder und Objekte</a></li>
-                    <li><a href="">Audio und Video</a></li>
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_ks_weitere_handschriften'}"
+                            values="{0:{0:'{K0001}', 1:'{listview_title}'}}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                            Handschriften ({solrcount})
+                        </f:link.action>
+                    </li>
+
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_ks_weitere_bundo'}"
+                            values="{0:{0:'{K0001}', 1:'{listview_title}'}}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                            Bilder und Objekte ({solrcount})
+                        </f:link.action>
+                    </li>
+
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_ks_weitere_aundv'}"
+                            values="{0:{0:'{K0001}', 1:'{listview_title}'}}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                            Audio und Video ({solrcount})
+                        </f:link.action>
+                    </li>
+
                 </ul>
             </article>
 

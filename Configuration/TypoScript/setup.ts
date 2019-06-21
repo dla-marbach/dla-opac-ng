@@ -405,6 +405,35 @@ plugin.tx_find {
             }
 
             127 {
+                id = detail_weitere_gedrucktes
+                type = Text
+                query = NOT PE0100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_names:("%2$s")
+                noescape = 1
+                hidden = 1
+            }
+            128 {
+                id = detail_weitere_handschriften
+                type = Text
+                query = NOT PE0100:("%1$s") AND NOT PEA100:("%1$s") AND facet_names:("%2$s") AND source:("HS")
+                noescape = 1
+                hidden = 1
+            }
+            129 {
+                id = detail_weitere_bundo
+                type = Text
+                query = NOT PE0100:("%1$s") AND NOT PEA100:("%1$s") AND facet_names:("%2$s") AND source:("BI")
+                noescape = 1
+                hidden = 1
+            }
+            130 {
+                id = detail_weitere_aundv
+                type = Text
+                query = NOT PE0100:("%1$s") AND facet_names:("%2$s") AND DOKTYP:("Ton- und Bildträger")
+                noescape = 1
+                hidden = 1
+            }
+
+            131 {
                 id = detail_all
                 type = Text
                 query = PE0100:("%1$s") OR PEA100:("%1$s") OR PEE100:("%1$s") OR PEU100:("%1$s")
@@ -414,21 +443,21 @@ plugin.tx_find {
 
             ## Werke ##
 
-            130 {
+            140 {
                 id = detail_werke_in_gedrucktes
                 type = Text
                 query = (GWKEY:("%1$s") OR AKE526:("%1$s")) AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger")
                 noescape = 1
                 hidden = 1
             }
-            131 {
+            141 {
                 id = detail_werke_in_handschriften
                 type = Text
                 query = GWKEY:("%1$s") AND source:("HS")
                 noescape = 1
                 hidden = 1
             }
-            132 {
+            142 {
                 id = detail_werke_in_aundv
                 type = Text
                 query = (GWKEY:("%1$s") OR AKE526:("%1$s")) AND DOKTYP:("Ton- und Bildträger")
@@ -436,21 +465,21 @@ plugin.tx_find {
                 hidden = 1
             }
 
-            133 {
+            143 {
                 id = detail_werke_translation_gedrucktes
                 type = Text
                 query = (GWKEY:("%1$s") OR AKE526:("%1$s")) AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND fact_form_content:("Übersetzung" OR "Übersetzung, deutsch" OR "Übersetzung, fremdsprachig")
                 noescape = 1
                 hidden = 1
             }
-            134 {
+            144 {
                 id = detail_werke_translation_handschriften
                 type = Text
                 query = GWKEY:("%1$s") AND source:("HS") AND fact_form_content:("Übersetzung" OR "Übersetzung, deutsch" OR "Übersetzung, fremdsprachig")
                 noescape = 1
                 hidden = 1
             }
-            135 {
+            145 {
                 id = detail_werke_translation_aundv
                 type = Text
                 query = (GWKEY:("%1$s") OR AKE526:("%1$s")) AND DOKTYP:("Ton- und Bildträger") AND fact_form_content:("Übersetzung" OR "Übersetzung, deutsch" OR "Übersetzung, fremdsprachig")
@@ -458,58 +487,56 @@ plugin.tx_find {
                 hidden = 1
             }
 
-            136 {
+            146 {
                 id = detail_werke_ueber_gedrucktes
                 type = Text
                 query = AKEKEY:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger")
                 noescape = 1
                 hidden = 1
             }
-            137 {
+            147 {
                 id = detail_werke_ueber_handschriften
                 type = Text
                 query = AKY526:("%1$s") AND source:("HS")
                 noescape = 1
                 hidden = 1
             }
-            139 {
+            149 {
                 id = detail_werke_ueber_bundo
                 type = Text
                 query = AKY526:("%1$s") AND source:("BI")
                 noescape = 1
                 hidden = 1
             }
-            140 {
+            150 {
                 id = detail_werke_ueber_aundv
                 type = Text
                 query = AKEKEY:("%1$s") AND DOKTYP:("Ton- und Bildträger")
                 noescape = 1
                 hidden = 1
             }
-            ### Baustelle ###
-            141 {
+            151 {
                 id = detail_werke_weitere_gedrucktes
                 type = Text
                 query = (NOT GWKEY:("%1$s") OR NOT AKE526:("%1$s")) AND (A0331:("%2$s") OR  ATIT:("%2$s")) AND detail_urheber_ids:("%3$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger")
                 noescape = 1
                 hidden = 1
             }
-            142 {
+            152 {
                 id = detail_werke_weitere_handschriften
                 type = Text
-                query = AKY526:("%1$s") AND source:("HS")
+                query = GWKEY:("%1$s") AND TITREG:("%2$s") AND PE0100:("%3$s") AND source:("HS")
                 noescape = 1
                 hidden = 1
             }
-            143 {
+            153 {
                 id = detail_werke_weitere_aundv
                 type = Text
-                query = AKEKEY:("%1$s") AND DOKTYP:("Ton- und Bildträger")
+                query = (NOT GWKEY:("%1$s") OR NOT AKE526:("%1$s")) AND DOKTYP:("Ton- und Bildträger") AND (A0331:("%2$s") OR ATIT:("%2$s")) AND detail_urheber_ids:("%3$s")
                 noescape = 1
                 hidden = 1
             }
-            ### Baustelle ###
-            144 {
+            154 {
                 id = detail_werke_all
                 type = Text
                 query = GWKEY:("%1$s") OR AKE526:("%1$s") OR AKY526:("%1$s") OR AKEKEY:("%1$s")
@@ -520,28 +547,28 @@ plugin.tx_find {
 
             ### Köperschaften ###
 
-            150 {
+            160 {
                 id = detail_ks_von_gedrucktes
                 type = Text
                 query = KSC200:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND NOT GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter") AND source:("AK")
                 noescape = 1
                 hidden = 1
             }
-            151 {
+            161 {
                 id = detail_ks_von_handschriften
                 type = Text
                 query = KSC200:("%1$s") AND source:("HS")
                 noescape = 1
                 hidden = 1
             }
-            152 {
+            162 {
                 id = detail_ks_von_bundo
                 type = Text
                 query = KSC200:("%1$s") AND source:("BI")
                 noescape = 1
                 hidden = 1
             }
-            153 {
+            163 {
                 id = detail_ks_von_aundv
                 type = Text
                 query = KSC200:("%1$s") AND DOKTYP:("Ton- und Bildträger") AND NOT GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
@@ -549,84 +576,84 @@ plugin.tx_find {
                 hidden = 1
             }
 
-            154 {
+            164 {
                 id = detail_ks_an_gedrucktes
                 type = Text
                 query = KSC200:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
                 noescape = 1
                 hidden = 1
             }
-            155 {
+            165 {
                 id = detail_ks_an_handschriften
                 type = Text
                 query = KSA200:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
                 noescape = 1
                 hidden = 1
             }
-            156 {
+            166 {
                 id = detail_ks_an_bundo
                 type = Text
                 query = KSA200:("%1$s") AND source:("BI")
                 noescape = 1
                 hidden = 1
             }
-            157 {
+            167 {
                 id = detail_ks_an_aundv
                 type = Text
                 query = KSC200:("%1$s") AND DOKTYP:("Ton- und Bildträger") AND GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
                 noescape = 1
                 hidden = 1
             }
-            158 {
+            168 {
                 id = detail_ks_ueber_gedrucktes
                 type = Text
                 query = KSE200:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger")
                 noescape = 1
                 hidden = 1
             }
-            159 {
+            169 {
                 id = detail_ks_ueber_handschriften
                 type = Text
                 query = KSE200:("%1$s") AND source:("HS")
                 noescape = 1
                 hidden = 1
             }
-            160 {
+            170 {
                 id = detail_ks_ueber_bundo
                 type = Text
                 query = KSE200:("%1$s") AND source:("BI")
                 noescape = 1
                 hidden = 1
             }
-            161 {
+            171 {
                 id = detail_ks_ueber_aundv
                 type = Text
                 query = KSE200:("%1$s") AND DOKTYP:("Ton- und Bildträger")
                 noescape = 1
                 hidden = 1
             }
-            162 {
+            172 {
                 id = detail_ks_ueber_bestaende
                 type = Text
                 query = KSE200:("%1$s") AND source:("BF")
                 noescape = 1
                 hidden = 1
             }
-            163 {
+            173 {
                 id = detail_ks_unter_bestaende
                 type = Text
                 query = KSU200:("%1$s") AND source:("BF")
                 noescape = 1
                 hidden = 1
             }
-            164 {
+            174 {
                 id = detail_ks_unter_bundo
                 type = Text
                 query = KSU200:("%1$s") AND source:("BI")
                 noescape = 1
                 hidden = 1
             }
-            165 {
+            175 {
                 id = detail_ks_unter_exemplare
                 type = Text
                 query = XX_AU_KSU200_AUKEY:("%1$s") AND source:("AK")
@@ -634,18 +661,38 @@ plugin.tx_find {
                 hidden = 1
             }
 
-            166 {
+            176 {
                 id = detail_ks_weitere_gedrucktes
-                type = Text
-                #query = NOT KSC200:("%1$s") NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_names:("%2$s")
-                query = id:("%1$s") NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_source:("%2$s")
+                type = Range
+                query = NOT KSC200:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_names:("%2$s")
+                noescape = 1
+                hidden = 1
+            }
+            177 {
+                id = detail_ks_weitere_handschriften
+                type = Range
+                query = NOT KSC200:("%1$s") AND NOT KSA200:("%1$s") AND facet_names:("%2$s")
+                noescape = 1
+                hidden = 1
+            }
+            178 {
+                id = detail_ks_weitere_bundo
+                type = Range
+                query = NOT KSC200:("%1$s") AND NOT KSA200:("%1$s") AND facet_names:("%2$s") AND source:("BI")
+                noescape = 1
+                hidden = 1
+            }
+            179 {
+                id = detail_ks_weitere_aundv
+                type = Range
+                query = NOT KSC200:("%1$s") AND DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_names:("%2$s")
                 noescape = 1
                 hidden = 1
             }
 
 
 
-            170 {
+            180 {
                 id = detail_ks_all
                 type = Text
                 query = KSC200:("%1$s") OR KSA200:("%1$s") OR KSE200:("%1$s") OR KSU200:("%1$s")
