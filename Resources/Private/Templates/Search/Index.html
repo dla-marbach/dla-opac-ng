@@ -251,7 +251,7 @@
                                                             {facetInfo.text}
                                                         </f:then>
                                                         <f:else>
-                                                            <v:format.replace substring="␝" content="{facetTerm}" replacement=" als " />
+                                                            <v:format.replace substring="␝" content="{facetTerm}" replacement=" | " />
                                                         </f:else>
                                                     </f:if>
 
@@ -272,7 +272,8 @@
                                                 class=""
                                                 title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
                                             <span class="icon bel-ende01"></span>
-                                            {config.term}
+                                            <dla:activeFacet text="{config.term}" as="output"/>
+                                            {output}
                                         </f:link.action>
                                     </li>
                                 </f:for>
@@ -282,7 +283,7 @@
                                     <li>
                                         <f:link.action
                                                 addQueryString="TRUE"
-                                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet][Zeit]'}"
+                                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet][NeuImKatalog]'}"
                                                 section="{settings.jumpToID}"
                                                 noCacheHash="1"
                                                 class=""
