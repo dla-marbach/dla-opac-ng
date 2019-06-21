@@ -1160,7 +1160,12 @@ class SolrServiceProvider extends AbstractServiceProvider
                 }
 
                 if ($queryPart) {
-                    $queryComponents[$fieldID] = $queryPart;
+                    if (is_array($queryParameters[$fieldID]) && empty($queryParameters[$fieldID]['term'])) {
+                        // TODO some handling
+                        $queryComponents[$fieldID] = $queryPart;
+                    } else {
+                        $queryComponents[$fieldID] = $queryPart;
+                    }
                 }
             }
         }
