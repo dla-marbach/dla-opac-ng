@@ -251,8 +251,15 @@
                                                             {facetInfo.text}
                                                         </f:then>
                                                         <f:else>
-                                                            <dla:activeFacet text="{facetTerm}" function="decisionTree" as="output"/>
-                                                           {output}
+                                                            <f:if condition="{facetInfo.id}=='facet_names_relations'">
+                                                                <f:then>
+                                                                    <dla:activeFacet text="{facetTerm}" function="decisionTree" as="output"/>
+                                                                    {output}
+                                                                </f:then>
+                                                                <f:else>
+                                                                    {facetTerm}
+                                                                </f:else>
+                                                            </f:if>
                                                         </f:else>
                                                     </f:if>
 
