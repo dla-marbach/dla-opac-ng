@@ -15,6 +15,7 @@ class ActiveFacetViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
     {
         parent::initializeArguments();
         $this->registerArgument('text', 'string', 'Text', false, null);
+        $this->registerArgument('function', 'string', 'Text', false, null);
         $this->registerArgument('as', 'string', 'name of the label result variable', true, 'string');
     }
 
@@ -23,15 +24,35 @@ class ActiveFacetViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
      */
     public function render()
     {
-        if ($this->arguments['text']) {
-            $resultValue = $this->arguments['text'];
+        $function = $this->arguments['function'];
+        $text = $this->arguments['text'];
+        if (empty($function)) {
 
-            $rangeRegex = "/RANGE.([0-9]*).TO.([0-9]*)/";
 
-            preg_match($rangeRegex, $resultValue, $matches);
+            if ($text) {
+                $resultValue = $this->arguments['text'];
 
-            if ($matches[1]) {
-                $resultValue = $matches[1] . ' bis ' . $matches[2];
+                $rangeRegex = "/RANGE.([0-9]*).TO.([0-9]*)/";
+
+                preg_match($rangeRegex, $resultValue, $matches);
+
+                if ($matches[1]) {
+                    $resultValue = $matches[1] . ' bis ' . $matches[2];
+                }
+
+            }
+        } else if ($function == "decisionTree") {
+            $delimiter = '␝';
+            $personFunctionArray = array('Über','Von','An','Unter');
+
+            $explodedTerm = explode($delimiter, $text);
+            $person = $explodedTerm[0];
+            $personFunction = $explodedTerm[1];
+
+            if(in_array($personFunction, $personFunctionArray)) {
+                $resultValue = $person . ' in Relation ' . $personFunction;
+            } else {
+                $resultValue = $person . ' in Funktion ' . $personFunction;
             }
 
         }
