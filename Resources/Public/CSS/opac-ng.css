@@ -116,6 +116,10 @@ section.active-facets a:hover {
     text-decoration: underline;
 }
 
+.ctg-catalog-title span.icon {
+    font-size: 3rem;
+}
+
 .active-facet-hr {
     margin: 0.5rem;
 }

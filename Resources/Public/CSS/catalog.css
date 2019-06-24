@@ -1013,7 +1013,11 @@ max 650px
 
 @media only screen and (max-width: 650px) {
 
-    .ctg-catalog-title {
+    .ctg-catalog-title span.kallias {
+        display: none;
+    }
+
+    .ctg-catalog-title strong {
         display: none;
     }
 
