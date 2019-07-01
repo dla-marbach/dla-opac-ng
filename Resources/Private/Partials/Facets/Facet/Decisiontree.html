@@ -81,9 +81,20 @@
                     </f:for>
 
                     <div class="decisiontree-person">
+                        <v:variable.set name="arguments" value="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}" />
                     <a class="decisiontree" href="#test" data-url="index.php?eID=decisiontree&q={config.queryString}&p={facetTerm}␝&activeFacets={activeFacetsParams}">
                         {facetTerm} <em>({itemCount})</em>
+                        <f:link.action
+                                addQueryString="TRUE"
+                                arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
+                                argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                                section="{settings.jumpToID}"
+                                noCacheHash="1"
+                                class="link-action-all" style="display:none;">
+                            Test
+                        </f:link.action>
                     </a>
+
                     </div>
 
                 </f:else>
@@ -112,6 +123,18 @@
                     }).done(function(data) {
                         currentElement.parent("div").append('<ul class="rolerelation"></ul>');
                         var listElement = currentElement.parent("div").children(".rolerelation");
+
+                        var name = currentElement.children("a.decisiontree").text();
+                        var counter = currentElement.children("em").text();
+                        var urlAll = currentElement.parent("div").children("a.link-action-all").prop("href");
+                        var url = new URL(window.location.href);
+                        if (url.searchParams.get("tx_find_find[facet][personen]["+name+"]") == 1) {
+                            listElement.append('<li><a href="' + urlAll + '" data-completefacet="' + this + '" class="activeFacet"><span class="icon bel-ok01"></span>' + 'Alle' + '<em>' + counter + '</em></a></li>');
+                        } else {
+                            listElement.append('<li><a href="' + urlAll + '" data-completefacet="' + this + '"><span class="icon bel-kreis01"></span>' + 'Alle' + '<em>' + counter + '</em></a></li>');
+                        }
+
+
                         $(data).each(function(a) {
                             var persons = $(this);
                             persons.each(function (index) {
