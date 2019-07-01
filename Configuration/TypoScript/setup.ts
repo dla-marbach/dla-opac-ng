@@ -1006,7 +1006,7 @@ plugin.tx_find {
                 id = Digital
                 field = filter_digital
                 type = Switch
-                text = digital
+                text = nur digitale Medien
                 query = filter_digital:true
                 removeHeadline = true
             }
