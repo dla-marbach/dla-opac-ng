@@ -831,6 +831,18 @@ plugin.tx_find {
 
 
 
+
+            ### Right column search ###
+            300 {
+                id = detail_ks_rightcolumn
+                type = Text
+                query = KSC200:("%1$s") source:("AK") AND DOKTYP:("Werktitel")
+                noescape = 1
+                hidden = 1
+            }
+
+
+
         }
 
         # In den folgenden beiden Abschnitten wird die Behandlung von zu verlinkenden Feldern in der Detailansicht

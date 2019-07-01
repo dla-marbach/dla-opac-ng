@@ -94,7 +94,14 @@
                     <aside class="small-3 column ctg-facet-colum">
                         <f:if condition="{results.documents.0.fields.listview_type.0} == 'Normdaten'">
                             <f:then>
-                                <f:render partial="Display/Detail/Normdata/PersonRightColumn" arguments="{results:results, document:document}" />
+                                <f:switch expression="{document.fields.source}">
+                                    <f:case value="PE">
+                                        <f:render partial="Display/Detail/Normdata/PersonRightColumn" arguments="{results:results, document:document}" />
+                                    </f:case>
+                                    <f:case value="KS">
+                                        <f:render partial="Display/Detail/Normdata/KSRightColumn" arguments="{results:results, document:document}" />
+                                    </f:case>
+                                </f:switch>
                             </f:then>
                             <f:else>
                                 <f:switch expression="{document.fields.source}">
