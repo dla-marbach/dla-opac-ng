@@ -492,11 +492,12 @@
                         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
                         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0331')}" name="A0331" />
                         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_urheber_ids')}" name="detail_urheber_ids" />
+                        <dla:data.implode array="{detail_urheber_ids}" glue=" " as="detail_urheber_ids_string"/>
                         <s:data.newArray
                                 name="query"
                                 global="1"
                                 keys="{0:'detail_werke_weitere_gedrucktes'}"
-                                values="{0:{0:'{A0001}', 1:'{A0331}',2:'{detail_urheber_ids}'}}"
+                                values="{0:{0:'{A0001}', 1:'{A0331}',2:'{detail_urheber_ids_string}'}}"
                         />
                         <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                         <dla:countFromSolr query="{solvedQuery}" />
@@ -529,11 +530,12 @@
                         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
                         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0331')}" name="A0331" />
                         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_urheber_ids')}" name="detail_urheber_ids" />
+                        <dla:data.implode array="{detail_urheber_ids}" glue=" " as="detail_urheber_ids_string"/>
                         <s:data.newArray
                                 name="query"
                                 global="1"
                                 keys="{0:'detail_werke_weitere_aundv'}"
-                                values="{0:{0:'{A0001}', 1:'{A0331}',2:'{detail_urheber_ids}'}}"
+                                values="{0:{0:'{A0001}', 1:'{A0331}',2:'{detail_urheber_ids_string}'}}"
                         />
                         <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                         <dla:countFromSolr query="{solvedQuery}" />

@@ -39,6 +39,19 @@
                     <f:if condition="{results.documents.0.fields.listview_type.0} == 'Normdaten'">
                         <f:then>
                             <section class="small-9 column ctg-content-column ctg-detailview ctg-detail-normdata">
+                                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'source')}" name="source" />
+                                <f:switch expression="{source}">
+                                    <f:case value="TH">
+                                        <f:render partial="Display/Detail/Normdata/Sachbegriffe" arguments="{results:results, document:document}" />
+                                    </f:case>
+                                    <f:case value="SY">
+                                        <f:render partial="Display/Detail/Normdata/Fachsystematik" arguments="{results:results, document:document}" />
+                                    </f:case>
+                                    <f:case value="SE">
+                                        <f:render partial="Display/Detail/Normdata/Ketten" arguments="{results:results, document:document}" />
+                                    </f:case>
+                                </f:switch>
+
                                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'facet_source')}" name="facet_source" />
                                 <f:switch expression="{facet_source}">
                                     <f:case value="Personen">
