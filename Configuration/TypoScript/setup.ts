@@ -222,7 +222,7 @@ plugin.tx_find {
                 # schaltet die Maskierung von Steuerzeichen auf den Modus 2 um.
                 # Gemeinsam mit escapechar werden dann die entsprechenden Zeichen maskiert
                 noescape = 2
-                escapechar = \,+,-,&,|,!,(,),{,},[,],^,~,?,:
+                escapechar = \,+,-,&,|,!,{,},[,],^,~,?,:
                 replaceAfterEscape {
                     entity_ids\: = entity_ids:
                 }

@@ -324,7 +324,7 @@ $.TokenList = function (input, url_or_data, settings) {
             input_box.val(value);
         }
         // get entity for tokenizer
-        var regEx = new RegExp(/entity_ids:(\w*)/g);
+        var regEx = new RegExp(/\(entity_ids:(\w*) OR entity_ids_from:\w* OR entity_ids_to:\w*\)/g);
         var valueWithoutToken = value;
         do {
             match = regEx.exec(value);
@@ -332,7 +332,7 @@ $.TokenList = function (input, url_or_data, settings) {
                 valueWithoutToken = valueWithoutToken.replace(match[0], "");
                 valueWithoutToken = valueWithoutToken.replace(",", "");
                 $.getJSON(url + match[1], function(result) {
-                    add_token({id: "entity_ids:" + result.id, term: "", normalized: result.listview_title});
+                    add_token({id: "(entity_ids:" + result.id + " OR entity_ids_from:" + result.id + " OR entity_ids_to:" + result.id + ")", term: "", normalized: result.listview_title});
                     input_box.val(valueWithoutToken);
                 });
             }

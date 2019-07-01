@@ -28,7 +28,7 @@ if ($response !== FALSE) {
     foreach($json['suggest'][$solr_suggest_dictionary][$query]['suggestions'] as $suggestion) {
         list ($id, $normalized) = explode('␝', $suggestion['payload']);
         $suggests[] = [
-            'id' => 'entity_ids:'.$id,
+            'id' => '(entity_ids:' . $id . ' OR entity_ids_from:' . $id . ' OR entity_ids_to:' . $id . ')',
             'term' => htmlspecialchars($suggestion['term']),
             'normalized' => htmlspecialchars($normalized)
         ];
