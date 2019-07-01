@@ -197,10 +197,8 @@
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'GFUKSA')}" name="GFUKSA" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KSAZU')}" name="KSAZU" />
 
-
-
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'H41410')}" name="H41410" />
-        <f:if condition="{H41410} != 'Briefwechsel' || {H41410} != 'Briefwechsel ohne Bestandsbildner'">
+        <f:if condition="{H41410} != 'Briefwechsel' && {H41410} != 'Briefwechsel ohne Bestandsbildner'">
             <f:then>
                 <f:if condition="{XX_PE_listview_title_PE0100} || {XX_KS_K0800_KSC200} || {XX_PE_listview_title_PEA100} || {XX_KS_K0800_KSA200}">
                     <f:then>
@@ -490,6 +488,7 @@
 
                         <f:if condition="{H41801}">
                             <f:then>
+                                <f:debug>{H41801}</f:debug>
                                 <dla:data.joinFields
                                         fieldNames="{0:'H41801',1:'H41800',2:'H41802',3:'H41820'}"
                                         fieldWraps="{0:'%s',1:': %s',2:'(%s)',3:'[%s]'}"
@@ -1115,133 +1114,10 @@
                     <f:translate key='Benutzung' extensionName='dla_opac_ng'/>
                 </div>
                 <div class="ctg-dtvt-content">
-
-                    <f:if condition="{AUSTAT} || {AUSTAT} != 'Am Standort'">
-                        <f:then>
-                            <f:render
-                                    partial="Display/Field/List"
-                                    arguments="{
-                                document:document,
-                                results:results,
-                                field:'AUSTAT',
-                                linkFieldContent:linkFieldContent,
-                                linkFacets:linkFacets
-                              }"/>
-                            <br />
-                        </f:then>
-                    </f:if>
-
-                    {detail_restrictions}
-
-                    <f:comment>
-
-
-                    <f:if condition="{KLASS} && ({KLASS} != 'benutzbar')}">
-                        {KLASS}<br />
-                    </f:if>
-
-                    <f:if condition="{H04030}">
-                        {H04030}<br />
-                    </f:if>
-
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'HSBFKY')}" name="HSBFKY" />
-                    <slub:data.fromSolr
-                            query="B0001:(\"{HSBFKY}\")"
-                    fields="id,KLASS"
-                    rows="10">
-                    <f:then>
-                        <f:if condition="{solr.KLASS} && {solr.KLASS} != 'benutzbar'">
-                            BF: {solr.KLASS}<br />
-                            <v:variable.set value="{solr.KLASS}" name="solrKLASS" />
-                        </f:if>
-                    </f:then>
-                    <f:else>
-                        <f:if condition="{solr.KLASS} && {solr.KLASS} != 'benutzbar'">
-                            BF: {solr.KLASS}<br />
-                            <v:variable.set value="{solr.KLASS}" name="solrKLASS" />
-                        </f:if>
-                    </f:else>
-                    </slub:data.fromSolr>
-
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PEA100')}" name="PEA100" />
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PEE100')}" name="PEE100" />
-                    <slub:data.fromSolr
-                            query="P00001:(\"{PE0100}\")"
-                    fields="id,PA8142"
-                    rows="10">
-                    <f:then>
-                        <f:if condition="{solr.PA8142}">
-                            <f:then>
-                            </f:then>
-                            <f:else>
-                                PE: Nur mit Einverständnis der beteiligten Personen ausleihbar!... <br />
-                                <v:variable.set value="Nur mit Einverständnis der beteiligten Personen ausleihbar!..." name="solrPA8142" />
-                            </f:else>
-                        </f:if>
-                    </f:then>
-                    <f:else>
-                        <f:if condition="{solr.PA8142}">
-                            <f:then>
-                            </f:then>
-                            <f:else>
-                                PE: Nur mit Einverständnis der beteiligten Personen ausleihbar!... <br />
-                                <v:variable.set value="Nur mit Einverständnis der beteiligten Personen ausleihbar!..." name="solrPA8142" />
-                            </f:else>
-                        </f:if>
-                    </f:else>
-                    </slub:data.fromSolr>
-                    <slub:data.fromSolr
-                            query="P00001:(\"{PEA100}\")"
-                    fields="id,PA8142"
-                    rows="10">
-                    <f:then>
-                        <f:if condition="{solr.PA8142}">
-                            <f:then>
-                            </f:then>
-                            <f:else>
-                                PE: Nur mit Einverständnis der beteiligten Personen ausleihbar!... <br />
-                                <v:variable.set value="Nur mit Einverständnis der beteiligten Personen ausleihbar!..." name="solrPA8142" />
-                            </f:else>
-                        </f:if>
-                    </f:then>
-                    <f:else>
-                        <f:if condition="{solr.PA8142}">
-                            <f:then>
-                            </f:then>
-                            <f:else>
-                                PE: Nur mit Einverständnis der beteiligten Personen ausleihbar!... <br />
-                                <v:variable.set value="Nur mit Einverständnis der beteiligten Personen ausleihbar!..." name="solrPA8142" />
-                            </f:else>
-                        </f:if>
-                    </f:else>
-                    </slub:data.fromSolr>
-                    <slub:data.fromSolr
-                            query="P00001:(\"{PEE100}\")"
-                    fields="id,PA8142"
-                    rows="10">
-                    <f:then>
-                        <f:if condition="{solr.PA8142}">
-                            <f:then>
-                            </f:then>
-                            <f:else>
-                                PE: Nur mit Einverständnis der beteiligten Personen ausleihbar!... <br />
-                                <v:variable.set value="Nur mit Einverständnis der beteiligten Personen ausleihbar!..." name="solrPA8142" />
-                            </f:else>
-                        </f:if>
-                    </f:then>
-                    <f:else>
-                        <f:if condition="{solr.PA8142}">
-                            <f:then>
-                            </f:then>
-                            <f:else>
-                                PE: Nur mit Einverständnis der beteiligten Personen ausleihbar!... <br />
-                                <v:variable.set value="Nur mit Einverständnis der beteiligten Personen ausleihbar!..." name="solrPA8142" />
-                            </f:else>
-                        </f:if>
-                    </f:else>
-                    </slub:data.fromSolr>
-                    </f:comment>
+                    {H04030}
+                    <br>
+                    <dla:replaceBreaks text="{detail_restrictions}" as="restriction"/>
+                    <f:format.raw>{restriction}</f:format.raw>
                 </div>
             </div>
         </f:if>
