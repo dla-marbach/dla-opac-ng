@@ -116,10 +116,6 @@ section.active-facets a:hover {
     text-decoration: underline;
 }
 
-.ctg-catalog-title span.icon {
-    font-size: 3rem;
-}
-
 .active-facet-hr {
     margin: 0.5rem;
 }
@@ -165,4 +161,24 @@ ul.rolerelation li {
 
 a.activeFacet {
     font-weight: bold;
+}
+
+@media only screen and (max-width: 2560px) {
+    .ctg-catalog-title span.icon {
+        font-size: 2rem;
+        margin-right: 10px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .ctg-catalog-title span.icon {
+        font-size: 2rem;
+        margin-right: 10px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .ctg-catalog-title span.icon {
+        font-size: 3rem;
+    }
 }
