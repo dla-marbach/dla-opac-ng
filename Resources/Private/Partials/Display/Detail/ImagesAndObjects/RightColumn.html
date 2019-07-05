@@ -22,7 +22,7 @@
         <f:for each="{solr}" as="solrResult">
             <li>
                 <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
-                    <span class="icon bel-mag"></span>
+                    <f:render partial="Display/Detail/MediatypeIcon" arguments="{listview_type:solrResult.listview_type}" />
                 </f:link.action>
                 <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
                     <f:format.crop maxCharacters="60" respectWordBoundaries="TRUE" respectHtml="TRUE">
@@ -59,27 +59,85 @@
         Ähnliche Motive
     </h3>
     <ul>
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
-        <v:variable.set value="" name="PE0100_query" />
-        <f:for each="{PE0100}" as="person" key="key" iteration="iterator">
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PEE100')}" name="PEE100" />
+        <v:variable.set value="" name="PEE100_query" />
+        <f:for each="{PEE100}" as="person" key="key" iteration="iterator">
             <f:if condition="{iterator.isFirst}">
                 <f:then>
-                    <v:variable.set value="{person}" name="PE0100_query" />
+                    <v:variable.set value="{person}" name="PEE100_query" />
                 </f:then>
                 <f:else>
-                    <v:variable.set value="{PE0100_query} OR {person}" name="PE0100_query" />
+                    <v:variable.set value="{PEE100_query} OR {person}" name="PEE100_query" />
                 </f:else>
             </f:if>
         </f:for>
 
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'THA720')}" name="THA720" />
+        <v:variable.set value="" name="THA720_query" />
+        <f:for each="{THA720}" as="person" key="key" iteration="iterator">
+            <f:if condition="{iterator.isFirst}">
+                <f:then>
+                    <v:variable.set value="{person}" name="THA720_query" />
+                </f:then>
+                <f:else>
+                    <v:variable.set value="{THA720_query} OR {person}" name="THA720_query" />
+                </f:else>
+            </f:if>
+        </f:for>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KSE200')}" name="KSE200" />
+        <v:variable.set value="" name="KSE200_query" />
+        <f:for each="{KSE200}" as="ks" key="key" iteration="iterator">
+            <f:if condition="{iterator.isFirst}">
+                <f:then>
+                    <v:variable.set value="{ks}" name="KSE200_query" />
+                </f:then>
+                <f:else>
+                    <v:variable.set value="{KSE200_query} OR {ks}" name="KSE200_query" />
+                </f:else>
+            </f:if>
+        </f:for>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AKY526')}" name="AKY526" />
+        <v:variable.set value="" name="AKY526_query" />
+        <f:for each="{AKY526}" as="aky" key="key" iteration="iterator">
+            <f:if condition="{iterator.isFirst}">
+                <f:then>
+                    <v:variable.set value="{aky}" name="AKY526_query" />
+                </f:then>
+                <f:else>
+                    <v:variable.set value="{AKY526_query} OR {aky}" name="AKY526_query" />
+                </f:else>
+            </f:if>
+        </f:for>
+
+        <v:variable.set value="(" name="query" />
+
+        <f:if condition="{PEE100_query}">
+            <v:variable.set value="{query} PEE100:({PEE100_query})" name="query" />
+        </f:if>
+
+        <f:if condition="{THA720_query}">
+            <v:variable.set value="{query} THA720:({THA720_query})" name="query" />
+        </f:if>
+
+        <f:if condition="{KSE200_query}">
+            <v:variable.set value="{query} KSE200:({KSE200_query})" name="query" />
+        </f:if>
+
+        <f:if condition="{AKY526_query}">
+            <v:variable.set value="{query} AKY526:({AKY526_query})" name="query" />
+        </f:if>
+        <v:variable.set value="{query} ) AND listview_type:(Bilder und Objekte)" name="query" />
+
         <dla:fromSolr
-                query="(PE0100:{PE0100_query} OR KSE200:{PE0100_query} OR THA720:({PE0100_query}) OR AKY526:({PE0100_query})) AND listview_type:(Bilder und Objekte)"
+                query="{query}"
                 fields="id,listview_title,listview_type"
                 rows="5" />
         <f:for each="{solr}" as="solrResult">
             <li>
                 <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
-                    <span class="icon bel-mag"></span>
+                    <f:render partial="Display/Detail/MediatypeIcon" arguments="{listview_type:solrResult.listview_type}" />
                 </f:link.action>
                 <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
                     <f:format.crop maxCharacters="60" respectWordBoundaries="TRUE" respectHtml="TRUE">
