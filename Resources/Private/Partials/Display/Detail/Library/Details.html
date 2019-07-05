@@ -1352,50 +1352,7 @@
             </f:then>
         </f:if>
 
-
-
-        <f:comment>
-            Für die Feldbenennung:
-            AKYTXT
-
-            Für den Feldinhalt
-            XX_AK_TITREG_AKY526
-
-
-            Die Datensatzverknüpfung erfolgt nur in eine Richtung, die
-            AKYTXT
-            wird nicht in beiden Sätzen belegt,
-            für die Anzeige im verknüpten Satz müssen die Werte aus
-            IND526
-            herangezogen werden,
-            dafür wurde eine Mappingtabelle. Die Lösung sollte so implementiert werden,
-            dass sie vom DLA weiter einfach weitergepflegt werden kann.
-        </f:comment>
-
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AKYTXT')}" name="AKYTXT" />
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_TITREG_AKY526')}" name="XX_AK_TITREG_AKY526" />
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0359_AKY526')}" name="XX_AK_A0359_AKY526" />
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_listview_additional1_AKY526')}" name="XX_AK_listview_additional1_AKY526" />
-
-        <f:for each="{AKYTXT}" as="labelItem" iteration="labelIterator">
-            <div class="ctg-dtvt-row">
-                <div class="ctg-dtvt-label">
-                    {labelItem}
-                </div>
-                <div class="ctg-dtvt-content">
-                    <f:render
-                            partial="Display/Field/List"
-                            arguments="{
-                document:document,
-                results:results,
-                field:'AKY526',
-                linkFieldContent:1,
-                linkFacets:linkFacets,
-                linkTexts:'{XX_AK_TITREG_AKY526.{labelIterator.index}} / {XX_AK_A0359_AKY526.{labelIterator.index}} . - {XX_AK_listview_additional1_AKY526.{labelIterator.index}}'
-              }"/>
-                </div>
-            </div>
-        </f:for>
+        
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SE_REGTIT_SYNKEY')}" name="XX_SE_REGTIT_SYNKEY" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0712')}" name="A0712" />
