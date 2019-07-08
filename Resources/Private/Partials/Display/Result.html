@@ -5,7 +5,7 @@
     It uses the standardFields configured in settings, result highlighting
     (if configured) and a link to the document’s page.
 </f:comment>
-<li class="ctg-result-item" id="c{config.uid}-result-{document.id}">
+<li class="ctg-result-item {f:if(condition:'{document.listview_type.0} == \'Normdaten\'', then:'ctg-result-normdata')}" id="c{config.uid}-result-{document.id}">
     <div class="ctg-ri-icon">
         <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_type)}">
 
