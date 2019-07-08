@@ -2,7 +2,7 @@
     <ol class="ctg-result-list">
         <f:for each="{results.components.facetset.facets.entities.values}" as="normdataValue" key="normdata">
             <dla:normdataResolver id="{normdata}" valueAs="objectData" />
-            <div class="ctg-result-item ctg-result-normdata">
+            <li class="ctg-result-item ctg-result-normdata">
                 <div class="ctg-ri-icon">
                     <span class="icon bel-idkarte"></span>
                 </div>
@@ -73,11 +73,24 @@
 
                 </div>
                 <f:if condition="{objectData.picture_midi}">
-                    <div class="ctg-ri-image">
-                        <img src="{objectData.picture_midi.0}" alt="">
-                    </div>
+                    <f:then>
+                        <div class="ctg-ri-image">
+                        </div>
+                    </f:then>
+                    <f:else>
+                        <div class="ctg-ri-image">
+                            <img src="{objectData.picture_midi.0}" alt="">
+                        </div>
+                    </f:else>
                 </f:if>
-            </div>
+                <div class="ctg-ri-actions">
+                    <ul>
+                        <li><a class="" title="merken"></a></li>
+                        <li><a class="" title="Details" data-details-toggle="1"></a></li>
+                    </ul>
+                </div>
+            </li>
         </f:for>
+
     </ol>
 </f:if>
