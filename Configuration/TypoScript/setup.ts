@@ -1064,25 +1064,12 @@ plugin.tx_find {
             }
 
             30 {
-                id = PersonenKöperschaften
+                id = Personen
                 label = Personen & Körperschaften
+                type = Decisiontree
                 field = facet_names
                 query = facet_names:("%s")
                 collapse = 1
-                # Shows a facet value which includes all "not known" items
-                showmissing = 1
-                labelmissing = nicht bestimmt
-            }
-
-            32 {
-                id = PersonenKöperschaftenFunktionsbezeichnung
-                label = Funktionsbezeichnung
-                field = facet_roles
-                query = facet_roles:("%s")
-                collapse = 1
-                # Shows a facet value which includes all "not known" items
-                showmissing = 1
-                labelmissing = nicht bestimmt
             }
 
             35 {
@@ -1167,14 +1154,6 @@ plugin.tx_find {
                 field = icon_facet
                 sortOrder = count
                 query = icon_facet:("%s")
-            }
-
-            88 {
-                id = Personen
-                label = Personen & Körperschaften
-                type = Decisiontree
-                field = facet_names
-                query = facet_names:("%s")
             }
 
             89 {
