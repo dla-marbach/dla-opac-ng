@@ -1,57 +1,60 @@
 <section class="ctg-facet">
-    <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
-        Vom selben Künstler
-    </h3>
-    <ul>
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
-        <f:for each="{PE0100}" as="person" key="fieldName" iteration="iterator">
-            <f:if condition="{iterator.isFirst}">
-                <f:then>
-                    <v:variable.set value="{person}" name="person_query" />
-                </f:then>
-                <f:else>
-                    <v:variable.set value="{person_query} OR {person}" name="person_query" />
-                </f:else>
-            </f:if>
-        </f:for>
 
-        <dla:fromSolr
-                query="(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)"
-                fields="id,listview_title,listview_type"
-                rows="5" />
-        <f:for each="{solr}" as="solrResult">
-            <li>
-                <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
-                    <f:render partial="Display/Detail/MediatypeIcon" arguments="{listview_type:solrResult.listview_type}" />
-                </f:link.action>
-                <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
-                    <f:format.crop maxCharacters="60" respectWordBoundaries="TRUE" respectHtml="TRUE">
-                        {solrResult.listview_title}
-                    </f:format.crop>
-                </f:link.action>
-            </li>
-        </f:for>
-
-        <f:if condition="{f:count(subject: solr)} > 0">
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
+    <f:for each="{PE0100}" as="person" key="fieldName" iteration="iterator">
+        <f:if condition="{iterator.isFirst}">
             <f:then>
-                <f:comment><li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li></f:comment>
-                <li>
-                    <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
-                        <span class="icon bel-lupe"></span>
-                    </f:link.action>
-                    <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
-                        Alle anzeigen
-                    </f:link.action>
-                </li>
+                <v:variable.set value="{person}" name="person_query" />
             </f:then>
             <f:else>
-                <li>
-                    <span class="icon"></span>
-                    Keine Treffer vorhanden
-                </li>
+                <v:variable.set value="{person_query} OR {person}" name="person_query" />
             </f:else>
         </f:if>
-    </ul>
+    </f:for>
+
+    <dla:fromSolr
+            query="(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)"
+            fields="id,listview_title,listview_type"
+            rows="5" />
+    <f:if condition="{f:count(subject: solr)} > 0">
+        <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
+            Vom selben Künstler
+        </h3>
+        <ul>
+            <f:for each="{solr}" as="solrResult">
+                <li>
+                    <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
+                        <f:render partial="Display/Detail/MediatypeIcon" arguments="{listview_type:solrResult.listview_type}" />
+                    </f:link.action>
+                    <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
+                        <f:format.crop maxCharacters="60" respectWordBoundaries="TRUE" respectHtml="TRUE">
+                            {solrResult.listview_title}
+                        </f:format.crop>
+                    </f:link.action>
+                </li>
+            </f:for>
+
+            <f:if condition="{f:count(subject: solr)} > 0">
+                <f:then>
+                    <f:comment><li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li></f:comment>
+                    <li>
+                        <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                            <span class="icon bel-lupe"></span>
+                        </f:link.action>
+                        <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                            Alle anzeigen
+                        </f:link.action>
+                    </li>
+                </f:then>
+                <f:else>
+                    <li>
+                        <span class="icon"></span>
+                        Keine Treffer vorhanden
+                    </li>
+                </f:else>
+            </f:if>
+        </ul>
+    </f:if>
 </section>
 
 <section class="ctg-facet">

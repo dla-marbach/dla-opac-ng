@@ -213,28 +213,29 @@
                 </div>
             </f:if>
 
-
-            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_relation_title')}" name="detail_relation_title" />
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_relation_type')}" name="detail_relation_type" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_relation_title')}" name="detail_relation_title" />
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_relation_ids')}" name="detail_relation_ids" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_relation_comment')}" name="detail_relation_comment" />
 
-            <f:for each="{detail_relation_title}" as="item" iteration="iterator">
-                <f:if condition="{detail_relation_title}">
-                    <f:then>
-                        <div class="ctg-dtvt-row">
-                            <div class="ctg-dtvt-label">
-                                {detail_relation_type.{iterator.index}}
-                            </div>
-                            <div class="ctg-dtvt-content">
-                                <f:link.action action="detail" arguments="{id: '{detail_relation_ids.{iterator.index}}'}">
-                                    {item}
-                                </f:link.action>
-                                <br/>
-                            </div>
+            <f:if condition="{detail_relation_type}">
+
+                <f:for each="{detail_relation_type}" as="item" iteration="iterator">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            {item}
                         </div>
-                    </f:then>
-                </f:if>
-            </f:for>
+                        <div class="ctg-dtvt-content">
+                            <f:link.action action="detail" arguments="{id:'{detail_relation_ids.{iterator.index}}'}">
+                                {detail_relation_title.{iterator.index}}
+                                <f:if condition="{detail_relation_comment.{iterator.index}}!='␞'">
+                                    ({detail_relation_comment.{iterator.index}})
+                                </f:if>
+                            </f:link.action>
+                        </div>
+                    </div>
+                </f:for>
+            </f:if>
 
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'T0808')}" name="T0808" />
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'TI808')}" name="TI808" />
