@@ -92,87 +92,9 @@
             <!-- begin results -->
 
             <!-- normdata -->
-            <ol class="ctg-result-list">
-                <f:for each="{results.components.facetset.facets.entities.values}" as="normdataValue" key="normdata">
-                    <dla:normdataResolver id="{normdata}" valueAs="objectData" />
-                    <div class="ctg-result-item ctg-result-normdata">
-                        <div class="ctg-ri-icon">
-                            <span class="icon bel-idkarte"></span>
-                        </div>
-                        <div class="ctg-ri-text">
-                            <h3>Relevante Namen &amp; Werke</h3>
-                            <h2>
-                                <f:link.action
-                                        action="detail"
-                                        arguments="{id:normdata}"
-                                        section="{settings.jumpToID}"
-                                        noCacheHash="1"
-                                        >
-                                    <f:format.raw>
-                                        {objectData.listview_title}
-                                    </f:format.raw>
-                                </f:link.action>
-                            </h2>
-                            <p>
-                                <f:if condition="{objectData.listview_associate}">
-                                    <f:for each="{objectData.listview_associate}" as="associate" iteration="iterator">
-                                        <f:if condition="{iterator.isFirst}">
-                                            <f:then>
-                                                <f:format.raw>
-                                                    {associate}
-                                                </f:format.raw>
-                                            </f:then>
-                                            <f:else>
-                                                , <f:format.raw>{associate}</f:format.raw>
-                                            </f:else>
-                                        </f:if>
-                                    </f:for>
-                                </f:if>
-                            </p>
 
-                            <p>
-                                <f:if condition="{objectData.listview_additional1}">
-                                    <f:for each="{objectData.listview_additional1}" as="additional1" iteration="iterator">
-                                        <f:if condition="{iterator.isFirst}">
-                                            <f:then>
-                                                <f:format.raw>
-                                                    {additional1}
-                                                </f:format.raw>
-                                            </f:then>
-                                            <f:else>
-                                                , <f:format.raw>{additional1}</f:format.raw>
-                                            </f:else>
-                                        </f:if>
-                                    </f:for>
-                                </f:if>
-                            </p>
+            <f:render partial="Display/List/FeaturedNormdata" arguments="{_all}"/>
 
-                            <p>
-                                <f:if condition="{objectData.listview_additional2}">
-                                    <f:for each="{objectData.listview_additional2}" as="additional2" iteration="iterator">
-                                        <f:if condition="{iterator.isFirst}">
-                                            <f:then>
-                                                <f:format.raw>
-                                                    {additional2}
-                                                </f:format.raw>
-                                            </f:then>
-                                            <f:else>
-                                                , <f:format.raw>{additional2}</f:format.raw>
-                                            </f:else>
-                                        </f:if>
-                                    </f:for>
-                                </f:if>
-                            </p>
-
-                        </div>
-                        <f:if condition="{objectData.picture_midi}">
-                            <div class="ctg-ri-image">
-                                <img src="{objectData.picture_midi.0}" alt="">
-                            </div>
-                        </f:if>
-                    </div>
-                </f:for>
-            </ol>
             <!-- normdata end -->
 
             <f:if condition="{results.documents -> f:count()} != 0">
