@@ -163,6 +163,11 @@ a.activeFacet {
     font-weight: bold;
 }
 
+article.detail em.highlight {
+    font-weight: inherit !important;
+    color: #333333 !important;
+}
+
 @media only screen and (max-width: 2560px) {
     .ctg-catalog-title span.icon {
         font-size: 2rem;
