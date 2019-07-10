@@ -1028,6 +1028,7 @@ plugin.tx_find {
                 type = Bar
                 sortOrder = count
                 query = icon_facet:("%s")
+                reverseFacet = 1
             }
 
             15 {
