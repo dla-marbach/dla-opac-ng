@@ -712,7 +712,7 @@ plugin.tx_find {
             191 {
                 id = detail_sb_schlagwort_bundo
                 type = Text
-                query = THA710:("%1$s") AND source:("HS")
+                query = THA710:("%1$s") AND source:("BI")
                 noescape = 1
                 hidden = 1
             }
@@ -720,7 +720,7 @@ plugin.tx_find {
             192 {
                 id = detail_sb_schlagwort_handschriften
                 type = Text
-                query = THA710:("%1$s") AND source:("BI")
+                query = THA710:("%1$s") AND source:("HS")
                 noescape = 1
                 hidden = 1
             }
