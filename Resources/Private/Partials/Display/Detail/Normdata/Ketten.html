@@ -182,7 +182,7 @@
                     <f:then>
                         <div class="ctg-dtvt-row">
                             <div class="ctg-dtvt-label">
-                                Person
+                                Schlagwort
                             </div>
                             <div class="ctg-dtvt-content">
                                 <f:link.action action="detail" arguments="{id: 'TH{THKEY.{iterator.index}}'}">
@@ -195,11 +195,32 @@
                 </f:if>
             </f:for>
 
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PEKEY')}" name="PEKEY" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_PE_listview_title_PEKEY')}" name="XX_PE_listview_title_PEKEY" />
+
+            <f:for each="{XX_PE_listview_title_PEKEY}" as="item" iteration="iterator">
+                <f:if condition="{PEKEY.{iterator.index}}">
+                    <f:then>
+                        <div class="ctg-dtvt-row">
+                            <div class="ctg-dtvt-label">
+                                Person
+                            </div>
+                            <div class="ctg-dtvt-content">
+                                <f:link.action action="detail" arguments="{id: 'PE{PEKEY.{iterator.index}}'}">
+                                    {item}
+                                </f:link.action>
+                                <br/>
+                            </div>
+                        </div>
+                    </f:then>
+                </f:if>
+            </f:for>
+
 
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KSKEY')}" name="KSKEY" />
-            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_listview_titel_KSKEY')}" name="XX_KS_listview_titel_KSKEY" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_listview_title_KSKEY')}" name="XX_KS_listview_title_KSKEY" />
 
-            <f:for each="{XX_KS_listview_titel_KSKEY}" as="item" iteration="iterator">
+            <f:for each="{XX_KS_listview_title_KSKEY}" as="item" iteration="iterator">
                 <f:if condition="{KSKEY.{iterator.index}}">
                     <f:then>
                         <div class="ctg-dtvt-row">
@@ -218,18 +239,18 @@
             </f:for>
 
 
-            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'SYKEY')}" name="SYKEY" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AUKEY')}" name="AUKEY" />
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_SY_REGTIT_AUKEY')}" name="XX_SY_REGTIT_AUKEY" />
 
             <f:for each="{XX_SY_REGTIT_AUKEY}" as="item" iteration="iterator">
-                <f:if condition="{SYKEY.{iterator.index}}">
+                <f:if condition="{AUKEY.{iterator.index}}">
                     <f:then>
                         <div class="ctg-dtvt-row">
                             <div class="ctg-dtvt-label">
                                 Autorenschema
                             </div>
                             <div class="ctg-dtvt-content">
-                                <f:link.action action="detail" arguments="{id: 'SY{SYKEY.{iterator.index}}'}">
+                                <f:link.action action="detail" arguments="{id: 'AU{AUKEY.{iterator.index}}'}">
                                     {item}
                                 </f:link.action>
                                 <br/>
