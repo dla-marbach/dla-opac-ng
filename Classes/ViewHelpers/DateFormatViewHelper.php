@@ -31,6 +31,13 @@ class DateFormatViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
 
         $date = new \DateTime();
 
+        if ($month == '00') {
+            $month = '01';
+        }
+        if ($day == '00') {
+            $day = '01';
+        }
+
         $date->setDate($year, $month, $day);
 
         $variableName = $this->arguments['as'];

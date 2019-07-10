@@ -157,77 +157,81 @@
                 </div>
 
 
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Lebensdaten' extensionName='dla_opac_ng'/>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PA8141')}" name="PA8141" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PA8142')}" name="PA8142" />
+                <f:if condition="{PA8141} || {PA8142}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Lebensdaten' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:if condition="{PA8141}">
+                                <dla:data.dateFormat
+                                        dateValue="{0: '{PA8141}'}"
+                                        as="PA8141"
+                                />
+                                <f:format.date date="{PA8141}" format="d.m.Y" />
+                            </f:if>
+                            <f:if condition="{PA8142}">
+                                -
+                                <dla:data.dateFormat
+                                        dateValue="{0: '{PA8142}'}"
+                                        as="PA8142"
+                                />
+                                <f:format.date date="{PA8142}" format="d.m.Y" />
+                            </f:if>
+                        </div>
                     </div>
-                    <div class="ctg-dtvt-content">
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                    document:document,
-                    results:results,
-                    field:'PA8141',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-                        -
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                    document:document,
-                    results:results,
-                    field:'PA8142',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-                    </div>
-                </div>
-
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Wirkungsdaten' extensionName='dla_opac_ng'/>
-                    </div>
-                    <div class="ctg-dtvt-content">
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                    document:document,
-                    results:results,
-                    field:'PB814A',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-                        -
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                    document:document,
-                    results:results,
-                    field:'PB814B',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-                    </div>
-                </div>
+                </f:if>
 
 
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Land' extensionName='dla_opac_ng'/>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PB814A')}" name="PB814A" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PB814B')}" name="PB814B" />
+                <f:if condition="{PB814A} || {PB814B}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Wirkungsdaten' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:if condition="{PB814A}">
+                                <dla:data.dateFormat
+                                    dateValue="{0: '{PB814A}'}"
+                                    as="PB814A"
+                                />
+                                <f:format.date date="{PB814A}" format="d.m.Y" />
+                            </f:if>
+                            <f:if condition="{PB814B}">
+                                -
+                                <dla:data.dateFormat
+                                        dateValue="{0: '{PB814B}'}"
+                                        as="PB814B"
+                                />
+                                <f:format.date date="{PB814B}" format="d.m.Y" />
+                            </f:if>
+                        </div>
                     </div>
-                    <div class="ctg-dtvt-content">
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                    document:document,
-                    results:results,
-                    field:'PA037',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
+                </f:if>
+
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PA037')}" name="PA037" />
+                <f:if condition="{PA037}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Land' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
+                        document:document,
+                        results:results,
+                        field:'PA037',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                      }"/>
+                        </div>
                     </div>
-                </div>
+                </f:if>
 
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_relation_type')}" name="detail_relation_type" />
@@ -257,7 +261,7 @@
 
                 <div class="ctg-dtvt-row">
                     <div class="ctg-dtvt-label">
-                        <f:translate key='Normsatz' extensionName='dla_opac_ng'/> (Baustelle)
+                        <f:translate key='Normsatz' extensionName='dla_opac_ng'/>
                     </div>
                     <div class="ctg-dtvt-content">
                         <f:render

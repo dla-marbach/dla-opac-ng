@@ -239,6 +239,33 @@
                     </div>
                 </f:if>
 
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PB814A')}" name="PB814A" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PB814B')}" name="PB814B" />
+                <f:if condition="{PB814A} || {PB814B}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Wirkungsdaten' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:if condition="{PB814A}">
+                                <dla:data.dateFormat
+                                        dateValue="{0: '{PB814A}'}"
+                                        as="PB814A"
+                                />
+                                <f:format.date date="{PB814A}" format="d.m.Y" />
+                            </f:if>
+                            <f:if condition="{PB814B}">
+                                -
+                                <dla:data.dateFormat
+                                        dateValue="{0: '{PB814B}'}"
+                                        as="PB814B"
+                                />
+                                <f:format.date date="{PB814B}" format="d.m.Y" />
+                            </f:if>
+                        </div>
+                    </div>
+                </f:if>
+
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0036')}" name="K0036" />
                 <f:if condition="{K0036}">
                     <div class="ctg-dtvt-row">
