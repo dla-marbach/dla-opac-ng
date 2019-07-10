@@ -350,7 +350,7 @@ plugin.tx_find {
             119 {
                 id = detail_ueber_gedrucktes
                 type = Text
-                query = PEE100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger")
+                query = PEE100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND source:("AK")
                 noescape = 1
                 hidden = 1
             }
@@ -399,7 +399,7 @@ plugin.tx_find {
             126 {
                 id = detail_unter_exemplare
                 type = Text
-                query = XX_AU_PEU00_AUKEY:("%1$s") AND source:("AK")
+                query = XX_AU_PEU100_AUKEY:("%1$s") AND source:("AK")
                 noescape = 1
                 hidden = 1
             }
@@ -407,7 +407,7 @@ plugin.tx_find {
             127 {
                 id = detail_weitere_gedrucktes
                 type = Text
-                query = NOT PE0100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_names:("%2$s")
+                query = NOT PE0100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_names:("%2$s") AND source:("AK")
                 noescape = 1
                 hidden = 1
             }
@@ -550,7 +550,7 @@ plugin.tx_find {
             160 {
                 id = detail_ks_von_gedrucktes
                 type = Text
-                query = (KSC200:("%1$s") OR KSC412:("%1$s")) AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND NOT GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter") AND source:("AK")
+                query = (KSC200:("%1$s") OR KS0412:("%1$s")) AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND NOT GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter") AND source:("AK")
                 noescape = 1
                 hidden = 1
             }
@@ -571,7 +571,7 @@ plugin.tx_find {
             163 {
                 id = detail_ks_von_aundv
                 type = Text
-                query = (KSC200:("%1$s") OR KSC412:("%1$s")) AND DOKTYP:("Ton- und Bildträger") AND NOT GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
+                query = (KSC200:("%1$s") OR KS0412:("%1$s")) AND DOKTYP:("Ton- und Bildträger") AND NOT GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
                 noescape = 1
                 hidden = 1
             }

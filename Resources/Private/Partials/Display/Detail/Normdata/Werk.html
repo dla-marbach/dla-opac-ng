@@ -508,15 +508,26 @@
                             </f:link.action>
                         </li>
 
+                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
+                        <f:for each="{PE0100}" as="person" key="fieldName" iteration="iterator">
+                            <f:if condition="{iterator.isFirst}">
+                                <f:then>
+                                    <v:variable.set value="{person}" name="person_query" />
+                                </f:then>
+                                <f:else>
+                                    <v:variable.set value="{person_query} OR {person}" name="person_query" />
+                                </f:else>
+                            </f:if>
+                        </f:for>
+
 
                         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
                         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0331')}" name="A0331" />
-                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
                         <s:data.newArray
                                 name="query"
                                 global="1"
                                 keys="{0:'detail_werke_weitere_handschriften'}"
-                                values="{0:{0:'{A0001}', 1:'{A0331}',2:'{PE0100}'}}"
+                                values="{0:{0:'{A0001}', 1:'{A0331}',2:'{person_query}'}}"
                         />
                         <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                         <dla:countFromSolr query="{solvedQuery}" />
