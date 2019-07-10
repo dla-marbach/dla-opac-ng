@@ -725,23 +725,29 @@ $.TokenList = function (input, url_or_data, settings) {
                 .hide();
 
             $.each(results, function(index, value) {
-                var this_li = settings.resultsFormatter(value);
-                
-                this_li = find_value_and_highlight_term(this_li ,value[settings.propertyToSearch], query);            
-                
-                this_li = $(this_li).appendTo(dropdown_ul);
-                
-                if(index % 2) {
-                    this_li.addClass(settings.classes.dropdownItem);
+
+                if (value.id != "br") {
+                    var this_li = settings.resultsFormatter(value);
+
+                    this_li = find_value_and_highlight_term(this_li, value[settings.propertyToSearch], query);
+
+                    this_li = $(this_li).appendTo(dropdown_ul);
+
+                    if (index % 2) {
+                        this_li.addClass(settings.classes.dropdownItem);
+                    } else {
+                        this_li.addClass(settings.classes.dropdownItem2);
+                    }
+
+                    if (index === 0) {
+                        // select_dropdown_item(this_li);
+                    }
+
+                    $.data(this_li.get(0), "tokeninput", value);
                 } else {
-                    this_li.addClass(settings.classes.dropdownItem2);
+                    this_li = '<span style="padding-left:10px;font-weight: bold;">Namen & Werke</span>';
+                    this_li = $(this_li).appendTo(dropdown_ul);
                 }
-
-                if(index === 0) {
-                    // select_dropdown_item(this_li);
-                }
-
-                $.data(this_li.get(0), "tokeninput", value);
             });
 
             show_dropdown();

@@ -1,22 +1,7 @@
 
 
-$('#normdata-activation').on("click", function () {
-
-    if (!readCookie("normdataAutocomplete")) {
-        createCookie("normdataAutocomplete", "1", 365);
-        activateNormdataAutocomplete();
-    } else {
-        eraseCookie("normdataAutocomplete");
-        location.reload();
-    }
-
-});
-
 $( document ).ready(function() {
-    if (readCookie("normdataAutocomplete") == 1) {
-        $('#normdata-activation').prop('checked', true);
         activateNormdataAutocomplete();
-    }
 });
 
 function activateNormdataAutocomplete() {

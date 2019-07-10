@@ -25,6 +25,10 @@ $response = file_get_contents(
 if ($response !== FALSE) {
     $json = json_decode($response, TRUE);
 
+    $suggests[] = [
+        'id' => 'br'
+    ];
+
     foreach($json['suggest'][$solr_suggest_dictionary][$query]['suggestions'] as $suggestion) {
         list ($id, $normalized) = explode('␝', $suggestion['payload']);
         $suggests[] = [
