@@ -258,24 +258,6 @@
                     </f:for>
                 </f:if>
 
-
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Normsatz' extensionName='dla_opac_ng'/>
-                    </div>
-                    <div class="ctg-dtvt-content">
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                    document:document,
-                    results:results,
-                    field:'AI710',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-                    </div>
-                </div>
-
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0801')}" name="P0801" />
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PI801')}" name="PI801" />
                 <div class="ctg-dtvt-row">
