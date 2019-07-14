@@ -224,9 +224,17 @@ plugin.tx_find {
                 noescape = 2
                 escapechar = \,+,-,&,|,!,{,},[,],^,~,?,:
                 replaceAfterEscape {
-                    entity_ids\: = entity_ids:
-                    entity_ids_from\: = entity_ids_from:
-                    entity_ids_to\: = entity_ids_to:
+                    1 {
+                        entity_ids\: = entity_ids:
+                    }
+                    2 {
+                        entity_ids_from\: = entity_ids_from:
+                        boost = 100
+                    }
+                    3 {
+                        entity_ids_to\: = entity_ids_to:
+                        boost = 70
+                    }
                 }
 
             }
