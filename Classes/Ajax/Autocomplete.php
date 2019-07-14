@@ -4,6 +4,8 @@
 $solr_suggest_url = 'http://scratch.dla-marbach.de:8983/solr/opac-ng-dev/suggest';
 $solr_suggest_dictionary = 'mySuggester';
 
+$solr_suggest_text = 'text';
+
 // Array of suggestions
 $suggests = [];
 
@@ -12,7 +14,7 @@ $query = $_GET['q'];
 
 // Get Solr suggestions
 $response = file_get_contents(
-    $solr_suggest_url.'?suggest=true&suggest.dictionary='.$solr_suggest_dictionary.'&suggest=true&suggest.q='.urlencode($query),
+    $solr_suggest_url.'?suggest=true&suggest.dictionary='.$solr_suggest_dictionary.'&suggest.dictionary='.$solr_suggest_text.'&suggest=true&suggest.q='.urlencode($query),
     FALSE,
     stream_context_create([
         'method' => 'GET',
@@ -24,6 +26,15 @@ $response = file_get_contents(
 // Parse JSON response
 if ($response !== FALSE) {
     $json = json_decode($response, TRUE);
+
+    foreach($json['suggest'][$solr_suggest_text][$query]['suggestions'] as $suggestion) {
+        list ($id, $normalized) = explode('␝', $suggestion['payload']);
+        $suggests[] = [
+            'id' => htmlspecialchars($suggestion['term']),
+            'term' => htmlspecialchars($suggestion['term']),
+            'normalized' => htmlspecialchars($suggestion['term'])
+        ];
+    }
 
     $suggests[] = [
         'id' => 'br'

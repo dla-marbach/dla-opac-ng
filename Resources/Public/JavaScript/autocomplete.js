@@ -12,7 +12,7 @@ function activateNormdataAutocomplete() {
         $(".inputType-text").tokenInput("index.php?eID=autocomplete", {
             propertyToSearch: "term",
             resultsFormatter: function(item){
-                if (item.term != item.normalized) {
+                if (item.term != item.normalized && item.term != item.id) {
                     var output = '<li class="autocomplete-list-li">' +
                         "<div style='display: inline-block; padding-left: 30px;'><div class='normalized'>" + item.term + " → siehe " + item.normalized + " </div>";
 

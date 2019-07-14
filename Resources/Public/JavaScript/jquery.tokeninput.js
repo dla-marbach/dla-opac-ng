@@ -718,14 +718,29 @@ $.TokenList = function (input, url_or_data, settings) {
                     select_dropdown_item($(event.target).closest("li"));
                 })
                 .mousedown(function (event) {
-                    add_token($(event.target).closest("li").data("tokeninput"));
-                    hidden_input.change();
-                    return false;
+
+                    if($(event.target).closest("li").data("tokeninput").id == $(event.target).closest("li").data("tokeninput").term) {
+                        input_box.val($(event.target).closest("li").data("tokeninput").id);
+                        hide_dropdown();
+                        return false;
+                    } else {
+                        add_token($(event.target).closest("li").data("tokeninput"));
+                        hidden_input.change();
+                        return false;
+                    }
                 })
                 .hide();
-
+            var i = 0;
             $.each(results, function(index, value) {
-
+                myHeight = window.innerHeight;
+                maxItemPerRow = Math.round( (myHeight / 100) + 1);
+                i++;
+                if (value.id == "br") {
+                    i = 0;
+                }
+                if (i >= maxItemPerRow) {
+                    return true;
+                }
                 if (value.id != "br") {
                     var this_li = settings.resultsFormatter(value);
 
