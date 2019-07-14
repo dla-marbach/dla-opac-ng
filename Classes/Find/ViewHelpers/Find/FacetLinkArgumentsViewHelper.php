@@ -89,7 +89,7 @@ class FacetLinkArgumentsViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abst
             if ($this->arguments['modifier']) {
                 $result['facet'][$this->arguments['facetID']][str_replace('&', '%26', $this->arguments['facetTerm'])] = $this->arguments['modifier'];
             }
-            
+
         }
 
         return $result;

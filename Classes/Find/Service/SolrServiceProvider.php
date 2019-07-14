@@ -1144,8 +1144,23 @@ class SolrServiceProvider extends AbstractServiceProvider
                             foreach ($chars as $char) {
                                 $queryTerm = str_replace($char, '\\'.$char, $queryTerm);
                             }
-                            foreach ($fieldInfo['replaceAfterEscape'] as $find => $replace) {
-                                $queryTerm = str_replace($find, $replace, $queryTerm);
+                            foreach ($fieldInfo['replaceAfterEscape'] as $number => $values) {
+                                foreach ($values as $find => $replace) {
+                                    if ($find == "boost") {
+                                        continue;
+                                    }
+                                    $boost = $values['boost'];
+                                    $queryTerm = str_replace($find, $replace, $queryTerm);
+
+                                    if ($boost) {
+                                        $pos = strpos($queryTerm, $replace);
+                                        $strLength = strlen($replace);
+                                        $docId = substr($queryTerm, ($pos + $strLength),10);
+                                        $queryTerm = str_replace($replace.$docId, $docId.'^'.$boost, $queryTerm);
+                                    }
+
+                                }
+
                             }
                             $queryTerms[$key] = $queryTerm;
 
