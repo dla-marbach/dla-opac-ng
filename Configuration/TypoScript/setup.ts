@@ -225,6 +225,8 @@ plugin.tx_find {
                 escapechar = \,+,-,&,|,!,{,},[,],^,~,?,:
                 replaceAfterEscape {
                     entity_ids\: = entity_ids:
+                    entity_ids_from\: = entity_ids_from:
+                    entity_ids_to\: = entity_ids_to:
                 }
 
             }
