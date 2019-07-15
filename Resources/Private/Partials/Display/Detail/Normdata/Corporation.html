@@ -200,9 +200,17 @@
                                 {item}
                             </div>
                             <div class="ctg-dtvt-content">
-                                <f:link.action action="detail" arguments="{id:'{detail_relation_ids.{iterator.index}}'}">
-                                    {detail_relation_title.{iterator.index}}
-                                </f:link.action>
+                                <f:if condition="{detail_relation_ids.{iterator.index}}">
+                                    <f:then>
+                                        <f:link.action action="detail" arguments="{id:'{detail_relation_ids.{iterator.index}}'}">
+                                            {detail_relation_title.{iterator.index}}
+                                        </f:link.action>
+                                    </f:then>
+                                    <f:else>
+                                        {detail_relation_title.{iterator.index}}
+                                    </f:else>
+                                </f:if>
+
                             </div>
                         </div>
                     </f:for>
