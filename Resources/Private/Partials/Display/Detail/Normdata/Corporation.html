@@ -195,25 +195,43 @@
                 <f:if condition="{detail_relation_type}">
 
                     <f:for each="{detail_relation_type}" as="item" iteration="iterator">
-                        <div class="ctg-dtvt-row">
-                            <div class="ctg-dtvt-label">
-                                {item}
-                            </div>
-                            <div class="ctg-dtvt-content">
-                                <f:if condition="{detail_relation_ids.{iterator.index}} && {detail_relation_ids.{iterator.index}}!='␞'">
-                                    <f:then>
-                                        <f:link.action action="detail" arguments="{id:'{detail_relation_ids.{iterator.index}}'}">
-                                            {detail_relation_title.{iterator.index}}
-                                        </f:link.action>
-                                    </f:then>
-                                    <f:else>
-                                        {detail_relation_title.{iterator.index}}
-                                    </f:else>
-                                </f:if>
 
-                            </div>
-                        </div>
+                        <f:if condition="{lastLabel}!={item}">
+                            <f:then>
+                                <f:if condition="{lastLabel}">
+                                    </div>
+                                    </div>
+                                </f:if>
+                                <div class="ctg-dtvt-row">
+                                    <div class="ctg-dtvt-label">
+                                        <v:variable.set value="{item}" name="lastLabel" />
+                                        {item}
+                                    </div>
+                                    <div class="ctg-dtvt-content">
+
+                            </f:then>
+                        </f:if>
+
+                        <f:if condition="{detail_relation_ids.{iterator.index}} && {detail_relation_ids.{iterator.index}}!='␞'">
+                            <f:then>
+                                <f:link.action action="detail" arguments="{id:'{detail_relation_ids.{iterator.index}}'}">
+                                    {detail_relation_title.{iterator.index}}
+                                    <f:if condition="{detail_relation_comment.{iterator.index}} && {detail_relation_comment.{iterator.index}}!='␞'">
+                                        ({detail_relation_comment.{iterator.index}})
+                                    </f:if>
+                                </f:link.action>
+                            </f:then>
+                            <f:else>
+                                {detail_relation_title.{iterator.index}}
+                                <f:if condition="{detail_relation_comment.{iterator.index}} && {detail_relation_comment.{iterator.index}}!='␞'">
+                                    ({detail_relation_comment.{iterator.index}})
+                                </f:if>
+                            </f:else>
+                        </f:if>
+                        <br/>
                     </f:for>
+                    </div>
+                    </div>
                 </f:if>
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KA805')}" name="KA805" />
