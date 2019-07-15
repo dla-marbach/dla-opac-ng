@@ -117,3 +117,19 @@ div.token-input-dropdown ul li.token-input-selected-dropdown-item {
     background-color: #dadada;
 }
 
+@media only screen and (max-width: 1000px) {
+    div.token-input-dropdown {
+        position: absolute;
+        /*width: 400px;*/
+        width: calc(80% - 180px);
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    div.token-input-dropdown {
+        position: absolute;
+        /*width: 400px;*/
+        width: calc(90% - 20px);
+    }
+}
+
