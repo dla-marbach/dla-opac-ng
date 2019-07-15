@@ -1049,6 +1049,7 @@ plugin.tx_find {
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
                 labelmissing = nicht bestimmt
+                reverseFacet = 1
             }
 
             20 {
@@ -1059,6 +1060,7 @@ plugin.tx_find {
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
                 labelmissing = nicht bestimmt
+                reverseFacet = 1
             }
 
             25 {
@@ -1116,6 +1118,7 @@ plugin.tx_find {
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
                 labelmissing = nicht bestimmt
+                reverseFacet = 1
             }
 
             50 {
