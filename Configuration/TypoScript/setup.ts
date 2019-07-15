@@ -851,6 +851,14 @@ plugin.tx_find {
                 hidden = 1
             }
 
+            310 {
+                id = detail_pe_rightcolumn
+                type = Text
+                query = PE0100:("%1$s") source:("AK") AND DOKTYP:("Werktitel")
+                noescape = 1
+                hidden = 1
+            }
+
 
 
         }
