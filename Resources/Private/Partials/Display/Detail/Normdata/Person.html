@@ -3,7 +3,7 @@
 {namespace dla=Dla\DlaOpacNg\ViewHelpers}
 {namespace s=Subugoe\Find\ViewHelpers}
 
-<div class="ctg-detailview-head">
+<div class="ctg-detailview-head" xmlns:f="http://www.w3.org/1999/html">
     <div class="ctg-dvh-main">
         <div class="ctg-ri-icon">
             <f:render partial="Display/Detail/MediatypeIcon" arguments="{listview_type:document.listview_type, listview_type_cardinality:document.listview_type_cardinality}" />
@@ -114,23 +114,14 @@
                     <div class="ctg-dtvt-content">
                         <f:if condition="{P0830} || {PI830}">
                             <f:then>
-                                <dla:data.joinFields
-                                        fieldNames="{0:'P0830',1:'PI830'}"
-                                        fieldWraps="{0:'%s',1:', (%s)'}"
-                                        fields="{document.fields}"
-                                        as="linkTexts"
-                                />
 
-                                <f:render
-                                        partial="Display/Field/List"
-                                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'P0830',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets,
-                        linkTexts:linkTexts
-                      }"/>
+                                <f:for each="{P0830}" as="item" iteration="iterator">
+                                    {item}
+                                    <f:if condition="{PI830.{iterator.index}}!='#NV'">
+                                        ({PI830.{iterator.index}})
+                                    </f:if>
+                                    <br />
+                                </f:for>
                             </f:then>
                             <f:else>
                                 -
