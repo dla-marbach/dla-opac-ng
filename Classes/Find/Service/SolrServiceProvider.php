@@ -1156,7 +1156,7 @@ class SolrServiceProvider extends AbstractServiceProvider
                                         $pos = strpos($queryTerm, $replace);
                                         $strLength = strlen($replace);
                                         $docId = substr($queryTerm, ($pos + $strLength),10);
-                                        $queryTerm = str_replace($replace.$docId, $docId.'^'.$boost, $queryTerm);
+                                        $queryTerm = str_replace($replace.$docId, $replace.$docId.'^'.$boost, $queryTerm);
                                     }
 
                                 }
