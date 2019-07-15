@@ -4,8 +4,7 @@
 {namespace s=Subugoe\Find\ViewHelpers}
 
 
-
-<div class="ctg-detailview-head">
+<div class="ctg-detailview-head" xmlns:f="http://www.w3.org/1999/html">
     <div class="ctg-dvh-main">
         <div class="ctg-ri-icon">
             <f:render partial="Display/Detail/MediatypeIcon" arguments="{listview_type:document.listview_type, listview_type_cardinality:document.listview_type_cardinality}" />
@@ -198,7 +197,8 @@
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KSAZU')}" name="KSAZU" />
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'H41410')}" name="H41410" />
-        <f:if condition="{H41410} != 'Briefwechsel' && {H41410} != 'Briefwechsel ohne Bestandsbildner'">
+
+        <f:if condition="{H41410} == 'Briefwechsel' || {H41410} == 'Briefwechsel ohne Bestandsbildner'">
             <f:then>
                 <f:if condition="{XX_PE_listview_title_PE0100} || {XX_KS_K0800_KSC200} || {XX_PE_listview_title_PEA100} || {XX_KS_K0800_KSA200}">
                     <f:then>
@@ -486,6 +486,20 @@
                     </div>
                     <div class="ctg-dtvt-content">
 
+                            <f:if condition="{H41801.{iterator.index}}">
+                                {H41801}:
+                            </f:if>
+                            <f:if condition="{H41800}">
+                                {H41800}
+                            </f:if>
+                            <f:if condition="{H41802}">
+                                ({H41802})
+                            </f:if>
+                            <f:if condition="{H41820}">
+                                [{H41820}]
+                            </f:if>
+
+                        <f:comment>
                         <f:if condition="{H41801}">
                             <f:then>
                                 <dla:data.joinFields
@@ -508,6 +522,7 @@
                         <f:for each="{linkTexts}" as="item" iteration="iterator">
                             {item}<br />
                         </f:for>
+                        </f:comment>
                     </div>
                 </div>
             </f:then>
@@ -532,7 +547,7 @@
                                 {H41841.{iterator.index}}:
                             </f:if>
                             {h41840_item}
-                            <f:if condition="{H41842.{iterator.index}">
+                            <f:if condition="{H41842.{iterator.index}}">
                                 ({H41842.{iterator.index}})
                             </f:if>
                             <f:if condition="{H41850.{iterator.index}}">
@@ -591,6 +606,7 @@
                     <div class="ctg-dtvt-content">
                         <f:for each="{H02010}" as="place">
                             {place}
+                            <br/>
                         </f:for>
                     </div>
                 </div>
