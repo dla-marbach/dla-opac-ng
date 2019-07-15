@@ -19,16 +19,26 @@
     </ul>
 </section>
 
-<f:comment>
-    <section class="ctg-facet-other">
-        <h3>Andere Fundorte <a title="schließen"><span class="icon bel-pfeil-o01"></span></a></h3>
-        <ul>
-            <li><a title=""><span class="icon bel-link03"></span></a><a title="">Wikipedia "Friedrich Stiller"</a></li>
-            <li><a title=""><span class="icon bel-link03"></span></a><a title="">Wikipedia "Stiller"</a></li>
-            <li><a title=""><span class="icon bel-link03"></span></a><a title="">Webarchive "Stiller, Friedrich"</a></li>
-        </ul>
-    </section>
-</f:comment>
+<section class="ctg-facet-other">
+    <h3>Andere Fundorte <a title="schließen"><span class="icon bel-pfeil-o01"></span></a></h3>
+    <ul>
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PI028')}" name="PI028" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PA028')}" name="PA028" />
+
+        <f:for each="{PI028}" as="item" key="key" iteration="iterator">
+            <f:if condition="{item}=='GND-Nr.'">
+                <li>
+                    <a href="http://d-nb.info/gnd/{PA028.{iterator.index}}">
+                        <span class="icon bel-link03"></span>
+                    </a>
+                    <a href="http://d-nb.info/gnd/{PA028.{iterator.index}}">
+                        GND
+                    </a>
+                </li>
+            </f:if>
+        </f:for>
+    </ul>
+</section>
 
 <f:comment>
 <section class="ctg-facet">
