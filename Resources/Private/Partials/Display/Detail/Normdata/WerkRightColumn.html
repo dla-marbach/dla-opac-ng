@@ -1,2 +1,23 @@
 
 <f:render partial="Display/Detail/RightColumn/Relation" arguments="{_all}"/>
+
+<section class="ctg-facet-other">
+    <h3>Andere Fundorte <a title="schließen"><span class="icon bel-pfeil-o01"></span></a></h3>
+    <ul>
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AI025')}" name="AI025" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0025')}" name="A0025" />
+
+        <f:for each="{AI025}" as="item" key="key" iteration="iterator">
+            <f:if condition="{item}">
+                <li>
+                    <a href="http://d-nb.info/gnd/{A0025.{iterator.index}}">
+                        <span class="icon bel-link03"></span>
+                    </a>
+                    <a href="http://d-nb.info/gnd/{A0025.{iterator.index}}">
+                        GND
+                    </a>
+                </li>
+            </f:if>
+        </f:for>
+    </ul>
+</section>
