@@ -13,9 +13,28 @@
 <section class="ctg-facet">
     <h3><a title="schließen"><span class="icon bel-pfeil-o01"></span></a>Werkbeziehungen</h3>
     <ul>
-        <li><a title=""><span class="icon bel-idkarte"></span></a><a title="">Lorem lorem lorem</a></li>
-        <li><a title=""><span class="icon bel-idkarte"></span></a><a title="">Lorem lorem lorem</a></li>
-        <li><a title=""><span class="icon bel-idkarte"></span></a><a title="">Lorem lorem lorem</a></li>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+        <s:data.newArray
+                name="query"
+                global="1"
+                keys="{0:'detail_pe_rightcolumn'}"
+                values="{0:'{P0001}'}"
+        />
+        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+        <dla:countFromSolr query="{solvedQuery}" />
+
+        <f:if condition="{solrcount}>0">
+            <li>
+                <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                    <span class="icon bel-idkarte"></span>
+                </f:link.action>
+                <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                    Werke ({solrcount})
+                </f:link.action>
+            </li>
+        </f:if>
     </ul>
 </section>
 
