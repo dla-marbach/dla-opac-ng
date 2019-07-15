@@ -25,14 +25,16 @@
         <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
         <dla:countFromSolr query="{solvedQuery}" />
 
-        <li>
-            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                <span class="icon bel-idkarte"></span>
-            </f:link.action>
-            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                Werke ({solrcount})
-            </f:link.action>
-        </li>
+        <f:if condition="{solrcount}>0">
+            <li>
+                <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                    <span class="icon bel-idkarte"></span>
+                </f:link.action>
+                <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                    Werke ({solrcount})
+                </f:link.action>
+            </li>
+        </f:if>
     </ul>
 </section>
 
@@ -40,16 +42,18 @@
     <h3>Andere Fundorte <a title="schließen"><span class="icon bel-pfeil-o01"></span></a></h3>
     <ul>
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0802')}" name="K0802" />
-        <f:if condition="{K0802}">
-            <li>
-                <a href="http://d-nb.info/gnd/{K0802}">
-                    <span class="icon bel-link03"></span>
-                </a>
-                <a href="http://d-nb.info/gnd/{K0802}">
-                    GND
-                </a>
-            </li>
-        </f:if>
+        <f:for each="{K0802}" as="item" key="key" iteration="iterator">
+            <f:if condition="{item}">
+                <li>
+                    <a href="http://d-nb.info/gnd/{item}">
+                        <span class="icon bel-link03"></span>
+                    </a>
+                    <a href="http://d-nb.info/gnd/{item}">
+                        GND
+                    </a>
+                </li>
+            </f:if>
+        </f:for>
     </ul>
 </section>
 
