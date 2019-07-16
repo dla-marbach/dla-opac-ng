@@ -75,15 +75,15 @@
             </f:if>
         </f:for>
 
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'THA720')}" name="THA720" />
-        <v:variable.set value="" name="THA720_query" />
-        <f:for each="{THA720}" as="person" key="key" iteration="iterator">
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'THA710')}" name="THA710" />
+        <v:variable.set value="" name="THA710_query" />
+        <f:for each="{THA710}" as="person" key="key" iteration="iterator">
             <f:if condition="{iterator.isFirst}">
                 <f:then>
-                    <v:variable.set value="{person}" name="THA720_query" />
+                    <v:variable.set value="{person}" name="THA710_query" />
                 </f:then>
                 <f:else>
-                    <v:variable.set value="{THA720_query} OR {person}" name="THA720_query" />
+                    <v:variable.set value="{THA710_query} OR {person}" name="THA710_query" />
                 </f:else>
             </f:if>
         </f:for>
@@ -120,8 +120,8 @@
             <v:variable.set value="{query} PEE100:({PEE100_query})" name="query" />
         </f:if>
 
-        <f:if condition="{THA720_query}">
-            <v:variable.set value="{query} THA720:({THA720_query})" name="query" />
+        <f:if condition="{THA710_query}">
+            <v:variable.set value="{query} THA710:({THA710_query})" name="query" />
         </f:if>
 
         <f:if condition="{KSE200_query}">
@@ -154,7 +154,7 @@
             <f:then>
                 <f:comment><li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li></f:comment>
                 <li>
-                    <f:link.action action="index" arguments="{q:{raw: '(PE0100:{PE0100_query} OR KSE200:{PE0100_query} OR THA720:({PE0100_query}) OR AKY526:({PE0100_query})) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                    <f:link.action action="index" arguments="{q:{raw: '(PE0100:{PE0100_query} OR KSE200:{PE0100_query} OR THA710:({PE0100_query}) OR AKY526:({PE0100_query})) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
                         <span class="icon bel-lupe"></span>
                     </f:link.action>
                     <f:link.action action="index" arguments="{q:{raw: '(PE0100:{PE0100_query} OR KSE200:{PE0100_query} OR THA720:({PE0100_query}) OR AKY526:({PE0100_query})) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
