@@ -154,10 +154,10 @@
             <f:then>
                 <f:comment><li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li></f:comment>
                 <li>
-                    <f:link.action action="index" arguments="{q:{raw: '(PE0100:{PE0100_query} OR KSE200:{PE0100_query} OR THA710:({PE0100_query}) OR AKY526:({PE0100_query})) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                    <f:link.action action="index" arguments="{q:{raw: '{query}'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
                         <span class="icon bel-lupe"></span>
                     </f:link.action>
-                    <f:link.action action="index" arguments="{q:{raw: '(PE0100:{PE0100_query} OR KSE200:{PE0100_query} OR THA720:({PE0100_query}) OR AKY526:({PE0100_query})) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                    <f:link.action action="index" arguments="{q:{raw: '{query}'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
                         Alle anzeigen
                     </f:link.action>
                 </li>
