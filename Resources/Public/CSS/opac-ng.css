@@ -163,6 +163,10 @@ a.activeFacet {
     font-weight: bold;
 }
 
+a.facetText {
+    width:100%;
+}
+
 article.detail em.highlight {
     font-weight: inherit !important;
     color: #333333 !important;
