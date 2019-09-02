@@ -148,26 +148,15 @@
                     </div>
                     <div class="ctg-dtvt-content">
 
-                        <dla:data.joinFields
-                                fieldNames="{0:'H41411',1:'H41421'}"
-                                fieldWraps="{0:'%s',1:'. %s'}"
-                                fields="{document.fields}"
-                                as="linkTexts"
-                        />
-
-                        <dla:replaceNullValue array="{linkTexts}" as="linkTexts"/>
-
-                        <f:render
-                                partial="Display/Field/List"
-                                arguments="{
-                        document:document,
-                        results:results,
-                        field:'H41411',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets,
-                        linkTexts:linkTexts
-                      }"/>
-
+                        <f:for each="{H41411}" as="item" iteration="iterator">
+                            <dla:replaceNullValue text="{item}" as="item"/>
+                            {item}
+                            <f:if condition="{H41421.{iterator.index}} && {H41421.{iterator.index}}!='#NV'">
+                                <dla:replaceNullValue text="{H41421.{iterator.index}}" as="secondPart"/>
+                                . {secondPart}
+                            </f:if>
+                            <br/>
+                        </f:for>
                     </div>
                 </div>
             </f:then>
@@ -226,24 +215,6 @@
                                         linkTexts:linkTexts
                                 }"/>
 
-                                <dla:data.joinFields
-                                        fieldNames="{0:'XX_PE_listview_title_PEA100',1:'GFUPAN',2:'PEAZU'}"
-                                        fieldWraps="{0:'%s',1:'%s',2:'[%S]'}"
-                                        fields="{document.fields}"
-                                        as="linkTexts"
-                                />
-
-                                <f:render
-                                        partial="Display/Field/List"
-                                        arguments="{
-                                        document:document,
-                                        results:results,
-                                        field:'PEA100',
-                                        linkFieldContent:1,
-                                        linkFacets:linkFacets,
-                                        linkTexts:linkTexts
-                                }"/>
-
 
                                 <dla:data.joinFields
                                         fieldNames="{0:'XX_KS_K0800_KSC200',1:'GFUKS',2:'KSCZU'}"
@@ -258,24 +229,6 @@
                                         document:document,
                                         results:results,
                                         field:'KSC200',
-                                        linkFieldContent:1,
-                                        linkFacets:linkFacets,
-                                        linkTexts:linkTexts
-                                }"/>
-
-                                <dla:data.joinFields
-                                        fieldNames="{0:'XX_KS_K0800_KSA200',1:'GFUKSA',2:'KSAZU'}"
-                                        fieldWraps="{0:'%s',1:'%s',2:'[%S]'}"
-                                        fields="{document.fields}"
-                                        as="linkTexts"
-                                />
-
-                                <f:render
-                                        partial="Display/Field/List"
-                                        arguments="{
-                                        document:document,
-                                        results:results,
-                                        field:'KSA200',
                                         linkFieldContent:1,
                                         linkFacets:linkFacets,
                                         linkTexts:linkTexts
