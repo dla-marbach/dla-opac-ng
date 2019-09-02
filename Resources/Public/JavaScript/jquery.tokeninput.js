@@ -760,7 +760,7 @@ $.TokenList = function (input, url_or_data, settings) {
 
                     $.data(this_li.get(0), "tokeninput", value);
                 } else {
-                    this_li = '<span style="padding-left:10px;font-weight: bold;">Namen & Werke</span>';
+                    this_li = '<li style="background-color:#b61f24;"><span style="padding-left:10px;font-weight: bold;color:#fff;">Relevante Namen & Werke</span></li>';
                     this_li = $(this_li).appendTo(dropdown_ul);
                 }
             });

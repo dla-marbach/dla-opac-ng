@@ -32,7 +32,8 @@ if ($response !== FALSE) {
         $suggests[] = [
             'id' => htmlspecialchars($suggestion['term']),
             'term' => htmlspecialchars($suggestion['term']),
-            'normalized' => htmlspecialchars($suggestion['term'])
+            'normalized' => htmlspecialchars($suggestion['term']),
+            'autocomplete' => '1'
         ];
     }
 
@@ -40,13 +41,20 @@ if ($response !== FALSE) {
         'id' => 'br'
     ];
 
+    $idDeduping = [];
+
     foreach($json['suggest'][$solr_suggest_dictionary][$query]['suggestions'] as $suggestion) {
         list ($id, $normalized) = explode('␝', $suggestion['payload']);
-        $suggests[] = [
-            'id' => '(entity_ids:' . $id . ' OR entity_ids_from:' . $id . ' OR entity_ids_to:' . $id . ')',
-            'term' => htmlspecialchars($suggestion['term']),
-            'normalized' => htmlspecialchars($normalized)
-        ];
+        if (!in_array($id, $idDeduping)) {
+            $suggests[] = [
+                'id' => '(entity_ids:' . $id . ' OR entity_ids_from:' . $id . ' OR entity_ids_to:' . $id . ')',
+                'term' => htmlspecialchars($suggestion['term']),
+                'normalized' => htmlspecialchars($normalized),
+                'autocomplete' => '0'
+            ];
+
+            $idDeduping[] = $id;
+        }
     }
 }
 

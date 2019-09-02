@@ -114,7 +114,18 @@ div.token-input-dropdown ul li em {
 }
 
 div.token-input-dropdown ul li.token-input-selected-dropdown-item {
+    /*background-color: #dadada;*/
     background-color: #dadada;
+}
+
+div.token-input-dropdown ul li.normdata-autocomplete {
+    /*background-color: #dadada;*/
+    background-color: #dadada;
+}
+
+div.token-input-dropdown ul li.normdata-autocomplete:hover {
+    /*background-color: #dadada;*/
+    background-color: #b4b4b4;
 }
 
 @media only screen and (max-width: 1000px) {
