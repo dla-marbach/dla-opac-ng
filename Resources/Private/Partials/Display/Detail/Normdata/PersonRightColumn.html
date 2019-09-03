@@ -65,10 +65,12 @@
     <h3>Andere Fundorte <a title="schließen"><span class="icon bel-pfeil-o01"></span></a></h3>
     <ul>
         <f:if condition="{wikidata_website}">
-            <li>
-                <a href="{wikidata_website}"><span class="icon bel-link03"></span></a>
-                <a href="{wikidata_website}">Webseite</a>
-            </li>
+            <f:for each="{wikidata_website}" as="item" key="key" iteration="iterator">
+                <li>
+                    <a href="{item}"><span class="icon bel-link03"></span></a>
+                    <a href="{item}">Webseite</a>
+                </li>
+            </f:for>
         </f:if>
         <f:if condition="{wikidata_wikipedia}">
             <li>
@@ -77,10 +79,12 @@
             </li>
         </f:if>
         <f:if condition="{lobid_filmportal}">
-            <li>
-                <a href="{lobid_filmportal}"><span class="icon bel-link03"></span></a>
-                <a href="{lobid_filmportal}">Filmportal</a>
-            </li>
+            <f:for each="{lobid_filmportal}" as="item" key="key" iteration="iterator">
+                <li>
+                    <a href="{item}"><span class="icon bel-link03"></span></a>
+                    <a href="{item}">Filmportal</a>
+                </li>
+            </f:for>
         </f:if>
 
         <f:if condition="{lobid_adb}">
