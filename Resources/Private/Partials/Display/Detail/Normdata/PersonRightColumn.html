@@ -1,14 +1,30 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0800')}" name="P0800" />
 
-<f:comment>
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_image')}" name="wikidata_image" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_image_rights')}" name="wikidata_image_rights" />
+<f:if condition="{wikidata_image}">
     <section>
         <figure class="teaser teaser-index ctg-image-teaser ctg-image-teaser-rc">
-            <div class="ctg-it-content" style="background: url(Start%20-%20DLA%20Marbach-Dateien/schiller-dummy.jpg); background-size: cover;">
-                <h3><a href="">{P0800}</a></h3>
+            <div class="ctg-it-content"
+                 style="background: url({v:format.replace(substring:' ', content: '{wikidata_image}', replacement: '_')}); background-size: cover;">
+                <h3><f:format.raw>{wikidata_image_rights}</f:format.raw></h3>
             </div>
         </figure>
     </section>
-</f:comment>
+</f:if>
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_signature')}" name="wikidata_signature" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_signature_rights')}" name="wikidata_signature_rights" />
+<f:if condition="{wikidata_signature}">
+    <section>
+        <figure class="teaser teaser-index ctg-image-teaser ctg-image-teaser-rc" style="min-height:200px;">
+            <div class="ctg-it-content" style="vertical-align:top;">
+                <img src="{v:format.replace(substring:' ', content: '{wikidata_signature}', replacement: '_')}">
+                <h3><f:format.raw>{wikidata_signature_rights}</f:format.raw></h3>
+            </div>
+        </figure>
+    </section>
+</f:if>
 
 <section class="ctg-facet">
     <h3><a title="schließen"><span class="icon bel-pfeil-o01"></span></a>Werkbeziehungen</h3>
@@ -39,23 +55,78 @@
 </section>
 
 <section class="ctg-facet-other">
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_website')}" name="wikidata_website" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_wikipedia')}" name="wikidata_wikipedia" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'lobid_filmportal')}" name="lobid_filmportal" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'lobid_adb')}" name="lobid_adb" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'lobid_ndb')}" name="lobid_ndb" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_id')}" name="wikidata_id" />
+
     <h3>Andere Fundorte <a title="schließen"><span class="icon bel-pfeil-o01"></span></a></h3>
     <ul>
+        <f:if condition="{wikidata_website}">
+            <li>
+                <a href="{wikidata_website}"><span class="icon bel-link03"></span></a>
+                <a href="{wikidata_website}">Webseite</a>
+            </li>
+        </f:if>
+        <f:if condition="{wikidata_wikipedia}">
+            <li>
+                <a href="{wikidata_wikipedia}"><span class="icon bel-link03"></span></a>
+                <a href="{wikidata_wikipedia}">Wikipedia</a>
+            </li>
+        </f:if>
+        <f:if condition="{lobid_filmportal}">
+            <li>
+                <a href="{lobid_filmportal}"><span class="icon bel-link03"></span></a>
+                <a href="{lobid_filmportal}">Filmportal</a>
+            </li>
+        </f:if>
+
+        <f:if condition="{lobid_adb}">
+            <li>
+                <a href="{lobid_adb}"><span class="icon bel-link03"></span></a>
+                <a href="{lobid_adb}">ADB</a>
+            </li>
+        </f:if>
+
+        <f:if condition="{lobid_ndb}">
+            <li>
+                <a href="{lobid_ndb}"><span class="icon bel-link03"></span></a>
+                <a href="{lobid_ndb}">NDB</a>
+            </li>
+        </f:if>
+
+        <f:if condition="{wikidata_award}">
+            <li>
+                Auszeichnungen:
+                <a href="{wikidata_award}"><span class="icon bel-link03"></span></a>
+                <a href="{wikidata_award}">NDB</a>
+            </li>
+        </f:if>
+
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PI028')}" name="PI028" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PA028')}" name="PA028" />
 
         <f:for each="{PI028}" as="item" key="key" iteration="iterator">
             <f:if condition="{item}=='GND-Nr.'">
                 <li>
-                    <a href="http://d-nb.info/gnd/{PA028.{iterator.index}}">
+                    <a href="https://lobid.org/gnd/{PA028.{iterator.index}}">
                         <span class="icon bel-link03"></span>
                     </a>
-                    <a href="http://d-nb.info/gnd/{PA028.{iterator.index}}">
-                        GND
+                    <a href="https://lobid.org/gnd/{PA028.{iterator.index}}">
+                        lobid-gnd
                     </a>
                 </li>
             </f:if>
         </f:for>
+
+        <f:if condition="{wikidata_id}">
+            <li>
+                <a href="https://www.wikidata.org/wiki/{wikidata_id}"><span class="icon bel-link03"></span></a>
+                <a href="https://www.wikidata.org/wiki/{wikidata_id}">Wikidata</a>
+            </li>
+        </f:if>
     </ul>
 </section>
 

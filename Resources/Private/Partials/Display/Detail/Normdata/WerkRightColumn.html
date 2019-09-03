@@ -1,9 +1,47 @@
+<section>
+
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_image')}" name="wikidata_image" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_image_rights')}" name="wikidata_image_rights" />
+    <f:if condition="{wikidata_image}">
+        <figure class="teaser teaser-index ctg-image-teaser ctg-image-teaser-rc">
+            <div class="ctg-it-content"
+                 style="background: url({v:format.replace(substring:' ', content: '{wikidata_image}', replacement: '_')}); background-size: cover;">
+                <h3><f:format.raw>{wikidata_image_rights}</f:format.raw></h3>
+            </div>
+        </figure>
+    </f:if>
+</section>
 
 <f:render partial="Display/Detail/RightColumn/Relation" arguments="{_all}"/>
 
 <section class="ctg-facet-other">
+
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_website')}" name="wikidata_website" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_wikipedia')}" name="wikidata_wikipedia" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_filmportal')}" name="wikidata_filmportal" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_id')}" name="wikidata_id" />
+
     <h3>Andere Fundorte <a title="schließen"><span class="icon bel-pfeil-o01"></span></a></h3>
     <ul>
+        <f:if condition="{wikidata_website}">
+            <li>
+                <a href="{wikidata_website}"><span class="icon bel-link03"></span></a>
+                <a href="{wikidata_website}">Webseite</a>
+            </li>
+        </f:if>
+        <f:if condition="{wikidata_wikipedia}">
+            <li>
+                <a href="{wikidata_wikipedia}"><span class="icon bel-link03"></span></a>
+                <a href="{wikidata_wikipedia}">Wikipedia</a>
+            </li>
+        </f:if>
+        <f:if condition="{wikidata_filmportal}">
+            <li>
+                <a href="{wikidata_filmportal}"><span class="icon bel-link03"></span></a>
+                <a href="{wikidata_filmportal}">Filmportal</a>
+            </li>
+        </f:if>
+
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AI025')}" name="AI025" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0025')}" name="A0025" />
 
@@ -19,5 +57,12 @@
                 </li>
             </f:if>
         </f:for>
+
+        <f:if condition="{wikidata_id}">
+            <li>
+                <a href="https://www.wikidata.org/wiki/{wikidata_id}"><span class="icon bel-link03"></span></a>
+                <a href="https://www.wikidata.org/wiki/{wikidata_id}">Wikidata</a>
+            </li>
+        </f:if>
     </ul>
 </section>
