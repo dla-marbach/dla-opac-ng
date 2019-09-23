@@ -17,7 +17,7 @@
                         <span class="icon bel-link02"></span>
                     </f:link.action>
 
-                    <f:link.action action="detail" arguments="{id:'detail_relation_ids.{iterator.index}}'}" title="{relation}" class="internal" noCacheHash="1">
+                    <f:link.action action="detail" arguments="{id:'{detail_relation_ids.{iterator.index}}'}" title="{relation}" class="internal" noCacheHash="1">
 
                         {detail_relation_type.{iterator.index}}: {relation}
                         <f:if condition="{detail_relation_comment.{iterator.index}}!='␞'">
