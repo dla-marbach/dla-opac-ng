@@ -49,6 +49,38 @@
                     </f:if>
                 </f:if>
                 <f:alias map="{facetType:'{f:if(condition:facetInfo.type, then:facetInfo.type, else:\"List\")}'}">
+                <f:if condition="{config.activeFacets.{facetInfo.id}}">
+                    <f:for each="{config.activeFacets.{facetInfo.id}}" key="key" as="item" iteration="iterator">
+                        <f:if condition="{item.modifier} == 'not'">
+                            <div class="facetList">
+                                <ul>
+                                    <li>
+                                        <f:link.action
+                                                addQueryString="TRUE"
+                                                argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:item.id, facetTerm:item.term, activeFacets:config.activeFacets, mode:'remove')}"
+                                                section="{settings.jumpToID}"
+                                                noCacheHash="1"
+                                                class=""
+                                                title="{f:translate(key:'remove filter %s', arguments:{0:item.term})}">
+                                            <span class="icon bel-verboten"></span>
+                                        </f:link.action>
+
+                                        <f:link.action
+                                                addQueryString="TRUE"
+                                                argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:item.id, facetTerm:item.term, activeFacets:config.activeFacets, mode:'remove')}"
+                                                section="{settings.jumpToID}"
+                                                noCacheHash="1"
+                                                class=""
+                                                title="{f:translate(key:'remove filter %s', arguments:{0:item.term})}">
+                                            {item.term}
+                                        </f:link.action>
+                                    </li>
+                                </ul>
+                            </div>
+                        </f:if>
+                    </f:for>
+                </f:if>
+
                     <f:render partial="Facets/Facet/{facetType}" arguments="{_all}"/>
                 </f:alias>
             </section>
