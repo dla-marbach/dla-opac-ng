@@ -261,15 +261,15 @@
                             {item} ({AI801.{iterator.index}}) <br/>
                         </f:for>
 
-                        <f:for each="{BEMURL}" as="item" iteration="iterator">
-                            <f:link.typolink parameter="{item}">{item}
-
-                                <f:if condition="{AURL.{iterator.index}}!='#NV'">
-                                    ({AURL.{iterator.index}})
-                                </f:if>
-                                <br />
-
+                        <f:for each="{AURL}" as="item" iteration="iterator">
+                            <f:link.typolink parameter="{item}">
+                                {item}
                             </f:link.typolink>
+                            <f:if condition="{BEMURL.{iterator.index}}!='#NV'">
+                                ({BEMURL.{iterator.index}})
+                            </f:if>
+                            <br />
+
                         </f:for>
                     </div>
                 </div>

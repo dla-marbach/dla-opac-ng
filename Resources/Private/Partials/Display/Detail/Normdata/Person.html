@@ -162,10 +162,8 @@
                                         as="PA8141"
                                 />
                                 <f:format.date date="{PA8141}" format="d.m.Y" />
-                                <f:if condition="{PA8142}">
-                                -
-                                </f:if>
                             </f:if>
+                            -
                             <f:if condition="{PA8142}">
                                 <dla:data.dateFormat
                                         dateValue="{0: '{PA8142}'}"
@@ -193,8 +191,8 @@
                                 />
                                 <f:format.date date="{PB814A}" format="d.m.Y" />
                             </f:if>
+                            -
                             <f:if condition="{PB814B}">
-                                -
                                 <dla:data.dateFormat
                                         dateValue="{0: '{PB814B}'}"
                                         as="PB814B"
@@ -321,14 +319,13 @@
                             <div class="ctg-dtvt-content">
 
                                 <f:for each="{PEURL}" as="item" iteration="iterator">
-                                    <f:link.typolink parameter="{item}">{item}
-
-                                        <f:if condition="{PEURLB.{iterator.index}}!='#NV'">
-                                            ({PEURLB.{iterator.index}})
-                                        </f:if>
-                                        <br />
-
+                                    <f:link.typolink parameter="{item}">
+                                        {item}
                                     </f:link.typolink>
+                                    <f:if condition="{PEURLB.{iterator.index}}!='#NV'">
+                                        ({PEURLB.{iterator.index}})
+                                    </f:if>
+                                    <br />
                                 </f:for>
 
                             </div>
