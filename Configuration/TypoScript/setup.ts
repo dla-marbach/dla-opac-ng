@@ -339,7 +339,7 @@ plugin.tx_find {
             116 {
                 id = detail_an_handschriften
                 type = Text
-                query = PEA100:("%1$s") AND source:("HS") AND facet_names_relations:("%2$s")
+                query = (PEA100:("%1$s") AND source:("HS")) OR (facet_names_relations:("%2$s") AND source:("AK"))
                 noescape = 1
                 hidden = 1
             }
@@ -596,7 +596,7 @@ plugin.tx_find {
             165 {
                 id = detail_ks_an_handschriften
                 type = Text
-                query = KSA200:("%1$s") AND source:("HS") AND facet_names_relations:("%2$s")
+                query = (KSA200:("%1$s") AND source:("HS")) OR (facet_names_relations:("%2$s") AND source:("AK"))
                 noescape = 1
                 hidden = 1
             }
