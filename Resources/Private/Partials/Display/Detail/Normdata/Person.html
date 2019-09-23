@@ -162,9 +162,11 @@
                                         as="PA8141"
                                 />
                                 <f:format.date date="{PA8141}" format="d.m.Y" />
+                                <f:if condition="{PA8142}">
+                                -
+                                </f:if>
                             </f:if>
                             <f:if condition="{PA8142}">
-                                -
                                 <dla:data.dateFormat
                                         dateValue="{0: '{PA8142}'}"
                                         as="PA8142"
@@ -317,34 +319,18 @@
 
                             </div>
                             <div class="ctg-dtvt-content">
-                                <dla:data.joinFields
-                                        fieldNames="{0:'PEURL',1:'PEURLB'}"
-                                        fieldWraps="{0:'%s',1:', (%s)'}"
-                                        fields="{document.fields}"
-                                        as="linkTexts"
-                                />
-                                <f:render
-                                        partial="Display/Field/List"
-                                        arguments="{
-                            document:document,
-                            results:results,
-                            field:'PEURL',
-                            linkFieldContent:linkFieldContent,
-                            linkFacets:linkFacets,
-                            linkTexts:linkTexts
-                          }"/>
 
-                                (
-                                <f:render
-                                        partial="Display/Field/List"
-                                        arguments="{
-                            document:document,
-                            results:results,
-                            field:'PEURLB',
-                            linkFieldContent:linkFieldContent,
-                            linkFacets:linkFacets
-                          }"/>
-                                )
+                                <f:for each="{PEURL}" as="item" iteration="iterator">
+                                    <f:link.typolink parameter="{item}">{item}
+
+                                        <f:if condition="{PEURLB.{iterator.index}}!='#NV'">
+                                            ({PEURLB.{iterator.index}})
+                                        </f:if>
+                                        <br />
+
+                                    </f:link.typolink>
+                                </f:for>
+
                             </div>
                         </div>
                     </f:then>

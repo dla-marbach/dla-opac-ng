@@ -246,19 +246,39 @@
                         </div>
                         <div class="ctg-dtvt-content">
                             <f:if condition="{KA805}">
-                                Gründung: {KA805}
+                                <dla:data.dateFormat
+                                        dateValue="{0: '{KA805}'}"
+                                        as="KA805"
+                                />
+
+                                Gründung: <f:format.date date="{KA805}" format="d.m.Y" />
                             </f:if>
                             <f:if condition="{KA805} && {KB805}">
                                 <br/>
                             </f:if>
                             <f:if condition="{KB805}">
-                                Auflösung: {KB805}
+                                <dla:data.dateFormat
+                                        dateValue="{0: '{KB805}'}"
+                                        as="KB805"
+                                />
+
+                                Auflösung: <f:format.date date="{KB805}" format="d.m.Y" />
                             </f:if>
                             <f:if condition="{KW805A}">
                                 <f:if condition="{KA805} || {KB805}">
                                     <br />
                                 </f:if>
-                                Wirkungszeit: {KW805A} - {KW805B}
+                                <dla:data.dateFormat
+                                        dateValue="{0: '{KW805A}'}"
+                                        as="KW805A"
+                                />
+                                <f:if condition="{KW805B}">
+                                    <dla:data.dateFormat
+                                        dateValue="{0: '{KW805B}'}"
+                                        as="KW805B"
+                                    />
+                                </f:if>
+                                Wirkungszeit: <f:format.date date="{KW805A}" format="d.m.Y" /><f:if condition="{KW805B}"> - <f:format.date date="{KW805B}" format="d.m.Y" /></f:if>
                             </f:if>
 
                         </div>
@@ -316,6 +336,8 @@
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0801')}" name="K0801" />
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KI801')}" name="KI801" />
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KSURL')}" name="KSURL" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KSURLB')}" name="KSURLB" />
+
                 <f:if condition="{K0801} || {KSURL}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
@@ -331,24 +353,16 @@
                                 <br/>
                             </f:for>
 
-                            <f:render
-                                    partial="Display/Field/List"
-                                    arguments="{
-                            document:document,
-                            results:results,
-                            field:'KSURL',
-                            linkFieldContent:linkFieldContent,
-                            linkFacets:linkFacets
-                          }"/>
-                            <f:render
-                                    partial="Display/Field/List"
-                                    arguments="{
-                            document:document,
-                            results:results,
-                            field:'KSURLB',
-                            linkFieldContent:linkFieldContent,
-                            linkFacets:linkFacets
-                          }"/>
+                            <f:for each="{KSURL}" as="item" iteration="iterator">
+                                <f:link.typolink parameter="{item}">{item}
+
+                                    <f:if condition="{KSURLB.{iterator.index}}!='#NV'">
+                                        ({KSURLB.{iterator.index}})
+                                    </f:if>
+                                    <br />
+
+                                </f:link.typolink>
+                            </f:for>
                         </div>
                     </div>
                 </f:if>
