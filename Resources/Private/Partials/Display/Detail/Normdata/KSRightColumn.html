@@ -5,10 +5,11 @@
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_image')}" name="wikidata_image" />
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_image_rights')}" name="wikidata_image_rights" />
     <f:if condition="{wikidata_image}">
-        <figure class="teaser teaser-index ctg-image-teaser ctg-image-teaser-rc">
-            <div class="ctg-it-content"
-                 style="background: url('{wikidata_image}'); background-size: cover;">
-                <h3><f:format.raw>{wikidata_image_rights}</f:format.raw></h3>
+        <figure class="teaser ctg-media-teaser">
+            <img src="{wikidata_image}" style="width: 100%; height: auto;" />
+            <div class="ctg-media-content">
+                <span class="icon bel-info"></span>
+                <p><f:format.raw>{wikidata_image_rights}</f:format.raw></p>
             </div>
         </figure>
     </f:if>

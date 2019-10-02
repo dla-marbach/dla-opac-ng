@@ -2,29 +2,29 @@
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_image')}" name="wikidata_image" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_image_rights')}" name="wikidata_image_rights" />
-<f:if condition="{wikidata_image}">
-    <section>
-        <figure class="teaser teaser-index ctg-image-teaser ctg-image-teaser-rc">
-            <div class="ctg-it-content"
-                 style="background: url('{wikidata_image}'); background-size: cover;">
-                <h3><f:format.raw>{wikidata_image_rights}</f:format.raw></h3>
+<section>
+    <f:if condition="{wikidata_image}">
+        <figure class="teaser ctg-media-teaser">
+            <img src="{wikidata_image}" style="width: 100%; height: auto;" />
+            <div class="ctg-media-content">
+                <span class="icon bel-info"></span>
+                <p><f:format.raw>{wikidata_image_rights}</f:format.raw></p>
             </div>
         </figure>
-    </section>
-</f:if>
+    </f:if>
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_signature')}" name="wikidata_signature" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_signature_rights')}" name="wikidata_signature_rights" />
-<f:if condition="{wikidata_signature}">
-    <section>
-        <figure class="teaser teaser-index ctg-image-teaser ctg-image-teaser-rc" style="min-height:200px;">
-            <div class="ctg-it-content" style="vertical-align:top;">
-                <img src="{v:format.replace(substring:' ', content: '{wikidata_signature}', replacement: '_')}">
-                <h3><f:format.raw>{wikidata_signature_rights}</f:format.raw></h3>
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_signature')}" name="wikidata_signature" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_signature_rights')}" name="wikidata_signature_rights" />
+    <f:if condition="{wikidata_signature}">
+        <figure class="teaser ctg-media-teaser">
+            <img src="{wikidata_signature}" style="width: 100%; height: auto;" />
+            <div class="ctg-media-content">
+                <span class="icon bel-info"></span>
+                <p><f:format.raw>{wikidata_signature_rights}</f:format.raw></p>
             </div>
         </figure>
-    </section>
-</f:if>
+    </f:if>
+</section>
 
 <section class="ctg-facet">
     <h3><a title="schließen"><span class="icon bel-pfeil-o01"></span></a>Werkbeziehungen</h3>
