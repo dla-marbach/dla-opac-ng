@@ -294,19 +294,19 @@
                         </div>
                         <div class="ctg-dtvt-content">
                             <f:if condition="{PB814A}">
-                                <dla:data.dateFormat
-                                        dateValue="{0: '{PB814A}'}"
+                                <dla:formatDate
+                                        date="{PB814A}"
                                         as="PB814A"
                                 />
-                                <f:format.date date="{PB814A}" format="d.m.Y" />
+                                {PB814A}
                             </f:if>
                             <f:if condition="{PB814B}">
                                 -
-                                <dla:data.dateFormat
-                                        dateValue="{0: '{PB814B}'}"
+                                <dla:data.formatDate
+                                        date="{PB814B}"
                                         as="PB814B"
                                 />
-                                <f:format.date date="{PB814B}" format="d.m.Y" />
+                                {PB814B}
                             </f:if>
                         </div>
                     </div>
