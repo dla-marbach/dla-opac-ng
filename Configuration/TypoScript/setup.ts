@@ -1091,6 +1091,7 @@ plugin.tx_find {
                 field = facet_names
                 query = facet_names:("%s")
                 collapse = 1
+                reverseFacet = 1
             }
 
             35 {
@@ -1101,6 +1102,7 @@ plugin.tx_find {
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
                 labelmissing = nicht bestimmt
+                reverseFacet = 1
             }
 
             40 {
@@ -1137,6 +1139,7 @@ plugin.tx_find {
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
                 labelmissing = nicht bestimmt
+                reverseFacet = 1
             }
 
             53 {
@@ -1147,6 +1150,7 @@ plugin.tx_find {
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
                 labelmissing = nicht bestimmt
+                reverseFacet = 1
             }
 
             65 {
@@ -1157,6 +1161,7 @@ plugin.tx_find {
                 # Shows a facet value which includes all "not known" items
                 showmissing = 1
                 labelmissing = nicht bestimmt
+                reverseFacet = 1
             }
 
             # Die nächsten konfigurierten Facetten sind für die Sucheinschränkung oberhalb des Suchschlitzes
