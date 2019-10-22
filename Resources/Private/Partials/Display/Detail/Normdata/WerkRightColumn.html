@@ -51,7 +51,7 @@
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0025')}" name="A0025" />
 
         <f:for each="{AI025}" as="item" key="key" iteration="iterator">
-            <f:if condition="{item}">
+            <f:if condition="{item}=='GND (Werktitel)'">
                 <li>
                     <a href="http://d-nb.info/gnd/{A0025.{iterator.index}}">
                         <span class="icon bel-link03"></span>
