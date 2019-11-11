@@ -1,7 +1,7 @@
 <?php
 
 // Configuration options
-$solr_select_url = 'http://scratch.dla-marbach.de:8983/solr/opac-ng-dev/select';
+$solr_select_url = 'http://serene.dla-marbach.de:8983/solr/opac-ng/select';
 
 // Array of entity facts
 $entity = [];
