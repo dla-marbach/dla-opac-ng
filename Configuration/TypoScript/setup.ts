@@ -873,6 +873,16 @@ plugin.tx_find {
                 hidden = 1
             }
 
+            ### Exemplarsuche ###
+
+            999 {
+                id = copy_search
+                type = Text
+                query = AUKEY:("%1$s")
+                noescape = 1
+                hidden = 1
+            }
+
 
 
         }

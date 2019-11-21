@@ -143,6 +143,10 @@ ul.token-input-list {
     text-decoration: none;
 }
 
+.copy-details {
+    display: table-row;
+}
+
 .decisiontree-person {
     margin-left: 0.5rem;
 }

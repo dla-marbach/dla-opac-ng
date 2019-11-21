@@ -1,7 +1,7 @@
 <?php
 
 // Configuration options
-$solr_suggest_url = 'http://scratch.dla-marbach.de:8983/solr/opac-ng-dev/suggest';
+$solr_suggest_url = 'http://serene.dla-marbach.de:8983/solr/opac-ng/suggest';
 $solr_suggest_dictionary = 'mySuggester';
 
 $solr_suggest_text = 'text';
