@@ -456,13 +456,13 @@
             <article>
                 <i><strong>von</strong> {box_title} ...</i>
                 <ul class="list-links">
-
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <v:variable.set value="{listview_title}␝Von" name="listview_title" />
                     <s:data.newArray
                             name="query"
                             global="1"
                             keys="{0:'detail_von_gedrucktes'}"
-                            values="{0:'{P0001}'}"
+                            values="{0:'{listview_title}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -473,13 +473,13 @@
                         </f:link.action>
                     </li>
 
-
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <v:variable.set value="{listview_title}␝Von" name="listview_title" />                    
                     <s:data.newArray
                             name="query"
                             global="1"
                             keys="{0:'detail_von_handschriften'}"
-                            values="{0:'{P0001}'}"
+                            values="{0:'{listview_title}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -490,14 +490,13 @@
                         </f:link.action>
                     </li>
 
-
-
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <v:variable.set value="{listview_title}␝Von" name="listview_title" />                    
                     <s:data.newArray
                             name="query"
                             global="1"
                             keys="{0:'detail_von_bundo'}"
-                            values="{0:'{P0001}'}"
+                            values="{0:'{listview_title}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -508,13 +507,13 @@
                         </f:link.action>
                     </li>
 
-
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <v:variable.set value="{listview_title}␝Von" name="listview_title" />                    
                     <s:data.newArray
                             name="query"
                             global="1"
                             keys="{0:'detail_von_aundv'}"
-                            values="{0:'{P0001}'}"
+                            values="{0:'{listview_title}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -534,12 +533,14 @@
                 <i><strong>an</strong> {box_title} ...</i>
                 <ul class="list-links">
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <v:variable.set value="{listview_title}␝An" name="listview_title" />                    
+
                     <s:data.newArray
                             name="query"
                             global="1"
                             keys="{0:'detail_an_gedrucktes'}"
-                            values="{0:'{P0001}'}"
+                            values="{0:'{listview_title}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -550,16 +551,15 @@
                         </f:link.action>
                     </li>
 
-
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
                     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
-                    <v:variable.set value="{listview_title}␝An" name="listview_title" />
+                    <v:variable.set value="{listview_title}␝An" name="listview_title" />                    
                     <s:data.newArray
                             name="query"
                             global="1"
                             keys="{0:'detail_an_handschriften'}"
-                            values="{0:{0:'{P0001}', 1:'{listview_title}'}}"
+                            values="{0:'{listview_title}'}"
                     />
+
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
 
@@ -570,12 +570,13 @@
                     </li>
 
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <v:variable.set value="{listview_title}␝An" name="listview_title" />                    
                     <s:data.newArray
                             name="query"
                             global="1"
                             keys="{0:'detail_an_bundo'}"
-                            values="{0:'{P0001}'}"
+                            values="{0:'{listview_title}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -587,12 +588,13 @@
                     </li>
 
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <v:variable.set value="{listview_title}␝An" name="listview_title" />                    
                     <s:data.newArray
                             name="query"
                             global="1"
                             keys="{0:'detail_an_aundv'}"
-                            values="{0:'{P0001}'}"
+                            values="{0:'{listview_title}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -608,12 +610,13 @@
             <article>
                 <i><strong>über</strong> {box_title} ...</i>
                 <ul class="list-links">
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <v:variable.set value="{listview_title}␝Über" name="listview_title" />
                     <s:data.newArray
                             name="query"
                             global="1"
                             keys="{0:'detail_ueber_gedrucktes'}"
-                            values="{0:'{P0001}'}"
+                            values="{0:'{listview_title}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -625,12 +628,13 @@
                     </li>
 
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <v:variable.set value="{listview_title}␝Über" name="listview_title" />
                     <s:data.newArray
                             name="query"
                             global="1"
                             keys="{0:'detail_ueber_handschriften'}"
-                            values="{0:'{P0001}'}"
+                            values="{0:'{listview_title}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -642,12 +646,13 @@
                     </li>
 
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <v:variable.set value="{listview_title}␝Über" name="listview_title" />
                     <s:data.newArray
                             name="query"
                             global="1"
                             keys="{0:'detail_ueber_bundo'}"
-                            values="{0:'{P0001}'}"
+                            values="{0:'{listview_title}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -659,12 +664,13 @@
                     </li>
 
 
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <v:variable.set value="{listview_title}␝Über" name="listview_title" />
                     <s:data.newArray
                             name="query"
                             global="1"
                             keys="{0:'detail_ueber_aundv'}"
-                            values="{0:'{P0001}'}"
+                            values="{0:'{listview_title}'}"
                     />
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
@@ -715,12 +721,13 @@
                             </f:link.action>
                         </li>
 
-                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                        <v:variable.set value="{listview_title}␝Unter" name="listview_title" />
                         <s:data.newArray
                                 name="query"
                                 global="1"
                                 keys="{0:'detail_unter_bundo'}"
-                                values="{0:'{P0001}'}"
+                                values="{0:'{listview_title}'}"
                         />
                         <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                         <dla:countFromSolr query="{solvedQuery}" />

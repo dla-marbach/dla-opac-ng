@@ -304,84 +304,97 @@ plugin.tx_find {
             111 {
                 id = detail_von_gedrucktes
                 type = Text
-                query = PE0100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND NOT GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter") AND source:("AK")
+                # query = PE0100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND NOT GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter") AND
+                query = (facet_names_relations:("%1$s") AND icon_facet:("Gedrucktes"))
                 noescape = 1
                 hidden = 1
             }
             112 {
                 id = detail_von_handschriften
                 type = Text
-                query = PE0100:("%1$s") AND source:("HS")
+                # query = PE0100:("%1$s") AND source:("HS")
+                query = (facet_names_relations:("%1$s") AND icon_facet:("Handschriften"))
                 noescape = 1
                 hidden = 1
             }
             113 {
                 id = detail_von_bundo
                 type = Text
-                query = PE0100:("%1$s") AND source:("BI")
+                # query = PE0100:("%1$s") AND source:("BI")
+                query = (facet_names_relations:("%1$s") AND icon_facet:("Bilder und Objekte"))
                 noescape = 1
                 hidden = 1
             }
             114 {
                 id = detail_von_aundv
                 type = Text
-                query = PE0100:("%1$s") AND DOKTYP:("Ton- und Bildträger") AND NOT GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
+                # query = PE0100:("%1$s") AND DOKTYP:("Ton- und Bildträger") AND NOT GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
+                query = (facet_names_relations:("%1$s") AND (icon_facet:("Audio") OR icon_facet:("Video")))
+
                 noescape = 1
                 hidden = 1
             }
             115 {
                 id = detail_an_gedrucktes
                 type = Text
-                query = PE0100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
+                # query = PE0100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
+                query = (facet_names_relations:("%1$s") AND icon_facet:("Gedrucktes"))
                 noescape = 1
                 hidden = 1
             }
             116 {
                 id = detail_an_handschriften
                 type = Text
-                query = (PEA100:("%1$s") AND source:("HS")) OR (facet_names_relations:("%2$s") AND source:("AK"))
+                # query = (PEA100:("%1$s") AND source:("HS")) OR (facet_names_relations:("%2$s") AND source:("AK"))
+                query = (facet_names_relations:("%1$s") AND icon_facet:("Handschriften"))
                 noescape = 1
                 hidden = 1
             }
             117 {
                 id = detail_an_bundo
                 type = Text
-                query = PEA100:("%1$s") AND source:("BI")
+                # query = PEA100:("%1$s") AND source:("BI")
+                query = (facet_names_relations:("%1$s") AND icon_facet:("Bilder und Objekte"))
                 noescape = 1
                 hidden = 1
             }
             118 {
                 id = detail_an_aundv
                 type = Text
-                query = PE0100:("%1$s") AND DOKTYP:("Ton- und Bildträger") AND GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
-                noescape = 1
+                # query = PE0100:("%1$s") AND DOKTYP:("Ton- und Bildträger") AND GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
+                query = (facet_names_relations:("%1$s") AND (icon_facet:("Audio") OR icon_facet:("Video")))
+                noescape = 1 
                 hidden = 1
             }
             119 {
                 id = detail_ueber_gedrucktes
                 type = Text
-                query = PEE100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND source:("AK")
+                # query = PEE100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND source:("AK")
+                query = (facet_names_relations:("%1$s") AND icon_facet:("Gedrucktes"))
                 noescape = 1
                 hidden = 1
             }
             120 {
                 id = detail_ueber_handschriften
                 type = Text
-                query = PEE100:("%1$s") AND source:("HS")
+                # query = PEE100:("%1$s") AND source:("HS")
+                query = (facet_names_relations:("%1$s") AND icon_facet:("Handschriften"))
                 noescape = 1
                 hidden = 1
             }
             121 {
                 id = detail_ueber_bundo
                 type = Text
-                query = PEE100:("%1$s") AND source:("BI")
+                # query = PEE100:("%1$s") AND source:("BI")
+                query = (facet_names_relations:("%1$s") AND icon_facet:("Bilder und Objekte"))
                 noescape = 1
                 hidden = 1
             }
             122 {
                 id = detail_ueber_aundv
                 type = Text
-                query = PEE100:("%1$s") AND DOKTYP:("Ton- und Bildträger")
+                # query = PEE100:("%1$s") AND DOKTYP:("Ton- und Bildträger")
+                query = (facet_names_relations:("%1$s") AND (icon_facet:("Audio") OR icon_facet:("Video")))
                 noescape = 1
                 hidden = 1
             }
@@ -402,7 +415,8 @@ plugin.tx_find {
             125 {
                 id = detail_unter_bundo
                 type = Text
-                query = PEU100:("%1$s") AND source:("BI")
+                # query = PEU100:("%1$s") AND source:("BI")
+                query = (facet_names_relations:("%1$s") AND icon_facet:("Bilder und Objekte"))
                 noescape = 1
                 hidden = 1
             }
@@ -826,7 +840,7 @@ plugin.tx_find {
             224 {
                 id = detail_fs_bibliographieketten
                 type = Text
-                query = SYKEY:("%1$s") OR TYP:("Bibliographie-Kette") AND source:("SE")
+                query = SYKEY:("%1$s") AND TYP:("Bibliographie-Kette") AND source:("SE")
                 noescape = 1
                 hidden = 1
             }
