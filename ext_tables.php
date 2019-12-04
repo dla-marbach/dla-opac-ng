@@ -8,6 +8,12 @@ defined('TYPO3_MODE') || die('Access denied.');
     'FindStart'
 );
 
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'Dla.' . 'DlaOpacNg',
+    'DlaTectonic',
+    'DlaTectonic'
+);
+
 call_user_func(
     function()
     {
