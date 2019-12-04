@@ -1,0 +1,65 @@
+<div class="ctg-dtvt-row">
+
+    <div class="ctg-dtvt-label">
+        Exemplar
+    </div>
+    <div class="ctg-dtvt-content">
+        Provenienz
+    </div>
+</div>
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AUKEY')}" name="AUKEY" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+
+<script>
+    $( document ).ready(function() {
+        $('.copy-details').hide();
+
+        $('.detail_link').click(function( event ) {
+            event.preventDefault();
+
+            $(this).parent().parent().next('.copy-details').toggle();
+        });
+    });
+
+</script>
+
+<f:if condition="{AUKEY}">
+    <f:then>
+        <v:variable.set value="" name="aukey_query_string" />
+        <f:for each="{AUKEY}" as="item" iteration="iterator">
+            <f:if condition="{iterator.isFirst}">
+                <f:then>
+                    <v:variable.set value="{item}" name="aukey_query_string" />
+                </f:then>
+                <f:else>
+                    <v:variable.set value="{aukey_query_string} OR {item}" name="aukey_query_string" />
+                </f:else>
+            </f:if>
+        </f:for>
+
+            <s:data.newArray
+                    name="query"
+                    global="1"
+                    keys="{0:'copy_search'}"
+                    values="{0:'{aukey_query_string}'}"
+            />
+
+            <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+            <dla:countFromSolr query="{solvedQuery}" />
+            <slub:data.fromSolr
+                    query="{solvedQuery}"
+                    fields="">
+
+                <f:if condition="{solr.id}!={id}">
+
+                    <f:render partial="Display/Detail/AccessExemplar/DetailMetadata" arguments="{_all}"/>
+
+                </f:if>
+            </slub:data.fromSolr>
+
+    </f:then>
+    <f:else>
+        Keine Exemplare vorhanden
+    </f:else>
+</f:if>
