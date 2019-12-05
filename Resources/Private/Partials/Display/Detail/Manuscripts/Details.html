@@ -90,11 +90,31 @@
 </f:comment>
 
 <div class="ctg-detailview-tabs">
-    <ul class="ctg-dtvt-menu">
-        <li><a href="" class="ctg-dtvt-menu-active"><span><f:translate key='Details' extensionName='dla_opac_ng'/></span></a></li>
+
+    <ul class="ctg-dtvt-menu" id="tabbed">
+        <li>
+            <a href="#tabbed" id="tabdetail" class="ctg-dtvt-menu-active" onclick="$('#detail').show();$('#access').hide();$(this).toggleClass('ctg-dtvt-menu-active');$('#tabaccess').toggleClass('ctg-dtvt-menu-active');">
+                <span>
+                    <f:translate key='Details' extensionName='dla_opac_ng'/>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#tabbed" id="tabaccess" onclick="$('#access').show();$('#detail').hide();$(this).toggleClass('ctg-dtvt-menu-active');$('#tabdetail').toggleClass('ctg-dtvt-menu-active');">
+                <span>
+                    <f:translate key='Zugang' extensionName='dla_opac_ng'/>
+                </span>
+            </a>
+        </li>
     </ul>
 
-    <div class="ctg-dtvt-details">
+    <div id="access" class="ctg-dtvt-details" style="display: none;">
+
+        <f:render partial="Display/Detail/AccessExemplar/Exemplar" arguments="{_all}"/>
+
+    </div>
+
+    <div id="detail" class="ctg-dtvt-details">
 
         <div class="ctg-dtvt-row">
             <div class="ctg-dtvt-label">
