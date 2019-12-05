@@ -29,6 +29,7 @@ class ReplaceNullValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstra
             $resultValue = str_replace("#NV : #NV", "", $resultValue);
             $resultValue = str_replace("#NV :", "", $resultValue);
             $resultValue = str_replace("#NV", "", $resultValue);
+            $resultValue = str_replace("␞", "", $resultValue);
 
             if (is_array($resultValue)) {
                 $resultValue = $resultValue[0];
