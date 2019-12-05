@@ -37,11 +37,11 @@
             </div>
         </div>
         <div id="{iterator.cycle}" class="copy-details ctg-dtvt-row">
-            <div class="" style="padding-left: 20px;">
+            <div class="">
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
 
-                <f:if condition="{detail_restrictions.{iterator.index}}">
+                <f:if condition="{detail_restrictions}">
                     <f:then>
                         <div class="ctg-dtvt-row">
                             <div class="ctg-dtvt-label">
@@ -49,7 +49,7 @@
                             </div>
 
                             <div class="ctg-dtvt-content">
-                                {detail_restrictions.{iterator.index}}
+                                {detail_restrictions}
                             </div>
                         </div>
                     </f:then>
@@ -110,7 +110,11 @@
                         </div>
 
                         <div class="ctg-dtvt-content">
-                            {XX_AU_SENDAT_AUKEY}
+                            <dla:formatDate
+                                    date="{XX_AU_SENDAT_AUKEY}"
+                                    as="dateFormat"
+                            />
+                            <f:format.date date="{dateFormat}" format="d.m.Y"></f:format.date>
                         </div>
                     </div>
                 </f:if>
@@ -330,7 +334,7 @@
         </div>
         <div id="{iterator.cycle}" class="copy-details ctg-dtvt-row">
 
-            <div class="" style="padding-left: 20px;">
+            <div class="">
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
 
@@ -364,25 +368,31 @@
                     </f:then>
                 </f:if>
 
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        Digitales Objekt
-                    </div>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'INDKEY')}" name="INDKEY" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
 
-                    <div class="ctg-dtvt-content">
-                        <f:for each="{solr.INDKEY}" as="item" iteration="iterator">
-                            <s:data.newArray
-                                    name="query"
-                                    global="1"
-                                    keys="{0:'id'}"
-                                    values="{0:'MM{item}'}"
-                            />
-                            <f:link.action action="index" arguments="{query}" class="internal" noCacheHash="1">
-                                {solr.XX_MM_MOTITL_INDKEY.{iterator.index}}<br/>
-                            </f:link.action>
-                        </f:for>
+                <dla:replaceNullValue array="{INDKEY}" as="array"/>
+                <f:if condition="{array}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            Digitales Objekt
+                        </div>
+
+                        <div class="ctg-dtvt-content">
+                            <f:for each="{INDKEY}" as="item" iteration="iterator_indkey">
+                                <s:data.newArray
+                                        name="query"
+                                        global="1"
+                                        keys="{0:'id'}"
+                                        values="{0:'MM{item}'}"
+                                />
+                                <f:link.action action="index" arguments="{query}" class="internal" noCacheHash="1">
+                                    {XX_MM_MOTITL_INDKEY.{iterator_indkey.index}}<br/>
+                                </f:link.action>
+                            </f:for>
+                        </div>
                     </div>
-                </div>
+                </f:if>
 
             </div>
 
@@ -421,7 +431,7 @@
             </div>
         </div>
         <div id="{iterator.cycle}" class="copy-details ctg-dtvt-row">
-            <div class="" style="padding-left: 20px;">
+            <div class="">
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
                 <dla:replaceNullValue text="{detail_restrictions}" as="detail_restrictions"/>
@@ -467,28 +477,38 @@
                 </f:if>
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B01610')}" name="B01610" />
+                <dla:replaceNullValue array="{B01610}" as="B01610"/>
+
                 <f:if condition="{B01610}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
                             Ordnung
                         </div>
                         <div class="ctg-dtvt-content">
-                            {B01610}
+                            <f:for each="{B01610}" as="item">
+                                {item} <br/>
+                            </f:for>
                         </div>
                     </div>
                 </f:if>
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B02610')}" name="B02610" />
+                <dla:replaceNullValue array="{B02610}" as="B02610"/>
                 <f:if condition="{B02610}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
                             Verzeichnung
                         </div>
                         <div class="ctg-dtvt-content">
-                            {B02610}
+                            <f:for each="{B02610}" as="item">
+                                {item} <br/>
+                            </f:for>
                         </div>
                     </div>
                 </f:if>
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'INDKEY')}" name="INDKEY" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
 
                 <dla:replaceNullValue array="{INDKEY}" as="array"/>
                 <f:if condition="{array}">
@@ -537,7 +557,7 @@
             </div>
         </div>
         <div id="{iterator.cycle}" class="copy-details ctg-dtvt-row">
-            <div class="" style="padding-left: 20px;">
+            <div class="">
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
                 <dla:replaceNullValue text="{detail_restrictions}" as="detail_restrictions"/>
@@ -626,7 +646,10 @@
                     </div>
                 </f:if>
 
-                <dla:replaceNullValue array="{solr.INDKEY}" as="array"/>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'INDKEY')}" name="INDKEY" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
+
+                <dla:replaceNullValue array="{INDKEY}" as="array"/>
                 <f:if condition="{array}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
