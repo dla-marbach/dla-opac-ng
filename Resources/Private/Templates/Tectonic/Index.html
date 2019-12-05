@@ -37,18 +37,18 @@
             // $(this).parent().parent().parent().append('<ul><article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>Level 1</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article></ul>');
         });
 
+        // click event for loaded content
+        $(document).on("click", '.childElement.children', function(event) {
+            var html = jsonToHtml('{"AK12345":{"text": "Text", "tektonik_children": "true", "element_info": "Infotext..."}, "AK1231231":{"text": "Text", "tektonik_children": "false", "element_info": "Infotext..."}}');
+            $(this).parent().parent().parent().append(html);
+        });
+
         $('#tectonictree a.bt-info').on("click", function() {
             $(this).parent().next(".tectonic-information").toggle();
         });
 
         $(document).on("click", '.bt-info', function(event) {
             $(this).parent().next(".tectonic-information").toggle();
-        });
-
-        // click event for loaded content
-        $(document).on("click", '.childElement', function(event) {
-            var html = jsonToHtml('{"AK12345":{"text": "Text", "tektonik_children": "true", "element_info": "Infotext..."}, "AK1231231":{"text": "Text", "tektonik_children": "false", "element_info": "Infotext..."}}');
-            $(this).parent().parent().parent().append(html);
         });
     }
 
@@ -69,7 +69,7 @@
 
     function getLiElement(index, item) {
         if (item.tektonik_children == 'true') {
-            constants.liElements += '<li id="' + index + '"><article><span class="bt-content"><a class="childElement bt-folder" href="#"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>' + item.text + '</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span><div class="tectonic-information">' + item.element_info + '</div></article></li>';
+            constants.liElements += '<li id="' + index + '"><article><span class="bt-content"><a class="childElement bt-folder children" href="#"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>' + item.text + '</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span><div class="tectonic-information">' + item.element_info + '</div></article></li>';
         } else if (item.tektonik_children == 'false') {
             constants.liElements += '<li id="' + index + '"><article><span class="bt-content"><span class="childElement bt-folder" href="#"><span class="icon bel-ordner"><strong>+</strong></span></span><h3>' + item.text + '</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span><div class="tectonic-information">' + item.element_info + '</div></article></li>';
         }
@@ -96,81 +96,81 @@
 
 <ul id="tectonictree" class="bt-listview">
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>A</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>A</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>B</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>B</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>C</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>C</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>D</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>D</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>E</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>E</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>F</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>F</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>G</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>G</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>H</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>H</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>I</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>I</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>J</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>J</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>K</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>K</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>L</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>L</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>M</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>M</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>N</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>N</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>O</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>O</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>P</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>P</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>Q</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>Q</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>R</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>R</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>S</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>S</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>T</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>T</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>U</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>U</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>V</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>V</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>W</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>W</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>X</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>X</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>Y</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>Y</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
     <li>
-        <article><span class="bt-content"><a href="#" class="childElement bt-folder"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>Z</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
+        <article><span class="bt-content"><a href="#" class="childElement bt-folder children"><span class="icon bel-ordner"><strong>+</strong></span></a><h3>Z</h3></span><span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a><a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span></article>
     </li>
 </ul>
