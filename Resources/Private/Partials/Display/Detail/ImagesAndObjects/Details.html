@@ -96,22 +96,13 @@
         </li>
     </ul>
 
-    <div class="ctg-dtvt-details tab-access" style="display:none;">
-        <div class="ctg-dtvt-row">
-            <div class="ctg-dtvt-label">
-                Exemplar
-            </div>
-            <div class="ctg-dtvt-content">
-                <ul class="field-listview_type-group">
-                    <li><span class="field-listview_type">
-                        Ausleihstatus
-                    </span></li>
-                </ul>
-            </div>
-        </div>
+    <div id="access" class="ctg-dtvt-details" style="display: none;">
+
+        <f:render partial="Display/Detail/AccessExemplar/Exemplar" arguments="{_all}"/>
+
     </div>
 
-    <div class="ctg-dtvt-details tab-detail">
+    <div id="detail" class="ctg-dtvt-details">
 
         <f:comment>
             Mediatype
