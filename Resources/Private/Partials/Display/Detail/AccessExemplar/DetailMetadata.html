@@ -26,7 +26,48 @@
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
 
             <div class="ctg-dtvt-content">
-                {listview_title}
+                <f:comment>Provinenz</f:comment>
+
+
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_PEU100_AUKEY')}" name="XX_AU_PEU100_AUKEY" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_PE_listview_title_XX_AU_PEU100_AUKEY')}" name="XXX_PE_listview_title_XX_AU_PEU100_AUKEY" />
+                <dla:replaceNullValue array="{XXX_PE_listview_title_XX_AU_PEU100_AUKEY}" as="XXX_PE_listview_title_XX_AU_PEU100_AUKEY"/>
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_KSU200_AUKEY')}" name="XX_AU_KSU200_AUKEY" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_KS_listview_title_XX_AU_KSU200_AUKEY')}" name="XXX_KS_listview_title_XX_AU_KSU200_AUKEY" />
+                <dla:replaceNullValue array="{XXX_KS_listview_title_XX_AU_KSU200_AUKEY}" as="XXX_KS_listview_title_XX_AU_KSU200_AUKEY"/>
+
+                <f:if condition="{XXX_PE_listview_title_XX_AU_PEU100_AUKEY} || {XXX_KS_listview_title_XX_AU_KSU200_AUKEY}">
+                    <f:then>
+                        <f:for each="{XXX_PE_listview_title_XX_AU_PEU100_AUKEY}" as="person" iteration="person_iterator">
+                            <f:link.action action="detail" arguments="{id: 'PE{XX_AU_PEU100_AUKEY.{person_iterator.index}}'}">
+                                {person} <br/>
+                            </f:link.action>
+                        </f:for>
+
+                        <f:for each="{XXX_KS_listview_title_XX_AU_KSU200_AUKEY}" as="ks" iteration="ks_iterator">
+                            <f:link.action action="detail" arguments="{id: 'KS{XX_AU_KSU200_AUKEY.{ks_iterator.index}}'}">
+                                {ks} <br/>
+                            </f:link.action>
+                        </f:for>
+                    </f:then>
+                    <f:else>
+
+                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_BFKEY_AUKEY')}" name="XX_AU_BFKEY_AUKEY" />
+                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_BF_B41600_XX_AU_BFKEY_AUKEY')}" name="XXX_BF_B41600_XX_AU_BFKEY_AUKEY" />
+                        <dla:replaceNullValue array="{XXX_BF_B41600_XX_AU_BFKEY_AUKEY}" as="XXX_BF_B41600_XX_AU_BFKEY_AUKEY"/>
+
+                        <f:if condition="{XXX_BF_B41600_XX_AU_BFKEY_AUKEY}">
+                            <f:for each="{XXX_BF_B41600_XX_AU_BFKEY_AUKEY}" as="bf" iteration="bf_iterator">
+                                <f:link.action action="detail" arguments="{id: 'BF{XX_AU_BFKEY_AUKEY.{bf_iterator.index}}'}">
+                                    {bf} <br/>
+                                </f:link.action>
+                            </f:for>
+                        </f:if>
+                    </f:else>
+                </f:if>
+
             </div>
             <div class="ctg-dtvt">
 
@@ -49,7 +90,16 @@
                             </div>
 
                             <div class="ctg-dtvt-content">
-                                {detail_restrictions}
+                                <f:if condition="{AUKEY_FLAG}">
+                                    <f:then>
+                                        {detail_restrictions}
+                                    </f:then>
+                                    <f:else>
+                                        <dla:replaceBreaks text="{detail_restrictions}" as="detail_restrictions" />
+                                        <f:format.raw>{detail_restrictions}</f:format.raw>
+                                    </f:else>
+                                </f:if>
+
                             </div>
                         </div>
                     </f:then>
@@ -135,25 +185,28 @@
                     </div>
                 </f:if>
 
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_PE_listview_title_XX_AU_PEU100_AUKEY')}" name="XXX_PE_listview_title_XX_AU_PEU100_AUKEY" />
-                <dla:replaceNullValue text="{XXX_PE_listview_title_XX_AU_PEU100_AUKEY.{iterator.index}}" as="XXX_PE_listview_title_XX_AU_PEU100_AUKEY"/>
+                <f:comment>
 
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_KS_listview_title_XX_AU_KSU200_AUKEY')}" name="XXX_KS_listview_title_XX_AU_KSU200_AUKEY" />
-                <dla:replaceNullValue text="{XXX_KS_listview_title_XX_AU_KSU200_AUKEY.{iterator.index}}" as="XXX_KS_listview_title_XX_AU_KSU200_AUKEY"/>
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_PE_listview_title_XX_AU_PEU100_AUKEY')}" name="XXX_PE_listview_title_XX_AU_PEU100_AUKEY" />
+                    <dla:replaceNullValue text="{XXX_PE_listview_title_XX_AU_PEU100_AUKEY.{iterator.index}}" as="XXX_PE_listview_title_XX_AU_PEU100_AUKEY"/>
 
-                <f:if condition="{XXX_PE_listview_title_XX_AU_PEU100_AUKEY} || {XXX_KS_listview_title_XX_AU_KSU200_AUKEY}">
-                    <div class="ctg-dtvt-row">
-                        <div class="ctg-dtvt-label">
-                            Vorbesitzer
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_KS_listview_title_XX_AU_KSU200_AUKEY')}" name="XXX_KS_listview_title_XX_AU_KSU200_AUKEY" />
+                    <dla:replaceNullValue text="{XXX_KS_listview_title_XX_AU_KSU200_AUKEY.{iterator.index}}" as="XXX_KS_listview_title_XX_AU_KSU200_AUKEY"/>
+
+                    <f:if condition="{XXX_PE_listview_title_XX_AU_PEU100_AUKEY} || {XXX_KS_listview_title_XX_AU_KSU200_AUKEY}">
+                        <div class="ctg-dtvt-row">
+                            <div class="ctg-dtvt-label">
+                                Vorbesitzer
+                            </div>
+
+                            <div class="ctg-dtvt-content">
+                                {XXX_PE_listview_title_XX_AU_PEU100_AUKEY}
+
+                                {XXX_KS_listview_title_XX_AU_KSU200_AUKEY}
+                            </div>
                         </div>
-
-                        <div class="ctg-dtvt-content">
-                            {XXX_PE_listview_title_XX_AU_PEU100_AUKEY}
-
-                            {XXX_KS_listview_title_XX_AU_KSU200_AUKEY}
-                        </div>
-                    </div>
-                </f:if>
+                    </f:if>
+                </f:comment>
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_BF_B41600_XX_AU_BFKEY_AUKEY')}" name="XXX_BF_B41600_XX_AU_BFKEY_AUKEY" />
                 <dla:replaceNullValue text="{XXX_BF_B41600_XX_AU_BFKEY_AUKEY.{iterator.index}}" as="XXX_BF_B41600_XX_AU_BFKEY_AUKEY"/>
@@ -346,7 +399,8 @@
                             </div>
 
                             <div class="ctg-dtvt-content">
-                                {detail_restrictions}
+                                <dla:replaceBreaks text="{detail_restrictions}" as="detail_restrictions" />
+                                <f:format.raw>{detail_restrictions}</f:format.raw>
                             </div>
                         </div>
                     </f:then>
@@ -444,7 +498,8 @@
                             </div>
 
                             <div class="ctg-dtvt-content">
-                                {detail_restrictions}
+                                <dla:replaceBreaks text="{detail_restrictions}" as="detail_restrictions" />
+                                <f:format.raw>{detail_restrictions}</f:format.raw>
                             </div>
                         </div>
                     </f:then>
@@ -570,7 +625,8 @@
                             </div>
 
                             <div class="ctg-dtvt-content">
-                                {detail_restrictions}
+                                <dla:replaceBreaks text="{detail_restrictions}" as="detail_restrictions" />
+                                <f:format.raw>{detail_restrictions}</f:format.raw>
                             </div>
                         </div>
                     </f:then>
