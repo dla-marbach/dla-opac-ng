@@ -2,7 +2,6 @@
 
 <f:switch expression="{source}">
     <f:case value="AK">
-
         <div class="ctg-dtvt-row">
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_KLASS_AUKEY')}" name="XX_AU_KLASS_AUKEY" />
 
@@ -32,38 +31,37 @@
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_PEU100_AUKEY')}" name="XX_AU_PEU100_AUKEY" />
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_PE_listview_title_XX_AU_PEU100_AUKEY')}" name="XXX_PE_listview_title_XX_AU_PEU100_AUKEY" />
-                <dla:replaceNullValue array="{XXX_PE_listview_title_XX_AU_PEU100_AUKEY}" as="XXX_PE_listview_title_XX_AU_PEU100_AUKEY"/>
+                <dla:replaceNullValue text="{XXX_PE_listview_title_XX_AU_PEU100_AUKEY.{iterator.index}}" as="PE_VALUE"/>
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_KSU200_AUKEY')}" name="XX_AU_KSU200_AUKEY" />
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_KS_listview_title_XX_AU_KSU200_AUKEY')}" name="XXX_KS_listview_title_XX_AU_KSU200_AUKEY" />
-                <dla:replaceNullValue array="{XXX_KS_listview_title_XX_AU_KSU200_AUKEY}" as="XXX_KS_listview_title_XX_AU_KSU200_AUKEY"/>
+                <dla:replaceNullValue text="{XXX_KS_listview_title_XX_AU_KSU200_AUKEY.{iterator.index}}" as="KS_VALUE"/>
 
-                <f:if condition="{XXX_PE_listview_title_XX_AU_PEU100_AUKEY} || {XXX_KS_listview_title_XX_AU_KSU200_AUKEY}">
+                <f:if condition="{PE_VALUE} || {KS_VALUE}">
                     <f:then>
-                        <f:for each="{XXX_PE_listview_title_XX_AU_PEU100_AUKEY}" as="person" iteration="person_iterator">
+                        <f:if condition="{PE_VALUE}">
                             <f:link.action action="detail" arguments="{id: 'PE{XX_AU_PEU100_AUKEY.{person_iterator.index}}'}">
-                                {person} <br/>
+                                {PE_VALUE} <br/>
                             </f:link.action>
-                        </f:for>
+                        </f:if>
 
-                        <f:for each="{XXX_KS_listview_title_XX_AU_KSU200_AUKEY}" as="ks" iteration="ks_iterator">
+                        <f:if condition="{KS_VALUE}">
                             <f:link.action action="detail" arguments="{id: 'KS{XX_AU_KSU200_AUKEY.{ks_iterator.index}}'}">
-                                {ks} <br/>
+                                {KS_VALUE} <br/>
                             </f:link.action>
-                        </f:for>
+                        </f:if>
+
                     </f:then>
                     <f:else>
 
                         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_BFKEY_AUKEY')}" name="XX_AU_BFKEY_AUKEY" />
                         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_BF_B41600_XX_AU_BFKEY_AUKEY')}" name="XXX_BF_B41600_XX_AU_BFKEY_AUKEY" />
-                        <dla:replaceNullValue array="{XXX_BF_B41600_XX_AU_BFKEY_AUKEY}" as="XXX_BF_B41600_XX_AU_BFKEY_AUKEY"/>
+                        <dla:replaceNullValue text="{XXX_BF_B41600_XX_AU_BFKEY_AUKEY.{iterator.index}}" as="BF_VALUE"/>
 
-                        <f:if condition="{XXX_BF_B41600_XX_AU_BFKEY_AUKEY}">
-                            <f:for each="{XXX_BF_B41600_XX_AU_BFKEY_AUKEY}" as="bf" iteration="bf_iterator">
-                                <f:link.action action="detail" arguments="{id: 'BF{XX_AU_BFKEY_AUKEY.{bf_iterator.index}}'}">
-                                    {bf} <br/>
-                                </f:link.action>
-                            </f:for>
+                        <f:if condition="{BF_VALUE} && {BF_VALUE}!=''">
+                            <f:link.action action="detail" arguments="{id: 'BF{XX_AU_BFKEY_AUKEY.{iterator.index}}'}">
+                                {BF_VALUE} <br/>
+                            </f:link.action>
                         </f:if>
                     </f:else>
                 </f:if>
