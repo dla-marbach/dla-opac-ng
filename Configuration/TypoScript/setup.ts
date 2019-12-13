@@ -995,6 +995,11 @@ plugin.tx_find {
                     f5 = listview_additional1
                     f6 = listview_additional2
                     f7 = picture_midi
+                    f8 = facet_medium
+                    f9 = detail_restrictions
+                    f10 = XX_AU_PRSTAT_AUKEY
+                    f11 = XX_MM_MOTITL_INDKEY
+                    f12 = XX_MM_MOPFAD_INDKEY
                 }
             }
             detail {

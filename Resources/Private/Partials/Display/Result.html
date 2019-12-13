@@ -122,29 +122,113 @@
         <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.listview_type)}">
             <div class="ctg-rid-row">
                 <div class="ctg-rid-label">
-                    <f:translate key='Medientyp' extensionName='dla_opac_ng'/>
+                    Medium
                 </div>
                 <div class="ctg-rid-content">
-                    {document.listview_type}
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'facet_medium')}" name="facet_medium" />
+                    <f:if condition="{facet_medium}">
+                        <f:for each="{facet_medium}" as="medium" iteration="iterator">
+                            {medium}
+                        </f:for>
+                        <br/>
+                    </f:if>
+
+                    <f:link.action
+                            action="detail"
+                            arguments="{id:document.id}"
+                            section="{settings.jumpToID}"
+                            noCacheHash="1"
+                            onclick="{f:if(
+                    condition:'{settings.paging.detailPagePaging} == 1',
+                    then:'return tx_find.detailViewWithPaging(this);'
+                    )}">
+                        Weitere Details
+                    </f:link.action>
                 </div>
             </div>
         </f:if>
         <div class="ctg-rid-row">
             <div class="ctg-rid-label">
-                <f:translate key='Technik' extensionName='dla_opac_ng'/>
-            </div>
-            <div class="ctg-rid-content">
-                Baustelle
-            </div>
-        </div>
-        <div class="ctg-rid-row">
-            <div class="ctg-rid-label">
                 <f:translate key='Benutzungszugang' extensionName='dla_opac_ng'/>
             </div>
             <div class="ctg-rid-content">
-                Baustelle: <f:translate key='nicht ausleihbar' extensionName='dla_opac_ng'/>, <a href=""><f:translate key='weiterer Hinweis hier' extensionName='dla_opac_ng'/></a>
+                <f:link.action
+                        action="detail"
+                        arguments="{id:document.id}"
+                        section="{settings.jumpToID}"
+                        noCacheHash="1"
+                        onclick="{f:if(
+                condition:'{settings.paging.detailPagePaging} == 1',
+                then:'return tx_find.detailViewWithPaging(this);'
+                )}">
+                    Zur Bestellung
+                </f:link.action>
+                <br/>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
+                <f:if condition="{detail_restrictions}">
+                    <dla:replaceBreaks text="{detail_restrictions}" as="restriction"/>
+                    <f:format.raw>{restriction}</f:format.raw>
+                </f:if>
+
             </div>
         </div>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
+        <dla:replaceNullValue array="{XX_MM_MOTITL_INDKEY}" as="XX_MM_MOTITL_INDKEY"/>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOPFAD_INDKEY')}" name="XX_MM_MOPFAD_INDKEY" />
+        <dla:replaceNullValue array="{XX_MM_MOPFAD_INDKEY}" as="XX_MM_MOPFAD_INDKEY"/>
+        
+        <f:if condition="{XX_MM_MOTITL_INDKEY}">
+            <div class="ctg-rid-row">
+                <div class="ctg-rid-label">
+                    Digitales Objekt
+                </div>
+                <div class="ctg-rid-content">
+                    <f:for each="{XX_MM_MOTITL_INDKEY}" as="MOTITL" iteration="iterator">
+                        <f:if condition="{XX_MM_MOPFAD_INDKEY}">
+                            <f:then>
+                                <a href="{XX_MM_MOPFAD_INDKEY.{iterator.index}}">
+                                    {MOTITL}
+                                </a>
+                            </f:then>
+                            <f:else>
+                                {MOTITL}
+                            </f:else>
+                        </f:if>
+                    </f:for>
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="0" name="pr_flag" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_PRSTAT_AUKEY')}" name="XX_AU_PRSTAT_AUKEY" />
+        <f:for each="{XX_AU_PRSTAT_AUKEY}" as="prstat" iteration="iterator">
+            <f:if condition="{prstat}=='k'">
+                <v:variable.set value="1" name="pr_flag" />
+            </f:if>
+        </f:for>
+
+        <f:if condition="{pr_flag}">
+            <div class="ctg-rid-row">
+                <div class="ctg-rid-label">
+                    Provenienz
+                </div>
+                <div class="ctg-rid-content">
+                    <f:link.action
+                            action="detail"
+                            arguments="{id:document.id}"
+                            section="{settings.jumpToID}"
+                            noCacheHash="1"
+                            onclick="{f:if(
+                    condition:'{settings.paging.detailPagePaging} == 1',
+                    then:'return tx_find.detailViewWithPaging(this);'
+                    )}">
+                        Zum Exemplar
+                    </f:link.action>
+                </div>
+            </div>
+        </f:if>
     </div>
 </li>
 
