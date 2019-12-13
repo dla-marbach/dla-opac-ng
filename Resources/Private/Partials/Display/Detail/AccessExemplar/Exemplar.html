@@ -1,6 +1,6 @@
 <div class="ctg-dtvt-row">
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'source')}" name="source" />
-    <f:if condition="{source}=='AK'">
+    <f:if condition="{source}=='AK' && {AUKEY}">
         <f:then>
             <div class="ctg-dtvt-label">
                 Exemplar

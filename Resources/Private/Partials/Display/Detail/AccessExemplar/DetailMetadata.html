@@ -68,14 +68,22 @@
 
             </div>
             <div class="ctg-dtvt">
-
-                <a href="" class="detail_link">
-                    Details & Benutzung
-                </a>
+                <f:if condition="{source}=='AK' && {AUKEY}">
+                    <a href="" class="detail_link">
+                        Details & Benutzung
+                    </a>
+                </f:if>
 
             </div>
         </div>
-        <div id="{iterator.cycle}" class="copy-details ctg-dtvt-row">
+        <f:if condition="{source}=='AK' && {AUKEY}">
+            <f:then>
+            <div id="{iterator.cycle}" class="copy-details ctg-dtvt-row">
+            </f:then>
+            <f:else>
+                <div id="{iterator.cycle}" class="ctg-dtvt-row">
+            </f:else>
+        </f:if>
             <div class="">
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
