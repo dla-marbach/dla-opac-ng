@@ -1,0 +1,38 @@
+<div class="ctg-dtvt-row">
+    <div class="ctg-dtvt-label">
+        Link zum Opac
+    </div>
+    <div class="ctg-dtvt-content">
+
+        <f:switch expression="{document.fields.source}">
+            <f:case value="BI">
+                <v:variable.set value="BI" name="opac_db" />
+                <v:variable.set value="{document.fields.B00001}" name="opac_id" />
+            </f:case>
+            <f:case value="AK">
+                <v:variable.set value="AK" name="opac_db" />
+                <v:variable.set value="{document.fields.A0001}" name="opac_id" />
+            </f:case>
+            <f:case value="BF">
+                <v:variable.set value="BF" name="opac_db" />
+                <v:variable.set value="{document.fields.B0001}" name="opac_id" />
+            </f:case>
+            <f:case value="HS">
+                <v:variable.set value="HS" name="opac_db" />
+                <v:variable.set value="{document.fields.H0001}" name="opac_id" />
+            </f:case>
+            <f:case value="PE">
+                <v:variable.set value="PE" name="opac_db" />
+                <v:variable.set value="{document.fields.P0001}" name="opac_id" />
+            </f:case>
+            <f:case value="KS">
+                <v:variable.set value="KS" name="opac_db" />
+                <v:variable.set value="{document.fields.K0001}" name="opac_id" />
+            </f:case>
+        </f:switch>
+
+        <a href="http://www.dla-marbach.de/kallias/aDISWeb/hs/index.html?ADISDB={opac_db}&WEB=JA&ADISOI={opac_id}">
+            Link
+        </a>
+    </div>
+</div>
