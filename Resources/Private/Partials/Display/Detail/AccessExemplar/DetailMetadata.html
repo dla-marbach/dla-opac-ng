@@ -305,15 +305,41 @@
                     </div>
                 </f:if>
 
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        Einlagen im Archiv
-                    </div>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+                <s:data.newArray
+                        name="query"
+                        global="1"
+                        keys="{0:'AUKEY'}"
+                        values="{0:'{AUKEY.{iterator.index}}'}"
+                />
+                <dla:fromSolr
+                    query="{query}"
+                    fields="id,listview_title"
+                />
+                <f:for each="{solr}" as="item" iteration="solr_iterator">
+                    <f:if condition="{item.id}!={id}">
+                        
+                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'enthaltene_materialien')}" name="enthaltene_materialien" />
 
-                    <div class="ctg-dtvt-content">
-                        ---
-                    </div>
-                </div>
+                        <f:for each="{enthaltene_materialien}" as="material" iteration="material_iterator">
+                            <f:if condition="{material}=={item.id}">
+                                <div class="ctg-dtvt-row">
+                                    <div class="ctg-dtvt-label">
+                                        Enthaltene Materialien
+                                    </div>
+
+                                    <div class="ctg-dtvt-content">
+                                        <f:link.action action="detail" arguments="{id:material}" class="internal">
+                                            {item.listview_title}
+                                        </f:link.action>
+
+                                    </div>
+                                </div>
+                            </f:if>
+                        </f:for>
+
+                    </f:if>
+                </f:for>
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_BUCHUM_AUKEY')}" name="XX_AU_BUCHUM_AUKEY" />
                 <dla:replaceNullValue text="{XX_AU_BUCHUM_AUKEY.{iterator.index}}" as="XX_AU_BUCHUM_AUKEY"/>
