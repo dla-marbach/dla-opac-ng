@@ -14,9 +14,9 @@
                 </f:then>
                 <f:else>
                     <div style="padding: 0.5rem 0; margin-bottom: 10px;">
-                        <a href="#" class="ctg-button" style="padding-bottom: 10px;padding-left: 10px;padding-right: 10px;">
-                            Jetzt bestellen
-                        </a>&nbsp;
+
+                        <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+
                         <span class="icon bel-kreis02" style="color:#00df27;"></span>
                     </div>
                 </f:else>
@@ -87,8 +87,9 @@
             <div class="">
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
+                <dla:replaceNullValue text="{detail_restrictions.{iterator.index}}" as="restriction"/>
 
-                <f:if condition="{detail_restrictions}">
+                <f:if condition="{restriction}">
                     <f:then>
                         <div class="ctg-dtvt-row">
                             <div class="ctg-dtvt-label">
@@ -98,11 +99,11 @@
                             <div class="ctg-dtvt-content">
                                 <f:if condition="{AUKEY_FLAG}">
                                     <f:then>
-                                        {detail_restrictions}
+                                        {restriction}
                                     </f:then>
                                     <f:else>
-                                        <dla:replaceBreaks text="{detail_restrictions}" as="detail_restrictions" />
-                                        <f:format.raw>{detail_restrictions}</f:format.raw>
+                                        <dla:replaceBreaks text="{restriction}" as="restriction" />
+                                        <f:format.raw>{restriction}</f:format.raw>
                                     </f:else>
                                 </f:if>
 
@@ -318,7 +319,7 @@
                 />
                 <f:for each="{solr}" as="item" iteration="solr_iterator">
                     <f:if condition="{item.id}!={id}">
-                        
+
                         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'enthaltene_materialien')}" name="enthaltene_materialien" />
 
                         <f:for each="{enthaltene_materialien}" as="material" iteration="material_iterator">
@@ -402,9 +403,9 @@
                 </f:then>
                 <f:else>
                     <div style="padding: 0.5rem 0; margin-bottom: 10px;">
-                        <a href="#" class="ctg-button" style="padding-bottom: 10px;padding-left: 10px;padding-right: 10px;">
-                            Jetzt bestellen
-                        </a>&nbsp;
+
+                        <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+
                         <span class="icon bel-kreis02" style="color:#00df27;"></span>
                     </div>
                 </f:else>
@@ -501,9 +502,9 @@
                 </f:then>
                 <f:else>
                     <div style="padding: 0.5rem 0; margin-bottom: 10px;">
-                        <a href="#" class="ctg-button" style="padding-bottom: 10px;padding-left: 10px;padding-right: 10px;">
-                            Jetzt bestellen
-                        </a>&nbsp;
+
+                        <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+
                         <span class="icon bel-kreis02" style="color:#00df27;"></span>
                     </div>
                 </f:else>
@@ -629,9 +630,9 @@
         <div class="ctg-dtvt-row">
 
             <div style="padding: 0.5rem 0; margin-bottom: 10px;">
-                <a href="#" class="ctg-button" style="padding-bottom: 10px;padding-left: 10px;padding-right: 10px;">
-                    Jetzt bestellen
-                </a>&nbsp;
+
+                <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+
                 <span class="icon bel-kreis02" style="color:#00df27;"></span>
             </div>
 
