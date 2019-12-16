@@ -173,30 +173,22 @@
             </div>
         </div>
 
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
-        <dla:replaceNullValue array="{XX_MM_MOTITL_INDKEY}" as="XX_MM_MOTITL_INDKEY"/>
 
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOPFAD_INDKEY')}" name="XX_MM_MOPFAD_INDKEY" />
-        <dla:replaceNullValue array="{XX_MM_MOPFAD_INDKEY}" as="XX_MM_MOPFAD_INDKEY"/>
-        
-        <f:if condition="{XX_MM_MOTITL_INDKEY}">
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AURL')}" name="AURL" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BEMURL')}" name="BEMURL" />
+
+        <f:if condition="{BEMURL}">
             <div class="ctg-rid-row">
                 <div class="ctg-rid-label">
                     Digitales Objekt
                 </div>
                 <div class="ctg-rid-content">
-                    <f:for each="{XX_MM_MOTITL_INDKEY}" as="MOTITL" iteration="iterator">
-                        <f:if condition="{XX_MM_MOPFAD_INDKEY}">
-                            <f:then>
-                                <a href="{XX_MM_MOPFAD_INDKEY.{iterator.index}}">
-                                    {MOTITL}
-                                </a>
-                            </f:then>
-                            <f:else>
-                                {MOTITL}
-                            </f:else>
+                    <f:for each="{BEMURL}" as="item" iteration="iterator">
+                        <f:if condition="{AURL.{iterator.index}} != '#NV' && {item} != '#NV'">
+                            <a href="{AURL.{iterator.index}}">{item}</a><br />
                         </f:if>
                     </f:for>
+
                 </div>
             </div>
         </f:if>
