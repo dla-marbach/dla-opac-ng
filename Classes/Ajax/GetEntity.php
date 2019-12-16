@@ -1,7 +1,8 @@
 <?php
+include_once 'EidSettings.php';
 
 // Configuration options
-$solr_select_url = 'http://serene.dla-marbach.de:8983/solr/opac-ng/select';
+$solr_select_url = $host . $core . '/select';
 
 // Array of entity facts
 $entity = [];
