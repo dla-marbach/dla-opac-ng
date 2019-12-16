@@ -231,7 +231,12 @@
                 </f:if>
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_SYNKEY_AUKEY')}" name="XX_AU_SYNKEY_AUKEY" />
+                <dla:replaceNullValue array="{XX_AU_SYNKEY_AUKEY}" as="XX_AU_SYNKEY_AUKEY"/>
                 <dla:replaceNullValue text="{XX_AU_SYNKEY_AUKEY.{iterator.index}}" as="XX_AU_SYNKEY_AUKEY"/>
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_SE_REGTIT_XX_AU_SYNKEY_AUKEY')}" name="XXX_SE_REGTIT_XX_AU_SYNKEY_AUKEY" />
+                <dla:replaceNullValue array="{XXX_SE_REGTIT_XX_AU_SYNKEY_AUKEY}" as="XXX_SE_REGTIT_XX_AU_SYNKEY_AUKEY"/>
+                <dla:replaceNullValue text="{XXX_SE_REGTIT_XX_AU_SYNKEY_AUKEY.{iterator.index}}" as="XXX_SE_REGTIT_XX_AU_SYNKEY_AUKEY"/>
 
                 <f:if condition="{XX_AU_SYNKEY_AUKEY}">
                     <div class="ctg-dtvt-row">
@@ -240,7 +245,9 @@
                         </div>
 
                         <div class="ctg-dtvt-content">
-                            {XX_AU_SYNKEY_AUKEY}
+                            <f:link.action action="detail" arguments="{id:'SE{XX_AU_SYNKEY_AUKEY}'}" class="internal">
+                                {XXX_SE_REGTIT_XX_AU_SYNKEY_AUKEY}
+                            </f:link.action>
                         </div>
                     </div>
                 </f:if>
