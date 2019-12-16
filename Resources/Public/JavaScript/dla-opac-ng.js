@@ -34,3 +34,35 @@ $(document).ready(function(){
     });
 });
 
+$(document).ready(function(){
+    var anchor =  document.location.hash;
+
+    if (anchor == "#tabaccess") {
+        $('#access').show();
+        $('#detail').hide();
+        $('#tabaccess').toggleClass('ctg-dtvt-menu-active');
+        $('#tabdetail').toggleClass('ctg-dtvt-menu-active');
+    }
+
+    $('#tabdetail').on("click", function (event) {
+        //event.preventDefault();
+        $('#detail').show();
+        $('#access').hide();
+        $(this).toggleClass('ctg-dtvt-menu-active');
+        $('#tabaccess').toggleClass('ctg-dtvt-menu-active');
+    });
+
+    $('#tabaccess').on("click", function (event) {
+        //event.preventDefault();
+        $('#access').show();
+        $('#detail').hide();
+        $(this).toggleClass('ctg-dtvt-menu-active');
+        $('#tabdetail').toggleClass('ctg-dtvt-menu-active');
+    });
+
+
+});
+
+
+
+
