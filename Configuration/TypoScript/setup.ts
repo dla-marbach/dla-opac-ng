@@ -1137,15 +1137,38 @@ plugin.tx_find {
             40 {
                 id = NeuImKatalog
                 label = Neu im Katalog
-                type = Timerange
-                field = filter_new
-                #query = filter_new:%s
-                showmissing = 1
 
-                #start = NOW/YEAR-35YEARS
-                #end = NOW
-                #gap = +1YEAR
-                #displayDateFormat = Y
+                excludeOwnFilter = 1
+
+                facetQuery {
+
+                    10 {
+                        id = Woche
+                        query = filter_new:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]
+                    }
+
+                    20 {
+                        id = Monat
+                        query = filter_new:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]
+                    }
+
+                    30 {
+                        id = Quartal
+                        query = filter_new:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]
+                    }
+
+                    40 {
+                        id = Halbjahr
+                        query = filter_new:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]
+                    }
+
+                    50 {
+                        id = Jahr
+                        query = filter_new:[NOW/DAY-1YEAR TO NOW/DAY+1DAY]
+                    }
+                }
+                showmissing = 0
+
                 collapse = 1
             }
 
