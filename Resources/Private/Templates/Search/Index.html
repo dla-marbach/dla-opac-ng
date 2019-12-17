@@ -141,9 +141,24 @@
             <section class="ctg-facet-other">
                 <h3><f:translate key='Andere Fundorte' extensionName='dla_opac_ng'/> (?)<a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a></h3>
                 <ul>
-                    <li><a title=""><span class="icon bel-link03"></span></a><a title="">Andere Fundorte (?)</a></li>
-                    <li><a title=""><span class="icon bel-link03"></span></a><a title="">Kalliope (?)</a></li>
-                    <li><a title=""><span class="icon bel-link03"></span></a><a title="">Wikipedia (?)</a></li>
+                    <li>
+                        <a href="https://fernleihe.boss.bsz-bw.de/Bsz/saveIsil/DE-Mar1" title="">
+                        <span class="icon bel-link03"></span>
+                        </a>
+                        <a href="https://fernleihe.boss.bsz-bw.de/Bsz/saveIsil/DE-Mar1" title="">Fernleihe</a>
+                    </li>
+                    <li>
+                        <a href="http://kalliope.staatsbibliothek-berlin.de/de/search.html?q={arguments.q.default -> f:format.urlencode()}" title="">
+                            <span class="icon bel-link03"></span>
+                        </a>
+                        <a href="http://kalliope.staatsbibliothek-berlin.de/de/search.html?q={arguments.q.default -> f:format.urlencode()}" title="">Kalliope</a>
+                    </li>
+                    <li>
+                        <a href="https://de.wikipedia.org/wiki/{arguments.q.default -> f:format.urlencode()}" title="">
+                            <span class="icon bel-link03"></span>
+                        </a>
+                        <a href="https://de.wikipedia.org/wiki/{arguments.q.default}" title="">Wikipedia</a>
+                    </li>
                 </ul>
             </section>
         </aside>
