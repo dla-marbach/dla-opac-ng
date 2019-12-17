@@ -277,9 +277,10 @@
                 <dla:replaceNullValue text="{XX_AU_VIRAUF_AUKEY.{iterator.index}}" as="XX_AU_VIRAUF_AUKEY"/>
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_AI710_AUKEY')}" name="XX_AU_AI710_AUKEY" />
+                <dla:replaceNullValue text="{XX_AU_AI710_AUKEY.{iterator.index}}" as="XX_AU_AI710_AUKEY"/>
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_A0710_AUKEY')}" name="XX_AU_A0710_AUKEY" />
-
+                <dla:replaceNullValue text="{XX_AU_A0710_AUKEY.{iterator.index}}" as="XX_AU_A0710_AUKEY"/>
 
                 <f:if condition="{XX_AU_FBTIT_AUKEY} || {XX_AU_BEMEXT_AUKEY} || {XX_AU_VIRAUF_AUKEY} || {XX_AU_AI710_AUKEY} || {XX_AU_A0710_AUKEY}">
                     <div class="ctg-dtvt-row">
@@ -301,9 +302,10 @@
                             </f:if>
 
                             <f:if condition="{XX_AU_AI710_AUKEY}">
-                                <dla:replaceNullValue array="{XX_AU_AI710_AUKEY}" as="XX_AU_AI710_AUKEY"/>
                                 <f:for each="{XX_AU_AI710_AUKEY}" as="item" iteration="item_iterator">
-                                    {item} <f:if condition="{XX_AU_A0710_AUKEY.{item_iterator.index}}">: {XX_AU_A0710_AUKEY.{item_iterator.index}}</f:if><br/>
+                                    {item}
+                                    <dla:replaceNullValue text="{XX_AU_A0710_AUKEY.{item_iterator.index}}" as="A0710_ITEM"/>
+                                    <f:if condition="{A0710_ITEM}">: {A0710_ITEM}</f:if><br/>
                                 </f:for>
                             </f:if>
                         </div>
@@ -564,7 +566,8 @@
                             Bemerkungen
                         </div>
                         <div class="ctg-dtvt-content">
-                            {BEMEXT}
+                            <dla:replaceBreaks text="{BEMEXT}" as="BEMEXT" />
+                            <f:format.raw>{BEMEXT}</f:format.raw>
                         </div>
                     </div>
                 </f:if>
@@ -578,8 +581,36 @@
                             Ordnung
                         </div>
                         <div class="ctg-dtvt-content">
-                            <f:for each="{B01610}" as="item">
-                                {item} <br/>
+                            <f:for each="{B01610}" as="item" iteration="item_iterator">
+                                {item}
+
+                                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B01611')}" name="B01611" />
+                                <dla:replaceNullValue text="{B01611.{item_iterator.index}}" as="B01611"/>
+
+                                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B01612')}" name="B01612" />
+                                <dla:replaceNullValue text="{B01612.{item_iterator.index}}" as="B01612"/>
+
+                                <f:if condition="{B01611}">
+                                    <f:then>
+                                        <f:if condition="{B01612}">
+                                            <f:then>
+                                                ({B01611} {B01612})
+                                            </f:then>
+                                            <f:else>
+                                                ({B01611})
+                                            </f:else>
+                                        </f:if>
+                                    </f:then>
+                                    <f:else>
+                                        <f:if condition="{B01612}">
+                                            ({B01612})
+                                        </f:if>
+                                    </f:else>
+                                </f:if>
+
+
+
+                                <br/>
                             </f:for>
                         </div>
                     </div>
