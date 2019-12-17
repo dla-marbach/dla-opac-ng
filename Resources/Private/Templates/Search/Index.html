@@ -125,7 +125,7 @@
                 </f:comment>
                 <div class="ctg-pager-aside">
                     <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.count"/>
-                    <f:form.select id="c{config.uid}-resultCountSelect" name="count" options="{config.resultCountOptions.menu}" value="{config.resultCountOptions.selected}"/>
+                    <f:form.select id="c{config.uid}-resultCountSelect" class="dlaResultCountSelect" name="count" options="{config.resultCountOptions.menu}" value="{config.resultCountOptions.selected}"/>
                 </div>
             </div>
         </section>
@@ -139,7 +139,7 @@
             <f:render partial="Display/Static/RightColumn" arguments="{_all}"/>
 
             <section class="ctg-facet-other">
-                <h3><f:translate key='Andere Fundorte' extensionName='dla_opac_ng'/> (?)<a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a></h3>
+                <h3><f:translate key='Andere Fundorte' extensionName='dla_opac_ng'/><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a></h3>
                 <ul>
                     <li>
                         <a href="https://fernleihe.boss.bsz-bw.de/Bsz/saveIsil/DE-Mar1" title="">

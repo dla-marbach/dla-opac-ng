@@ -67,6 +67,8 @@
                         </f:for>
                     </f:for>
 
+                    <f:form.hidden id="countHidden" name="count" value="{settings.paging.perPage}"/>
+
                     <ul>
                         <li>
                             <f:alias map="{gedrucktes:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Gedrucktes\", mode:\"add\", activeFacets:config.activeFacets)}'}">

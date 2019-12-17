@@ -1269,6 +1269,11 @@ plugin.tx_find {
         # Trefferset in der Detailanzeige.
         paging {
             perPage = 25
+            menu {
+                25 = 25
+                50 = 50
+                100 = 100
+            }
             maximumPerPage = 100
             detailPagePaging = 1
         }
