@@ -13,7 +13,22 @@
         <v:variable.set value="{key}" name="facetkey" />
     </f:for>
 </f:if>
-<f:if condition="{f:count(subject:facetData.values)} > 0  || {facetInfo.type} == 'Timerange'">
+
+<f:if condition="{facetInfo.facetQuery}">
+    <f:then>
+        <v:variable.set value="1" name="facetValuesEmpty" />
+        <f:for each="{facetData.values}" as="itemCount" key="key" iteration="iterator">
+            <f:if condition="{itemCount}>0">
+                <v:variable.set value="0" name="facetValuesEmpty" />
+            </f:if>
+        </f:for>
+    </f:then>
+    <f:else>
+        <v:variable.set value="0" name="facetValuesEmpty" />
+    </f:else>
+</f:if>
+
+<f:if condition="({f:count(subject:facetData.values)} > 0  || {facetInfo.type} == 'Timerange') && {facetValuesEmpty}!=1">
     <f:if condition="{f:count(subject:facetData.values)} == 1 && {facetkey} == '' && {facetInfo.type} != 'Timerange'">
         <f:then></f:then>
         <f:else>
