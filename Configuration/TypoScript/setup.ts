@@ -1000,6 +1000,8 @@ plugin.tx_find {
                     f10 = XX_AU_PRSTAT_AUKEY
                     f11 = XX_MM_MOTITL_INDKEY
                     f12 = XX_MM_MOPFAD_INDKEY
+                    f13 = AURL
+                    f14 = BEMURL
                 }
             }
             detail {
