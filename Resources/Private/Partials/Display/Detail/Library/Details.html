@@ -413,7 +413,8 @@
                     <div class="ctg-dtvt-content">
 
                         <f:for each="{linkTexts}" as="item" iteration="iterator">
-                            {item}
+                            <dla:replaceBreaks text="{item}" as="item" />
+                            <f:format.raw>{item}</f:format.raw>
                         </f:for>
                     </div>
                 </div>
