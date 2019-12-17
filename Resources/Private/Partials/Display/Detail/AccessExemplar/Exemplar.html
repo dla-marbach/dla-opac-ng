@@ -1,7 +1,7 @@
 <div class="ctg-dtvt-row">
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'source')}" name="source" />
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AUKEY')}" name="AUKEY" />
-    
+
     <f:if condition="{source}=='AK' && {AUKEY}">
         <f:then>
             <div class="ctg-dtvt-label">
@@ -75,9 +75,34 @@
         </f:comment>
         <f:if condition="{AUKEY}">
             <f:then>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_PRSTAT_AUKEY')}" name="XX_AU_PRSTAT_AUKEY" />
+                <v:variable.set value="0" name="PRSTAT_FLAG" />
+                <f:if condition="{XX_AU_PRSTAT_AUKEY}">
+                    <f:for each="{XX_AU_PRSTAT_AUKEY}" as="PRSTAT_ITEM" iteration="item_iterator">
+                        <f:if condition="{PRSTAT_ITEM}=='k'">
+                            <v:variable.set value="{item_iterator.index}" name="PRSTAT_FLAG" />
+                        </f:if>
+                    </f:for>
+                </f:if>
+
+                <f:if condition="{PRSTAT_FLAG}">
+                    <v:variable.set value="{'index':PRSTAT_FLAG}" name="iterator" />
+                    <f:render partial="Display/Detail/AccessExemplar/DetailMetadata" arguments="{_all}"/>
+                </f:if>
+
                 <v:variable.set value="1" name="AUKEY_FLAG" />
                 <f:for each="{AUKEY}" as="exemplar" iteration="iterator">
-                    <f:render partial="Display/Detail/AccessExemplar/DetailMetadata" arguments="{_all}"/>
+                    <f:if condition="{PRSTAT_FLAG} && {PRSTAT_FLAG}!={iterator.index}">
+                        <f:then>
+                            <f:render partial="Display/Detail/AccessExemplar/DetailMetadata" arguments="{_all}"/>
+                        </f:then>
+                        <f:else>
+                            <f:if condition="{PRSTAT_FLAG}==0">
+                                <f:render partial="Display/Detail/AccessExemplar/DetailMetadata" arguments="{_all}"/>
+                            </f:if>
+                        </f:else>
+                    </f:if>
+
                 </f:for>
             </f:then>
             <f:else>
