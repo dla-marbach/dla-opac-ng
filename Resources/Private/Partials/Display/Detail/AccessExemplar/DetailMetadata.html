@@ -616,16 +616,46 @@
                     </div>
                 </f:if>
 
+
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B02610')}" name="B02610" />
                 <dla:replaceNullValue array="{B02610}" as="B02610"/>
+
                 <f:if condition="{B02610}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
                             Verzeichnung
                         </div>
                         <div class="ctg-dtvt-content">
-                            <f:for each="{B02610}" as="item">
-                                {item} <br/>
+                            <f:for each="{B02610}" as="item" iteration="item_iterator">
+                                {item}
+
+                                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B02611')}" name="B02611" />
+                                <dla:replaceNullValue text="{B02611.{item_iterator.index}}" as="B02611"/>
+
+                                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B02612')}" name="B02612" />
+                                <dla:replaceNullValue text="{B02612.{item_iterator.index}}" as="B02612"/>
+
+                                <f:if condition="{B02611}">
+                                    <f:then>
+                                        <f:if condition="{B02612}">
+                                            <f:then>
+                                                ({B02611} {B02612})
+                                            </f:then>
+                                            <f:else>
+                                                ({B02611})
+                                            </f:else>
+                                        </f:if>
+                                    </f:then>
+                                    <f:else>
+                                        <f:if condition="{B02612}">
+                                            ({B02612})
+                                        </f:if>
+                                    </f:else>
+                                </f:if>
+
+
+
+                                <br/>
                             </f:for>
                         </div>
                     </div>
@@ -686,6 +716,9 @@
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
                 <dla:replaceNullValue text="{detail_restrictions}" as="detail_restrictions"/>
 
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'H04030')}" name="H04030" />
+
+
                 <f:if condition="{detail_restrictions}">
                     <f:then>
                         <div class="ctg-dtvt-row">
@@ -696,6 +729,10 @@
                             <div class="ctg-dtvt-content">
                                 <dla:replaceBreaks text="{detail_restrictions}" as="detail_restrictions" />
                                 <f:format.raw>{detail_restrictions}</f:format.raw>
+                                <f:if condition="{H04030}">
+                                    <br/>({H04030})
+                                </f:if>
+
                             </div>
                         </div>
                     </f:then>
