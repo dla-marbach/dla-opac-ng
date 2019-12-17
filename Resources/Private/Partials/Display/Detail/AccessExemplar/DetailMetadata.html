@@ -4,11 +4,12 @@
     <f:case value="AK">
         <div class="ctg-dtvt-row">
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_KLASS_AUKEY')}" name="XX_AU_KLASS_AUKEY" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_STAND_AUKEY')}" name="XX_AU_STAND_AUKEY" />
 
             <f:if condition="{XX_AU_KLASS_AUKEY.{iterator.index}}=='nicht benutzbar' && {XX_AU_STAND_AUKEY.{iterator.index}}=='nicht im Bestand des DLA'">
                 <f:then>
                     <div style="padding: 0.5rem 0;">
-                        Jetzt bestellen
+                        Nicht bestellbar
                         <span class="icon bel-kreis02" style="color:#cf2a0e;"></span>
                     </div>
                 </f:then>
@@ -404,7 +405,7 @@
             <f:if condition="{XX_AU_KLASS_AUKEY=='nicht benutzbar'">
                 <f:then>
                     <div style="padding: 0.5rem 0;">
-                        Jetzt bestellen
+                        Nicht bestellbar
                         <span class="icon bel-kreis02" style="color:#cf2a0e;"></span>
                     </div>
                 </f:then>
@@ -503,7 +504,7 @@
             <f:if condition="{DLAABT}=='Handschriftensammlung' || {DLAABT}=='Bibliothek'">
                 <f:then>
                     <div style="padding: 0.5rem 0;">
-                        Jetzt bestellen
+                        Nicht bestellbar
                         <span class="icon bel-kreis02" style="color:#cf2a0e;"></span>
                     </div>
                 </f:then>
