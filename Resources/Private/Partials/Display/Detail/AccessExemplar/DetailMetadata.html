@@ -88,9 +88,8 @@
             <div class="">
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
-                <dla:replaceNullValue text="{detail_restrictions.{iterator.index}}" as="restriction"/>
 
-                <f:if condition="{restriction}">
+                <f:if condition="{detail_restrictions}">
                     <f:then>
                         <div class="ctg-dtvt-row">
                             <div class="ctg-dtvt-label">
@@ -98,15 +97,9 @@
                             </div>
 
                             <div class="ctg-dtvt-content">
-                                <f:if condition="{AUKEY_FLAG}">
-                                    <f:then>
-                                        <dla:replaceBreaks text="{restriction}" as="restriction" />
-                                        <f:format.raw>{restriction}</f:format.raw>
-                                    </f:then>
-                                    <f:else>
-                                        <dla:replaceBreaks text="{restriction}" as="restriction" />
-                                        <f:format.raw>{restriction}</f:format.raw>
-                                    </f:else>
+                                <f:if condition="{detail_restrictions}">
+                                    <dla:replaceBreaks text="{detail_restrictions}" as="restriction"/>
+                                    <f:format.raw>{restriction}</f:format.raw>
                                 </f:if>
 
                             </div>
