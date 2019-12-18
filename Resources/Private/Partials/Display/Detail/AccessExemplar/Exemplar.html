@@ -80,19 +80,14 @@
                 <f:if condition="{XX_AU_PRSTAT_AUKEY}">
                     <f:for each="{XX_AU_PRSTAT_AUKEY}" as="PRSTAT_ITEM" iteration="item_iterator">
                         <f:if condition="{PRSTAT_ITEM}=='k'">
-                            <v:variable.set value="{item_iterator.index}" name="PRSTAT_FLAG" />
+                            <v:variable.set value="1" name="PRSTAT_FLAG" />
+                            <v:variable.set value="{item_iterator.index}" name="PRSTAT_NUMBER" />
                         </f:if>
                     </f:for>
                 </f:if>
-
-                <f:if condition="{PRSTAT_FLAG}">
-                    <v:variable.set value="{'index':PRSTAT_FLAG}" name="iterator" />
-                    <f:render partial="Display/Detail/AccessExemplar/DetailMetadata" arguments="{_all}"/>
-                </f:if>
-
                 <v:variable.set value="1" name="AUKEY_FLAG" />
                 <f:for each="{AUKEY}" as="exemplar" iteration="iterator">
-                    <f:if condition="{PRSTAT_FLAG} && {PRSTAT_FLAG}!={iterator.index}">
+                    <f:if condition="{PRSTAT_FLAG} && {PRSTAT_NUMBER}!={iterator.index}">
                         <f:then>
                             <f:render partial="Display/Detail/AccessExemplar/DetailMetadata" arguments="{_all}"/>
                         </f:then>
@@ -104,6 +99,12 @@
                     </f:if>
 
                 </f:for>
+
+                <f:if condition="{PRSTAT_FLAG}">
+                    <v:variable.set value="{'index':PRSTAT_NUMBER}" name="iterator" />
+                    <f:render partial="Display/Detail/AccessExemplar/DetailMetadata" arguments="{_all}"/>
+                </f:if>
+
             </f:then>
             <f:else>
                 <f:render partial="Display/Detail/AccessExemplar/DetailMetadata" arguments="{_all}"/>
