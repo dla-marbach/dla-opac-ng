@@ -595,12 +595,39 @@
                             </div>
 
                             <div class="ctg-dtvt-content">
+                                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AUSTAT')}" name="AUSTAT" />
+                                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KLASS')}" name="KLASS" />
+                                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B04030')}" name="B04030" />
+                                <f:if condition="{AUSTAT} || {KLASS} || {B04030}">
+
+                                    <dla:data.joinFields
+                                            fieldNames="{0:'AUSTAT',1:'KLASS',2:'B04030'}"
+                                            fieldWraps="{0:'%s',1:'. %s',2:'. %s'}"
+                                            fields="{document.fields}"
+                                            as="linkTexts"
+                                    />
+
+                                    <f:render
+                                        partial="Display/Field/List"
+                                        arguments="{
+                                            document:document,
+                                            results:results,
+                                            field:'AUSTAT',
+                                            linkFieldContent:linkFieldContent,
+                                            linkFacets:linkFacets,
+                                            linkTexts:linkTexts
+                                    }"/>
+                                    <br/>
+                                </f:if>
+
                                 <dla:replaceBreaks text="{detail_restrictions}" as="detail_restrictions" />
                                 <f:format.raw>{detail_restrictions}</f:format.raw>
                             </div>
                         </div>
                     </f:then>
                 </f:if>
+
+
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BUCHN')}" name="BUCHN" />
                 <dla:replaceNullValue text="{BUCHN}" as="BUCHN"/>
