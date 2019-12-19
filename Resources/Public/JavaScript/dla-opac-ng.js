@@ -65,6 +65,41 @@ $(document).ready(function(){
         $('#countHidden').val($(this).val());
         $("form").submit();
     });
+
+    $('.order-button').click(function (event) {
+
+        $('.order-overlay').toggle();
+
+        var orderurl = $(this).data('orderurl');
+
+        $('.order-overlay-button').data('orderurl', orderurl);
+    });
+
+    $('.order-overlay-button').click(function (event) {
+        var nameValue = $('#order-name').val();
+        var pwValue = $('#order-pw').val();
+        if (!nameValue || !pwValue) {
+            $('.order-overlay .error').show();
+        } else {
+
+            var orderurl = $(this).data('orderurl');
+            orderurl = orderurl.replace("%name%", encodeURI(nameValue));
+            orderurl = orderurl.replace("%pw%", pwValue);
+
+            var win = window.open(orderurl, '_blank');
+            if (win) {
+                //Browser has allowed it to be opened
+                win.focus();
+            } else {
+                //Browser has blocked it
+                alert('Please allow popups for this website');
+            }
+        }
+    });
+
+    $('.close-button').click(function (event) {
+        $(this).parent().toggle();
+    });
 });
 
 
