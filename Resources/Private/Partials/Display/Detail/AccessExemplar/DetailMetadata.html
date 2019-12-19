@@ -106,6 +106,7 @@
             <div class="">
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
+                <dla:replaceNullValue text="{detail_restrictions}" as="detail_restrictions"/>
 
                 <f:if condition="{detail_restrictions}">
                     <f:then>
