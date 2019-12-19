@@ -18,7 +18,7 @@
                     <f:if condition="{detail_restrictions}">
                         <dla:replaceBreaks text="{detail_restrictions}" as="restriction"/>
 
-                        <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}">
+                        <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}=='bedingt benutzbar'">
                             <f:then>
                                 <div style="padding: 0.5rem 0; margin-bottom: 10px;">
 
@@ -425,7 +425,7 @@
                     <f:if condition="{detail_restrictions}">
                         <dla:replaceBreaks text="{detail_restrictions}" as="restriction"/>
 
-                        <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}">
+                        <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}=='bedingt benutzbar'">
                             <f:then>
                                 <div style="padding: 0.5rem 0; margin-bottom: 10px;">
 
@@ -541,7 +541,7 @@
                     <f:if condition="{detail_restrictions}">
                         <dla:replaceBreaks text="{detail_restrictions}" as="restriction"/>
 
-                        <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}">
+                        <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}=='bedingt benutzbar'">
                             <f:then>
                                 <div style="padding: 0.5rem 0; margin-bottom: 10px;">
 
@@ -745,7 +745,7 @@
             <f:if condition="{detail_restrictions}">
                 <dla:replaceBreaks text="{detail_restrictions}" as="restriction"/>
 
-                <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}">
+                <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}=='bedingt benutzbar'">
                     <f:then>
                         <div style="padding: 0.5rem 0; margin-bottom: 10px;">
 
