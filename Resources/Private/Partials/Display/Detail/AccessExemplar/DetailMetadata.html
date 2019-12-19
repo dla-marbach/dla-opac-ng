@@ -14,12 +14,30 @@
                     </div>
                 </f:then>
                 <f:else>
-                    <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
+                    <f:if condition="{detail_restrictions}">
+                        <dla:replaceBreaks text="{detail_restrictions}" as="restriction"/>
 
-                        <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+                        <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}">
+                            <f:then>
+                                <div style="padding: 0.5rem 0; margin-bottom: 10px;">
 
-                        <span class="icon bel-kreis02" style="color:#00df27;"></span>
-                    </div>
+                                    <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+
+                                    <span class="icon bel-kreis02" style="color:#df661e;"></span>
+                                </div>
+                            </f:then>
+                            <f:else>
+                                <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+
+                                    <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+
+                                    <span class="icon bel-kreis02" style="color:#00df27;"></span>
+                                </div>
+                            </f:else>
+                        </f:if>
+                    </f:if>
+
                 </f:else>
             </f:if>
 
@@ -402,12 +420,29 @@
                     </div>
                 </f:then>
                 <f:else>
-                    <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
+                    <f:if condition="{detail_restrictions}">
+                        <dla:replaceBreaks text="{detail_restrictions}" as="restriction"/>
 
-                        <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+                        <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}">
+                            <f:then>
+                                <div style="padding: 0.5rem 0; margin-bottom: 10px;">
 
-                        <span class="icon bel-kreis02" style="color:#00df27;"></span>
-                    </div>
+                                    <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+
+                                    <span class="icon bel-kreis02" style="color:#df661e;"></span>
+                                </div>
+                            </f:then>
+                            <f:else>
+                                <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+
+                                    <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+
+                                    <span class="icon bel-kreis02" style="color:#00df27;"></span>
+                                </div>
+                            </f:else>
+                        </f:if>
+                    </f:if>
                 </f:else>
             </f:if>
 
@@ -501,12 +536,29 @@
                     </div>
                 </f:then>
                 <f:else>
-                    <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
+                    <f:if condition="{detail_restrictions}">
+                        <dla:replaceBreaks text="{detail_restrictions}" as="restriction"/>
 
-                        <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+                        <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}">
+                            <f:then>
+                                <div style="padding: 0.5rem 0; margin-bottom: 10px;">
 
-                        <span class="icon bel-kreis02" style="color:#00df27;"></span>
-                    </div>
+                                    <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+
+                                    <span class="icon bel-kreis02" style="color:#df661e;"></span>
+                                </div>
+                            </f:then>
+                            <f:else>
+                                <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+
+                                    <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+
+                                    <span class="icon bel-kreis02" style="color:#00df27;"></span>
+                                </div>
+                            </f:else>
+                        </f:if>
+                    </f:if>
                 </f:else>
             </f:if>
 
@@ -688,12 +740,29 @@
 
         <div class="ctg-dtvt-row">
 
-            <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
+            <f:if condition="{detail_restrictions}">
+                <dla:replaceBreaks text="{detail_restrictions}" as="restriction"/>
 
-                <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+                <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}">
+                    <f:then>
+                        <div style="padding: 0.5rem 0; margin-bottom: 10px;">
 
-                <span class="icon bel-kreis02" style="color:#00df27;"></span>
-            </div>
+                            <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+
+                            <span class="icon bel-kreis02" style="color:#df661e;"></span>
+                        </div>
+                    </f:then>
+                    <f:else>
+                        <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+
+                            <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+
+                            <span class="icon bel-kreis02" style="color:#00df27;"></span>
+                        </div>
+                    </f:else>
+                </f:if>
+            </f:if>
 
             <div class="ctg-dtvt-content">
                 {solr.listview_title}
