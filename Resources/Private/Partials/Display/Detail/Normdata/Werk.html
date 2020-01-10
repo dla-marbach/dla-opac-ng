@@ -67,12 +67,7 @@
         </div>
     </div>
 
-    <ul class="ctg-dvh-aside">
-        <li><a class="ctg-button" title="<f:translate key='merken' extensionName='dla_opac_ng'/>"><span class="icon bel-stern01"></span></a></li>
-        <li><a class="ctg-button" title="<f:translate key='versenden' extensionName='dla_opac_ng'/>"><span class="icon bel-brief01"></span></a></li>
-        <li><a class="ctg-button" title="<f:translate key='teilen' extensionName='dla_opac_ng'/>"><span class="icon bel-link01"></span></a></li>
-        <li><a class="ctg-button" title="<f:translate key='exportieren' extensionName='dla_opac_ng'/>"><span class="icon bel-postin"></span></a></li>
-    </ul>
+    <f:render partial="Display/Detail/DetailButtons" arguments="{_all}"/>
 </div>
 
 <f:comment>
@@ -292,8 +287,6 @@
                     </div>
                     </f:then>
             </f:if>
-
-            <f:render partial="Display/Detail/OpacLink" arguments="{_all}"/>
             
         </span>
 

@@ -102,6 +102,28 @@ $(document).ready(function(){
     });
 });
 
+function copyUrl() {
+    var dummy = document.createElement('input'),
+        text = window.location.href;
+
+    document.body.appendChild(dummy);
+    dummy.value = text;
+    dummy.select();
+    document.execCommand('copy');
+    document.body.removeChild(dummy);
+}
+
+function sendUrlByMail(title) {
+    var subject= title;
+    var body = "";
+    body += window.location.href;
+    body += "";
+    var uri = "mailto:?subject=";
+    uri += encodeURIComponent(subject);
+    uri += "&body=";
+    uri += encodeURIComponent(body);
+    window.open(uri);
+}
 
 
 
