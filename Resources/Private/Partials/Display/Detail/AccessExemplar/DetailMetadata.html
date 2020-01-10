@@ -387,6 +387,25 @@
                     </div>
                 </f:if>
 
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AURL')}" name="AURL" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BEMURL')}" name="BEMURL" />
+
+                <f:if condition="{BEMURL}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            Digitales Objekt
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:for each="{BEMURL}" as="item" iteration="iterator">
+                                <f:if condition="{AURL.{iterator.index}} != '#NV' && {item} != '#NV'">
+                                    <a href="{AURL.{iterator.index}}">{item}</a><br />
+                                </f:if>
+                            </f:for>
+
+                        </div>
+                    </div>
+                </f:if>
+
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
                 <dla:replaceNullValue text="{XX_MM_MOTITL_INDKEY.{iterator.index}}" as="XX_MM_MOTITL_INDKEY"/>
 
