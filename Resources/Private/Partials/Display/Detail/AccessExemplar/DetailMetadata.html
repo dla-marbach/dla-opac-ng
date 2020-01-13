@@ -430,10 +430,10 @@
                 </f:if>
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
-                <dla:replaceNullValue text="{XX_MM_MOTITL_INDKEY.{iterator.index}}" as="XX_MM_MOTITL_INDKEY"/>
+                <dla:replaceNullValue array="{XX_MM_MOTITL_INDKEY}" as="XX_MM_MOTITL_INDKEY"/>
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOPFAD_INDKEY')}" name="XX_MM_MOPFAD_INDKEY" />
-                <dla:replaceNullValue text="{XX_MM_MOPFAD_INDKEY.{iterator.index}}" as="XX_MM_MOPFAD_INDKEY"/>
+                <dla:replaceNullValue array="{XX_MM_MOPFAD_INDKEY}" as="XX_MM_MOPFAD_INDKEY"/>
 
                 <f:if condition="{XX_MM_MOTITL_INDKEY}">
                     <div class="ctg-dtvt-row">
@@ -444,12 +444,16 @@
                         <div class="ctg-dtvt-content">
                             <f:if condition="{XX_MM_MOPFAD_INDKEY}">
                                 <f:then>
-                                    <a href="{XX_MM_MOPFAD_INDKEY}">
-                                        {XX_MM_MOTITL_INDKEY}
-                                    </a>
+                                    <f:for each="{XX_MM_MOTITL_INDKEY}" as="item" iteration="item_iterator">
+                                        <a href="{XX_MM_MOPFAD_INDKEY.{item_iterator.index}}">
+                                            {item}
+                                        </a><br/>
+                                    </f:for>
                                 </f:then>
                                 <f:else>
-                                    {XX_MM_MOTITL_INDKEY}
+                                    <f:for each="{XX_MM_MOTITL_INDKEY}" as="item" iteration="item_iterator">
+                                        {item}<br/>
+                                    </f:for>
                                 </f:else>
                             </f:if>
                         </div>
