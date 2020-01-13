@@ -232,62 +232,83 @@
                     </div>
                 </f:if>
 
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_PE_listview_title_XX_AU_PEU100_AUKEY')}" name="XXX_PE_listview_title_XX_AU_PEU100_AUKEY" />
-                <dla:replaceNullValue text="{XXX_PE_listview_title_XX_AU_PEU100_AUKEY.{iterator.index}}" as="XXX_PE_listview_title_XX_AU_PEU100_AUKEY"/>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_vorbesitzer')}" name="detail_vorbesitzer" />
+                <dla:replaceNullValue text="{detail_vorbesitzer.{iterator.index}}" as="vorbesitzer_item"/>
 
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_KS_listview_title_XX_AU_KSU200_AUKEY')}" name="XXX_KS_listview_title_XX_AU_KSU200_AUKEY" />
-                <dla:replaceNullValue text="{XXX_KS_listview_title_XX_AU_KSU200_AUKEY.{iterator.index}}" as="XXX_KS_listview_title_XX_AU_KSU200_AUKEY"/>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_vorbesitzer_ids')}" name="detail_vorbesitzer_ids" />
+                <dla:replaceNullValue text="{detail_vorbesitzer_ids.{iterator.index}}" as="vorbesitzer_id"/>
 
-                <f:if condition="{XXX_PE_listview_title_XX_AU_PEU100_AUKEY} || {XXX_KS_listview_title_XX_AU_KSU200_AUKEY}">
+
+                <f:if condition="{vorbesitzer_item}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
                             Vorbesitzer
                         </div>
 
                         <div class="ctg-dtvt-content">
-                            {XXX_PE_listview_title_XX_AU_PEU100_AUKEY}
+                            <v:variable.set value="{dla:explode(string: '{vorbesitzer_id}', delimiter: '␝')}" name="detail_id_array" />
+                            <f:for each="{dla:explode(string: '{vorbesitzer_item}', delimiter: '␝')}" as="name" iteration="name_iterator">
+                                <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal" noCacheHash="1">
+                                    {name}
+                                </f:link.action>
+                                <br/>
+                            </f:for>
 
-                            {XXX_KS_listview_title_XX_AU_KSU200_AUKEY}
                         </div>
                     </div>
                 </f:if>
 
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_BF_B41600_XX_AU_BFKEY_AUKEY')}" name="XXX_BF_B41600_XX_AU_BFKEY_AUKEY" />
-                <dla:replaceNullValue text="{XXX_BF_B41600_XX_AU_BFKEY_AUKEY.{iterator.index}}" as="XXX_BF_B41600_XX_AU_BFKEY_AUKEY"/>
 
-                <f:if condition="{XXX_BF_B41600_XX_AU_BFKEY_AUKEY}">
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_inbestand')}" name="detail_inbestand" />
+                <dla:replaceNullValue text="{detail_inbestand.{iterator.index}}" as="inbestand_item"/>
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_inbestand_ids')}" name="detail_inbestand_ids" />
+                <dla:replaceNullValue text="{detail_inbestand_ids.{iterator.index}}" as="inbestand_id"/>
+
+                <f:if condition="{inbestand_item}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
                             In Bestand
                         </div>
 
                         <div class="ctg-dtvt-content">
-                            {XXX_BF_B41600_XX_AU_BFKEY_AUKEY}
+                            <v:variable.set value="{dla:explode(string: '{inbestand_id}', delimiter: '␝')}" name="detail_id_array" />
+                            <f:for each="{dla:explode(string: '{inbestand_item}', delimiter: '␝')}" as="name" iteration="name_iterator">
+                                <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal" noCacheHash="1">
+                                    {name}
+                                </f:link.action>
+                                <br/>
+                            </f:for>
                         </div>
                     </div>
                 </f:if>
 
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_SYNKEY_AUKEY')}" name="XX_AU_SYNKEY_AUKEY" />
-                <dla:replaceNullValue array="{XX_AU_SYNKEY_AUKEY}" as="XX_AU_SYNKEY_AUKEY"/>
-                <dla:replaceNullValue text="{XX_AU_SYNKEY_AUKEY.{iterator.index}}" as="XX_AU_SYNKEY_AUKEY"/>
 
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_SE_REGTIT_XX_AU_SYNKEY_AUKEY')}" name="XXX_SE_REGTIT_XX_AU_SYNKEY_AUKEY" />
-                <dla:replaceNullValue array="{XXX_SE_REGTIT_XX_AU_SYNKEY_AUKEY}" as="XXX_SE_REGTIT_XX_AU_SYNKEY_AUKEY"/>
-                <dla:replaceNullValue text="{XXX_SE_REGTIT_XX_AU_SYNKEY_AUKEY.{iterator.index}}" as="XXX_SE_REGTIT_XX_AU_SYNKEY_AUKEY"/>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_merkmale')}" name="detail_merkmale" />
+                <dla:replaceNullValue text="{detail_merkmale.{iterator.index}}" as="merkmale_item"/>
 
-                <f:if condition="{XX_AU_SYNKEY_AUKEY}">
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_merkmale_ids')}" name="detail_merkmale_ids" />
+                <dla:replaceNullValue text="{detail_merkmale_ids.{iterator.index}}" as="merkmale_id"/>
+
+                <f:if condition="{merkmale_item}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
                             Merkmale
                         </div>
 
                         <div class="ctg-dtvt-content">
-                            <f:link.action action="detail" arguments="{id:'SE{XX_AU_SYNKEY_AUKEY}'}" class="internal">
-                                {XXX_SE_REGTIT_XX_AU_SYNKEY_AUKEY}
-                            </f:link.action>
+                            <v:variable.set value="{dla:explode(string: '{merkmale_id}', delimiter: '␝')}" name="detail_id_array" />
+                            <f:for each="{dla:explode(string: '{merkmale_item}', delimiter: '␝')}" as="name" iteration="name_iterator">
+                                <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal" noCacheHash="1">
+                                    {name}
+                                </f:link.action>
+                                <br/>
+                            </f:for>
                         </div>
                     </div>
                 </f:if>
+
+
 
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_FBTIT_AUKEY')}" name="XX_AU_FBTIT_AUKEY" />
@@ -304,6 +325,10 @@
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_A0710_AUKEY')}" name="XX_AU_A0710_AUKEY" />
                 <dla:replaceNullValue text="{XX_AU_A0710_AUKEY.{iterator.index}}" as="XX_AU_A0710_AUKEY"/>
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_vermerke')}" name="detail_vermerke" />
+                <dla:replaceNullValue text="{detail_vermerke.{iterator.index}}" as="vermerk_item"/>
+
 
                 <f:if condition="{XX_AU_FBTIT_AUKEY} || {XX_AU_BEMEXT_AUKEY} || {XX_AU_VIRAUF_AUKEY} || {XX_AU_AI710_AUKEY} || {XX_AU_A0710_AUKEY}">
                     <div class="ctg-dtvt-row">
@@ -324,11 +349,9 @@
                                 {XX_AU_VIRAUF_AUKEY} <br/>
                             </f:if>
 
-                            <f:if condition="{XX_AU_AI710_AUKEY}">
-                                <f:for each="{XX_AU_AI710_AUKEY}" as="item" iteration="item_iterator">
-                                    {item}
-                                    <dla:replaceNullValue text="{XX_AU_A0710_AUKEY.{item_iterator.index}}" as="A0710_ITEM"/>
-                                    <f:if condition="{A0710_ITEM}">: {A0710_ITEM}</f:if><br/>
+                            <f:if condition="{vermerk_item}">
+                                <f:for each="{dla:explode(string: '{vermerk_item}', delimiter: '␝')}" as="name" iteration="name_iterator">
+                                    {name}<br/>
                                 </f:for>
                             </f:if>
                         </div>
@@ -434,9 +457,12 @@
                 </f:if>
 
             </div>
-        </div>
 
         <f:render partial="Display/Detail/OpacLink" arguments="{_all}"/>
+
+        </div>
+
+
 
     </f:case>
     <f:case value="BI">
@@ -550,10 +576,8 @@
                 </f:if>
 
             </div>
-
+            <f:render partial="Display/Detail/OpacLink" arguments="{_all}"/>
         </div>
-
-        <f:render partial="Display/Detail/OpacLink" arguments="{_all}"/>
 
     </f:case>
     <f:case value="BF">
@@ -795,9 +819,8 @@
                 </f:if>
 
             </div>
+            <f:render partial="Display/Detail/OpacLink" arguments="{_all}"/>
         </div>
-
-        <f:render partial="Display/Detail/OpacLink" arguments="{_all}"/>
 
     </f:case>
     <f:case value="HS">
@@ -961,9 +984,8 @@
                 </f:if>
 
             </div>
+            <f:render partial="Display/Detail/OpacLink" arguments="{_all}"/>
         </div>
-
-        <f:render partial="Display/Detail/OpacLink" arguments="{_all}"/>
 
     </f:case>
     <f:defaultCase>
