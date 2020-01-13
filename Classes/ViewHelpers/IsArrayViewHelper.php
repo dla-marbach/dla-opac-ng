@@ -1,9 +1,9 @@
 <?php
 
-namespace Dla\DlaOpacNg\ViewHelpers\Data;
+namespace Dla\DlaOpacNg\ViewHelpers;
 
 
-class isArrayViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class IsArrayViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
 {
 
 
@@ -14,7 +14,7 @@ class isArrayViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHel
     public function initializeArguments()
     {
         parent::initializeArguments();
-        $this->registerArgument('array', 'array', 'List of fields', true, array());
+        $this->registerArgument('array', 'mixed', 'List of fields', true, array());
     }
 
     /**
