@@ -166,8 +166,9 @@
                     </div>
                 </f:then>
             </f:if>
-            
+
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'ATIT')}" name="ATIT" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'ATITSP')}" name="ATITSP" />
             <f:if condition="{ATIT}">
                 <f:then>
                     <div class="ctg-dtvt-row">
@@ -177,7 +178,8 @@
                         <div class="ctg-dtvt-content">
 
                             <f:for each="{ATIT}" as="item" iteration="iterator">
-                                {item} <br />
+                                {item} <f:if condition="{ATITSP.{iterator.index}}">({ATITSP.{iterator.index}})</f:if>
+                                <br />
                             </f:for>
 
                         </div>
