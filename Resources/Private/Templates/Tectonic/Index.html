@@ -26,7 +26,36 @@
     $( document ).ready(function() {
         getChildNodes(0);
         registerOnClick();
+        registerSearchForm();
     });
+
+    function registerSearchForm() {
+        $("#tectonic-search").on("keyup", function (event) {
+            if ($(this).val() == '') {
+                resetTreeNodes();
+                getChildNodes(0);
+            } else {
+                searchNodes($(this).val());
+            }
+        })
+    }
+
+    function searchNodes(searchTerm) {
+        var url = '/index.php?eID=tectonic&action=searchNodes&search=' + searchTerm;
+
+        $.ajax({
+            url: url,
+            dataType: "json"
+        })
+        .done(function(data) {
+            resetTreeNodes();
+            $('#tectonictree').append(jsonToHtml(data));
+        });
+    }
+
+    function resetTreeNodes() {
+        $("#tectonictree").html("");
+    }
 
     var constants = function() {
         this.liElements = '';
@@ -67,9 +96,6 @@
                 } else {
                     $('#'+id).append(jsonToHtml(data));
                 }
-            })
-            .fail(function() {
-
             });
     }
 
@@ -128,6 +154,9 @@
     }
 
 </script>
+
+<label>Suche</label>
+<input id="tectonic-search" type="text">
 
 <ul id="tectonictree" class="bt-listview">
 
