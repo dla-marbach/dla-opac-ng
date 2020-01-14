@@ -974,7 +974,7 @@
 
                         <f:for each="{digitalObject}" as="item" iteration="iterator">
                             <f:if condition="{AURL.{iterator.index}} != '#NV' && {item} != '#NV'">
-                                <a href="{AURL.{iterator.index}}">{item}</a><br />
+                                <a href="{AURL.{iterator.index}}" target="_blank">{item}</a><br />
                             </f:if>
                         </f:for>
                     </div>
