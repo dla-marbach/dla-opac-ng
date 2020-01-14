@@ -199,6 +199,14 @@ a.facetText {
     margin-top: 1rem !important;
 }
 
+.order-overlay button.confirm {
+    display: none;
+    background-color:#b61e24;
+    color:#ffffff;
+    padding:10px;
+    margin-top: 15px;
+}
+
 article.detail em.highlight {
     font-weight: inherit !important;
     color: #333333 !important;

@@ -68,6 +68,7 @@ $(document).ready(function(){
 
     $('.order-button').click(function (event) {
 
+        $('.order-overlay .login-form').show();
         $('.order-overlay').toggle();
 
         var orderurl = $(this).data('orderurl');
@@ -86,14 +87,23 @@ $(document).ready(function(){
             orderurl = orderurl.replace("%name%", encodeURI(nameValue));
             orderurl = orderurl.replace("%pw%", pwValue);
 
-            var win = window.open(orderurl, '_blank');
-            if (win) {
-                //Browser has allowed it to be opened
-                win.focus();
-            } else {
-                //Browser has blocked it
-                alert('Please allow popups for this website');
-            }
+            $.ajax({
+                url: orderurl,
+            })
+            .done(function( data ) {
+                $('.order-overlay .login-form').hide();
+                $('.order-overlay .info').text($(data).find(".kginfo").text()).show();
+                $('.order-overlay .confirm').show().on("click", function (event) {
+                    event.preventDefault();
+                    $('.order-overlay').hide();
+                });
+
+            })
+            .fail(function() {
+                sendOrderAsPopup(orderurl);
+            });
+
+
         }
     });
 
@@ -101,6 +111,19 @@ $(document).ready(function(){
         $(this).parent().toggle();
     });
 });
+
+function sendOrderAsPopup(orderurl) {
+    // if ajax failed
+    var win = window.open(orderurl, '_blank');
+    if (win) {
+        //Browser has allowed it to be opened
+        win.focus();
+    } else {
+        //Browser has blocked it
+        alert('Please allow popups for this website');
+    }
+    $('.order-overlay').hide();
+}
 
 function copyUrl() {
     var dummy = document.createElement('input'),
