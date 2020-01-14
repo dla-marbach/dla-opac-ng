@@ -166,8 +166,8 @@
                     </div>
                 </f:then>
             </f:if>
-
-            <dla:data.valueForKeyFiltered key="ATIT" filterKey="AMTIT" filterValues="{0:'303n'}" mustMatch="false" fields="{document.fields}" as="ATIT" />
+            
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'ATIT')}" name="ATIT" />
             <f:if condition="{ATIT}">
                 <f:then>
                     <div class="ctg-dtvt-row">
