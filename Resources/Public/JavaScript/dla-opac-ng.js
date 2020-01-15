@@ -134,6 +134,8 @@ function copyUrl() {
     dummy.select();
     document.execCommand('copy');
     document.body.removeChild(dummy);
+
+    $('.action-copied-info').fadeIn().delay(2000).fadeOut();
 }
 
 function sendUrlByMail(title) {
