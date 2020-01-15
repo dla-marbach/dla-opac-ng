@@ -24,7 +24,7 @@
             <f:for each="{solr}" as="solrResult">
                 <li>
                     <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
-                        <f:render partial="Display/Detail/MediatypeIcon" arguments="{listview_type:solrResult.listview_type}" />
+                        <f:render partial="Display/Detail/MediatypeIcon" arguments="{listview_type:solrResult.listview_type, filter_digital:document.filter_digital}" />
                     </f:link.action>
                     <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
                         <f:format.crop maxCharacters="60" respectWordBoundaries="TRUE" respectHtml="TRUE">
@@ -140,7 +140,7 @@
         <f:for each="{solr}" as="solrResult">
             <li>
                 <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
-                    <f:render partial="Display/Detail/MediatypeIcon" arguments="{listview_type:solrResult.listview_type}" />
+                    <f:render partial="Display/Detail/MediatypeIcon" arguments="{listview_type:solrResult.listview_type, filter_digital:document.filter_digital}" />
                 </f:link.action>
                 <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
                     <f:format.crop maxCharacters="60" respectWordBoundaries="TRUE" respectHtml="TRUE">

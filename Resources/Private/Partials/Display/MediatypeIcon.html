@@ -2,42 +2,92 @@
 
 <f:switch expression="{listview_type.0}">
     <f:case value="Audio">
-        <span class="icon bel-ton" title="Audio"></span>
+        <f:if condition="{filter_digital}=='true'">
+            <f:then>
+                <span class="icon bel-tone" title="Audio"></span>
+            </f:then>
+            <f:else>
+                <span class="icon bel-ton" title="Audio"></span>
+            </f:else>
+        </f:if>
         <f:if condition="{listview_type_cardinality} == 'N'">
           <span class="icon bel-note" style="margin-left: 4px; margin-top: -33px;" title="Audio"></span>
         </f:if>
     </f:case>
     <f:case value="Video">
-        <span class="icon bel-pcfilm" title="Video"></span>
+        <f:if condition="{filter_digital}=='true'">
+            <f:then>
+                <span class="icon bel-pcfilm" title="Video"></span>
+            </f:then>
+            <f:else>
+                <span class="icon bel-pcfilm" title="Video"></span>
+            </f:else>
+        </f:if>
         <f:if condition="{listview_type_cardinality} == 'N'">
             <span class="icon bel-note" style="margin-left: 4px; margin-top: -33px;" title="Video"></span>
         </f:if>
     </f:case>
     <f:case value="Bilder und Objekte">
-        <span class="icon bel-foto" title="<f:translate key='Bilder &amp; Objekte' extensionName='dla_opac_ng'/>"></span>
+        <f:if condition="{filter_digital}=='true'">
+            <f:then>
+                <span class="icon bel-fotoe" title="<f:translate key='Bilder &amp; Objekte' extensionName='dla_opac_ng'/>"></span>
+            </f:then>
+            <f:else>
+                <span class="icon bel-foto" title="<f:translate key='Bilder &amp; Objekte' extensionName='dla_opac_ng'/>"></span>
+            </f:else>
+        </f:if>
         <f:if condition="{listview_type_cardinality} == 'N'">
             <span class="icon bel-foto" style="margin-left: 4px; margin-top: -36px;" title="<f:translate key='Bilder &amp; Objekte' extensionName='dla_opac_ng'/>"></span>
         </f:if>
     </f:case>
     <f:case value="Daten">
-        <span class="icon bel-daten" title="Daten"></span>
+        <f:if condition="{filter_digital}=='true'">
+            <f:then>
+                <span class="icon bel-datene" title="Daten"></span>
+            </f:then>
+            <f:else>
+                <span class="icon bel-daten" title="Daten"></span>
+            </f:else>
+        </f:if>
         <f:if condition="{listview_type_cardinality} == 'N'">
             <span class="icon bel-daten" style="margin-left: 4px; margin-top: -36px;" title="Daten"></span>
         </f:if>
     </f:case>
     <f:case value="Gedrucktes">
-        <span class="icon bel-mag" title="<f:translate key='Gedrucktes' extensionName='dla_opac_ng'/>"></span>
+        <f:if condition="{filter_digital}=='true'">
+            <f:then>
+                <span class="icon bel-mage" title="<f:translate key='Gedrucktes' extensionName='dla_opac_ng'/>"></span>
+            </f:then>
+            <f:else>
+                <span class="icon bel-mag" title="<f:translate key='Gedrucktes' extensionName='dla_opac_ng'/>"></span>
+            </f:else>
+        </f:if>
         <f:if condition="{listview_type_cardinality} == 'N'">
             <span class="icon bel-mag" style="margin-left: 4px; margin-top: -34px;" title="<f:translate key='Gedrucktes' extensionName='dla_opac_ng'/>"></span>
         </f:if>
     </f:case>
     <f:case value="Handschriften">
-        <span class="icon bel-schreiben" title="<f:translate key='Handschriften' extensionName='dla_opac_ng'/>"></span>
+        <f:if condition="{filter_digital}=='true'">
+            <f:then>
+                <span class="icon bel-schreibene" title="<f:translate key='Handschriften' extensionName='dla_opac_ng'/>"></span>
+            </f:then>
+            <f:else>
+                <span class="icon bel-schreiben" title="<f:translate key='Handschriften' extensionName='dla_opac_ng'/>"></span>
+            </f:else>
+        </f:if>
         <f:if condition="{listview_type_cardinality} == 'N'">
             <span class="icon bel-schreiben" style="margin-left: 7px; margin-top: -33px;" title="<f:translate key='Handschriften' extensionName='dla_opac_ng'/>"></span>
         </f:if>
     </f:case>
     <f:case value="Normdaten">
+        <f:if condition="{filter_digital}=='true'">
+            <f:then>
+                <span class="icon bel-idkarte" title="<f:translate key='Handschriften' extensionName='dla_opac_ng'/>"></span>
+            </f:then>
+            <f:else>
+                <span class="icon bel-idkarte" title="<f:translate key='Handschriften' extensionName='dla_opac_ng'/>"></span>
+            </f:else>
+        </f:if>
         <span class="icon bel-idkarte" title="Normdaten"></span>
         <f:if condition="{listview_type_cardinality} == 'N'">
             <span class="icon bel-papier" style="margin-left: 4px; margin-top: -36px;" title="Normdaten"></span>

@@ -1003,6 +1003,7 @@ plugin.tx_find {
                     f13 = INDKEY
                     f14 = AURL
                     f15 = BEMURL
+                    f16 = filter_digital
                 }
             }
             detail {
