@@ -17,7 +17,7 @@
     <f:case value="Video">
         <f:if condition="{filter_digital}=='true'">
             <f:then>
-                <span class="icon bel-pcfilm" title="Video"></span>
+                <span class="icon bel-pce" title="Video"></span>
             </f:then>
             <f:else>
                 <span class="icon bel-pcfilm" title="Video"></span>
@@ -82,13 +82,12 @@
     <f:case value="Normdaten">
         <f:if condition="{filter_digital}=='true'">
             <f:then>
-                <span class="icon bel-idkarte" title="<f:translate key='Handschriften' extensionName='dla_opac_ng'/>"></span>
+                <span class="icon bel-idkarte" title="Normdaten"></span>
             </f:then>
             <f:else>
-                <span class="icon bel-idkarte" title="<f:translate key='Handschriften' extensionName='dla_opac_ng'/>"></span>
+                <span class="icon bel-idkarte" title="Normdaten"></span>
             </f:else>
         </f:if>
-        <span class="icon bel-idkarte" title="Normdaten"></span>
         <f:if condition="{listview_type_cardinality} == 'N'">
             <span class="icon bel-papier" style="margin-left: 4px; margin-top: -36px;" title="Normdaten"></span>
         </f:if>
