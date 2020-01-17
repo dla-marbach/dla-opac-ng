@@ -1,10 +1,14 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
 
-<div class="action-copied-info">Link kopiert!</div>
+<div class="action-copied-info">
+    <input id="action-copied-info-input" class="action-copied-info-input" type="text" readonly value=""/>
+    <button class="action-copied-info-button" onclick="copyUrl();">Link kopieren</button>
+    <button class="action-copied-info-button action-copied-success">Link kopiert</button>
+</div>
 
 <ul class="ctg-dvh-aside">
     <li><a style="color:#d3d3d3;" class="ctg-button" title="<f:translate key='merken' extensionName='dla_opac_ng'/>"><span class="icon bel-stern01"></span></a></li>
     <li><a onclick='sendUrlByMail("{listview_title}");' class="ctg-button" title="<f:translate key='versenden' extensionName='dla_opac_ng'/>"><span class="icon bel-brief01"></span></a></li>
-    <li><a onclick="copyUrl();" class="ctg-button" title="Link kopieren"><span class="icon bel-verbinden"></span></a></li>
+    <li><a onclick="copyUrlAction();" class="ctg-button" title="Link kopieren"><span class="icon bel-verbinden"></span></a></li>
     <li><a style="color:#d3d3d3;" class="ctg-button" title="<f:translate key='exportieren' extensionName='dla_opac_ng'/>"><span class="icon bel-postin"></span></a></li>
 </ul>

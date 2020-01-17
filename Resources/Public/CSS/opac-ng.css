@@ -210,12 +210,37 @@ a.facetText {
 .action-copied-info {
     display: none;
     position: absolute;
-    right: 2px;
-    top: -25px;
+    right: 1rem;
+    top: 60px;
     padding: 5px;
     background-color: #dadada;
     color: #464646;
     border: 1px solid #b1b1b1;
+    z-index: 9;
+    min-width: 50%;
+    text-align: center;
+}
+
+.action-copied-info input {
+    background-color: #ffffff !important;
+}
+
+.action-copied-success {
+    display: none;
+    background-color: #75b61e !important;
+}
+
+.action-copied-info-button {
+    width: 120px;
+    border-top: 1px solid #aeaeae;
+    background-color: #b61f24;
+    color: #fff;
+    margin: 0;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    height: 2rem;
+    font-size: 100%;
+    text-decoration: none;
+    margin-top: 1rem;
 }
 
 article.detail em.highlight {

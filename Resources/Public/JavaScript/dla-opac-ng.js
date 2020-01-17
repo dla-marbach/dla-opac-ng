@@ -125,17 +125,30 @@ function sendOrderAsPopup(orderurl) {
     $('.order-overlay').hide();
 }
 
+function copyUrlAction() {
+    var location = window.location;
+    var pageId = getUrlParameter('id');
+    var docId = getUrlParameter('tx_find_find%5Bid%5D');
+    var url = location.origin + location.pathname + '?id=' + pageId + '&tx_find_find[id]=' + docId + '';
+
+    $('.action-copied-info-input').val(url);
+    $('.action-copied-info-button').show();
+    $('.action-copied-info-button.action-copied-success').hide();
+
+    $('.action-copied-info').fadeIn();
+}
+
 function copyUrl() {
-    var dummy = document.createElement('input'),
-        text = window.location.href;
 
-    document.body.appendChild(dummy);
-    dummy.value = text;
-    dummy.select();
+    var input = document.getElementById('action-copied-info-input');
+
+    input.select();
     document.execCommand('copy');
-    document.body.removeChild(dummy);
 
-    $('.action-copied-info').fadeIn().delay(2000).fadeOut();
+    $('.action-copied-info-button').hide();
+    $('.action-copied-info-button.action-copied-success').fadeIn();
+
+    $('.action-copied-info').delay(2000).fadeOut();
 }
 
 function sendUrlByMail(title) {
@@ -150,5 +163,18 @@ function sendUrlByMail(title) {
     window.open(uri);
 }
 
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
 
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
 
