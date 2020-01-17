@@ -204,6 +204,8 @@ plugin.tx_find {
         # definiert, die garantiert keine Treffer erzeugt.
         defaultQuery = *:*
 
+        orderlink = https://cww-test.dla-marbach.de/cgi-bin/aDISCGI/kallias_intra_test/lib/adis.htm
+
         features.eDisMax = 1
 
         # Der Abschnitt "queryFields" definiert die zur Verfügung stehenden Suchfelder.
