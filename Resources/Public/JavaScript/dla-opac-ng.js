@@ -135,7 +135,7 @@ function copyUrlAction() {
     $('.action-copied-info-button').show();
     $('.action-copied-info-button.action-copied-success').hide();
 
-    $('.action-copied-info').fadeIn();
+    $('.action-copied-info').toggle();
 }
 
 function copyUrl() {
