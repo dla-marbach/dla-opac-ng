@@ -18,7 +18,7 @@
                     <f:if condition="{detail_restrictions}">
                         <f:then>
 
-                            <dla:replaceBreaks text="{detail_restrictions}" as="restriction"/>
+                            <dla:replaceBreaks text="{detail_restrictions.{iterator.index}}" as="restriction"/>
 
                             <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}=='bedingt benutzbar'">
                                 <f:then>
@@ -117,7 +117,7 @@
             <div class="">
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
-                <dla:replaceNullValue text="{detail_restrictions}" as="detail_restrictions"/>
+                <dla:replaceNullValue text="{detail_restrictions.{iterator.index}}" as="detail_restrictions"/>
 
                 <f:if condition="{detail_restrictions}">
                     <f:then>
