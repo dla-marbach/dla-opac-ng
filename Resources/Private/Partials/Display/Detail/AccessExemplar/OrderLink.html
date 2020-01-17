@@ -1,29 +1,39 @@
-<f:switch expression="{document.fields.source}">
-    <f:case value="AK">
-        <v:variable.set value="AK" name="opac_db" />
-        <v:variable.set value="{document.fields.A0001}" name="id" />
-        <v:variable.set value="DBSEL=AK;" name="dbsel" />
-        <v:variable.set value="DBSEL=AK;{document.fields.A0001};" name="param" />
-    </f:case>
-    <f:case value="BF">
-        <v:variable.set value="BF" name="opac_db" />
-        <v:variable.set value="{document.fields.B0001}" name="id" />
-        <v:variable.set value="DBSEL2=BF;" name="dbsel" />
-        <v:variable.set value="DBSEL2=BF;{document.fields.B0001};" name="param" />
-    </f:case>
-    <f:case value="HS">
-        <v:variable.set value="HS" name="opac_db" />
-        <v:variable.set value="DBSEL1=HS;" name="dbsel" />
-        <v:variable.set value="{document.fields.H0001}" name="id" />
-        <v:variable.set value="DBSEL1=HS;{document.fields.H0001};" name="param" />
-    </f:case>
-    <f:case value="AU">
+<f:if condition="{AUKEY.{iterator.index}}">
+    <f:then>
         <v:variable.set value="AU" name="opac_db" />
         <v:variable.set value="{document.fields.AUISN}" name="id" />
         <v:variable.set value="DBSEL3=AU;" name="dbsel" />
-        <v:variable.set value="DBSEL3=AU;{document.fields.AUISN};" name="param" />
-    </f:case>
-</f:switch>
+        <v:variable.set value="DBSEL3=AU;{AUKEY.{iterator.index}};" name="param" />
+    </f:then>
+    <f:else>
+        <f:switch expression="{document.fields.source}">
+            <f:case value="AK">
+                <v:variable.set value="AK" name="opac_db" />
+                <v:variable.set value="{document.fields.A0001}" name="id" />
+                <v:variable.set value="DBSEL=AK;" name="dbsel" />
+                <v:variable.set value="DBSEL=AK;{document.fields.A0001};" name="param" />
+            </f:case>
+            <f:case value="BF">
+                <v:variable.set value="BF" name="opac_db" />
+                <v:variable.set value="{document.fields.B0001}" name="id" />
+                <v:variable.set value="DBSEL2=BF;" name="dbsel" />
+                <v:variable.set value="DBSEL2=BF;{document.fields.B0001};" name="param" />
+            </f:case>
+            <f:case value="HS">
+                <v:variable.set value="HS" name="opac_db" />
+                <v:variable.set value="DBSEL1=HS;" name="dbsel" />
+                <v:variable.set value="{document.fields.H0001}" name="id" />
+                <v:variable.set value="DBSEL1=HS;{document.fields.H0001};" name="param" />
+            </f:case>
+            <f:case value="AU">
+                <v:variable.set value="AU" name="opac_db" />
+                <v:variable.set value="{document.fields.AUISN}" name="id" />
+                <v:variable.set value="DBSEL3=AU;" name="dbsel" />
+                <v:variable.set value="DBSEL3=AU;{document.fields.AUISN};" name="param" />
+            </f:case>
+        </f:switch>
+    </f:else>
+</f:if>
 
 <a href="#tabaccess" class="ctg-button order-button" style="padding-bottom: 10px;padding-left: 10px;padding-right: 10px;" data-orderurl="{settings.orderlink}?ADISDB=AU&WEB=JA&{param}&L%23NAME=%name%&LPASSW=%pw%">
     Jetzt bestellen
