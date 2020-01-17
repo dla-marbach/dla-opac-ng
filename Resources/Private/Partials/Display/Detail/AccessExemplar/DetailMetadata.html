@@ -1,12 +1,28 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'source')}" name="source" />
 
+<f:if condition="!{iterator.index}">
+    <v:variable.set value="{index: '0'}" name="iterator" />
+</f:if>
+
 <f:switch expression="{source}">
     <f:case value="AK">
         <div class="ctg-dtvt-row">
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_KLASS_AUKEY')}" name="XX_AU_KLASS_AUKEY" />
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_STAND_AUKEY')}" name="XX_AU_STAND_AUKEY" />
 
-            <f:if condition="{XX_AU_KLASS_AUKEY.{iterator.index}}=='nicht benutzbar' && {XX_AU_STAND_AUKEY.{iterator.index}}=='nicht im Bestand des DLA'">
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AUKEY')}" name="AUKEY" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'DOKTYP')}" name="DOKTYP" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS113')}" name="POS113" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0544')}" name="A0544" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_type')}" name="listview_type" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'facet_source')}" name="facet_source" />
+
+            <f:if condition="{XX_AU_KLASS_AUKEY.{iterator.index}}=='nicht benutzbar' || {XX_AU_STAND_AUKEY.{iterator.index}}=='nicht im Bestand des DLA'
+            || {AUKEY}=='' && {POS113}!='Einzelbestandteil / unselbständiges Werk'
+            || {AUKEY}=='' && {DOKTYP}=='Zeitschriftenheft'
+            || {A0544.{iterator.index}}=='Nicht im Bestand des DLA' || {A0544.{iterator.index}}=='kein Bestand'
+            || {facet_source}=='Digitale Nachschlagewerke' || {facet_source}=='Elektronische Zeitschriftenbibliothek'
+            || {listview_type}=='Daten'">
                 <f:then>
                     <div style="padding: 0.5rem 0;">
                         Nicht bestellbar
@@ -473,7 +489,7 @@
 
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_KLASS_AUKEY')}" name="XX_AU_KLASS_AUKEY" />
 
-            <f:if condition="{XX_AU_KLASS_AUKEY=='nicht benutzbar'">
+            <f:if condition="{XX_AU_KLASS_AUKEY=='nicht benutzbar' || {listview_type}=='Daten'">
                 <f:then>
                     <div style="padding: 0.5rem 0;">
                         Nicht bestellbar
@@ -588,7 +604,7 @@
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'DLAABT')}" name="DLAABT" />
             <dla:replaceNullValue text="{DLAABT}" as="DLAABT"/>
 
-            <f:if condition="{DLAABT}=='Handschriftensammlung' || {DLAABT}=='Bibliothek'">
+            <f:if condition="{DLAABT}=='Handschriftensammlung' || {DLAABT}=='Bibliothek' || {listview_type}=='Daten'">
                 <f:then>
                     <div style="padding: 0.5rem 0;">
                         Nicht bestellbar
@@ -827,28 +843,38 @@
 
         <div class="ctg-dtvt-row">
 
-            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
-            <f:if condition="{detail_restrictions}">
-                <dla:replaceBreaks text="{detail_restrictions}" as="restriction"/>
+            <f:if condition="{listview_type}=='Daten'">
+                <f:then>
+                    <div style="padding: 0.5rem 0;">
+                        Nicht bestellbar
+                        <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 19px;"></span>
+                    </div>
+                </f:then>
+                <f:else>
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
+                    <f:if condition="{detail_restrictions}">
+                        <dla:replaceBreaks text="{detail_restrictions}" as="restriction"/>
 
-                <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}=='bedingt benutzbar'">
-                    <f:then>
-                        <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+                        <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}=='bedingt benutzbar'">
+                            <f:then>
+                                <div style="padding: 0.5rem 0; margin-bottom: 10px;">
 
-                            <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+                                    <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
 
-                            <span class="icon bel-kreis02" style="color:#df661e;"></span>
-                        </div>
-                    </f:then>
-                    <f:else>
-                        <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+                                    <span class="icon bel-kreis02" style="color:#df661e;"></span>
+                                </div>
+                            </f:then>
+                            <f:else>
+                                <div style="padding: 0.5rem 0; margin-bottom: 10px;">
 
-                            <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
+                                    <f:render partial="Display/Detail/AccessExemplar/OrderLink" arguments="{_all}"/>
 
-                            <span class="icon bel-kreis02" style="color:#00df27;"></span>
-                        </div>
-                    </f:else>
-                </f:if>
+                                    <span class="icon bel-kreis02" style="color:#00df27;"></span>
+                                </div>
+                            </f:else>
+                        </f:if>
+                    </f:if>
+                </f:else>
             </f:if>
 
             <div class="ctg-dtvt-content">
