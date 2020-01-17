@@ -92,10 +92,8 @@ $(document).ready(function(){
                 url: orderurl,
             })
             .done(function( data ) {
-                console.log($(data));
-                console.log($(data).find(".kginfo"));
                 $('.order-overlay .login-form').hide();
-                $('.order-overlay .info').text("Bestellung wurde erfolgreich abgeschickt!").show();
+                $('.order-overlay .info').text($(data).filter("#meldung").text()).show();
                 $('.order-overlay .confirm').show().on("click", function (event) {
                     event.preventDefault();
                     $('.order-overlay').hide();

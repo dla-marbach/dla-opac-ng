@@ -204,7 +204,7 @@ plugin.tx_find {
         # definiert, die garantiert keine Treffer erzeugt.
         defaultQuery = *:*
 
-        orderlink = https://cww-test.dla-marbach.de/cgi-bin/aDISCGI/kallias_intra_test/lib/adis.htm
+        orderlink = https://cww-test.dla-marbach.de/cgi-bin/aDISCGI/kallias_intra_test/lib/ng-ausleihe.html
 
         features.eDisMax = 1
 
