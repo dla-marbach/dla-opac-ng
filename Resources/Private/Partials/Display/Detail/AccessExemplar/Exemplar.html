@@ -1,5 +1,20 @@
 <f:render partial="Display/Detail/OpacLink" arguments="{_all}"/>
 
+<div class="order-overlay">
+    <span class="close-button"><a id=""href="#tabaccess"><span class="bel-ende03" style="font-size:48px;"></span></a></span>
+    <span class="error" style="display: none;color:red;">Bitte geben Sie sowohl ein Nutzernamen als auch ein Passwort ein.</span>
+    <div class="info" style="display: none;"></div>
+    <button class="confirm">Bestellansicht verlassen</button>
+    <div class="login-form">
+        <span>
+            <h1>Login - Bestellung</h1>
+        </span>
+        <label>Name:</label> <f:form.textfield id="order-name"/>
+        <label>Passwort:</label> <f:form.password id="order-pw"/>
+        <f:form.submit class="ctg-button order-overlay-button" value="Bestellung abschicken"/>
+    </div>
+</div>
+
 <div class="ctg-dtvt-row">
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'source')}" name="source" />
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AUKEY')}" name="AUKEY" />

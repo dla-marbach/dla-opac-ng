@@ -69,6 +69,7 @@ $(document).ready(function(){
     $('.order-button').click(function (event) {
 
         $('.order-overlay .login-form').show();
+        $('.order-overlay .confirm').hide();
         $('.order-overlay').toggle();
 
         var orderurl = $(this).data('orderurl');
@@ -91,8 +92,10 @@ $(document).ready(function(){
                 url: orderurl,
             })
             .done(function( data ) {
+                console.log($(data));
+                console.log($(data).find(".kginfo"));
                 $('.order-overlay .login-form').hide();
-                $('.order-overlay .info').text($(data).find(".kginfo").text()).show();
+                $('.order-overlay .info').text("Bestellung wurde erfolgreich abgeschickt!").show();
                 $('.order-overlay .confirm').show().on("click", function (event) {
                     event.preventDefault();
                     $('.order-overlay').hide();
