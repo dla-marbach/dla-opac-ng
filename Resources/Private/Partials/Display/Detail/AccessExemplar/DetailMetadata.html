@@ -489,7 +489,7 @@
 
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KLASS')}" name="KLASS" />
 
-            <f:if condition="{KLASS=='nicht benutzbar' || {listview_type}=='Daten'">
+            <f:if condition="{KLASS}=='nicht benutzbar' || {listview_type}=='Daten'">
                 <f:then>
                     <div style="padding: 0.5rem 0;">
                         Nicht bestellbar
