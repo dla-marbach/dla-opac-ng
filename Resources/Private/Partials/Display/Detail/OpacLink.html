@@ -3,32 +3,32 @@
 
         <f:switch expression="{document.fields.source}">
             <f:case value="BI">
-                <v:variable.set value="BI" name="opac_db" />
+                <v:variable.set value="bi" name="opac_db" />
                 <v:variable.set value="{document.fields.B00001}" name="opac_id" />
             </f:case>
             <f:case value="AK">
-                <v:variable.set value="AK" name="opac_db" />
+                <v:variable.set value="ak" name="opac_db" />
                 <v:variable.set value="{document.fields.A0001}" name="opac_id" />
             </f:case>
             <f:case value="BF">
-                <v:variable.set value="BF" name="opac_db" />
+                <v:variable.set value="bf" name="opac_db" />
                 <v:variable.set value="{document.fields.B0001}" name="opac_id" />
             </f:case>
             <f:case value="HS">
-                <v:variable.set value="HS" name="opac_db" />
+                <v:variable.set value="hs" name="opac_db" />
                 <v:variable.set value="{document.fields.H0001}" name="opac_id" />
             </f:case>
             <f:case value="PE">
-                <v:variable.set value="PE" name="opac_db" />
+                <v:variable.set value="pe" name="opac_db" />
                 <v:variable.set value="{document.fields.P0001}" name="opac_id" />
             </f:case>
             <f:case value="KS">
-                <v:variable.set value="KS" name="opac_db" />
+                <v:variable.set value="ks" name="opac_db" />
                 <v:variable.set value="{document.fields.K0001}" name="opac_id" />
             </f:case>
         </f:switch>
 
-        <a href="http://www.dla-marbach.de/kallias/aDISWeb/{opac_db}/index.html?ADISDB={opac_db}&WEB=JA&ADISOI={opac_id}">
+        <a href="http://www.dla-marbach.de/kallias/aDISWeb/{opac_db}/index.html?ADISDB={document.fields.source}&WEB=JA&ADISOI={opac_id}">
             Anzeigen und bestellen im aktuellen Onlinekatalog
         </a>
     </div>
