@@ -1140,6 +1140,21 @@ plugin.tx_find {
                 reverseFacet = 1
             }
 
+#            40 {
+#                id = NeuImKatalog
+#                label = Neu im Katalog
+#                type = Timerange
+#                field = filter_new
+#                #query = filter_new:%s
+#                showmissing = 1
+
+#                #start = NOW/YEAR-35YEARS
+#                #end = NOW
+#                #gap = +1YEAR
+#                #displayDateFormat = Y
+#                collapse = 1
+#            }
+
             40 {
                 id = NeuImKatalog
                 label = Neu im Katalog

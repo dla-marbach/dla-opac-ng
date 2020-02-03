@@ -82,8 +82,14 @@
                         </f:then>
                         <f:else>
                             <li>
-                                <dla:countFromSolr query="filter_new:[NOW-7DAY TO NOW]" activeFacets="{config.activeFacets}"/>
+Debug/Test:<br>
+
+<-- dla:countFacetQuery query="filter_new:[NOW-7DAY TO NOW]" activeFacets="{config.activeFacets}"/ -->
+{count_1month}
+                               <dla:countFromSolr query="filter_new:[NOW-7DAY TO NOW]" activeFacets="{config.activeFacets}"/>
+
                                 <f:if condition="{solrcount} > 0">
+
                                     <v:variable.set value="RANGE NOW-7DAY TO NOW" name="facetTerm" />
                                     <f:link.action
                                             addQueryString="TRUE"
@@ -110,6 +116,8 @@
                             <li>
                                 <dla:countFromSolr query="filter_new:[NOW-1MONTH TO NOW]" activeFacets="{config.activeFacets}"/>
                                 <f:if condition="{solrcount} > 0">
+
+
                                     <v:variable.set value="RANGE NOW-1MONTH TO NOW" name="facetTerm" />
 
                                     <f:link.action
