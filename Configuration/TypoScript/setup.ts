@@ -307,7 +307,7 @@ plugin.tx_find {
                 id = detail_von_gedrucktes
                 type = Text
                 # query = PE0100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND NOT GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter") AND
-                query = (facet_names_relations:("%1$s") AND icon_facet:("Gedrucktes"))
+                query = (facet_names_relations:("%1$s") AND listview_type:("Gedrucktes"))
                 noescape = 1
                 hidden = 1
             }
@@ -315,7 +315,7 @@ plugin.tx_find {
                 id = detail_von_handschriften
                 type = Text
                 # query = PE0100:("%1$s") AND source:("HS")
-                query = (facet_names_relations:("%1$s") AND icon_facet:("Handschriften"))
+                query = (facet_names_relations:("%1$s") AND listview_type:("Handschriften"))
                 noescape = 1
                 hidden = 1
             }
@@ -323,7 +323,7 @@ plugin.tx_find {
                 id = detail_von_bundo
                 type = Text
                 # query = PE0100:("%1$s") AND source:("BI")
-                query = (facet_names_relations:("%1$s") AND icon_facet:("Bilder und Objekte"))
+                query = (facet_names_relations:("%1$s") AND listview_type:("Bilder und Objekte"))
                 noescape = 1
                 hidden = 1
             }
@@ -331,7 +331,7 @@ plugin.tx_find {
                 id = detail_von_aundv
                 type = Text
                 # query = PE0100:("%1$s") AND DOKTYP:("Ton- und Bildträger") AND NOT GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
-                query = (facet_names_relations:("%1$s") AND (icon_facet:("Audio") OR icon_facet:("Video")))
+                query = (facet_names_relations:("%1$s") AND (listview_type:("Audio") OR listview_type:("Video")))
 
                 noescape = 1
                 hidden = 1
@@ -340,7 +340,7 @@ plugin.tx_find {
                 id = detail_an_gedrucktes
                 type = Text
                 # query = PE0100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
-                query = (facet_names_relations:("%1$s") AND icon_facet:("Gedrucktes"))
+                query = (facet_names_relations:("%1$s") AND listview_type:("Gedrucktes"))
                 noescape = 1
                 hidden = 1
             }
@@ -348,7 +348,7 @@ plugin.tx_find {
                 id = detail_an_handschriften
                 type = Text
                 # query = (PEA100:("%1$s") AND source:("HS")) OR (facet_names_relations:("%2$s") AND source:("AK"))
-                query = (facet_names_relations:("%1$s") AND icon_facet:("Handschriften"))
+                query = (facet_names_relations:("%1$s") AND listview_type:("Handschriften"))
                 noescape = 1
                 hidden = 1
             }
@@ -356,7 +356,7 @@ plugin.tx_find {
                 id = detail_an_bundo
                 type = Text
                 # query = PEA100:("%1$s") AND source:("BI")
-                query = (facet_names_relations:("%1$s") AND icon_facet:("Bilder und Objekte"))
+                query = (facet_names_relations:("%1$s") AND listview_type:("Bilder und Objekte"))
                 noescape = 1
                 hidden = 1
             }
@@ -364,7 +364,7 @@ plugin.tx_find {
                 id = detail_an_aundv
                 type = Text
                 # query = PE0100:("%1$s") AND DOKTYP:("Ton- und Bildträger") AND GFUPE:("Widmungsempfänger" OR "Adressat" OR "Gefeierter")
-                query = (facet_names_relations:("%1$s") AND (icon_facet:("Audio") OR icon_facet:("Video")))
+                query = (facet_names_relations:("%1$s") AND (listview_type:("Audio") OR listview_type:("Video")))
                 noescape = 1 
                 hidden = 1
             }
@@ -372,7 +372,7 @@ plugin.tx_find {
                 id = detail_ueber_gedrucktes
                 type = Text
                 # query = PEE100:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND source:("AK")
-                query = (facet_names_relations:("%1$s") AND icon_facet:("Gedrucktes"))
+                query = (facet_names_relations:("%1$s") AND listview_type:("Gedrucktes"))
                 noescape = 1
                 hidden = 1
             }
@@ -380,7 +380,7 @@ plugin.tx_find {
                 id = detail_ueber_handschriften
                 type = Text
                 # query = PEE100:("%1$s") AND source:("HS")
-                query = (facet_names_relations:("%1$s") AND icon_facet:("Handschriften"))
+                query = (facet_names_relations:("%1$s") AND listview_type:("Handschriften"))
                 noescape = 1
                 hidden = 1
             }
@@ -388,7 +388,7 @@ plugin.tx_find {
                 id = detail_ueber_bundo
                 type = Text
                 # query = PEE100:("%1$s") AND source:("BI")
-                query = (facet_names_relations:("%1$s") AND icon_facet:("Bilder und Objekte"))
+                query = (facet_names_relations:("%1$s") AND listview_type:("Bilder und Objekte"))
                 noescape = 1
                 hidden = 1
             }
@@ -396,7 +396,7 @@ plugin.tx_find {
                 id = detail_ueber_aundv
                 type = Text
                 # query = PEE100:("%1$s") AND DOKTYP:("Ton- und Bildträger")
-                query = (facet_names_relations:("%1$s") AND (icon_facet:("Audio") OR icon_facet:("Video")))
+                query = (facet_names_relations:("%1$s") AND (listview_type:("Audio") OR listview_type:("Video")))
                 noescape = 1
                 hidden = 1
             }
@@ -418,7 +418,7 @@ plugin.tx_find {
                 id = detail_unter_bundo
                 type = Text
                 # query = PEU100:("%1$s") AND source:("BI")
-                query = (facet_names_relations:("%1$s") AND icon_facet:("Bilder und Objekte"))
+                query = (facet_names_relations:("%1$s") AND listview_type:("Bilder und Objekte"))
                 noescape = 1
                 hidden = 1
             }
@@ -1077,10 +1077,10 @@ plugin.tx_find {
             }
             11 {
                 id = Medientypen
-                field = icon_facet
+                field = listview_type
                 type = Bar
                 sortOrder = count
-                query = icon_facet:("%s")
+                query = listview_type:("%s")
                 reverseFacet = 1
             }
 
@@ -1251,9 +1251,9 @@ plugin.tx_find {
             77 {
                 id = MedientypenHidden
                 facettype = multi_select_facet
-                field = icon_facet
+                field = listview_type
                 sortOrder = count
-                query = icon_facet:("%s")
+                query = listview_type:("%s")
             }
 
             89 {
