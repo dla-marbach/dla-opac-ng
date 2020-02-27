@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <type>database</type>
+        <description>Language labels for extension 'dla_opac_ng'</description>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="tx_dlaopacng_tectonic">Hierarchical Collections</label>
+            <label index="tx_dlaopacng_tectonic.record_id">Catalog Record ID</label>
+            <label index="tx_dlaopacng_tectonic.parent_id">Parent Record ID</label>
+            <label index="tx_dlaopacng_tectonic.listview_title">Title</label>
+            <label index="tx_dlaopacng_tectonic.listview_type">Type</label>
+            <label index="tx_dlaopacng_tectonic.listview_associate">Associates</label>
+            <label index="tx_dlaopacng_tectonic.listview_additional1">Additional Information (1)</label>
+            <label index="tx_dlaopacng_tectonic.listview_additional2">Additional Information (2)</label>
+            <label index="tx_dlaopacng_tectonic.hasChild">Has Child Records?</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="tx_dlaopacng_tectonic">Bestandstektonik</label>
+            <label index="tx_dlaopacng_tectonic.record_id">OPAC Datensatz-ID</label>
+            <label index="tx_dlaopacng_tectonic.parent_id">Übergeordnete Datensatz-ID</label>
+            <label index="tx_dlaopacng_tectonic.listview_title">Titel</label>
+            <label index="tx_dlaopacng_tectonic.listview_type">Typ</label>
+            <label index="tx_dlaopacng_tectonic.listview_associate">Beitragende</label>
+            <label index="tx_dlaopacng_tectonic.listview_additional1">Weitere Informationen (1)</label>
+            <label index="tx_dlaopacng_tectonic.listview_additional2">Weitere Informationen (2)</label>
+            <label index="tx_dlaopacng_tectonic.hasChild">Hat Kindelemente?</label>
+        </languageKey>
+    </data>
+</T3locallang>
