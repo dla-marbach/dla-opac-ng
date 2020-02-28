@@ -87,6 +87,23 @@
                         </f:uri.action>'></span>
                     </f:for>
                 </f:if>
+
+                <f:if condition="{f:count(subject:settings.paging.menu)} > 1">
+
+                    <f:for each="{settings.paging.menu}" as="pagingOption" key="key" iteration="iterator">
+                        <span
+                            id="pagingUri{iterator.index}"
+                            style="display:none;"
+                            uri='<f:uri.action
+                            addQueryString="TRUE"
+                            arguments="{count:'{key}'}"
+                            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                            section="{settings.jumpToID}"
+                            noCacheHash="1">
+                            </f:uri.action>'>
+                        </span>
+                    </f:for>
+                </f:if>
             </div>
 
             <!-- begin results -->

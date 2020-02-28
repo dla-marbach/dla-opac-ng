@@ -62,8 +62,11 @@ $(document).ready(function(){
 
 
     $('.dlaResultCountSelect').change(function (event) {
-        $('#countHidden').val($(this).val());
-        $("form").submit();
+        //$('#countHidden').val($(this).val());
+        //$("form").submit();
+        var uri = $(document).find("#pagingUri"+$(this).find(":selected").index()).attr('uri');
+        $(location).attr('href',uri);
+
     });
 
     $('.order-button').click(function (event) {
