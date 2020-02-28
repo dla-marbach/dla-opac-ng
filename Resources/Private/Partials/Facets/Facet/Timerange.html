@@ -82,10 +82,7 @@
                         </f:then>
                         <f:else>
                             <li>
-Debug/Test:<br>
 
-<-- dla:countFacetQuery query="filter_new:[NOW-7DAY TO NOW]" activeFacets="{config.activeFacets}"/ -->
-{count_1month}
                                <dla:countFromSolr query="filter_new:[NOW-7DAY TO NOW]" activeFacets="{config.activeFacets}"/>
 
                                 <f:if condition="{solrcount} > 0">
