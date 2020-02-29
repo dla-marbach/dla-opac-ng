@@ -24,7 +24,7 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 100,
-                'eval' => 'nospace,required,uniqueInPid',
+                'eval' => 'nospace,required',
                 'default' => '',
             ],
         ],
