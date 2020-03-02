@@ -99,15 +99,33 @@
                 <f:translate key='Medium' extensionName='dla_opac_ng'/>
             </div>
             <div class="ctg-dtvt-content">
-                <f:render
-                        partial="Display/Field/List"
-                        arguments="{
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'facet_medium')}" name="facet_medium" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'facet_form_content')}" name="facet_form_content" />
+
+                <f:if condition="{facet_medium}">
+                    <f:then>
+                        <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                                document:document,
+                                results:results,
+                                field:'facet_medium',
+                                linkFieldContent:linkFieldContent,
+                                linkFacets:linkFacets
+                        }"/>
+                    </f:then>
+                    <f:else>
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
                         document:document,
                         results:results,
-                        field:'facet_medium',
+                        field:'facet_form_content',
                         linkFieldContent:linkFieldContent,
                         linkFacets:linkFacets
                         }"/>
+                    </f:else>
+                </f:if>
             </div>
         </div>
 
