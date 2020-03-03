@@ -36,15 +36,17 @@
 
             <f:if condition="{f:count(subject: solr)} > 0">
                 <f:then>
-                    <f:comment><li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li></f:comment>
-                    <li>
-                        <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
-                            <span class="icon bel-lupe"></span>
-                        </f:link.action>
-                        <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
-                            Alle anzeigen
-                        </f:link.action>
-                    </li>
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+                    <f:if condition="{solrResult.id}!={id}">
+                        <li>
+                            <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                                <span class="icon bel-lupe"></span>
+                            </f:link.action>
+                            <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                                Alle anzeigen
+                            </f:link.action>
+                        </li>
+                    </f:if>
                 </f:then>
                 <f:else>
                     <li>
@@ -131,26 +133,34 @@
         <f:if condition="{AKY526_query}">
             <v:variable.set value="{query} AKY526:({AKY526_query})" name="query" />
         </f:if>
-        <v:variable.set value="{query} ) AND listview_type:(Bilder und Objekte)" name="query" />
+        <v:variable.set value="{query} ) AND listview_type:(\"Bilder und Objekte\")" name="query" />
 
         <dla:fromSolr
                 query="{query}"
                 fields="id,listview_title,listview_type"
                 rows="5" />
         <f:for each="{solr}" as="solrResult">
-            <li>
-                <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
-                    <f:render partial="Display/Detail/MediatypeIcon" arguments="{listview_type:solrResult.listview_type, filter_digital:document.filter_digital}" />
-                </f:link.action>
-                <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
-                    <f:format.crop maxCharacters="60" respectWordBoundaries="TRUE" respectHtml="TRUE">
-                        {solrResult.listview_title}
-                    </f:format.crop>
-                </f:link.action>
-            </li>
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+            <f:if condition="{solrResult.id}!={id}">
+                <f:then>
+                    <li>
+                        <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
+                            <f:render partial="Display/Detail/MediatypeIcon" arguments="{listview_type:solrResult.listview_type, filter_digital:document.filter_digital}" />
+                        </f:link.action>
+                        <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
+                            <f:format.crop maxCharacters="60" respectWordBoundaries="TRUE" respectHtml="TRUE">
+                                {solrResult.listview_title}
+                            </f:format.crop>
+                        </f:link.action>
+                    </li>
+                </f:then>
+                <f:else>
+                    <v:variable.set value="1" name="removeSameId" />
+                </f:else>
+            </f:if>
         </f:for>
 
-        <f:if condition="{f:count(subject: solr)} > 0">
+        <f:if condition="{f:count(subject: solr)} > 0 && {removeSameId}!= 1 && {f:count(subject: solr)} != 1">
             <f:then>
                 <f:comment><li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li></f:comment>
                 <li>

@@ -42,14 +42,17 @@
         <dla:countFromSolr query="{solvedQuery}" />
 
         <f:if condition="{solrcount}>0">
-            <li>
-                <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                    <span class="icon bel-idkarte"></span>
-                </f:link.action>
-                <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                    Werke ({solrcount})
-                </f:link.action>
-            </li>
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+            <f:if condition="{solrResult.id}!={id}">
+                <li>
+                    <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                        <span class="icon bel-idkarte"></span>
+                    </f:link.action>
+                    <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                        Werke ({solrcount})
+                    </f:link.action>
+                </li>
+            </f:if>
         </f:if>
     </ul>
 </section>
@@ -153,7 +156,7 @@
         </f:for>
 
         <dla:fromSolr
-                query="(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)"
+                query="(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(\"Bilder und Objekte\")"
                 fields="id,listview_title,listview_type"
                 rows="5" />
         <f:for each="{solr}" as="solrResult">
