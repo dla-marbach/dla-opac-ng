@@ -25,8 +25,8 @@
             || {listview_type}=='Daten'">
                 <f:then>
                     <div style="padding: 0.5rem 0;">
-                        Nicht bestellbar
-                        <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 29px;"></span>
+                        <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">Nicht bestellbar</span>
+                        <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 3px;"></span>
                     </div>
                 </f:then>
                 <f:else>
@@ -83,23 +83,40 @@
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_KS_listview_title_XX_AU_KSU200_AUKEY')}" name="XXX_KS_listview_title_XX_AU_KSU200_AUKEY" />
                 <dla:replaceNullValue text="{XXX_KS_listview_title_XX_AU_KSU200_AUKEY.{iterator.index}}" as="KS_VALUE"/>
 
-                <f:if condition="{PE_VALUE} || {KS_VALUE}">
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_vorbesitzer')}" name="detail_vorbesitzer" />
+                <dla:replaceNullValue text="{detail_vorbesitzer.{iterator.index}}" as="vorbesitzer_item"/>
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_vorbesitzer_ids')}" name="detail_vorbesitzer_ids" />
+                <dla:replaceNullValue text="{detail_vorbesitzer_ids.{iterator.index}}" as="vorbesitzer_id"/>
+
+
+                <f:if condition="{vorbesitzer_item}">
                     <f:then>
-                        <f:if condition="{PE_VALUE}">
-                            <f:link.action action="detail" arguments="{id: 'PE{XX_AU_PEU100_AUKEY.{person_iterator.index}}'}">
-                                {PE_VALUE} <br/>
-                            </f:link.action>
-                        </f:if>
-
-                        <f:if condition="{KS_VALUE}">
-                            <f:link.action action="detail" arguments="{id: 'KS{XX_AU_KSU200_AUKEY.{ks_iterator.index}}'}">
-                                {KS_VALUE} <br/>
-                            </f:link.action>
-                        </f:if>
-
+                        <v:variable.set value="{dla:explode(string: '{vorbesitzer_id}', delimiter: '␝')}" name="detail_id_array" />
+                        <v:variable.set value="0" name="pe_rendered" />
+                        <v:variable.set value="0" name="ks_rendered" />
+                        <f:for each="{dla:explode(string: '{vorbesitzer_item}', delimiter: '␝')}" as="name" iteration="name_iterator">
+                            <f:if condition="{v:format.substring(content: '{detail_id_array.{name_iterator.index}}', start: 0, length: 2)}==PE">
+                                <f:if condition="{pe_rendered}!=1">
+                                    <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal" noCacheHash="1">
+                                        {name}
+                                    </f:link.action>
+                                    <br/>
+                                    <v:variable.set value="1" name="pe_rendered" />
+                                </f:if>
+                            </f:if>
+                            <f:if condition="{v:format.substring(content: '{detail_id_array.{name_iterator.index}}', start: 0, length: 2)}==KS">
+                                <f:if condition="{ks_rendered}!=1">
+                                    <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal" noCacheHash="1">
+                                        {name}
+                                    </f:link.action>
+                                    <br/>
+                                    <v:variable.set value="1" name="ks_rendered" />
+                                </f:if>
+                            </f:if>
+                        </f:for>
                     </f:then>
                     <f:else>
-
                         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_BFKEY_AUKEY')}" name="XX_AU_BFKEY_AUKEY" />
                         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_BF_B41600_XX_AU_BFKEY_AUKEY')}" name="XXX_BF_B41600_XX_AU_BFKEY_AUKEY" />
                         <dla:replaceNullValue text="{XXX_BF_B41600_XX_AU_BFKEY_AUKEY.{iterator.index}}" as="BF_VALUE"/>
@@ -111,6 +128,7 @@
                         </f:if>
                     </f:else>
                 </f:if>
+
 
             </div>
             <div class="ctg-dtvt">
@@ -492,8 +510,8 @@
             <f:if condition="{KLASS}=='nicht benutzbar' || {listview_type}=='Daten'">
                 <f:then>
                     <div style="padding: 0.5rem 0;">
-                        Nicht bestellbar
-                        <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 29px;"></span>
+                        <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">Nicht bestellbar</span>
+                        <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 3px;"></span>
                     </div>
                 </f:then>
                 <f:else>
@@ -617,8 +635,8 @@
             <f:if condition="{DLAABT}=='Handschriftensammlung' || {DLAABT}=='Bibliothek' || {DLAABT}=='Cotta-Archiv' || {DLAABT}=='Suhrkamp-Archiv' ||{listview_type}=='Daten'">
                 <f:then>
                     <div style="padding: 0.5rem 0;">
-                        Nicht bestellbar
-                        <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 29px;"></span>
+                        <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">Nicht bestellbar</span>
+                        <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 3px;"></span>
                     </div>
                 </f:then>
                 <f:else>
@@ -856,8 +874,8 @@
             <f:if condition="{listview_type}=='Daten'">
                 <f:then>
                     <div style="padding: 0.5rem 0;">
-                        Nicht bestellbar
-                        <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 29px;"></span>
+                        <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">Nicht bestellbar</span>
+                        <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 3px;"></span>
                     </div>
                 </f:then>
                 <f:else>
