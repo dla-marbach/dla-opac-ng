@@ -160,7 +160,7 @@
             </f:if>
         </f:for>
 
-        <f:if condition="{f:count(subject: solr)} > 0 && {removeSameId}!= 1 && {f:count(subject: solr)} != 1">
+        <f:if condition="{f:count(subject: solr)} > 0 && {removeSameId}!= 1 || {removeSameId}== 1 && {f:count(subject: solr)} > 1)">
             <f:then>
                 <f:comment><li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li></f:comment>
                 <li>
