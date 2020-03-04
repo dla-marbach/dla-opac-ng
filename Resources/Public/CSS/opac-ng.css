@@ -182,7 +182,7 @@ a.facetText {
     height: 100%;
     padding-top: 150px;
     padding: 1rem;
-    z-index: 1;
+    z-index: 50;
 }
 
 .close-button {
