@@ -13,11 +13,11 @@
 </f:for>
 
 <dla:fromSolr
-        query="(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)"
+        query="(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(\"Urheber/in\") AND listview_type:(\"Bilder und Objekte\")"
         fields="id,listview_title,listview_type"
         rows="5" />
 <f:if condition="{f:count(subject: solr)} > 0">
-    <section class="ctg-facet right-column-similar-artist">
+    <section class="ctg-facet right-col-similar-artist">
         <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
             Vom selben Künstler
         </h3>
@@ -40,10 +40,10 @@
                     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
                     <f:if condition="{solrResult.id}!={id}">
                         <li>
-                            <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                            <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(\"Urheber/in\") AND listview_type:(\"Bilder und Objekte\")'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
                                 <span class="icon bel-lupe"></span>
                             </f:link.action>
-                            <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                            <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(\"Urheber/in\") AND listview_type:(\"Bilder und Objekte\")'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
                                 Alle anzeigen
                             </f:link.action>
                         </li>
@@ -57,7 +57,7 @@
                     <f:format.raw>
                         <script type="text/javascript">
                             $(document).ready(function() {
-                                $('.right-column-similar-artist').hide();
+                                $('.right-col-similar-artist').hide();
                             });
                         </script>
                     </f:format.raw>
@@ -67,7 +67,7 @@
     </section>
 </f:if>
 
-<section class="ctg-facet right-column-similar-motive">
+<section class="ctg-facet right-col-similar-motive">
     <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
         Ähnliche Motive
     </h3>
@@ -188,7 +188,7 @@
                 <f:format.raw>
                     <script type="text/javascript">
                         $(document).ready(function() {
-                            $('.right-column-similar-motive').hide();
+                            $('.right-col-similar-motive').hide();
                         });
                     </script>
                 </f:format.raw>

@@ -15,7 +15,7 @@
         fields="id,listview_title,listview_type"
         rows="5" />
 <f:if condition="{f:count(subject: solr)} > 0">
-    <section class="ctg-facet right-column-similar-author">
+    <section class="ctg-facet right-col-similar-author">
         <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
             Vom selben Verfasser / Urheber
         </h3>
@@ -63,7 +63,7 @@
                     <f:format.cdata>
                         <script type="text/javascript">
                             $(document).ready(function() {
-                                $('.right-column-similar-author').hide();
+                                $('.right-col-similar-author').hide();
                             });
                         </script>
                     </f:format.cdata>
@@ -91,7 +91,7 @@
         fields="id,listview_title,listview_type"
         rows="5" />
 <f:if condition="{f:count(subject: solr)} > 0">
-    <section class="ctg-facet right-column-similar-topic">
+    <section class="ctg-facet right-col-similar-topic">
         <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
             Ähnliche Themen
         </h3>
@@ -138,7 +138,7 @@
                     <f:format.raw>
                         <script type="text/javascript">
                             $(document).ready(function() {
-                                $('.right-column-similar-topic').hide();
+                                $('.right-col-similar-topic').hide();
                             });
                         </script>
                     </f:format.raw>
