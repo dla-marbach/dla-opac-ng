@@ -1,20 +1,21 @@
-<section class="ctg-facet">
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_urheber_ids')}" name="detail_urheber_ids" />
-    <f:for each="{detail_urheber_ids}" as="urheber_id" key="fieldName" iteration="iterator">
-        <f:if condition="{iterator.isFirst}">
-            <f:then>
-                <v:variable.set value="{urheber_id}" name="urheber_query" />
-            </f:then>
-            <f:else>
-                <v:variable.set value="{urheber_query} OR {urheber_id}" name="urheber_query" />
-            </f:else>
-        </f:if>
-    </f:for>
-    <dla:fromSolr
-            query="detail_urheber_ids:{urheber_query}"
-            fields="id,listview_title,listview_type"
-            rows="5" />
-    <f:if condition="{f:count(subject: solr)} > 0">
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_urheber_ids')}" name="detail_urheber_ids" />
+<f:for each="{detail_urheber_ids}" as="urheber_id" key="fieldName" iteration="iterator">
+    <f:if condition="{iterator.isFirst}">
+        <f:then>
+            <v:variable.set value="{urheber_id}" name="urheber_query" />
+        </f:then>
+        <f:else>
+            <v:variable.set value="{urheber_query} OR {urheber_id}" name="urheber_query" />
+        </f:else>
+    </f:if>
+</f:for>
+<dla:fromSolr
+        query="detail_urheber_ids:{urheber_query}"
+        fields="id,listview_title,listview_type"
+        rows="5" />
+<f:if condition="{f:count(subject: solr)} > 0">
+    <section class="ctg-facet right-column-similar-author">
         <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
             Vom selben Verfasser / Urheber
         </h3>
@@ -59,11 +60,18 @@
                         <span class="icon"></span>
                         Keine Treffer vorhanden
                     </li>
+                    <f:format.cdata>
+                        <script type="text/javascript">
+                            $(document).ready(function() {
+                                $('.right-column-similar-author').hide();
+                            });
+                        </script>
+                    </f:format.cdata>
                 </f:else>
             </f:if>
         </ul>
-    </f:if>
-</section>
+    </section>
+</f:if>
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'SYNKEY')}" name="SYNKEY" />
 <v:variable.set value="" name="SYNKEY_query" />
@@ -83,7 +91,7 @@
         fields="id,listview_title,listview_type"
         rows="5" />
 <f:if condition="{f:count(subject: solr)} > 0">
-    <section class="ctg-facet">
+    <section class="ctg-facet right-column-similar-topic">
         <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
             Ähnliche Themen
         </h3>
@@ -127,6 +135,13 @@
                         <span class="icon"></span>
                         Keine Treffer vorhanden
                     </li>
+                    <f:format.raw>
+                        <script type="text/javascript">
+                            $(document).ready(function() {
+                                $('.right-column-similar-topic').hide();
+                            });
+                        </script>
+                    </f:format.raw>
                 </f:else>
             </f:if>
         </ul>

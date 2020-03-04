@@ -1,22 +1,23 @@
-<section class="ctg-facet">
 
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
-    <f:for each="{PE0100}" as="person" key="fieldName" iteration="iterator">
-        <f:if condition="{iterator.isFirst}">
-            <f:then>
-                <v:variable.set value="{person}" name="person_query" />
-            </f:then>
-            <f:else>
-                <v:variable.set value="{person_query} OR {person}" name="person_query" />
-            </f:else>
-        </f:if>
-    </f:for>
 
-    <dla:fromSolr
-            query="(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)"
-            fields="id,listview_title,listview_type"
-            rows="5" />
-    <f:if condition="{f:count(subject: solr)} > 0">
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0100')}" name="PE0100" />
+<f:for each="{PE0100}" as="person" key="fieldName" iteration="iterator">
+    <f:if condition="{iterator.isFirst}">
+        <f:then>
+            <v:variable.set value="{person}" name="person_query" />
+        </f:then>
+        <f:else>
+            <v:variable.set value="{person_query} OR {person}" name="person_query" />
+        </f:else>
+    </f:if>
+</f:for>
+
+<dla:fromSolr
+        query="(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)"
+        fields="id,listview_title,listview_type"
+        rows="5" />
+<f:if condition="{f:count(subject: solr)} > 0">
+    <section class="ctg-facet right-column-similar-artist">
         <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
             Vom selben Künstler
         </h3>
@@ -53,13 +54,20 @@
                         <span class="icon"></span>
                         Keine Treffer vorhanden
                     </li>
+                    <f:format.raw>
+                        <script type="text/javascript">
+                            $(document).ready(function() {
+                                $('.right-column-similar-artist').hide();
+                            });
+                        </script>
+                    </f:format.raw>
                 </f:else>
             </f:if>
         </ul>
-    </f:if>
-</section>
+    </section>
+</f:if>
 
-<section class="ctg-facet">
+<section class="ctg-facet right-column-similar-motive">
     <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
         Ähnliche Motive
     </h3>
@@ -177,6 +185,13 @@
                     <span class="icon"></span>
                     Keine Treffer vorhanden
                 </li>
+                <f:format.raw>
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                            $('.right-column-similar-motive').hide();
+                        });
+                    </script>
+                </f:format.raw>
             </f:else>
         </f:if>
     </ul>
