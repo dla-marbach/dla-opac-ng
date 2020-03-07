@@ -1,0 +1,37 @@
+{
+    "name": "dla/opacng",
+    "description": "Find configuration for DLA Catalog",
+    "type": "typo3-cms-extension",
+    "homepage": "https://www.dla-marbach.de",
+    "authors": [
+        {
+            "name": "DLA Marbach",
+            "homepage": "https://www.dla-marbach.de",
+            "role": "provider"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/dla-kramski/opac-ng_typo3/issues",
+        "source": "https://github.com/dla-kramski/opac-ng_typo3"
+    },
+    "require": {
+        "php": "^7.2",
+        "typo3/cms-core": "^8.7",
+        "typo3/cms-tstemplate": "^8.7",
+        "helhum/typo3-console": "^5.0",
+        "subugoe/find": "^3.0 || ^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dla\\DlaOpacNg\\": "Classes/"
+        },
+        "classmap": [
+            "Classes/Controller/StartController.php"
+        ]
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "dla_opac_ng"
+        }
+    }
+}
