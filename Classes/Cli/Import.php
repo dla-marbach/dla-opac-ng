@@ -77,29 +77,42 @@ class Import extends Command {
             exit(1);
         }
 
-        // Read contents from subsequent lines
-        $records = [];
-        while ($record = fgetcsv($file)) {
-            $records[] = array_merge($record, [$pid]);
-        }
-
-        // Release file handle
-        fclose($file);
-
         // Get database connection for table 'tx_dlaopacng_tectonic'
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getConnectionForTable('tx_dlaopacng_tectonic');
 
-        // Truncate table prior to inserting new data
-        $connection->truncate('tx_dlaopacng_tectonic');
+        // Start transaction
+        $connection->beginTransaction();
 
-        // Insert new data
-        $connection->bulkInsert(
-            'tx_dlaopacng_tectonic',
-            $records,
-            array_merge($fields, ['pid']),
-            array_merge(array_fill(0, count($fields), Connection::PARAM_STR), [Connection::PARAM_INT])
-        );
+        try {
+            // Truncate table prior to inserting new data
+            $connection->truncate('tx_dlaopacng_tectonic');
+
+            // Read contents from subsequent lines
+            while ($record = fgetcsv($file)) {
+                // Insert new data
+                $connection->insert(
+                    'tx_dlaopacng_tectonic',
+                    array_combine(
+                        array_merge($fields, ['pid']),
+                        array_merge($record, [$pid])
+                    )            
+                );
+            }
+
+            // Release file handle
+            fclose($file);
+
+            // Commit changes
+            $connection->commit();
+        } catch (\Exception $e) {
+            // Something went wrong - roll back!
+            $connection->rollBack();
+
+            // Return error
+            $io->error('ERROR: ' . $e->getMessage());
+            exit(1);
+        }
 
         // That's it!
         $io->success('All done!');
