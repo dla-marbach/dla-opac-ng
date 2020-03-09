@@ -24,10 +24,7 @@
     "autoload": {
         "psr-4": {
             "Dla\\DlaOpacNg\\": "Classes/"
-        },
-        "classmap": [
-            "Classes/Controller/StartController.php"
-        ]
+        }
     },
     "extra": {
         "typo3/cms": {
