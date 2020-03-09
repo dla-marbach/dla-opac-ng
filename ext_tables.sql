@@ -14,6 +14,6 @@ CREATE TABLE tx_dlaopacng_tectonic (
     hasChild smallint(6) DEFAULT '0' NOT NULL,
 
     PRIMARY KEY (uid),
-    KEY (parent_id),
-    FULLTEXT (listview_title,listview_type,listview_associate,listview_additional1,listview_additional2)
+    KEY parent (parent_id),
+    FULLTEXT search (listview_title,listview_type,listview_associate,listview_additional1,listview_additional2)
 );
