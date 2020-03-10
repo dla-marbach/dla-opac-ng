@@ -1,21 +1,32 @@
 <?php
-namespace Subugoe\Find\Controller;
+namespace Dla\DlaOpacNg\Controller;
 
 class StartController extends \Subugoe\Find\Controller\SearchController
 {
-    public static $my_static = 0;
 
+    public function initializeAction()
+    {
+
+        /** @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager */
+
+        $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+
+        $configurationManager = $objectManager->get('TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface');
+        $settings = $configurationManager->getConfiguration(
+            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT,
+            'find',
+            'find'
+        );
+
+        $this->settings = $settings['plugin.']['tx_find.']['settings.'];
+
+    }
 
     /**
      * Start Action.
      */
     public function startAction()
     {
-        ++self::$my_static;
 
-        if (self::$my_static > 1) {
-            self::$my_static == 0;
-            return FALSE;
-        }
     }
 }

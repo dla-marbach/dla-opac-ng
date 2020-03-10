@@ -64,17 +64,20 @@
     function registerOnClick() {
         // click event for loaded content
         $(document).on("click", '.childElement.children', function(event) {
+            event.preventDefault();
             var liElement = $(this).parent().parent().parent();
             var id = liElement.attr('id');
             var html = jsonToHtml(getChildNodes(id));
             liElement.append(html);
         });
 
-        $('#tectonictree a.bt-info').on("click", function() {
+        $('#tectonictree a.bt-info').on("click", function(event) {
+            event.preventDefault();
             $(this).parent().next(".tectonic-information").toggle();
         });
 
         $(document).on("click", '.bt-info', function(event) {
+            event.preventDefault();
             $(this).parent().next(".tectonic-information").toggle();
         });
     }
@@ -101,39 +104,46 @@
 
     function getLiElement(index, item) {
         if (item.hasChild == 1) {
-            constants.liElements += '<li id="' + item.id + '">' +
-                '<article>' +
-                '<span class="bt-content">' +
-                '<a class="childElement bt-folder children" href="#">' +
-                '<span class="icon bel-ordner">' +
-                '<strong>+</strong>' +
-                '</span>' +
-                '</a>' +
-                '<h3>' + item.listview_title + '</h3>' +
-                '</span>' +
-                '<span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a>' +
-                '<a href="#" class="bt-search"><span class="icon bel-lupe"></span></a></span>' +
-                '<div class="tectonic-information">' + item.element_info + '</div>' +
-                '</article>' +
-                '</li>';
+            var addClass = 'children';
         } else if (item.hasChild == 0) {
-            constants.liElements += '<li id="' + item.id + '">' +
-                '<article>' +
-                '<span class="bt-content">' +
-                '<span class="childElement bt-folder" href="#">' +
-                '<span class="icon bel-ordner">' +
-                '<strong>+</strong>' +
-                '</span></span>' +
-                '<h3>' + item.listview_title + '</h3>' +
-                '</span>' +
-                '<span class="bt-actions"><a href="#" class="bt-info">' +
-                '<span class="icon bel-info"></span></a>' +
-                '<a href="#" class="bt-search"><span class="icon bel-lupe"></span></a>' +
-                '</span>' +
-                '<div class="tectonic-information">' + item.element_info + '</div>' +
-                '</article>' +
-                '</li>';
+            var addClass = '';
         }
+        if (Number.isInteger(Number(item.record_id))) {
+            var linkAndActions = '';
+        } else {
+            var linkAndActions = '<span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a>' +
+                '<a href="/index.php?id=2&tx_find_find%5Bid%5D=' + item.record_id + '" class="bt-search" target="_blank"><span class="icon bel-lupe"></span></a>' +
+                '</span>' +
+                '<div class="tectonic-information">';
+            if (item.listview_type) {
+                linkAndActions += item.listview_type + '<br/>';
+            }
+            if (item.listview_associate) {
+                linkAndActions += item.listview_associate + '<br/>';
+            }
+            if (item.listview_additional1) {
+                linkAndActions += item.listview_additional1 + '<br/>';
+            }
+            if (item.listview_additional2) {
+                linkAndActions += item.listview_additional2 + '<br/>';
+            }
+            linkAndActions += '</div>';
+
+        }
+
+        constants.liElements += '<li id="' + item.record_id + '">' +
+            '<article>' +
+            '<span class="bt-content">' +
+            '<a class="childElement bt-folder ' + addClass + '" href="#">' +
+            '<span class="icon bel-ordner">' +
+            '<strong>+</strong>' +
+            '</span>' +
+            '</a>' +
+            '<h3>' + item.listview_title + '</h3>' +
+            '</span>' +
+            linkAndActions +
+            '</article>' +
+            '</li>';
 
     }
 

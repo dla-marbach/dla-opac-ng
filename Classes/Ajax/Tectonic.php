@@ -6,8 +6,7 @@ $db = mysqli_connect(
     $config['DB']['Connections']['Default']['host'],
     $config['DB']['Connections']['Default']['user'],
     $config['DB']['Connections']['Default']['password'],
-//    $config['DB']['Connections']['Default']['dbname'],
-    'tectonic',
+    $config['DB']['Connections']['Default']['dbname'],
     $config['DB']['Connections']['Default']['port']
 );
 
@@ -26,8 +25,8 @@ $jTree = [];
 
 if ($action == 'getNodes') {
 
-    $stmt = $db->prepare('SELECT * FROM tectonic WHERE pid = ?;');
-    $stmt->bind_param('i', $nodeId);
+    $stmt = $db->prepare('SELECT * FROM tx_dlaopacng_tectonic WHERE parent_id = ?;');
+    $stmt->bind_param('s', $nodeId);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -35,9 +34,9 @@ if ($action == 'getNodes') {
 
     while ($row = $result->fetch_assoc()) {
         $jTree[] = [
-            'id' => $row["id"],
-            'pid' => $row["pid"],
-            'rid' => $row["rid"],
+            'uid' => $row["uid"],
+            'parent_id' => $row["parent_id"],
+            'record_id' => $row["record_id"],
             'listview_title' => $row["listview_title"],
             'listview_type' => $row["listview_type"],
             'listview_associate' => $row["listview_associate"],
@@ -48,7 +47,7 @@ if ($action == 'getNodes') {
     }
 } else if ($action == 'searchNodes') {
 
-    $stmt = $db->prepare("SELECT * FROM tectonic WHERE MATCH (listview_title, listview_type, listview_associate, listview_additional1, listview_additional2) AGAINST (? IN NATURAL LANGUAGE MODE);");
+    $stmt = $db->prepare("SELECT * FROM tx_dlaopacng_tectonic WHERE MATCH (listview_title, listview_type, listview_associate, listview_additional1, listview_additional2) AGAINST (? IN NATURAL LANGUAGE MODE);");
 
     $stmt->bind_param('s', $search);
     $stmt->execute();
@@ -58,9 +57,9 @@ if ($action == 'getNodes') {
 
     while ($row = $result->fetch_assoc()) {
         $jTree[] = [
-            'id' => $row["id"],
-            'pid' => $row["pid"],
-            'rid' => $row["rid"],
+            'uid' => $row["uid"],
+            'parent_id' => $row["parent_id"],
+            'record_id' => $row["record_id"],
             'listview_title' => $row["listview_title"],
             'listview_type' => $row["listview_type"],
             'listview_associate' => $row["listview_associate"],
@@ -72,10 +71,10 @@ if ($action == 'getNodes') {
 } else if ($action == 'getStructure') {
 
     $stmt = $db->prepare("SELECT * FROM 
-        (SELECT * FROM tectonic ORDER BY pid, id) listview_title,
+        (SELECT * FROM tx_dlaopacng_tectonic ORDER BY parent_id, record_id) listview_title,
         (SELECT @pv := ?) initialisation
-        WHERE find_in_set(pid, @pv)
-        AND length(@pv := concat(@pv, ',', id))");
+        WHERE find_in_set(parent_id, @pv)
+        AND length(@pv := concat(@pv, ',', record_id))");
 
     $stmt->bind_param('i', $nodeId);
     $stmt->execute();
@@ -85,9 +84,9 @@ if ($action == 'getNodes') {
 
     while ($row = $result->fetch_assoc()) {
         $jTree[] = [
-            'id' => $row["id"],
-            'pid' => $row["pid"],
-            'rid' => $row["rid"],
+            'uid' => $row["uid"],
+            'parent_id' => $row["parent_id"],
+            'record_id' => $row["record_id"],
             'listview_title' => $row["listview_title"],
             'listview_type' => $row["listview_type"],
             'listview_associate' => $row["listview_associate"],
