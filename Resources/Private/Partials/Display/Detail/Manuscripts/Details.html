@@ -804,7 +804,7 @@
         </f:if>
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'H0001')}" name="H0001" />
-        <dla:fromSolr query="HSOKEY:\"{H0001}\"" fields="id,listview_title" rows="100" />
+        <dla:fromSolr query="HSOKEY:\"{H0001}\"" fields="id,listview_title" rows="300" />
         <f:if condition="{solr}">
             <div class="ctg-dtvt-row">
                 <div class="ctg-dtvt-label">
