@@ -4,7 +4,7 @@
     <f:case value="Audio">
         <f:if condition="{filter_digital}=='true'">
             <f:then>
-                <span class="icon bel-tone" title="Audio"></span>
+                <span class="icon bel-tone" style="z-index:5;" title="Audio"></span>
             </f:then>
             <f:else>
                 <span class="icon bel-ton" style="z-index:5;" title="Audio"></span>
@@ -17,7 +17,7 @@
     <f:case value="Video">
         <f:if condition="{filter_digital}=='true'">
             <f:then>
-                <span class="icon bel-pce" title="Video"></span>
+                <span class="icon bel-pce" style="z-index:5;" title="Video"></span>
             </f:then>
             <f:else>
                 <span class="icon bel-pcfilm" style="z-index:5;" title="Video"></span>
@@ -30,20 +30,28 @@
     <f:case value="Bilder und Objekte">
         <f:if condition="{filter_digital}=='true'">
             <f:then>
-                <span class="icon bel-pcbild" title="<f:translate key='Bilder &amp; Objekte' extensionName='dla_opac_ng'/>"></span>
+                <span class="icon bel-pcbild" style="z-index:5;" title="<f:translate key='Bilder &amp; Objekte' extensionName='dla_opac_ng'/>"></span>
             </f:then>
             <f:else>
                 <span class="icon bel-foto" style="z-index:5;" title="<f:translate key='Bilder &amp; Objekte' extensionName='dla_opac_ng'/>"></span>
             </f:else>
         </f:if>
         <f:if condition="{listview_type_cardinality} == 'N'">
-            <span class="icon bel-foto" style="margin-left: 4px; margin-top: -36px;color:#c1c1c1;z-index:0;" title="<f:translate key='Bilder &amp; Objekte' extensionName='dla_opac_ng'/>"></span>
+            <f:if condition="{filter_digital}=='true'">
+                <f:then>
+                    <span class="icon bel-pcbild" style="margin-left: 4px; margin-top: -36px;color:#c1c1c1;z-index:0;" title="<f:translate key='Bilder &amp; Objekte' extensionName='dla_opac_ng'/>"></span>
+                </f:then>
+                <f:else>
+                    <span class="icon bel-foto" style="margin-left: 4px; margin-top: -36px;color:#c1c1c1;z-index:0;" title="<f:translate key='Bilder &amp; Objekte' extensionName='dla_opac_ng'/>"></span>
+                </f:else>
+            </f:if>
+
         </f:if>
     </f:case>
     <f:case value="Daten">
         <f:if condition="{filter_digital}=='true'">
             <f:then>
-                <span class="icon bel-datene" title="Daten"></span>
+                <span class="icon bel-datene" style="z-index:5;" title="Daten"></span>
             </f:then>
             <f:else>
                 <span class="icon bel-daten" style="z-index:5;" title="Daten"></span>
@@ -56,7 +64,7 @@
     <f:case value="Gedrucktes">
         <f:if condition="{filter_digital}=='true'">
             <f:then>
-                <span class="icon bel-mage" title="<f:translate key='Gedrucktes' extensionName='dla_opac_ng'/>"></span>
+                <span class="icon bel-mage" style="z-index:5;" title="<f:translate key='Gedrucktes' extensionName='dla_opac_ng'/>"></span>
             </f:then>
             <f:else>
                 <span class="icon bel-mag" style="z-index:5;" title="<f:translate key='Gedrucktes' extensionName='dla_opac_ng'/>"></span>
@@ -69,7 +77,7 @@
     <f:case value="Handschriften">
         <f:if condition="{filter_digital}=='true'">
             <f:then>
-                <span class="icon bel-schreibene" title="<f:translate key='Handschriften' extensionName='dla_opac_ng'/>"></span>
+                <span class="icon bel-schreibene" style="z-index:5;" title="<f:translate key='Handschriften' extensionName='dla_opac_ng'/>"></span>
             </f:then>
             <f:else>
                 <span class="icon bel-schreiben" style="z-index:5;" title="<f:translate key='Handschriften' extensionName='dla_opac_ng'/>"></span>
@@ -82,7 +90,7 @@
     <f:case value="Normdaten">
         <f:if condition="{filter_digital}=='true'">
             <f:then>
-                <span class="icon bel-idkarte" title="Normdaten"></span>
+                <span class="icon bel-idkarte" style="z-index:5;" title="Normdaten"></span>
             </f:then>
             <f:else>
                 <span class="icon bel-idkarte" style="z-index:5;" title="Normdaten"></span>
