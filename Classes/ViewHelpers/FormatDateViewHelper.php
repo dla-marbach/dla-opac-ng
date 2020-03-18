@@ -34,14 +34,22 @@ class FormatDateViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
 
         $yearOnly = false;
 
-        if ($matchDay[1] == "00") {
+        if ($matchDay[1] == "00" || !$matchDay) {
             $matchDay[1] = 01;
             $yearOnly = true;
         }
 
-        if ($matchMonth[1] == "00") {
+        if ($matchMonth[1] == "00" || !$matchMonth) {
             $matchMonth[1] = 01;
             $yearOnly = true;
+        }
+
+        if (!$matchYear && $yearOnly) {
+            if (strlen($date) == 4) {
+                $matchYear[1] = $date;
+                $matchMonth[1] = 01;
+                $matchDay[1] = 01;
+            }
         }
 
         $resultValue = new \DateTime();
