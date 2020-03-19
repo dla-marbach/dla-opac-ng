@@ -33,7 +33,14 @@
         <f:render partial="Facets/Facet/List/Autocomplete" arguments="{_all}"/>
     </f:if>
 </f:if>
-<ul class="facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}" style="{f:if(condition:facetInfo.collapse, then:'display:none;')}">
+<f:if condition="{config.activeFacets.{facetInfo.id}}">
+    <f:then>
+        <ul class="facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}">
+    </f:then>
+    <f:else>
+        <ul class="facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}" style="{f:if(condition:facetInfo.collapse, then:'display:none;')}">
+    </f:else>
+</f:if>
     <f:for each="{facetData.values}" as="itemCount" key="facetTerm" iteration="iterator">
         <f:alias map="{
       facetTermDisplay:'{f:if(
