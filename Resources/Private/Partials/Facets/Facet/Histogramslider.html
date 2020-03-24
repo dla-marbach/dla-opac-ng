@@ -11,7 +11,16 @@
 
 <f:comment>Write viewHelper to get the first year (first element of value array)</f:comment>
 
-<div class="facetList" style="{f:if(condition:facetInfo.collapse, then:'display:none;')}">
+
+<f:if condition="{config.activeFacets.{facetInfo.id}}">
+    <f:then>
+        <div class="facetList">
+    </f:then>
+    <f:else>
+        <div class="facetList" style="{f:if(condition:facetInfo.collapse, then:'display:none;')}">
+    </f:else>
+</f:if>
+
     <dla:HistogramValue firstValueAs="firstDate" lastValueAs="lastDate" array="{facetData.values}" dateFormat="{facetData.displayDateFormat}"/>
 
     <script>
