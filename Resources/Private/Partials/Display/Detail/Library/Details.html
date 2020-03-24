@@ -924,11 +924,11 @@
                         <f:if condition="{value->f:format.urlencode()} != '%E2%90%9E'">
                             <f:then>
                                 <div>
-                                    <dla:data.dateFormat
-                                            dateValue="{XX_AU_SENDAT_AUKEY}"
+                                    <dla:formatDate
+                                            date="{XX_AU_SENDAT_AUKEY.{iterator.index}}"
                                             as="dateFormat"
                                     />
-                                    {XX_AU_SENDER_AUKEY.{iterator.index}} am <f:format.date date="{dateFormat}" format="d.m.Y"></f:format.date>
+                                    {XX_AU_SENDER_AUKEY.{iterator.index}} am {dateFormat}
                                 </div>
                             </f:then>
                         </f:if>
