@@ -140,7 +140,7 @@
                         <f:form.textfield
                                 id="c{config.uid}-field-{fieldInfo.id}"
                                 class="inputType-text"
-                                name="q[default]"
+                                name="tx_find_find[q][default]"
                                 value=""
                                 placeholder="Wonach suchen Sie?"
                         />
@@ -157,6 +157,8 @@
 
         <script>
             $( document ).ready(function() {
+                console.log( $('.inputType-text'));
+                $('.inputType-text').attr('name', 'tx_find_find[q][default]')
                 var url = new URL(window.location.href);
 
                 $('.gesamt').removeClass("ctg-hd-active");
