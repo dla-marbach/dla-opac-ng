@@ -39,7 +39,7 @@ class Import extends Command {
                 'file',
                 'f',
                 InputOption::VALUE_REQUIRED,
-                'CSV file to import'
+                'TSV file to import'
             )
             ->addOption(
                 'pid',
@@ -86,10 +86,10 @@ class Import extends Command {
         }
 
         // Read field names from first line
-        $fields = fgetcsv($file);
+        $fields = fgetcsv($file, 0, "\t");
 
         if ($fields === false) {
-            $io->error('ERROR: No valid CSV file (' . $input->getOption('file') . ') given.');
+            $io->error('ERROR: No valid TSV file (' . $input->getOption('file') . ') given.');
             exit(1);
         }
 
@@ -105,7 +105,7 @@ class Import extends Command {
             $connection->truncate($this->tables[$type]);
 
             // Read contents from subsequent lines
-            while ($record = fgetcsv($file)) {
+            while ($record = fgetcsv($file, 0, "\t")) {
                 // Insert new data
                 $connection->insert(
                     $this->tables[$type],
