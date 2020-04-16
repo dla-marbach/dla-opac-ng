@@ -8,6 +8,16 @@
             "name": "DLA Marbach",
             "homepage": "https://www.dla-marbach.de",
             "role": "provider"
+        },
+        {
+            "name": "effective WEBWORK",
+            "homepage": "https://www.effective-webwork.de",
+            "role": "developer"
+        },
+        {
+            "name": "Open Culture Consulting",
+            "homepage": "https://www.opencultureconsulting.com",
+            "role": "developer"
         }
     ],
     "support": {
