@@ -8,12 +8,16 @@ use \Symfony\Component\Console\Input\InputOption;
 use \Symfony\Component\Console\Output\OutputInterface;
 use \Symfony\Component\Console\Style\SymfonyStyle;
 use \TYPO3\CMS\Core\Core\Bootstrap;
-use \TYPO3\CMS\Core\Database\Connection;
 use \TYPO3\CMS\Core\Database\ConnectionPool;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Core\Utility\MathUtility;
 
 class Import extends Command {
+
+    protected static $tables = [
+        'classification' => 'tx_dlaopacng_classification',
+        'collection' => 'tx_dlaopacng_tectonic'
+    ];
 
     /**
      * Configure the command by defining the name, options and arguments.
@@ -26,10 +30,16 @@ class Import extends Command {
             ->setDescription('Import new collection hierarchy into database.')
             ->setHelp('')
             ->addOption(
+                'type',
+                't',
+                InputOption::VALUE_REQUIRED,
+                'Type of data ("collection" or "classification")'
+            )
+            ->addOption(
                 'file',
                 'f',
                 InputOption::VALUE_REQUIRED,
-                'CSV file to import'
+                'TSV file to import'
             )
             ->addOption(
                 'pid',
@@ -56,8 +66,14 @@ class Import extends Command {
         $io->title($this->getDescription());
 
         // Get input parameters
+        $type = $input->getOption('type');
         $file = fopen($input->getOption('file'), 'r');
         $pid = MathUtility::forceIntegerInRange((int) $input->getOption('pid'), 0);
+
+        if ($type !== 'collection' && $type !== 'classification') {
+            $io->error('ERROR: Required parameter --type|-t missing or invalid (has to be "collection" or "classification").');
+            exit(1);
+        }
 
         if ($file === false) {
             $io->error('ERROR: Required parameter --file|-f missing or file not readable.');
@@ -65,34 +81,34 @@ class Import extends Command {
         }
 
         if ($pid === 0) {
-            $io->error('ERROR: No valid PID (' . $input->getOption('pid') . ') given.');
+            $io->error('ERROR: Required parameter --pid|-p missing or invalid).');
             exit(1);
         }
 
         // Read field names from first line
-        $fields = fgetcsv($file);
+        $fields = fgetcsv($file, 0, "\t");
 
         if ($fields === false) {
-            $io->error('ERROR: No valid CSV file (' . $input->getOption('file') . ') given.');
+            $io->error('ERROR: No valid TSV file (' . $input->getOption('file') . ') given.');
             exit(1);
         }
 
-        // Get database connection for table 'tx_dlaopacng_tectonic'
+        // Get database connection
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)
-            ->getConnectionForTable('tx_dlaopacng_tectonic');
+            ->getConnectionForTable($this->tables[$type]);
 
         // Start transaction
         $connection->beginTransaction();
 
         try {
             // Truncate table prior to inserting new data
-            $connection->truncate('tx_dlaopacng_tectonic');
+            $connection->truncate($this->tables[$type]);
 
             // Read contents from subsequent lines
-            while ($record = fgetcsv($file)) {
+            while ($record = fgetcsv($file, 0, "\t")) {
                 // Insert new data
                 $connection->insert(
-                    'tx_dlaopacng_tectonic',
+                    $this->tables[$type],
                     array_combine(
                         array_merge($fields, ['pid']),
                         array_merge($record, [$pid])
