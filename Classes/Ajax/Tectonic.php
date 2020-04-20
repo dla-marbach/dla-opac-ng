@@ -16,16 +16,24 @@ mysqli_set_charset(
     $config['DB']['Connections']['Default']['charset']
 );
 
+$tables = [
+    'classification' => 'tx_dlaopacng_classification',
+    'tectonic' => 'tx_dlaopacng_tectonic'
+];
+
 $action = $_GET['action'];
 $nodeId = $_GET['id'];
 $search = $_GET['search'];
+$type = $_GET['type'];
+
+$table = $tables[$type];
 
 // Prepare JSON for jTree
 $jTree = [];
 
 if ($action == 'getNodes') {
 
-    $stmt = $db->prepare('SELECT * FROM tx_dlaopacng_tectonic WHERE parent_id = ?;');
+    $stmt = $db->prepare('SELECT * FROM ' . $table . ' WHERE parent_id = ?;');
     $stmt->bind_param('s', $nodeId);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -47,7 +55,7 @@ if ($action == 'getNodes') {
     }
 } else if ($action == 'searchNodes') {
 
-    $stmt = $db->prepare("SELECT * FROM tx_dlaopacng_tectonic WHERE MATCH (listview_title, listview_type, listview_associate, listview_additional1, listview_additional2) AGAINST (? IN NATURAL LANGUAGE MODE);");
+    $stmt = $db->prepare("SELECT * FROM " . $table . " WHERE MATCH (listview_title, listview_type, listview_associate, listview_additional1, listview_additional2) AGAINST (? IN NATURAL LANGUAGE MODE);");
 
     $stmt->bind_param('s', $search);
     $stmt->execute();
@@ -71,7 +79,7 @@ if ($action == 'getNodes') {
 } else if ($action == 'getStructure') {
 
     $stmt = $db->prepare("SELECT * FROM 
-        (SELECT * FROM tx_dlaopacng_tectonic ORDER BY parent_id, record_id) listview_title,
+        (SELECT * FROM " . $table . " ORDER BY parent_id, record_id) listview_title,
         (SELECT @pv := ?) initialisation
         WHERE find_in_set(parent_id, @pv)
         AND length(@pv := concat(@pv, ',', record_id))");

@@ -41,7 +41,7 @@
     }
 
     function searchNodes(searchTerm) {
-        var url = '/index.php?eID=tectonic&type=tectonic&action=searchNodes&search=' + searchTerm;
+        var url = '/index.php?eID=tectonic&type=classification&action=searchNodes&search=' + searchTerm;
 
         $.ajax({
             url: url,
@@ -87,7 +87,7 @@
         if (!id) {
             id = 0;
         }
-        var url = '/index.php?eID=tectonic&type=tectonic&action=getNodes&id=' + id;
+        var url = '/index.php?eID=tectonic&type=classification&action=getNodes&id=' + id;
 
         var jqxhr = $.ajax({
                 url: url,

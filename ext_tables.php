@@ -14,6 +14,12 @@ defined('TYPO3_MODE') || die('Access denied.');
     'DlaTectonic'
 );
 
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'Dla.' . 'DlaOpacNg',
+    'DlaClassification',
+    'DlaClassification'
+);
+
 call_user_func(
     function()
     {
