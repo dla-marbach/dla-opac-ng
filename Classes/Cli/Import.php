@@ -95,20 +95,20 @@ class Import extends Command {
 
         // Get database connection
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)
-            ->getConnectionForTable($this->tables[$type]);
+            ->getConnectionForTable(self::$tables[$type]);
 
         // Start transaction
         $connection->beginTransaction();
 
         try {
             // Truncate table prior to inserting new data
-            $connection->truncate($this->tables[$type]);
+            $connection->truncate(self::$tables[$type]);
 
             // Read contents from subsequent lines
             while ($record = fgetcsv($file, 0, "\t")) {
                 // Insert new data
                 $connection->insert(
-                    $this->tables[$type],
+                    self::$tables[$type],
                     array_combine(
                         array_merge($fields, ['pid']),
                         array_merge($record, [$pid])
