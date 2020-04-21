@@ -20,11 +20,25 @@
     .bt-folder strong {position: absolute; top: 1px; left: 36%; font-size: 1rem; color: #FFF;}
     span.bt-folder .icon {color: #dadada;}
     #tectonictree div.tectonic-information {display: none;}
+    .childElement {display: none;}
+    .childElement.children {display: initial;}
 </style>
+
+
+
+<span id="record_id" data-record="{record}" style="display:none;"></span>
+<label>Suche</label>
+<input id="tectonic-search" type="text">
+
+<ul id="tectonictree" class="bt-listview">
+
+</ul>
 
 <script type="text/javascript">
     $( document ).ready(function() {
+        var record = $('#record_id').data('record');
         getChildNodes(0);
+        expandStructure(record);
         registerOnClick();
         registerSearchForm();
     });
@@ -47,10 +61,10 @@
             url: url,
             dataType: "json"
         })
-        .done(function(data) {
-            resetTreeNodes();
-            $('#tectonictree').append(jsonToHtml(data));
-        });
+            .done(function(data) {
+                resetTreeNodes();
+                $('#tectonictree').append(jsonToHtml(data));
+            });
     }
 
     function resetTreeNodes() {
@@ -66,9 +80,14 @@
         $(document).on("click", '.childElement.children', function(event) {
             event.preventDefault();
             var liElement = $(this).parent().parent().parent();
-            var id = liElement.attr('id');
-            var html = jsonToHtml(getChildNodes(id));
-            liElement.append(html);
+            if (liElement.children('ul').length == 0) {
+                var id = liElement.attr('id');
+                var html = jsonToHtml(getChildNodes(id));
+                liElement.append(html);
+                $(this).children('span strong').text('-');
+            } else {
+                liElement.children('ul').toggle();
+            }
         });
 
         $('#tectonictree a.bt-info').on("click", function(event) {
@@ -90,15 +109,35 @@
         var url = '/index.php?eID=tectonic&type=tectonic&action=getNodes&id=' + id;
 
         var jqxhr = $.ajax({
-                url: url,
-                dataType: "json"
-            })
+            url: url,
+            dataType: "json"
+        })
             .done(function(data) {
                 if (id == 0) {
                     $('#tectonictree').append(jsonToHtml(data));
                 } else {
                     $('#'+id).append(jsonToHtml(data));
                 }
+            });
+    }
+
+    function eachRecord(data) {
+        if (data.child) {
+            getChildNodes(data.record_id);
+            eachRecord(data.child);
+        }
+    }
+
+    function expandStructure(record) {
+
+        var url = '/index.php?eID=tectonic&type=tectonic&action=getAllParents&id=' + record;
+
+        var jqxhr = $.ajax({
+            url: url,
+            dataType: "json"
+        })
+            .done(function(data) {
+                eachRecord(data);
             });
     }
 
@@ -164,10 +203,3 @@
     }
 
 </script>
-
-<label>Suche</label>
-<input id="tectonic-search" type="text">
-
-<ul id="tectonictree" class="bt-listview">
-
-</ul>

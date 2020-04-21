@@ -22,6 +22,14 @@
     #tectonictree div.tectonic-information {display: none;}
 </style>
 
+
+<label>Suche</label>
+<input id="tectonic-search" type="text">
+
+<ul id="tectonictree" class="bt-listview">
+
+</ul>
+
 <script type="text/javascript">
     $( document ).ready(function() {
         getChildNodes(0);
@@ -47,10 +55,10 @@
             url: url,
             dataType: "json"
         })
-        .done(function(data) {
-            resetTreeNodes();
-            $('#tectonictree').append(jsonToHtml(data));
-        });
+            .done(function(data) {
+                resetTreeNodes();
+                $('#tectonictree').append(jsonToHtml(data));
+            });
     }
 
     function resetTreeNodes() {
@@ -90,9 +98,9 @@
         var url = '/index.php?eID=tectonic&type=classification&action=getNodes&id=' + id;
 
         var jqxhr = $.ajax({
-                url: url,
-                dataType: "json"
-            })
+            url: url,
+            dataType: "json"
+        })
             .done(function(data) {
                 if (id == 0) {
                     $('#tectonictree').append(jsonToHtml(data));
@@ -164,10 +172,3 @@
     }
 
 </script>
-
-<label>Suche</label>
-<input id="tectonic-search" type="text">
-
-<ul id="tectonictree" class="bt-listview">
-
-</ul>

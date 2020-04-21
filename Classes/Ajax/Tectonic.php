@@ -76,6 +76,51 @@ if ($action == 'getNodes') {
             'hasChild' => $row["hasChild"],
         ];
     }
+
+} else if ($action == 'getAllParents') {
+
+    $stmt = $db->prepare("SELECT * FROM " . $table . " WHERE record_id = ?");
+
+    $stmt->bind_param('s', $nodeId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $data = mysqli_fetch_fields($result);
+
+    $jTree = [];
+    $currentTree = [];
+
+    while ($row = $result->fetch_assoc()) {
+        if ($row['parent_id']) {
+            $stmt = $db->prepare("SELECT * FROM " . $table . " WHERE record_id = ?");
+
+            $stmt->bind_param('s', $row['parent_id']);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            $data = mysqli_fetch_fields($result);
+
+            if (empty($currentTree)) {
+                $currentTree['record_id'] = $row['record_id'];
+            } else {
+                $newTree['record_id'] = $row['record_id'];
+                $newTree['child'] = $currentTree;
+                $currentTree = $newTree;
+            }
+
+            if (intval($row['parent_id'])) {
+                $newTree['record_id'] = $row['parent_id'];
+                $newTree['child'] = $currentTree;
+                $currentTree = $newTree;
+            }
+        } else {
+            $jTree = $currentTree;
+        }
+
+    }
+
+
+
 } else if ($action == 'getStructure') {
 
     $stmt = $db->prepare("SELECT * FROM 
