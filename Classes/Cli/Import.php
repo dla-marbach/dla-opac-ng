@@ -93,6 +93,9 @@ class Import extends Command {
             exit(1);
         }
 
+        $uids = [];
+        $uid = 1;
+
         // Get database connection
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getConnectionForTable(self::$tables[$type]);
@@ -106,6 +109,23 @@ class Import extends Command {
 
             // Read contents from subsequent lines
             while ($record = fgetcsv($file, 0, "\t")) {
+                // Set new UID
+                if (!empty($record['uid'])) {
+                    if (empty($uids[$record['uid']])) {
+                        $uids[$record['uid']] = $uid;
+                        $uid++;
+                    }
+                    $record['uid'] = $uids[$record['uid']];
+                }
+                // Set new parent_id
+                if (!empty($record['parent_id'])) {
+                    if (empty($uids[$record['parent_id']])) {
+                        $uids[$record['parent_id']] = $uid;
+                        $uid++;
+                    }
+                    $record['parent_id'] = $uids[$record['parent_id']];
+                }
+
                 // Insert new data
                 $connection->insert(
                     self::$tables[$type],
