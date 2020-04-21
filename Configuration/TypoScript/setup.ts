@@ -154,7 +154,7 @@ bodyTagCObject.wrap = <body class="page-|">
 9999 = TEXT
 9999 {
     value (
-        <script src="https://www-test.dla-marbach.de/fileadmin/lombego/layout/js/init-live.min.js"></script>
+        #<script src="https://www-test.dla-marbach.de/fileadmin/lombego/layout/js/init-live.min.js"></script>
     )
 }
 }
