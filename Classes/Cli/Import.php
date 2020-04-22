@@ -115,13 +115,12 @@ class Import extends Command {
                 );
 
                 // Set new UID
-                if (!empty($values['uid'])) {
-                    if (empty($uids[$values['uid']])) {
-                        $uids[$values['uid']] = $uid;
-                        $uid++;
-                    }
-                    $values['uid'] = $uids[$values['uid']];
+                if (empty($uids[$values['uid']])) {
+                    $uids[$values['uid']] = $uid;
+                    $uid++;
                 }
+                $values['uid'] = $uids[$values['uid']];
+
                 // Set new parent_id
                 if (!empty($values['parent_id'])) {
                     if (empty($uids[$values['parent_id']])) {
@@ -129,6 +128,8 @@ class Import extends Command {
                         $uid++;
                     }
                     $values['parent_id'] = $uids[$values['parent_id']];
+                } else {
+                    $values['parent_id'] = 0;
                 }
 
                 // Insert new data
