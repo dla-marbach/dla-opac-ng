@@ -101,7 +101,7 @@
         });
     }
 
-    function getChildNodes(id) {
+    function getChildNodes(id, child = "",expand = 0) {
 
         if (!id) {
             id = 0;
@@ -112,19 +112,22 @@
             url: url,
             dataType: "json"
         })
-            .done(function(data) {
+            .done(function (data) {
                 if (id == 0) {
                     $('#tectonictree').append(jsonToHtml(data));
                 } else {
-                    $('#'+id).append(jsonToHtml(data));
+                    $('#' + id).append(jsonToHtml(data));
+                }
+                if (expand) {
+                    eachRecord(child);
                 }
             });
     }
 
     function eachRecord(data) {
         if (data.child) {
-            getChildNodes(data.uid);
-            eachRecord(data.child);
+            getChildNodes(data.uid, data.child, 1);
+            // eachRecord(data.child);
         }
     }
 
