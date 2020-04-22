@@ -41,8 +41,6 @@
         expandStructure(record);
         registerOnClick();
         registerSearchForm();
-
-        $("li article span h3:contains('root')").hide();
     });
 
     function registerSearchForm() {
@@ -174,20 +172,21 @@
             linkAndActions += '</div>';
 
         }
-
-        constants.liElements += '<li id="' + item.uid + '">' +
-            '<article>' +
-            '<span class="bt-content">' +
-            '<a class="childElement bt-folder ' + addClass + '" href="#">' +
-            '<span class="icon bel-ordner">' +
-            '<strong>+</strong>' +
-            '</span>' +
-            '</a>' +
-            '<h3>' + item.listview_title + '</h3>' +
-            '</span>' +
-            linkAndActions +
-            '</article>' +
-            '</li>';
+        if (item.listview_title != 'root') {
+            constants.liElements += '<li id="' + item.uid + '">' +
+                '<article>' +
+                '<span class="bt-content">' +
+                '<a class="childElement bt-folder ' + addClass + '" href="#">' +
+                '<span class="icon bel-ordner">' +
+                '<strong>+</strong>' +
+                '</span>' +
+                '</a>' +
+                '<h3>' + item.listview_title + '</h3>' +
+                '</span>' +
+                linkAndActions +
+                '</article>' +
+                '</li>';
+        }
 
     }
 
