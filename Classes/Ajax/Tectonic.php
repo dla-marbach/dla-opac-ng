@@ -92,7 +92,7 @@ if ($action == 'getNodes') {
 
     while ($row = $result->fetch_assoc()) {
         if ($row['parent_id']) {
-            $stmt = $db->prepare("SELECT * FROM " . $table . " WHERE record_id = ?");
+            $stmt = $db->prepare("SELECT * FROM " . $table . " WHERE uid = ?");
 
             $stmt->bind_param('s', $row['parent_id']);
             $stmt->execute();
