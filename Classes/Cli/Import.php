@@ -109,30 +109,32 @@ class Import extends Command {
 
             // Read contents from subsequent lines
             while ($record = fgetcsv($file, 0, "\t")) {
+                $values = array_combine(
+                    array_merge($fields, ['pid']),
+                    array_merge($record, [$pid])
+                );
+
                 // Set new UID
-                if (!empty($record['uid'])) {
-                    if (empty($uids[$record['uid']])) {
-                        $uids[$record['uid']] = $uid;
+                if (!empty($values['uid'])) {
+                    if (empty($uids[$values['uid']])) {
+                        $uids[$values['uid']] = $uid;
                         $uid++;
                     }
-                    $record['uid'] = $uids[$record['uid']];
+                    $values['uid'] = $uids[$values['uid']];
                 }
                 // Set new parent_id
-                if (!empty($record['parent_id'])) {
-                    if (empty($uids[$record['parent_id']])) {
-                        $uids[$record['parent_id']] = $uid;
+                if (!empty($values['parent_id'])) {
+                    if (empty($uids[$values['parent_id']])) {
+                        $uids[$values['parent_id']] = $uid;
                         $uid++;
                     }
-                    $record['parent_id'] = $uids[$record['parent_id']];
+                    $values['parent_id'] = $uids[$values['parent_id']];
                 }
 
                 // Insert new data
                 $connection->insert(
                     self::$tables[$type],
-                    array_combine(
-                        array_merge($fields, ['pid']),
-                        array_merge($record, [$pid])
-                    )            
+                    $values
                 );
             }
 
