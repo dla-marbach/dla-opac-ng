@@ -112,7 +112,7 @@ if ($action == 'getNodes') {
 
             if (intval($row['parent_id'])) {
                 $newTree['record_id'] = $row['parent_id'];
-                $newTree['uid'] = $row['uid'];
+                $newTree['uid'] = $row['parent_id'];
                 $newTree['child'] = $currentTree;
                 $currentTree = $newTree;
             }
