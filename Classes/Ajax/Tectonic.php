@@ -33,7 +33,7 @@ $jTree = [];
 
 if ($action == 'getNodes') {
 
-    $stmt = $db->prepare('SELECT * FROM ' . $table . ' WHERE parent_id = ?;');
+    $stmt = $db->prepare('SELECT * FROM ' . $table . ' WHERE parent_id = ? ORDER BY listview_title;');
     $stmt->bind_param('s', $nodeId);
     $stmt->execute();
     $result = $stmt->get_result();
