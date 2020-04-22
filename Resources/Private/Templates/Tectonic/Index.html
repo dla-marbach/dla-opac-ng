@@ -41,6 +41,8 @@
         expandStructure(record);
         registerOnClick();
         registerSearchForm();
+
+        $("li article span h3:contains('root')").hide();
     });
 
     function registerSearchForm() {
