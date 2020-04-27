@@ -540,9 +540,17 @@
                     </div>
                     <div class="ctg-dtvt-content">
 
-                        <f:if condition="{H02035}">
-                            <dla:formatDate date="{H02035}" as="H02035"/>
-                            {H02035}
+                        <f:if condition="{H02035}"><f:debug>{H02035}</f:debug>
+                            <f:if condition="{H02035}=='ohne Datum' || {H02035}=='o.D.'">
+                                <f:then>
+                                    {H02035}
+                                </f:then>
+                                <f:else>
+                                    <dla:formatDate date="{H02035}" as="H02035"/>
+                                    {H02035}
+                                </f:else>
+                            </f:if>
+
                         </f:if>
                         <f:if condition="{PB814.0} && {PB814.0}!='#NV'">
                             [{PB814.0}]
