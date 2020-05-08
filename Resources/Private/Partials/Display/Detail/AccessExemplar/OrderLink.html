@@ -31,6 +31,12 @@
                 <v:variable.set value="DBSEL3=AU;" name="dbsel" />
                 <v:variable.set value="DBSEL3=AU;{document.fields.AUISN};" name="param" />
             </f:case>
+            <f:case value="BI">
+                <v:variable.set value="BI" name="opac_db" />
+                <v:variable.set value="{document.fields.B00001}" name="id" />
+                <v:variable.set value="DBSEL4=BI;" name="dbsel" />
+                <v:variable.set value="DBSEL4=BI;{document.fields.B00001};" name="param" />
+            </f:case>
         </f:switch>
     </f:else>
 </f:if>
