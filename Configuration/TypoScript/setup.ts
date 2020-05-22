@@ -336,6 +336,13 @@ plugin.tx_find {
                 noescape = 1
                 hidden = 1
             }
+            1141 {
+                id = detail_daten
+                type = Text
+                query = (facet_names_relations:("%1$s") AND listview_type:("Daten"))
+                noescape = 1
+                hidden = 1
+            }
             115 {
                 id = detail_an_gedrucktes
                 type = Text
@@ -347,8 +354,9 @@ plugin.tx_find {
             116 {
                 id = detail_an_handschriften
                 type = Text
-                # query = (PEA100:("%1$s") AND source:("HS")) OR (facet_names_relations:("%2$s") AND source:("AK"))
-                query = (facet_names_relations:("%1$s") AND listview_type:("Handschriften"))
+                query = (PEA100:("%1$s") AND source:("HS")) OR (facet_names_relations:("%2$s") AND source:("AK"))
+                # Geht nicht, findet Widmungen nicht, vgl. #1794:
+                # query = (facet_names_relations:("%1$s") AND listview_type:("Handschriften"))
                 noescape = 1
                 hidden = 1
             }
@@ -721,7 +729,7 @@ plugin.tx_find {
             180 {
                 id = detail_ks_all
                 type = Text
-                query = KSC200:("%1$s") OR KSA200:("%1$s") OR KSE200:("%1$s") OR KSU200:("%1$s")
+                query = KSC200:("%1$s") OR KSA200:("%1$s") OR KSE200:("%1$s") OR KSU200:("%1$s") OR KS0412:("%1$s")
                 noescape = 1
                 hidden = 1
             }
@@ -738,7 +746,7 @@ plugin.tx_find {
             191 {
                 id = detail_sb_schlagwort_bundo
                 type = Text
-                query = THA710:("%1$s") AND source:("BI")
+                query = (THA710:("%1$s") OR THA720:("%1$s")) AND source:("BI")
                 noescape = 1
                 hidden = 1
             }
