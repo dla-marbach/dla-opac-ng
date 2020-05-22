@@ -565,11 +565,13 @@
                     </li>
 
                     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <v:variable.set value="{listview_title}␝An" name="listview_title" />
                     <s:data.newArray
                             name="query"
                             global="1"
                             keys="{0:'detail_an_handschriften'}"
-                            values="{0:'{P0001}'}"
+                            values="{0:{0:'{P0001}', 1:'{listview_title}'}}"
                     />
 
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
