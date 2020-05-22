@@ -729,7 +729,7 @@ plugin.tx_find {
             180 {
                 id = detail_ks_all
                 type = Text
-                query = KSC200:("%1$s") OR KSA200:("%1$s") OR KSE200:("%1$s") OR KSU200:("%1$s") OR KS0412:("%1$s")
+                query = KSC200:("%1$s") OR KSA200:("%1$s") OR KSE200:("%1$s") OR KSU200:("%1$s")
                 noescape = 1
                 hidden = 1
             }
