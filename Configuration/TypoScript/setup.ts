@@ -502,7 +502,8 @@ plugin.tx_find {
             143 {
                 id = detail_werke_translation_gedrucktes
                 type = Text
-                query = (GWKEY:("%1$s") OR AKE526:("%1$s")) AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_form_content:("Übersetzung" OR "Übersetzung, deutsch" OR "Übersetzung, fremdsprachig") AND source:("AK")
+                # query = (GWKEY:("%1$s") OR AKE526:("%1$s")) AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_form_content:("Übersetzung" OR "Übersetzung, deutsch" OR "Übersetzung, fremdsprachig") AND source:("AK")
+                query = ("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_form_content:("Übersetzung" OR "Übersetzung, deutsch" OR "Übersetzung, fremdsprachig") AND source:("AK")
                 noescape = 1
                 hidden = 1
             }
@@ -577,7 +578,20 @@ plugin.tx_find {
                 noescape = 1
                 hidden = 1
             }
-
+            155 {
+                id = detail_werke_rezension_gedrucktes
+                type = Text
+                query = ("%1$s") AND facet_form_content:("Rezension") AND source:("AK")
+                noescape = 1
+                hidden = 1
+            }
+            156 {
+                id = detail_werke_rezension_handschriften
+                type = Text
+                query = ("%1$s") AND facet_form_content:("Rezension") AND source:("HS")
+                noescape = 1
+                hidden = 1
+            }            
 
             ### Köperschaften ###
 
