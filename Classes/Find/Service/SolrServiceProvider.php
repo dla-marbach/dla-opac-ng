@@ -361,6 +361,10 @@ class SolrServiceProvider extends AbstractServiceProvider
      */
     protected function addFacetQueries()
     {
+
+        $statsquery = clone $this->query;
+        $statsquery->setStart(0)->setRows(0);
+
         $facetConfiguration = $this->settings['facets'];
 
         if ($facetConfiguration) {
@@ -392,18 +396,28 @@ class SolrServiceProvider extends AbstractServiceProvider
                         if ($facet['facettype'] == 'date_range') {
                             if ($facet['start'] && $facet['end'] && $facet['gap']) {
 
-                                $query = $this->query;
+                                try {
+                                    $stats = $statsquery->getStats();
+                                    $stats->createField('facet_time_stat');
 
-                                $stats = $query->getStats();
-                                $stats->createField('facet_time_stat');
+                                    $resultset = $this->connection->select($statsquery);
 
-                                $resultset = $this->connection->select($query);
-                                $statsResult = $resultset->getStats();
-                                $minValue = $statsResult->getResult('facet_time_stat')->getMin();
-                                $maxValue = $statsResult->getResult('facet_time_stat')->getMax();
+                                    $statsResult = $resultset->getStats();
+                                    $minValue = $statsResult->getResult('facet_time_stat')->getMin();
+                                    #seems not be used
+                                    #$maxValue = $statsResult->getResult('facet_time_stat')->getMax();
+
+                                } catch (HttpException $exception) {
+                                    // preset to year 0, if stats query faild
+                                    $minValue = '0000-01-01';
+
+                                } catch (Exception $e) {
+                                    // preset to year 0, if stats query faild
+                                    $minValue = '0000-01-01';
+                                }
 
                                 $date = new \DateTime($minValue);
-                                $maxDate = new \DateTime($maxValue);
+                                //$maxDate = new \DateTime($maxValue);
 
                                 $nowDate = new \DateTime('now');
 
