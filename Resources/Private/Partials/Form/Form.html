@@ -272,7 +272,12 @@
                         <a href="#" title="<f:translate key='Expertensuche' extensionName='dla_opac_ng'/>"><span class="icon bel-regler01"></span><span class="ctg-hd-addon-term"><f:translate key='Expertensuche' extensionName='dla_opac_ng'/></span></a>
                     </li>
                     <li>
-                        <a href="#" title="<f:translate key='Bestandsübersicht' extensionName='dla_opac_ng'/>"><span class="icon bel-inhalt"></span><span class="ctg-hd-addon-term"><f:translate key='Bestandsübersicht' extensionName='dla_opac_ng'/></span></a>
+                        <f:link.action pageUid="{settings.tectonicUid}">
+                            <span class="icon bel-inhalt"></span>
+                            <span class="ctg-hd-addon-term">
+                                <f:translate key='Bestandsübersicht' extensionName='dla_opac_ng'/>
+                            </span>
+                        </f:link.action>
                     </li>
                     <li>
                         <a href="#" title="<f:translate key='Suchverlauf' extensionName='dla_opac_ng'/>"><span class="icon bel-zurueck02"></span><span class="ctg-hd-addon-term"><f:translate key='Suchverlauf' extensionName='dla_opac_ng'/></span></a>
