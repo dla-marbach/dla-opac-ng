@@ -110,13 +110,12 @@ if ($action == 'getNodes') {
                 $currentTree = $newTree;
             }
 
-            if (intval($row['parent_id']) && $row['parent_id'] < 27) {
-                $newTree['record_id'] = $row['parent_id'];
-                $newTree['uid'] = $row['parent_id'];
-                $newTree['child'] = $currentTree;
-                $currentTree = $newTree;
-            }
         } else {
+            $newTree['record_id'] = $row['parent_id'];
+            $newTree['uid'] = $row['uid'];
+            $newTree['child'] = $currentTree;
+            $currentTree = $newTree;
+
             $jTree = $currentTree;
         }
 
