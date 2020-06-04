@@ -512,6 +512,21 @@
                                 Handschriften ({solrcount})
                             </f:link.action>
                         </li>
+                        
+                        <s:data.newArray
+                                name="query"
+                                global="1"
+                                keys="{0:'detail_werke_rezension_aundv'}"
+                                values="{0:'{XX_PE_P0800_PE0100.0} {A0331}'}"
+                        />
+                        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                        <dla:countFromSolr query="{solvedQuery}" />
+
+                        <li>
+                            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                                Audio und Video ({solrcount})
+                            </f:link.action>
+                        </li>
                     </ul>
                 </article>
                 
