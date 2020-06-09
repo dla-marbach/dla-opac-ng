@@ -521,6 +521,22 @@
                         </f:link.action>
                     </li>
 
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <v:variable.set value="{listview_title}␝Von" name="listview_title" />                    
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_daten'}"
+                            values="{0:'{listview_title}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                            Daten ({solrcount})
+                        </f:link.action>
+                    </li>
 
 
                 </ul>
@@ -548,13 +564,14 @@
                         </f:link.action>
                     </li>
 
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0001')}" name="P0001" />
                     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
-                    <v:variable.set value="{listview_title}␝An" name="listview_title" />                    
+                    <v:variable.set value="{listview_title}␝An" name="listview_title" />
                     <s:data.newArray
                             name="query"
                             global="1"
                             keys="{0:'detail_an_handschriften'}"
-                            values="{0:'{listview_title}'}"
+                            values="{0:{0:'{P0001}', 1:'{listview_title}'}}"
                     />
 
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
@@ -601,6 +618,23 @@
                             Audio und Video ({solrcount})
                         </f:link.action>
                     </li>
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <v:variable.set value="{listview_title}␝An" name="listview_title" />                    
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_daten'}"
+                            values="{0:'{listview_title}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                            Daten ({solrcount})
+                        </f:link.action>
+                    </li>                    
                 </ul>
             </article>
 
@@ -675,6 +709,24 @@
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
                             Audio und Video ({solrcount})
+                        </f:link.action>
+                    </li>
+
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <v:variable.set value="{listview_title}␝Über" name="listview_title" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_daten'}"
+                            values="{0:'{listview_title}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                            Daten ({solrcount})
                         </f:link.action>
                     </li>
 

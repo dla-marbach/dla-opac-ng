@@ -336,6 +336,13 @@ plugin.tx_find {
                 noescape = 1
                 hidden = 1
             }
+            1141 {
+                id = detail_daten
+                type = Text
+                query = (facet_names_relations:("%1$s") AND listview_type:("Daten"))
+                noescape = 1
+                hidden = 1
+            }
             115 {
                 id = detail_an_gedrucktes
                 type = Text
@@ -347,8 +354,9 @@ plugin.tx_find {
             116 {
                 id = detail_an_handschriften
                 type = Text
-                # query = (PEA100:("%1$s") AND source:("HS")) OR (facet_names_relations:("%2$s") AND source:("AK"))
-                query = (facet_names_relations:("%1$s") AND listview_type:("Handschriften"))
+                query = (PEA100:("%1$s") AND source:("HS")) OR (facet_names_relations:("%2$s") AND source:("AK"))
+                # Geht nicht, findet Widmungen nicht, vgl. #1794:
+                # query = (facet_names_relations:("%1$s") AND listview_type:("Handschriften"))
                 noescape = 1
                 hidden = 1
             }
@@ -494,7 +502,8 @@ plugin.tx_find {
             143 {
                 id = detail_werke_translation_gedrucktes
                 type = Text
-                query = (GWKEY:("%1$s") OR AKE526:("%1$s")) AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_form_content:("Übersetzung" OR "Übersetzung, deutsch" OR "Übersetzung, fremdsprachig") AND source:("AK")
+                # query = (GWKEY:("%1$s") OR AKE526:("%1$s")) AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_form_content:("Übersetzung" OR "Übersetzung, deutsch" OR "Übersetzung, fremdsprachig") AND source:("AK")
+                query = (%1$s) AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_form_content:("Übersetzung" OR "Übersetzung, deutsch" OR "Übersetzung, fremdsprachig") AND source:("AK")
                 noescape = 1
                 hidden = 1
             }
@@ -569,7 +578,27 @@ plugin.tx_find {
                 noescape = 1
                 hidden = 1
             }
-
+            155 {
+                id = detail_werke_rezension_gedrucktes
+                type = Text
+                query = (%1$s) AND facet_form_content:("Rezension") AND source:("AK") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger")
+                noescape = 1
+                hidden = 1
+            }
+            156 {
+                id = detail_werke_rezension_handschriften
+                type = Text
+                query = (%1$s) AND facet_form_content:("Rezension") AND source:("HS")
+                noescape = 1
+                hidden = 1
+            }            
+            157 {
+                id = detail_werke_rezension_aundv
+                type = Text
+                query = (%1$s) AND facet_form_content:("Rezension") AND DOKTYP:("Ton- und Bildträger")
+                noescape = 1
+                hidden = 1
+            }            
 
             ### Köperschaften ###
 
@@ -738,7 +767,7 @@ plugin.tx_find {
             191 {
                 id = detail_sb_schlagwort_bundo
                 type = Text
-                query = THA710:("%1$s") AND source:("BI")
+                query = (THA710:("%1$s") OR THA720:("%1$s")) AND source:("BI")
                 noescape = 1
                 hidden = 1
             }
