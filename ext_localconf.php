@@ -44,7 +44,7 @@ $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['tectonic'] = 'EXT:dla_opac_ng/
 
 // Add RealURL configuration
 if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('realurl')) {
-    $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl']['_DEFAULT']['postVarSets']['_DEFAULT'][] = [
+    $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl']['_DEFAULT']['postVarSets']['_DEFAULT'] = [
         'opac' => [
             [
                 'GETvar' => 'tx_find_find[action]',
