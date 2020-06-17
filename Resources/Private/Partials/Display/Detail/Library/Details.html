@@ -772,7 +772,12 @@
                     <div class="ctg-dtvt-content">
 
                         <f:for each="{A0501}" as="item" iteration="iterator">
-                            {item}<br />
+                            <f:format.raw>
+                                <f:format.stripTags allowedTags="<a>">
+                                    {item}
+                                </f:format.stripTags>
+                            </f:format.raw>
+                            <br />
                         </f:for>
                     </div>
                 </div>
@@ -1448,15 +1453,14 @@
 
                         <f:if condition="{A0750}">
                             <f:then>
-                                <f:render
-                                        partial="Display/Field/List"
-                                        arguments="{
-                        document:document,
-                        results:results,
-                        field:'A0750',
-                        linkFieldContent:linkFieldContent,
-                        linkFacets:linkFacets
-                        }"/>
+                                <f:for each="{A0750}" as="item" iteration="iterator">
+                                    <f:format.raw>
+                                        <f:format.stripTags allowedTags="<a>">
+                                            {item}
+                                        </f:format.stripTags>
+                                    </f:format.raw>
+                                    <br />
+                                </f:for>
                             </f:then>
                         </f:if>
 
