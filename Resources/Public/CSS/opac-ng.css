@@ -243,6 +243,10 @@ a.facetText {
     margin-top: 1rem;
 }
 
+.ctg-media-content p {
+    word-break: break-word;
+}
+
 article.detail em.highlight {
     font-weight: inherit !important;
     color: #333333 !important;
