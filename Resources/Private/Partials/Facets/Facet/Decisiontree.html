@@ -33,7 +33,8 @@
         <f:render partial="Facets/Facet/List/Autocomplete" arguments="{_all}"/>
     </f:if>
 </f:if>
-<f:if condition="{config.activeFacets.{facetInfo.id}}">
+
+<f:if condition="{config.activeFacets.facet_names_roles} || {config.activeFacets.facet_names_relations}">
     <f:then>
         <ul class="facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}">
     </f:then>
