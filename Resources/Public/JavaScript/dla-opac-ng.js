@@ -70,7 +70,7 @@ $(document).ready(function(){
     });
 
     $('.order-button').click(function (event) {
-
+        event.preventDefault();
         $('.order-overlay .login-form').show();
         $('.order-overlay .confirm').hide();
         $('.order-overlay').toggle();
