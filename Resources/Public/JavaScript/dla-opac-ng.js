@@ -53,7 +53,7 @@ $(document).ready(function(){
     });
 
     $('#tabaccess').on("click", function (event) {
-        //event.preventDefault();
+        event.preventDefault();
         $('#access').show();
         $('#detail').hide();
         $(this).toggleClass('ctg-dtvt-menu-active');
