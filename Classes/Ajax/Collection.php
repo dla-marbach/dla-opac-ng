@@ -27,13 +27,14 @@ $search = $_GET['search'];
 $type = $_GET['type'];
 
 $table = $tables[$type];
+$view_title = 'treeview_title_' . $type;
 
 // Prepare JSON for jTree
 $jTree = [];
 
 if ($action == 'getNodes') {
 
-    $stmt = $db->prepare('SELECT * FROM ' . $table . ' WHERE parent_id = ? ORDER BY listview_title;');
+    $stmt = $db->prepare('SELECT uid,parent_id,record_id,' . $view_title . ' AS title,hasChild FROM ' . $table . ' WHERE parent_id = ? ORDER BY ' . $view_title . ';');
     $stmt->bind_param('s', $nodeId);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -45,17 +46,14 @@ if ($action == 'getNodes') {
             'uid' => $row["uid"],
             'parent_id' => $row["parent_id"],
             'record_id' => $row["record_id"],
-            'listview_title' => $row["listview_title"],
-            'listview_type' => $row["listview_type"],
-            'listview_associate' => $row["listview_associate"],
-            'listview_additional1' => $row["listview_additional1"],
-            'listview_additional2' => $row["listview_additional2"],
+            'title' => $row["title"],
             'hasChild' => $row["hasChild"],
         ];
     }
+
 } else if ($action == 'searchNodes') {
 
-    $stmt = $db->prepare("SELECT * FROM " . $table . " WHERE MATCH (listview_title, listview_type, listview_associate, listview_additional1, listview_additional2) AGAINST (? IN NATURAL LANGUAGE MODE);");
+    $stmt = $db->prepare('SELECT uid,parent_id,record_id,' . $view_title . ' AS title,hasChild FROM ' . $table . ' WHERE MATCH (' . $view_title . ',listview_title,listview_type,listview_associate,listview_additional1,listview_additional2) AGAINST (? IN NATURAL LANGUAGE MODE);');
 
     $stmt->bind_param('s', $search);
     $stmt->execute();
@@ -68,18 +66,14 @@ if ($action == 'getNodes') {
             'uid' => $row["uid"],
             'parent_id' => $row["parent_id"],
             'record_id' => $row["record_id"],
-            'listview_title' => $row["listview_title"],
-            'listview_type' => $row["listview_type"],
-            'listview_associate' => $row["listview_associate"],
-            'listview_additional1' => $row["listview_additional1"],
-            'listview_additional2' => $row["listview_additional2"],
+            'title' => $row["title"],
             'hasChild' => $row["hasChild"],
         ];
     }
 
 } else if ($action == 'getAllParents') {
 
-    $stmt = $db->prepare("SELECT * FROM " . $table . " WHERE record_id = ?");
+    $stmt = $db->prepare('SELECT uid,parent_id,record_id FROM ' . $table . ' WHERE record_id = ?');
 
     $stmt->bind_param('s', $nodeId);
     $stmt->execute();
@@ -92,7 +86,7 @@ if ($action == 'getNodes') {
 
     while ($row = $result->fetch_assoc()) {
         if ($row['parent_id']) {
-            $stmt = $db->prepare("SELECT * FROM " . $table . " WHERE uid = ?");
+            $stmt = $db->prepare('SELECT uid,parent_id,record_id FROM ' . $table . ' WHERE uid = ?');
 
             $stmt->bind_param('s', $row['parent_id']);
             $stmt->execute();
@@ -121,15 +115,13 @@ if ($action == 'getNodes') {
 
     }
 
-
-
 } else if ($action == 'getStructure') {
 
-    $stmt = $db->prepare("SELECT * FROM 
-        (SELECT * FROM " . $table . " ORDER BY parent_id, record_id) listview_title,
+    $stmt = $db->prepare('SELECT uid,parent_id,record_id,' . $view_title . ' AS view_title,hasChild FROM 
+        (SELECT uid,parent_id,record_id,' . $view_title . ' AS title,hasChild FROM ' . $table . ' ORDER BY parent_id, record_id) records,
         (SELECT @pv := ?) initialisation
         WHERE find_in_set(parent_id, @pv)
-        AND length(@pv := concat(@pv, ',', record_id))");
+        AND length(@pv := concat(@pv, ',', record_id))');
 
     $stmt->bind_param('i', $nodeId);
     $stmt->execute();
@@ -142,11 +134,7 @@ if ($action == 'getNodes') {
             'uid' => $row["uid"],
             'parent_id' => $row["parent_id"],
             'record_id' => $row["record_id"],
-            'listview_title' => $row["listview_title"],
-            'listview_type' => $row["listview_type"],
-            'listview_associate' => $row["listview_associate"],
-            'listview_additional1' => $row["listview_additional1"],
-            'listview_additional2' => $row["listview_additional2"],
+            'title' => $row["title"],
             'hasChild' => $row["hasChild"],
         ];
     }
