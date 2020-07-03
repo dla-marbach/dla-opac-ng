@@ -19,7 +19,6 @@
     .bt-folder {position: relative;}
     .bt-folder strong {position: absolute; top: 1px; left: 36%; font-size: 1rem; color: #FFF;}
     span.bt-folder .icon {color: #dadada;}
-    #collectiontree div.collection-information {display: none;}
     .childElement {display: none;}
     .childElement.children {display: initial;}
 </style>
@@ -89,16 +88,6 @@
                 liElement.children('ul').toggle();
             }
         });
-
-        $('#collectiontree a.bt-info').on("click", function(event) {
-            event.preventDefault();
-            $(this).parent().next(".collection-information").toggle();
-        });
-
-        $(document).on("click", '.bt-info', function(event) {
-            event.preventDefault();
-            $(this).parent().next(".collection-information").toggle();
-        });
     }
 
     function getChildNodes(id, child = "",expand = 0) {
@@ -155,24 +144,9 @@
         } else {
             var linkAndActions = '<span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a>' +
                 '<a href="/index.php?id=2&tx_find_find%5Bid%5D=' + item.record_id + '" class="bt-search" target="_blank"><span class="icon bel-lupe"></span></a>' +
-                '</span>' +
-                '<div class="collection-information">';
-            if (item.listview_type) {
-                linkAndActions += item.listview_type + '<br/>';
-            }
-            if (item.listview_associate) {
-                linkAndActions += item.listview_associate + '<br/>';
-            }
-            if (item.listview_additional1) {
-                linkAndActions += item.listview_additional1 + '<br/>';
-            }
-            if (item.listview_additional2) {
-                linkAndActions += item.listview_additional2 + '<br/>';
-            }
-            linkAndActions += '</div>';
-
+                '</span>';
         }
-        if (item.listview_title != 'root') {
+        if (item.title != 'root') {
             constants.liElements += '<li id="' + item.uid + '">' +
                 '<article>' +
                 '<span class="bt-content">' +
@@ -181,7 +155,7 @@
                 '<strong>+</strong>' +
                 '</span>' +
                 '</a>' +
-                '<h3>' + item.listview_title + '</h3>' +
+                '<h3>' + item.title + '</h3>' +
                 '</span>' +
                 linkAndActions +
                 '</article>' +
