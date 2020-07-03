@@ -108,8 +108,9 @@
         if (Number.isInteger(Number(item.record_id))) {
             var linkAndActions = '';
         } else {
-            var linkAndActions = '<span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a>' +
-                '<a href="/index.php?id=2&tx_find_find%5Bid%5D=' + item.record_id + '" class="bt-search" target="_blank"><span class="icon bel-lupe"></span></a>' +
+            var linkAndActions = '<span class="bt-actions">' +
+                '<a href="/index.php?id=2&tx_find_find%5Bid%5D=' + item.record_id + '" class="bt-info"><span class="icon bel-info"></span></a>' +
+                '<a href="#" class="bt-search" target="_blank"><span class="icon bel-lupe"></span></a>' +
                 '</span>';
         }
 
