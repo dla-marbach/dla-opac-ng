@@ -6,19 +6,19 @@
     </meta>
     <data type="array">
         <languageKey index="default" type="array">
-            <label index="tx_dlaopacng_tectonic">Hierarchical Collections</label>
-            <label index="tx_dlaopacng_tectonic.record_id">Catalog Record ID</label>
-            <label index="tx_dlaopacng_tectonic.parent_id">Parent Record ID</label>
-            <label index="tx_dlaopacng_tectonic.listview_title">Title</label>
-            <label index="tx_dlaopacng_tectonic.listview_type">Type</label>
-            <label index="tx_dlaopacng_tectonic.listview_associate">Associates</label>
-            <label index="tx_dlaopacng_tectonic.listview_additional1">Additional Information (1)</label>
-            <label index="tx_dlaopacng_tectonic.listview_additional2">Additional Information (2)</label>
-            <label index="tx_dlaopacng_tectonic.hasChild">Has Child Records?</label>
-            <label index="tx_dlaopacng_classification">Hierarchical Classifications</label>
+            <label index="tx_dlaopacng_collection">Collections</label>
+            <label index="tx_dlaopacng_collection.record_id">Catalog Record ID</label>
+            <label index="tx_dlaopacng_collection.parent_id">Parent Record ID</label>
+            <label index="tx_dlaopacng_collection.listview_title">Title (Listview)</label>
+            <label index="tx_dlaopacng_collection.listview_type">Type</label>
+            <label index="tx_dlaopacng_collection.listview_associate">Associates</label>
+            <label index="tx_dlaopacng_collection.listview_additional1">Additional Information (1)</label>
+            <label index="tx_dlaopacng_collection.listview_additional2">Additional Information (2)</label>
+            <label index="tx_dlaopacng_collection.hasChild">Has Child Records?</label>
+            <label index="tx_dlaopacng_classification">Classifications</label>
             <label index="tx_dlaopacng_classification.record_id">Catalog Record ID</label>
             <label index="tx_dlaopacng_classification.parent_id">Parent Record ID</label>
-            <label index="tx_dlaopacng_classification.listview_title">Title</label>
+            <label index="tx_dlaopacng_classification.listview_title">Title (Listview)</label>
             <label index="tx_dlaopacng_classification.listview_type">Type</label>
             <label index="tx_dlaopacng_classification.listview_associate">Associates</label>
             <label index="tx_dlaopacng_classification.listview_additional1">Additional Information (1)</label>
@@ -26,19 +26,19 @@
             <label index="tx_dlaopacng_classification.hasChild">Has Child Records?</label>
         </languageKey>
         <languageKey index="de" type="array">
-            <label index="tx_dlaopacng_tectonic">Bestandstektonik</label>
-            <label index="tx_dlaopacng_tectonic.record_id">OPAC Datensatz-ID</label>
-            <label index="tx_dlaopacng_tectonic.parent_id">Übergeordnete Datensatz-ID</label>
-            <label index="tx_dlaopacng_tectonic.listview_title">Titel</label>
-            <label index="tx_dlaopacng_tectonic.listview_type">Typ</label>
-            <label index="tx_dlaopacng_tectonic.listview_associate">Beitragende</label>
-            <label index="tx_dlaopacng_tectonic.listview_additional1">Weitere Informationen (1)</label>
-            <label index="tx_dlaopacng_tectonic.listview_additional2">Weitere Informationen (2)</label>
-            <label index="tx_dlaopacng_tectonic.hasChild">Hat Kindelemente?</label>
+            <label index="tx_dlaopacng_collection">Bestandstektonik</label>
+            <label index="tx_dlaopacng_collection.record_id">OPAC Datensatz-ID</label>
+            <label index="tx_dlaopacng_collection.parent_id">Übergeordnete Datensatz-ID</label>
+            <label index="tx_dlaopacng_collection.listview_title">Titel (Listenansicht)</label>
+            <label index="tx_dlaopacng_collection.listview_type">Typ</label>
+            <label index="tx_dlaopacng_collection.listview_associate">Beitragende</label>
+            <label index="tx_dlaopacng_collection.listview_additional1">Weitere Informationen (1)</label>
+            <label index="tx_dlaopacng_collection.listview_additional2">Weitere Informationen (2)</label>
+            <label index="tx_dlaopacng_collection.hasChild">Hat Kindelemente?</label>
             <label index="tx_dlaopacng_classification">Systematik</label>
             <label index="tx_dlaopacng_classification.record_id">OPAC Datensatz-ID</label>
             <label index="tx_dlaopacng_classification.parent_id">Übergeordnete Datensatz-ID</label>
-            <label index="tx_dlaopacng_classification.listview_title">Titel</label>
+            <label index="tx_dlaopacng_classification.listview_title">Titel (Listenansicht)</label>
             <label index="tx_dlaopacng_classification.listview_type">Typ</label>
             <label index="tx_dlaopacng_classification.listview_associate">Beitragende</label>
             <label index="tx_dlaopacng_classification.listview_additional1">Weitere Informationen (1)</label>

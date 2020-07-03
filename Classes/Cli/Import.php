@@ -16,7 +16,7 @@ class Import extends Command {
 
     protected static $tables = [
         'classification' => 'tx_dlaopacng_classification',
-        'collection' => 'tx_dlaopacng_tectonic'
+        'collection' => 'tx_dlaopacng_collection'
     ];
 
     /**

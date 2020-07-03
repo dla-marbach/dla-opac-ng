@@ -18,7 +18,7 @@ mysqli_set_charset(
 
 $tables = [
     'classification' => 'tx_dlaopacng_classification',
-    'tectonic' => 'tx_dlaopacng_tectonic'
+    'collection' => 'tx_dlaopacng_collection'
 ];
 
 $action = $_GET['action'];

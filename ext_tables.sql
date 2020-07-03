@@ -1,7 +1,7 @@
 --
--- Table structure for table 'tx_dlaopacng_tectonic'
+-- Table structure for table 'tx_dlaopacng_collection'
 --
-CREATE TABLE tx_dlaopacng_tectonic (
+CREATE TABLE tx_dlaopacng_collection (
     uid int(11) NOT NULL auto_increment,
     pid int(11) DEFAULT '0' NOT NULL,
     record_id varchar(100) DEFAULT '' NOT NULL,
