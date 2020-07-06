@@ -122,7 +122,8 @@
 
     <script>
         $( document ).ready(function() {
-            $('.decisiontree').click(function() {
+            $('.decisiontree').click(function(event) {
+                event.preventDefault();
                 var currentElement = $(this);
                 if (currentElement.parent("div").children('ul.rolerelation').length == 0) {
                     $.ajax({
