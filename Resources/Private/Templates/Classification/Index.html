@@ -39,6 +39,7 @@
     function registerSearchForm() {
         $("#collection-search").on("keyup", function (event) {
             if ($(this).val() == '') {
+                $('#collection-search').data('searchFilterIds', '');
                 resetTreeNodes();
                 getChildNodes(0);
             } else {
@@ -56,7 +57,10 @@
         })
             .done(function(data) {
                 resetTreeNodes();
-                $('#collectiontree').append(jsonToHtml(data));
+                // save filter ids as data attribute
+                $('#collection-search').data('searchFilterIds', data.foundUids);
+                // build tree from first level with filter ids set
+                getChildNodes(0);
             });
     }
 
@@ -84,7 +88,10 @@
         if (!id) {
             id = 0;
         }
-        var url = '/index.php?eID=collection&type=classification&action=getNodes&id=' + id;
+
+        var filterIds = $('#collection-search').data('searchFilterIds');
+
+        var url = '/index.php?eID=collection&type=classification&action=getNodes&id=' + id + '&filterIds=' + filterIds;
 
         var jqxhr = $.ajax({
             url: url,
