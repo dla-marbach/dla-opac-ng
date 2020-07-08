@@ -11,31 +11,31 @@
                 <v:variable.set value="AK" name="opac_db" />
                 <v:variable.set value="{document.fields.A0001}" name="id" />
                 <v:variable.set value="DBSEL=AK;" name="dbsel" />
-                <v:variable.set value="DBSEL=AK;{document.fields.A0001};DBSEL1=;DBSEL2=;DBSEL3=;DBSEL4=;" name="param" />
+                <v:variable.set value="DBSEL=AK;{document.fields.A0001};&DBSEL1=;&DBSEL2=;&DBSEL3=;&DBSEL4=;" name="param" />
             </f:case>
             <f:case value="HS">
                 <v:variable.set value="HS" name="opac_db" />
                 <v:variable.set value="DBSEL1=HS;" name="dbsel" />
                 <v:variable.set value="{document.fields.H0001}" name="id" />
-                <v:variable.set value="DBSEL1=HS;{document.fields.H0001};DBSEL=;DBSEL2=;DBSEL3=;DBSEL4=;" name="param" />
+                <v:variable.set value="DBSEL1=HS;{document.fields.H0001};&DBSEL=;&DBSEL2=;&DBSEL3=;&DBSEL4=;" name="param" />
             </f:case>
             <f:case value="BF">
                 <v:variable.set value="BF" name="opac_db" />
                 <v:variable.set value="{document.fields.B0001}" name="id" />
                 <v:variable.set value="DBSEL2=BF;" name="dbsel" />
-                <v:variable.set value="DBSEL2=BF;{document.fields.B0001};DBSEL=;DBSEL1=;DBSEL3=;DBSEL4=;" name="param" />
+                <v:variable.set value="DBSEL2=BF;{document.fields.B0001};&DBSEL=;&DBSEL1=;&DBSEL3=;&DBSEL4=;" name="param" />
             </f:case>
             <f:case value="AU">
                 <v:variable.set value="AU" name="opac_db" />
                 <v:variable.set value="{document.fields.AUISN}" name="id" />
                 <v:variable.set value="DBSEL3=AU;" name="dbsel" />
-                <v:variable.set value="DBSEL3=AU;{document.fields.AUISN};DBSEL=;DBSEL1=;DBSEL2=;DBSEL4=;" name="param" />
+                <v:variable.set value="DBSEL3=AU;{document.fields.AUISN};&DBSEL=;&DBSEL1=;&DBSEL2=;&DBSEL4=;" name="param" />
             </f:case>
             <f:case value="BI">
                 <v:variable.set value="BI" name="opac_db" />
                 <v:variable.set value="{document.fields.B00001}" name="id" />
                 <v:variable.set value="DBSEL4=BI;" name="dbsel" />
-                <v:variable.set value="DBSEL4=BI;{document.fields.B00001};DBSEL=;DBSEL1=;DBSEL2=;DBSEL3=;" name="param" />
+                <v:variable.set value="DBSEL4=BI;{document.fields.B00001};&DBSEL=;&DBSEL1=;&DBSEL2=;&DBSEL3=;" name="param" />
             </f:case>
         </f:switch>
     </f:else>
