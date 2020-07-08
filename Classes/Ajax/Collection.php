@@ -26,6 +26,8 @@ $nodeId = $_GET['id'];
 $search = $_GET['search'];
 $type = $_GET['type'];
 
+$filter = $_GET['filterIds'];
+
 $table = $tables[$type];
 $view_title = 'treeview_title_' . $type;
 
@@ -34,8 +36,24 @@ $jTree = [];
 
 if ($action == 'getNodes') {
 
-    $stmt = $db->prepare('SELECT uid,parent_id,record_id,' . $view_title . ' AS title,hasChild FROM ' . $table . ' WHERE parent_id = ? ORDER BY ' . $view_title . ';');
-    $stmt->bind_param('s', $nodeId);
+    if (!empty($filter)) {
+        $placeholders = implode(',', array_fill(0, count(explode(",", $filter)), '?'));
+        $stmt = $db->prepare('SELECT uid,parent_id,record_id,' . $view_title . ' AS title,hasChild FROM ' . $table . ' WHERE parent_id = ? AND uid IN (' . $placeholders . ') ORDER BY ' . $view_title . ';');
+
+        //  call bind_param with $filter as array  $stmt->bind_param('ss', $nodeId, $filter);
+        $paramArray = array_merge([$nodeId], explode(",", $filter));
+
+        // add types as first parameter for bind_param
+        $typeArray = '';
+        foreach ($paramArray as $parameter) {
+            $typeArray .= 's';
+        }
+        // call "bind_param" with all parameters as array
+        call_user_func_array(array($stmt, 'bind_param'), array_merge([$typeArray], $paramArray));
+    } else {
+        $stmt = $db->prepare('SELECT uid,parent_id,record_id,' . $view_title . ' AS title,hasChild FROM ' . $table . ' WHERE parent_id = ? ORDER BY ' . $view_title . ';');
+        $stmt->bind_param('s', $nodeId);
+    }
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -69,7 +87,33 @@ if ($action == 'getNodes') {
             'title' => $row["title"],
             'hasChild' => $row["hasChild"],
         ];
+
+        // build array of uids
+        $jTree['foundUids'][$row["uid"]] = $row["uid"];
+        $stmt = $db->prepare('SELECT uid,parent_id FROM ' . $table . ' WHERE uid = ?');
+        $stmt->bind_param('i', $row["parent_id"]);
+        $stmt->execute();
+
+        $parentResult = $stmt->get_result();
+
+        while ($parentsRow = $parentResult->fetch_assoc()) {
+
+            $jTree['foundUids'][$parentsRow["uid"]] = $parentsRow["uid"];
+
+            if ($parentsRow['parent_id']) {
+                $stmt = $db->prepare('SELECT uid,parent_id FROM ' . $table . ' WHERE uid = ?');
+
+                $stmt->bind_param('s', $parentsRow['parent_id']);
+                $stmt->execute();
+                $parentResult = $stmt->get_result();
+
+                $data = mysqli_fetch_fields($result);
+            }
+        }
+
     }
+
+    $jTree['foundUids'] = implode($jTree['foundUids'], ',');
 
 } else if ($action == 'getAllParents') {
 
