@@ -105,6 +105,17 @@ return [
                 'default' => '',
             ],
         ],
+        'facet_value' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_collection.facet_value',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'max' => 1024,
+                'eval' => 'required,trim',
+                'default' => '',
+            ],
+        ],
         'hasChild' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlfopacng_collection.hasChild',
@@ -115,6 +126,6 @@ return [
         ],
     ],
     'types' => [
-        '0' => ['showitem' => 'record_id,parent_id,treeview_title,listview_title,listview_type,listview_associate,listview_additonal1,listview_additional2,hasChild'],
+        '0' => ['showitem' => 'record_id,parent_id,treeview_title,listview_title,listview_type,listview_associate,listview_additonal1,listview_additional2,facet_value,hasChild'],
     ]
 ];

@@ -117,10 +117,10 @@
         } else {
             var linkAndActions = '<span class="bt-actions">' +
                 '<a href="/index.php?id=2&tx_find_find%5Bid%5D=' + item.record_id + '" class="bt-info"><span class="icon bel-info"></span></a>' +
-                '<a href="#" class="bt-search" target="_blank"><span class="icon bel-lupe"></span></a>' +
+                '<a href="/index.php?id=2&tx_find_find%5Bfacet%5D%5BSammlung%5D%5B' + item.facet_value + '%5D=1" class="bt-search" target="_blank"><span class="icon bel-lupe"></span></a>' +
                 '</span>';
         }
-
+        http://www-demo.dla-marbach.de/?tx_find_find%5Bfacet%5D%5BMedientypen%5D%5BGedrucktes%5D=1&tx_dlaopacng_dlastart%5Bcontroller%5D=Start#tx_find
         constants.liElements += '<li id="' + item.uid + '">' +
             '<article>' +
             '<span class="bt-content">' +

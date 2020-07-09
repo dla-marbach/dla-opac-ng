@@ -12,6 +12,7 @@ CREATE TABLE tx_dlaopacng_collection (
     listview_associate text NOT NULL,
     listview_additional1 text NOT NULL,
     listview_additional2 text NOT NULL,
+    facet_value text NOT NULL,
     hasChild smallint(6) DEFAULT '0' NOT NULL,
 
     PRIMARY KEY (uid),
@@ -33,6 +34,7 @@ CREATE TABLE tx_dlaopacng_classification (
     listview_associate text NOT NULL,
     listview_additional1 text NOT NULL,
     listview_additional2 text NOT NULL,
+    facet_value text NOT NULL,
     hasChild smallint(6) DEFAULT '0' NOT NULL,
 
     PRIMARY KEY (uid),
