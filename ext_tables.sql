@@ -6,7 +6,7 @@ CREATE TABLE tx_dlaopacng_collection (
     pid int(11) DEFAULT '0' NOT NULL,
     record_id varchar(100) DEFAULT '' NOT NULL,
     parent_id varchar(100) DEFAULT '' NOT NULL,
-    treeview_title_collection text NOT NULL,
+    treeview_title text NOT NULL,
     listview_title text NOT NULL,
     listview_type text NOT NULL,
     listview_associate text NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE tx_dlaopacng_collection (
 
     PRIMARY KEY (uid),
     KEY parent (parent_id),
-    FULLTEXT search (treeview_title_collection,listview_title,listview_type,listview_associate,listview_additional1,listview_additional2)
+    FULLTEXT search (treeview_title,listview_title,listview_type,listview_associate,listview_additional1,listview_additional2)
 );
 
 --
@@ -27,7 +27,7 @@ CREATE TABLE tx_dlaopacng_classification (
     pid int(11) DEFAULT '0' NOT NULL,
     record_id varchar(100) DEFAULT '' NOT NULL,
     parent_id varchar(100) DEFAULT '' NOT NULL,
-    treeview_title_classification text NOT NULL,
+    treeview_title text NOT NULL,
     listview_title text NOT NULL,
     listview_type text NOT NULL,
     listview_associate text NOT NULL,
@@ -37,5 +37,5 @@ CREATE TABLE tx_dlaopacng_classification (
 
     PRIMARY KEY (uid),
     KEY parent (parent_id),
-    FULLTEXT search (treeview_title_classification,listview_title,listview_type,listview_associate,listview_additional1,listview_additional2)
+    FULLTEXT search (treeview_title,listview_title,listview_type,listview_associate,listview_additional1,listview_additional2)
 );

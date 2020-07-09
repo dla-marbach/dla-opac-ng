@@ -9,7 +9,7 @@
             <label index="tx_dlaopacng_collection">Collections</label>
             <label index="tx_dlaopacng_collection.record_id">Catalog Record ID</label>
             <label index="tx_dlaopacng_collection.parent_id">Parent Record ID</label>
-            <label index="tx_dlaopacng_collection.treeview_title_collection">Title</label>
+            <label index="tx_dlaopacng_collection.treeview_title">Title</label>
             <label index="tx_dlaopacng_collection.listview_title">Title (Listview)</label>
             <label index="tx_dlaopacng_collection.listview_type">Type</label>
             <label index="tx_dlaopacng_collection.listview_associate">Associates</label>
@@ -19,7 +19,7 @@
             <label index="tx_dlaopacng_classification">Classifications</label>
             <label index="tx_dlaopacng_classification.record_id">Catalog Record ID</label>
             <label index="tx_dlaopacng_classification.parent_id">Parent Record ID</label>
-            <label index="tx_dlaopacng_classification.treeview_title_classification">Title</label>
+            <label index="tx_dlaopacng_classification.treeview_title">Title</label>
             <label index="tx_dlaopacng_classification.listview_title">Title (Listview)</label>
             <label index="tx_dlaopacng_classification.listview_type">Type</label>
             <label index="tx_dlaopacng_classification.listview_associate">Associates</label>
@@ -31,7 +31,7 @@
             <label index="tx_dlaopacng_collection">Bestandstektonik</label>
             <label index="tx_dlaopacng_collection.record_id">OPAC Datensatz-ID</label>
             <label index="tx_dlaopacng_collection.parent_id">Übergeordnete Datensatz-ID</label>
-            <label index="tx_dlaopacng_collection.treeview_title_collection">Titel</label>
+            <label index="tx_dlaopacng_collection.treeview_title">Titel</label>
             <label index="tx_dlaopacng_collection.listview_title">Titel (Listenansicht)</label>
             <label index="tx_dlaopacng_collection.listview_type">Typ</label>
             <label index="tx_dlaopacng_collection.listview_associate">Beitragende</label>
@@ -41,7 +41,7 @@
             <label index="tx_dlaopacng_classification">Systematik</label>
             <label index="tx_dlaopacng_classification.record_id">OPAC Datensatz-ID</label>
             <label index="tx_dlaopacng_classification.parent_id">Übergeordnete Datensatz-ID</label>
-            <label index="tx_dlaopacng_classification.treeview_title_classification">Titel</label>
+            <label index="tx_dlaopacng_classification.treeview_title">Titel</label>
             <label index="tx_dlaopacng_classification.listview_title">Titel (Listenansicht)</label>
             <label index="tx_dlaopacng_classification.listview_type">Typ</label>
             <label index="tx_dlaopacng_classification.listview_associate">Beitragende</label>

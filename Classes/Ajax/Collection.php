@@ -29,7 +29,6 @@ $type = $_GET['type'];
 $filter = $_GET['filterIds'];
 
 $table = $tables[$type];
-$view_title = 'treeview_title_' . $type;
 
 // Prepare JSON for jTree
 $jTree = [];
@@ -38,7 +37,7 @@ if ($action == 'getNodes') {
 
     if (!empty($filter)) {
         $placeholders = implode(',', array_fill(0, count(explode(",", $filter)), '?'));
-        $stmt = $db->prepare('SELECT uid,parent_id,record_id,' . $view_title . ' AS title,hasChild FROM ' . $table . ' WHERE parent_id = ? AND uid IN (' . $placeholders . ') ORDER BY ' . $view_title . ';');
+        $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title,hasChild FROM ' . $table . ' WHERE parent_id = ? AND uid IN (' . $placeholders . ') ORDER BY treeview_title;');
 
         //  call bind_param with $filter as array  $stmt->bind_param('ss', $nodeId, $filter);
         $paramArray = array_merge([$nodeId], explode(",", $filter));
@@ -51,7 +50,7 @@ if ($action == 'getNodes') {
         // call "bind_param" with all parameters as array
         call_user_func_array(array($stmt, 'bind_param'), array_merge([$typeArray], $paramArray));
     } else {
-        $stmt = $db->prepare('SELECT uid,parent_id,record_id,' . $view_title . ' AS title,hasChild FROM ' . $table . ' WHERE parent_id = ? ORDER BY ' . $view_title . ';');
+        $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title,hasChild FROM ' . $table . ' WHERE parent_id = ? ORDER BY treeview_title;');
         $stmt->bind_param('s', $nodeId);
     }
     $stmt->execute();
@@ -64,14 +63,14 @@ if ($action == 'getNodes') {
             'uid' => $row["uid"],
             'parent_id' => $row["parent_id"],
             'record_id' => $row["record_id"],
-            'title' => $row["title"],
+            'title' => $row["treeview_title"],
             'hasChild' => $row["hasChild"],
         ];
     }
 
 } else if ($action == 'searchNodes') {
 
-    $stmt = $db->prepare('SELECT uid,parent_id,record_id,' . $view_title . ' AS title,hasChild FROM ' . $table . ' WHERE MATCH (' . $view_title . ',listview_title,listview_type,listview_associate,listview_additional1,listview_additional2) AGAINST (? IN NATURAL LANGUAGE MODE);');
+    $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title,hasChild FROM ' . $table . ' WHERE MATCH (treeview_title,listview_title,listview_type,listview_associate,listview_additional1,listview_additional2) AGAINST (? IN NATURAL LANGUAGE MODE);');
 
     $stmt->bind_param('s', $search);
     $stmt->execute();
@@ -84,7 +83,7 @@ if ($action == 'getNodes') {
             'uid' => $row["uid"],
             'parent_id' => $row["parent_id"],
             'record_id' => $row["record_id"],
-            'title' => $row["title"],
+            'title' => $row["treeview_title"],
             'hasChild' => $row["hasChild"],
         ];
 
@@ -161,8 +160,8 @@ if ($action == 'getNodes') {
 
 } else if ($action == 'getStructure') {
 
-    $stmt = $db->prepare('SELECT uid,parent_id,record_id,' . $view_title . ' AS view_title,hasChild FROM 
-        (SELECT uid,parent_id,record_id,' . $view_title . ' AS title,hasChild FROM ' . $table . ' ORDER BY parent_id, record_id) records,
+    $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title,hasChild FROM 
+        (SELECT uid,parent_id,record_id,treeview_title,hasChild FROM ' . $table . ' ORDER BY parent_id, record_id) records,
         (SELECT @pv := ?) initialisation
         WHERE find_in_set(parent_id, @pv)
         AND length(@pv := concat(@pv, ',', record_id))');
@@ -178,7 +177,7 @@ if ($action == 'getNodes') {
             'uid' => $row["uid"],
             'parent_id' => $row["parent_id"],
             'record_id' => $row["record_id"],
-            'title' => $row["title"],
+            'title' => $row["treeview_title"],
             'hasChild' => $row["hasChild"],
         ];
     }
