@@ -112,6 +112,7 @@ $(document).ready(function(){
     });
 
     $('.close-button').click(function (event) {
+        event.preventDefault();
         $(this).parent().toggle();
     });
 });
