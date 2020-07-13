@@ -27,7 +27,7 @@
 <label>Suche</label>
 <input id="collection-search" type="text">
 
-<ul id="collectiontree" class="bt-listview">
+<ul id="collectiontree" class="bt-listview" data-findIndexPageId="{settings.indexPageUid}">
 
 </ul>
 
@@ -160,8 +160,12 @@
             var linkAndActions = '';
         } else {
             var linkAndActions = '<span class="bt-actions">' +
-                '<a href="/index.php?id=2&tx_find_find%5Bid%5D=' + item.record_id + '" class="bt-info"><span class="icon bel-info"></span></a>' +
-                '<a href="/index.php?id=2&tx_find_find%5Bfacet%5D%5BSammlung%5D%5B' + item.facet_value + '%5D=1" class="bt-search" target="_blank"><span class="icon bel-lupe"></span></a>' +
+                '<a href="/index.php?id=' + $('#collectiontree').data('findIndexPageId') + '&tx_find_find%5Bid%5D=' + item.record_id + '" class="bt-info">' +
+                '<span class="icon bel-info"></span>' +
+                '</a>' +
+                '<a href="/index.php?id=' + $('#collectiontree').data('findIndexPageId') + '&tx_find_find%5Bfacet%5D%5BSammlung%5D%5B' + item.facet_value + '%5D=1" class="bt-search" target="_blank">' +
+                '<span class="icon bel-lupe"></span>' +
+                '</a>' +
                 '</span>';
         }
         if (item.title != 'root') {
