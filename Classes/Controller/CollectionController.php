@@ -12,6 +12,20 @@ class CollectionController extends ActionController
      */
     public function indexAction(string $record = '')
     {
+        /** @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager */
+
+        $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+
+        $configurationManager = $objectManager->get('TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface');
+        $settings = $configurationManager->getConfiguration(
+            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT,
+            'find',
+            'find'
+        );
+
+        $extSettings = $settings['plugin.']['tx_find.']['settings.'];
+
+        $this->view->assign('settings', $extSettings);
         $this->view->assign('record', $record);
     }
 }
