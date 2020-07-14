@@ -115,7 +115,11 @@
     <div class="ctg-ri-actions">
         <ul>
             <li><a class="ctg-button" title="<f:translate key='merken' extensionName='dla_opac_ng'/>"><span class="icon bel-stern01"></span></a></li>
-            <li><a class="ctg-button" title="<f:translate key='Details' extensionName='dla_opac_ng'/>" data-details-toggle="1"><span class="icon bel-pfeil-u01"></span></a></li>
+            <f:if condition="{document.listview_type.0} != 'Normdaten'">
+                <f:then>
+                    <li><a class="ctg-button" title="<f:translate key='Details' extensionName='dla_opac_ng'/>" data-details-toggle="1"><span class="icon bel-pfeil-u01"></span></a></li>
+                </f:then>
+            </f:if>
         </ul>
     </div>
     <div class="ctg-ri-details" style="display:none;">
