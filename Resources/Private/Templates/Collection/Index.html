@@ -7,7 +7,7 @@
     ul.bt-listview ul {list-style-type: none; padding: 0; margin: 0;}
     .bt-listview article {transition: all 0.3s linear; border-bottom: 1px solid #dadada;}
     .bt-listview article:hover {background: #f5f5f5;}
-    ul.bt-listview ul {list-style-type: none; padding: 0 0 0 1rem;}
+    ul.bt-listview ul {list-style-type: none; padding: 0 0 0 1.5rem;}
     .bt-listview h3 {display: inline; vertical-align: middle;}
     .bt-infohelp {display: inline; vertical-align: middle; padding-left: 0.25rem;}
     .bt-content {display: inline-block; width: 70%; vertical-align: middle; padding: 0.25rem 0;}
@@ -21,6 +21,9 @@
     span.bt-folder .icon {color: #dadada;}
     .childElement {display: none;}
     .childElement.children {display: initial;}
+    a.childElement:not(.children) ~ h3 {
+        margin-left:32px;
+    }
 </style>
 
 <span id="record_id" data-record="{record}" style="display:none;"></span>
@@ -82,12 +85,14 @@
         // click event for loaded content
         $(document).on("click", '.childElement.children', function(event) {
             event.preventDefault();
+            $(this).children('span.icon').toggleClass("bel-pfeil-o01").toggleClass("bel-pfeil-u01");
+
             var liElement = $(this).parent().parent().parent();
             if (liElement.children('ul').length == 0) {
                 var id = liElement.attr('id');
-                var html = jsonToHtml(getChildNodes(id));
-                liElement.append(html);
-                $(this).children('span strong').text('-');
+                getChildNodes(id)
+                // var html = jsonToHtml(getChildNodes(id));
+                // liElement.append(html);
             } else {
                 liElement.children('ul').toggle();
             }
@@ -135,6 +140,7 @@
     function expandFirstLevel() {
         $('#collectiontree li').each(function () {
             getChildNodes($(this).attr('id'));
+            $(this).find('span.icon').toggleClass("bel-pfeil-o01").toggleClass("bel-pfeil-u01");
         });
     }
 
@@ -172,9 +178,9 @@
             constants.liElements += '<li id="' + item.uid + '">' +
                 '<article>' +
                 '<span class="bt-content">' +
-                '<a class="childElement bt-folder ' + addClass + '" href="#">' +
-                '<span class="icon bel-ordner">' +
-                '<strong>+</strong>' +
+                '<a class="childElement ' + addClass + '" href="#">' +
+                '<span class="icon bel-pfeil-u01">' +
+                '' +
                 '</span>' +
                 '</a>' +
                 '<h3>' + item.title + '</h3>' +
