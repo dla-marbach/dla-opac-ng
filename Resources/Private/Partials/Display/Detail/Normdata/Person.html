@@ -107,6 +107,7 @@
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0830')}" name="P0830" />
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PI830')}" name="PI830" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PV830')}" name="PV830" />
                 <div class="ctg-dtvt-row">
                     <div class="ctg-dtvt-label">
                         <f:translate key='Andere Namen' extensionName='dla_opac_ng'/>
@@ -117,8 +118,11 @@
 
                                 <f:for each="{P0830}" as="item" iteration="iterator">
                                     {item}
-                                    <f:if condition="{PI830.{iterator.index}}!='#NV'">
+                                    <f:if condition="{PI830.{iterator.index}} && {PI830.{iterator.index}}!='#NV'">
                                         ({PI830.{iterator.index}})
+                                    </f:if>
+                                    <f:if condition="{PV830.{iterator.index}} && {PV830.{iterator.index}}!='#NV'">
+                                        ({PV830.{iterator.index}})
                                     </f:if>
                                     <br />
                                 </f:for>

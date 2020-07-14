@@ -178,7 +178,7 @@
                         <div class="ctg-dtvt-content">
 
                             <f:for each="{ATIT}" as="item" iteration="iterator">
-                                {item} <f:if condition="{ATITSP.{iterator.index}}">({ATITSP.{iterator.index}})</f:if>
+                                {item} <f:if condition="{ATITSP.{iterator.index}} && {ATITSP.{iterator.index}} != '#NV'">({ATITSP.{iterator.index}})</f:if>
                                 <br />
                             </f:for>
 
@@ -187,22 +187,27 @@
                 </f:then>
             </f:if>
 
-            <div class="ctg-dtvt-row">
-                <div class="ctg-dtvt-label">
-                    <f:translate key='Form des Werks' extensionName='dla_opac_ng'/>
-                </div>
-                <div class="ctg-dtvt-content">
-                    <f:render
-                            partial="Display/Field/List"
-                            arguments="{
-                    document:document,
-                    results:results,
-                    field:'A0712',
-                    linkFieldContent:linkFieldContent,
-                    linkFacets:linkFacets
-                  }"/>
-                </div>
-            </div>
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0712')}" name="A0712" />
+            <f:if condition="{A0712}">
+                <f:then>
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Form des Werks' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
+                            document:document,
+                            results:results,
+                            field:'A0712',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+                        </div>
+                    </div>
+                </f:then>
+            </f:if>
 
 
 
@@ -216,7 +221,7 @@
                     </div>
                     <div class="ctg-dtvt-content">
                         <f:for each="{AI412}" as="value" iteration="iterator">
-                            {value}:{A0425}
+                            {value}:{A0425.{iterator.index}}
                         </f:for>
                     </div>
                 </div>
