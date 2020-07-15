@@ -1008,18 +1008,38 @@
             </f:then>
         </f:if>
 
-        <div class="ctg-dtvt-row">
-            <div class="ctg-dtvt-label">
-                In Tektonik zeigen
-            </div>
-            <div class="ctg-dtvt-content">
-                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
-                <f:link.action pageUid="{settings.collectionUid}" additionalParams="{'tx_dlaopacng_dlacollection[record]':'{id}'}">
-                    Tektonik
-                </f:link.action>
-            </div>
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+        <dla:collection record="{id}" as="data"/>
+        <f:if condition="{data}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        In Bestandsübersicht zeigen
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        <div>
+                            <f:for each="{data}" as="doc" iteration="iterator">
+                                <f:if condition="{doc.record_id}">
+                                    <f:then>
+                                        <f:link.action pageUid="{settings.collectionUid}" additionalParams="{'tx_dlaopacng_dlacollection[record]':'{doc.record_id}'}">
+                                            {doc.record_id}
+                                        </f:link.action>
+                                    </f:then>
+                                    <f:else>
+                                        {doc.record_id}
+                                    </f:else>
+                                </f:if>
+                                <f:if condition="!{iterator.isLast}">
+                                    ->
+                                </f:if>
+                            </f:for>
+                        </div>
 
-        </div>
+                    </div>
+
+                </div>
+            </f:then>
+        </f:if>
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B00001')}" name="B00001" />
 
