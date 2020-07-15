@@ -2,12 +2,12 @@
 
 <style>
     body {margin: 1rem; padding: 0; color: #222; font-family: "akzidenz-grotesk", Helvetica, Roboto, Arial, sans-serif;}
-    #tectonictree {font-size: 20px !important;}
+    #collectiontree {font-size: 20px !important;}
     ul.bt-listview {list-style-type: none; margin: 0; padding: 0;}
     ul.bt-listview ul {list-style-type: none; padding: 0; margin: 0;}
     .bt-listview article {transition: all 0.3s linear; border-bottom: 1px solid #dadada;}
     .bt-listview article:hover {background: #f5f5f5;}
-    ul.bt-listview ul {list-style-type: none; padding: 0 0 0 1rem;}
+    ul.bt-listview ul {list-style-type: none; padding: 0 0 0 1.5rem;}
     .bt-listview h3 {display: inline; vertical-align: middle;}
     .bt-infohelp {display: inline; vertical-align: middle; padding-left: 0.25rem;}
     .bt-content {display: inline-block; width: 70%; vertical-align: middle; padding: 0.25rem 0;}
@@ -19,18 +19,18 @@
     .bt-folder {position: relative;}
     .bt-folder strong {position: absolute; top: 1px; left: 36%; font-size: 1rem; color: #FFF;}
     span.bt-folder .icon {color: #dadada;}
-    #tectonictree div.tectonic-information {display: none;}
     .childElement {display: none;}
     .childElement.children {display: initial;}
+    a.childElement:not(.children) ~ h3 {
+        margin-left:32px;
+    }
 </style>
-
-
 
 <span id="record_id" data-record="{record}" style="display:none;"></span>
 <label>Suche</label>
-<input id="tectonic-search" type="text">
+<input id="collection-search" type="text">
 
-<ul id="tectonictree" class="bt-listview">
+<ul id="collectiontree" class="bt-listview" data-findIndexPageId="{settings.indexPageUid}">
 
 </ul>
 
@@ -38,14 +38,17 @@
     $( document ).ready(function() {
         var record = $('#record_id').data('record');
         getChildNodes(0);
-        expandStructure(record);
+        if (record) {
+            expandStructure(record);
+        }
         registerOnClick();
         registerSearchForm();
     });
 
     function registerSearchForm() {
-        $("#tectonic-search").on("keyup", function (event) {
+        $("#collection-search").on("keyup", function (event) {
             if ($(this).val() == '') {
+                $('#collection-search').data('searchFilterIds', '');
                 resetTreeNodes();
                 getChildNodes(0);
             } else {
@@ -55,7 +58,7 @@
     }
 
     function searchNodes(searchTerm) {
-        var url = '/index.php?eID=tectonic&type=tectonic&action=searchNodes&search=' + searchTerm;
+        var url = '/index.php?eID=collection&type=collection&action=searchNodes&search=' + searchTerm;
 
         $.ajax({
             url: url,
@@ -63,12 +66,15 @@
         })
             .done(function(data) {
                 resetTreeNodes();
-                $('#tectonictree').append(jsonToHtml(data));
+                // save filter ids as data attribute
+                $('#collection-search').data('searchFilterIds', data.foundUids);
+                // build tree from first level with filter ids set
+                getChildNodes(0);
             });
     }
 
     function resetTreeNodes() {
-        $("#tectonictree").html("");
+        $("#collectiontree").html("");
     }
 
     var constants = function() {
@@ -79,25 +85,17 @@
         // click event for loaded content
         $(document).on("click", '.childElement.children', function(event) {
             event.preventDefault();
+            $(this).children('span.icon').toggleClass("bel-pfeil-o01").toggleClass("bel-pfeil-u01");
+
             var liElement = $(this).parent().parent().parent();
             if (liElement.children('ul').length == 0) {
                 var id = liElement.attr('id');
-                var html = jsonToHtml(getChildNodes(id));
-                liElement.append(html);
-                $(this).children('span strong').text('-');
+                getChildNodes(id)
+                // var html = jsonToHtml(getChildNodes(id));
+                // liElement.append(html);
             } else {
                 liElement.children('ul').toggle();
             }
-        });
-
-        $('#tectonictree a.bt-info').on("click", function(event) {
-            event.preventDefault();
-            $(this).parent().next(".tectonic-information").toggle();
-        });
-
-        $(document).on("click", '.bt-info', function(event) {
-            event.preventDefault();
-            $(this).parent().next(".tectonic-information").toggle();
         });
     }
 
@@ -106,7 +104,14 @@
         if (!id) {
             id = 0;
         }
-        var url = '/index.php?eID=tectonic&type=tectonic&action=getNodes&id=' + id;
+
+        var filterIds = $('#collection-search').data('searchFilterIds');
+
+        if (typeof filterIds !== 'undefined') {
+            var url = '/index.php?eID=collection&type=collection&action=getNodes&id=' + id + '&filterIds=' + filterIds;
+        } else {
+            var url = '/index.php?eID=collection&type=collection&action=getNodes&id=' + id;
+        }
 
         var jqxhr = $.ajax({
             url: url,
@@ -114,7 +119,8 @@
         })
             .done(function (data) {
                 if (id == 0) {
-                    $('#tectonictree').append(jsonToHtml(data));
+                    $('#collectiontree').append(jsonToHtml(data));
+                    expandFirstLevel();
                 } else {
                     $('#' + id).append(jsonToHtml(data));
                 }
@@ -131,17 +137,23 @@
         }
     }
 
-    function expandStructure(record) {
+    function expandFirstLevel() {
+        $('#collectiontree li').each(function () {
+            getChildNodes($(this).attr('id'));
+            $(this).find('span.icon').toggleClass("bel-pfeil-o01").toggleClass("bel-pfeil-u01");
+        });
+    }
 
-        var url = '/index.php?eID=tectonic&type=tectonic&action=getAllParents&id=' + record;
+    function expandStructure(record) {
+        var url = '/index.php?eID=collection&type=collection&action=getAllParents&id=' + record;
 
         var jqxhr = $.ajax({
             url: url,
             dataType: "json"
         })
-            .done(function(data) {
-                eachRecord(data);
-            });
+        .done(function(data) {
+            eachRecord(data);
+        });
     }
 
     function getLiElement(index, item) {
@@ -153,35 +165,25 @@
         if (Number.isInteger(Number(item.record_id))) {
             var linkAndActions = '';
         } else {
-            var linkAndActions = '<span class="bt-actions"><a href="#" class="bt-info"><span class="icon bel-info"></span></a>' +
-                '<a href="/index.php?id=2&tx_find_find%5Bid%5D=' + item.record_id + '" class="bt-search" target="_blank"><span class="icon bel-lupe"></span></a>' +
-                '</span>' +
-                '<div class="tectonic-information">';
-            if (item.listview_type) {
-                linkAndActions += item.listview_type + '<br/>';
-            }
-            if (item.listview_associate) {
-                linkAndActions += item.listview_associate + '<br/>';
-            }
-            if (item.listview_additional1) {
-                linkAndActions += item.listview_additional1 + '<br/>';
-            }
-            if (item.listview_additional2) {
-                linkAndActions += item.listview_additional2 + '<br/>';
-            }
-            linkAndActions += '</div>';
-
+            var linkAndActions = '<span class="bt-actions">' +
+                '<a href="/index.php?id=' + $('#collectiontree').data('findIndexPageId') + '&tx_find_find%5Bid%5D=' + item.record_id + '" class="bt-info">' +
+                '<span class="icon bel-info"></span>' +
+                '</a>' +
+                '<a href="/index.php?id=' + $('#collectiontree').data('findIndexPageId') + '&tx_find_find%5Bfacet%5D%5BSammlung%5D%5B' + item.facet_value + '%5D=1" class="bt-search" target="_blank">' +
+                '<span class="icon bel-lupe"></span>' +
+                '</a>' +
+                '</span>';
         }
-        if (item.listview_title != 'root') {
+        if (item.title != 'root') {
             constants.liElements += '<li id="' + item.uid + '">' +
                 '<article>' +
                 '<span class="bt-content">' +
-                '<a class="childElement bt-folder ' + addClass + '" href="#">' +
-                '<span class="icon bel-ordner">' +
-                '<strong>+</strong>' +
+                '<a class="childElement ' + addClass + '" href="#">' +
+                '<span class="icon bel-pfeil-u01">' +
+                '' +
                 '</span>' +
                 '</a>' +
-                '<h3>' + item.listview_title + '</h3>' +
+                '<h3>' + item.title + '</h3>' +
                 '</span>' +
                 linkAndActions +
                 '</article>' +

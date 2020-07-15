@@ -2,24 +2,24 @@
 
 return [
     'ctrl' => [
-        'title'     => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_tectonic',
-        'label'     => 'listview_title',
+        'title'     => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_collection',
+        'label'     => 'treeview_title',
         'default_sortby' => 'ORDER BY uid',
         'rootLevel' => 0,
-        'searchFields' => 'record_id,listview_title,listview_type,listview_associate,listview_additional1,listview_additional2',
+        'searchFields' => 'record_id,treeview_title,listview_title,listview_type,listview_associate,listview_additional1,listview_additional2',
     ],
     'feInterface' => [
         'fe_admin_fieldList' => '',
     ],
     'interface' => [
-        'showRecordFieldList' => 'listview_title,record_id',
+        'showRecordFieldList' => 'treeview_title,record_id',
         'maxDBListItems' => 25,
         'maxSingleDBListItems' => 50,
     ],
     'columns' => [
         'record_id' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_tectonic.record_id',
+            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_collection.record_id',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -30,7 +30,7 @@ return [
         ],
         'parent_id' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_tectonic.parent_id',
+            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_collection.parent_id',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -39,9 +39,9 @@ return [
                 'default' => '',
             ],
         ],
-        'listview_title' => [
+        'treeview_title' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_tectonic.listview_title',
+            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_collection.treeview_title',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -50,9 +50,20 @@ return [
                 'default' => '',
             ],
         ],
+        'listview_title' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_collection.listview_title',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'max' => 1024,
+                'eval' => 'trim',
+                'default' => '',
+            ],
+        ],
         'listview_type' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_tectonic.listview_type',
+            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_collection.listview_type',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -63,7 +74,7 @@ return [
         ],
         'listview_associate' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_tectonic.listview_associate',
+            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_collection.listview_associate',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -74,7 +85,7 @@ return [
         ],
         'listview_additional1' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_tectonic.listview_additional1',
+            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_collection.listview_additional1',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -85,7 +96,7 @@ return [
         ],
         'listview_additional2' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_tectonic.listview_additional2',
+            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_collection.listview_additional2',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -94,9 +105,20 @@ return [
                 'default' => '',
             ],
         ],
+        'facet_value' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_collection.facet_value',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'max' => 1024,
+                'eval' => 'required,trim',
+                'default' => '',
+            ],
+        ],
         'hasChild' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlfopacng_tectonic.hasChild',
+            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlfopacng_collection.hasChild',
             'config' => [
                 'type' => 'check',
                 'default' => 0,
@@ -104,6 +126,6 @@ return [
         ],
     ],
     'types' => [
-        '0' => ['showitem' => 'record_id,parent_id,listview_title,listview_type,listview_associate,listview_additonal1,listview_additional2,hasChild'],
+        '0' => ['showitem' => 'record_id,parent_id,treeview_title,listview_title,listview_type,listview_associate,listview_additonal1,listview_additional2,facet_value,hasChild'],
     ]
 ];

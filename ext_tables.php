@@ -10,8 +10,8 @@ defined('TYPO3_MODE') || die('Access denied.');
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'Dla.' . 'DlaOpacNg',
-    'DlaTectonic',
-    'DlaTectonic'
+    'DlaCollection',
+    'DlaCollection'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
