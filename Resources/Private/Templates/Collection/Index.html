@@ -46,7 +46,7 @@
     });
 
     function registerSearchForm() {
-        $("#collection-search").on("keyup", function (event) {
+        $("#collection-search").on("keyup", delay(function (event) {
             if ($(this).val() == '') {
                 $('#collection-search').data('searchFilterIds', '');
                 resetTreeNodes();
@@ -54,8 +54,20 @@
             } else {
                 searchNodes($(this).val());
             }
-        })
+        }, 500));
     }
+
+    function delay(callback, ms) {
+        var timer = 0;
+        return function() {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
+
 
     function searchNodes(searchTerm) {
         var url = '/index.php?eID=collection&type=collection&action=searchNodes&search=' + searchTerm;
