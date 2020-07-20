@@ -510,11 +510,11 @@
                                         <f:if condition="{doc.record_id}">
                                             <f:then>
                                                 <f:link.action pageUid="{settings.collectionUid}" additionalParams="{'tx_dlaopacng_dlacollection[record]':'{doc.record_id}'}">
-                                                    {doc.record_id}
+                                                    {doc.treeview_title}
                                                 </f:link.action>
                                             </f:then>
                                             <f:else>
-                                                {doc.record_id}
+                                                {doc.treeview_title}
                                             </f:else>
                                         </f:if>
                                         <f:if condition="!{iterator.isLast}">

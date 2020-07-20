@@ -34,6 +34,7 @@ class CollectionViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
                 $breadcrumbArray[0] = [
                     'record_id' => $arrayData->record_id,
                     'uid' => $arrayData->uid,
+                    'treeview_title' => $arrayData->treeview_title,
                 ];
                 $childObject = $arrayData;
                 $i = 1;
@@ -42,6 +43,7 @@ class CollectionViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
                     $breadcrumbArray[$i] = [
                         'record_id' => $childObject->child->record_id,
                         'uid' => $childObject->child->uid,
+                        'treeview_title' => $childObject->child->treeview_title,
                     ];
                     $i++;
                     $childObject = $childObject->child;

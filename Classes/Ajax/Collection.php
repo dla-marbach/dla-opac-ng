@@ -118,7 +118,7 @@ if ($action == 'getNodes') {
 
 } else if ($action == 'getAllParents') {
 
-    $stmt = $db->prepare('SELECT uid,parent_id,record_id FROM ' . $table . ' WHERE record_id = ?');
+    $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title FROM ' . $table . ' WHERE record_id = ?');
 
     $stmt->bind_param('s', $nodeId);
     $stmt->execute();
@@ -131,7 +131,7 @@ if ($action == 'getNodes') {
 
     while ($row = $result->fetch_assoc()) {
         if ($row['parent_id']) {
-            $stmt = $db->prepare('SELECT uid,parent_id,record_id FROM ' . $table . ' WHERE uid = ?');
+            $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title FROM ' . $table . ' WHERE uid = ?');
 
             $stmt->bind_param('s', $row['parent_id']);
             $stmt->execute();
@@ -142,9 +142,11 @@ if ($action == 'getNodes') {
             if (empty($currentTree)) {
                 $currentTree['record_id'] = $row['record_id'];
                 $currentTree['uid'] = $row['uid'];
+                $currentTree['treeview_title'] = $row['treeview_title'];
             } else {
                 $newTree['record_id'] = $row['record_id'];
                 $newTree['uid'] = $row['uid'];
+                $newTree['treeview_title'] = $row['treeview_title'];
                 $newTree['child'] = $currentTree;
                 $currentTree = $newTree;
             }
@@ -152,6 +154,7 @@ if ($action == 'getNodes') {
         } else {
             $newTree['record_id'] = $row['parent_id'];
             $newTree['uid'] = $row['uid'];
+            $newTree['treeview_title'] = $row['treeview_title'];
             $newTree['child'] = $currentTree;
             $currentTree = $newTree;
 
