@@ -1,4 +1,4 @@
-<f:if condition="{arguments.facet}">
+<f:if condition="{arguments.facet} || {arguments.q} && !{arguments.q.default}">
     <section class="ctg-facet active-facets">
         <h3>
             Aktive Facetten
@@ -9,16 +9,32 @@
         <div class="facetList">
             <ul>
                 <li class="active-facet-reset">
-                    <f:link.action
-                            addQueryString="TRUE"
-                            argumentsToBeExcludedFromQueryString="{1: 'tx_find_find[facet]'}"
-                            section="{settings.jumpToID}"
-                            noCacheHash="1"
-                            class=""
-                            title="alle Filter zurücksetzen">
-                        <span class="icon bel-ende01"></span>
-                        alle Filter zurücksetzen
-                    </f:link.action>
+                    <f:if condition="{arguments.q} && !{arguments.q.default}">
+                        <f:then>
+                            <f:link.action
+                                    addQueryString="TRUE"
+                                    argumentsToBeExcludedFromQueryString="{1: 'tx_find_find[facet]', 2: 'tx_find_find[q]'}"
+                                    section="{settings.jumpToID}"
+                                    noCacheHash="1"
+                                    class=""
+                                    title="alle Filter zurücksetzen">
+                                <span class="icon bel-ende01"></span>
+                                alle Filter zurücksetzen
+                            </f:link.action>
+                        </f:then>
+                        <f:else>
+                            <f:link.action
+                                    addQueryString="TRUE"
+                                    argumentsToBeExcludedFromQueryString="{1: 'tx_find_find[facet]'}"
+                                    section="{settings.jumpToID}"
+                                    noCacheHash="1"
+                                    class=""
+                                    title="alle Filter zurücksetzen">
+                                <span class="icon bel-ende01"></span>
+                                alle Filter zurücksetzen
+                            </f:link.action>
+                        </f:else>
+                    </f:if>
                 </li>
                 <f:for each="{arguments.facet}" as="reverseFacets" key="facetKey">
                     <f:for each="{reverseFacets}" as="reverseFacet" key="reverseFacetKey">
