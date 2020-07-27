@@ -78,6 +78,9 @@ $(document).ready(function(){
         var orderurl = $(this).data('orderurl');
 
         $('.order-overlay-button').data('orderurl', orderurl);
+
+        $('html,body').animate({scrollTop: $('#content-area').offset().top},'slow');
+        $('#order-name').focus();
     });
 
     $('.order-overlay-button').click(function (event) {
