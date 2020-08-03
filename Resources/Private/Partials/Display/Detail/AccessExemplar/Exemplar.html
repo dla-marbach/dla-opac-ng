@@ -37,23 +37,6 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AUKEY')}" name="AUKEY" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
 
-<f:if condition="{source}=='AK'">
-    <f:then>
-        <script>
-            $( document ).ready(function() {
-                $('.copy-details').hide();
-
-                $('.detail_link').click(function( event ) {
-                    event.preventDefault();
-
-                    $(this).parent().parent().next('.copy-details').toggle();
-                });
-            });
-
-        </script>
-    </f:then>
-</f:if>
-
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'source')}" name="source" />
 <f:if condition="{source}=='BF' || {source}=='BI' || {source}=='HS' || {source}=='AK'">
     <f:then>

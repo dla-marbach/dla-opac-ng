@@ -118,6 +118,16 @@ $(document).ready(function(){
         event.preventDefault();
         $(this).parent().toggle();
     });
+
+
+    $('.copy-details').hide();
+
+    $('.detail_link').click(function( event ) {
+        event.preventDefault();
+
+        $(this).parent().parent().next('.copy-details').toggle();
+    });
+
 });
 
 function sendOrderAsPopup(orderurl) {
