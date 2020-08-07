@@ -123,6 +123,12 @@
                                     <f:case value="AK">
                                         <f:render partial="Display/Detail/Library/RightColumn" arguments="{results:results, document:document}" />
                                     </f:case>
+                                    <f:case value="HS">
+                                        <f:render partial="Display/Detail/Manuscripts/RightColumn" arguments="{results:results, document:document}" />
+                                    </f:case>
+                                    <f:case value="BF">
+                                        <f:render partial="Display/Detail/Inventory/RightColumn" arguments="{results:results, document:document}" />
+                                    </f:case>
                                     <f:defaultCase>
 
                                     </f:defaultCase>
