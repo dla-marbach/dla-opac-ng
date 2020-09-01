@@ -24,11 +24,25 @@
     a.childElement:not(.children) ~ h3 {
         margin-left:32px;
     }
+    div.main-link {margin-bottom: 1rem;}
+    div.main-link a {
+        text-decoration: none;
+        margin-bottom: 1rem;
+    }
 </style>
-
+<div class="main-link">
+    <f:link.action pageUid="{settings.mainPageUid}">
+        <span class="icon bel-haus"></span>
+        <strong>
+            <f:translate key='Kallías' extensionName='dla_opac_ng'/>
+        </strong>
+        <span class="kallias">
+            – <f:translate key='der Online-Katalog des Deutschen Literaturarchivs Marbach' extensionName='dla_opac_ng'/>
+        </span>
+    </f:link.action>
+</div>
 <span id="record_id" data-record="{record}" style="display:none;"></span>
-<label>Suche</label>
-<input id="collection-search" type="text">
+<input id="collection-search" type="text" placeholder="Suche in der Bestandsübersicht">
 
 <ul id="collectiontree" class="bt-listview" data-findIndexPageId="{settings.indexPageUid}" data-pluginType="collection">
 
