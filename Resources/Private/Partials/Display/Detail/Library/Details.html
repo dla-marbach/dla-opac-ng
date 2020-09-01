@@ -1289,7 +1289,12 @@
                         <f:if condition="{A0501}">
                             <f:then>
                                 <f:for each="{A0501}" as="item" iteration="iterator">
-                                    {item}<br />
+                                    <dla:replaceNullValue text="{item}" as="item"/>
+                                    <f:if condition="{item}">
+                                        <f:then>
+                                            {item}<br />
+                                        </f:then>
+                                    </f:if>
                                 </f:for>
                             </f:then>
                             <f:else>
