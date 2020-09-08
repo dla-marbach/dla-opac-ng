@@ -1009,9 +1009,16 @@
         </f:if>
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'BIOKEY')}" name="BIOKEY" />
         <dla:collection record="{id}" as="data"/>
-        <f:if condition="{data}">
+        <dla:collection record="BI{BIOKEY}" as="dataGreater"/>
+        <f:if condition="{data} || {dataGreater}">
             <f:then>
+                <f:if condition="{dataGreater} && !{data}">
+                    <f:then>
+                        <v:variable.set value="{dataGreater}" name="data" />
+                    </f:then>
+                </f:if>
                 <div class="ctg-dtvt-row">
                     <div class="ctg-dtvt-label">
                         In Bestandsübersicht zeigen
