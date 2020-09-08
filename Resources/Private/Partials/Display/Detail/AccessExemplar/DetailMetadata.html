@@ -496,7 +496,7 @@
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
                 <dla:collection record="{id}" as="data"/>
-                <dla:collection record="{exemplar}" as="dataGreater"/>
+                <dla:collection record="AK{exemplar}" as="dataGreater"/>
                 <f:if condition="{data} || {dataGreater}">
                     <f:then>
                         <f:if condition="{dataGreater} && !{data}">
