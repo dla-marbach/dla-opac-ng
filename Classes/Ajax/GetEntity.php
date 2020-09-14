@@ -28,7 +28,6 @@ if ($response !== FALSE) {
         'id' => htmlspecialchars($json['response']['docs'][0]['id']),
         'listview_title' => !empty($json['response']['docs'][0]['listview_title']) ? htmlspecialchars($json['response']['docs'][0]['listview_title']) : '',
         'listview_associate' => !empty($json['response']['docs'][0]['listview_associate']) ? array_map('htmlspecialchars', $json['response']['docs'][0]['listview_associate']) : '',
-        'listview_type' => !empty($json['response']['docs'][0]['listview_type']) ? array_map('htmlspecialchars', $json['response']['docs'][0]['listview_type']) : '',
         'listview_additional1' => !empty($json['response']['docs'][0]['listview_additional1']) ? array_map('htmlspecialchars', $json['response']['docs'][0]['listview_additional1']) : '',
         'listview_additional2' => !empty($json['response']['docs'][0]['listview_additional2']) ? array_map('htmlspecialchars', $json['response']['docs'][0]['listview_additional2']) : '',
         'picture_midi' => !empty($json['response']['docs'][0]['picture_midi']) ? $json['response']['docs'][0]['picture_midi'] : '',

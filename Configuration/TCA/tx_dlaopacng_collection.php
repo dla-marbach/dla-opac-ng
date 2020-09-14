@@ -6,7 +6,7 @@ return [
         'label'     => 'treeview_title',
         'default_sortby' => 'ORDER BY uid',
         'rootLevel' => 0,
-        'searchFields' => 'record_id,treeview_title,listview_title,listview_type,listview_associate,listview_additional1,listview_additional2',
+        'searchFields' => 'record_id,treeview_title,listview_title,listview_associate,listview_additional1,listview_additional2',
     ],
     'feInterface' => [
         'fe_admin_fieldList' => '',
@@ -53,17 +53,6 @@ return [
         'listview_title' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_collection.listview_title',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'max' => 1024,
-                'eval' => 'trim',
-                'default' => '',
-            ],
-        ],
-        'listview_type' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_collection.listview_type',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -126,6 +115,6 @@ return [
         ],
     ],
     'types' => [
-        '0' => ['showitem' => 'record_id,parent_id,treeview_title,listview_title,listview_type,listview_associate,listview_additonal1,listview_additional2,facet_value,hasChild'],
+        '0' => ['showitem' => 'record_id,parent_id,treeview_title,listview_title,listview_associate,listview_additonal1,listview_additional2,facet_value,hasChild'],
     ]
 ];

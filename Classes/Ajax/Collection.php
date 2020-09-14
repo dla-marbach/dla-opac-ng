@@ -71,9 +71,13 @@ if ($action == 'getNodes') {
 
 } else if ($action == 'searchNodes') {
 
-    $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title,facet_value,hasChild FROM ' . $table . ' WHERE MATCH (treeview_title,listview_title,listview_type,listview_associate,listview_additional1,listview_additional2) AGAINST (? IN NATURAL LANGUAGE MODE);');
+    $addOperator = function($x) { return '+'.$x; };
 
-    $stmt->bind_param('s', $search);
+    $searchwords = implode(' ', array_map($addOperator, explode(' ', $search)));
+
+    $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title,facet_value,hasChild FROM ' . $table . ' WHERE MATCH (treeview_title,listview_title,listview_associate,listview_additional1,listview_additional2) AGAINST (? IN BOOLEAN MODE);');
+
+    $stmt->bind_param('s', $searchwords);
     $stmt->execute();
     $result = $stmt->get_result();
 
