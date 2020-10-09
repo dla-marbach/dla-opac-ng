@@ -148,6 +148,8 @@
                 '<span class="icon bel-lupe"></span>' +
                 '</a>' +
                 '</span>';
+        } else {
+            var linkAndActions = '';
         }
         if (item.title != 'root') {
             if (Number.isInteger(Number(item.record_id))) {
@@ -167,6 +169,7 @@
                 '</a>' +
                 '<h3>' + title + '</h3>' +
                 '</span>' +
+                    linkAndActions +
                 '</article>' +
                 '</li>';
         }
