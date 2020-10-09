@@ -91,7 +91,7 @@
         };
 
         if (typeof filterIds !== 'undefined') {
-            requestObject.data = { filterIds : filterIds};
+            requestObject.data = { filterIds : filterIds };
         }
 
         var jqxhr = $.ajax(requestObject)
@@ -100,6 +100,13 @@
                     $('#collectiontree').append(jsonToHtml(data));
                 } else {
                     $('#' + id).append(jsonToHtml(data));
+
+                    // delayed scroll to entry
+                    if ($('#record_id').data('record')) {
+                        setTimeout(function() {
+                            $(document).scrollTop($('#'+$('#record_id').data('record')).offset().top);
+                        }, 500);
+                    }
                 }
                 if (expand) {
                     eachRecord(child);
@@ -112,7 +119,7 @@
             getChildNodes(data.uid, data.child, 1);
             // eachRecord(data.child);
         } else {
-            $(document).scrollTop($('#'+$('#record_id').data('achorid')).offset().top);
+            $(document).scrollTop($('#'+$('#record_id').data('anchorid')).offset().top);
         }
     }
 
@@ -125,7 +132,7 @@
         })
             .done(function(data) {
                 eachRecord(data);
-                $('#record_id').data('achorid', data.uid);
+                $('#record_id').data('anchorid', data.uid);
             });
     }
 
@@ -151,7 +158,7 @@
                     '</a>';
             }
             constants.liElements += '<li id="' + item.uid + '">' +
-                '<article>' +
+                '<article id="' + item.record_id + '">' +
                 '<span class="bt-content">' +
                 '<a class="childElement ' + addClass + '" href="#">' +
                 '<span class="icon bel-pfeil-u01">' +
