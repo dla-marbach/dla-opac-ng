@@ -26,7 +26,7 @@ $nodeId = $_GET['id'];
 $search = $_GET['search'];
 $type = $_GET['type'];
 
-$filter = $_GET['filterIds'];
+$filter = $_POST['filterIds'];
 
 $table = $tables[$type];
 

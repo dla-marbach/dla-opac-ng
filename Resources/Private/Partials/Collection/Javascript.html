@@ -84,16 +84,17 @@
 
         var filterIds = $('#collection-search').data('searchFilterIds');
 
+        var requestObject = {
+            type: "POST",
+            url: '/index.php?eID=collection&type=' + pluginType + '&action=getNodes&id=' + id,
+            dataType: "json"
+        };
+
         if (typeof filterIds !== 'undefined') {
-            var url = '/index.php?eID=collection&type=' + pluginType + '&action=getNodes&id=' + id + '&filterIds=' + filterIds;
-        } else {
-            var url = '/index.php?eID=collection&type=' + pluginType + '&action=getNodes&id=' + id;
+            requestObject.data = { filterIds : filterIds};
         }
 
-        var jqxhr = $.ajax({
-            url: url,
-            dataType: "json"
-        })
+        var jqxhr = $.ajax(requestObject)
             .done(function (data) {
                 if (id == 0) {
                     $('#collectiontree').append(jsonToHtml(data));
