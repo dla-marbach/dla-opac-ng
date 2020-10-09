@@ -1,4 +1,4 @@
-<f:if condition="{arguments.facet} || {arguments.q} && !{arguments.q.default}">
+<f:if condition="{arguments.facet} || {arguments.q} && {dla:isNull(variable:'{arguments.q.default}')}">
     <section class="ctg-facet active-facets">
         <h3>
             Aktive Facetten
@@ -9,7 +9,7 @@
         <div class="facetList">
             <ul>
                 <li class="active-facet-reset">
-                    <f:if condition="{arguments.q} && !{arguments.q.default}">
+                    <f:if condition="{arguments.q} && {dla:isNull(variable:'{arguments.q.default}')}">
                         <f:then>
                             <f:link.action
                                     addQueryString="TRUE"
