@@ -1140,10 +1140,10 @@
 
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'HSBFKEY')}" name="HSBFKEY" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'HSBFKY')}" name="HSBFKY" />
 
         <dla:collection record="{id}" as="data"/>
-        <dla:collection record="HS{HSBFKEY}" as="dataGreater"/>
+        <dla:collection record="BF{HSBFKY}" as="dataGreater"/>
         <f:if condition="{data} || {dataGreater}">
             <f:then>
                 <f:if condition="{dataGreater} && !{data}">
