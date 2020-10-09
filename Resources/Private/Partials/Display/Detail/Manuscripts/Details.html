@@ -185,7 +185,7 @@
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'GFUPER')}" name="GFUPER" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PE0ZU')}" name="PE0ZU" />
 
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_K0800_KSC200')}" name="XX_KS_K0800_KSC200" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_listview_title_KSC200')}" name="XX_KS_listview_title_KSC200" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'GFUKS')}" name="GFUKS" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KSCZU')}" name="KSCZU" />
 
@@ -196,7 +196,7 @@
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'GFUPAN')}" name="GFUPAN" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PEAZU')}" name="PEAZU" />
 
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_K0800_KSA200')}" name="XX_KS_K0800_KSA200" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_listview_title_KSA200')}" name="XX_KS_listview_title_KSA200" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'GFUKSA')}" name="GFUKSA" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KSAZU')}" name="KSAZU" />
 
@@ -204,7 +204,7 @@
 
         <f:if condition="{H41410} == 'Briefwechsel' || {H41410} == 'Briefwechsel ohne Bestandsbildner'">
             <f:then>
-                <f:if condition="{XX_PE_listview_title_PE0100} || {XX_KS_K0800_KSC200} || {XX_PE_listview_title_PEA100} || {XX_KS_K0800_KSA200}">
+                <f:if condition="{XX_PE_listview_title_PE0100} || {XX_KS_listview_title_KSC200} || {XX_PE_listview_title_PEA100} || {XX_KS_listview_title_KSA200}">
                     <f:then>
                         <div class="ctg-dtvt-row">
                             <div class="ctg-dtvt-label">
@@ -232,7 +232,7 @@
 
 
                                 <dla:data.joinFields
-                                        fieldNames="{0:'XX_KS_K0800_KSC200',1:'GFUKS',2:'KSCZU'}"
+                                        fieldNames="{0:'XX_KS_listview_title_KSC200',1:'GFUKS',2:'KSCZU'}"
                                         fieldWraps="{0:'%s',1:'%s',2:'[%S]'}"
                                         fields="{document.fields}"
                                         as="linkTexts"
@@ -255,7 +255,7 @@
                 </f:if>
             </f:then>
             <f:else>
-                <f:if condition="{XX_PE_listview_title_PE0100} || {XX_KS_K0800_KSC200}">
+                <f:if condition="{XX_PE_listview_title_PE0100} || {XX_KS_listview_title_KSC200}">
                     <f:then>
                         <div class="ctg-dtvt-row">
                             <div class="ctg-dtvt-label">
@@ -282,7 +282,7 @@
                           }"/>
 
                                 <dla:data.joinFields
-                                        fieldNames="{0:'XX_KS_K0800_KSC200',1:'GFUKS',2:'KSCZU'}"
+                                        fieldNames="{0:'XX_KS_listview_title_KSC200',1:'GFUKS',2:'KSCZU'}"
                                         fieldWraps="{0:'%s',1:'%s',2:'[%s]'}"
                                         fields="{document.fields}"
                                         as="linkTexts"
@@ -330,7 +330,7 @@
                           }"/>
 
                                 <dla:data.joinFields
-                                        fieldNames="{0:'XX_KS_K0800_KSA200',1:'GFUKSA',2:'KSAZU'}"
+                                        fieldNames="{0:'XX_KS_listview_title_KSA200',1:'GFUKSA',2:'KSAZU'}"
                                         fieldWraps="{0:'%s',1:'%s',2:'[%s]'}"
                                         fields="{document.fields}"
                                         as="linkTexts"

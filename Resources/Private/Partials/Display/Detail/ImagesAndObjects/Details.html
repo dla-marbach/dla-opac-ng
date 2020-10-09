@@ -288,11 +288,11 @@
         <f:comment>
             Körperschaft
         </f:comment>
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_K0800_KSE200')}" name="XX_KS_K0800_KSE200" />
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_K0800_KSC200')}" name="XX_KS_K0800_KSC200" />
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_K0800_KSA200')}" name="XX_KS_K0800_KSA200" />
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_K0800_KSU200')}" name="XX_KS_K0800_KSU200" />
-        <f:if condition="{XX_KS_K0800_KSE200} || {XX_KS_K0800_KSC200} || {XX_KS_K0800_KSA200} || {XX_KS_K0800_KSU200}">
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_listview_title_KSE200')}" name="XX_KS_listview_title_KSE200" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_listview_title_KSC200')}" name="XX_KS_listview_title_KSC200" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_listview_title_KSA200')}" name="XX_KS_listview_title_KSA200" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_listview_title_KSU200')}" name="XX_KS_listview_title_KSU200" />
+        <f:if condition="{XX_KS_listview_title_KSE200} || {XX_KS_listview_title_KSC200} || {XX_KS_listview_title_KSA200} || {XX_KS_listview_title_KSU200}">
             <f:then>
                 <div class="ctg-dtvt-row">
                     <div class="ctg-dtvt-label">
@@ -306,8 +306,8 @@
                             document:document,
                             results:results,
                             field:'KSE200',
-                            fieldToDisplay: 'XX_KS_K0800_KSE200',
-                            fieldNames: '{0:\'XX_KS_K0800_KSE200\', 1:\'GFUKSE\', 2:\'AFUKSE\'}',
+                            fieldToDisplay: 'XX_KS_listview_title_KSE200',
+                            fieldNames: '{0:\'XX_KS_listview_title_KSE200\', 1:\'GFUKSE\', 2:\'AFUKSE\'}',
                             fieldWraps: '{0:\'%s\',1:\'[%s]\',2:\'(%s)\'}'
                         }"
                         />
@@ -318,8 +318,8 @@
                             document:document,
                             results:results,
                             field:'KSC200',
-                            fieldToDisplay: 'XX_KS_K0800_KSC200',
-                            fieldNames: '{0:\'XX_KS_K0800_KSC200\', 1:\'AFUKS\'}',
+                            fieldToDisplay: 'XX_KS_listview_title_KSC200',
+                            fieldNames: '{0:\'XX_KS_listview_title_KSC200\', 1:\'AFUKS\'}',
                             fieldWraps: '{0:\'%s [Urheber/in]\',1:\'(%s)\'}'
                         }"
                         />
@@ -330,8 +330,8 @@
                             document:document,
                             results:results,
                             field:'KSA200',
-                            fieldToDisplay: 'XX_KS_K0800_KSA200',
-                            fieldNames: '{0:\'XX_KS_K0800_KSA200\'}',
+                            fieldToDisplay: 'XX_KS_listview_title_KSA200',
+                            fieldNames: '{0:\'XX_KS_listview_title_KSA200\'}',
                             fieldWraps: '{0:\'%s [Widmungsempfänger/in]\'}'
                         }"
                         />
@@ -342,8 +342,8 @@
                             document:document,
                             results:results,
                             field:'KSU200',
-                            fieldToDisplay: 'XX_KS_K0800_KSU200',
-                            fieldNames: '{0:\'XX_KS_K0800_KSU200\'}',
+                            fieldToDisplay: 'XX_KS_listview_title_KSU200',
+                            fieldNames: '{0:\'XX_KS_listview_title_KSU200\'}',
                             fieldWraps: '{0:\'%s [Vorbesitzer/in]\'}'
                         }"
                         />

@@ -148,10 +148,10 @@
 
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_PE_listview_title_PEU100')}" name="XX_PE_listview_title_PEU100" />
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_K0800_KSU200')}" name="XX_KS_K0800_KSU200" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_listview_title_KSU200')}" name="XX_KS_listview_title_KSU200" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_PE_listview_titel')}" name="XX_PE_listview_titel" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_listview_titel_KSU200')}" name="XX_KS_listview_titel_KSU200" />
-<f:if condition="{XX_PE_listview_title_PEU100} || {XX_KS_K0800_KSU200}">
+<f:if condition="{XX_PE_listview_title_PEU100} || {XX_KS_listview_title_KSU200}">
     <div class="ctg-dtvt-row">
         <div class="ctg-dtvt-label">
             <f:translate key='Bestandsbildner' extensionName='dla_opac_ng'/>
@@ -177,6 +177,7 @@
                     field:'KSU200',
                     linkFieldContent:1,
                     linkFacets:linkFacets
+                    linkTexts: XX_KS_listview_title_KSU200
                   }"/>
         </div>
     </div>
