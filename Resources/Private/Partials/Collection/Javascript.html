@@ -167,10 +167,10 @@
         }
         if (item.title != 'root') {
             if (Number.isInteger(Number(item.record_id))) {
-                var title = item.title;
+                var title = $('<div/>').text(item.title).html();
             } else {
                 var title = '<a href="/index.php?id=' + $('#collectiontree').data('findindexpageid') + '&tx_find_find%5Bid%5D=' + item.record_id + '" target="_blank">' +
-                    item.title +
+                    $('<div/>').text(item.title).html() +
                     '</a>';
             }
             constants.liElements += '<li id="' + item.uid + '">' +
