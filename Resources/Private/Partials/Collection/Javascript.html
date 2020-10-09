@@ -77,6 +77,7 @@
     }
 
     function getChildNodes(id, child = "",expand = 0) {
+        var searchFlag = false;
 
         if (!id) {
             id = 0;
@@ -92,12 +93,18 @@
 
         if (typeof filterIds !== 'undefined') {
             requestObject.data = { filterIds : filterIds };
+            searchFlag = true;
         }
 
         var jqxhr = $.ajax(requestObject)
             .done(function (data) {
                 if (id == 0) {
                     $('#collectiontree').append(jsonToHtml(data));
+                    if (searchFlag) {
+                        setTimeout(function() {
+                            expandFirstLevel();
+                        }, 500);
+                    }
                 } else {
                     $('#' + id).append(jsonToHtml(data));
 
@@ -112,6 +119,13 @@
                     eachRecord(child);
                 }
             });
+    }
+
+    function expandFirstLevel() {
+        $('#collectiontree li').each(function () {
+            getChildNodes($(this).attr('id'));
+            $(this).find('span.icon').toggleClass("bel-pfeil-o01").toggleClass("bel-pfeil-u01");
+        });
     }
 
     function eachRecord(data) {
