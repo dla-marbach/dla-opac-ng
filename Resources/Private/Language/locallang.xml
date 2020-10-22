@@ -369,7 +369,7 @@
       <label index="Audio &amp; Video">Audio &amp; Video</label>
       <label index="Namen &amp; Werke">Namen &amp; Werke</label>
       <label index="Jetzt suchen">Jetzt suchen</label>
-      <label index="Expertensuche">Expertensuche</label>
+      <label index="Expertensuche">Erweitere Suche</label>
       <label index="Bestandsübersicht">Bestandsübersicht</label>
       <label index="Suchverlauf">Suchverlauf</label>
       <label index="Hilfe und Auskunft">Hilfe &amp; Auskunft</label>
@@ -395,6 +395,24 @@
 
       <!-- Resources/Private/Templates/Start/Start.html -->
       <label index="Hilfe &amp; Auskunft">Hilfe &amp; Auskunft</label>
+
+      <label index="search.fieldselector.author">Person/Körperschaft</label>
+      <label index="search.fieldselector.author_von">Person/Körperschaft Von</label>
+      <label index="search.fieldselector.author_an">Person/Körperschaft An</label>
+      <label index="search.fieldselector.author_ueber">Person/Körperschaft Über</label>
+      <label index="search.fieldselector.author_unter">Person/Körperschaft Unter</label>
+      <label index="search.fieldselector.title">Titel</label>
+      <label index="search.fieldselector.title_ueber">Titel Über</label>
+      <label index="search.fieldselector.date">Jahr/Datum</label>
+      <label index="search.fieldselector.date_von">Zeit/Datum Von</label>
+      <label index="search.fieldselector.date_bis">Zeit/Datum Bis</label>
+      <label index="search.fieldselector.new_von">Neu erfasst von</label>
+      <label index="search.fieldselector.new_bis">Neu erfasst bis</label>
+      <label index="search.fieldselector.place">Entstehungsort/Erscheinungsort</label>
+      <label index="search.fieldselector.numbers">Nummern</label>
+      <label index="search.fieldselector.signatur">Bestandssignatur</label>
+      <label index="search.fieldselector.exemplar">Provienenzmerkmale (Exemplar)</label>
+      <label index="search.fieldselector.searchall">Freie Suche</label>
 
     </languageKey>
 

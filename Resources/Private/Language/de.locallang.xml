@@ -11,7 +11,7 @@
     <languageKey index="default" type="array">
       <label index="Missing type in configuration for queryField %s.">Error: Missing type in configuration for queryField »%s«.</label>
 
-      <label index="extended Search">Expertensuche</label>
+      <label index="extended Search">Erweitere Suche</label>
       <label index="basic Search">Einfache Suche</label>
       <label index="Search">Jetzt suchen</label>
 

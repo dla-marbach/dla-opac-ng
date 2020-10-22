@@ -106,6 +106,55 @@ section.active-facets a:hover {
     padding-top:0px !important;
 }
 
+.extended-search {
+}
+
+.extended-search-container {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5rem;
+}
+
+.extended-search-container-button {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.extended-search-container-button button {
+    padding: 10px 20px 10px 10px;
+    background-color: #b61f24;
+    color: #FFF;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.extended-search-fields {
+    display: table-cell;
+}
+
+.extended-search-fields select:hover {
+    background-color: #b61f24;
+}
+
+.extended-search-fields select {
+    background-color: #b61f24;
+    color: white;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.extended-search-input {
+    display: table-cell;
+    width: 70%;
+}
+
+.extended-search-input input {
+    border-bottom-right-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+}
+
 .ctg-catalog-title a {
     color: #fff;
     text-decoration: none;

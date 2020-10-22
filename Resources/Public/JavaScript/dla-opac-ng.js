@@ -196,3 +196,105 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
+// extended search
+$(document).ready(function () {
+    $('.linkExtendedSearch').on('click', function (event) {
+        event.preventDefault();
+        toggleExtendedSearch();
+    });
+
+    $('.extended-search-container-button button').on('click', function (event) {
+        var extendedInputs = [0,1,2,3,4];
+        extendedInputs.forEach(function (item, index, array) {
+            var currentSelectName = $('#extended-search-select-'+item).children('option:selected').attr('name');
+
+            if ($('#extended-search-input-'+item).val().length !== 0) {
+
+                if ($('#extended-search-select-0').children('option:selected').attr('name') == currentSelectName && item != 0) {
+                    if ($('#extended-search-input-0').val().length !== 0) {
+                        $('#extended-search-input-'+item).val($('#extended-search-input-'+item).val() + ' ' + $('#extended-search-input-0').val());
+                        $('#extended-search-input-0').val('');
+                    }
+                }
+
+                if ($('#extended-search-select-1').children('option:selected').attr('name') == currentSelectName && item != 1) {
+                    if ($('#extended-search-input-1').val().length !== 0) {
+                        $('#extended-search-input-'+item).val($('#extended-search-input-'+item).val() + ' ' + $('#extended-search-input-1').val());
+                        $('#extended-search-input-1').val('');
+                    }
+                }
+
+                if ($('#extended-search-select-2').children('option:selected').attr('name') == currentSelectName && item != 2) {
+                    if ($('#extended-search-input-2').val().length !== 0) {
+                        $('#extended-search-input-'+item).val($('#extended-search-input-'+item).val() + ' ' + $('#extended-search-input-2').val());
+                        $('#extended-search-input-2').val('');
+                    }
+                }
+
+                if ($('#extended-search-select-3').children('option:selected').attr('name') == currentSelectName && item != 3) {
+                    if ($('#extended-search-input-3').val().length !== 0) {
+                        $('#extended-search-input-'+item).val($('#extended-search-input-'+item).val() + ' ' + $('#extended-search-input-3').val());
+                        $('#extended-search-input-3').val('');
+                    }
+                }
+
+                if ($('#extended-search-select-4').children('option:selected').attr('name') == currentSelectName && item != 4) {
+                    if ($('#extended-search-input-4').val().length !== 0) {
+                        $('#extended-search-input-'+item).val($('#extended-search-input-'+item).val() + ' ' + $('#extended-search-input-4').val());
+                        $('#extended-search-input-4').val('');
+                    }
+                }
+            } else {
+                $('#extended-search-input-'+item).attr('name', 'tx_find_find[q]['+item+']');
+            }
+
+
+        });
+    });
+
+    $('.extended-search-select').on('change', function (event) {
+        $('#'+$(this).attr('id').replace('select','input')).attr('name', 'tx_find_find[q][' + $(this).children('option:selected').attr('name') + ']');
+    });
+
+    var extendedFields = ["author",
+        "author_von",
+        "author_an",
+        "author_ueber",
+        "author_unter",
+        "title",
+        "title_ueber",
+        "date",
+        "date_von",
+        "date_bis",
+        "new_von",
+        "new_bis",
+        "place",
+        "numbers",
+        "signatur",
+        "exemplar",
+        "searchall"];
+
+    var i = 0;
+    extendedFields.forEach(function (item, index, array) {
+        if (value = getUrlParameter("tx_find_find%5Bq%5D%5B" + item + "%5D")) {
+            $('#extended-search-select-'+i).children('[name='+item+']').prop('selected', true)
+            $('#extended-search-input-'+i).val(value);
+            $('#extended-search-input-'+i).attr('name', 'tx_find_find[q][' + item + ']');
+            i++;
+        }
+    });
+    if (i > 0) {
+        toggleExtendedSearch();
+    }
+
+
+
+
+
+});
+
+function toggleExtendedSearch() {
+    $('.extended-search').toggle();
+    $('.ctg-hd-search-form').toggle();
+}
+

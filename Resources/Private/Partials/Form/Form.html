@@ -167,7 +167,7 @@
                         </li>
                     </ul>
 
-                    <div class="ctg-hd-search-form">
+                    <div class="ctg-hd-search-form {f:if(condition: '{arguments.extended}==1', then: 'hidden')}">
                         <div class="ctg-search-autocomplete">
 
                             <f:comment>
@@ -226,6 +226,222 @@
                             </button>
                         </div>
                     </div>
+
+
+                    <div class="extended-search {f:if(condition: '{arguments.extended}!=1', then: 'hidden')}">
+                        <div class="extended-search-container">
+
+                            <div class="extended-search-fields">
+                                <select id="extended-search-select-0" class="extended-search-select">
+                                    <option name="author" selected="true" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author"/></option>
+                                    <option name="author_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_von"/></option>
+                                    <option name="author_an" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_an"/></option>
+                                    <option name="author_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_ueber"/></option>
+                                    <option name="author_unter" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_unter"/></option>
+                                    <option name="title" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title"/></option>
+                                    <option name="title_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title_ueber"/></option>
+                                    <option name="date" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date"/></option>
+                                    <option name="date_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_von"/></option>
+                                    <option name="date_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_bis"/></option>
+                                    <option name="new_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_von"/></option>
+                                    <option name="new_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_bis"/></option>
+                                    <option name="place" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.place"/></option>
+                                    <option name="numbers" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.numbers"/></option>
+                                    <option name="signatur" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.signatur"/></option>
+                                    <option name="exemplar" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.exemplar"/></option>
+                                    <option name="searchall" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.searchall"/></option>
+
+                                </select>
+                            </div>
+                            <div class="extended-search-input">
+                                <f:form.textfield
+                                        id="extended-search-input-0"
+                                        class="catalog-extended-search-input"
+                                        name="q[author]"
+                                        value=""
+                                        placeholder=""
+                                        additionalAttributes="{aria-label:\"Suchfeld 1\"}"
+                                />
+                                <button id="resetInput-extended-0" class="btn btn-default hidden" aria-label="Reset Input" type="button"><span class='hide-text'><f:translate key="LLL:{settings.languageRootPath}locallang.xml:reset-input" /></span></button>
+                            </div>
+                        </div>
+
+                        <div class="extended-search-container">
+
+                            <div class="extended-search-fields">
+                                <select id="extended-search-select-1" class="extended-search-select">
+                                    <option name="author" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author"/></option>
+                                    <option name="author_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_von"/></option>
+                                    <option name="author_an" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_an"/></option>
+                                    <option name="author_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_ueber"/></option>
+                                    <option name="author_unter" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_unter"/></option>
+                                    <option name="title" selected="true"  class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title"/></option>
+                                    <option name="title_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title_ueber"/></option>
+                                    <option name="date" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date"/></option>
+                                    <option name="date_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_von"/></option>
+                                    <option name="date_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_bis"/></option>
+                                    <option name="new_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_von"/></option>
+                                    <option name="new_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_bis"/></option>
+                                    <option name="place" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.place"/></option>
+                                    <option name="numbers" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.numbers"/></option>
+                                    <option name="signatur" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.signatur"/></option>
+                                    <option name="exemplar" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.exemplar"/></option>
+                                    <option name="searchall" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.searchall"/></option>
+
+                                </select>
+                            </div>
+                            <div class="extended-search-input">
+                                <f:form.textfield
+                                        id="extended-search-input-1"
+                                        class="catalog-extended-search-input"
+                                        name="q[title]"
+                                        value=""
+                                        placeholder=""
+                                        additionalAttributes="{aria-label:\"Suchfeld 2\"}"
+                                />
+                                <button id="resetInput-extended-1" class="btn btn-default hidden" aria-label="Reset Input" type="button"><span class='hide-text'><f:translate key="LLL:{settings.languageRootPath}locallang.xml:reset-input" /></span></button>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="extended-search-container">
+
+                            <div class="extended-search-fields">
+                                <select id="extended-search-select-2" class="extended-search-select">
+                                    <option name="author" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author"/></option>
+                                    <option name="author_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_von"/></option>
+                                    <option name="author_an" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_an"/></option>
+                                    <option name="author_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_ueber"/></option>
+                                    <option name="author_unter" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_unter"/></option>
+                                    <option name="title" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title"/></option>
+                                    <option name="title_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title_ueber"/></option>
+                                    <option name="date" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date"/></option>
+                                    <option name="date_von" selected="true" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_von"/></option>
+                                    <option name="date_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_bis"/></option>
+                                    <option name="new_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_von"/></option>
+                                    <option name="new_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_bis"/></option>
+                                    <option name="place" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.place"/></option>
+                                    <option name="numbers" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.numbers"/></option>
+                                    <option name="signatur" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.signatur"/></option>
+                                    <option name="exemplar" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.exemplar"/></option>
+                                    <option name="searchall" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.searchall"/></option>
+
+                                </select>
+                            </div>
+                            <div class="extended-search-input">
+                                <f:form.textfield
+                                        id="extended-search-input-2"
+                                        class="catalog-extended-search-input"
+                                        name="q[date_von]"
+                                        value=""
+                                        placeholder=""
+                                        additionalAttributes="{aria-label:\"Suchfeld 3\"}"
+                                />
+                                <button id="resetInput-extended-2" class="btn btn-default hidden" aria-label="Reset Input" type="button"><span class='hide-text'><f:translate key="LLL:{settings.languageRootPath}locallang.xml:reset-input" /></span></button>
+                            </div>
+
+                        </div>
+
+
+                        <div class="extended-search-container">
+
+                            <div class="extended-search-fields">
+                                <select id="extended-search-select-3" class="extended-search-select">
+                                    <option name="author" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author"/></option>
+                                    <option name="author_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_von"/></option>
+                                    <option name="author_an" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_an"/></option>
+                                    <option name="author_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_ueber"/></option>
+                                    <option name="author_unter" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_unter"/></option>
+                                    <option name="title" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title"/></option>
+                                    <option name="title_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title_ueber"/></option>
+                                    <option name="date" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date"/></option>
+                                    <option name="date_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_von"/></option>
+                                    <option name="date_bis" selected="true" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_bis"/></option>
+                                    <option name="new_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_von"/></option>
+                                    <option name="new_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_bis"/></option>
+                                    <option name="place" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.place"/></option>
+                                    <option name="numbers" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.numbers"/></option>
+                                    <option name="signatur" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.signatur"/></option>
+                                    <option name="exemplar" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.exemplar"/></option>
+                                    <option name="searchall" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.searchall"/></option>
+
+                                </select>
+                            </div>
+                            <div class="extended-search-input">
+                                <f:form.textfield
+                                        id="extended-search-input-3"
+                                        class="catalog-extended-search-input"
+                                        name="q[date_bis]"
+                                        value=""
+                                        placeholder=""
+                                        additionalAttributes="{aria-label:\"Suchfeld 4\"}"
+                                />
+                                <button id="resetInput-extended-3" class="btn btn-default hidden" aria-label="Reset Input" type="button"><span class='hide-text'><f:translate key="LLL:{settings.languageRootPath}locallang.xml:reset-input" /></span></button>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="extended-search-container">
+
+                            <div class="extended-search-fields">
+                                <select id="extended-search-select-4" class="extended-search-select">
+                                    <option name="author" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author"/></option>
+                                    <option name="author_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_von"/></option>
+                                    <option name="author_an" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_an"/></option>
+                                    <option name="author_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_ueber"/></option>
+                                    <option name="author_unter" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_unter"/></option>
+                                    <option name="title" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title"/></option>
+                                    <option name="title_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title_ueber"/></option>
+                                    <option name="date" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date"/></option>
+                                    <option name="date_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_von"/></option>
+                                    <option name="date_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_bis"/></option>
+                                    <option name="new_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_von"/></option>
+                                    <option name="new_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_bis"/></option>
+                                    <option name="place" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.place"/></option>
+                                    <option name="numbers" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.numbers"/></option>
+                                    <option name="signatur" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.signatur"/></option>
+                                    <option name="exemplar" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.exemplar"/></option>
+                                    <option name="searchall" selected="true" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.searchall"/></option>
+
+                                </select>
+                            </div>
+                            <div class="extended-search-input">
+                                <f:form.textfield
+                                        id="extended-search-input-4"
+                                        class="catalog-extended-search-input"
+                                        name="q[searchall]"
+                                        value=""
+                                        placeholder=""
+                                        additionalAttributes="{aria-label:\"Suchfeld 5\"}"
+                                />
+                                <button id="resetInput-extended-4" class="btn btn-default hidden" aria-label="Reset Input" type="button"><span class='hide-text'><f:translate key="LLL:{settings.languageRootPath}locallang.xml:reset-input" /></span></button>
+                            </div>
+
+
+                        </div>
+                        <div class="extended-search-container-button">
+                            <button type="submit">
+                                <span class="icon bel-lupe"></span>
+                                <f:translate key='Jetzt suchen' extensionName='dla_opac_ng'/>
+                            </button>
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
                 </f:form>
             </section>
 
@@ -268,8 +484,13 @@
                         </f:comment>
 
 
+                        <f:link.action
+                            addQueryString="TRUE"
+                            arguments="{extendedSearch: 1}"
+                            class="linkExtendedSearch">
+                            <span class="icon bel-regler01"></span><span class="ctg-hd-addon-term"><f:translate key='Expertensuche' extensionName='dla_opac_ng'/></span>
+                        </f:link.action>
 
-                        <a href="#" title="<f:translate key='Expertensuche' extensionName='dla_opac_ng'/>"><span class="icon bel-regler01"></span><span class="ctg-hd-addon-term"><f:translate key='Expertensuche' extensionName='dla_opac_ng'/></span></a>
                     </li>
                     <li>
                         <f:link.action pageUid="{settings.collectionUid}">
@@ -288,6 +509,8 @@
                 </ul>
             </section>
         </figure>
+
+
 
     </div>
 </div>
