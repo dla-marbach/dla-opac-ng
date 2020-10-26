@@ -66,6 +66,10 @@ page.includeJS.jquery-plot-select = EXT:dla_opac_ng/Resources/Public/JavaScript/
 #page.includeJS.fa = https://use.fontawesome.com/96352f148e.js
 page.includeJS.find = EXT:find/Resources/Public/JavaScript/find.js
 
+page.includeJSFooter.jscookie = EXT:dla_opac_ng/Resources/Public/JavaScript/js.cookie.min.js
+
+page.includeJS.jspdf = EXT:dla_opac_ng/Resources/Public/JavaScript/jspdf.min.js
+
 page.includeJSFooter.autocomplete = EXT:dla_opac_ng/Resources/Public/JavaScript/autocomplete.js
 
 page.includeJSFooter.dla_opac_ng = EXT:dla_opac_ng/Resources/Public/JavaScript/dla-opac-ng.js

@@ -288,10 +288,184 @@ $(document).ready(function () {
     }
 
 
+});
+
+// watchlist
+$(document).ready(function () {
+    updateCounter();
+    markWatchlistButtons();
+
+    $('#watchlist').on('click', function (event) {
+        event.preventDefault();
+        buildWatchlist();
+        $('.watchlist-container').toggle();
+
+        // watchlist export csv
+        $('.watchlist-export').on('click', function (event) {
+            event.preventDefault();
+            let csvContent = "data:text/csv;charset=utf-8,";
+            $('#watchlist-list li').each(function () {
+                csvContent += location.origin + '/suche/opac/id/' + $(this).find('a').data('docid') + ',' + $(this).text() + '\r\n';
+            });
+            var encodedUri = encodeURI(csvContent);
+
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "marbach.csv");
+            document.body.appendChild(link);
+            link.click();
+
+        });
+
+        // watchlist send via mail
+        $('.watchlist-send').on('click', function (event) {
+            //event.preventDefault();
+            let mailBody = "";
+            $('#watchlist-list li').each(function () {
+                mailBody += location.origin + '/suche/opac/id/' + $(this).find('a').data('docid') + '%20' + $(this).text() + '%0D%0A';
+            });
+            $(this).attr('href', 'mailto:?subject=Marbach%20Merkliste&body='+mailBody);
+        });
+
+        // print watchlist
+        $('.watchlist-print').on('click', function (event) {
+            var pdf = new jsPDF("p", "mm", "a4");
+            var i = 0;
+            var margin = 7;
+            $('#watchlist-list li').each(function () {
+                if ((30 + (i * margin)) > 260) {
+                    pdf.addPage();
+                    i = 0;
+                }
+                i = i + 2;
+                pdf.setFontSize(16);
+                var splitText = pdf.splitTextToSize($(this).text(), 160);
+                pdf.text (splitText, 20, (30 + (i * margin)));
+
+                if (splitText.length > 1) {
+                    i = i + splitText.length;
+                } else {
+                    i++;
+                }
+
+                pdf.setFontSize(12);
+                pdf.text ($(this).find('a').data('docid'), 30, (30 + (i * margin)));
+
+            });
+            pdf.save ("Merkliste.pdf");
+        });
+
+    });
+
+    // Add document to watchlist
+    $('.add-watchlist-button').on('click', function () {
+        var docId = $(this).data('docid');
+        addToWatchlist(docId);
+        updateCounter();
+        $(this).toggleClass('add-watchlist-button-marked');
+    });
 
 
 
 });
+
+function markWatchlistButtons() {
+    if (Cookies.get('list') != undefined) {
+        var list = Cookies.get('list');
+        var listArray = list.split(',');
+        listArray.forEach(function (item, index, array) {
+            $('.add-watchlist-button[data-docid="'+item+'"]').toggleClass('add-watchlist-button-marked');
+        });
+    }
+}
+
+function addToWatchlist(id) {
+    if (Cookies.get('list') != undefined) {
+        var list = Cookies.get('list');
+        if (list.search(id) == -1) {
+            list += ','+id;
+            list = list.replace(',,', ',');
+            Cookies.set('list', list);
+        } else {
+            removeFromWatchlist(id);
+        }
+
+    } else {
+        Cookies.set('list', id);
+    }
+}
+
+function removeFromWatchlist(id) {
+    if (Cookies.get('list') != undefined) {
+        var list = Cookies.get('list');
+        list = list.replace(id, '');
+        list = list.replace(',,', ',');
+        list = list.replace(/^,|,$/, "");
+        Cookies.set('list', list);
+    }
+}
+
+function updateCounter() {
+    $('#watchlist .watchlist-counter').text($('#watchlist .watchlist-counter').text().replace(/\d+/, countWatchlist()));
+}
+
+function countWatchlist() {
+    if (Cookies.get('list') != undefined) {
+        var list = Cookies.get('list');
+        return list.split(',').length;
+    } else {
+        return 0;
+    }
+}
+
+function buildWatchlist() {
+    if (Cookies.get('list') != undefined) {
+        var list = Cookies.get('list');
+        var listArray = list.split(',');
+
+        // List action buttons
+        var html = '<div class="watchlist-actions">';
+        html += '<a class="ctg-button watchlist-send" title="versenden"><span class="icon bel-brief01"></span></a>';
+        html += '<a class="ctg-button watchlist-export" title="CSV Export"><span class="icon bel-postin"></span></a>';
+        html += '<a class="ctg-button watchlist-print" title="drucken"><span class="icon bel-drucker"></span></a>';
+        html += '</div>';
+
+        html += '<ul id="watchlist-list">';
+        html += '</ul>';
+
+        $('#watchlist-entries').html(html);
+        listArray.forEach(function (item, index, array) {
+
+        });
+        $.ajax({
+            url: "/index.php?eID=getEntities&q=" + list,
+        })
+            .done(function( data ) {
+                data.forEach(function (item, index, array) {
+                    $('#watchlist-list')
+                        // .append('<li><input type="checkbox" data-docid="'+data.id+'">' +
+                        .append('<li>' +
+                            '<a href="/suche/opac/id/' + item.id + '" data-docid="'+item.id+'">' + item.listview_title + '</a>' +
+                            '<span class="watchlist-delete-container">' +
+                            '<a href="#" class="watchlist-delete-'+item.id+'" data-docid="'+item.id+'"><span class="bel-ende03" style="font-size:48px;"></span></a>' +
+                            '</span></li>');
+                    $('.watchlist-delete-'+item.id).on('click', function (event) {
+                        event.preventDefault();
+                        var docId = $(this).data('docid');
+                        removeFromWatchlist(docId);
+                        updateCounter();
+                        $(this).closest('li').remove();
+                    });
+                });
+
+            });
+
+
+    } else {
+        $('#watchlist-entries').html('<h2>Keine Einträge vorhanden</h2>');
+    }
+}
+
 
 function toggleExtendedSearch() {
     $('.extended-search').toggle();

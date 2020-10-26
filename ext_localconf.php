@@ -36,6 +36,7 @@ defined('TYPO3_MODE') or die();
 
 $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['autocomplete'] = 'EXT:dla_opac_ng/Classes/Ajax/Autocomplete.php';
 $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['getEntity'] = 'EXT:dla_opac_ng/Classes/Ajax/GetEntity.php';
+$GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['getEntities'] = 'EXT:dla_opac_ng/Classes/Ajax/GetEntities.php';
 $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['decisiontree'] = 'EXT:dla_opac_ng/Classes/Ajax/Decisiontree.php';
 $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['collection'] = 'EXT:dla_opac_ng/Classes/Ajax/Collection.php';
 

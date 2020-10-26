@@ -106,6 +106,63 @@ section.active-facets a:hover {
     padding-top:0px !important;
 }
 
+.add-watchlist-button-marked {
+    background-color: #b61f24 !important;
+}
+
+.watchlist-actions a {
+    margin-left:1rem;
+}
+
+.watchlist-actions {
+    position: absolute;
+    left: 2.6rem;
+    top: 1rem;
+}
+
+.watchlist-container h1 {
+    margin-bottom: 2rem;
+}
+
+.watchlist-container {
+    position: absolute;
+    background-color: #fffffff0;
+    width: 97%;
+    height: auto;
+    min-height: 60vh;
+    z-index: 9;
+    color: #000;
+    text-align: center;
+}
+
+span.watchlist-delete-container {
+    float: right;
+    margin-right: 2rem;
+}
+
+span.watchlist-delete-container a {
+    text-decoration: none;
+}
+
+ul#watchlist-list {
+    list-style-type: none;
+    text-align:left;
+}
+
+ul#watchlist-list li {
+    min-height: 50px;
+    font-size: 1.2rem;
+}
+
+ul#watchlist-list li input {
+    margin-right:1rem;
+}
+
+ul#watchlist-list li a {
+    width: 90%;
+    display: inline-block;
+}
+
 .extended-search {
 }
 
