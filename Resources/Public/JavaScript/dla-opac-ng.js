@@ -185,6 +185,13 @@ function copyUrlAction(context) {
 
     var match = location.href.match(reg);
 
+    if (match == undefined) {
+        var pageId = getUrlParameter('id');
+        var docId = getUrlParameter('tx_find_find%5Bid%5D');
+        var match = [];
+        match[1] = docId;
+    }
+
     if (AU) {
         var url = location.origin + '/suche/opac/id/' + match[1] + '?tx_find_find[au]=' + AU + '#tabaccess';
         $('#action-copied-info-input-' + AU).val(url);
@@ -193,7 +200,6 @@ function copyUrlAction(context) {
 
         $('.action-copied-info-div-' + AU).toggle();
     } else {
-        console.log("copyUrlAction without AU");
         var url = location.origin + '/suche/opac/id/' + match[1];
 
         $('.action-copied-info-input-detail').val(url);
