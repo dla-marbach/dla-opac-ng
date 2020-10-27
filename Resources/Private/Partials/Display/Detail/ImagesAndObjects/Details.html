@@ -896,45 +896,82 @@
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B04100')}" name="B04100" />
         <f:if condition="{picture_midi} || {B04100} ">
             <f:then>
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        <f:translate key='Digitales Objekt' extensionName='dla_opac_ng'/>
-                    </div>
-                    <div class="ctg-dtvt-content">
-
-                        <f:for each="{picture_midi}" as="pic" iteration="iterator">
-                            <div class="detail-do-image">
-                                <image src="{pic}"/>
+                <f:if condition="{picture_midi -> f:count()} > 1">
+                    <f:then>
+                        <div class="ctg-dtvt-row">
+                            <div class="ctg-dtvt-label">
+                                <f:translate key='Digitales Objekt' extensionName='dla_opac_ng'/>
                             </div>
-                            <f:if condition="{B04100.{iterator.index}}!='#NV'">
-                                <span class="detail-do-description">
-                                    <v:variable.get name="B04100.{iterator.index}" />
-                                </span>
-                            </f:if>
-                        </f:for>
-                        <f:comment><f:render
-                                partial="Display/Field/ImageList"
-                                arguments="{
-                            document:document,
-                            results:results,
-                            field:'picture_midi',
-                            linkFieldContent:linkFieldContent,
-                            linkFacets:linkFacets
-                          }"/>
+                            <div class="ctg-dtvt-content">
 
-                            <f:render
-                                    partial="Display/Field/List"
-                                    arguments="{
-                            document:document,
-                            results:results,
-                            field:'B04100',
-                            linkFieldContent:linkFieldContent,
-                            linkFacets:linkFacets
-                          }"/>
-                        </f:comment>
+                                <f:for each="{picture_midi}" as="pic" iteration="iterator">
+                                    <f:if condition="{iterator.cycle}%2">
+                                        <f:then>
+                                            <div class="detail-images-row">
+                                                <div class="detail-images-column">
+                                                    <a href="{pic}" data-lightbox="detail-images"><image src="{pic}"/></a>
+                                                    <f:if condition="{B04100.{iterator.index}}!='#NV'">
+                                                        <span class="detail-do-description">
+                                                            <v:variable.get name="B04100.{iterator.index}" />
+                                                        </span>
+                                                    </f:if>
+                                                </div>
+                                        </f:then>
+                                    </f:if>
 
-                    </div>
-                </div>
+                                    <f:if condition="{iterator.index}%2">
+                                        <f:then>
+                                                <div class="detail-images-column">
+                                                    <a href="{pic}" data-lightbox="detail-images"><image src="{pic}"/></a>
+                                                    <f:if condition="{B04100.{iterator.index}}!='#NV'">
+                                                        <span class="detail-do-description">
+                                                            <v:variable.get name="B04100.{iterator.index}" />
+                                                        </span>
+                                                    </f:if>
+                                                </div>
+                                            </div>
+                                        </f:then>
+                                    </f:if>
+
+
+                                    <f:comment>
+                                    <div class="detail-do-image">
+                                        <image src="{pic}"/>
+                                    </div>
+                                    <f:if condition="{B04100.{iterator.index}}!='#NV'">
+                                        <span class="detail-do-description">
+                                            <v:variable.get name="B04100.{iterator.index}" />
+                                        </span>
+                                    </f:if>
+                                    </f:comment>
+
+                                </f:for>
+
+                                <f:comment><f:render
+                                        partial="Display/Field/ImageList"
+                                        arguments="{
+                                    document:document,
+                                    results:results,
+                                    field:'picture_midi',
+                                    linkFieldContent:linkFieldContent,
+                                    linkFacets:linkFacets
+                                  }"/>
+
+                                    <f:render
+                                            partial="Display/Field/List"
+                                            arguments="{
+                                    document:document,
+                                    results:results,
+                                    field:'B04100',
+                                    linkFieldContent:linkFieldContent,
+                                    linkFacets:linkFacets
+                                  }"/>
+                                </f:comment>
+
+                            </div>
+                        </div>
+                    </f:then>
+                </f:if>
             </f:then>
         </f:if>
 

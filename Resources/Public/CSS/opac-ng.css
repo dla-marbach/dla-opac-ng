@@ -349,6 +349,15 @@ a.facetText {
     margin-top: 1rem;
 }
 
+.detail-images-row {
+    display: flex;
+}
+
+.detail-images-column {
+    flex: 33.33%;
+    padding: 5px;
+}
+
 .au-highlighting {
     background-color: #dadada;
 }
