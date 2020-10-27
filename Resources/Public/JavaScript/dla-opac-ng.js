@@ -148,6 +148,7 @@ $(document).ready(function(){
     if (docId) {
         $('.row-'+docId).addClass('au-highlighting');
         $('.row-'+docId).next().addClass('au-highlighting');
+        $('.row-'+docId).find('.detail_link').click();
     }
 
 });
