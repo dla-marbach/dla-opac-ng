@@ -893,8 +893,8 @@
 
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'picture_midi')}" name="picture_midi" />
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'B04100')}" name="B04100" />
-        <f:if condition="{picture_midi} || {B04100} ">
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
+        <f:if condition="{picture_midi} || {XX_MM_MOTITL_INDKEY} ">
             <f:then>
                 <f:if condition="{picture_midi -> f:count()} > 1">
                     <f:then>
@@ -910,9 +910,9 @@
                                             <div class="detail-images-row">
                                                 <div class="detail-images-column">
                                                     <a href="{pic}" data-lightbox="detail-images"><image src="{pic}"/></a>
-                                                    <f:if condition="{B04100.{iterator.index}}!='#NV'">
+                                                    <f:if condition="{XX_MM_MOTITL_INDKEY.{iterator.index}}!='#NV'">
                                                         <span class="detail-do-description">
-                                                            <v:variable.get name="B04100.{iterator.index}" />
+                                                            <v:variable.get name="XX_MM_MOTITL_INDKEY.{iterator.index}" />
                                                         </span>
                                                     </f:if>
                                                 </div>
@@ -923,9 +923,9 @@
                                         <f:then>
                                                 <div class="detail-images-column">
                                                     <a href="{pic}" data-lightbox="detail-images"><image src="{pic}"/></a>
-                                                    <f:if condition="{B04100.{iterator.index}}!='#NV'">
+                                                    <f:if condition="{XX_MM_MOTITL_INDKEY.{iterator.index}}!='#NV'">
                                                         <span class="detail-do-description">
-                                                            <v:variable.get name="B04100.{iterator.index}" />
+                                                            <v:variable.get name="XX_MM_MOTITL_INDKEY.{iterator.index}" />
                                                         </span>
                                                     </f:if>
                                                 </div>
@@ -938,9 +938,9 @@
                                     <div class="detail-do-image">
                                         <image src="{pic}"/>
                                     </div>
-                                    <f:if condition="{B04100.{iterator.index}}!='#NV'">
+                                    <f:if condition="{XX_MM_MOTITL_INDKEY.{iterator.index}}!='#NV'">
                                         <span class="detail-do-description">
-                                            <v:variable.get name="B04100.{iterator.index}" />
+                                            <v:variable.get name="XX_MM_MOTITL_INDKEY.{iterator.index}" />
                                         </span>
                                     </f:if>
                                     </f:comment>
@@ -962,7 +962,7 @@
                                             arguments="{
                                     document:document,
                                     results:results,
-                                    field:'B04100',
+                                    field:'XX_MM_MOTITL_INDKEY',
                                     linkFieldContent:linkFieldContent,
                                     linkFacets:linkFacets
                                   }"/>
