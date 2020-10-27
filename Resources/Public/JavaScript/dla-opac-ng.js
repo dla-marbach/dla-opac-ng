@@ -128,6 +128,28 @@ $(document).ready(function(){
         $(this).parent().parent().next('.copy-details').toggle();
     });
 
+    // permalink actions
+    $('.permalink').on('click', function (event) {
+        event.preventDefault();
+        copyUrlAction($(this));
+    });
+
+    $('.au-permalink').on('click', function (event) {
+        event.preventDefault();
+        copyUrlAction($(this));
+    });
+
+    $('.copy-link-button').on('click', function (event) {
+        event.preventDefault();
+        copyUrl($(this));
+    });
+
+    var docId = getUrlParameter('tx_find_find%5Bau%5D');
+    if (docId) {
+        $('.row-'+docId).addClass('au-highlighting');
+        $('.row-'+docId).next().addClass('au-highlighting');
+    }
+
 });
 
 function sendOrderAsPopup(orderurl) {
@@ -143,30 +165,73 @@ function sendOrderAsPopup(orderurl) {
     $('.order-overlay').hide();
 }
 
-function copyUrlAction() {
+// function copyUrlAction() {
+//     var location = window.location;
+//     var pageId = getUrlParameter('id');
+//     var docId = getUrlParameter('tx_find_find%5Bid%5D');
+//     var url = location.origin + location.pathname + '?id=' + pageId + '&tx_find_find[id]=' + docId + '';
+//
+//     $('.action-copied-info-input').val(url);
+//     $('.action-copied-info-button').show();
+//     $('.action-copied-info-button.action-copied-success').hide();
+//
+//     $('.action-copied-info').toggle();
+// }
+
+function copyUrlAction(context) {
     var location = window.location;
-    var pageId = getUrlParameter('id');
-    var docId = getUrlParameter('tx_find_find%5Bid%5D');
-    var url = location.origin + location.pathname + '?id=' + pageId + '&tx_find_find[id]=' + docId + '';
+    var reg = new RegExp("\\/suche\\/opac\\/id\\/(.*)\\/");
+    var AU = context.data('auid');
 
-    $('.action-copied-info-input').val(url);
-    $('.action-copied-info-button').show();
-    $('.action-copied-info-button.action-copied-success').hide();
+    var match = location.href.match(reg);
 
-    $('.action-copied-info').toggle();
+    if (AU) {
+        var url = location.origin + '/suche/opac/id/' + match[1] + '?tx_find_find[au]=' + AU + '#tabaccess';
+        $('#action-copied-info-input-' + AU).val(url);
+        $('.action-copied-info-button-' + AU).show();
+        $('.action-copied-info-button-' + AU +'.action-copied-success-' + AU).hide();
+
+        $('.action-copied-info-div-' + AU).toggle();
+    } else {
+        console.log("copyUrlAction without AU");
+        var url = location.origin + '/suche/opac/id/' + match[1];
+
+        $('.action-copied-info-input-detail').val(url);
+        $('.action-copied-info-button-detail').show();
+        $('.action-copied-info-button-detail.action-copied-success-detail').hide();
+
+        $('.action-copied-info-div-detail').toggle();
+    }
+
+
+
 }
 
-function copyUrl() {
+function copyUrl(context) {
+    var AU = context.data('auid');
 
-    var input = document.getElementById('action-copied-info-input');
+    if (AU) {
+        var input = document.getElementById('action-copied-info-input-' + AU);
+    } else {
+        var input = document.getElementById('action-copied-info-input-detail');
+    }
 
     input.select();
     document.execCommand('copy');
 
-    $('.action-copied-info-button').hide();
-    $('.action-copied-info-button.action-copied-success').fadeIn();
+    if (AU) {
+        $('.action-copied-info-button-' + AU).hide();
+        $('.action-copied-info-button-' + AU + '.action-copied-success-' + AU).fadeIn();
 
-    $('.action-copied-info').delay(2000).fadeOut();
+        $('.action-copied-info-' + AU).delay(2000).fadeOut();
+    } else {
+        $('.action-copied-info-button-detail').hide();
+        $('.action-copied-info-button-detail.action-copied-success-detail').fadeIn();
+
+        $('.action-copied-info-detail').delay(2000).fadeOut();
+    }
+
+
 }
 
 function sendUrlByMail(title) {
@@ -412,7 +477,11 @@ function updateCounter() {
 function countWatchlist() {
     if (Cookies.get('list') != undefined) {
         var list = Cookies.get('list');
-        return list.split(',').length;
+        if (list == "") {
+            return 0;
+        } else {
+            return list.split(',').length;
+        }
     } else {
         return 0;
     }

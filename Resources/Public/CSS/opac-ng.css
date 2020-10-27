@@ -313,7 +313,7 @@ a.facetText {
     margin-top: 15px;
 }
 
-.action-copied-info {
+*[class^='action-copied-info-div-'] {
     display: none;
     position: absolute;
     right: 1rem;
@@ -327,16 +327,16 @@ a.facetText {
     text-align: center;
 }
 
-.action-copied-info input {
+*[class^='action-copied-info-div-'] input {
     background-color: #ffffff !important;
 }
 
-.action-copied-success {
+*[class^='action-copied-success-'] {
     display: none;
     background-color: #75b61e !important;
 }
 
-.action-copied-info-button {
+*[class^='action-copied-info-button-'] {
     width: 120px;
     border-top: 1px solid #aeaeae;
     background-color: #b61f24;
@@ -347,6 +347,18 @@ a.facetText {
     font-size: 100%;
     text-decoration: none;
     margin-top: 1rem;
+}
+
+.au-highlighting {
+    background-color: #dadada;
+}
+
+.aukey-row-info {
+    padding-left: 1rem;
+}
+
+.copy-details {
+    padding-left: 1rem;
 }
 
 .ctg-media-content p {

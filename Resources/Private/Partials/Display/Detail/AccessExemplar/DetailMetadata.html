@@ -6,7 +6,7 @@
 
 <f:switch expression="{source}">
     <f:case value="AK">
-        <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-row row-{AUKEY.{iterator.index}} aukey-row-info">
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_KLASS_AUKEY')}" name="XX_AU_KLASS_AUKEY" />
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_STAND_AUKEY')}" name="XX_AU_STAND_AUKEY" />
 
@@ -149,6 +149,20 @@
             </f:else>
         </f:if>
             <div class="">
+                <div class="ctg-dtvt-row" style="margin-left:auto;margin-right:auto;">
+                    <div class="ctg-dtvt-label">
+                        Exemplar-Aktionen
+                    </div>
+
+                    <div class="ctg-dtvt-content">
+                        <a data-auid="{AUKEY.{iterator.index}}" class="ctg-button au-permalink" title="Link kopieren"><span class="icon bel-verbinden"></span></a>
+                        <div class="action-copied-info-div-{AUKEY.{iterator.index}}" style="display: none; top:auto; right:auto;">
+                            <input id="action-copied-info-input-{AUKEY.{iterator.index}}" class="action-copied-info-input-{AUKEY.{iterator.index}}" type="text" readonly="" value="">
+                            <button class="action-copied-info-button-{AUKEY.{iterator.index}} copy-link-button" data-auid="{AUKEY.{iterator.index}}">Link kopieren</button>
+                            <button class="action-copied-info-button-{AUKEY.{iterator.index}} action-copied-success-{AUKEY.{iterator.index}}" style="display: none;">Link kopiert</button>
+                        </div>
+                    </div>
+                </div>
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_restrictions')}" name="detail_restrictions" />
                 <dla:replaceNullValue text="{detail_restrictions.{iterator.index}}" as="detail_restrictions"/>
@@ -548,7 +562,7 @@
     </f:case>
     <f:case value="BI">
 
-        <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-row row-{AUKEY.{iterator.index}} aukey-row-info">
 
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KLASS')}" name="KLASS" />
 
@@ -672,7 +686,7 @@
     </f:case>
     <f:case value="BF">
 
-        <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-row row-{AUKEY.{iterator.index}} aukey-row-info">
 
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'DLAABT')}" name="DLAABT" />
             <dla:replaceNullValue text="{DLAABT}" as="DLAABT"/>
@@ -914,7 +928,7 @@
     </f:case>
     <f:case value="HS">
 
-        <div class="ctg-dtvt-row">
+        <div class="ctg-dtvt-row row-{AUKEY.{iterator.index}} aukey-row-info">
 
             <f:if condition="{listview_type}=='Daten'">
                 <f:then>
