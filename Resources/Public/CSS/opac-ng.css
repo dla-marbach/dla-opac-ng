@@ -126,18 +126,18 @@ section.active-facets a:hover {
 
 .watchlist-container {
     position: absolute;
-    background-color: #fffffff0;
+    background-color: #ffffff;
     width: 97%;
     height: auto;
     min-height: 60vh;
     z-index: 9;
     color: #000;
     text-align: center;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 span.watchlist-delete-container {
-    float: right;
-    margin-right: 2rem;
+    float: left;
 }
 
 span.watchlist-delete-container a {
@@ -147,6 +147,7 @@ span.watchlist-delete-container a {
 ul#watchlist-list {
     list-style-type: none;
     text-align:left;
+    margin-left: 0.4rem;
 }
 
 ul#watchlist-list li {
@@ -159,7 +160,7 @@ ul#watchlist-list li input {
 }
 
 ul#watchlist-list li a {
-    width: 90%;
+    width: 94%;
     display: inline-block;
 }
 
@@ -347,6 +348,18 @@ a.facetText {
     font-size: 100%;
     text-decoration: none;
     margin-top: 1rem;
+}
+
+*[class^='watchlist-delete-'] span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#collection-search {
+    border-radius: 5px;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    width: 96%;
 }
 
 .detail-images-row {

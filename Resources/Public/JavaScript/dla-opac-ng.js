@@ -367,6 +367,15 @@ $(document).ready(function () {
     updateCounter();
     markWatchlistButtons();
 
+    $('body').mousedown(function(e) {
+        var clicked = $(e.target);
+        if (clicked.is('.watchlist-container') || clicked.parents().is('.watchlist-container')) {
+            return;
+        } else {
+            $('.watchlist-container').hide();
+        }
+    });
+
     $('#watchlist').on('click', function (event) {
         event.preventDefault();
         buildWatchlist();
@@ -436,8 +445,6 @@ $(document).ready(function () {
         updateCounter();
         $(this).toggleClass('add-watchlist-button-marked');
     });
-
-
 
 });
 
@@ -521,10 +528,11 @@ function buildWatchlist() {
                     $('#watchlist-list')
                         // .append('<li><input type="checkbox" data-docid="'+data.id+'">' +
                         .append('<li>' +
-                            '<a href="/suche/opac/id/' + item.id + '" data-docid="'+item.id+'">' + item.listview_title + '</a>' +
                             '<span class="watchlist-delete-container">' +
-                            '<a href="#" class="watchlist-delete-'+item.id+'" data-docid="'+item.id+'"><span class="bel-ende03" style="font-size:48px;"></span></a>' +
-                            '</span></li>');
+                            '<a href="#" class="watchlist-delete-'+item.id+'" data-docid="'+item.id+'"><span class="bel-ende03 " style="font-size:48px;"></span></a>' +
+                            '</span>' +
+                            '<a href="/suche/opac/id/' + item.id + '" data-docid="'+item.id+'">' + item.listview_title + '</a>' +
+                            '</li>');
                     $('.watchlist-delete-'+item.id).on('click', function (event) {
                         event.preventDefault();
                         var docId = $(this).data('docid');
