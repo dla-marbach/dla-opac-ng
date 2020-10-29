@@ -108,6 +108,7 @@ section.active-facets a:hover {
 
 .add-watchlist-button-marked {
     background-color: #b61f24 !important;
+    color: #ffffff !important;
 }
 
 .watchlist-actions a {
@@ -360,6 +361,10 @@ a.facetText {
     margin-left: 1.5rem;
     margin-bottom: 1rem;
     width: 96%;
+}
+
+.extended-search {
+    margin-top: 1rem;
 }
 
 .detail-images-row {
