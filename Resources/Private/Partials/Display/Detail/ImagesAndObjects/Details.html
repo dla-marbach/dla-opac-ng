@@ -905,7 +905,7 @@
                             <div class="ctg-dtvt-content">
 
                                 <f:for each="{picture_midi}" as="pic" iteration="iterator">
-                                    <f:if condition="{iterator.cycle}%2">
+                                    <f:if condition="{iterator.isOdd}">
                                         <f:then>
                                             <div class="detail-images-row">
                                                 <div class="detail-images-column">
@@ -916,10 +916,15 @@
                                                         </span>
                                                     </f:if>
                                                 </div>
+                                                <f:if condition="{iterator.isLast}">
+                                                    <f:then>
+                                                        </div>
+                                                    </f:then>
+                                                </f:if>
                                         </f:then>
                                     </f:if>
 
-                                    <f:if condition="{iterator.index}%2">
+                                    <f:if condition="{iterator.isEven}">
                                         <f:then>
                                                 <div class="detail-images-column">
                                                     <a href="{pic}" data-lightbox="detail-images"><image src="{pic}"/></a>
