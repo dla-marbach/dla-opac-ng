@@ -23,9 +23,16 @@
     <f:for each="{formatSettings.fieldMapping}" as="docField" key="name" iteration="bibtexIterator">
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'{docField}')}" name="fieldValue" />
 
-        <f:if condition="{fieldValue -> f:count()} > 1">
+        <f:if condition="{s:data.isArray(subject:fieldValue)}">
             <f:then>
-                <f:render partial="Display/Citation/Endnote/Endnote_Multiple" arguments="{title:'%{name}', content:'{fieldValue}'}"/>
+                <f:if condition="{fieldValue -> f:count()} > 1">
+                    <f:then>
+                        <f:render partial="Display/Citation/Endnote/Endnote_Multiple" arguments="{title:'%{name}', content:'{fieldValue}'}"/>
+                    </f:then>
+                    <f:else>
+                        <f:render partial="Display/Citation/Endnote/Endnote_General" arguments="{title:'%{name}', content:'{fieldValue}'}"/>
+                    </f:else>
+                </f:if>
             </f:then>
             <f:else>
                 <f:render partial="Display/Citation/Endnote/Endnote_General" arguments="{title:'%{name}', content:'{fieldValue}'}"/>
