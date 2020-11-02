@@ -10,5 +10,19 @@
     <li><a class="ctg-button add-watchlist-button" data-docid="{document.id}" title="<f:translate key='merken' extensionName='dla_opac_ng'/>"><span class="icon bel-stern01"></span></a></li>
     <li><a onclick='sendUrlByMail("{listview_title}");' class="ctg-button" title="<f:translate key='versenden' extensionName='dla_opac_ng'/>"><span class="icon bel-brief01"></span></a></li>
     <li><a class="ctg-button permalink" title="Link kopieren"><span class="icon bel-verbinden"></span></a></li>
-    <li><a style="color:#d3d3d3;" class="ctg-button" title="<f:translate key='exportieren' extensionName='dla_opac_ng'/>"><span class="icon bel-postin"></span></a></li>
+    <li>
+        <a class="export-choice-button ctg-button" title="<f:translate key='exportieren' extensionName='dla_opac_ng'/>"><span class="icon bel-postin"></span></a>
+        <div class="export-formats hidden">
+            <f:for each="{settings.citation}" key="format" as="formatSettings" iteration="formatIterator">
+                <a class="citation-export" data-exportname="{format}" data-fileext="{formatSettings.formatMapping.fileext}" style="text-decoration: none;">
+                    <span>
+                        <div class="citation-content hidden">
+                            <f:render partial="Display/Citation/{format}/{format}.html" arguments="{_all}" />
+                        </div>
+                        {format}
+                    </span>
+                </a>
+            </f:for>
+        </div>
+    </li>
 </ul>

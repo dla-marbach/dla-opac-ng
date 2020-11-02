@@ -1,0 +1,29 @@
+{namespace s=Subugoe\Find\ViewHelpers}
+<f:if condition="{content}">
+    <div class="citation_field">
+        <span class='citation_title'>{title} </span>
+        <f:if condition="{s:data.isArray(subject:content)}">
+            <f:then>
+                <f:for each="{content}" as="value" iteration="iterator">
+                    <f:if condition="{value}">
+                        <f:if condition="{s:data.isArray(subject:value)}">
+                            <f:then>
+                                <f:for each="{value}" as="array_value" iteration="iterator2">
+                                    <f:if condition="{array_value}">
+                                        <span class="citation_value">{array_value}</span>
+                                    </f:if>
+                                </f:for>
+                            </f:then>
+                            <f:else>
+                                <span class="citation_value">{value}</span>
+                            </f:else>
+                        </f:if>
+                    </f:if>
+                </f:for>
+            </f:then>
+            <f:else>
+                <span class="citation_value">{content}</span>
+            </f:else>
+        </f:if>
+    </div>
+</f:if>

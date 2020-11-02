@@ -1,0 +1,51 @@
+<div class='citation_wrapper'>
+    <div class="citation_field">
+        <span class='citation_title'>%0 </span>
+        <span class='citation_value'>
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'{formatSettings.formatMapping.field}')}" name="source" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'{formatSettings.formatMapping.id}')}" name="id" />
+
+            <f:if condition="{source}">
+                <f:then>
+                    <f:if condition="{formatSettings.formatMapping.mapping.{source}}">
+                        <f:then>
+                            {formatSettings.formatMapping.mapping.{source}}
+                        </f:then>
+                        <f:else>
+                            {formatSettings.formatMapping.mapping.default}
+                        </f:else>
+                    </f:if>
+                </f:then>
+            </f:if>
+		</span>
+    </div>
+
+    <f:for each="{formatSettings.fieldMapping}" as="docField" key="name" iteration="bibtexIterator">
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'{docField}')}" name="fieldValue" />
+
+        <f:if condition="{fieldValue -> f:count()} > 1">
+            <f:then>
+                <f:render partial="Display/Citation/Endnote/Endnote_Multiple" arguments="{title:'%{name}', content:'{fieldValue}'}"/>
+            </f:then>
+            <f:else>
+                <f:render partial="Display/Citation/Endnote/Endnote_General" arguments="{title:'%{name}', content:'{fieldValue}'}"/>
+            </f:else>
+        </f:if>
+
+    </f:for>
+
+    <f:comment>
+    <f:render partial="SLUB/Citation/Endnote/endnote_field_multiple" arguments="{title:'%T', content:{0:title_short, 1:title_sub, 2:title_part}}"/>
+    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%A', content:{0:author, 1:author_corp, 2:author2, 3:author_corp2,}}"/>
+    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%7', content:edition}"/>
+    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%I', content:publisher}"/>
+    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%@', content:isbn}"/>
+    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%@', content:issn}"/>
+    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%K', content:topic}"/>
+    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%D', content:date}"/>
+    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%X', content:description_footnote}"/>
+    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%X', content:description_contents}"/>
+    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%C', content:{0:publisher, 1:publishPlace}}"/>
+    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%U',content:'http://slubdd.de/katalog?{docID}'}"/>
+    </f:comment>
+</div>

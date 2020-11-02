@@ -1484,6 +1484,89 @@ plugin.tx_find {
 
         indexPageUid = 3
 
+        citation {
+            Bibtex {
+                formatMapping {
+                    field = source
+                    id = id
+                    fileext = bib
+                    mapping {
+                        AK = @article
+                        BI = @proceedings
+                        default = @misc
+                    }
+                }
+                fieldMapping {
+                    author = author
+                    title = listview_title
+                    edition = id
+                    publisher = id
+                    isbn = id
+                    issn = id
+                    keywords = id
+                    year = id
+                    abstract = id
+                    booktitle = id
+                    address = id
+                }
+            }
+            Ris {
+                formatMapping {
+                    field = source
+                    id = id
+                    fileext = ris
+                    mapping {
+                        AK = MGZN
+                        BI = BOOK
+                        default = GEN
+                    }
+                }
+                fieldMapping {
+                    AU = id
+                    TI = id
+                    ET = id
+                    PB = id
+                    SN = id
+                    SN = id
+                    KW = id
+                    PY = id
+                    N2 = id
+                    N2 = id
+                    BT = id
+                    CY = id
+                    UR = id
+                    ER = id
+
+                }
+            }
+            Endnote {
+                formatMapping {
+                    field = source
+                    id = id
+                    fileext = enw
+                    mapping {
+                        AK = Journal Article
+                        BI = Audiovisual Material
+                        default = Generic
+                    }
+                }
+                fieldMapping {
+                    T = id
+                    A = id
+                    7 = id
+                    I = id
+                    @ = id
+                    @ = id
+                    K = id
+                    D = id
+                    X = id
+                    X = id
+                    C = id
+                    U = id
+
+                }
+            }
+        }
     }
 }
 

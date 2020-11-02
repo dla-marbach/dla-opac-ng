@@ -148,10 +148,49 @@ $(document).ready(function(){
     if (docId) {
         $('.row-'+docId).addClass('au-highlighting');
         $('.row-'+docId).next().addClass('au-highlighting');
-        $('.row-'+docId).find('.detail_link').click();
+        //$('.row-'+docId).find('.detail_link').click();
     }
 
+    // export formats
+    $('.export-choice-button').on('click', function (event) {
+        event.preventDefault();
+        $(this).next().toggle();
+    });
+
+    $('.citation-export').on('click', function (event) {
+        event.preventDefault();
+
+        var citation = "";
+
+        var citationfields = $(this).find(".citation_field").each(function() {
+            $(this).find('.citation_title').text($(this).find('.citation_title').text().trim());
+            $(this).find('.citation_value').text($(this).find('.citation_value').text().trim());
+            citation += $(this).text().trim().replace(/[\n\r\t]/g, "") + "\r\n";
+            console.log(citation);
+        });
+
+        var fileExt = $(this).data('fileext');
+        var exportName = $(this).data('exportname');
+
+        downloadContentAsFile(citation, "text/plain", exportName + '.' + fileExt);
+
+    });
+
 });
+
+function downloadContentAsFile(content, type, filename) {
+    var prepareContent = "data:" + type + ";charset=utf-8,";
+    prepareContent += content;
+
+    var encodedUri = encodeURI(prepareContent);
+
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", filename);
+    document.body.appendChild(link);
+    link.click();
+
+}
 
 function sendOrderAsPopup(orderurl) {
     // if ajax failed
@@ -384,18 +423,12 @@ $(document).ready(function () {
         // watchlist export csv
         $('.watchlist-export').on('click', function (event) {
             event.preventDefault();
-            let csvContent = "data:text/csv;charset=utf-8,";
+            let csvContent = "";
             $('#watchlist-list li').each(function () {
-                csvContent += location.origin + '/suche/opac/id/' + $(this).find('a').data('docid') + ',' + $(this).text() + '\r\n';
+                csvContent += '"' + location.origin + '/suche/opac/id/' + $(this).find('a').data('docid') + '";' + $(this).text().replaceAll(';', '') + '\r\n';
             });
-            var encodedUri = encodeURI(csvContent);
 
-            var link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "marbach.csv");
-            document.body.appendChild(link);
-            link.click();
-
+            downloadContentAsFile(csvContent, "text/csv", "marbach.csv");
         });
 
         // watchlist send via mail

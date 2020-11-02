@@ -302,6 +302,16 @@ a.facetText {
     text-decoration:none;
 }
 
+.export-formats {
+    margin-top: 1rem;
+}
+
+.export-formats span {
+    padding: 8px;
+    display: inline-block;
+    border: 1px solid #dadada;
+}
+
 .order-overlay-button {
     padding: 3px !important;
     margin-top: 1rem !important;

@@ -1,0 +1,43 @@
+<div class='citation_wrapper'>
+	<span class="citation_bibtex_wrapper citation_field">
+
+		<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'{formatSettings.formatMapping.field}')}" name="source" />
+		<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'{formatSettings.formatMapping.id}')}" name="id" />
+
+		<f:if condition="{source}">
+			<f:then>
+				<f:if condition="{formatSettings.formatMapping.mapping.{source}}">
+					<f:then>
+						{formatSettings.formatMapping.mapping.{source}}
+					</f:then>
+					<f:else>
+						{formatSettings.formatMapping.mapping.default}
+					</f:else>
+				</f:if>
+			</f:then>
+		</f:if>
+		{{id},
+	</span>
+
+	<f:for each="{formatSettings.fieldMapping}" as="docField" key="name" iteration="bibtexIterator">
+		<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'{docField}')}" name="fieldValue" />
+
+		<f:if condition="{name}=='author'">
+			<f:then>
+				<f:render partial="Display/Citation/Bibtex/Bibtex_Author" arguments="{title:'{name}', content:'{fieldValue}'}"/>
+			</f:then>
+			<f:else>
+				<f:if condition="{fieldValue -> f:count()} > 1">
+					<f:then>
+						<f:render partial="Display/Citation/Bibtex/Bibtex_Multiple" arguments="{title:'{name}', content:'{fieldValue}'}"/>
+					</f:then>
+					<f:else>
+						<f:render partial="Display/Citation/Bibtex/Bibtex_General" arguments="{title:'{name}', content:'{fieldValue}'}"/>
+					</f:else>
+				</f:if>
+			</f:else>
+		</f:if>
+	</f:for>
+
+    <span class="citation_bibtex_wrapper citation_field">}</span>
+</div>

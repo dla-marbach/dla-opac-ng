@@ -1,0 +1,40 @@
+{namespace s=Subugoe\Find\ViewHelpers}
+<f:alias  map="{open:'{', close: '}'}">
+    <f:if condition="{content}">
+        <f:if condition="{s:data.isArray(subject:content)}">
+            <f:then>
+                <div class="citation_field">
+                    <span class='citation_title'>{title}</span> = <span class="citation_brace">{open}</span>
+                    <f:for each="{content}" as="value" iteration="iterator">
+                        <f:if condition="{value}">
+                            <f:if condition="{s:data.isArray(subject:value)}">
+                                <f:then>
+                                    <f:for each="{value}" as="array_value" iteration="iterator2">
+                                        <f:if condition="{array_value}">
+                                            <span class="citation_value">{array_value}</span>
+                                            <f:if condition="{iterator2.cycle} != {iterator2.isLast}">
+                                                <span class="citation_value_separator"> AND </span>
+                                            </f:if>
+                                        </f:if>
+                                    </f:for>
+                                </f:then>
+                                <f:else>
+                                    <span class="citation_value">{value}</span>
+                                    <f:if condition="{iterator.cycle} != {iterator.isLast}">
+                                        <span class="citation_value_separator"> AND </span>
+                                    </f:if>
+                                </f:else>
+                            </f:if>
+                        </f:if>
+                    </f:for>
+                    <span class="citation_brace">{close}</span>,
+                </div>
+            </f:then>
+            <f:else>
+                <div class="citation_field">
+                    <span class='citation_title'>{title}</span> = <span class="citation_brace">{open}</span><span class="citation_value">{content}</span><span class="citation_brace">{close}</span>,
+                </div>
+            </f:else>
+        </f:if>
+    </f:if>
+</f:alias>
