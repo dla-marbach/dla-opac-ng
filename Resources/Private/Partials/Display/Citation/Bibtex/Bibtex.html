@@ -27,9 +27,16 @@
 				<f:render partial="Display/Citation/Bibtex/Bibtex_Author" arguments="{title:'{name}', content:'{fieldValue}'}"/>
 			</f:then>
 			<f:else>
-				<f:if condition="{fieldValue -> f:count()} > 1">
+				<f:if condition="{s:data.isArray(subject:fieldValue)}">
 					<f:then>
-						<f:render partial="Display/Citation/Bibtex/Bibtex_Multiple" arguments="{title:'{name}', content:'{fieldValue}'}"/>
+						<f:if condition="{fieldValue -> f:count()} > 1">
+							<f:then>
+								<f:render partial="Display/Citation/Bibtex/Bibtex_Multiple" arguments="{title:'{name}', content:'{fieldValue}'}"/>
+							</f:then>
+							<f:else>
+								<f:render partial="Display/Citation/Bibtex/Bibtex_General" arguments="{title:'{name}', content:'{fieldValue}'}"/>
+							</f:else>
+						</f:if>
 					</f:then>
 					<f:else>
 						<f:render partial="Display/Citation/Bibtex/Bibtex_General" arguments="{title:'{name}', content:'{fieldValue}'}"/>
