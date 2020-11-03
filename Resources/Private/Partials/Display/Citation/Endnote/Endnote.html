@@ -40,19 +40,4 @@
         </f:if>
 
     </f:for>
-
-    <f:comment>
-    <f:render partial="SLUB/Citation/Endnote/endnote_field_multiple" arguments="{title:'%T', content:{0:title_short, 1:title_sub, 2:title_part}}"/>
-    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%A', content:{0:author, 1:author_corp, 2:author2, 3:author_corp2,}}"/>
-    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%7', content:edition}"/>
-    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%I', content:publisher}"/>
-    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%@', content:isbn}"/>
-    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%@', content:issn}"/>
-    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%K', content:topic}"/>
-    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%D', content:date}"/>
-    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%X', content:description_footnote}"/>
-    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%X', content:description_contents}"/>
-    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%C', content:{0:publisher, 1:publishPlace}}"/>
-    <f:render partial="SLUB/Citation/Endnote/endnote_field" arguments="{title:'%U',content:'http://slubdd.de/katalog?{docID}'}"/>
-    </f:comment>
 </div>
