@@ -1367,6 +1367,7 @@ plugin.tx_find {
                 showmissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
+                fixed = 1
             }
 
             65 {
