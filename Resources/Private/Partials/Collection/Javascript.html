@@ -46,7 +46,12 @@
                 // save filter ids as data attribute
                 $('#collection-search').data('searchFilterIds', data.foundUids);
                 // build tree from first level with filter ids set
-                getChildNodes(0);
+                if (data.foundUids == null) {
+                    $("#collectiontree").html("<h2 style='margin-left:1.5rem;'>Keine Treffer gefunden</h2>");
+                } else {
+                    getChildNodes(0);
+                }
+
             });
     }
 
