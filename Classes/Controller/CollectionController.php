@@ -9,8 +9,9 @@ class CollectionController extends ActionController
     /**
      * Index Action.
      * @param string $record
+     * @param string $uid
      */
-    public function indexAction(string $record = '')
+    public function indexAction(string $record = '', string $uid = '')
     {
         /** @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager */
 
@@ -27,5 +28,6 @@ class CollectionController extends ActionController
 
         $this->view->assign('settings', $extSettings);
         $this->view->assign('record', $record);
+        $this->view->assign('uid', $uid);
     }
 }

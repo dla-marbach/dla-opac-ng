@@ -31,24 +31,26 @@ class CollectionViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
             $arrayData = json_decode($jsonData);
 
             if ($arrayData) {
-                $breadcrumbArray[0] = [
-                    'record_id' => $arrayData->record_id,
-                    'uid' => $arrayData->uid,
-                    'treeview_title' => $arrayData->treeview_title,
-                ];
-                $childObject = $arrayData;
-                $i = 1;
-                while ($childObject->child) {
-
-                    $breadcrumbArray[$i] = [
-                        'record_id' => $childObject->child->record_id,
-                        'uid' => $childObject->child->uid,
-                        'treeview_title' => $childObject->child->treeview_title,
+                foreach ($arrayData as $key => $value) {
+                    $breadcrumbArray[0] = [
+                        'record_id' => $value->record_id,
+                        'uid' => $value->uid,
+                        'treeview_title' => $value->treeview_title,
                     ];
-                    $i++;
-                    $childObject = $childObject->child;
+                    $childObject = $value;
+                    $i = 1;
+                    while ($childObject->child) {
+
+                        $breadcrumbArray[$i] = [
+                            'record_id' => $childObject->child->record_id,
+                            'uid' => $childObject->child->uid,
+                            'treeview_title' => $childObject->child->treeview_title,
+                        ];
+                        $i++;
+                        $childObject = $childObject->child;
+                    }
+                    $resultValue[] = $breadcrumbArray;
                 }
-                $resultValue = $breadcrumbArray;
             } else {
                 $resultValue = NULL;
             }

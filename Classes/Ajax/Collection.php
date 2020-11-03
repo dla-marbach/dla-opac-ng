@@ -134,36 +134,56 @@ if ($action == 'getNodes') {
     $currentTree = [];
 
     while ($row = $result->fetch_assoc()) {
-        if ($row['parent_id']) {
-            $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title FROM ' . $table . ' WHERE uid = ?');
 
-            $stmt->bind_param('s', $row['parent_id']);
-            $stmt->execute();
-            $result = $stmt->get_result();
+        $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title FROM ' . $table . ' WHERE uid = ?');
 
-            $data = mysqli_fetch_fields($result);
+        $stmt->bind_param('s', $row['parent_id']);
+        $stmt->execute();
+        $parentResult = $stmt->get_result();
 
-            if (empty($currentTree)) {
-                $currentTree['record_id'] = $row['record_id'];
-                $currentTree['uid'] = $row['uid'];
-                $currentTree['treeview_title'] = $row['treeview_title'];
+        $parentData = mysqli_fetch_fields($parentResult);
+
+        $currentTree['record_id'] = $row['record_id'];
+        $currentTree['uid'] = $row['uid'];
+        $currentTree['treeview_title'] = $row['treeview_title'];
+
+        while ($rowParent = $parentResult->fetch_assoc()) {
+
+            if ($rowParent['parent_id']) {
+
+                $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title FROM ' . $table . ' WHERE uid = ?');
+
+                $stmt->bind_param('s', $rowParent['parent_id']);
+                $stmt->execute();
+                $parentResult = $stmt->get_result();
+
+                $parentData = mysqli_fetch_fields($parentResult);
+
+
+                if (empty($currentTree)) {
+                    $currentTree['record_id'] = $rowParent['record_id'];
+                    $currentTree['uid'] = $rowParent['uid'];
+                    $currentTree['treeview_title'] = $rowParent['treeview_title'];
+                } else {
+                    $newTree['record_id'] = $rowParent['record_id'];
+                    $newTree['uid'] = $rowParent['uid'];
+                    $newTree['treeview_title'] = $rowParent['treeview_title'];
+                    $newTree['child'] = $currentTree;
+                    $currentTree = $newTree;
+                }
             } else {
-                $newTree['record_id'] = $row['record_id'];
-                $newTree['uid'] = $row['uid'];
-                $newTree['treeview_title'] = $row['treeview_title'];
+                $newTree['record_id'] = $rowParent['parent_id'];
+                $newTree['uid'] = $rowParent['uid'];
+                $newTree['treeview_title'] = $rowParent['treeview_title'];
                 $newTree['child'] = $currentTree;
                 $currentTree = $newTree;
+
+                $jTree[] = $currentTree;
+                $currentTree = [];
             }
-
-        } else {
-            $newTree['record_id'] = $row['parent_id'];
-            $newTree['uid'] = $row['uid'];
-            $newTree['treeview_title'] = $row['treeview_title'];
-            $newTree['child'] = $currentTree;
-            $currentTree = $newTree;
-
-            $jTree = $currentTree;
         }
+
+
 
     }
 

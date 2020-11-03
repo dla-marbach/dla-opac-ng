@@ -116,7 +116,7 @@
                     // delayed scroll to entry
                     if ($('#record_id').data('record')) {
                         setTimeout(function() {
-                            $(document).scrollTop($('#'+$('#record_id').data('record')).offset().top);
+                            $(document).scrollTop($('#'+$('#uid').data('uid')).offset().top);
                         }, 500);
                     }
                 }
@@ -136,9 +136,6 @@
     function eachRecord(data) {
         if (data.child) {
             getChildNodes(data.uid, data.child, 1);
-            // eachRecord(data.child);
-        } else {
-            $(document).scrollTop($('#'+$('#record_id').data('anchorid')).offset().top);
         }
     }
 
@@ -150,8 +147,10 @@
             dataType: "json"
         })
             .done(function(data) {
-                eachRecord(data);
-                $('#record_id').data('anchorid', data.uid);
+                data.forEach(function (item, index) {
+                    eachRecord(item);
+                });
+                $('#record_id').data('anchorid', $('#uid').data('uid'));
             });
     }
 
