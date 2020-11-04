@@ -918,6 +918,11 @@
                                                 </div>
                                                 <f:if condition="{iterator.isLast}">
                                                     <f:then>
+                                                        <f:if condition="{iterator.isOdd}">
+                                                            <f:then>
+                                                                <div class="detail-images-column"></div>
+                                                            </f:then>
+                                                        </f:if>
                                                         </div>
                                                     </f:then>
                                                 </f:if>
