@@ -1381,9 +1381,20 @@ plugin.tx_find {
                 reverseFacet = 1
             }
 
+            66 {
+                id = Bibliographie
+                field = filter_bibliography
+                query = filter_bibliography:("%s")
+                collapse = 1
+                # Shows a facet value which includes all "not known" items
+                showmissing = 1
+                labelmissing = nicht bestimmt
+                reverseFacet = 1
+            }
+
             # Die nächsten konfigurierten Facetten sind für die Sucheinschränkung oberhalb des Suchschlitzes
             # Konkret für Audio & Video und Namen & Werke
-            66 {
+            70 {
                 id = DatenbestandHidden
                 facettype = multi_select_facet
                 field = facet_source
