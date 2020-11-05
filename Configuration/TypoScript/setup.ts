@@ -923,28 +923,28 @@ plugin.tx_find {
             501 {
                 id = author_von
                 type = Text
-                query = facet_names_relations:(%1$s) AND facet_names_relations:(*␝Von)
+                query = advanced_von:(%1$s)
                 noescape = 1
                 hidden = 1
             }
             502 {
                 id = author_an
                 type = Text
-                query = facet_names_relations:(%1$s) AND facet_names_relations:(*␝An)
+                query = advanced_an:(%1$s)
                 noescape = 1
                 hidden = 1
             }
             503 {
                 id = author_ueber
                 type = Text
-                query = facet_names_relations:(%1$s) AND facet_names_relations:(*␝Über)
+                query = advanced_ueber:(%1$s)
                 noescape = 1
                 hidden = 1
             }
             504 {
                 id = author_unter
                 type = Text
-                query = facet_names_relations:(%1$s) AND facet_names_relations:(*␝Unter)
+                query = advanced_unter:(%1$s)
                 noescape = 1
                 hidden = 1
             }
