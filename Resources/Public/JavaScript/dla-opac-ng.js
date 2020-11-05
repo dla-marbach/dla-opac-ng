@@ -310,6 +310,15 @@ var getUrlParameter = function getUrlParameter(sParam) {
 // extended search
 $(document).ready(function () {
 
+    // remove all extended search values otherwise both search modes are combined
+    $('.ctg-hd-search-form button').on('click', function (event) {
+        var extendedInputs = [0,1,2,3,4];
+        extendedInputs.forEach(function (item, index, array) {
+            $('#extended-search-input-'+item).val("");
+        });
+
+    });
+
     var extSearch =  getUrlParameter('tx_find_find%5BextSearch%5D');
 
     if (extSearch) {
