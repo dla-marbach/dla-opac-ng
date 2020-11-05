@@ -385,7 +385,7 @@ $(document).ready(function () {
     $('.extended-search-select').on('change', function (event) {
         $('#'+$(this).attr('id').replace('select','input')).attr('name', 'tx_find_find[q][' + $(this).children('option:selected').attr('name') + ']');
         if ($(this).children('option:selected').attr('name') == 'not_date') {
-            $('#'+$(this).attr('id').replace('select','input')).attr('readonly', true);
+            $('#'+$(this).attr('id').replace('select','input')).attr('readonly', true).val("*");
         } else {
             $('#'+$(this).attr('id').replace('select','input')).attr('readonly', false);
         }
@@ -401,6 +401,7 @@ $(document).ready(function () {
         "date",
         "date_von",
         "date_bis",
+        "not_date",
         "new_von",
         "new_bis",
         "place",
@@ -415,6 +416,9 @@ $(document).ready(function () {
             $('#extended-search-select-'+i).children('[name='+item+']').prop('selected', true)
             $('#extended-search-input-'+i).val(value);
             $('#extended-search-input-'+i).attr('name', 'tx_find_find[q][' + item + ']');
+            if (item == "not_date") {
+                $('#extended-search-input-'+i).attr('readonly', true);
+            }
             i++;
         }
     });
