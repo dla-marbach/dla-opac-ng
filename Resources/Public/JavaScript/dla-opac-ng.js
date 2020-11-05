@@ -309,9 +309,18 @@ var getUrlParameter = function getUrlParameter(sParam) {
 
 // extended search
 $(document).ready(function () {
+
+    var extSearch =  getUrlParameter('tx_find_find%5BextSearch%5D');
+
+    if (extSearch) {
+        $('.extended-search').show();
+        $('.ctg-hd-search-form').hide();
+    }
+
     $('.linkExtendedSearch').on('click', function (event) {
         event.preventDefault();
         toggleExtendedSearch();
+        //add extended search parameter to link
     });
 
     $('.extended-search-container-button button').on('click', function (event) {
@@ -319,6 +328,7 @@ $(document).ready(function () {
         extendedInputs.forEach(function (item, index, array) {
             var currentSelectName = $('#extended-search-select-'+item).children('option:selected').attr('name');
 
+            // check if duplicate options are chosen
             if ($('#extended-search-input-'+item).val().length !== 0) {
 
                 if ($('#extended-search-select-0').children('option:selected').attr('name') == currentSelectName && item != 0) {
@@ -365,6 +375,11 @@ $(document).ready(function () {
 
     $('.extended-search-select').on('change', function (event) {
         $('#'+$(this).attr('id').replace('select','input')).attr('name', 'tx_find_find[q][' + $(this).children('option:selected').attr('name') + ']');
+        if ($(this).children('option:selected').attr('name') == 'not_date') {
+            $('#'+$(this).attr('id').replace('select','input')).attr('readonly', true);
+        } else {
+            $('#'+$(this).attr('id').replace('select','input')).attr('readonly', false);
+        }
     });
 
     var extendedFields = ["author",
@@ -400,6 +415,12 @@ $(document).ready(function () {
 
 
 });
+
+function toggleExtendedSearch() {
+    $('.extended-search').toggle();
+    $('.ctg-hd-search-form').toggle();
+}
+
 
 // watchlist
 $(document).ready(function () {
@@ -581,11 +602,5 @@ function buildWatchlist() {
     } else {
         $('#watchlist-entries').html('<h2>Keine Einträge vorhanden</h2>');
     }
-}
-
-
-function toggleExtendedSearch() {
-    $('.extended-search').toggle();
-    $('.ctg-hd-search-form').toggle();
 }
 

@@ -413,6 +413,7 @@
       <label index="search.fieldselector.signatur">Bestandssignatur</label>
       <label index="search.fieldselector.exemplar">Provienenzmerkmale (Exemplar)</label>
       <label index="search.fieldselector.searchall">Freie Suche</label>
+      <label index="search.fieldselector.not_date">Ohne Datum</label>
 
     </languageKey>
 

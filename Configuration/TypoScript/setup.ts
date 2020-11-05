@@ -1032,6 +1032,13 @@ plugin.tx_find {
                 noescape = 1
                 hidden = 1
             }
+            517 {
+                id = not_date
+                type = Text
+                query = -facet_time:*
+                noescape = 1
+                hidden = 1
+            }
 
             ### Exemplarsuche ###
 
