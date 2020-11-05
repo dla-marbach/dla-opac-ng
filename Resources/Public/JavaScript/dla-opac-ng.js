@@ -332,7 +332,18 @@ $(document).ready(function () {
         //add extended search parameter to link
     });
 
+    // prevent enter in extended search input fields because it triggers the basic search
+    $("[id^=extended-search-input-]").on('keypress', function (event) {
+        if (event.which === 13) {
+            event.preventDefault();
+            $('.extended-search button').click();
+        }
+    });
+
     $('.extended-search-container-button button').on('click', function (event) {
+
+        $('.ctg-hd-search-form input').val('');
+
         var extendedInputs = [0,1,2,3,4];
         extendedInputs.forEach(function (item, index, array) {
             var currentSelectName = $('#extended-search-select-'+item).children('option:selected').attr('name');
