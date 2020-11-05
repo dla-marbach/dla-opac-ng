@@ -1158,20 +1158,23 @@
                     </div>
                     <div class="ctg-dtvt-content">
                         <div>
-                            <f:for each="{data}" as="doc" iteration="iterator">
-                                <f:if condition="{doc.record_id}">
-                                    <f:then>
-                                        <f:link.action pageUid="{settings.collectionUid}" additionalParams="{'tx_dlaopacng_dlacollection[record]':'{doc.record_id}'}">
+                            <f:for each="{data}" as="arrayData" iteration="ArrayIterator">
+                                <f:for each="{arrayData}" as="doc" iteration="iterator">
+                                    <f:if condition="{doc.record_id}">
+                                        <f:then>
+                                            <f:link.action pageUid="{settings.collectionUid}" additionalParams="{'tx_dlaopacng_dlacollection[record]':'{doc.record_id}','tx_dlaopacng_dlacollection[uid]':'{doc.uid}'}">
+                                                {doc.treeview_title}
+                                            </f:link.action>
+                                        </f:then>
+                                        <f:else>
                                             {doc.treeview_title}
-                                        </f:link.action>
-                                    </f:then>
-                                    <f:else>
-                                        {doc.treeview_title}
-                                    </f:else>
-                                </f:if>
-                                <f:if condition="!{iterator.isLast}">
-                                    ->
-                                </f:if>
+                                        </f:else>
+                                    </f:if>
+                                    <f:if condition="!{iterator.isLast}">
+                                        ->
+                                    </f:if>
+                                </f:for>
+                                <br/><br/>
                             </f:for>
                         </div>
                     </div>
