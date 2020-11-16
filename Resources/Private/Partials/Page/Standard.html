@@ -1,9 +1,50 @@
 <f:comment>
-  Standard elements to insert on all pages:
+    Standard elements to insert on all pages:
     * include CSS files
     * include JavaScript files
     * include the search form
 </f:comment>
 <f:render partial="Page/CSS" arguments="{_all}"/>
 <f:render partial="Page/JavaScript" arguments="{_all}"/>
-<f:render partial="Form/Form" arguments="{_all}"/>
+<f:if condition="{settings.searchOnly}">
+    <f:then>
+        <f:form pageUid="{settings.listPageId}" name="c{config.uid}-form"
+                method="post"
+                section="{settings.jumpToID}"
+                class="searchForm {f:if(condition:config.extendedSearch, then:'search-extended', else:'search-simple')}">
+
+            <div class="ctg-hd-search-form {f:if(condition: '{arguments.extended}==1', then: 'hidden')}">
+                <div class="ctg-search-autocomplete">
+
+
+                    <f:alias map="{queryParameter:'{s:data.valueForKey(array:config.query, key:settings.queryFields.0.id)}'}">
+                        <f:form.textfield
+                                id="c{config.uid}-field-{settings.queryFields.0.id}"
+                                class="inputType-text"
+                                name="q[{settings.queryFields.0.id}]{f:if(
+                                    condition:hasAlternate,
+                                    then:'[term]'
+                                  )}"
+                                value="{f:if(
+                                condition:hasAlternate,
+                                then:queryParameter.term,
+                                else:queryParameter
+                              )}"
+                                placeholder="{f:translate(key:'LLL:{settings.languageRootPath}locallang-form.xml:input.{settings.queryFields.0.id}.placeholder')}"
+                        />
+                    </f:alias>
+                </div>
+                <div class="ctg-search-autocomplete-button">
+                    <button type="submit">
+                        <span class="icon bel-lupe"></span>
+                        <f:translate key='Jetzt suchen' extensionName='dla_opac_ng'/>
+                    </button>
+                </div>
+            </div>
+
+        </f:form>
+    </f:then>
+    <f:else>
+        <f:render partial="Form/Form" arguments="{_all}"/>
+    </f:else>
+</f:if>

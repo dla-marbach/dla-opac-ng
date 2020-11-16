@@ -13,172 +13,181 @@
     This result display is sufficient for basic result lists.
 </f:comment>
 <f:section name="main">
-    <s:page.title>
-        <f:render partial="Components/QueryString" arguments="{query:arguments.q, facets:config.activeFacets}"/>
-        –
-        {config.pageTitle}
-    </s:page.title>
+    <f:if condition="{settings.searchOnly}">
+        <f:then>
+            <f:render partial="Page/Standard" arguments="{_all}"/>
+        </f:then>
+        <f:else>
 
-    <f:render partial="Page/Standard" arguments="{_all}"/>
+            <s:page.title>
+                <f:render partial="Components/QueryString" arguments="{query:arguments.q, facets:config.activeFacets}"/>
+                –
+                {config.pageTitle}
+            </s:page.title>
+
+            <f:render partial="Page/Standard" arguments="{_all}"/>
 
 
-    <div class="row ctg-info-actions">
-        <div class="small-6 column">
-            <div class="ctg-info-text">
-                <f:render partial="Components/ResultCount" arguments="{_all}"/>
-            </div>
-        </div>
-        <div class="small-6 column ctg-ia-scnd">
-            <a class="ctg-button" title="versenden"><span class="icon bel-brief01"></span></a>
-            <a class="ctg-button" title="teilen"><span class="icon bel-link01"></span></a>
-        </div>
-    </div>
-
-    <f:comment><div class="row ctg-info-actions active-facet-container">
-        <div class="column">
-            <f:for each="{config.facets}" as="facetInfo" key="facetKey">
-                <f:if condition="{facetInfo.hidden}!=1">
-                    <v:variable.set value="{s:data.valueForKey(array:results.components.facetset.facets, key:facetInfo.id)}" name="facetData" />
-                    <f:for each="{facetData.values}" as="itemCount" key="facetTerm" iteration="iterator">
-                        <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}">
-                            <f:link.action
-                                    addQueryString="TRUE"
-                                    argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
-                                    section="{settings.jumpToID}"
-                                    noCacheHash="1"
-                                    class=""
-                                    style="text-decoration:none;"
-                                    title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
-                                <span class="active-facets">
-                                    {facetTerm}
-                                    <span class="icon bel-ende01"></span>
-                                </span>
-                            </f:link.action>
-                        </f:if>
-                    </f:for>
-                </f:if>
-            </f:for>
-        </div>
-    </div></f:comment>
-
-    <!--TYPO3SEARCH_begin-->
-    <div class="row ctg-follow-content" id="content-area">
-        <section class="small-9 column ctg-content-column">
-            <div class="ctg-pager-actions">
-                <f:render partial="Pager/ListPager" arguments="{_all}"/>
-
-                <f:if condition="{f:count(subject:config.sortOptions.menu)} > 1">
-                    <div class="ctg-pager-aside">
-                        <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.sort"/>
-                        <f:form.select additionalAttributes='{data-id:"c{config.uid}-sortSelect",data-sort:"1"}' name="sort" options="{config.sortOptions.menu}" value="{config.sortOptions.selected}"/>
+            <div class="row ctg-info-actions">
+                <div class="small-6 column">
+                    <div class="ctg-info-text">
+                        <f:render partial="Components/ResultCount" arguments="{_all}"/>
                     </div>
-
-                    <f:for each="{config.sortOptions.menu}" as="sortOption" key="key" iteration="iterator">
-            <span
-                    id="sortUri{iterator.index}"
-                    style="display:none;"
-                    uri='<f:uri.action
-              addQueryString="TRUE"
-              arguments="{sort:'{key}'}"
-                        argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
-                        section="{settings.jumpToID}"
-                        noCacheHash="1">
-                        </f:uri.action>'></span>
-                    </f:for>
-                </f:if>
-
-                <f:if condition="{f:count(subject:settings.paging.menu)} > 1">
-
-                    <f:for each="{settings.paging.menu}" as="pagingOption" key="key" iteration="iterator">
-                        <span
-                            id="pagingUri{iterator.index}"
-                            style="display:none;"
-                            uri='<f:uri.action
-                            addQueryString="TRUE"
-                            arguments="{count:'{key}'}"
-                            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
-                            section="{settings.jumpToID}"
-                            noCacheHash="1">
-                            </f:uri.action>'>
-                        </span>
-                    </f:for>
-                </f:if>
-            </div>
-
-            <!-- begin results -->
-
-            <!-- normdata -->
-
-            <f:render partial="Display/List/FeaturedNormdata" arguments="{_all}"/>
-
-            <!-- normdata end -->
-
-            <f:if condition="{results.documents -> f:count()} != 0">
-                <f:then>
-                    <ol id="c{config.uid}-resultList" class="ctg-result-list" start="{config.counterStart}">
-                        <f:for each="{results.documents}" as="document">
-                            <f:render partial="Display/Result" arguments="{_all}"/>
-                        </f:for>
-
-                    </ol>
-                </f:then>
-                <f:else>
-                    <f:render partial="Display/Static/NoHitMessage" arguments="{_all}"/>
-                </f:else>
-            </f:if>
-
-            <!-- end results -->
-
-            <div class="ctg-pager-actions">
-                <f:render partial="Pager/ListPager" arguments="{_all}"/>
-                <f:comment>
-                    <f:if condition="{f:count(subject:config.resultCountOptions.menu)} > 1">
-                        <div class="ctg-pager-aside">
-                            <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.count"/>
-                            <f:form.select id="c{config.uid}-resultCountSelect" name="count" options="{config.resultCountOptions.menu}" value="{config.resultCountOptions.selected}"/>
-                        </div>
-                    </f:if>
-                </f:comment>
-                <div class="ctg-pager-aside">
-                    <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.count"/>
-                    <f:form.select id="c{config.uid}-resultCountSelect" class="dlaResultCountSelect" name="count" options="{config.resultCountOptions.menu}" value="{config.resultCountOptions.selected}"/>
+                </div>
+                <div class="small-6 column ctg-ia-scnd">
+                    <a class="ctg-button" title="versenden"><span class="icon bel-brief01"></span></a>
+                    <a class="ctg-button" title="teilen"><span class="icon bel-link01"></span></a>
                 </div>
             </div>
-        </section>
 
-        <aside class="small-3 column ctg-facet-colum">
+            <f:comment><div class="row ctg-info-actions active-facet-container">
+                <div class="column">
+                    <f:for each="{config.facets}" as="facetInfo" key="facetKey">
+                        <f:if condition="{facetInfo.hidden}!=1">
+                            <v:variable.set value="{s:data.valueForKey(array:results.components.facetset.facets, key:facetInfo.id)}" name="facetData" />
+                            <f:for each="{facetData.values}" as="itemCount" key="facetTerm" iteration="iterator">
+                                <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}">
+                                    <f:link.action
+                                            addQueryString="TRUE"
+                                            argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
+                                            section="{settings.jumpToID}"
+                                            noCacheHash="1"
+                                            class=""
+                                            style="text-decoration:none;"
+                                            title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
+                                        <span class="active-facets">
+                                            {facetTerm}
+                                            <span class="icon bel-ende01"></span>
+                                        </span>
+                                    </f:link.action>
+                                </f:if>
+                            </f:for>
+                        </f:if>
+                    </f:for>
+                </div>
+            </div></f:comment>
 
-            <f:render partial="Display/List/ActiveFacets" arguments="{_all}"/>
+            <!--TYPO3SEARCH_begin-->
+            <div class="row ctg-follow-content" id="content-area">
+                <section class="small-9 column ctg-content-column">
+                    <div class="ctg-pager-actions">
+                        <f:render partial="Pager/ListPager" arguments="{_all}"/>
 
-            <f:render partial="Facets/Facets" arguments="{_all}"/>
+                        <f:if condition="{f:count(subject:config.sortOptions.menu)} > 1">
+                            <div class="ctg-pager-aside">
+                                <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.sort"/>
+                                <f:form.select additionalAttributes='{data-id:"c{config.uid}-sortSelect",data-sort:"1"}' name="sort" options="{config.sortOptions.menu}" value="{config.sortOptions.selected}"/>
+                            </div>
 
-            <f:render partial="Display/Static/RightColumn" arguments="{_all}"/>
+                            <f:for each="{config.sortOptions.menu}" as="sortOption" key="key" iteration="iterator">
+                    <span
+                            id="sortUri{iterator.index}"
+                            style="display:none;"
+                            uri='<f:uri.action
+                      addQueryString="TRUE"
+                      arguments="{sort:'{key}'}"
+                                argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                                section="{settings.jumpToID}"
+                                noCacheHash="1">
+                                </f:uri.action>'></span>
+                            </f:for>
+                        </f:if>
 
-            <section class="ctg-facet-other">
-                <h3><f:translate key='Andere Fundorte' extensionName='dla_opac_ng'/><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a></h3>
-                <ul>
-                    <li>
-                        <a href="https://fernleihe.boss.bsz-bw.de/Bsz/saveIsil/DE-Mar1" title="">
-                        <span class="icon bel-link03"></span>
-                        </a>
-                        <a href="https://fernleihe.boss.bsz-bw.de/Bsz/saveIsil/DE-Mar1" title="">Fernleihe</a>
-                    </li>
-                    <li>
-                        <a href="http://kalliope.staatsbibliothek-berlin.de/de/search.html?q={arguments.q.default -> f:format.urlencode()}" title="">
-                            <span class="icon bel-link03"></span>
-                        </a>
-                        <a href="http://kalliope.staatsbibliothek-berlin.de/de/search.html?q={arguments.q.default -> f:format.urlencode()}" title="">Kalliope</a>
-                    </li>
-                    <li>
-                        <a href="https://de.wikipedia.org/wiki/{arguments.q.default -> f:format.urlencode()}" title="">
-                            <span class="icon bel-link03"></span>
-                        </a>
-                        <a href="https://de.wikipedia.org/wiki/{arguments.q.default}" title="">Wikipedia</a>
-                    </li>
-                </ul>
-            </section>
-        </aside>
-    </div>
-    <!--TYPO3SEARCH_end-->
+                        <f:if condition="{f:count(subject:settings.paging.menu)} > 1">
+
+                            <f:for each="{settings.paging.menu}" as="pagingOption" key="key" iteration="iterator">
+                                <span
+                                    id="pagingUri{iterator.index}"
+                                    style="display:none;"
+                                    uri='<f:uri.action
+                                    addQueryString="TRUE"
+                                    arguments="{count:'{key}'}"
+                                    argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
+                                    section="{settings.jumpToID}"
+                                    noCacheHash="1">
+                                    </f:uri.action>'>
+                                </span>
+                            </f:for>
+                        </f:if>
+                    </div>
+
+                    <!-- begin results -->
+
+                    <!-- normdata -->
+
+                    <f:render partial="Display/List/FeaturedNormdata" arguments="{_all}"/>
+
+                    <!-- normdata end -->
+
+                    <f:if condition="{results.documents -> f:count()} != 0">
+                        <f:then>
+                            <ol id="c{config.uid}-resultList" class="ctg-result-list" start="{config.counterStart}">
+                                <f:for each="{results.documents}" as="document">
+                                    <f:render partial="Display/Result" arguments="{_all}"/>
+                                </f:for>
+
+                            </ol>
+                        </f:then>
+                        <f:else>
+                            <f:render partial="Display/Static/NoHitMessage" arguments="{_all}"/>
+                        </f:else>
+                    </f:if>
+
+                    <!-- end results -->
+
+                    <div class="ctg-pager-actions">
+                        <f:render partial="Pager/ListPager" arguments="{_all}"/>
+                        <f:comment>
+                            <f:if condition="{f:count(subject:config.resultCountOptions.menu)} > 1">
+                                <div class="ctg-pager-aside">
+                                    <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.count"/>
+                                    <f:form.select id="c{config.uid}-resultCountSelect" name="count" options="{config.resultCountOptions.menu}" value="{config.resultCountOptions.selected}"/>
+                                </div>
+                            </f:if>
+                        </f:comment>
+                        <div class="ctg-pager-aside">
+                            <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.count"/>
+                            <f:form.select id="c{config.uid}-resultCountSelect" class="dlaResultCountSelect" name="count" options="{config.resultCountOptions.menu}" value="{config.resultCountOptions.selected}"/>
+                        </div>
+                    </div>
+                </section>
+
+                <aside class="small-3 column ctg-facet-colum">
+
+                    <f:render partial="Display/List/ActiveFacets" arguments="{_all}"/>
+
+                    <f:render partial="Facets/Facets" arguments="{_all}"/>
+
+                    <f:render partial="Display/Static/RightColumn" arguments="{_all}"/>
+
+                    <section class="ctg-facet-other">
+                        <h3><f:translate key='Andere Fundorte' extensionName='dla_opac_ng'/><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a></h3>
+                        <ul>
+                            <li>
+                                <a href="https://fernleihe.boss.bsz-bw.de/Bsz/saveIsil/DE-Mar1" title="">
+                                <span class="icon bel-link03"></span>
+                                </a>
+                                <a href="https://fernleihe.boss.bsz-bw.de/Bsz/saveIsil/DE-Mar1" title="">Fernleihe</a>
+                            </li>
+                            <li>
+                                <a href="http://kalliope.staatsbibliothek-berlin.de/de/search.html?q={arguments.q.default -> f:format.urlencode()}" title="">
+                                    <span class="icon bel-link03"></span>
+                                </a>
+                                <a href="http://kalliope.staatsbibliothek-berlin.de/de/search.html?q={arguments.q.default -> f:format.urlencode()}" title="">Kalliope</a>
+                            </li>
+                            <li>
+                                <a href="https://de.wikipedia.org/wiki/{arguments.q.default -> f:format.urlencode()}" title="">
+                                    <span class="icon bel-link03"></span>
+                                </a>
+                                <a href="https://de.wikipedia.org/wiki/{arguments.q.default}" title="">Wikipedia</a>
+                            </li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+            <!--TYPO3SEARCH_end-->
+
+        </f:else>
+    </f:if>
 
 </f:section>
