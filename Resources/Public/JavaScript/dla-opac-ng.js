@@ -514,6 +514,13 @@ $(document).ready(function () {
             pdf.save ("Merkliste.pdf");
         });
 
+        // Remove all from watchlist
+        $('.watchlist-delall').on('click', function () {
+            removeAllFromWatchlist();
+            updateCounter();
+            $('.add-watchlist-button-marked').removeClass('add-watchlist-button-marked');
+        });
+
     });
 
     // Add document to watchlist
@@ -562,6 +569,13 @@ function removeFromWatchlist(id) {
     }
 }
 
+function removeAllFromWatchlist() {
+    if (Cookies.get('list') != undefined) {
+        Cookies.set('list', '');
+        $('#watchlist-list').html('');
+    }
+}
+
 function updateCounter() {
     $('#watchlist .watchlist-counter').text($('#watchlist .watchlist-counter').text().replace(/\d+/, countWatchlist()));
 }
@@ -589,6 +603,7 @@ function buildWatchlist() {
         html += '<a class="ctg-button watchlist-send" title="versenden"><span class="icon bel-brief01"></span></a>';
         html += '<a class="ctg-button watchlist-export" title="CSV Export"><span class="icon bel-postin"></span></a>';
         html += '<a class="ctg-button watchlist-print" title="drucken"><span class="icon bel-drucker"></span></a>';
+        html += '<a class="ctg-button watchlist-delall" title="Alle Einträge löschen"><span class="icon bel-ende01"></span></a>';
         html += '</div>';
 
         html += '<ul id="watchlist-list">';
@@ -617,6 +632,7 @@ function buildWatchlist() {
                         removeFromWatchlist(docId);
                         updateCounter();
                         $(this).closest('li').remove();
+                        $("a[data-docid='" + docId + "']").removeClass('add-watchlist-button-marked');
                     });
                 });
 
