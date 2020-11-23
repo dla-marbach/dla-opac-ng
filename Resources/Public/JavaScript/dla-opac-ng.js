@@ -521,6 +521,12 @@ $(document).ready(function () {
             $('.add-watchlist-button-marked').removeClass('add-watchlist-button-marked');
         });
 
+        // Remove all from watchlist
+        $('.watchlist-close a').on('click', function (evt) {
+            evt.preventDefault();
+            $('.watchlist-container').toggle();
+        });
+
     });
 
     // Add document to watchlist
@@ -596,7 +602,7 @@ function countWatchlist() {
 function buildWatchlist() {
     if (Cookies.get('list') != undefined) {
         var list = Cookies.get('list');
-        var listArray = list.split(',');
+        // var listArray = list.split(',');
 
         // List action buttons
         var html = '<div class="watchlist-actions">';
@@ -610,9 +616,7 @@ function buildWatchlist() {
         html += '</ul>';
 
         $('#watchlist-entries').html(html);
-        listArray.forEach(function (item, index, array) {
 
-        });
         $.ajax({
             url: "/index.php?eID=getEntities&q=" + list,
         })

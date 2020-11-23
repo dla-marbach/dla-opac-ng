@@ -165,6 +165,16 @@ ul#watchlist-list li a {
     display: inline-block;
 }
 
+.watchlist-close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+.watchlist-close a {
+    text-decoration: none;
+}
+
 .extended-search {
 }
 
