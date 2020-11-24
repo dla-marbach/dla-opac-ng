@@ -558,7 +558,12 @@ function addToWatchlist(id) {
     if (Cookies.get('list') != undefined) {
         var list = Cookies.get('list');
         if (list.search(id) == -1) {
-            list += ','+id;
+            if (list == '') {
+                list += id;
+            } else {
+                list += ','+id;
+            }
+
             list = list.replace(',,', ',');
             Cookies.set('list', list);
         } else {
