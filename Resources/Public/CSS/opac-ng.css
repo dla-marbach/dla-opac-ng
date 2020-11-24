@@ -201,6 +201,7 @@ ul#watchlist-list li a {
 
 .extended-search-fields {
     display: table-cell;
+    vertical-align: top;
 }
 
 .extended-search-fields select:hover {
