@@ -12,7 +12,7 @@ $query = $_GET['q'];
 
 // Get Solr record
 $response = file_get_contents(
-    $solr_select_url.'?q='.urlencode('id:('.str_replace(',',' OR ',$query).')').'&rows=100',
+    $solr_select_url.'?q='.urlencode('id:('.str_replace(',',' OR ',$query).')').'&rows=200',
     FALSE,
     stream_context_create([
         'method' => 'GET',
