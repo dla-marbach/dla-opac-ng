@@ -526,19 +526,19 @@ $(document).ready(function () {
             pdf.save ("Merkliste.pdf");
         });
 
-        // Remove all from watchlist
-        $('.watchlist-delall').on('click', function () {
-            removeAllFromWatchlist();
-            updateCounter();
-            $('.add-watchlist-button-marked').removeClass('add-watchlist-button-marked');
-        });
+    });
 
-        // Remove all from watchlist
-        $('.watchlist-close a').on('click', function (evt) {
-            evt.preventDefault();
-            $('.watchlist-container').toggle();
-        });
+    // Remove all from watchlist
+    $('.watchlist-delall').on('click', function () {
+        removeAllFromWatchlist();
+        updateCounter();
+        $('.add-watchlist-button-marked').removeClass('add-watchlist-button-marked');
+    });
 
+    // Close watchlist
+    $('.watchlist-close a').on('click', function (evt) {
+        evt.preventDefault();
+        $('.watchlist-container').toggle();
     });
 
     // Add document to watchlist
@@ -619,25 +619,12 @@ function countWatchlist() {
 function buildWatchlist() {
     if (Cookies.get('list') != undefined) {
         var list = Cookies.get('list');
-        // var listArray = list.split(',');
-
-        // List action buttons
-        var html = '<div class="watchlist-actions">';
-        html += '<a class="ctg-button watchlist-send" title="versenden"><span class="icon bel-brief01"></span></a>';
-        html += '<a class="ctg-button watchlist-export" title="CSV Export"><span class="icon bel-postin"></span></a>';
-        html += '<a class="ctg-button watchlist-print" title="drucken"><span class="icon bel-drucker"></span></a>';
-        html += '<a class="ctg-button watchlist-delall" title="Alle Einträge löschen"><span class="icon bel-ende01"></span></a>';
-        html += '</div>';
-
-        html += '<ul id="watchlist-list">';
-        html += '</ul>';
-
-        $('#watchlist-entries').html(html);
 
         $.ajax({
             url: "/index.php?eID=getEntities&q=" + list,
         })
             .done(function( data ) {
+                $('#watchlist-list').html('');
                 data.forEach(function (item, index, array) {
                     $('#watchlist-list')
                         // .append('<li><input type="checkbox" data-docid="'+data.id+'">' +
