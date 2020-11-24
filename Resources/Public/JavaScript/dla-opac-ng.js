@@ -312,11 +312,11 @@ $(document).ready(function () {
 
     // remove all extended search values otherwise both search modes are combined
     $('.ctg-hd-search-form button').on('click', function (event) {
-        var extendedInputs = [0,1,2,3,4];
-        extendedInputs.forEach(function (item, index, array) {
-            $('#extended-search-input-'+item).val("");
-        });
+        resetExtendedSearch();
+    });
 
+    $('.extended-search-reset').on('click', function (event) {
+        resetExtendedSearch();
     });
 
     var extSearch =  getUrlParameter('tx_find_find%5BextSearch%5D');
@@ -439,6 +439,13 @@ $(document).ready(function () {
 
 
 });
+
+function resetExtendedSearch() {
+    var extendedInputs = [0,1,2,3,4];
+    extendedInputs.forEach(function (item, index, array) {
+        $('#extended-search-input-'+item).val("");
+    });
+}
 
 function toggleExtendedSearch() {
     $('.extended-search').toggle();
