@@ -441,13 +441,13 @@ $(document).ready(function () {
 });
 
 function toggleExtendedSearch() {
+    $('.extended-search').toggle();
+    $('.ctg-hd-search-form').toggle();
     if ($('.extended-search').is(":visible")) {
         $('.show-ext-search').text('Einfache Suche');
     } else {
         $('.show-ext-search').text('Erweiterte Suche');
     }
-    $('.extended-search').toggle();
-    $('.ctg-hd-search-form').toggle();
 }
 
 
