@@ -437,7 +437,8 @@ $(document).ready(function () {
         toggleExtendedSearch();
     }
 
-
+    // check if extended search is visible
+    setExtendedSearchText();
 });
 
 function resetExtendedSearch() {
@@ -450,6 +451,10 @@ function resetExtendedSearch() {
 function toggleExtendedSearch() {
     $('.extended-search').toggle();
     $('.ctg-hd-search-form').toggle();
+    setExtendedSearchText();
+}
+
+function setExtendedSearchText() {
     if ($('.extended-search').is(":visible")) {
         $('.show-ext-search').text('Einfache Suche');
     } else {
