@@ -965,21 +965,21 @@ plugin.tx_find {
             507 {
                 id = date
                 type = Text
-                query = facet_time:(%1$s)
+                query = date_variants_txt:(%1$s)
                 noescape = 1
                 hidden = 1
             }
             508 {
                 id = date_von
                 type = Text
-                query = facet_time:[%1$s TO *]
+                query = date_variants_txt:[%1$s TO *]
                 noescape = 1
                 hidden = 1
             }
             509 {
                 id = date_bis
                 type = Text
-                query = facet_time:[* TO %1$s]
+                query = date_variants_txt:[* TO %1$s]
                 noescape = 1
                 hidden = 1
             }
