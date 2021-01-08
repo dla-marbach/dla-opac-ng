@@ -1000,7 +1000,7 @@ plugin.tx_find {
             512 {
                 id = place
                 type = Text
-                query = H02010:(%1$s) OR A0410(%1$s)
+                query = H02010:(%1$s) OR A0410:(%1$s)
                 noescape = 1
                 hidden = 1
             }
