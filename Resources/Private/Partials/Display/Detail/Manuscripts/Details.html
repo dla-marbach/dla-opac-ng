@@ -913,9 +913,8 @@
         </f:if>
 
 
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'H05080')}" name="H05080" />
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'H04000')}" name="H04000" />
-        <f:if condition="{H05080} || {H04000}">
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_zugangsnummer')}" name="detail_zugangsnummer" />
+        <f:if condition="{detail_zugangsnummer}">
             <f:then>
                 <div class="ctg-dtvt-row">
                     <div class="ctg-dtvt-label">
@@ -923,15 +922,15 @@
                     </div>
                     <div class="ctg-dtvt-content">
 
-                        <dla:data.joinFields
-                                fieldNames="{0:'H05080',1:'H04000'}"
-                                fieldWraps="{0:'%s',1:'. %s'}"
-                                fields="{document.fields}"
-                                as="linkTexts"
-                        />
-                        <f:for each="{linkTexts}" as="item" iteration="iterator">
-                            <v:format.trim content="{item}" characters=" ."></v:format.trim><br />
-                        </f:for>
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                document:document,
+                results:results,
+                field:'detail_zugangsnummer',
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+              }"/>
                     </div>
                 </div>
             </f:then>
