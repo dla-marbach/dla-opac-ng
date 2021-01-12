@@ -20,6 +20,10 @@ $tables = [
     'classification' => 'tx_dlaopacng_classification',
     'collection' => 'tx_dlaopacng_collection'
 ];
+$orderBy = [
+    'classification' => 'listview_title',
+    'collection' => 'treeview_title'
+];
 
 $action = $_GET['action'];
 $nodeId = $_GET['id'];
@@ -29,6 +33,7 @@ $type = $_GET['type'];
 $filter = $_POST['filterIds'];
 
 $table = $tables[$type];
+$order = $orderBy[$type];
 
 // Prepare JSON for jTree
 $jTree = [];
@@ -37,7 +42,7 @@ if ($action == 'getNodes') {
 
     if (!empty($filter)) {
         $placeholders = implode(',', array_fill(0, count(explode(",", $filter)), '?'));
-        $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title,facet_value,hasChild FROM ' . $table . ' WHERE parent_id = ? AND uid IN (' . $placeholders . ') ORDER BY treeview_title;');
+        $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title,facet_value,hasChild FROM ' . $table . ' WHERE parent_id = ? AND uid IN (' . $placeholders . ') ORDER BY ' . $order . ';');
 
         //  call bind_param with $filter as array  $stmt->bind_param('ss', $nodeId, $filter);
         $paramArray = array_merge([$nodeId], explode(",", $filter));
@@ -50,7 +55,7 @@ if ($action == 'getNodes') {
         // call "bind_param" with all parameters as array
         call_user_func_array(array($stmt, 'bind_param'), array_merge([$typeArray], $paramArray));
     } else {
-        $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title,facet_value,hasChild FROM ' . $table . ' WHERE parent_id = ? ORDER BY treeview_title;');
+        $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title,facet_value,hasChild FROM ' . $table . ' WHERE parent_id = ? ORDER BY ' . $order . ';');
         $stmt->bind_param('s', $nodeId);
     }
     $stmt->execute();
