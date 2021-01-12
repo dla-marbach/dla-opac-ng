@@ -50,6 +50,7 @@
                                 addQueryString="TRUE"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
                                 noCacheHash="1"
+                                title="{f:translate(key:'Gesamtbestand', extensionName:'dla_opac_ng')}"
                                 class="{f:if(condition:'{config.activeFacets.Medientypen}',then:'',else:'ctg-hd-active')} gesamt">
                                 <span class="icon bel-mkombo06"></span><f:translate key='Gesamtbestand' extensionName='dla_opac_ng'/>
                             </f:link.action>
@@ -64,6 +65,7 @@
                                     addQueryString="TRUE"
                                     argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
                                     noCacheHash="1"
+                                    title="{f:translate(key:'Gedrucktes', extensionName:'dla_opac_ng')}"
                                     class="{f:if(condition:'{config.activeFacets.Medientypen.Gedrucktes}',then:'ctg-hd-active',else:'')} gedrucktes">
                                 <span class="icon bel-mag"></span><f:translate key='Gedrucktes' extensionName='dla_opac_ng'/>
                             </f:link.action>
@@ -78,6 +80,7 @@
                                 addQueryString="TRUE"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
                                 noCacheHash="1"
+                                title="{f:translate(key:'Handschriften', extensionName:'dla_opac_ng')}"
                                 class="{f:if(condition:'{config.activeFacets.Medientypen.Handschriften}',then:'ctg-hd-active',else:'')} handschriften">
                                 <span class="icon bel-schreiben"></span><f:translate key='Handschriften' extensionName='dla_opac_ng'/>
                             </f:link.action>
@@ -92,6 +95,7 @@
                                 addQueryString="TRUE"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
                                 noCacheHash="1"
+                                title="{f:translate(key:'Bilder und Objekte', extensionName:'dla_opac_ng')}"
                                 class="{f:if(condition:'{s:data.valueForKey(array:config.activeFacets.Medientypen, key:\"Bilder und Objekte\")}',then:'ctg-hd-active',else:'')} bilder">
                                 <span class="icon bel-foto"></span><f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/>
                             </f:link.action>
@@ -109,6 +113,7 @@
                                 addQueryString="TRUE"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
                                 noCacheHash="1"
+                                title="{f:translate(key:'Audio & Video', extensionName:'dla_opac_ng')}"
                                 class="{f:if(condition:'{s:data.valueForKey(array:config.activeFacets.Medientypen, key:\"Audio\")}',then:'ctg-hd-active',else:'')} audio">
                         <span class="icon bel-ton"></span><f:translate key='Audio & Video' extensionName='dla_opac_ng'/>
                         </f:link.action>
@@ -128,6 +133,7 @@
                                 addQueryString="TRUE"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
                                 noCacheHash="1"
+                                title="{f:translate(key:'Namen und Werke', extensionName:'dla_opac_ng')}"
                                 class="{f:if(condition:'{config.activeFacets.Medientypen.Normdaten}',then:'ctg-hd-active',else:'')} namen">
                             <span class="icon bel-idkarte"></span><f:translate key='Namen und Werke' extensionName='dla_opac_ng'/>
                         </f:link.action>
@@ -183,12 +189,17 @@
         <section class="ctg-hd-addon">
             <ul>
                 <li>
-                    <f:link.action pageUid="{settings.indexPageUid}" additionalParams="{'tx_find_find[extSearch]':'1'}">
+                    <f:link.action
+                        pageUid="{settings.indexPageUid}"
+                        title="{f:translate(key:'Expertensuche', extensionName:'dla_opac_ng')}"
+                        additionalParams="{'tx_find_find[extSearch]':'1'}">
                         <span class="icon bel-regler01"></span><span class="ctg-hd-addon-term"><f:translate key='Expertensuche' extensionName='dla_opac_ng'/></span>
                     </f:link.action>
                 </li>
                 <li>
-                    <f:link.action pageUid="{settings.collectionUid}">
+                    <f:link.action
+                        pageUid="{settings.collectionUid}"
+                        title="{f:translate(key:'Bestandsübersicht', extensionName:'dla_opac_ng')}">
                         <span class="icon bel-inhalt"></span>
                         <span class="ctg-hd-addon-term">
                                 <f:translate key='Bestandsübersicht' extensionName='dla_opac_ng'/>
