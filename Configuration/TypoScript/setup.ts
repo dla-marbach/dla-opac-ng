@@ -1040,6 +1040,16 @@ plugin.tx_find {
                 hidden = 1
             }
 
+            ### Systematikverlinkung ###
+
+            600 {
+                id = seisn
+                type = Text
+                query = SEISN:(%1$s)
+                noescape = 1
+                hidden = 1
+            }
+
             ### Exemplarsuche ###
 
             999 {
