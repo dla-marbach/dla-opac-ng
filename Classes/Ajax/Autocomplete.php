@@ -18,9 +18,11 @@ $response = file_get_contents(
     $solr_suggest_url.'?suggest=true&suggest.dictionary='.$solr_suggest_dictionary.'&suggest.dictionary='.$solr_suggest_text.'&suggest=true&suggest.q='.urlencode($query),
     FALSE,
     stream_context_create([
-        'method' => 'GET',
-        'follow_location' => 0,
-        'timeout' => 1.0
+        'http' => [
+            'method' => 'GET',
+            'follow_location' => 0,
+            'timeout' => 1.0
+        ]
     ])
 );
 

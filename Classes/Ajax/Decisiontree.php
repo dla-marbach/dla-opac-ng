@@ -23,9 +23,11 @@ $responseRelations = file_get_contents(
     $solr_select_url.'?facet.field=facet_names_relations&facet.mincount=1&facet=on&facet.prefix='.urlencode($prefix).'&fq=NOT%20filter_hidden%3Atrue&fq=NOT%20source%3A(AU%20OR%20MM)&q='.urlencode($query).'&rows=0',
     FALSE,
     stream_context_create([
-        'method' => 'GET',
-        'follow_location' => 0,
-        'timeout' => 1.0
+        'http' => [
+            'method' => 'GET',
+            'follow_location' => 0,
+            'timeout' => 1.0
+        ]
     ])
 );
 
@@ -33,9 +35,11 @@ $responseRoles = file_get_contents(
     $solr_select_url.'?facet.field=facet_names_roles&facet=on&facet.mincount=1&facet.prefix='.urlencode($prefix).'&fq=NOT%20filter_hidden%3Atrue&fq=NOT%20source%3A(AU%20OR%20MM)&q='.urlencode($query).'&rows=0',
     FALSE,
     stream_context_create([
-        'method' => 'GET',
-        'follow_location' => 0,
-        'timeout' => 1.0
+        'http' => [
+            'method' => 'GET',
+            'follow_location' => 0,
+            'timeout' => 1.0
+        ]
     ])
 );
 
