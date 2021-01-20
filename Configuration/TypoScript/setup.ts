@@ -1049,6 +1049,13 @@ plugin.tx_find {
                 noescape = 1
                 hidden = 1
             }
+            610 {
+                id = sys_suche
+                type = Text
+                query = SYNKEY:(%1$s) OR XX_AU_SYNKEY_AUKEY:(%1$s)
+                noescape = 1
+                hidden = 1
+            }
 
             ### Exemplarsuche ###
 
