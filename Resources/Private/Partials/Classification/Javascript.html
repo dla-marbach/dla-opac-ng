@@ -1,0 +1,219 @@
+<script type="text/javascript">
+    const pluginType = $("#collectiontree").data('plugintype');
+    $( document ).ready(function() {
+        var record = $('#record_id').data('record');
+        getChildNodes(0);
+        if (record) {
+            expandStructure(record);
+        }
+        registerOnClick();
+        registerSearchForm();
+    });
+
+    function registerSearchForm() {
+        $("#collection-search").on("keyup", delay(function (event) {
+            if ($(this).val() == '') {
+                $('#collection-search').data('searchFilterIds', '');
+                resetTreeNodes();
+                getChildNodes(0);
+            } else {
+                searchNodes($(this).val());
+            }
+        }, 500));
+    }
+
+    function delay(callback, ms) {
+        var timer = 0;
+        return function() {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
+
+
+    function searchNodes(searchTerm) {
+        var url = '/index.php?eID=collection&type=' + pluginType + '&action=searchNodes&search=' + searchTerm;
+
+        $.ajax({
+            url: url,
+            dataType: "json"
+        })
+            .done(function(data) {
+                resetTreeNodes();
+                // save filter ids as data attribute
+                $('#collection-search').data('searchFilterIds', data.foundUids);
+                // build tree from first level with filter ids set
+                if (data.foundUids == null) {
+                    $("#collectiontree").html("<h2 style='margin-left:1.5rem;'>Keine Treffer gefunden</h2>");
+                } else {
+                    getChildNodes(0);
+                }
+
+            });
+    }
+
+    function resetTreeNodes() {
+        $("#collectiontree").html("");
+    }
+
+    var constants = function() {
+        this.liElements = '';
+    };
+
+    function registerOnClick() {
+        // click event for loaded content
+        $(document).on("click", '.childElement.children', function(event) {
+            event.preventDefault();
+            $(this).children('span.icon').toggleClass("bel-pfeil-o01").toggleClass("bel-pfeil-u01");
+
+            var liElement = $(this).parent().parent().parent();
+            if (liElement.children('ul').length == 0) {
+                var id = liElement.attr('id');
+                getChildNodes(id)
+                // var html = jsonToHtml(getChildNodes(id));
+                // liElement.append(html);
+            } else {
+                liElement.children('ul').toggle();
+            }
+        });
+    }
+
+    function getChildNodes(id, child = "",expand = 0) {
+        var searchFlag = false;
+
+        if (!id) {
+            id = 0;
+        }
+
+        var filterIds = $('#collection-search').data('searchFilterIds');
+
+        var requestObject = {
+            type: "POST",
+            url: '/index.php?eID=collection&type=' + pluginType + '&action=getNodes&id=' + id,
+            dataType: "json"
+        };
+
+        if (typeof filterIds !== 'undefined') {
+            requestObject.data = { filterIds : filterIds };
+            searchFlag = true;
+        }
+
+        var jqxhr = $.ajax(requestObject)
+            .done(function (data) {
+                if (id == 0) {
+                    $('#collectiontree').append(jsonToHtml(data));
+                    if (searchFlag) {
+                        setTimeout(function() {
+                            expandFirstLevel();
+                        }, 500);
+                    }
+                } else {
+                    $('#' + id).append(jsonToHtml(data));
+
+                    // delayed scroll to entry
+                    if ($('#record_id').data('record')) {
+                        setTimeout(function() {
+                            $(document).scrollTop($('#'+$('#uid').data('uid')).offset().top);
+                        }, 500);
+                    }
+                }
+                if (expand) {
+                    eachRecord(child);
+                }
+            });
+    }
+
+    function expandFirstLevel() {
+        $('#collectiontree li').each(function () {
+            getChildNodes($(this).attr('id'));
+            $(this).find('span.icon').toggleClass("bel-pfeil-o01").toggleClass("bel-pfeil-u01");
+        });
+    }
+
+    function eachRecord(data) {
+        if (data.child) {
+            getChildNodes(data.uid, data.child, 1);
+        }
+    }
+
+    function expandStructure(record) {
+        var url = '/index.php?eID=collection&type=' + pluginType + '&action=getAllParents&id=' + record;
+
+        var jqxhr = $.ajax({
+            url: url,
+            dataType: "json"
+        })
+            .done(function(data) {
+                data.forEach(function (item, index) {
+                    eachRecord(item);
+                });
+                $('#record_id').data('anchorid', $('#uid').data('uid'));
+            });
+    }
+
+    function getLiElement(index, item) {
+        if (item.hasChild == 1) {
+            var addClass = 'children';
+        } else if (item.hasChild == 0) {
+            var addClass = '';
+        }
+        if (item.facet_value != '') {
+            var linkAndActions = '<span class="bt-actions">' +
+                '<a href="/index.php?id=' + $('#collectiontree').data('findindexpageid') + '&tx_find_find%5Bq%5D%5Bsys_suche%5D=' + encodeURI(item.facet_value) + '" class="bt-search" target="_blank">' +
+                '<span class="icon bel-lupe"></span>' +
+                '</a>' +
+                '</span>';
+        } else {
+            var linkAndActions = '';
+        }
+        if (item.title != 'root') {
+            if (Number.isInteger(Number(item.record_id)) || item.facet_value == '') {
+                var title = $('<div/>').text(item.title).html();
+            } else {
+                if (item.facet_value.toLowerCase().indexOf('or') < 0) {
+                    var title = '<a href="/index.php?id=' + $('#collectiontree').data('findindexpageid') + '&tx_find_find%5Bid%5D=' + item.record_id + '" target="_blank">' +
+                        $('<div/>').text(item.title).html() +
+                        '</a>';
+                } else {
+                    var title = '<a href="/index.php?id=' + $('#collectiontree').data('findindexpageid') + '&tx_find_find%5Bq%5D%5Bseisn%5D=' + encodeURI(item.facet_value) + '" target="_blank">' +
+                        $('<div/>').text(item.title).html() +
+                        '</a>';
+                }
+            }
+            constants.liElements += '<li id="' + item.uid + '">' +
+                '<article id="' + item.record_id + '">' +
+                '<span class="bt-content">' +
+                '<a class="childElement ' + addClass + '" href="#">' +
+                '<span class="icon bel-pfeil-u01">' +
+                '' +
+                '</span>' +
+                '</a>' +
+                '<h3>' + title + '</h3>' +
+                '</span>' +
+                    linkAndActions +
+                '</article>' +
+                '</li>';
+        }
+
+    }
+
+    function jsonToHtml(json) {
+        var obj = json;
+        constants.liElements = '';
+
+        var htmlListElement = '<ul>';
+
+        jQuery.each(obj, getLiElement);
+
+        htmlListElement += constants.liElements;
+
+        htmlListElement += '</ul>';
+
+        return htmlListElement;
+
+    }
+
+</script>
