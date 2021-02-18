@@ -10,7 +10,7 @@
 </f:comment>
 <f:if condition="{linkFieldContent}">
     <f:then>
-        <f:if condition="{s:data.valueForKey(array:settings.displayFieldForDataField, key:field)}">
+        <f:if condition="{s:data.valueForKey(array:settings.displayFieldForDataField, key:field)} && !{linkTextValue}">
             <f:then>
                 <f:for each="{v:iterator.explode(content:'{s:data.valueForKey(array:settings.queryFieldForDataField, key:field)}', glue:',')}" as="queryField">
                     <p style="color:lightgrey;">
