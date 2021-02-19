@@ -26,7 +26,11 @@
     }
     div.main-link {
         margin-bottom: 1rem;
-        margin-left: 1.3rem;
+        margin-left: 0.5rem;
+    }
+    div.page-subtitle {
+        margin-bottom: 1rem;
+        margin-left: 1.5rem;
     }
     div.main-link strong {
         vertical-align: middle;
@@ -49,6 +53,9 @@
             – <f:translate key='der Online-Katalog des Deutschen Literaturarchivs Marbach' extensionName='dla_opac_ng'/>
         </span>
     </f:link.action>
+</div>
+<div class="page-subtitle">
+    <h2>{v:page.info(field:'subtitle')}</h2>
 </div>
 <span id="record_id" data-record="{record}" style="display:none;"></span>
 <span id="uid" data-uid="{uid}" style="display:none;"></span>
