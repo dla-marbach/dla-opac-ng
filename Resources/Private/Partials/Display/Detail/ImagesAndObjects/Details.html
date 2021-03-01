@@ -708,7 +708,7 @@
             </f:then>
         </f:if>
 
-
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0331_AKA451')}" name="XX_AK_A0331_AKA451" />
         <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0331_AKA451')}">
             <f:then>
                 <div class="ctg-dtvt-row">
@@ -716,7 +716,6 @@
                         <f:translate key='Bibliothek' extensionName='dla_opac_ng'/>
                     </div>
                     <div class="ctg-dtvt-content">
-
                         <f:render
                                 partial="Display/Field/List"
                                 arguments="{
