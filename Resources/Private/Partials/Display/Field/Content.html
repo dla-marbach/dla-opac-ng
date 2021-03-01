@@ -10,7 +10,7 @@
 </f:comment>
 <f:if condition="{linkFieldContent}">
     <f:then>
-        <f:if condition="{s:data.valueForKey(array:settings.displayFieldForDataField, key:field)} && !{linkTextValue}">
+        <f:if condition="{s:data.valueForKey(array:settings.displayFieldForDataField, key:field)}">
             <f:then>
                 <f:for each="{v:iterator.explode(content:'{s:data.valueForKey(array:settings.queryFieldForDataField, key:field)}', glue:',')}" as="queryField">
                     <p style="color:lightgrey;">
@@ -87,15 +87,22 @@
                                                 <f:case default="TRUE">
                                                     <f:link.action action="detail" arguments="{id:solr.id}" class="internal">
                                                         <f:comment><span style="color:lightgrey;">{displayField}: </span></f:comment>
-                                                        <f:render
-                                                                partial="Display/Field/Inline"
-                                                                arguments="{
+                                                        <f:if condition="!{s:data.isArray(subject: linkTextValue)}">
+                                                            <f:then>
+                                                                {linkTextValue}
+                                                            </f:then>
+                                                            <f:else>
+                                                                <f:render
+                                                                        partial="Display/Field/Inline"
+                                                                        arguments="{
                                                                   config:config,
                                                                   results:results,
                                                                   document:solr,
                                                                   field:'{displayField}',
                                                                   linkTextValue: linkTextValue
                                                                 }"/>
+                                                            </f:else>
+                                                        </f:if>
                                                     </f:link.action>
                                                 </f:case>
                                             </f:switch>
