@@ -249,9 +249,10 @@
                                 <dla:data.dateFormat
                                         dateValue="{0: '{KA805}'}"
                                         as="KA805"
+                                        desiredFormat="d.m.Y"
                                 />
 
-                                Gründung: <f:format.date date="{KA805}" format="d.m.Y" />
+                                Gründung: {KA805}
                             </f:if>
                             <f:if condition="{KA805} && {KB805}">
                                 <br/>
@@ -262,7 +263,7 @@
                                         as="KB805"
                                 />
 
-                                Auflösung: <f:format.date date="{KB805}" format="d.m.Y" />
+                                Auflösung: {KB805}
                             </f:if>
                             <f:if condition="{KW805A}">
                                 <f:if condition="{KA805} || {KB805}">
@@ -278,7 +279,7 @@
                                         as="KW805B"
                                     />
                                 </f:if>
-                                Wirkungszeit: <f:format.date date="{KW805A}" format="d.m.Y" /><f:if condition="{KW805B}"> - <f:format.date date="{KW805B}" format="d.m.Y" /></f:if>
+                                Wirkungszeit: {KW805A}<f:if condition="{KW805B}"> - {KW805B}</f:if>
                             </f:if>
 
                         </div>

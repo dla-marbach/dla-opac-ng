@@ -15,6 +15,7 @@ class DateFormatViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
     {
         parent::initializeArguments();
         $this->registerArgument('dateValue', 'integer', 'DateValue', true, array());
+        $this->registerArgument('desiredFormat', 'string', 'format', false, 'd.m.Y');
         $this->registerArgument('as', 'string', 'name of the result array', true, array());
     }
 
@@ -24,6 +25,7 @@ class DateFormatViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
     public function render()
     {
         $dateValue = $this->arguments['dateValue'][0];
+        $desiredFormat = $this->arguments['desiredFormat'];
 
         $year = substr($dateValue, 0, 4);
         $month = substr($dateValue, 4, 2);
@@ -38,14 +40,19 @@ class DateFormatViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
             $day = '01';
         }
 
-        $date->setDate($year, $month, $day);
+        if ($month == '' && $day == '') {
+            $dateOutput = $year;
+        } else {
+            $date->setDate($year, $month, $day);
+            $dateOutput = $date->format($desiredFormat);
+        }
 
         $variableName = $this->arguments['as'];
         if ($variableName !== null) {
             if ($this->templateVariableContainer->exists($variableName)) {
                 $this->templateVariableContainer->remove($variableName);
             }
-            $this->templateVariableContainer->add($variableName, $date);
+            $this->templateVariableContainer->add($variableName, $dateOutput);
             $date = $this->renderChildren();
         }
 
