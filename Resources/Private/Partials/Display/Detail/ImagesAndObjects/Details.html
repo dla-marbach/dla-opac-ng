@@ -684,7 +684,7 @@
             </f:then>
         </f:if>
 
-
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XXX_AK_TITREG_XX_AU_AKKEY_AUKEY')}" name="XXX_AK_TITREG_XX_AU_AKKEY_AUKEY" />
         <f:if condition="{s:data.valueForKey(array:document.fields, key:'XX_AU_AKKEY_AUKEY')}">
             <f:then>
                 <div class="ctg-dtvt-row">
@@ -700,7 +700,8 @@
                         results:results,
                         field: 'XX_AU_AKKEY_AUKEY',
                         linkFieldContent:1,
-                        linkFacets:linkFacets
+                        linkFacets:linkFacets,
+                        linkTexts: '{XXX_AK_TITREG_XX_AU_AKKEY_AUKEY}'
                     }"/>
 
                     </div>
