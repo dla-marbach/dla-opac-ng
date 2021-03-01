@@ -1355,6 +1355,42 @@
             </f:then>
         </f:if>
 
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'enthaltene_materialien')}" name="enthaltene_materialien" />
+
+        <dla:data.implode
+                array="{enthaltene_materialien}"
+                glue=" OR "
+                as="enthaltene_materialien_concat"
+        />
+        <s:data.newArray
+                name="query"
+                global="1"
+                keys="{0:'id'}"
+                values="{0:'({enthaltene_materialien_concat})'}"
+        />
+        <dla:fromSolr
+                query="{query}"
+                fields="id,listview_title"
+        />
+        <f:if condition="{f:count(subject: solr)} > 0">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        Enthaltene Materialien
+                    </div>
+
+                    <div class="ctg-dtvt-content">
+                        <f:for each="{solr}" as="item" iteration="item_iterator">
+                            <f:if condition="{item}">
+                                <f:link.action action="detail" arguments="{id:item.id}" class="internal">
+                                    {item.listview_title}
+                                </f:link.action>
+                            </f:if>
+                        </f:for>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
 
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_relation_title')}" name="detail_relation_title" />
