@@ -119,7 +119,7 @@ catalog - search
 }
 
 .ctg-hd-search-form button .icon {
-    font-size: 3rem;
+    font-size: 3rem !important;
     margin-right: 1.8rem;
 }
 
