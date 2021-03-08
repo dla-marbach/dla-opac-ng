@@ -86,8 +86,8 @@ page.includeCSS.opac-ng =  EXT:dla_opac_ng/Resources/Public/CSS/opac-ng.css
 
 
 #page.includeCSS.site =  https://www-test-ng.dla-marbach.de/fileadmin/lombego/layout/css/site.min.css
-#page.includeCSS.belugino =  EXT:dla_opac_ng/Resources/Public/CSS/belugino.css
-#page.includeCSS.catalog =  EXT:dla_opac_ng/Resources/Public/CSS/catalog.css
+page.includeCSS.belugino =  EXT:dla_opac_ng/Resources/Public/CSS/belugino.css
+page.includeCSS.catalog =  EXT:dla_opac_ng/Resources/Public/CSS/catalog.css
 
 page.includeCSS.tokeninput = EXT:dla_opac_ng/Resources/Public/CSS/token-input.css
 
