@@ -130,23 +130,27 @@
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'KI810')}" name="KI810" />
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0811')}" name="K0811" />
 
-                <div class="ctg-dtvt-row">
-                    <div class="ctg-dtvt-label">
-                        Andere Namen
-                    </div>
-                    <div class="ctg-dtvt-content">
-                        <f:for each="{K0810}" as="item" iteration="iterator">
-                            {item}
-                            <f:if condition="{KI810.{iterator.index}}">
-                                {KI810.{iterator.index}}
-                            </f:if>
-                            <f:if condition="{K0811.{iterator.index}}">
-                                {K0811.{iterator.index}}
-                            </f:if>
-                            <br />
-                        </f:for>
-                    </div>
-                </div>
+                <f:if condition="{K0810}">
+                    <f:then>
+                        <div class="ctg-dtvt-row">
+                            <div class="ctg-dtvt-label">
+                                Andere Namen
+                            </div>
+                            <div class="ctg-dtvt-content">
+                                <f:for each="{K0810}" as="item" iteration="iterator">
+                                    {item}
+                                    <f:if condition="{KI810.{iterator.index}}">
+                                        {KI810.{iterator.index}}
+                                    </f:if>
+                                    <f:if condition="{K0811.{iterator.index}}">
+                                        {K0811.{iterator.index}}
+                                    </f:if>
+                                    <br />
+                                </f:for>
+                            </div>
+                        </div>
+                    </f:then>
+                </f:if>
 
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_KS_K0800_KA850')}" name="XX_KS_K0800_KA850" />
