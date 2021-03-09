@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    initDatepickerExtSearch();
+});
+
+$(document).ready(function(){
     $("[data-facet-toggle]").click(function(){
         $(this).closest(".ctg-facet").find(".facetList").toggle();
         $(this).find(".icon").toggleClass("bel-pfeil-u01 bel-pfeil-o01");
@@ -400,6 +404,7 @@ $(document).ready(function () {
         } else {
             $('#'+$(this).attr('id').replace('select','input')).attr('readonly', false);
         }
+        initDatepickerExtSearch($(this));
     });
 
     var extendedFields = ["author",
@@ -459,6 +464,31 @@ function setExtendedSearchText() {
         $('.show-ext-search').text('Einfache Suche');
     } else {
         $('.show-ext-search').text('Erweiterte Suche');
+    }
+}
+
+// datepicker
+function initDatepickerExtSearch(context = false) {
+    var datePickerConfig = {
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "yy-mm-dd"
+    };
+    if (context) {
+        var dateInput = $('#' + context.attr('id').replace('select','input'));
+        if (dateInput && !dateInput.hasClass('useDatepicker')) {
+            dateInput.datepicker(datePickerConfig);
+            dateInput.addClass('useDatepicker');
+        } else {
+            if (dateInput.hasClass('useDatepicker')) {
+                dateInput.datepicker('destroy');
+                dateInput.removeClass('useDatepicker');
+            }
+        }
+    } else {
+        var dateInput = $('input[name^="tx_find_find[q][date"]');
+        dateInput.datepicker(datePickerConfig);
+        dateInput.addClass('useDatepicker');
     }
 }
 
@@ -656,4 +686,3 @@ function buildWatchlist() {
         $('#watchlist-entries').html('<h2>Keine Einträge vorhanden</h2>');
     }
 }
-

@@ -60,8 +60,11 @@ page.10 {
 
 
 page.includeJS.jquery = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-1.11.0.min.js
+page.includeJS.jquery-ui = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-ui.min.js
+page.includeCSS.jquery-ui =  EXT:dla_opac_ng/Resources/Public/CSS/jquery-ui/jquery-ui.min.css
 page.includeJS.jquery-plot = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.flot.min.js
 page.includeJS.jquery-plot-select = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.flot.selection.js
+
 # Zur Darstellung der Icons in der Trefferliste wird Font Awesome verwendet
 #page.includeJS.fa = https://use.fontawesome.com/96352f148e.js
 page.includeJS.find = EXT:find/Resources/Public/JavaScript/find.js
@@ -158,12 +161,7 @@ bodyTagCObject.wrap = <body class="page-|">
     <meta name="theme-color" content="#ffffff">
 )
 }
-9999 = TEXT
-9999 {
-    value (
-        #<script src="https://www-test.dla-marbach.de/fileadmin/lombego/layout/js/init-live.min.js"></script>
-    )
-}
+
 }
 
 
