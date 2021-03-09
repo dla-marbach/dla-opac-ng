@@ -215,6 +215,9 @@ plugin.tx_find {
 
         features.eDisMax = 1
 
+        escapechar = \,+,-,&,|,!,{,},[,],^,~,?,:
+        escapechardate = \,+,&,|,!,{,},[,],^,~,?,:
+
         # Der Abschnitt "queryFields" definiert die zur Verfügung stehenden Suchfelder.
         # Der Index "0" beschreibt den Standardsuchschlitz, weitere Indizes können zusätzliche
         # Suchfelder (z.B. für eine erweiterte Suche) beinhalten.
@@ -231,7 +234,7 @@ plugin.tx_find {
                 # schaltet die Maskierung von Steuerzeichen auf den Modus 2 um.
                 # Gemeinsam mit escapechar werden dann die entsprechenden Zeichen maskiert
                 noescape = 2
-                escapechar = \,+,-,&,|,!,{,},[,],^,~,?,:
+                escapechar < plugin.tx_find.settings.escapechar
                 replaceAfterEscape {
                     1 {
                         entity_ids\: = entity_ids:
@@ -917,126 +920,144 @@ plugin.tx_find {
                 id = author
                 type = Text
                 query = (facet_names:(%1$s) OR P0800:(%1$s) OR K0800:(%1$s))
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
             }
             501 {
                 id = author_von
                 type = Text
                 query = (advanced_von:(%1$s))
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
             }
             502 {
                 id = author_an
                 type = Text
                 query = (advanced_an:(%1$s))
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
             }
             503 {
                 id = author_ueber
                 type = Text
                 query = (advanced_ueber:(%1$s))
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
             }
             504 {
                 id = author_unter
                 type = Text
                 query = (advanced_unter:(%1$s))
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
             }
             505 {
                 id = title
                 type = Text
                 query = ((listview_title:(%1$s) AND (source:("AK") OR source:("BF") OR source:("HS") OR source:("BI") OR source:("dbis") OR source:("ezb"))) OR ATIT:(%1$s) OR H41840:(%1$s) OR H41820:(%1$s) OR H41850:(%1$s) OR B51801:(%1$s) OR XX_AK_TITREG_GWKEY:(%1$s))
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
             }
             506 {
                 id = title_ueber
                 type = Text
                 query = (XX_AK_ATIT_AKEKEY:(%1$s) OR XX_AK_TITREG_AKY526:(%1$s))
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
             }
             507 {
                 id = date
                 type = Text
                 query = (facet_time:(%1$s))
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechardate
                 hidden = 1
             }
             508 {
                 id = date_von
                 type = Text
                 query = (facet_time:[%1$s TO *])
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechardate
                 hidden = 1
             }
             509 {
                 id = date_bis
                 type = Text
                 query = (facet_time:[* TO %1$s])
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechardate
                 hidden = 1
             }
             510 {
                 id = new_von
                 type = Text
                 query = (POS075:(%1$s) OR B00050:(%1$s) OR H00050:(%1$s) OR M00050:(%1$s))
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
             }
             511 {
                 id = new_bis
                 type = Text
                 query = (POS075:(%1$s) OR B00050:(%1$s) OR H00050:(%1$s) OR M00050:(%1$s))
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
             }
             512 {
                 id = place
                 type = Text
                 query = (H02010:(%1$s) OR A0410:(%1$s))
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
             }
             513 {
                 id = numbers
                 type = Text
                 query = (id:(%1$s) OR A0540:(%1$s) OR A0542:(%1$s) OR ANUM:(%1$s) OR H05080:(%1$s) OR H04000:(%1$s) OR detail_zugangsnummer:(%1$s) OR H04010:(%1$s) OR H00070:(%1$s) OR H00080:(%1$s) OR BUCHN:(%1$s) OR XX_AU_BUCHUM_AUKEY:(%1$s) OR B04000:(%1$s) OR XX_BE_E05080_BEKEY:(%1$s) OR XX_AU_ZUGNR_AUKEY:(%1$s) OR B04100:(%1$s))
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
             }
             514 {
                 id = signatur
                 type = Text
                 query = (B41600:(%1$s) OR XX_AU_WSIGNA_AUKEY:(%1$s) OR XX_BF_B41600_HSBFKY:(%1$s) OR XX_BF_B41600_BFKEY:(%1$s))
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
             }
             515 {
                 id = exemplar
                 type = Text
                 query = (XX_AU_FBTIT_AUKEY:(%1$s) OR XX_AU_BEMEXT_AUKEY:(%1$s) OR XXX_SE_REGTIT_XX_AU_SYNKEY_AUKEY:(%1$s) OR XX_AU_VIRAUF_AUKEY:(%1$s))
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
             }
             516 {
                 id = searchall
                 type = Text
                 query = (%1$s)
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
             }
             517 {
                 id = not_date
                 type = Text
                 query = (-facet_time:*)
-                noescape = 1
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
             }
 
