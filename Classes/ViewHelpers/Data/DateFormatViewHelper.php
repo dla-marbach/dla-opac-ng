@@ -42,6 +42,8 @@ class DateFormatViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
 
         if ($month == '' && $day == '') {
             $dateOutput = $year;
+        } else if ($day == '') {
+            $dateOutput = $month . '.' . $year;
         } else {
             $date->setDate($year, $month, $day);
             $dateOutput = $date->format($desiredFormat);
