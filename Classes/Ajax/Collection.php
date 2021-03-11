@@ -52,8 +52,8 @@ if ($action == 'getNodes') {
         foreach ($paramArray as $parameter) {
             $typeArray .= 's';
         }
-        // call "bind_param" with all parameters as array
-        call_user_func_array(array($stmt, 'bind_param'), array_merge([$typeArray], $paramArray));
+        // call "bind_param" with all parameters as array using spread operator (...)
+        $stmt->bind_param($typeArray, ...$paramArray);
     } else {
         $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title,facet_value,hasChild FROM ' . $table . ' WHERE parent_id = ? ORDER BY ' . $order . ';');
         $stmt->bind_param('s', $nodeId);
