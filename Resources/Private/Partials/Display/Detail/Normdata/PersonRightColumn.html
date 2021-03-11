@@ -70,45 +70,45 @@
         <f:if condition="{wikidata_website}">
             <f:for each="{wikidata_website}" as="item" key="key" iteration="iterator">
                 <li>
-                    <a href="{item}"><span class="icon bel-link03"></span></a>
-                    <a href="{item}">Webseite</a>
+                    <a href="{item}" target="_blank"><span class="icon bel-link03"></span></a>
+                    <a href="{item}" target="_blank">Webseite</a>
                 </li>
             </f:for>
         </f:if>
         <f:if condition="{wikidata_wikipedia}">
             <li>
-                <a href="{wikidata_wikipedia}"><span class="icon bel-link03"></span></a>
-                <a href="{wikidata_wikipedia}">Wikipedia</a>
+                <a href="{wikidata_wikipedia}" target="_blank"><span class="icon bel-link03"></span></a>
+                <a href="{wikidata_wikipedia}" target="_blank">Wikipedia</a>
             </li>
         </f:if>
         <f:if condition="{lobid_filmportal}">
             <f:for each="{lobid_filmportal}" as="item" key="key" iteration="iterator">
                 <li>
-                    <a href="{item}"><span class="icon bel-link03"></span></a>
-                    <a href="{item}">Filmportal</a>
+                    <a href="{item}" target="_blank"><span class="icon bel-link03"></span></a>
+                    <a href="{item}" target="_blank">Filmportal</a>
                 </li>
             </f:for>
         </f:if>
 
         <f:if condition="{lobid_adb}">
             <li>
-                <a href="{lobid_adb}"><span class="icon bel-link03"></span></a>
-                <a href="{lobid_adb}">ADB</a>
+                <a href="{lobid_adb}" target="_blank"><span class="icon bel-link03"></span></a>
+                <a href="{lobid_adb}" target="_blank">ADB</a>
             </li>
         </f:if>
 
         <f:if condition="{lobid_ndb}">
             <li>
-                <a href="{lobid_ndb}"><span class="icon bel-link03"></span></a>
-                <a href="{lobid_ndb}">NDB</a>
+                <a href="{lobid_ndb}" target="_blank"><span class="icon bel-link03"></span></a>
+                <a href="{lobid_ndb}" target="_blank">NDB</a>
             </li>
         </f:if>
 
         <f:if condition="{wikidata_award}">
             <li>
                 Auszeichnungen:
-                <a href="{wikidata_award}"><span class="icon bel-link03"></span></a>
-                <a href="{wikidata_award}">NDB</a>
+                <a href="{wikidata_award}" target="_blank"><span class="icon bel-link03"></span></a>
+                <a href="{wikidata_award}" target="_blank">NDB</a>
             </li>
         </f:if>
 
@@ -118,10 +118,10 @@
         <f:for each="{PI028}" as="item" key="key" iteration="iterator">
             <f:if condition="{item}=='GND-Nr.'">
                 <li>
-                    <a href="http://d-nb.info/gnd/{PA028.{iterator.index}}">
+                    <a href="http://d-nb.info/gnd/{PA028.{iterator.index}}" target="_blank">
                         <span class="icon bel-link03"></span>
                     </a>
-                    <a href="http://d-nb.info/gnd/{PA028.{iterator.index}}">
+                    <a href="http://d-nb.info/gnd/{PA028.{iterator.index}}" target="_blank">
                         GND
                     </a>
                 </li>
@@ -130,8 +130,8 @@
 
         <f:if condition="{wikidata_id}">
             <li>
-                <a href="https://www.wikidata.org/wiki/{wikidata_id}"><span class="icon bel-link03"></span></a>
-                <a href="https://www.wikidata.org/wiki/{wikidata_id}">Wikidata</a>
+                <a href="https://www.wikidata.org/wiki/{wikidata_id}" target="_blank"><span class="icon bel-link03"></span></a>
+                <a href="https://www.wikidata.org/wiki/{wikidata_id}" target="_blank">Wikidata</a>
             </li>
         </f:if>
     </ul>
