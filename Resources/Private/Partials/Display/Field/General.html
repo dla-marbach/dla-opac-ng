@@ -60,7 +60,7 @@
             </f:if>
             <f:if condition="{s:data.isArray(subject: linkTexts)}">
                 <f:then>
-                    <v:variable.set value="{linkTexts.{iterator.index}}" name="linkTextValue" />
+                    <v:variable.set value="{linkTexts.0}" name="linkTextValue" />
                 </f:then>
                 <f:else>
                     <v:variable.set value="{linkTexts}" name="linkTextValue" />
