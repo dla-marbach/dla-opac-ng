@@ -997,7 +997,7 @@ plugin.tx_find {
             510 {
                 id = new_von
                 type = Text
-                query = (POS075:(%1$s) OR B00050:(%1$s) OR H00050:(%1$s) OR M00050:(%1$s))
+                query = (filter_new:[%1$s TO *])
                 noescape = 2
                 escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
@@ -1005,7 +1005,7 @@ plugin.tx_find {
             511 {
                 id = new_bis
                 type = Text
-                query = (POS075:(%1$s) OR B00050:(%1$s) OR H00050:(%1$s) OR M00050:(%1$s))
+                query = (filter_new:[* TO %1$s])
                 noescape = 2
                 escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
