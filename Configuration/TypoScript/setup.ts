@@ -917,7 +917,7 @@ plugin.tx_find {
             500 {
                 id = author
                 type = Text
-                query = (facet_names:(%1$s) OR P0800:(%1$s) OR K0800:(%1$s))
+                query = (advanced_names:(%1$s) OR P0800:(%1$s) OR K0800:(%1$s))
                 noescape = 2
                 escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
