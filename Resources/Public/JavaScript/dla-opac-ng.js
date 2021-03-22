@@ -290,7 +290,7 @@ function sendUrlByMail(title) {
     body += window.location.href;
     body += "";
     var uri = "mailto:?subject=";
-    uri += encodeURIComponent(subject);
+    uri += encodeURIComponent(decodeURI(subject));
     uri += "&body=";
     uri += encodeURIComponent(body);
     window.open(uri);

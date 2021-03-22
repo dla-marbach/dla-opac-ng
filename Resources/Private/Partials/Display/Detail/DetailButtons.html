@@ -8,7 +8,7 @@
 
 <ul class="ctg-dvh-aside">
     <li><a class="ctg-button add-watchlist-button" data-docid="{document.id}" title="<f:translate key='merken' extensionName='dla_opac_ng'/>"><span class="icon bel-stern01"></span></a></li>
-    <li><a onclick='sendUrlByMail("{listview_title}");' class="ctg-button" title="<f:translate key='versenden' extensionName='dla_opac_ng'/>"><span class="icon bel-brief01"></span></a></li>
+    <li><a onclick="sendUrlByMail('{listview_title -> f:format.urlencode()}');" class="ctg-button" title="<f:translate key='versenden' extensionName='dla_opac_ng'/>"><span class="icon bel-brief01"></span></a></li>
     <li><a class="ctg-button permalink" title="Link kopieren"><span class="icon bel-verbinden"></span></a></li>
     <li>
         <a class="export-choice-button ctg-button" title="<f:translate key='exportieren' extensionName='dla_opac_ng'/>"><span class="icon bel-postin"></span></a>
