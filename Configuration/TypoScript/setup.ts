@@ -1130,7 +1130,7 @@ plugin.tx_find {
         displayFieldForDataField {
             BIKEY = B51800
             XX_AU_AKKEY_AUKEY = TITREG
-            HSOKEY = H41811,KUTIT
+            HSOKEY = H41811
             HSBFKY = B41600
             PE0100 = P0800
             PEA100 = P0800
