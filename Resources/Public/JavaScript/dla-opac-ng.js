@@ -517,7 +517,7 @@ $(document).ready(function () {
             event.preventDefault();
             let csvContent = "";
             $('#watchlist-list li').each(function () {
-                csvContent += '"' + location.origin + '/suche/opac/id/' + $(this).find('a').data('docid') + '";' + $(this).text().replaceAll(';', '') + '\r\n';
+                csvContent += '"' + location.origin + '/suche/opac/id/' + $(this).find('a').data('docid') + '";' + $($(this).text()).replace('/;/g', '') + '\r\n';
             });
 
             downloadContentAsFile(csvContent, "text/csv", "marbach.csv");
