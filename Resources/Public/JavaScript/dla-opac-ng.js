@@ -278,7 +278,7 @@ function copyUrl(context) {
         $('.action-copied-info-button-detail').hide();
         $('.action-copied-info-button-detail.action-copied-success-detail').fadeIn();
 
-        $('.action-copied-info-detail').delay(2000).fadeOut();
+        $('.action-copied-info-div-detail').delay(2000).fadeOut();
     }
 
 

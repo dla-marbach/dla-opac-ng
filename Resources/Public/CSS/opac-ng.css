@@ -354,7 +354,7 @@ a.facetText {
     background-color: #ffffff !important;
 }
 
-*[class^='action-copied-success-'] {
+*[class*='action-copied-success-'] {
     display: none;
     background-color: #75b61e !important;
 }
