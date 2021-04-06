@@ -606,19 +606,7 @@ plugin.tx_find {
                 query = (%1$s) AND facet_form_content:("Rezension") AND DOKTYP:("Ton- und Bildträger")
                 noescape = 1
                 hidden = 1
-            }
-
-            #### ADD EMPTY FIELD SEARCH ####
-
-            151 {
-            id = detail_werke_weitere_gedrucktes_empty
-            type = Text
-            query = (NOT GWKEY:("%1$s") OR NOT AKE526:("%1$s")) AND (A0331:("%2$s") OR ATIT:("%2$s")) AND -detail_urheber_ids:* AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger")
-            noescape = 1
-            hidden = 1
-        }
-
-
+            }            
 
             ### Köperschaften ###
 
