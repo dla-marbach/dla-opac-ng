@@ -476,11 +476,13 @@ function initDatepickerExtSearch(context = false) {
     };
     if (context) {
         var dateInput = $('#' + context.attr('id').replace('select','input'));
-        if (dateInput && !dateInput.hasClass('useDatepicker') && dateInput.attr("name").substr(0, 20) == 'tx_find_find[q][date') {
+        var isDateInput = (dateInput.attr("name").substr(0, 20) === 'tx_find_find[q][date')
+
+        if (dateInput && !dateInput.hasClass('useDatepicker') && isDateInput) {
             dateInput.datepicker(datePickerConfig);
             dateInput.addClass('useDatepicker');
         } else {
-            if (dateInput.hasClass('useDatepicker')) {
+            if (dateInput.hasClass('useDatepicker') && !isDateInput) {
                 dateInput.datepicker('destroy');
                 dateInput.removeClass('useDatepicker');
             }
