@@ -476,7 +476,7 @@ function initDatepickerExtSearch(context = false) {
     };
     if (context) {
         var dateInput = $('#' + context.attr('id').replace('select','input'));
-        if (dateInput && !dateInput.hasClass('useDatepicker')) {
+        if (dateInput && !dateInput.hasClass('useDatepicker') && dateInput.attr("name").substr(0, 20) == 'tx_find_find[q][date') {
             dateInput.datepicker(datePickerConfig);
             dateInput.addClass('useDatepicker');
         } else {
