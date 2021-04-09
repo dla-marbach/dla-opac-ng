@@ -1178,7 +1178,7 @@ plugin.tx_find {
             listview_title = listview_title
             listview_additional1 = listview_additional1
             listview_additional2 = listview_additional2
-            picture_mini = picture_midi
+            picture_midi = picture_midi
         }
 
         # Der Abschnitt "dataFields" bestimmt, welche Felder in den jeweiligen Ansichten geladen werden sollen.
@@ -1531,7 +1531,7 @@ plugin.tx_find {
                     f20 = XX_TH_SWAF_THA710
                     f21 = B02040
                     f22 = XX_BI_B51800_BIOKEY
-                    f23 = picture_mini
+                    f23 = picture_midi
                 }
             }
 
