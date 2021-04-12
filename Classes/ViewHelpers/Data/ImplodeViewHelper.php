@@ -24,20 +24,23 @@ class ImplodeViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHel
      */
     public function render()
     {
-        $array = array_values($this->arguments['array']);
-        $glue = $this->arguments['glue'];
+        $array = $this->arguments['array'];
+        if ($array) {
+            $array = array_values($array);
+            $glue = $this->arguments['glue'];
 
-        $result = implode($glue,$array);
+            $result = implode($glue,$array);
 
-        $variableName = $this->arguments['as'];
-        if ($variableName !== null) {
-            if ($this->templateVariableContainer->exists($variableName)) {
-                $this->templateVariableContainer->remove($variableName);
+            $variableName = $this->arguments['as'];
+            if ($variableName !== null) {
+                if ($this->templateVariableContainer->exists($variableName)) {
+                    $this->templateVariableContainer->remove($variableName);
+                }
+                $this->templateVariableContainer->add($variableName, $result);
+                $result = $this->renderChildren();
             }
-            $this->templateVariableContainer->add($variableName, $result);
-            $result = $this->renderChildren();
+            return $result;
         }
-        return $result;
 
     }
 }

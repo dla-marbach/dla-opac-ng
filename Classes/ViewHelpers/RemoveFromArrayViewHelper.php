@@ -33,28 +33,31 @@ class RemoveFromArrayViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstrac
         $newArray2 = array();
 
         $i = 0;
-        foreach ($array as $key => $value) {
-            if (!($value == '␞' || $value == '#NV') && !($array2[$i] == '␞' || $array2[$i] == '#NV' )) {
-                $newArray[$i] = $value;
-                $newArray2[$i] = $array2[$i];
+        if ($array) {
+            foreach ($array as $key => $value) {
+                if (!($value == '␞' || $value == '#NV') && !($array2[$i] == '␞' || $array2[$i] == '#NV' )) {
+                    $newArray[$i] = $value;
+                    $newArray2[$i] = $array2[$i];
+                }
+                $i++;
             }
-            $i++;
-        }
 
-        $valueName = $this->arguments['as'];
-        if ($valueName !== null) {
-            if ($this->templateVariableContainer->exists($valueName)) {
-                $this->templateVariableContainer->remove($valueName);
-            }
-            $this->templateVariableContainer->add($valueName, $newArray);
-        }
 
-        $valueName = $this->arguments['as2'];
-        if ($valueName !== null) {
-            if ($this->templateVariableContainer->exists($valueName)) {
-                $this->templateVariableContainer->remove($valueName);
+            $valueName = $this->arguments['as'];
+            if ($valueName !== null) {
+                if ($this->templateVariableContainer->exists($valueName)) {
+                    $this->templateVariableContainer->remove($valueName);
+                }
+                $this->templateVariableContainer->add($valueName, $newArray);
             }
-            $this->templateVariableContainer->add($valueName, $newArray2);
+
+            $valueName = $this->arguments['as2'];
+            if ($valueName !== null) {
+                if ($this->templateVariableContainer->exists($valueName)) {
+                    $this->templateVariableContainer->remove($valueName);
+                }
+                $this->templateVariableContainer->add($valueName, $newArray2);
+            }
         }
 
     }

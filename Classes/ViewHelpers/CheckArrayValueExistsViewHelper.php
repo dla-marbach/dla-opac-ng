@@ -31,36 +31,38 @@ class CheckArrayValueExistsViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\A
 
         $flag = false;
 
-        foreach ($array as $key => $value) {
-            foreach ($arrayCheckValue as $checkKey => $checkValue) {
-                $pos = strpos($value, $checkValue);
+        if ($array) {
+            foreach ($array as $key => $value) {
+                foreach ($arrayCheckValue as $checkKey => $checkValue) {
+                    $pos = strpos($value, $checkValue);
 
-                if ($pos !== false) {
-                    $flag = true;
-                    $resultBoolArray[] = true;
-                } else {
-                    $resultBoolArray[] = false;
+                    if ($pos !== false) {
+                        $flag = true;
+                        $resultBoolArray[] = true;
+                    } else {
+                        $resultBoolArray[] = false;
+                    }
                 }
+
             }
 
-        }
-
-        $valueName = $this->arguments['as'];
-        if ($valueName !== null) {
-            if ($this->templateVariableContainer->exists($valueName)) {
-                $this->templateVariableContainer->remove($valueName);
+            $valueName = $this->arguments['as'];
+            if ($valueName !== null) {
+                if ($this->templateVariableContainer->exists($valueName)) {
+                    $this->templateVariableContainer->remove($valueName);
+                }
+                $this->templateVariableContainer->add($valueName, $resultBoolArray);
+    //            $result = $this->renderChildren();
             }
-            $this->templateVariableContainer->add($valueName, $resultBoolArray);
-//            $result = $this->renderChildren();
-        }
 
-        $valueName = $this->arguments['isTrue'];
-        if ($valueName !== null) {
-            if ($this->templateVariableContainer->exists($valueName)) {
-                $this->templateVariableContainer->remove($valueName);
+            $valueName = $this->arguments['isTrue'];
+            if ($valueName !== null) {
+                if ($this->templateVariableContainer->exists($valueName)) {
+                    $this->templateVariableContainer->remove($valueName);
+                }
+                $this->templateVariableContainer->add($valueName, $flag);
+    //            $result = $this->renderChildren();
             }
-            $this->templateVariableContainer->add($valueName, $flag);
-//            $result = $this->renderChildren();
         }
 
     }
