@@ -3,7 +3,7 @@
         <v:variable.set value="AU" name="opac_db" />
         <v:variable.set value="{document.fields.AUISN}" name="id" />
         <v:variable.set value="DBSEL3=AU;" name="dbsel" />
-        <v:variable.set value="DBSEL3=AU;{AUKEY.{iterator.index}};DBSEL=;DBSEL1=;DBSEL2=;DBSEL4=;" name="param" />
+        <v:variable.set value="DBSEL3=AU;{AUKEY.{iterator.index}};&DBSEL=;&DBSEL1=;&DBSEL2=;&DBSEL4=;" name="param" />
     </f:then>
     <f:else>
         <f:switch expression="{document.fields.source}">
