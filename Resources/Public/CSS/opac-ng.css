@@ -10,7 +10,9 @@
     /*padding: 0;*/
 }
 
-.watchlist-container.hidden {
+.watchlist-container.hidden,
+.extended-search.hidden,
+.btn-default.hidden {
     display: none;
 }
 
