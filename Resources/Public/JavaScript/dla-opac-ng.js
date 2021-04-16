@@ -671,7 +671,7 @@ function buildWatchlist() {
                             '<span class="watchlist-delete-container">' +
                             '<a href="#" class="watchlist-delete-'+item.id+'" data-docid="'+item.id+'"><span class="bel-ende03 " style="font-size:48px;"></span></a>' +
                             '</span>' +
-                            '<a href="/suche/opac/id/' + item.id + '" data-docid="'+item.id+'">' + item.listview_title + '</a>' +
+                            '<a href="' + PLUGIN_PATH + item.id + '" data-docid="'+item.id+'">' + item.listview_title + '</a>' +
                             '</li>');
                     $('.watchlist-delete-'+item.id).on('click', function (event) {
                         event.preventDefault();

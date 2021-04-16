@@ -10,6 +10,9 @@
     /*padding: 0;*/
 }
 
+.watchlist-container.hidden {
+    display: none;
+}
 
 .tx_find .ctg-dtvt-details ol {
     margin: 0;
