@@ -1,3 +1,5 @@
+const PLUGIN_PATH = '/katalog-ng/suche/opac/id/';
+
 $(document).ready(function(){
     initDatepickerExtSearch();
 });
@@ -237,14 +239,14 @@ function copyUrlAction(context) {
     }
 
     if (AU) {
-        var url = location.origin + '/suche/opac/id/' + match[1] + '?tx_find_find[au]=' + AU + '#tabaccess';
+        var url = location.origin + PLUGIN_PATH + match[1] + '?tx_find_find[au]=' + AU + '#tabaccess';
         $('#action-copied-info-input-' + AU).val(url);
         $('.action-copied-info-button-' + AU).show();
         $('.action-copied-info-button-' + AU +'.action-copied-success-' + AU).hide();
 
         $('.action-copied-info-div-' + AU).toggle();
     } else {
-        var url = location.origin + '/suche/opac/id/' + match[1];
+        var url = location.origin + PLUGIN_PATH + match[1];
 
         $('.action-copied-info-input-detail').val(url);
         $('.action-copied-info-button-detail').show();
@@ -519,7 +521,7 @@ $(document).ready(function () {
             event.preventDefault();
             let csvContent = "";
             $('#watchlist-list li').each(function () {
-                csvContent += '"' + location.origin + '/suche/opac/id/' + $(this).find('a').data('docid') + '";' + $(this).text().replace('/;/g', '') + '\r\n';
+                csvContent += '"' + location.origin + PLUGIN_PATH + $(this).find('a').data('docid') + '";' + $(this).text().replace('/;/g', '') + '\r\n';
             });
 
             downloadContentAsFile(csvContent, "text/csv", "marbach.csv");
@@ -530,7 +532,7 @@ $(document).ready(function () {
             //event.preventDefault();
             let mailBody = "";
             $('#watchlist-list li').each(function () {
-                mailBody += location.origin + '/suche/opac/id/' + $(this).find('a').data('docid') + '%20' + $(this).text() + '%0D%0A';
+                mailBody += location.origin + PLUGIN_PATH + $(this).find('a').data('docid') + '%20' + $(this).text() + '%0D%0A';
             });
             $(this).attr('href', 'mailto:?subject=Marbach%20Merkliste&body='+mailBody);
         });
