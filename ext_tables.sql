@@ -16,6 +16,7 @@ CREATE TABLE tx_dlaopacng_collection (
 
     PRIMARY KEY (uid),
     KEY parent (parent_id),
+    KEY record_id (record_id),
     FULLTEXT search (treeview_title,listview_title,listview_associate,listview_additional1,listview_additional2)
 );
 
@@ -37,5 +38,6 @@ CREATE TABLE tx_dlaopacng_classification (
 
     PRIMARY KEY (uid),
     KEY parent (parent_id),
+    KEY record_id (record_id),
     FULLTEXT search (treeview_title,listview_title,listview_associate,listview_additional1,listview_additional2)
 );
