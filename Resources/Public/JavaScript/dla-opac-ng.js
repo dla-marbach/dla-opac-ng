@@ -100,6 +100,8 @@ $(document).ready(function(){
             orderurl = orderurl.replace("%name%", encodeURI(nameValue));
             orderurl = orderurl.replace("%pw%", pwValue);
 
+            $('.order-overlay-button').prop('disabled', true);
+
             $.ajax({
                 url: orderurl,
             })
@@ -110,10 +112,12 @@ $(document).ready(function(){
                     event.preventDefault();
                     $('.order-overlay').hide();
                 });
+                $('.order-overlay-button').prop('disabled', false);
 
             })
             .fail(function() {
                 sendOrderAsPopup(orderurl);
+                $('.order-overlay-button').prop('disabled', false);
             });
 
 
