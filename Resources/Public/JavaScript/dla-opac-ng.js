@@ -1,4 +1,4 @@
-const PLUGIN_PATH = '/katalog-ng/suche/opac/id/';
+const PLUGIN_PATH = '/find/opac/id/';
 
 $(document).ready(function(){
     initDatepickerExtSearch();
