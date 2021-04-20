@@ -476,26 +476,25 @@ function setExtendedSearchText() {
 // datepicker
 function initDatepickerExtSearch(context = false) {
     var datePickerConfig = {
-        changeMonth: true,
-        changeYear: true,
-        dateFormat: "yy-mm-dd"
+        timepicker: false,
+        format: "Y-m-d"
     };
     if (context) {
         var dateInput = $('#' + context.attr('id').replace('select','input'));
         var isDateInput = (dateInput.attr("name").substr(0, 20) === 'tx_find_find[q][date')
 
         if (dateInput && !dateInput.hasClass('useDatepicker') && isDateInput) {
-            dateInput.datepicker(datePickerConfig);
+            dateInput.datetimepicker(datePickerConfig);
             dateInput.addClass('useDatepicker');
         } else {
             if (dateInput.hasClass('useDatepicker') && !isDateInput) {
-                dateInput.datepicker('destroy');
+                dateInput.datetimepicker('destroy');
                 dateInput.removeClass('useDatepicker');
             }
         }
     } else {
         var dateInput = $('input[name^="tx_find_find[q][date"]');
-        dateInput.datepicker(datePickerConfig);
+        dateInput.datetimepicker(datePickerConfig);
         dateInput.addClass('useDatepicker');
     }
 }
