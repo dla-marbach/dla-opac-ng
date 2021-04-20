@@ -567,7 +567,7 @@ li.ctg-result-item {
 }
 
 .ctg-ri-image img {
-    width: 100%;
+    max-width: 100%;
 }
 
 .ctg-ri-actions {
