@@ -477,7 +477,12 @@ function setExtendedSearchText() {
 function initDatepickerExtSearch(context = false) {
     var datePickerConfig = {
         timepicker: false,
-        format: "Y-m-d"
+        allowBlank: true,
+        validateOnBlur: false,
+        format: "Y-m-d",
+        onClose: function (ct, $i) {
+
+        }
     };
     if (context) {
         var dateInput = $('#' + context.attr('id').replace('select','input'));
