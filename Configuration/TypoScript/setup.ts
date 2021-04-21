@@ -1612,8 +1612,6 @@ plugin.tx_find {
                     A = id
                     7 = id
                     I = id
-                    @ = id
-                    @ = id
                     K = id
                     D = id
                     X = id
