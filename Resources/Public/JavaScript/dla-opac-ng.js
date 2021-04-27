@@ -97,7 +97,7 @@ $(document).ready(function(){
         } else {
 
             var orderurl = $(this).data('orderurl');
-            orderurl = orderurl.replace("%name%", encodeURI(nameValue));
+            orderurl = orderurl.replace("%name%", encodeURI(escape(nameValue)));
             orderurl = orderurl.replace("%pw%", pwValue);
 
             $('.order-overlay-button').prop('disabled', true);
