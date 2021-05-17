@@ -215,8 +215,8 @@ plugin.tx_find {
 
         features.eDisMax = 1
 
-        escapechar = \,+,-,&,|,!,{,},[,],^,?,:
-        escapechardate = \,+,&,|,!,{,},[,],^,?,:
+        escapechar = \,+,-,&,|,!,{,},[,],?,:
+        escapechardate = \,+,&,|,!,{,},[,],?,:
 
         # Der Abschnitt "queryFields" definiert die zur Verfügung stehenden Suchfelder.
         # Der Index "0" beschreibt den Standardsuchschlitz, weitere Indizes können zusätzliche
