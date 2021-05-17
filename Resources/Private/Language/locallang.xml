@@ -414,6 +414,7 @@
       <label index="search.fieldselector.exemplar">Provienenzmerkmale (Exemplar)</label>
       <label index="search.fieldselector.searchall">Freie Suche</label>
       <label index="search.fieldselector.not_date">Ohne Datum</label>
+      <label index="search.fieldselector.label_not_date">Nur ohne Datum</label>
 
     </languageKey>
 
