@@ -230,6 +230,25 @@ ul#watchlist-list li a {
     border-top-right-radius: 5px !important;
 }
 
+#extended-search-checkbox-no-date {
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+    vertical-align: bottom;
+    border: 1px solid #FFF;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.no-date-label {
+    display: inline-block;
+    color: #FFFFFF;
+    background-color: #b61f24;
+    border: 1px solid #FFFFFF;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 5px;
+}
+
 .ctg-catalog-title a {
     color: #fff;
     text-decoration: none;

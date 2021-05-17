@@ -405,11 +405,7 @@ $(document).ready(function () {
 
     $('.extended-search-select').on('change', function (event) {
         $('#'+$(this).attr('id').replace('select','input')).attr('name', 'tx_find_find[q][' + $(this).children('option:selected').attr('name') + ']');
-        if ($(this).children('option:selected').attr('name') == 'not_date') {
-            $('#'+$(this).attr('id').replace('select','input')).attr('readonly', true).val("*");
-        } else {
-            $('#'+$(this).attr('id').replace('select','input')).attr('readonly', false);
-        }
+        $('#'+$(this).attr('id').replace('select','input')).attr('readonly', false);
         initDatepickerExtSearch($(this));
     });
 
@@ -432,16 +428,18 @@ $(document).ready(function () {
         "exemplar",
         "searchall"];
 
+    // find existing parameters and refill ext search inputs
     var i = 0;
     extendedFields.forEach(function (item, index, array) {
         if (value = getUrlParameter("tx_find_find%5Bq%5D%5B" + item + "%5D")) {
-            $('#extended-search-select-'+i).children('[name='+item+']').prop('selected', true)
-            $('#extended-search-input-'+i).val(value);
-            $('#extended-search-input-'+i).attr('name', 'tx_find_find[q][' + item + ']');
             if (item == "not_date") {
-                $('#extended-search-input-'+i).attr('readonly', true);
+                $('#extended-search-checkbox-no-date').attr("checked", true);
+            } else {
+                $('#extended-search-select-'+i).children('[name='+item+']').prop('selected', true)
+                $('#extended-search-input-'+i).val(value);
+                $('#extended-search-input-'+i).attr('name', 'tx_find_find[q][' + item + ']');
+                i++;
             }
-            i++;
         }
     });
     if (i > 0) {
@@ -457,6 +455,7 @@ function resetExtendedSearch() {
     extendedInputs.forEach(function (item, index, array) {
         $('#extended-search-input-'+item).val("");
     });
+    $('#extended-search-checkbox-no-date').attr("checked", false);
 }
 
 function toggleExtendedSearch() {
