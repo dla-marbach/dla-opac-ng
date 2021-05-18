@@ -568,6 +568,9 @@ $(document).ready(function () {
                 pdf.setFontSize(12);
                 pdf.text ($(this).find('a').data('docid'), 30, (30 + (i * margin)));
 
+                pdf.setFontSize(12);
+                pdf.text ($(this).find('a.watchlist-entry').data('link'), 30, (35 + (i * margin)));
+
             });
             pdf.save ("Merkliste.pdf");
         });
@@ -672,13 +675,15 @@ function buildWatchlist() {
             .done(function( data ) {
                 $('#watchlist-list').html('');
                 data.forEach(function (item, index, array) {
+                    var locationpath = PLUGIN_PATH + item.id;
+                    var fulllocation = window.location.origin + locationpath;
                     $('#watchlist-list')
                         // .append('<li><input type="checkbox" data-docid="'+data.id+'">' +
                         .append('<li>' +
                             '<span class="watchlist-delete-container">' +
                             '<a href="#" class="watchlist-delete-'+item.id+'" data-docid="'+item.id+'"><span class="bel-ende03 " style="font-size:48px;"></span></a>' +
                             '</span>' +
-                            '<a href="' + PLUGIN_PATH + item.id + '" data-docid="'+item.id+'">' + item.listview_title + '</a>' +
+                            '<a class="watchlist-entry" href="' + locationpath + '" data-docid="'+item.id+'" data-link="' + fulllocation + '">' + item.listview_title + '</a>' +
                             '</li>');
                     $('.watchlist-delete-'+item.id).on('click', function (event) {
                         event.preventDefault();
