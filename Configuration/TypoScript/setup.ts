@@ -75,6 +75,9 @@ page.includeJSFooter.jscookie = EXT:dla_opac_ng/Resources/Public/JavaScript/js.c
 
 page.includeJS.jspdf = EXT:dla_opac_ng/Resources/Public/JavaScript/jspdf.min.js
 
+page.includeCSS.jplayer = EXT:dla_opac_ng/Resources/Public/JavaScript/jplayer/skin/blue.monday/css/jplayer.blue.monday.min.css
+page.includeJS.jplayer = EXT:dla_opac_ng/Resources/Public/JavaScript/jplayer/jquery.jplayer.min.js
+
 page.includeJSFooter.autocomplete = EXT:dla_opac_ng/Resources/Public/JavaScript/autocomplete.js
 
 page.includeJSFooter.dla_opac_ng = EXT:dla_opac_ng/Resources/Public/JavaScript/dla-opac-ng.js
