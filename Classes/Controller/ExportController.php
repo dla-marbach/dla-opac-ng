@@ -20,8 +20,10 @@ class ExportController extends ActionController
         $delimiter = ';';
 
         // header for file download
-        header('Content-Type: application/csv');
+        header('Content-Encoding: UTF-8');
+        header('Content-type: text/csv; charset=UTF-8');
         header('Content-Disposition: attachment; filename="'.$csvFilename.'";');
+        echo "\xEF\xBB\xBF";
 
         // send getEntities request // get all information from each id
         $json = file_get_contents($protocol . $domainName . $file . $parameter);
