@@ -526,12 +526,13 @@ $(document).ready(function () {
         // watchlist export csv
         $('.watchlist-export').on('click', function (event) {
             event.preventDefault();
-            let csvContent = "";
-            $('#watchlist-list li').each(function () {
-                csvContent += '"' + location.origin + PLUGIN_PATH + $(this).find('a').data('docid') + '";' + $(this).text().replace('/;/g', '') + '\r\n';
-            });
 
-            downloadContentAsFile(csvContent, "text/csv", "marbach.csv");
+            var url = location.origin + '/index.php?tx_dlaopacng_dlastart%5Bcontroller%5D=Export&tx_dlaopacng_dlastart%5Baction%5D=csv&tx_dlaopacng_dlastart%5Bids%5D=';
+            $('#watchlist-list li').each(function () {
+                url += $(this).find('a').data('docid') + ',';
+            });
+            
+            window.open(url, '_blank').focus();
         });
 
         // watchlist send via mail
@@ -683,7 +684,7 @@ function buildWatchlist() {
                             '<span class="watchlist-delete-container">' +
                             '<a href="#" class="watchlist-delete-'+item.id+'" data-docid="'+item.id+'"><span class="bel-ende03 " style="font-size:48px;"></span></a>' +
                             '</span>' +
-                            '<a class="watchlist-entry" href="' + locationpath + '" data-docid="'+item.id+'" data-link="' + fulllocation + '">' + item.listview_title + '</a>' +
+                            '<a class="watchlist-entry" href="' + locationpath + '" data-docid="'+item.id+'" data-link="' + fulllocation + '">' + item.title + '</a>' +
                             '</li>');
                     $('.watchlist-delete-'+item.id).on('click', function (event) {
                         event.preventDefault();

@@ -6,9 +6,11 @@ defined('TYPO3_MODE') or die();
     'DlaStart',
     [
         'Start' => 'start',
+        'Export' => 'csv',
     ],
     [
         'Start' => 'start',
+        'Export' => 'csv',
     ]
 );
 
