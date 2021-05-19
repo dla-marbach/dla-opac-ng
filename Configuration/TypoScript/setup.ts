@@ -59,6 +59,8 @@ page.10 {
 # Einbindung einer lokalen Kopie wegen Beschränkungen im internen Netz des DLA
 
 
+#page.includeJS.init = EXT:dla_opac_ng/Resources/Public/JavaScript/init-live.js
+#page.includeJSFooter.datetimepicker = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.datetimepicker.min.js
 page.includeCSS.datetimepicker =  EXT:dla_opac_ng/Resources/Public/CSS/jquery.datetimepicker.css
 
 page.includeJS.jquery = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-1.11.0.min.js
