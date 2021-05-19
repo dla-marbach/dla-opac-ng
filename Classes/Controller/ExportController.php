@@ -32,6 +32,11 @@ class ExportController extends ActionController
 
         $f = fopen('php://output', 'w');
 
+        // add info
+        $objDateTime = new \DateTime('NOW');
+        $line = ['Deutsches Literaturarchiv Marbach. Auszug Katalog. ' . $objDateTime->format('d.m.Y')];
+        fputcsv($f, $line, $delimiter);
+
         // field names
         $line = ['ID', 'Titel', 'Form und Inhalt', 'Medium', 'Zeit', 'Personen', 'Thema', 'Sprache', 'Ort', 'Datenbestand'];
         fputcsv($f, $line, $delimiter);
