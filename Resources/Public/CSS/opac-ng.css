@@ -237,6 +237,7 @@ ul#watchlist-list li a {
     vertical-align: bottom;
     border: 1px solid #FFF;
     color: rgba(0, 0, 0, 0.75);
+    margin: 0;
 }
 
 .no-date-label {
@@ -247,6 +248,7 @@ ul#watchlist-list li a {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     padding: 5px;
+    width: 233px;
 }
 
 .ctg-catalog-title a {

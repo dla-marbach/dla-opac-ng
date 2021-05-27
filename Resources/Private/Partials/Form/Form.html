@@ -458,11 +458,15 @@
                         </div>
 
                         <div class="extended-search-container">
-                            <label class="no-date-label" for="extended-search-checkbox-no-date"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.label_not_date" /></label>
-                            <f:form.checkbox id="extended-search-checkbox-no-date"
+                            <div class="extended-search-fields">
+                                <label class="no-date-label" for="extended-search-checkbox-no-date"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.label_not_date" /></label>
+                            </div>
+                            <div class="extended-search-input">
+                                <f:form.checkbox id="extended-search-checkbox-no-date"
                                              class="inputType-checkbox"
                                              name="q[not_date]"
                                              value="*"/>
+                            </div>
                         </div>
 
                         <div class="extended-search-container-button">
