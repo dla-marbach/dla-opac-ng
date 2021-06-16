@@ -170,19 +170,9 @@
             var linkAndActions = '';
         }
         if (item.title != 'root') {
-            if (Number.isInteger(Number(item.record_id)) || item.facet_value == '') {
-                var title = $('<div/>').text(item.title).html();
-            } else {
-                if (item.facet_value.toLowerCase().indexOf('or') < 0) {
-                    var title = '<a href="/index.php?id=' + $('#collectiontree').data('findindexpageid') + '&tx_find_find%5Bid%5D=' + item.record_id + '" target="_blank">' +
-                        $('<div/>').text(item.title).html() +
-                        '</a>';
-                } else {
-                    var title = '<a href="/index.php?id=' + $('#collectiontree').data('findindexpageid') + '&tx_find_find%5Bq%5D%5Bseisn%5D=' + encodeURI(item.facet_value) + '" target="_blank">' +
-                        $('<div/>').text(item.title).html() +
-                        '</a>';
-                }
-            }
+
+            var title = $('<div/>').text(item.title).html();
+
             constants.liElements += '<li id="' + item.uid + '">' +
                 '<article id="' + item.record_id + '">' +
                 '<span class="bt-content">' +
