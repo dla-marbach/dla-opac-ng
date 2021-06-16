@@ -7,11 +7,12 @@ class CollectionController extends ActionController
 {
 
     /**
-     * Index Action.
+     * Index Action. Parameter tx_dlaopacng_dlacollection
      * @param string $record
      * @param string $uid
+     * @param string $search
      */
-    public function indexAction(string $record = '', string $uid = '')
+    public function indexAction(string $record = '', string $uid = '', string $search = '')
     {
         /** @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager */
 
@@ -29,5 +30,6 @@ class CollectionController extends ActionController
         $this->view->assign('settings', $extSettings);
         $this->view->assign('record', $record);
         $this->view->assign('uid', $uid);
+        $this->view->assign('search', $search);
     }
 }
