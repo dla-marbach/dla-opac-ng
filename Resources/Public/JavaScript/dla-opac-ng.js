@@ -540,7 +540,7 @@ $(document).ready(function () {
             //event.preventDefault();
             let mailBody = "";
             $('#watchlist-list li').each(function () {
-                mailBody += location.origin + PLUGIN_PATH + $(this).find('a').data('docid') + '%20' + $(this).text() + '%0D%0A';
+                mailBody += location.origin + PLUGIN_PATH + $(this).find('a').data('docid') + '%20' + $(this).text().replaceAll('&', '%26') + '%0D%0A';
             });
             $(this).attr('href', 'mailto:?subject=Marbach%20Merkliste&body='+mailBody);
         });
