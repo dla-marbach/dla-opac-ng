@@ -48,7 +48,7 @@ if ($response !== FALSE) {
                 $title = '. - ' . $title;
             }
             foreach ($doc['listview_associate'] as $listview_associate) {
-                $title = htmlspecialchars($doc['listview_associate']) . $title;
+                $title = htmlspecialchars($listview_associate) . $title;
             }
         }
         if (!empty($doc['listview_title'])) {

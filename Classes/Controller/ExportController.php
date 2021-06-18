@@ -38,7 +38,7 @@ class ExportController extends ActionController
         fputcsv($f, $line, $delimiter);
 
         // field names
-        $line = ['ID', 'Titel', 'Form und Inhalt', 'Medium', 'Zeit', 'Personen', 'Thema', 'Sprache', 'Ort', 'Datenbestand'];
+        $line = ['ID', 'Titelbeschreibung', 'Form und Inhalt', 'Medium', 'Zeit', 'Personen', 'Thema', 'Sprache', 'Ort', 'Datenbestand'];
         fputcsv($f, $line, $delimiter);
 
         foreach ($array as $entry) {
