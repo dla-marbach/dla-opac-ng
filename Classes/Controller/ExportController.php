@@ -38,21 +38,25 @@ class ExportController extends ActionController
         fputcsv($f, $line, $delimiter);
 
         // field names
-        $line = ['ID', 'Titelbeschreibung', 'Form und Inhalt', 'Medium', 'Zeit', 'Personen', 'Thema', 'Sprache', 'Ort', 'Datenbestand'];
+        $line = ['ID', 'Titelbeschreibung', 'Form und Inhalt', 'Medium', 'Zeit', 'Personen', 'Thema', 'Sprache', 'Ort', 'Datenbestand', 'Medium', 'Bibliografie', 'Sammlung', 'Digital'];
         fputcsv($f, $line, $delimiter);
 
         foreach ($array as $entry) {
             $line = [
                 $entry->id,
                 $entry->title,
-                implode(",", $entry->facet_form_content),
-                implode(",", $entry->facet_medium),
-                implode(",", $entry->facet_time),
-                implode(",", $entry->facet_names),
-                implode(",", $entry->facet_subject),
-                implode(",", $entry->facet_language),
-                implode(",", $entry->facet_location),
-                $entry->facet_source
+                implode(";", $entry->facet_form_content),
+                implode(";", $entry->facet_medium),
+                implode(";", $entry->facet_time),
+                implode(";", $entry->facet_names),
+                implode(";", array_map('htmlspecialchars_decode', $entry->facet_subject)),
+                implode(";", $entry->facet_language),
+                implode(";", $entry->facet_location),
+                $entry->facet_source,
+                implode(";", $entry->listview_type),
+                implode(";", $entry->filter_bibliography),
+                implode(";", $entry->filter_collection),
+                $entry->filter_digital
             ];
 
             fputcsv($f, $line, $delimiter);

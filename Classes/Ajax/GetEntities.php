@@ -63,6 +63,7 @@ if ($response !== FALSE) {
             'listview_title' => !empty($doc['listview_title']) ? htmlspecialchars($doc['listview_title']) : '',
             'listview_associate' => !empty($doc['listview_associate']) ? array_map('htmlspecialchars', $doc['listview_associate']) : '',
             'listview_additional1' => !empty($doc['listview_additional1']) ? array_map('htmlspecialchars', $doc['listview_additional1']) : '',
+            'listview_type' => !empty($doc['listview_type']) ? array_map('htmlspecialchars', $doc['listview_type']) : '',
             'facet_form_content' => !empty($doc['facet_form_content']) ? array_map('htmlspecialchars', $doc['facet_form_content']) : '',
             'facet_medium' => !empty($doc['facet_medium']) ? array_map('htmlspecialchars', $doc['facet_medium']) : '',
             'facet_time' => !empty($doc['facet_time']) ? array_map('htmlspecialchars', $doc['facet_time']) : '',
@@ -71,6 +72,9 @@ if ($response !== FALSE) {
             'facet_language' => !empty($doc['facet_language']) ? array_map('htmlspecialchars', $doc['facet_language']) : '',
             'facet_location' => !empty($doc['facet_location']) ? array_map('htmlspecialchars', $doc['facet_location']) : '',
             'facet_source' => !empty($doc['facet_source']) ? htmlspecialchars($doc['facet_source']) : '',
+            'filter_bibliography' => !empty($doc['filter_bibliography']) ? array_map('htmlspecialchars', $doc['filter_bibliography']) : '',
+            'filter_collection' => !empty($doc['filter_collection']) ? array_map('htmlspecialchars', $doc['filter_collection']) : '',
+            'filter_digital' => !empty($doc['filter_digital']) ? $doc['filter_digital'] : '',
             'picture_midi' => !empty($doc['picture_midi']) ? $doc['picture_midi'] : '',
             'title' => $title,
         ];
