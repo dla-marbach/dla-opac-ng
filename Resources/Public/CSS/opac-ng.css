@@ -180,6 +180,10 @@ ul#watchlist-list li a {
     text-decoration: none;
 }
 
+.watchlist-info {
+    background-color: #ffeb00;
+}
+
 .extended-search {
 }
 
