@@ -182,6 +182,7 @@ ul#watchlist-list li a {
 
 .watchlist-info {
     background-color: #ffeb00;
+    margin-top: 20px;
 }
 
 .extended-search {
