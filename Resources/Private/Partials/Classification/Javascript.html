@@ -2,9 +2,15 @@
     const pluginType = $("#collectiontree").data('plugintype');
     $( document ).ready(function() {
         var record = $('#record_id').data('record');
+        var search = $('#search').data('search');
+        console.log(search);
         getChildNodes(0);
         if (record) {
             expandStructure(record);
+        }
+        if (search) {
+            $('#collection-search').val(search);
+            searchNodes(search);
         }
         registerOnClick();
         registerSearchForm();
