@@ -11,6 +11,9 @@ class ExportController extends ActionController
      */
     public function csvAction(string $ids)
     {
+        $extPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('dla_opac_ng');
+        include_once $extPath . 'Classes/Ajax/EidSettings.php';
+
         $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
         $domainName = $_SERVER['HTTP_HOST'] . '/';
         $file = 'index.php?';
@@ -38,12 +41,13 @@ class ExportController extends ActionController
         fputcsv($f, $line, $delimiter);
 
         // field names
-        $line = ['ID', 'Titelbeschreibung', 'Form und Inhalt', 'Medium', 'Zeit', 'Personen', 'Thema', 'Sprache', 'Ort', 'Datenbestand', 'Medium', 'Bibliografie', 'Sammlung', 'Digital'];
+        $line = ['ID', 'Link', 'Titelbeschreibung', 'Form und Inhalt', 'Medium', 'Zeit', 'Personen', 'Thema', 'Sprache', 'Ort', 'Datenbestand', 'Medium', 'Bibliografie', 'Sammlung', 'Digital'];
         fputcsv($f, $line, $delimiter);
 
         foreach ($array as $entry) {
             $line = [
                 $entry->id,
+                $protocol . trim($domainName, '/') . $PLUGIN_PATH . $entry->id,
                 $entry->title,
                 implode(";", $entry->facet_form_content),
                 implode(";", $entry->facet_medium),
