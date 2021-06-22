@@ -1,4 +1,5 @@
 const PLUGIN_PATH = '/find/opac/id/';
+const START_PLUGIN_PATH = '/katalog-ng/';
 
 $(document).ready(function(){
     initDatepickerExtSearch();
@@ -527,7 +528,7 @@ $(document).ready(function () {
         $('.watchlist-export').on('click', function (event) {
             event.preventDefault();
 
-            var url = location.origin + '/index.php?tx_dlaopacng_dlastart%5Bcontroller%5D=Export&tx_dlaopacng_dlastart%5Baction%5D=csv&tx_dlaopacng_dlastart%5Bids%5D=';
+            var url = location.origin + START_PLUGIN_PATH + '?tx_dlaopacng_dlastart%5Bcontroller%5D=Export&tx_dlaopacng_dlastart%5Baction%5D=csv&tx_dlaopacng_dlastart%5Bids%5D=';
             $('#watchlist-list li').each(function () {
                 url += $(this).find('a').data('docid') + ',';
             });
