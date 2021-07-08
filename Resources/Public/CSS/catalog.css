@@ -105,7 +105,7 @@ catalog - search
     border-radius: 0 5px 5px 0;
     width: 180px;
     border-top: 1px solid #aeaeae;
-    background-color: #b61f24;
+    background-color: #b61f24 !important;
     color: #fff !important;
     margin: 0;
     padding: 0.5rem 0.5rem 0.5rem 0;
