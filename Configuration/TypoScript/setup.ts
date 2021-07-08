@@ -1083,6 +1083,15 @@ plugin.tx_find {
                 hidden = 1
             }
 
+            700 {
+                id = swb
+                type = Text
+                query = A0025:(%1$s)
+                noescape = 2
+                escapechar < plugin.tx_find.settings.escapechar
+                hidden = 1
+            }
+
             ### Exemplarsuche ###
 
             999 {
