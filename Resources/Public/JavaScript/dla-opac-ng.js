@@ -231,7 +231,8 @@ function sendOrderAsPopup(orderurl) {
 
 function copyUrlAction(context) {
     var location = window.location;
-    var reg = new RegExp("\\/find\\/opac\\/id\\/(.*)\\/");
+    var regexString = PLUGIN_PATH.replaceAll('/', '\\/') + '(.*)\\/';
+    var reg = new RegExp(regexString);
     var AU = context.data('auid');
 
     var match = location.href.match(reg);
