@@ -118,11 +118,12 @@ class FromSolrViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHe
     private function createQueryComponents(&$query) {
 
         // Shards
-
-        if(count($this->templateVariableContainer->get('settings')['shards'])) {
-            $distributedSearch = $query->getDistributedSearch();
-            foreach($this->templateVariableContainer->get('settings')['shards'] as $name => $shard) {
-                $distributedSearch->addShard($name, $shard);
+        if ($this->templateVariableContainer->get('settings')['shards']) {
+            if(count($this->templateVariableContainer->get('settings')['shards'])) {
+                $distributedSearch = $query->getDistributedSearch();
+                foreach($this->templateVariableContainer->get('settings')['shards'] as $name => $shard) {
+                    $distributedSearch->addShard($name, $shard);
+                }
             }
         }
     }
