@@ -2,8 +2,9 @@
 
 namespace Dla\DlaOpacNg\ViewHelpers;
 
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
-class NormdataResolverViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class NormdataResolverViewHelper extends AbstractViewHelper
 {
 
 
@@ -26,7 +27,7 @@ class NormdataResolverViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstra
     {
         $id = $this->arguments['id'];
 
-        $url = $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST'] . "/index.php?eID=getEntity&q=" . $id;
+        $url = $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST'] . "/?getEntity=1&q=" . $id;
         $jsonObject = json_decode(file_get_contents($url));
 
         $resultValue = $jsonObject;

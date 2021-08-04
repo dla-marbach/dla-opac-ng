@@ -2,8 +2,9 @@
 
 namespace Dla\DlaOpacNg\ViewHelpers\Data;
 
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
-class JoinFieldsViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class JoinFieldsViewHelper extends AbstractViewHelper
 {
 
 

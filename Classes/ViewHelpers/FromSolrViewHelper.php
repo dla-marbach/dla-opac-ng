@@ -24,6 +24,7 @@ namespace Dla\DlaOpacNg\ViewHelpers;
 
 use Solarium\QueryType\Select\Result\Result;
 use Solarium\QueryType\Update\Query\Document\DocumentInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * FromSolrViewHelper
@@ -31,7 +32,7 @@ use Solarium\QueryType\Update\Query\Document\DocumentInterface;
  * Gets a field value from a Solr record
  *
  */
-class FromSolrViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class FromSolrViewHelper extends AbstractViewHelper {
 
     /**
      * @var \Solarium\Client

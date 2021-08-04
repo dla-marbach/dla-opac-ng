@@ -2,8 +2,9 @@
 
 namespace Dla\DlaOpacNg\ViewHelpers;
 
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
-class ArrayMergeViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class ArrayMergeViewHelper extends AbstractViewHelper
 {
 
 
