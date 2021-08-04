@@ -45,27 +45,3 @@ $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['collection'] = 'EXT:dla_opac_n
 // Add BackendLayouts
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:' . $_EXTKEY . '/Configuration/PageTS/BackendLayouts.txt">');
 
-// Add RealURL configuration
-if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('realurl')) {
-    $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl']['_DEFAULT']['postVarSets']['_DEFAULT'] = [
-        'opac' => [
-            [
-                'GETvar' => 'tx_find_find[action]',
-                'valueMap' => [
-                    'id' => 'detail',
-                    'suche' => 'index',
-                ],
-                'noMatch' => 'bypass',
-            ],
-            [
-                'GETvar' => 'tx_find_find[id]',
-            ],
-            // Ignore 'tx_find_find[controller]' in URLs because it is always "Search" which is the default anyway.
-            [
-                'GETvar' => 'tx_find_find[controller]',
-                'valueMap' => [],
-                'noMatch' => 'null',
-            ],
-        ]
-    ];
-}
