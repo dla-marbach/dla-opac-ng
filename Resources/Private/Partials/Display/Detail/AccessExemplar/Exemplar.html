@@ -62,7 +62,7 @@
 
             <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
             <dla:countFromSolr query="{solvedQuery}" />
-            <slub:data.fromSolr
+            <dla:fromSolr
                     query="{solvedQuery}"
                     fields="">
 
@@ -71,7 +71,7 @@
 
 
                 </f:if>
-            </slub:data.fromSolr>
+            </dla:fromSolr>
         </f:comment>
         <f:if condition="{AUKEY}">
             <f:then>

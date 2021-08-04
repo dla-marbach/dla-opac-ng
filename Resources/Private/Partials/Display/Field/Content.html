@@ -27,7 +27,7 @@
                         </f:comment>
                     </p>
                     <ol>
-                        <slub:data.fromSolr
+                        <dla:fromSolr
                                 query="{queryField}:(\"{value}\")"
                                 fields="id,{s:data.valueForKey(array:settings.displayFieldForDataField, key:field)}"
                                 rows="10">
@@ -133,7 +133,7 @@
                                 </f:comment>
                             </li>
                         </f:else>
-                        </slub:data.fromSolr>
+                        </dla:fromSolr>
                     </ol>
                 </f:for>
             </f:then>
