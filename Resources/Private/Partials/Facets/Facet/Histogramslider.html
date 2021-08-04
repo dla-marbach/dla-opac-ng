@@ -171,7 +171,9 @@
             links[$.trim($(this).text())] = $(this).attr('href');
         });
 
+        <f:format.raw>
         var canvas = document.getElementById("myHistogram-{facetInfo.id}");
+        </f:format.raw>
         var ctx = canvas.getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',

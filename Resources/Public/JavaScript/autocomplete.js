@@ -9,7 +9,7 @@ function activateNormdataAutocomplete() {
 
     done(function( script, textStatus ) {
 
-        $(".inputType-text").tokenInput("index.php?eID=autocomplete", {
+        $(".inputType-text").tokenInput("/?autocomplete=1", {
             propertyToSearch: "term",
             resultsFormatter: function(item){
                 // if (item.term != item.normalized && item.term != item.id) {

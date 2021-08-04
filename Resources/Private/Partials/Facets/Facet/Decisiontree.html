@@ -90,7 +90,7 @@
 
                     <div class="decisiontree-person">
                         <v:variable.set name="arguments" value="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}" />
-                    <a class="decisiontree" href="#test" data-url="index.php?eID=decisiontree&q={config.queryString}&p={facetTerm}␝&activeFacets={activeFacetsParams}">
+                    <a class="decisiontree" href="#test" data-url="/?decisiontree=1&q={config.queryString}&p={facetTerm}␝&activeFacets={activeFacetsParams}">
                         {facetTerm} <em>({itemCount})</em>
                         <f:link.action
                                 addQueryString="TRUE"

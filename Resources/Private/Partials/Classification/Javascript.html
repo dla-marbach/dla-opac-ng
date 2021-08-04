@@ -41,7 +41,7 @@
 
 
     function searchNodes(searchTerm) {
-        var url = '/index.php?eID=collection&type=' + pluginType + '&action=searchNodes&search=' + searchTerm;
+        var url = '/?collection=1&type=' + pluginType + '&action=searchNodes&search=' + searchTerm;
 
         $.ajax({
             url: url,
@@ -98,7 +98,7 @@
 
         var requestObject = {
             type: "POST",
-            url: '/index.php?eID=collection&type=' + pluginType + '&action=getNodes&id=' + id,
+            url: '/?collection=1&type=' + pluginType + '&action=getNodes&nodeid=' + id,
             dataType: "json"
         };
 
@@ -146,7 +146,7 @@
     }
 
     function expandStructure(record) {
-        var url = '/index.php?eID=collection&type=' + pluginType + '&action=getAllParents&id=' + record;
+        var url = '/?collection=1&type=' + pluginType + '&action=getAllParents&id=' + record;
 
         var jqxhr = $.ajax({
             url: url,

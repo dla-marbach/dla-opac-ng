@@ -673,7 +673,7 @@ function buildWatchlist() {
         var list = Cookies.get('list');
 
         $.ajax({
-            url: "/index.php?eID=getEntities&q=" + list,
+            url: "/?getEntities=1&q=" + list,
         })
             .done(function( data ) {
                 $('#watchlist-list').html('');
