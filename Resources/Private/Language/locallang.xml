@@ -51,10 +51,319 @@
 
       <!-- Templates -->
       <!-- Resources/Private/Extensions/DCE/CatalogContact.html -->
-      <label index="Phone">Phone</label>
-      <label index="Fax">Fax</label>
+      <label index="Telefon">Telephone</label>
+      <label index="Telefax">Telefax</label>
 
       <!-- Resources/Private/Page/Layouts/Startseite.html -->
+      <label index="Informationen">Information</label>
+      <label index="Über uns">About us</label>
+      <label index="Kalender">Calendar</label>
+      <label index="Service">Service</label>
+      <label index="Presse">Press</label>
+      <label index="Shop">Shop</label>
+      <label index="Kontakt">Contact</label>
+      <label index="Archiv">Archive</label>
+      <label index="Bibliothek">Library</label>
+      <label index="Museen">Museum</label>
+      <label index="Bildung">Education</label>
+      <label index="Forschung">Research</label>
+      <label index="Katalog">Catalogue</label>
+      <label index="Deutsches Literaturarchiv Marbach">Deutsches Literaturarchiv Marbach</label>
+      <label index="Suche">Search</label>
+      <label index="Suche nach:">Search:</label>
+      <label index="Suche in:">Search in:</label>
+      <label index="gesamter Webauftritt">whole Website</label>
+      <label index="Suche starten">Start search</label>
+      <label index="Friedrich Schiller">Friedrich Schiller</label>
+      <label index="Cotta-Archiv">Cotta-Archiv</label>
+      <label index="Exil: Helen und Kurt Wolff-Archiv">Exil: Helen und Kurt Wolff-Archiv</label>
+      <label index="Mit über 200 Vor- und Nachlässen von Schriftstellerinnen, Schriftstellern und Gelehrten, die während der NS-Zeit verfolgt wurden und ins Exil flüchteten, ist das Helen und Kurt Wolff-Archiv eine der wichtigsten Quellen zum deutschsprachigen Exil des 20. Jahrhunderts.">Mit über 200 Vor- und Nachlässen von Schriftstellerinnen, Schriftstellern und Gelehrten, die während der NS-Zeit verfolgt wurden und ins Exil flüchteten, ist das Helen und Kurt Wolff-Archiv eine der wichtigsten Quellen zum deutschsprachigen Exil des 20. Jahrhunderts.</label>
+      <label index="Siegfried Unseld Archiv">Siegfried Unseld Archiv</label>
+      <label index="10.000 Archivkästen mit Korrespondenzen, Manuskripten und Notizen – das wichtigste Verlagsarchiv der modernen deutschen Literatur.">10.000 Archivkästen mit Korrespondenzen, Manuskripten und Notizen – das wichtigste Verlagsarchiv der modernen deutschen Literatur.</label>
+      <label index="Verlagsarchive">Verlagsarchive</label>
+      <label index="Gelehrte, Philosophen, Germanisten">Gelehrte, Philosophen, Germanisten</label>
+      <label index="Index der Handschriften-Bestände">Index der Handschriften-Bestände</label>
+      <label index="Bilder und Objekte">Bilder &amp; Objekte</label>
+      <label index="Audio und Video">Audio &amp; Video</label>
+      <label index="Audio">Audio</label>
+      <label index="Video">Video</label>
+      <label index="Namen und Werke">Namen &amp; Werke</label>
+      <label index="Porträtgalerie">Porträtgalerie</label>
+      <label index="Projekte">Projects</label>
+      <label index="Mediendokumentation">Media documentation</label>
+      <label index="Spezialsammlungen">Special collection</label>
+      <label index="Literatur im Netz">Literatur im Netz</label>
+      <label index="Germanistik im Netz">Germanistik im Netz</label>
+      <label index="Bibliografien">Bibliography</label>
+      <label index="Literaturmuseum der Moderne">Literaturmuseum der Moderne</label>
+      <label index="Wechselausstellungen">Wechselausstellungen</label>
+      <label index="Dauerausstellung DIE SEELE">Dauerausstellung DIE SEELE</label>
+      <label index="Architektur">Architecture</label>
+      <label index="Schiller-Nationalmuseum">Schiller-Nationalmuseum</label>
+      <label index="Dauerausstellung UNTERM PARNASS">Dauerausstellung UNTERM PARNASS</label>
+      <label index="Geschichte">Geschichte</label>
+      <label index="Besucherinformation">Visitor information</label>
+      <label index="Museums-App">Museums-App</label>
+      <label index="Ausstellungskataloge">Ausstellungskataloge</label>
+      <label index="Lese-Garten-Café">Lese-Garten-Café</label>
+      <label index="Junges Museum">Junges Museum</label>
+      <label index="Familien und Kinder">Family and kids</label>
+      <label index="Erwachsene">Adults</label>
+      <label index="Angebote für Schulen">Angebote für Schulen</label>
+      <label index="Lehrerfortbildungen">Lehrerfortbildungen</label>
+      <label index="Buchbare Führungen und Workshops">Buchbare Führungen und Workshops</label>
+      <label index="Führungen »Die Familie. Ein Archiv«">Führungen »Die Familie. Ein Archiv«</label>
+      <label index="Tagungen">Tagungen</label>
+      <label index="Das Marbacher Stipendienprogramm">Das Marbacher Stipendienprogramm</label>
+      <label index="Internationales Archivforschungsprojekt 1968">Internationales Archivforschungsprojekt 1968</label>
+      <label index="Suhrkamp-Forschungskolleg">Suhrkamp-Forschungskolleg</label>
+      <label index="Global Archives">Global Archives</label>
+      <label index="Arbeitsstelle für die Erforschung der Geschichte der Germanistik">Arbeitsstelle für die Erforschung der Geschichte der Germanistik</label>
+      <label index="Koordinierungsstelle zur Erforschung deutsch-jüdischer Nachlässe in Israel">Koordinierungsstelle zur Erforschung deutsch-jüdischer Nachlässe in Israel</label>
+      <label index="Forschungsverbund Marbach Weimar Wolfenbüttel">Forschungsverbund Marbach Weimar Wolfenbüttel</label>
+      <label index="Kooperationen">Kooperationen</label>
+      <label index="Handschriften">Handschriften</label>
+      <label index="Bestände">Bestände</label>
+      <label index="Sie befinden sich hier:">Sie befinden sich hier:</label>
+      <label index="Bestandserhaltung">Bestandserhaltung</label>
+      <label index="Konservierung und Restaurierung">Konservierung und Restaurierung</label>
+      <label index="Präventive Konservierung">Präventive Konservierung</label>
+      <label index="Restaurierung">Restaurierung</label>
+      <label index="Mengenentsäuerung">Mengenentsäuerung</label>
+      <label index="Digitale Bestandserhaltung">Digitale Bestandserhaltung</label>
+      <label index="Exponatpflege">Exponatpflege</label>
+      <label index="Autorenbibliotheken">Autorenbibliotheken</label>
+      <label index="Exil">Exil</label>
+      <label index="Germanisten- und Gelehrtennachlässe">Germanisten- und Gelehrtennachlässe</label>
+      <label index="Wiss. Kooperationen">Wiss. Kooperationen</label>
+      <label index="Internationale Partneruniversitäten">Internationale Partneruniversitäten</label>
+      <label index="Forschungsverbund MWW">Forschungsverbund MWW</label>
+      <label index="Freunde und Partner">Freunde und Partner</label>
+      <label index="Freundeskreis">Freundeskreis</label>
+      <label index="Mitglied werden">Mitglied werden</label>
+      <label index="Spenden">Spenden</label>
+      <label index="American Friends of Marbach">American Friends of Marbach</label>
+      <label index="Häufig besuchte Seiten">Häufig besuchte Seiten</label>
+      <label index="Anreise">Arrival</label>
+      <label index="Collegienhaus">Collegienhaus</label>
+      <label index="Stellenangebote">Stellenangebote</label>
+      <label index="Öffnungszeiten">Opening hours</label>
+      <label index="Führungen">Führungen</label>
+      <label index="Schule und Lehrer">School and teacher</label>
+      <label index="Neuerwerbungen">Neuerwerbungen</label>
+      <label index="Raumvermietung">Raumvermietung</label>
+      <label index="Newsletter">Newsletter</label>
+      <label index="Impressum">Impressum</label>
+      <label index="Datenschutzerklärung">Privacy statement</label>
+
+      <!-- Resources/Private/... -->
+      <label index="merken">notice</label>
+      <label index="versenden">send</label>
+      <label index="teilen">share</label>
+      <label index="exportieren">export</label>
+      <label index="Details">Details</label>
+      <label index="Zugang">Order/Origin</label>
+      <label index="Medienart">Media type</label>
+      <label index="Objekttyp">Object type</label>
+      <label index="Medientyp">Media type</label>
+      <label index="Medium">Medium</label>
+
+      <!-- Resources/Private/Partials/Display/Detail/ImagesAndObjects/Details.html -->
+      <label index="Originaltitel">Originaltitel</label>
+      <label index="Person">Person</label>
+      <label index="Körperschaft">Körperschaft</label>
+      <label index="Allgemeine Beschreibung">Allgemeine Beschreibung</label>
+      <label index="Entstehungszeit">Entstehungszeit</label>
+      <label index="Bezeichnung">Description</label>
+      <label index="Technik">Technology</label>
+      <label index="Umfang">Extent</label>
+      <label index="Maße [in cm]">Dimension [in cm]</label>
+      <label index="Erhaltungszustand">Erhaltungszustand</label>
+      <label index="Objekt- und Konvoluttypen">Objekt- und Konvoluttypen</label>
+      <label index="Objekttypen">Objekttypen</label>
+      <label index="Werk">Werk</label>
+      <label index="Ort">Location</label>
+      <label index="Sachschlagwort">Sachschlagwort</label>
+      <label index="Bestand">Bestand</label>
+      <label index="Buchexemplar">Buchexemplar</label>
+      <label index="Anmerkungen">Anmerkungen</label>
+      <label index="Literatur">Literatur</label>
+      <label index="In">In</label>
+      <label index="Inventarnummer">Inventarnummer</label>
+      <label index="Erwerbungsnummer">Erwerbungsnummer</label>
+      <label index="Digitales Objekt">Digital object</label>
+      <label index="Inhalt">Content</label>
+      <label index="Benutzung">Use</label>
+      <label index="Darin">Therein</label>
+
+      <!-- Resources/Private/Partials/Display/Detail/Inventory/Details.html -->
+      <label index="Bestandsart">Bestandsart</label>
+      <label index="Bestandsbildner">Bestandsbildner</label>
+      <label index="Sammlung">Collection</label>
+      <label index="Signatur">Signature</label>
+      <label index="Inhaltsangabe">Table of contents</label>
+      <label index="Literaturangaben">Literaturangaben</label>
+      <label index="Übersicht">Übersicht</label>
+      <label index="Mediennummer">Mediennummer</label>
+      <label index="Benutzungshinweis">Benutzungshinweis</label>
+      <label index="Bemerkungen">Bemerkungen</label>
+      <label index="Ordnung">Ordnung</label>
+      <label index="Verzeichnung">Verzeichnung</label>
+      <label index="Beziehungen">Beziehungen</label>
+      <label index="Schlagwort">Schlagwort</label>
+      <label index="Person Über">Person Über</label>
+      <label index="Körperschaft Über">Körperschaft Über</label>
+      <label index="Tektonik">Tektonik</label>
+
+      <!-- Resources/Private/Partials/Display/Detail/Library/Details.html -->
+      <label index="Urheber">Urheber</label>
+      <label index="Beteiligt">Beteiligt</label>
+      <label index="Erschienen">Erschienen</label>
+      <label index="Erscheinungsverlauf">Erscheinungsverlauf</label>
+      <label index="Ausgabe">Ausgabe</label>
+      <label index="Physische Beschreibung">Physische Beschreibung</label>
+      <label index="ISBN">ISBN</label>
+      <label index="ISSN">ISSN</label>
+      <label index="E-ISSN">E-ISSN</label>
+      <label index="ZDB-ID">ZDB-ID</label>
+      <label index="Teil von">Teil von</label>
+      <label index="Enthalten in">Enthalten in</label>
+      <label index="Provenienz">Provenienz</label>
+      <label index="Sendeangaben">Sendeangaben</label>
+      <label index="Teilwerke">Teilwerke</label>
+      <label index="Weitere Titel">Weitere Titel</label>
+      <label index="Sprache">Sprache</label>
+      <label index="Sprache Original">Sprache Original</label>
+      <label index="Maßstab">Maßstab</label>
+      <label index="Register">Register</label>
+      <label index="Enthält">Enthält</label>
+      <label index="Bibliographie">Bibliographie</label>
+      <label index="Enthaltene Beiträge">Enthaltene Beiträge</label>
+      <label index="Enthaltene Bände">Enthaltene Bände</label>
+      <label index="Rezensionen">Rezensionen</label>
+      <label index="Bände und Hefte">Bände und Hefte</label>
+
+      <!-- Resources/Private/Partials/Display/Detail/Manuscripts/Details.html -->
+      <label index="Gattung">Gattung</label>
+      <label index="Weitere Gattung">Weitere Gattung</label>
+      <label index="VON/AN">VON/AN</label>
+      <label index="VON">VON</label>
+      <label index="AN">AN</label>
+      <label index="ÜBER">ÜBER</label>
+      <label index="Entstehungsort">Entstehungsort</label>
+      <label index="Vorliegende Namensform">Vorliegende Namensform</label>
+      <label index="Titel">Titel</label>
+      <label index="Umfang, Beilagen">Umfang, Beilagen</label>
+      <label index="Objektart">Objektart</label>
+      <label index="Bei / Auf / In">Bei / Auf / In</label>
+      <label index="Dabei / Darauf / Darin">Dabei / Darauf / Darin</label>
+      <label index="Bilder &amp; Objekte">Bilder &amp; Objekte</label>
+      <label index="Bestandssignatur">Bestandssignatur</label>
+      <label index="Zugangsnummer">Zugangsnummer</label>
+      <label index="Übernommene Sigel">Übernommene Sigel</label>
+      <label index="Mikrofiche">Mikrofiche</label>
+      <label index="Repro">Repro</label>
+      <label index="Kasten">Kasten</label>
+      <label index="Mappe">Mappe</label>
+
+      <!-- Resources/Private/Partials/Display/Detail/Normdata/Person.html -->
+      <label index="GND">GND</label>
+      <label index="Andere Namen">Andere Namen</label>
+      <label index="Geschlecht">Geschlecht</label>
+      <label index="Lebensdaten">Lebensdaten</label>
+      <label index="Wirkungsdaten">Wirkungsdaten</label>
+      <label index="Land">Land</label>
+      <label index="Normsatz">Normsatz</label>
+      <label index="Quelle">Quelle</label>
+      <label index="Erläuterung">Erläuterung</label>
+
+      <!-- Resources/Private/Partials/Display/Detail/Normdata/Werk.html -->
+      <label index="Icon">Icon</label>
+      <label index="Typ">Typ</label>
+      <label index="Titel des Werkes">Titel des Werkes</label>
+      <label index="Form des Werks">Form des Werks</label>
+      <label index="Zeit">Zeit</label>
+      <label index="Dieses Werk in">Dieses Werk in</label>
+      <label index="Übersetzungen dieses Werks">Übersetzungen dieses Werks</label>
+      <label index="Über dieses Werk">Über dieses Werk</label>
+
+      <!-- Resources/Private/Partials/Display/Detail/MediatypeIcon.html -->
+      <label index="AV-Medien">AV-Medien</label>
+      <label index="Daten">Daten</label>
+      <label index="Gedrucktes">Gedrucktes</label>
+      <label index="Normdaten">Normdaten</label>
+      <label index="Sonstiges">Sonstiges</label>
+
+      <!-- Resources/Private/Partials/Display/Field/Content.html -->
+      <!--
+      <label index="">Suche in {queryField} nach {value}</label>
+      <label index="">Suche nach {displayField}:</label>
+      <label index="">Nothing found. Is {s:data.valueForKey(array:settings.queryFieldForDataField, key:field)} indexed and {s:data.valueForKey(array:settings.displayFieldForDataField, key:field)} stored?</label>
+      -->
+
+      <!-- Resources/Private/Partials/Display/Field/MediatypeIcon.html -->
+
+      <!-- Resources/Private/Partials/Display/Field/Result.html -->
+      <label index="Benutzungszugang">Benutzungszugang</label>
+      <label index="nicht ausleihbar">nicht ausleihbar,</label>
+      <label index="weiterer Hinweis hier">weiterer Hinweis hier</label>
+
+      <!-- Resources/Private/Partials/Form/Form.html -->
+      <label index="Kallías">Kallías</label>
+      <label index="der Online-Katalog des Deutschen Literaturarchivs Marbach">der Online-Katalog des Deutschen Literaturarchivs Marbach</label>
+      <label index="Merkliste">Watchlist</label>
+      <label index="Feedback">Feedback</label>
+      <label index="Mein Konto">My account</label>
+      <label index="Gesamtbestand">Gesamtbestand</label>
+      <label index="Audio &amp; Video">Audio &amp; Video</label>
+      <label index="Namen &amp; Werke">Namen &amp; Werke</label>
+      <label index="Jetzt suchen">Search now</label>
+      <label index="Expertensuche">Extended Search</label>
+      <label index="Bestandsübersicht">Bestandsübersicht</label>
+      <label index="Suchverlauf">Search history</label>
+      <label index="Hilfe und Auskunft">Help</label>
+
+      <!-- Resources/Private/Templates/Search/Detail.html -->
+      <label index="Gleicher Künstler">Gleicher Künstler</label>
+      <label index="Aus demselben Nachlass">Aus demselben Nachlass</label>
+      <label index="Aus der selben Sammlung">Aus der selben Sammlung</label>
+      <label index="Aus demselben Archiv">Aus demselben Archiv</label>
+      <label index="Ähnliche Fundstücke">Ähnliche Fundstücke</label>
+
+      <!-- Resources/Private/Templates/Search/Index.html -->
+      <label index="Sie haben das Gesuchte nicht gefunden?">Sie haben das Gesuchte nicht gefunden?</label>
+      <label index="search_help">Unter &quot;Hilfe &amp; Auskunft&quot; finden Sie Tipps zur Suche. Oder Sie wenden sich direkt an uns.</label>
+      <label index="Auskunftsdienst Archiv">Auskunftsdienst Archiv</label>
+      <label index="Telefon &lt;a href='tel:+497144848425'&gt;+49 (0) 7144 / 848-425&lt;/a&gt;&lt;br/&gt;&lt;a href='mailto:auskhss@dla-marbach.de'&gt;auskhss@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 18:00h">Telefon &lt;a href="tel:+497144848425"&gt;+49 (0) 7144 / 848-425&lt;/a&gt;&lt;br/&gt;&lt;a href="mailto:auskhss@dla-marbach.de"&gt;auskhss@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 18:00h</label>
+      <label index="Auskunftsdienst Bibliothek">Auskunftsdienst Bibliothek</label>
+      <label index="Telefon &lt;a href='tel:+497144848318'&gt;+49 (0) 7144 / 848-318&lt;/a&gt;&lt;br/&gt;&lt;a href='bibliothek@dla-marbach.de'&gt;bibliothek@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 17:30h">Telefon &lt;a href="tel:+497144848318"&gt;+49 (0) 7144 / 848-318&lt;/a&gt;&lt;br/&gt;&lt;a href="bibliothek@dla-marbach.de"&gt;bibliothek@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 17:30h</label>
+      <label index="Auskunftsdienst Bilder und Objekte">Auskunftsdienst Bilder und Objekte</label>
+      <label index="Telefon Auskunftsdienst Bilder und Objekte">Telefon &lt;a href="tel:+497144848500"&gt;+49 (0) 7144 / 848-500&lt;/a&gt;&lt;br/&gt;Telefax &lt;a href="tel:+497144848490"&gt;+49 (0) 7144 / 848-490&lt;/a&gt;&lt;br/&gt;&lt;a href="bilder-und-objekte@dla-marbach.de"&gt;bilder-und-objekte@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 18:00h</label>
+      <label index="Andere Fundorte">Andere Fundorte</label>
+      <label index="schließen">schließen</label>
+
+      <!-- Resources/Private/Templates/Start/Start.html -->
+      <label index="Hilfe &amp; Auskunft">Hilfe &amp; Auskunft</label>
+
+      <label index="search.fieldselector.author">Person/Körperschaft</label>
+      <label index="search.fieldselector.author_von">Person/Körperschaft Von</label>
+      <label index="search.fieldselector.author_an">Person/Körperschaft An</label>
+      <label index="search.fieldselector.author_ueber">Person/Körperschaft Über</label>
+      <label index="search.fieldselector.author_unter">Person/Körperschaft Unter</label>
+      <label index="search.fieldselector.title">Titel</label>
+      <label index="search.fieldselector.title_ueber">Titel Über</label>
+      <label index="search.fieldselector.date">Jahr/Datum</label>
+      <label index="search.fieldselector.date_von">Zeit/Datum Von</label>
+      <label index="search.fieldselector.date_bis">Zeit/Datum Bis</label>
+      <label index="search.fieldselector.new_von">Neu erfasst von</label>
+      <label index="search.fieldselector.new_bis">Neu erfasst bis</label>
+      <label index="search.fieldselector.place">Entstehungsort/Erscheinungsort</label>
+      <label index="search.fieldselector.numbers">Nummern</label>
+      <label index="search.fieldselector.signatur">Bestandssignatur</label>
+      <label index="search.fieldselector.exemplar">Provienenzmerkmale (Exemplar)</label>
+      <label index="search.fieldselector.searchall">Freie Suche</label>
+      <label index="search.fieldselector.not_date">Ohne Datum</label>
+      <label index="search.fieldselector.label_not_date">Nur ohne Datum</label>
 
 
     </languageKey>
