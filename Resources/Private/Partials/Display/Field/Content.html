@@ -84,7 +84,7 @@
                                                     </f:if>
                                                 </f:case>
                                                 <!-- default data field handling -->
-                                                <f:case default="TRUE">
+                                                <f:defaultCase>
                                                     <f:link.action action="detail" arguments="{id:solr.id}" class="internal">
                                                         <f:comment><span style="color:lightgrey;">{displayField}: </span></f:comment>
                                                         <f:if condition="!{s:data.isArray(subject: linkTextValue)}">
@@ -104,7 +104,7 @@
                                                             </f:else>
                                                         </f:if>
                                                     </f:link.action>
-                                                </f:case>
+                                                </f:defaultCase>
                                             </f:switch>
                                     </f:for>
                                 </ul>

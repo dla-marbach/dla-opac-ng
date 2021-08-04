@@ -92,10 +92,10 @@
             <span class="icon bel-papier" style="margin-left: 4px; margin-top: -36px;" title="Normdaten"></span>
         </f:if>
     </f:case>
-    <f:case default="TRUE">
+    <f:defaultCase>
         <span class="icon bel-leer" title="Sonstiges"></span>
         <f:if condition="{listview_type_cardinality} == 'N'">
             <span class="icon bel-unbek" style="margin-left: 4px; margin-top: -36px;" title="Sonstiges"></span>
         </f:if>
-    </f:case>
+    </f:defaultCase>
 </f:switch>

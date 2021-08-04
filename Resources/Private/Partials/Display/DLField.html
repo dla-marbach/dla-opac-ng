@@ -30,7 +30,7 @@
             linkFacets:linkFacets
           }"/>
       </f:case>
-      <f:case default="TRUE">
+      <f:defaultCase>
         <f:if condition="{s:data.valueForKey(array:settings.queryFieldForDataField, key:field)}">
           <f:then>
             <f:render
@@ -55,7 +55,7 @@
               }"/>
           </f:else>
         </f:if>
-      </f:case>
+      </f:defaultCase>
     </f:switch>
     </dd>
   </f:if>
