@@ -17,7 +17,7 @@ class ExportController extends ActionController
         $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
         $domainName = $_SERVER['HTTP_HOST'] . '/';
         $file = 'index.php?';
-        $parameter = 'eID=getEntities&q=' . trim($ids, ',');
+        $parameter = 'getEntities=1&q=' . trim($ids, ',');
 
         $csvFilename = 'marbach.csv';
         $delimiter = ';';
