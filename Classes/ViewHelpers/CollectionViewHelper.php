@@ -27,7 +27,7 @@ class CollectionViewHelper extends AbstractViewHelper
         $protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === 0 ? 'https://' : 'http://';
         $record = $this->arguments['record'];
         if ($record) {
-            $url = $protocol . $_SERVER['HTTP_HOST'] . '/index.php?collection=1&type=collection&action=getAllParents&id=' . $record;
+            $url = $protocol . $_SERVER['HTTP_HOST'] . '/?collection=1&type=collection&action=getAllParents&id=' . $record;
             $jsonData = file_get_contents($url);
             $arrayData = json_decode($jsonData);
 
