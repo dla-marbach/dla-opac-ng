@@ -52,7 +52,7 @@ class GetEntities implements MiddlewareInterface
                 $title = '';
                 if (!empty($doc['listview_additional2'])) {
                     foreach ($doc['listview_additional2'] as $listview_additional2) {
-                        $title = htmlspecialchars($doc['listview_additional2']) . $title;
+                        $title = htmlspecialchars($listview_additional2) . $title;
                     }
                 }
                 if (!empty($doc['listview_additional1'])) {
