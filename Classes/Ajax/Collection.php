@@ -45,7 +45,7 @@ class Collection implements MiddlewareInterface
         ];
 
         $action = $request->getQueryParams()['action'];
-        $nodeId = $request->getQueryParams()['nodeid'];
+        $nodeId = $request->getQueryParams()['id'];
         $search = $request->getQueryParams()['search'];
         $type = $request->getQueryParams()['type'];
 
