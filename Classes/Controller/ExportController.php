@@ -45,21 +45,57 @@ class ExportController extends ActionController
         fputcsv($f, $line, $delimiter);
 
         foreach ($array as $entry) {
+
+            if(!empty($entry->facet_form_content)) {
+                $facet_form_content = implode(";", $entry->facet_form_content);
+            }
+            if(!empty($entry->facet_medium)) {
+                $facet_medium = implode(";", $entry->facet_medium);
+            }
+            if(!empty($entry->facet_time)) {
+                $facet_time = implode(";", $entry->facet_time);
+            }
+            if(!empty($entry->facet_names)) {
+                $facet_names = implode(";", $entry->facet_names);
+            }
+            if(!empty($entry->facet_subject)) {
+                if (is_array($entry->facet_subject)) {
+                    $facet_subject = implode(";", array_map('htmlspecialchars_decode', $entry->facet_subject));
+                } else {
+                    $facet_subject = implode(";", $entry->facet_subject);
+                }
+            }
+            if(!empty($entry->facet_language)) {
+                $facet_language = implode(";", $entry->facet_language);
+            }
+            if(!empty($entry->facet_location)) {
+                $facet_location = implode(";", $entry->facet_location);
+            }
+            if(!empty($entry->listview_type)) {
+                $listview_type = implode(";", $entry->listview_type);
+            }
+            if(!empty($entry->filter_bibliography)) {
+                $filter_bibliography = implode(";", $entry->filter_bibliography);
+            }
+            if(!empty($entry->filter_collection)) {
+                $filter_collection = implode(";", $entry->filter_collection);
+            }
+
             $line = [
                 $entry->id,
                 $protocol . trim($domainName, '/') . $PLUGIN_PATH . $entry->id,
                 $entry->title,
-                implode(";", $entry->facet_form_content),
-                implode(";", $entry->facet_medium),
-                implode(";", $entry->facet_time),
-                implode(";", $entry->facet_names),
-                implode(";", array_map('htmlspecialchars_decode', $entry->facet_subject)),
-                implode(";", $entry->facet_language),
-                implode(";", $entry->facet_location),
+                $facet_form_content,
+                $facet_medium,
+                $facet_time,
+                $facet_names,
+                $facet_subject,
+                $facet_language,
+                $facet_location,
                 $entry->facet_source,
-                implode(";", $entry->listview_type),
-                implode(";", $entry->filter_bibliography),
-                implode(";", $entry->filter_collection),
+                $listview_type,
+                $filter_bibliography,
+                $filter_collection,
                 $entry->filter_digital
             ];
 
