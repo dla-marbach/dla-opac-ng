@@ -35,11 +35,26 @@ class DimensionViewHelper extends AbstractViewHelper
         $diameters = $this->arguments['diameter'];
         $descriptions = $this->arguments['description'];
 
-        $countAll[] = count($heights);
-        $countAll[] = count($widths);
-        $countAll[] = count($depths);
-        $countAll[] = count($diameters);
-        $countAll[] = count($descriptions);
+        $countAll = [];
+
+        if ($heights) {
+            $countAll[] = count($heights);
+        }
+
+        if ($widths) {
+            $countAll[] = count($widths);
+        }
+        if ($depths) {
+            $countAll[] = count($depths);
+        }
+
+        if ($diameters) {
+            $countAll[] = count($diameters);
+        }
+
+        if ($descriptions) {
+            $countAll[] = count($descriptions);
+        }
 
         $maxValue = max($countAll);
         $resultValue = array();
