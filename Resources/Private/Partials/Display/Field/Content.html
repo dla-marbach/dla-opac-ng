@@ -30,110 +30,111 @@
                         <dla:fromSolr
                                 query="{queryField}:(\"{value}\")"
                                 fields="id,{s:data.valueForKey(array:settings.displayFieldForDataField, key:field)}"
-                                rows="10">
-                        <f:then>
-                            <li>{displayField}
-                                <ul>
-                                    <f:for each="{v:iterator.explode(content:'{s:data.valueForKey(array:settings.displayFieldForDataField, key:field)}', glue:',')}" as="displayField">
-                                        <li>
-                                            <f:switch expression="{field}">
-                                                <!-- special handling of field SYNKEY -->
-                                                <f:case value="SYNKEY">
-                                                    <s:data.newArray
-                                                            name="SYNKEYquery"
-                                                            global="1"
-                                                            keys="{0:'raw'}"
-                                                            values="{0:'{field}:{value}'}"
-                                                    />
+                                rows="10" />
+                        <f:if condition="{solr}">
+                            <f:then>
+                                <li>{displayField}
+                                    <ul>
+                                        <f:for each="{v:iterator.explode(content:'{s:data.valueForKey(array:settings.displayFieldForDataField, key:field)}', glue:',')}" as="displayField">
+                                            <li>
+                                                <f:switch expression="{field}">
+                                                    <!-- special handling of field SYNKEY -->
+                                                    <f:case value="SYNKEY">
+                                                        <s:data.newArray
+                                                                name="SYNKEYquery"
+                                                                global="1"
+                                                                keys="{0:'raw'}"
+                                                                values="{0:'{field}:{value}'}"
+                                                        />
 
-                                                    <f:link.action action="index" arguments="{q:SYNKEYquery}" class="internal" noCacheHash="1">
-                                                        <span style="color:lightgrey;">Suche nach {displayField}: </span>
-                                                        <f:render
-                                                            partial="Display/Field/Inline"
-                                                            arguments="{
-                                                              config:config,
-                                                              results:results,
-                                                              document:solr,
-                                                              field:'{displayField}'
-                                                            }"/>
-                                                    </f:link.action>
-                                                </f:case>
-                                                <!-- special handling of field VORKOP -->
-                                                <f:case value="VORKOP">
-                                                    <f:link.action action="detail" arguments="{id:solr.id}" class="internal">
-                                                        <span style="color:lightgrey;">{displayField}: </span>
-                                                        <f:render
-                                                            partial="Display/Field/Inline"
-                                                            arguments="{
-                                                              config:config,
-                                                              results:results,
-                                                              document:solr,
-                                                              field:'{displayField}'
-                                                            }"/>
-                                                    </f:link.action>
-                                                    <f:if condition="{displayField}=='VORKOP'">
-                                                        <f:render
-                                                            partial="Display/Field/Inline"
-                                                            arguments="{
-                                                                config:config,
-                                                                results:results,
-                                                                document:solr,
-                                                                field:'{displayField}',
-                                                                linkFieldContent:1
-                                                            }"/>
-                                                    </f:if>
-                                                </f:case>
-                                                <!-- default data field handling -->
-                                                <f:defaultCase>
-                                                    <f:link.action action="detail" arguments="{id:solr.id}" class="internal">
-                                                        <f:comment><span style="color:lightgrey;">{displayField}: </span></f:comment>
-                                                        <f:if condition="!{s:data.isArray(subject: linkTextValue)}">
-                                                            <f:then>
-                                                                {linkTextValue}
-                                                            </f:then>
-                                                            <f:else>
-                                                                <f:render
-                                                                        partial="Display/Field/Inline"
-                                                                        arguments="{
+                                                        <f:link.action action="index" arguments="{q:SYNKEYquery}" class="internal" noCacheHash="1">
+                                                            <span style="color:lightgrey;">Suche nach {displayField}: </span>
+                                                            <f:render
+                                                                partial="Display/Field/Inline"
+                                                                arguments="{
                                                                   config:config,
                                                                   results:results,
                                                                   document:solr,
-                                                                  field:'{displayField}',
-                                                                  linkTextValue: linkTextValue
+                                                                  field:'{displayField}'
                                                                 }"/>
-                                                            </f:else>
+                                                        </f:link.action>
+                                                    </f:case>
+                                                    <!-- special handling of field VORKOP -->
+                                                    <f:case value="VORKOP">
+                                                        <f:link.action action="detail" arguments="{id:solr.id}" class="internal">
+                                                            <span style="color:lightgrey;">{displayField}: </span>
+                                                            <f:render
+                                                                partial="Display/Field/Inline"
+                                                                arguments="{
+                                                                  config:config,
+                                                                  results:results,
+                                                                  document:solr,
+                                                                  field:'{displayField}'
+                                                                }"/>
+                                                        </f:link.action>
+                                                        <f:if condition="{displayField}=='VORKOP'">
+                                                            <f:render
+                                                                partial="Display/Field/Inline"
+                                                                arguments="{
+                                                                    config:config,
+                                                                    results:results,
+                                                                    document:solr,
+                                                                    field:'{displayField}',
+                                                                    linkFieldContent:1
+                                                                }"/>
                                                         </f:if>
-                                                    </f:link.action>
-                                                </f:defaultCase>
-                                            </f:switch>
-                                    </f:for>
-                                </ul>
-                            </li>
-                        </f:then>
-                        <f:else>
-                            <li>
-                                <f:if condition="{linkTextValue}">
-                                    <f:then>
-                                        {linkTextValue}
-                                    </f:then>
-                                    <f:else>
-                                        <s:find.highlightField
-                                            field="{field}"
-                                            document="{document}"
-                                            results="{results}"
-                                            index="{iterator.index}"
-                                            alternateField="{s:data.valueForKey(array:config.highlight.alternateFields, key:field)}" />
-                                    </f:else>
-                                </f:if>
-                                <f:comment>
-                                <br />
-                                <span style="color:lightgrey;">
-                                    Nothing found. Is {s:data.valueForKey(array:settings.queryFieldForDataField, key:field)} indexed and {s:data.valueForKey(array:settings.displayFieldForDataField, key:field)} stored?
-                                </span>
-                                </f:comment>
-                            </li>
-                        </f:else>
-                        </dla:fromSolr>
+                                                    </f:case>
+                                                    <!-- default data field handling -->
+                                                    <f:defaultCase>
+                                                        <f:link.action action="detail" arguments="{id:solr.id}" class="internal">
+                                                            <f:comment><span style="color:lightgrey;">{displayField}: </span></f:comment>
+                                                            <f:if condition="!{s:data.isArray(subject: linkTextValue)}">
+                                                                <f:then>
+                                                                    {linkTextValue}
+                                                                </f:then>
+                                                                <f:else>
+                                                                    <f:render
+                                                                            partial="Display/Field/Inline"
+                                                                            arguments="{
+                                                                      config:config,
+                                                                      results:results,
+                                                                      document:solr,
+                                                                      field:'{displayField}',
+                                                                      linkTextValue: linkTextValue
+                                                                    }"/>
+                                                                </f:else>
+                                                            </f:if>
+                                                        </f:link.action>
+                                                    </f:defaultCase>
+                                                </f:switch>
+                                        </f:for>
+                                    </ul>
+                                </li>
+                            </f:then>
+                            <f:else>
+                                <li>
+                                    <f:if condition="{linkTextValue}">
+                                        <f:then>
+                                            {linkTextValue}
+                                        </f:then>
+                                        <f:else>
+                                            <s:find.highlightField
+                                                field="{field}"
+                                                document="{document}"
+                                                results="{results}"
+                                                index="{iterator.index}"
+                                                alternateField="{s:data.valueForKey(array:config.highlight.alternateFields, key:field)}" />
+                                        </f:else>
+                                    </f:if>
+                                    <f:comment>
+                                    <br />
+                                    <span style="color:lightgrey;">
+                                        Nothing found. Is {s:data.valueForKey(array:settings.queryFieldForDataField, key:field)} indexed and {s:data.valueForKey(array:settings.displayFieldForDataField, key:field)} stored?
+                                    </span>
+                                    </f:comment>
+                                </li>
+                            </f:else>
+                        </f:if>
                     </ol>
                 </f:for>
             </f:then>
