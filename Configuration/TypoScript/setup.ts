@@ -120,7 +120,7 @@ plugin.tx_find {
         connections {
             default {
                 options {
-                    host = serene.dla-marbach.de
+                    host = instant.dla-marbach.de
                     port = 8983
                     path = /solr/opac-ng
                     scheme = http
@@ -129,7 +129,7 @@ plugin.tx_find {
         }
 
         connection {
-            host = serene.dla-marbach.de
+            host = instant.dla-marbach.de
             port = 8983
             path = /solr/opac-ng
             timeout = 10
