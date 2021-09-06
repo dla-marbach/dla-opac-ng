@@ -60,7 +60,8 @@ class Import extends Command {
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         // Make sure the _cli_ user is loaded
-        Bootstrap::getInstance()->initializeBackendAuthentication();
+//        Bootstrap::getInstance()->initializeBackendAuthentication();
+        Bootstrap::initializeBackendAuthentication();
 
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
@@ -150,10 +151,12 @@ class Import extends Command {
 
             // Return error
             $io->error('ERROR: ' . $e->getMessage());
-            exit(1);
+            return Command::FAILURE;
+//            exit(1);
         }
 
         // That's it!
         $io->success('All done!');
+        return Command::SUCCESS;
     }
 }
