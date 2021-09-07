@@ -146,7 +146,7 @@
     }
 
     function expandStructure(record) {
-        var url = '/?collection=1&type=' + pluginType + '&action=getAllParents&id=' + record;
+        var url = '/?collection=1&type=' + pluginType + '&action=getAllParents&nodeid=' + record;
 
         var jqxhr = $.ajax({
             url: url,
