@@ -1014,7 +1014,7 @@ plugin.tx_find {
             }
 
             700 {
-                id = swb
+                id = k10plus
                 type = Text
                 query = A0025:(%1$s)
                 noescape = 2
