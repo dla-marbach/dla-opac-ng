@@ -231,7 +231,7 @@ function sendOrderAsPopup(orderurl) {
 
 function copyUrlAction(context) {
     var location = window.location;
-    var regexString = PLUGIN_PATH.replaceAll('/', '\\/') + '(.*)\\/';
+    var regexString = PLUGIN_PATH.replaceAll('/', '\\/') + '(.*)\[\/|\?]';
     var reg = new RegExp(regexString);
     var AU = context.data('auid');
 
