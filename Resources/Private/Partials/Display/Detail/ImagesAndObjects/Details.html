@@ -892,7 +892,7 @@
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_MM_MOTITL_INDKEY')}" name="XX_MM_MOTITL_INDKEY" />
         <f:if condition="{picture_midi} || {XX_MM_MOTITL_INDKEY} ">
             <f:then>
-                <f:if condition="{picture_midi -> f:count()} > 1">
+                <f:if condition="{picture_midi -> f:count()} > 0">
                     <f:then>
                         <div class="ctg-dtvt-row">
                             <div class="ctg-dtvt-label">
