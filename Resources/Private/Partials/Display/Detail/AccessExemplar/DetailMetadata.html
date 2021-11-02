@@ -1,3 +1,4 @@
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'source')}" name="source" />
 
 <f:if condition="!{iterator.index}">
@@ -611,15 +612,12 @@
                     </f:if>
                 </f:else>
             </f:if>
-
             <div class="ctg-dtvt-content">
-                {listview_title}
             </div>
             <div class="ctg-dtvt">
-
             </div>
         </div>
-        <div id="{iterator.cycle}" class="copy-details ctg-dtvt-row">
+        <div id="{iterator.cycle}" class="ctg-dtvt-row">
 
             <div class="">
 
