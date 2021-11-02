@@ -958,7 +958,7 @@ plugin.tx_find {
             513 {
                 id = numbers
                 type = Text
-                query = (id:(%1$s) OR A0540:(%1$s) OR A0542:(%1$s) OR ANUM:(%1$s) OR H05080:(%1$s) OR H04000:(%1$s) OR detail_zugangsnummer:(%1$s) OR H04010:(%1$s) OR H00070:(%1$s) OR H00080:(%1$s) OR BUCHN:(%1$s) OR XX_AU_BUCHUM_AUKEY:(%1$s) OR B04000:(%1$s) OR XX_BE_E05080_BEKEY:(%1$s) OR XX_AU_ZUGNR_AUKEY:(%1$s) OR B04100:(%1$s))
+                query = (id:(%1$s) OR advanced_numbers:(%1$s))
                 noescape = 2
                 escapechar < plugin.tx_find.settings.escapechar
                 hidden = 1
