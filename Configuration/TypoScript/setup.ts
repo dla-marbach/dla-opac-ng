@@ -63,7 +63,7 @@ page.10 {
 #page.includeJSFooter.datetimepicker = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.datetimepicker.min.js
 page.includeCSS.datetimepicker =  EXT:dla_opac_ng/Resources/Public/CSS/jquery.datetimepicker.css
 
-page.includeJS.jquery = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-1.11.0.min.js
+page.includeJS.jquery = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-3.6.0.js
 page.includeJS.jquery-ui = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-ui.min.js
 page.includeCSS.jquery-ui =  EXT:dla_opac_ng/Resources/Public/CSS/jquery-ui/jquery-ui.min.css
 page.includeJS.jquery-plot = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.flot.min.js
