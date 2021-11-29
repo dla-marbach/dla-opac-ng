@@ -15,22 +15,21 @@
     </f:if>
 </section>
 
-<section class="ctg-facet">
-    <h3><a title="schließen"><span class="icon bel-pfeil-o01"></span></a>Werkbeziehungen</h3>
-    <ul>
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+<s:data.newArray
+        name="query"
+        global="1"
+        keys="{0:'detail_ks_rightcolumn'}"
+        values="{0:'{K0001}'}"
+/>
+<dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+<dla:countFromSolr query="{solvedQuery}" />
 
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
-        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
-        <s:data.newArray
-                name="query"
-                global="1"
-                keys="{0:'detail_ks_rightcolumn'}"
-                values="{0:'{K0001}'}"
-        />
-        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
-        <dla:countFromSolr query="{solvedQuery}" />
-
-        <f:if condition="{solrcount}>0">
+<f:if condition="{solrcount}>0">
+    <section class="ctg-facet">
+        <h3><a title="schließen"><span class="icon bel-pfeil-o01"></span></a>Werkbeziehungen</h3>
+        <ul>
             <li>
                 <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
                     <span class="icon bel-idkarte"></span>
@@ -39,9 +38,9 @@
                     Werke ({solrcount})
                 </f:link.action>
             </li>
-        </f:if>
-    </ul>
-</section>
+        </ul>
+    </section>
+</f:if>
 
 <section class="ctg-facet-other">
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_website')}" name="wikidata_website" />
