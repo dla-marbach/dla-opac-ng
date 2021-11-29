@@ -1580,13 +1580,13 @@ plugin.tx_find {
     locale_all = de_DE.UTF-8
     htmlTag_setParams = lang="de" dir="ltr" class="no-js"
 }
-[globalVar = GP:L = 1]
+[siteLanguage("locale") == "en_US.UTF-8"]
 config {
     sys_language_uid = 1
     language = en
     locale_all = en_US.UTF-8
     htmlTag_setParams = lang="en" dir="ltr" class="no-js"
 }
-[global]
+[END]
 
 page.config.contentObjectExceptionHandler = 0
