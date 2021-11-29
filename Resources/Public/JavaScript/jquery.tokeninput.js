@@ -732,6 +732,9 @@ $.TokenList = function (input, url_or_data, settings) {
                 .hide();
             var i = 0;
             $.each(results, function(index, value) {
+                if (i === 0 && value.id == "br") {
+                    return true;
+                }
                 myHeight = window.innerHeight;
                 maxItemPerRow = Math.round( (myHeight / 100) + 1);
                 i++;
