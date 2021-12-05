@@ -664,7 +664,7 @@ function removeAllFromWatchlist() {
 }
 
 function updateCounter() {
-    $('#watchlist .watchlist-counter').text($('#watchlist .watchlist-counter').text().replace(/\d+/, countWatchlist()));
+    $('.watchlist-counter').text($('.watchlist-counter').text().replace(/\d+/, countWatchlist()));
 }
 
 function countWatchlist() {

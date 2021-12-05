@@ -949,9 +949,13 @@ max 1080px
         padding: 4rem 0;
     }
 
-    .ctg-hd-meta-menu ul,
+    .ctg-hd-meta-menu ul li a,
     .ctg-hd-search ul {
         font-size: 0%;
+    }
+
+    span.watchlist-counter {
+        margin-left: -20px
     }
 
     ul.token-input-list {
