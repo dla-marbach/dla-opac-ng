@@ -41,7 +41,7 @@ class ExportController extends ActionController
         fputcsv($f, $line, $delimiter);
 
         // field names
-        $line = ['ID', 'Link', 'Titelbeschreibung', 'Form und Inhalt', 'Medium', 'Zeit', 'Personen', 'Thema', 'Sprache', 'Ort', 'Datenbestand', 'Medium', 'Bibliografie', 'Sammlung', 'Digital'];
+        $line = ['ID', 'Link', 'Titelbeschreibung', 'Medientyp', 'Form und Inhalt', 'Medium', 'Zeit', 'Personen', 'Thema', 'Sprache', 'Ort', 'Datenbestand', 'Bibliografie', 'Sammlung', 'Digital'];
         fputcsv($f, $line, $delimiter);
 
         foreach ($array as $entry) {
@@ -56,7 +56,11 @@ class ExportController extends ActionController
                 $facet_time = implode(";", $entry->facet_time);
             }
             if(!empty($entry->facet_names)) {
-                $facet_names = implode(";", $entry->facet_names);
+                if (is_array($entry->facet_names)) {
+                    $facet_names = implode(";", array_map('htmlspecialchars_decode', $entry->facet_names));
+                } else {
+                    $facet_names = implode(";", $entry->facet_names);
+                }
             }
             if(!empty($entry->facet_subject)) {
                 if (is_array($entry->facet_subject)) {
@@ -69,7 +73,11 @@ class ExportController extends ActionController
                 $facet_language = implode(";", $entry->facet_language);
             }
             if(!empty($entry->facet_location)) {
-                $facet_location = implode(";", $entry->facet_location);
+                if (is_array($entry->facet_location)) {
+                    $facet_location = implode(";", array_map('htmlspecialchars_decode', $entry->facet_location));
+                } else {
+                    $facet_location = implode(";", $entry->facet_location);
+                }
             }
             if(!empty($entry->listview_type)) {
                 $listview_type = implode(";", $entry->listview_type);
@@ -78,13 +86,18 @@ class ExportController extends ActionController
                 $filter_bibliography = implode(";", $entry->filter_bibliography);
             }
             if(!empty($entry->filter_collection)) {
-                $filter_collection = implode(";", $entry->filter_collection);
+                if (is_array($entry->filter_collection)) {
+                    $filter_collection = implode(";", array_map('htmlspecialchars_decode', $entry->filter_collection));
+                } else {
+                    $filter_collection = implode(";", $entry->filter_collection);
+                }
             }
 
             $line = [
                 $entry->id,
                 $protocol . trim($domainName, '/') . $PLUGIN_PATH . $entry->id,
                 $entry->title,
+                $listview_type,
                 $facet_form_content,
                 $facet_medium,
                 $facet_time,
@@ -93,7 +106,6 @@ class ExportController extends ActionController
                 $facet_language,
                 $facet_location,
                 $entry->facet_source,
-                $listview_type,
                 $filter_bibliography,
                 $filter_collection,
                 $entry->filter_digital
