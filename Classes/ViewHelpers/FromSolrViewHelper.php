@@ -120,10 +120,12 @@ class FromSolrViewHelper extends AbstractViewHelper {
 
         // Shards
         if ($this->templateVariableContainer->get('settings')['shards']) {
-            if(count($this->templateVariableContainer->get('settings')['shards'])) {
-                $distributedSearch = $query->getDistributedSearch();
-                foreach($this->templateVariableContainer->get('settings')['shards'] as $name => $shard) {
-                    $distributedSearch->addShard($name, $shard);
+            if (is_array($this->templateVariableContainer->get('settings')['shards']) || is_object($this->templateVariableContainer->get('settings')['shards'])) {
+                if (count($this->templateVariableContainer->get('settings')['shards'])) {
+                    $distributedSearch = $query->getDistributedSearch();
+                    foreach ($this->templateVariableContainer->get('settings')['shards'] as $name => $shard) {
+                        $distributedSearch->addShard($name, $shard);
+                    }
                 }
             }
         }
