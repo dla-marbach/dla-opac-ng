@@ -776,6 +776,40 @@
                         </f:link.action>
                     </li>
 
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_ks_weitere_bestaende'}"
+                            values="{0:{0:'{K0001}', 1:'{listview_title}'}}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                            Bestände ({solrcount})
+                        </f:link.action>
+                    </li>
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_title')}" name="listview_title" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_ks_weitere_daten'}"
+                            values="{0:{0:'{K0001}', 1:'{listview_title}'}}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                            Daten ({solrcount})
+                        </f:link.action>
+                    </li>
+
                 </ul>
             </article>
 

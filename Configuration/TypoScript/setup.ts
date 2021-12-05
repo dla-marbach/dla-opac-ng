@@ -420,6 +420,22 @@ plugin.tx_find {
                 hidden = 1
             }
 
+            132 {
+                id = detail_weitere_daten
+                type = Text
+                query = NOT PE0100:("%1$s") AND NOT PEA100:("%1$s") AND facet_names:("%2$s") AND listview_type:("Daten")
+                noescape = 1
+                hidden = 1
+            }
+
+            133 {
+                id = detail_weitere_bestaende
+                type = Text
+                query = NOT PE0100:("%1$s") AND NOT PEA100:("%1$s") AND facet_names:("%2$s") AND source:("BF")
+                noescape = 1
+                hidden = 1
+            }
+
             ## Werke ##
 
             140 {
@@ -671,7 +687,7 @@ plugin.tx_find {
             177 {
                 id = detail_ks_weitere_handschriften
                 type = Range
-                query = NOT KSC200:("%1$s") AND NOT KSA200:("%1$s") AND facet_names:("%2$s")
+                query = NOT KSC200:("%1$s") AND NOT KSA200:("%1$s") AND facet_names:("%2$s") AND source:("HS")
                 noescape = 1
                 hidden = 1
             }
@@ -690,12 +706,26 @@ plugin.tx_find {
                 hidden = 1
             }
 
-
-
             180 {
                 id = detail_ks_all
                 type = Text
                 query = KSC200:("%1$s") OR KSA200:("%1$s") OR KSE200:("%1$s") OR KSU200:("%1$s")
+                noescape = 1
+                hidden = 1
+            }
+
+            181 {
+                id = detail_ks_weitere_bestaende
+                type = Range
+                query = NOT KSC200:("%1$s") AND NOT KSA200:("%1$s") AND facet_names:("%2$s") AND source:("BF")
+                noescape = 1
+                hidden = 1
+            }
+
+            182 {
+                id = detail_ks_weitere_daten
+                type = Range
+                query = NOT KSC200:("%1$s") AND NOT KSA200:("%1$s") AND facet_names:("%2$s") AND listview_type:("Daten")
                 noescape = 1
                 hidden = 1
             }
