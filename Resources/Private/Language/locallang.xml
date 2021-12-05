@@ -36,6 +36,7 @@
       <label index="previous">previous</label>
       <label index="next">next</label>
       <label index="Return to results list">Return to results list</label>
+      <label index="Return to results list mobile">List</label>
 
       <label index="Facets">Facets</label>
       <label index="remove filter">remove filter</label>
@@ -396,6 +397,7 @@
       <label index="previous">voriger Treffer</label>
       <label index="next">nächster Treffer</label>
       <label index="Return to results list">Zurück zur Ergebnisliste</label>
+      <label index="Return to results list mobile">Ergebnisliste</label>
 
       <label index="Facets">Facetten</label>
       <label index="remove filter">Filter aufheben</label>

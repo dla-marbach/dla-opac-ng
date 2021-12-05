@@ -1,6 +1,18 @@
 const PLUGIN_PATH = '/find/opac/id/';
 const START_PLUGIN_PATH = '/katalog-ng/';
 
+// mobile label switch
+$(document).ready(function(){
+    let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+
+    if (isMobile) {
+        $('*[data-mobile-label]').each(function (key, value) {
+            var extractHtml = $(this).html().replace($(this).text().trim(), $(this).data('mobile-label'));
+            $(this).html(extractHtml);
+        });
+    }
+});
+
 $(document).ready(function(){
     initDatepickerExtSearch();
 });
