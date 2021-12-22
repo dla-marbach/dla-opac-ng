@@ -9,5 +9,8 @@
 return [
     'dla_opac_ng:import' => [
         'class' => Dla\DlaOpacNg\Cli\Import::class
+    ],
+    'dla_opac_ng:sitemap' => [
+        'class' => Dla\DlaOpacNg\Cli\Sitemap::class
     ]
 ];
