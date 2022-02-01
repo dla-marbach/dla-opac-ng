@@ -56,15 +56,15 @@ class Sitemap extends Command {
         $io->title($this->getDescription());
 
         // Get input parameters
-        $file = fopen($input->getOption('file'), 'r');
+        $file = $input->getOption('file');
 
-        if ($file === false) {
+        if (!file_exists($file)) {
             $io->error('ERROR: Required parameter --file|-f missing or file not readable.');
             exit(1);
         }
 
         try {
-            $lines = $this->fetch_data_from_file($ID_FILE_FOR_SITEMAP);
+            $lines = $this->fetch_data_from_file($file);
 
             // build sitemaps with detail urls
             $y = 0;
