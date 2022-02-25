@@ -41,12 +41,11 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('.button-close').on('click', function(e){
         $(this).parent().siblings('ul').toggle();
-        console.log($(this).children('span.bel-pfeil-u01'));
-        var arrow = $(this).children('span.bel-pfeil-u01');
+        var arrow = $(this).children('span.bel-pfeil-o01')[0];
         if (arrow) {
-            $(this).children('span.bel-pfeil-u01').removeClass('bel-pfeil-u01').addClass('bel-pfeil-o01');
+            $(this).children('span.bel-pfeil-o01').removeClass('bel-pfeil-o01').addClass('bel-pfeil-u01');
         } else {
-            $(this).children('span.bel-pfeil-u01').removeClass('bel-pfeil-o01').addClass('bel-pfeil-u01');
+            $(this).children('span.bel-pfeil-u01').removeClass('bel-pfeil-u01').addClass('bel-pfeil-o01');
         }
     });
 
