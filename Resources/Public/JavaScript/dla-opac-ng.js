@@ -39,6 +39,20 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
+    $('.button-close').on('click', function(e){
+        $(this).parent().siblings('ul').toggle();
+        console.log($(this).children('span.bel-pfeil-u01'));
+        var arrow = $(this).children('span.bel-pfeil-u01');
+        if (arrow) {
+            $(this).children('span.bel-pfeil-u01').removeClass('bel-pfeil-u01').addClass('bel-pfeil-o01');
+        } else {
+            $(this).children('span.bel-pfeil-u01').removeClass('bel-pfeil-o01').addClass('bel-pfeil-u01');
+        }
+    });
+
+});
+
+$(document).ready(function(){
     $('.dla-toggle-facets').on('click', function(e){
         e.preventDefault();
         var containingList = $(this).parents('ul')[0];
@@ -550,14 +564,14 @@ $(document).ready(function () {
         });
 
         // watchlist send via mail
-        $('.watchlist-send').on('click', function (event) {
-            //event.preventDefault();
-            let mailBody = "";
-            $('#watchlist-list li').each(function () {
-                mailBody += location.origin + PLUGIN_PATH + $(this).find('a').data('docid') + '%20' + $(this).text().replaceAll('&', '%26') + '%0D%0A';
-            });
-            $(this).attr('href', 'mailto:?subject=Marbach%20Merkliste&body='+mailBody);
-        });
+        // $('.watchlist-send').on('click', function (event) {
+        //     //event.preventDefault();
+        //     let mailBody = "";
+        //     $('#watchlist-list li').each(function () {
+        //         mailBody += location.origin + PLUGIN_PATH + $(this).find('a').data('docid') + '%20' + $(this).text().replaceAll('&', '%26') + '%0D%0A';
+        //     });
+        //     $(this).attr('href', 'mailto:?subject=Marbach%20Merkliste&body='+mailBody);
+        // });
 
         // print watchlist
         $('.watchlist-print').on('click', function (event) {
