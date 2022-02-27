@@ -40,7 +40,7 @@
 
 <f:if condition="{solrcount}>0">
     <section class="ctg-facet">
-        <h3><a title="schließen"><span class="icon bel-pfeil-o01"></span></a>Werkbeziehungen</h3>
+        <h3><a title="schließen" class="button-close"><span class="icon bel-pfeil-o01"></span></a>Werkbeziehungen</h3>
         <ul>
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
             <f:if condition="{solrResult.id}!={id}">
@@ -65,7 +65,7 @@
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'lobid_ndb')}" name="lobid_ndb" />
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_id')}" name="wikidata_id" />
 
-    <h3>Andere Fundorte <a title="schließen"><span class="icon bel-pfeil-o01"></span></a></h3>
+    <h3>Andere Fundorte <a title="schließen" class="button-close"><span class="icon bel-pfeil-o01"></span></a></h3>
     <ul>
         <f:if condition="{wikidata_website}">
             <f:for each="{wikidata_website}" as="item" key="key" iteration="iterator">
