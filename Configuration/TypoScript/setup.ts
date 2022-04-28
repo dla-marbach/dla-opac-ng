@@ -1284,6 +1284,15 @@ plugin.tx_find {
             }
 
             25 {
+                id = Personen
+                label = Personen & Körperschaften
+                type = Decisiontree
+                field = facet_names
+                query = facet_names:("%s")
+                reverseFacet = 1
+            }
+
+            30 {
                 id = Zeit
                 label = Zeit
                 type = Histogramslider
@@ -1294,16 +1303,6 @@ plugin.tx_find {
                 gap = +1YEAR
                 displayDateFormat = Y
                 collapse = 1
-            }
-
-            30 {
-                id = Personen
-                label = Personen & Körperschaften
-                type = Decisiontree
-                field = facet_names
-                query = facet_names:("%s")
-                collapse = 1
-                reverseFacet = 1
             }
 
             35 {
