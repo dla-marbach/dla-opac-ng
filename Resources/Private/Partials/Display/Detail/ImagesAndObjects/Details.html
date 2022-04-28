@@ -770,7 +770,8 @@
                 </div>
                 <div class="ctg-dtvt-content">
                     <f:for each="{valueArrayCleaned}" as="value" iteration="iterator">
-                        {value}
+                        <dla:replaceBreaks text="{value}" as="valueWBreaks"/>
+                        <f:format.raw>{valueWBreaks}</f:format.raw>
                         <f:if condition="{iterator.isLast} != 1">
                             <hr/>
                         </f:if>
