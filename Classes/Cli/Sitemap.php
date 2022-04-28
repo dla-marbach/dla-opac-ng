@@ -147,11 +147,13 @@ class Sitemap extends Command {
             // Return error
             $io->error('ERROR: ' . $e->getMessage());
 //            return Command::FAILURE;
+            return 1;
         }
 
         // That's it!
         $io->success('All done!');
 //        return Command::SUCCESS;
+        return 0;
     }
 
     function fetch_data_from_file(string $file_path) : iterable {
