@@ -105,10 +105,6 @@ class Sitemap extends Command {
 
                     fwrite($sitemapFileHandler, $document->saveXML());
                     fclose($sitemapFileHandler);
-
-                    if ($i===3) {
-                        break;
-                    }
                 }
             }
 
