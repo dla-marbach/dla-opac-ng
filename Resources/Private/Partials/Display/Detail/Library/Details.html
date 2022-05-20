@@ -694,12 +694,36 @@
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_additional1')}" name="listview_additional1" />
 
 
-        <dla:stringReplace array="{listview_additional1}" replace="" search="Erschienen in: " as="listview_additional1"/>
-        <dla:data.joinFieldArrays
-                arrays="{0:'{listview_additional1}'}"
-                fieldWraps="{0:'%s'}"
-                as="linkTexts"
-        />
+        <f:if condition="{GESTYP.0} == 'Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)' ||
+                 {GESTYP.0} == 'Begleitmaterial / Beilage'">
+            <f:then>
+                <dla:stringReplace array="{listview_additional1}" replace="" search="Erschienen in: " as="listview_additional1"/>
+                <dla:data.joinFieldArrays
+                        arrays="{0:'{listview_additional1}'}"
+                        fieldWraps="{0:'%s'}"
+                        as="linkTexts"
+                />
+            </f:then>
+            <f:else>
+                <f:if condition="{GESTYP.0} == 'Teil einer monografischen Zusammenstellung, unselbständiges Stück'">
+                    <f:then>
+                        <dla:data.joinFieldArrays
+                                arrays="{0:'{listview_additional1}'}"
+                                fieldWraps="{0:'%s'}"
+                                as="linkTexts"
+                        />
+                    </f:then>
+                    <f:else>
+                        <f:comment><dla:data.joinFieldArrays
+                                arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{USEIT}'}"
+                                fieldWraps="{0:'%s',1:': %s'}"
+                                as="linkTexts"
+                        /></f:comment>
+                        <v:variable.set value="" name="linkTexts" />
+                    </f:else>
+                </f:if>
+            </f:else>
+        </f:if>
 
         <f:if condition="{linkTexts}">
             <f:then>
