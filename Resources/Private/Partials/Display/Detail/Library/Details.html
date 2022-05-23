@@ -693,7 +693,7 @@
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AK_A0359_AKA451')}" name="XX_AK_A0359_AKA451" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'AKA451')}" name="AKA451" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'listview_additional1')}" name="listview_additional1" />
-
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'POS113')}" name="POS113" />
 
         <f:if condition="{GESTYP.0} == 'Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)' ||
                  {GESTYP.0} == 'Begleitmaterial / Beilage'">
@@ -715,12 +715,15 @@
                         />
                     </f:then>
                     <f:else>
-                        <f:comment><dla:data.joinFieldArrays
-                                arrays="{0:'{XX_AK_TITREG_AKA451}',1:'{USEIT}'}"
-                                fieldWraps="{0:'%s',1:': %s'}"
-                                as="linkTexts"
-                        /></f:comment>
-                        <v:variable.set value="" name="linkTexts" />
+                        <f:if condition="{POS113} == 'Einzelbestandteil / unselbständiges Werk'">
+                            <f:then>
+                                <dla:data.joinFieldArrays
+                                        arrays="{0:'{listview_additional1}'}"
+                                        fieldWraps="{0:'%s'}"
+                                        as="linkTexts"
+                                />
+                            </f:then>
+                        </f:if>
                     </f:else>
                 </f:if>
             </f:else>
