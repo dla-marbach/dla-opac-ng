@@ -1,4 +1,6 @@
-
+a:visited {
+    color: #b61f24;
+}
 
 .tx_find .ctg-dtvt-details span {
     margin: 0;
