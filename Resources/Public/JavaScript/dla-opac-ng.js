@@ -155,8 +155,10 @@ $(document).ready(function(){
         $(this).parent().toggle();
     });
 
-
-    $('.copy-details').hide();
+    // Hide details only if more than one exists (exemplar)
+    if ($('.copy-details').length > 1) {
+        $('.copy-details').hide();
+    }
 
     $('.detail_link').click(function( event ) {
         event.preventDefault();
