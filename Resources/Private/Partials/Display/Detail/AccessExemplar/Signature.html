@@ -10,15 +10,14 @@
 <dla:replaceNullValue text="{XX_AU_LESSIG_AUKEY.0}" as="XX_AU_LESSIG_AUKEY"/>
 
 <f:if condition="{XX_AU_SIGNA_AUKEY} || {XX_AU_LESSIG_AUKEY}">
-  <li>
-      <f:translate key='Signatur' extensionName='dla_opac_ng'/>:
-      <f:if condition="{XX_AU_LESSIG_AUKEY}">
-        <f:then>
-          {XX_AU_LESSIG_AUKEY}
-        </f:then>
-        <f:else>
-          {XX_AU_SIGNA_AUKEY} <f:if condition="{XX_AU_SIGNAV_AUKEY}">({XX_AU_SIGNAV_AUKEY})</f:if>
-        </f:else>
-      </f:if>
-  </li>
+    <div class="signature-position">
+        <f:if condition="{XX_AU_LESSIG_AUKEY}">
+            <f:then>
+                {XX_AU_LESSIG_AUKEY}
+            </f:then>
+            <f:else>
+                {XX_AU_SIGNA_AUKEY} <f:if condition="{XX_AU_SIGNAV_AUKEY}">({XX_AU_SIGNAV_AUKEY})</f:if>
+            </f:else>
+        </f:if>
+    </div>
 </f:if>
