@@ -1,13 +1,13 @@
 {namespace dla=Dla\DlaOpacNg\ViewHelpers}
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_SIGNA_AUKEY')}" name="XX_AU_SIGNA_AUKEY" />
-<dla:replaceNullValue text="{XX_AU_SIGNA_AUKEY.0}" as="XX_AU_SIGNA_AUKEY"/>
+<dla:replaceNullValue text="{XX_AU_SIGNA_AUKEY.{iterator.index}}" as="XX_AU_SIGNA_AUKEY"/>
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_SIGNAV_AUKEY')}" name="XX_AU_SIGNAV_AUKEY" />
-<dla:replaceNullValue text="{XX_AU_SIGNAV_AUKEY.0}" as="XX_AU_SIGNAV_AUKEY"/>
+<dla:replaceNullValue text="{XX_AU_SIGNAV_AUKEY.{iterator.index}}" as="XX_AU_SIGNAV_AUKEY"/>
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_LESSIG_AUKEY')}" name="XX_AU_LESSIG_AUKEY" />
-<dla:replaceNullValue text="{XX_AU_LESSIG_AUKEY.0}" as="XX_AU_LESSIG_AUKEY"/>
+<dla:replaceNullValue text="{XX_AU_LESSIG_AUKEY.{iterator.index}}" as="XX_AU_LESSIG_AUKEY"/>
 
 <f:if condition="{XX_AU_SIGNA_AUKEY} || {XX_AU_LESSIG_AUKEY}">
     <div class="signature-position">
