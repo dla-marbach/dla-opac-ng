@@ -145,7 +145,9 @@ class Collection implements MiddlewareInterface
             }
 
             if (!empty($jTree['foundUids'])) {
-                $jTree['foundUids'] = implode($jTree['foundUids'], ',');
+                $jTree['foundUids'] = implode(',', $jTree['foundUids']);
+            } else {
+                $jTree['foundUids'] = NULL;
             }
 
         } else if ($action == 'getAllParents') {

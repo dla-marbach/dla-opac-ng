@@ -1,5 +1,6 @@
 <script type="text/javascript">
     const pluginType = $("#collectiontree").data('plugintype');
+    var childRequestsActive = 0;
     $( document ).ready(function() {
         var record = $('#record_id').data('record');
         var search = $('#search').data('search');
@@ -13,6 +14,15 @@
         }
         registerOnClick();
         registerSearchForm();
+
+        // show tree if all requests are done
+        $(document).ajaxStop(function() {
+            if (childRequestsActive === 1) {
+                childRequestsActive = 0;
+                $("#collectiontree").show();
+                $("#loading-icon").hide();
+            }
+        });
     });
 
     function registerSearchForm() {
@@ -24,6 +34,9 @@
             } else {
                 searchNodes($(this).val());
             }
+            // Hide tree until ajax requests are done
+            $("#collectiontree").hide();
+            $("#loading-icon").show();
         }, 500));
     }
 
@@ -50,9 +63,12 @@
                 resetTreeNodes();
                 // save filter ids as data attribute
                 $('#collection-search').data('searchFilterIds', data.foundUids);
+                console.log((data.foundUids == null));
                 // build tree from first level with filter ids set
                 if (data.foundUids == null) {
                     $("#collectiontree").html("<h2 style='margin-left:1.5rem;'>Keine Treffer gefunden</h2>");
+                    $("#collectiontree").show();
+                    $("#loading-icon").hide();
                 } else {
                     getChildNodes(0);
                 }
@@ -91,6 +107,9 @@
 
         if (!id) {
             id = 0;
+        } else {
+            // set flag to 1 to show result after all requests are done
+            childRequestsActive = 1;
         }
 
         var filterIds = $('#collection-search').data('searchFilterIds');

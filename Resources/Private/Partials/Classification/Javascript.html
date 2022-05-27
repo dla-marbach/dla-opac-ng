@@ -1,9 +1,9 @@
 <script type="text/javascript">
     const pluginType = $("#collectiontree").data('plugintype');
+    var childRequestsActive = 0;
     $( document ).ready(function() {
         var record = $('#record_id').data('record');
         var search = $('#search').data('search');
-        console.log(search);
         getChildNodes(0);
         if (record) {
             expandStructure(record);
@@ -14,6 +14,15 @@
         }
         registerOnClick();
         registerSearchForm();
+
+        // show tree if all requests are done
+        $(document).ajaxStop(function() {
+            if (childRequestsActive === 1) {
+                childRequestsActive = 0;
+                $("#collectiontree").show();
+                $("#loading-icon").hide();
+            }
+        });
     });
 
     function registerSearchForm() {
@@ -25,6 +34,9 @@
             } else {
                 searchNodes($(this).val());
             }
+            // Hide tree until ajax requests are done
+            $("#collectiontree").hide();
+            $("#loading-icon").show();
         }, 500));
     }
 
@@ -92,6 +104,9 @@
 
         if (!id) {
             id = 0;
+        } else {
+            // set flag to 1 to show result after all requests are done
+            childRequestsActive = 1;
         }
 
         var filterIds = $('#collection-search').data('searchFilterIds');
