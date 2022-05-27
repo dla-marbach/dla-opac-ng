@@ -739,6 +739,7 @@
                     </div>
                     <div class="ctg-dtvt-content">
 
+                        <dla:stringReplace array="{linkTexts}" replace="" search="Erschienen in: " as="linkTexts"/>
                         <f:for each="{linkTexts}" as="item" iteration="iterator">
                             <f:if condition="{AKA451.{iterator.index}}">
                                 <f:then>
