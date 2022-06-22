@@ -160,6 +160,7 @@ $(document).ready(function(){
         $('.copy-details').hide();
     } else {
         $('.detail_link').hide();
+        $('.signature-position').hide();
     }
 
     $('.detail_link').click(function( event ) {
