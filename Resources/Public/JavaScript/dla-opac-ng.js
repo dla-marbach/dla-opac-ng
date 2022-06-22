@@ -158,6 +158,8 @@ $(document).ready(function(){
     // Hide details only if more than one exists (exemplar)
     if ($('.copy-details').length > 1) {
         $('.copy-details').hide();
+    } else {
+        $('.detail_link').hide();
     }
 
     $('.detail_link').click(function( event ) {
