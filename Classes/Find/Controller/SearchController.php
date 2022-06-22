@@ -116,6 +116,23 @@ class SearchController extends ActionController
             $this->addStandardAssignments();
             $defaultQuery = $this->searchProvider->getDefaultQuery();
 
+            // redirect to detail if only one item found and search is configured to redirect
+            if ($defaultQuery['results']->getNumFound() === 1) {
+                $redirectQueries = [];
+                foreach ($this->settings['queryFields'] as $querySettings) {
+                    if ($querySettings['redirectToDetail']) {
+                        $redirectQueries[$querySettings['id']] = 1;
+                    }
+                }
+
+                foreach ($this->requestArguments['q'] as $queryId => $queryTerm) {
+                    if (array_key_exists($queryId, $redirectQueries)) {
+                        $docId = $defaultQuery['results']->getData()['response']['docs'][0]['id'];
+                        $this->forward('detail', NULL, NULL, ['id' => $docId]);
+                    }
+                }
+            }
+
             $viewValues = [
                 'arguments' => $this->searchProvider->getRequestArguments(),
                 'config' => $this->searchProvider->getConfiguration(),
