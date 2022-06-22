@@ -66,6 +66,8 @@
                 // build tree from first level with filter ids set
                 if (data.foundUids == null) {
                     $("#collectiontree").html("<h2 style='margin-left:1.5rem;'>Keine Treffer gefunden</h2>");
+                    $("#collectiontree").show();
+                    $("#loading-icon").hide();
                 } else {
                     getChildNodes(0);
                 }
