@@ -708,6 +708,25 @@ $.TokenList = function (input, url_or_data, settings) {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
     }
 
+    function mergeSearchTerms(existingTerms, selectionTerms, split = ' ') {
+        existingTermsArray = existingTerms.split(split);
+        selectionTermsArray = selectionTerms.split(split);
+
+        saveTermCount = existingTermsArray.length - selectionTermsArray.length;
+        removeTermCounter = existingTermsArray.length - saveTermCount;
+
+        // remove existing terms to avoid duplication
+        for (let i = 0; i < removeTermCounter; i++) {
+            existingTermsArray.pop();
+        }
+
+        // add selected terms
+        mergedArray = existingTermsArray.concat(selectionTermsArray);
+
+        return mergedArray.join(' ');
+
+    }
+
     // Populate the results dropdown with some results
     function populate_dropdown (query, results) {
         if(results && results.length) {
@@ -720,7 +739,16 @@ $.TokenList = function (input, url_or_data, settings) {
                 .mousedown(function (event) {
 
                     if($(event.target).closest("li").data("tokeninput").id == $(event.target).closest("li").data("tokeninput").term) {
-                        input_box.val($(event.target).closest("li").data("tokeninput").id);
+                        searchTerms = input_box.val().split(' ');
+                        searchTerms[searchTerms.length-1] = $(event.target).closest("li").data("tokeninput").id;
+
+                        if (input_box.val().split(' ').length != $(event.target).closest("li").data("tokeninput").id.split(' ').length) {
+                            input_box.val(mergeSearchTerms(input_box.val(), $(event.target).closest("li").data("tokeninput").id));
+                            // input_box.val(searchTerms.join(' '));
+                        } else {
+                            input_box.val($(event.target).closest("li").data("tokeninput").id);
+                        }
+
                         hide_dropdown();
                         return false;
                     } else {
