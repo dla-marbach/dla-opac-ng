@@ -1047,9 +1047,9 @@ plugin.tx_find {
                 id = k10plus
                 type = Text
                 query = A0025:(%1$s)
-                noescape = 2
-                escapechar < plugin.tx_find.settings.escapechar
+                noescape = 1
                 hidden = 1
+                redirectToDetail = 1
             }
 
             ### Exemplarsuche ###
