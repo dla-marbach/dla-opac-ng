@@ -119,16 +119,20 @@ class SearchController extends ActionController
             // redirect to detail if only one item found and search is configured to redirect
             if ($defaultQuery['results']->getNumFound() === 1) {
                 $redirectQueries = [];
-                foreach ($this->settings['queryFields'] as $querySettings) {
-                    if ($querySettings['redirectToDetail']) {
-                        $redirectQueries[$querySettings['id']] = 1;
+                if ($this->settings['redirectAllOneHitToDetail']) {
+                    $docId = $defaultQuery['results']->getData()['response']['docs'][0]['id'];
+                    $this->forward('detail', NULL, NULL, ['id' => $docId]);
+                } else {
+                    foreach ($this->settings['queryFields'] as $querySettings) {
+                        if ($querySettings['redirectToDetail']) {
+                            $redirectQueries[$querySettings['id']] = 1;
+                        }
                     }
-                }
-
-                foreach ($this->requestArguments['q'] as $queryId => $queryTerm) {
-                    if (array_key_exists($queryId, $redirectQueries)) {
-                        $docId = $defaultQuery['results']->getData()['response']['docs'][0]['id'];
-                        $this->forward('detail', NULL, NULL, ['id' => $docId]);
+                    foreach ($this->requestArguments['q'] as $queryId => $queryTerm) {
+                        if (array_key_exists($queryId, $redirectQueries)) {
+                            $docId = $defaultQuery['results']->getData()['response']['docs'][0]['id'];
+                            $this->forward('detail', NULL, NULL, ['id' => $docId]);
+                        }
                     }
                 }
             }
