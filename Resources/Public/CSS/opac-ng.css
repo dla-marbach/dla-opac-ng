@@ -451,6 +451,16 @@ article.detail em.highlight {
     color: #333333 !important;
 }
 
+.reset-search-icon {
+    cursor: pointer;
+    display:none;
+    width: 30px;
+    height: 30px;
+    background: url(../Images/close.png) top right no-repeat;
+    display: inline-block;
+    margin-right: 10px;
+}
+
 @media only screen and (max-width: 2560px) {
     .ctg-catalog-title span.icon {
         font-size: 2rem;

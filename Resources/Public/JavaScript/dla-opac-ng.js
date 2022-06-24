@@ -48,7 +48,17 @@ $(document).ready(function(){
             $(this).children('span.bel-pfeil-u01').removeClass('bel-pfeil-u01').addClass('bel-pfeil-o01');
         }
     });
+});
 
+// reset search
+$(document).ready(function(){
+    if ($('.token-input-input-token input').val() != '') {
+        $('.reset-search-icon').show();
+    }
+    // $('.reset-search-icon').on('click', function () {
+    //     // $('.token-input-input-token input').val('');
+    //     $('.ctg-catalog-title a')[0].click();
+    // });
 });
 
 $(document).ready(function(){
