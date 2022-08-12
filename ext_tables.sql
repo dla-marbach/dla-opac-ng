@@ -35,6 +35,7 @@ CREATE TABLE tx_dlaopacng_classification (
     listview_additional2 text NOT NULL,
     facet_value text NOT NULL,
     hasChild smallint(6) DEFAULT '0' NOT NULL,
+    count varchar(100) DEFAULT '' NOT NULL,
 
     PRIMARY KEY (uid),
     KEY parent (parent_id),
