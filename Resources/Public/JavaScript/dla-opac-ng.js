@@ -146,7 +146,6 @@ $(document).ready(function(){
                 $('.order-overlay .info').text($(data).filter("#meldung").text()).show();
                 if ($(data).filter("#meldung").text() == 'Ihre Leihscheine wurden gedruckt') {
                     var additionalText = 'Ihre Bestellung wurde verschickt';
-                    $('.order-overlay .info').text().show();
                     if ($('.field-listview_type').text().trim() == 'Bilder und Objekte') {
                         additionalText += '<br/>Zur Abholung kontaktieren Sie uns bitte unter der Mail-Adresse <a href="mailto:bilder-und-objekte@dla-marbach.de">bilder-und-objekte@dla-marbach.de</a>'
                     }
