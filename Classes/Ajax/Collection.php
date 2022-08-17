@@ -54,6 +54,13 @@ class Collection implements MiddlewareInterface
         $table = $tables[$type];
         $order = $orderBy[$type];
 
+        // set field select
+        if ($type == 'classification') {
+            $fieldSelect = 'uid,parent_id,record_id,treeview_title,facet_value,hasChild,count';
+        } else {
+            $fieldSelect = 'uid,parent_id,record_id,treeview_title,facet_value,hasChild';
+        }
+
         // Prepare JSON for jTree
         $jTree = [];
 
@@ -61,7 +68,7 @@ class Collection implements MiddlewareInterface
 
             if (!empty($filter)) {
                 $placeholders = implode(',', array_fill(0, count(explode(",", $filter)), '?'));
-                $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title,facet_value,hasChild FROM ' . $table . ' WHERE parent_id = ? AND uid IN (' . $placeholders . ') ORDER BY ' . $order . ';');
+                $stmt = $db->prepare('SELECT ' . $fieldSelect . ' FROM ' . $table . ' WHERE parent_id = ? AND uid IN (' . $placeholders . ') ORDER BY ' . $order . ';');
 
                 //  call bind_param with $filter as array  $stmt->bind_param('ss', $nodeId, $filter);
                 $paramArray = array_merge([$nodeId], explode(",", $filter));
@@ -74,7 +81,7 @@ class Collection implements MiddlewareInterface
                 // call "bind_param" with all parameters as array using spread operator (...)
                 $stmt->bind_param($typeArray, ...$paramArray);
             } else {
-                $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title,facet_value,hasChild FROM ' . $table . ' WHERE parent_id = ? ORDER BY ' . $order . ';');
+                $stmt = $db->prepare('SELECT ' . $fieldSelect . ' FROM ' . $table . ' WHERE parent_id = ? ORDER BY ' . $order . ';');
                 $stmt->bind_param('s', $nodeId);
             }
             $stmt->execute();
@@ -90,6 +97,7 @@ class Collection implements MiddlewareInterface
                     'title' => $row["treeview_title"],
                     'facet_value' => $row["facet_value"],
                     'hasChild' => $row["hasChild"],
+                    'count' => ($row['count'] ?: '')
                 ];
             }
 
@@ -101,7 +109,7 @@ class Collection implements MiddlewareInterface
 
             $searchwords = implode(' ', array_map($addOperator, explode(' ', $search)));
 
-            $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title,facet_value,hasChild FROM ' . $table . ' WHERE MATCH (treeview_title,listview_title,listview_associate,listview_additional1,listview_additional2) AGAINST (? IN BOOLEAN MODE);');
+            $stmt = $db->prepare('SELECT ' . $fieldSelect . ' FROM ' . $table . ' WHERE MATCH (treeview_title,listview_title,listview_associate,listview_additional1,listview_additional2) AGAINST (? IN BOOLEAN MODE);');
 
             $stmt->bind_param('s', $searchwords);
             $stmt->execute();
@@ -117,6 +125,7 @@ class Collection implements MiddlewareInterface
                     'title' => $row["treeview_title"],
                     'facet_value' => $row["facet_value"],
                     'hasChild' => $row["hasChild"],
+                    'count' => ($row['count'] ?: '')
                 ];
 
                 // build array of uids
@@ -218,8 +227,8 @@ class Collection implements MiddlewareInterface
 
         } else if ($action == 'getStructure') {
 
-            $stmt = $db->prepare('SELECT uid,parent_id,record_id,treeview_title,facet_value,hasChild FROM 
-                (SELECT uid,parent_id,record_id,treeview_title,facet_value,hasChild FROM ' . $table . ' ORDER BY parent_id, record_id) records,
+            $stmt = $db->prepare('SELECT ' . $fieldSelect . ' FROM 
+                (SELECT ' . $fieldSelect . ' FROM ' . $table . ' ORDER BY parent_id, record_id) records,
                 (SELECT @pv := ?) initialisation
                 WHERE find_in_set(parent_id, @pv)
                 AND length(@pv := concat(@pv, ', ', record_id))');
@@ -238,6 +247,7 @@ class Collection implements MiddlewareInterface
                     'title' => $row["treeview_title"],
                     'facet_value' => $row["facet_value"],
                     'hasChild' => $row["hasChild"],
+                    'count' => ($row['count'] ?: '')
                 ];
             }
         }

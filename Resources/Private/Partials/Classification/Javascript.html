@@ -192,6 +192,10 @@
         } else {
             var linkAndActions = '';
         }
+        countElement = '';
+        if (item.count) {
+            countElement = '<span class="classification-counter">' + item.count + '</span>';
+        }
         if (item.title != 'root') {
 
             var title = $('<div/>').text(item.title).html();
@@ -207,6 +211,7 @@
                 '<h3>' + title + '</h3>' +
                 '</span>' +
                     linkAndActions +
+                    countElement +
                 '</article>' +
                 '</li>';
         }
