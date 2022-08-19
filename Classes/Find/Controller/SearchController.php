@@ -121,7 +121,7 @@ class SearchController extends ActionController
                 $redirectQueries = [];
                 if ($this->settings['redirectAllOneHitToDetail']) {
                     $docId = $defaultQuery['results']->getData()['response']['docs'][0]['id'];
-                    $this->forward('detail', NULL, NULL, ['id' => $docId]);
+                    $this->redirect('detail', NULL, NULL, ['id' => $docId]);
                 } else {
                     foreach ($this->settings['queryFields'] as $querySettings) {
                         if ($querySettings['redirectToDetail']) {
@@ -131,7 +131,7 @@ class SearchController extends ActionController
                     foreach ($this->requestArguments['q'] as $queryId => $queryTerm) {
                         if (array_key_exists($queryId, $redirectQueries)) {
                             $docId = $defaultQuery['results']->getData()['response']['docs'][0]['id'];
-                            $this->forward('detail', NULL, NULL, ['id' => $docId]);
+                            $this->redirect('detail', NULL, NULL, ['id' => $docId]);
                         }
                     }
                 }
