@@ -55,10 +55,10 @@ $(document).ready(function(){
     if ($('.token-input-input-token input').val() != '') {
         $('.reset-search-icon').show();
     }
-    // $('.reset-search-icon').on('click', function () {
-    //     // $('.token-input-input-token input').val('');
-    //     $('.ctg-catalog-title a')[0].click();
-    // });
+    $('.reset-search-icon').on('click', function (e) {
+        e.preventDefault();
+        $('.token-input-input-token input').val('');
+    });
 });
 
 $(document).ready(function(){
