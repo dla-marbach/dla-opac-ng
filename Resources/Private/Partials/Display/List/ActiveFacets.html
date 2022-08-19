@@ -57,7 +57,7 @@
                 </f:for>
 
                 <f:for each="{config.facets}" as="facetInfo" key="facetKey">
-                    <f:if condition="{facetInfo.hidden}!=1 || {facetInfo.id} == 'facet_names_relations' || {facetInfo.id} == 'facet_names_roles'">
+                    <f:if condition="{facetInfo.hidden}!=1 || {facetInfo.id} == 'facet_names_relations' || {facetInfo.id} == 'facet_names_roles' || {facetInfo.id} == 'facet_language_type' || {facetInfo.id} == 'facet_location_type'">
                         <v:variable.set value="{s:data.valueForKey(array:results.components.facetset.facets, key:facetInfo.id)}" name="facetData" />
                         <f:for each="{facetData.values}" as="itemCount" key="facetTerm" iteration="iterator">
                             <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}">
@@ -76,7 +76,7 @@
                                                 {facetInfo.text}
                                             </f:then>
                                             <f:else>
-                                                <f:if condition="{facetInfo.id}=='facet_names_relations' || {facetInfo.id}=='facet_names_roles'">
+                                                <f:if condition="{facetInfo.id}=='facet_names_relations' || {facetInfo.id}=='facet_names_roles' || {facetInfo.id} == 'facet_language_type' || {facetInfo.id} == 'facet_location_type'">
                                                     <f:then>
                                                         <dla:activeFacet text="{facetTerm}" function="decisionTree" as="output"/>
                                                         {output}

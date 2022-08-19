@@ -83,6 +83,7 @@ page.includeJS.jplayer = EXT:dla_opac_ng/Resources/Public/JavaScript/jplayer/jqu
 page.includeJSFooter.autocomplete = EXT:dla_opac_ng/Resources/Public/JavaScript/autocomplete.js
 
 page.includeJSFooter.dla_opac_ng = EXT:dla_opac_ng/Resources/Public/JavaScript/dla-opac-ng.js
+page.includeJSFooter.decisiontree = EXT:dla_opac_ng/Resources/Public/JavaScript/decisiontree.js
 
 page.includeJS.nouislider = EXT:dla_opac_ng/Resources/Public/JavaScript/nouislider.js
 page.includeCSS.nouislider =  EXT:dla_opac_ng/Resources/Public/CSS/nouislider.css
@@ -1292,6 +1293,8 @@ plugin.tx_find {
                 field = facet_names
                 query = facet_names:("%s")
                 reverseFacet = 1
+                relationField1 = facet_names_relations
+                relationField2 = facet_names_roles
             }
 
             30 {
@@ -1356,26 +1359,64 @@ plugin.tx_find {
                 collapse = 1
             }
 
-            45 {
+            #45 {
+            #    id = Sprache
+            #    field = facet_language
+            #    query = facet_language:("%s")
+            #    collapse = 1
+            #    # Shows a facet value which includes all "not known" items
+            #    showmissing = 1
+            #    labelmissing = nicht bestimmt
+            #    reverseFacet = 1
+            #}
+
+            46 {
                 id = Sprache
+                label = Sprache
+                type = Decisiontree
                 field = facet_language
                 query = facet_language:("%s")
-                collapse = 1
-                # Shows a facet value which includes all "not known" items
-                showmissing = 1
-                labelmissing = nicht bestimmt
                 reverseFacet = 1
+                relationField1 = facet_language_type
+                collapse = 1
             }
 
-            50 {
+            47 {
+                id = facet_language_type
+                type = List
+                field = facet_language_type
+                query = facet_language_type:("%s")
+                hidden = 1
+            }
+
+            #50 {
+            #    id = Ort
+            #    field = facet_location
+            #    query = facet_location:("%s")
+            #    collapse = 1
+            #    # Shows a facet value which includes all "not known" items
+            #    showmissing = 1
+            #    labelmissing = nicht bestimmt
+            #    reverseFacet = 1
+            #}
+
+            51 {
                 id = Ort
+                label = Ort
+                type = Decisiontree
                 field = facet_location
                 query = facet_location:("%s")
-                collapse = 1
-                # Shows a facet value which includes all "not known" items
-                showmissing = 1
-                labelmissing = nicht bestimmt
                 reverseFacet = 1
+                relationField1 = facet_location_type
+                collapse = 1
+            }
+
+            52 {
+                id = facet_location_type
+                type = List
+                field = facet_location_type
+                query = facet_location_type:("%s")
+                hidden = 1
             }
 
             53 {

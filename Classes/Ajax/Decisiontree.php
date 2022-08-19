@@ -34,13 +34,21 @@ class Decisiontree implements MiddlewareInterface
 
         $activeFacets = $request->getQueryParams()['activeFacets'];
 
+        // add parameter for "facet_names_relations" and "facet_names_roles"
+        $relationField1 = $request->getQueryParams()['relation1'];
+        $relationField2 = $request->getQueryParams()['relation2'];
+
+        $fq = 'fq=NOT%20filter_hidden%3Atrue&fq=NOT%20source%3A(AU%20OR%20MM)';
+
         if ($activeFacets) {
             $query = $query . ' AND ' . $activeFacets;
         }
 
+
+
         // Get relations
-        $responseRelations = file_get_contents(
-            $solr_select_url . '?facet.field=facet_names_relations&facet.mincount=1&facet=on&facet.prefix=' . urlencode($prefix) . '&fq=NOT%20filter_hidden%3Atrue&fq=NOT%20source%3A(AU%20OR%20MM)&q=' . urlencode($query) . '&rows=0',
+        $responseField1 = file_get_contents(
+            $solr_select_url . '?facet.field=' . $relationField1 . '&facet=on&facet.mincount=1&facet.prefix=' . urlencode($prefix) . '&' . $fq . '&q=' . urlencode($query) . '&rows=0',
             FALSE,
             stream_context_create([
                 'http' => [
@@ -51,8 +59,8 @@ class Decisiontree implements MiddlewareInterface
             ])
         );
 
-        $responseRoles = file_get_contents(
-            $solr_select_url . '?facet.field=facet_names_roles&facet=on&facet.mincount=1&facet.prefix=' . urlencode($prefix) . '&fq=NOT%20filter_hidden%3Atrue&fq=NOT%20source%3A(AU%20OR%20MM)&q=' . urlencode($query) . '&rows=0',
+        $responseField2 = file_get_contents(
+            $solr_select_url . '?facet.field=' . $relationField2 . '&facet=on&facet.mincount=1&facet.prefix=' . urlencode($prefix) . '&' . $fq . '&q=' . urlencode($query) . '&rows=0',
             FALSE,
             stream_context_create([
                 'http' => [
@@ -64,16 +72,16 @@ class Decisiontree implements MiddlewareInterface
         );
 
         // Parse JSON response
-        if ($responseRelations !== FALSE && $responseRoles !== FALSE) {
-            $jsonRelations = json_decode($responseRelations, TRUE);
-            $jsonRoles = json_decode($responseRoles, TRUE);
+        if ($responseField1 !== FALSE && $responseField2 !== FALSE) {
+            $jsonField1 = json_decode($responseField1, TRUE);
+            $jsonField2 = json_decode($responseField2, TRUE);
 
-            $relations = array($jsonRelations['facet_counts']['facet_fields']['facet_names_relations']);
-            $roles = array($jsonRoles['facet_counts']['facet_fields']['facet_names_roles']);
+            $arrayField1 = array($jsonField1['facet_counts']['facet_fields'][$relationField1]);
+            $arrayField2 = array($jsonField2['facet_counts']['facet_fields'][$relationField2]);
 
             //    $roles = $jsonRoles['facet_counts']['facet_fields']['facet_names_roles'];
 
-            $output = array_merge($relations, $roles);
+            $output = array_merge($arrayField1, $arrayField2);
 
         }
 
