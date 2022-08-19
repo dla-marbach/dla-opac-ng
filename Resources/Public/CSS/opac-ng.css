@@ -453,11 +453,11 @@ article.detail em.highlight {
 
 .reset-search-icon {
     cursor: pointer;
+    display: inline-block;
     display:none;
     width: 18px;
     height: 28px;
     background: url(../Images/close.png) top right no-repeat;
-    display: inline-block;
     margin-right: 10px;
     background-size: 18px;
 }
