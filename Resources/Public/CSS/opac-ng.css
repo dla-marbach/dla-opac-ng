@@ -453,7 +453,6 @@ article.detail em.highlight {
 
 .reset-search-icon {
     cursor: pointer;
-    display: inline-block;
     display:none;
     width: 18px;
     height: 28px;

@@ -53,7 +53,7 @@ $(document).ready(function(){
 // reset search
 $(document).ready(function(){
     if ($('.token-input-input-token input').val() != '') {
-        $('.reset-search-icon').show();
+        $('.reset-search-icon').css('display', 'inline-block');
     }
     $('.reset-search-icon').on('click', function (e) {
         e.preventDefault();
