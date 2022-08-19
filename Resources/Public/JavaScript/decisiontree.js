@@ -46,14 +46,16 @@ $( document ).ready(function() {
                                 output = this.split('␝');
 
                                 var active = false;
-
                                 var url = new URL(window.location.href);
 
                                 // remove chash
                                 url.searchParams.delete("cHash");
 
                                 var location = window.location;
-                                var linkUrl = location.origin + location.pathname + location.search;
+                                var linkUrl = new URL(location.origin + location.pathname + location.search);
+
+                                // remove chash
+                                linkUrl.searchParams.delete("cHash");
 
                                 if (a == 0) {
                                     var c = url.searchParams.get(field1Parameter + "["+this+"]");
