@@ -48,6 +48,10 @@ $( document ).ready(function() {
                                 var active = false;
 
                                 var url = new URL(window.location.href);
+
+                                // remove chash
+                                url.searchParams.delete("cHash");
+
                                 var location = window.location;
                                 var linkUrl = location.origin + location.pathname + location.search;
 
