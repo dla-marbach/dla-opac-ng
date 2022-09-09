@@ -28,7 +28,7 @@
         "php": "^7.2",
         "typo3/cms-core": "^10",
         "typo3/cms-tstemplate": "^10",
-        "helhum/typo3-console": "^5.0",
+        "helhum/typo3-console": "^6.0",
         "fluidtypo3/vhs": "^6.0.1",
         "subugoe/find": "^3.0 || ^3.1"
     },
