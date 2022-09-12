@@ -139,8 +139,8 @@
                             <div class="ctg-dtvt-content">
                                 <f:for each="{K0810}" as="item" iteration="iterator">
                                     {item}
-                                    <f:if condition="{KI810.{iterator.index}}">
-                                        {KI810.{iterator.index}}
+                                    <f:if condition="{KI810.{iterator.index}} && {KI810.{iterator.index}} != '#NV'">
+                                        ({KI810.{iterator.index}})
                                     </f:if>
                                     <f:if condition="{K0811.{iterator.index}}">
                                         {K0811.{iterator.index}}
