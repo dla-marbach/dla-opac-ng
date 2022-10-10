@@ -35,6 +35,11 @@
                 </div>
             </div>
         </div>
+        <div class="jp-playlist">
+            <ul>
+                <li></li> <!-- Empty <li> so your HTML conforms with the W3C spec -->
+            </ul>
+        </div>
         <div class="jp-no-solution">
             <span>Update Required</span>
             To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
@@ -44,22 +49,33 @@
 <script>
     $(document).ready(function(){
 
-        $("#jquery_jplayer_1").jPlayer({
-            ready: function (event) {
-                $(this).jPlayer("setMedia", {
-                    title: "{mp3_title}",
-                    mp3: "{mp3_url}"
-                });
+        var myPlaylist = new jPlayerPlaylist({
+                jPlayer: "#jquery_jplayer_1",
+                cssSelectorAncestor: "#jp_container_1"
             },
-            supplied: "mp3",
-            wmode: "window",
-            useStateClassSkin: true,
-            autoBlur: false,
-            smoothPlayBar: true,
-            keyEnabled: true,
-            remainingDuration: true,
-            toggleDuration: true
+            [], {
+                playlistOptions: {
+                },
+                supplied: "mp3,oga,wav",
+                wmode: "window",
+                useStateClassSkin: true,
+                autoBlur: false,
+                smoothPlayBar: true,
+                keyEnabled: true,
+                remainingDuration: true,
+                toggleDuration: true
+            });
+
+        $('.jp_media_url').each(function (){
+            myPlaylist.add({
+                title: $(this).data('url'),
+                mp3: $(this).data('url'),
+                post: $(this).data('poster')
+            });
         });
+
+
+
 
     });
 </script>
