@@ -82,7 +82,9 @@
     <div class="ctg-dtvt-details">
 
         <input type="checkbox" class="ctg-hackbox ctg-readmore" id="ctg-readmore-now">
-        <label class="ctg-readmore ctg-button ctg-button-textnicon" for="ctg-readmore-now">weitere Details</label>
+        <label class="ctg-readmore ctg-button ctg-button-textnicon" for="ctg-readmore-now">
+            <f:translate key='detail.more_details' extensionName='dla_opac_ng'/>
+        </label>
         <span class="ctg-readmore-content">
 
             <div class="ctg-dtvt-row">
@@ -285,7 +287,7 @@
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'SEISN')}" name="SEISN" />
 
                 <article>
-                    <i><strong>von</strong> {box_title} ...</i>
+                    <i><strong><f:translate key='normdata.von' extensionName='dla_opac_ng'/></strong> {box_title} ...</i>
                     <ul class="list-links">
 
 
@@ -300,7 +302,7 @@
 
                         <li>
                             <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                                Gedrucktes ({solrcount})
+                                <f:translate key='Gedrucktes' extensionName='dla_opac_ng'/> ({solrcount})
                             </f:link.action>
                         </li>
 
@@ -316,7 +318,7 @@
 
                         <li>
                             <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                                Audio und Video ({solrcount})
+                                <f:translate key='Audio und Video' extensionName='dla_opac_ng'/> ({solrcount})
                             </f:link.action>
                         </li>
 
@@ -332,7 +334,7 @@
 
                         <li>
                             <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                                Provenienzexemplare ({solrcount})
+                                <f:translate key='Provenienzexemplare' extensionName='dla_opac_ng'/> ({solrcount})
                             </f:link.action>
                         </li>
 
@@ -341,7 +343,7 @@
                 </article>
 
                 <article class="ctg-detail-showall">
-                    <span class="icon bel-frage"></span> Nicht die richtige Kategorie dabei?
+                    <span class="icon bel-frage"></span> <f:translate key="normdata.wrong_category" extensionName="dla_opac_ng" />
 
                     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
                     <s:data.newArray
@@ -354,7 +356,7 @@
                     <dla:countFromSolr query="{solvedQuery}" />
 
                     <f:link.action action="index" arguments="{q:query}" noCacheHash="1" class="ctg-button ctg-button-textnicon" title="alles zu dieser Kette">
-                        alles zu dieser Kette ({solrcount})
+                        <f:translate key='normdata.all_from_chain' extensionName='dla_opac_ng'/> ({solrcount})
                     </f:link.action>
 
                 </article>

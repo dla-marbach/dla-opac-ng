@@ -1,7 +1,7 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'P0800')}" name="P0800" />
 
 <section class="ctg-facet-other">
-    <h3>Andere Fundorte <a title="schließen" class="button-close"><span class="icon bel-pfeil-o01"></span></a></h3>
+    <h3><f:translate key="Andere Fundorte" extensionName="dla_opac_ng"/> <a title="schließen" class="button-close"><span class="icon bel-pfeil-o01"></span></a></h3>
     <ul>
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'T0028')}" name="T0028" />
         <f:for each="{T0028}" as="item" key="key" iteration="iterator">

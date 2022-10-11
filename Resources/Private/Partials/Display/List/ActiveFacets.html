@@ -1,7 +1,7 @@
 <f:if condition="{arguments.facet} || {arguments.q} && {dla:isNull(variable:'{arguments.q.default}')}">
     <section class="ctg-facet active-facets">
         <h3>
-            Aktive Facetten
+            <f:translate key="search.facet.active_facets" extensionName="dla_opac_ng" />
             <a title="schließen" data-facet-toggle="1">
                 <span class="icon bel-pfeil-o01"></span>
             </a>
@@ -19,7 +19,7 @@
                                     class=""
                                     title="alle Filter zurücksetzen">
                                 <span class="icon bel-ende01"></span>
-                                alle Filter zurücksetzen
+                                <f:translate key="search.facet.reset_facets" extensionName="dla_opac_ng" />
                             </f:link.action>
                         </f:then>
                         <f:else>
@@ -31,7 +31,7 @@
                                     class=""
                                     title="alle Filter zurücksetzen">
                                 <span class="icon bel-ende01"></span>
-                                alle Filter zurücksetzen
+                                <f:translate key="search.facet.reset_facets" extensionName="dla_opac_ng" />
                             </f:link.action>
                         </f:else>
                     </f:if>

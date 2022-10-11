@@ -358,6 +358,103 @@
       <label index="search.fieldselector.searchall">Free Search</label>
       <label index="search.fieldselector.not_date">Not dated</label>
       <label index="search.fieldselector.label_not_date">Only without dates</label>
+
+      <label index="search.facet.active_facets">Active facets</label>
+      <label index="search.facet.reset_facets">Reset facets</label>
+      <label index="search.facet.FormUndInhalt">Form and content</label>
+      <label index="search.facet.Medium">Medium</label>
+      <label index="search.facet.Personen">Persons and corporations</label>
+      <label index="search.facet.Zeit">Time</label>
+      <label index="search.facet.Thema">Subject</label>
+      <label index="search.facet.NeuImKatalog">New in catalogue</label>
+      <label index="search.facet.Sprache">Language</label>
+      <label index="search.facet.Ort">Location</label>
+      <label index="search.facet.Sammlung">Collection</label>
+      <label index="search.facet.Datenbestand">Dataset</label>
+      <label index="search.facet.Bibliographie">Bibliographie</label>
+
+      <label index="sortby.Default">Default</label>
+      <label index="sortby.yearAsc">Year ascending</label>
+      <label index="sortby.yearDesc">Year descending</label>
+      <label index="sortby.titleAsc">Title (A-Z)</label>
+      <label index="sortby.titleDesc">Title (Z-A)</label>
+      <label index="sortby.normdataDesc">Normdata descending</label>
+
+      <label index="info.telephone">Tel.</label>
+      <label index="info.mo_fr_9_17">Monday - Friday, 9:00h - 17:00h</label>
+      <label index="info.telefax">Telefax</label>
+      <label index="info.mo_do_9_17">Monday - Thursday, 9:00h - 17:00h</label>
+      <label index="info.fr_9-15">Friday, 9:00h - 15:00h</label>
+
+      <label index="detail.more_details">More Details</label>
+      <label index="detail.document_link">Document links</label>
+      <label index="Provenienzexemplare">Provenance Copies</label>
+
+      <label index="normdata.wrong_category">Not the right category?</label>
+      <label index="normdata.all_from">All from this %s</label>
+
+      <label index="Systematikketten">Classification</label>
+      <label index="Personennormsätzen">Personennormsätzen??</label>
+      <label index="Körperschaftsnormsätzen">Körperschaftsnormsätzen??</label>
+      <label index="Autorenschemaketten">Autorenschemaketten??</label>
+      <label index="Bibliographieketten">Bibliographieketten??</label>
+
+      <label index="normdata.wrong_category">Not the right category?</label>
+      <label index="normdata.all_from_keyword">Everything about this keyword</label>
+      <label index="normdata.all_from_work">Everything about this work</label>
+      <label index="normdata.all_from_classification">Everything about this classification</label>
+      <label index="normdata.all_from_corporation">Everything about this corporation</label>
+      <label index="normdata.all_from_chain">Everything about this chain</label>
+      <label index="normdata.all_from_person">Everything about this person</label>
+
+      <label index="normdata.possible_hits">Possible further hits</label>
+      <label index="normdata.von">by</label>
+      <label index="normdata.an">to</label>
+      <label index="normdata.über">about</label>
+      <label index="normdata.unter">under</label>
+
+      <label index="Akad. Grad">Academic degree</label>
+      <label index="Bekanntschaft mit">Acquaintance with</label>
+      <label index="Beruf/Funktion">Occupation/Function</label>
+      <label index="Beziehung familiär">Relationship family</label>
+      <label index="Charakt. Beruf">Characteristic profession</label>
+      <label index="Geburtsort">Place of birth</label>
+      <label index="Sterbeort">Place of death</label>
+
+      <label index="Andere Namen">Other names</label>
+      <label index="Vorgänger">Predecessor</label>
+      <label index="Nachfolger">Successor</label>
+      <label index="Sitz, Ort">Seat, place</label>
+
+      <label index="Vom selben Verfasser / Urheber">From the same author</label>
+      <label index="Ähnliche Themen">Similar themes</label>
+      <label index="Vom selben Künstler">From the same artist</label>
+      <label index="Ähnliche Motive">Similar motives</label>
+      <label index="Vom selben Bestandsbildner">From the same inventor</label>
+
+      <label index="Keine Treffer vorhanden">No hits found</label>
+      <label index="Alle anzeigen">Show all</label>
+
+      <label index="Sammeln und Sammelbestellungen über den alten Katalog aufgeben">Collect and place bulk orders through the old catalogue</label>
+      <label index="Jetzt bestellen">Order now</label>
+
+      <label index="Keine Exemplare vorhanden">No copies available</label>
+      <label index="Nicht bestellbar">Not orderable</label>
+      <label index="Details & Benutzung">Details & Use</label>
+      <label index="Exemplar-Aktionen">Item Actions</label>
+      <label index="Sender">Transmitter</label>
+      <label index="Sendedatum">Date of sending</label>
+      <label index="Vorbesitzer">Previous owner</label>
+      <label index="In Bestand">In stock</label>
+      <label index="Merkmale">Features</label>
+      <label index="Beschreibung">Description</label>
+      <label index="Enthaltene Materialien">Included Materials</label>
+      <label index="Buchumschlag">Book cover</label>
+      <label index="Vorhanden. Bitte per Leihschein bestellen.">Present. Please order by loan slip.</label>
+      <label index="In Bestandsübersicht zeigen">Show in stock overview</label>
+
+      <label index="Achtung: Aus technischen Gründen können max. 200 Sätze exportiert werden.">Attention: For technical reasons, a maximum of 200 records can be exported.</label>
+
     </languageKey>
 
     <languageKey index="de" type="array">
@@ -717,6 +814,94 @@
       <label index="search.fieldselector.searchall">Freie Suche</label>
       <label index="search.fieldselector.not_date">Ohne Datum</label>
       <label index="search.fieldselector.label_not_date">Nur ohne Datum</label>
+
+      <label index="search.facet.active_facets">Aktive Facetten</label>
+      <label index="search.facet.reset_facets">alle Filter zurücksetzen</label>
+      <label index="search.facet.FormUndInhalt">Form und Inhalt</label>
+      <label index="search.facet.Medium">Medium</label>
+      <label index="search.facet.Personen">Personen und Körperschaften</label>
+      <label index="search.facet.Zeit">Zeit</label>
+      <label index="search.facet.Thema">Thema</label>
+      <label index="search.facet.NeuImKatalog">Neu im Katalog</label>
+      <label index="search.facet.Sprache">Sprache</label>
+      <label index="search.facet.Ort">Ort</label>
+      <label index="search.facet.Sammlung">Sammlung</label>
+      <label index="search.facet.Datenbestand">Datenbestand</label>
+      <label index="search.facet.Bibliographie">Bibliographie</label>
+
+      <label index="sortby.Default">Default</label>
+      <label index="sortby.yearAsc">Jahr aufsteigend</label>
+      <label index="sortby.yearDesc">Jahr absteigend</label>
+      <label index="sortby.titleAsc">Titel (A-Z)</label>
+      <label index="sortby.titleDesc">Titel (Z-A)</label>
+      <label index="sortby.normdataDesc">Normdaten absteigend</label>
+
+      <label index="detail.more_details">Weitere Details</label>
+      <label index="detail.document_link">Werkbeziehungen</label>
+      <label index="Provenienzexemplare">Provenienzexemplare</label>
+
+      <label index="Systematikketten">Systematikketten</label>
+      <label index="Personennormsätzen">Personennormsätzen</label>
+      <label index="Körperschaftsnormsätzen">Körperschaftsnormsätzen</label>
+      <label index="Autorenschemaketten">Autorenschemaketten</label>
+      <label index="Bibliographieketten">Bibliographieketten</label>
+
+      <label index="normdata.wrong_category">Nicht die richtige Kategorie dabei?</label>
+      <label index="normdata.all_from_keyword">Alles zu diesem Schlagwort</label>
+      <label index="normdata.all_from_work">Alles zu diesem Werk</label>
+      <label index="normdata.all_from_classification">Alles zu dieser Systematik</label>
+      <label index="normdata.all_from_corporation">Alles zu dieser Körperschaft</label>
+      <label index="normdata.all_from_chain">Alles zu dieser Kette</label>
+      <label index="normdata.all_from_person">Alles zu dieser Person</label>
+
+      <label index="normdata.possible_hits">Mögliche weitere Treffer</label>
+      <label index="normdata.von">von</label>
+      <label index="normdata.an">an</label>
+      <label index="normdata.über">über</label>
+      <label index="normdata.unter">unter</label>
+
+      <label index="Akad. Grad">Akad. Grad</label>
+      <label index="Bekanntschaft mit">Bekanntschaft mit</label>
+      <label index="Beruf/Funktion">Beruf/Funktion</label>
+      <label index="Beziehung familiär">Beziehung familiär</label>
+      <label index="Charakt. Beruf">Charakt. Beruf</label>
+      <label index="Geburtsort">Geburtsort</label>
+      <label index="Sterbeort">Sterbeort</label>
+
+      <label index="Andere Namen">Andere Namen</label>
+      <label index="Vorgänger">Vorgänger</label>
+      <label index="Nachfolger">Nachfolger</label>
+      <label index="Sitz, Ort">Sitz, Ort</label>
+      <label index="Siehe auch">Siehe auch</label>
+
+      <label index="Vom selben Verfasser / Urheber">Vom selben Verfasser / Urheber</label>
+      <label index="Ähnliche Themen">Ähnliche Themen</label>
+      <label index="Vom selben Künstler">Vom selben Künstler</label>
+      <label index="Ähnliche Motive">Ähnliche Motive</label>
+      <label index="Vom selben Bestandsbildner">Vom selben Bestandsbildner</label>
+
+      <label index="Keine Treffer vorhanden">Keine Treffer vorhanden</label>
+      <label index="Alle anzeigen">Alle anzeigen</label>
+
+      <label index="Sammeln und Sammelbestellungen über den alten Katalog aufgeben">Sammeln und Sammelbestellungen über den alten Katalog aufgeben</label>
+      <label index="Jetzt bestellen">Jetzt bestellen</label>
+
+      <label index="Keine Exemplare vorhanden">Keine Exemplare vorhanden</label>
+      <label index="Nicht bestellbar">Nicht bestellbar</label>
+      <label index="Details & Benutzung">Details & Benutzung</label>
+      <label index="Exemplar-Aktionen">Exemplar-Aktionen</label>
+      <label index="Sender">Sender</label>
+      <label index="Sendedatum">Sendedatum</label>
+      <label index="Vorbesitzer">Vorbesitzer</label>
+      <label index="In Bestand">In Bestand</label>
+      <label index="Merkmale">Merkmale</label>
+      <label index="Beschreibung">Beschreibung</label>
+      <label index="Enthaltene Materialien">Enthaltene Materialien</label>
+      <label index="Buchumschlag">Buchumschlag</label>
+      <label index="Vorhanden. Bitte per Leihschein bestellen.">Vorhanden. Bitte per Leihschein bestellen.</label>
+      <label index="In Bestandsübersicht zeigen">In Bestandsübersicht zeigen</label>
+
+      <label index="Achtung: Aus technischen Gründen können max. 200 Sätze exportiert werden.">Achtung: Aus technischen Gründen können max. 200 Sätze exportiert werden.</label>
 
     </languageKey>
 

@@ -76,7 +76,13 @@
                         <f:if condition="{f:count(subject:config.sortOptions.menu)} > 1">
                             <div class="ctg-pager-aside">
                                 <f:translate key="LLL:{settings.languageRootPath}locallang-form.xml:input.sort"/>
-                                <f:form.select additionalAttributes='{data-id:"c{config.uid}-sortSelect",data-sort:"1"}' name="sort" options="{config.sortOptions.menu}" value="{config.sortOptions.selected}"/>
+                                <f:form.select name="sort" additionalAttributes='{data-id:"c{config.uid}-sortSelect",data-sort:"1"}' value="{config.sortOptions.selected}">
+                                    <f:for each="{config.sortOptions.menu}" as="sort" key="key" iteration="iterator">
+                                        <f:form.select.option value="{key}">
+                                            <f:translate key="sortby.{sort}" extensionName="dla_opac_ng" default="{sort}"/>
+                                        </f:form.select.option>
+                                    </f:for>
+                                </f:form.select>
                             </div>
 
                             <f:for each="{config.sortOptions.menu}" as="sortOption" key="key" iteration="iterator">
@@ -167,7 +173,9 @@
                                 <a href="https://fernleihe.boss.bsz-bw.de/Bsz/saveIsil/DE-Mar1" title="">
                                 <span class="icon bel-link03"></span>
                                 </a>
-                                <a href="https://fernleihe.boss.bsz-bw.de/Bsz/saveIsil/DE-Mar1" title="">Fernleihe</a>
+                                <a href="https://fernleihe.boss.bsz-bw.de/Bsz/saveIsil/DE-Mar1" title="">
+                                    Fernleihe
+                                </a>
                             </li>
                             <li>
                                 <a href="http://kalliope.staatsbibliothek-berlin.de/de/search.html?q={arguments.q.default -> f:format.urlencode()}" title="">

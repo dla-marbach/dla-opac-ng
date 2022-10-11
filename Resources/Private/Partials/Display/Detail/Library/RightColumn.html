@@ -1,4 +1,4 @@
-
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'detail_urheber_ids')}" name="detail_urheber_ids" />
 <f:for each="{detail_urheber_ids}" as="urheber_id" key="fieldName" iteration="iterator">
     <f:if condition="{iterator.isFirst}">
@@ -17,7 +17,7 @@
 <f:if condition="{f:count(subject: solr)} > 0">
     <section class="ctg-facet right-col-similar-author">
         <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
-            Vom selben Verfasser / Urheber
+            <f:translate key="Vom selben Verfasser / Urheber" extensionName="dla_opac_ng" />
         </h3>
         <ul>
 
@@ -51,14 +51,14 @@
                             <span class="icon bel-lupe"></span>
                         </f:link.action>
                         <f:link.action action="index" arguments="{q:{raw: 'detail_urheber_ids:({urheber_query})'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
-                            Alle anzeigen
+                            <f:translate key="Alle anzeigen" extensionName="dla_opac_ng" />
                         </f:link.action>
                     </li>
                 </f:then>
                 <f:else>
                     <li>
                         <span class="icon"></span>
-                        Keine Treffer vorhanden
+                        <f:translate key="Keine Treffer vorhanden" extensionName="dla_opac_ng" />
                     </li>
                     <f:format.raw>
                         <script type="text/javascript">
@@ -94,7 +94,7 @@
 <f:if condition="{f:count(subject: solr)} > 0">
     <section class="ctg-facet right-col-similar-topic">
         <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
-            Ähnliche Themen
+            <f:translate key="Ähnliche Themen" extensionName="dla_opac_ng" />
         </h3>
         <ul>
 
@@ -127,14 +127,14 @@
                             <span class="icon bel-lupe"></span>
                         </f:link.action>
                         <f:link.action action="index" arguments="{q:{raw: 'SYNKEY:({SYNKEY_query})'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
-                            Alle anzeigen
+                            <f:translate key="Alle anzeigen" extensionName="dla_opac_ng" />
                         </f:link.action>
                     </li>
                 </f:then>
                 <f:else>
                     <li>
                         <span class="icon"></span>
-                        Keine Treffer vorhanden
+                        <f:translate key="Keine Treffer vorhanden" extensionName="dla_opac_ng" />
                     </li>
                     <f:format.raw>
                         <script type="text/javascript">

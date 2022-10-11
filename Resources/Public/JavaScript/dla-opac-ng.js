@@ -517,8 +517,10 @@ function toggleExtendedSearch() {
 function setExtendedSearchText() {
     if ($('.extended-search').is(":visible")) {
         $('.show-ext-search').text('Einfache Suche');
+        $('.show-ext-search').text($('.show-ext-search').data('search'));
     } else {
         $('.show-ext-search').text('Erweiterte Suche');
+        $('.show-ext-search').text($('.show-ext-search').data('extendedsearch'));
     }
 }
 
