@@ -440,7 +440,7 @@
 
       <label index="Keine Exemplare vorhanden">No copies available</label>
       <label index="Nicht bestellbar">Not orderable</label>
-      <label index="Details & Benutzung">Details & Use</label>
+      <label index="Details und Benutzung">Details &amp; Use</label>
       <label index="Exemplar-Aktionen">Item Actions</label>
       <label index="Sender">Transmitter</label>
       <label index="Sendedatum">Date of sending</label>
@@ -888,7 +888,7 @@
 
       <label index="Keine Exemplare vorhanden">Keine Exemplare vorhanden</label>
       <label index="Nicht bestellbar">Nicht bestellbar</label>
-      <label index="Details & Benutzung">Details & Benutzung</label>
+      <label index="Details und Benutzung">Details &amp; Benutzung</label>
       <label index="Exemplar-Aktionen">Exemplar-Aktionen</label>
       <label index="Sender">Sender</label>
       <label index="Sendedatum">Sendedatum</label>
