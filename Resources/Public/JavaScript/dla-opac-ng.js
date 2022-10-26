@@ -146,15 +146,23 @@ $(document).ready(function(){
                 $('.order-overlay .info-no-account').hide();
                 $('.order-overlay .info').text($(data).filter("#meldung").text()).show();
                 if ($(data).filter("#meldung").text() == 'Ihre Leihscheine wurden gedruckt') {
-                    var additionalText = 'Ihre Bestellung wurde verschickt';
+                    // var additionalText = 'Ihre Bestellung wurde verschickt';
                     if ($('.field-listview_type').text().trim() == 'Bilder und Objekte') {
-                        additionalText += '<br/>Zur Abholung kontaktieren Sie uns bitte unter der Mail-Adresse <a href="mailto:bilder-und-objekte@dla-marbach.de">bilder-und-objekte@dla-marbach.de</a>'
+                        // additionalText += '<br/>Zur Abholung kontaktieren Sie uns bitte unter der Mail-Adresse <a href="mailto:bilder-und-objekte@dla-marbach.de">bilder-und-objekte@dla-marbach.de</a>'
+                        $('.order-overlay .info .order-info-bo').show();
+                    } else if ($('.field-listview_type').text().trim() == 'Gedrucktes') {
+                        $('.order-overlay .info .order-info-print').show();
+                    } else if ($('.field-listview_type').text().trim() == 'Handschriften') {
+                        $('.order-overlay .info .order-info-hs').show();
+                    } else if ($('.field-listview_type').text().trim().replace(/\n/g, '').replace(/\s/g, '') == 'AudioVideo') {
+                        $('.order-overlay .info .order-info-av').show();
                     }
-                    $('.order-overlay .info').html(additionalText).show();
+                    $('.order-overlay .info').show();
                 }
                 $('.order-overlay .confirm').show().on("click", function (event) {
                     event.preventDefault();
                     $('.order-overlay').hide();
+                    $('.order-overlay .info span').hide();
                 });
                 $('.order-overlay-button').prop('disabled', false);
 

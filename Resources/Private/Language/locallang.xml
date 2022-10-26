@@ -455,6 +455,11 @@
 
       <label index="Achtung: Aus technischen Gründen können max. 200 Sätze exportiert werden.">Attention: For technical reasons, a maximum of 200 records can be exported.</label>
 
+      <label index="hs order sent">Your order has been sent. &lt;br/&gt; The materials will be made available to you in the manuscript reading room.</label>
+      <label index="print order sent">Your order has been sent. &lt;br/&gt; The materials will be made available to you in the library reading room.</label>
+      <label index="av order sent">Your order has been sent. &lt;br/&gt; To use, please contact us on the extension number 07144/848-378 oder -379</label>
+      <label index="bo order sent">Your order has been sent. &lt;br/&gt; For pickup, please contact us at the email address &lt;a href='mailto:bilder-und-objekte@dla-marbach.de'&gt;bilder-und-objekte@dla-marbach.de&lt;/a&gt;</label>
+
     </languageKey>
 
     <languageKey index="de" type="array">
@@ -903,6 +908,10 @@
 
       <label index="Achtung: Aus technischen Gründen können max. 200 Sätze exportiert werden.">Achtung: Aus technischen Gründen können max. 200 Sätze exportiert werden.</label>
 
+      <label index="hs order sent">Ihre Bestellung wurde verschickt. &lt;br/&gt; Die Materialien werden im Handschriftenlesesaal für Sie bereitgestellt.</label>
+      <label index="print order sent">Ihre Bestellung wurde verschickt. &lt;br/&gt; Die Materialien werden im Bibliothekslesesaal für Sie bereitgestellt.</label>
+      <label index="av order sent">Ihre Bestellung wurde verschickt. &lt;br/&gt; Zur Benutzung kontaktieren Sie uns bitte unter der Durchwahlnummer 07144/848-378 oder -379</label>
+      <label index="bo order sent">Ihre Bestellung wurde verschickt. &lt;br/&gt; Zur Abholung kontaktieren Sie uns bitte unter der Mail-Adresse &lt;a href='mailto:bilder-und-objekte@dla-marbach.de'&gt;bilder-und-objekte@dla-marbach.de&lt;/a&gt;</label>
     </languageKey>
 
   </data>
