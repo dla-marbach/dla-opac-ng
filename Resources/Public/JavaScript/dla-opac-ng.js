@@ -144,7 +144,7 @@ $(document).ready(function(){
             .done(function( data ) {
                 $('.order-overlay .login-form').hide();
                 $('.order-overlay .info-no-account').hide();
-                $('.order-overlay .info').text($(data).filter("#meldung").text()).show();
+                // $('.order-overlay .info').text($(data).filter("#meldung").text()).show();
                 if ($(data).filter("#meldung").text() == 'Ihre Leihscheine wurden gedruckt') {
                     // var additionalText = 'Ihre Bestellung wurde verschickt';
                     if ($('.field-listview_type').text().trim() == 'Bilder und Objekte') {
