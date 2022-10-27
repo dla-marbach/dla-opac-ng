@@ -154,7 +154,9 @@ $(document).ready(function(){
                         $('.order-overlay .info .order-info-print').show();
                     } else if ($('.field-listview_type').text().trim() == 'Handschriften') {
                         $('.order-overlay .info .order-info-hs').show();
-                    } else if ($('.field-listview_type').text().trim().replace(/\n/g, '').replace(/\s/g, '') == 'AudioVideo') {
+                    } else if ($('.field-listview_type').text().trim().replace(/\n/g, '').replace(/\s/g, '') == 'Audio') {
+                        $('.order-overlay .info .order-info-av').show();
+                    } else if ($('.field-listview_type').text().trim().replace(/\n/g, '').replace(/\s/g, '') == 'Video') {
                         $('.order-overlay .info .order-info-av').show();
                     }
                     $('.order-overlay .info').show();
