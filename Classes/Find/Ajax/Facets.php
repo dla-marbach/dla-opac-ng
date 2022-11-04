@@ -70,9 +70,11 @@ class Facets implements MiddlewareInterface
         }
 
         $addFacetsToSolrQuery = $query;
-        foreach ($activeFacets['facet'] as $key => $value) {
-            foreach ($value as $subkey => $subvalue) {
-                $addFacetsToSolrQuery .= ' AND ' . str_replace('%s', $subkey, $facetQueries[$key]);
+        if (!empty($activeFacets['facet'])) {
+            foreach ($activeFacets['facet'] as $key => $value) {
+                foreach ($value as $subkey => $subvalue) {
+                    $addFacetsToSolrQuery .= ' AND ' . str_replace('%s', $subkey, $facetQueries[$key]);
+                }
             }
         }
 
