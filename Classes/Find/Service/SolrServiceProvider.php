@@ -371,98 +371,101 @@ class SolrServiceProvider extends AbstractServiceProvider
             $facetSet = $this->query->getFacetSet();
             foreach ($facetConfiguration as $key => $facet) {
                 if (array_key_exists('id', $facet)) {
-                    $facetID = $facet['id'];
+                    // dont show facets which are loaded via ajax
+                    if (1 !== (int) $facet['ajax']) {
+                        $facetID = $facet['id'];
 
-                    // start with defaults and overwrite with specific facet configuration
-                    $facet = array_merge($this->settings['facetDefaults'], $facet);
-                    $facetConfiguration[$key] = $facet;
+                        // start with defaults and overwrite with specific facet configuration
+                        $facet = array_merge($this->settings['facetDefaults'], $facet);
+                        $facetConfiguration[$key] = $facet;
 
-                    $queryForFacet = null;
-                    if (array_key_exists('facetQuery', $facet)) {
-                        $queryForFacet = $facetSet->createFacetMultiQuery($facetID);
-                        foreach ($facet['facetQuery'] as $facetQueryIndex => $facetQuery) {
-                            if (array_key_exists('id', $facetQuery) && array_key_exists('query', $facetQuery)) {
-                                $queryForFacet->createQuery($facetQuery['id'], $facetQuery['query']);
-                            } else {
-                                $this->logger->error(sprintf('TypoScript facet »%s«, facetQuery %s does not have the required keys »id« and »query«. Ignoring this facetQuery.', $facetID, $facetQueryIndex),
-                                    [
-                                        'facetQuery' => $facetQuery,
-                                        'facetConfiguration' => $facetConfiguration,
-                                    ]
-                                );
-                            }
-                        }
-                    } elseif (array_key_exists('facettype', $facet)) {
-                        if ($facet['facettype'] == 'date_range') {
-                            if ($facet['start'] && $facet['end'] && $facet['gap']) {
-
-                                try {
-                                    $stats = $statsquery->getStats();
-                                    $stats->createField('facet_time_stat');
-
-                                    $resultset = $this->connection->select($statsquery);
-
-                                    $statsResult = $resultset->getStats();
-                                    $minValue = $statsResult->getResult('facet_time_stat')->getMin();
-                                    #seems not be used
-                                    #$maxValue = $statsResult->getResult('facet_time_stat')->getMax();
-
-                                } catch (HttpException $exception) {
-                                    // preset to year 0, if stats query faild
-                                    $minValue = '0000-01-01';
-
-                                } catch (Exception $e) {
-                                    // preset to year 0, if stats query faild
-                                    $minValue = '0000-01-01';
-                                }
-
-                                $date = new \DateTime($minValue);
-                                //$maxDate = new \DateTime($maxValue);
-
-                                $nowDate = new \DateTime('now');
-
-                                $years = date_diff($date, $nowDate);
-
-                                if ($years->y < 50) {
-                                    $gap = 1;
+                        $queryForFacet = null;
+                        if (array_key_exists('facetQuery', $facet)) {
+                            $queryForFacet = $facetSet->createFacetMultiQuery($facetID);
+                            foreach ($facet['facetQuery'] as $facetQueryIndex => $facetQuery) {
+                                if (array_key_exists('id', $facetQuery) && array_key_exists('query', $facetQuery)) {
+                                    $queryForFacet->createQuery($facetQuery['id'], $facetQuery['query']);
                                 } else {
-                                    $gap = round($years->y / 50);
+                                    $this->logger->error(sprintf('TypoScript facet »%s«, facetQuery %s does not have the required keys »id« and »query«. Ignoring this facetQuery.', $facetID, $facetQueryIndex),
+                                        [
+                                            'facetQuery' => $facetQuery,
+                                            'facetConfiguration' => $facetConfiguration,
+                                        ]
+                                    );
                                 }
-
-                                // calculate start date so the gap divide evenly
-                                $mod = $years->y % $gap;
-                                $adding = $gap - $mod;
-
-                                $startTimeYears = $years->y + $adding;
-
-                                $start = 'NOW/YEAR-'. $startTimeYears .'YEARS';
-
-                                $end = $nowDate
-                                    ->add(new \DateInterval('P1Y'))
-                                    ->format('Y-m-d\TH:i:s\Z');
-
-                                $queryForFacet = $facetSet->createFacetRange($facet['field'] ? $facetID : $facet['field']);
-                                $queryForFacet->setField($facet['field'] ? $facet['field'] : $facetID)
-                                    ->setGap('+'.$gap.'YEAR')
-                                    ->setStart($start)
-                                    ->setEnd($end);
-
                             }
+                        } elseif (array_key_exists('facettype', $facet)) {
+                            if ($facet['facettype'] == 'date_range') {
+                                if ($facet['start'] && $facet['end'] && $facet['gap']) {
+
+                                    try {
+                                        $stats = $statsquery->getStats();
+                                        $stats->createField('facet_time_stat');
+
+                                        $resultset = $this->connection->select($statsquery);
+
+                                        $statsResult = $resultset->getStats();
+                                        $minValue = $statsResult->getResult('facet_time_stat')->getMin();
+                                        #seems not be used
+                                        #$maxValue = $statsResult->getResult('facet_time_stat')->getMax();
+
+                                    } catch (HttpException $exception) {
+                                        // preset to year 0, if stats query faild
+                                        $minValue = '0000-01-01';
+
+                                    } catch (Exception $e) {
+                                        // preset to year 0, if stats query faild
+                                        $minValue = '0000-01-01';
+                                    }
+
+                                    $date = new \DateTime($minValue);
+                                    //$maxDate = new \DateTime($maxValue);
+
+                                    $nowDate = new \DateTime('now');
+
+                                    $years = date_diff($date, $nowDate);
+
+                                    if ($years->y < 50) {
+                                        $gap = 1;
+                                    } else {
+                                        $gap = round($years->y / 50);
+                                    }
+
+                                    // calculate start date so the gap divide evenly
+                                    $mod = $years->y % $gap;
+                                    $adding = $gap - $mod;
+
+                                    $startTimeYears = $years->y + $adding;
+
+                                    $start = 'NOW/YEAR-' . $startTimeYears . 'YEARS';
+
+                                    $end = $nowDate
+                                        ->add(new \DateInterval('P1Y'))
+                                        ->format('Y-m-d\TH:i:s\Z');
+
+                                    $queryForFacet = $facetSet->createFacetRange($facet['field'] ? $facetID : $facet['field']);
+                                    $queryForFacet->setField($facet['field'] ? $facet['field'] : $facetID)
+                                        ->setGap('+' . $gap . 'YEAR')
+                                        ->setStart($start)
+                                        ->setEnd($end);
+
+                                }
+                            }
+                        } else {
+                            $queryForFacet = $facetSet->createFacetField($facetID);
+                            $queryForFacet->setField($facet['field'] ? $facet['field'] : $facetID)
+                                ->setMinCount($facet['fetchMinimum'])
+                                ->setLimit($facet['fetchMaximum'])
+                                ->setSort($facet['sortOrder']);
                         }
-                    } else {
-                        $queryForFacet = $facetSet->createFacetField($facetID);
-                        $queryForFacet->setField($facet['field'] ? $facet['field'] : $facetID)
-                            ->setMinCount($facet['fetchMinimum'])
-                            ->setLimit($facet['fetchMaximum'])
-                            ->setSort($facet['sortOrder']);
-                    }
 
-                    if (1 == $facet['excludeOwnFilter']) {
-                        $queryForFacet->addExclude($this->tagForFacet($facetID));
-                    }
+                        if (1 == $facet['excludeOwnFilter']) {
+                            $queryForFacet->addExclude($this->tagForFacet($facetID));
+                        }
 
-                    if ($facet['showmissing'] == 1) {
-                        $queryForFacet->setMissing(true);
+                        if ($facet['showmissing'] == 1) {
+                            $queryForFacet->setMissing(true);
+                        }
                     }
                 } else {
                     $this->logger->warning(sprintf('TypoScript facet %s does not have the required key »id«. Ignoring this facet.', $key),
