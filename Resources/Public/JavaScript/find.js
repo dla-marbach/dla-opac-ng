@@ -51,9 +51,76 @@ var tx_find = (function () {
       jQuery('.position .resultPosition', container).click(onClickRecordNumber);
 
       initializeHistogramFacets();
+	  loadAjaxFacets();
     });
   };
 
+	function getSearchParams(k){
+		var p={};
+		location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){p[k]=v})
+		return k?p[k]:p;
+	}
+
+  var loadAjaxFacets = function () {
+	  var query = getSearchParams('tx_find_find%5Bq%5D%5Bdefault%5D');
+	  if (!query) {
+		  query = '';
+	  }
+	  $('.ajax-facet').each(function () {
+		 var activeFacets = $(this).data('activefacets');
+		 if (!activeFacets) {
+			 activeFacets = '';
+		 }
+
+		 var facetId = $(this).attr('id');
+		 var url = window.location.origin + "?facetId=" + facetId + "&q=" + query + "&" + activeFacets;
+		  $.ajax({
+			  url: url
+		  }).done(function (data) {
+			  var i = 1;
+			  $(data).each(function () {
+				  var elementClass = '';
+				  var iconClass = 'bel-kreis01';
+				  var displayDefault = $('#' + facetId).data('displaydefault');
+				  if (this.active) {
+					  elementClass = 'facetActive';
+					  iconClass = 'bel-ok01';
+					  // generate html for active facet block
+					  $("section.active-facets ul").append('<li><a title="Filter '+this.label+' aufheben" href="' + this.link + '"><span class="icon bel-ende01"></span>'+this.label+'</a></li>');
+				  }
+				  if (i > displayDefault) {
+					  elementClass = elementClass + ' hidden';
+				  }
+				  $('#'+facetId+' ul.facetList')
+					  .append('<li class="' + elementClass + '"><a href="' + this.link + '"><span class="icon '+ iconClass +'"></span></a><a class="facetAdd facetText internal" href="' + this.link + '">' + this.label + '<em>('+this.count+')</em></a><a class="facetExclude facetRemoveIcon hide-text" href="' + this.linkReverse + '"><span class="icon bel-verboten"></span></a></li>');
+				  i++;
+			  });
+			  $('#'+facetId+' ul.facetList')
+				  .append('<li class="facetShowAll">\n' +
+					  '        <a href="#" class="dla-toggle-facets dla-toggle-facets-collapsed" data-translate-show-all="show all" data-translate-show-less="show less">\n' +
+					  '            show all\n' +
+					  '        </a>\n' +
+					  '    </li>');
+			  $('#'+facetId+' ul.facetList li a.dla-toggle-facets').on('click', function(e){
+				  e.preventDefault();
+				  var containingList = $(this).parents('ul')[0];
+				  if ($(this).hasClass('dla-toggle-facets-collapsed')) {
+					  jQuery('.hidden', containingList).slideDown(300);
+					  $(this).html($(this).data('translate-show-less'));
+				  } else {
+					  jQuery('.hidden', containingList).slideUp(300);
+					  $(this).html($(this).data('translate-show-all'));
+				  }
+				  $(this).toggleClass('dla-toggle-facets-collapsed');
+			  });
+
+			  // // if decisiontree (marbach only)
+			  // initDecisiontree($('#'+facetId));
+			  // // endif decisiontree
+
+		  });
+	  });
+  }
 
 // Localisation function. Currently not implemented.
   var localise = function (term) {
