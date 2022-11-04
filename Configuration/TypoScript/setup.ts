@@ -1273,6 +1273,8 @@ plugin.tx_find {
                 showmissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
+                ajax = 1
+                displayDefault = 6
             }
 
             20 {
@@ -1284,6 +1286,8 @@ plugin.tx_find {
                 showmissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
+                ajax = 1
+                displayDefault = 6
             }
 
             25 {
@@ -1319,6 +1323,8 @@ plugin.tx_find {
                 showmissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
+                ajax = 1
+                displayDefault = 6
             }
 
             40 {
@@ -1357,6 +1363,8 @@ plugin.tx_find {
                 showmissing = 0
 
                 collapse = 1
+                ajax = 1
+                displayDefault = 6
             }
 
             #45 {
@@ -1440,6 +1448,8 @@ plugin.tx_find {
                 showmissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
+                ajax = 1
+                displayDefault = 6
             }
 
             66 {
@@ -1451,6 +1461,8 @@ plugin.tx_find {
                 showmissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
+                ajax = 1
+                displayDefault = 6
             }
 
             # Die nächsten konfigurierten Facetten sind für die Sucheinschränkung oberhalb des Suchschlitzes
