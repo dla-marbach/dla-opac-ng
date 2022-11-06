@@ -19,7 +19,7 @@
 <f:if condition="{f:count(subject: solr)} > 0">
     <section class="ctg-facet right-col-similar-artist">
         <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
-            Vom selben Künstler
+            <f:translate key="Vom selben Künstler" extensionName="dla_opac_ng" />
         </h3>
         <ul>
             <f:for each="{solr}" as="solrResult">
@@ -44,7 +44,7 @@
                                 <span class="icon bel-lupe"></span>
                             </f:link.action>
                             <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(\"Urheber/in\") AND listview_type:(\"Bilder und Objekte\")'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
-                                Alle anzeigen
+                                <f:translate key="Alle anzeigen" extensionName="dla_opac_ng" />
                             </f:link.action>
                         </li>
                     </f:if>
@@ -52,7 +52,7 @@
                 <f:else>
                     <li>
                         <span class="icon"></span>
-                        Keine Treffer vorhanden
+                        <f:translate key="Keine Treffer vorhanden" extensionName="dla_opac_ng" />
                     </li>
                     <f:format.raw>
                         <script type="text/javascript">
@@ -69,7 +69,7 @@
 
 <section class="ctg-facet right-col-similar-motive">
     <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
-        Ähnliche Motive
+        <f:translate key="Ähnliche Motive" extensionName="dla_opac_ng" />
     </h3>
     <ul>
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'PEE100')}" name="PEE100" />
@@ -176,14 +176,14 @@
                         <span class="icon bel-lupe"></span>
                     </f:link.action>
                     <f:link.action action="index" arguments="{q:{raw: '{query}'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
-                        Alle anzeigen
+                        <f:translate key="Alle anzeigen" extensionName="dla_opac_ng" />
                     </f:link.action>
                 </li>
             </f:then>
             <f:else>
                 <li>
                     <span class="icon"></span>
-                    Keine Treffer vorhanden
+                    <f:translate key="Keine Treffer vorhanden" extensionName="dla_opac_ng" />
                 </li>
                 <f:format.raw>
                     <script type="text/javascript">

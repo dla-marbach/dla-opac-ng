@@ -69,7 +69,9 @@
         <div class="ctg-dtvt-details">
 
             <input type="checkbox" class="ctg-hackbox ctg-readmore" id="ctg-readmore-now">
-            <label class="ctg-readmore ctg-button ctg-button-textnicon" for="ctg-readmore-now">weitere Details</label>
+            <label class="ctg-readmore ctg-button ctg-button-textnicon" for="ctg-readmore-now">
+                <f:translate key='detail.more_details' extensionName='dla_opac_ng'/>
+            </label>
             <span class="ctg-readmore-content">
                 <div class="ctg-dtvt-row">
                     <div class="ctg-dtvt-label">
@@ -93,7 +95,7 @@
 
                 <div class="ctg-dtvt-row">
                     <div class="ctg-dtvt-label">
-                        {KTYP.0}
+                        <f:translate key="{KTYP.0}" extensionName="dla_opac_ng" default="{KTYP.0}"/>
                     </div>
                     <div class="ctg-dtvt-content">
                         <f:render
@@ -113,7 +115,7 @@
                 <f:if condition="{XX_KS_K0800_KANSHS}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Siehe auch
+                            <f:translate key="Siehe auch" extensionName="dla_opac_ng" />
                         </div>
                         <div class="ctg-dtvt-content">
                             <f:for each="{XX_KS_K0800_KANSHS}" as="item" iteration="iterator">
@@ -134,7 +136,7 @@
                     <f:then>
                         <div class="ctg-dtvt-row">
                             <div class="ctg-dtvt-label">
-                                Andere Namen
+                                <f:translate key="Andere Namen" extensionName="dla_opac_ng" />
                             </div>
                             <div class="ctg-dtvt-content">
                                 <f:for each="{K0810}" as="item" iteration="iterator">
@@ -159,7 +161,7 @@
                 <f:if condition="{XX_KS_K0800_KA850}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Vorgänger
+                            <f:translate key="Vorgänger" extensionName="dla_opac_ng" />
                         </div>
                         <div class="ctg-dtvt-content">
                             <f:for each="{XX_KS_K0800_KA850}" as="item" iteration="iterator">
@@ -178,7 +180,7 @@
                 <f:if condition="{XX_KS_K0800_KC850}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Nachfolger
+                            <f:translate key="Nachfolger" extensionName="dla_opac_ng" />
                         </div>
                         <div class="ctg-dtvt-content">
                             <f:for each="{XX_KS_K0800_KC850}" as="item" iteration="iterator">
@@ -209,7 +211,7 @@
                                 <div class="ctg-dtvt-row">
                                     <div class="ctg-dtvt-label">
                                         <v:variable.set value="{item}" name="lastLabel" />
-                                        {item}
+                                        <f:translate key="{item}" extensionName="dla_opac_ng" default="{item}"/>
                                     </div>
                                     <div class="ctg-dtvt-content">
 
@@ -404,7 +406,7 @@
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0800')}" name="box_title" />
 
             <article>
-                <i><strong>von</strong> {box_title} ...</i>
+                <i><strong><f:translate key='normdata.von' extensionName='dla_opac_ng'/></strong> {box_title} ...</i>
                 <ul class="list-links">
 
                     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
@@ -419,7 +421,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Gedrucktes ({solrcount})
+                            <f:translate key='Gedrucktes' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -436,7 +438,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Handschriften ({solrcount})
+                            <f:translate key='Handschriften' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -454,7 +456,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Bilder und Objekte ({solrcount})
+                            <f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -471,7 +473,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Audio und Video ({solrcount})
+                            <f:translate key='Audio und Video' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -481,7 +483,7 @@
             </article>
 
             <article>
-                <i><strong>an</strong> {box_title} ...</i>
+                <i><strong><f:translate key='normdata.an' extensionName='dla_opac_ng'/></strong> {box_title} ...</i>
                 <ul class="list-links">
 
                     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
@@ -496,7 +498,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Gedrucktes ({solrcount})
+                            <f:translate key='Gedrucktes' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -514,7 +516,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Handschriften ({solrcount})
+                            <f:translate key='Handschriften' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -531,7 +533,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Bilder und Objekte ({solrcount})
+                            <f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -548,14 +550,14 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Audio und Video ({solrcount})
+                            <f:translate key='Audio und Video' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
                 </ul>
             </article>
 
             <article>
-                <i><strong>über</strong> {box_title} ...</i>
+                <i><strong><f:translate key='normdata.über' extensionName='dla_opac_ng'/></strong> {box_title} ...</i>
                 <ul class="list-links">
                     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                     <s:data.newArray
@@ -569,7 +571,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Gedrucktes ({solrcount})
+                            <f:translate key='Gedrucktes' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -586,7 +588,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Handschriften ({solrcount})
+                            <f:translate key='Handschriften' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -603,7 +605,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Bilder und Objekte ({solrcount})
+                            <f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -620,7 +622,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Audio und Video ({solrcount})
+                            <f:translate key='Audio und Video' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -637,14 +639,14 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Bestände ({solrcount})
+                            <f:translate key='Bestände' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
                 </ul>
             </article>
 
             <article>
-                <i><strong>unter</strong> {box_title} ...</i>
+                <i><strong><f:translate key='normdata.unter' extensionName='dla_opac_ng'/></strong> {box_title} ...</i>
                 <ul class="list-links">
                     <ul class="list-links">
 
@@ -660,7 +662,7 @@
 
                         <li>
                             <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                                Bestände ({solrcount})
+                                <f:translate key='Bestände' extensionName='dla_opac_ng'/> ({solrcount})
                             </f:link.action>
                         </li>
 
@@ -676,7 +678,7 @@
 
                         <li>
                             <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                                Bilder und Objekte ({solrcount})
+                                <f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/> ({solrcount})
                             </f:link.action>
                         </li>
 
@@ -693,7 +695,7 @@
 
                         <li>
                             <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                                Provenienzexemplare ({solrcount})
+                                <f:translate key='Provenienzexemplare' extensionName='dla_opac_ng'/> ({solrcount})
                             </f:link.action>
                         </li>
 
@@ -702,7 +704,7 @@
             </article>
 
             <article>
-                <i>mögliche weitere Treffer</i>
+                <i><f:translate key='normdata.possible_hits' extensionName='dla_opac_ng'/></i>
                 <ul class="list-links">
 
                     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
@@ -718,7 +720,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Gedrucktes ({solrcount})
+                            <f:translate key='Gedrucktes' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -736,7 +738,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Handschriften ({solrcount})
+                            <f:translate key='Handschriften' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -754,7 +756,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Bilder und Objekte ({solrcount})
+                            <f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -772,7 +774,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Audio und Video ({solrcount})
+                            <f:translate key='Audio und Video' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -789,7 +791,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Bestände ({solrcount})
+                            <f:translate key='Bestände' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -806,7 +808,7 @@
 
                     <li>
                         <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
-                            Daten ({solrcount})
+                            <f:translate key='Daten' extensionName='dla_opac_ng'/> ({solrcount})
                         </f:link.action>
                     </li>
 
@@ -814,7 +816,7 @@
             </article>
 
             <article class="ctg-detail-showall">
-                <span class="icon bel-frage"></span> Nicht die richtige Kategorie dabei?
+                <span class="icon bel-frage"></span> <f:translate key="normdata.wrong_category" extensionName="dla_opac_ng" />
 
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'K0001')}" name="K0001" />
                 <s:data.newArray
@@ -827,7 +829,7 @@
                 <dla:countFromSolr query="{solvedQuery}" />
 
                 <f:link.action action="index" arguments="{q:query}" noCacheHash="1" class="ctg-button ctg-button-textnicon" title="alles zu dieser Körperschaft">
-                    alles zu dieser Körperschaft ({solrcount})
+                    <f:translate key='normdata.all_from_corporation' extensionName='dla_opac_ng'/> ({solrcount})
                 </f:link.action>
             </article>
 

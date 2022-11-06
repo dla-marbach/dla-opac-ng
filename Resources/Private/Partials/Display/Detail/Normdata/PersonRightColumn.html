@@ -40,7 +40,7 @@
 
 <f:if condition="{solrcount}>0">
     <section class="ctg-facet">
-        <h3><a title="schließen" class="button-close"><span class="icon bel-pfeil-o01"></span></a>Werkbeziehungen</h3>
+        <h3><a title="schließen" class="button-close"><span class="icon bel-pfeil-o01"></span></a><f:translate key="detail.document_link" extensionName="dla_opac_ng"/></h3>
         <ul>
             <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
             <f:if condition="{solrResult.id}!={id}">
@@ -65,7 +65,7 @@
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'lobid_ndb')}" name="lobid_ndb" />
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_id')}" name="wikidata_id" />
 
-    <h3>Andere Fundorte <a title="schließen" class="button-close"><span class="icon bel-pfeil-o01"></span></a></h3>
+    <h3><f:translate key="Andere Fundorte" extensionName="dla_opac_ng"/> <a title="schließen" class="button-close"><span class="icon bel-pfeil-o01"></span></a></h3>
     <ul>
         <f:if condition="{wikidata_website}">
             <f:for each="{wikidata_website}" as="item" key="key" iteration="iterator">
@@ -180,14 +180,14 @@
                         <span class="icon bel-lupe"></span>
                     </f:link.action>
                     <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
-                        Alle anzeigen
+                        <f:translate key="Alle anzeigen" extensionName="dla_opac_ng" />
                     </f:link.action>
                 </li>
             </f:then>
             <f:else>
                 <li>
                     <span class="icon"></span>
-                    Keine Treffer vorhanden
+                    <f:translate key="Keine Treffer vorhanden" extensionName="dla_opac_ng" />
                 </li>
             </f:else>
         </f:if>
@@ -237,14 +237,14 @@
                         <span class="icon bel-lupe"></span>
                     </f:link.action>
                     <f:link.action action="index" arguments="{q:{raw: '(PE0100:{PE0100_query} OR KSE200:{PE0100_query} OR THA720:({PE0100_query}) OR AKY526:({PE0100_query})) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
-                        Alle anzeigen
+                        <f:translate key="Alle anzeigen" extensionName="dla_opac_ng" />
                     </f:link.action>
                 </li>
             </f:then>
             <f:else>
                 <li>
                     <span class="icon"></span>
-                    Keine Treffer vorhanden
+                    <f:translate key="Keine Treffer vorhanden" extensionName="dla_opac_ng" />
                 </li>
             </f:else>
         </f:if>

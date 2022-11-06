@@ -26,7 +26,9 @@
             || {listview_type}=='Daten'">
                 <f:then>
                     <div style="padding: 0.5rem 0;">
-                        <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">Nicht bestellbar</span>
+                        <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">
+                            <f:translate key="Nicht bestellbar" extensionName="dla_opac_ng"/>
+                        </span>
                         <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 3px;"></span>
                     </div>
                 </f:then>
@@ -134,7 +136,7 @@
                 <f:render partial="Display/Detail/AccessExemplar/Signature" arguments="{_all}"/>
                 <f:if condition="{source}=='AK' && {AUKEY}">
                     <a href="" class="detail_link">
-                        Details & Benutzung
+                        <f:translate key="Details und Benutzung" extensionName="dla_opac_ng"/>
                     </a>
                 </f:if>
 
@@ -151,7 +153,7 @@
             <div class="">
                 <div class="ctg-dtvt-row" style="margin-left:auto;margin-right:auto;">
                     <div class="ctg-dtvt-label">
-                        Exemplar-Aktionen
+                        <f:translate key="Exemplar-Aktionen" extensionName="dla_opac_ng"/>
                     </div>
 
                     <div class="ctg-dtvt-content">
@@ -171,7 +173,7 @@
                     <f:then>
                         <div class="ctg-dtvt-row">
                             <div class="ctg-dtvt-label">
-                                Benutzungshinweis
+                                <f:translate key="Benutzungshinweis" extensionName="dla_opac_ng"/>
                             </div>
 
                             <div class="ctg-dtvt-content">
@@ -197,7 +199,7 @@
                 <f:if condition="{XX_AU_SIGNA_AUKEY} || {XX_AU_LESSIG_AUKEY}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Signatur
+                            <f:translate key="Signatur" extensionName="dla_opac_ng"/>
                         </div>
                         <f:comment><XX_AU_SIGNA_AUKEY> (<XX_AU_SIGNAV_AUKEY>) Wenn <XX_AU_LESSIG_AUKEY> belegt ist, das FEld LESSIG statt SIGNA ausgeben</f:comment>
                         <div class="ctg-dtvt-content">
@@ -220,7 +222,7 @@
                 <f:if condition="{XX_AU_ZUGNR_AUKEY}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Zugangsnummer
+                            <f:translate key="Zugangsnummer" extensionName="dla_opac_ng"/>
                         </div>
 
                         <div class="ctg-dtvt-content">
@@ -235,7 +237,7 @@
                 <f:if condition="{XX_AU_SENDER_AUKEY}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Sender
+                            <f:translate key="Sender" extensionName="dla_opac_ng"/>
                         </div>
 
                         <div class="ctg-dtvt-content">
@@ -250,7 +252,7 @@
                 <f:if condition="{XX_AU_SENDAT_AUKEY}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Sendedatum
+                            <f:translate key="Sendedatum" extensionName="dla_opac_ng"/>
                         </div>
 
                         <div class="ctg-dtvt-content">
@@ -269,7 +271,7 @@
                 <f:if condition="{detail_bestandsangaben}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Bestandsübersicht
+                            <f:translate key="Bestandsübersicht" extensionName="dla_opac_ng"/>
                         </div>
 
                         <div class="ctg-dtvt-content">
@@ -290,7 +292,7 @@
                 <f:if condition="{vorbesitzer_item}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Vorbesitzer
+                            <f:translate key="Vorbesitzer" extensionName="dla_opac_ng"/>
                         </div>
 
                         <div class="ctg-dtvt-content">
@@ -316,7 +318,7 @@
                 <f:if condition="{inbestand_item}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            In Bestand
+                            <f:translate key="In Bestand" extensionName="dla_opac_ng"/>
                         </div>
 
                         <div class="ctg-dtvt-content">
@@ -341,7 +343,7 @@
                 <f:if condition="{merkmale_item}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Merkmale
+                            <f:translate key="Merkmale" extensionName="dla_opac_ng"/>
                         </div>
 
                         <div class="ctg-dtvt-content">
@@ -381,7 +383,7 @@
                 <f:if condition="{XX_AU_FBTIT_AUKEY} || {XX_AU_BEMEXT_AUKEY} || {XX_AU_VIRAUF_AUKEY} || {XX_AU_AI710_AUKEY} || {XX_AU_A0710_AUKEY}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Beschreibung
+                            <f:translate key="Beschreibung" extensionName="dla_opac_ng"/>
                         </div>
 
                         <div class="ctg-dtvt-content">
@@ -427,7 +429,7 @@
                             <f:if condition="{material}=={item.id}">
                                 <div class="ctg-dtvt-row">
                                     <div class="ctg-dtvt-label">
-                                        Enthaltene Materialien
+                                        <f:translate key="Enthaltene Materialien" extensionName="dla_opac_ng"/>
                                     </div>
 
                                     <div class="ctg-dtvt-content">
@@ -449,11 +451,11 @@
                 <f:if condition="{XX_AU_BUCHUM_AUKEY}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Buchumschlag
+                            <f:translate key="Buchumschlag" extensionName="dla_opac_ng"/>
                         </div>
 
                         <div class="ctg-dtvt-content">
-                            "Vorhanden. Bitte per Leihschein bestellen."
+                            "<f:translate key="Vorhanden. Bitte per Leihschein bestellen." extensionName="dla_opac_ng"/>"
                         </div>
                     </div>
                 </f:if>
@@ -464,7 +466,7 @@
                 <f:if condition="{BEMURL}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Digitales Objekt
+                            <f:translate key="Digitales Objekt" extensionName="dla_opac_ng"/>
                         </div>
                         <div class="ctg-dtvt-content">
                             <f:for each="{BEMURL}" as="item" iteration="iterator">
@@ -486,7 +488,7 @@
                 <f:if condition="{XX_MM_MOTITL_INDKEY}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Digitales Objekt
+                            <f:translate key="Digitales Objekt" extensionName="dla_opac_ng"/>
                         </div>
 
                         <div class="ctg-dtvt-content">
@@ -525,7 +527,7 @@
                         </f:if>
                         <div class="ctg-dtvt-row">
                             <div class="ctg-dtvt-label">
-                                In Bestandsübersicht zeigen
+                                <f:translate key="In Bestandsübersicht zeigen" extensionName="dla_opac_ng"/>
                             </div>
 
                             <div class="ctg-dtvt-content">
@@ -571,7 +573,9 @@
             <f:if condition="{KLASS}=='nicht benutzbar' || {listview_type}=='Daten'">
                 <f:then>
                     <div style="padding: 0.5rem 0;">
-                        <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">Nicht bestellbar</span>
+                        <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">
+                            <f:translate key="Nicht bestellbar" extensionName="dla_opac_ng"/>
+                        </span>
                         <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 3px;"></span>
                     </div>
                 </f:then>
@@ -626,7 +630,7 @@
                     <f:then>
                         <div class="ctg-dtvt-row">
                             <div class="ctg-dtvt-label">
-                                Benutzungshinweis
+                                <f:translate key="Benutzungshinweis" extensionName="dla_opac_ng"/>
                             </div>
 
                             <div class="ctg-dtvt-content">
@@ -643,7 +647,7 @@
                     <f:then>
                         <div class="ctg-dtvt-row">
                             <div class="ctg-dtvt-label">
-                                Inventarnummer
+                                <f:translate key="Inventarnummer" extensionName="dla_opac_ng"/>
                             </div>
 
                             <div class="ctg-dtvt-content">
@@ -660,7 +664,7 @@
                 <f:if condition="{array}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Digitales Objekt
+                            <f:translate key="Digitales Objekt" extensionName="dla_opac_ng"/>
                         </div>
 
                         <div class="ctg-dtvt-content">
@@ -693,7 +697,9 @@
             <f:if condition="{DLAABT}=='Handschriftensammlung' || {DLAABT}=='Bibliothek' || {DLAABT}=='Cotta-Archiv' || {DLAABT}=='Suhrkamp-Archiv' ||{listview_type}=='Daten'">
                 <f:then>
                     <div style="padding: 0.5rem 0;">
-                        <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">Nicht bestellbar</span>
+                        <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">
+                            <f:translate key="Nicht bestellbar" extensionName="dla_opac_ng"/>
+                        </span>
                         <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 3px;"></span>
                     </div>
                 </f:then>
@@ -741,7 +747,7 @@
                     <f:then>
                         <div class="ctg-dtvt-row">
                             <div class="ctg-dtvt-label">
-                                Benutzungshinweis
+                                <f:translate key="Benutzungshinweis" extensionName="dla_opac_ng"/>
                             </div>
 
                             <div class="ctg-dtvt-content">
@@ -785,7 +791,7 @@
                 <f:if condition="{BUCHN}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Mediennummer
+                            <f:translate key="Mediennummer" extensionName="dla_opac_ng"/>
                         </div>
                         <div class="ctg-dtvt-content">
                             {BUCHN}
@@ -797,7 +803,7 @@
                 <f:if condition="{BEMEXT}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Bemerkungen
+                            <f:translate key="Bemerkungen" extensionName="dla_opac_ng"/>
                         </div>
                         <div class="ctg-dtvt-content">
                             <dla:replaceBreaks text="{BEMEXT}" as="BEMEXT" />
@@ -812,7 +818,7 @@
                 <f:if condition="{B01610}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Ordnung
+                            <f:translate key="Ordnung" extensionName="dla_opac_ng"/>
                         </div>
                         <div class="ctg-dtvt-content">
                             <f:for each="{B01610}" as="item" iteration="item_iterator">
@@ -857,7 +863,7 @@
                 <f:if condition="{B02610}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Verzeichnung
+                            <f:translate key="Verzeichnung" extensionName="dla_opac_ng"/>
                         </div>
                         <div class="ctg-dtvt-content">
                             <f:for each="{B02610}" as="item" iteration="item_iterator">
@@ -902,7 +908,7 @@
                 <f:if condition="{array}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Digitales Objekt
+                            <f:translate key="Digitales Objekt" extensionName="dla_opac_ng"/>
                         </div>
 
                         <div class="ctg-dtvt-content">
@@ -932,7 +938,9 @@
             <f:if condition="{listview_type}=='Daten'">
                 <f:then>
                     <div style="padding: 0.5rem 0;">
-                        <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">Nicht bestellbar</span>
+                        <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">
+                            <f:translate key="Nicht bestellbar" extensionName="dla_opac_ng"/>
+                        </span>
                         <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 3px;"></span>
                     </div>
                 </f:then>
@@ -994,7 +1002,7 @@
                     <f:then>
                         <div class="ctg-dtvt-row">
                             <div class="ctg-dtvt-label">
-                                Benutzungshinweis
+                                <f:translate key="Benutzungshinweis" extensionName="dla_opac_ng"/>
                             </div>
 
                             <div class="ctg-dtvt-content">
@@ -1015,7 +1023,7 @@
                 <f:if condition="{H04010}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Übernommene Sigel
+                            <f:translate key="Übernommene Sigel" extensionName="dla_opac_ng"/>
                         </div>
                         <div class="ctg-dtvt-content">
                             {H04010}
@@ -1029,7 +1037,7 @@
                 <f:if condition="{H00070}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Mikrofiche
+                            <f:translate key="Mikrofiche" extensionName="dla_opac_ng"/>
                         </div>
                         <div class="ctg-dtvt-content">
                             {H00070}
@@ -1043,7 +1051,7 @@
                 <f:if condition="{H00080}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Repro
+                            <f:translate key="Repro" extensionName="dla_opac_ng"/>
                         </div>
                         <div class="ctg-dtvt-content">
                             {H00080}
@@ -1057,7 +1065,7 @@
                 <f:if condition="{KASTNR}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Kasten
+                            <f:translate key="Kasten" extensionName="dla_opac_ng"/>
                         </div>
                         <div class="ctg-dtvt-content">
                             {KASTNR}
@@ -1071,7 +1079,7 @@
                 <f:if condition="{MAPPNR}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Mappe
+                            <f:translate key="Mappe" extensionName="dla_opac_ng"/>
                         </div>
                         <div class="ctg-dtvt-content">
                             {MAPPNR}
@@ -1086,7 +1094,7 @@
                 <f:if condition="{array}">
                     <div class="ctg-dtvt-row">
                         <div class="ctg-dtvt-label">
-                            Digitales Objekt
+                            <f:translate key="Digitales Objekt" extensionName="dla_opac_ng"/>
                         </div>
 
                         <div class="ctg-dtvt-content">

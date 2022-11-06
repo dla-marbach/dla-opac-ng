@@ -98,6 +98,23 @@
 
     <div id="detail" class="ctg-dtvt-details">
 
+        <div class="ctg-dtvt-row" style="display: none;">
+            <div class="ctg-dtvt-label">
+                <f:translate key='Medienart' extensionName='dla_opac_ng'/>
+            </div>
+            <div class="ctg-dtvt-content">
+                <f:render
+                        partial="Display/Field/List"
+                        arguments="{
+                    document:document,
+                    results:results,
+                    field:'listview_type',
+                    linkFieldContent:linkFieldContent,
+                    linkFacets:linkFacets
+                  }"/>
+            </div>
+        </div>
+
         <div class="ctg-dtvt-row">
             <div class="ctg-dtvt-label">
                 <f:translate key='Medium' extensionName='dla_opac_ng'/>

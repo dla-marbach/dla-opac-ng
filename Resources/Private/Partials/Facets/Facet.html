@@ -28,11 +28,13 @@
     </f:else>
 </f:if>
 
-<f:if condition="({f:count(subject:facetData.values)} > 0  || {facetInfo.type} == 'Timerange') && {facetValuesEmpty}!=1">
+<f:if condition="({f:count(subject:facetData.values)} > 0  || {facetInfo.type} == 'Timerange') && {facetValuesEmpty}!=1 || ({f:count(subject:facetData.values)} == 0 && {facetInfo.ajax} == 1)">
     <f:if condition="{f:count(subject:facetData.values)} == 1 && {facetkey} == '' && {facetInfo.type} != 'Timerange'">
         <f:then></f:then>
         <f:else>
-            <section class="ctg-facet">
+            <section class="ctg-facet {f:if(condition:facetInfo.ajax, then:'ajax-facet')}"
+                     id="{facetInfo.id}" data-activefacets="{s:find.ArrayToUrlParameter(array:config.activeFacets)}"
+                     data-displaydefault="{facetInfo.displayDefault}">
                 <f:comment>
                     <article class="facet facet-id-{facetInfo.id}{f:if(condition:facetInfo.type, then:' facet-type-{facetInfo.type}')}">
                     </article>
@@ -41,7 +43,7 @@
                     <f:if condition="{facetInfo.label}">
                         <f:then>
                             <h3>
-                                {facetInfo.label}
+                                <f:translate key='search.facet.{facetInfo.id}' extensionName='dla_opac_ng' default="{facetInfo.label}"/>
                                 <a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>" data-facet-toggle="1">
                                     <f:if condition="{facetInfo.collapse} && !{config.activeFacets.{facetInfo.id}}">
                                         <f:then><span class="icon bel-pfeil-u01"></span></f:then>
@@ -52,7 +54,8 @@
                         </f:then>
                         <f:else>
                             <h3>
-                                <f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}" default="{facetInfo.id}"/>
+                                <f:translate key='search.facet.{facetInfo.id}' extensionName='dla_opac_ng' default="{facetInfo.label}"/>
+                                <f:comment><f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}" default="{facetInfo.id}"/></f:comment>
                                 <a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>" data-facet-toggle="1">
                                     <f:if condition="{facetInfo.collapse} && !{config.activeFacets.{facetInfo.id}}">
                                         <f:then><span class="icon bel-pfeil-u01"></span></f:then>

@@ -22,7 +22,7 @@
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_filmportal')}" name="wikidata_filmportal" />
     <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'wikidata_id')}" name="wikidata_id" />
 
-    <h3>Andere Fundorte <a title="schließen" class="button-close"><span class="icon bel-pfeil-o01"></span></a></h3>
+    <h3><f:translate key="Andere Fundorte" extensionName="dla_opac_ng"/> <a title="schließen" class="button-close"><span class="icon bel-pfeil-o01"></span></a></h3>
     <ul>
         <f:if condition="{wikidata_website}">
             <f:for each="{wikidata_website}" as="item" key="key" iteration="iterator">
