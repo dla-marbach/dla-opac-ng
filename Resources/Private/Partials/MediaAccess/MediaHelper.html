@@ -1,0 +1,9 @@
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'media_url')}" name="media_url" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'media_ext')}" name="media_ext" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'media_thumbnail')}" name="media_thumbnail" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'media_access')}" name="media_access" />
+
+<dla:mediaPlayer urls="{media_url}" ext="{media_ext}" access="{media_access}" as="mediaData"/>
+
+<f:debug>{_all}</f:debug>

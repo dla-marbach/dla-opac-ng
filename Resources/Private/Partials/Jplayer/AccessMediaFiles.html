@@ -1,0 +1,35 @@
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'media_url')}" name="media_url" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'media_ext')}" name="media_ext" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'media_thumbnail')}" name="media_thumbnail" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'media_access')}" name="media_access" />
+
+<dla:mediaPlayer urls="{media_url}" ext="{media_ext}" access="{media_access}" as="mediaData"/>
+
+<v:variable.set value="0" name="renderPlayer" />
+<f:if condition="{mediaData.mediaplayer}">
+    <f:then>
+        <f:for each="{mediaData.mediaplayer}" as="playerItem" iteration="iterator">
+            <f:if condition="{playerItem.forbidden} != 1">
+                <f:then>
+                        <span class="jp_media_url"
+                              data-url="{playerItem.url}"
+                              data-poster="{media_thumbnail.{iterator.index}}"
+                              data-ext="{playerItem.ext}"
+                        ></span>
+                    <v:variable.set value="1" name="renderPlayer" />
+                </f:then>
+                <f:else>
+                    <div style="border: 1px solid;padding: 10px;background-color: #fcff58;">
+                        <f:translate key="mediaplayer.access_file_forbidden" extensionName='dla_opac_ng'/> {playerItem.url}
+                    </div>
+                </f:else>
+            </f:if>
+        </f:for>
+        <f:if condition="{renderPlayer}">
+            <f:then>
+                <f:render partial="Jplayer/Audioplayer" />
+            </f:then>
+        </f:if>
+    </f:then>
+</f:if>
