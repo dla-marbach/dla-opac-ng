@@ -44,7 +44,7 @@ class MediaPlayerViewHelper extends AbstractViewHelper
         //        "mp2",1,
         //        "rtf",1
 
-        $restrictionGroups = ['public', 'campus', 'sandbox', 'staff'];
+        $restrictionGroups = ['op_admin', 'op_campus', 'op_sandbox', 'op_staff'];
         $userRestrictionGroup = 'public';
 
         $mediaPlayerExt = ['wav', 'mp4', 'mp2'];

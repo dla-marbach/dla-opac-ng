@@ -358,6 +358,8 @@
       <label index="search.fieldselector.searchall">Free Search</label>
       <label index="search.fieldselector.not_date">Not dated</label>
       <label index="search.fieldselector.label_not_date">Only without dates</label>
+
+      <label index="mediaplayer.access_file_forbidden">Forbidden to access file:</label>
     </languageKey>
 
     <languageKey index="de" type="array">
@@ -718,6 +720,7 @@
       <label index="search.fieldselector.not_date">Ohne Datum</label>
       <label index="search.fieldselector.label_not_date">Nur ohne Datum</label>
 
+      <label index="mediaplayer.access_file_forbidden">Zugriff auf folgende Datei verweigert:</label>
     </languageKey>
 
   </data>

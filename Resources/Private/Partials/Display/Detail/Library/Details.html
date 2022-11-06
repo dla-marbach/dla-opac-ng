@@ -68,33 +68,7 @@
 </f:comment>
 
 <div class="ctg-detailview-media">
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'media_url')}" name="media_url" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'media_ext')}" name="media_ext" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'media_thumbnail')}" name="media_thumbnail" />
-    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'media_access')}" name="media_access" />
-
-    <dla:mediaPlayer urls="{media_url}" ext="{media_ext}" access="{media_access}" as="mediaData"/>
-
-    <f:if condition="{mediaData.mediaplayer}">
-        <f:then>
-            <f:for each="{mediaData.mediaplayer}" as="playerItem" iteration="iterator">
-                <f:if condition="{playerItem.forbidden} != 1">
-                    <f:then>
-                        <span class="jp_media_url"
-                              data-url="{playerItem.url}"
-                              data-poster="{media_thumbnail.{iterator.index}}"
-                              data-ext="{playerItem.ext}"
-                        ></span>
-                    </f:then>
-                    <f:else>
-                        Forbidden file access {playerItem.url}
-                    </f:else>
-                </f:if>
-            </f:for>
-
-            <f:render partial="Jplayer/Audioplayer" />
-        </f:then>
-    </f:if>
+    <f:render partial="Jplayer/AccessMediaFiles" arguments="{_all}"/>
 </div>
 
 <div class="ctg-detailview-tabs">
@@ -1038,20 +1012,8 @@
                             </f:if>
                         </f:for>
 
-                        <f:if condition="{mediaData.links}">
-                            <f:then>
-                                <f:for each="{mediaData.links}" as="link">
-                                    <f:if condition="{link.forbidden} == 1">
-                                        <f:then>
-                                            <span style="color: #797979">File access forbidden ({link.ext})</span>
-                                        </f:then>
-                                        <f:else>
-                                            <a href="{link.url}">{link.url}</a>
-                                        </f:else>
-                                    </f:if>
-                                </f:for>
-                            </f:then>
-                        </f:if>
+                        <f:render partial="MediaAccess/RenderLinks" arguments="{_all}"/>
+
                     </div>
                 </div>
             </f:then>

@@ -1000,20 +1000,12 @@
                                     arguments="{
                                 document:document,
                                 results:results,
-                                field:'XX_MM_MOPFAD_INDKEY',
-                                linkFieldContent:linkFieldContent,
-                                linkFacets:linkFacets
-                              }"/>
-
-                            <f:render
-                                    partial="Display/Field/List"
-                                    arguments="{
-                                document:document,
-                                results:results,
                                 field:'XX_MM_MOTITL_INDKEY',
                                 linkFieldContent:linkFieldContent,
                                 linkFacets:linkFacets
                               }"/>
+
+                            <f:render partial="MediaAccess/RenderLinks" arguments="{_all}"/>
 
                         </div>
                     </div>

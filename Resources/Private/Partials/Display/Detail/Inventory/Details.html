@@ -491,6 +491,9 @@
         </div>
         <div class="ctg-dtvt-content">
 
+            <f:render partial="MediaAccess/RenderLinks" arguments="{_all}"/>
+
+            <f:comment>
             <f:for each="{INDKEY}" as="item" iteration="iterator">
                 <s:data.newArray
                         name="query"
@@ -503,7 +506,6 @@
                 </f:link.action>
             </f:for>
 
-            <f:comment>
             <f:render
                     partial="Display/Field/List"
                     arguments="{
@@ -513,11 +515,12 @@
             linkFieldContent:1,
             linkFacets:linkFacets,
             linkTexts:XX_MM_MOTITL_INDKEY
-          }"/></f:comment>
+          }"/>
 
             <f:for each="{digitalObject}" as="item" iteration="iterator">
                 <a href="{AURL.{iterator.index}}">{item}</a><br />
             </f:for>
+            </f:comment>
         </div>
     </div>
 </f:if>
