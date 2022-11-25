@@ -77,8 +77,8 @@ var tx_find = (function () {
 		  $.ajax({
 			  url: url
 		  }).done(function (data) {
-			  var i = 1;
-			  $(data).each(function () {
+			  var i = $(data).length;
+			  $($(data).toArray().reverse()).each(function () {
 				  var elementClass = '';
 				  var iconClass = 'bel-kreis01';
 				  var displayDefault = $('#' + facetId).data('displaydefault');
@@ -92,26 +92,8 @@ var tx_find = (function () {
 					  elementClass = elementClass + ' hidden';
 				  }
 				  $('#'+facetId+' ul.facetList')
-					  .append('<li class="' + elementClass + '"><a href="' + this.link + '"><span class="icon '+ iconClass +'"></span></a><a class="facetAdd facetText internal" href="' + this.link + '">' + this.label + '<em>('+this.count+')</em></a><a class="facetExclude facetRemoveIcon hide-text" href="' + this.linkReverse + '"><span class="icon bel-verboten"></span></a></li>');
-				  i++;
-			  });
-			  $('#'+facetId+' ul.facetList')
-				  .append('<li class="facetShowAll">\n' +
-					  '        <a href="#" class="dla-toggle-facets dla-toggle-facets-collapsed" data-translate-show-all="show all" data-translate-show-less="show less">\n' +
-					  '            show all\n' +
-					  '        </a>\n' +
-					  '    </li>');
-			  $('#'+facetId+' ul.facetList li a.dla-toggle-facets').on('click', function(e){
-				  e.preventDefault();
-				  var containingList = $(this).parents('ul')[0];
-				  if ($(this).hasClass('dla-toggle-facets-collapsed')) {
-					  jQuery('.hidden', containingList).slideDown(300);
-					  $(this).html($(this).data('translate-show-less'));
-				  } else {
-					  jQuery('.hidden', containingList).slideUp(300);
-					  $(this).html($(this).data('translate-show-all'));
-				  }
-				  $(this).toggleClass('dla-toggle-facets-collapsed');
+					  .prepend('<li class="' + elementClass + '"><a href="' + this.link + '"><span class="icon '+ iconClass +'"></span></a><a class="facetAdd facetText internal" href="' + this.link + '">' + this.label + '<em>('+this.count+')</em></a><a class="facetExclude facetRemoveIcon hide-text" href="' + this.linkReverse + '"><span class="icon bel-verboten"></span></a></li>');
+				  i--;
 			  });
 
 			  // // if decisiontree (marbach only)
