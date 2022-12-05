@@ -11,7 +11,17 @@
     .bt-listview h3 {display: block; width: 95%; margin: auto; float:right; vertical-align: middle;}
     .bt-infohelp {display: inline; vertical-align: middle; padding-left: 0.25rem;}
     .bt-content {display: inline-block; width: 70%; vertical-align: middle; padding: 0.25rem 0;}
-    .bt-actions {display: inline-block; width: 25%; vertical-align: top; text-align: right; padding: 0.25rem 0rem 0.25rem 0;}
+    .bt-actions {display: inline-block; width: 20%; vertical-align: top; text-align: right; padding: 0.25rem 0rem 0.25rem 0;}
+    @media (max-width: 1000px) {
+        span.bt-actions {
+            width: 20%;
+        }
+    }
+    @media (max-width: 800px) {
+        span.bt-actions {
+            width: 18%;
+        }
+    }
     span.classification-counter {display: inline-block;vertical-align: top;text-align: right;padding: 0.25rem 0rem 0.25rem 0;}
     .icon {display: inline-block; width: auto; height: auto; font-size: 2rem; vertical-align: middle;}
     .bt-listview a {color: #222; text-decoration: none;}
