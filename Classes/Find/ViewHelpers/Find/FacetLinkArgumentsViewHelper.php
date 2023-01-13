@@ -57,6 +57,8 @@ class FacetLinkArgumentsViewHelper extends AbstractViewHelper
             false, null);
         $this->registerArgument('activeFacets', 'array', 'Array of active facets', false, []);
         $this->registerArgument('mode', 'string', 'add|remove', false, 'add');
+        $this->registerArgument('not', 'boolean', 'Invert facet to not.', FALSE, '');
+        $this->registerArgument('modifier', 'string', 'Choose a modifier.', FALSE, '');
     }
 
     /**
@@ -77,6 +79,7 @@ class FacetLinkArgumentsViewHelper extends AbstractViewHelper
         $facetTerm = $arguments['facetTerm'];
         $activeFacets = $arguments['activeFacets'];
         $mode = $arguments['mode'];
+        $modifier = $arguments['modifier'];
         if ('remove' === $mode && $activeFacets) {
             if (array_key_exists($facetID, $activeFacets)) {
                 $itemToRemove = 'tx_find_find[facet]['.$facetID.']';
@@ -84,16 +87,17 @@ class FacetLinkArgumentsViewHelper extends AbstractViewHelper
                 if (array_key_exists($facetTerm, $activeFacets[$facetID])) {
                     $itemToRemove .= '['.$facetTerm.']';
                 }
-
                 $result[] = $itemToRemove;
             }
-
             // Go back to page 1.
             $result[] = 'tx_find_find[page]';
         } elseif ('add' === $mode) {
             $result['facet'] = [
                 $facetID => [$facetTerm => 1],
             ];
+            if ($modifier) {
+                $result['facet'][$arguments['facetID']][str_replace('&', '%26', $arguments['facetTerm'])] = $arguments['modifier'];
+            }
         }
 
         return $result;
