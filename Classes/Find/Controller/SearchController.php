@@ -85,6 +85,11 @@ class SearchController extends ActionController
      */
     public function indexAction()
     {
+//        if(!array_key_exists('qParam', $this->requestArguments)) {
+//            $params = array('qParam' => '1');
+//            $this->redirect('index', NULL, NULL, array_merge($this->requestArguments, $params));
+//        }
+
         if (array_key_exists('id', $this->requestArguments)) {
             $this->forward('detail');
         } else {
@@ -100,6 +105,28 @@ class SearchController extends ActionController
 
             $this->addStandardAssignments();
             $defaultQuery = $this->searchProvider->getDefaultQuery();
+
+            // redirect to detail if only one item found and search is configured to redirect
+            if ($defaultQuery['results']->getNumFound() === 1) {
+                $redirectQueries = [];
+                if ($this->settings['redirectAllOneHitToDetail']) {
+                    $docId = $defaultQuery['results']->getData()['response']['docs'][0]['id'];
+                    $this->redirect('detail', NULL, NULL, ['id' => $docId]);
+                } else {
+                    foreach ($this->settings['queryFields'] as $querySettings) {
+                        if ($querySettings['redirectToDetail']) {
+                            $redirectQueries[$querySettings['id']] = 1;
+                        }
+                    }
+
+                    foreach ($this->requestArguments['q'] as $queryId => $queryTerm) {
+                        if (array_key_exists($queryId, $redirectQueries)) {
+                            $docId = $defaultQuery['results']->getData()['response']['docs'][0]['id'];
+                            $this->redirect('detail', NULL, NULL, ['id' => $docId]);
+                        }
+                    }
+                }
+            }
 
             $viewValues = [
                 'arguments' => $this->searchProvider->getRequestArguments(),
