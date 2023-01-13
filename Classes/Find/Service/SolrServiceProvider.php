@@ -271,8 +271,24 @@ class SolrServiceProvider extends AbstractServiceProvider
         $activeFacets = $this->getActiveFacets($arguments);
         $activeFacetsForTemplate = [];
         foreach ($activeFacets as $facetID => $facets) {
+            $concatFacetTerm = "";
+            $i = 0;
             foreach ($facets as $facetTerm => $facetInfo) {
                 $facetQuery = $this->getFacetQuery($this->getFacetConfig($facetID), $facetTerm);
+                if ($facetInfo['modifier'] == 'not') {
+                    $facetQuery = 'NOT '.$facetQuery;
+                }
+
+                // multi select facet
+                if ($facetInfo['config']['facettype'] == 'multi_select_facet') {
+                    if ($concatFacetTerm == "") {
+                        $concatFacetTerm = $facetTerm;
+                    } else {
+                        $concatFacetTerm = $concatFacetTerm . ' ' .$facetTerm;
+                    }
+                    $i++;
+                }
+
                 if ('and' === $facetInfo['config']['queryStyle']) {
                     // TODO: Do we really use this part of the condition? Can it be removed?
                     // Alternative query style: adding a conjunction to the main query.
@@ -302,8 +318,21 @@ class SolrServiceProvider extends AbstractServiceProvider
                         $this->query->createFilterQuery($queryInfo)
                             ->setQuery('-'.str_replace('("%s")', '[* TO *]', $facetInfo['config']['query']));
                     } else {
-                        $this->query->createFilterQuery($queryInfo)
-                            ->setQuery($facetQuery);
+
+                        if ($facetInfo['config']['facettype'] == 'multi_select_facet') {
+
+                            if ($i == count($facets)) {
+                                $facetQuery = str_replace('"%s"', $concatFacetTerm, $facetInfo['config']['query']);
+                                $this->query->createFilterQuery($queryInfo)->setQuery($facetQuery);
+                            } else {
+                                continue;
+                            }
+
+                        } else {
+                            $this->query->createFilterQuery($queryInfo)
+                                ->setQuery($facetQuery);
+                        }
+
                     }
                 }
 
@@ -321,6 +350,9 @@ class SolrServiceProvider extends AbstractServiceProvider
      */
     protected function addFacetQueries(): void
     {
+        $statsquery = clone $this->query;
+        $statsquery->setStart(0)->setRows(0);
+
         $facetConfiguration = $this->settings['facets'];
 
         if ($facetConfiguration) {
@@ -352,6 +384,63 @@ class SolrServiceProvider extends AbstractServiceProvider
 
                         if (1 === (int) $facet['excludeOwnFilter']) {
                             $queryForFacet->addExclude($this->tagForFacet($facetID));
+                        }
+                    } elseif (array_key_exists('facettype', $facet)) {
+                        if ($facet['facettype'] == 'date_range') {
+                            if ($facet['start'] && $facet['end'] && $facet['gap']) {
+
+                                try {
+                                    $stats = $statsquery->getStats();
+                                    $stats->createField('facet_time_stat');
+
+                                    $resultset = $this->connection->select($statsquery);
+
+                                    $statsResult = $resultset->getStats();
+                                    $minValue = $statsResult->getResult('facet_time_stat')->getMin();
+                                    #seems not be used
+                                    #$maxValue = $statsResult->getResult('facet_time_stat')->getMax();
+
+                                } catch (HttpException $exception) {
+                                    // preset to year 0, if stats query faild
+                                    $minValue = '0000-01-01';
+
+                                } catch (Exception $e) {
+                                    // preset to year 0, if stats query faild
+                                    $minValue = '0000-01-01';
+                                }
+
+                                $date = new \DateTime($minValue);
+                                //$maxDate = new \DateTime($maxValue);
+
+                                $nowDate = new \DateTime('now');
+
+                                $years = date_diff($date, $nowDate);
+
+                                if ($years->y < 50) {
+                                    $gap = 1;
+                                } else {
+                                    $gap = round($years->y / 50);
+                                }
+
+                                // calculate start date so the gap divide evenly
+                                $mod = $years->y % $gap;
+                                $adding = $gap - $mod;
+
+                                $startTimeYears = $years->y + $adding;
+
+                                $start = 'NOW/YEAR-'. $startTimeYears .'YEARS';
+
+                                $end = $nowDate
+                                    ->add(new \DateInterval('P1Y'))
+                                    ->format('Y-m-d\TH:i:s\Z');
+
+                                $queryForFacet = $facetSet->createFacetRange($facet['field'] ? $facetID : $facet['field']);
+                                $queryForFacet->setField($facet['field'] ? $facet['field'] : $facetID)
+                                    ->setGap('+'.$gap.'YEAR')
+                                    ->setStart($start)
+                                    ->setEnd($end);
+
+                            }
                         }
                     } else {
                         $queryForFacet = $facetSet->createFacetField($facetID);
@@ -645,6 +734,7 @@ class SolrServiceProvider extends AbstractServiceProvider
         $this->addFeatures();
         $this->addTypoScriptFilters();
         $this->addDefaultQueryOperator();
+//        $this->addMainQueryOperator();
 
         $this->setConfigurationValue('solarium', $this->query);
     }
@@ -1047,9 +1137,30 @@ class SolrServiceProvider extends AbstractServiceProvider
                 if (2 === (int) $fieldInfo['noescape']) {
                     $chars = explode(',', $fieldInfo['escapechar']);
                     foreach ($queryTerms as $key => $term) {
+                        $queryTerm = $term;
                         foreach ($chars as $char) {
-                            $queryTerms[$key] = str_replace($char, '\\'.$char, $term);
+                            $queryTerm = str_replace($char, '\\'.$char, $queryTerm);
                         }
+                        foreach ($fieldInfo['replaceAfterEscape'] as $number => $values) {
+                            foreach ($values as $find => $replace) {
+                                if ($find == "boost") {
+                                    continue;
+                                }
+                                $boost = $values['boost'];
+                                $queryTerm = str_replace($find, $replace, $queryTerm);
+
+                                if ($boost) {
+                                    $pos = strpos($queryTerm, $replace);
+                                    $strLength = strlen($replace);
+                                    $docId = substr($queryTerm, ($pos + $strLength),10);
+                                    $queryTerm = str_replace($replace.$docId, $replace.$docId.'^'.$boost, $queryTerm);
+                                }
+
+                            }
+
+                        }
+                        $queryTerms[$key] = $queryTerm;
+
                     }
 
                     $queryPart = $magicFieldPrefix.vsprintf($queryFormat, $queryTerms);
@@ -1083,13 +1194,16 @@ class SolrServiceProvider extends AbstractServiceProvider
     {
         $facetQueries = [];
         $facetConfig = $this->getFacetConfig($facetID);
-        foreach (array_keys($facetSelection) as $facetTerm) {
+        foreach (array_keys($facetSelection) as $facetTerm => $facetStatus) {
             $facetInfo = [
                 'id' => $facetID,
                 'config' => $facetConfig,
                 'term' => $facetTerm,
                 'query' => $this->getFacetQuery($facetConfig, $facetTerm),
             ];
+            if ($facetStatus == "not") {
+                $facetInfo['modifier'] = 'not';
+            }
             $facetQueries[$facetTerm] = $facetInfo;
         }
 
@@ -1150,6 +1264,7 @@ class SolrServiceProvider extends AbstractServiceProvider
     {
         $this->query->setStart($this->getOffset($arguments));
         $this->query->setRows($this->getCount($arguments));
+        $this->addResultCountOptionsToTemplate($arguments);
     }
 
     /**
@@ -1199,4 +1314,16 @@ class SolrServiceProvider extends AbstractServiceProvider
         $ping = $this->connection->createPing();
         $this->connection->ping($ping);
     }
+
+//    /*
+//     * Set configured main query operator. Defaults to 'AND'.
+//     */
+//    private function addMainQueryOperator()
+//    {
+//        $mainQueryOperator = 'AND';
+//        if (isset($this->settings['mainQueryOperator'])) {
+//            $mainQueryOperator = $this->settings['mainQueryOperator'];
+//        }
+//        $this->query->setQueryDefaultOperator($mainQueryOperator);
+//    }
 }
