@@ -3,6 +3,7 @@
 namespace Dla\DlaOpacNg\ViewHelpers;
 
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
 class HistogramValueViewHelper extends AbstractViewHelper
 {
@@ -22,34 +23,26 @@ class HistogramValueViewHelper extends AbstractViewHelper
     }
 
     /**
-     * @return boolean
+     * @return array
      */
-    public function render()
-    {
-        $array = $this->arguments['array'];
-        $resultValue = date($this->arguments['dateFormat'], strtotime(min(array_keys($array))));
+    public static function renderStatic(
+        array $arguments,
+        \Closure $renderChildrenClosure,
+        RenderingContextInterface $renderingContext
+    ) {
+
+        $array = $arguments['array'];
+        $minTimeValue = date($arguments['dateFormat'], strtotime(min(array_keys($array))));
 
         foreach ($array as $key => $value) {
             $timeArray[] = $key;
         }
+        $maxTimeValue = date($arguments['dateFormat'], strtotime(max($timeArray)));
 
-        $valueName = $this->arguments['firstValueAs'];
-        if ($valueName !== null) {
-            if ($this->templateVariableContainer->exists($valueName)) {
-                $this->templateVariableContainer->remove($valueName);
-            }
-            $this->templateVariableContainer->add($valueName, $resultValue);
-        }
-
-        $resultValue = date($this->arguments['dateFormat'], strtotime(max($timeArray)));
-
-        $valueName = $this->arguments['lastValueAs'];
-        if ($valueName !== null) {
-            if ($this->templateVariableContainer->exists($valueName)) {
-                $this->templateVariableContainer->remove($valueName);
-            }
-            $this->templateVariableContainer->add($valueName, $resultValue);
-        }
+        return [
+            $arguments['lastValueAs'] => $maxTimeValue,
+            $arguments['firstValueAs'] => $minTimeValue,
+        ];
     }
 
 }
