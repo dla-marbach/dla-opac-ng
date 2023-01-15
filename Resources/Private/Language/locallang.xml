@@ -247,10 +247,10 @@
       <!-- Resources/Private/Partials/Display/Detail/Manuscripts/Details.html -->
       <label index="Gattung">Genre</label>
       <label index="Weitere Gattung">Other Genres</label>
-      <label index="VON/AN">FROM/TO</label>
-      <label index="VON">FROM</label>
-      <label index="AN">TO</label>
-      <label index="ÜBER">ABOUT</label>
+      <label index="VON/AN">From/To</label>
+      <label index="VON">From</label>
+      <label index="AN">To</label>
+      <label index="ÜBER">About</label>
       <label index="Entstehungsort">Place of Origin</label>
       <label index="Vorliegende Namensform">Current Name</label>
       <label index="Titel">Title</label>
@@ -308,7 +308,7 @@
       <label index="weiterer Hinweis hier">More information here</label>
       <!-- Resources/Private/Partials/Form/Form.html -->
       <label index="Kallías">Kallías</label>
-      <label index="der Online-Katalog des Deutschen Literaturarchivs Marbach">The Online Catalogue of the Deutschen Literaturarchivs Marbach</label>
+      <label index="der Online-Katalog des Deutschen Literaturarchivs Marbach">Online Catalogue of the Deutschen Literaturarchivs Marbach</label>
       <label index="Merkliste">Watchlist</label>
       <label index="Feedback">Feedback</label>
       <label index="Mein Konto">My account</label>
@@ -361,9 +361,9 @@
 
       <label index="search.facet.active_facets">Active facets</label>
       <label index="search.facet.reset_facets">Reset facets</label>
-      <label index="search.facet.FormUndInhalt">Form and content</label>
+      <label index="search.facet.FormUndInhalt">Form and Content</label>
       <label index="search.facet.Medium">Medium</label>
-      <label index="search.facet.Personen">Persons and corporations</label>
+      <label index="search.facet.Personen">Persons and Corporations</label>
       <label index="search.facet.Zeit">Time</label>
       <label index="search.facet.Thema">Subject</label>
       <label index="search.facet.NeuImKatalog">New in catalogue</label>
@@ -371,14 +371,14 @@
       <label index="search.facet.Ort">Location</label>
       <label index="search.facet.Sammlung">Collection</label>
       <label index="search.facet.Datenbestand">Dataset</label>
-      <label index="search.facet.Bibliographie">Bibliographie</label>
+      <label index="search.facet.Bibliographie">Bibliography</label>
 
       <label index="sortby.Default">Default</label>
-      <label index="sortby.yearAsc">Year ascending</label>
-      <label index="sortby.yearDesc">Year descending</label>
-      <label index="sortby.titleAsc">Title (A-Z)</label>
-      <label index="sortby.titleDesc">Title (Z-A)</label>
-      <label index="sortby.normdataDesc">Normdata descending</label>
+      <label index="sortby.Jahr aufsteigend">Year ascending</label>
+      <label index="sortby.Jahr absteigend">Year descending</label>
+      <label index="sortby.Titel (A-Z)">Title (A-Z)</label>
+      <label index="sortby.Titel(Z-A)">Title (Z-A)</label>
+      <label index="sortby.Normdaten absteigend">Normdata descending</label>
 
       <label index="info.telephone">Tel.</label>
       <label index="info.mo_fr_9_17">Monday - Friday, 9:00h - 17:00h</label>
@@ -460,6 +460,15 @@
       <label index="av order sent">Your order has been sent. &lt;br/&gt; To use, please contact us on the extension number 07144/848-378 oder -379</label>
       <label index="bo order sent">Your order has been sent. &lt;br/&gt; For pickup, please contact us at the email address &lt;a href='mailto:bilder-und-objekte@dla-marbach.de'&gt;bilder-und-objekte@dla-marbach.de&lt;/a&gt;</label>
 
+      <label index="Eingabe zurücksetzen">Reset entry</label>
+      <label index="Unter">Under</label>
+      <label index="FAQ Info">you can find tips for searching or you can contact us.</label>
+      <label index="Fernleihe">Interlibray Loan</label>
+      <label index="Primäre Quellen von">Primary Sources from</label>
+      <label index="Sekundäre Quellen über">Secondary Sources from</label>
+      <label index="Übersetzungen von">Translations from</label>
+      <label index="Rezensionen zu">Reviews of</label>
+      <label index="Schlagwort">Subject</label>
     </languageKey>
 
     <languageKey index="de" type="array">
@@ -835,11 +844,11 @@
       <label index="search.facet.Bibliographie">Bibliographie</label>
 
       <label index="sortby.Default">Default</label>
-      <label index="sortby.yearAsc">Jahr aufsteigend</label>
-      <label index="sortby.yearDesc">Jahr absteigend</label>
-      <label index="sortby.titleAsc">Titel (A-Z)</label>
-      <label index="sortby.titleDesc">Titel (Z-A)</label>
-      <label index="sortby.normdataDesc">Normdaten absteigend</label>
+      <label index="sortby.Jahr aufsteigend">Jahr aufsteigend</label>
+      <label index="sortby.Jahr absteigend">Jahr absteigend</label>
+      <label index="sortby.Titel (A-Z)">Titel (A-Z)</label>
+      <label index="sortby.Titel(Z-A)">Titel (Z-A)</label>
+      <label index="sortby.Normdaten absteigend">Normdaten absteigend</label>
 
       <label index="detail.more_details">Weitere Details</label>
       <label index="detail.document_link">Werkbeziehungen</label>
@@ -912,6 +921,16 @@
       <label index="print order sent">Ihre Bestellung wurde verschickt. &lt;br/&gt; Die Materialien werden im Bibliothekslesesaal für Sie bereitgestellt.</label>
       <label index="av order sent">Ihre Bestellung wurde verschickt. &lt;br/&gt; Zur Benutzung kontaktieren Sie uns bitte unter der Durchwahlnummer 07144/848-378 oder -379</label>
       <label index="bo order sent">Ihre Bestellung wurde verschickt. &lt;br/&gt; Zur Abholung kontaktieren Sie uns bitte unter der Mail-Adresse &lt;a href='mailto:bilder-und-objekte@dla-marbach.de'&gt;bilder-und-objekte@dla-marbach.de&lt;/a&gt;</label>
+
+      <label index="Eingabe zurücksetzen">Eingabe zurücksetzen</label>
+      <label index="Unter">Unter</label>
+      <label index="FAQ Info">finden Sie Tipps zur Suche. Oder Sie wenden sich direkt an uns.</label>
+      <label index="Fernleihe">Fernleihe</label>
+      <label index="Primäre Quellen von">Primäre Quellen von</label>
+      <label index="Sekundäre Quellen über">Sekundäre Quellen über</label>
+      <label index="Übersetzungen von">Übersetzungen von</label>
+      <label index="Rezensionen zu">Übersetzungen von</label>
+      <label index="Schlagwort">Schlagwort</label>
     </languageKey>
 
   </data>

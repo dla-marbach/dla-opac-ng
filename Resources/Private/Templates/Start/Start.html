@@ -360,7 +360,7 @@
                         <span>
                                 <button type="button" class="extended-search-reset">
                                     <span class="icon bel-ende03"></span>
-                                    Eingabe zurücksetzen
+                                    <f:translate key='Eingabe zurücksetzen' extensionName='dla_opac_ng'/>
                                 </button>
                             </span>
                     </div>
@@ -405,7 +405,10 @@
                             addQueryString="TRUE"
                             arguments="{extendedSearch: 1}"
                             class="linkExtendedSearch">
-                        <span class="icon bel-regler01"></span><span class="ctg-hd-addon-term show-ext-search"><f:translate key='Expertensuche' extensionName='dla_opac_ng'/></span>
+                        <span class="icon bel-regler01"></span>
+                        <span class="ctg-hd-addon-term show-ext-search" data-extendedsearch="{f:translate(key:'Expertensuche', extensionName='dla_opac_ng')}" data-search="{f:translate(key:'basic Search', extensionName='dla_opac_ng')}">
+                            <f:translate key='Expertensuche' extensionName='dla_opac_ng'/>
+                        </span>
                     </f:link.action>
                 </li>
                 <li>

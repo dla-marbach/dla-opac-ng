@@ -306,7 +306,9 @@
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
 
                 <article>
-                    <i><strong>Primäre Quellen von</strong> {box_title} ...</i>
+                    <i>
+                        <strong><f:translate key='Primäre Quellen von' extensionName='dla_opac_ng'/></strong> {box_title} ...
+                    </i>
                     <ul class="list-links">
 
 
@@ -363,7 +365,7 @@
                 </article>
 
                 <article>
-                    <i><strong>Übersetzungen von</strong> {box_title} ...</i>
+                    <i><strong><f:translate key='Übersetzungen von' extensionName='dla_opac_ng'/></strong> {box_title} ...</i>
                     <ul class="list-links">
                         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PE0100')}" name="XX_PE_P0800_PE0100" />
                         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0331')}" name="A0331" />
@@ -416,7 +418,7 @@
                 </article>
 
                 <article>
-                    <i><strong>Sekundäre Quellen über</strong> {box_title} ... (Werk als Thema)</i>
+                    <i><strong><f:translate key='Sekundäre Quellen über' extensionName='dla_opac_ng'/></strong> {box_title} ... (Werk als Thema)</i>
                     <ul class="list-links">
                         <s:data.newArray
                                 name="query"
@@ -484,7 +486,7 @@
                 </article>
 
                 <article>
-                    <i><strong>Rezensionen zu</strong> {box_title} ...</i>
+                    <i><strong><f:translate key='Rezensionen zu' extensionName='dla_opac_ng'/></strong> {box_title} ...</i>
                     <ul class="list-links">
                     
                         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_PE_P0800_PE0100')}" name="XX_PE_P0800_PE0100" />
