@@ -20,18 +20,39 @@
         <div class="facetList" style="{f:if(condition:facetInfo.collapse, then:'display:none;')}">
     </f:else>
 </f:if>
-
-    <dla:HistogramValue firstValueAs="firstDate" lastValueAs="lastDate" array="{facetData.values}" dateFormat="{facetData.displayDateFormat}"/>
-
+<f:alias map="{histogramValues: '{dla:HistogramValue(firstValueAs: \"firstDate\", lastValueAs: \"lastDate\", array: facetData.values, dateFormat: facetInfo.displayDateFormat)}'}">
+    <span id="slider-data" data-facetinfo="{facetInfo.id}" data-firstdate="{histogramValues.firstDate}" data-lastdate="{histogramValues.lastDate}"></span>
     <script>
         $( document ).ready(function() {
-            var facetInfo = "{facetInfo.id}";
+            var facetInfo = $('#slider-data').data('facetinfo');
             var slider = document.getElementById('slider-histogramm-'+facetInfo);
-            var firstDate = {firstDate};
-            var lastDate = {lastDate};
+            var firstDate = $('#slider-data').data('firstdate');
+            if (firstDate.charAt(0) == '-') {
+                firstDate = 0;
+            }
+            var lastDate = $('#slider-data').data('lastdate');
 
             var frominput = document.getElementById('from-histogramm-'+facetInfo);
             var tillinput = document.getElementById('till-histogramm-'+facetInfo);
+
+            $(frominput).on('change', function () {
+                if ($(this).val() == "") {
+                    $('#publishDateFacetSubmit-Zeit').addClass('ctg-bu-disable');
+                }
+            });
+
+            $(tillinput).on('change', function () {
+                if ($(this).val() == "") {
+                    $('#publishDateFacetSubmit-Zeit').addClass('ctg-bu-disable');
+                }
+            });
+
+            $('#publishDateFacetSubmit-Zeit').on('click', function (event) {
+                if ($(tillinput).val() == "" || $(tillinput).val() == "") {
+                    event.preventDefault();
+                }
+            });
+
             <f:format.raw>
                 noUiSlider.create(slider, {
                     start: [firstDate, lastDate],
@@ -89,7 +110,7 @@
             });
         </f:format.raw>
     </script>
-
+</f:alias>
     <canvas id="myHistogram-{facetInfo.id}" width="400" height="300"></canvas>
 
     <div id="slider-histogramm-{facetInfo.id}"></div>

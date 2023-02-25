@@ -247,10 +247,10 @@
       <!-- Resources/Private/Partials/Display/Detail/Manuscripts/Details.html -->
       <label index="Gattung">Genre</label>
       <label index="Weitere Gattung">Other Genres</label>
-      <label index="VON/AN">FROM/TO</label>
-      <label index="VON">FROM</label>
-      <label index="AN">TO</label>
-      <label index="ÜBER">ABOUT</label>
+      <label index="VON/AN">From/To</label>
+      <label index="VON">From</label>
+      <label index="AN">To</label>
+      <label index="ÜBER">About</label>
       <label index="Entstehungsort">Place of Origin</label>
       <label index="Vorliegende Namensform">Current Name</label>
       <label index="Titel">Title</label>
@@ -461,6 +461,15 @@
       <label index="bo order sent">Your order has been sent. &lt;br/&gt; For pickup, please contact us at the email address &lt;a href='mailto:bilder-und-objekte@dla-marbach.de'&gt;bilder-und-objekte@dla-marbach.de&lt;/a&gt;</label>
 
       <label index="mediaplayer.access_file_forbidden">Forbidden to access file:</label>
+      <label index="Eingabe zurücksetzen">Reset entry</label>
+      <label index="Unter">Under</label>
+      <label index="FAQ Info">you can find tips for searching or you can contact us.</label>
+      <label index="Fernleihe">Interlibray Loan</label>
+      <label index="Primäre Quellen von">Primary Sources from</label>
+      <label index="Sekundäre Quellen über">Secondary Sources from</label>
+      <label index="Übersetzungen von">Translations from</label>
+      <label index="Rezensionen zu">Reviews of</label>
+      <label index="Schlagwort">Subject</label>
     </languageKey>
 
     <languageKey index="de" type="array">
@@ -915,6 +924,16 @@
       <label index="bo order sent">Ihre Bestellung wurde verschickt. &lt;br/&gt; Zur Abholung kontaktieren Sie uns bitte unter der Mail-Adresse &lt;a href='mailto:bilder-und-objekte@dla-marbach.de'&gt;bilder-und-objekte@dla-marbach.de&lt;/a&gt;</label>
 
       <label index="mediaplayer.access_file_forbidden">Zugriff auf folgende Datei verweigert:</label>
+
+      <label index="Eingabe zurücksetzen">Eingabe zurücksetzen</label>
+      <label index="Unter">Unter</label>
+      <label index="FAQ Info">finden Sie Tipps zur Suche. Oder Sie wenden sich direkt an uns.</label>
+      <label index="Fernleihe">Fernleihe</label>
+      <label index="Primäre Quellen von">Primäre Quellen von</label>
+      <label index="Sekundäre Quellen über">Sekundäre Quellen über</label>
+      <label index="Übersetzungen von">Übersetzungen von</label>
+      <label index="Rezensionen zu">Übersetzungen von</label>
+      <label index="Schlagwort">Schlagwort</label>
     </languageKey>
 
   </data>

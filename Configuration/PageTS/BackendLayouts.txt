@@ -1,1 +1,0 @@
-<INCLUDE_TYPOSCRIPT: source="DIR:EXT:dla_opac_ng/Configuration/PageTS/BackendLayouts" extensions="TXT">

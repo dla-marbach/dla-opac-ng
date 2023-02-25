@@ -69,11 +69,13 @@ class Sitemap extends Command {
             // build sitemaps with detail urls
             $y = 0;
             $i = 0;
+            $fileOpenFlag = false;
             $fileNames = [];
             $today = new \DateTime('today');
             foreach ($lines as $line_number => $line) {
                 if (!empty($line)) {
                     if ($y === 0) {
+                        $fileOpenFlag = true;
                         $sitemapFileName = 'sitemap' . $i . '.xml';
                         $sitemapFileHandler = fopen($SITEMAP_DIR . $sitemapFileName, 'w');
 
@@ -105,7 +107,12 @@ class Sitemap extends Command {
 
                     fwrite($sitemapFileHandler, $document->saveXML());
                     fclose($sitemapFileHandler);
+                    $fileOpenFlag = false;
                 }
+            }
+            if ($fileOpenFlag) {
+                fwrite($sitemapFileHandler, $document->saveXML());
+                fclose($sitemapFileHandler);
             }
 
             // build sitemap index file for each file
