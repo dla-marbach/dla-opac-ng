@@ -8,7 +8,6 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 class HistogramValueViewHelper extends AbstractViewHelper
 {
 
-
     /**
      * Register arguments.
      * @return void
@@ -17,8 +16,8 @@ class HistogramValueViewHelper extends AbstractViewHelper
     {
         parent::initializeArguments();
         $this->registerArgument('array', 'array', 'List of fields', true, array());
-        $this->registerArgument('firstValueAs', 'string', 'name of the value result variable', true, "firstValue");
-        $this->registerArgument('lastValueAs', 'string', 'name of the value result variable', true, "lastValue");
+        $this->registerArgument('firstValueAs', 'string', 'name of the value result variable', false, "firstValue");
+        $this->registerArgument('lastValueAs', 'string', 'name of the value result variable', false, "lastValue");
         $this->registerArgument('dateFormat', 'string', 'returns date in the given format default is Y', false, "Y");
     }
 
@@ -40,8 +39,8 @@ class HistogramValueViewHelper extends AbstractViewHelper
         $maxTimeValue = date($arguments['dateFormat'], strtotime(max($timeArray)));
 
         return [
-            $arguments['lastValueAs'] => $maxTimeValue,
-            $arguments['firstValueAs'] => $minTimeValue,
+            'lastDate' => $maxTimeValue,
+            'firstDate' => $minTimeValue,
         ];
     }
 

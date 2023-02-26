@@ -1,3 +1,4 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
 {namespace s=Subugoe\Find\ViewHelpers}
 {namespace dla=Dla\DlaOpacNg\ViewHelpers}
 {namespace slub=Slub\SlubFindExtend\ViewHelpers}
@@ -11,18 +12,18 @@
 
 <f:comment>Write viewHelper to get the first year (first element of value array)</f:comment>
 
-
-<f:if condition="{config.activeFacets.{facetInfo.id}}">
+<v:variable.set value="{facetInfo.id}" name="facettenId" />
+<v:variable.set value="" name="facetDisplay" />
+<f:if condition="{facetInfo.collapse} && !{config.activeFacets.{facetInfo.id}}">
     <f:then>
-        <div class="facetList">
+        <v:variable.set value="display:none;" name="facetDisplay" />
     </f:then>
-    <f:else>
-        <div class="facetList" style="{f:if(condition:facetInfo.collapse, then:'display:none;')}">
-    </f:else>
 </f:if>
-<f:alias map="{histogramValues: '{dla:HistogramValue(firstValueAs: \"firstDate\", lastValueAs: \"lastDate\", array: facetData.values, dateFormat: facetInfo.displayDateFormat)}'}">
+<div class="facetList" style="{facetDisplay}">
+    <v:variable.set value="{dla:HistogramValue(array: facetData.values, dateFormat: facetInfo.displayDateFormat)}" name="histogramValues" />
     <span id="slider-data" data-facetinfo="{facetInfo.id}" data-firstdate="{histogramValues.firstDate}" data-lastdate="{histogramValues.lastDate}"></span>
     <script>
+        <f:format.raw>
         $( document ).ready(function() {
             var facetInfo = $('#slider-data').data('facetinfo');
             var slider = document.getElementById('slider-histogramm-'+facetInfo);
@@ -53,13 +54,12 @@
                 }
             });
 
-            <f:format.raw>
                 noUiSlider.create(slider, {
                     start: [firstDate, lastDate],
                     connect: true,
                     range: {
-                        'min': firstDate,
-                        'max': lastDate
+                        'min': parseInt(firstDate),
+                        'max': parseInt(lastDate)
                     }
                 });
 
@@ -110,7 +110,6 @@
             });
         </f:format.raw>
     </script>
-</f:alias>
     <canvas id="myHistogram-{facetInfo.id}" width="400" height="300"></canvas>
 
     <div id="slider-histogramm-{facetInfo.id}"></div>
