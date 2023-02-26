@@ -160,6 +160,9 @@ $(document).ready(function(){
                         $('.order-overlay .info .order-info-av').show();
                     }
                     $('.order-overlay .info').show();
+                } else {
+                    $('.order-overlay span.error').text($(data).filter("#meldung").text());
+                    $('.order-overlay span.error').show();
                 }
                 $('.order-overlay .confirm').show().on("click", function (event) {
                     event.preventDefault();
