@@ -274,7 +274,7 @@ class SolrServiceProvider extends AbstractServiceProvider
             $concatFacetTerm = "";
             $i = 0;
             foreach ($facets as $facetTerm => $facetInfo) {
-                $facetQuery = $this->getFacetQuery($this->getFacetConfig($facetID), $facetTerm);
+                $facetQuery = $this->getFacetQuery($this->getFacetConfig($facetID), $facetInfo['term']);
                 if ($facetInfo['modifier'] == 'not') {
                     $facetQuery = 'NOT '.$facetQuery;
                 }
@@ -1141,23 +1141,25 @@ class SolrServiceProvider extends AbstractServiceProvider
                         foreach ($chars as $char) {
                             $queryTerm = str_replace($char, '\\'.$char, $queryTerm);
                         }
-                        foreach ($fieldInfo['replaceAfterEscape'] as $number => $values) {
-                            foreach ($values as $find => $replace) {
-                                if ($find == "boost") {
-                                    continue;
-                                }
-                                $boost = $values['boost'];
-                                $queryTerm = str_replace($find, $replace, $queryTerm);
+                        if ($fieldInfo['replaceAfterEscape']) {
+                            foreach ($fieldInfo['replaceAfterEscape'] as $number => $values) {
+                                foreach ($values as $find => $replace) {
+                                    if ($find == "boost") {
+                                        continue;
+                                    }
+                                    $boost = $values['boost'];
+                                    $queryTerm = str_replace($find, $replace, $queryTerm);
 
-                                if ($boost) {
-                                    $pos = strpos($queryTerm, $replace);
-                                    $strLength = strlen($replace);
-                                    $docId = substr($queryTerm, ($pos + $strLength),10);
-                                    $queryTerm = str_replace($replace.$docId, $replace.$docId.'^'.$boost, $queryTerm);
+                                    if ($boost) {
+                                        $pos = strpos($queryTerm, $replace);
+                                        $strLength = strlen($replace);
+                                        $docId = substr($queryTerm, ($pos + $strLength),10);
+                                        $queryTerm = str_replace($replace.$docId, $replace.$docId.'^'.$boost, $queryTerm);
+                                    }
+
                                 }
 
                             }
-
                         }
                         $queryTerms[$key] = $queryTerm;
 
@@ -1198,8 +1200,8 @@ class SolrServiceProvider extends AbstractServiceProvider
             $facetInfo = [
                 'id' => $facetID,
                 'config' => $facetConfig,
-                'term' => $facetTerm,
-                'query' => $this->getFacetQuery($facetConfig, $facetTerm),
+                'term' => $facetStatus,
+                'query' => $this->getFacetQuery($facetConfig, $facetStatus),
             ];
             if ($facetStatus == "not") {
                 $facetInfo['modifier'] = 'not';
