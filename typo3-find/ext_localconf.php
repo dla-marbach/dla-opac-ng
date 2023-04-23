@@ -2,6 +2,10 @@
 
 defined('TYPO3_MODE') || exit;
 
+if (!defined('TYPO3_COMPOSER_MODE') || TYPO3_COMPOSER_MODE === false) {
+    require_once \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('find').'.Build/vendor/autoload.php';
+}
+
 $autoexec = static function () {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
         'Find',
