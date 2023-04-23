@@ -48,7 +48,8 @@ class CountFromSolrViewHelper extends AbstractViewHelper {
                     'port' => intval($this->templateVariableContainer->get('settings')['connection']['port']),
                     'path' => $this->templateVariableContainer->get('settings')['connection']['path'],
                     'timeout' => $this->templateVariableContainer->get('settings')['connection']['timeout'],
-                    'scheme' => $this->templateVariableContainer->get('settings')['connection']['scheme']
+                    'scheme' => $this->templateVariableContainer->get('settings')['connection']['scheme'],
+                    'core' => $this->templateVariableContainer->get('settings')['connection']['core']
                 )
             )
         );

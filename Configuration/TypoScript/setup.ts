@@ -66,8 +66,9 @@ plugin.tx_find {
                 options {
                     host = instant.dla-marbach.de
                     port = 8983
-                    path = /solr/opac-ng
+                    path = /
                     scheme = http
+                    core = opac-ng
                 }
             }
         }
@@ -75,9 +76,10 @@ plugin.tx_find {
         connection {
             host = instant.dla-marbach.de
             port = 8983
-            path = /solr/opac-ng
+            path = /
             timeout = 10
             scheme = http
+            core = opac-ng
         }
 
         mainQueryOperator = AND
