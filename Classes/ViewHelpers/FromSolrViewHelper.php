@@ -25,6 +25,8 @@ namespace Dla\DlaOpacNg\ViewHelpers;
 use Solarium\QueryType\Select\Result\Result;
 use Solarium\QueryType\Update\Query\Document\DocumentInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Solarium\Core\Client\Adapter\Curl;
 
 /**
  * FromSolrViewHelper
@@ -53,7 +55,9 @@ class FromSolrViewHelper extends AbstractViewHelper {
             )
         );
 
-        $this->solr = new \Solarium\Client($configuration);
+        $adapter = new Curl();
+
+        $this->solr = new \Solarium\Client($adapter, new EventDispatcher, $configuration);
     }
 
     /**
