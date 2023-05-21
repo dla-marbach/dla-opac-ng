@@ -1203,10 +1203,10 @@ class SolrServiceProvider extends AbstractServiceProvider
                 'term' => $facetStatus,
                 'query' => $this->getFacetQuery($facetConfig, $facetStatus),
             ];
-            if ($facetStatus == "not") {
+            if ($facetSelection[$facetStatus] == "not") {
                 $facetInfo['modifier'] = 'not';
             }
-            $facetQueries[$facetTerm] = $facetInfo;
+            $facetQueries[$facetStatus] = $facetInfo;
         }
 
         if ([] !== $facetQueries) {
