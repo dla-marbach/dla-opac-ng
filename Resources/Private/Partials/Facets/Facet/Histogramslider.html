@@ -28,7 +28,7 @@
             var facetInfo = $('#slider-data').data('facetinfo');
             var slider = document.getElementById('slider-histogramm-'+facetInfo);
             var firstDate = $('#slider-data').data('firstdate');
-            if (firstDate.charAt(0) == '-') {
+            if (firstDate.toString().charAt(0) == '-') {
                 firstDate = 0;
             }
             var lastDate = $('#slider-data').data('lastdate');
