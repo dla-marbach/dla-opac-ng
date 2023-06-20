@@ -105,6 +105,9 @@
                     var re = new RegExp("\\["+ facetInfo +"]\\[.*?]", "g");
                     url = url.replace(re, "["+facetInfo+"][RANGE " + min + " TO " + max + "]");
                     url = url.replace(/ & /g, " %26 ");
+                    // remove cHash
+                    var cHashRegex = new RegExp("&cHash=[a-zA-z0-9]*", "g");
+                    url = url.replace(cHashRegex, '');
                     $('#publishDateFacetSubmit-'+facetInfo).attr('href', url);
                 }
             });
