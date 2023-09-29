@@ -600,6 +600,21 @@ $(document).ready(function () {
             window.open(url, '_blank').focus();
         });
 
+        $('.watchlist-export-dataservice').on('click', function (event) {
+            event.preventDefault();
+
+            var url = 'http://dataservice.dla-marbach.de/v1/api/recordsById?ids=';
+            $('#watchlist-list li').each(function () {
+                url += $(this).find('a').data('docid') + ',';
+            });
+            url = url.replace(/,\s*$/, "");
+            url += '/csv';
+
+            window.open(url, '_blank').focus();
+        });
+
+
+
         // watchlist send via mail
         // $('.watchlist-send').on('click', function (event) {
         //     //event.preventDefault();

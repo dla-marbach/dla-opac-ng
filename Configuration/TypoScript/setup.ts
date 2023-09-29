@@ -59,6 +59,8 @@ plugin.tx_find {
     # Der Abschnitt "settings" enthält die Konfiguration der Plugin-Instanz
     settings {
 
+        dataserviceUrl = http://dataservice.dla-marbach.de/
+
         # Der Abschnitt "connection" definiert die Verbindung zum Solr-Server.
         # Wichtig ist die Angabe des zu verwendenden Solr-Cores in "path"!
         connections {
