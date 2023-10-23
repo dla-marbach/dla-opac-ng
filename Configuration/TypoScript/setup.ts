@@ -629,7 +629,7 @@ plugin.tx_find {
             176 {
                 id = detail_ks_weitere_gedrucktes
                 type = Range
-                query = NOT KSC200:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_names:("%2$s")
+                query = NOT KSC200:("%1$s") AND NOT DOKTYP:("Werktitel" OR "Ton- und Bildträger") AND facet_names:("%2$s") AND source:("AK")
                 noescape = 1
                 hidden = 1
             }
