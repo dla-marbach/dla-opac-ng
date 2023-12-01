@@ -1670,8 +1670,11 @@
         </f:if>
 </f:comment>
 
+
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'A0001')}" name="A0001" />
 
+<f:if condition="{A0001}">
+    <f:then>
         <s:data.newArray
                 name="query"
                 global="1"
@@ -1814,6 +1817,7 @@
                 </f:then>
             </f:if>
         </f:if>
-
+    </f:then>
+</f:if>
     </div>
 </div>
