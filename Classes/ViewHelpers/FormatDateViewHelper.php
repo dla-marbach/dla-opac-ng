@@ -34,10 +34,11 @@ class FormatDateViewHelper extends AbstractViewHelper
         $day = preg_match($this->arguments['regexDay'], $date,$matchDay);
 
         $yearOnly = false;
+        $yearMonth = false;
 
         if ($matchDay[1] == "00" || !$matchDay) {
             $matchDay[1] = 01;
-            $yearOnly = true;
+            $yearMonth = true;
         }
 
         if ($matchMonth[1] == "00" || !$matchMonth) {
@@ -58,6 +59,8 @@ class FormatDateViewHelper extends AbstractViewHelper
 
         if ($yearOnly) {
             $resultValue = date_format($resultValue, 'Y');
+        } else if ($yearMonth) {
+            $resultValue = date_format($resultValue, 'm.Y');
         } else {
             $resultValue = date_format($resultValue, 'd.m.Y');
         }
