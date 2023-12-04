@@ -64,7 +64,7 @@ plugin.tx_find {
         connections {
             default {
                 options {
-                    host = instant.dla-marbach.de
+                    host = serene.dla-marbach.de
                     port = 8983
                     path = /
                     scheme = http
@@ -74,7 +74,7 @@ plugin.tx_find {
         }
 
         connection {
-            host = instant.dla-marbach.de
+            host = serene.dla-marbach.de
             port = 8983
             path = /
             timeout = 10
@@ -1216,7 +1216,7 @@ plugin.tx_find {
                 query = facet_form_content:("%s")
                 label = Form und Inhalt
                 # Shows a facet value which includes all "not known" items
-                showmissing = 1
+                showMissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
             }
@@ -1227,7 +1227,7 @@ plugin.tx_find {
                 sortOrder = count
                 query = facet_medium:("%s")
                 # Shows a facet value which includes all "not known" items
-                showmissing = 1
+                showMissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
             }
@@ -1262,7 +1262,7 @@ plugin.tx_find {
                 query = facet_subject:("%s")
                 collapse = 1
                 # Shows a facet value which includes all "not known" items
-                showmissing = 1
+                showMissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
             }
@@ -1300,7 +1300,7 @@ plugin.tx_find {
                         query = filter_new:[NOW/DAY-1YEAR TO NOW/DAY+1DAY]
                     }
                 }
-                showmissing = 0
+                showMissing = 0
 
                 collapse = 1
             }
@@ -1311,7 +1311,7 @@ plugin.tx_find {
             #    query = facet_language:("%s")
             #    collapse = 1
             #    # Shows a facet value which includes all "not known" items
-            #    showmissing = 1
+            #    showMissing = 1
             #    labelmissing = nicht bestimmt
             #    reverseFacet = 1
             #}
@@ -1341,7 +1341,7 @@ plugin.tx_find {
             #    query = facet_location:("%s")
             #    collapse = 1
             #    # Shows a facet value which includes all "not known" items
-            #    showmissing = 1
+            #    showMissing = 1
             #    labelmissing = nicht bestimmt
             #    reverseFacet = 1
             #}
@@ -1371,7 +1371,7 @@ plugin.tx_find {
                 query = filter_collection:("%s")
                 collapse = 1
                 # Shows a facet value which includes all "not known" items
-                showmissing = 1
+                showMissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
                 fixed = 1
@@ -1383,7 +1383,7 @@ plugin.tx_find {
                 query = facet_source:("%s")
                 collapse = 1
                 # Shows a facet value which includes all "not known" items
-                showmissing = 1
+                showMissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
             }
@@ -1394,7 +1394,7 @@ plugin.tx_find {
                 query = filter_bibliography:("%s")
                 collapse = 1
                 # Shows a facet value which includes all "not known" items
-                showmissing = 1
+                showMissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
             }
