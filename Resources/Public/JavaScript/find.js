@@ -51,9 +51,58 @@ var tx_find = (function () {
       jQuery('.position .resultPosition', container).click(onClickRecordNumber);
 
       initializeHistogramFacets();
+	  loadAjaxFacets();
     });
   };
 
+	function getSearchParams(k){
+		var p={};
+		location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){p[k]=v})
+		return k?p[k]:p;
+	}
+
+  var loadAjaxFacets = function () {
+	  var query = getSearchParams('tx_find_find%5Bq%5D%5Bdefault%5D');
+	  if (!query) {
+		  query = '';
+	  }
+	  $('.ajax-facet').each(function () {
+		 var activeFacets = $(this).data('activefacets');
+		 if (!activeFacets) {
+			 activeFacets = '';
+		 }
+
+		 var facetId = $(this).attr('id');
+		 var url = window.location.origin + "?facetId=" + facetId + "&q=" + query + "&" + activeFacets;
+		  $.ajax({
+			  url: url
+		  }).done(function (data) {
+			  var i = $(data).length;
+			  $($(data).toArray().reverse()).each(function () {
+				  var elementClass = '';
+				  var iconClass = 'bel-kreis01';
+				  var displayDefault = $('#' + facetId).data('displaydefault');
+				  if (this.active) {
+					  elementClass = 'facetActive';
+					  iconClass = 'bel-ok01';
+					  // generate html for active facet block
+					  $("section.active-facets ul").append('<li><a title="Filter '+this.label+' aufheben" href="' + this.link + '"><span class="icon bel-ende01"></span>'+this.label+'</a></li>');
+				  }
+				  if (i > displayDefault) {
+					  elementClass = elementClass + ' hidden';
+				  }
+				  $('#'+facetId+' ul.facetList')
+					  .prepend('<li class="' + elementClass + '"><a href="' + this.link + '"><span class="icon '+ iconClass +'"></span></a><a class="facetAdd facetText internal" href="' + this.link + '">' + this.label + '<em>('+this.count+')</em></a><a class="facetExclude facetRemoveIcon hide-text" href="' + this.linkReverse + '"><span class="icon bel-verboten"></span></a></li>');
+				  i--;
+			  });
+
+			  // // if decisiontree (marbach only)
+			  // initDecisiontree($('#'+facetId));
+			  // // endif decisiontree
+
+		  });
+	  });
+  }
 
 // Localisation function. Currently not implemented.
   var localise = function (term) {
