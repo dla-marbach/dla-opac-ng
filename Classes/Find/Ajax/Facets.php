@@ -40,6 +40,8 @@ class Facets implements MiddlewareInterface
         $facetConfig = $templateService->setup['plugin.']['tx_find.']['settings.']['facets.'];
         $additionalFilters = $templateService->setup['plugin.']['tx_find.']['settings.']['additionalFilters.'];
 
+        $queryFields = $templateService->setup['plugin.']['tx_find.']['settings.']['queryFields.'];
+
         $facetQueries = [];
 
         foreach ($facetConfig as $facet) {
@@ -63,13 +65,26 @@ class Facets implements MiddlewareInterface
 
         $prefix = '';
         $fq = '';
+        $solrQuery = '';
         $activeFacets = $request->getQueryParams()['activeFacets'];
-        $query = $request->getQueryParams()['q'];
-        if ($query == '') {
-            $query = '*';
-        }
 
-        $addFacetsToSolrQuery = $query;
+        $query = $request->getQueryParams()['q'];
+        if ($query === 'true') {
+            $findSearch = $request->getQueryParams()['tx_find_find']['q'];
+            foreach ($findSearch as $fieldKey => $search) {
+                foreach ($queryFields as $queryField) {
+                    if ($queryField['id'] === $fieldKey) {
+                        $solrQuery .= str_replace('%1$s', $search, $queryField['query']);
+                    }
+                }
+            }
+
+        }
+//        if ($query == '') {
+//            $query = '*';
+//        }
+
+        $addFacetsToSolrQuery = $solrQuery;
         if (!empty($activeFacets['facet'])) {
             foreach ($activeFacets['facet'] as $key => $value) {
                 foreach ($value as $subkey => $subvalue) {

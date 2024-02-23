@@ -56,15 +56,22 @@ var tx_find = (function () {
   };
 
 	function getSearchParams(k){
-		var p={};
+		var p={},r='';
 		location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){p[k]=v})
-		return k?p[k]:p;
+        for (const [key, value] of Object.entries(p)) {
+          if (key.includes(k)) {
+            r += key + '=' + value + '&';
+          }
+        }
+        return r;
+		// return k?p[k]:p;
 	}
 
   var loadAjaxFacets = function () {
-	  var query = getSearchParams('tx_find_find%5Bq%5D%5Bdefault%5D');
-	  if (!query) {
-		  query = '';
+      var searchParameters = getSearchParams('tx_find_find%5Bq%5D');
+      var query = '';
+	  if (searchParameters) {
+		  query = 'true';
 	  }
 	  $('.ajax-facet').each(function () {
 		 var activeFacets = $(this).data('activefacets');
@@ -73,7 +80,7 @@ var tx_find = (function () {
 		 }
 
 		 var facetId = $(this).attr('id');
-		 var url = window.location.origin + "?facetId=" + facetId + "&q=" + query + "&" + activeFacets;
+		 var url = window.location.origin + "?facetId=" + facetId + "&q=" + query + "&" + activeFacets + "&" + searchParameters;
 		  $.ajax({
 			  url: url
 		  }).done(function (data) {
