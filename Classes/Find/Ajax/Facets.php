@@ -76,8 +76,10 @@ class Facets implements MiddlewareInterface
                 foreach ($queryFields as $queryField) {
                     if ($queryField['id'] === $fieldKey) {
                         if ($fieldKey === 'default') {
-                            $solrQuery .= str_replace('%s', $search, $queryField['query']) . ' AND ';
-                            $defaultQuery = str_replace('%s', $search, $queryField['query']);
+                            if ($search) {
+                                $solrQuery .= str_replace('%s', $search, $queryField['query']) . ' AND ';
+                                $defaultQuery = str_replace('%s', $search, $queryField['query']);
+                            }
                         } else {
                             $solrQuery .= str_replace('%1$s', $search, $queryField['query']);
                         }
