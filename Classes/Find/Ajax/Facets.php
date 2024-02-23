@@ -66,6 +66,7 @@ class Facets implements MiddlewareInterface
         $prefix = '';
         $fq = '';
         $solrQuery = '';
+        $defaultQuery = '';
         $activeFacets = $request->getQueryParams()['activeFacets'];
 
         $query = $request->getQueryParams()['q'];
@@ -74,15 +75,19 @@ class Facets implements MiddlewareInterface
             foreach ($findSearch as $fieldKey => $search) {
                 foreach ($queryFields as $queryField) {
                     if ($queryField['id'] === $fieldKey) {
-                        $solrQuery .= str_replace('%1$s', $search, $queryField['query']);
+                        if ($fieldKey === 'default') {
+                            $solrQuery .= str_replace('%s', $search, $queryField['query']) . ' AND ';
+                            $defaultQuery = str_replace('%s', $search, $queryField['query']);
+                        } else {
+                            $solrQuery .= str_replace('%1$s', $search, $queryField['query']);
+                        }
                     }
                 }
             }
-
         }
-//        if ($query == '') {
-//            $query = '*';
-//        }
+        if ($defaultQuery === '') {
+            $defaultQuery = str_replace('%s', '*', $queryFields[0]['query']);
+        }
 
         $addFacetsToSolrQuery = $solrQuery;
         if (!empty($activeFacets['facet'])) {
@@ -105,7 +110,7 @@ class Facets implements MiddlewareInterface
 
         // Get relations
         $response = file_get_contents(
-            $solr_select_url . '?facet.field=' . $facetField . '&facet=on&facet.mincount=1&q=' . urlencode($addFacetsToSolrQuery) . '&rows=0' . $solrFq . $showmissingParam,
+            $solr_select_url . '?facet.field=' . $facetField . '&facet=on&facet.mincount=1&q=' . rawurlencode($addFacetsToSolrQuery) . '&rows=0' . $solrFq . $showmissingParam,
             FALSE,
             stream_context_create([
                 'http' => [
@@ -127,7 +132,7 @@ class Facets implements MiddlewareInterface
 
         for ($i=0;$i<count($facetData);$i++) {
             $arguments = [
-                'q' => ['default' => $query]
+                'q' => array_merge(['default' => $defaultQuery], $request->getQueryParams()['tx_find_find']['q'])
             ];
             $activeFacetsUseAsArgument = $activeFacets;
 
@@ -163,7 +168,7 @@ class Facets implements MiddlewareInterface
             if ($reverseFacet == 1) {
                 $argumentsReverse = [
                     'facet' => [$facetId => [$facetData[$i] => 'not']],
-                    'q' => ['default' => $query]
+                    'q' => array_merge(['default' => $defaultQuery], $request->getQueryParams()['tx_find_find']['q'])
                 ];
                 if ($activeFacets) {
                     $argumentsReverse = array_merge_recursive($argumentsReverse, $activeFacets);
