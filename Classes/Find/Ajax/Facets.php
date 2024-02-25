@@ -90,7 +90,8 @@ class Facets implements MiddlewareInterface
             }
         }
         if ($defaultQuery === '') {
-            $defaultQuery = str_replace('%s', '*', $queryFields[0]['query']);
+            $defaultQuery = str_replace('%s', '*', $queryFields['0.']['query']);
+            $solrQuery = $defaultQuery . $solrQuery;
         }
 
         $addFacetsToSolrQuery = $solrQuery;
