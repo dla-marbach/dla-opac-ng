@@ -288,6 +288,7 @@ ul.token-input-list {
     color: white;
     padding: 10px;
     border-radius: 5px;
+    display: none;
 }
 
 #beta-button a {
