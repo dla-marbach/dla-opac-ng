@@ -1,82 +1,53 @@
 {
-  "name": "subugoe/find",
-  "description": "A frontend for Solr indexes",
-  "type": "typo3-cms-extension",
-  "keywords": [
-    "TYPO3 CMS"
-  ],
-  "license": [
-    "GPL-2.0-or-later"
-  ],
-  "authors": [
-    {
-      "name": "Sven-S. Porst, Ingo Pfennigstorf",
-      "email": "pfennigstorf@sub.uni-goettingen.de",
-      "role": "Developer"
-    }
-  ],
-  "autoload": {
-    "psr-4": {
-      "Subugoe\\Find\\": "Classes/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Subugoe\\Find\\Tests\\": "Tests/"
-    }
-  },
-  "replace": {
-    "typo3-ter/find": "self.version"
-  },
-  "require": {
-    "php": "^7.4",
-    "ext-curl": "*",
-    "ext-json": "*",
-    "solarium/solarium": ">=6.0 <7.0",
-    "typo3/cms-core": "^10.4.10",
-    "typo3/cms-felogin": "^10.4.10"
-  },
-  "require-dev": {
-    "nimut/testing-framework": "^6.0",
-    "friendsofphp/php-cs-fixer": "^3.0",
-    "phpunit/phpunit": "^8.5",
-    "ssch/typo3-rector": "^1.0",
-    "phpspec/prophecy": "^1.15"
-  },
-  "config": {
-    "vendor-dir": ".Build/vendor",
-    "bin-dir": ".Build/bin",
-    "allow-plugins": {
-      "typo3/class-alias-loader": true,
-      "typo3/cms-composer-installers": true
-    }
-  },
-  "scripts": {
-    "post-autoload-dump": [
-      "mkdir -p .Build/Web/typo3conf/ext/",
-      "[ -L .Build/Web/typo3conf/ext/find ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/find"
+    "name": "subugoe/find",
+    "description": "A frontend for Solr indexes",
+    "type": "typo3-cms-extension",
+    "keywords": [
+        "TYPO3 CMS"
     ],
-    "rector-lint": "rector process --dry-run",
-    "rector-fix": "rector process",
-    "php-cs-lint": "php-cs-fixer fix --dry-run",
-    "php-cs-fix": "php-cs-fixer fix",
-    "lint":  [
-      "@php-cs-lint",
-      "@rector-lint"
+    "license": [
+        "GPL-2.0-or-later"
     ],
-    "fix":  [
-      "@php-cs-fix",
-      "@rector-fix"
-    ]
-  },
-  "suggest": {
-    "solarium/solarium": "Allows using the SolrServiceProvider"
-  },
-  "extra": {
-    "typo3/cms": {
-      "cms-package-dir": "{$vendor-dir}/typo3/cms",
-      "web-dir": ".Build/Web",
-      "extension-key": "find"
+    "authors": [
+        {
+            "name": "Sven-S. Porst, Ingo Pfennigstorf",
+            "email": "pfennigstorf@sub.uni-goettingen.de",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Subugoe\\Find\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Subugoe\\Find\\Tests\\": "Tests/"
+        }
+    },
+    "replace": {
+        "typo3-ter/find": "self.version"
+    },
+    "require": {
+        "php": "^8.1",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "solarium/solarium": "^7.0",
+        "typo3/cms-core": "^12.4",
+        "typo3/cms-felogin": "^12.4"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin",
+        "allow-plugins": {
+            "typo3/class-alias-loader": true,
+            "typo3/cms-composer-installers": true
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "find"
+        }
     }
-  }
 }
