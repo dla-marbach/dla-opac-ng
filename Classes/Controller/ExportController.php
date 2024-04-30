@@ -1,6 +1,9 @@
 <?php
 namespace Dla\DlaOpacNg\Controller;
 
+use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\HttpFoundation\StreamedResponse;
+use TYPO3\CMS\Core\Utility\CsvUtility;
 use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class ExportController extends ActionController
@@ -9,8 +12,10 @@ class ExportController extends ActionController
     /**
      * @param string $ids
      */
-    public function csvAction(string $ids)
+    public function csvAction(string $ids): ResponseInterface
     {
+        $this->view->setTemplatePathAndFilename('');
+
         $extPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('dla_opac_ng');
         include_once $extPath . 'Classes/Ajax/EidSettings.php';
 
@@ -19,30 +24,33 @@ class ExportController extends ActionController
         $file = '?';
         $parameter = 'getEntities=1&q=' . trim($ids, ',');
 
-        $csvFilename = 'marbach.csv';
+//        $csvFilename = 'marbach.csv';
         $delimiter = ';';
 
         // header for file download
         header('Content-Encoding: UTF-8');
         header('Content-type: text/csv; charset=UTF-8');
-        header('Content-Disposition: attachment; filename="'.$csvFilename.'";');
-        echo "\xEF\xBB\xBF";
+//        header('Content-Disposition: attachment; filename="'.$csvFilename.'";');
+//        echo "\xEF\xBB\xBF";
 
         // send getEntities request // get all information from each id
         $json = file_get_contents($protocol . $domainName . $file . $parameter);
 
         $array = json_decode($json);
+        $output = '';
 
-        $f = fopen('php://output', 'w');
+//        $f = fopen('php://temp/maxmemory:1048576', 'w');
 
         // add info
         $objDateTime = new \DateTime('NOW');
         $line = ['Deutsches Literaturarchiv Marbach. Auszug Katalog. ' . $objDateTime->format('d.m.Y')];
-        fputcsv($f, $line, $delimiter);
+//        fputcsv($f, $line, $delimiter);
+        $output .= CsvUtility::csvValues($line, $delimiter) . PHP_EOL;
 
         // field names
         $line = ['ID', 'Link', 'Titelbeschreibung', 'Medientyp', 'Form und Inhalt', 'Medium', 'Zeit', 'Personen', 'Thema', 'Sprache', 'Ort', 'Datenbestand', 'Bibliografie', 'Sammlung', 'Digital'];
-        fputcsv($f, $line, $delimiter);
+//        fputcsv($f, $line, $delimiter);
+        $output .= CsvUtility::csvValues($line, $delimiter) . PHP_EOL;
 
         foreach ($array as $entry) {
 
@@ -97,22 +105,34 @@ class ExportController extends ActionController
                 $entry->id,
                 $protocol . trim($domainName, '/') . $PLUGIN_PATH . $entry->id,
                 $entry->title,
-                $listview_type,
-                $facet_form_content,
-                $facet_medium,
-                $facet_time,
-                $facet_names,
-                $facet_subject,
-                $facet_language,
-                $facet_location,
+                $listview_type ?? '',
+                $facet_form_content ?? '',
+                $facet_medium ?? '',
+                $facet_time ?? '',
+                $facet_names ?? '',
+                $facet_subject ?? '',
+                $facet_language ?? '',
+                $facet_location ?? '',
                 $entry->facet_source,
-                $filter_bibliography,
-                $filter_collection,
+                $filter_bibliography ?? '',
+                $filter_collection ?? '',
                 $entry->filter_digital
             ];
 
-            fputcsv($f, $line, $delimiter);
+//            fputcsv($f, $line, $delimiter);
+            $output .= CsvUtility::csvValues($line, $delimiter) . PHP_EOL;
         }
+
+        echo $output;
         exit;
+
+        $response = $this->responseFactory->createResponse()
+            ->withAddedHeader('Content-Encoding', 'UTF-8')
+            ->withAddedHeader('Content-Type', 'application/octet-stream')
+            ->withAddedHeader('Content-Disposition', 'attachment; filename="marbach.csv"');
+        $response->getBody()->write($output);
+
+        return $response;
+
     }
 }

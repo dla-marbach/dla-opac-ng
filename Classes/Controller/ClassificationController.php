@@ -14,12 +14,7 @@ class ClassificationController extends ActionController
      */
     public function indexAction(string $record = '', string $uid = '', string $search = '')
     {
-        /** @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager */
-
-        $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
-
-        $configurationManager = $objectManager->get('TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface');
-        $settings = $configurationManager->getConfiguration(
+        $settings = $this->configurationManager->getConfiguration(
             \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT,
             'find',
             'find'
@@ -31,5 +26,7 @@ class ClassificationController extends ActionController
         $this->view->assign('record', $record);
         $this->view->assign('uid', $uid);
         $this->view->assign('search', $search);
+
+        return $this->htmlResponse();
     }
 }
