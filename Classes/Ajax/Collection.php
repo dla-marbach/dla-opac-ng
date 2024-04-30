@@ -19,7 +19,7 @@ class Collection implements MiddlewareInterface
             return $response;
         }
 
-        $config = require 'typo3conf/LocalConfiguration.php';
+        $config = require '../config/system/settings.php';
         // Connect to DB
         $db = mysqli_connect(
             $config['DB']['Connections']['Default']['host'],
@@ -44,12 +44,12 @@ class Collection implements MiddlewareInterface
             'collection' => 'treeview_title'
         ];
 
-        $action = $request->getQueryParams()['action'];
-        $nodeId = $request->getQueryParams()['nodeid'];
-        $search = $request->getQueryParams()['search'];
-        $type = $request->getQueryParams()['type'];
+        $action = $request->getQueryParams()['action'] ?? '';
+        $nodeId = $request->getQueryParams()['nodeid'] ?? '';
+        $search = $request->getQueryParams()['search'] ?? '';
+        $type = $request->getQueryParams()['type'] ?? '';
 
-        $filter = $request->getParsedBody()['filterIds'];
+        $filter = $request->getParsedBody()['filterIds'] ?? '';
 
         $table = $tables[$type];
         $order = $orderBy[$type];
@@ -125,7 +125,7 @@ class Collection implements MiddlewareInterface
                     'title' => $row["treeview_title"],
                     'facet_value' => $row["facet_value"],
                     'hasChild' => $row["hasChild"],
-                    'count' => ($row['count'] ?: '')
+                    'count' => ($row['count'] ?? '')
                 ];
 
                 // build array of uids
