@@ -29,12 +29,14 @@ namespace Subugoe\Find\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+use Psr\Http\Message\ResponseInterface;
 use Subugoe\Find\Service\ServiceProviderInterface;
 use Subugoe\Find\Utility\ArrayUtility;
 use Subugoe\Find\Utility\FrontendUtility;
 use TYPO3\CMS\Core\Log\LogManagerInterface;
 use TYPO3\CMS\Core\Utility\ArrayUtility as CoreArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class SearchController extends ActionController
@@ -54,21 +56,33 @@ class SearchController extends ActionController
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      */
-    public function detailAction(string $id)
+    public function detailAction(string $id): ResponseInterface
     {
         $arguments = $this->searchProvider->getRequestArguments();
         $detail = $this->searchProvider->getDocumentById($id);
 
         if ($this->request->hasArgument('underlyingQuery')) {
             $underlyingQueryInfo = $this->request->getArgument('underlyingQuery');
-            $this->response->addAdditionalHeaderData(
+            $assetCollector = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\AssetCollector::class);
+            $assetCollector->addInlineJavaScript(
+                'my_identifier',
                 FrontendUtility::addQueryInformationAsJavaScript(
-                    $underlyingQueryInfo['q'],
+                    $underlyingQueryInfo['q'] ?? [],
                     $this->settings,
                     (int) $underlyingQueryInfo['position'],
                     $arguments
-                )
+                ),
+                [],
+                ['priority' => true]
             );
+//            $this->response->addAdditionalHeaderData(
+//                FrontendUtility::addQueryInformationAsJavaScript(
+//                    $underlyingQueryInfo['q'],
+//                    $this->settings,
+//                    (int) $underlyingQueryInfo['position'],
+//                    $arguments
+//                )
+//            );
         }
 
         $this->addStandardAssignments();
@@ -78,29 +92,36 @@ class SearchController extends ActionController
             'arguments' => $arguments,
             'config' => $this->searchProvider->getConfiguration(),
         ]);
+
+        return $this->htmlResponse();
     }
 
     /**
      * Index Action.
      */
-    public function indexAction()
+    public function indexAction(): ResponseInterface
     {
         if(!array_key_exists('qParam', $this->requestArguments)) {
             $params = array('qParam' => '1');
-            $this->redirect('index', NULL, NULL, array_merge($this->requestArguments, $params));
+            return $this->redirect('index', NULL, NULL, array_merge($this->requestArguments, $params));
         }
 
         if (array_key_exists('id', $this->requestArguments)) {
-            $this->forward('detail');
+            return new ForwardResponse('detail');
         } else {
             $this->searchProvider->setCounter();
-            $this->response->addAdditionalHeaderData(
+
+            $assetCollector = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\AssetCollector::class);
+            $assetCollector->addInlineJavaScript(
+                'my_identifier',
                 FrontendUtility::addQueryInformationAsJavaScript(
-                    $this->searchProvider->getRequestArguments()['q'],
+                    $this->searchProvider->getRequestArguments()['q'] ?? [],
                     $this->settings,
                     null,
                     $this->searchProvider->getRequestArguments()
-                )
+                ),
+                [],
+                ['priority' => true]
             );
 
             $this->addStandardAssignments();
@@ -136,6 +157,7 @@ class SearchController extends ActionController
             CoreArrayUtility::mergeRecursiveWithOverrule($viewValues, $defaultQuery);
             $this->view->assignMultiple($viewValues);
         }
+        return $this->htmlResponse();
     }
 
     /**
