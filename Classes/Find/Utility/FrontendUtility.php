@@ -42,11 +42,11 @@ class FrontendUtility
      * @param int|null $position  of the record in the result list
      * @param array    $arguments overrides $this->requestArguments if set
      */
-    public static function addQueryInformationAsJavaScript($query, array $settings, $position = null, $arguments = []): string
+    public static function addQueryInformationAsJavaScript(array $query, array $settings, $position = null, $arguments = []): string
     {
         if ($settings['paging']['detailPagePaging']) {
-            $scriptTag = GeneralUtility::makeInstance(TagBuilder::class, 'script');
-            $scriptTag->addAttribute('type', 'text/javascript');
+//            $scriptTag = GeneralUtility::makeInstance(TagBuilder::class, 'script');
+//            $scriptTag->addAttribute('type', 'text/javascript');
 
             if (array_key_exists('underlyingQuery', $arguments)) {
                 $arguments = $arguments['underlyingQuery'];
@@ -61,17 +61,19 @@ class FrontendUtility
                 $underlyingQuery['position'] = $position;
             }
 
-            if ($arguments['count']) {
+            if (isset($arguments['count'])) {
                 $underlyingQuery['count'] = $arguments['count'];
             }
 
-            if ($arguments['sort']) {
+            if (isset($arguments['sort'])) {
                 $underlyingQuery['sort'] = $arguments['sort'];
             }
 
-            $scriptTag->setContent('var underlyingQuery = '.json_encode($underlyingQuery).';');
+//            $scriptTag->setContent('var underlyingQuery = '.json_encode($underlyingQuery).';');
 
-            return $scriptTag->render();
+            return 'var underlyingQuery = '.json_encode($underlyingQuery).';';
+
+//            return $scriptTag->render();
         }
 
         return '';
