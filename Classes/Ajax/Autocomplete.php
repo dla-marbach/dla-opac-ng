@@ -51,7 +51,9 @@ class Autocomplete implements MiddlewareInterface
             $json = json_decode($response, TRUE);
 
             foreach ($json['suggest'][$solr_suggest_text][$query]['suggestions'] as $suggestion) {
-                list ($id, $normalized) = explode('␝', $suggestion['payload']);
+                if (!empty($suggestion['payload']))
+                    list ($id, $normalized) = explode('␝', $suggestion['payload']);
+
                 $suggests[] = [
                     'id' => htmlspecialchars($suggestion['term']),
                     'term' => htmlspecialchars($suggestion['term']),

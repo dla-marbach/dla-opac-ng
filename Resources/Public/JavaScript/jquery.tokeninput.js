@@ -323,6 +323,7 @@ $.TokenList = function (input, url_or_data, settings) {
         if (value != "") {
             input_box.val(value);
         }
+
         // get entity for tokenizer
         var regEx = new RegExp(/\(entity_ids:(\w*) OR entity_ids_from:\w* OR entity_ids_to:\w*\)/g);
         var valueWithoutToken = value;
@@ -337,6 +338,8 @@ $.TokenList = function (input, url_or_data, settings) {
                 });
             }
         } while (match);
+
+        hidden_input.val("");
 
     });
 
@@ -404,7 +407,7 @@ $.TokenList = function (input, url_or_data, settings) {
         });
 
     // Pre-populate list if items exist
-    hidden_input.val("");
+    // hidden_input.val("");
     var li_data = settings.prePopulate || hidden_input.data("pre");
     if(settings.processPrePopulate && $.isFunction(settings.onResult)) {
         li_data = settings.onResult.call(hidden_input, li_data);

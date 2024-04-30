@@ -5,9 +5,8 @@ $( document ).ready(function() {
 });
 
 function activateNormdataAutocomplete() {
-    $.getScript( window.location.origin + "/typo3conf/ext/dla_opac_ng/Resources/Public/JavaScript/jquery.tokeninput.js").
 
-    done(function( script, textStatus ) {
+    $( document ).ready(function() {
 
         $(".inputType-text").tokenInput("/?autocomplete=1", {
             propertyToSearch: "term",

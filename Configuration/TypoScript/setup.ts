@@ -3,7 +3,7 @@
 
 
 #page.includeJS.init = EXT:dla_opac_ng/Resources/Public/JavaScript/init-live.js
-#page.includeJSFooter.datetimepicker = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.datetimepicker.min.js
+page.includeJSFooter.datetimepicker = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.datetimepicker.min.js
 page.includeCSS.datetimepicker =  EXT:dla_opac_ng/Resources/Public/CSS/jquery.datetimepicker.css
 
 page.includeJS.jquery = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-3.6.0.js
@@ -44,7 +44,8 @@ page.includeCSS.belugino =  EXT:dla_opac_ng/Resources/Public/CSS/belugino.css
 page.includeCSS.catalog =  EXT:dla_opac_ng/Resources/Public/CSS/catalog.css
 
 page.includeCSS.tokeninput = EXT:dla_opac_ng/Resources/Public/CSS/token-input.css
-
+page.includeJSFooter.tokeninput = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.tokeninput.js
+page.includeJS.chart = EXT:dla_opac_ng/Resources/Public/JavaScript/Chart-2.7.2.min.js
 
 # Generell wird die gesamte Konfiguration in "plugin.tx_find" gebündelt
 plugin.tx_find {
@@ -1219,7 +1220,7 @@ plugin.tx_find {
                 showMissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
-                ajax = 1
+                ajax = 0
                 displayDefault = 6
             }
 
@@ -1232,7 +1233,7 @@ plugin.tx_find {
                 showMissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
-                ajax = 1
+                ajax = 0
                 displayDefault = 6
             }
 
@@ -1269,7 +1270,7 @@ plugin.tx_find {
                 showMissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
-                ajax = 1
+                ajax = 0
                 displayDefault = 6
             }
 
@@ -1309,7 +1310,7 @@ plugin.tx_find {
                 showMissing = 0
 
                 collapse = 1
-                ajax = 1
+                ajax = 0
                 displayDefault = 6
             }
 
@@ -1394,7 +1395,7 @@ plugin.tx_find {
                 showMissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
-                ajax = 1
+                ajax = 0
                 displayDefault = 6
             }
 
@@ -1407,7 +1408,7 @@ plugin.tx_find {
                 showMissing = 1
                 labelmissing = nicht bestimmt
                 reverseFacet = 1
-                ajax = 1
+                ajax = 0
                 displayDefault = 6
             }
 
