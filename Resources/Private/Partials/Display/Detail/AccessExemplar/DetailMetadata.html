@@ -99,7 +99,7 @@
                         <f:for each="{dla:explode(string: '{vorbesitzer_item}', delimiter: '␝')}" as="name" iteration="name_iterator">
                             <f:if condition="{v:format.substring(content: '{detail_id_array.{name_iterator.index}}', start: 0, length: 2)}==PE">
                                 <f:if condition="{pe_rendered}!=1">
-                                    <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal" noCacheHash="1">
+                                    <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal">
                                         {name}
                                     </f:link.action>
                                     <br/>
@@ -108,7 +108,7 @@
                             </f:if>
                             <f:if condition="{v:format.substring(content: '{detail_id_array.{name_iterator.index}}', start: 0, length: 2)}==KS">
                                 <f:if condition="{ks_rendered}!=1">
-                                    <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal" noCacheHash="1">
+                                    <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal">
                                         {name}
                                     </f:link.action>
                                     <br/>
@@ -298,7 +298,7 @@
                         <div class="ctg-dtvt-content">
                             <v:variable.set value="{dla:explode(string: '{vorbesitzer_id}', delimiter: '␝')}" name="detail_id_array" />
                             <f:for each="{dla:explode(string: '{vorbesitzer_item}', delimiter: '␝')}" as="name" iteration="name_iterator">
-                                <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal" noCacheHash="1">
+                                <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal">
                                     {name}
                                 </f:link.action>
                                 <br/>
@@ -324,7 +324,7 @@
                         <div class="ctg-dtvt-content">
                             <v:variable.set value="{dla:explode(string: '{inbestand_id}', delimiter: '␝')}" name="detail_id_array" />
                             <f:for each="{dla:explode(string: '{inbestand_item}', delimiter: '␝')}" as="name" iteration="name_iterator">
-                                <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal" noCacheHash="1">
+                                <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal">
                                     {name}
                                 </f:link.action>
                                 <br/>
@@ -349,7 +349,7 @@
                         <div class="ctg-dtvt-content">
                             <v:variable.set value="{dla:explode(string: '{merkmale_id}', delimiter: '␝')}" name="detail_id_array" />
                             <f:for each="{dla:explode(string: '{merkmale_item}', delimiter: '␝')}" as="name" iteration="name_iterator">
-                                <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal" noCacheHash="1">
+                                <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal">
                                     {name}
                                 </f:link.action>
                                 <br/>
@@ -675,7 +675,7 @@
                                         keys="{0:'id'}"
                                         values="{0:'MM{item}'}"
                                 />
-                                <f:link.action action="index" arguments="{query}" class="internal" noCacheHash="1">
+                                <f:link.action action="index" arguments="{query}" class="internal">
                                     {XX_MM_MOTITL_INDKEY.{iterator_indkey.index}}<br/>
                                 </f:link.action>
                             </f:for>
@@ -919,7 +919,7 @@
                                         keys="{0:'id'}"
                                         values="{0:'MM{item}'}"
                                 />
-                                <f:link.action action="index" arguments="{query}" class="internal" noCacheHash="1">
+                                <f:link.action action="index" arguments="{query}" class="internal">
                                     {XX_MM_MOTITL_INDKEY.{iterator.index}}<br/>
                                 </f:link.action>
                             </f:for>
@@ -1105,7 +1105,7 @@
                                         keys="{0:'id'}"
                                         values="{0:'MM{item}'}"
                                 />
-                                <f:link.action action="index" arguments="{query}" class="internal" noCacheHash="1">
+                                <f:link.action action="index" arguments="{query}" class="internal">
                                     {XX_MM_MOTITL_INDKEY.{iterator_indkey.index}}<br/>
                                 </f:link.action>
                             </f:for>

@@ -32,10 +32,10 @@
         <h3><a title="schließen" class="button-close"><span class="icon bel-pfeil-o01"></span></a><f:translate key="detail.document_link" extensionName="dla_opac_ng"/></h3>
         <ul>
             <li>
-                <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                <f:link.action action="index" arguments="{q:query}" class="internal">
                     <span class="icon bel-idkarte"></span>
                 </f:link.action>
-                <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                <f:link.action action="index" arguments="{q:query}" class="internal">
                     Werke ({solrcount})
                 </f:link.action>
             </li>
@@ -115,10 +115,10 @@
             <f:if condition="{solrResult.id}!={id}">
                 <f:then>
                     <li>
-                        <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
+                        <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal">
                             <span class="icon bel-mag"></span>
                         </f:link.action>
-                        <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
+                        <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal">
                             <f:format.crop maxCharacters="60" respectWordBoundaries="TRUE" respectHtml="TRUE">
                                 {solrResult.listview_title}
                             </f:format.crop>
@@ -135,10 +135,10 @@
             <f:then>
                 <f:comment><li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li></f:comment>
                 <li>
-                    <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                    <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal">
                         <span class="icon bel-lupe"></span>
                     </f:link.action>
-                    <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                    <f:link.action action="index" arguments="{q:{raw: '(PE0100:{person_query} OR KS0800:{person_query}) AND GFUPER:(Urheber/in) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal">
                         <f:translate key="Alle anzeigen" extensionName="dla_opac_ng" />
                     </f:link.action>
                 </li>
@@ -180,10 +180,10 @@
             <f:if condition="{solrResult.id}!={id}">
                 <f:then>
                     <li>
-                        <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
+                        <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal">
                             <span class="icon bel-mag"></span>
                         </f:link.action>
-                        <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal" noCacheHash="1">
+                        <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.listview_title}" class="internal">
                             <f:format.crop maxCharacters="60" respectWordBoundaries="TRUE" respectHtml="TRUE">
                                 {solrResult.listview_title}
                             </f:format.crop>
@@ -200,10 +200,10 @@
             <f:then>
                 <f:comment><li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li></f:comment>
                 <li>
-                    <f:link.action action="index" arguments="{q:{raw: '(PE0100:{PE0100_query} OR KSE200:{PE0100_query} OR THA720:({PE0100_query}) OR AKY526:({PE0100_query})) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                    <f:link.action action="index" arguments="{q:{raw: '(PE0100:{PE0100_query} OR KSE200:{PE0100_query} OR THA720:({PE0100_query}) OR AKY526:({PE0100_query})) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal">
                         <span class="icon bel-lupe"></span>
                     </f:link.action>
-                    <f:link.action action="index" arguments="{q:{raw: '(PE0100:{PE0100_query} OR KSE200:{PE0100_query} OR THA720:({PE0100_query}) OR AKY526:({PE0100_query})) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal" noCacheHash="1">
+                    <f:link.action action="index" arguments="{q:{raw: '(PE0100:{PE0100_query} OR KSE200:{PE0100_query} OR THA720:({PE0100_query}) OR AKY526:({PE0100_query})) AND listview_type:(Bilder und Objekte)'}}" title="{solr.listview_title}" class="internal">
                         <f:translate key="Alle anzeigen" extensionName="dla_opac_ng" />
                     </f:link.action>
                 </li>

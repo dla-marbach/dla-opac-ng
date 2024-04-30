@@ -1509,7 +1509,7 @@
                                             keys="{0:'id'}"
                                             values="{0:'SE{SYNKEY.{iterator.index}}'}"
                                     />
-                                    <f:link.action action="index" arguments="{detailpage}" class="internal" noCacheHash="1">
+                                    <f:link.action action="index" arguments="{detailpage}" class="internal">
                                         {XX_SE_REGTIT_SYNKEY.{iterator.index}}<br/>
                                     </f:link.action>
                                 </f:then>
@@ -1612,7 +1612,7 @@
                                     keys="{0:'id'}"
                                     values="{0:'SE{SYNKEY_BIBLIOGRAPHIE.{iterator.index}}'}"
                             />
-                            <f:link.action action="index" arguments="{detailpage}" class="internal" noCacheHash="1">
+                            <f:link.action action="index" arguments="{detailpage}" class="internal">
                                 {REGTIT_SYNKEY_BIBLIOGRAPHIE.{iterator.index}}<br/>
                             </f:link.action>
                         </f:for>
@@ -1690,7 +1690,7 @@
                 <f:translate key='Beziehungen' extensionName='dla_opac_ng'/>
             </dt>
             <dd class="dd-{field}">
-                <f:link.action action="index" arguments="{q:query, sort:'AA425 desc'}" class="internal" noCacheHash="1">
+                <f:link.action action="index" arguments="{q:query, sort:'AA425 desc'}" class="internal">
                     <span>Enthaltene Beiträge ({solrcount})</span>
                     <f:render
                             partial="Display/Field/Inline"
@@ -1729,7 +1729,7 @@
                     <dd class="dd-{field}">
 
 
-                        <f:link.action action="index" arguments="{q:query, sort:'first_value_A0456_s asc'}" class="internal" noCacheHash="1">
+                        <f:link.action action="index" arguments="{q:query, sort:'first_value_A0456_s asc'}" class="internal">
                             <span>Enthaltene Bände ({solrcount})</span>
                             <f:render
                                     partial="Display/Field/Inline"
@@ -1765,7 +1765,7 @@
             </dt>
             <dd class="dd-{field}">
 
-                <f:link.action action="index" arguments="{q:query, sort:'AA425 desc'}" class="internal" noCacheHash="1">
+                <f:link.action action="index" arguments="{q:query, sort:'AA425 desc'}" class="internal">
                     <span>Suche nach Rezensionen ({solrcount})</span>
                     <f:render
                             partial="Display/Field/Inline"
@@ -1802,7 +1802,7 @@
                     </dt>
                     <dd class="dd-{field}">
 
-                        <f:link.action action="index" arguments="{q:query, sort:'AA425 desc'}" class="internal" noCacheHash="1">
+                        <f:link.action action="index" arguments="{q:query, sort:'AA425 desc'}" class="internal">
                             <span>Enthaltene Bände und Hefte ({solrcount})</span>
                             <f:render
                                     partial="Display/Field/Inline"

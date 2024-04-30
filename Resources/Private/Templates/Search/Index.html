@@ -51,7 +51,7 @@
                                             addQueryString="TRUE"
                                             argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
                                             section="{settings.jumpToID}"
-                                            noCacheHash="1"
+
                                             class=""
                                             style="text-decoration:none;"
                                             title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
@@ -94,7 +94,7 @@
                       arguments="{sort:'{key}'}"
                                 argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                                 section="{settings.jumpToID}"
-                                noCacheHash="1">
+                               >
                                 </f:uri.action>'></span>
                             </f:for>
                         </f:if>
@@ -110,7 +110,7 @@
                                     arguments="{count:'{key}'}"
                                     argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                                     section="{settings.jumpToID}"
-                                    noCacheHash="1">
+                                   >
                                     </f:uri.action>'>
                                 </span>
                             </f:for>

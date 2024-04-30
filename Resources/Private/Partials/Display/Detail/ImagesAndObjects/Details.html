@@ -696,7 +696,7 @@
                     </div>
                     <div class="ctg-dtvt-content">
 
-                        <f:link.action action="detail" arguments="{id:'AK{XX_AU_AKKEY_AUKEY}', au:'{AUKEY.0}'}" title="" class="internal" noCacheHash="1" section="tabaccess">
+                        <f:link.action action="detail" arguments="{id:'AK{XX_AU_AKKEY_AUKEY}', au:'{AUKEY.0}'}" title="" class="internal" section="tabaccess">
                             {XXX_AK_TITREG_XX_AU_AKKEY_AUKEY}
                         </f:link.action>
 
@@ -1110,7 +1110,7 @@
                 <f:translate key='Darin' extensionName='dla_opac_ng'/>
             </dt>
             <dd class="dd-{field}">
-                <f:link.action action="index" arguments="{q:query, sort:'AA425 desc'}" class="internal" noCacheHash="1">
+                <f:link.action action="index" arguments="{q:query, sort:'AA425 desc'}" class="internal">
                     <span>Darin {solrcount} Objekte</span>
                     <f:render
                             partial="Display/Field/Inline"

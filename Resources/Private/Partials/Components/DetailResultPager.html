@@ -28,7 +28,7 @@
                 action="index"
                 arguments="{linkArguments}"
                 section="c{config.uid}-result-{document.fields.id}"
-                noCacheHash="1"
+
                 class="ctg-button ctg-button-textnicon"
                 data="{'mobile-label': '{f:translate(key: \'Return to results list mobile\', extensionName: \'dla_opac_ng\')}'}"
               >
@@ -63,7 +63,7 @@
                 action="detail"
                 arguments="{id: document-previous.fields.id}"
                 section="{settings.jumpToID}"
-                noCacheHash="1"
+
                 class="ctg-button"
                 onclick="return tx_find.detailViewWithPaging(this, {document-previous-number});"
                 title="{f:translate(key:'previous')}: {s:data.valueForKey(array:document-previous.fields, key:settings.standardFields.title)}"
@@ -79,7 +79,7 @@
                 action="detail"
                 arguments="{id: document-next.fields.id}"
                 section="{settings.jumpToID}"
-                noCacheHash="1"
+
                 class="ctg-button"
                 onclick="return tx_find.detailViewWithPaging(this, {document-next-number});" title="{f:translate(key:'next')}: {s:data.valueForKey(array:document-next.fields, key:settings.standardFields.title)}"
               ><span class="icon bel-pfeil-l01"></span></f:link.action>

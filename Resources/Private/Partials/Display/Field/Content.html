@@ -21,7 +21,7 @@
                                     keys="{0:'raw'}"
                                     values="{0:'{queryField}:{value}'}"
                             />
-                            <f:link.action action="index" arguments="{q:queryArray}" class="internal" noCacheHash="1">
+                            <f:link.action action="index" arguments="{q:queryArray}" class="internal">
                                 Suche in {queryField} nach {value}
                             </f:link.action>
                         </f:comment>
@@ -47,7 +47,7 @@
                                                                 values="{0:'{field}:{value}'}"
                                                         />
 
-                                                        <f:link.action action="index" arguments="{q:SYNKEYquery}" class="internal" noCacheHash="1">
+                                                        <f:link.action action="index" arguments="{q:SYNKEYquery}" class="internal">
                                                             <span style="color:lightgrey;">Suche nach {displayField}: </span>
                                                             <f:render
                                                                 partial="Display/Field/Inline"
@@ -206,7 +206,6 @@
                         q:queryArray,
                         facet:linkFacets
                     }"
-                    noCacheHash="1"
                     class="internal"
                     title="{f:translate(
                         key:'Alle Datensätze mit %1$s »%2$s« zeigen.',

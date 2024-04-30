@@ -498,7 +498,7 @@
                         keys="{0:'id'}"
                         values="{0:'MM{item}'}"
                 />
-                <f:link.action action="index" arguments="{query}" class="internal" noCacheHash="1">
+                <f:link.action action="index" arguments="{query}" class="internal">
                     {XX_MM_MOTITL_INDKEY.{iterator.index}}<br/>
                 </f:link.action>
             </f:for>
@@ -577,7 +577,7 @@
         </div>
         <div class="ctg-dtvt-content">
 
-            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+            <f:link.action action="index" arguments="{q:query}" class="internal">
                 <span>In diesem Bestand {solrcount} Unterbestände</span>
                 <f:render
                         partial="Display/Field/Inline"
@@ -610,7 +610,7 @@
         </div>
         <div class="ctg-dtvt-content">
 
-            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+            <f:link.action action="index" arguments="{q:query}" class="internal">
                 <span style="">In diesem Bestand {solrcount} Einzelobjekte</span>
                 <f:render
                         partial="Display/Field/Inline"

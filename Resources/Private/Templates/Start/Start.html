@@ -68,7 +68,6 @@
                                 section="{settings.jumpToID}"
                                 addQueryString="TRUE"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
-                                noCacheHash="1"
                                 title="{f:translate(key:'Gesamtbestand', extensionName:'dla_opac_ng')}"
                                 class="{f:if(condition:'{config.activeFacets.Medientypen}',then:'',else:'ctg-hd-active')} gesamt">
                                 <span class="icon bel-mkombo06"></span><f:translate key='Gesamtbestand' extensionName='dla_opac_ng'/>
@@ -83,7 +82,7 @@
                                     section="{settings.jumpToID}"
                                     addQueryString="TRUE"
                                     argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
-                                    noCacheHash="1"
+
                                     title="{f:translate(key:'Gedrucktes', extensionName:'dla_opac_ng')}"
                                     class="{f:if(condition:'{config.activeFacets.Medientypen.Gedrucktes}',then:'ctg-hd-active',else:'')} gedrucktes">
                                 <span class="icon bel-mag"></span><f:translate key='Gedrucktes' extensionName='dla_opac_ng'/>
@@ -98,7 +97,7 @@
                                 section="{settings.jumpToID}"
                                 addQueryString="TRUE"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
-                                noCacheHash="1"
+
                                 title="{f:translate(key:'Handschriften', extensionName:'dla_opac_ng')}"
                                 class="{f:if(condition:'{config.activeFacets.Medientypen.Handschriften}',then:'ctg-hd-active',else:'')} handschriften">
                                 <span class="icon bel-schreiben"></span><f:translate key='Handschriften' extensionName='dla_opac_ng'/>
@@ -113,7 +112,7 @@
                                 section="{settings.jumpToID}"
                                 addQueryString="TRUE"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
-                                noCacheHash="1"
+
                                 title="{f:translate(key:'Bilder und Objekte', extensionName:'dla_opac_ng')}"
                                 class="{f:if(condition:'{s:data.valueForKey(array:config.activeFacets.Medientypen, key:\"Bilder und Objekte\")}',then:'ctg-hd-active',else:'')} bilder">
                                 <span class="icon bel-foto"></span><f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/>
@@ -131,7 +130,7 @@
                                 section="{settings.jumpToID}"
                                 addQueryString="TRUE"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
-                                noCacheHash="1"
+
                                 title="{f:translate(key:'Audio & Video', extensionName:'dla_opac_ng')}"
                                 class="{f:if(condition:'{s:data.valueForKey(array:config.activeFacets.Medientypen, key:\"Audio\")}',then:'ctg-hd-active',else:'')} audio">
                         <span class="icon bel-ton"></span><f:translate key='Audio & Video' extensionName='dla_opac_ng'/>
@@ -151,7 +150,7 @@
                                 section="{settings.jumpToID}"
                                 addQueryString="TRUE"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
-                                noCacheHash="1"
+
                                 title="{f:translate(key:'Namen und Werke', extensionName:'dla_opac_ng')}"
                                 class="{f:if(condition:'{config.activeFacets.Medientypen.Normdaten}',then:'ctg-hd-active',else:'')} namen">
                             <span class="icon bel-idkarte"></span><f:translate key='Namen und Werke' extensionName='dla_opac_ng'/>

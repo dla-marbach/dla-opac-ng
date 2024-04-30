@@ -276,7 +276,7 @@
                         <dla:countFromSolr query="{solvedQuery}" />
 
                         <li>
-                            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                            <f:link.action action="index" arguments="{q:query}" class="internal">
                                 <f:translate key="Systematikketten" extensionName="dla_opac_ng" /> ({solrcount})
                             </f:link.action>
                         </li>
@@ -293,7 +293,7 @@
                         <dla:countFromSolr query="{solvedQuery}" />
 
                         <li>
-                            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                            <f:link.action action="index" arguments="{q:query}" class="internal">
                                 <f:translate key="Personennormsätzen" extensionName="dla_opac_ng" /> ({solrcount})
                             </f:link.action>
                         </li>
@@ -309,7 +309,7 @@
                         <dla:countFromSolr query="{solvedQuery}" />
 
                         <li>
-                            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                            <f:link.action action="index" arguments="{q:query}" class="internal">
                                 <f:translate key="Körperschaftsnormsätzen" extensionName="dla_opac_ng" /> ({solrcount})
                             </f:link.action>
                         </li>
@@ -324,7 +324,7 @@
                         <dla:countFromSolr query="{solvedQuery}" />
 
                         <li>
-                            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                            <f:link.action action="index" arguments="{q:query}" class="internal">
                                 <f:translate key="Autorenschemaketten" extensionName="dla_opac_ng" /> ({solrcount})
                             </f:link.action>
                         </li>
@@ -339,7 +339,7 @@
                         <dla:countFromSolr query="{solvedQuery}" />
 
                         <li>
-                            <f:link.action action="index" arguments="{q:query}" class="internal" noCacheHash="1">
+                            <f:link.action action="index" arguments="{q:query}" class="internal">
                                 <f:translate key="Bibliographieketten" extensionName="dla_opac_ng" /> ({solrcount})
                             </f:link.action>
                         </li>
@@ -361,7 +361,7 @@
                     <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
                     <dla:countFromSolr query="{solvedQuery}" />
 
-                    <f:link.action action="index" arguments="{q:query}" noCacheHash="1" class="ctg-button ctg-button-textnicon" title="alles zu dieser Systematik">
+                    <f:link.action action="index" arguments="{q:query}" class="ctg-button ctg-button-textnicon" title="alles zu dieser Systematik">
                         <f:translate key='normdata.all_from_classification' extensionName='dla_opac_ng'/> ({solrcount})
                     </f:link.action>
 

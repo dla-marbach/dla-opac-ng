@@ -39,7 +39,6 @@
                             addQueryString="TRUE"
                             argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
                             section="{settings.jumpToID}"
-                            noCacheHash="1"
                             class=""
                             title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
                         <span class="icon bel-ok01"></span>
@@ -49,7 +48,6 @@
                             addQueryString="TRUE"
                             argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
                             section="{settings.jumpToID}"
-                            noCacheHash="1"
                             class=""
                             title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}">
                         <f:translate
@@ -63,7 +61,6 @@
                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
                             argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                             section="{settings.jumpToID}"
-                            noCacheHash="1"
                             class="facetAdd internal">
                         <span class="icon bel-kreis01"></span>
                     </f:link.action>
@@ -72,7 +69,6 @@
                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
                             argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                             section="{settings.jumpToID}"
-                            noCacheHash="1"
                             class="facetAdd facetText internal">
                         <f:translate
                                 key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
@@ -85,7 +81,6 @@
                                 arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, modifier:'not')}"
                                 argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                                 section="{settings.jumpToID}"
-                                noCacheHash="1"
                                 class="facetExclude facetRemoveIcon hide-text"><span class="icon bel-verboten"></span></f:link.action>
                     </f:if>
                 </f:else>
