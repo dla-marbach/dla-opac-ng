@@ -1,0 +1,1310 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" product-name="dla_opac_ng"
+          date="2014-01-05T14:38:32+01:00">
+        <header/>
+        <body>
+            <trans-unit id="Missing type in configuration for queryField %s.">
+                <source>Error: Missing type in configuration for queryField »%s«.</source>
+            </trans-unit>
+
+            <trans-unit id="extended Search">
+                <source>extended Search</source>
+            </trans-unit>
+            <trans-unit id="basic Search">
+                <source>basic Search</source>
+            </trans-unit>
+            <trans-unit id="Search">
+                <source>Search</source>
+            </trans-unit>
+
+            <trans-unit id="jump to results">
+                <source>jump to results</source>
+            </trans-unit>
+            <trans-unit id="no results">
+                <source>no results</source>
+            </trans-unit>
+            <trans-unit id="1 result">
+                <source>1 result</source>
+            </trans-unit>
+            <trans-unit id="results">
+                <source>results</source>
+            </trans-unit>
+            <trans-unit id="Error">
+                <source>Error</source>
+            </trans-unit>
+            <trans-unit id="of">
+                <source>of</source>
+            </trans-unit>
+            <trans-unit id="Go to previous page of results. (Page %s)">
+                <source>Go to previous page of results. (Page %s)</source>
+            </trans-unit>
+            <trans-unit id="Go to next page of results. (Page %s)">
+                <source>Go to next page of results. (Page %s)</source>
+            </trans-unit>
+
+            <trans-unit id="Filter by %s">
+                <source>Filter by %s</source>
+            </trans-unit>
+            <trans-unit id="Alle Datensätze mit %1$s »%2$s« zeigen.">
+                <source>Show all records with %1$s »%2$s«.</source>
+            </trans-unit>
+
+            <trans-unit id="All records">
+                <source>All records</source>
+            </trans-unit>
+            <trans-unit id="Query">
+                <source>Query</source>
+            </trans-unit>
+            <trans-unit id="restricted to">
+                <source>with</source>
+            </trans-unit>
+            <trans-unit id="AND">
+                <source>and</source>
+            </trans-unit>
+            <trans-unit id="and">
+                <source>and</source>
+            </trans-unit>
+            <trans-unit id="result">
+                <source>result</source>
+            </trans-unit>
+            <trans-unit id="previous">
+                <source>previous</source>
+            </trans-unit>
+            <trans-unit id="next">
+                <source>next</source>
+            </trans-unit>
+            <trans-unit id="Return to results list">
+                <source>Return to results list</source>
+            </trans-unit>
+            <trans-unit id="Return to results list mobile">
+                <source>List</source>
+            </trans-unit>
+
+            <trans-unit id="Facets">
+                <source>Facets</source>
+            </trans-unit>
+            <trans-unit id="remove filter">
+                <source>remove filter</source>
+            </trans-unit>
+            <trans-unit id="remove filter %s">
+                <source>remove filter “%s”</source>
+            </trans-unit>
+            <trans-unit id="show all">
+                <source>show all</source>
+            </trans-unit>
+            <trans-unit id="show less">
+                <source>show less</source>
+            </trans-unit>
+
+            <trans-unit id="Show Detail Page">
+                <source>Details</source>
+            </trans-unit>
+
+            <trans-unit id="Your query could not be executed.">
+                <source>Your query could not be executed.</source>
+            </trans-unit>
+            <trans-unit id="Re-run the query with escaped terms.">
+                <source>Re-run the query with escaped terms.</source>
+            </trans-unit>
+            <trans-unit id="Your query took too long.">
+                <source>Your query took too long and was cancelled. Try re-running the query or using a simpler one. If
+                    your query is simple already, please get in touch with us and tell us what you tried to do.
+                </source>
+            </trans-unit>
+
+            <!-- Templates -->
+            <!-- Resources/Private/Extensions/DCE/CatalogContact.html -->
+            <trans-unit id="Telefon">
+                <source>Telephone</source>
+            </trans-unit>
+            <trans-unit id="Telefax">
+                <source>Telefax</source>
+            </trans-unit>
+
+            <!-- Resources/Private/Page/Layouts/Startseite.html -->
+            <trans-unit id="Informationen">
+                <source>Information</source>
+            </trans-unit>
+            <trans-unit id="Über uns">
+                <source>About us</source>
+            </trans-unit>
+            <trans-unit id="Kalender">
+                <source>Calendar</source>
+            </trans-unit>
+            <trans-unit id="Service">
+                <source>Service</source>
+            </trans-unit>
+            <trans-unit id="Presse">
+                <source>Press</source>
+            </trans-unit>
+            <trans-unit id="Shop">
+                <source>Shop</source>
+            </trans-unit>
+            <trans-unit id="Kontakt">
+                <source>Contact</source>
+            </trans-unit>
+            <trans-unit id="Archiv">
+                <source>Archive</source>
+            </trans-unit>
+            <trans-unit id="Bibliothek">
+                <source>Library</source>
+            </trans-unit>
+            <trans-unit id="Museen">
+                <source>Museum</source>
+            </trans-unit>
+            <trans-unit id="Bildung">
+                <source>Education</source>
+            </trans-unit>
+            <trans-unit id="Forschung">
+                <source>Research</source>
+            </trans-unit>
+            <trans-unit id="Katalog">
+                <source>Catalogue</source>
+            </trans-unit>
+            <trans-unit id="Deutsches Literaturarchiv Marbach">
+                <source>Deutsches Literaturarchiv Marbach</source>
+            </trans-unit>
+            <trans-unit id="Suche">
+                <source>Search</source>
+            </trans-unit>
+            <trans-unit id="Suche nach:">
+                <source>Search:</source>
+            </trans-unit>
+            <trans-unit id="Suche in:">
+                <source>Search in:</source>
+            </trans-unit>
+            <trans-unit id="gesamter Webauftritt">
+                <source>whole Website</source>
+            </trans-unit>
+            <trans-unit id="Suche starten">
+                <source>Start search</source>
+            </trans-unit>
+            <trans-unit id="Friedrich Schiller">
+                <source>Friedrich Schiller</source>
+            </trans-unit>
+            <trans-unit id="Cotta-Archiv">
+                <source>Cotta-Archive</source>
+            </trans-unit>
+            <trans-unit id="Exil: Helen und Kurt Wolff-Archiv">
+                <source>Exile: Helen and Kurt Wolff-Archiv</source>
+            </trans-unit>
+            <trans-unit
+                    id="Mit über 200 Vor- und Nachlässen von Schriftstellerinnen, Schriftstellern und Gelehrten, die während der NS-Zeit verfolgt wurden und ins Exil flüchteten, ist das Helen und Kurt Wolff-Archiv eine der wichtigsten Quellen zum deutschsprachigen Exil des 20. Jahrhunderts.">
+                <source>The Helen and Kurt Wolff Archive is one of the most important resources on German-speaking exile
+                    in the 20th Century, with the estates of more than 200 authors and scholars who fled into exile
+                    after persecution during the Nazi era.
+                </source>
+            </trans-unit>
+            <trans-unit id="Siegfried Unseld Archiv">
+                <source>Siegfried Unseld Archive</source>
+            </trans-unit>
+            <trans-unit
+                    id="10.000 Archivkästen mit Korrespondenzen, Manuskripten und Notizen – das wichtigste Verlagsarchiv der modernen deutschen Literatur.">
+                <source>10,000 archive boxes containing correspondences, manuscripts and notes make it the most
+                    important publishing archive of modern German literature.
+                </source>
+            </trans-unit>
+            <trans-unit id="Verlagsarchive">
+                <source>Publishing Archive</source>
+            </trans-unit>
+            <trans-unit id="Gelehrte, Philosophen, Germanisten">
+                <source>Academics, philosophers, and Germanists</source>
+            </trans-unit>
+            <trans-unit id="Index der Handschriften-Bestände">
+                <source>Index of the Manuscript Collections</source>
+            </trans-unit>
+            <trans-unit id="Bilder und Objekte">
+                <source>Pictures and Objects</source>
+            </trans-unit>
+            <trans-unit id="Audio und Video">
+                <source>Audio and Video</source>
+            </trans-unit>
+            <trans-unit id="Audio">
+                <source>Audio</source>
+            </trans-unit>
+            <trans-unit id="Video">
+                <source>Video</source>
+            </trans-unit>
+            <trans-unit id="Namen und Werke">
+                <source>Names and Works</source>
+            </trans-unit>
+            <trans-unit id="Porträtgalerie">
+                <source>Portrait Gallery</source>
+            </trans-unit>
+            <trans-unit id="Projekte">
+                <source>Projects</source>
+            </trans-unit>
+            <trans-unit id="Mediendokumentation">
+                <source>Media documentation</source>
+            </trans-unit>
+            <trans-unit id="Spezialsammlungen">
+                <source>Special collection</source>
+            </trans-unit>
+            <trans-unit id="Literatur im Netz">
+                <source>Literatur Online</source>
+            </trans-unit>
+            <trans-unit id="Germanistik im Netz">
+                <source>German Studies Online</source>
+            </trans-unit>
+            <trans-unit id="Bibliografien">
+                <source>Bibliography</source>
+            </trans-unit>
+            <trans-unit id="Literaturmuseum der Moderne">
+                <source>The Literature Museum of the Modern World</source>
+            </trans-unit>
+            <trans-unit id="Wechselausstellungen">
+                <source>Temporary Exhibitions</source>
+            </trans-unit>
+            <trans-unit id="Dauerausstellung DIE SEELE">
+                <source>Permanent Exhibition: DIE SEELE (THE SOUL)</source>
+            </trans-unit>
+            <trans-unit id="Architektur">
+                <source>Architecture</source>
+            </trans-unit>
+            <trans-unit id="Schiller-Nationalmuseum">
+                <source>Schiller National Museum</source>
+            </trans-unit>
+            <trans-unit id="Dauerausstellung UNTERM PARNASS">
+                <source>Permanent Exhibition: UNTERM PARNASS (UNDER THE PARNASSUS)</source>
+            </trans-unit>
+            <trans-unit id="Geschichte">
+                <source>History</source>
+            </trans-unit>
+            <trans-unit id="Besucherinformation">
+                <source>Visitor information</source>
+            </trans-unit>
+            <trans-unit id="Museums-App">
+                <source>Museum App</source>
+            </trans-unit>
+            <trans-unit id="Ausstellungskataloge">
+                <source>Exhibition Catalogue</source>
+            </trans-unit>
+            <trans-unit id="Lese-Garten-Café">
+                <source>Lese-Garten Café</source>
+            </trans-unit>
+            <trans-unit id="Junges Museum">
+                <source>The Young Museum</source>
+            </trans-unit>
+            <trans-unit id="Familien und Kinder">
+                <source>Family and Kids</source>
+            </trans-unit>
+            <trans-unit id="Erwachsene">
+                <source>Adults</source>
+            </trans-unit>
+            <trans-unit id="Angebote für Schulen">
+                <source>Offers for Schools</source>
+            </trans-unit>
+            <trans-unit id="Lehrerfortbildungen">
+                <source>Teacher Training</source>
+            </trans-unit>
+            <trans-unit id="Buchbare Führungen und Workshops">
+                <source>Bookable Tours and Workshops</source>
+            </trans-unit>
+            <trans-unit id="Führungen »Die Familie. Ein Archiv«">
+                <source>Tours: »Family: An Archive«</source>
+            </trans-unit>
+            <trans-unit id="Tagungen">
+                <source>Conferences</source>
+            </trans-unit>
+            <trans-unit id="Das Marbacher Stipendienprogramm">
+                <source>The Marbach Scholarship Programme</source>
+            </trans-unit>
+            <trans-unit id="Internationales Archivforschungsprojekt 1968">
+                <source>The 1968 International Archive Research Project</source>
+            </trans-unit>
+            <trans-unit id="Suhrkamp-Forschungskolleg">
+                <source>Suhrkamp Research Lectures</source>
+            </trans-unit>
+            <trans-unit id="Global Archives">
+                <source>Global Archives</source>
+            </trans-unit>
+            <trans-unit id="Arbeitsstelle für die Erforschung der Geschichte der Germanistik">
+                <source>Department for the Exploration of the History of German Studies</source>
+            </trans-unit>
+            <trans-unit id="Koordinierungsstelle zur Erforschung deutsch-jüdischer Nachlässe in Israel">
+                <source>Coordinator for the Exploration of German Jewish Literary Estates in Israel</source>
+            </trans-unit>
+            <trans-unit id="Forschungsverbund Marbach Weimar Wolfenbüttel">
+                <source>Marbach Weimar Wolfenbüttel Research Association</source>
+            </trans-unit>
+            <trans-unit id="Kooperationen">
+                <source>Cooperation</source>
+            </trans-unit>
+            <trans-unit id="Handschriften">
+                <source>Manuscripts</source>
+            </trans-unit>
+            <trans-unit id="Bestände">
+                <source>Holdings</source>
+            </trans-unit>
+            <trans-unit id="Sie befinden sich hier:">
+                <source>You are here:</source>
+            </trans-unit>
+            <trans-unit id="Bestandserhaltung">
+                <source>Maintaining the Inventory</source>
+            </trans-unit>
+            <trans-unit id="Konservierung und Restaurierung">
+                <source>Conservation and Restoration</source>
+            </trans-unit>
+            <trans-unit id="Präventive Konservierung">
+                <source>Preventative Conservation</source>
+            </trans-unit>
+            <trans-unit id="Restaurierung">
+                <source>Restoration</source>
+            </trans-unit>
+            <trans-unit id="Mengenentsäuerung">
+                <source>Massive Deacidification</source>
+            </trans-unit>
+            <trans-unit id="Digitale Bestandserhaltung">
+                <source>Digital Inventory Maintenance</source>
+            </trans-unit>
+            <trans-unit id="Exponatpflege">
+                <source>Exhibit Maintenance</source>
+            </trans-unit>
+            <trans-unit id="Autorenbibliotheken">
+                <source>Author Libraries</source>
+            </trans-unit>
+            <trans-unit id="Exil">
+                <source>Exile</source>
+            </trans-unit>
+            <trans-unit id="Germanisten- und Gelehrtennachlässe">
+                <source>The Posthumous Estates of Germanists and Scholars</source>
+            </trans-unit>
+            <trans-unit id="Wiss. Kooperationen">
+                <source>Academic Cooperation</source>
+            </trans-unit>
+            <trans-unit id="Internationale Partneruniversitäten">
+                <source>International Partner Universities</source>
+            </trans-unit>
+            <trans-unit id="Forschungsverbund MWW">
+                <source>MWW Research Association</source>
+            </trans-unit>
+            <trans-unit id="Freunde und Partner">
+                <source>Friends and Partners</source>
+            </trans-unit>
+            <trans-unit id="Freundeskreis">
+                <source>Friends of the Archive</source>
+            </trans-unit>
+            <trans-unit id="Mitglied werden">
+                <source>Become a Member</source>
+            </trans-unit>
+            <trans-unit id="Spenden">
+                <source>Donate</source>
+            </trans-unit>
+            <trans-unit id="American Friends of Marbach">
+                <source>American Friends of Marbach</source>
+            </trans-unit>
+            <trans-unit id="Häufig besuchte Seiten">
+                <source>Frequently Visited Pages</source>
+            </trans-unit>
+            <trans-unit id="Anreise">
+                <source>Arrival</source>
+            </trans-unit>
+            <trans-unit id="Collegienhaus">
+                <source>Collegium House</source>
+            </trans-unit>
+            <trans-unit id="Stellenangebote">
+                <source>Vacancies</source>
+            </trans-unit>
+            <trans-unit id="Öffnungszeiten">
+                <source>Opening hours</source>
+            </trans-unit>
+            <trans-unit id="Führungen">
+                <source>Tours</source>
+            </trans-unit>
+            <trans-unit id="Schule und Lehrer">
+                <source>Schools and Teachers</source>
+            </trans-unit>
+            <trans-unit id="Neuerwerbungen">
+                <source>New Acquisitions</source>
+            </trans-unit>
+            <trans-unit id="Raumvermietung">
+                <source>Renting a Room</source>
+            </trans-unit>
+            <trans-unit id="Newsletter">
+                <source>Newsletter</source>
+            </trans-unit>
+            <trans-unit id="Impressum">
+                <source>Copyright Page</source>
+            </trans-unit>
+            <trans-unit id="Datenschutzerklärung">
+                <source>Privacy statement</source>
+            </trans-unit>
+
+            <!-- Resources/Private/... -->
+            <trans-unit id="merken">
+                <source>notice</source>
+            </trans-unit>
+            <trans-unit id="versenden">
+                <source>send</source>
+            </trans-unit>
+            <trans-unit id="teilen">
+                <source>share</source>
+            </trans-unit>
+            <trans-unit id="exportieren">
+                <source>export</source>
+            </trans-unit>
+            <trans-unit id="Details">
+                <source>Details</source>
+            </trans-unit>
+            <trans-unit id="Zugang">
+                <source>Order/Origin</source>
+            </trans-unit>
+            <trans-unit id="Medienart">
+                <source>Media type</source>
+            </trans-unit>
+            <trans-unit id="Objekttyp">
+                <source>Object type</source>
+            </trans-unit>
+            <trans-unit id="Medientyp">
+                <source>Media type</source>
+            </trans-unit>
+            <trans-unit id="Medium">
+                <source>Medium</source>
+            </trans-unit>
+
+            <!-- Resources/Private/Partials/Display/Detail/ImagesAndObjects/Details.html -->
+            <trans-unit id="Originaltitel">
+                <source>Original Title</source>
+            </trans-unit>
+            <trans-unit id="Person">
+                <source>Person</source>
+            </trans-unit>
+            <trans-unit id="Körperschaft">
+                <source>Corporation</source>
+            </trans-unit>
+            <trans-unit id="Allgemeine Beschreibung">
+                <source>General Description</source>
+            </trans-unit>
+            <trans-unit id="Entstehungszeit">
+                <source>Period of Origin</source>
+            </trans-unit>
+            <trans-unit id="Bezeichnung">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="Technik">
+                <source>Technology</source>
+            </trans-unit>
+            <trans-unit id="Umfang">
+                <source>Extent</source>
+            </trans-unit>
+            <trans-unit id="Maße [in cm]">
+                <source>Dimension [in cm]</source>
+            </trans-unit>
+            <trans-unit id="Erhaltungszustand">
+                <source>Condition</source>
+            </trans-unit>
+            <trans-unit id="Objekt- und Konvoluttypen">
+                <source>Types of Object and Collection</source>
+            </trans-unit>
+            <trans-unit id="Objekttypen">
+                <source>Types of Object</source>
+            </trans-unit>
+            <trans-unit id="Werk">
+                <source>Work</source>
+            </trans-unit>
+            <trans-unit id="Ort">
+                <source>Location</source>
+            </trans-unit>
+            <trans-unit id="Sachschlagwort">
+                <source>Keyword</source>
+            </trans-unit>
+            <trans-unit id="Bestand">
+                <source>Inventory</source>
+            </trans-unit>
+            <trans-unit id="Buchexemplar">
+                <source>Book Copy</source>
+            </trans-unit>
+            <trans-unit id="Anmerkungen">
+                <source>Comments</source>
+            </trans-unit>
+            <trans-unit id="Literatur">
+                <source>Literature</source>
+            </trans-unit>
+            <trans-unit id="In">
+                <source>In</source>
+            </trans-unit>
+            <trans-unit id="Inventarnummer">
+                <source>Inventory Number</source>
+            </trans-unit>
+            <trans-unit id="Erwerbungsnummer">
+                <source>Acquisition Number</source>
+            </trans-unit>
+            <trans-unit id="Digitales Objekt">
+                <source>Digital object</source>
+            </trans-unit>
+            <trans-unit id="Inhalt">
+                <source>Content</source>
+            </trans-unit>
+            <trans-unit id="Benutzung">
+                <source>Use</source>
+            </trans-unit>
+            <trans-unit id="Darin">
+                <source>Therein</source>
+            </trans-unit>
+
+            <!-- Resources/Private/Partials/Display/Detail/Inventory/Details.html -->
+            <trans-unit id="Bestandsart">
+                <source>Type of Holding</source>
+            </trans-unit>
+            <trans-unit id="Bestandsbildner">
+                <source>Inventory Creator</source>
+            </trans-unit>
+            <trans-unit id="Sammlung">
+                <source>Collection</source>
+            </trans-unit>
+            <trans-unit id="Signatur">
+                <source>Signature</source>
+            </trans-unit>
+            <trans-unit id="Inhaltsangabe">
+                <source>Table of contents</source>
+            </trans-unit>
+            <trans-unit id="Literaturangaben">
+                <source>Literary Information</source>
+            </trans-unit>
+            <trans-unit id="Übersicht">
+                <source>Overview</source>
+            </trans-unit>
+            <trans-unit id="Mediennummer">
+                <source>Media Number</source>
+            </trans-unit>
+            <trans-unit id="Benutzungshinweis">
+                <source>User Advice</source>
+            </trans-unit>
+            <trans-unit id="Bemerkungen">
+                <source>Comments</source>
+            </trans-unit>
+            <trans-unit id="Ordnung">
+                <source>Category</source>
+            </trans-unit>
+            <trans-unit id="Verzeichnung">
+                <source>Registration</source>
+            </trans-unit>
+            <trans-unit id="Beziehungen">
+                <source>Titles</source>
+            </trans-unit>
+            <trans-unit id="Schlagwort">
+                <source>Keyword</source>
+            </trans-unit>
+            <trans-unit id="Person Ãœber">
+                <source>About the Person</source>
+            </trans-unit>
+            <trans-unit id="Körperschaft Über">
+                <source>About the corporation</source>
+            </trans-unit>
+            <trans-unit id="Tektonik">
+                <source>Tektonik</source>
+            </trans-unit>
+
+            <!-- Resources/Private/Partials/Display/Detail/Library/Details.html -->
+            <trans-unit id="Urheber">
+                <source>Creator</source>
+            </trans-unit>
+            <trans-unit id="Beteiligt">
+                <source>Contributors</source>
+            </trans-unit>
+            <trans-unit id="Erschienen">
+                <source>Published</source>
+            </trans-unit>
+            <trans-unit id="Erscheinungsverlauf">
+                <source>Publishing History</source>
+            </trans-unit>
+            <trans-unit id="Ausgabe">
+                <source>Edition</source>
+            </trans-unit>
+            <trans-unit id="Physische Beschreibung">
+                <source>Physical Description</source>
+            </trans-unit>
+            <trans-unit id="ISBN">
+                <source>ISBN</source>
+            </trans-unit>
+            <trans-unit id="ISSN">
+                <source>ISSN</source>
+            </trans-unit>
+            <trans-unit id="E-ISSN">
+                <source>E-ISSN</source>
+            </trans-unit>
+            <trans-unit id="ZDB-ID">
+                <source>ZDB-ID</source>
+            </trans-unit>
+            <trans-unit id="Teil von">
+                <source>Part of</source>
+            </trans-unit>
+            <trans-unit id="Enthalten in">
+                <source>Featured in</source>
+            </trans-unit>
+            <trans-unit id="Provenienz">
+                <source>Provenance</source>
+            </trans-unit>
+            <trans-unit id="Sendeangaben">
+                <source>Order Information</source>
+            </trans-unit>
+            <trans-unit id="Teilwerke">
+                <source>Individual Works</source>
+            </trans-unit>
+            <trans-unit id="Weitere Titel">
+                <source>Other Titles</source>
+            </trans-unit>
+            <trans-unit id="Sprache">
+                <source>Language</source>
+            </trans-unit>
+            <trans-unit id="Sprache Original">
+                <source>Original Language</source>
+            </trans-unit>
+            <trans-unit id="Maßstab">
+                <source>Touchstone</source>
+            </trans-unit>
+            <trans-unit id="Register">
+                <source>Register</source>
+            </trans-unit>
+            <trans-unit id="Enthält">
+                <source>Containing</source>
+            </trans-unit>
+            <trans-unit id="Bibliographie">
+                <source>Bibliography</source>
+            </trans-unit>
+            <trans-unit id="Enthaltene Beiträge">
+                <source>Featured Contributions</source>
+            </trans-unit>
+            <trans-unit id="Enthaltene Bände">
+                <source>Featured Volumes</source>
+            </trans-unit>
+            <trans-unit id="Rezensionen">
+                <source>Reviews</source>
+            </trans-unit>
+            <trans-unit id="Bände und Hefte">
+                <source>Volumes und Issues</source>
+            </trans-unit>
+
+            <!-- Resources/Private/Partials/Display/Detail/Manuscripts/Details.html -->
+            <trans-unit id="Gattung">
+                <source>Genre</source>
+            </trans-unit>
+            <trans-unit id="Weitere Gattung">
+                <source>Other Genres</source>
+            </trans-unit>
+            <trans-unit id="VON/AN">
+                <source>From/To</source>
+            </trans-unit>
+            <trans-unit id="VON">
+                <source>From</source>
+            </trans-unit>
+            <trans-unit id="AN">
+                <source>To</source>
+            </trans-unit>
+            <trans-unit id="ÜBER">
+                <source>About</source>
+            </trans-unit>
+            <trans-unit id="Entstehungsort">
+                <source>Place of Origin</source>
+            </trans-unit>
+            <trans-unit id="Vorliegende Namensform">
+                <source>Current Name</source>
+            </trans-unit>
+            <trans-unit id="Titel">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="Umfang, Beilagen">
+                <source>Extent, Accompaniments</source>
+            </trans-unit>
+            <trans-unit id="Objektart">
+                <source>Type of Object</source>
+            </trans-unit>
+            <trans-unit id="Bei / Auf / In">
+                <source>At / On / In</source>
+            </trans-unit>
+            <trans-unit id="Dabei / Darauf / Darin">
+                <source>At that / On that / In that</source>
+            </trans-unit>
+            <trans-unit id="Bilder &amp; Objekte">
+                <source>Picture &amp; Objects</source>
+            </trans-unit>
+            <trans-unit id="Bestandssignatur">
+                <source>Holdings Call Number</source>
+            </trans-unit>
+            <trans-unit id="Zugangsnummer">
+                <source>Access Number</source>
+            </trans-unit>
+            <trans-unit id="Übernommene Sigel">
+                <source>Abbreviations</source>
+            </trans-unit>
+            <trans-unit id="Mikrofiche">
+                <source>Microfiche</source>
+            </trans-unit>
+            <trans-unit id="Repro">
+                <source>Replica</source>
+            </trans-unit>
+            <trans-unit id="Kasten">
+                <source>Box</source>
+            </trans-unit>
+            <trans-unit id="Mappe">
+                <source>Portfolio</source>
+            </trans-unit>
+
+            <!-- Resources/Private/Partials/Display/Detail/Normdata/Person.html -->
+            <trans-unit id="GND">
+                <source>GND</source>
+            </trans-unit>
+            <trans-unit id="Andere Namen">
+                <source>Other Names</source>
+            </trans-unit>
+            <trans-unit id="Geschlecht">
+                <source>Sex</source>
+            </trans-unit>
+            <trans-unit id="Lebensdaten">
+                <source>Birth and Death Dates</source>
+            </trans-unit>
+            <trans-unit id="Wirkungsdaten">
+                <source>Dates Active</source>
+            </trans-unit>
+            <trans-unit id="Land">
+                <source>Country</source>
+            </trans-unit>
+            <trans-unit id="Normsatz">
+                <source>Authority Record</source>
+            </trans-unit>
+            <trans-unit id="Quelle">
+                <source>Source</source>
+            </trans-unit>
+            <trans-unit id="Erläuterung">
+                <source>Explanation</source>
+            </trans-unit>
+            <!-- Resources/Private/Partials/Display/Detail/Normdata/Werk.html -->
+            <trans-unit id="Icon">
+                <source>Icon</source>
+            </trans-unit>
+            <trans-unit id="Typ">
+                <source>Type</source>
+            </trans-unit>
+            <trans-unit id="Titel des Werkes">
+                <source>Title of the Work</source>
+            </trans-unit>
+            <trans-unit id="Form des Werks">
+                <source>Form of the Work</source>
+            </trans-unit>
+            <trans-unit id="Zeit">
+                <source>Time</source>
+            </trans-unit>
+            <trans-unit id="Dieses Werk in">
+                <source>Work Featured in</source>
+            </trans-unit>
+            <trans-unit id="Übersetzungen dieses Werks">
+                <source>Translations of this Work</source>
+            </trans-unit>
+            <trans-unit id="Über dieses Werk">
+                <source>About this Work</source>
+            </trans-unit>
+
+            <!-- Resources/Private/Partials/Display/Detail/MediatypeIcon.html -->
+            <trans-unit id="AV-Medien">
+                <source>AV Media</source>
+            </trans-unit>
+            <trans-unit id="Daten">
+                <source>Information</source>
+            </trans-unit>
+            <trans-unit id="Gedrucktes">
+                <source>Printed Works</source>
+            </trans-unit>
+            <trans-unit id="Normdaten">
+                <source>Authority Files</source>
+            </trans-unit>
+            <trans-unit id="Sonstiges">
+                <source>Miscellaneous</source>
+            </trans-unit>
+            <!-- Resources/Private/Partials/Display/Field/Content.html -->
+            <!--
+            <trans-unit id="">
+<source>Suche in {queryField} nach {value}</source>
+</trans-unit>
+            <trans-unit id="">
+<source>Suche nach {displayField}:</source>
+</trans-unit>
+            <trans-unit id="">
+<source>Nothing found. Is {s:data.valueForKey(array:settings.queryFieldForDataField, key:field)} indexed and {s:data.valueForKey(array:settings.displayFieldForDataField, key:field)} stored?</source>
+</trans-unit>
+            -->
+
+            <!-- Resources/Private/Partials/Display/Field/MediatypeIcon.html -->
+
+            <!-- Resources/Private/Partials/Display/Field/Result.html -->
+            <trans-unit id="Benutzungszugang">
+                <source>User Access</source>
+            </trans-unit>
+            <trans-unit id="nicht ausleihbar">
+                <source>Cannot be borrowed,</source>
+            </trans-unit>
+            <trans-unit id="weiterer Hinweis hier">
+                <source>More information here</source>
+            </trans-unit>
+            <!-- Resources/Private/Partials/Form/Form.html -->
+            <trans-unit id="Kallías">
+                <source>Kallías</source>
+            </trans-unit>
+            <trans-unit id="der Online-Katalog des Deutschen Literaturarchivs Marbach">
+                <source>Online Catalogue of the Deutschen Literaturarchivs Marbach</source>
+            </trans-unit>
+            <trans-unit id="Merkliste">
+                <source>Watchlist</source>
+            </trans-unit>
+            <trans-unit id="Feedback">
+                <source>Feedback</source>
+            </trans-unit>
+            <trans-unit id="Mein Konto">
+                <source>My account</source>
+            </trans-unit>
+            <trans-unit id="Gesamtbestand">
+                <source>Complete Holdings</source>
+            </trans-unit>
+            <trans-unit id="Audio &amp; Video">
+                <source>Audio &amp; Video</source>
+            </trans-unit>
+            <trans-unit id="Namen &amp; Werke">
+                <source>Names &amp; Works</source>
+            </trans-unit>
+            <trans-unit id="Jetzt suchen">
+                <source>Search now</source>
+            </trans-unit>
+            <trans-unit id="Expertensuche">
+                <source>Extended Search</source>
+            </trans-unit>
+            <trans-unit id="Bestandsübersicht">
+                <source>Overview of the Holdings</source>
+            </trans-unit>
+            <trans-unit id="Suchverlauf">
+                <source>Search history</source>
+            </trans-unit>
+            <trans-unit id="Hilfe und Auskunft">
+                <source>Help and information</source>
+            </trans-unit>
+            <!-- Resources/Private/Templates/Search/Detail.html -->
+            <trans-unit id="Gleicher Künstler">
+                <source>Same Artist</source>
+            </trans-unit>
+            <trans-unit id="Aus demselben Nachlass">
+                <source>Part of the same estate</source>
+            </trans-unit>
+            <trans-unit id="Aus der selben Sammlung">
+                <source>From the same collection</source>
+            </trans-unit>
+            <trans-unit id="Aus demselben Archiv">
+                <source>Part of the same archive</source>
+            </trans-unit>
+            <trans-unit id="Ähnliche Fundstücke">
+                <source>Similar Findings</source>
+            </trans-unit>
+            <!-- Resources/Private/Templates/Search/Index.html -->
+            <trans-unit id="Sie haben das Gesuchte nicht gefunden?">
+                <source>Didn't find what you were looking for?</source>
+            </trans-unit>
+            <trans-unit id="search_help">
+                <source>Unter &quot;Hilfe &amp; Auskunft&quot; finden Sie Tipps zur Suche. Oder Sie wenden sich direkt
+                    an uns.
+                </source>
+            </trans-unit>
+            <trans-unit id="Auskunftsdienst Archiv">
+                <source>Archive Information Service</source>
+            </trans-unit>
+            <trans-unit
+                    id="Telefon &lt;a href='tel:+497144848425'&gt;+49 (0) 7144 / 848-425&lt;/a&gt;&lt;br/&gt;&lt;a href='mailto:auskhss@dla-marbach.de'&gt;auskhss@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 18:00h">
+                <source>Telephone &lt;a href="tel:+497144848425"&gt;+49 (0) 7144 / 848-425&lt;/a&gt;&lt;br/&gt;&lt;a
+                    href="mailto:auskhss@dla-marbach.de"&gt;auskhss@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Monday - Friday,
+                    8:30 to 18:00
+                </source>
+            </trans-unit>
+            <trans-unit id="Auskunftsdienst Bibliothek">
+                <source>Auskunftsdienst Bibliothek</source>
+            </trans-unit>
+            <trans-unit
+                    id="Telefon &lt;a href='tel:+497144848318'&gt;+49 (0) 7144 / 848-318&lt;/a&gt;&lt;br/&gt;&lt;a href='bibliothek@dla-marbach.de'&gt;bibliothek@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 17:30h">
+                <source>Telefon &lt;a href="tel:+497144848318"&gt;+49 (0) 7144 / 848-318&lt;/a&gt;&lt;br/&gt;&lt;a
+                    href="bibliothek@dla-marbach.de"&gt;bibliothek@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag,
+                    8:30h bis 17:30h
+                </source>
+            </trans-unit>
+            <trans-unit id="Auskunftsdienst Bilder und Objekte">
+                <source>Pictures and Objects Information Service</source>
+            </trans-unit>
+            <trans-unit id="Telefon Auskunftsdienst Bilder und Objekte">
+                <source>Telefon &lt;a href="tel:+497144848500"&gt;+49 (0) 7144 / 848-500&lt;/a&gt;&lt;br/&gt;Telefax
+                    &lt;a href="tel:+497144848490"&gt;+49 (0) 7144 / 848-490&lt;/a&gt;&lt;br/&gt;&lt;a
+                    href="bilder-und-objekte@dla-marbach.de"&gt;bilder-und-objekte@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag
+                    - Freitag, 8:30h bis 18:00h
+                </source>
+            </trans-unit>
+            <trans-unit id="Andere Fundorte">
+                <source>Other Provenances</source>
+            </trans-unit>
+            <trans-unit id="schließen">
+                <source>Close</source>
+            </trans-unit>
+            <!-- Resources/Private/Templates/Start/Start.html -->
+            <trans-unit id="Hilfe &amp; Auskunft">
+                <source>Help &amp; Information</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.author">
+                <source>Person/Corporation</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.author_von">
+                <source>Person/Corporation Von</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.author_an">
+                <source>Person/Corporation An</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.author_ueber">
+                <source>Person/Corporation Ãœber</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.author_unter">
+                <source>Person/Corporation Unter</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.title_ueber">
+                <source>Title Ãœber</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.date">
+                <source>Year/Date</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.date_von">
+                <source>Time/Date Von</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.date_bis">
+                <source>Time/Date Bis</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.new_von">
+                <source>Newly recorded since</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.new_bis">
+                <source>Newly recorded until</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.place">
+                <source>Place of Origin/Place of Publication</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.numbers">
+                <source>Number</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.signatur">
+                <source>Holding Call Number</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.exemplar">
+                <source>Provenance Symbol (Exemplar)</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.searchall">
+                <source>Free Search</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.not_date">
+                <source>Not dated</source>
+            </trans-unit>
+            <trans-unit id="search.fieldselector.label_not_date">
+                <source>Only without dates</source>
+            </trans-unit>
+
+            <trans-unit id="search.facet.active_facets">
+                <source>Active facets</source>
+            </trans-unit>
+            <trans-unit id="search.facet.reset_facets">
+                <source>Reset facets</source>
+            </trans-unit>
+            <trans-unit id="search.facet.FormUndInhalt">
+                <source>Form and Content</source>
+            </trans-unit>
+            <trans-unit id="search.facet.Medium">
+                <source>Medium</source>
+            </trans-unit>
+            <trans-unit id="search.facet.Personen">
+                <source>Persons and Corporations</source>
+            </trans-unit>
+            <trans-unit id="search.facet.Zeit">
+                <source>Time</source>
+            </trans-unit>
+            <trans-unit id="search.facet.Thema">
+                <source>Subject</source>
+            </trans-unit>
+            <trans-unit id="search.facet.NeuImKatalog">
+                <source>New in catalogue</source>
+            </trans-unit>
+            <trans-unit id="search.facet.Sprache">
+                <source>Language</source>
+            </trans-unit>
+            <trans-unit id="search.facet.Ort">
+                <source>Location</source>
+            </trans-unit>
+            <trans-unit id="search.facet.Sammlung">
+                <source>Collection</source>
+            </trans-unit>
+            <trans-unit id="search.facet.Datenbestand">
+                <source>Dataset</source>
+            </trans-unit>
+            <trans-unit id="search.facet.Bibliographie">
+                <source>Bibliography</source>
+            </trans-unit>
+
+            <trans-unit id="sortby.Default">
+                <source>Default</source>
+            </trans-unit>
+            <trans-unit id="sortby.Jahr aufsteigend">
+                <source>Year ascending</source>
+            </trans-unit>
+            <trans-unit id="sortby.Jahr absteigend">
+                <source>Year descending</source>
+            </trans-unit>
+            <trans-unit id="sortby.Titel (A-Z)">
+                <source>Title (A-Z)</source>
+            </trans-unit>
+            <trans-unit id="sortby.Titel(Z-A)">
+                <source>Title (Z-A)</source>
+            </trans-unit>
+            <trans-unit id="sortby.Normdaten absteigend">
+                <source>Normdata descending</source>
+            </trans-unit>
+
+            <trans-unit id="info.telephone">
+                <source>Tel.</source>
+            </trans-unit>
+            <trans-unit id="info.mo_fr_9_17">
+                <source>Monday - Friday, 9:00h - 17:00h</source>
+            </trans-unit>
+            <trans-unit id="info.telefax">
+                <source>Telefax</source>
+            </trans-unit>
+            <trans-unit id="info.mo_do_9_17">
+                <source>Monday - Thursday, 9:00h - 17:00h</source>
+            </trans-unit>
+            <trans-unit id="info.fr_9-15">
+                <source>Friday, 9:00h - 15:00h</source>
+            </trans-unit>
+
+            <trans-unit id="detail.more_details">
+                <source>More Details</source>
+            </trans-unit>
+            <trans-unit id="detail.document_link">
+                <source>Document links</source>
+            </trans-unit>
+            <trans-unit id="Provenienzexemplare">
+                <source>Provenance Copies</source>
+            </trans-unit>
+
+            <trans-unit id="normdata.wrong_category">
+                <source>Not the right category?</source>
+            </trans-unit>
+            <trans-unit id="normdata.all_from">
+                <source>All from this %s</source>
+            </trans-unit>
+
+            <trans-unit id="Systematikketten">
+                <source>Classification</source>
+            </trans-unit>
+            <trans-unit id="Personennormsätzen">
+                <source>Personennormsätzen??</source>
+            </trans-unit>
+            <trans-unit id="Körperschaftsnormsätzen">
+                <source>Körperschaftsnormsätzen??</source>
+            </trans-unit>
+            <trans-unit id="Autorenschemaketten">
+                <source>Autorenschemaketten??</source>
+            </trans-unit>
+            <trans-unit id="Bibliographieketten">
+                <source>Bibliographieketten??</source>
+            </trans-unit>
+
+            <trans-unit id="normdata.wrong_category">
+                <source>Not the right category?</source>
+            </trans-unit>
+            <trans-unit id="normdata.all_from_keyword">
+                <source>Everything about this keyword</source>
+            </trans-unit>
+            <trans-unit id="normdata.all_from_work">
+                <source>Everything about this work</source>
+            </trans-unit>
+            <trans-unit id="normdata.all_from_classification">
+                <source>Everything about this classification</source>
+            </trans-unit>
+            <trans-unit id="normdata.all_from_corporation">
+                <source>Everything about this corporation</source>
+            </trans-unit>
+            <trans-unit id="normdata.all_from_chain">
+                <source>Everything about this chain</source>
+            </trans-unit>
+            <trans-unit id="normdata.all_from_person">
+                <source>Everything about this person</source>
+            </trans-unit>
+
+            <trans-unit id="normdata.possible_hits">
+                <source>Possible further hits</source>
+            </trans-unit>
+            <trans-unit id="normdata.von">
+                <source>by</source>
+            </trans-unit>
+            <trans-unit id="normdata.an">
+                <source>to</source>
+            </trans-unit>
+            <trans-unit id="normdata.über">
+                <source>about</source>
+            </trans-unit>
+            <trans-unit id="normdata.unter">
+                <source>under</source>
+            </trans-unit>
+
+            <trans-unit id="Akad. Grad">
+                <source>Academic degree</source>
+            </trans-unit>
+            <trans-unit id="Bekanntschaft mit">
+                <source>Acquaintance with</source>
+            </trans-unit>
+            <trans-unit id="Beruf/Funktion">
+                <source>Occupation/Function</source>
+            </trans-unit>
+            <trans-unit id="Beziehung familiär">
+                <source>Relationship family</source>
+            </trans-unit>
+            <trans-unit id="Charakt. Beruf">
+                <source>Characteristic profession</source>
+            </trans-unit>
+            <trans-unit id="Geburtsort">
+                <source>Place of birth</source>
+            </trans-unit>
+            <trans-unit id="Sterbeort">
+                <source>Place of death</source>
+            </trans-unit>
+
+            <trans-unit id="Andere Namen">
+                <source>Other names</source>
+            </trans-unit>
+            <trans-unit id="Vorgänger">
+                <source>Predecessor</source>
+            </trans-unit>
+            <trans-unit id="Nachfolger">
+                <source>Successor</source>
+            </trans-unit>
+            <trans-unit id="Sitz, Ort">
+                <source>Seat, place</source>
+            </trans-unit>
+
+            <trans-unit id="Vom selben Verfasser / Urheber">
+                <source>From the same author</source>
+            </trans-unit>
+            <trans-unit id="Ähnliche Themen">
+                <source>Similar themes</source>
+            </trans-unit>
+            <trans-unit id="Vom selben Künstler">
+                <source>From the same artist</source>
+            </trans-unit>
+            <trans-unit id="Ähnliche Motive">
+                <source>Similar motives</source>
+            </trans-unit>
+            <trans-unit id="Vom selben Bestandsbildner">
+                <source>From the same inventor</source>
+            </trans-unit>
+
+            <trans-unit id="Keine Treffer vorhanden">
+                <source>No hits found</source>
+            </trans-unit>
+            <trans-unit id="Alle anzeigen">
+                <source>Show all</source>
+            </trans-unit>
+
+            <trans-unit id="Sammeln und Sammelbestellungen über den alten Katalog aufgeben">
+                <source>Collect and place bulk orders through the old catalogue</source>
+            </trans-unit>
+            <trans-unit id="Jetzt bestellen">
+                <source>Order now</source>
+            </trans-unit>
+
+            <trans-unit id="Keine Exemplare vorhanden">
+                <source>No copies available</source>
+            </trans-unit>
+            <trans-unit id="Nicht bestellbar">
+                <source>Not orderable</source>
+            </trans-unit>
+            <trans-unit id="Details und Benutzung">
+                <source>Details &amp; Use</source>
+            </trans-unit>
+            <trans-unit id="Exemplar-Aktionen">
+                <source>Item Actions</source>
+            </trans-unit>
+            <trans-unit id="Sender">
+                <source>Transmitter</source>
+            </trans-unit>
+            <trans-unit id="Sendedatum">
+                <source>Date of sending</source>
+            </trans-unit>
+            <trans-unit id="Vorbesitzer">
+                <source>Previous owner</source>
+            </trans-unit>
+            <trans-unit id="In Bestand">
+                <source>In stock</source>
+            </trans-unit>
+            <trans-unit id="Merkmale">
+                <source>Features</source>
+            </trans-unit>
+            <trans-unit id="Beschreibung">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="Enthaltene Materialien">
+                <source>Included Materials</source>
+            </trans-unit>
+            <trans-unit id="Buchumschlag">
+                <source>Book cover</source>
+            </trans-unit>
+            <trans-unit id="Vorhanden. Bitte per Leihschein bestellen.">
+                <source>Present. Please order by loan slip.</source>
+            </trans-unit>
+            <trans-unit id="In Bestandsübersicht zeigen">
+                <source>Show in stock overview</source>
+            </trans-unit>
+
+            <trans-unit id="Achtung: Aus technischen Gründen können max. 200 Sätze exportiert werden.">
+                <source>Attention: For technical reasons, a maximum of 200 records can be exported.</source>
+            </trans-unit>
+
+            <trans-unit id="hs order sent">
+                <source>Your order has been sent. &lt;br/&gt; The materials will be made available to you in the
+                    manuscript reading room.
+                </source>
+            </trans-unit>
+            <trans-unit id="print order sent">
+                <source>Your order has been sent. &lt;br/&gt; The materials will be made available to you in the library
+                    reading room.
+                </source>
+            </trans-unit>
+            <trans-unit id="av order sent">
+                <source>Your order has been sent. &lt;br/&gt; To use, please contact us on the extension number
+                    07144/848-378 oder -379
+                </source>
+            </trans-unit>
+            <trans-unit id="bo order sent">
+                <source>Your order has been sent. &lt;br/&gt; For pickup, please contact us at the email address &lt;a
+                    href='mailto:bilder-und-objekte@dla-marbach.de'&gt;bilder-und-objekte@dla-marbach.de&lt;/a&gt;
+                </source>
+            </trans-unit>
+
+            <trans-unit id="Eingabe zurücksetzen">
+                <source>Reset entry</source>
+            </trans-unit>
+            <trans-unit id="Unter">
+                <source>Under</source>
+            </trans-unit>
+            <trans-unit id="FAQ Info">
+                <source>you can find tips for searching or you can contact us.</source>
+            </trans-unit>
+            <trans-unit id="Fernleihe">
+                <source>Interlibray Loan</source>
+            </trans-unit>
+            <trans-unit id="Primäre Quellen von">
+                <source>Primary Sources from</source>
+            </trans-unit>
+            <trans-unit id="Sekundäre Quellen über">
+                <source>Secondary Sources from</source>
+            </trans-unit>
+            <trans-unit id="Übersetzungen von">
+                <source>Translations from</source>
+            </trans-unit>
+            <trans-unit id="Rezensionen zu">
+                <source>Reviews of</source>
+            </trans-unit>
+            <trans-unit id="Schlagwort">
+                <source>Subject</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
