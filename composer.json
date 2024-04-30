@@ -1,5 +1,5 @@
 {
-    "name": "dla/opacng",
+    "name": "dla/dla_opac_ng",
     "description": "Find configuration for DLA Catalog",
     "type": "typo3-cms-extension",
     "homepage": "https://www.dla-marbach.de",
@@ -31,7 +31,7 @@
         "fluidtypo3/vhs": "^6.0.1 || ^7"
     },
     "replace": {
-        "typo3-ter/opacng": "self.version"
+        "typo3-ter/dla_opac_ng": "self.version"
     },
     "autoload": {
         "psr-4": {

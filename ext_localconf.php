@@ -1,43 +1,43 @@
 <?php
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Dla.' . 'DlaOpacNg',
+    'DlaOpacNg',
     'DlaStart',
     [
-        'Start' => 'start',
-        'Export' => 'csv',
+        \Dla\DlaOpacNg\Controller\StartController::class => 'start',
+        \Dla\DlaOpacNg\Controller\ExportController::class => 'csv',
     ],
     [
-        'Start' => 'start',
-        'Export' => 'csv',
+        \Dla\DlaOpacNg\Controller\StartController::class => 'start',
+        \Dla\DlaOpacNg\Controller\ExportController::class => 'csv',
     ]
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Dla.' . 'DlaOpacNg',
+    'DlaOpacNg',
     'DlaCollection',
     [
-        'Collection' => 'index',
+        \Dla\DlaOpacNg\Controller\CollectionController::class => 'index',
     ],
     [
-        'Collection' => 'index',
+        \Dla\DlaOpacNg\Controller\CollectionController::class => 'index',
     ]
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Dla.' . 'DlaOpacNg',
+    'DlaOpacNg',
     'DlaClassification',
     [
-        'Classification' => 'index',
+        \Dla\DlaOpacNg\Controller\ClassificationController::class => 'index',
     ],
     [
-        'Classification' => 'index',
+        \Dla\DlaOpacNg\Controller\ClassificationController::class => 'index',
     ]
 );
 
 // Dev only (needed if no templates existing)
-//\FluidTYPO3\Flux\Core::registerProviderExtensionKey('Dla.DlaOpacNg', 'Content');
-//\FluidTYPO3\Flux\Core::registerProviderExtensionKey('Dla.DlaOpacNg', 'Page');
+\FluidTYPO3\Flux\Core::registerProviderExtensionKey('DlaOpacNg', 'Content');
+\FluidTYPO3\Flux\Core::registerProviderExtensionKey('DlaOpacNg', 'Page');
 
 
