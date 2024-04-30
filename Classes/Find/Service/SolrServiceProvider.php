@@ -161,7 +161,7 @@ class SolrServiceProvider extends AbstractServiceProvider
             $result = ((bool) $this->requestArguments['extended']);
         } elseif (array_key_exists('q', $this->requestArguments)) {
             foreach ($this->settings['queryFields'] as $fieldInfo) {
-                if ($fieldInfo['extended']
+                if (isset($fieldInfo['extended'])
                     && array_key_exists($fieldInfo['id'], $this->requestArguments['q'])
                     && $this->requestArguments['q'][$fieldInfo['id']]
                 ) {
@@ -275,12 +275,12 @@ class SolrServiceProvider extends AbstractServiceProvider
             $i = 0;
             foreach ($facets as $facetTerm => $facetInfo) {
                 $facetQuery = $this->getFacetQuery($this->getFacetConfig($facetID), $facetInfo['term']);
-                if ($facetInfo['modifier'] == 'not') {
+                if (isset($facetInfo['modifier']) && $facetInfo['modifier'] == 'not') {
                     $facetQuery = 'NOT '.$facetQuery;
                 }
 
                 // multi select facet
-                if ($facetInfo['config']['facettype'] == 'multi_select_facet') {
+                if (isset($facetInfo['config']['facettype']) && $facetInfo['config']['facettype'] == 'multi_select_facet') {
                     if ($concatFacetTerm == "") {
                         $concatFacetTerm = $facetTerm;
                     } else {
@@ -289,7 +289,7 @@ class SolrServiceProvider extends AbstractServiceProvider
                     $i++;
                 }
 
-                if ('and' === $facetInfo['config']['queryStyle']) {
+                if (isset($facetInfo['config']['queryStyle']) && 'and' === $facetInfo['config']['queryStyle']) {
                     // TODO: Do we really use this part of the condition? Can it be removed?
                     // Alternative query style: adding a conjunction to the main query.
                     // Can be useful when using {!join} to filter on the underlying
@@ -308,18 +308,18 @@ class SolrServiceProvider extends AbstractServiceProvider
                     // Do not add it otherwise as the additional {!tag …} prepended to the Solr query
                     // will break usage of {!join …} in the query.
                     $queryInfo = ['key' => 'facet-'.$facetID.'-'.$facetTerm];
-                    if ($facetInfo['config']['excludeOwnFilter'] && $facetQuery) {
+                    if (isset($facetInfo['config']['excludeOwnFilter']) && $facetInfo['config']['excludeOwnFilter'] && $facetQuery) {
                         $queryInfo['tag'] = $this->tagForFacet($facetID);
                     }
 
                     // If facet.missing is active and facet is selected
                     // set solr query to exclude all known facet values
-                    if ($facetTerm === $facetInfo['config']['labelMissing']) {
+                    if (isset($facetInfo['config']['labelMissing']) && $facetTerm === $facetInfo['config']['labelMissing']) {
                         $this->query->createFilterQuery($queryInfo)
                             ->setQuery('-'.str_replace('("%s")', '[* TO *]', $facetInfo['config']['query']));
                     } else {
 
-                        if ($facetInfo['config']['facettype'] == 'multi_select_facet') {
+                        if (isset($facetInfo['config']['facettype']) && $facetInfo['config']['facettype'] == 'multi_select_facet') {
 
                             if ($i == count($facets)) {
                                 $facetQuery = str_replace('"%s"', $concatFacetTerm, $facetInfo['config']['query']);
@@ -359,7 +359,8 @@ class SolrServiceProvider extends AbstractServiceProvider
             foreach ($facetConfiguration as $key => $facet) {
                 if (array_key_exists('id', $facet)) {
                     // dont show facets which are loaded via ajax
-                    if (1 !== (int) $facet['ajax']) {
+                    $facetAjaxOption = $facet['ajax'] ?? false;
+                    if (1 !== (int) $facetAjaxOption) {
                         $facetID = $facet['id'];
 
                         // start with defaults and overwrite with specific facet configuration
@@ -405,6 +406,9 @@ class SolrServiceProvider extends AbstractServiceProvider
                                         $minValue = '0000-01-01';
                                     }
 
+                                    if (!$minValue)
+                                        $minValue = '0000-01-01';
+
                                     $date = new \DateTime($minValue);
                                     //$maxDate = new \DateTime($maxValue);
 
@@ -446,16 +450,16 @@ class SolrServiceProvider extends AbstractServiceProvider
                                 ->setSort($facet['sortOrder']);
                         }
 
-                        if (1 == $facet['excludeOwnFilter']) {
+                        if (isset($facet['excludeOwnFilter']) && 1 == $facet['excludeOwnFilter']) {
                             $queryForFacet->addExclude($this->tagForFacet($facetID));
                         }
 
-                        if ($facet['showmissing'] == 1) {
+                        if (isset($facet['showmissing']) && 1 === $facet['showmissing']) {
                             $queryForFacet->setMissing(true);
                         }
                     }
 
-                    if (1 === $facet['showMissing']) {
+                    if (isset($facet['showMissing']) && 1 === $facet['showMissing']) {
                         $queryForFacet->setMissing(true);
                     }
                 } else {
@@ -496,7 +500,7 @@ class SolrServiceProvider extends AbstractServiceProvider
             $highlight = $this->query->getHighlighting();
 
             // Configure highlight queries.
-            if ($highlightConfig['query']) {
+            if (isset($highlightConfig['query'])) {
                 $queryWords = [];
                 if ($highlightConfig['useQueryTerms'] && array_key_exists('q', $arguments)) {
                     $queryParameters = $arguments['q'];
@@ -563,7 +567,7 @@ class SolrServiceProvider extends AbstractServiceProvider
             $highlight->setFragSize((int) $highlightConfig['fragsize']);
 
             // Set up alternative fields.
-            if ($highlightConfig['alternateFields']) {
+            if (isset($highlightConfig['alternateFields'])) {
                 foreach ($highlightConfig['alternateFields'] as $fieldName => $alternateFieldName) {
                     $highlightField = $highlight->getField($fieldName);
                     if (null !== $highlightField) {
@@ -602,7 +606,7 @@ class SolrServiceProvider extends AbstractServiceProvider
 
             $resultCountOptions['default'] = $this->settings['paging']['perPage'];
 
-            if ($arguments['count'] && array_key_exists($arguments['count'], $resultCountOptions['menu'])) {
+            if (isset($arguments['count']) && array_key_exists($arguments['count'], $resultCountOptions['menu'])) {
                 $resultCountOptions['selected'] = $arguments['count'];
             } else {
                 $resultCountOptions['selected'] = $resultCountOptions['default'];
@@ -655,7 +659,7 @@ class SolrServiceProvider extends AbstractServiceProvider
                 }
             }
 
-            if ($arguments['sort'] && array_key_exists($arguments['sort'], $sortOptions['menu'])) {
+            if (isset($arguments['sort']) && array_key_exists($arguments['sort'], $sortOptions['menu'])) {
                 $sortOptions['selected'] = $arguments['sort'];
             } else {
                 $sortOptions['selected'] = $sortOptions['default'];
@@ -850,7 +854,7 @@ class SolrServiceProvider extends AbstractServiceProvider
         $count = (int) $this->settings['paging']['perPage'];
 
         if (array_key_exists('count', $arguments)) {
-            $count = (int) $this->requestArguments['count'];
+            $count = (int) $arguments['count'];
         }
 
         $maxCount = (int) $this->settings['paging']['maximumPerPage'];
@@ -1060,7 +1064,7 @@ class SolrServiceProvider extends AbstractServiceProvider
         $queryFields = $this->settings['queryFields'];
         foreach ($queryFields as $fieldInfo) {
             $fieldID = $fieldInfo['id'];
-            if ($fieldID && $queryParameters[$fieldID]) {
+            if ($fieldID && isset($queryParameters[$fieldID])) {
                 // Extract array of query terms from the different structures:
                 // a) just a single string (e.g. text field)
                 // b) array of strings (e.g. date range field)
@@ -1082,7 +1086,7 @@ class SolrServiceProvider extends AbstractServiceProvider
                 }
 
                 // Fill in pre-configured default values if they exist and the field is empty.
-                $defaults = $fieldInfo['default'];
+                $defaults = $fieldInfo['default'] ?? '';
                 if ($defaults) {
                     if (!is_array($defaults)) {
                         $defaults = [$defaults];
@@ -1142,13 +1146,13 @@ class SolrServiceProvider extends AbstractServiceProvider
                         foreach ($chars as $char) {
                             $queryTerm = str_replace($char, '\\'.$char, $queryTerm);
                         }
-                        if ($fieldInfo['replaceAfterEscape']) {
+                        if (!empty($fieldInfo['replaceAfterEscape'])) {
                             foreach ($fieldInfo['replaceAfterEscape'] as $number => $values) {
                                 foreach ($values as $find => $replace) {
                                     if ($find == "boost") {
                                         continue;
                                     }
-                                    $boost = $values['boost'];
+                                    $boost = $values['boost'] ?? '';
                                     $queryTerm = str_replace($find, $replace, $queryTerm);
 
                                     if ($boost) {
@@ -1241,13 +1245,13 @@ class SolrServiceProvider extends AbstractServiceProvider
         }
 
         // If allowed fields are configured, keep only those.
-        $allowedFields = $fieldsConfig['allow'];
+        $allowedFields = $fieldsConfig['allow'] ?? '';
         if ($allowedFields) {
             $fields = array_intersect($fields, $allowedFields);
         }
 
         // If disallowed fields are configured, remove those.
-        $disallowedFields = $fieldsConfig['disallow'];
+        $disallowedFields = $fieldsConfig['disallow'] ?? '';
         if ($disallowedFields) {
             $fields = array_diff($fields, $disallowedFields);
         }
