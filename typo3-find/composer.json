@@ -2,6 +2,7 @@
     "name": "subugoe/find",
     "description": "A frontend for Solr indexes",
     "type": "typo3-cms-extension",
+    "version": "5.0.0",
     "keywords": [
         "TYPO3 CMS"
     ],

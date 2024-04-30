@@ -3,8 +3,8 @@
 $EM_CONF['find'] = [
     'title' => 'Find',
     'description' => 'A frontend for Solr indexes',
-    'version' => '4.0.2',
-    'state' => 'stable',
+    'version' => '5.0.0',
+    'state' => 'beta',
     'category' => 'plugin',
     'clearCacheOnLoad' => true,
     'author' => 'Sven-S. Porst, Ingo Pfennigstorf',
