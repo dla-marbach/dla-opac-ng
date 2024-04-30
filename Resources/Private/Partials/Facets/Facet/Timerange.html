@@ -31,7 +31,7 @@
                         <f:then>
                             <li>
                                 <f:link.action
-                                        addQueryString="TRUE"
+                                        addQueryString="untrusted"
                                         argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
                                         section="{settings.jumpToID}"
                                         class=""
@@ -40,7 +40,7 @@
                                 </f:link.action>
 
                                 <f:link.action
-                                        addQueryString="TRUE"
+                                        addQueryString="untrusted"
                                         argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
                                         section="{settings.jumpToID}"
                                         class=""
@@ -87,7 +87,7 @@
 
                                     <v:variable.set value="RANGE NOW-7DAY TO NOW" name="facetTerm" />
                                     <f:link.action
-                                            addQueryString="TRUE"
+                                            addQueryString="untrusted"
                                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
                                             argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                                             section="{settings.jumpToID}"
@@ -95,7 +95,7 @@
                                         <span class="icon bel-kreis01"></span>
                                     </f:link.action>
                                     <f:link.action
-                                            addQueryString="TRUE"
+                                            addQueryString="untrusted"
                                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
                                             argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                                             section="{settings.jumpToID}"
@@ -114,7 +114,7 @@
                                     <v:variable.set value="RANGE NOW-1MONTH TO NOW" name="facetTerm" />
 
                                     <f:link.action
-                                            addQueryString="TRUE"
+                                            addQueryString="untrusted"
                                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
                                             argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                                             section="{settings.jumpToID}"
@@ -122,7 +122,7 @@
                                         <span class="icon bel-kreis01"></span>
                                     </f:link.action>
                                     <f:link.action
-                                            addQueryString="TRUE"
+                                            addQueryString="untrusted"
                                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
                                             argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                                             section="{settings.jumpToID}"
@@ -138,7 +138,7 @@
                                 <f:if condition="{solrcount} > 0">
                                     <v:variable.set value="RANGE NOW-3MONTH TO NOW" name="facetTerm" />
                                     <f:link.action
-                                            addQueryString="TRUE"
+                                            addQueryString="untrusted"
                                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
                                             argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                                             section="{settings.jumpToID}"
@@ -146,7 +146,7 @@
                                         <span class="icon bel-kreis01"></span>
                                     </f:link.action>
                                     <f:link.action
-                                            addQueryString="TRUE"
+                                            addQueryString="untrusted"
                                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
                                             argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                                             section="{settings.jumpToID}"
@@ -162,7 +162,7 @@
                                 <f:if condition="{solrcount} > 0">
                                     <v:variable.set value="RANGE NOW-6MONTH TO NOW" name="facetTerm" />
                                     <f:link.action
-                                            addQueryString="TRUE"
+                                            addQueryString="untrusted"
                                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
                                             argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                                             section="{settings.jumpToID}"
@@ -170,7 +170,7 @@
                                         <span class="icon bel-kreis01"></span>
                                     </f:link.action>
                                     <f:link.action
-                                            addQueryString="TRUE"
+                                            addQueryString="untrusted"
                                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
                                             argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                                             section="{settings.jumpToID}"
@@ -186,7 +186,7 @@
                                 <f:if condition="{solrcount} > 0">
                                     <v:variable.set value="RANGE NOW-12MONTH TO NOW" name="facetTerm" />
                                     <f:link.action
-                                            addQueryString="TRUE"
+                                            addQueryString="untrusted"
                                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
                                             argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                                             section="{settings.jumpToID}"
@@ -194,7 +194,7 @@
                                         <span class="icon bel-kreis01"></span>
                                     </f:link.action>
                                     <f:link.action
-                                            addQueryString="TRUE"
+                                            addQueryString="untrusted"
                                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
                                             argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                                             section="{settings.jumpToID}"

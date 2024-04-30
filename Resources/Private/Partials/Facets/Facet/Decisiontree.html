@@ -97,7 +97,7 @@
                    data-url="/?decisiontree=1&q={config.queryString}&p={facetTerm}␝&activeFacets={activeFacetsParams}&relation1={facetInfo.relationField1}&relation2={facetInfo.relationField2}">
                     {facetTerm} <em>({itemCount})</em>
                     <f:link.action
-                            addQueryString="TRUE"
+                            addQueryString="untrusted"
                             arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
                             argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                             section="{settings.jumpToID}"

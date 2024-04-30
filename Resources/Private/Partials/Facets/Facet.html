@@ -83,10 +83,9 @@
                                         </f:link.action>
 
                                         <f:link.action
-                                                addQueryString="TRUE"
+                                                addQueryString="untrusted"
                                                 argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:item.id, facetTerm:item.term, activeFacets:config.activeFacets, mode:'remove')}"
                                                 section="{settings.jumpToID}"
-                                                noCacheHash="1"
                                                 class=""
                                                 title="{f:translate(key:'remove filter %s', arguments:{0:item.term})}">
                                             {item.term}

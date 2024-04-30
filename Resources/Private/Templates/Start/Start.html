@@ -66,8 +66,9 @@
                             <f:link.action
                                 id="gesamtbestand"
                                 section="{settings.jumpToID}"
-                                addQueryString="TRUE"
-                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
+                                addQueryString="untrusted"
+                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]', 2:'tx_find_find[id]'}"
+
                                 title="{f:translate(key:'Gesamtbestand', extensionName:'dla_opac_ng')}"
                                 class="{f:if(condition:'{config.activeFacets.Medientypen}',then:'',else:'ctg-hd-active')} gesamt">
                                 <span class="icon bel-mkombo06"></span><f:translate key='Gesamtbestand' extensionName='dla_opac_ng'/>
@@ -80,7 +81,7 @@
                                     id="gedrucktes"
                                     additionalParams="{tx_find_find: gedrucktes}"
                                     section="{settings.jumpToID}"
-                                    addQueryString="TRUE"
+                                    addQueryString="untrusted"
                                     argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
 
                                     title="{f:translate(key:'Gedrucktes', extensionName:'dla_opac_ng')}"
@@ -95,7 +96,7 @@
                                 id="handschriften"
                                 additionalParams="{tx_find_find: handschriften}"
                                 section="{settings.jumpToID}"
-                                addQueryString="TRUE"
+                                addQueryString="untrusted"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
 
                                 title="{f:translate(key:'Handschriften', extensionName:'dla_opac_ng')}"
@@ -110,7 +111,7 @@
                                 id="picsandobjects"
                                 additionalParams="{tx_find_find: picsandobjects}"
                                 section="{settings.jumpToID}"
-                                addQueryString="TRUE"
+                                addQueryString="untrusted"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
 
                                 title="{f:translate(key:'Bilder und Objekte', extensionName:'dla_opac_ng')}"
@@ -128,7 +129,7 @@
                                 id="audio"
                                 additionalParams="{tx_find_find: newArray}"
                                 section="{settings.jumpToID}"
-                                addQueryString="TRUE"
+                                addQueryString="untrusted"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
 
                                 title="{f:translate(key:'Audio & Video', extensionName:'dla_opac_ng')}"
@@ -148,7 +149,7 @@
                                 id="normdaten"
                                 additionalParams="{tx_find_find: newArray}"
                                 section="{settings.jumpToID}"
-                                addQueryString="TRUE"
+                                addQueryString="untrusted"
                                 argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]'}"
 
                                 title="{f:translate(key:'Namen und Werke', extensionName:'dla_opac_ng')}"
@@ -401,7 +402,7 @@
             <ul>
                 <li>
                     <f:link.action
-                            addQueryString="TRUE"
+                            addQueryString="untrusted"
                             arguments="{extendedSearch: 1}"
                             class="linkExtendedSearch">
                         <span class="icon bel-regler01"></span>

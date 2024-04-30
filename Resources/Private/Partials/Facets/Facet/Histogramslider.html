@@ -143,7 +143,7 @@
             <div style="float:left;">
                 <f:link.action
                         id="publishDateFacetSubmit-{facetInfo.id}"
-                        addQueryString="TRUE"
+                        addQueryString="untrusted"
                         arguments="{addArguments}"
                         argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
                         section="{settings.jumpToID}"
@@ -159,7 +159,7 @@
                         <f:alias map="{years:\"{s:format.regexp(match:'/RANGE ([0-9]*) TO ([0-9]*)/', replace:'\1-\2', string:term)}\"}">
                             <span class="facetActive">
                                 <f:link.action
-                                    addQueryString="TRUE"
+                                    addQueryString="untrusted"
                                     argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, activeFacets:config.activeFacets, mode:'remove')}"
                                     section="{settings.jumpToID}"
                                     class="icon-cancel facetRemove internal ctg-button" style="padding-left: 10px;padding-right: 10px;">

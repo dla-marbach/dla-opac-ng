@@ -48,7 +48,7 @@
                             <f:for each="{facetData.values}" as="itemCount" key="facetTerm" iteration="iterator">
                                 <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}">
                                     <f:link.action
-                                            addQueryString="TRUE"
+                                            addQueryString="untrusted"
                                             argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
                                             section="{settings.jumpToID}"
 
@@ -90,7 +90,7 @@
                             id="sortUri{iterator.index}"
                             style="display:none;"
                             uri='<f:uri.action
-                      addQueryString="TRUE"
+                      addQueryString="untrusted"
                       arguments="{sort:'{key}'}"
                                 argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                                 section="{settings.jumpToID}"
@@ -106,7 +106,7 @@
                                     id="pagingUri{iterator.index}"
                                     style="display:none;"
                                     uri='<f:uri.action
-                                    addQueryString="TRUE"
+                                    addQueryString="untrusted"
                                     arguments="{count:'{key}'}"
                                     argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]'}"
                                     section="{settings.jumpToID}"
