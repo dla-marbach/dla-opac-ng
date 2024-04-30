@@ -29,7 +29,7 @@ class SolveQueryViewHelper extends AbstractViewHelper
         $array = $this->arguments['array'];
 
         foreach ($settings['queryFields'] as $queryField) {
-            if ($array[$queryField['id']]) {
+            if (!empty($array[$queryField['id']])) {
                 if (is_array($array[$queryField['id']])) {
                     $resultValue = $queryField['query'];
                     for ($i=0;$i < sizeof($array[$queryField['id']]);$i++) {

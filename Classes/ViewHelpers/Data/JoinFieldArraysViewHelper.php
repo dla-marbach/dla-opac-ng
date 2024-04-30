@@ -44,6 +44,8 @@ class JoinFieldArraysViewHelper extends AbstractViewHelper
 
     protected function joinArrays($arrays, $wraps) {
 
+        $result = [];
+
         if (!is_array($arrays)) {
             $arrays = array();
         }

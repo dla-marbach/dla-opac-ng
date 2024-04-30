@@ -26,10 +26,15 @@ class CollectionViewHelper extends AbstractViewHelper
     {
         $protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === 0 ? 'https://' : 'http://';
         $record = $this->arguments['record'];
+        $arrayData = [];
         if ($record) {
             $url = $protocol . $_SERVER['HTTP_HOST'] . '/?collection=1&type=collection&action=getAllParents&nodeid=' . $record;
-            $jsonData = file_get_contents($url);
-            $arrayData = json_decode($jsonData);
+            try {
+                $jsonData = file_get_contents($url);
+                $arrayData = json_decode($jsonData);
+            } catch (\Exception $exception) {
+
+            }
 
             if ($arrayData) {
                 foreach ($arrayData as $key => $value) {

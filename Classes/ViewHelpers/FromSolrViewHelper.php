@@ -124,7 +124,7 @@ class FromSolrViewHelper extends AbstractViewHelper {
     private function createQueryComponents(&$query) {
 
         // Shards
-        if ($this->templateVariableContainer->get('settings')['shards']) {
+        if (!empty($this->templateVariableContainer->get('settings')['shards'])) {
             if (is_array($this->templateVariableContainer->get('settings')['shards']) || is_object($this->templateVariableContainer->get('settings')['shards'])) {
                 if (count($this->templateVariableContainer->get('settings')['shards'])) {
                     $distributedSearch = $query->getDistributedSearch();

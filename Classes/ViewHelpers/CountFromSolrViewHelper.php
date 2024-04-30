@@ -76,11 +76,11 @@ class CountFromSolrViewHelper extends AbstractViewHelper {
         $findParameter = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('tx_find_find');
 
         $activeFacets = $this->arguments['activeFacets'];
-        $queryConcat = $this->arguments['queryConcat'];
+        $queryConcat = $this->arguments['queryConcat'] ?? '';
 
         $newQuery = $this->arguments['query'];
 
-        if ($findParameter['q']['default']) {
+        if (!empty($findParameter['q']['default'])) {
             $newQuery = $newQuery . ' AND ' . $findParameter['q']['default'];
         }
 
@@ -121,7 +121,7 @@ class CountFromSolrViewHelper extends AbstractViewHelper {
     private function createQueryComponents(&$query) {
 
         // Shards
-        if ($this->templateVariableContainer->get('settings')['shards']) {
+        if (!empty($this->templateVariableContainer->get('settings')['shards'])) {
             if(count($this->templateVariableContainer->get('settings')['shards'])) {
                 $distributedSearch = $query->getDistributedSearch();
                 foreach($this->templateVariableContainer->get('settings')['shards'] as $name => $shard) {

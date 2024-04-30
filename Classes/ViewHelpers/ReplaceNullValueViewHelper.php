@@ -25,7 +25,9 @@ class ReplaceNullValueViewHelper extends AbstractViewHelper
      */
     public function render()
     {
+        $resultValue = null;
         if ($this->arguments['text']) {
+            $resultValue = '';
             $resultValue = str_replace("(#NV)", "", $this->arguments['text']);
             $resultValue = str_replace("#NV : #NV", "", $resultValue);
             $resultValue = str_replace("#NV :", "", $resultValue);
@@ -36,6 +38,7 @@ class ReplaceNullValueViewHelper extends AbstractViewHelper
                 $resultValue = $resultValue[0];
             }
         } else if (is_array($this->arguments['array'])) {
+            $resultValue = [];
             foreach ($this->arguments['array'] as $key => $value) {
 
                 $value = str_replace("(#NV)", "", $value);
