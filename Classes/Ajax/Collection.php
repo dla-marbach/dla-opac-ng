@@ -26,7 +26,7 @@ class Collection implements MiddlewareInterface
             $config['DB']['Connections']['Default']['user'],
             $config['DB']['Connections']['Default']['password'],
             $config['DB']['Connections']['Default']['dbname'],
-            $config['DB']['Connections']['Default']['port']
+            $config['DB']['Connections']['Default']['port'] ?? '3306'
         );
 
         // Set charset
