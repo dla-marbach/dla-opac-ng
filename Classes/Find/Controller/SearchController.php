@@ -107,7 +107,7 @@ class SearchController extends ActionController
         }
 
         if (array_key_exists('id', $this->requestArguments)) {
-            return new ForwardResponse('detail');
+            return $this->redirect('detail', NULL, NULL, $this->requestArguments);
         } else {
             $this->searchProvider->setCounter();
 
