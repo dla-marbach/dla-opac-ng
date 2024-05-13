@@ -61,6 +61,7 @@ class PageListViewHelper extends AbstractViewHelper
         $adjacentFirst = max($currentPage - $adjacentPages, 1);
         $adjacentLast = min($currentPage + $adjacentPages, $numberOfPages);
         $minimumGapSize = (int) $arguments['minimumGapSize'];
+        $pages = [];
 
         $pageIndex = 1;
         while ($pageIndex <= $numberOfPages) {
