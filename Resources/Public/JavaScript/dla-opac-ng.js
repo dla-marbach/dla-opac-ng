@@ -1,5 +1,5 @@
 const PLUGIN_PATH = '/find/opac/id/';
-const START_PLUGIN_PATH = '/katalog-ng/';
+const START_PLUGIN_PATH = '/katalog';
 
 // mobile label switch
 $(document).ready(function(){
