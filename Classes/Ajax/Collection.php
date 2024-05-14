@@ -97,7 +97,7 @@ class Collection implements MiddlewareInterface
                     'title' => $row["treeview_title"],
                     'facet_value' => $row["facet_value"],
                     'hasChild' => $row["hasChild"],
-                    'count' => ($row['count'] ?: '')
+                    'count' => ($row['count'] ?? '')
                 ];
             }
 
