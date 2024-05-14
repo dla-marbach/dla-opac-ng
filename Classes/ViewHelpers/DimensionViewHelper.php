@@ -61,12 +61,13 @@ class DimensionViewHelper extends AbstractViewHelper
 
         for($i=0; $i < $maxValue; $i++) {
             $result = "";
+            $description = "";
             $nextNoX = false;
-            if($descriptions[$i] && $descriptions[$i] != '#NV') {
+            if(isset($descriptions[$i]) && $descriptions[$i] != '#NV') {
                 $nextNoX = true;
                 $description = $descriptions[$i];
             }
-            if($diameters[$i] && $diameters[$i] != '#NV') {
+            if(isset($diameters[$i]) && $diameters[$i] != '#NV') {
                 if($nextNoX) {
                     $result = $diameters[$i] . " " . $result;
                     $nextNoX = false;
@@ -76,7 +77,7 @@ class DimensionViewHelper extends AbstractViewHelper
             } else {
                 $nextNoX = true;
             }
-            if($depths[$i] && $depths[$i] != '#NV') {
+            if(isset($depths[$i]) && $depths[$i] != '#NV') {
                 if($nextNoX) {
                     $result = $depths[$i] . " (Tiefe) " . $result;
                     $nextNoX = false;
@@ -86,7 +87,7 @@ class DimensionViewHelper extends AbstractViewHelper
             } else {
                 $nextNoX = true;
             }
-            if($widths[$i] && $widths[$i] != '#NV') {
+            if(isset($widths[$i]) && $widths[$i] != '#NV') {
                 if($nextNoX) {
                     $result = $widths[$i] . " (Breite) " . $result;
                     $nextNoX = false;
@@ -96,7 +97,7 @@ class DimensionViewHelper extends AbstractViewHelper
             } else {
                 $nextNoX = true;
             }
-            if($heights[$i] && $heights[$i] != '#NV') {
+            if(isset($heights[$i]) && $heights[$i] != '#NV') {
                 if($nextNoX) {
                     $result = $heights[$i] . " (Höhe) " . $result;
                     $nextNoX = false;
