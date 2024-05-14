@@ -1649,7 +1649,7 @@
                 <target>In Bestandsübersicht zeigen</target>
             </trans-unit>
 
-            <trans-unit id="Achtung: Aus technischen Gründen können max. 200 Sätze exportiert werden.">
+            <trans-unit id="Achtung Aus technischen Gründen können max. 200 Sätze exportiert werden.">
                 <source>Attention: For technical reasons, a maximum of 200 records can be exported.</source>
                 <target>Achtung: Aus technischen Gründen können max. 200 Sätze exportiert werden.</target>
             </trans-unit>

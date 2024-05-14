@@ -1253,7 +1253,7 @@
                 <source>Show in stock overview</source>
             </trans-unit>
 
-            <trans-unit id="Achtung: Aus technischen Gründen können max. 200 Sätze exportiert werden.">
+            <trans-unit id="Achtung Aus technischen Gründen können max. 200 Sätze exportiert werden.">
                 <source>Attention: For technical reasons, a maximum of 200 records can be exported.</source>
             </trans-unit>
 
