@@ -29,6 +29,10 @@ class FormatDateViewHelper extends AbstractViewHelper
     public function render()
     {
         $date = $this->arguments['date'];
+
+        if (!$date)
+            return false;
+
         $year = preg_match($this->arguments['regexYear'], $date,$matchYear);
         $month = preg_match($this->arguments['regexMonth'], $date,$matchMonth);
         $day = preg_match($this->arguments['regexDay'], $date,$matchDay);
@@ -36,26 +40,37 @@ class FormatDateViewHelper extends AbstractViewHelper
         $yearOnly = false;
         $yearMonth = false;
 
-        if ($matchDay[1] == "00" || !$matchDay) {
-            $matchDay[1] = 01;
-            $yearMonth = true;
-        }
+        $year = null;
+        $month = null;
+        $day = null;
 
-        if ($matchMonth[1] == "00" || !$matchMonth) {
-            $matchMonth[1] = 01;
-            $yearOnly = true;
-        }
+        // check if year only
+        if (strlen($date) == 4) {
+            $year = $date;
+            $month = 1;
+            $day = 1;
+        } else {
+            $year = array_key_exists(1, $matchYear) ? $matchYear[1] : 0;
+            $month = array_key_exists(1, $matchMonth) ? $matchMonth[1] : 1;
+            $day = array_key_exists(1, $matchDay) ? $matchDay[1] : 1;
 
-        if (!$matchYear && $yearOnly) {
-            if (strlen($date) == 4) {
-                $matchYear[1] = $date;
-                $matchMonth[1] = 01;
-                $matchDay[1] = 01;
+            if ($day === '00') {
+                $day = 1;
+                $yearMonth = true;
+            }
+
+            if ($month === '00') {
+                $month = 1;
+                $yearOnly = true;
             }
         }
 
         $resultValue = new \DateTime();
-        $resultValue->setDate($matchYear[1], $matchMonth[1], $matchDay[1]);
+        $resultValue->setDate(
+            $year,
+            $month,
+            $day
+        );
 
         if ($yearOnly) {
             $resultValue = date_format($resultValue, 'Y');
