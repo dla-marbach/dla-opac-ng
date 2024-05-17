@@ -53,6 +53,9 @@ class CollectionViewHelper extends AbstractViewHelper
                             'treeview_title' => $childObject->child->treeview_title,
                         ];
                         $i++;
+                        if (empty($childObject->child->child)) {
+                            break;
+                        }
                         $childObject = $childObject->child;
                     }
                     $resultValue[] = $breadcrumbArray;
