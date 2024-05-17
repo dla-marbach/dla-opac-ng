@@ -24,6 +24,8 @@ class ArrayRemoveNullViewHelper extends AbstractViewHelper
      */
     public function render()
     {
+        $resultValue = [];
+
         $array = $this->arguments['array'];
         foreach ($array as $key => $value) {
             if ($value !== NULL) {
