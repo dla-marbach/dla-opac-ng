@@ -12,7 +12,7 @@ use \TYPO3\CMS\Core\Database\ConnectionPool;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Core\Utility\MathUtility;
 
-class Import extends Command {
+final class Import extends Command {
 
     protected static $tables = [
         'classification' => 'tx_dlaopacng_classification',
@@ -24,7 +24,7 @@ class Import extends Command {
      *
      * @return void
      */
-    public function configure()
+    public function configure(): void
     {
         $this
             ->setDescription('Import new collection hierarchy into database.')
@@ -55,9 +55,9 @@ class Import extends Command {
      * @param InputInterface $input The input parameters
      * @param OutputInterface $output The Symfony interface for outputs on console
      *
-     * @return void
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         // Make sure the _cli_ user is loaded
 //        Bootstrap::getInstance()->initializeBackendAuthentication();

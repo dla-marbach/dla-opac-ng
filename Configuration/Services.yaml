@@ -12,3 +12,9 @@ services:
     resource: '../Classes/*'
     exclude:
       - '../Classes/Ajax/EidSettings.php'
+
+  Dla\DlaOpacNg\Cli\Import:
+    tags:
+      - name: console.command
+        command: 'dla_opac_ng:import'
+        description: 'A command that does nothing and always succeeds.'
