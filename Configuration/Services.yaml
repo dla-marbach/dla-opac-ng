@@ -17,4 +17,4 @@ services:
     tags:
       - name: console.command
         command: 'dla_opac_ng:import'
-        description: 'A command that does nothing and always succeeds.'
+        description: 'Import new collection hierarchy into database.'
