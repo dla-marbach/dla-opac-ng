@@ -698,7 +698,8 @@
                         <f:translate key='Anmerkungen' extensionName='dla_opac_ng'/>
                     </div>
                     <div class="ctg-dtvt-content">
-                        {H02430}
+                        <dla:replaceBreaks text="{H02430}" as="H02430"/>
+                        <f:format.raw>{H02430}</f:format.raw>
                     </div>
                 </div>
             </f:then>
