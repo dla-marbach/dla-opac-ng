@@ -1304,7 +1304,7 @@
             </trans-unit>
             <trans-unit id="search.fieldselector.exemplar">
                 <source>Provenance Symbol (Exemplar)</source>
-                <target>Provienenzmerkmale (Exemplar)</target>
+                <target>Provenienzmerkmale (Exemplar)</target>
             </trans-unit>
             <trans-unit id="search.fieldselector.searchall">
                 <source>Free Search</source>
