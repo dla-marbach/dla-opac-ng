@@ -22,11 +22,11 @@ class Collection implements MiddlewareInterface
         $config = require '../config/system/settings.php';
         // Connect to DB
         $db = mysqli_connect(
-            $config['DB']['Connections']['Default']['host'],
-            $config['DB']['Connections']['Default']['user'],
-            $config['DB']['Connections']['Default']['password'],
-            $config['DB']['Connections']['Default']['dbname'],
-            $config['DB']['Connections']['Default']['port'] ?? '3306'
+            getenv('TYPO3__DB__host'),
+            getenv('TYPO3__DB__username'),
+            getenv('TYPO3__DB__password'),
+            getenv('TYPO3__DB__database'),
+            getenv('TYPO3__DB__port')
         );
 
         // Set charset
