@@ -741,7 +741,12 @@ $.TokenList = function (input, url_or_data, settings) {
             var dropdown_ul = $("<ul>")
                 .appendTo(dropdown)
                 .mouseover(function (event) {
-                    select_dropdown_item($(event.target).closest("li"));
+                    if ($(this).data('init') === undefined)
+                    {
+                        $(this).data('init', '1');
+                    } else {
+                        select_dropdown_item($(event.target).closest("li"));
+                    }
                 })
                 .mousedown(function (event) {
 
