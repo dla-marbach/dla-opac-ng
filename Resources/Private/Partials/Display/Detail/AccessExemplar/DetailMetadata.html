@@ -514,10 +514,10 @@
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'XX_AU_BFKEY_AUKEY')}" name="XX_AU_BFKEY_AUKEY" />
                 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
 
-                <dla:replaceNullValue text="{XX_AU_BFKEY_AUKEY.{item_iterator.index}}" as="BFKEY_AUKEY"/>
+                <dla:replaceNullValue text="{detail_inbestand_ids.{item_iterator.index}}" as="BFKEY_AUKEY"/>
 
                 <dla:collection record="{id}" as="data"/>
-                <dla:collection record="BF{BFKEY_AUKEY}" as="dataGreater"/>
+                <dla:collection record="{BFKEY_AUKEY}" as="dataGreater"/>
                 <f:if condition="{data} || {dataGreater}">
                     <f:then>
                         <f:if condition="{dataGreater} && !{data}">
