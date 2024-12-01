@@ -113,6 +113,7 @@ $(document).ready(function(){
 
     $('.order-button').click(function (event) {
         event.preventDefault();
+        $('.order-overlay .error').hide();
         $('.order-overlay .login-form').show();
         $('.order-overlay .confirm').hide();
         $('.order-overlay').toggle();
@@ -137,11 +138,12 @@ $(document).ready(function(){
             orderurl = orderurl.replace("%pw%", pwValue);
 
             $('.order-overlay-button').prop('disabled', true);
-
+            $('#loading').addClass('lb-cancel');
             $.ajax({
                 url: orderurl,
             })
             .done(function( data ) {
+                $('#loading').removeClass('lb-cancel');
                 $('.order-overlay .login-form').hide();
                 $('.order-overlay .info-no-account').hide();
                 // $('.order-overlay .info').text($(data).filter("#meldung").text()).show();
