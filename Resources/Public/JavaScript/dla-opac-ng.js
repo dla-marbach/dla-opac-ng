@@ -643,24 +643,31 @@ function loadDataserviceFormats(baseUrl, callback) {
         callback(dataserviceFormatsCache[baseUrl]);
         return;
     }
-    $.getJSON(baseUrl + '/openapi.json', function (spec) {
-        var formats = [];
-        try {
-            var params = spec.paths['/records'].get.parameters;
-            $.each(params, function (i, param) {
-                if (param.name === 'format' && param.schema && param.schema.enum) {
-                    $.each(param.schema.enum, function (j, fmt) {
-                        formats.push({ id: fmt, label: fmt.toUpperCase() });
-                    });
-                }
-            });
-        } catch (e) {}
-        dataserviceFormatsCache[baseUrl] = formats.length ? formats : DATASERVICE_FALLBACK_FORMATS;
-        callback(dataserviceFormatsCache[baseUrl]);
-    }).fail(function () {
-        dataserviceFormatsCache[baseUrl] = DATASERVICE_FALLBACK_FORMATS;
-        callback(dataserviceFormatsCache[baseUrl]);
-    });
+
+    // Temporarily disabled because requesting openapi.json can fail with CORS.
+    // Keep this block for later reactivation when CORS is fixed.
+    //
+    // $.getJSON(baseUrl + '/openapi.json', function (spec) {
+    //     var formats = [];
+    //     try {
+    //         var params = spec.paths['/records'].get.parameters;
+    //         $.each(params, function (i, param) {
+    //             if (param.name === 'format' && param.schema && param.schema.enum) {
+    //                 $.each(param.schema.enum, function (j, fmt) {
+    //                     formats.push({ id: fmt, label: fmt.toUpperCase() });
+    //                 });
+    //             }
+    //         });
+    //     } catch (e) {}
+    //     dataserviceFormatsCache[baseUrl] = formats.length ? formats : DATASERVICE_FALLBACK_FORMATS;
+    //     callback(dataserviceFormatsCache[baseUrl]);
+    // }).fail(function () {
+    //     dataserviceFormatsCache[baseUrl] = DATASERVICE_FALLBACK_FORMATS;
+    //     callback(dataserviceFormatsCache[baseUrl]);
+    // });
+
+    dataserviceFormatsCache[baseUrl] = DATASERVICE_FALLBACK_FORMATS;
+    callback(dataserviceFormatsCache[baseUrl]);
 }
 
 
