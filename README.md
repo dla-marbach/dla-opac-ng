@@ -1,6 +1,6 @@
-# dla-opac-ng branch "internformat"
+# dla-opac-ng
 
-Entwicklungsumgebung für die TYPO3-Extension des Online-Katalogs des Deutschen Literaturarchivs Marbach
+TYPO3-Extension für den Katalog des Deutschen Literaturarchivs Marbach https://www.dla-marbach.de/katalog
 
 ## Installation
 
@@ -19,7 +19,7 @@ Lokal muss GitHub CLI [gh](https://cli.github.com) installiert sein.
 Auf dem lokalen PC mit aktiver VPN-Verbindung:
 
 ```
-SOLR="datastream.dla-marbach.de"
+SOLR="serene.dla-marbach.de"
 gh codespace ssh -- -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -R 127.0.0.1:18983:$SOLR:8983
 ```
 
