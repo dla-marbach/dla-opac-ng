@@ -1,0 +1,960 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace s=Dla\Find\ViewHelpers}
+
+<div class="ctg-detailview-head" xmlns:f="http://www.w3.org/1999/html">
+    <div class="ctg-dvh-main">
+        <div class="ctg-ri-icon">
+            <f:render partial="Display/Detail/MediatypeIcon" arguments="{filterType_mv:document.filterType_mv, filterMultipart:document.filterMultipart, filterDigital:document.filterDigital}" />
+        </div>
+        <div class="ctg-ri-text">
+            <h2>
+                <f:render
+                        partial="Display/Field/Inline"
+                        arguments="{
+                        config:config,
+                        results:results,
+                        document:document,
+                        field:settings.standardFields.display,
+                        separator:''
+                    }"/>
+            </h2>
+            <p>
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.displayName)}">
+                    <f:render
+                            partial="Display/Field/Inline"
+                            arguments="{
+                            config:config,
+                            results:results,
+                            document:document,
+                            field:settings.standardFields.displayName,
+                            separator:'; '
+                    }"/>
+                </f:if>
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.displayName)} && ({s:data.valueForKey(array:document.fields, key:settings.standardFields.displayAddition1)} || {s:data.valueForKey(array:document.fields, key:settings.standardFields.displayAddition2)})">,</f:if>
+            </p>
+            <p>
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.displayAddition1)}">
+                    <f:render
+                            partial="Display/Field/Inline"
+                            arguments="{
+                            config:config,
+                            results:results,
+                            document:document,
+                            field:settings.standardFields.displayAddition1,
+                            separator:'; '
+                    }"/>
+                </f:if>
+            </p>
+            <p>
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.displayAddition2)}">
+                    <f:render
+                            partial="Display/Field/Inline"
+                            arguments="{
+                            config:config,
+                            results:results,
+                            document:document,
+                            field:settings.standardFields.displayAddition2,
+                            separator:'; '
+                    }"/>
+                </f:if>
+            </p>
+        </div>
+        <div class="ctg-ri-image">
+
+        </div>
+
+        <div class="ctg-dtvt-details">
+
+            <input type="checkbox" class="ctg-hackbox ctg-readmore" id="ctg-readmore-now">
+            <label class="ctg-readmore ctg-button ctg-button-textnicon" for="ctg-readmore-now">
+                <f:translate key='detail.more_details' extensionName='dla_opac_ng'/>
+            </label>
+            <span class="ctg-readmore-content">
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Medienart' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                                document:document,
+                                results:results,
+                                field:'filterType_mv',
+                                linkFieldContent:linkFieldContent,
+                                linkFacets:linkFacets
+                        }"/>
+                    </div>
+                </div>
+
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Person' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        <f:render
+                            partial="Display/Field/List"
+                            arguments="{
+                                document:document,
+                                results:results,
+                                field:'title',
+                                linkFieldContent:linkFieldContent,
+                                linkFacets:linkFacets
+                        }"/>
+                    </div>
+                </div>
+
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'nameAlternative_name_mv')}" name="nameAlternative_name_mv" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'nameAlternative_type_mv')}" name="nameAlternative_type_mv" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'nameAlternative_comment_mv')}" name="nameAlternative_comment_mv" />
+                <f:if condition="{nameAlternative_name_mv}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Andere Namen' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:for each="{nameAlternative_name_mv}" as="item" iteration="iterator">
+                                {item}
+                                <f:if condition="{nameAlternative_type_mv.{iterator.index}} && {nameAlternative_type_mv.{iterator.index}}!='␣'">
+                                    ({nameAlternative_type_mv.{iterator.index}})
+                                </f:if>
+                                <f:if condition="{nameAlternative_comment_mv.{iterator.index}} && {nameAlternative_comment_mv.{iterator.index}}!='␣'">
+                                    ({nameAlternative_comment_mv.{iterator.index}})
+                                </f:if>
+                                <br />
+                            </f:for>
+                        </div>
+                    </div>
+                </f:if>
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'gender')}" name="gender" />
+                <f:if condition="{gender}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Geschlecht' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
+                        document:document,
+                        results:results,
+                        field:'gender',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                      }"/>
+                        </div>
+                    </div>
+                </f:if>
+
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'dateLifespanStart')}" name="dateLifespanStart" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'dateLifespanEnd')}" name="dateLifespanEnd" />
+                <f:if condition="{dateLifespanStart} || {dateLifespanEnd}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Lebensdaten' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:if condition="{dateLifespanStart}">
+                                <dla:formatDate
+                                        date="{dateLifespanStart}"
+                                        as="dateLifespanStart"
+                                />
+                                {dateLifespanStart}
+                            </f:if>
+                            –
+                            <f:if condition="{dateLifespanEnd}">
+                                <dla:formatDate
+                                        date="{dateLifespanEnd}"
+                                        as="dateLifespanEnd"
+                                />
+                                {dateLifespanEnd}
+                            </f:if>
+                        </div>
+                    </div>
+                </f:if>
+
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'dateActivityStart')}" name="dateActivityStart" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'dateActivityEnd')}" name="dateActivityEnd" />
+                <f:if condition="{dateActivityStart} || {dateActivityEnd}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Wirkungsdaten' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:if condition="{dateActivityStart}">
+                                <dla:formatDate
+                                    date="{dateActivityStart}"
+                                    as="dateActivityStart"
+                                />
+                                {dateActivityStart}
+                            </f:if>
+                            –
+                            <f:if condition="{dateActivityEnd}">
+                                <dla:formatDate
+                                        date="{dateActivityEnd}"
+                                        as="dateActivityEnd"
+                                />
+                                {dateActivityEnd}
+                            </f:if>
+                        </div>
+                    </div>
+                </f:if>
+
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'country_mv')}" name="country_mv" />
+                <f:if condition="{country_mv}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Land' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
+                        document:document,
+                        results:results,
+                        field:'country_mv',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                      }"/>
+                        </div>
+                    </div>
+                </f:if>
+
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'relation_type_mv')}" name="relation_type_mv" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'relation_text_mv')}" name="relation_text_mv" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'relation_id_mv')}" name="relation_id_mv" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'relation_comment_mv')}" name="relation_comment_mv" />
+                <v:variable.set value="10000" name="maxRenderedRelations" />
+
+                <f:if condition="{relation_type_mv}">
+
+                    <f:for each="{relation_type_mv}" as="item" iteration="iterator">
+                        <f:if condition="{iterator.cycle} <= {maxRenderedRelations}">
+
+                        <f:if condition="{lastLabel}!={item}">
+                            <f:then>
+                                <f:if condition="{lastLabel}">
+                                    </div>
+                                    </div>
+                                </f:if>
+                                <div class="ctg-dtvt-row">
+                                    <div class="ctg-dtvt-label">
+                                        <v:variable.set value="{item}" name="lastLabel" />
+                                        <f:translate key="{item}" extensionName="dla_opac_ng" default="{item}"/>
+                                    </div>
+                                <div class="ctg-dtvt-content">
+
+                            </f:then>
+                        </f:if>
+
+
+                            <f:if condition="{relation_id_mv.{iterator.index}} && {relation_id_mv.{iterator.index}}!='␣'">
+                                <f:then>
+                                    <f:link.action action="detail" arguments="{id:'{relation_id_mv.{iterator.index}}'}">
+                                        {relation_text_mv.{iterator.index}}
+                                        <f:if condition="{relation_comment_mv.{iterator.index}} && {relation_comment_mv.{iterator.index}}!='␣'">
+                                            ({relation_comment_mv.{iterator.index}})
+                                        </f:if>
+                                    </f:link.action>
+                                </f:then>
+                                <f:else>
+                                    {relation_text_mv.{iterator.index}}
+                                    <f:if condition="{relation_comment_mv.{iterator.index}} && {relation_comment_mv.{iterator.index}}!='␣'">
+                                        ({relation_comment_mv.{iterator.index}})
+                                    </f:if>
+                                </f:else>
+                            </f:if>
+                            <br/>
+                        </f:if>
+                    </f:for>
+                    <f:if condition="{f:count(subject: relation_type_mv)} > {maxRenderedRelations}">
+                        <f:translate key="maxRenderedRelationsNote" extensionName="dla_opac_ng" arguments="{0: maxRenderedRelations}" />
+                    </f:if>
+                    </div>
+                    </div>
+                </f:if>
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'reference_text_mv')}" name="reference_text_mv" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'reference_type_mv')}" name="reference_type_mv" />
+                <f:if condition="{reference_text_mv}">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Quelle' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <dla:data.joinFields
+                                    fieldNames="{0:'reference_text_mv',1:'reference_type_mv'}"
+                                    fieldWraps="{0:'%s',1:', (%s)'}"
+                                    fields="{document.fields}"
+                                    as="linkTexts"
+                            />
+
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
+                    document:document,
+                    results:results,
+                    field:'reference_text_mv',
+                    linkFieldContent:linkFieldContent,
+                    linkFacets:linkFacets,
+                    linkTexts:linkTexts
+                  }"/>
+                        </div>
+                    </div>
+                </f:if>
+
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'website_url_mv')}" name="website_url_mv" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'website_description_mv')}" name="website_description_mv" />
+                <f:if condition="{website_url_mv}">
+                    <f:then>
+                        <div class="ctg-dtvt-row">
+                            <div class="ctg-dtvt-label">
+
+                            </div>
+                            <div class="ctg-dtvt-content">
+
+                                <f:for each="{website_url_mv}" as="item" iteration="iterator">
+                                    <f:link.typolink parameter="{item}">
+                                        {item}
+                                    </f:link.typolink>
+                                    <f:if condition="{website_description_mv.{iterator.index}} && {website_description_mv.{iterator.index}}!='␣'">
+                                        ({website_description_mv.{iterator.index}})
+                                    </f:if>
+                                    <br />
+                                </f:for>
+
+                            </div>
+                        </div>
+                    </f:then>
+                </f:if>
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'noteRemark_type_mv')}" name="noteRemark_type_mv" />
+                <f:comment>noteExplanatory_type_mv.0 because this field is an array</f:comment>
+                <f:if condition="{noteRemark_type_mv.0} == 'Biografische Angaben'">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Erläuterung' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
+                    document:document,
+                    results:results,
+                    field:'noteRemark_text_mv',
+                    linkFieldContent:linkFieldContent,
+                    linkFacets:linkFacets
+                  }"/>
+                        </div>
+                    </div>
+                </f:if>
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'noteExplanatory_type_mv')}" name="noteExplanatory_type_mv" />
+                <f:comment>noteExplanatory_type_mv.0 because this field is an array</f:comment>
+                <f:if condition="{noteExplanatory_type_mv.0} == 'Geschichte des Werks'">
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Erläuterung' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
+                    document:document,
+                    results:results,
+                    field:'noteExplanatory_text_mv',
+                    linkFieldContent:linkFieldContent,
+                    linkFacets:linkFacets
+                  }"/>
+                        </div>
+                    </div>
+                </f:if>
+
+            </div>
+        </span>
+    </div>
+
+    <f:render partial="Display/Detail/DetailButtons" arguments="{_all}"/>
+</div>
+
+<div class="ctg-detailview-teaser">
+
+    <f:comment>
+    <section class="ctg-facet">
+        <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
+            Ähnliche Themen
+        </h3>
+        <ul>
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'classification_id_mv')}" name="classification_id_mv" />
+            <v:variable.set value="" name="classification_id_mv_query" />
+            <f:for each="{classification_id_mv}" as="synkey" key="key" iteration="iterator">
+                <f:if condition="{iterator.isFirst}">
+                    <f:then>
+                        <v:variable.set value="{synkey}" name="classification_id_mv_query" />
+                    </f:then>
+                    <f:else>
+                        <v:variable.set value="{classification_id_mv_query} OR {synkey}" name="classification_id_mv_query" />
+                    </f:else>
+                </f:if>
+            </f:for>
+
+            <dla:fromSolr
+                    query="classification_id_mv:({classification_id_mv_query})"
+                    fields="id,display,filterType_mv"
+                    rows="5" />
+            <f:for each="{solr}" as="solrResult">
+                <li>
+                    <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.display}" class="internal">
+                        <span class="icon bel-mag"></span>
+                    </f:link.action>
+                    <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.display}" class="internal">
+                        <f:format.crop maxCharacters="60" respectWordBoundaries="TRUE" respectHtml="TRUE">
+                            {solrResult.display}
+                        </f:format.crop>
+                    </f:link.action>
+                </li>
+            </f:for>
+
+            <f:if condition="{f:count(subject: solr)} > 0">
+                <f:then>
+                    <f:comment><li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li></f:comment>
+                    <li>
+                        <f:link.action action="index" arguments="{q:{raw: 'classification_id_mv:({classification_id_mv_query})'}}" title="{solr.display}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <span class="icon bel-lupe"></span>
+                        </f:link.action>
+                        <f:link.action action="index" arguments="{q:{raw: 'classification_id_mv:({classification_id_mv_query})'}}" title="{solr.display}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key="Alle anzeigen" extensionName="dla_opac_ng" />
+                        </f:link.action>
+                    </li>
+                </f:then>
+                <f:else>
+                    <li>
+                        <span class="icon"></span>
+                        <f:translate key="Keine Treffer vorhanden" extensionName="dla_opac_ng" />
+                    </li>
+                </f:else>
+            </f:if>
+        </ul>
+    </section>
+    </f:comment>
+
+
+
+    <div class="ctg-detailview-teaser">
+        <section>
+
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'title')}" name="box_title" />
+
+            <article>
+                <i><strong><f:translate key='normdata.von' extensionName='dla_opac_ng'/></strong> {box_title} ...</i>
+                <ul class="list-links">
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                    <v:variable.set value="{display}␝Von" name="display" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_von_gedrucktes'}"
+                            values="{0:'{display}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Gedrucktes' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                    <v:variable.set value="{display}␝Von" name="display" />                    
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_von_handschriften'}"
+                            values="{0:'{display}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Handschriften' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                    <v:variable.set value="{display}␝Von" name="display" />                    
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_von_bundo'}"
+                            values="{0:'{display}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                    <v:variable.set value="{display}␝Von" name="display" />                    
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_von_aundv'}"
+                            values="{0:'{display}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Audio und Video' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                    <v:variable.set value="{display}␝Von" name="display" />                    
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_daten'}"
+                            values="{0:'{display}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Daten' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+
+                </ul>
+            </article>
+
+            <article>
+                <i><strong><f:translate key='normdata.an' extensionName='dla_opac_ng'/></strong> {box_title} ...</i>
+                <ul class="list-links">
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                    <v:variable.set value="{display}␝An" name="display" />                    
+
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_an_gedrucktes'}"
+                            values="{0:'{display}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Gedrucktes' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                    <v:variable.set value="{display}␝An" name="display" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_an_handschriften'}"
+                            values="{0:{0:'{id}', 1:'{display}'}}"
+                    />
+
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Handschriften' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                    <v:variable.set value="{display}␝An" name="display" />                    
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_an_bundo'}"
+                            values="{0:'{display}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                    <v:variable.set value="{display}␝An" name="display" />                    
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_an_aundv'}"
+                            values="{0:'{display}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Audio und Video' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                    <v:variable.set value="{display}␝An" name="display" />                    
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_daten'}"
+                            values="{0:'{display}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Daten' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>                    
+                </ul>
+            </article>
+
+            <article>
+                <i><strong><f:translate key='normdata.über' extensionName='dla_opac_ng'/></strong> {box_title} ...</i>
+                <ul class="list-links">
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                    <v:variable.set value="{display}␝Über" name="display" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_ueber_gedrucktes'}"
+                            values="{0:'{display}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Gedrucktes' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                    <v:variable.set value="{display}␝Über" name="display" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_ueber_handschriften'}"
+                            values="{0:'{display}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Handschriften' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                    <v:variable.set value="{display}␝Über" name="display" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_ueber_bundo'}"
+                            values="{0:'{display}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                    <v:variable.set value="{display}␝Über" name="display" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_ueber_aundv'}"
+                            values="{0:'{display}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Audio und Video' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                    <v:variable.set value="{display}␝Über" name="display" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_daten'}"
+                            values="{0:'{display}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Daten' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_ueber_bestaende'}"
+                            values="{0:'{id}'}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Bestände' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+                </ul>
+            </article>
+
+            <article>
+                <i><strong><f:translate key='normdata.unter' extensionName='dla_opac_ng'/></strong> {box_title} ...</i>
+                <ul class="list-links">
+                    <ul class="list-links">
+
+                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+                        <s:data.newArray
+                                name="query"
+                                global="1"
+                                keys="{0:'detail_unter_bestaende'}"
+                                values="{0:'{id}'}"
+                        />
+                        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                        <dla:countFromSolr query="{solvedQuery}" />
+
+                        <li>
+                            <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                                <f:translate key='Bestände' extensionName='dla_opac_ng'/> ({solrcount})
+                            </f:link.action>
+                        </li>
+
+                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                        <v:variable.set value="{display}␝Unter" name="display" />
+                        <s:data.newArray
+                                name="query"
+                                global="1"
+                                keys="{0:'detail_unter_bundo'}"
+                                values="{0:'{display}'}"
+                        />
+                        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                        <dla:countFromSolr query="{solvedQuery}" />
+
+                        <li>
+                            <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                                <f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/> ({solrcount})
+                            </f:link.action>
+                        </li>
+
+                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                        <v:variable.set value="{display}␝Unter" name="display" />
+                        <s:data.newArray
+                                name="query"
+                                global="1"
+                                keys="{0:'detail_unter_exemplare'}"
+                                values="{0:'{display}'}"
+                        />
+
+                        <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                        <dla:countFromSolr query="{solvedQuery}" />
+
+                        <li>
+                            <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                                <f:translate key='Provenienzexemplare' extensionName='dla_opac_ng'/> ({solrcount})
+                            </f:link.action>
+                        </li>
+
+                    </ul>
+                </ul>
+            </article>
+
+            <article>
+                <i><f:translate key='normdata.possible_hits' extensionName='dla_opac_ng'/></i>
+                <ul class="list-links">
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'title')}" name="title" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_weitere_gedrucktes'}"
+                            values="{0:{0:'{id}', 1:'{title}'}}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Gedrucktes' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'title')}" name="title" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_weitere_handschriften'}"
+                            values="{0:{0:'{id}', 1:'{title}'}}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Handschriften' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'title')}" name="title" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_weitere_bundo'}"
+                            values="{0:{0:'{id}', 1:'{title}'}}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'title')}" name="title" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_weitere_aundv'}"
+                            values="{0:{0:'{id}', 1:'{title}'}}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Audio und Video' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'title')}" name="title" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_weitere_bestaende'}"
+                            values="{0:{0:'{id}', 1:'{title}'}}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Bestände' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'title')}" name="title" />
+                    <s:data.newArray
+                            name="query"
+                            global="1"
+                            keys="{0:'detail_weitere_daten'}"
+                            values="{0:{0:'{id}', 1:'{title}'}}"
+                    />
+                    <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                    <dla:countFromSolr query="{solvedQuery}" />
+
+                    <li>
+                        <f:link.action action="index" arguments="{q:query}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key='Daten' extensionName='dla_opac_ng'/> ({solrcount})
+                        </f:link.action>
+                    </li>
+
+                </ul>
+            </article>
+
+            <article class="ctg-detail-showall">
+                <span class="icon bel-frage"></span> <f:translate key="normdata.wrong_category" extensionName="dla_opac_ng" />
+
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+                <s:data.newArray
+                        name="query"
+                        global="1"
+                        keys="{0:'detail_all'}"
+                        values="{0:'{id}'}"
+                />
+                <dla:solveQuery array="{query}" as="solvedQuery" settings="{settings}" />
+                <dla:countFromSolr query="{solvedQuery}" />
+
+                <f:link.action action="index" arguments="{q:query}" class="ctg-button ctg-button-textnicon" title="alles zu diesem Werk" additionalAttributes="{rel: 'nofollow'}">
+                    <f:translate key='normdata.all_from_person' extensionName='dla_opac_ng'/> ({solrcount})
+                </f:link.action>
+
+            </article>
+
+            <!--
+            <article>
+                <i><strong>andere Fundorte</strong></i>
+                <ul class="list-links">
+                    <li><a title=""><span class="icon bel-link03"></span></a> <a title="">Wikipedia "Friedrich Stiller"</a></li>
+                    <li><a title=""><span class="icon bel-link03"></span></a> <a title="">Wikipedia "Stiller"</a></li>
+                    <li><a title=""><span class="icon bel-link03"></span></a> <a title="">Webarchive "Stiller, Friedrich"</a></li>
+                </ul>
+            </article>
+            -->
+        </section>
+
+    </div>
+
+
+
+</div>

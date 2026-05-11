@@ -1,0 +1,121 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  install:
+    desc: installiere und starte alle benötigten Komponenten
+    cmds:
+      - task: install_socat
+      - task: install_ddev
+      - task: install_ext
+
+  install_socat:
+    cmds:
+      - sudo apt-get update || true
+      - sudo apt-get install -y socat
+      - |
+        if lsof -iTCP:8983 -sTCP:LISTEN -Pn >/dev/null 2>&1; then
+          echo "socat läuft bereits auf Port 8983"
+        else
+          bash -c 'nohup socat TCP-LISTEN:8983,fork,bind=0.0.0.0,reuseaddr TCP:127.0.0.1:18983 >/tmp/socat-8983.log 2>&1 &'
+          echo "socat wurde im Hintergrund gestartet (Log: /tmp/socat-8983.log)"
+        fi
+
+  install_ddev:
+    dir: t3example
+    cmds:
+      - |
+        ddev config --project-type typo3 \
+        --docroot public \
+        --php-version 8.2 \
+        --database=mariadb:10.11
+      - cp ../.devfiles/.env .ddev/.env
+      - ddev start -y
+      - ddev composer create-project "typo3/cms-base-distribution:^12" --no-security-blocking
+      - |
+        ddev typo3 setup \
+        --no-interaction \
+        --server-type=other \
+        --driver=mysqli \
+        --host=db \
+        --port=3306 \
+        --dbname=db \
+        --username=db \
+        --password=db \
+        --admin-username=admin \
+        --admin-user-password="Dla1337!" \
+        --admin-email="info@example.com" \
+        --project-name="DLA OPAC" \
+        --force
+      - ddev composer require fluidtypo3/flux
+      - ddev import-db < ../.devfiles/init.sql
+      - cp ../.devfiles/additional.php config/system/additional.php
+      - cp ../.devfiles/robots.txt public/robots.txt
+      - mkdir -p config/sites/dla-opac && cp ../.devfiles/siteconfig.yaml config/sites/dla-opac/config.yaml
+
+  install_ext:
+    dir: t3example
+    cmds:
+      - mkdir -p .local-ext
+      - rm -rf .local-ext/dla-find
+      - cp -al ../dla-find .local-ext/dla-find
+      - rm -rf .local-ext/dla-dla_opac_ng
+      - mkdir -p .local-ext/dla-dla_opac_ng
+      - |
+        cp -al \
+        ../Classes \
+        ../Configuration \
+        ../Resources \
+        ../LICENSE \
+        ../composer.json \
+        ../ext_* \
+        .local-ext/dla-dla_opac_ng/
+      - rm -rf packages/dla-find
+      - ln -s ../.local-ext/dla-find packages/dla-find
+      - rm -rf packages/dla-dla_opac_ng
+      - ln -s ../.local-ext/dla-dla_opac_ng packages/dla-dla_opac_ng
+      - |
+        mkdir -p packages/dla-dla_opac_ng/Resources/Public/Fonts
+        cp -al ../.devfiles/*.woff2 packages/dla-dla_opac_ng/Resources/Public/Fonts
+      - |
+        mkdir -p packages/dla-dla_opac_ng/Resources/Public/CSS
+        cp -al ../.devfiles/site.min.css packages/dla-dla_opac_ng/Resources/Public/CSS/
+      - ddev composer config repositories.dla-find '{"type":"path","url":"packages/dla-find","options":{"symlink":true}}'
+      - ddev composer require "dla/find:dev-internformat as 6.0-dev" "dla/dla_opac_ng:@dev"
+      - cp -f ../.devfiles/systematik.tsv systematik.tsv
+      - cp -f ../.devfiles/tektonik.tsv tektonik.tsv
+      - ddev exec vendor/bin/typo3 dla_opac_ng:import -t classification -f systematik.tsv -p 6
+      - ddev exec vendor/bin/typo3 dla_opac_ng:import -t collection -f tektonik.tsv -p 6
+
+  cache:
+    dir: t3example
+    desc: lösche den TYPO3-Cache, um Code-Änderungen wirksam zu machen
+    cmds:
+      - rm -rf packages/dla-find
+      - rm -rf packages/dla-dla_opac_ng
+      - task: install_ext
+      - ddev typo3 cache:flush
+      - ddev exec composer dump-autoload
+
+  reinstall:
+    desc: löschen, neuinstallieren und starten
+    cmds:
+      - task: delete
+      - task: install
+
+  delete:
+    desc: lösche die gesamten DDEV Container
+    dir: t3example
+    cmds:
+      - ddev poweroff
+      - ddev delete -y --omit-snapshot || true
+      - cd .. && rm -rf t3example
+
+  test:
+    desc: Playwright-Test ausführen
+    dir: dla-opac-tests
+    cmds:
+      - npx playwright test {{.CLI_ARGS}}
+    env:
+      BASE_URL: http://127.0.0.1/

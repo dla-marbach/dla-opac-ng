@@ -1,0 +1,496 @@
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+
+<f:if condition="!{iterator.index}">
+    <v:variable.set value="{index: '0'}" name="iterator" />
+</f:if>
+
+<div class="ctg-dtvt-row row-{item_id_mv.{iterator.index}} aukey-row-info">
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_usageRestriction_mv')}" name="item_usageRestriction_mv" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_location_mv')}" name="item_location_mv" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_digitalObject_hyperlink_mv')}" name="item_digitalObject_hyperlink_mv" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_id_mv')}" name="item_id_mv" />
+    <v:variable.set value="{item_usageRestriction_mv.{iterator.index}}" name="usageRestriction" />
+    <v:variable.set value="{item_location_mv.{iterator.index}}" name="location" />
+    <v:variable.set value="{item_digitalObject_hyperlink_mv.{iterator.index}}" name="digitalObject_hyperlink" />
+    <f:if condition="
+        {usageRestriction}=='nicht benutzbar'
+        || {location}=='nicht im Bestand des DLA'
+        || {dla:stringContains(input: digitalObject_hyperlink, search: 'https://digital.dla-marbach.de/viewer')})
+        ">
+        <f:then>
+            <div style="padding: 0.5rem 0; margin-top: 10px; margin-bottom: 10px; width: 200px;">
+                <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">
+                    <f:translate key="Nicht bestellbar" extensionName="dla_opac_ng"/>
+                </span>
+                <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 3px;"></span>
+            </div>
+        </f:then>
+        <f:else>
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_usageRestrictionNote_mv')}" name="item_usageRestrictionNote_mv" />
+            <f:if condition="{item_usageRestrictionNote_mv}">
+                <f:then>
+                    <dla:replaceBreaks text="{item_usageRestrictionNote_mv.{iterator.index}}" as="restriction"/>
+                    <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}=='bedingt benutzbar'">
+                        <f:then>
+                            <div style="padding: 0.5rem 0; margin-top: 10px; margin-bottom: 10px; width: 200px;">
+                                <f:render partial="Display/Detail/Order/OrderLink" arguments="{_all}"/>
+                                <span class="icon bel-kreis02" style="color:#df661e;"></span>
+                            </div>
+                        </f:then>
+                        <f:else>
+                            <div style="padding: 0.5rem 0; margin-top: 10px; margin-bottom: 10px; width: 200px;">
+                                <f:render partial="Display/Detail/Order/OrderLink" arguments="{_all}"/>
+                                <span class="icon bel-kreis02" style="color:#00df27;"></span>
+                            </div>
+                        </f:else>
+                    </f:if>
+                </f:then>
+                <f:else>
+                    <div style="padding: 0.5rem 0; margin-top: 10px; margin-bottom: 10px; width: 200px;">
+                        <f:render partial="Display/Detail/Order/OrderLink" arguments="{_all}"/>
+                        <span class="icon bel-kreis02" style="color:#00df27;"></span>
+                    </div>
+                </f:else>
+            </f:if>
+        </f:else>
+    </f:if>
+
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+    <div class="ctg-dtvt-content">
+        <f:comment>Provenienz</f:comment>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_personAt_id_mv')}" name="item_personAt_id_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_personAt_display_mv')}" name="item_personAt_display_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_corporationAt_id_mv')}" name="item_corporationAt_id_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_corporationAt_display_mv')}" name="item_corporationAt_display_mv" />
+
+        <dla:replaceNullValue text="{item_personAt_display_mv.{iterator.index}}" as="vorbesitzer_person_item"/>
+        <dla:replaceNullValue text="{item_personAt_id_mv.{iterator.index}}" as="vorbesitzer_person_id"/>
+        <dla:replaceNullValue text="{item_corporationAt_display_mv.{iterator.index}}" as="vorbesitzer_ks_item"/>
+        <dla:replaceNullValue text="{item_corporationAt_id_mv.{iterator.index}}" as="vorbesitzer_ks_id"/>
+
+        <f:if condition="{vorbesitzer_person_item} || {vorbesitzer_ks_item}">
+            <f:then>
+                <f:if condition="{vorbesitzer_person_item}">
+                    <v:variable.set value="{dla:explode(string: vorbesitzer_person_id, delimiter: '␝')}" name="detail_id_array" />
+                    <f:for each="{dla:explode(string: vorbesitzer_person_item, delimiter: '␝')}" as="name" iteration="name_iterator">
+                        <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal">
+                            {name}
+                        </f:link.action>
+                        <br/>
+                    </f:for>
+                </f:if>
+
+                <f:if condition="{vorbesitzer_ks_item}">
+                    <v:variable.set value="{dla:explode(string: vorbesitzer_ks_id, delimiter: '␝')}" name="detail_id_array" />
+                    <f:for each="{dla:explode(string: vorbesitzer_ks_item, delimiter: '␝')}" as="name" iteration="name_iterator">
+                        <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal">
+                            {name}
+                        </f:link.action>
+                        <br/>
+                    </f:for>
+                </f:if>
+            </f:then>
+            <f:else>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_collection_id_mv')}" name="item_collection_id_mv" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_collection_display_mv')}" name="item_collection_display_mv" />
+                <dla:replaceNullValue text="{item_collection_display_mv.{iterator.index}}" as="BF_VALUE"/>
+
+                <f:if condition="{BF_VALUE} && {BF_VALUE}!=''">
+                    <f:link.action action="detail" arguments="{id:'{item_collection_id_mv.{iterator.index}}'}">
+                        {BF_VALUE} <br/>
+                    </f:link.action>
+                </f:if>
+            </f:else>
+        </f:if>
+
+    </div>
+    <div class="ctg-dtvt" style="width:130px;">
+        <f:render partial="Display/Detail/Order/Signature" arguments="{_all}"/>
+        <f:if condition="{item_id_mv.{iterator.index}}">
+            <a href="#" class="detail_link">
+                <f:translate key="Details und Benutzung" extensionName="dla_opac_ng"/>
+            </a>
+        </f:if>
+
+    </div>
+</div>
+<f:if condition="{item_id_mv}">
+    <f:then>
+        <div id="{iterator.cycle}" class="copy-details ctg-dtvt-row">
+    </f:then>
+    <f:else>
+        <div id="{iterator.cycle}" class="ctg-dtvt-row">
+    </f:else>
+</f:if>
+    <div class="">
+        <div class="ctg-dtvt-row" style="margin-left:auto;margin-right:auto;">
+            <div class="ctg-dtvt-label">
+                <f:translate key="Exemplar-Aktionen" extensionName="dla_opac_ng"/>
+            </div>
+
+            <div class="ctg-dtvt-content">
+                <a data-auid="{item_id_mv.{iterator.index}}" class="ctg-button au-permalink" title="Link kopieren"><span class="icon bel-verbinden"></span></a>
+                <div class="action-copied-info-div-{item_id_mv.{iterator.index}}" style="display: none; top:auto; right:auto;">
+                    <input id="action-copied-info-input-{item_id_mv.{iterator.index}}" class="action-copied-info-input-{item_id_mv.{iterator.index}}" type="text" readonly="" value="">
+                    <button class="action-copied-info-button-{item_id_mv.{iterator.index}} copy-link-button" data-auid="{item_id_mv.{iterator.index}}">Link kopieren</button>
+                    <button class="action-copied-info-button-{item_id_mv.{iterator.index}} action-copied-success-{item_id_mv.{iterator.index}}" style="display: none;">Link kopiert</button>
+                </div>
+            </div>
+        </div>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_usageRestrictionNote_mv')}" name="item_usageRestrictionNote_mv" />
+        <dla:replaceNullValue text="{item_usageRestrictionNote_mv.{iterator.index}}" as="item_usageRestrictionNote_mv"/>
+
+        <f:if condition="{item_usageRestrictionNote_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key="Benutzungshinweis" extensionName="dla_opac_ng"/>
+                    </div>
+
+                    <div class="ctg-dtvt-content">
+                        <f:if condition="{item_usageRestrictionNote_mv}">
+                            <dla:replaceBreaks text="{item_usageRestrictionNote_mv}" as="restriction"/>
+                            <f:format.raw>{restriction}</f:format.raw>
+                        </f:if>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_digitalObject_hyperlink_mv')}" name="item_digitalObject_hyperlink_mv" />
+        <f:if condition="{item_digitalObject_hyperlink_mv.{iterator.index}} && {item_digitalObject_hyperlink_mv.{iterator.index}} != '␣'">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Digitales Objekt" extensionName="dla_opac_ng"/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    <f:render partial="MediaAccess/RenderItemLinks" arguments="{_all}"/>
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_callNumberItem_mv')}" name="item_callNumberItem_mv" />
+        <dla:replaceNullValue text="{item_callNumberItem_mv.{iterator.index}}" as="item_callNumberItem_mv"/>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_callNumberItemSuffix_mv')}" name="item_callNumberItemSuffix_mv" />
+        <dla:replaceNullValue text="{item_callNumberItemSuffix_mv.{iterator.index}}" as="item_callNumberItemSuffix_mv"/>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_callNumberReadingRoom_mv')}" name="item_callNumberReadingRoom_mv" />
+        <dla:replaceNullValue text="{item_callNumberReadingRoom_mv.{iterator.index}}" as="item_callNumberReadingRoom_mv"/>
+
+        <f:if condition="{item_callNumberItem_mv} || {item_callNumberReadingRoom_mv}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Signatur" extensionName="dla_opac_ng"/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    <f:if condition="{item_callNumberReadingRoom_mv}">
+                        <f:then>
+                            {item_callNumberReadingRoom_mv}
+                        </f:then>
+                        <f:else>
+                            {item_callNumberItem_mv} <f:if condition="{item_callNumberItemSuffix_mv}">({item_callNumberItemSuffix_mv})</f:if>
+                        </f:else>
+                    </f:if>
+
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_accessionNumber_mv')}" name="item_accessionNumber_mv" />
+        <dla:replaceNullValue text="{item_accessionNumber_mv.{iterator.index}}" as="item_accessionNumber_mv"/>
+
+        <f:if condition="{item_accessionNumber_mv}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Zugangsnummer" extensionName="dla_opac_ng"/>
+                </div>
+
+                <div class="ctg-dtvt-content">
+                    {item_accessionNumber_mv}
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_broadcastStation_mv')}" name="item_broadcastStation_mv" />
+        <dla:replaceNullValue text="{item_broadcastStation_mv.{iterator.index}}" as="item_broadcastStation_mv"/>
+
+        <f:if condition="{item_broadcastStation_mv}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Sender" extensionName="dla_opac_ng"/>
+                </div>
+
+                <div class="ctg-dtvt-content">
+                    {item_broadcastStation_mv}
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_broadcastDate_mv')}" name="item_broadcastDate_mv" />
+        <dla:replaceNullValue text="{item_broadcastDate_mv.{iterator.index}}" as="item_broadcastDate_mv"/>
+
+        <f:if condition="{item_broadcastDate_mv}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Sendedatum" extensionName="dla_opac_ng"/>
+                </div>
+
+                <div class="ctg-dtvt-content">
+                    <dla:formatDate
+                            date="{item_broadcastDate_mv}"
+                            as="dateFormat"
+                    />
+                    {dateFormat}
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_personAt_id_mv')}" name="item_personAt_id_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_personAt_display_mv')}" name="item_personAt_display_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_corporationAt_id_mv')}" name="item_corporationAt_id_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_corporationAt_display_mv')}" name="item_corporationAt_display_mv" />
+
+        <dla:replaceNullValue text="{item_personAt_display_mv.{iterator.index}}" as="vorbesitzer_person_item"/>
+        <dla:replaceNullValue text="{item_personAt_id_mv.{iterator.index}}" as="vorbesitzer_person_id"/>
+        <dla:replaceNullValue text="{item_corporationAt_display_mv.{iterator.index}}" as="vorbesitzer_ks_item"/>
+        <dla:replaceNullValue text="{item_corporationAt_id_mv.{iterator.index}}" as="vorbesitzer_ks_id"/>
+
+        <f:if condition="{vorbesitzer_person_item} || {vorbesitzer_ks_item}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key="Vorbesitzer" extensionName="dla_opac_ng"/>
+                    </div>
+
+                    <div class="ctg-dtvt-content">
+
+                    <f:if condition="{vorbesitzer_person_item}">
+                        <v:variable.set value="{dla:explode(string: vorbesitzer_person_id, delimiter: '␝')}" name="detail_id_array" />
+                        <f:for each="{dla:explode(string: vorbesitzer_person_item, delimiter: '␝')}" as="name" iteration="name_iterator">
+                            <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal">
+                                {name}
+                            </f:link.action>
+                            <br/>
+                        </f:for>
+                    </f:if>
+
+                    <f:if condition="{vorbesitzer_ks_item}">
+                        <v:variable.set value="{dla:explode(string: vorbesitzer_ks_id, delimiter: '␝')}" name="detail_id_array" />
+                        <f:for each="{dla:explode(string: vorbesitzer_ks_item, delimiter: '␝')}" as="name" iteration="name_iterator">
+                            <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal">
+                                {name}
+                            </f:link.action>
+                            <br/>
+                        </f:for>
+                    </f:if>
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_collection_display_mv')}" name="item_collection_display_mv" />
+        <dla:replaceNullValue text="{item_collection_display_mv.{iterator.index}}" as="inbestand_item"/>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_collection_id_mv')}" name="item_collection_id_mv" />
+        <dla:replaceNullValue text="{item_collection_id_mv.{iterator.index}}" as="inbestand_id"/>
+
+        <f:if condition="{inbestand_item}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="In Bestand" extensionName="dla_opac_ng"/>
+                </div>
+
+                <div class="ctg-dtvt-content">
+                    <v:variable.set value="{dla:explode(string: inbestand_id, delimiter: '␝')}" name="detail_id_array" />
+                    <f:for each="{dla:explode(string: inbestand_item, delimiter: '␝')}" as="name" iteration="name_iterator">
+                        <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal">
+                            {name}
+                        </f:link.action>
+                        <br/>
+                    </f:for>
+                </div>
+            </div>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_classification_display_mv')}" name="item_classification_display_mv" />
+        <dla:replaceNullValue text="{item_classification_display_mv.{iterator.index}}" as="merkmale_item"/>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_classification_id_mv')}" name="item_classification_id_mv" />
+        <dla:replaceNullValue text="{item_classification_id_mv.{iterator.index}}" as="merkmale_id"/>
+
+        <f:if condition="{merkmale_item}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Merkmale" extensionName="dla_opac_ng"/>
+                </div>
+
+                <div class="ctg-dtvt-content">
+                    <v:variable.set value="{dla:explode(string: merkmale_id, delimiter: '␝')}" name="detail_id_array" />
+                    <f:for each="{dla:explode(string: merkmale_item, delimiter: '␝')}" as="name" iteration="name_iterator">
+                        <f:link.action action="detail" arguments="{id:'{detail_id_array.{name_iterator.index}}'}" title="" class="internal">
+                            {name}
+                        </f:link.action>
+                        <br/>
+                    </f:for>
+                </div>
+            </div>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_note_mv')}" name="item_note_mv" />
+        <dla:replaceNullValue text="{item_note_mv.{iterator.index}}" as="item_note_mv"/>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_noteOther_mv')}" name="item_noteOther_mv" />
+        <dla:replaceNullValue text="{item_noteOther_mv.{iterator.index}}" as="item_noteOther_mv"/>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_virtualRecording_mv')}" name="item_virtualRecording_mv" />
+        <dla:replaceNullValue text="{item_virtualRecording_mv.{iterator.index}}" as="item_virtualRecording_mv"/>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_noteProvenance_mv')}" name="item_noteProvenance_mv" />
+        <dla:replaceNullValue text="{item_noteProvenance_mv.{iterator.index}}" as="vermerk_item"/>
+
+
+        <f:if condition="{item_note_mv} || {item_noteOther_mv} || {item_virtualRecording_mv}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Beschreibung" extensionName="dla_opac_ng"/>
+                </div>
+
+                <div class="ctg-dtvt-content">
+                    <f:if condition="{item_note_mv}">
+                        {item_note_mv} <br/>
+                    </f:if>
+
+                    <f:if condition="{item_noteOther_mv}">
+                        {item_noteOther_mv} <br/>
+                    </f:if>
+
+                    <f:if condition="{item_virtualRecording_mv}">
+                        {item_virtualRecording_mv} <br/>
+                    </f:if>
+
+                    <f:if condition="{vermerk_item}">
+                        <f:for each="{dla:explode(string: vermerk_item, delimiter: '; ')}" as="name" iteration="name_iterator">
+                            {name}<br/>
+                        </f:for>
+                    </f:if>
+                </div>
+            </div>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_supplements_id_mv')}" name="item_supplements_id_mv" />
+        <dla:replaceNullValue text="{item_supplements_id_mv.{iterator.index}}" as="supplement_item"/>
+        <f:if condition="{supplement_item}">
+            <v:variable.set value="{dla:explode(string: supplement_item, delimiter: '␝')}" name="supplements" />
+            <dla:data.implode
+                    array="{supplements}"
+                    glue=" OR "
+                    as="supplements_concat"
+            />
+            <f:if condition="{supplements_concat}">
+                <s:data.newArray
+                        name="query"
+                        global="1"
+                        keys="{0:'id'}"
+                        values="{0:'({supplements_concat})'}"
+                />
+                <dla:fromSolr
+                        query="{query}"
+                        fields="id,display"
+                />
+                <f:if condition="{f:count(subject: solr)} > 0">
+                    <f:then>
+                        <div class="ctg-dtvt-row">
+                            <div class="ctg-dtvt-label">
+                                <f:translate key="Enthaltene Materialien" extensionName="dla_opac_ng"/>
+                            </div>
+
+                            <div class="ctg-dtvt-content">
+                                <f:for each="{solr}" as="item" iteration="item_iterator">
+                                    <f:if condition="{item}">
+                                        <f:link.action action="detail" arguments="{id:item.id}" class="internal">
+                                            {item.display}
+                                        </f:link.action>
+                                        <br/>
+                                    </f:if>
+                                </f:for>
+                            </div>
+                        </div>
+                    </f:then>
+                </f:if>
+            </f:if>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_enveloped_mv')}" name="item_enveloped_mv" />
+        <dla:replaceNullValue text="{item_enveloped_mv.{iterator.index}}" as="item_enveloped_mv"/>
+
+        <f:if condition="{item_enveloped_mv}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Buchumschlag" extensionName="dla_opac_ng"/>
+                </div>
+
+                <div class="ctg-dtvt-content">
+                    "<f:translate key="Vorhanden. Bitte per Leihschein bestellen." extensionName="dla_opac_ng"/>"
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_collection_id_mv')}" name="item_collection_id_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+
+        <dla:replaceNullValue text="{item_collection_id_mv.{item_iterator.index}}" as="collection_id_mv_item_id_mv"/>
+
+        <dla:collection record="{id}" as="data"/>
+        <dla:collection record="{collection_id_mv_item_id_mv}" as="dataGreater"/>
+        <f:if condition="{data} || {dataGreater}">
+            <f:then>
+                <f:if condition="{dataGreater} && !{data}">
+                    <f:then>
+                        <v:variable.set value="{dataGreater}" name="data" />
+                    </f:then>
+                </f:if>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key="In Bestandsübersicht zeigen" extensionName="dla_opac_ng"/>
+                    </div>
+
+                    <div class="ctg-dtvt-content">
+                        <div>
+                            <f:for each="{data}" as="arrayData" iteration="ArrayIterator">
+                                <f:for each="{arrayData}" as="doc" iteration="iterator">
+                                    <f:if condition="{doc.record_id}">
+                                        <f:then>
+                                            <f:link.action pageUid="{settings.collectionUid}" additionalParams="{'tx_dlaopacng_dlacollection[record]':'{doc.record_id}','tx_dlaopacng_dlacollection[uid]':'{doc.uid}'}" additionalAttributes="{rel: 'nofollow'}">
+                                                {doc.displayTree}
+                                            </f:link.action>
+                                        </f:then>
+                                        <f:else>
+                                            {doc.displayTree}
+                                        </f:else>
+                                    </f:if>
+                                    <f:if condition="!{iterator.isLast}">
+                                        ->
+                                    </f:if>
+                                </f:for>
+                                <br/><br/>
+                            </f:for>
+                        </div>
+                    </div>
+
+                </div>
+            </f:then>
+        </f:if>
+
+    </div>
+
+</div>

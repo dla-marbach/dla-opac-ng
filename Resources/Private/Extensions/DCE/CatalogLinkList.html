@@ -1,0 +1,15 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+<f:layout name="None" />
+
+<f:section name="main">
+    <figure class="teaser teaser-index teaser-static ctg-text-teaser">
+        <h3>{field.header}</h3>
+        <ul class="list-links">
+            <f:for each="{field.link}" as="dis">
+                <li>
+                    <f:link.typolink parameter="{dis.url}">{dis.title}</f:link.typolink>
+                </li>
+            </f:for>
+        </ul>
+    </figure>
+</f:section>

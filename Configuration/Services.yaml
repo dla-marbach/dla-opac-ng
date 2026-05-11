@@ -1,0 +1,20 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  Dla\DlaOpacNg\ViewHelpers\:
+    resource: '../Classes/ViewHelpers/*'
+    public: true
+
+  Dla\DlaOpacNg\:
+    resource: '../Classes/*'
+    exclude:
+      - '../Classes/Ajax/EidSettings.php'
+
+  Dla\DlaOpacNg\Cli\Import:
+    tags:
+      - name: console.command
+        command: 'dla_opac_ng:import'
+        description: 'Import new collection hierarchy into database.'

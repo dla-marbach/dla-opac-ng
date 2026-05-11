@@ -1,0 +1,33 @@
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+
+<div class="action-copied-info-div-detail">
+    <input id="action-copied-info-input-detail" class="action-copied-info-input-detail" type="text" readonly value=""/>
+    <button class="action-copied-info-button-detail copy-link-button">Link kopieren</button>
+    <button class="action-copied-info-button-detail action-copied-success-detail">Link kopiert</button>
+</div>
+
+<ul class="ctg-dvh-aside">
+    <li><a class="ctg-button add-watchlist-button" data-docid="{document.id}" title="<f:translate key='merken' extensionName='dla_opac_ng'/>"><span class="icon bel-stern01"></span></a></li>
+    <li><a onclick="sendUrlByMail('{display -> f:format.urlencode()}');" class="ctg-button" title="<f:translate key='versenden' extensionName='dla_opac_ng'/>"><span class="icon bel-brief01"></span></a></li>
+    <li><a class="ctg-button permalink" title="Link kopieren"><span class="icon bel-verbinden"></span></a></li>
+    <f:if condition="{settings.dataserviceUrl}">
+        <li><a href="#" class="ctg-button dataservice-detail-download" data-dataservice-url="{settings.dataserviceUrl}" data-docid="{document.id}" data-download-hint="{f:translate(key:'dataservice.download_hint_single', extensionName:'dla_opac_ng')}" data-more-info-text="{f:translate(key:'dataservice.more_info', extensionName:'dla_opac_ng')}" data-info-url="{settings.dataserviceInfoUrl}" title="<f:translate key='dataservice.download_single_title' extensionName='dla_opac_ng'/>"><span class="icon bel-postin"></span></a></li>
+    </f:if>
+    <f:comment>
+    <li>
+        <a class="export-choice-button ctg-button" title="<f:translate key='exportieren' extensionName='dla_opac_ng'/>"><span class="icon bel-postin"></span></a>
+        <div class="export-formats hidden">
+            <f:for each="{settings.citation}" key="format" as="formatSettings" iteration="formatIterator">
+                <a class="citation-export" data-exportname="{format}" data-fileext="{formatSettings.formatMapping.fileext}" style="text-decoration: none;">
+                    <span>
+                        <div class="citation-content hidden">
+                            <f:render partial="Display/Citation/{format}/{format}.html" arguments="{_all}" />
+                        </div>
+                        {format}
+                    </span>
+                </a>
+            </f:for>
+        </div>
+    </li>
+    </f:comment>
+</ul>

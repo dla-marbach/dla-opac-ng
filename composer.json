@@ -1,0 +1,56 @@
+{
+    "name": "dla/dla_opac_ng",
+    "description": "Find configuration for DLA Catalog",
+    "type": "typo3-cms-extension",
+    "homepage": "https://www.dla-marbach.de",
+    "authors": [
+        {
+            "name": "DLA Marbach",
+            "homepage": "https://www.dla-marbach.de",
+            "role": "provider"
+        },
+        {
+            "name": "effective WEBWORK",
+            "homepage": "https://www.effective-webwork.de",
+            "role": "developer"
+        },
+        {
+            "name": "Open Culture Consulting",
+            "homepage": "https://www.opencultureconsulting.com",
+            "role": "developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/dla-marbach/dla-opac-ng/issues",
+        "source": "https://github.com/dla-marbach/dla-opac-ng/"
+    },
+    "require": {
+        "php": "^8.1",
+        "typo3/cms-core": "^12",
+        "typo3/cms-tstemplate": "^12",
+        "fluidtypo3/vhs": "^6.0.1 || ^7",
+        "dla/find": "^6"
+    },
+    "replace": {
+        "typo3-ter/dla_opac_ng": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dla\\DlaOpacNg\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "dla_opac_ng"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "typo3/cms-composer-installers": true,
+            "typo3/class-alias-loader": true
+        }
+    },
+    "repositories": [
+        { "type": "vcs", "url": "https://github.com/dla-marbach/typo3-find.git","no-api": true}
+    ]
+}

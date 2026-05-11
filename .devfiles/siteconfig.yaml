@@ -1,0 +1,42 @@
+base: /
+flux_content_types: ''
+flux_page_templates: ''
+languages:
+  -
+    title: German
+    enabled: true
+    locale: de_DE.utf8
+    hreflang: ''
+    base: /
+    websiteTitle: ''
+    navigationTitle: Deutsch
+    flag: de
+    languageId: 0
+    fallbackType: strict
+    fallbacks: ''
+  -
+    title: English
+    enabled: true
+    locale: en_US.utf8
+    hreflang: ''
+    base: /en/
+    websiteTitle: 'Catalog - DLA Marbach'
+    navigationTitle: English
+    fallbackType: strict
+    fallbacks: ''
+    flag: en-us-gb
+    languageId: 1
+rootPageId: 1
+websiteTitle: 'Katalog - DLA Marbach'
+
+routeEnhancers:
+  Find:
+    type: Extbase
+    extension: Find
+    plugin: Find
+    defaultController: 'Search::index'
+    routes:
+      - routePath: '/opac/id/{doc_id}'
+        _controller: 'Search::detail'
+        _arguments:
+          doc_id: id

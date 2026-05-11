@@ -1,0 +1,57 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace s=Dla\Find\ViewHelpers}
+
+<f:if condition="{s:data.valueForKey(array:document.fields, key:{fieldToDisplay})}">
+
+    <div>
+
+    <dla:data.joinFields
+            fieldNames="{fieldNames}"
+            fieldWraps="{fieldWraps}"
+            fields="{document.fields}"
+            as="linkTexts"
+    />
+    <dla:replaceNullValue array="{linkTexts}" as="linkTexts"/>
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:field)}" name="lookupIds" />
+
+        <f:if condition="{s:data.isArray(subject:lookupIds)}">
+                <f:then>
+                        <f:for each="{lookupIds}" as="lookupId" iteration="iterator">
+                                <f:if condition="{lookupId}">
+                                        <f:link.action action="detail" arguments="{id:lookupId}" class="internal">
+                                                <f:if condition="{linkTexts.{iterator.index}}">
+                                                        <f:then>
+                                                                <f:if condition="{truncateAt}">
+                                                                        <f:then><dla:substringBefore text="{linkTexts.{iterator.index}}" delimiter="{truncateAt}" /></f:then>
+                                                                        <f:else>{linkTexts.{iterator.index}}</f:else>
+                                                                </f:if>
+                                                        </f:then>
+                                                        <f:else>{lookupId}</f:else>
+                                                </f:if>
+                                        </f:link.action>
+                                        <f:if condition="!{iterator.isLast}"><br/></f:if>
+                                </f:if>
+                        </f:for>
+                </f:then>
+                <f:else>
+                        <f:if condition="{lookupIds}">
+                                <f:link.action action="detail" arguments="{id:lookupIds}" class="internal">
+                                        <f:if condition="{linkTexts.0}">
+                                                <f:then>
+                                                        <f:if condition="{truncateAt}">
+                                                                <f:then><dla:substringBefore text="{linkTexts.0}" delimiter="{truncateAt}" /></f:then>
+                                                                <f:else>{linkTexts.0}</f:else>
+                                                        </f:if>
+                                                </f:then>
+                                                <f:else>{lookupIds}</f:else>
+                                        </f:if>
+                                </f:link.action>
+                        </f:if>
+                </f:else>
+        </f:if>
+        
+    </div>
+
+</f:if>

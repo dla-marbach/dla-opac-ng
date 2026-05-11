@@ -1,0 +1,62 @@
+<?php
+
+namespace Dla\DlaOpacNg\ViewHelpers;
+
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+
+class ReplaceNullValueViewHelper extends AbstractViewHelper
+{
+
+
+    /**
+     * Register arguments.
+     * @return void
+     */
+    public function initializeArguments()
+    {
+        parent::initializeArguments();
+        $this->registerArgument('text', 'string', 'Text', false, null);
+        $this->registerArgument('array', 'array', 'Array', false, null);
+        $this->registerArgument('as', 'string', 'name of the label result variable', true, 'string');
+    }
+
+    /**
+     * @return boolean
+     */
+    public function render()
+    {
+        $resultValue = null;
+        if ($this->arguments['text']) {
+            $resultValue = '';
+            $resultValue = str_replace("(␣)", "", $this->arguments['text']);
+            $resultValue = str_replace("␣ : ␣", "", $resultValue);
+            $resultValue = str_replace("␣ :", "", $resultValue);
+            $resultValue = str_replace("␣", "", $resultValue);
+
+            if (is_array($resultValue)) {
+                $resultValue = $resultValue[0];
+            }
+        } else if (is_array($this->arguments['array'])) {
+            $resultValue = [];
+            foreach ($this->arguments['array'] as $key => $value) {
+
+                $value = str_replace("(␣)", "", $value);
+                $value = str_replace("␣", "", $value);
+
+                if (!empty($value)) {
+                    $resultValue[] = $value;
+                }
+            }
+        }
+        $valueName = $this->arguments['as'];
+        if ($valueName !== null) {
+            if ($this->templateVariableContainer->exists($valueName)) {
+                $this->templateVariableContainer->remove($valueName);
+            }
+            $this->templateVariableContainer->add($valueName, $resultValue);
+//            $result = $this->renderChildren();
+        }
+
+    }
+}
+?>

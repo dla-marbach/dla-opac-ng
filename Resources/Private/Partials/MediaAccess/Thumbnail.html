@@ -1,0 +1,31 @@
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_accessLevel_mv')}" name="digitalObject_accessLevel_mv" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_hyperlink_mv')}" name="digitalObject_hyperlink_mv" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_thumbnail_mv')}" name="digitalObject_thumbnail_mv" />
+
+<dla:mediaPlayer
+    urls="{digitalObject_hyperlink_mv.0}"
+    access="{digitalObject_accessLevel_mv.0}"
+    as="mediaData"
+/>
+
+<f:if condition="{digitalObject_thumbnail_mv.0} && {digitalObject_thumbnail_mv.0} != '␣'">
+    <f:then>
+        <f:if condition="{mediaData.links.0.forbidden} == 1">
+            <f:then>
+                <div class="access-denied">
+                    <span class="access-denied-message">
+                        <f:translate key="mediaplayer.access_file_forbidden_greenbox" extensionName='dla_opac_ng'/>
+                    </span>
+                </div>
+            </f:then>
+            <f:else>
+                <a href="{digitalObject_hyperlink_mv.0}" target="_blank">
+                    <img src="{digitalObject_thumbnail_mv.0}"/>
+                </a>
+            </f:else>
+        </f:if>
+
+    </f:then>
+</f:if>

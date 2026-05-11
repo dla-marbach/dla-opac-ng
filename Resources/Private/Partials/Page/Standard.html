@@ -1,0 +1,41 @@
+<f:comment>
+    Standard elements to insert on all pages:
+    * include CSS files
+    * include JavaScript files
+    * include the search form
+</f:comment>
+<f:render partial="Page/CSS" arguments="{_all}"/>
+<f:render partial="Page/JavaScript" arguments="{_all}"/>
+<f:if condition="{settings.searchOnly}">
+    <f:then>
+        <form method="get"
+              action="{f:uri.action(pageUid: settings.listPageId, action: 'index', controller: 'Search', extensionName: 'Find', pluginName: 'Find', section: settings.jumpToID)}"
+              class="searchForm {f:if(condition:config.extendedSearch, then:'search-extended', else:'search-simple')}">
+
+            <div class="ctg-hd-search-form {f:if(condition: '{arguments.extended}==1', then: 'hidden')}">
+                <div class="ctg-search-autocomplete">
+
+
+                    <f:alias map="{queryParameter:'{s:data.valueForKey(array:config.query, key:settings.queryFields.0.id)}'}">
+                                                <input type="text"
+                                                             id="c{config.uid}-field-{settings.queryFields.0.id}"
+                                                             class="inputType-text"
+                                                             name="tx_find_find[q][{settings.queryFields.0.id}]"
+                                                             value="{f:if(condition:hasAlternate, then:queryParameter.term, else:queryParameter)}"
+                                                             placeholder="{f:translate(key:'LLL:{settings.languageRootPath}locallang-form.xml:input.{settings.queryFields.0.id}.placeholder')}" />
+                    </f:alias>
+                </div>
+                <div class="ctg-search-autocomplete-button">
+                    <button type="submit">
+                        <span class="icon bel-lupe"></span>
+                        <f:translate key='Jetzt suchen' extensionName='dla_opac_ng'/>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </f:then>
+    <f:else>
+        <f:render partial="Form/Form" arguments="{_all}"/>
+    </f:else>
+</f:if>

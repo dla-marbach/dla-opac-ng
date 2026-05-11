@@ -1,0 +1,252 @@
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+
+<div class="ctg-dtvt-row">
+    
+    <div class="">
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'usageRestrictionNote')}" name="usageRestrictionNote" />
+
+        <f:if condition="{usageRestrictionNote}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key="Benutzungshinweis" extensionName="dla_opac_ng"/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        <dla:replaceBreaks text="{usageRestrictionNote}" as="restriction"/>
+                        <f:format.raw>{restriction}</f:format.raw>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'textualHolding_mv')}" name="textualHolding_mv" />
+        <f:if condition="{textualHolding_mv}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Bestandsübersicht" extensionName="dla_opac_ng"/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    <f:for each="{textualHolding_mv}" as="item" iteration="item_iterator">
+                        {item} <br/>
+                    </f:for>
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'website_url_mv')}" name="website_url_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'website_description_mv')}" name="website_description_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_hyperlink_mv')}" name="digitalObject_hyperlink_mv" />
+
+        <v:variable.set
+            value="{
+                0:'Volltext',
+                1:'Langzeitarchivierung',
+                2:'Veranstaltung bei \"Dichterlesen.net\" nachhören',
+                3:'Zugang',
+                4:'CD-ROM aufrufen'
+            }"
+            name="websiteFilter"
+        />
+
+        <dla:data.valueForKeyFiltered
+            key="website_url_mv"
+            filterKey="website_description_mv"
+            filterValues="{websiteFilter}"
+            mustMatch="false"
+            fields="{document.fields}"
+            as="website_url_mv_filtered"
+        />
+        <dla:data.valueForKeyFiltered
+            key="website_description_mv"
+            filterKey="website_description_mv"
+            filterValues="{websiteFilter}"
+            mustMatch="false"
+            fields="{document.fields}"
+            as="website_description_mv_filtered"
+        />
+
+        <f:if condition="{digitalObject_hyperlink_mv} || {website_url_mv_filtered}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:if condition="{dla:stringContains(input: digitalObject_hyperlink_mv, search: 'dbst02')}">
+                            <f:then>
+                                <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
+                            </f:then>
+                            <f:else>
+                                <f:translate key='Digitales Objekt' extensionName='dla_opac_ng'/>
+                            </f:else>
+                        </f:if>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render partial="MediaAccess/RenderLinks" arguments="{_all}"/>
+
+                        <f:for each="{website_description_mv_filtered}" as="item" iteration="website_iterator">
+                            <f:if condition="{website_url_mv_filtered.{website_iterator.index}} != '␣' && {item} != '␣'">
+                                <a href="{website_url_mv_filtered.{website_iterator.index}}" target="_blank">{item}</a><br />
+                            </f:if>
+                        </f:for>
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+        <v:variable.set
+            value="{
+                0:'Rezension',
+                1:'Inhaltstext',
+                2:'Inhaltsverzeichnis'
+            }"
+            name="websiteFilter"
+        />
+
+        <dla:data.valueForKeyFiltered
+            key="website_url_mv"
+            filterKey="website_description_mv"
+            filterValues="{websiteFilter}"
+            mustMatch="false"
+            fields="{document.fields}"
+            as="website_url_mv_filtered"
+        />
+        <dla:data.valueForKeyFiltered
+            key="website_description_mv"
+            filterKey="website_description_mv"
+            filterValues="{websiteFilter}"
+            mustMatch="false"
+            fields="{document.fields}"
+            as="website_description_mv_filtered"
+        />
+
+       <f:if condition="{website_url_mv_filtered}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:for each="{website_description_mv_filtered}" as="item" iteration="website_iterator">
+                            <f:if condition="{website_url_mv_filtered.{website_iterator.index}} != '␣' && {item} != '␣'">
+                                <a href="{website_url_mv_filtered.{website_iterator.index}}" target="_blank">{item}</a><br />
+                            </f:if>
+                        </f:for>
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+    </div>
+
+</div>
+
+<v:variable.set value="{index: '0'}" name="iterator" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_id_mv')}" name="item_id_mv" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_provenance_mv')}" name="item_provenance_mv" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+
+<f:if condition="{item_id_mv}">
+    <f:then>
+        <div class="ctg-dtvt-row aukey-row-info" style="margin-top: 1.5rem;">
+            <div style="padding: 0.5rem 0; width: 200px; font-weight: bold;">
+                Exemplar
+            </div>
+            <div class="ctg-dtvt-content" style="padding: 0.5rem 0; font-weight: bold;">
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_personAt_id_mv')}" name="item_personAt_id_mv" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_corporationAt_id_mv')}" name="item_corporationAt_id_mv" />
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_collection_id_mv')}" name="item_corporationAt_id_mv" />
+                <f:if condition="{item_personAt_id_mv} || {item_corporationAt_id_mv} || {item_collection_id_mv}">
+                Provenienz
+                </f:if>
+            </div>
+            <div class="ctg-dtvt" style="padding: 0.5rem 0; font-weight: bold; width:130px;">
+                Signatur / Details
+            </div>
+        </div>
+        <f:if condition="{item_provenance_mv}">
+            <f:then>
+                <f:for each="{item_id_mv}" as="exemplar" iteration="item_iterator">
+                    <f:if condition="{item_provenance_mv.{item_iterator.index}}!=true">
+                        <v:variable.set value="{'index':item_iterator.index}" name="iterator" />
+                        <f:render partial="Display/Detail/Library/Item" arguments="{_all}"/>
+                    </f:if>
+                </f:for>
+                <f:for each="{item_id_mv}" as="exemplar" iteration="item_iterator">
+                    <f:if condition="{item_provenance_mv.{item_iterator.index}}==true">
+                        <v:variable.set value="{'index':item_iterator.index}" name="iterator" />
+                        <f:render partial="Display/Detail/Library/Item" arguments="{_all}"/>
+                    </f:if>
+                </f:for>
+            </f:then>
+            <f:else>
+                <f:for each="{item_id_mv}" as="exemplar" iteration="item_iterator">
+                    <v:variable.set value="{'index':item_iterator.index}" name="iterator" />
+                    <f:render partial="Display/Detail/Library/Item" arguments="{_all}"/>
+                </f:for>
+            </f:else>
+        </f:if>
+    </f:then>
+    <f:else>
+        <div class="ctg-dtvt-row">
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_id_mv')}" name="item_id_mv" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'category')}" name="category" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'categorySub')}" name="categorySub" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'callNumberBibliographic_mv')}" name="callNumberBibliographic_mv" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'filterType_mv')}" name="filterType_mv" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'filterSource')}" name="filterSource" />
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_hyperlink_mv')}" name="digitalObject_hyperlink_mv" />
+
+            <f:if condition="
+            {categorySub}!='Einzelbestandteil / unselbständiges Werk'
+            || {category}=='Zeitschriftenheft'
+            || {callNumberBibliographic_mv}=='Nicht im Bestand des DLA'
+            || {callNumberBibliographic_mv}=='kein Bestand'
+            || {filterSource}=='Digitale Nachschlagewerke'
+            || {filterSource}=='Elektronische Zeitschriftenbibliothek'
+            || {filterType_mv.0}=='Daten'
+            || {dla:stringContains(input: digitalObject_hyperlink_mv, search: 'https://digital.dla-marbach.de/viewer')}">
+                <f:then>
+                    <div style="padding: 0.5rem 0; margin-top: 10px; margin-bottom: 10px; width: 200px;">
+                        <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">
+                            <f:translate key="Nicht bestellbar" extensionName="dla_opac_ng"/>
+                        </span>
+                        <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 3px;"></span>
+                    </div>
+                </f:then>
+                <f:else>
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'usageRestrictionNote_mv')}" name="usageRestrictionNote_mv" />
+                    <f:if condition="{usageRestrictionNote_mv}">
+                        <f:then>
+                            <dla:replaceBreaks text="{usageRestrictionNote_mv.{iterator.index}}" as="restriction"/>
+                            <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}=='bedingt benutzbar'">
+                                <f:then>
+                                    <div style="padding: 0.5rem 0; margin-top: 10px; margin-bottom: 10px; width: 200px;">
+                                        <f:render partial="Display/Detail/Order/OrderLink" arguments="{_all}"/>
+                                        <span class="icon bel-kreis02" style="color:#df661e;"></span>
+                                    </div>
+                                </f:then>
+                                <f:else>
+                                    <div style="padding: 0.5rem 0; margin-top: 10px; margin-bottom: 10px; width: 200px;">
+                                        <f:render partial="Display/Detail/Order/OrderLink" arguments="{_all}"/>
+                                        <span class="icon bel-kreis02" style="color:#00df27;"></span>
+                                    </div>
+                                </f:else>
+                            </f:if>
+                        </f:then>
+                        <f:else>
+                            <div style="padding: 0.5rem 0;margin-top: 10px; margin-bottom: 10px; width: 200px;">
+                                <f:render partial="Display/Detail/Order/OrderLink" arguments="{_all}"/>
+                                <span class="icon bel-kreis02" style="color:#00df27;"></span>
+                            </div>
+                        </f:else>
+                    </f:if>
+                </f:else>
+            </f:if>
+        </div>
+    </f:else>
+</f:if>

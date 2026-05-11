@@ -1,0 +1,54 @@
+{namespace s=Dla\Find\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+
+<f:comment>
+    Renders the facet as a list.
+    If there are more than displayDefault list items, additional ones are hidden
+    with a JavaScript link to show them.
+
+    Each list item is created by the Facets/Facet/List/Item partial.
+    A potentially configured autocomplete popup is created by the
+    Facets/Facet/List/Autocomplete partial.
+</f:comment>
+<div class="facetList">
+    <ul>
+        <f:for each="{facetData.values}" as="itemCount" key="facetTerm" iteration="iterator">
+            <f:alias map="{
+              facetTermDisplay:'{f:if(
+                condition:facetInfo.sortPrefixSeparator,
+                then:\"{s:format.regexp(
+                     string:facetTerm,
+                     match:\'/^.*?{facetInfo.sortPrefixSeparator}/\',
+            replace:\'\'
+            )}\",
+            else:facetTerm
+            )}'
+            }">
+            <f:render partial="Facets/Facet/List/Item" arguments="{_all}"/>
+            </f:alias>
+        </f:for>
+    </ul>
+</div>
+<dla:ChartValue labelAs="chartLabels" valueAs="chartValues" countAs="countDocuments" array="{facetData.values}" itemCount="7"/>
+<script>
+    <f:format.raw>
+        var chartValues = [{chartValues}];
+        var chartLabels = [{chartLabels}];
+        var countValues = ["{countDocuments}", "{countDocuments}", "{countDocuments}", "{countDocuments}", "{countDocuments}"];
+    </f:format.raw>
+
+    $.each($('.facetList ul li a:nth-child(2)'), function (key, value) {
+        var item = $(value);
+        var percentage = Math.round((chartValues[key] / countValues[0]) * 100);
+        if (percentage == 0) {
+            percentage = 1;
+        }
+        item
+            .addClass("ctg-progress-item")
+            .append("<span class=\"ctg-facet-bar\"><span class=\"ctg-hprogress\" style=\"width:"+percentage+"%;\"></span></span>");
+    });
+
+</script>
+
+
+</ul>

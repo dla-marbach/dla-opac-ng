@@ -1,0 +1,31 @@
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'source')}" name="source" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'department')}" name="department" />
+
+<f:switch expression="{source}">
+    <f:case value="AK">
+        <a href="mailto:bibliothek@dla-marbach.de">Mail</a>
+    </f:case>
+    <f:case value="BI">
+        <a href="mailto:bilder-und-objekte@dla-marbach.de">Mail</a>
+    </f:case>
+    <f:case value="HS">
+        <a href="mailto:auskunft-handschriften@dla-marbach.de">Mail</a>
+    </f:case>
+    <f:case value="BF">
+        <f:switch expression="{department}">
+            <f:case value="Bibliothek">
+                <a href="mailto:bibliothek@dla-marbach.de">Mail</a>
+            </f:case>
+            <f:case value="Mediendokumentation">
+                <a href="mailto:bibliothek@dla-marbach.de">Mail</a>
+            </f:case>
+            <f:case value="Bilder und Objekte">
+                <a href="mailto:bilder-und-objekte@dla-marbach.de">Mail</a>
+            </f:case>
+            <f:case value="Handschriften">
+                <a href="mailto:auskunft-handschriften@dla-marbach.de">Mail</a>
+            </f:case>
+        </f:switch>
+    </f:case>
+</f:switch>

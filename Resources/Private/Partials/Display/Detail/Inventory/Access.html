@@ -1,0 +1,257 @@
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+
+<f:if condition="!{iterator.index}">
+    <v:variable.set value="{index: '0'}" name="iterator" />
+</f:if>
+
+<div class="ctg-dtvt-row row-{item_id_mv.{iterator.index}} aukey-row-info">
+
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'department')}" name="department" />
+    <dla:replaceNullValue text="{department}" as="department"/>
+
+    <f:if condition="{department}=='Handschriften' || {department}=='Bibliothek' || {department}=='Suhrkamp-Archiv' || {filterType_mv.0}=='Daten'">
+    <f:then>
+            <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+                <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">
+                    <f:translate key="Nicht bestellbar" extensionName="dla_opac_ng"/>
+                </span>
+                <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 3px;"></span>
+            </div>
+        </f:then>
+        <f:else>
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'usageRestrictionNote')}" name="usageRestrictionNote" />
+            <f:if condition="{usageRestrictionNote}">
+                <dla:replaceBreaks text="{usageRestrictionNote}" as="restriction"/>
+
+                <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}=='bedingt benutzbar'">
+                    <f:then>
+                        <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+
+                            <f:render partial="Display/Detail/Order/OrderLink" arguments="{_all}"/>
+
+                            <span class="icon bel-kreis02" style="color:#df661e;"></span>
+                        </div>
+                    </f:then>
+                    <f:else>
+                        <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+
+                            <f:render partial="Display/Detail/Order/OrderLink" arguments="{_all}"/>
+
+                            <span class="icon bel-kreis02" style="color:#00df27;"></span>
+                        </div>
+                    </f:else>
+                </f:if>
+            </f:if>
+        </f:else>
+    </f:if>
+
+    <div class="ctg-dtvt-content">
+
+    </div>
+    <div class="ctg-dtvt">
+
+    </div>
+</div>
+<div id="{iterator.cycle}" class="ctg-dtvt-row">
+    <div class="">
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'statusLoan')}" name="statusLoan" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'usageRestrictionComment')}" name="usageRestrictionComment" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'usageRestrictionNote')}" name="usageRestrictionNote" />
+        <dla:replaceNullValue text="{usageRestrictionNote}" as="usageRestrictionNote"/>
+
+        <f:if condition="{statusLoan} || {usageRestrictionComment} || ({usageRestrictionNote} && {department}!='Mediendokumentation')">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key="Benutzungshinweis" extensionName="dla_opac_ng"/>
+                    </div>
+
+                    <div class="ctg-dtvt-content">
+                        <f:if condition="{statusLoan} || {usageRestrictionComment}">
+
+                            <dla:data.joinFields
+                                    fieldNames="{0:'statusLoan',1:'usageRestrictionComment'}"
+                                    fieldWraps="{0:'%s',1:'. %s'}"
+                                    fields="{document.fields}"
+                                    as="linkTexts"
+                            />
+
+                            <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                                    document:document,
+                                    results:results,
+                                    field:'statusLoan',
+                                    linkFieldContent:linkFieldContent,
+                                    linkFacets:linkFacets,
+                                    linkTexts:linkTexts
+                            }"/>
+                        </f:if>
+                        <f:if condition="{usageRestrictionNote} && {department}!='Mediendokumentation'">
+                            <dla:replaceBreaks text="{usageRestrictionNote}" as="usageRestrictionNote" />
+                            <br/>
+                            <f:format.raw>{usageRestrictionNote}</f:format.raw>
+                        </f:if>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'mediaNumber')}" name="mediaNumber" />
+        <dla:replaceNullValue text="{mediaNumber}" as="mediaNumber"/>
+
+        <f:if condition="{mediaNumber}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Mediennummer" extensionName="dla_opac_ng"/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    {mediaNumber}
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'note')}" name="note" />
+        <f:if condition="{note}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Bemerkungen" extensionName="dla_opac_ng"/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    <dla:replaceBreaks text="{note}" as="note" />
+                    <f:format.raw>{note}</f:format.raw>
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'order_status_mv')}" name="order_status_mv" />
+        <dla:replaceNullValue array="{order_status_mv}" as="order_status_mv"/>
+
+        <f:if condition="{order_status_mv}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Ordnung" extensionName="dla_opac_ng"/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    <f:for each="{order_status_mv}" as="item" iteration="item_iterator">
+                        {item}
+
+                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'order_extent_mv')}" name="order_extent_mv" />
+                        <dla:replaceNullValue text="{order_extent_mv.{item_iterator.index}}" as="order_extent_mv"/>
+
+                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'order_unit_mv')}" name="order_unit_mv" />
+                        <dla:replaceNullValue text="{order_unit_mv.{item_iterator.index}}" as="order_unit_mv"/>
+
+                        <f:if condition="{order_extent_mv}">
+                            <f:then>
+                                <f:if condition="{order_unit_mv}">
+                                    <f:then>
+                                        ({order_extent_mv} {order_unit_mv})
+                                    </f:then>
+                                    <f:else>
+                                        ({order_extent_mv})
+                                    </f:else>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                <f:if condition="{order_unit_mv}">
+                                    ({order_unit_mv})
+                                </f:if>
+                            </f:else>
+                        </f:if>
+
+
+
+                        <br/>
+                    </f:for>
+                </div>
+            </div>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'itemization_status_mv')}" name="itemization_status_mv" />
+        <dla:replaceNullValue array="{itemization_status_mv}" as="itemization_status_mv"/>
+
+        <f:if condition="{itemization_status_mv}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Verzeichnung" extensionName="dla_opac_ng"/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    <f:for each="{itemization_status_mv}" as="item" iteration="item_iterator">
+                        {item}
+
+                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'itemization_extent_mv')}" name="itemization_extent_mv" />
+                        <dla:replaceNullValue text="{itemization_extent_mv.{item_iterator.index}}" as="itemization_extent_mv"/>
+
+                        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'itemization_unit_mv')}" name="itemization_unit_mv" />
+                        <dla:replaceNullValue text="{itemization_unit_mv.{item_iterator.index}}" as="itemization_unit_mv"/>
+
+                        <f:if condition="{itemization_extent_mv}">
+                            <f:then>
+                                <f:if condition="{itemization_unit_mv}">
+                                    <f:then>
+                                        ({itemization_extent_mv} {itemization_unit_mv})
+                                    </f:then>
+                                    <f:else>
+                                        ({itemization_extent_mv})
+                                    </f:else>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                <f:if condition="{itemization_unit_mv}">
+                                    ({itemization_unit_mv})
+                                </f:if>
+                            </f:else>
+                        </f:if>
+
+
+
+                        <br/>
+                    </f:for>
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_hyperlink_mv')}" name="digitalObject_hyperlink_mv" />
+        <f:if condition="{digitalObject_hyperlink_mv}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:if condition="{dla:stringContains(input: digitalObject_hyperlink_mv, search: 'dbst02')}">
+                        <f:then>
+                            <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
+                        </f:then>
+                        <f:else>
+                            <f:translate key='Digitales Objekt' extensionName='dla_opac_ng'/>
+                        </f:else>
+                    </f:if>
+                </div>
+                <div class="ctg-dtvt-content">
+                    <f:render partial="MediaAccess/RenderLinks" arguments="{_all}"/>
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'website_description_mv')}" name="website_description_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'website_url_mv')}" name="website_url_mv" />
+
+        <f:if condition="{website_description_mv} || {website_url_mv}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    <f:for each="{website_description_mv}" as="item" iteration="iterator">
+                        <a href="{v:variable.get(name: 'website_url_mv.{iterator.index}')}">
+                            {item}
+                        </a>
+                    </f:for>
+                </div>
+            </div>
+        </f:if>
+
+    </div>
+</div>

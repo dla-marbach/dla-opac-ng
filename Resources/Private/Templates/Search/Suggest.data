@@ -1,0 +1,1 @@
+{namespace s=Dla\Find\ViewHelpers}<s:format.json data="{suggestions}"/>

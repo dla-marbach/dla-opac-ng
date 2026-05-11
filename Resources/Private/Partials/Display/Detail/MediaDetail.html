@@ -1,0 +1,48 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'media_ext')}" name="media_ext"/>
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'media_url')}" name="media_url" />
+
+<f:for each="{media_ext}" as="ext" iteration="extIterator">
+
+    <f:switch expression="{ext}">
+        <f:case value="jpg">
+            <a href="{media_url.{extIterator.index}}" target="_blank">
+                Image{extIterator.index}
+                <f:comment>
+                    <img src="{media_url.{extIterator.index}}" alt="" />
+                </f:comment>
+            </a>
+        </f:case>
+        <f:case value="gif">
+            <a href="{media_url.{extIterator.index}}" target="_blank">
+                Image{extIterator.index}
+                <f:comment>
+                    <img src="{media_url.{extIterator.index}}" alt="" />
+                </f:comment>
+            </a>
+        </f:case>
+        <f:case value="pdf">
+            <a href="{media_url.{extIterator.index}}" target="_blank">
+                <i class="bel-ton"></i>
+            </a>
+        </f:case>
+        <f:case value="mp3">
+            <a href="{media_url.99{extIterator.index}}" target="_blank">
+                <i class="bel-ton"></i>
+            </a>
+        </f:case>
+        <f:case value="mp4">
+            <a href="{media_url.{extIterator.index}}" target="_blank">
+                MP4
+            </a>
+        </f:case>
+        <f:defaultCase>
+            <a href="{media_url.{extIterator.index}}" target="_blank">
+                LINK
+            </a>
+        </f:defaultCase>
+    </f:switch>
+
+</f:for>
+

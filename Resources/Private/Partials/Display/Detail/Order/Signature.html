@@ -1,0 +1,23 @@
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_callNumberItem_mv')}" name="item_callNumberItem_mv" />
+<dla:replaceNullValue text="{item_callNumberItem_mv.{iterator.index}}" as="item_callNumberItem_mv"/>
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_callNumberItemSuffix_mv')}" name="item_callNumberItemSuffix_mv" />
+<dla:replaceNullValue text="{item_callNumberItemSuffix_mv.{iterator.index}}" as="item_callNumberItemSuffix_mv"/>
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_callNumberReadingRoom_mv')}" name="item_callNumberReadingRoom_mv" />
+<dla:replaceNullValue text="{item_callNumberReadingRoom_mv.{iterator.index}}" as="item_callNumberReadingRoom_mv"/>
+
+<f:if condition="{item_callNumberItem_mv} || {item_callNumberReadingRoom_mv}">
+    <div class="signature-position">
+        <f:if condition="{item_callNumberReadingRoom_mv}">
+            <f:then>
+                {item_callNumberReadingRoom_mv}
+            </f:then>
+            <f:else>
+                {item_callNumberItem_mv} <f:if condition="{item_callNumberItemSuffix_mv}">({item_callNumberItemSuffix_mv})</f:if>
+            </f:else>
+        </f:if>
+    </div>
+</f:if>

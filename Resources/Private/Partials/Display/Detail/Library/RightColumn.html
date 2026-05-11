@@ -1,0 +1,163 @@
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'creator_id_mv')}" name="creator_id_mv" />
+<v:variable.set value="" name="urheber_query" />
+<f:for each="{creator_id_mv}" as="urheber_id" key="fieldName" iteration="iterator">
+    <f:if condition="{iterator.isFirst}">
+        <f:then>
+            <v:variable.set value="{urheber_id}" name="urheber_query" />
+        </f:then>
+        <f:else>
+            <v:variable.set value="{urheber_query} OR {urheber_id}" name="urheber_query" />
+        </f:else>
+    </f:if>
+</f:for>
+<f:if condition="{urheber_query}">
+    <f:then>
+        <dla:fromSolr
+                query="creator_id_mv:{urheber_query}"
+                fields="id,display,filterType_mv"
+                rows="5" />
+        <f:if condition="{f:count(subject: solr)} > 0">
+            <section class="ctg-facet right-col-similar-author">
+                <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
+                    <f:translate key="Vom selben Verfasser / Urheber" extensionName="dla_opac_ng" />
+                </h3>
+                <ul>
+
+            <f:for each="{solr}" as="solrResult">
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+                <f:if condition="{solrResult.id}!={id}">
+                    <f:then>
+                        <li>
+                            <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.display}" class="internal">
+                                <span class="icon bel-mag"></span>
+                            </f:link.action>
+                            <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.display}" class="internal">
+                                <f:format.crop maxCharacters="60" respectWordBoundaries="TRUE" respectHtml="TRUE">
+                                    {solrResult.display}
+                                </f:format.crop>
+                            </f:link.action>
+                        </li>
+                    </f:then>
+                    <f:else>
+                        <v:variable.set value="1" name="removeSameId" />
+                    </f:else>
+                </f:if>
+
+            </f:for>
+
+            <f:if condition="{f:count(subject: solr)} > 0 && {removeSameId}!= 1 || {removeSameId}== 1 && {f:count(subject: solr)} > 1)">
+                <f:then>
+                    <f:comment><li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li></f:comment>
+                    <li>
+                        <f:link.action action="index" arguments="{q:{raw: 'creator_id_mv:({urheber_query})'}}" title="{solr.display}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <span class="icon bel-lupe"></span>
+                        </f:link.action>
+                        <f:link.action action="index" arguments="{q:{raw: 'creator_id_mv:({urheber_query})'}}" title="{solr.display}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key="Alle anzeigen" extensionName="dla_opac_ng" />
+                        </f:link.action>
+                    </li>
+                </f:then>
+                <f:else>
+                    <li>
+                        <span class="icon"></span>
+                        <f:translate key="Keine Treffer vorhanden" extensionName="dla_opac_ng" />
+                    </li>
+                    <f:format.raw>
+                        <script type="text/javascript">
+                            $(document).ready(function() {
+                                $('.right-col-similar-author').hide();
+                            });
+                        </script>
+                    </f:format.raw>
+
+                </f:else>
+            </f:if>
+                </ul>
+            </section>
+        </f:if>
+    </f:then>
+</f:if>
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'classification_id_mv')}" name="classification_id_mv" />
+<v:variable.set value="" name="classification_id_mv_query" />
+<f:for each="{classification_id_mv}" as="synkey" key="key" iteration="iterator">
+    <f:if condition="{iterator.isFirst}">
+        <f:then>
+            <v:variable.set value="{synkey}" name="classification_id_mv_query" />
+        </f:then>
+        <f:else>
+            <v:variable.set value="{classification_id_mv_query} OR {synkey}" name="classification_id_mv_query" />
+        </f:else>
+    </f:if>
+</f:for>
+
+<f:if condition="{classification_id_mv_query}">
+    <f:then>
+        <dla:fromSolr
+                query="classification_id_mv:({classification_id_mv_query})"
+                fields="id,display,filterType_mv"
+                rows="5" />
+        <f:if condition="{f:count(subject: solr)} > 0">
+            <section class="ctg-facet right-col-similar-topic">
+                <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
+                    <f:translate key="Ähnliche Themen" extensionName="dla_opac_ng" />
+                </h3>
+                <ul>
+
+            <f:for each="{solr}" as="solrResult">
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+                <f:if condition="{solrResult.id}!={id}">
+                    <f:then>
+                        <li>
+                            <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.display}" class="internal">
+                                <span class="icon bel-mag"></span>
+                            </f:link.action>
+                            <f:link.action action="detail" arguments="{id:'{solrResult.id}'}" title="{solrResult.display}" class="internal">
+                                <f:format.crop maxCharacters="60" respectWordBoundaries="TRUE" respectHtml="TRUE">
+                                    {solrResult.display}
+                                </f:format.crop>
+                            </f:link.action>
+                        </li>
+                    </f:then>
+                    <f:else>
+                        <v:variable.set value="1" name="removeSameId" />
+                    </f:else>
+                </f:if>
+            </f:for>
+
+            <f:if condition="{f:count(subject: solr)} > 0 && {removeSameId}!= 1 || {removeSameId}== 1 && {f:count(subject: solr)} > 1)">
+                <f:then>
+                    <f:comment><li><a title=""><span class="icon bel-pfeil-u02"></span></a><a title="">weitere 6</a></li></f:comment>
+                    <li>
+                        <f:link.action action="index" arguments="{q:{raw: 'classification_id_mv:({classification_id_mv_query})'}}" title="{solr.display}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <span class="icon bel-lupe"></span>
+                        </f:link.action>
+                        <f:link.action action="index" arguments="{q:{raw: 'classification_id_mv:({classification_id_mv_query})'}}" title="{solr.display}" class="internal" additionalAttributes="{rel: 'nofollow'}">
+                            <f:translate key="Alle anzeigen" extensionName="dla_opac_ng" />
+                        </f:link.action>
+                    </li>
+                </f:then>
+                <f:else>
+                    <li>
+                        <span class="icon"></span>
+                        <f:translate key="Keine Treffer vorhanden" extensionName="dla_opac_ng" />
+                    </li>
+                    <f:format.raw>
+                        <script type="text/javascript">
+                            $(document).ready(function() {
+                                $('.right-col-similar-topic').hide();
+                            });
+                        </script>
+                    </f:format.raw>
+                </f:else>
+            </f:if>
+                </ul>
+            </section>
+        </f:if>
+    </f:then>
+</f:if>
+
+<f:render partial="Display/Detail/RightColumn/BestandsbildnerRightColumn" arguments="{_all}"/>
+
+<f:render partial="Display/Detail/RightColumn/Relation" arguments="{_all}"/>

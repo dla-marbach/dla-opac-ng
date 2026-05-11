@@ -1,0 +1,73 @@
+<section>
+
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'linkCommonsImage_file_mv')}" name="linkCommonsImage_file_mv" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'linkCommonsImage_rights_mv')}" name="linkCommonsImage_rights_mv" />
+    <f:if condition="{linkCommonsImage_file_mv}">
+        <figure class="teaser ctg-media-teaser">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/{linkCommonsImage_file_mv.0}?width=270px" style="width: 100%; height: auto;" />
+            <div class="ctg-media-content">
+                <span class="icon bel-info"></span>
+                <p><f:format.raw>{linkCommonsImage_rights_mv.0}</f:format.raw></p>
+            </div>
+        </figure>
+    </f:if>
+</section>
+
+<f:render partial="Display/Detail/RightColumn/Relation" arguments="{_all}"/>
+
+<section class="ctg-facet-other">
+
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'linkWikidataWebsite_mv')}" name="linkWikidataWebsite_mv" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'linkWikipedia')}" name="linkWikipedia" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'linkFilmportal_mv')}" name="linkFilmportal_mv" />
+    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'linkWikidata')}" name="linkWikidata" />
+
+    <h3><f:translate key="Andere Fundorte" extensionName="dla_opac_ng"/> <a title="schließen" class="button-close"><span class="icon bel-pfeil-o01"></span></a></h3>
+    <ul>
+        <f:if condition="{linkWikidataWebsite_mv}">
+            <f:for each="{linkWikidataWebsite_mv}" as="item" key="key" iteration="iterator">
+                <li>
+                    <a href="{item}" target="_blank"><span class="icon bel-link03"></span></a>
+                    <a href="{item}" target="_blank">Webseite</a>
+                </li>
+            </f:for>
+        </f:if>
+        <f:if condition="{linkWikipedia}">
+            <li>
+                <a href="{linkWikipedia}" target="_blank"><span class="icon bel-link03"></span></a>
+                <a href="{linkWikipedia}" target="_blank">Wikipedia</a>
+            </li>
+        </f:if>
+        <f:if condition="{linkFilmportal_mv}">
+            <f:for each="{linkFilmportal_mv}" as="item" key="key" iteration="iterator">
+                <li>
+                    <a href="{item}" target="_blank"><span class="icon bel-link03"></span></a>
+                    <a href="{item}" target="_blank">Filmportal</a>
+                </li>
+            </f:for>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'vendor_type_mv')}" name="vendor_type_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'vendor_id_mv')}" name="vendor_id_mv" />
+
+        <f:for each="{vendor_type_mv}" as="item" key="key" iteration="iterator">
+            <f:if condition="{item}=='GND (Werktitel)'">
+                <li>
+                    <a href="http://d-nb.info/gnd/{vendor_id_mv.{iterator.index}}" target="_blank">
+                        <span class="icon bel-link03"></span>
+                    </a>
+                    <a href="http://d-nb.info/gnd/{vendor_id_mv.{iterator.index}}" target="_blank">
+                        GND
+                    </a>
+                </li>
+            </f:if>
+        </f:for>
+
+        <f:if condition="{linkWikidata}">
+            <li>
+                <a href="https://www.wikidata.org/wiki/{linkWikidata}" target="_blank"><span class="icon bel-link03"></span></a>
+                <a href="https://www.wikidata.org/wiki/{linkWikidata}" target="_blank">Wikidata</a>
+            </li>
+        </f:if>
+    </ul>
+</section>

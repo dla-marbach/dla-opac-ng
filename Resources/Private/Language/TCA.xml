@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <type>database</type>
+        <description>Language labels for extension 'dla_opac_ng'</description>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="tx_dlaopacng_collection">Collections</label>
+            <label index="tx_dlaopacng_collection.record_id">Catalog Record ID</label>
+            <label index="tx_dlaopacng_collection.parent_id">Parent Record ID</label>
+            <label index="tx_dlaopacng_collection.displayTree">Title</label>
+            <label index="tx_dlaopacng_collection.display">Title (Listview)</label>
+            <label index="tx_dlaopacng_collection.displayName">Associates</label>
+            <label index="tx_dlaopacng_collection.displayAddition1">Additional Information (1)</label>
+            <label index="tx_dlaopacng_collection.displayAddition2">Additional Information (2)</label>
+            <label index="tx_dlaopacng_collection.facet_value">Facet Value</label>
+            <label index="tx_dlaopacng_collection.hasChild">Has Child Records?</label>
+            <label index="tx_dlaopacng_classification">Classifications</label>
+            <label index="tx_dlaopacng_classification.record_id">Catalog Record ID</label>
+            <label index="tx_dlaopacng_classification.parent_id">Parent Record ID</label>
+            <label index="tx_dlaopacng_classification.displayTree">Title</label>
+            <label index="tx_dlaopacng_classification.display">Title (Listview)</label>
+            <label index="tx_dlaopacng_classification.displayName">Associates</label>
+            <label index="tx_dlaopacng_classification.displayAddition1">Additional Information (1)</label>
+            <label index="tx_dlaopacng_classification.displayAddition2">Additional Information (2)</label>
+            <label index="tx_dlaopacng_classification.facet_value">Facet Value</label>
+            <label index="tx_dlaopacng_classification.hasChild">Has Child Records?</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="tx_dlaopacng_collection">Bestandstektonik</label>
+            <label index="tx_dlaopacng_collection.record_id">OPAC Datensatz-ID</label>
+            <label index="tx_dlaopacng_collection.parent_id">Übergeordnete Datensatz-ID</label>
+            <label index="tx_dlaopacng_collection.displayTree">Titel</label>
+            <label index="tx_dlaopacng_collection.display">Titel (Listenansicht)</label>
+            <label index="tx_dlaopacng_collection.displayName">Beitragende</label>
+            <label index="tx_dlaopacng_collection.displayAddition1">Weitere Informationen (1)</label>
+            <label index="tx_dlaopacng_collection.displayAddition2">Weitere Informationen (2)</label>
+            <label index="tx_dlaopacng_collection.facet_value">Facetten-Wert</label>
+            <label index="tx_dlaopacng_collection.hasChild">Hat Kindelemente?</label>
+            <label index="tx_dlaopacng_classification">Systematik</label>
+            <label index="tx_dlaopacng_classification.record_id">OPAC Datensatz-ID</label>
+            <label index="tx_dlaopacng_classification.parent_id">Übergeordnete Datensatz-ID</label>
+            <label index="tx_dlaopacng_classification.displayTree">Titel</label>
+            <label index="tx_dlaopacng_classification.display">Titel (Listenansicht)</label>
+            <label index="tx_dlaopacng_classification.displayName">Beitragende</label>
+            <label index="tx_dlaopacng_classification.displayAddition1">Weitere Informationen (1)</label>
+            <label index="tx_dlaopacng_classification.displayAddition2">Weitere Informationen (2)</label>
+            <label index="tx_dlaopacng_classification.facet_value">Facetten-Wert</label>
+            <label index="tx_dlaopacng_classification.hasChild">Hat Kindelemente?</label>
+        </languageKey>
+    </data>
+</T3locallang>

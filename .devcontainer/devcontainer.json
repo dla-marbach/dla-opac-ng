@@ -1,0 +1,24 @@
+{
+  "postCreateCommand": "bash .devcontainer/startup.sh",
+  "forwardPorts": [80, 3306, 8027],
+  	"portsAttributes": {
+  		"80": {
+  			"label": "TYPO3"
+  		},
+  		"3306": {
+  			"label": "mariadb"
+  		},
+  		"8027": {
+  			"label": "Mailpit"
+  		}
+  	},
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "dla-marbach/*": {
+          "permissions": "write-all"
+        }
+      }
+    }
+  }
+}

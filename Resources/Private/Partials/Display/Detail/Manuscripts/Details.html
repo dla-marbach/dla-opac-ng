@@ -1,0 +1,1117 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace s=Dla\Find\ViewHelpers}
+
+
+<div class="ctg-detailview-head" xmlns:f="http://www.w3.org/1999/html">
+    <div class="ctg-dvh-main">
+        <div class="ctg-ri-icon">
+            <f:render partial="Display/Detail/MediatypeIcon" arguments="{filterType_mv:document.filterType_mv, filterMultipart:document.filterMultipart, filterDigital:document.filterDigital}" />
+        </div>
+        <div class="ctg-ri-text">
+            <h2>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'display')}" name="display" />
+                <f:if condition="{display}">
+                    <f:then>
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                                document:document,
+                                results:results,
+                                field:'display',
+                                linkFieldContent:linkFieldContent,
+                                linkFacets:linkFacets
+                        }"/>
+                    </f:then>
+                    <f:else>
+                        -
+                    </f:else>
+                </f:if>
+            </h2>
+            <p>
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.displayName)}">
+                    <f:render
+                            partial="Display/Field/Inline"
+                            arguments="{
+                            config:config,
+                            results:results,
+                            document:document,
+                            field:settings.standardFields.displayName,
+                            separator:'; '
+                    }"/>
+                </f:if>
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.displayName)}"></f:if>
+            </p>
+            <p>
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.displayAddition1)}">
+                    <f:render
+                            partial="Display/Field/Inline"
+                            arguments="{
+                            config:config,
+                            results:results,
+                            document:document,
+                            field:settings.standardFields.displayAddition1,
+                            separator:'; '
+                    }"/>
+                </f:if>
+            </p>
+            <p>
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.displayAddition2)}">
+                    <f:render
+                            partial="Display/Field/Inline"
+                            arguments="{
+                            config:config,
+                            results:results,
+                            document:document,
+                            field:settings.standardFields.displayAddition2,
+                            separator:'; '
+                    }"/>
+                </f:if>
+            </p>
+        </div>
+        <div class="ctg-ri-image">
+
+        </div>
+    </div>
+
+    <f:render partial="Display/Detail/DetailButtons" arguments="{_all}"/>
+</div>
+
+<div class="ctg-detailview-media">
+    <f:render partial="MediaAccess/Thumbnail" arguments="{_all}"/>
+</div>
+
+<div class="ctg-detailview-tabs">
+
+    <ul class="ctg-dtvt-menu" id="tabbed">
+        <li>
+            <a href="#tabdetail" id="tabdetail" class="ctg-dtvt-menu-active">
+                <span>
+                    <f:translate key='Details' extensionName='dla_opac_ng'/>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#tabaccess" id="tabaccess">
+                <span>
+                    <f:translate key='Zugang' extensionName='dla_opac_ng'/>
+                </span>
+            </a>
+        </li>
+    </ul>
+
+    <div id="access" class="ctg-dtvt-details" style="display: none;">
+
+        <f:render partial="Display/Detail/Order/Main" arguments="{_all}"/>
+
+    </div>
+
+    <div id="detail" class="ctg-dtvt-details">
+
+        <div class="ctg-dtvt-row">
+            <div class="ctg-dtvt-label">
+                <f:translate key='Medienart' extensionName='dla_opac_ng'/>
+            </div>
+            <div class="ctg-dtvt-content">
+                <f:render
+                        partial="Display/Field/List"
+                        arguments="{
+                    document:document,
+                    results:results,
+                    field:'filterType_mv',
+                    linkFieldContent:linkFieldContent,
+                    linkFacets:linkFacets
+                  }"/>
+            </div>
+        </div>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'genre')}" name="genre" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'genreSub')}" name="genreSub" />
+        <f:if condition="{genre} || {genreSub}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Gattung' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <dla:data.joinFields
+                                fieldNames="{0:'genre',1:'genreSub'}"
+                                fieldWraps="{0:'%s',1:'. %s'}"
+                                fields="{document.fields}"
+                                as="linkTexts"
+                        />
+                        {linkTexts.0}
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'genreOther_mv')}" name="genreOther_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'genreSubOther_mv')}" name="genreSubOther_mv" />
+        <f:if condition="{genreOther_mv} || {genreSubOther_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Weitere Gattung' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:for each="{genreOther_mv}" as="item" iteration="iterator">
+                            <dla:replaceNullValue text="{item}" as="item"/>
+                            {item}
+                            <f:if condition="{genreSubOther_mv.{iterator.index}} && {genreSubOther_mv.{iterator.index}}!='␣'">
+                                <dla:replaceNullValue text="{genreSubOther_mv.{iterator.index}}" as="secondPart"/>
+                                . {secondPart}
+                            </f:if>
+                            <br/>
+                        </f:for>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+
+        <f:comment>VON</f:comment>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'personBy_display_mv')}" name="personBy_display_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'personBy_role_mv')}" name="personBy_role_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'personBy_comment_mv')}" name="personBy_comment_mv" />
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'corporationBy_display_mv')}" name="corporationBy_display_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'corporationBy_role_mv')}" name="corporationBy_role_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'corporationBy_comment_mv')}" name="corporationBy_comment_mv" />
+
+
+        <f:comment>AN</f:comment>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'personTo_display_mv')}" name="personTo_display_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'personTo_role_mv')}" name="personTo_role_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'personTo_comment_mv')}" name="personTo_comment_mv" />
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'corporationTo_display_mv')}" name="corporationTo_display_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'corporationTo_role_mv')}" name="corporationTo_role_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'corporationTo_comment_mv')}" name="corporationTo_comment_mv" />
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'genre')}" name="genre" />
+
+        <f:if condition="{genre} == 'Briefwechsel' || {genre} == 'Briefwechsel ohne Bestandsbildner'">
+            <f:then>
+                <f:if condition="{personBy_display_mv} || {corporationBy_display_mv} || {personTo_display_mv} || {corporationTo_display_mv}">
+                    <f:then>
+                        <div class="ctg-dtvt-row">
+                            <div class="ctg-dtvt-label">
+                                <f:translate key='VON/AN' extensionName='dla_opac_ng'/>
+                            </div>
+                            <div class="ctg-dtvt-content">
+
+                                <f:render
+                                    partial="Display/Detail/LookupLink"
+                                    arguments="{
+                                    document:document,
+                                    results:results,
+                                    field:'personBy_id_mv',
+                                    fieldToDisplay: 'personBy_display_mv',
+                                    fieldNames: '{0:\'personBy_display_mv\', 1:\'personBy_role_mv\', 2:\'personBy_comment_mv\'}',
+                                    fieldWraps: '{0:\'%s\',1:\'%s\',2:\'[%s]\'}'
+                                }"
+                                />
+
+                                <f:render
+                                    partial="Display/Detail/LookupLink"
+                                    arguments="{
+                                    document:document,
+                                    results:results,
+                                    field:'corporationBy_id_mv',
+                                    fieldToDisplay: 'corporationBy_display_mv',
+                                    fieldNames: '{0:\'corporationBy_display_mv\', 1:\'corporationBy_role_mv\', 2:\'corporationBy_comment_mv\'}',
+                                    fieldWraps: '{0:\'%s\',1:\'%s\',2:\'[%s]\'}'
+                                }"
+                                />
+
+                            </div>
+                        </div>
+                    </f:then>
+                </f:if>
+            </f:then>
+            <f:else>
+                <f:if condition="{personBy_display_mv} || {corporationBy_display_mv}">
+                    <f:then>
+                        <div class="ctg-dtvt-row">
+                            <div class="ctg-dtvt-label">
+                                <f:translate key='VON' extensionName='dla_opac_ng'/>
+                            </div>
+                            <div class="ctg-dtvt-content">
+
+                                <f:render
+                                    partial="Display/Detail/LookupLink"
+                                    arguments="{
+                                document:document,
+                                results:results,
+                                field:'personBy_id_mv',
+                                fieldToDisplay: 'personBy_display_mv',
+                                fieldNames: '{0:\'personBy_display_mv\', 1:\'personBy_role_mv\', 2:\'personBy_comment_mv\'}',
+                                fieldWraps: '{0:\'%s\',1:\'%s\',2:\'[%s]\'}'
+                              }"
+                                />
+
+                                <f:render
+                                    partial="Display/Detail/LookupLink"
+                                    arguments="{
+                                document:document,
+                                results:results,
+                                field:'corporationBy_id_mv',
+                                fieldToDisplay: 'corporationBy_display_mv',
+                                fieldNames: '{0:\'corporationBy_display_mv\', 1:\'corporationBy_role_mv\', 2:\'corporationBy_comment_mv\'}',
+                                fieldWraps: '{0:\'%s\',1:\'%s\',2:\'[%s]\'}'
+                              }"
+                                />
+
+                            </div>
+                        </div>
+                    </f:then>
+                </f:if>
+                <f:if condition="{personTo_display_mv} || {corporationTo_display_mv}">
+                    <f:then>
+                        <div class="ctg-dtvt-row">
+                            <div class="ctg-dtvt-label">
+                                <f:translate key='AN' extensionName='dla_opac_ng'/>
+                            </div>
+                            <div class="ctg-dtvt-content">
+
+                                <f:render
+                                    partial="Display/Detail/LookupLink"
+                                    arguments="{
+                                document:document,
+                                results:results,
+                                field:'personTo_id_mv',
+                                fieldToDisplay: 'personTo_display_mv',
+                                fieldNames: '{0:\'personTo_display_mv\', 1:\'personTo_role_mv\', 2:\'personTo_comment_mv\'}',
+                                fieldWraps: '{0:\'%s\',1:\'%s\',2:\'[%s]\'}'
+                              }"
+                                />
+
+                                <f:render
+                                    partial="Display/Detail/LookupLink"
+                                    arguments="{
+                                document:document,
+                                results:results,
+                                field:'corporationTo_id_mv',
+                                fieldToDisplay: 'corporationTo_display_mv',
+                                fieldNames: '{0:\'corporationTo_display_mv\', 1:\'corporationTo_role_mv\', 2:\'corporationTo_comment_mv\'}',
+                                fieldWraps: '{0:\'%s\',1:\'%s\',2:\'[%s]\'}'
+                              }"
+                                />
+
+                            </div>
+                        </div>
+                    </f:then>
+                </f:if>
+            </f:else>
+        </f:if>
+
+
+
+
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'personAbout_id_mv')}" name="personAbout_id_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'personAbout_display_mv')}" name="personAbout_display_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'personAbout_role_mv')}" name="personAbout_role_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'personAbout_comment_mv')}" name="personAbout_comment_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'corporationAbout_id_mv')}" name="corporationAbout_id_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'corporationAbout_display_mv')}" name="corporationAbout_display_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'corporationAbout_role_mv')}" name="corporationAbout_role_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'corporationAbout_comment_mv')}" name="corporationAbout_comment_mv" />
+
+        <f:if condition="{personAbout_id_mv} ||{personAbout_role_mv} || {personAbout_comment_mv} || {corporationAbout_id_mv} ||{corporationAbout_role_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='ÜBER' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                        document:document,
+                        results:results,
+                        field:'personAbout_id_mv',
+                        fieldToDisplay: 'personAbout_display_mv',
+                        fieldNames: '{0:\'personAbout_display_mv\', 1:\'personAbout_role_mv\', 2:\'personAbout_comment_mv\'}',
+                        fieldWraps: '{0:\'%s\',1:\'%s\',2:\'[%s]\'}'
+                          }"
+                        />
+
+                        <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                        document:document,
+                        results:results,
+                        field:'corporationAbout_id_mv',
+                        fieldToDisplay: 'corporationAbout_display_mv',
+                        fieldNames: '{0:\'corporationAbout_display_mv\', 1:\'corporationAbout_role_mv\', 2:\'corporationAbout_comment_mv\'}',
+                        fieldWraps: '{0:\'%s\',1:\'%s\',2:\'%s\'}'
+                          }"
+                        />
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'nameOriginal_mv')}" name="nameOriginal_mv" />
+        <f:if condition="{nameOriginal_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Vorliegende Namensform' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                        document:document,
+                        results:results,
+                        field:'nameOriginal_mv',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                      }"/>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'titleMain_category')}" name="titleMain_category" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'titleMain_text')}" name="titleMain_text" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'titleMain_type')}" name="titleMain_type" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'titleMain_comment')}" name="titleMain_comment" />
+        <f:if condition="{titleMain_category} || {titleMain_text} || {titleMain_type} || {titleMain_comment}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Titel' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                            <f:if condition="{titleMain_category}">
+                                {titleMain_category}:
+                            </f:if>
+                            <f:if condition="{titleMain_text}">
+                                {titleMain_text}
+                            </f:if>
+                            <f:if condition="{titleMain_type}">
+                                ({titleMain_type})
+                            </f:if>
+                            <f:if condition="{titleMain_comment}">
+                                [{titleMain_comment}]
+                            </f:if>
+
+                        <f:comment>
+                        <f:if condition="{titleMain_category}">
+                            <f:then>
+                                <dla:data.joinFields
+                                        fieldNames="{0:'titleMain_category',1:'titleMain_text',2:'titleMain_type',3:'titleMain_comment'}"
+                                        fieldWraps="{0:'%s',1:': %s',2:'(%s)',3:'[%s]'}"
+                                        fields="{document.fields}"
+                                        as="linkTexts"
+                                />
+                            </f:then>
+                            <f:else>
+                                <dla:data.joinFields
+                                        fieldNames="{0:'titleMain_text',1:'titleMain_type',2:'titleMain_comment'}"
+                                        fieldWraps="{0:'%s',1:'(%s)',2:'[%s]'}"
+                                        fields="{document.fields}"
+                                        as="linkTexts"
+                                />
+                            </f:else>
+                        </f:if>
+
+                        <f:for each="{linkTexts}" as="item" iteration="iterator">
+                            {item}<br />
+                        </f:for>
+                        </f:comment>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'titleOther_category_mv')}" name="titleOther_category_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'titleOther_text_mv')}" name="titleOther_text_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'titleOther_type_mv')}" name="titleOther_type_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'titleOther_comment_mv')}" name="titleOther_comment_mv" />
+
+        <f:if condition="{titleOther_category_mv} || {titleOther_text_mv} || {titleOther_type_mv} || {titleOther_comment_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Weitere Titel' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:for each="{titleOther_text_mv}" as="titleOther_text_item" iteration="iterator">
+                            <f:if condition="{titleOther_category_mv.{iterator.index}} && {titleOther_category_mv.{iterator.index}}!='␣'">
+                                {titleOther_category_mv.{iterator.index}}:
+                            </f:if>
+                            {titleOther_text_item}
+                            <f:if condition="{titleOther_type_mv.{iterator.index}} && {titleOther_type_mv.{iterator.index}}!='␣'">
+                                ({titleOther_type_mv.{iterator.index}})
+                            </f:if>
+                            <f:if condition="{titleOther_comment_mv.{iterator.index}} && {titleOther_comment_mv.{iterator.index}}!='␣'">
+                             [{titleOther_comment_mv.{iterator.index}}]
+                            </f:if>
+                            <br />
+                        </f:for>
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'dateOriginStart')}" name="dateOriginStart" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'dateOther_mv')}" name="dateOther_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'dateOriginEnd')}" name="dateOriginEnd" />
+        <f:if condition="{dateOriginStart} || {dateOriginEnd}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Entstehungszeit' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:if condition="{dateOriginStart}">
+                            <f:if condition="{dateOriginStart}=='ohne Datum' || {dateOriginStart}=='o.D.'">
+                                <f:then>
+                                    {dateOriginStart}
+                                </f:then>
+                                <f:else>
+                                    <dla:formatDate date="{dateOriginStart}" as="dateOriginStart"/>
+                                    {dateOriginStart}
+                                </f:else>
+                            </f:if>
+
+                        </f:if>
+                        <f:if condition="{dateOther_mv.0} && {dateOther_mv.0}!='␣'">
+                            [{dateOther_mv.0}]
+                        </f:if>
+                        <f:if condition="{dateOriginStart} && {dateOriginEnd}">
+                            -
+                        </f:if>
+                        <f:if condition="{dateOriginEnd}">
+                            <dla:formatDate date="{dateOriginEnd}" as="dateOriginEnd"/>
+                            {dateOriginEnd}
+                        </f:if>
+                        <f:if condition="{dateOther_mv.1}">
+                            [{dateOther_mv.1}]
+                        </f:if>
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'place_mv')}" name="place_mv" />
+        <f:if condition="{place_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Entstehungsort' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        <f:for each="{place_mv}" as="place">
+                            {place}
+                            <br/>
+                        </f:for>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'extent')}" name="extent" />
+        <f:if condition="{extent}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Umfang, Beilagen' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                        document:document,
+                        results:results,
+                        field:'extent',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                      }"/>
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'language_mv')}" name="language_mv" />
+        <f:if condition="{language_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Sprache' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                        document:document,
+                        results:results,
+                        field:'language_mv',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                      }"/>
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'categorySub')}" name="categorySub" />
+        <f:if condition="{categorySub}!='Handschrift'">
+            <f:if condition="{categorySub}">
+                <f:then>
+                    <div class="ctg-dtvt-row">
+                        <div class="ctg-dtvt-label">
+                            <f:translate key='Objektart' extensionName='dla_opac_ng'/>
+                        </div>
+                        <div class="ctg-dtvt-content">
+
+                            <f:render
+                                    partial="Display/Field/List"
+                                    arguments="{
+                            document:document,
+                            results:results,
+                            field:'categorySub',
+                            linkFieldContent:linkFieldContent,
+                            linkFacets:linkFacets
+                          }"/>
+                        </div>
+                    </div>
+                </f:then>
+            </f:if>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'content')}" name="content" />
+        <f:if condition="{content}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                        document:document,
+                        results:results,
+                        field:'content',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                      }"/>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'note')}" name="note" />
+        <f:if condition="{note}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Anmerkungen' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        <dla:replaceBreaks text="{note}" as="note"/>
+                        <f:format.raw>{note}</f:format.raw>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'subject_display_mv')}" name="subject_display_mv" />
+        <f:if condition="{subject_display_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Schlagwort' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                        document:document,
+                        results:results,
+                        field:'subject_id_mv',
+                        fieldToDisplay: 'subject_display_mv',
+                        fieldNames: '{0:\'subject_display_mv\'}',
+                        fieldWraps: '{0:\'%s\'}'
+                          }"
+                        />
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'work_display_mv')}" name="work_display_mv" />
+        <f:if condition="{work_display_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Werk' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                        document:document,
+                        results:results,
+                        field:'work_id_mv',
+                        fieldToDisplay: 'work_display_mv',
+                        fieldNames: '{0:\'work_display_mv\'}',
+                        fieldWraps: '{0:\'%s\'}'
+                          }"
+                        />
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'parent_display_mv')}" name="parent_display_mv" />
+        <f:if condition="{parent_display_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Bei / Auf / In' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+                                                <f:render
+                                                                partial="Display/Detail/LookupLink"
+                                                                arguments="{
+                                        document:document,
+                                        results:results,
+                                        field:'parent_id_mv',
+                                        fieldToDisplay: 'parent_display_mv',
+                                        fieldNames: '{0:\'parent_display_mv\'}',
+                                        fieldWraps: '{0:\'%s\'}'
+                                    }"
+                                                />
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+        <dla:fromSolr query="parent_id_mv:\"{id}\"" fields="id,display" rows="500" />
+        <f:if condition="{solr}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key='Dabei / Darauf / Darin' extensionName='dla_opac_ng'/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    <f:for each="{solr}" as="solrItem">
+
+                        <f:link.action
+                                action="detail"
+                                arguments="{id: solrItem.fields.id}"
+                        >
+                            <div>
+                                {solrItem.fields.display}
+                            </div>
+                        </f:link.action>
+                    </f:for>
+                </div>
+            </div>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_manifestation_id_mv')}" name="item_manifestation_id_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_manifestation_display_mv')}" name="item_manifestation_display_mv" />
+        <f:if condition="{item_manifestation_id_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Bibliothek' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                                                <f:render
+                                                                partial="Display/Detail/LookupLink"
+                                                                arguments="{
+                                                        document:document,
+                                                        results:results,
+                                                        field:'item_manifestation_id_mv',
+                                                        fieldToDisplay: 'item_manifestation_display_mv',
+                                                        fieldNames: '{0:\'item_manifestation_display_mv\'}',
+                                                        fieldWraps: '{0:\'%s\'}'
+                                                    }"
+                                                />
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'object_display')}" name="object_display" />
+        <f:if condition="{object_display}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                        document:document,
+                        results:results,
+                        field:'object_id',
+                        fieldToDisplay: 'object_display',
+                        fieldNames: '{0:\'object_display\'}',
+                        fieldWraps: '{0:\'%s\'}'
+                          }"
+                        />
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'collection_display_mv')}" name="collection_display_mv" />
+        <f:if condition="{collection_display_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Bestandssignatur' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                            partial="Display/Detail/LookupLink"
+                            arguments="{
+                        document:document,
+                        results:results,
+                        field:'collection_id_mv',
+                        fieldToDisplay: 'collection_display_mv',
+                                                truncateAt: ' - [',
+                        fieldNames: '{0:\'collection_display_mv\'}',
+                        fieldWraps: '{0:\'%s\'}'
+                          }"
+                        />
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'accessionNumber')}" name="accessionNumber" />
+        <f:if condition="{accessionNumber}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Zugangsnummer' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                document:document,
+                results:results,
+                field:'accessionNumber',
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+              }"/>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'mediaNumber')}" name="mediaNumber" />
+        <f:if condition="{mediaNumber}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Mediennummer' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                document:document,
+                results:results,
+                field:'mediaNumber',
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+              }"/>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'acronym_mv')}" name="acronym_mv" />
+        <f:if condition="{acronym_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Übernommene Sigel' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                document:document,
+                results:results,
+                field:'acronym_mv',
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+              }"/>
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'microform_mv')}" name="microform_mv" />
+        <f:if condition="{microform_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Mikrofiche' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                document:document,
+                results:results,
+                field:'microform_mv',
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+              }"/>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'photoNegativeNumber_mv')}" name="photoNegativeNumber_mv" />
+        <f:if condition="{photoNegativeNumber_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Repro' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                        document:document,
+                        results:results,
+                        field:'photoNegativeNumber_mv',
+                        linkFieldContent:linkFieldContent,
+                        linkFacets:linkFacets
+                      }"/>
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'locationBoxNumber')}" name="locationBoxNumber" />
+        <f:if condition="{locationBoxNumber}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Kasten' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                document:document,
+                results:results,
+                field:'locationBoxNumber',
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+              }"/>
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'locationFolderNumber')}" name="locationFolderNumber" />
+        <f:if condition="{locationFolderNumber}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key='Mappe' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+
+                        <f:render
+                                partial="Display/Field/List"
+                                arguments="{
+                document:document,
+                results:results,
+                field:'locationFolderNumber',
+                linkFieldContent:linkFieldContent,
+                linkFacets:linkFacets
+              }"/>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'usageRestrictionComment')}" name="usageRestrictionComment" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'usageRestrictionNote')}" name="usageRestrictionNote" />
+
+        <f:if condition="{usageRestrictionComment} || {usageRestrictionNote}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key='Benutzung' extensionName='dla_opac_ng'/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    {usageRestrictionComment}
+                    <f:if condition="{usageRestrictionComment} && {usageRestrictionNote}"><br/></f:if>
+                    <dla:replaceBreaks text="{usageRestrictionNote}" as="restriction"/>
+                    <f:format.raw>{restriction}</f:format.raw>
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_hyperlink_mv')}" name="digitalObject_hyperlink_mv" />
+        <f:if condition="{digitalObject_hyperlink_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:if condition="{dla:stringContains(input: digitalObject_hyperlink_mv, search: 'dbst02')}">
+                            <f:then>
+                                <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
+                            </f:then>
+                            <f:else>
+                                <f:translate key='Digitales Objekt' extensionName='dla_opac_ng'/>
+                            </f:else>
+                        </f:if>
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        <f:render partial="MediaAccess/RenderLinks" arguments="{_all}"/>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+        
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'collection_id_mv')}" name="collection_id_mv" />
+
+        <dla:collection record="{id}" as="data"/>
+        <dla:collection record="{collection_id_mv.0}" as="dataGreater"/>
+        <f:if condition="{data} || {dataGreater}">
+            <f:then>
+                <f:if condition="{dataGreater} && !{data}">
+                    <f:then>
+                        <v:variable.set value="{dataGreater}" name="data" />
+                    </f:then>
+                </f:if>
+
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key="In Bestandsübersicht zeigen" extensionName="dla_opac_ng"/>
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        <div>
+                            <f:for each="{data}" as="arrayData" iteration="ArrayIterator">
+                                <f:for each="{arrayData}" as="doc" iteration="iterator">
+                                    <f:if condition="{doc.record_id}">
+                                        <f:then>
+                                            <f:link.action pageUid="{settings.collectionUid}" additionalParams="{'tx_dlaopacng_dlacollection[record]':'{doc.record_id}','tx_dlaopacng_dlacollection[uid]':'{doc.uid}'}" additionalAttributes="{rel: 'nofollow'}">
+                                                {doc.displayTree}
+                                            </f:link.action>
+                                        </f:then>
+                                        <f:else>
+                                            {doc.displayTree}
+                                        </f:else>
+                                    </f:if>
+                                    <f:if condition="!{iterator.isLast}">
+                                        ->
+                                    </f:if>
+                                </f:for>
+                                <br/><br/>
+                            </f:for>
+                        </div>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'website_url_mv')}" name="website_url_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'website_description_mv')}" name="website_description_mv" />
+
+        <f:if condition="{website_description_mv} || {website_url_mv}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        URL
+                    </div>
+                    <div class="ctg-dtvt-content">
+                        <div>
+                            <f:for each="{website_description_mv}" as="arrayData" iteration="ArrayIterator">
+                                <a href="{website_url_mv.{ArrayIterator.index}}" target="_blank">
+                                    {arrayData}
+                                </a>
+                            </f:for>
+
+                        </div>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+
+    </div>
+</div>

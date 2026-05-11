@@ -1,0 +1,46 @@
+{namespace s=Dla\Find\ViewHelpers}
+<f:comment>
+  Renders the facet as a list.
+  If there are more than displayDefault list items, additional ones are hidden
+  with a JavaScript link to show them.
+
+  Each list item is created by the Facets/Facet/List/Item partial.
+  A potentially configured autocomplete popup is created by the
+  Facets/Facet/List/Autocomplete partial.
+</f:comment>
+<f:if condition="{facetInfo.autocomplete}">
+  <f:if condition="{f:count(subject:facetData.values)} > {facetInfo.displayDefault}">
+    <f:render partial="Facets/Facet/List/Autocomplete" arguments="{_all}"/>
+  </f:if>
+</f:if>
+<f:if condition="{config.activeFacets.{facetInfo.id}}">
+  <f:then>
+    <ul class="facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}">
+  </f:then>
+  <f:else>
+    <ul class="facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}" style="{f:if(condition:facetInfo.collapse, then:'display:none;')}">
+  </f:else>
+</f:if>
+  <f:for each="{facetData.values}" as="itemCount" key="facetTerm" iteration="iterator">
+    <f:alias map="{
+      facetTermDisplay:'{f:if(
+        condition:facetInfo.sortPrefixSeparator,
+        then:\"{s:format.regexp(
+          string:facetTerm,
+          match:\'/^.*?{facetInfo.sortPrefixSeparator}/\',
+          replace:\'\'
+        )}\",
+        else:facetTerm
+      )}'
+    }">
+      <f:render partial="Facets/Facet/List/Item" arguments="{_all}"/>
+    </f:alias>
+  </f:for>
+  <f:if condition="{f:count(subject:facetData.values)} > {facetInfo.displayDefault} || {facetInfo.ajax} == 1)">
+    <li class="facetShowAll">
+      <a href="#" class="dla-toggle-facets dla-toggle-facets-collapsed" data-translate-show-all="<f:translate key='show all' extensionName='dla_opac_ng'/>" data-translate-show-less="<f:translate key='show less' extensionName='dla_opac_ng'/>">
+        <f:translate key="show all"/>
+      </a>
+    </li>
+  </f:if>
+</ul>

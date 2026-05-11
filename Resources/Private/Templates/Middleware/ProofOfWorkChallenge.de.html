@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sicherheitspr&uuml;fung - DLA Katalog</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#f0f2f5;color:#333}
+.pow-box{text-align:center;background:#fff;padding:2.5rem;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);max-width:480px;width:90%}
+h1{font-size:1.25rem;margin-bottom:1rem;color:#1a1a1a}
+p{font-size:.95rem;line-height:1.5;margin-bottom:1rem;color:#555}
+.spinner{width:40px;height:40px;margin:1.5rem auto;border:3px solid #e0e0e0;border-top-color:#333;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#pow-status{font-size:.85rem;color:#888}
+noscript p{color:#c00;font-weight:700}
+</style>
+</head>
+<body>
+<div class="pow-box">
+<h1>Sicherheitspr&uuml;fung</h1>
+<p>Ihr Zugriff wird &uuml;berpr&uuml;ft. Dies dauert nur einen kurzen Moment.</p>
+<div class="spinner" id="pow-spinner"></div>
+<div id="pow-status"></div>
+<noscript><p>Bitte aktivieren Sie JavaScript, um den Katalog nutzen zu k&ouml;nnen.</p></noscript>
+</div>
+<script>
+(async function(){
+var C="__POW_CHALLENGE__",S="__POW_SIGNATURE__",D=__POW_DIFFICULTY__;
+var st=document.getElementById("pow-status"),sp=document.getElementById("pow-spinner");
+if(!window.crypto||!window.crypto.subtle){st.textContent="Fehler: Ihr Browser unterst\u00fctzt diese Sicherheitspr\u00fcfung nicht. Bitte nutzen Sie eine aktuelle Browserversion \u00fcber eine sichere Verbindung.";sp.style.display="none";return}
+var enc=new TextEncoder(),B=500;
+// Check leading hex zero nibbles in hash bytes
+function ok(h,d){for(var i=0;i<(d>>1);i++){if(h[i]!==0)return false}return!(d&1&&h[d>>1]&240)}
+for(var base=0;;base+=B){
+var p=[];for(var i=0;i<B;i++)p.push(crypto.subtle.digest("SHA-256",enc.encode(C+":"+(base+i))));
+var r=await Promise.all(p);
+for(var i=0;i<r.length;i++){if(ok(new Uint8Array(r[i]),D)){
+st.textContent="Pr\u00fcfung abgeschlossen. Weiterleitung\u2026";sp.style.display="none";
+var f=document.createElement("form");f.method="POST";f.action=location.href;
+var d=[["pow_challenge",C],["pow_signature",S],["pow_nonce",""+(base+i)]];
+for(var j=0;j<d.length;j++){var inp=document.createElement("input");inp.type="hidden";inp.name=d[j][0];inp.value=d[j][1];f.appendChild(inp)}
+document.body.appendChild(f);f.submit();return}}
+await new Promise(function(resolve){setTimeout(resolve,0)})}
+})();
+</script>
+</body>
+</html>

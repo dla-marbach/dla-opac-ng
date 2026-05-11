@@ -1,0 +1,143 @@
+User-agent: *
+Disallow: /find
+Disallow: /find/
+Disallow: /en/katalog/find
+Disallow: /en/katalog/find/
+Disallow: /*tx_find_find
+Disallow: /bestandsuebersicht/
+Disallow: /en/katalog/bestandsuebersicht/
+Disallow: /bibliothek/projekte/die-bibliotheken-von-karl-wolfskehl/recherche-nach-buchbesitz-von-karl-wolfskehl/
+Disallow: /bibliothek/spezialsammlungen/bestandsliste/bibliothek-siegfried-kracauer/recherche-in-der-autorenbibliothek-von-siegfried-kracauer/
+Disallow: /bibliothek/bibliografien/siegfried-kracauer-personalbibliografie/recherche-in-der-personalbibliographie-siegfried-kracauer/
+Disallow: /en/bibliothek/projekte/die-bibliotheken-von-karl-wolfskehl/recherche-nach-buchbesitz-von-karl-wolfskehl/
+Disallow: /en/bibliothek/spezialsammlungen/bestandsliste/bibliothek-siegfried-kracauer/recherche-in-der-autorenbibliothek-von-siegfried-kracauer/
+Disallow: /en/bibliothek/bibliografien/siegfried-kracauer-personalbibliografie/recherche-in-der-personalbibliographie-siegfried-kracauer/
+Allow: /find/opac/id/
+Disallow: /typo3/
+Disallow: /typo3_src/
+Allow: /typo3/sysext/frontend/Resources/Public/*
+
+Crawl-delay: 5
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: AliyunSecBot
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: AspiegelBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: FacebookExternalHit
+Disallow: /
+
+User-agent: MJ12Bot
+Disallow: /
+
+User-agent: MauiBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: SEMrushBot
+Disallow: /
+
+User-agent: ai2bot
+Disallow: /
+
+User-agent: ai2bot-dolma
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: applebot-extended
+Disallow: /
+
+User-agent: big-sur-ai
+Disallow: /
+
+User-agent: blexbot
+Disallow: /
+
+User-agent: bytespider
+Disallow: /
+
+User-agent: cohere-training-data-crawler
+Disallow: /
+
+User-agent: cotoyogi
+Disallow: /
+
+User-agent: crawler4j
+Disallow: /
+
+User-agent: digitaloceangenai-crawler
+Disallow: /
+
+User-agent: grok
+Disallow: /
+
+User-agent: imagesiftbot
+Disallow: /
+
+User-agent: img2dataset
+Disallow: /
+
+User-agent: kangaroo-bot
+Disallow: /
+
+User-agent: liner-bot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: mycentralaiscraperbot
+Disallow: /
+
+User-agent: netestate-imprint-crawler
+Disallow: /
+
+User-agent: news-please
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+
+User-agent: omgilibot
+Disallow: /
+
+User-agent: peer39-crawler-1-0
+Disallow: /
+
+User-agent: perplexity-user
+Disallow: /
+
+User-agent: perplexity-user-1-0
+Disallow: /
+
+User-agent: quillbot-com
+Disallow: /
+
+User-agent: sbintuitionsbot
+Disallow: /
+
+User-agent: scrapy
+Disallow: /
+
+User-agent: taragroup-intelligent-bot
+Disallow: /
+
+User-agent: turnitinbot
+Disallow: /
+
+User-agent: viennatinybot
+Disallow: /

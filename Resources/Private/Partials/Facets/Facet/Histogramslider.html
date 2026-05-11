@@ -1,0 +1,243 @@
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+{namespace s=Dla\Find\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+{namespace slub=Slub\SlubFindExtend\ViewHelpers}
+
+<f:comment>
+    Uses facet data to draw a histogram of the distribution of the (numeric) facet terms.
+    Includes the required JavaScript libraries (jQuery.flot) and hooks up the script
+    functions to enable interaction.
+    Adds a link to deselect the date range used for faceting if there is a selection.
+</f:comment>
+
+<f:comment>Write viewHelper to get the first year (first element of value array)</f:comment>
+
+<v:variable.set value="{facetInfo.id}" name="facettenId" />
+<v:variable.set value="" name="facetDisplay" />
+<f:if condition="{facetInfo.collapse} && !{config.activeFacets.{facetInfo.id}}">
+    <f:then>
+        <v:variable.set value="display:none;" name="facetDisplay" />
+    </f:then>
+</f:if>
+<div class="facetList" style="{facetDisplay}">
+    <v:variable.set value="{dla:HistogramValue(array: facetData.values, dateFormat: facetInfo.displayDateFormat)}" name="histogramValues" />
+    <span id="slider-data" data-facetinfo="{facetInfo.id}" data-firstdate="{histogramValues.firstDate}" data-lastdate="{histogramValues.lastDate}"></span>
+    <script>
+        <f:format.raw>
+        $( document ).ready(function() {
+            var facetInfo = $('#slider-data').data('facetinfo');
+            var slider = document.getElementById('slider-histogramm-'+facetInfo);
+            var firstDate = $('#slider-data').data('firstdate');
+            if (firstDate.toString().charAt(0) == '-') {
+                firstDate = 0;
+            }
+            var lastDate = $('#slider-data').data('lastdate');
+
+            var frominput = document.getElementById('from-histogramm-'+facetInfo);
+            var tillinput = document.getElementById('till-histogramm-'+facetInfo);
+
+            $(frominput).on('change', function () {
+                if ($(this).val() == "") {
+                    $('#publishDateFacetSubmit-Zeit').addClass('ctg-bu-disable');
+                } else {
+                    $('#publishDateFacetSubmit-Zeit').removeClass('ctg-bu-disable');
+                }
+            });
+
+            $(tillinput).on('change', function () {
+                if ($(this).val() == "") {
+                    $('#publishDateFacetSubmit-Zeit').addClass('ctg-bu-disable');
+                } else {
+                    $('#publishDateFacetSubmit-Zeit').removeClass('ctg-bu-disable');
+                }
+            });
+
+            $('#publishDateFacetSubmit-Zeit').on('click', function (event) {
+                if ($(frominput).val() == "" || $(tillinput).val() == "") {
+                    event.preventDefault();
+                }
+            });
+
+                noUiSlider.create(slider, {
+                    start: [firstDate, lastDate],
+                    connect: true,
+                    range: {
+                        'min': parseInt(firstDate),
+                        'max': parseInt(lastDate)
+                    }
+                });
+
+                // initial output
+                if(!frominput.value) {
+                    frominput.value = Math.round(firstDate);
+                } else {
+                    slider.noUiSlider.set([frominput.value, tillinput.value]);
+                    jQuery(".noUi-connect").addClass("noUi-connect-active");
+                    //document.getElementsByClassName('noUi-connect').classList.add("noUi-connect-active");
+                }
+
+                if(!tillinput.value) {
+                    tillinput.value = Math.round(lastDate);
+                } else {
+                    slider.noUiSlider.set([frominput.value, tillinput.value]);
+                }
+
+                slider.noUiSlider.on('slide', function( values, handle ) {
+
+                    var value = values[handle];
+
+                    if ( handle ) {
+                        tillinput.value = Math.round(value);
+                    } else {
+                        frominput.value = Math.round(value);
+                    }
+                    adjustLink(frominput.value, tillinput.value);
+                });
+
+                tillinput.addEventListener('change', function(){
+                    slider.noUiSlider.set([null, this.value]);
+                    adjustLink(frominput.value, this.value);
+                });
+
+                frominput.addEventListener('change', function(){
+                    slider.noUiSlider.set([this.value, null]);
+                    adjustLink(this.value, tillinput.value);
+                });
+
+                function adjustLink(min, max) {
+                    var url = decodeURIComponent($('#publishDateFacetSubmit-'+facetInfo).attr('href'));
+                    var re = new RegExp("\\["+ facetInfo +"]\\[.*?]", "g");
+                    url = url.replace(re, "["+facetInfo+"][RANGE " + min + " TO " + max + "]");
+                    url = url.replace(/ & /g, " %26 ");
+                    // remove cHash
+                    var cHashRegex = new RegExp("&cHash=[a-zA-z0-9]*", "g");
+                    url = url.replace(cHashRegex, '');
+                    $('#publishDateFacetSubmit-'+facetInfo).attr('href', url);
+                }
+            });
+        </f:format.raw>
+    </script>
+    <canvas id="myHistogram-{facetInfo.id}" width="400" height="300"></canvas>
+
+    <div id="slider-histogramm-{facetInfo.id}"></div>
+
+    <f:alias map="{
+        addArguments:'{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:\"RANGE%20%20TO%20\", mode:\"add\", activeFacets:config.activeFacets)}',
+    removeArguments:'{f:if(
+    condition:\"{s:data.valueForKey(array:config.arguments.facet, key:facetInfo.id)}\",
+    then:\"{s:find.facetLinkArguments(facetID:facetInfo.id, mode:\'remove\', activeFacets:config.activeFacets)}\",
+    else:\"{0:\'{config.prefixID}[page]\',1:\'tx_find_find[controller]\',2:\'tx_find_find[action]\',3:\'cHash\'}\"
+    )}'
+    }">
+        <div class="histogram-inputs">
+            <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, activeFacets:config.activeFacets)}">
+                <f:then>
+                    <f:for each="{s:data.valueForKey(array:config.activeFacets, key:facetInfo.id)}" as="termInfo" key="term">
+                        <span><input type="text" id="from-histogramm-{facetInfo.id}" class="histogram-slider-input" value="{s:format.regexp(match:'/RANGE ([0-9]*) TO ([0-9]*)/', replace:'\1', string:term)}"></span>
+                        <span><input type="text" id="till-histogramm-{facetInfo.id}" class="histogram-slider-input histogram-input-right" value="{s:format.regexp(match:'/RANGE ([0-9]*) TO ([0-9]*)/', replace:'\2', string:term)}"></span>
+                    </f:for>
+                </f:then>
+                <f:else>
+                    <span><input type="text" id="from-histogramm-{facetInfo.id}" class="histogram-slider-input"></span>
+                    <span><input type="text" id="till-histogramm-{facetInfo.id}" class="histogram-slider-input histogram-input-right"></span>
+                </f:else>
+            </f:if>
+        </div>
+        <div style="padding-bottom:30px;">
+            <div style="float:left;">
+                <f:link.action
+                        id="publishDateFacetSubmit-{facetInfo.id}"
+                        addQueryString="untrusted"
+                        arguments="{addArguments}"
+                        argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
+                        section="{settings.jumpToID}"
+                        class="ctg-button" style="padding-left: 10px;padding-right: 10px;" additionalAttributes="{rel: 'nofollow'}">
+                    Anwenden
+                    <f:translate key="LLL:{settings.languageRootPath}locallang.xml:facet-button-submit" />
+                </f:link.action>
+            </div>
+
+            <div class="facetHistogram-container" style="float:right;">
+                <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, activeFacets:config.activeFacets)}">
+                    <f:for each="{s:data.valueForKey(array:config.activeFacets, key:facetInfo.id)}" as="termInfo" key="term">
+                        <f:alias map="{years:\"{s:format.regexp(match:'/RANGE ([0-9]*) TO ([0-9]*)/', replace:'\1-\2', string:term)}\"}">
+                            <span class="facetActive">
+                                <f:link.action
+                                    addQueryString="untrusted"
+                                    argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, activeFacets:config.activeFacets, mode:'remove')}"
+                                    section="{settings.jumpToID}"
+                                    class="icon-cancel facetRemove internal ctg-button" style="padding-left: 10px;padding-right: 10px;" additionalAttributes="{rel: 'nofollow'}">
+                                    Aufheben
+                                </f:link.action>
+                            </span>
+                        </f:alias>
+                    </f:for>
+                </f:if>
+            </div>
+        </div>
+
+    </f:alias>
+
+    <dla:ChartValue labelAs="chartLabels" valueAs="chartValues" countAs="countDocuments" array="{facetData.values}" itemCount="50"/>
+
+    <script>
+        <f:format.raw>
+        var chartValues = [{chartValues}];
+        var chartLabels = [{chartLabels}];
+        var countValues = ["{countDocuments}"];
+        </f:format.raw>
+        var sum = chartValues.map(function (num, idx) {
+            return countValues[idx] - num;
+        });
+        var links = {};
+        var linkElements = $('.facetChartList li a:nth-child(2)');
+        linkElements.each(function() {
+            links[$.trim($(this).text())] = $(this).attr('href');
+        });
+
+        <f:format.raw>
+        var canvas = document.getElementById("myHistogram-{facetInfo.id}");
+        </f:format.raw>
+        var ctx = canvas.getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: chartLabels,
+                datasets: [{
+                    label: '',
+                    data: chartValues,
+                    borderWidth: 1,
+                    backgroundColor: ["#b61f24"],
+                    //radius: 0,
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        display: false,
+                        ticks: {
+                            fontSize: 12,
+                            fontColor: "#b61f24",
+                            beginAtZero:true
+                        },
+                        gridLines: {
+                            display: false
+                        },
+                    }],
+                    xAxes: [{
+                        display: false
+                    }],
+                },
+                legend: {
+                    display:false
+                },
+                tooltips: {
+                    enabled: true
+                }
+            }
+        });
+    </script>
+
+
+    </ul>
+</div>

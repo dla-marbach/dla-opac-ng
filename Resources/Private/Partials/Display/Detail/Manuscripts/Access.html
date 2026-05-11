@@ -1,0 +1,172 @@
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'source')}" name="source" />
+
+<f:if condition="!{iterator.index}">
+    <v:variable.set value="{index: '0'}" name="iterator" />
+</f:if>
+
+<div class="ctg-dtvt-row row-{item_id_mv.{iterator.index}} aukey-row-info">
+    <f:if condition="{filterType_mv.0}=='Daten'">
+        <f:then>
+            <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+                <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">
+                    <f:translate key="Nicht bestellbar" extensionName="dla_opac_ng"/>
+                </span>
+                <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 3px;"></span>
+            </div>
+        </f:then>
+        <f:else>
+            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'usageRestrictionNote')}" name="usageRestrictionNote" />
+            <f:if condition="{usageRestrictionNote}">
+                <f:then>
+                    <dla:replaceBreaks text="{usageRestrictionNote}" as="restriction"/>
+
+                    <f:if condition="restriction!=''">
+                        <f:then>
+                            <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+
+                                <f:render partial="Display/Detail/Order/OrderLink" arguments="{_all}"/>
+
+                                <span class="icon bel-kreis02" style="color:#df661e;"></span>
+                            </div>
+                        </f:then>
+                        <f:else>
+                            <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+
+                                <f:render partial="Display/Detail/Order/OrderLink" arguments="{_all}"/>
+
+                                <span class="icon bel-kreis02" style="color:#00df27;"></span>
+                            </div>
+                        </f:else>
+                    </f:if>
+                </f:then>
+                <f:else>
+                    <div style="padding: 0.5rem 0; margin-bottom: 10px;">
+
+                        <f:render partial="Display/Detail/Order/OrderLink" arguments="{_all}"/>
+
+                        <span class="icon bel-kreis02" style="color:#00df27;"></span>
+                    </div>
+                </f:else>
+            </f:if>
+        </f:else>
+    </f:if>
+</div>
+
+<div id="{iterator.cycle}" class="ctg-dtvt-row">
+    <div class="">
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'usageRestrictionNote')}" name="usageRestrictionNote" />
+        <dla:replaceNullValue text="{usageRestrictionNote}" as="usageRestrictionNote"/>
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'usageRestrictionComment')}" name="usageRestrictionComment" />
+
+        <f:if condition="{usageRestrictionNote}">
+            <f:then>
+                <div class="ctg-dtvt-row">
+                    <div class="ctg-dtvt-label">
+                        <f:translate key="Benutzungshinweis" extensionName="dla_opac_ng"/>
+                    </div>
+
+                    <div class="ctg-dtvt-content">
+                        <dla:replaceBreaks text="{usageRestrictionNote}" as="usageRestrictionNote" />
+                        <f:format.raw>{usageRestrictionNote}</f:format.raw>
+                        <f:if condition="{usageRestrictionComment}">
+                            <br/>{usageRestrictionComment}
+                        </f:if>
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'acronym_mv')}" name="acronym_mv" />
+        <dla:replaceNullValue text="{acronym_mv}" as="acronym_mv"/>
+
+        <f:if condition="{acronym_mv}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Übernommene Sigel" extensionName="dla_opac_ng"/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    {acronym_mv}
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'microform_mv')}" name="microform_mv" />
+        <dla:replaceNullValue text="{microform_mv}" as="microform_mv"/>
+
+        <f:if condition="{microform_mv}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Mikrofiche" extensionName="dla_opac_ng"/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    {microform_mv}
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'photoNegativeNumber_mv')}" name="photoNegativeNumber_mv" />
+        <dla:replaceNullValue text="{photoNegativeNumber_mv}" as="photoNegativeNumber_mv"/>
+
+        <f:if condition="{photoNegativeNumber_mv}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Repro" extensionName="dla_opac_ng"/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    {photoNegativeNumber_mv}
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'locationBoxNumber')}" name="locationBoxNumber" />
+        <dla:replaceNullValue text="{locationBoxNumber}" as="locationBoxNumber"/>
+
+        <f:if condition="{locationBoxNumber}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Kasten" extensionName="dla_opac_ng"/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    {locationBoxNumber}
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'locationFolderNumber')}" name="locationFolderNumber" />
+        <dla:replaceNullValue text="{locationFolderNumber}" as="locationFolderNumber"/>
+
+        <f:if condition="{locationFolderNumber}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:translate key="Mappe" extensionName="dla_opac_ng"/>
+                </div>
+                <div class="ctg-dtvt-content">
+                    {locationFolderNumber}
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_hyperlink_mv')}" name="digitalObject_hyperlink_mv" />
+        <f:if condition="{digitalObject_hyperlink_mv}">
+            <div class="ctg-dtvt-row">
+                <div class="ctg-dtvt-label">
+                    <f:if condition="{dla:stringContains(input: digitalObject_hyperlink_mv, search: 'dbst02')}">
+                        <f:then>
+                            <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
+                        </f:then>
+                        <f:else>
+                            <f:translate key='Digitales Objekt' extensionName='dla_opac_ng'/>
+                        </f:else>
+                    </f:if>
+                </div>
+                <div class="ctg-dtvt-content">
+                    <f:render partial="MediaAccess/RenderLinks" arguments="{_all}"/>
+                </div>
+            </div>
+        </f:if>
+
+    </div>
+</div>

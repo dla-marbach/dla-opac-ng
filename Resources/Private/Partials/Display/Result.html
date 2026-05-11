@@ -1,0 +1,255 @@
+{namespace s=Dla\Find\ViewHelpers}
+<f:comment>
+    Creates a list item for document stored in the document variable.
+
+    It uses the standardFields configured in settings, result highlighting
+    (if configured) and a link to the document’s page.
+</f:comment>
+<li class="ctg-result-item {f:if(condition:'{document.filterType_mv.0} == \'Normdaten\'', then:'ctg-result-normdata')}" id="c{config.uid}-result-{document.id}">
+    <div class="ctg-ri-icon">
+        <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.filterType_mv)}">
+
+            <f:comment>
+                <f:switch expression="{document.filterMultipart}">
+                    <f:case value="true">
+                        <i class="fa fa-stack-2x fa-files-o" style="color:#d3d3d3;"></i>
+                    </f:case>
+                    <f:defaultCase>
+                        <i class="fa fa-stack-2x fa-file-o" style="color:#d3d3d3;"></i>
+                    </f:defaultCase>
+                </f:switch>
+            </f:comment>
+
+            <f:render partial="Display/Detail/MediatypeIcon" arguments="{filterType_mv:document.filterType_mv, filterMultipart:document.filterMultipart, filterDigital:document.filterDigital}" />
+        </f:if>
+    </div>
+
+    <div class="ctg-ri-text">
+        <h2>
+            <f:link.action
+                    action="detail"
+                    arguments="{id:document.id}"
+                    section="{settings.jumpToID}"
+                    onclick="{f:if(
+                condition:'{settings.paging.detailPagePaging} == 1',
+                then:'return tx_find.detailViewWithPaging(this);'
+      )}">
+                <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.display)}">
+                    <f:then>
+                        <f:render
+                                partial="Display/Field/Inline"
+                                arguments="{
+                config:config,
+                results:results,
+                document:document,
+                field:settings.standardFields.display,
+                separator:''
+              }"/>
+                    </f:then>
+                    <f:else>
+                        ID: {document.id}
+                    </f:else>
+                </f:if>
+            </f:link.action>
+        </h2>
+        <p>
+            <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.displayName)}">
+                <f:render
+                        partial="Display/Field/Inline"
+                        arguments="{
+            config:config,
+            results:results,
+            document:document,
+            field:settings.standardFields.displayName,
+            separator:'; '
+          }"/>
+            </f:if>
+        </p>
+        <p>
+            <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.displayAddition1)}">
+                <f:render
+                        partial="Display/Field/Inline"
+                        arguments="{
+            config:config,
+            results:results,
+            document:document,
+            field:settings.standardFields.displayAddition1,
+            separator:'; '
+          }"/>
+            </f:if>
+        </p>
+
+        <p>
+            <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.displayAddition2)}">
+                <f:render
+                        partial="Display/Field/Inline"
+                        arguments="{
+            config:config,
+            results:results,
+            document:document,
+            field:settings.standardFields.displayAddition2,
+            separator:'; '
+          }"/>
+            </f:if>
+        </p>
+    </div>
+
+    <f:if condition="{document.digitalObject_thumbnail_mv} && {document.digitalObject_thumbnail_mv.0}!='␣'">
+        <div class="ctg-ri-image">
+            <f:render partial="MediaAccess/ThumbnailResult" arguments="{_all}"/>
+        </div>
+    </f:if>
+
+    <div class="ctg-ri-actions">
+        <ul>
+            <li><a class="ctg-button add-watchlist-button" data-docid="{document.id}" title="<f:translate key='merken' extensionName='dla_opac_ng'/>"><span class="icon bel-stern01"></span></a></li>
+            <f:if condition="{document.filterType_mv.0} != 'Normdaten'">
+                <f:then>
+                    <li><a class="ctg-button" title="<f:translate key='Details' extensionName='dla_opac_ng'/>" data-details-toggle="1"><span class="icon bel-pfeil-u01"></span></a></li>
+                </f:then>
+            </f:if>
+        </ul>
+    </div>
+    <div class="ctg-ri-details" style="display:none;">
+        <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.filterType_mv)}">
+            <div class="ctg-rid-row">
+                <div class="ctg-rid-label">
+                    Medium
+                </div>
+                <div class="ctg-rid-content">
+                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'filterMedium_mv')}" name="filterMedium_mv" />
+                    <f:if condition="{filterMedium_mv}">
+                        <f:for each="{filterMedium_mv}" as="medium" iteration="iterator">
+                            {medium}
+                        </f:for>
+                        <br/>
+                    </f:if>
+
+                    <f:link.action
+                            action="detail"
+                            arguments="{id:document.id}"
+                            section=""
+                            onclick="{f:if(
+                    condition:'{settings.paging.detailPagePaging} == 1',
+                    then:'return tx_find.detailViewWithPaging(this);'
+                    )}">
+                        <f:translate key='detail.more_details' extensionName='dla_opac_ng'/>
+                    </f:link.action>
+                </div>
+            </div>
+        </f:if>
+        <div class="ctg-rid-row">
+            <div class="ctg-rid-label">
+                <f:translate key='Benutzungszugang' extensionName='dla_opac_ng'/>
+            </div>
+            <div class="ctg-rid-content">
+                <f:link.action
+                        action="detail"
+                        arguments="{id:document.id}"
+                        section="tabaccess"
+                        onclick="{f:if(
+                condition:'{settings.paging.detailPagePaging} == 1',
+                then:'return tx_find.detailViewWithPaging(this);'
+                )}">
+                    Zur Bestellung
+                </f:link.action>
+                <br/>
+                <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'usageRestrictionNote')}" name="usageRestrictionNote" />
+                <f:if condition="{usageRestrictionNote}">
+                    <dla:replaceBreaks text="{usageRestrictionNote}" as="restriction"/>
+                    <f:format.raw>{restriction}</f:format.raw>
+                </f:if>
+
+            </div>
+        </div>
+
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'website_url_mv')}" name="website_url_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'website_description_mv')}" name="website_description_mv" />
+
+        <f:if condition="{website_description_mv}">
+            <div class="ctg-rid-row">
+                <div class="ctg-rid-label">
+                    Digitales Objekt
+                </div>
+                <div class="ctg-rid-content">
+                    <f:for each="{website_description_mv}" as="item" iteration="iterator">
+                        <f:if condition="{website_url_mv.{iterator.index}} != '␣' && {item} != '␣'">
+                            <a href="{website_url_mv.{iterator.index}}">{item}</a><br />
+                        </f:if>
+                    </f:for>
+
+                </div>
+            </div>
+        </f:if>
+
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_hyperlink_mv')}" name="digitalObject_hyperlink_mv" />
+        <f:if condition="{digitalObject_hyperlink_mv}">
+            <f:then>
+                <div class="ctg-rid-row">
+                    <div class="ctg-rid-label">
+                        <f:translate key='Digitales Objekt' extensionName='dla_opac_ng'/>
+                    </div>
+                    <div class="ctg-rid-content">
+                        <f:render partial="MediaAccess/RenderLinks" arguments="{_all}"/>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+        <v:variable.set value="0" name="pr_flag" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_provenance_mv')}" name="item_provenance_mv" />
+        <f:for each="{item_provenance_mv}" as="prstat" iteration="iterator">
+            <f:if condition="{prstat}==true">
+                <v:variable.set value="1" name="pr_flag" />
+            </f:if>
+        </f:for>
+
+        <f:if condition="{pr_flag}">
+            <div class="ctg-rid-row">
+                <div class="ctg-rid-label">
+                    Provenienz
+                </div>
+                <div class="ctg-rid-content">
+                    <f:link.action
+                            action="detail"
+                            arguments="{id:document.id}"
+                            section="tabaccess"
+                            onclick="{f:if(
+                    condition:'{settings.paging.detailPagePaging} == 1',
+                    then:'return tx_find.detailViewWithPaging(this);'
+                    )}">
+                        Zum Exemplar
+                    </f:link.action>
+                </div>
+            </div>
+        </f:if>
+    </div>
+</li>
+
+<f:comment>
+    <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.displayAddition1)}">
+        <f:render
+                partial="Display/Field/Inline"
+                arguments="{
+            config:config,
+            results:results,
+            document:document,
+            field:settings.standardFields.displayAddition1,
+            separator:'; '
+          }"/>
+    </f:if>
+    <br />
+    <f:if condition="{s:data.valueForKey(array:document.fields, key:settings.standardFields.displayAddition2)}">
+        <f:render
+                partial="Display/Field/Inline"
+                arguments="{
+            config:config,
+            results:results,
+            document:document,
+            field:settings.standardFields.displayAddition2,
+            separator:'; '
+          }"/>
+    </f:if>
+</f:comment>
+

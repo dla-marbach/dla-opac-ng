@@ -1,0 +1,259 @@
+<script type="text/javascript">
+    const pluginType = $("#collectiontree").data('plugintype');
+    var childRequestsActive = 0;
+    $( document ).ready(function() {
+        var record = $('#record_id').data('record');
+        var search = $('#search').data('search');
+        getChildNodes(0);
+        if (record) {
+            expandStructure(record);
+        }
+        if (search) {
+            $('#collection-search').val(search);
+            searchNodes(search);
+        }
+        registerOnClick();
+        registerSearchForm();
+
+        // show tree if all requests are done
+        $(document).ajaxStop(function() {
+            if (childRequestsActive === 1) {
+                childRequestsActive = 0;
+                $("#collectiontree").show();
+                $("#loading-icon").hide();
+            }
+        });
+    });
+
+    function registerSearchForm() {
+        $("#collection-search").on("keyup", delay(function (event) {
+            if ($(this).val() == '') {
+                $('#collection-search').data('searchFilterIds', '');
+                resetTreeNodes();
+                getChildNodes(0);
+            } else {
+                searchNodes($(this).val());
+            }
+            // Hide tree until ajax requests are done
+            $("#collectiontree").hide();
+            $("#loading-icon").show();
+        }, 500));
+    }
+
+    function delay(callback, ms) {
+        var timer = 0;
+        return function() {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
+
+
+    function searchNodes(searchTerm) {
+        var url = '/?collection=1&type=' + pluginType + '&action=searchNodes&search=' + searchTerm;
+
+        $.ajax({
+            url: url,
+            dataType: "json"
+        })
+            .done(function(data) {
+                resetTreeNodes();
+                // save filter ids as data attribute
+                $('#collection-search').data('searchFilterIds', data.foundUids);
+                // build tree from first level with filter ids set
+                if (data.foundUids == null) {
+                    $("#collectiontree").html("<h2 style='margin-left:1.5rem;'>Keine Treffer gefunden</h2>");
+                    $("#collectiontree").show();
+                    $("#loading-icon").hide();
+                } else {
+                    getChildNodes(0);
+                }
+
+            });
+    }
+
+    function resetTreeNodes() {
+        $("#collectiontree").html("");
+    }
+
+    var constants = function() {
+        this.liElements = '';
+    };
+
+    function registerOnClick() {
+        // click event for loaded content
+        $(document).on("click", '.childElement.children', function(event) {
+            event.preventDefault();
+            $(this).children('span.icon').toggleClass("bel-pfeil-o01").toggleClass("bel-pfeil-u01");
+
+            var liElement = $(this).parent().parent().parent();
+            if (liElement.children('ul').length == 0) {
+                var id = liElement.attr('id');
+                getChildNodes(id)
+                // var html = jsonToHtml(getChildNodes(id));
+                // liElement.append(html);
+            } else {
+                liElement.children('ul').toggle();
+            }
+        });
+    }
+
+    function getChildNodes(id, child = "",expand = 0) {
+        var searchFlag = false;
+
+        if (!id) {
+            id = 0;
+        } else {
+            // set flag to 1 to show result after all requests are done
+            childRequestsActive = 1;
+        }
+
+        var filterIds = $('#collection-search').data('searchFilterIds');
+
+        var requestObject = {
+            type: "POST",
+            url: '/?collection=1&type=' + pluginType + '&action=getNodes&nodeid=' + id,
+            dataType: "json"
+        };
+
+        if (typeof filterIds !== 'undefined') {
+            requestObject.data = { filterIds : filterIds };
+            searchFlag = true;
+        }
+
+        var jqxhr = $.ajax(requestObject)
+            .done(function (data) {
+                if (id == 0) {
+                    $('#collectiontree').append(jsonToHtml(data));
+                    if (searchFlag) {
+                        setTimeout(function() {
+                            expandFirstLevel();
+                        }, 500);
+                    }
+                } else {
+                    $('#' + id).append(jsonToHtml(data));
+
+                    // delayed scroll to entry
+                    if ($('#record_id').data('record')) {
+                        setTimeout(function() {
+                            $(document).scrollTop($('#'+$('#uid').data('uid')).offset().top);
+                        }, 500);
+                    }
+                }
+                if (expand) {
+                    eachRecord(child);
+                }
+            });
+    }
+
+    function expandFirstLevel() {
+        $('#collectiontree li').each(function () {
+            getChildNodes($(this).attr('id'));
+            $(this).find('span.icon').toggleClass("bel-pfeil-o01").toggleClass("bel-pfeil-u01");
+        });
+    }
+
+    function eachRecord(data) {
+        if (data.child) {
+            getChildNodes(data.uid, data.child, 1);
+        }
+    }
+
+    function expandStructure(record) {
+        var url = '/?collection=1&type=' + pluginType + '&action=getAllParents&nodeid=' + record;
+
+        var jqxhr = $.ajax({
+            url: url,
+            dataType: "json"
+        })
+            .done(function(data) {
+                data.forEach(function (item, index) {
+                    eachRecord(item);
+                });
+                $('#record_id').data('anchorid', $('#uid').data('uid'));
+            });
+    }
+
+    function getLiElement(index, item) {
+        if (item.hasChild == 1) {
+            var addClass = 'children';
+        } else if (item.hasChild == 0) {
+            var addClass = '';
+        }
+
+        function appendQueryToUrl(url, query) {
+            if (!url) {
+                return '?' + query;
+            }
+            var hashIndex = url.indexOf('#');
+            var hash = '';
+            var baseUrl = url;
+
+            if (hashIndex >= 0) {
+                hash = url.substring(hashIndex);
+                baseUrl = url.substring(0, hashIndex);
+            }
+
+            var separator = baseUrl.indexOf('?') >= 0 ? '&' : '?';
+            return baseUrl + separator + query + hash;
+        }
+
+        if (item.facet_value != '') {
+            var findListUrl = String($('#collectiontree').data('find-list-url') || '');
+            var facetQuery = 'tx_find_find%5Bfacet%5D%5BSammlung%5D%5B' + encodeURIComponent(item.facet_value) + '%5D=1';
+            var facetUrl = appendQueryToUrl(findListUrl, facetQuery);
+            var linkAndActions = '<span class="bt-actions">' +
+                '<a href="' + facetUrl + '" class="bt-search" target="_blank" rel="noopener noreferrer nofollow">' +
+                '<span class="icon bel-lupe"></span>' +
+                '</a>' +
+                '</span>';
+        } else {
+            var linkAndActions = '';
+        }
+        if (item.title != 'root') {
+            if (Number.isInteger(Number(item.record_id))) {
+                var title = $('<div/>').text(item.title).html();
+            } else {
+                var detailLinkTemplate = String($('#collectiontree').data('detail-link-template') || '');
+                var detailUrl = detailLinkTemplate.replace('__DLA_DOC_ID__', encodeURIComponent(item.record_id));
+                var title = '<a href="' + detailUrl + '" target="_blank">' +
+                    $('<div/>').text(item.title).html() +
+                    '</a>';
+            }
+            constants.liElements += '<li id="' + item.uid + '">' +
+                '<article id="' + item.record_id + '">' +
+                '<span class="bt-content">' +
+                '<a class="childElement ' + addClass + '" href="#">' +
+                '<span class="icon bel-pfeil-u01">' +
+                '' +
+                '</span>' +
+                '</a>' +
+                '<h3>' + title + '</h3>' +
+                '</span>' +
+                    linkAndActions +
+                '</article>' +
+                '</li>';
+        }
+
+    }
+
+    function jsonToHtml(json) {
+        var obj = json;
+        constants.liElements = '';
+
+        var htmlListElement = '<ul>';
+
+        jQuery.each(obj, getLiElement);
+
+        htmlListElement += constants.liElements;
+
+        htmlListElement += '</ul>';
+
+        return htmlListElement;
+
+    }
+
+</script>

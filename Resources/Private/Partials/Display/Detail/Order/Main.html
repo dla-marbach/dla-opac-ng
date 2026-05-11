@@ -1,0 +1,66 @@
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+<f:comment>
+    Der Link in den alten OPAC ist momentan inaktiv
+    <f:render partial="Display/Detail/OpacLink" arguments="{_all}"/>
+</f:comment>
+
+<div class="order-overlay">
+    <span class="close-button"><a id=""href="#tabaccess"><span class="bel-ende03" style="font-size:48px;"></span></a></span>
+    <span class="error" style="display: none;color:red;">Bitte geben Sie sowohl ein Nutzernamen als auch ein Passwort ein.</span>
+    <div class="info" style="display: none;">
+        <span class="order-info-hs" style="display: none;">
+            <f:format.raw>
+                <f:translate key="hs order sent" extensionName="dla_opac_ng" />
+            </f:format.raw>
+        </span>
+        <span class="order-info-print" style="display: none;">
+            <f:format.raw>
+                <f:translate key="print order sent" extensionName="dla_opac_ng" />
+            </f:format.raw>
+        </span>
+        <span class="order-info-av" style="display: none;">
+            <f:format.raw>
+                <f:translate key="av order sent" extensionName="dla_opac_ng" />
+            </f:format.raw>
+        </span>
+        <span class="order-info-bo" style="display: none;">
+            <f:format.raw>
+                <f:translate key="bo order sent" extensionName="dla_opac_ng" />
+            </f:format.raw>
+        </span>
+        <span class="order-info-generic" style="display: none;">
+            <f:format.raw>
+                <f:translate key="generic order sent" extensionName="dla_opac_ng" />
+            </f:format.raw>
+        </span>
+    </div>
+    <button class="confirm">Bestellansicht verlassen</button>
+    <div class="login-form">
+        <span>
+            <h1>Login - Bestellung</h1>
+        </span>
+        <label>Name:</label> <f:form.textfield id="order-name" placeholder="Nachname, Vorname"/>
+        <label>Passwort:</label> <f:form.password id="order-pw"/>
+        <f:form.submit class="ctg-button order-overlay-button" value="Bestellung abschicken"/>
+        <span id="loading"></span>
+    </div>
+    <div style="padding-top:15px;" class="info-no-account">
+        Sie haben noch kein Benutzerkonto?<br/>
+        Informationen zu Anmeldung und Benutzung finden Sie <a href="https://www.dla-marbach.de/service/benutzung-bibliothek/" target="_blank">hier</a><br/>
+        Bei weiteren Fragen zum Benutzerkonto wenden Sie sich bitte an <a href="mailto:theke-bibliothek@dla-marbach.de">theke-bibliothek@dla-marbach.de</a><br/>
+    </div>
+</div>
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'source')}" name="source" />
+<f:if condition="{source}=='AK'">
+    <f:render partial="Display/Detail/Library/Access" arguments="{_all}"/>
+</f:if>
+<f:if condition="{source}=='BF'">
+    <f:render partial="Display/Detail/Inventory/Access" arguments="{_all}"/>
+</f:if>
+<f:if condition="{source}=='BI'">
+    <f:render partial="Display/Detail/ImagesAndObjects/Access" arguments="{_all}"/>
+</f:if>
+<f:if condition="{source}=='HS'">
+    <f:render partial="Display/Detail/Manuscripts/Access" arguments="{_all}"/>
+</f:if>

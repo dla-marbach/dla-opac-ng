@@ -1,0 +1,124 @@
+{namespace s=Dla\Find\ViewHelpers}
+{namespace v=FluidTYPO3\vhs\ViewHelpers}
+<f:comment>
+    Renders the facet as a list.
+    If there are more than displayDefault list items, additional ones are hidden
+    with a JavaScript link to show them.
+
+    Each list item is created by the Facets/Facet/List/Item partial.
+    A potentially configured autocomplete popup is created by the
+    Facets/Facet/List/Autocomplete partial.
+</f:comment>
+
+<f:comment>
+    Get all active facets for ajax request
+</f:comment>
+<f:for each="{config.activeFacets}" as="facets" key="facetId" iteration="iterator">
+    <f:for each="{facets}" as="facetDetail" key="facetChoice" iteration="detailIterator">
+        <f:if condition="{iterator.isFirst}">
+            <f:then>
+                <v:variable.set value="{facetDetail.config.field}:\"{facetChoice}\"" name="activeFacetsParams" />
+            </f:then>
+            <f:else>
+                <v:variable.set value="{activeFacetsParams} AND {facetDetail.config.field}:\"{facetChoice}\"" name="activeFacetsParams" />
+            </f:else>
+        </f:if>
+    </f:for>
+</f:for>
+
+
+<f:if condition="{facetInfo.autocomplete}">
+    <f:if condition="{f:count(subject:facetData.values)} > {facetInfo.displayDefault}">
+        <f:render partial="Facets/Facet/List/Autocomplete" arguments="{_all}"/>
+    </f:if>
+</f:if>
+
+<f:if condition="{config.activeFacets.filterAuthorityRole_mv} || {config.activeFacets.filterAuthorityRelation_mv}">
+    <f:then>
+        <ul class="facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}">
+    </f:then>
+    <f:else>
+        <ul class="facetList{f:if(condition:facetInfo.autocomplete, then:' autocomplete')}" style="{f:if(condition:facetInfo.collapse, then:'display:none;')}">
+    </f:else>
+</f:if>
+
+<f:for each="{facetData.values}" as="itemCount" key="facetTerm" iteration="iterator">
+
+    <v:variable.set value="" name="facetActiveClass" />
+    <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}">
+        <f:then>
+            <v:variable.set value="facetActive" name="facetActiveClass" />
+        </f:then>
+    </f:if>
+
+    <v:variable.set value="" name="setHidden" />
+    <f:if condition="{facetInfo.displayDefault}">
+        <f:then>
+            <f:if condition="{iterator.cycle} > {facetInfo.displayDefault}">
+                <f:then>
+                    <v:variable.set value="hidden" name="setHidden" />
+                </f:then>
+            </f:if>
+        </f:then>
+        <f:else>
+            <f:if condition="{iterator.cycle} > {settings.facetDefaults.displayDefault}">
+                <f:then>
+                    <v:variable.set value="hidden" name="setHidden" />
+                </f:then>
+            </f:if>
+        </f:else>
+    </f:if>
+
+    <li class="index-{iterator.cycle} count-{itemCount} {facetActiveClass} {setHidden}"
+        value="{facetTerm}"
+        label="{f:translate(key:'LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTerm}', default:facetTerm)}"
+        count="{itemCount}">
+        <f:if condition="{itemCount} == 0">
+            <f:then></f:then>
+            <f:else>
+                <f:if condition="{facetTerm} == ''">
+                    <f:then>
+                        <v:variable.set value="{facetInfo.labelMissing}" name="facetTerm" />
+                        <v:variable.set value="{facetInfo.labelMissing}" name="facetTermDisplay" />
+                    </f:then>
+                </f:if>
+
+                <f:for each="{config.activeFacets}" as="activeFacets" key="activeFacetKey" iteration="activeFacetIterator">
+                    <v:variable.set name="activeFacetParams" value="{activeFacets}" />
+                </f:for>
+
+                <div class="decisiontree-item">
+                    <v:variable.set name="arguments" value="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}" />
+                <a class="decisiontree"
+                   href="#test"
+                   data-field1="{facetInfo.relationField1}"
+                   data-field2="{facetInfo.relationField2}"
+                   data-fieldOrigin="{facetInfo.id}"
+                   data-url="?decisiontree=1&q={config.queryString}&p={facetTerm}␝&activeFacets={activeFacetsParams}&relation1={facetInfo.relationField1}&relation2={facetInfo.relationField2}">
+                    {facetTerm} <em>({itemCount})</em>
+                    <f:link.action
+                            addQueryString="untrusted"
+                            arguments="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}"
+                            argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[page]',1:'tx_find_find[controller]',2:'tx_find_find[action]',3:'cHash'}"
+                            section="{settings.jumpToID}"
+                            class="link-action-all" style="display:none;" additionalAttributes="{rel: 'nofollow'}">
+
+                    </f:link.action>
+                </a>
+
+                </div>
+
+            </f:else>
+        </f:if>
+    </li>
+
+</f:for>
+<f:if condition="{f:count(subject:facetData.values)} > {facetInfo.displayDefault}">
+    <li class="facetShowAll">
+        <a href="#" class="dla-toggle-facets dla-toggle-facets-collapsed" data-translate-show-all="<f:translate key='show all' extensionName='dla_opac_ng'/>" data-translate-show-less="<f:translate key='show less' extensionName='dla_opac_ng'/>">
+            <f:translate key="show all"/>
+        </a>
+    </li>
+</f:if>
+
+</ul>

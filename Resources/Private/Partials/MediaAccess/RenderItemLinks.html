@@ -1,0 +1,68 @@
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_digitalObject_accessLevel_mv')}" name="item_digitalObject_accessLevel_mv" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_digitalObject_display_mv')}" name="item_digitalObject_display_mv" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_digitalObject_hyperlink_mv')}" name="item_digitalObject_hyperlink_mv" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_digitalObject_fileExtension_mv')}" name="item_digitalObject_fileExtension_mv" />
+
+<dla:mediaPlayer
+    urls="{item_digitalObject_hyperlink_mv.{iterator.index}}"
+    display="{item_digitalObject_display_mv.{iterator.index}}"
+    ext="{item_digitalObject_fileExtension_mv.{iterator.index}}"
+    access="{item_digitalObject_accessLevel_mv.{iterator.index}}"
+    as="mediaData"
+/>
+
+<f:for each="{mediaData.links}" as="item" iteration="itemIterator">
+    <v:variable.set value="" name="fileExt" />
+    <f:if condition="{item.ext} && {item.ext} != '␣'">
+        <v:variable.set value="({item.ext})" name="fileExt" />
+    </f:if>
+    <v:variable.set value="Link zum digitalen Objekt" name="linkText" />
+    <f:if condition="{item.display} && {item.display} != '␣'">
+        <v:variable.set value="{item.display}" name="linkText" />
+    </f:if>
+    <f:if condition="{item.url} && {item.url} != '␣'">
+        <f:if condition="{item.forbidden} != 1">
+            <f:then>
+                <a href="{item.url}" target="_blank">{linkText} {fileExt}</a><br />
+            </f:then>
+            <f:else>
+                <f:if condition="{item.access} == 'campus'">
+                    <f:then>
+                        <v:variable.set value="{campusLinks}<span class='access-denied-link'>{linkText} {fileExt}</span><br />" name="campusLinks" />
+                        <v:variable.set value="1" name="campusSet" />
+                    </f:then>
+                    <f:else if="{item.access} == 'sandbox'">
+                        <v:variable.set value="{sandboxLinks}<span class='access-denied-link'>{linkText} {fileExt}</span><br />" name="sandboxLinks" />
+                        <v:variable.set value="1" name="sandboxSet" />
+                    </f:else>
+                </f:if>
+            </f:else>
+        </f:if>
+    </f:if>
+</f:for>
+
+<f:if condition="{campusSet}">
+    <f:then>
+        <div style="border: 1px solid;padding: 10px;background-color: #fcff58;">
+            <f:format.raw>{campusLinks}</f:format.raw>
+            <div class="forbidden-access">
+                <f:translate key="mediaplayer.access_file_forbidden" extensionName='dla_opac_ng'/>
+                <f:render partial="MediaAccess/MailSwitch" arguments="{_all}"/>
+            </div>
+        </div>
+    </f:then>
+</f:if>
+
+<f:if condition="{sandboxSet}">
+    <f:then>
+        <div style="border: 1px solid;padding: 10px;background-color: #fcff58;">
+            <f:format.raw>{sandboxLinks}</f:format.raw>
+            <div class="forbidden-access">
+                <f:translate key="mediaplayer.access_file_forbidden_sandbox" extensionName='dla_opac_ng'/>
+                <f:render partial="MediaAccess/MailSwitch" arguments="{_all}"/>
+            </div>
+        </div>
+    </f:then>
+</f:if>

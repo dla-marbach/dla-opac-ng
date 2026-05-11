@@ -1,0 +1,29 @@
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_accessLevel_mv')}" name="digitalObject_accessLevel_mv" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_hyperlink_mv')}" name="digitalObject_hyperlink_mv" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_thumbnail_mv')}" name="digitalObject_thumbnail_mv" />
+
+<dla:mediaPlayer
+    urls="{document.digitalObject_hyperlink_mv.0}"
+    access="{document.digitalObject_accessLevel_mv.0}"
+    as="mediaData"
+/>
+
+<f:if condition="{digitalObject_thumbnail_mv.0} && {digitalObject_thumbnail_mv.0} != '␣'">
+    <f:then>
+        <f:if condition="{mediaData.links.0.forbidden} == 0">
+            <f:link.action
+                action="detail"
+                arguments="{id:document.id}"
+                section="{settings.jumpToID}"
+                onclick="{f:if(
+                    condition:'{settings.paging.detailPagePaging} == 1',
+                    then:'return tx_find.detailViewWithPaging(this);'
+                    )}"
+            >
+                <img src="{digitalObject_thumbnail_mv.0}"/>
+            </f:link.action>
+        </f:if>
+    </f:then>
+</f:if>

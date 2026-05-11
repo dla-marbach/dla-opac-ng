@@ -1,0 +1,29 @@
+<v:variable.set value="{v:format.substring(content: '{document.fields.id}', start: 2)}" name="id" />
+<f:if condition="{item_id_mv.{iterator.index}}">
+    <f:then>
+        <v:variable.set value="DBSEL3=AU;{item_id_mv.{iterator.index}};&DBSEL=;&DBSEL1=;&DBSEL2=;&DBSEL4=;" name="param" />
+    </f:then>
+    <f:else>
+        <f:switch expression="{document.fields.source}">
+            <f:case value="AK">
+                <v:variable.set value="DBSEL=AK;{id};&DBSEL1=;&DBSEL2=;&DBSEL3=;&DBSEL4=;" name="param" />
+            </f:case>
+            <f:case value="HS">
+                <v:variable.set value="DBSEL1=HS;{id};&DBSEL=;&DBSEL2=;&DBSEL3=;&DBSEL4=;" name="param" />
+            </f:case>
+            <f:case value="BF">
+                <v:variable.set value="DBSEL2=BF;{id};&DBSEL=;&DBSEL1=;&DBSEL3=;&DBSEL4=;" name="param" />
+            </f:case>
+            <f:case value="AU">
+                <v:variable.set value="DBSEL3=AU;{id};&DBSEL=;&DBSEL1=;&DBSEL2=;&DBSEL4=;" name="param" />
+            </f:case>
+            <f:case value="BI">
+                <v:variable.set value="DBSEL4=BI;{id};&DBSEL=;&DBSEL1=;&DBSEL2=;&DBSEL3=;" name="param" />
+            </f:case>
+        </f:switch>
+    </f:else>
+</f:if>
+
+<a href="#tabaccess" class="ctg-button order-button" style="padding-bottom: 10px;padding-left: 10px;padding-right: 10px;" data-orderurl="{settings.orderlink}?ADISDB=AU&WEB=JA&{param}&L%23NAME=%name%&LPASSW=%pw%">
+    <f:translate key="Jetzt bestellen" extensionName="dla_opac_ng" />
+</a>&nbsp;

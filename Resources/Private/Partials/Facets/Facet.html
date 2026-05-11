@@ -1,0 +1,112 @@
+<f:comment>
+  Creates an individual facet using the arguments:
+    * facetInfo: with the facet configuration
+    * facetData: with the facet entries
+    * config: with the extension’s current setup
+
+  Each facet is created by the partial in Facets/Facet with the name of the
+  facet’s configured type (deaulting to  »List«).
+</f:comment>
+<f:comment>This identifies if the facet only conatins the missing facet element</f:comment>
+<f:if condition="{f:count(subject:facetData.values)} == 1 || {facetInfo.type} == 'Timerange'">
+    <f:for each="{facetData.values}" as="itemCount" key="key" iteration="iterator">
+        <v:variable.set value="{key}" name="facetkey" />
+    </f:for>
+</f:if>
+
+<f:if condition="{facetInfo.facetQuery}">
+    <f:then>
+        <v:variable.set value="1" name="facetValuesEmpty" />
+        <f:for each="{facetData.values}" as="itemCount" key="key" iteration="iterator">
+            <f:if condition="{itemCount}>0">
+                <v:variable.set value="0" name="facetValuesEmpty" />
+            </f:if>
+        </f:for>
+    </f:then>
+    <f:else>
+        <v:variable.set value="0" name="facetValuesEmpty" />
+    </f:else>
+</f:if>
+
+<f:if condition="({f:count(subject:facetData.values)} > 0  || {facetInfo.type} == 'Timerange') && {facetValuesEmpty}!=1 || ({f:count(subject:facetData.values)} == 0 && {facetInfo.ajax} == 1)">
+    <f:if condition="{facetkey} == ''">
+        <v:variable.set value="{facetInfo.labelMissing}" name="facetkey" />
+    </f:if>
+    <f:if condition="{f:count(subject:facetData.values)} == 1 && {facetkey} == '' && {facetInfo.type} != 'Timerange'">
+        <f:then></f:then>
+        <f:else>
+            <section class="ctg-facet {f:if(condition:facetInfo.ajax, then:'ajax-facet')}"
+                     id="{facetInfo.id}" data-activefacets="{s:find.ArrayToUrlParameter(array:config.activeFacets)}"
+                     data-displaydefault="{facetInfo.displayDefault}">
+                <f:comment>
+                    <article class="facet facet-id-{facetInfo.id}{f:if(condition:facetInfo.type, then:' facet-type-{facetInfo.type}')}">
+                    </article>
+                </f:comment>
+                <f:if condition="{facetInfo.removeHeadline} != true">
+                    <f:if condition="{facetInfo.label}">
+                        <f:then>
+                            <h3>
+                                <f:translate key='search.facet.{facetInfo.id}' extensionName='dla_opac_ng' default="{facetInfo.label}"/>
+                                <a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>" data-facet-toggle="1">
+                                    <f:if condition="{facetInfo.collapse} && !{config.activeFacets.{facetInfo.id}}">
+                                        <f:then><span class="icon bel-pfeil-u01"></span></f:then>
+                                        <f:else><span class="icon bel-pfeil-o01"></span></f:else>
+                                    </f:if>
+                                </a>
+                            </h3>
+                        </f:then>
+                        <f:else>
+                            <h3>
+                                <f:translate key='search.facet.{facetInfo.id}' extensionName='dla_opac_ng' default="{facetInfo.label}"/>
+                                <f:comment><f:translate key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}" default="{facetInfo.id}"/></f:comment>
+                                <a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>" data-facet-toggle="1">
+                                    <f:if condition="{facetInfo.collapse} && !{config.activeFacets.{facetInfo.id}}">
+                                        <f:then><span class="icon bel-pfeil-u01"></span></f:then>
+                                        <f:else><span class="icon bel-pfeil-o01"></span></f:else>
+                                    </f:if>
+                                </a>
+                            </h3>
+                        </f:else>
+                    </f:if>
+                </f:if>
+                <f:alias map="{facetType:'{f:if(condition:facetInfo.type, then:facetInfo.type, else:\"List\")}'}">
+                <f:if condition="{config.activeFacets.{facetInfo.id}}">
+                    <f:for each="{config.activeFacets.{facetInfo.id}}" key="key" as="item" iteration="iterator">
+                        <f:if condition="{item.modifier} == 'not'">
+                            <div class="facetList">
+                                <ul>
+                                    <li>
+                                        <f:link.action
+                                                addQueryString="untrusted"
+                                                argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:item.id, facetTerm:item.term, activeFacets:config.activeFacets, mode:'remove')}"
+                                                section="{settings.jumpToID}"
+                                                class=""
+                                                title="{f:translate(key:'remove filter %s', arguments:{0:item.term})}" additionalAttributes="{rel: 'nofollow'}">
+                                            <span class="icon bel-verboten"></span>
+                                        </f:link.action>
+
+                                        <f:link.action
+                                                addQueryString="untrusted"
+                                                argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:item.id, facetTerm:item.term, activeFacets:config.activeFacets, mode:'remove')}"
+                                                section="{settings.jumpToID}"
+                                                class=""
+                                                title="{f:translate(key:'remove filter %s', arguments:{0:item.term})}" additionalAttributes="{rel: 'nofollow'}">
+                                            {item.term}
+                                        </f:link.action>
+                                    </li>
+                                </ul>
+                            </div>
+                        </f:if>
+                    </f:for>
+                </f:if>
+
+                    <f:render partial="Facets/Facet/{facetType}" arguments="{_all}"/>
+                </f:alias>
+            </section>
+        </f:else>
+    </f:if>
+</f:if>
+
+
+
+

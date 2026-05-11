@@ -1,0 +1,477 @@
+{namespace s=Dla\Find\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+
+<form method="get"
+            action="{f:uri.action(pageUid: settings.indexPageUid, action: 'index', controller: 'Search', extensionName: 'Find', pluginName: 'Find', section: settings.jumpToID)}"
+            class="searchForm {f:if(condition:config.extendedSearch, then:'search-extended', else:'search-simple')}">
+
+    <figure class="ctg-header ctg-header-home">
+        <section class="ctg-hd-meta">
+            <div class="ctg-catalog-title">
+                <f:link.page pageUid="{settings.mainPageUid}">
+                    <span class="icon bel-haus"></span>
+                    <strong>
+                        <f:translate key='Kallías' extensionName='dla_opac_ng'/>
+                    </strong>
+                    <span class="kallias">
+                        – <f:translate key='der Online-Katalog des Deutschen Literaturarchivs Marbach' extensionName='dla_opac_ng'/>
+                    </span>
+                </f:link.page>
+            </div>
+            <div class="ctg-hd-meta-menu">
+                <ul>
+                    <li>
+                        <a href="#" id="watchlist" title="<f:translate key='Merkliste' extensionName='dla_opac_ng'/>"><span class="icon bel-stern01"></span><f:translate key='Merkliste' extensionName='dla_opac_ng'/> </a><span class="watchlist-counter">(0)</span>
+                    </li>
+                    <li>
+                        <a href="mailto:opac@dla-marbach.de?subject=Feedback%20zum%20Online-Katalog" title="<f:translate key='Feedback' extensionName='dla_opac_ng'/>"><span class="icon bel-sprache01"></span><f:translate key='Feedback' extensionName='dla_opac_ng'/></a>
+                    </li>
+                    <f:comment>
+                    <li>
+                        <a href="#" title="<f:translate key='Mein Konto' extensionName='dla_opac_ng'/>"><span class="icon bel-nutzer"></span><f:translate key='Mein Konto' extensionName='dla_opac_ng'/></a>
+                    </li>
+                    </f:comment>
+                </ul>
+            </div>
+        </section>
+
+        <div class="watchlist-container hidden">
+            <div class="watchlist-close"><a href=""><span class="bel-ende03"></span></a></div>
+            <h1><f:translate key='Merkliste' extensionName='dla_opac_ng'/></h1>
+            <div id="watchlist-entries">
+                <div class="watchlist-actions">
+                    <a class="ctg-button watchlist-export-dataservice" data-dataservice-url="{settings.dataserviceUrl}" title="CSV Export via Datendienst"><span class="icon bel-postin"></span></a>
+                    <a class="ctg-button watchlist-print" title="drucken"><span class="icon bel-drucker"></span></a>
+                    <a class="ctg-button watchlist-delall" title="Alle Einträge löschen"><span class="icon bel-ende01"></span></a>
+                </div>
+
+                <ul id="watchlist-list">
+                </ul>
+            </div>
+
+        </div>
+
+        <section class="ctg-hd-search">
+                <ul>
+                    <li>
+                        <f:alias map="{gedrucktes:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Gedrucktes\", mode:\"add\", activeFacets:config.activeFacets)}'}">
+                            <f:link.action
+                                id="gesamtbestand"
+                                section="{settings.jumpToID}"
+                                addQueryString="untrusted"
+                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]', 2:'tx_find_find[id]', 3:'tx_find_find[controller]', 4:'tx_find_find[action]', 5:'cHash'}"
+
+                                title="{f:translate(key:'Gesamtbestand', extensionName:'dla_opac_ng')}"
+                                class="{f:if(condition:'{config.activeFacets.Medientypen}',then:'',else:'ctg-hd-active')} gesamt" additionalAttributes="{rel: 'nofollow'}">
+                                <span class="icon bel-mkombo06"></span><f:translate key='Gesamtbestand' extensionName='dla_opac_ng'/>
+                            </f:link.action>
+                        </f:alias>
+                    </li>
+                    <li>
+                        <f:alias map="{gedrucktes:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Gedrucktes\", mode:\"add\", activeFacets:config.activeFacets)}'}">
+                            <f:link.action
+                                    id="gedrucktes"
+                                    additionalParams="{tx_find_find: gedrucktes}"
+                                    section="{settings.jumpToID}"
+                                    addQueryString="untrusted"
+                                    argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]', 2:'tx_find_find[controller]', 3:'tx_find_find[action]', 4:'cHash'}"
+
+                                    title="{f:translate(key:'Gedrucktes', extensionName:'dla_opac_ng')}"
+                                    class="{f:if(condition:'{config.activeFacets.Medientypen.Gedrucktes}',then:'ctg-hd-active',else:'')} gedrucktes" additionalAttributes="{rel: 'nofollow'}">
+                                <span class="icon bel-mag"></span><f:translate key='Gedrucktes' extensionName='dla_opac_ng'/>
+                            </f:link.action>
+                        </f:alias>
+                    </li>
+                    <li>
+                        <f:alias map="{handschriften:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Handschriften\", mode:\"add\", activeFacets:config.activeFacets)}'}">
+                            <f:link.action
+                                id="handschriften"
+                                additionalParams="{tx_find_find: handschriften}"
+                                section="{settings.jumpToID}"
+                                addQueryString="untrusted"
+                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]', 2:'tx_find_find[controller]', 3:'tx_find_find[action]', 4:'cHash'}"
+
+                                title="{f:translate(key:'Handschriften', extensionName:'dla_opac_ng')}"
+                                class="{f:if(condition:'{config.activeFacets.Medientypen.Handschriften}',then:'ctg-hd-active',else:'')} handschriften" additionalAttributes="{rel: 'nofollow'}">
+                                <span class="icon bel-schreiben"></span><f:translate key='Handschriften' extensionName='dla_opac_ng'/>
+                            </f:link.action>
+                        </f:alias>
+                    </li>
+                    <li>
+                        <f:alias map="{picsandobjects:'{s:find.facetLinkArguments(facetID:\"Medientypen\", facetTerm:\"Bilder und Objekte\", mode:\"add\", activeFacets:config.activeFacets)}'}">
+                            <f:link.action
+                                id="picsandobjects"
+                                additionalParams="{tx_find_find: picsandobjects}"
+                                section="{settings.jumpToID}"
+                                addQueryString="untrusted"
+                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]', 2:'tx_find_find[controller]', 3:'tx_find_find[action]', 4:'cHash'}"
+
+                                title="{f:translate(key:'Bilder und Objekte', extensionName:'dla_opac_ng')}"
+                                class="{f:if(condition:'{s:data.valueForKey(array:config.activeFacets.Medientypen, key:\"Bilder und Objekte\")}',then:'ctg-hd-active',else:'')} bilder" additionalAttributes="{rel: 'nofollow'}">
+                                <span class="icon bel-foto"></span><f:translate key='Bilder und Objekte' extensionName='dla_opac_ng'/>
+                            </f:link.action>
+                        </f:alias>
+                    </li>
+                    <li>
+                        <f:alias map="{audio:'{s:find.facetLinkArguments(facetID:\"MedientypenHidden\", facetTerm:\"Audio\", mode:\"add\", activeFacets:config.activeFacets)}',
+                        video:'{s:find.facetLinkArguments(facetID:\"MedientypenHidden\", facetTerm:\"Video\", mode:\"add\", activeFacets:config.activeFacets)}'}">
+
+                        <dla:arrayMerge array1="{audio}" array2="{video}" as="newArray" />
+                        <f:link.action
+                                id="audio"
+                                additionalParams="{tx_find_find: newArray}"
+                                section="{settings.jumpToID}"
+                                addQueryString="untrusted"
+                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]', 2:'tx_find_find[controller]', 3:'tx_find_find[action]', 4:'cHash'}"
+
+                                title="{f:translate(key:'Audio & Video', extensionName:'dla_opac_ng')}"
+                                class="{f:if(condition:'{s:data.valueForKey(array:config.activeFacets.Medientypen, key:\"Audio\")}',then:'ctg-hd-active',else:'')} audio" additionalAttributes="{rel: 'nofollow'}">
+                        <span class="icon bel-ton"></span><f:translate key='Audio & Video' extensionName='dla_opac_ng'/>
+                        </f:link.action>
+                        </f:alias>
+                    </li>
+                    <li>
+                        <f:alias map="{werke:'{s:find.facetLinkArguments(facetID:\"DatenbestandHidden\", facetTerm:\"Werke\", mode:\"add\", activeFacets:config.activeFacets)}',
+                        person: '{s:find.facetLinkArguments(facetID:\"DatenbestandHidden\", facetTerm:\"Personen\", mode:\"add\", activeFacets:config.activeFacets)}',
+                        corporation: '{s:find.facetLinkArguments(facetID:\"DatenbestandHidden\", facetTerm:\"Körperschaften\", mode:\"add\", activeFacets:config.activeFacets)}'}">
+
+                        <dla:arrayMerge array1="{werke}" array2="{person}" array3="{corporation}" as="newArray" />
+                        <dla:arrayMerge array1="{newArray}" array2="{sort: 'searchEntityScore desc'}" as="newArray" />
+                        <f:link.action
+                                id="normdaten"
+                                additionalParams="{tx_find_find: newArray}"
+                                section="{settings.jumpToID}"
+                                addQueryString="untrusted"
+                                argumentsToBeExcludedFromQueryString="{1:'tx_find_find[facet]', 2:'tx_find_find[controller]', 3:'tx_find_find[action]', 4:'cHash'}"
+
+                                title="{f:translate(key:'Namen und Werke', extensionName:'dla_opac_ng')}"
+                                class="{f:if(condition:'{config.activeFacets.Medientypen.Normdaten}',then:'ctg-hd-active',else:'')} namen" additionalAttributes="{rel: 'nofollow'}">
+                            <span class="icon bel-idkarte"></span><f:translate key='Namen und Werke' extensionName='dla_opac_ng'/>
+                        </f:link.action>
+                        </f:alias>
+                    </li>
+                </ul>
+
+                <div class="ctg-hd-search-form">
+                    <div class="ctg-search-autocomplete">
+                        <input type="text"
+                               id="c{config.uid}-field-{fieldInfo.id}"
+                               class="inputType-text"
+                               name="tx_find_find[q][default]"
+                               value=""
+                               placeholder="Wonach suchen Sie?" />
+                    </div>
+                    <div class="ctg-search-autocomplete-button">
+                        <button type="submit">
+                            <span class="icon bel-lupe"></span>
+                            <f:translate key='Jetzt suchen' extensionName='dla_opac_ng'/>
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="extended-search {f:if(condition: '{arguments.extended}!=1', then: 'hidden')}">
+                    <div class="extended-search-container">
+
+                        <div class="extended-search-fields">
+                            <select id="extended-search-select-0" class="extended-search-select">
+                                <option name="author" selected="true" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author"/></option>
+                                <option name="author_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_von"/></option>
+                                <option name="author_an" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_an"/></option>
+                                <option name="author_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_ueber"/></option>
+                                <option name="author_unter" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_unter"/></option>
+                                <option name="title" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title"/></option>
+                                <option name="title_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title_ueber"/></option>
+                                <option name="date" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date"/></option>
+                                <option name="date_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_von"/></option>
+                                <option name="date_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_bis"/></option>
+                                <option name="new_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_von"/></option>
+                                <option name="new_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_bis"/></option>
+                                <option name="place" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.place"/></option>
+                                <option name="numbers" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.numbers"/></option>
+                                <option name="id" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.id"/></option>
+                                <option name="classification" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.classification"/></option>
+                                <option name="signatur" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.signatur"/></option>
+                                <option name="exemplar" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.exemplar"/></option>
+                                <option name="searchall" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.searchall"/></option>
+
+                            </select>
+                        </div>
+                        <div class="extended-search-input">
+                            <input type="text"
+                                   id="extended-search-input-0"
+                                   class="catalog-extended-search-input"
+                                   name="tx_find_find[q][author]"
+                                   value=""
+                                   placeholder=""
+                                   aria-label="Suchfeld 1"
+                                   disabled="disabled" />
+                            <button id="resetInput-extended-0" class="btn btn-default hidden" aria-label="Reset Input" type="button"><span class='hide-text'><f:translate key="LLL:{settings.languageRootPath}locallang.xml:reset-input" /></span></button>
+                        </div>
+                    </div>
+
+                    <div class="extended-search-container">
+
+                        <div class="extended-search-fields">
+                            <select id="extended-search-select-1" class="extended-search-select">
+                                <option name="author" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author"/></option>
+                                <option name="author_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_von"/></option>
+                                <option name="author_an" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_an"/></option>
+                                <option name="author_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_ueber"/></option>
+                                <option name="author_unter" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_unter"/></option>
+                                <option name="title" selected="true"  class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title"/></option>
+                                <option name="title_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title_ueber"/></option>
+                                <option name="date" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date"/></option>
+                                <option name="date_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_von"/></option>
+                                <option name="date_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_bis"/></option>
+                                <option name="new_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_von"/></option>
+                                <option name="new_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_bis"/></option>
+                                <option name="place" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.place"/></option>
+                                <option name="numbers" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.numbers"/></option>
+                                <option name="id" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.id"/></option>
+                                <option name="classification" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.classification"/></option>
+                                <option name="signatur" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.signatur"/></option>
+                                <option name="exemplar" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.exemplar"/></option>
+                                <option name="searchall" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.searchall"/></option>
+
+                            </select>
+                        </div>
+                        <div class="extended-search-input">
+                            <input type="text"
+                                   id="extended-search-input-1"
+                                   class="catalog-extended-search-input"
+                                   name="tx_find_find[q][title]"
+                                   value=""
+                                   placeholder=""
+                                   aria-label="Suchfeld 2"
+                                   disabled="disabled" />
+                            <button id="resetInput-extended-1" class="btn btn-default hidden" aria-label="Reset Input" type="button"><span class='hide-text'><f:translate key="LLL:{settings.languageRootPath}locallang.xml:reset-input" /></span></button>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="extended-search-container">
+
+                        <div class="extended-search-fields">
+                            <select id="extended-search-select-2" class="extended-search-select">
+                                <option name="author" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author"/></option>
+                                <option name="author_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_von"/></option>
+                                <option name="author_an" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_an"/></option>
+                                <option name="author_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_ueber"/></option>
+                                <option name="author_unter" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_unter"/></option>
+                                <option name="title" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title"/></option>
+                                <option name="title_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title_ueber"/></option>
+                                <option name="date" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date"/></option>
+                                <option name="date_von" selected="true" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_von"/></option>
+                                <option name="date_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_bis"/></option>
+                                <option name="new_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_von"/></option>
+                                <option name="new_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_bis"/></option>
+                                <option name="place" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.place"/></option>
+                                <option name="numbers" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.numbers"/></option>
+                                <option name="id" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.id"/></option>
+                                <option name="classification" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.classification"/></option>
+                                <option name="signatur" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.signatur"/></option>
+                                <option name="exemplar" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.exemplar"/></option>
+                                <option name="searchall" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.searchall"/></option>
+
+                            </select>
+                        </div>
+                        <div class="extended-search-input">
+                            <input type="text"
+                                   id="extended-search-input-2"
+                                   class="catalog-extended-search-input"
+                                   name="tx_find_find[q][date_von]"
+                                   value=""
+                                   placeholder=""
+                                   aria-label="Suchfeld 3"
+                                   disabled="disabled" />
+                            <button id="resetInput-extended-2" class="btn btn-default hidden" aria-label="Reset Input" type="button"><span class='hide-text'><f:translate key="LLL:{settings.languageRootPath}locallang.xml:reset-input" /></span></button>
+                        </div>
+
+                    </div>
+
+
+                    <div class="extended-search-container">
+
+                        <div class="extended-search-fields">
+                            <select id="extended-search-select-3" class="extended-search-select">
+                                <option name="author" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author"/></option>
+                                <option name="author_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_von"/></option>
+                                <option name="author_an" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_an"/></option>
+                                <option name="author_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_ueber"/></option>
+                                <option name="author_unter" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_unter"/></option>
+                                <option name="title" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title"/></option>
+                                <option name="title_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title_ueber"/></option>
+                                <option name="date" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date"/></option>
+                                <option name="date_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_von"/></option>
+                                <option name="date_bis" selected="true" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_bis"/></option>
+                                <option name="new_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_von"/></option>
+                                <option name="new_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_bis"/></option>
+                                <option name="place" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.place"/></option>
+                                <option name="numbers" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.numbers"/></option>
+                                <option name="id" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.id"/></option>
+                                <option name="classification" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.classification"/></option>
+                                <option name="signatur" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.signatur"/></option>
+                                <option name="exemplar" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.exemplar"/></option>
+                                <option name="searchall" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.searchall"/></option>
+
+                            </select>
+                        </div>
+                        <div class="extended-search-input">
+                            <input type="text"
+                                   id="extended-search-input-3"
+                                   class="catalog-extended-search-input"
+                                   name="tx_find_find[q][date_bis]"
+                                   value=""
+                                   placeholder=""
+                                   aria-label="Suchfeld 4"
+                                   disabled="disabled" />
+                            <button id="resetInput-extended-3" class="btn btn-default hidden" aria-label="Reset Input" type="button"><span class='hide-text'><f:translate key="LLL:{settings.languageRootPath}locallang.xml:reset-input" /></span></button>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="extended-search-container">
+
+                        <div class="extended-search-fields">
+                            <select id="extended-search-select-4" class="extended-search-select">
+                                <option name="author" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author"/></option>
+                                <option name="author_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_von"/></option>
+                                <option name="author_an" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_an"/></option>
+                                <option name="author_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_ueber"/></option>
+                                <option name="author_unter" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.author_unter"/></option>
+                                <option name="title" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title"/></option>
+                                <option name="title_ueber" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.title_ueber"/></option>
+                                <option name="date" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date"/></option>
+                                <option name="date_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_von"/></option>
+                                <option name="date_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.date_bis"/></option>
+                                <option name="new_von" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_von"/></option>
+                                <option name="new_bis" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.new_bis"/></option>
+                                <option name="place" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.place"/></option>
+                                <option name="numbers" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.numbers"/></option>
+                                <option name="id" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.id"/></option>
+                                <option name="classification" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.classification"/></option>
+                                <option name="signatur" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.signatur"/></option>
+                                <option name="exemplar" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.exemplar"/></option>
+                                <option name="searchall" selected="true" class="extended-search-option"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.searchall"/></option>
+
+                            </select>
+                        </div>
+                        <div class="extended-search-input">
+                            <input type="text"
+                                   id="extended-search-input-4"
+                                   class="catalog-extended-search-input"
+                                   name="tx_find_find[q][searchall]"
+                                   value=""
+                                   placeholder=""
+                                   aria-label="Suchfeld 5"
+                                   disabled="disabled" />
+                            <button id="resetInput-extended-4" class="btn btn-default hidden" aria-label="Reset Input" type="button"><span class='hide-text'><f:translate key="LLL:{settings.languageRootPath}locallang.xml:reset-input" /></span></button>
+                        </div>
+
+
+                    </div>
+
+                    <div class="extended-search-container">
+                        <div class="extended-search-fields">
+                            <label class="no-date-label" for="extended-search-checkbox-no-date"><f:translate key="LLL:{settings.languageRootPath}locallang.xml:search.fieldselector.label_not_date" /></label>
+                        </div>
+                        <div class="extended-search-input">
+                            <input type="checkbox"
+                                id="extended-search-checkbox-no-date"
+                                class="inputType-checkbox"
+                                name="tx_find_find[q][not_date]"
+                                value="*"
+                                disabled="disabled" />
+                        </div>
+                    </div>
+
+                    <div class="extended-search-container-button">
+                        <button type="submit">
+                            <span class="icon bel-lupe"></span>
+                            <f:translate key='Jetzt suchen' extensionName='dla_opac_ng'/>
+                        </button>
+                        <span>
+                                <button type="button" class="extended-search-reset">
+                                    <span class="icon bel-ende03"></span>
+                                    <f:translate key='Eingabe zurücksetzen' extensionName='dla_opac_ng'/>
+                                </button>
+                            </span>
+                    </div>
+
+
+                </div>
+        </section>
+
+        <script>
+            $( document ).ready(function() {
+                console.log( $('.inputType-text'));
+                var url = new URL(window.location.href);
+
+                $('.gesamt').removeClass("ctg-hd-active");
+
+                if (url.searchParams.get("tx_find_find[facet][Medientypen][Gedrucktes]")) {
+                    $('.gedrucktes').addClass("ctg-hd-active");
+                } else if (url.searchParams.get("tx_find_find[facet][Medientypen][Handschriften]")) {
+                    $('.handschriften').addClass("ctg-hd-active");
+                } else if (url.searchParams.get("tx_find_find[facet][Medientypen][Bilder und Objekte]")) {
+                    $('.bilder').addClass("ctg-hd-active");
+                } else if (url.searchParams.get("tx_find_find[facet][MedientypenHidden][Video]")) {
+                    $('.audio').addClass("ctg-hd-active");
+                } else if (url.searchParams.get("tx_find_find[facet][DatenbestandHidden][Werke]")) {
+                    $('.namen').addClass("ctg-hd-active");
+                } else {
+                    $('.gesamt').addClass("ctg-hd-active");
+                }
+
+            });
+        </script>
+
+        <section class="ctg-hd-addon">
+            <ul>
+                <li>
+                    <f:link.action
+                            addQueryString="untrusted"
+                            argumentsToBeExcludedFromQueryString="{0:'tx_find_find[controller]',1:'tx_find_find[action]',2:'cHash'}"
+                            arguments="{extendedSearch: 1}"
+                            class="linkExtendedSearch" additionalAttributes="{rel: 'nofollow'}">
+                        <span class="icon bel-regler01"></span>
+                        <span class="ctg-hd-addon-term show-ext-search" data-extendedsearch="{f:translate(key:'Expertensuche', extensionName='dla_opac_ng')}" data-search="{f:translate(key:'basic Search', extensionName='dla_opac_ng')}">
+                            <f:translate key='Expertensuche' extensionName='dla_opac_ng'/>
+                        </span>
+                    </f:link.action>
+                </li>
+                <li>
+                    <f:link.page
+                        pageUid="{settings.collectionUid}"
+                        title="{f:translate(key:'Bestandsübersicht', extensionName:'dla_opac_ng')}">
+                        <span class="icon bel-inhalt"></span>
+                        <span class="ctg-hd-addon-term">
+                                <f:translate key='Bestandsübersicht' extensionName='dla_opac_ng'/>
+                            </span>
+                    </f:link.page>
+                </li>
+<!--
+                <li>
+                    <a href="#" title="<f:translate key='Suchverlauf' extensionName='dla_opac_ng'/>"><span class="icon bel-zurueck02"></span><span class="ctg-hd-addon-term"><f:translate key='Suchverlauf' extensionName='dla_opac_ng'/></span></a>
+                </li>
+-->
+                <li>
+                    <f:link.page
+                            pageUid="{settings.helpUid}"
+                            title="{f:translate(key:'Hilfe und Auskunft', extensionName:'dla_opac_ng')}">
+                        <span class="icon bel-info"></span>
+                        <span class="ctg-hd-addon-term">
+                            <f:translate key='Hilfe und Auskunft' extensionName='dla_opac_ng'/>
+                        </span>
+                    </f:link.page>
+                </li>
+            </ul>
+        </section>
+    </figure>
+
+</form>

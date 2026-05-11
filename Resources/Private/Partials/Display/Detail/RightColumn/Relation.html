@@ -1,0 +1,40 @@
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'relation_type_mv')}" name="relation_type_mv" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'relation_text_mv')}" name="relation_text_mv" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'relation_comment_mv')}" name="relation_comment_mv" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'relation_id_mv')}" name="relation_id_mv" />
+<v:variable.set value="10000" name="maxRenderedRelations" />
+
+<f:if condition="{relation_text_mv}">
+    <section class="ctg-facet">
+        <h3><a title="<f:translate key='schließen' extensionName='dla_opac_ng'/>"><span class="icon bel-pfeil-o01"></span></a>
+            <f:translate key="detail.document_link" extensionName="dla_opac_ng"/>
+        </h3>
+        <ul>
+
+            <f:for each="{relation_text_mv}" as="relation" iteration="iterator">
+                <f:if condition="{iterator.cycle} <= {maxRenderedRelations}">
+                    <li>
+
+                        <f:link.action action="detail" arguments="{id:'{relation_id_mv.{iterator.index}}'}" title="{relation}" class="internal">
+                            <span class="icon bel-link02"></span>
+                        </f:link.action>
+
+                        <f:link.action action="detail" arguments="{id:'{relation_id_mv.{iterator.index}}'}" title="{relation}" class="internal">
+
+                            {relation_type_mv.{iterator.index}}: {relation}
+                            <f:if condition="{relation_comment_mv.{iterator.index}} && {relation_comment_mv.{iterator.index}}!='␣'">
+                                ({relation_comment_mv.{iterator.index}})
+                            </f:if>
+                        </f:link.action>
+                    </li>
+                </f:if>
+            </f:for>
+            <f:if condition="{f:count(subject: relation_text_mv)} > {maxRenderedRelations}">
+                <li>
+                    <f:translate key="maxRenderedRelationsNote" extensionName="dla_opac_ng" arguments="{0: maxRenderedRelations}" />
+                </li>
+            </f:if>
+
+        </ul>
+    </section>
+</f:if>

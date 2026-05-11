@@ -1,0 +1,52 @@
+<f:if condition="{results.components.facetset.facets.Medientypen.values.Normdaten} != {results.numfound}">
+    <ol class="ctg-result-list">
+        <f:for each="{results.components.facetset.facets.entities.values}" as="normdataValue" key="normdata">
+            <dla:normdataResolver id="{normdata}" valueAs="objectData" />
+            <li class="ctg-result-item ctg-result-normdata">
+                <div class="ctg-ri-icon">
+                    <span class="icon bel-idkarte"></span>
+                </div>
+                <div class="ctg-ri-text">
+                    <h3>Tipp: Relevante Namen &amp; Werke</h3>
+                    <h2>
+                        <f:link.action
+                                action="detail"
+                                arguments="{id:normdata}"
+                                section="{settings.jumpToID}"
+                        >
+                            <f:format.raw>
+                                {objectData.display}
+                            </f:format.raw>
+                        </f:link.action>
+                    </h2>
+
+                    <p>
+                        <f:if condition="{objectData.displayName}">
+                            <f:format.raw>{objectData.displayName}</f:format.raw>
+                        </f:if>
+                    </p>
+
+                    <p>
+                        <f:if condition="{objectData.displayAddition1}">
+                            <f:format.raw>{objectData.displayAddition1}</f:format.raw>
+                        </f:if>
+                    </p>
+
+                    <p>
+                        <f:if condition="{objectData.displayAddition2}">
+                            <f:format.raw>{objectData.displayAddition2}</f:format.raw>
+                        </f:if>
+                    </p>
+
+                </div>
+                <div class="ctg-ri-actions">
+                    <ul>
+                        <li><a class="" title="merken"></a></li>
+                        <li><a class="" title="Details" data-details-toggle="1"></a></li>
+                    </ul>
+                </div>
+            </li>
+        </f:for>
+
+    </ol>
+</f:if>
