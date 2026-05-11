@@ -831,6 +831,17 @@ function formatDownloadBytes(bytes) {
     return (bytes / 1048576).toFixed(1) + ' MB';
 }
 
+function getDataserviceFormatFilterQuery(format) {
+    var formatKey = String(format || '').toLowerCase();
+    var formatFilterMap = {
+        dc: 'exportDC:*',
+        mods: 'exportMODS:*',
+        ris: 'exportRIS:*'
+    };
+
+    return formatFilterMap[formatKey] || null;
+}
+
 function buildDataserviceRecordsUrl(baseUrl, query, format) {
     var url = baseUrl + '/v1/records?q=' + encodeURIComponent(query) + '&format=' + encodeURIComponent(format);
     var additionalFilters = (typeof DLA_FACETS !== 'undefined' && DLA_FACETS && Array.isArray(DLA_FACETS.additionalFilters))
@@ -842,6 +853,11 @@ function buildDataserviceRecordsUrl(baseUrl, query, format) {
             url += '&fq=' + encodeURIComponent(filterQuery);
         }
     });
+
+    var formatFilterQuery = getDataserviceFormatFilterQuery(format);
+    if (formatFilterQuery) {
+        url += '&fq=' + encodeURIComponent(formatFilterQuery);
+    }
 
     return url;
 }
