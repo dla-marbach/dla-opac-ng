@@ -831,6 +831,21 @@ function formatDownloadBytes(bytes) {
     return (bytes / 1048576).toFixed(1) + ' MB';
 }
 
+function buildDataserviceRecordsUrl(baseUrl, query, format) {
+    var url = baseUrl + '/v1/records?q=' + encodeURIComponent(query) + '&format=' + encodeURIComponent(format);
+    var additionalFilters = (typeof DLA_FACETS !== 'undefined' && DLA_FACETS && Array.isArray(DLA_FACETS.additionalFilters))
+        ? DLA_FACETS.additionalFilters
+        : [];
+
+    $.each(additionalFilters, function (_, filterQuery) {
+        if (filterQuery) {
+            url += '&fq=' + encodeURIComponent(filterQuery);
+        }
+    });
+
+    return url;
+}
+
 
 // Builds a Solr query for the dataservice from the current URL parameters.
 // Includes search query fields (tx_find_find[q][field]) and
@@ -1030,7 +1045,7 @@ $(document).ready(function () {
         var idQuery = ids.map(function (id) { return 'id:' + id; }).join(' OR ');
         var baseUrl = dataserviceUrl.replace(/\/$/, '');
         showDataserviceFlyout($(this), baseUrl, function (format) {
-            return baseUrl + '/v1/records?q=' + encodeURIComponent(idQuery) + '&format=' + encodeURIComponent(format);
+            return buildDataserviceRecordsUrl(baseUrl, idQuery, format);
         }, 'merkliste', ids.length);
     });
 
@@ -1045,7 +1060,7 @@ $(document).ready(function () {
         }
         var baseUrl = dataserviceUrl.replace(/\/$/, '');
         showDataserviceFlyout($(this), baseUrl, function (format) {
-            return baseUrl + '/v1/records?q=' + encodeURIComponent('id:' + docId) + '&format=' + encodeURIComponent(format);
+            return buildDataserviceRecordsUrl(baseUrl, 'id:' + docId, format);
         }, docId, 1, true);
     });
 
@@ -1061,7 +1076,7 @@ $(document).ready(function () {
         var numFound = parseInt($(this).data('numfound'), 10) || 0;
         var baseUrl = dataserviceUrl.replace(/\/$/, '');
         showDataserviceFlyout($(this), baseUrl, function (format) {
-            return baseUrl + '/v1/records?q=' + encodeURIComponent(query) + '&format=' + encodeURIComponent(format);
+            return buildDataserviceRecordsUrl(baseUrl, query, format);
         }, 'trefferliste', numFound, true);
     });
 

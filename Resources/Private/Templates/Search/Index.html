@@ -16,7 +16,7 @@
     <f:if condition="{settings.dataserviceUrl}">
         <script>
             var DLA_QUERY_FIELDS = <dla:queryFieldsJson queryFields="{settings.queryFields}"/>;
-            var DLA_FACETS = <dla:facetsJson facets="{settings.facets}"/>;
+            var DLA_FACETS = <dla:facetsJson facets="{settings.facets}" additionalFilters="{settings.additionalFilters}"/>;
         </script>
     </f:if>
     <f:if condition="{settings.searchOnly}">
