@@ -49,8 +49,5 @@
             "typo3/cms-composer-installers": true,
             "typo3/class-alias-loader": true
         }
-    },
-    "repositories": [
-        { "type": "vcs", "url": "https://github.com/dla-marbach/typo3-find.git","no-api": true}
-    ]
+    }
 }

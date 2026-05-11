@@ -82,7 +82,7 @@ tasks:
         mkdir -p packages/dla-dla_opac_ng/Resources/Public/CSS
         cp -al ../.devfiles/site.min.css packages/dla-dla_opac_ng/Resources/Public/CSS/
       - ddev composer config repositories.dla-find '{"type":"path","url":"packages/dla-find","options":{"symlink":true}}'
-      - ddev composer require "dla/find:dev-internformat as 6.0-dev" "dla/dla_opac_ng:@dev"
+      - ddev composer require "dla/find:dev-main as 6.0-dev" "dla/dla_opac_ng:@dev"
       - cp -f ../.devfiles/systematik.tsv systematik.tsv
       - cp -f ../.devfiles/tektonik.tsv tektonik.tsv
       - ddev exec vendor/bin/typo3 dla_opac_ng:import -t classification -f systematik.tsv -p 6
