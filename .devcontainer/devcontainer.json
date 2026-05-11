@@ -15,7 +15,10 @@
   "customizations": {
     "codespaces": {
       "repositories": {
-        "dla-marbach/*": {
+				"dla-marbach/typo3-find": {
+					"permissions": "write-all"
+				},
+				"dla-marbach/dla-opac-tests": {
           "permissions": "write-all"
         }
       }
