@@ -6,86 +6,91 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Http\JsonResponse;
 
 class Autocomplete implements MiddlewareInterface
 {
-
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if (!isset($request->getQueryParams()['q'], $request->getQueryParams()['autocomplete'])) {
+        $queryParams = $request->getQueryParams();
+
+        if (!isset($queryParams['q'], $queryParams['autocomplete'])) {
             return $handler->handle($request);
         }
 
         include_once 'EidSettings.php';
 
-        // Configuration options
         $solr_suggest_url = $host . $core . '/suggest';
         $solr_suggest_dictionary = 'mySuggester';
-
         $solr_suggest_text = 'text';
 
-        // Array of suggestions
         $suggests = [];
+        $query = trim((string)$queryParams['q']);
 
-        // Get query string
-        $query = $request->getQueryParams()['q'];
+        // Leere/Whitespace-Query: gültige leere JSON-Response zurückgeben
+        if ($query === '') {
+            return new JsonResponse($suggests);
+        }
 
-        // Get Solr suggestions
-        $response = file_get_contents(
-            $solr_suggest_url . '?suggest=true&suggest.dictionary=' . $solr_suggest_dictionary . '&suggest.dictionary=' . $solr_suggest_text . '&suggest=true&suggest.q=' . urlencode($query),
-            FALSE,
+        $response = @file_get_contents(
+            $solr_suggest_url
+            . '?suggest=true'
+            . '&suggest.dictionary=' . urlencode($solr_suggest_dictionary)
+            . '&suggest.dictionary=' . urlencode($solr_suggest_text)
+            . '&suggest.q=' . urlencode($query),
+            false,
             stream_context_create([
                 'http' => [
                     'method' => 'GET',
                     'follow_location' => 0,
-                    'timeout' => 1.0
-                ]
+                    'timeout' => 1.0,
+                ],
             ])
         );
 
-        // Parse JSON response
-        if ($response !== FALSE) {
-            $json = json_decode($response, TRUE);
+        if ($response !== false) {
+            $json = json_decode($response, true);
 
-            foreach ($json['suggest'][$solr_suggest_text][$query]['suggestions'] as $suggestion) {
-                if (!empty($suggestion['payload']))
-                    list ($id, $normalized) = explode('␝', $suggestion['payload']);
-
-                $suggests[] = [
-                    'id' => htmlspecialchars($suggestion['term']),
-                    'term' => htmlspecialchars($suggestion['term']),
-                    'normalized' => htmlspecialchars($suggestion['term']),
-                    'autocomplete' => '1'
-                ];
+            if (isset($json['suggest'][$solr_suggest_text][$query]['suggestions']) && is_array($json['suggest'][$solr_suggest_text][$query]['suggestions'])) {
+                foreach ($json['suggest'][$solr_suggest_text][$query]['suggestions'] as $suggestion) {
+                    $suggests[] = [
+                        'id' => htmlspecialchars((string)$suggestion['term']),
+                        'term' => htmlspecialchars((string)$suggestion['term']),
+                        'normalized' => htmlspecialchars((string)$suggestion['term']),
+                        'autocomplete' => '1',
+                    ];
+                }
             }
 
-            $suggests[] = [
-                'id' => 'br'
-            ];
+            if (!empty($suggests)) {
+                $suggests[] = ['id' => 'br'];
+            }
 
             $idDeduping = [];
 
-            foreach ($json['suggest'][$solr_suggest_dictionary][$query]['suggestions'] as $suggestion) {
-                list ($id, $normalized) = explode('␝', $suggestion['payload']);
-                if (!in_array($id, $idDeduping)) {
-                    $suggests[] = [
-                        'id' => 'searchEntity_id_mv:' . $id,
-                        'term' => htmlspecialchars($suggestion['term']),
-                        'normalized' => htmlspecialchars($normalized),
-                        'autocomplete' => '0'
-                    ];
+            if (isset($json['suggest'][$solr_suggest_dictionary][$query]['suggestions']) && is_array($json['suggest'][$solr_suggest_dictionary][$query]['suggestions'])) {
+                foreach ($json['suggest'][$solr_suggest_dictionary][$query]['suggestions'] as $suggestion) {
+                    if (empty($suggestion['payload'])) {
+                        continue;
+                    }
 
-                    $idDeduping[] = $id;
+                    [$id, $normalized] = array_pad(explode('␝', (string)$suggestion['payload'], 2), 2, '');
+
+                    if ($id !== '' && !in_array($id, $idDeduping, true)) {
+                        $suggests[] = [
+                            'id' => 'searchEntity_id_mv:' . $id,
+                            'term' => htmlspecialchars((string)$suggestion['term']),
+                            'normalized' => htmlspecialchars((string)$normalized),
+                            'autocomplete' => '0',
+                        ];
+
+                        $idDeduping[] = $id;
+                    }
                 }
             }
         }
 
-        // Return results
-        if (!empty($suggests)) {
-            // Return result
-            return new JsonResponse($suggests);
-        }
+        // IMMER ResponseInterface zurückgeben
+        return new JsonResponse($suggests);
     }
 }
