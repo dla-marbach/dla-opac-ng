@@ -22,7 +22,7 @@ var DEFAULT_SETTINGS = {
 
 	// Display settings
     hintText: "",
-    noResultsText: "No results",
+    noResultsText: "",
     searchingText: "",
     deleteText: "&times;",
     animateDropdown: true,
