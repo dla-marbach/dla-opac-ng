@@ -38,7 +38,7 @@ class ActiveFacetViewHelper extends AbstractViewHelper
 
                 preg_match($rangeRegex, $resultValue, $matches);
 
-                if ($matches[1]) {
+                if (isset($matches[1], $matches[2]) && $matches[1] !== '') {
                     $resultValue = $matches[1] . ' bis ' . $matches[2];
                 }
 
@@ -47,14 +47,16 @@ class ActiveFacetViewHelper extends AbstractViewHelper
             $delimiter = '␝';
             $personFunctionArray = array('Über','Von','An','Unter');
 
-            $explodedTerm = explode($delimiter, $text);
-            $person = $explodedTerm[0];
-            $personFunction = $explodedTerm[1];
+            $explodedTerm = explode($delimiter, $text, 2);
+            $person = $explodedTerm[0] ?? '';
+            $personFunction = $explodedTerm[1] ?? '';
 
-            if(in_array($personFunction, $personFunctionArray)) {
+            if ($personFunction !== '' && in_array($personFunction, $personFunctionArray, true)) {
                 $resultValue = $person . ' in Relation ' . $personFunction;
             } else {
-                $resultValue = $person . ' in Funktion ' . $personFunction;
+                $resultValue = $personFunction !== ''
+                    ? $person . ' in Funktion ' . $personFunction
+                    : $person;
             }
 
         }
