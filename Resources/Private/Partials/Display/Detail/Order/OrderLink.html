@@ -1,7 +1,8 @@
 <v:variable.set value="{v:format.substring(content: '{document.fields.id}', start: 2)}" name="id" />
 <f:if condition="{item_id_mv.{iterator.index}}">
     <f:then>
-        <v:variable.set value="DBSEL3=AU;{item_id_mv.{iterator.index}};&DBSEL=;&DBSEL1=;&DBSEL2=;&DBSEL4=;" name="param" />
+        <v:variable.set value="{v:format.substring(content: '{item_id_mv.{iterator.index}}', start: 2)}" name="itemIdTrimmed" />
+        <v:variable.set value="DBSEL3=AU;{itemIdTrimmed};&DBSEL=;&DBSEL1=;&DBSEL2=;&DBSEL4=;" name="param" />
     </f:then>
     <f:else>
         <f:switch expression="{document.fields.source}">
