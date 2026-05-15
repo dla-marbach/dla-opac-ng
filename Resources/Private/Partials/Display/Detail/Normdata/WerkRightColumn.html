@@ -34,15 +34,15 @@
         </f:if>
         <f:if condition="{linkWikipedia}">
             <li>
-                <a href="{linkWikipedia}" target="_blank"><span class="icon bel-link03"></span></a>
-                <a href="{linkWikipedia}" target="_blank">Wikipedia</a>
+                <a href="https://de.wikipedia.org/wiki/{linkWikipedia}" target="_blank"><span class="icon bel-link03"></span></a>
+                <a href="https://de.wikipedia.org/wiki/{linkWikipedia}" target="_blank">Wikipedia</a>
             </li>
         </f:if>
         <f:if condition="{linkFilmportal_mv}">
             <f:for each="{linkFilmportal_mv}" as="item" key="key" iteration="iterator">
                 <li>
-                    <a href="{item}" target="_blank"><span class="icon bel-link03"></span></a>
-                    <a href="{item}" target="_blank">Filmportal</a>
+                    <a href="https://www.filmportal.de/{item}" target="_blank"><span class="icon bel-link03"></span></a>
+                    <a href="https://www.filmportal.de/{item}" target="_blank">Filmportal</a>
                 </li>
             </f:for>
         </f:if>
