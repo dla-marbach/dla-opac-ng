@@ -1,6 +1,7 @@
 <script type="text/javascript">
     const pluginType = $("#collectiontree").data('plugintype');
     var childRequestsActive = 0;
+    var rootNodesCache = null;
     $( document ).ready(function() {
         var record = $('#record_id').data('record');
         var search = $('#search').data('search');
@@ -113,6 +114,15 @@
 
         var filterIds = $('#collection-search').data('searchFilterIds');
 
+        // Use cached root nodes when no filter is active
+        if (id == 0 && !filterIds && rootNodesCache !== null) {
+            $('#collectiontree').append(jsonToHtml(rootNodesCache));
+            if (expand) {
+                eachRecord(child);
+            }
+            return;
+        }
+
         var requestObject = {
             type: "POST",
             url: '/?collection=1&type=' + pluginType + '&action=getNodes&nodeid=' + id,
@@ -127,6 +137,10 @@
         var jqxhr = $.ajax(requestObject)
             .done(function (data) {
                 if (id == 0) {
+                    // Cache root nodes response when no filter is active
+                    if (!searchFlag) {
+                        rootNodesCache = data;
+                    }
                     $('#collectiontree').append(jsonToHtml(data));
                     if (searchFlag) {
                         setTimeout(function() {
