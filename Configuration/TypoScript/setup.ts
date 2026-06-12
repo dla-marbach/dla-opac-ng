@@ -995,17 +995,6 @@ plugin.tx_find {
                 redirectToDetail = 1
             }
 
-            ### Exemplarsuche ###
-
-            999 {
-                id = copy_search
-                type = Text
-                query = item_id_mv:("%1$s")
-                noescape = 1
-                hidden = 1
-            }
-
-
 
         }
         # Der Abschnitt "additionalFilters" definiert globale Suchfilter
