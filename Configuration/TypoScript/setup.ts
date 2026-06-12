@@ -758,7 +758,7 @@ plugin.tx_find {
             223 {
                 id = detail_fs_autorenschemaketten
                 type = Text
-                query = item_id_mv:("%1$s") AND source:("SE")
+                query = classificationAuthor_id_mv:("%1$s")
                 noescape = 1
                 hidden = 1
             }
