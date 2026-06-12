@@ -158,7 +158,7 @@ plugin.tx_find {
             105 {
                 id = relation_subinventory_hs
                 type = Text
-                query = collection_id_mv:("%1$s") OR item_collection_id_mv:("%1$s")
+                query = collection_id_mv:("%1$s") OR item_collection_id_mv:(*%1$s*)
                 noescape = 1
                 hidden = 1
             }
@@ -718,7 +718,7 @@ plugin.tx_find {
             204 {
                 id = detail_kette_exemplare
                 type = Text
-                query = item_classification_id_mv:("%1$s")
+                query = item_classification_id_mv:(*%1$s*)
                 noescape = 1
                 hidden = 1
             }
@@ -726,7 +726,7 @@ plugin.tx_find {
             205 {
                 id = detail_kette_all
                 type = Text
-                query = classification_id_mv:("%1$s") OR item_classification_id_mv:("%1$s")
+                query = searchClassification_id_mv:("%1$s")
                 noescape = 1
                 hidden = 1
             }
