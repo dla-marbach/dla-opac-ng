@@ -39,9 +39,9 @@ class Sitemap extends Command {
      * @param InputInterface $input The input parameters
      * @param OutputInterface $output The Symfony interface for outputs on console
      *
-     * @return void
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $extPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('dla_opac_ng');
         include_once $extPath . 'Classes/Ajax/EidSettings.php';
@@ -60,7 +60,7 @@ class Sitemap extends Command {
 
         if (!file_exists($file)) {
             $io->error('ERROR: Required parameter --file|-f missing or file not readable.');
-            exit(1);
+            return Command::FAILURE;
         }
 
         try {
@@ -149,14 +149,12 @@ class Sitemap extends Command {
 
             // Return error
             $io->error('ERROR: ' . $e->getMessage());
-//            return Command::FAILURE;
-            return 1;
+            return Command::FAILURE;
         }
 
         // That's it!
         $io->success('All done!');
-//        return Command::SUCCESS;
-        return 0;
+        return Command::SUCCESS;
     }
 
     function fetch_data_from_file(string $file_path) : iterable {
