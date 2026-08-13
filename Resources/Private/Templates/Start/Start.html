@@ -5,9 +5,9 @@
             action="{f:uri.action(pageUid: settings.indexPageUid, action: 'index', controller: 'Search', extensionName: 'Find', pluginName: 'Find', section: settings.jumpToID)}"
             class="searchForm {f:if(condition:config.extendedSearch, then:'search-extended', else:'search-simple')}">
 
-    <f:for each="{config.activeFacets}" as="activeFacetGroup">
-        <f:for each="{activeFacetGroup}" as="activeFacet">
-            <input type="hidden" name="tx_find_find[facet][{activeFacet.id}][{activeFacet.term}]" value="1"/>
+    <f:for each="{formFacets}" as="facet" key="facetId">
+        <f:for each="{facet}" as="unused" key="facetTerm">
+            <input type="hidden" name="tx_find_find[facet][{facetId}][{facetTerm}]" value="1"/>
         </f:for>
     </f:for>
 

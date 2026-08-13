@@ -22,6 +22,15 @@ class StartController extends \Dla\Find\Controller\SearchController
      */
     public function startAction()
     {
+        $queryParams = $this->request->getQueryParams();
+        $findParams = $queryParams['tx_find_find'] ?? [];
+        $formFacets = is_array($findParams) ? ($findParams['facet'] ?? []) : [];
+
+        $this->view->assign(
+            'formFacets',
+            is_array($formFacets) ? array_filter($formFacets, 'is_array') : []
+        );
+
         return $this->htmlResponse();
     }
 }
