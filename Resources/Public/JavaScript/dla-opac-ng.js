@@ -842,35 +842,67 @@ function getDataserviceFormatFilterQuery(format) {
     return formatFilterMap[formatKey] || null;
 }
 
+// query may be a plain Solr query string (watchlist/detail) or an object
+// { q: <string>, fq: [<string>, …] } as returned by buildDataserviceQuery().
+// Filters are always passed as separate, repeatable fq parameters so that a ":"
+// inside the user's search term cannot break the query syntax.
 function buildDataserviceRecordsUrl(baseUrl, query, format) {
-    var url = baseUrl + '/v1/records?q=' + encodeURIComponent(query) + '&format=' + encodeURIComponent(format);
+    var searchQuery = '';
+    var filterQueries = [];
+
+    if (query && typeof query === 'object') {
+        searchQuery = query.q || '';
+        if (Array.isArray(query.fq)) {
+            filterQueries = query.fq.slice();
+        }
+    } else {
+        searchQuery = query || '';
+    }
+
+    if (!searchQuery) {
+        searchQuery = '*:*';
+    }
+
     var additionalFilters = (typeof DLA_FACETS !== 'undefined' && DLA_FACETS && Array.isArray(DLA_FACETS.additionalFilters))
         ? DLA_FACETS.additionalFilters
         : [];
 
     $.each(additionalFilters, function (_, filterQuery) {
         if (filterQuery) {
-            url += '&fq=' + encodeURIComponent(filterQuery);
+            filterQueries.push(filterQuery);
         }
     });
 
     var formatFilterQuery = getDataserviceFormatFilterQuery(format);
     if (formatFilterQuery) {
-        url += '&fq=' + encodeURIComponent(formatFilterQuery);
+        filterQueries.push(formatFilterQuery);
     }
 
-    return url;
+    var params = new URLSearchParams();
+    params.append('q', searchQuery);
+    params.append('format', format);
+    $.each(filterQueries, function (_, filterQuery) {
+        if (filterQuery) {
+            params.append('fq', filterQuery);
+        }
+    });
+
+    // URLSearchParams encodes spaces as "+"; use %20 for consistency with the
+    // previously generated links (literal "+" is already encoded as %2B).
+    return baseUrl + '/v1/records?' + params.toString().replace(/\+/g, '%20');
 }
 
 
-// Builds a Solr query for the dataservice from the current URL parameters.
-// Includes search query fields (tx_find_find[q][field]) and
-// active facets (tx_find_find[facet][ID][Term]).
+// Builds the dataservice query from the current URL parameters.
+// Returns { q: <search query>, fq: [<filter query>, …] }: search query fields
+// (tx_find_find[q][field]) go into q, while active facets
+// (tx_find_find[facet][ID][Term]) and fixed filters become separate fq entries.
 // Both queryField templates and facet field mappings are resolved via DLA_QUERY_FIELDS
 // and DLA_FACETS, which are injected from TypoScript settings on the page.
 function buildDataserviceQuery() {
     var params = new URLSearchParams(window.location.search);
-    var queryParts = [];
+    var queryParts = [];  // parts of the search query (q)
+    var filterParts = []; // filter queries (fq), one entry per filter/facet
     var arrayQueryFields = {}; // { fieldId: { index: value } } for tx_find_find[q][field][N]=value
     var queryFields = (typeof DLA_QUERY_FIELDS !== 'undefined') ? DLA_QUERY_FIELDS : [];
 
@@ -906,8 +938,9 @@ function buildDataserviceQuery() {
                         queryParts.push(simpleFieldId + ':' + value);
                     }
                 } else if (simpleQueryField.query.indexOf('%s') === -1) {
-                    // Fixed query without any placeholder (e.g. not_date checkbox): use as-is.
-                    queryParts.push(simpleQueryField.query);
+                    // Fixed query without any placeholder (e.g. not_date checkbox):
+                    // this is a filter, not a search term.
+                    filterParts.push(simpleQueryField.query);
                 } else {
                     // find-extension format (query = %s). If the value is already a Solr field:value
                     // expression (e.g. searchEntity_id_mv:PE00003793 from Normdaten entity selection),
@@ -934,20 +967,20 @@ function buildDataserviceQuery() {
 
         // Fixed-query facets (e.g. Digital switch): query is independent of the term value.
         if (facets.fixedMap[facetId]) {
-            queryParts.push(facets.fixedMap[facetId]);
+            filterParts.push(facets.fixedMap[facetId]);
             return;
         }
 
         // facetQuery facets (e.g. NeuImKatalog): term selects a predefined query string.
         if (facets.queryMap[facetId] && facets.queryMap[facetId][facetTerm]) {
-            queryParts.push(facets.queryMap[facetId][facetTerm]);
+            filterParts.push(facets.queryMap[facetId][facetTerm]);
             return;
         }
 
         // Standard field facets: map facet ID to Solr field name.
         var field = facets.fieldMap[facetId];
         if (field) {
-            queryParts.push(field + ':("' + facetTerm + '")');
+            filterParts.push(field + ':("' + facetTerm.replace(/(["\\])/g, '\\$1') + '")');
         }
     });
 
@@ -971,7 +1004,18 @@ function buildDataserviceQuery() {
         }
     });
 
-    return queryParts.join(' AND ');
+    // Wrap each part in parentheses when combining several search fields so that a
+    // ":" inside a free-text term cannot break the AND concatenation.
+    var searchQuery = queryParts.length > 1
+        ? queryParts.map(function (part) { return '(' + part + ')'; }).join(' AND ')
+        : (queryParts[0] || '');
+
+    return {
+        q: searchQuery || '*:*',
+        fq: filterParts.filter(function (filterQuery, index) {
+            return filterQuery && filterParts.indexOf(filterQuery) === index;
+        })
+    };
 }
 
 // watchlist
@@ -1088,7 +1132,7 @@ $(document).ready(function () {
         if (!dataserviceUrl) {
             return;
         }
-        var query = buildDataserviceQuery() || '*:*';
+        var query = buildDataserviceQuery();
         var numFound = parseInt($(this).data('numfound'), 10) || 0;
         var baseUrl = dataserviceUrl.replace(/\/$/, '');
         showDataserviceFlyout($(this), baseUrl, function (format) {
