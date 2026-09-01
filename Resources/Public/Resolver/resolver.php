@@ -6,7 +6,8 @@ if (!empty($_GET['ADISDB']) && !empty($_GET['ADISOI'])) {
     $oi = (string) preg_replace('/[^0-9]/', '', (string) $_GET['ADISOI']);
 
     if ($db === '' || $oi === '') {
-        return;
+        http_response_code(400);
+        exit;
     }
 
     $db = rawurlencode($db);
