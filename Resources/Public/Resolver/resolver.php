@@ -2,15 +2,18 @@
 
 if (!empty($_GET['ADISDB']) && !empty($_GET['ADISOI'])) {
 
-    $db = strtoupper($_GET['ADISDB']);
-    $oi = str_pad($_GET['ADISOI'], 8, '0', STR_PAD_LEFT);
+    $db = (string) preg_replace('/[^A-Z0-9]/', '', strtoupper((string) $_GET['ADISDB']));
+    $oi = (string) preg_replace('/[^0-9]/', '', (string) $_GET['ADISOI']);
 
-    if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
-        $protocol = 'https://';
-    } else {
-        $protocol = 'http://';
+    if ($db === '' || $oi === '') {
+        http_response_code(400);
+        exit;
     }
-    $url = $protocol . $_SERVER['HTTP_HOST'] . '/find/opac/id/' . $db . $oi;
+
+    $db = rawurlencode($db);
+    $oi = rawurlencode(str_pad($oi, 8, '0', STR_PAD_LEFT));
+
+    $url = '/find/opac/id/' . $db . $oi;
 
     header('Location: ' . $url);
 
