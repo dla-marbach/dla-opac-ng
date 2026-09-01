@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="8"
+    findUnusedCode="false"
+    findUnusedVariablesAndParams="false"
+    resolveFromConfigFile="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+>
+    <projectFiles>
+        <directory name="Classes"/>
+        <directory name="Configuration"/>
+        <file name="Resources/Public/Resolver/resolver.php"/>
+        <file name="ext_localconf.php"/>
+        <file name="ext_tables.php"/>
+        <ignoreFiles>
+            <directory name="vendor"/>
+        </ignoreFiles>
+    </projectFiles>
+    <issueHandlers>
+        <PossiblyUnusedMethod errorLevel="suppress"/>
+        <PossiblyUnusedParam errorLevel="suppress"/>
+        <UnusedProperty errorLevel="suppress"/>
+        <UnusedVariable errorLevel="suppress"/>
+    </issueHandlers>
+</psalm>
