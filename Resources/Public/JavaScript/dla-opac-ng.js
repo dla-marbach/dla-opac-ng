@@ -903,7 +903,7 @@ function buildDataserviceQuery() {
     var params = new URLSearchParams(window.location.search);
     var queryParts = [];  // parts of the search query (q)
     var filterParts = []; // filter queries (fq), one entry per filter/facet
-    var arrayQueryFields = {}; // { fieldId: { index: value } } for tx_find_find[q][field][N]=value
+    var arrayQueryFields = Object.create(null); // { fieldId: { index: value } } for tx_find_find[q][field][N]=value
     var queryFields = (typeof DLA_QUERY_FIELDS !== 'undefined') ? DLA_QUERY_FIELDS : [];
 
     params.forEach(function (value, key) {
@@ -914,7 +914,7 @@ function buildDataserviceQuery() {
             var fieldId = qArrayMatch[1];
             var idx = parseInt(qArrayMatch[2], 10);
             if (!arrayQueryFields[fieldId]) {
-                arrayQueryFields[fieldId] = {};
+                arrayQueryFields[fieldId] = Object.create(null);
             }
             arrayQueryFields[fieldId][idx] = value;
             return;
