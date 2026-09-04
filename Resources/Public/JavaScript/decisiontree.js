@@ -33,11 +33,16 @@ $( document ).ready(function() {
                 var url = new URL(window.location.href);
 
                 // check if facet is active and set activeFacet class
-                if (url.searchParams.get(fieldOriginParameter + "["+name+"]") == 1) {
-                    listElement.append('<li><a href="' + urlAll + '" data-completefacet="' + this + '" class="activeFacet" rel="nofollow"><span class="icon bel-ok01"></span>' + 'Alle' + '<em>' + counter + '</em></a></li>');
-                } else {
-                    listElement.append('<li><a href="' + urlAll + '" data-completefacet="' + this + '" rel="nofollow"><span class="icon bel-kreis01"></span>' + 'Alle' + '<em>' + counter + '</em></a></li>');
-                }
+                var isActiveFacet = (url.searchParams.get(fieldOriginParameter + "["+name+"]") == 1);
+                var allLinkElement = $('<a>', {
+                    href: urlAll,
+                    'data-completefacet': this,
+                    rel: 'nofollow'
+                }).addClass(isActiveFacet ? 'activeFacet' : '');
+                allLinkElement.append($('<span>').addClass(isActiveFacet ? 'icon bel-ok01' : 'icon bel-kreis01'));
+                allLinkElement.append(document.createTextNode('Alle'));
+                allLinkElement.append($('<em>').text(counter));
+                listElement.append($('<li>').append(allLinkElement));
 
                 $(data).each(function(a) {
                     var items = $(this);
