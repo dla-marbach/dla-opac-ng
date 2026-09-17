@@ -117,8 +117,8 @@
                 <target>Filter „%s“ aufheben</target>
             </trans-unit>
             <trans-unit id="show all">
-                <source>show all</source>
-                <target>alle zeigen</target>
+                <source>show more</source>
+                <target>mehr zeigen</target>
             </trans-unit>
             <trans-unit id="show less">
                 <source>show less</source>

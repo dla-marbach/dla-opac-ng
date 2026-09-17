@@ -91,7 +91,7 @@
                 <source>remove filter “%s”</source>
             </trans-unit>
             <trans-unit id="show all">
-                <source>show all</source>
+                <source>show more</source>
             </trans-unit>
             <trans-unit id="show less">
                 <source>show less</source>
