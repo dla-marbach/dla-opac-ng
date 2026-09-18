@@ -27,6 +27,8 @@ jobs:
 
       - name: Set up DDEV
         uses: ddev/github-action-setup-ddev@v1
+        with:
+          autostart: false
 
       - name: Set up Task
         uses: arduino/setup-task@v2
