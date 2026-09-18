@@ -1,0 +1,37 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/suggest",
+        "query": {
+            "suggest": "true",
+            "suggest.dictionary": [
+                "mySuggester",
+                "text"
+            ],
+            "suggest.q": "zzznoresultzzz"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0
+            },
+            "suggest": {
+                "mySuggester": {
+                    "zzznoresultzzz": {
+                        "numFound": 0,
+                        "suggestions": []
+                    }
+                },
+                "text": {
+                    "zzznoresultzzz": {
+                        "numFound": 0,
+                        "suggestions": []
+                    }
+                }
+            }
+        }
+    }
+}

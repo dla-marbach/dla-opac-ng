@@ -1,0 +1,29 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(DOES-NOT-EXIST-XYZ)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0,
+                "params": {
+                    "q": "id:(DOES-NOT-EXIST-XYZ)",
+                    "rows": "1"
+                }
+            },
+            "response": {
+                "numFound": 0,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": []
+            }
+        }
+    }
+}

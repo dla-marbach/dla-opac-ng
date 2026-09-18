@@ -36,12 +36,20 @@
     "suggest": {
         "typo3/cms-tstemplate": "Backend-Modul TypoScript, um das statische TypoScript dieser Extension in einem sys_template-Datensatz einzubinden"
     },
+    "require-dev": {
+        "typo3/testing-framework": "^8.3"
+    },
     "replace": {
         "typo3-ter/dla_opac_ng": "self.version"
     },
     "autoload": {
         "psr-4": {
             "Dla\\DlaOpacNg\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dla\\DlaOpacNg\\Tests\\": "Tests/"
         }
     },
     "extra": {

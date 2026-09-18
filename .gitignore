@@ -2,3 +2,5 @@
 dla-opac-ng/
 dla-opac-transform/
 t3example/
+vendor/
+Tests/Fixtures/Solr/missing-requests.log

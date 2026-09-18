@@ -64,6 +64,31 @@ Test zum Vergleich auf Produktivsystem ausführen:
 BASE_URL=https://www.dla-marbach.de task test -- -g "robots"
 ```
 
+## PHPUnit-Tests mit Solr-Mockdaten
+
+Die PHP-Unit-Tests (`Tests/` in dieser Extension und in [dla-find/Tests](dla-find/Tests)) laufen gegen
+einen lokalen Solr-Mock-Server und benötigen dafür **keinen** Solr-Tunnel:
+
+```
+task test:php
+```
+
+Der Mock-Server ([Tests/Fixtures/Solr/MockSolrServer.php](Tests/Fixtures/Solr/MockSolrServer.php)) beantwortet
+Anfragen anhand aufgezeichneter, echter Solr-Antworten ([Tests/Fixtures/Solr/cassettes](Tests/Fixtures/Solr/cassettes)),
+die dauerhaft im Repository liegen. Dadurch bleiben die Tests auch dann nutzbar, wenn kein Solr-Zugriff
+mehr besteht.
+
+Neue Fixtures aufnehmen (nur möglich, solange der Solr-Tunnel aktiv ist, siehe oben):
+
+```
+php Tests/Fixtures/Solr/recorder.php
+```
+
+Dazu vorher das gewünschte Szenario (Pfad + Query-Parameter) in
+[Tests/Fixtures/Solr/recorder.php](Tests/Fixtures/Solr/recorder.php) ergänzen. Bei unbekannten Anfragen
+antwortet der Mock-Server mit HTTP 404 und protokolliert die fehlende Anfrage in
+`Tests/Fixtures/Solr/missing-requests.log`.
+
 ## Weitere Hinweise
 
 Der Code der Extension ist über Symlinks eingebunden. Nach Änderungen am Code wie beispielsweise in [Configuration/TypoScript/setup.ts](Configuration/TypoScript/setup.ts) ist also lediglich ein Löschen des TYPO3-Caches erforderlich:

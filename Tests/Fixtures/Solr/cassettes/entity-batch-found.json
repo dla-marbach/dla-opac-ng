@@ -1,0 +1,495 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(\"PE00000863\" OR \"BF00025111\")",
+            "rows": "2"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0,
+                "params": {
+                    "q": "id:(\"PE00000863\" OR \"BF00025111\")",
+                    "rows": "2"
+                }
+            },
+            "response": {
+                "numFound": 2,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00025111",
+                        "display": "COTTA:Briefe - [Bestand des Cotta-Archivs, Archiv]",
+                        "category": "Bestand des Cotta-Archivs",
+                        "categorySub": "Archiv",
+                        "corporationAt_display_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)"
+                        ],
+                        "corporationAt_id_mv": [
+                            "KS00011400",
+                            "KS00012421",
+                            "KS00012422"
+                        ],
+                        "dateCataloged": "2008-02-07",
+                        "dateModified": "2025-07-21",
+                        "department": "Handschriften",
+                        "displayAddition1": "583 Kästen",
+                        "displayName": "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889); J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956); J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)",
+                        "displayTree": "Archiv, Handschriften [COTTA:Briefe]",
+                        "extent": "583 Kästen",
+                        "filterAuthorityRelation_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)␝Unter",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)␝Unter",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)␝Unter"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)␝Bestandsbildner/Vorbesitzer",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)␝Bestandsbildner/Vorbesitzer",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)␝Bestandsbildner/Vorbesitzer"
+                        ],
+                        "filterAuthority_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)"
+                        ],
+                        "filterCollection_mv": [
+                            "COTTA:Briefe"
+                        ],
+                        "filterFormContent_mv": [
+                            "Archiv"
+                        ],
+                        "filterMultipart": true,
+                        "filterRecent": "2008-02-07",
+                        "filterSource": "Nachlässe und Spezialsammlungen",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "itemization_extent_mv": [
+                            "568",
+                            "15"
+                        ],
+                        "itemization_status_mv": [
+                            "katalogisiert",
+                            "nicht verzeichnet"
+                        ],
+                        "itemization_unit_mv": [
+                            "Kästen",
+                            "Kästen"
+                        ],
+                        "mediaNumber": "BF000251118",
+                        "note": "enthält auch Briefe aus dem 2010 aufgelösten Bestand A:Cotta",
+                        "order_extent_mv": [
+                            "568",
+                            "15"
+                        ],
+                        "order_status_mv": [
+                            "feingeordnet",
+                            "geordnet"
+                        ],
+                        "order_unit_mv": [
+                            "Kästen",
+                            "Kästen"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 1.4595749,
+                        "searchCollectionCreator_display_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)"
+                        ],
+                        "searchCollectionCreator_id_mv": [
+                            "KS00011400",
+                            "KS00012421",
+                            "KS00012422"
+                        ],
+                        "searchEntity_id_mv": [
+                            "KS00011400",
+                            "KS00012421",
+                            "KS00012422"
+                        ],
+                        "searchNameAt_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart>",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin>",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen>"
+                        ],
+                        "searchName_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart>",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin>",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen>"
+                        ],
+                        "searchVariant_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Tübingen; Stuttgart>",
+                            "Cottaische Buchhandlung <Stuttgart>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Tübingen>",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; München>",
+                            "J. G. Cotta (Firma)",
+                            "Cotta (Firma)",
+                            "Cotta'sche Buchhandlung Nachfolger <Stuttgart>",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin>",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; München>",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; München>",
+                            "Cotta-Verlag <Stuttgart>",
+                            "Johann Georg Cottens Buchhandlung <Tübingen>",
+                            "Johann Georg Cotta, Bibliopola Academiae Tubingensis",
+                            "Cottens Buchladen <Tübingen>",
+                            "Cotta, Bibliopola Academiae Tubingensis",
+                            "J.-G.-Cotta'sche Buchhandlung <Tübingen>",
+                            "Cotta <Tübingen>",
+                            "J.-G.-Cotta <Tübingen>",
+                            "Johann Georg Cotta <Tübingen>",
+                            "Christoph Friedrich Cotta <Tübingen>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Tübingen>"
+                        ],
+                        "source": "BF",
+                        "statusLoan": "Am Standort",
+                        "title": "COTTA:Briefe",
+                        "titleShort": "Briefe",
+                        "url": "https://www.dla-marbach.de/find/opac/id/BF00025111",
+                        "usageRestriction": "benutzbar",
+                        "usageRestrictionNote": "Für nähere Angaben wenden Sie sich bitte an die Auskunft.\nE-Mail: auskunft-handschriften@dla-marbach.de\nTelefon: +49 7144 848 425"
+                    },
+                    {
+                        "id": "PE00000863",
+                        "display": "Goethe, Johann Wolfgang von (1749-1832)",
+                        "categoryEntity_mv": [
+                            "Person"
+                        ],
+                        "categoryIndex_mv": [
+                            "Literarische/r Autor/in im Sinne der Bibliothek",
+                            "Person der Zeitungsausschnittsammlung",
+                            "Bestandsbildner/in im Sinne der Handschriftensammlung",
+                            "Komponist/in"
+                        ],
+                        "classificationNewspaper_comment_mv": [
+                            "Autoren, Kritiker und Übersetzer"
+                        ],
+                        "classificationNewspaper_text_mv": [
+                            "xy"
+                        ],
+                        "country_mv": [
+                            "Deutschland"
+                        ],
+                        "dateCataloged": "1997-06-17",
+                        "dateLifespanEnd": "1832-03-22",
+                        "dateLifespanStart": "1749-08-28",
+                        "dateModified": "2026-09-17",
+                        "dateRetention": "1902",
+                        "displayAddition1": "Schriftsteller, Politiker, Naturwissenschaftler",
+                        "filterDatePoint_mv": [
+                            "1749-08-28T00:00:00Z",
+                            "1832-03-22T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "[1749-08-28 TO 1832-03-22]"
+                        ],
+                        "filterLocationType_mv": [
+                            "Frankfurt am Main␝Geburtsort",
+                            "Weimar␝Sterbeort",
+                            "Jena␝Wirkungsort",
+                            "Weimar␝Wirkungsort"
+                        ],
+                        "filterLocation_mv": [
+                            "Frankfurt am Main",
+                            "Weimar",
+                            "Jena",
+                            "Weimar"
+                        ],
+                        "filterSource": "Personen",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "gender": "männlich",
+                        "gnd_id_mv": [
+                            "118540238"
+                        ],
+                        "gnd_type_mv": [
+                            "GND-Nr."
+                        ],
+                        "linkCommonsImage_file_mv": [
+                            "Goethe%20%28Stieler%201828%29.jpg"
+                        ],
+                        "linkCommonsImage_rights_mv": [
+                            "Joseph Karl Stieler | Wikimedia Commons | Public domain"
+                        ],
+                        "linkCommonsSignature_file_mv": [
+                            "Signature%20of%20Johann%20Wolfgang%20von%20Goethe.svg"
+                        ],
+                        "linkCommonsSignature_rights_mv": [
+                            "Johann Wolfgang Goethe  | Wikimedia Commons | Public domain"
+                        ],
+                        "linkDeutscheBiographie_mv": [
+                            "pnd118540238.html#adbcontent",
+                            "pnd118540238.html#ndbcontent"
+                        ],
+                        "linkFilmportal_mv": [
+                            "ccbaa3cef5654b98ad772651f9023de6"
+                        ],
+                        "linkWikidata": "Q5879",
+                        "linkWikipedia": "Johann_Wolfgang_von_Goethe",
+                        "nameAlternative_name_mv": [
+                            "Goethe, Johann Wolfgang",
+                            "Gete, Iogann W.",
+                            "Goethe, Johann W.",
+                            "Gëte, Iogann V.",
+                            "Goethe, Wolfgang von",
+                            "Goethius, ...",
+                            "Goethe, Volfgango",
+                            "Goethe, Johan Wolphgang",
+                            "Gete, Johan Volfgang",
+                            "Goethe, Johann Wolfgang",
+                            "Göthe, J. W.",
+                            "Goethe, Johann W. von"
+                        ],
+                        "nameAlternative_type_mv": [
+                            "Früherer Name",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣"
+                        ],
+                        "noteExplanatory_text_mv": [
+                            "Goethe-Schwerpunkte gibt es in folgenden Beständen:\nHesse-Archiv (HH.B:1. Studienbibliothek): ca. 100 Bände und Sekundärliteratur.\nBibliothek Kippenberg (Kipp.I:8°/362-407): ca. 120 Bände und Sekundärliteratur. \nBibliothek Rudolf G. Binding (Bind:2): 288 Bände und Sekundärliteratur (74)."
+                        ],
+                        "noteExplanatory_type_mv": [
+                            "Verwendungshinweis"
+                        ],
+                        "occupation_mv": [
+                            "Schriftsteller",
+                            "Politiker",
+                            "Naturwissenschaftler"
+                        ],
+                        "placeBirth": "Frankfurt am Main",
+                        "placeDeath": "Weimar",
+                        "place_mv": [
+                            "Frankfurt am Main",
+                            "Weimar",
+                            "Jena",
+                            "Weimar"
+                        ],
+                        "reference_text_mv": [
+                            "Goedeke",
+                            "Kosch Lit.<3>",
+                            "Killy",
+                            "GND",
+                            "Kussmaul",
+                            "HSA, Rechtekartei (zu Edwin Redslob: FAZ 28.6.1999, Nr. 146, S. 49)"
+                        ],
+                        "reference_type_mv": [
+                            "positiv",
+                            "positiv",
+                            "positiv",
+                            "positiv",
+                            "positiv",
+                            "positiv"
+                        ],
+                        "relation_comment_mv": [
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Kind",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣"
+                        ],
+                        "relation_id_mv": [
+                            "TH00061035",
+                            "PE00014293",
+                            "PE00017368",
+                            "PE00596165",
+                            "PE00054741",
+                            "PE00007211",
+                            "PE00594346",
+                            "PE00174082",
+                            "PE00347764",
+                            "TH00001300",
+                            "TH00001427",
+                            "PE00080868",
+                            "PE00641854",
+                            "PE00662465",
+                            "PE00124620",
+                            "PE00580495",
+                            "PE00017440",
+                            "PE00115515",
+                            "PE00017441",
+                            "PE00026459",
+                            "PE00034478",
+                            "PE00039793",
+                            "KS00159857",
+                            "TH00037865",
+                            "TH00001621",
+                            "KS00014375",
+                            "AK01016314",
+                            "AK01705146",
+                            "AK01607309",
+                            "AK01781076",
+                            "TH00015367",
+                            "AK01669873",
+                            "PE00667873",
+                            "AK01363233",
+                            "TH00001912",
+                            "TH00000892",
+                            "TH00001912"
+                        ],
+                        "relation_text_mv": [
+                            "Freiherr",
+                            "Eckermann, Johann Peter (1792-1854)",
+                            "Göchhausen, Luise von (1752-1807)",
+                            "Kirms, Franz (1750-1826)",
+                            "Müller, Friedrich von (1779-1849)",
+                            "Schopenhauer, Johanna (1766-1838)",
+                            "Schuchardt, Christian (1799-1870)",
+                            "Schultheß, Barbara (1745-1818)",
+                            "Zelter, Dorothea (1792-1852)",
+                            "Naturwissenschaftler",
+                            "Politiker",
+                            "Karl August, Sachsen-Weimar-Eisenach, Großherzog (1757-1828)",
+                            "Perthaler, Karoline (1810-1873)",
+                            "Rost, Maria Sophia (1761-1844)",
+                            "Goethe, August von (1789-1830)",
+                            "Goethe, Friedrich (1657-1730)",
+                            "Goethe, Ottilie von (1796-1872)",
+                            "Goethe, Walther Wolfgang von (1818-1885)",
+                            "Goethe, Wolfgang von (1820-1883)",
+                            "Loen, Johann Michael von (1694-1776)",
+                            "Schlosser, Johann Georg (1739-1799)",
+                            "Vulpius, Christian August (1762-1827)",
+                            "Deutsches Romantik-Museum (2021-)",
+                            "Wertheriade",
+                            "Schriftsteller",
+                            "Frankfurt <Main>",
+                            "Arnim, Bettina von (1785-1859). Goethe-Denkmal (Gipsmodell : 1824)",
+                            "Bode, Wilhelm (1862-1922). Goethe in vertraulichen Briefen seiner Zeitgenossen (Briefsammlung : 1918)",
+                            "Eggebrecht, Harald (1946-). Goethe - ein Denkmal wird lebendig (Zusammenstellung : 1982)",
+                            "Geerdts, Hans Jürgen (1922-1989). Johann Wolfgang Goethe (Biographie : 1972)",
+                            "Goethehaus Weimar",
+                            "Grieser, Dietmar (1934-). Goethe in Hessen (1982)",
+                            "Insom, Giovanni (1959-)",
+                            "Wyder, Margrit (1954-). Bis an die Sterne weit (Zusammenstellung : 1999)",
+                            "Weimar",
+                            "Jena",
+                            "Weimar"
+                        ],
+                        "relation_type_mv": [
+                            "Adelstitel",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Beruf/Funktion",
+                            "Beruf/Funktion",
+                            "Beziehung beruflich",
+                            "Beziehung beruflich",
+                            "Beziehung beruflich",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung thematisch",
+                            "Beziehung thematisch",
+                            "Charakt. Beruf",
+                            "Geburtsort",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Sterbeort",
+                            "Wirkungsort",
+                            "Wirkungsort"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.5,
+                        "searchDate_mv": [
+                            "28.08.1749",
+                            "1749-08-28",
+                            "22.03.1832",
+                            "1832-03-22"
+                        ],
+                        "searchEntityScore": 33750,
+                        "searchEntity_id_mv": [
+                            "PE00000863"
+                        ],
+                        "searchSuggestPayload": "PE00000863␝Goethe, Johann Wolfgang von (1749-1832)",
+                        "searchSuggestTerm_mv": [
+                            "Goethe, Johann Wolfgang von (1749-1832)",
+                            "Goethe, Johann Wolfgang",
+                            "Gete, Iogann W.",
+                            "Goethe, Johann W.",
+                            "Gëte, Iogann V.",
+                            "Goethe, Wolfgang von",
+                            "Goethius, ...",
+                            "Goethe, Volfgango",
+                            "Goethe, Johan Wolphgang",
+                            "Gete, Johan Volfgang",
+                            "Goethe, Johann Wolfgang",
+                            "Göthe, J. W.",
+                            "Goethe, Johann W. von"
+                        ],
+                        "source": "PE",
+                        "statusEditing": "individualisiert",
+                        "title": "Goethe, Johann Wolfgang von",
+                        "url": "https://www.dla-marbach.de/find/opac/id/PE00000863"
+                    }
+                ]
+            }
+        }
+    }
+}

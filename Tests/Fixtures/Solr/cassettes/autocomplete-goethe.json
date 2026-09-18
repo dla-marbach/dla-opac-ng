@@ -1,0 +1,539 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/suggest",
+        "query": {
+            "suggest": "true",
+            "suggest.dictionary": [
+                "mySuggester",
+                "text"
+            ],
+            "suggest.q": "goethe"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0
+            },
+            "suggest": {
+                "mySuggester": {
+                    "goethe": {
+                        "numFound": 50,
+                        "suggestions": [
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832)",
+                                "weight": 33750,
+                                "payload": "PE00000863␝Goethe, Johann Wolfgang von (1749-1832)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang",
+                                "weight": 33750,
+                                "payload": "PE00000863␝Goethe, Johann Wolfgang von (1749-1832)"
+                            },
+                            {
+                                "term": "Goethe, Johann W.",
+                                "weight": 33750,
+                                "payload": "PE00000863␝Goethe, Johann Wolfgang von (1749-1832)"
+                            },
+                            {
+                                "term": "Goethe, Wolfgang von",
+                                "weight": 33750,
+                                "payload": "PE00000863␝Goethe, Johann Wolfgang von (1749-1832)"
+                            },
+                            {
+                                "term": "Goethe, Volfgango",
+                                "weight": 33750,
+                                "payload": "PE00000863␝Goethe, Johann Wolfgang von (1749-1832)"
+                            },
+                            {
+                                "term": "Goethe, Johan Wolphgang",
+                                "weight": 33750,
+                                "payload": "PE00000863␝Goethe, Johann Wolfgang von (1749-1832)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang",
+                                "weight": 33750,
+                                "payload": "PE00000863␝Goethe, Johann Wolfgang von (1749-1832)"
+                            },
+                            {
+                                "term": "Goethe, Johann W. von",
+                                "weight": 33750,
+                                "payload": "PE00000863␝Goethe, Johann Wolfgang von (1749-1832)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832). Faust (Drama)",
+                                "weight": 2228,
+                                "payload": "AK00032651␝Goethe, Johann Wolfgang von (1749-1832). Faust (Drama)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Faust et le second Faust",
+                                "weight": 2228,
+                                "payload": "AK00032651␝Goethe, Johann Wolfgang von (1749-1832). Faust (Drama)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Fausti",
+                                "weight": 2228,
+                                "payload": "AK00032651␝Goethe, Johann Wolfgang von (1749-1832). Faust (Drama)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Die Leiden des jungen Werther",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Werther",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Alam aš-šab Firtir",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Zenc Verterin Iztirablary",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Werther gaztearen arrangurak",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Shao-nien Wei-t'e ti fan-nao",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Den unge Werthers lidelser",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): The sorrows of young Werther",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): La suferoj de la juna Werther",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Les passions du jeune Werther",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Les souffrances du jeune Werther",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): As mágoas do mozo Werther",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): I dolori del giovane Werther",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Les tribulacions del jove Werther",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Jeolm eun be leu te leu ui seul peum",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Patnje mladoga Werthera",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Jauna Wertera ciešanas",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Het Lyden van den jongen Werther",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Het lijden van de jonge Werther",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Rangha-i Wirtir-i gawan",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Cierpienia młodego Wertera",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): A paixao do jovem werther",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Os sofrimentos do jovem Werther",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Los sufrimientos del joven Werther",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Las penas del joven Werther",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Utrpenie mladého Werthera",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Az ifju Werther gyötrelmei",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Naujavan Varthar ki dastan-i gam",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Jeolm eun Be leu te leu ui seul peum",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Cholmun Perut'eruui sulp'um",
+                                "weight": 810,
+                                "payload": "AK00033009␝Goethe, Johann Wolfgang von (1749-1832). Die Leiden des jungen Werthers (Roman : 1774)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832). Die Wahlverwandtschaften (Roman : 1809)",
+                                "weight": 546,
+                                "payload": "AK00037144␝Goethe, Johann Wolfgang von (1749-1832). Die Wahlverwandtschaften (Roman : 1809)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Elective Affinities",
+                                "weight": 546,
+                                "payload": "AK00037144␝Goethe, Johann Wolfgang von (1749-1832). Die Wahlverwandtschaften (Roman : 1809)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Les Affinités électives",
+                                "weight": 546,
+                                "payload": "AK00037144␝Goethe, Johann Wolfgang von (1749-1832). Die Wahlverwandtschaften (Roman : 1809)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Le affinità elettive",
+                                "weight": 546,
+                                "payload": "AK00037144␝Goethe, Johann Wolfgang von (1749-1832). Die Wahlverwandtschaften (Roman : 1809)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Las afinidades electivas",
+                                "weight": 546,
+                                "payload": "AK00037144␝Goethe, Johann Wolfgang von (1749-1832). Die Wahlverwandtschaften (Roman : 1809)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): As Afinidades Eletivas",
+                                "weight": 546,
+                                "payload": "AK00037144␝Goethe, Johann Wolfgang von (1749-1832). Die Wahlverwandtschaften (Roman : 1809)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Powinowactwa z wyboru",
+                                "weight": 546,
+                                "payload": "AK00037144␝Goethe, Johann Wolfgang von (1749-1832). Die Wahlverwandtschaften (Roman : 1809)"
+                            },
+                            {
+                                "term": "Goethe, Johann Wolfgang von (1749-1832): Valfrändskap",
+                                "weight": 546,
+                                "payload": "AK00037144␝Goethe, Johann Wolfgang von (1749-1832). Die Wahlverwandtschaften (Roman : 1809)"
+                            }
+                        ]
+                    }
+                },
+                "text": {
+                    "goethe": {
+                        "numFound": 50,
+                        "suggestions": [
+                            {
+                                "term": "goethe",
+                                "weight": 8117867482753369,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethes",
+                                "weight": 3438943835473176,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethe's",
+                                "weight": 559389388785120,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethezeit",
+                                "weight": 477215521207771,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goetheana",
+                                "weight": 80656144429482,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethe:d",
+                                "weight": 49434411101940,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethe:e",
+                                "weight": 43580336103026,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethe:a",
+                                "weight": 39894437029636,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goetheschen",
+                                "weight": 37943078696665,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethejahr",
+                                "weight": 26018111106284,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethebund",
+                                "weight": 25801293513732,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goetheanum",
+                                "weight": 20814488885027,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethe:c",
+                                "weight": 18646312959504,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethehaus",
+                                "weight": 17562224996742,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethebild",
+                                "weight": 16478137033980,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethefeier",
+                                "weight": 14960413886113,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethepreises",
+                                "weight": 11708149997828,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethemuseum",
+                                "weight": 10840879627618,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethe'schen",
+                                "weight": 10407244442513,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethepreis",
+                                "weight": 10407244442513,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethescher",
+                                "weight": 9756791664856,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethesche",
+                                "weight": 8455886109542,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethegesellschaft",
+                                "weight": 6721345369123,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goetheforschung",
+                                "weight": 6504527776571,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goetheliteratur",
+                                "weight": 5637257406361,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goetheplatz",
+                                "weight": 5420439813809,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethego",
+                                "weight": 5203622221256,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethehauses",
+                                "weight": 4553169443599,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethestudien",
+                                "weight": 4119534258495,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethezeichnungen",
+                                "weight": 3902716665942,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethebuch",
+                                "weight": 3469081480837,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethefeiern",
+                                "weight": 3252263888285,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethen",
+                                "weight": 3252263888285,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethe'scher",
+                                "weight": 3035446295733,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goetherezeption",
+                                "weight": 3035446295733,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethe'sche",
+                                "weight": 2818628703180,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethetexte",
+                                "weight": 2818628703180,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethean",
+                                "weight": 2601811110628,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethebiographie",
+                                "weight": 2601811110628,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethedenkmal",
+                                "weight": 2384993518076,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethekreis",
+                                "weight": 2384993518076,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethemuseums",
+                                "weight": 2384993518076,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethestadt",
+                                "weight": 2384993518076,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethestätten",
+                                "weight": 2384993518076,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethewoche",
+                                "weight": 2384993518076,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethekreise",
+                                "weight": 2168175925523,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethestadtmuseum",
+                                "weight": 2168175925523,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethestiftung",
+                                "weight": 2168175925523,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goethe:f",
+                                "weight": 1951358332971,
+                                "payload": ""
+                            },
+                            {
+                                "term": "goetheanismus",
+                                "weight": 1951358332971,
+                                "payload": ""
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
