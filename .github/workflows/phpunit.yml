@@ -1,0 +1,40 @@
+name: PHP Tests (PHPUnit)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  phpunit:
+    name: PHPUnit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout dla-opac-ng
+        uses: actions/checkout@v4
+
+      - name: Checkout dla-find
+        uses: actions/checkout@v4
+        with:
+          repository: dla-marbach/typo3-find
+          path: dla-find
+
+      - name: Set up DDEV
+        uses: ddev/github-action-setup-ddev@v1
+        with:
+          autostart: false
+
+      - name: Set up Task
+        uses: arduino/setup-task@v2
+
+      - name: Install test environment
+        run: task install
+
+      - name: Run PHPUnit tests
+        run: task test:php
