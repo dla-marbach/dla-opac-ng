@@ -19,8 +19,7 @@ Lokal muss GitHub CLI [gh](https://cli.github.com) installiert sein.
 Auf dem lokalen PC mit aktiver VPN-Verbindung:
 
 ```
-SOLR="serene.dla-marbach.de"
-gh codespace ssh -- -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -R 127.0.0.1:18983:$SOLR:8983
+gh codespace ssh -- -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -R 127.0.0.1:18983:serene.dla-marbach.de:8983
 ```
 
 ### Entwicklungssystem

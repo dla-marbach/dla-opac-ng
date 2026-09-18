@@ -8,7 +8,7 @@ bash -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b ~/.local/b
 
 # git repositories
 git clone https://github.com/dla-marbach/typo3-find dla-find
-git clone https://github.com/dla-marbach/dla-opac-tests --branch develop
+git clone https://github.com/dla-marbach/dla-opac-tests
 
 # playwright
 sudo rm -f /etc/apt/sources.list.d/yarn.list || true ## GPG error: https://dl.yarnpkg.com/debian stable InRelease
