@@ -125,8 +125,11 @@ Für einen Machbarkeitstest gibt es zusätzlich einen Functional-Prototyp:
 Mess-/Vergleichsergebnis (Stand dieses Prototyps):
 
 * **Laufzeitvergleich:** In dieser Sandbox nicht belastbar messbar, da `ddev` hier nicht verfügbar ist; die Messung muss in der regulären CI-/DDEV-Umgebung mit `time task test:php` (Unit) und `time task test:php:functional` erfolgen.
-* **Code-Komplexität:** Unit-Basis [Tests/Support/FluidPartialTestCase.php](Tests/Support/FluidPartialTestCase.php) umfasst aktuell ca. **151 Zeilen**, die neue Functional-Basis ca. **50 Zeilen**; der manuelle Cache-/Package-/LanguageService-Aufbau inkl. Reflection-Hack entfällt im Functional-Bootstrap.
-* **Routing-Erkenntnis:** Der Prototyp prüft `f:link.action` ohne Test-Override (`href="#test-link"`), nutzt dafür aber weiterhin kein vollständiges Frontend-Rendering einer Seite; falls künftig echte Site-/TSFE-Routingpfade assertionskritisch werden, sollte ein dedizierter Frontend-Functional-Test (Request-basiert) ergänzt werden.
+* **Code-Komplexität:** Unit-Basis [Tests/Support/FluidPartialTestCase.php](Tests/Support/FluidPartialTestCase.php) umfasst aktuell ca. **151 Zeilen**, die Functional-Basis ca. **86 Zeilen**; der manuelle Cache-/Package-/LanguageService-Aufbau inkl. Reflection-Hack entfällt im Functional-Bootstrap.
+* **Konfigurations-/Fixture-Wiederverwendung:** Functional-Tests nutzen jetzt bewusst die bestehende Dev-Quelle der Wahrheit statt doppelter Hardcodierung:
+  * Site-Konfiguration wird aus [.devfiles/siteconfig.yaml](.devfiles/siteconfig.yaml) geladen und als Test-Site geschrieben.
+  * Die benötigten Seiten (`uid=1` Start, `uid=2` Katalog) werden als schlanke CSV-Fixture in [Tests/Functional/Fixtures/pages.from-initsql.csv](Tests/Functional/Fixtures/pages.from-initsql.csv) importiert (abgeleitet aus `.devfiles/init.sql`).
+* **Routing-Erkenntnis:** Der Prototyp prüft `f:link.action` weiterhin ohne Test-Override (`href="#test-link"`), aber ohne vollständiges Frontend-Seitenrendering; falls künftig tiefere TSFE-/cHash-/ContentObject-Szenarien assertionskritisch werden, sollte ein dedizierter Frontend-Functional-Test (Request-basiert) ergänzt werden.
 
 Empfehlung:
 

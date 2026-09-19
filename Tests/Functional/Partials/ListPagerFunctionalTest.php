@@ -27,8 +27,22 @@ class ListPagerFunctionalTest extends FluidFunctionalPartialTestCase
         self::assertStringContainsString('ctg-pager', $html);
         self::assertStringContainsString('ctg-bu-active', $html);
         self::assertStringNotContainsString('ctg-bu-disable', $html);
-        self::assertStringContainsString('href="', $html);
-        self::assertStringNotContainsString('href="#test-link"', $html);
-        self::assertStringContainsString('rel="nofollow"', $html);
+
+        preg_match_all('/<a\b[^>]*>/', $html, $anchorTags);
+        $nofollowHrefs = [];
+        foreach ($anchorTags[0] as $anchorTag) {
+            if (!str_contains($anchorTag, 'rel="nofollow"')) {
+                continue;
+            }
+            if (preg_match('/\bhref="([^"]+)"/', $anchorTag, $hrefMatch) === 1) {
+                $nofollowHrefs[] = $hrefMatch[1];
+            }
+        }
+        self::assertNotEmpty($nofollowHrefs, 'Expected pager links rendered by f:link.action with href + rel="nofollow".');
+        foreach ($nofollowHrefs as $href) {
+            self::assertNotSame('', trim($href));
+            self::assertNotSame('#test-link', $href);
+        }
+        self::assertStringContainsString('/katalog', $html);
     }
 }

@@ -2,10 +2,13 @@
 
 namespace Dla\DlaOpacNg\Tests\Support;
 
+use Symfony\Component\Yaml\Yaml;
+use TYPO3\CMS\Core\Configuration\SiteWriter;
 use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Http\ServerRequest;
-use TYPO3\CMS\Core\Http\Uri;
-use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
+use TYPO3\CMS\Core\Routing\PageArguments;
+use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\ExtbaseRequestParameters;
 use TYPO3\CMS\Extbase\Mvc\Request as ExtbaseRequest;
@@ -19,6 +22,18 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 abstract class FluidFunctionalPartialTestCase extends FunctionalTestCase
 {
+    private const ROOT_PAGE_UID = 1;
+    private const REQUEST_PAGE_UID = 2;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        // Aus .devfiles/init.sql übernommener Minimal-Auszug (pages uid=1/2),
+        // damit Site-Konfiguration und Page-UIDs konsistent zur Dev-Umgebung bleiben.
+        $this->importCSVDataSet(dirname(__DIR__) . '/Functional/Fixtures/pages.from-initsql.csv');
+        $this->writeSiteConfigurationFromDevEnvironment();
+    }
+
     protected function renderPartial(string $partial, array $variables): string
     {
         $extensionPath = dirname(__DIR__, 2) . '/Resources/Private/';
@@ -34,17 +49,14 @@ abstract class FluidFunctionalPartialTestCase extends FunctionalTestCase
         $extbaseParameters->setControllerName('Search');
         $extbaseParameters->setControllerActionName('index');
 
-        // f:translate ruft intern Locales::createLocaleFromRequest($request) auf, was für
-        // Frontend-Requests entweder das Request-Attribut "language" (SiteLanguage) oder
-        // ersatzweise "site" (Site::getDefaultLanguage()) voraussetzt. In Produktion setzt
-        // das TYPO3s Site-/Routing-Middleware, im isolierten Partial-Rendering-Test (ohne
-        // vollen Request-Zyklus/TSFE) fehlt beides - daher hier eine minimale, deutsche
-        // SiteLanguage direkt als "language"-Attribut setzen.
-        $siteLanguage = new SiteLanguage(0, 'de-DE', new Uri('/'), []);
+        $site = $this->get(SiteFinder::class)->getSiteByPageId(self::REQUEST_PAGE_UID);
+        $pageArguments = new PageArguments(self::REQUEST_PAGE_UID, '0', []);
 
-        $request = (new ServerRequest('https://example.invalid/?id=1'))
+        $request = (new ServerRequest('https://example.invalid/katalog?id=' . self::REQUEST_PAGE_UID))
             ->withAttribute('applicationType', SystemEnvironmentBuilder::REQUESTTYPE_FE)
-            ->withAttribute('language', $siteLanguage)
+            ->withAttribute('site', $site)
+            ->withAttribute('language', $site->getDefaultLanguage())
+            ->withAttribute('routing', $pageArguments)
             ->withAttribute('extbase', $extbaseParameters)
             ->withQueryParams($variables['arguments'] ?? []);
         $renderingContext->setRequest(new ExtbaseRequest($request));
@@ -59,5 +71,16 @@ abstract class FluidFunctionalPartialTestCase extends FunctionalTestCase
         $view->assignMultiple($variables);
 
         return $view->render();
+    }
+
+    private function writeSiteConfigurationFromDevEnvironment(): void
+    {
+        $siteConfiguration = Yaml::parseFile(dirname(__DIR__, 2) . '/.devfiles/siteconfig.yaml');
+        $siteConfiguration['rootPageId'] = self::ROOT_PAGE_UID;
+        $siteIdentifier = 'dla-opac-' . substr(md5(static::class), 0, 8);
+        $siteWriter = $this->get(SiteWriter::class);
+
+        GeneralUtility::rmdir(Environment::getConfigPath() . '/sites/' . $siteIdentifier, true);
+        $siteWriter->write($siteIdentifier, $siteConfiguration);
     }
 }
