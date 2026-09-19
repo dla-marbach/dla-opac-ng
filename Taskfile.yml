@@ -123,6 +123,12 @@ tasks:
       - ddev exec vendor/bin/phpunit -c packages/dla-dla_opac_ng/Tests/phpunit.xml
       - ddev exec vendor/bin/phpunit -c packages/dla-find/Tests/phpunit.xml
 
+  test:php:functional:
+    desc: Functional-PHPUnit-Prototyp für Fluid-Partial-Rendering (dla_opac_ng)
+    dir: t3example
+    cmds:
+      - ddev exec vendor/bin/phpunit -c packages/dla-dla_opac_ng/Tests/phpunit.functional.xml
+
   test:
     desc: Playwright-Test ausführen
     dir: dla-opac-tests
