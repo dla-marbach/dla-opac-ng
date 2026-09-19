@@ -1,0 +1,267 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(AK01600951)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.700324,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "searchBoost": 1,
+                        "default": [
+                            "1",
+                            "Stolterfoht, Ulf",
+                            "Seite 169-171",
+                            "PE00037752",
+                            "Gedrucktes",
+                            "Band",
+                            "Jahrbuch / Deutsche Akademie für Sprache und Dichtung. - 2013/14 (2015)",
+                            "Jahrbuch / Deutsche Akademie für Sprache und Dichtung",
+                            "Stolterfoht, Ulf (1963-)",
+                            "Stolterfoht, Ulf (1963-)",
+                            "[Antrittsrede. Unter der Rubrik:] Vorstellungsreden neuer Mitglieder : [Vortrag, Rede]",
+                            "Erschienen in: Jahrbuch / Deutsche Akademie für Sprache und Dichtung. - 2013/14 (2015). - Seite 169-171",
+                            "Deutsch",
+                            "Text",
+                            "Beitrag",
+                            "Deutsch",
+                            "2015",
+                            "AK01345363",
+                            "AK00003076",
+                            "https://www.dla-marbach.de/find/opac/id/AK01600951",
+                            "AK",
+                            "Vorstellungsrede am 24. Oktober 2014 auf der Herbsttagung der Deutschen Akademie für Sprache und Dichtung in Darmstadt",
+                            "Stolterfoht, Ulf (1963-)",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>[Antrittsrede. Unter der Rubrik:] Vorstellungsreden neuer Mitglieder</title>\n  </titleInfo>\n  <titleInfo type=\"alternative\">\n    <title>Gedichtanfang: muskat: vor einnahme gesamtnuß bring deine Lyrik ...</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Stolterfoht, Ulf (1963-)</namePart>\n    <nameIdentifier type=\"gnd\">120651335</nameIdentifier>\n    <namePart type=\"date\">1963-06-08</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Lyrik</genre>\n  <genre>Sonstige Texte</genre>\n  <genre>Aufsatz</genre>\n  <genre>Rede / Vortrag</genre>\n  <genre>Autobiografisches</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">2015</dateIssued>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Ulf Stolterfoht</note>\n  <note type=\"summary\">Vorstellungsrede am 24. Oktober 2014 auf der Herbsttagung der Deutschen Akademie für Sprache und Dichtung in Darmstadt</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Jahrbuch / Deutsche Akademie für Sprache und Dichtung. - 2013/14 (2015)</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01345363</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Jahrbuch / Deutsche Akademie für Sprache und Dichtung</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00003076</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2018-02-02</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2018-02-02</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01600951</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>[Antrittsrede. Unter der Rubrik:] Vorstellungsreden neuer Mitglieder : [Vortrag, Rede]</dc:title>\n  <dc:title>Gedichtanfang: muskat: vor einnahme gesamtnuß bring deine Lyrik ...</dc:title>\n  <dc:creator>Stolterfoht, Ulf (1963-)</dc:creator>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Lyrik</dc:type>\n  <dc:type>Sonstige Texte</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Rede / Vortrag</dc:type>\n  <dc:type>Autobiografisches</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:date>2015</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:description>Vorstellungsrede am 24. Oktober 2014 auf der Herbsttagung der Deutschen Akademie für Sprache und Dichtung in Darmstadt</dc:description>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK01345363</dc:source>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00003076</dc:source>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01600951</dc:identifier>\n  <dc:identifier>AK01600951</dc:identifier>\n</oai_dc:dc>",
+                            "2015",
+                            "[2013 TO 2014]",
+                            "Druckschrift",
+                            "Stolterfoth, Ulf",
+                            "Brueterich",
+                            "Štol'terfot, Ul'f",
+                            "Stolterfoht, Urs",
+                            "Stolterfot, Ulf",
+                            "Vortrag, Rede",
+                            "Erinnerung, Autobiographisches, Memoiren",
+                            "Stolterfoht, Ulf (1963-)␝Verfasser/Urheber",
+                            "Stolterfoht, Ulf (1963-)␝Von",
+                            "2013/14",
+                            "Stolterfoht, Ulf (1963-)",
+                            "Lyrik",
+                            "Sonstige Texte",
+                            "2018-02-02",
+                            "2013-01-01T00:00:00Z",
+                            "2014-01-01T00:00:00Z",
+                            "2015-01-01T00:00:00Z",
+                            "Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)",
+                            "␣",
+                            "2018-02-02",
+                            "Stolterfoht, Ulf",
+                            "PE00037752",
+                            "1.0.0",
+                            "370n",
+                            "creator",
+                            "Verfasser/Urheber",
+                            "Ulf Stolterfoht",
+                            "PE00037752",
+                            "f-fertig, i-fertig",
+                            "Deutsch␝Original",
+                            "2015",
+                            "2013",
+                            "2014",
+                            "Abgeschlossen",
+                            "false",
+                            "Lyrik",
+                            "Sonstige Texte",
+                            "Aufsatz",
+                            "Rede / Vortrag",
+                            "Autobiografisches",
+                            "[Antrittsrede. Unter der Rubrik:] Vorstellungsreden neuer Mitglieder",
+                            "Druckschrift",
+                            "TY  - GEN\nAU  - Stolterfoht, Ulf\nDA  - 2013\nDA  - 2014\nDA  - 2015\nID  - AK01600951\nLA  - Deutsch\nM2  - Beitrag\nM3  - Lyrik\nM3  - Sonstige Texte\nM3  - Aufsatz\nM3  - Rede / Vortrag\nM3  - Autobiografisches\nN2  - Vorstellungsrede am 24. Oktober 2014 auf der Herbsttagung der Deutschen Akademie für Sprache und Dichtung in Darmstadt\nNV  - Seite 169-171\nPY  - 2015\nSP  - Seite 169-171\nTI  - [Antrittsrede. Unter der Rubrik:] Vorstellungsreden neuer Mitglieder : [Vortrag, Rede]\nT2  - Gedichtanfang: muskat: vor einnahme gesamtnuß bring deine Lyrik ...\nT3  - Jahrbuch / Deutsche Akademie für Sprache und Dichtung. - 2013/14 (2015); Jahrbuch / Deutsche Akademie für Sprache und Dichtung\nUR  - https://www.dla-marbach.de/find/opac/id/AK01600951/\nER  -",
+                            "2018-02-02",
+                            "Verfasser/Urheber",
+                            "AK01600951",
+                            "Seite 169-171",
+                            "Gedichtanfang: muskat: vor einnahme gesamtnuß bring deine Lyrik ...",
+                            "Bibliotheksdokumente",
+                            "Bibliotheksmaterialien",
+                            "[Antrittsrede. Unter der Rubrik:] Vorstellungsreden neuer Mitglieder",
+                            "Berlin : Wallstein Verlag, 2015 - 240 Seiten",
+                            "Göttingen : Wallstein, 1953/54(1954) -.",
+                            "Einzelbestandteil / unselbständiges Werk"
+                        ],
+                        "searchName_mv": [
+                            "Stolterfoht, Ulf"
+                        ],
+                        "parentIssuePage": "Seite 169-171",
+                        "personBy_id_mv": [
+                            "PE00037752"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "categoryMedium_mv": [
+                            "Band"
+                        ],
+                        "parent_display_mv": [
+                            "Jahrbuch / Deutsche Akademie für Sprache und Dichtung. - 2013/14 (2015)",
+                            "Jahrbuch / Deutsche Akademie für Sprache und Dichtung"
+                        ],
+                        "displayName": "Stolterfoht, Ulf (1963-)",
+                        "creator_display_mv": [
+                            "Stolterfoht, Ulf (1963-)"
+                        ],
+                        "display": "[Antrittsrede. Unter der Rubrik:] Vorstellungsreden neuer Mitglieder : [Vortrag, Rede]",
+                        "displayAddition1": "Erschienen in: Jahrbuch / Deutsche Akademie für Sprache und Dichtung. - 2013/14 (2015). - Seite 169-171",
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "categoryContent_mv": [
+                            "Text"
+                        ],
+                        "filterMedium_mv": [
+                            "Beitrag"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "dateOrigin": "2015",
+                        "parent_id_mv": [
+                            "AK01345363",
+                            "AK00003076"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK01600951",
+                        "source": "AK",
+                        "noteContent_mv": [
+                            "Vorstellungsrede am 24. Oktober 2014 auf der Herbsttagung der Deutschen Akademie für Sprache und Dichtung in Darmstadt"
+                        ],
+                        "personBy_display_mv": [
+                            "Stolterfoht, Ulf (1963-)"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>[Antrittsrede. Unter der Rubrik:] Vorstellungsreden neuer Mitglieder</title>\n  </titleInfo>\n  <titleInfo type=\"alternative\">\n    <title>Gedichtanfang: muskat: vor einnahme gesamtnuß bring deine Lyrik ...</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Stolterfoht, Ulf (1963-)</namePart>\n    <nameIdentifier type=\"gnd\">120651335</nameIdentifier>\n    <namePart type=\"date\">1963-06-08</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Lyrik</genre>\n  <genre>Sonstige Texte</genre>\n  <genre>Aufsatz</genre>\n  <genre>Rede / Vortrag</genre>\n  <genre>Autobiografisches</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">2015</dateIssued>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Ulf Stolterfoht</note>\n  <note type=\"summary\">Vorstellungsrede am 24. Oktober 2014 auf der Herbsttagung der Deutschen Akademie für Sprache und Dichtung in Darmstadt</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Jahrbuch / Deutsche Akademie für Sprache und Dichtung. - 2013/14 (2015)</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01345363</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Jahrbuch / Deutsche Akademie für Sprache und Dichtung</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00003076</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2018-02-02</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2018-02-02</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01600951</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>[Antrittsrede. Unter der Rubrik:] Vorstellungsreden neuer Mitglieder : [Vortrag, Rede]</dc:title>\n  <dc:title>Gedichtanfang: muskat: vor einnahme gesamtnuß bring deine Lyrik ...</dc:title>\n  <dc:creator>Stolterfoht, Ulf (1963-)</dc:creator>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Lyrik</dc:type>\n  <dc:type>Sonstige Texte</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Rede / Vortrag</dc:type>\n  <dc:type>Autobiografisches</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:date>2015</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:description>Vorstellungsrede am 24. Oktober 2014 auf der Herbsttagung der Deutschen Akademie für Sprache und Dichtung in Darmstadt</dc:description>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK01345363</dc:source>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00003076</dc:source>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01600951</dc:identifier>\n  <dc:identifier>AK01600951</dc:identifier>\n</oai_dc:dc>",
+                        "filterDateRange_mv": [
+                            "2015",
+                            "[2013 TO 2014]"
+                        ],
+                        "categorySubSub": "Druckschrift",
+                        "searchVariant_mv": [
+                            "Stolterfoth, Ulf",
+                            "Brueterich",
+                            "Štol'terfot, Ul'f",
+                            "Stolterfoht, Urs",
+                            "Stolterfot, Ulf"
+                        ],
+                        "categoryPublication_mv": [
+                            "Vortrag, Rede",
+                            "Erinnerung, Autobiographisches, Memoiren"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Stolterfoht, Ulf (1963-)␝Verfasser/Urheber"
+                        ],
+                        "filterAuthorityRelation_mv": [
+                            "Stolterfoht, Ulf (1963-)␝Von"
+                        ],
+                        "parentIssueYear": "2013/14",
+                        "filterAuthority_mv": [
+                            "Stolterfoht, Ulf (1963-)"
+                        ],
+                        "genreOther_mv": [
+                            "Lyrik",
+                            "Sonstige Texte"
+                        ],
+                        "filterRecent": "2018-02-02",
+                        "filterDatePoint_mv": [
+                            "2013-01-01T00:00:00Z",
+                            "2014-01-01T00:00:00Z",
+                            "2015-01-01T00:00:00Z"
+                        ],
+                        "parent_type_mv": [
+                            "Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)",
+                            "␣"
+                        ],
+                        "dateCataloged": "2018-02-02",
+                        "searchNameBy_mv": [
+                            "Stolterfoht, Ulf"
+                        ],
+                        "creator_id_mv": [
+                            "PE00037752"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "titleOther_type_mv": [
+                            "370n"
+                        ],
+                        "personBy_creator_mv": [
+                            "creator"
+                        ],
+                        "creator_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "titleResponsability": "Ulf Stolterfoht",
+                        "searchEntity_id_mv": [
+                            "PE00037752"
+                        ],
+                        "statusCataloging": "f-fertig, i-fertig",
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "searchDate_mv": [
+                            "2015",
+                            "2013",
+                            "2014"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "confidential": false,
+                        "filterFormContent_mv": [
+                            "Lyrik",
+                            "Sonstige Texte",
+                            "Aufsatz",
+                            "Rede / Vortrag",
+                            "Autobiografisches"
+                        ],
+                        "title": "[Antrittsrede. Unter der Rubrik:] Vorstellungsreden neuer Mitglieder",
+                        "categoryMedia_mv": [
+                            "Druckschrift"
+                        ],
+                        "exportRIS": "TY  - GEN\nAU  - Stolterfoht, Ulf\nDA  - 2013\nDA  - 2014\nDA  - 2015\nID  - AK01600951\nLA  - Deutsch\nM2  - Beitrag\nM3  - Lyrik\nM3  - Sonstige Texte\nM3  - Aufsatz\nM3  - Rede / Vortrag\nM3  - Autobiografisches\nN2  - Vorstellungsrede am 24. Oktober 2014 auf der Herbsttagung der Deutschen Akademie für Sprache und Dichtung in Darmstadt\nNV  - Seite 169-171\nPY  - 2015\nSP  - Seite 169-171\nTI  - [Antrittsrede. Unter der Rubrik:] Vorstellungsreden neuer Mitglieder : [Vortrag, Rede]\nT2  - Gedichtanfang: muskat: vor einnahme gesamtnuß bring deine Lyrik ...\nT3  - Jahrbuch / Deutsche Akademie für Sprache und Dichtung. - 2013/14 (2015); Jahrbuch / Deutsche Akademie für Sprache und Dichtung\nUR  - https://www.dla-marbach.de/find/opac/id/AK01600951/\nER  -",
+                        "dateModified": "2018-02-02",
+                        "personBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "id": "AK01600951",
+                        "parentVolumeTotal": "Seite 169-171",
+                        "titleOther_text_mv": [
+                            "Gedichtanfang: muskat: vor einnahme gesamtnuß bring deine Lyrik ..."
+                        ],
+                        "category": "Bibliotheksdokumente",
+                        "filterSource": "Bibliotheksmaterialien",
+                        "titleMain_text": "[Antrittsrede. Unter der Rubrik:] Vorstellungsreden neuer Mitglieder",
+                        "parent_displayAddition1_mv": [
+                            "Berlin : Wallstein Verlag, 2015 - 240 Seiten",
+                            "Göttingen : Wallstein, 1953/54(1954) -."
+                        ],
+                        "categorySub": "Einzelbestandteil / unselbständiges Werk",
+                        "score": 13.700324
+                    }
+                ]
+            }
+        }
+    }
+}

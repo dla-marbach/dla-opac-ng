@@ -1,0 +1,239 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(HS00067821)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.700324,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterLocationType_mv": [
+                            "Osnabrück␝Entstehungsort"
+                        ],
+                        "default": [
+                            "Osnabrück␝Entstehungsort",
+                            "1",
+                            "PE00042480",
+                            "PE00095873",
+                            "Handschriften",
+                            "BF00000271",
+                            "A:Zuckmayer, Carl - [Bestand, Nachlass]",
+                            "HEUSINGER, GERDA",
+                            "[Adressat/in]",
+                            "Nur mit Einverständnis der beteiligten Personen ausleihbar!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                            "Zuckmayer, Carl (1896-1977)",
+                            "Am Standort",
+                            "Heusinger, Gerda [Verfasser/in]; Zuckmayer, Carl (1896-1977) [Adressat/in]",
+                            "Heusinger, Gerda an Zuckmayer, Carl [Briefe]",
+                            "A:Zuckmayer, Carl - [Bestand, Nachlass]",
+                            "Deutsch",
+                            "Deutsch",
+                            "https://www.dla-marbach.de/find/opac/id/HS00067821",
+                            "HS",
+                            "Heusinger, Gerda␝Verfasser/Urheber",
+                            "Zuckmayer, Carl (1896-1977)␝Adressat",
+                            "Heusinger, Gerda",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Heusinger, Gerda an Zuckmayer, Carl</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Heusinger, Gerda</namePart>\n    <role>\n      <roleTerm type=\"text\">[Verfasser/in]</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Zuckmayer, Carl (1896-1977)</namePart>\n    <nameIdentifier type=\"gnd\">118637304</nameIdentifier>\n    <namePart type=\"date\">1896-12-27 — 1977-01-18</namePart>\n    <role>\n      <roleTerm type=\"text\">[Adressat/in]</roleTerm>\n    </role>\n  </name>\n  <typeOfResource manuscript=\"yes\">Handschrift</typeOfResource>\n  <genre>Brief</genre>\n  <originInfo eventType=\"manufacture\">\n    <place>\n      <placeTerm type=\"text\">Osnabrück</placeTerm>\n    </place>\n    <dateCreated point=\"start\" encoding=\"iso8601\">1956</dateCreated>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <extent>2 Bl.</extent>\n  </physicalDescription>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00000271</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>A:Zuckmayer, Carl</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2000-10-25</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2001-10-23</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS00067821</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Heusinger, Gerda an Zuckmayer, Carl</dc:title>\n  <dc:creator>Heusinger, Gerda</dc:creator>\n  <dc:contributor>Zuckmayer, Carl (1896-1977)</dc:contributor>\n  <dc:type>Brief</dc:type>\n  <dc:type>Handschrift</dc:type>\n  <dc:date>1956</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>2 Bl.</dc:format>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00000271</dc:source>\n  <dc:identifier>A:Zuckmayer, Carl</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/HS00067821</dc:identifier>\n  <dc:identifier>HS00067821</dc:identifier>\n</oai_dc:dc>",
+                            "1956",
+                            "1956",
+                            "Zuck",
+                            "Mohr",
+                            "Burbel",
+                            "Charlemagne",
+                            "Dulcis",
+                            "Zuckmayer, Karl",
+                            "Osnabrück",
+                            "1956",
+                            "Heusinger, Gerda␝Von",
+                            "Zuckmayer, Carl (1896-1977)␝An",
+                            "HS.1995.0001",
+                            "Heusinger, Gerda",
+                            "Zuckmayer, Carl (1896-1977)",
+                            "2000-10-25",
+                            "1956-01-01T00:00:00Z",
+                            "2000-10-25",
+                            "Heusinger, Gerda",
+                            "PE00042480",
+                            "BE00000244",
+                            "Briefe",
+                            "Zuckmayer, Carl",
+                            "Frau von Herbert Heusinger",
+                            "PE00095873",
+                            "PE00042480",
+                            "ZUCKMAYER, CARL",
+                            "BE00000244",
+                            "HS000678211",
+                            "Deutsch␝Original",
+                            "1956",
+                            "Zuckmayer, Carl (1896-1977)",
+                            "benutzbar",
+                            "false",
+                            "Brief",
+                            "Heusinger, Gerda an Zuckmayer, Carl",
+                            "2 Bl.",
+                            "TY  - GEN\nA2  - Zuckmayer, Carl\nAN  - HS.1995.0001\nAU  - Heusinger, Gerda\nCN  - HS000678211\nDA  - 1956\nDB  - A:Zuckmayer, Carl\nID  - HS00067821\nLA  - Deutsch\nM3  - Brief\nN1  - Entstehungsort: Osnabrück\nN1  - Umfang: 2 Bl.\nRN  - Frau von Herbert Heusinger\nST  - Heusinger, Gerda an Zuckmayer, Carl\nTI  - Heusinger, Gerda an Zuckmayer, Carl [Briefe]\nUR  - https://www.dla-marbach.de/find/opac/id/HS00067821/\nER  -",
+                            "2001-10-23",
+                            "1.0.0",
+                            "HS00067821",
+                            "A:Zuckmayer, Carl",
+                            "Briefe an",
+                            "Handschriften Einzelnachweise",
+                            "Osnabrück",
+                            "[Verfasser/in]",
+                            "Heusinger, Gerda",
+                            "Zuckmayer, Carl",
+                            "Handschrift"
+                        ],
+                        "searchBoost": 1,
+                        "searchCollectionCreator_id_mv": [
+                            "PE00042480"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00095873"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "collection_id_mv": [
+                            "BF00000271"
+                        ],
+                        "collection_display_mv": [
+                            "A:Zuckmayer, Carl - [Bestand, Nachlass]"
+                        ],
+                        "sortingKey": "HEUSINGER, GERDA",
+                        "personTo_role_mv": [
+                            "[Adressat/in]"
+                        ],
+                        "usageRestrictionNote": "Nur mit Einverständnis der beteiligten Personen ausleihbar!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "searchCollectionCreator_display_mv": [
+                            "Zuckmayer, Carl (1896-1977)"
+                        ],
+                        "statusLoan": "Am Standort",
+                        "displayName": "Heusinger, Gerda [Verfasser/in]; Zuckmayer, Carl (1896-1977) [Adressat/in]",
+                        "display": "Heusinger, Gerda an Zuckmayer, Carl [Briefe]",
+                        "displayAddition2": "A:Zuckmayer, Carl - [Bestand, Nachlass]",
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/HS00067821",
+                        "source": "HS",
+                        "filterAuthorityRole_mv": [
+                            "Heusinger, Gerda␝Verfasser/Urheber",
+                            "Zuckmayer, Carl (1896-1977)␝Adressat"
+                        ],
+                        "personBy_display_mv": [
+                            "Heusinger, Gerda"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Heusinger, Gerda an Zuckmayer, Carl</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Heusinger, Gerda</namePart>\n    <role>\n      <roleTerm type=\"text\">[Verfasser/in]</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Zuckmayer, Carl (1896-1977)</namePart>\n    <nameIdentifier type=\"gnd\">118637304</nameIdentifier>\n    <namePart type=\"date\">1896-12-27 — 1977-01-18</namePart>\n    <role>\n      <roleTerm type=\"text\">[Adressat/in]</roleTerm>\n    </role>\n  </name>\n  <typeOfResource manuscript=\"yes\">Handschrift</typeOfResource>\n  <genre>Brief</genre>\n  <originInfo eventType=\"manufacture\">\n    <place>\n      <placeTerm type=\"text\">Osnabrück</placeTerm>\n    </place>\n    <dateCreated point=\"start\" encoding=\"iso8601\">1956</dateCreated>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <extent>2 Bl.</extent>\n  </physicalDescription>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00000271</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>A:Zuckmayer, Carl</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2000-10-25</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2001-10-23</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS00067821</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Heusinger, Gerda an Zuckmayer, Carl</dc:title>\n  <dc:creator>Heusinger, Gerda</dc:creator>\n  <dc:contributor>Zuckmayer, Carl (1896-1977)</dc:contributor>\n  <dc:type>Brief</dc:type>\n  <dc:type>Handschrift</dc:type>\n  <dc:date>1956</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>2 Bl.</dc:format>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00000271</dc:source>\n  <dc:identifier>A:Zuckmayer, Carl</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/HS00067821</dc:identifier>\n  <dc:identifier>HS00067821</dc:identifier>\n</oai_dc:dc>",
+                        "filterDateRange_mv": [
+                            "1956"
+                        ],
+                        "dateOriginStart": "1956",
+                        "searchVariant_mv": [
+                            "Zuck",
+                            "Mohr",
+                            "Burbel",
+                            "Charlemagne",
+                            "Dulcis",
+                            "Zuckmayer, Karl"
+                        ],
+                        "place_mv": [
+                            "Osnabrück"
+                        ],
+                        "displayAddition1": "1956",
+                        "filterAuthorityRelation_mv": [
+                            "Heusinger, Gerda␝Von",
+                            "Zuckmayer, Carl (1896-1977)␝An"
+                        ],
+                        "accessionNumber": "HS.1995.0001",
+                        "filterAuthority_mv": [
+                            "Heusinger, Gerda",
+                            "Zuckmayer, Carl (1896-1977)"
+                        ],
+                        "filterRecent": "2000-10-25",
+                        "filterDatePoint_mv": [
+                            "1956-01-01T00:00:00Z"
+                        ],
+                        "dateCataloged": "2000-10-25",
+                        "searchNameBy_mv": [
+                            "Heusinger, Gerda"
+                        ],
+                        "personTo_id_mv": [
+                            "PE00042480"
+                        ],
+                        "accession_display": "BE00000244",
+                        "genre": "Briefe",
+                        "searchNameTo_mv": [
+                            "Zuckmayer, Carl"
+                        ],
+                        "note": "Frau von Herbert Heusinger",
+                        "searchEntity_id_mv": [
+                            "PE00095873",
+                            "PE00042480"
+                        ],
+                        "sortingKeySub": "ZUCKMAYER, CARL",
+                        "accession_id": "BE00000244",
+                        "mediaNumber": "HS000678211",
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "searchDate_mv": [
+                            "1956"
+                        ],
+                        "personTo_display_mv": [
+                            "Zuckmayer, Carl (1896-1977)"
+                        ],
+                        "usageRestriction": "benutzbar",
+                        "confidential": false,
+                        "filterFormContent_mv": [
+                            "Brief"
+                        ],
+                        "title": "Heusinger, Gerda an Zuckmayer, Carl",
+                        "extent": "2 Bl.",
+                        "exportRIS": "TY  - GEN\nA2  - Zuckmayer, Carl\nAN  - HS.1995.0001\nAU  - Heusinger, Gerda\nCN  - HS000678211\nDA  - 1956\nDB  - A:Zuckmayer, Carl\nID  - HS00067821\nLA  - Deutsch\nM3  - Brief\nN1  - Entstehungsort: Osnabrück\nN1  - Umfang: 2 Bl.\nRN  - Frau von Herbert Heusinger\nST  - Heusinger, Gerda an Zuckmayer, Carl\nTI  - Heusinger, Gerda an Zuckmayer, Carl [Briefe]\nUR  - https://www.dla-marbach.de/find/opac/id/HS00067821/\nER  -",
+                        "dateModified": "2001-10-23",
+                        "schemaVersion": "1.0.0",
+                        "id": "HS00067821",
+                        "filterCollection_mv": [
+                            "A:Zuckmayer, Carl"
+                        ],
+                        "category": "Briefe an",
+                        "filterSource": "Handschriften Einzelnachweise",
+                        "filterLocation_mv": [
+                            "Osnabrück"
+                        ],
+                        "personBy_role_mv": [
+                            "[Verfasser/in]"
+                        ],
+                        "searchName_mv": [
+                            "Heusinger, Gerda",
+                            "Zuckmayer, Carl"
+                        ],
+                        "categorySub": "Handschrift",
+                        "score": 13.700324
+                    }
+                ]
+            }
+        }
+    }
+}

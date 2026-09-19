@@ -17,7 +17,7 @@
         "body": {
             "responseHeader": {
                 "status": 0,
-                "QTime": 9,
+                "QTime": 29,
                 "params": {
                     "q": "goethe",
                     "facet.field": "filterAuthorityRelation_mv",
@@ -29,7 +29,7 @@
                 }
             },
             "response": {
-                "numFound": 51003,
+                "numFound": 51004,
                 "start": 0,
                 "numFoundExact": true,
                 "docs": []

@@ -1,0 +1,83 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(KS00113059)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 6.850162,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "KS00113059",
+                        "default": [
+                            "KS00113059",
+                            "Kunsthalle",
+                            "Verlag",
+                            "false",
+                            "2013-04-11",
+                            "2026-09-18",
+                            "Verlag",
+                            "Körperschaften",
+                            "Normdaten",
+                            "Kunsthalle",
+                            "1.0.0",
+                            "0.5",
+                            "3",
+                            "KS00113059",
+                            "KS00113059␝Kunsthalle",
+                            "Kunsthalle",
+                            "Kunsthalle",
+                            "KS",
+                            "Kunsthalle",
+                            "https://www.dla-marbach.de/find/opac/id/KS00113059"
+                        ],
+                        "display": "Kunsthalle",
+                        "categoryIndex_mv": [
+                            "Verlag"
+                        ],
+                        "confidential": false,
+                        "dateCataloged": "2013-04-11",
+                        "dateModified": "2026-09-18",
+                        "displayAddition2": "Verlag",
+                        "filterSource": "Körperschaften",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "nameOriginal_mv": [
+                            "Kunsthalle"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.5,
+                        "searchEntityScore": 3,
+                        "searchEntity_id_mv": [
+                            "KS00113059"
+                        ],
+                        "searchSuggestPayload": "KS00113059␝Kunsthalle",
+                        "searchSuggestTerm_mv": [
+                            "Kunsthalle",
+                            "Kunsthalle"
+                        ],
+                        "source": "KS",
+                        "title": "Kunsthalle",
+                        "url": "https://www.dla-marbach.de/find/opac/id/KS00113059",
+                        "score": 6.850162
+                    }
+                ]
+            }
+        }
+    }
+}

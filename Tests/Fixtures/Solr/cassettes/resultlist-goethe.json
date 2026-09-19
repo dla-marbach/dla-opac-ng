@@ -1,0 +1,1459 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "goethe",
+            "rows": "5"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 61078,
+                "start": 0,
+                "maxScore": 81.65286,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00019445",
+                        "default": [
+                            "BF00019445",
+                            "G:Glück, Franz (Sammlerbibliothek) - [Geschlossener Bestand der Bibliothek, Sammlung, Sammlerbibliothek]",
+                            "BB.1982.0003",
+                            "BE00003722",
+                            "BE00003722",
+                            "Geschlossener Bestand der Bibliothek",
+                            "Sammlung",
+                            "Sammlerbibliothek",
+                            "false",
+                            "Zugangsjahr: 1982.\nDie umfangreiche Bibliothek des Wiener Literaturhistorikers, Museumsdirektors und Sammlers Franz Glück (1899-1981) umfasst die deutschsprachige Literatur mit Schwerpunkt 18. bis 20. Jahrhundert, wobei die Werke österreichischer Autoren besonders breit und vielfältig repräsentiert sind. Ergänzt wird dieser Bestand durch etwa 4100 Bände fremdsprachiger Literatur, wobei die französischen Autoren mit ca. 1700 Bänden besonders reichhaltig vertreten sind.. Eine bemerkenswerte Sammelintensität liegt bei Johann Wolfgang von Goethe und Adalbert Stifter vor.",
+                            "2005-07-08",
+                            "2026-04-23",
+                            "Bibliothek",
+                            "ca. 20.000 Bände",
+                            "Glück, Franz (1899-1981)",
+                            "Sammlung, Bibliothek [G:Glück, Franz (Sammlerbibliothek)]",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>G:Glück, Franz (Sammlerbibliothek) - [Geschlossener Bestand der Bibliothek, Sammlung, Sammlerbibliothek]</dc:title>\n  <dc:creator>Glück, Franz (1899-1981)</dc:creator>\n  <dc:type>Sammlung</dc:type>\n  <dc:type>Bestand</dc:type>\n  <dc:format>ca. 20.000 Bände</dc:format>\n  <dc:description>Zugangsjahr: 1982.\nDie umfangreiche Bibliothek des Wiener Literaturhistorikers, Museumsdirektors und Sammlers Franz Glück (1899-1981) umfasst die deutschsprachige Literatur mit Schwerpunkt 18. bis 20. Jahrhundert, wobei die Werke österreichischer Autoren besonders breit und vielfältig repräsentiert sind. Ergänzt wird dieser Bestand durch etwa 4100 Bände fremdsprachiger Literatur, wobei die französischen Autoren mit ca. 1700 Bänden besonders reichhaltig vertreten sind.. Eine bemerkenswerte Sammelintensität liegt bei Johann Wolfgang von Goethe und Adalbert Stifter vor.</dc:description>\n  <dc:description>Bibliographische Titelliste der Zeitschriften, die der Sammlung entnommen wurden, in der Bestandsregistratur der Bibliothek.</dc:description>\n  <dc:subject>Goethe, Johann Wolfgang von (1749-1832)</dc:subject>\n  <dc:subject>Stifter, Adalbert (1805-1868)</dc:subject>\n  <dc:identifier>G:Glück, Franz (Sammlerbibliothek)</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BF00019445</dc:identifier>\n  <dc:identifier>BF00019445</dc:identifier>\n</oai_dc:dc>",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>G:Glück, Franz (Sammlerbibliothek) - [Geschlossener Bestand der Bibliothek, Sammlung, Sammlerbibliothek]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Glück, Franz (1899-1981)</namePart>\n    <nameIdentifier type=\"gnd\">116667850</nameIdentifier>\n    <namePart type=\"date\">1899-09-12 — 1981-04-23</namePart>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <typeOfResource collection=\"yes\">Bestand</typeOfResource>\n  <genre>Sammlung</genre>\n  <physicalDescription>\n    <extent>ca. 20.000 Bände</extent>\n  </physicalDescription>\n  <abstract>Zugangsjahr: 1982.\nDie umfangreiche Bibliothek des Wiener Literaturhistorikers, Museumsdirektors und Sammlers Franz Glück (1899-1981) umfasst die deutschsprachige Literatur mit Schwerpunkt 18. bis 20. Jahrhundert, wobei die Werke österreichischer Autoren besonders breit und vielfältig repräsentiert sind. Ergänzt wird dieser Bestand durch etwa 4100 Bände fremdsprachiger Literatur, wobei die französischen Autoren mit ca. 1700 Bänden besonders reichhaltig vertreten sind.. Eine bemerkenswerte Sammelintensität liegt bei Johann Wolfgang von Goethe und Adalbert Stifter vor.</abstract>\n  <tableOfContents>Bibliographische Titelliste der Zeitschriften, die der Sammlung entnommen wurden, in der Bestandsregistratur der Bibliothek.</tableOfContents>\n  <subject>\n    <topic>Goethe, Johann Wolfgang von (1749-1832)</topic>\n  </subject>\n  <subject>\n    <topic>Stifter, Adalbert (1805-1868)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Goethe, Johann Wolfgang von (1749-1832)</namePart>\n    </name>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Stifter, Adalbert (1805-1868)</namePart>\n    </name>\n  </subject>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>G:Glück, Franz (Sammlerbibliothek)</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2005-07-08</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2026-04-23</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00019445</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "TY  - GEN\nA2  - Goethe, Johann Wolfgang von\nA2  - Stifter, Adalbert\nAN  - BB.1982.0003\nAU  - Glück, Franz\nAV  - bedingt benutzbar. Benutzung bedingt möglich nach vorheriger Terminabsprache. Bitte nehmen Sie Kontakt zu uns auf.. E-Mail: bibliothek@dla-marbach.de. Telefon: +49 7144 848 317\nCN  - BF000194450\nDB  - G:Glück, Franz (Sammlerbibliothek)\nID  - BF00019445\nKW  - Goethe, Johann Wolfgang von (1749-1832)\nKW  - Stifter, Adalbert (1805-1868)\nM3  - Sammlung\nN1  - Umfang: ca. 20.000 Bände\nN1  - Übersicht: Bibliographische Titelliste der Zeitschriften, die der Sammlung entnommen wurden, in der Bestandsregistratur der Bibliothek.\nN1  - katalogisiert: 10634 Bände\nN1  - akzessioniert: 9366 Bände\nN1  - systematische Aufstellung (Bibl.): 20000 Bände\nN1  - Literatur: Jutta Bendt: Die Bibliothek Franz Glück. Vorstellung einer Wiener Sammlung. Marbach am Neckar: Deutsche Schillergesellschaft, 1998, 96 S. und 6 Microfiches (Standortkatalog). (= Deutsches Literaturarchiv: Verzeichnisse - Berichte - Informationen. 20).\nN2  - Zugangsjahr: 1982.. Die umfangreiche Bibliothek des Wiener Literaturhistorikers, Museumsdirektors und Sammlers Franz Glück (1899-1981) umfasst die deutschsprachige Literatur mit Schwerpunkt 18. bis 20. Jahrhundert, wobei die Werke österreichischer Autoren besonders breit und vielfältig repräsentiert sind. Ergänzt wird dieser Bestand durch etwa 4100 Bände fremdsprachiger Literatur, wobei die französischen Autoren mit ca. 1700 Bänden besonders reichhaltig vertreten sind.. Eine bemerkenswerte Sammelintensität liegt bei Johann Wolfgang von Goethe und Adalbert Stifter vor.\nRN  - Grundsignatur: Glück\nTI  - G:Glück, Franz (Sammlerbibliothek) - [Geschlossener Bestand der Bibliothek, Sammlung, Sammlerbibliothek]\nUR  - https://www.dla-marbach.de/find/opac/id/BF00019445/\nER  -",
+                            "ca. 20.000 Bände",
+                            "Goethe, Johann Wolfgang von (1749-1832)␝Über",
+                            "Stifter, Adalbert (1805-1868)␝Über",
+                            "Glück, Franz (1899-1981)␝Unter",
+                            "Goethe, Johann Wolfgang von (1749-1832)␝Behandelte Person/Körperschaft",
+                            "Stifter, Adalbert (1805-1868)␝Behandelte Person/Körperschaft",
+                            "Glück, Franz (1899-1981)␝Bestandsbildner/Vorbesitzer",
+                            "Goethe, Johann Wolfgang von (1749-1832)",
+                            "Stifter, Adalbert (1805-1868)",
+                            "Glück, Franz (1899-1981)",
+                            "G:Glück, Franz (Sammlerbibliothek)",
+                            "Sammlung",
+                            "true",
+                            "2005-07-08",
+                            "Nachlässe und Spezialsammlungen",
+                            "Goethe, Johann Wolfgang von (1749-1832)",
+                            "Stifter, Adalbert (1805-1868)",
+                            "Gedrucktes",
+                            "10634",
+                            "9366",
+                            "katalogisiert",
+                            "akzessioniert",
+                            "Bände",
+                            "Bände",
+                            "Bibliotheksmagazin 5 (Block I: Achse 8b-12b); Quartformate: Achse 7a.",
+                            "BF000194450",
+                            "Grundsignatur: Glück",
+                            "Bibliographische Titelliste der Zeitschriften, die der Sammlung entnommen wurden, in der Bestandsregistratur der Bibliothek.",
+                            "20000",
+                            "systematische Aufstellung (Bibl.)",
+                            "Bände",
+                            "Goethe, Johann Wolfgang von (1749-1832)",
+                            "Stifter, Adalbert (1805-1868)",
+                            "PE00000863",
+                            "PE00001223",
+                            "Glück, Franz (1899-1981)",
+                            "PE00063047",
+                            "Jutta Bendt: Die Bibliothek Franz Glück. Vorstellung einer Wiener Sammlung. Marbach am Neckar: Deutsche Schillergesellschaft, 1998, 96 S. und 6 Microfiches (Standortkatalog). (= Deutsches Literaturarchiv: Verzeichnisse - Berichte - Informationen. 20).",
+                            "1.0.0",
+                            "1.4096944755176941",
+                            "Glück, Franz (1899-1981)",
+                            "PE00063047",
+                            "PE00000863",
+                            "PE00001223",
+                            "PE00063047",
+                            "Goethe, Johann Wolfgang von",
+                            "Stifter, Adalbert",
+                            "Glück, Franz",
+                            "Goethe, Johann Wolfgang von",
+                            "Stifter, Adalbert",
+                            "Glück, Franz",
+                            "Goethe, Johann Wolfgang",
+                            "Gete, Iogann W.",
+                            "Goethe, Johann W.",
+                            "Gëte, Iogann V.",
+                            "Goethe, Wolfgang von",
+                            "Goethius, ...",
+                            "Goethe, Volfgango",
+                            "Goethe, Johan Wolphgang",
+                            "Gete, Johan Volfgang",
+                            "Goethe, Johann Wolfgang",
+                            "Göthe, J. W.",
+                            "Goethe, Johann W. von",
+                            "Ostade",
+                            "Stifter, Adelbert",
+                            "BF",
+                            "Am Standort",
+                            "G:Glück, Franz (Sammlerbibliothek)",
+                            "Glück, Franz (Sammlerbibliothek)",
+                            "https://www.dla-marbach.de/find/opac/id/BF00019445",
+                            "benutzbar",
+                            "bedingt benutzbar\nBenutzung bedingt möglich nach vorheriger Terminabsprache. Bitte nehmen Sie Kontakt zu uns auf.\nE-Mail: bibliothek@dla-marbach.de\nTelefon: +49 7144 848 317"
+                        ],
+                        "display": "G:Glück, Franz (Sammlerbibliothek) - [Geschlossener Bestand der Bibliothek, Sammlung, Sammlerbibliothek]",
+                        "accessionNumber": "BB.1982.0003",
+                        "accession_display": "BE00003722",
+                        "accession_id": "BE00003722",
+                        "category": "Geschlossener Bestand der Bibliothek",
+                        "categorySub": "Sammlung",
+                        "categorySubSub": "Sammlerbibliothek",
+                        "confidential": false,
+                        "content": "Zugangsjahr: 1982.\nDie umfangreiche Bibliothek des Wiener Literaturhistorikers, Museumsdirektors und Sammlers Franz Glück (1899-1981) umfasst die deutschsprachige Literatur mit Schwerpunkt 18. bis 20. Jahrhundert, wobei die Werke österreichischer Autoren besonders breit und vielfältig repräsentiert sind. Ergänzt wird dieser Bestand durch etwa 4100 Bände fremdsprachiger Literatur, wobei die französischen Autoren mit ca. 1700 Bänden besonders reichhaltig vertreten sind.. Eine bemerkenswerte Sammelintensität liegt bei Johann Wolfgang von Goethe und Adalbert Stifter vor.",
+                        "dateCataloged": "2005-07-08",
+                        "dateModified": "2026-04-23",
+                        "department": "Bibliothek",
+                        "displayAddition1": "ca. 20.000 Bände",
+                        "displayName": "Glück, Franz (1899-1981)",
+                        "displayTree": "Sammlung, Bibliothek [G:Glück, Franz (Sammlerbibliothek)]",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>G:Glück, Franz (Sammlerbibliothek) - [Geschlossener Bestand der Bibliothek, Sammlung, Sammlerbibliothek]</dc:title>\n  <dc:creator>Glück, Franz (1899-1981)</dc:creator>\n  <dc:type>Sammlung</dc:type>\n  <dc:type>Bestand</dc:type>\n  <dc:format>ca. 20.000 Bände</dc:format>\n  <dc:description>Zugangsjahr: 1982.\nDie umfangreiche Bibliothek des Wiener Literaturhistorikers, Museumsdirektors und Sammlers Franz Glück (1899-1981) umfasst die deutschsprachige Literatur mit Schwerpunkt 18. bis 20. Jahrhundert, wobei die Werke österreichischer Autoren besonders breit und vielfältig repräsentiert sind. Ergänzt wird dieser Bestand durch etwa 4100 Bände fremdsprachiger Literatur, wobei die französischen Autoren mit ca. 1700 Bänden besonders reichhaltig vertreten sind.. Eine bemerkenswerte Sammelintensität liegt bei Johann Wolfgang von Goethe und Adalbert Stifter vor.</dc:description>\n  <dc:description>Bibliographische Titelliste der Zeitschriften, die der Sammlung entnommen wurden, in der Bestandsregistratur der Bibliothek.</dc:description>\n  <dc:subject>Goethe, Johann Wolfgang von (1749-1832)</dc:subject>\n  <dc:subject>Stifter, Adalbert (1805-1868)</dc:subject>\n  <dc:identifier>G:Glück, Franz (Sammlerbibliothek)</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BF00019445</dc:identifier>\n  <dc:identifier>BF00019445</dc:identifier>\n</oai_dc:dc>",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>G:Glück, Franz (Sammlerbibliothek) - [Geschlossener Bestand der Bibliothek, Sammlung, Sammlerbibliothek]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Glück, Franz (1899-1981)</namePart>\n    <nameIdentifier type=\"gnd\">116667850</nameIdentifier>\n    <namePart type=\"date\">1899-09-12 — 1981-04-23</namePart>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <typeOfResource collection=\"yes\">Bestand</typeOfResource>\n  <genre>Sammlung</genre>\n  <physicalDescription>\n    <extent>ca. 20.000 Bände</extent>\n  </physicalDescription>\n  <abstract>Zugangsjahr: 1982.\nDie umfangreiche Bibliothek des Wiener Literaturhistorikers, Museumsdirektors und Sammlers Franz Glück (1899-1981) umfasst die deutschsprachige Literatur mit Schwerpunkt 18. bis 20. Jahrhundert, wobei die Werke österreichischer Autoren besonders breit und vielfältig repräsentiert sind. Ergänzt wird dieser Bestand durch etwa 4100 Bände fremdsprachiger Literatur, wobei die französischen Autoren mit ca. 1700 Bänden besonders reichhaltig vertreten sind.. Eine bemerkenswerte Sammelintensität liegt bei Johann Wolfgang von Goethe und Adalbert Stifter vor.</abstract>\n  <tableOfContents>Bibliographische Titelliste der Zeitschriften, die der Sammlung entnommen wurden, in der Bestandsregistratur der Bibliothek.</tableOfContents>\n  <subject>\n    <topic>Goethe, Johann Wolfgang von (1749-1832)</topic>\n  </subject>\n  <subject>\n    <topic>Stifter, Adalbert (1805-1868)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Goethe, Johann Wolfgang von (1749-1832)</namePart>\n    </name>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Stifter, Adalbert (1805-1868)</namePart>\n    </name>\n  </subject>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>G:Glück, Franz (Sammlerbibliothek)</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2005-07-08</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2026-04-23</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00019445</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "exportRIS": "TY  - GEN\nA2  - Goethe, Johann Wolfgang von\nA2  - Stifter, Adalbert\nAN  - BB.1982.0003\nAU  - Glück, Franz\nAV  - bedingt benutzbar. Benutzung bedingt möglich nach vorheriger Terminabsprache. Bitte nehmen Sie Kontakt zu uns auf.. E-Mail: bibliothek@dla-marbach.de. Telefon: +49 7144 848 317\nCN  - BF000194450\nDB  - G:Glück, Franz (Sammlerbibliothek)\nID  - BF00019445\nKW  - Goethe, Johann Wolfgang von (1749-1832)\nKW  - Stifter, Adalbert (1805-1868)\nM3  - Sammlung\nN1  - Umfang: ca. 20.000 Bände\nN1  - Übersicht: Bibliographische Titelliste der Zeitschriften, die der Sammlung entnommen wurden, in der Bestandsregistratur der Bibliothek.\nN1  - katalogisiert: 10634 Bände\nN1  - akzessioniert: 9366 Bände\nN1  - systematische Aufstellung (Bibl.): 20000 Bände\nN1  - Literatur: Jutta Bendt: Die Bibliothek Franz Glück. Vorstellung einer Wiener Sammlung. Marbach am Neckar: Deutsche Schillergesellschaft, 1998, 96 S. und 6 Microfiches (Standortkatalog). (= Deutsches Literaturarchiv: Verzeichnisse - Berichte - Informationen. 20).\nN2  - Zugangsjahr: 1982.. Die umfangreiche Bibliothek des Wiener Literaturhistorikers, Museumsdirektors und Sammlers Franz Glück (1899-1981) umfasst die deutschsprachige Literatur mit Schwerpunkt 18. bis 20. Jahrhundert, wobei die Werke österreichischer Autoren besonders breit und vielfältig repräsentiert sind. Ergänzt wird dieser Bestand durch etwa 4100 Bände fremdsprachiger Literatur, wobei die französischen Autoren mit ca. 1700 Bänden besonders reichhaltig vertreten sind.. Eine bemerkenswerte Sammelintensität liegt bei Johann Wolfgang von Goethe und Adalbert Stifter vor.\nRN  - Grundsignatur: Glück\nTI  - G:Glück, Franz (Sammlerbibliothek) - [Geschlossener Bestand der Bibliothek, Sammlung, Sammlerbibliothek]\nUR  - https://www.dla-marbach.de/find/opac/id/BF00019445/\nER  -",
+                        "extent": "ca. 20.000 Bände",
+                        "filterAuthorityRelation_mv": [
+                            "Goethe, Johann Wolfgang von (1749-1832)␝Über",
+                            "Stifter, Adalbert (1805-1868)␝Über",
+                            "Glück, Franz (1899-1981)␝Unter"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Goethe, Johann Wolfgang von (1749-1832)␝Behandelte Person/Körperschaft",
+                            "Stifter, Adalbert (1805-1868)␝Behandelte Person/Körperschaft",
+                            "Glück, Franz (1899-1981)␝Bestandsbildner/Vorbesitzer"
+                        ],
+                        "filterAuthority_mv": [
+                            "Goethe, Johann Wolfgang von (1749-1832)",
+                            "Stifter, Adalbert (1805-1868)",
+                            "Glück, Franz (1899-1981)"
+                        ],
+                        "filterCollection_mv": [
+                            "G:Glück, Franz (Sammlerbibliothek)"
+                        ],
+                        "filterFormContent_mv": [
+                            "Sammlung"
+                        ],
+                        "filterMultipart": true,
+                        "filterRecent": "2005-07-08",
+                        "filterSource": "Nachlässe und Spezialsammlungen",
+                        "filterSubject_mv": [
+                            "Goethe, Johann Wolfgang von (1749-1832)",
+                            "Stifter, Adalbert (1805-1868)"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "itemization_extent_mv": [
+                            "10634",
+                            "9366"
+                        ],
+                        "itemization_status_mv": [
+                            "katalogisiert",
+                            "akzessioniert"
+                        ],
+                        "itemization_unit_mv": [
+                            "Bände",
+                            "Bände"
+                        ],
+                        "location_mv": [
+                            "Bibliotheksmagazin 5 (Block I: Achse 8b-12b); Quartformate: Achse 7a."
+                        ],
+                        "mediaNumber": "BF000194450",
+                        "note": "Grundsignatur: Glück",
+                        "noteOther_mv": [
+                            "Bibliographische Titelliste der Zeitschriften, die der Sammlung entnommen wurden, in der Bestandsregistratur der Bibliothek."
+                        ],
+                        "order_extent_mv": [
+                            "20000"
+                        ],
+                        "order_status_mv": [
+                            "systematische Aufstellung (Bibl.)"
+                        ],
+                        "order_unit_mv": [
+                            "Bände"
+                        ],
+                        "personAbout_display_mv": [
+                            "Goethe, Johann Wolfgang von (1749-1832)",
+                            "Stifter, Adalbert (1805-1868)"
+                        ],
+                        "personAbout_id_mv": [
+                            "PE00000863",
+                            "PE00001223"
+                        ],
+                        "personAt_display_mv": [
+                            "Glück, Franz (1899-1981)"
+                        ],
+                        "personAt_id_mv": [
+                            "PE00063047"
+                        ],
+                        "reference_text_mv": [
+                            "Jutta Bendt: Die Bibliothek Franz Glück. Vorstellung einer Wiener Sammlung. Marbach am Neckar: Deutsche Schillergesellschaft, 1998, 96 S. und 6 Microfiches (Standortkatalog). (= Deutsches Literaturarchiv: Verzeichnisse - Berichte - Informationen. 20)."
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 1.4096944,
+                        "searchCollectionCreator_display_mv": [
+                            "Glück, Franz (1899-1981)"
+                        ],
+                        "searchCollectionCreator_id_mv": [
+                            "PE00063047"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00000863",
+                            "PE00001223",
+                            "PE00063047"
+                        ],
+                        "searchNameAbout_mv": [
+                            "Goethe, Johann Wolfgang von",
+                            "Stifter, Adalbert"
+                        ],
+                        "searchNameAt_mv": [
+                            "Glück, Franz"
+                        ],
+                        "searchName_mv": [
+                            "Goethe, Johann Wolfgang von",
+                            "Stifter, Adalbert",
+                            "Glück, Franz"
+                        ],
+                        "searchVariant_mv": [
+                            "Goethe, Johann Wolfgang",
+                            "Gete, Iogann W.",
+                            "Goethe, Johann W.",
+                            "Gëte, Iogann V.",
+                            "Goethe, Wolfgang von",
+                            "Goethius, ...",
+                            "Goethe, Volfgango",
+                            "Goethe, Johan Wolphgang",
+                            "Gete, Johan Volfgang",
+                            "Goethe, Johann Wolfgang",
+                            "Göthe, J. W.",
+                            "Goethe, Johann W. von",
+                            "Ostade",
+                            "Stifter, Adelbert"
+                        ],
+                        "source": "BF",
+                        "statusLoan": "Am Standort",
+                        "title": "G:Glück, Franz (Sammlerbibliothek)",
+                        "titleShort": "Glück, Franz (Sammlerbibliothek)",
+                        "url": "https://www.dla-marbach.de/find/opac/id/BF00019445",
+                        "usageRestriction": "benutzbar",
+                        "usageRestrictionNote": "bedingt benutzbar\nBenutzung bedingt möglich nach vorheriger Terminabsprache. Bitte nehmen Sie Kontakt zu uns auf.\nE-Mail: bibliothek@dla-marbach.de\nTelefon: +49 7144 848 317",
+                        "score": 81.65286
+                    },
+                    {
+                        "id": "BF00035434",
+                        "default": [
+                            "BF00035434",
+                            "H:Goethe-Institut Amsterdam/Bild- und Tonträger - [Geschlossener Bestand der Mediendokumentation, Teilarchiv, Tonarachiv]",
+                            "DS.2012.0001",
+                            "BE00006408",
+                            "BE00006408",
+                            "Geschlossener Bestand der Mediendokumentation",
+                            "Teilarchiv",
+                            "Tonarachiv",
+                            "false",
+                            "Tonaufnahmen von Veranstaltungen im Goethe-Institut Amsterdam aus den Jahren 1994-2006, darunter viele Autorenlesungen.\nDer Bestand wurde 2018 im Projekt \"Autorenlesungen. Digitalisierung, Archivierung, Erschließung und Präsentation von Dokumentaraufnahmen deutschsprachiger Autorenlesungen\" vollständig digitalisiert sowie bibliothekarisch und wissenschaftlich erschlossen. Die Tondokumente und die Erschließungsinformationen sind auch über das Online-Portal \"dichterlesen.net\" zugänglich. Das Projekt \"Autorenlesungen\" wurde gefördert vom Bundesministerium für Bildung und Forschung.",
+                            "Goethe Institut Amsterdam",
+                            "KS00036613",
+                            "2012-12-12",
+                            "2026-03-04",
+                            "2006",
+                            "1994",
+                            "Mediendokumentation",
+                            "217 Tonkassetten (in 3 Kästen)",
+                            "Goethe Institut Amsterdam",
+                            "Teilarchiv, Mediendokumentation [H:Goethe-Institut Amsterdam/Bild- und Tonträger]",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>H:Goethe-Institut Amsterdam/Bild- und Tonträger - [Geschlossener Bestand der Mediendokumentation, Teilarchiv, Tonarachiv]</dc:title>\n  <dc:creator>Goethe Institut Amsterdam</dc:creator>\n  <dc:type>Teilarchiv</dc:type>\n  <dc:type>Bestand</dc:type>\n  <dc:date>1994</dc:date>\n  <dc:date>2006</dc:date>\n  <dc:format>217 Tonkassetten (in 3 Kästen)</dc:format>\n  <dc:description>Tonaufnahmen von Veranstaltungen im Goethe-Institut Amsterdam aus den Jahren 1994-2006, darunter viele Autorenlesungen.\nDer Bestand wurde 2018 im Projekt &quot;Autorenlesungen. Digitalisierung, Archivierung, Erschließung und Präsentation von Dokumentaraufnahmen deutschsprachiger Autorenlesungen&quot; vollständig digitalisiert sowie bibliothekarisch und wissenschaftlich erschlossen. Die Tondokumente und die Erschließungsinformationen sind auch über das Online-Portal &quot;dichterlesen.net&quot; zugänglich. Das Projekt &quot;Autorenlesungen&quot; wurde gefördert vom Bundesministerium für Bildung und Forschung.</dc:description>\n  <dc:identifier>H:Goethe-Institut Amsterdam/Bild- und Tonträger</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BF00035434</dc:identifier>\n  <dc:identifier>BF00035434</dc:identifier>\n</oai_dc:dc>",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>H:Goethe-Institut Amsterdam/Bild- und Tonträger - [Geschlossener Bestand der Mediendokumentation, Teilarchiv, Tonarachiv]</title>\n  </titleInfo>\n  <name type=\"corporate\">\n    <namePart>Goethe Institut Amsterdam</namePart>\n    <nameIdentifier type=\"gnd\">2057894-5</nameIdentifier>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <typeOfResource collection=\"yes\">Bestand</typeOfResource>\n  <genre>Teilarchiv</genre>\n  <originInfo eventType=\"collection\">\n    <dateCreated point=\"start\">1994</dateCreated>\n    <dateCreated point=\"end\">2006</dateCreated>\n  </originInfo>\n  <physicalDescription>\n    <extent>217 Tonkassetten (in 3 Kästen)</extent>\n  </physicalDescription>\n  <abstract>Tonaufnahmen von Veranstaltungen im Goethe-Institut Amsterdam aus den Jahren 1994-2006, darunter viele Autorenlesungen.\nDer Bestand wurde 2018 im Projekt &quot;Autorenlesungen. Digitalisierung, Archivierung, Erschließung und Präsentation von Dokumentaraufnahmen deutschsprachiger Autorenlesungen&quot; vollständig digitalisiert sowie bibliothekarisch und wissenschaftlich erschlossen. Die Tondokumente und die Erschließungsinformationen sind auch über das Online-Portal &quot;dichterlesen.net&quot; zugänglich. Das Projekt &quot;Autorenlesungen&quot; wurde gefördert vom Bundesministerium für Bildung und Forschung.</abstract>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>H:Goethe-Institut Amsterdam/Bild- und Tonträger</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2012-12-12</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2026-03-04</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00035434</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "TY  - GEN\nAN  - DS.2012.0001\nAU  - Goethe Institut Amsterdam\nAV  - bedingt benutzbar. Die Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Mediendokumentation.. E-Mail: mediendokumentation@dla-marbach.de\nCN  - BF000354349\nDA  - 1994\nDA  - 2006\nDB  - H:Goethe-Institut Amsterdam/Bild- und Tonträger\nID  - BF00035434\nM3  - Teilarchiv\nN1  - Umfang: 217 Tonkassetten (in 3 Kästen)\nN1  - fremde Liste: 217 Bild- und Tonträger\nN1  - fortlaufend numerisch: 217 Bild- und Tonträger\nN2  - Tonaufnahmen von Veranstaltungen im Goethe-Institut Amsterdam aus den Jahren 1994-2006, darunter viele Autorenlesungen.. Der Bestand wurde 2018 im Projekt \"Autorenlesungen. Digitalisierung, Archivierung, Erschließung und Präsentation von Dokumentaraufnahmen deutschsprachiger Autorenlesungen\" vollständig digitalisiert sowie bibliothekarisch und wissenschaftlich erschlossen. Die Tondokumente und die Erschließungsinformationen sind auch über das Online-Portal \"dichterlesen.net\" zugänglich. Das Projekt \"Autorenlesungen\" wurde gefördert vom Bundesministerium für Bildung und Forschung.\nRN  - Der Bestand ist vollständig im Bibliotheksmodul katalogisiert (Signaturen: TTS:CXN GIA 1-210) und ist digitalisiert\nTI  - H:Goethe-Institut Amsterdam/Bild- und Tonträger - [Geschlossener Bestand der Mediendokumentation, Teilarchiv, Tonarachiv]\nUR  - https://www.dichterlesen.net/veranstalter/detail/deutsches-literaturarchiv-marbach/\nUR  - https://www.dla-marbach.de/find/opac/id/BF00035434/\nER  -",
+                            "217 Tonkassetten (in 3 Kästen)",
+                            "Goethe Institut Amsterdam␝Unter",
+                            "Goethe Institut Amsterdam␝Bestandsbildner/Vorbesitzer",
+                            "Goethe Institut Amsterdam",
+                            "H:Goethe-Institut Amsterdam/Bild- und Tonträger",
+                            "1994-01-01T00:00:00Z",
+                            "2006-01-01T00:00:00Z",
+                            "[1994 TO 2006]",
+                            "Teilarchiv",
+                            "true",
+                            "2012-12-12",
+                            "Nachlässe und Spezialsammlungen",
+                            "Audio",
+                            "Video",
+                            "217",
+                            "fremde Liste",
+                            "Bild- und Tonträger",
+                            "Regalachse D 29 a",
+                            "BF000354349",
+                            "Der Bestand ist vollständig im Bibliotheksmodul katalogisiert (Signaturen: TTS:CXN GIA 1-210) und ist digitalisiert",
+                            "217",
+                            "fortlaufend numerisch",
+                            "Bild- und Tonträger",
+                            "1.0.0",
+                            "1.2322219294733918",
+                            "Goethe Institut Amsterdam",
+                            "KS00036613",
+                            "1994",
+                            "2006",
+                            "KS00036613",
+                            "Goethe Institut Amsterdam",
+                            "Goethe Institut Amsterdam",
+                            "Goethe-Institut",
+                            "BF",
+                            "Magazin Fellbach - Bitte 2 Wochen im Voraus bestellen!",
+                            "H:Goethe-Institut Amsterdam/Bild- und Tonträger",
+                            "Goethe-Institut Amsterdam/Bild- und Tonträger",
+                            "https://www.dla-marbach.de/find/opac/id/BF00035434",
+                            "benutzbar",
+                            "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Mediendokumentation.\nE-Mail: mediendokumentation@dla-marbach.de",
+                            "Zugang über das Online-Portal \"dichterlesen.net\"",
+                            "https://www.dichterlesen.net/veranstalter/detail/deutsches-literaturarchiv-marbach/"
+                        ],
+                        "display": "H:Goethe-Institut Amsterdam/Bild- und Tonträger - [Geschlossener Bestand der Mediendokumentation, Teilarchiv, Tonarachiv]",
+                        "accessionNumber": "DS.2012.0001",
+                        "accession_display": "BE00006408",
+                        "accession_id": "BE00006408",
+                        "category": "Geschlossener Bestand der Mediendokumentation",
+                        "categorySub": "Teilarchiv",
+                        "categorySubSub": "Tonarachiv",
+                        "confidential": false,
+                        "content": "Tonaufnahmen von Veranstaltungen im Goethe-Institut Amsterdam aus den Jahren 1994-2006, darunter viele Autorenlesungen.\nDer Bestand wurde 2018 im Projekt \"Autorenlesungen. Digitalisierung, Archivierung, Erschließung und Präsentation von Dokumentaraufnahmen deutschsprachiger Autorenlesungen\" vollständig digitalisiert sowie bibliothekarisch und wissenschaftlich erschlossen. Die Tondokumente und die Erschließungsinformationen sind auch über das Online-Portal \"dichterlesen.net\" zugänglich. Das Projekt \"Autorenlesungen\" wurde gefördert vom Bundesministerium für Bildung und Forschung.",
+                        "corporationAt_display_mv": [
+                            "Goethe Institut Amsterdam"
+                        ],
+                        "corporationAt_id_mv": [
+                            "KS00036613"
+                        ],
+                        "dateCataloged": "2012-12-12",
+                        "dateModified": "2026-03-04",
+                        "dateOriginEnd": "2006",
+                        "dateOriginStart": "1994",
+                        "department": "Mediendokumentation",
+                        "displayAddition1": "217 Tonkassetten (in 3 Kästen)",
+                        "displayName": "Goethe Institut Amsterdam",
+                        "displayTree": "Teilarchiv, Mediendokumentation [H:Goethe-Institut Amsterdam/Bild- und Tonträger]",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>H:Goethe-Institut Amsterdam/Bild- und Tonträger - [Geschlossener Bestand der Mediendokumentation, Teilarchiv, Tonarachiv]</dc:title>\n  <dc:creator>Goethe Institut Amsterdam</dc:creator>\n  <dc:type>Teilarchiv</dc:type>\n  <dc:type>Bestand</dc:type>\n  <dc:date>1994</dc:date>\n  <dc:date>2006</dc:date>\n  <dc:format>217 Tonkassetten (in 3 Kästen)</dc:format>\n  <dc:description>Tonaufnahmen von Veranstaltungen im Goethe-Institut Amsterdam aus den Jahren 1994-2006, darunter viele Autorenlesungen.\nDer Bestand wurde 2018 im Projekt &quot;Autorenlesungen. Digitalisierung, Archivierung, Erschließung und Präsentation von Dokumentaraufnahmen deutschsprachiger Autorenlesungen&quot; vollständig digitalisiert sowie bibliothekarisch und wissenschaftlich erschlossen. Die Tondokumente und die Erschließungsinformationen sind auch über das Online-Portal &quot;dichterlesen.net&quot; zugänglich. Das Projekt &quot;Autorenlesungen&quot; wurde gefördert vom Bundesministerium für Bildung und Forschung.</dc:description>\n  <dc:identifier>H:Goethe-Institut Amsterdam/Bild- und Tonträger</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BF00035434</dc:identifier>\n  <dc:identifier>BF00035434</dc:identifier>\n</oai_dc:dc>",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>H:Goethe-Institut Amsterdam/Bild- und Tonträger - [Geschlossener Bestand der Mediendokumentation, Teilarchiv, Tonarachiv]</title>\n  </titleInfo>\n  <name type=\"corporate\">\n    <namePart>Goethe Institut Amsterdam</namePart>\n    <nameIdentifier type=\"gnd\">2057894-5</nameIdentifier>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <typeOfResource collection=\"yes\">Bestand</typeOfResource>\n  <genre>Teilarchiv</genre>\n  <originInfo eventType=\"collection\">\n    <dateCreated point=\"start\">1994</dateCreated>\n    <dateCreated point=\"end\">2006</dateCreated>\n  </originInfo>\n  <physicalDescription>\n    <extent>217 Tonkassetten (in 3 Kästen)</extent>\n  </physicalDescription>\n  <abstract>Tonaufnahmen von Veranstaltungen im Goethe-Institut Amsterdam aus den Jahren 1994-2006, darunter viele Autorenlesungen.\nDer Bestand wurde 2018 im Projekt &quot;Autorenlesungen. Digitalisierung, Archivierung, Erschließung und Präsentation von Dokumentaraufnahmen deutschsprachiger Autorenlesungen&quot; vollständig digitalisiert sowie bibliothekarisch und wissenschaftlich erschlossen. Die Tondokumente und die Erschließungsinformationen sind auch über das Online-Portal &quot;dichterlesen.net&quot; zugänglich. Das Projekt &quot;Autorenlesungen&quot; wurde gefördert vom Bundesministerium für Bildung und Forschung.</abstract>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>H:Goethe-Institut Amsterdam/Bild- und Tonträger</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2012-12-12</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2026-03-04</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00035434</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "exportRIS": "TY  - GEN\nAN  - DS.2012.0001\nAU  - Goethe Institut Amsterdam\nAV  - bedingt benutzbar. Die Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Mediendokumentation.. E-Mail: mediendokumentation@dla-marbach.de\nCN  - BF000354349\nDA  - 1994\nDA  - 2006\nDB  - H:Goethe-Institut Amsterdam/Bild- und Tonträger\nID  - BF00035434\nM3  - Teilarchiv\nN1  - Umfang: 217 Tonkassetten (in 3 Kästen)\nN1  - fremde Liste: 217 Bild- und Tonträger\nN1  - fortlaufend numerisch: 217 Bild- und Tonträger\nN2  - Tonaufnahmen von Veranstaltungen im Goethe-Institut Amsterdam aus den Jahren 1994-2006, darunter viele Autorenlesungen.. Der Bestand wurde 2018 im Projekt \"Autorenlesungen. Digitalisierung, Archivierung, Erschließung und Präsentation von Dokumentaraufnahmen deutschsprachiger Autorenlesungen\" vollständig digitalisiert sowie bibliothekarisch und wissenschaftlich erschlossen. Die Tondokumente und die Erschließungsinformationen sind auch über das Online-Portal \"dichterlesen.net\" zugänglich. Das Projekt \"Autorenlesungen\" wurde gefördert vom Bundesministerium für Bildung und Forschung.\nRN  - Der Bestand ist vollständig im Bibliotheksmodul katalogisiert (Signaturen: TTS:CXN GIA 1-210) und ist digitalisiert\nTI  - H:Goethe-Institut Amsterdam/Bild- und Tonträger - [Geschlossener Bestand der Mediendokumentation, Teilarchiv, Tonarachiv]\nUR  - https://www.dichterlesen.net/veranstalter/detail/deutsches-literaturarchiv-marbach/\nUR  - https://www.dla-marbach.de/find/opac/id/BF00035434/\nER  -",
+                        "extent": "217 Tonkassetten (in 3 Kästen)",
+                        "filterAuthorityRelation_mv": [
+                            "Goethe Institut Amsterdam␝Unter"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Goethe Institut Amsterdam␝Bestandsbildner/Vorbesitzer"
+                        ],
+                        "filterAuthority_mv": [
+                            "Goethe Institut Amsterdam"
+                        ],
+                        "filterCollection_mv": [
+                            "H:Goethe-Institut Amsterdam/Bild- und Tonträger"
+                        ],
+                        "filterDatePoint_mv": [
+                            "1994-01-01T00:00:00Z",
+                            "2006-01-01T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "[1994 TO 2006]"
+                        ],
+                        "filterFormContent_mv": [
+                            "Teilarchiv"
+                        ],
+                        "filterMultipart": true,
+                        "filterRecent": "2012-12-12",
+                        "filterSource": "Nachlässe und Spezialsammlungen",
+                        "filterType_mv": [
+                            "Audio",
+                            "Video"
+                        ],
+                        "itemization_extent_mv": [
+                            "217"
+                        ],
+                        "itemization_status_mv": [
+                            "fremde Liste"
+                        ],
+                        "itemization_unit_mv": [
+                            "Bild- und Tonträger"
+                        ],
+                        "location_mv": [
+                            "Regalachse D 29 a"
+                        ],
+                        "mediaNumber": "BF000354349",
+                        "note": "Der Bestand ist vollständig im Bibliotheksmodul katalogisiert (Signaturen: TTS:CXN GIA 1-210) und ist digitalisiert",
+                        "order_extent_mv": [
+                            "217"
+                        ],
+                        "order_status_mv": [
+                            "fortlaufend numerisch"
+                        ],
+                        "order_unit_mv": [
+                            "Bild- und Tonträger"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 1.232222,
+                        "searchCollectionCreator_display_mv": [
+                            "Goethe Institut Amsterdam"
+                        ],
+                        "searchCollectionCreator_id_mv": [
+                            "KS00036613"
+                        ],
+                        "searchDate_mv": [
+                            "1994",
+                            "2006"
+                        ],
+                        "searchEntity_id_mv": [
+                            "KS00036613"
+                        ],
+                        "searchNameAt_mv": [
+                            "Goethe Institut Amsterdam"
+                        ],
+                        "searchName_mv": [
+                            "Goethe Institut Amsterdam"
+                        ],
+                        "searchVariant_mv": [
+                            "Goethe-Institut"
+                        ],
+                        "source": "BF",
+                        "statusLoan": "Magazin Fellbach - Bitte 2 Wochen im Voraus bestellen!",
+                        "title": "H:Goethe-Institut Amsterdam/Bild- und Tonträger",
+                        "titleShort": "Goethe-Institut Amsterdam/Bild- und Tonträger",
+                        "url": "https://www.dla-marbach.de/find/opac/id/BF00035434",
+                        "usageRestriction": "benutzbar",
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Mediendokumentation.\nE-Mail: mediendokumentation@dla-marbach.de",
+                        "website_description_mv": [
+                            "Zugang über das Online-Portal \"dichterlesen.net\""
+                        ],
+                        "website_url_mv": [
+                            "https://www.dichterlesen.net/veranstalter/detail/deutsches-literaturarchiv-marbach/"
+                        ],
+                        "score": 76.337555
+                    },
+                    {
+                        "searchBoost": 1,
+                        "default": [
+                            "1",
+                            "Goethe-Institut Athen",
+                            "Goethe-Institut",
+                            "PE00000893",
+                            "Handschriften",
+                            "BF00013575",
+                            "A:Lenz, Siegfried - [Bestand, Nachlass]",
+                            "GOETHEINSTITUT ATHEN",
+                            "[Adressat]",
+                            "KS00026239",
+                            "KS00051994",
+                            "Lenz, Siegfried (1926-2014)",
+                            "Am Standort",
+                            "Goethe-Institut Athen [Verfasser]; Goethe-Institut (München) (2003-) [Adressat]",
+                            "Goethe-Institut Athen an Goethe-Institut (München) [Briefe]",
+                            "A:Lenz, Siegfried - [Bestand, Nachlass]",
+                            "HS01159165",
+                            "Deutsch",
+                            "Deutsch",
+                            "https://www.dla-marbach.de/find/opac/id/HS01159167",
+                            "HS",
+                            "Goethe-Institut Athen␝Verfasser/Urheber",
+                            "Goethe-Institut (München) (2003-)␝Adressat",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Goethe-Institut Athen an Goethe-Institut (München)</title>\n  </titleInfo>\n  <name type=\"corporate\">\n    <namePart>Goethe-Institut Athen</namePart>\n    <nameIdentifier type=\"gnd\">2090330-3</nameIdentifier>\n    <role>\n      <roleTerm type=\"text\">[Verfasser]</roleTerm>\n    </role>\n  </name>\n  <name type=\"corporate\">\n    <namePart>Goethe-Institut (München) (2003-)</namePart>\n    <nameIdentifier type=\"gnd\">10068828-7</nameIdentifier>\n    <namePart type=\"date\">2003-07</namePart>\n    <role>\n      <roleTerm type=\"text\">[Adressat]</roleTerm>\n    </role>\n  </name>\n  <typeOfResource manuscript=\"yes\">Handschrift</typeOfResource>\n  <genre>Brief</genre>\n  <originInfo eventType=\"manufacture\">\n    <dateCreated point=\"start\" encoding=\"iso8601\">1967-09-06</dateCreated>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <extent>2 Blatt Durchschlag</extent>\n  </physicalDescription>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS01159165</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00013575</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>A:Lenz, Siegfried</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2019-03-15</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2019-03-15</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS01159167</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Goethe-Institut Athen an Goethe-Institut (München)</dc:title>\n  <dc:creator>Goethe-Institut Athen</dc:creator>\n  <dc:contributor>Goethe-Institut (München) (2003-)</dc:contributor>\n  <dc:type>Brief</dc:type>\n  <dc:type>Handschrift</dc:type>\n  <dc:date>1967-09-06</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>2 Blatt Durchschlag</dc:format>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/HS01159165</dc:source>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00013575</dc:source>\n  <dc:identifier>A:Lenz, Siegfried</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/HS01159167</dc:identifier>\n  <dc:identifier>HS01159167</dc:identifier>\n</oai_dc:dc>",
+                            "Goethe-Institut Athen",
+                            "1967-09-06",
+                            "1967-09-06",
+                            "Instituto Goethe (Ath¯enai)",
+                            "Goethe-Institut (Ath¯enai)",
+                            "Goethe-Institut (Athen)",
+                            "Instituto Goethe (Athen)",
+                            "Instituto Goethe Athen¯on",
+                            "Goethe-Institut München. Zweigstelle Athen",
+                            "Goethe-Institut <Ath¯enai>",
+                            "Goethe-Institut",
+                            "Goethe-Institut München",
+                            "Goethe-Institut e.V.",
+                            "GI",
+                            "Goethe Institute",
+                            "Institut Goethe",
+                            "Instituto Goethe",
+                            "Goethe-institutet",
+                            "Instytut Goethego",
+                            "Goethe Enstitüsü",
+                            "ohne Ort",
+                            "06.09.1967",
+                            "Goethe-Institut Athen␝Von",
+                            "Goethe-Institut (München) (2003-)␝An",
+                            "false",
+                            "HS.2014.0114",
+                            "Goethe-Institut Athen",
+                            "Goethe-Institut (München) (2003-)",
+                            "2019-03-15",
+                            "1967-09-06T00:00:00Z",
+                            "Bei",
+                            "GOETHEINSTITUT MUENCHEN",
+                            "2019-03-15",
+                            "Goethe-Institut Athen",
+                            "BE00006911",
+                            "Briefe",
+                            "Goethe-Institut",
+                            "KS00026239",
+                            "KS00051994",
+                            "[Verfasser]",
+                            "BE00006911",
+                            "Goethe-Institut (München) an Lenz, Siegfried [Briefe]",
+                            "HS011591673",
+                            "Deutsch␝Original",
+                            "06.09.1967",
+                            "1967-09-06",
+                            "benutzbar",
+                            "Goethe-Institut (München) (2003-)",
+                            "Brief",
+                            "Goethe-Institut Athen an Goethe-Institut (München)",
+                            "2 Blatt Durchschlag",
+                            "TY  - GEN\nA2  - Goethe-Institut\nAN  - HS.2014.0114\nAU  - Goethe-Institut Athen\nCN  - HS011591673\nDA  - 1967/09/06\nDB  - A:Lenz, Siegfried\nID  - HS01159167\nLA  - Deutsch\nM3  - Brief\nN1  - Umfang: 2 Blatt Durchschlag\nST  - Goethe-Institut Athen an Goethe-Institut (München)\nTI  - Goethe-Institut Athen an Goethe-Institut (München) [Briefe]\nUR  - https://www.dla-marbach.de/find/opac/id/HS01159167/\nER  -",
+                            "2019-03-15",
+                            "HS01159167",
+                            "A:Lenz, Siegfried",
+                            "Briefe anderer",
+                            "Handschriften Einzelnachweise",
+                            "1.0.0",
+                            "Handschrift"
+                        ],
+                        "searchName_mv": [
+                            "Goethe-Institut Athen",
+                            "Goethe-Institut"
+                        ],
+                        "searchCollectionCreator_id_mv": [
+                            "PE00000893"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "collection_id_mv": [
+                            "BF00013575"
+                        ],
+                        "collection_display_mv": [
+                            "A:Lenz, Siegfried - [Bestand, Nachlass]"
+                        ],
+                        "sortingKey": "GOETHEINSTITUT ATHEN",
+                        "corporationTo_role_mv": [
+                            "[Adressat]"
+                        ],
+                        "corporationBy_id_mv": [
+                            "KS00026239"
+                        ],
+                        "corporationTo_id_mv": [
+                            "KS00051994"
+                        ],
+                        "searchCollectionCreator_display_mv": [
+                            "Lenz, Siegfried (1926-2014)"
+                        ],
+                        "statusLoan": "Am Standort",
+                        "displayName": "Goethe-Institut Athen [Verfasser]; Goethe-Institut (München) (2003-) [Adressat]",
+                        "display": "Goethe-Institut Athen an Goethe-Institut (München) [Briefe]",
+                        "displayAddition2": "A:Lenz, Siegfried - [Bestand, Nachlass]",
+                        "parent_id_mv": [
+                            "HS01159165"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/HS01159167",
+                        "source": "HS",
+                        "filterAuthorityRole_mv": [
+                            "Goethe-Institut Athen␝Verfasser/Urheber",
+                            "Goethe-Institut (München) (2003-)␝Adressat"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Goethe-Institut Athen an Goethe-Institut (München)</title>\n  </titleInfo>\n  <name type=\"corporate\">\n    <namePart>Goethe-Institut Athen</namePart>\n    <nameIdentifier type=\"gnd\">2090330-3</nameIdentifier>\n    <role>\n      <roleTerm type=\"text\">[Verfasser]</roleTerm>\n    </role>\n  </name>\n  <name type=\"corporate\">\n    <namePart>Goethe-Institut (München) (2003-)</namePart>\n    <nameIdentifier type=\"gnd\">10068828-7</nameIdentifier>\n    <namePart type=\"date\">2003-07</namePart>\n    <role>\n      <roleTerm type=\"text\">[Adressat]</roleTerm>\n    </role>\n  </name>\n  <typeOfResource manuscript=\"yes\">Handschrift</typeOfResource>\n  <genre>Brief</genre>\n  <originInfo eventType=\"manufacture\">\n    <dateCreated point=\"start\" encoding=\"iso8601\">1967-09-06</dateCreated>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <extent>2 Blatt Durchschlag</extent>\n  </physicalDescription>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS01159165</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00013575</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>A:Lenz, Siegfried</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2019-03-15</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2019-03-15</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS01159167</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Goethe-Institut Athen an Goethe-Institut (München)</dc:title>\n  <dc:creator>Goethe-Institut Athen</dc:creator>\n  <dc:contributor>Goethe-Institut (München) (2003-)</dc:contributor>\n  <dc:type>Brief</dc:type>\n  <dc:type>Handschrift</dc:type>\n  <dc:date>1967-09-06</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>2 Blatt Durchschlag</dc:format>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/HS01159165</dc:source>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00013575</dc:source>\n  <dc:identifier>A:Lenz, Siegfried</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/HS01159167</dc:identifier>\n  <dc:identifier>HS01159167</dc:identifier>\n</oai_dc:dc>",
+                        "corporationBy_display_mv": [
+                            "Goethe-Institut Athen"
+                        ],
+                        "filterDateRange_mv": [
+                            "1967-09-06"
+                        ],
+                        "dateOriginStart": "1967-09-06",
+                        "searchVariant_mv": [
+                            "Instituto Goethe (Ath¯enai)",
+                            "Goethe-Institut (Ath¯enai)",
+                            "Goethe-Institut (Athen)",
+                            "Instituto Goethe (Athen)",
+                            "Instituto Goethe Athen¯on",
+                            "Goethe-Institut München. Zweigstelle Athen",
+                            "Goethe-Institut <Ath¯enai>",
+                            "Goethe-Institut",
+                            "Goethe-Institut München",
+                            "Goethe-Institut e.V.",
+                            "GI",
+                            "Goethe Institute",
+                            "Institut Goethe",
+                            "Instituto Goethe",
+                            "Goethe-institutet",
+                            "Instytut Goethego",
+                            "Goethe Enstitüsü"
+                        ],
+                        "place_mv": [
+                            "ohne Ort"
+                        ],
+                        "displayAddition1": "06.09.1967",
+                        "filterAuthorityRelation_mv": [
+                            "Goethe-Institut Athen␝Von",
+                            "Goethe-Institut (München) (2003-)␝An"
+                        ],
+                        "confidential": false,
+                        "accessionNumber": "HS.2014.0114",
+                        "filterAuthority_mv": [
+                            "Goethe-Institut Athen",
+                            "Goethe-Institut (München) (2003-)"
+                        ],
+                        "filterRecent": "2019-03-15",
+                        "filterDatePoint_mv": [
+                            "1967-09-06T00:00:00Z"
+                        ],
+                        "parent_type_mv": [
+                            "Bei"
+                        ],
+                        "sortingKeySub": "GOETHEINSTITUT MUENCHEN",
+                        "dateCataloged": "2019-03-15",
+                        "searchNameBy_mv": [
+                            "Goethe-Institut Athen"
+                        ],
+                        "accession_display": "BE00006911",
+                        "genre": "Briefe",
+                        "searchNameTo_mv": [
+                            "Goethe-Institut"
+                        ],
+                        "searchEntity_id_mv": [
+                            "KS00026239",
+                            "KS00051994"
+                        ],
+                        "corporationBy_role_mv": [
+                            "[Verfasser]"
+                        ],
+                        "accession_id": "BE00006911",
+                        "parent_display_mv": [
+                            "Goethe-Institut (München) an Lenz, Siegfried [Briefe]"
+                        ],
+                        "mediaNumber": "HS011591673",
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "searchDate_mv": [
+                            "06.09.1967",
+                            "1967-09-06"
+                        ],
+                        "usageRestriction": "benutzbar",
+                        "corporationTo_display_mv": [
+                            "Goethe-Institut (München) (2003-)"
+                        ],
+                        "filterFormContent_mv": [
+                            "Brief"
+                        ],
+                        "title": "Goethe-Institut Athen an Goethe-Institut (München)",
+                        "extent": "2 Blatt Durchschlag",
+                        "exportRIS": "TY  - GEN\nA2  - Goethe-Institut\nAN  - HS.2014.0114\nAU  - Goethe-Institut Athen\nCN  - HS011591673\nDA  - 1967/09/06\nDB  - A:Lenz, Siegfried\nID  - HS01159167\nLA  - Deutsch\nM3  - Brief\nN1  - Umfang: 2 Blatt Durchschlag\nST  - Goethe-Institut Athen an Goethe-Institut (München)\nTI  - Goethe-Institut Athen an Goethe-Institut (München) [Briefe]\nUR  - https://www.dla-marbach.de/find/opac/id/HS01159167/\nER  -",
+                        "dateModified": "2019-03-15",
+                        "id": "HS01159167",
+                        "filterCollection_mv": [
+                            "A:Lenz, Siegfried"
+                        ],
+                        "category": "Briefe anderer",
+                        "filterSource": "Handschriften Einzelnachweise",
+                        "schemaVersion": "1.0.0",
+                        "categorySub": "Handschrift",
+                        "score": 63.127953
+                    },
+                    {
+                        "filterLocationType_mv": [
+                            "Hannover␝Erscheinungsort"
+                        ],
+                        "default": [
+                            "Hannover␝Erscheinungsort",
+                            "kart.",
+                            "AU00259819",
+                            "Goethe-Gesellschaft <Hannover>",
+                            "Goethe-Gesellschaft",
+                            "Goethe, Johann Wolfgang von",
+                            "Gedrucktes",
+                            "A6 (Jockusch,Mar.). G85.2225. Sechzig Jahre Goethe-Gesellschaft Hannover : 1925 - 1985 ; Rückschau 1965 - 1985",
+                            "Hannover",
+                            "1",
+                            "Sechzig Jahre Goethe-Gesellschaft Hannover",
+                            "Band",
+                            "Kette Bibliothek",
+                            "Kette Bibliothek",
+                            "KS00013736",
+                            "benutzbar",
+                            "Text",
+                            "Goethe-Gesellschaft <Hannover>",
+                            "PE00000863",
+                            "Deutsch",
+                            "Buch",
+                            "Goethe, Johann Wolfgang von (1749-1832)",
+                            "Deutsch",
+                            "1985",
+                            "G85.2225",
+                            "https://www.dla-marbach.de/find/opac/id/AK00346864",
+                            "Körperschaft ÜBER (vor 1999 erfaßt)",
+                            "Institutionen / Einzelne Institutionen",
+                            "Goethe, Johann Wolfgang von (1749-1832)",
+                            "Goethe-Gesellschaft",
+                            "Goethe-Gesellschaft <Hannover>␝Verfasser/Urheber",
+                            "Goethe-Gesellschaft (1885-)␝Behandelte Person/Körperschaft",
+                            "Goethe, Johann Wolfgang von (1749-1832)␝Behandelte Person/Körperschaft",
+                            "K10Plus-PPN",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Sechzig Jahre Goethe-Gesellschaft Hannover</title>\n    <subTitle>1925 - 1985 ; Rückschau 1965 - 1985</subTitle>\n  </titleInfo>\n  <name type=\"corporate\">\n    <namePart>Goethe-Gesellschaft &lt;Hannover&gt;</namePart>\n    <nameIdentifier type=\"gnd\">1094380-8</nameIdentifier>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Buch</typeOfResource>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Hannover</placeTerm>\n    </place>\n    <publisher>Goethe-Ges.</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1985</dateIssued>\n    <displayDate>1985</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n    <extent>59 Seiten</extent>\n  </physicalDescription>\n  <note type=\"footnotes\">kart.</note>\n  <subject>\n    <topic>Körperschaft ÜBER (vor 1999 erfaßt)</topic>\n  </subject>\n  <subject>\n    <topic>Institutionen / Einzelne Institutionen</topic>\n  </subject>\n  <subject>\n    <topic>Goethe, Johann Wolfgang von (1749-1832)</topic>\n  </subject>\n  <subject>\n    <topic>Goethe-Gesellschaft</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Goethe, Johann Wolfgang von (1749-1832)</namePart>\n    </name>\n  </subject>\n  <subject>\n    <name type=\"corporate\">\n      <namePart>Goethe-Gesellschaft (1885-)</namePart>\n    </name>\n  </subject>\n  <classification authority=\"DE-Mar1\">Goethe-Gesellschaft / K0 Körperschaft ÜBER (vor 1999 erfaßt)</classification>\n  <classification authority=\"DE-Mar1\">Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Gesellschaft</classification>\n  <identifier type=\"kxp\">1385389109</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>A6 (Jockusch,Mar.)</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2008-03-28</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2010-07-30</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00346864</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Sechzig Jahre Goethe-Gesellschaft Hannover : 1925 - 1985 ; Rückschau 1965 - 1985</dc:title>\n  <dc:creator>Goethe-Gesellschaft &lt;Hannover&gt;</dc:creator>\n  <dc:type>Buch</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:publisher>Goethe-Ges.</dc:publisher>\n  <dc:date>1985</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>59 Seiten</dc:format>\n  <dc:description>kart.</dc:description>\n  <dc:subject>Körperschaft ÜBER (vor 1999 erfaßt)</dc:subject>\n  <dc:subject>Institutionen / Einzelne Institutionen</dc:subject>\n  <dc:subject>Goethe, Johann Wolfgang von (1749-1832)</dc:subject>\n  <dc:subject>Goethe-Gesellschaft</dc:subject>\n  <dc:subject>Goethe-Gesellschaft (1885-)</dc:subject>\n  <dc:subject>Goethe-Gesellschaft / K0 Körperschaft ÜBER (vor 1999 erfaßt)</dc:subject>\n  <dc:subject>Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Gesellschaft</dc:subject>\n  <dc:identifier>1385389109</dc:identifier>\n  <dc:identifier>A6 (Jockusch,Mar.)</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00346864</dc:identifier>\n  <dc:identifier>AK00346864</dc:identifier>\n</oai_dc:dc>",
+                            "Goethe-Gesellschaft <Hannover>",
+                            "1985",
+                            "Druckschrift",
+                            "Goethe-Gesellschaft in Weimar e.V.",
+                            "Goethe-Gesellschaft Weimar",
+                            "Goethe-Gesellschaft in Weimar",
+                            "Goethe-Gesellschaft <Weimar>",
+                            "Goethe Gesellschaft <Weimar>",
+                            "Geothe-Gesellschaft <Weimar>",
+                            "Goethe-Gesellschaft / Ortsvereinigung <Hannover>",
+                            "Goethe, Johann Wolfgang",
+                            "Gete, Iogann W.",
+                            "Goethe, Johann W.",
+                            "Gëte, Iogann V.",
+                            "Goethe, Wolfgang von",
+                            "Goethius, ...",
+                            "Goethe, Volfgango",
+                            "Goethe, Johan Wolphgang",
+                            "Gete, Johan Volfgang",
+                            "Goethe, Johann Wolfgang",
+                            "Göthe, J. W.",
+                            "Goethe, Johann W. von",
+                            "Hannover : Goethe-Ges., 1985 - 59 Seiten",
+                            "536",
+                            "Goethe-Gesellschaft <Hannover>␝Von",
+                            "Goethe-Gesellschaft (1885-)␝Über",
+                            "Goethe, Johann Wolfgang von (1749-1832)␝Über",
+                            "false",
+                            "KS00000833",
+                            "Goethe-Gesellschaft <Hannover>",
+                            "Goethe-Gesellschaft (1885-)",
+                            "Goethe, Johann Wolfgang von (1749-1832)",
+                            "2008-03-28",
+                            "1985-01-01T00:00:00Z",
+                            "2008-03-28",
+                            "Goethe-Gesellschaft <Hannover>",
+                            "1.0.0",
+                            "KS00013736",
+                            "Goethe-Gesellschaft / K0 Körperschaft ÜBER (vor 1999 erfaßt)",
+                            "Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Gesellschaft",
+                            "u-unklar",
+                            "SE00125127",
+                            "SE00006669",
+                            "Bibliotheksmagazin",
+                            "Goethe-Gesellschaft (1885-)",
+                            "Verfasser/Urheber",
+                            "creator",
+                            "Sechzig Jahre Goethe-Gesellschaft Hannover : 1925 - 1985 ; Rückschau 1965 - 1985",
+                            "90,B47,0474",
+                            "901414239",
+                            "0203_0558_1.tif",
+                            "0268_0464_1.tif",
+                            "Deutsch␝Original",
+                            "1985",
+                            "KS00018572",
+                            "Retrokonversion",
+                            "Goethe-Gesellschaft",
+                            "Goethe, Johann Wolfgang von",
+                            "Sechzig Jahre Goethe-Gesellschaft Hannover : 1925 - 1985 ; Rückschau 1965 - 1985",
+                            "AK",
+                            "59 Seiten",
+                            "Druckschrift",
+                            "TY  - GEN\nA2  - Goethe-Gesellschaft\nA2  - Goethe, Johann Wolfgang von\nAU  - Goethe-Gesellschaft <Hannover>\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Hannover\nDA  - 1985\nID  - AK00346864\nKW  - Körperschaft ÜBER (vor 1999 erfaßt)\nKW  - Institutionen / Einzelne Institutionen\nKW  - Goethe, Johann Wolfgang von (1749-1832)\nKW  - Goethe-Gesellschaft\nLA  - Deutsch\nM2  - Buch\nN1  - Umfang: 59 Seiten\nN1  - Erscheinungsort: Hannover\nN1  - kart.\nPB  - Goethe-Ges.\nPY  - 1985\nTI  - Sechzig Jahre Goethe-Gesellschaft Hannover : 1925 - 1985 ; Rückschau 1965 - 1985\nUR  - https://www.dla-marbach.de/find/opac/id/AK00346864/\nER  -",
+                            "A6",
+                            "2010-07-30",
+                            "1385389109",
+                            "Jockusch,Mar.",
+                            "Goethe-Ges.",
+                            "AK00346864",
+                            "574",
+                            "572",
+                            "572y",
+                            "572y",
+                            "Goethe-Ges.",
+                            "KS00000833",
+                            "KS00013736",
+                            "PE00000863",
+                            "KS00018572",
+                            "SE00125127",
+                            "SE00006669",
+                            "1925 - 1985 ; Rückschau 1965 - 1985",
+                            "Bibliotheksdokumente",
+                            "Bibliotheksmaterialien",
+                            "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                            "Hannover",
+                            "1985",
+                            "Goethe-Gesellschaft <Hannover>"
+                        ],
+                        "noteFootnote_text_mv": [
+                            "kart."
+                        ],
+                        "item_id_mv": [
+                            "AU00259819"
+                        ],
+                        "searchName_mv": [
+                            "Goethe-Gesellschaft <Hannover>",
+                            "Goethe-Gesellschaft",
+                            "Goethe, Johann Wolfgang von"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "item_display_mv": [
+                            "A6 (Jockusch,Mar.). G85.2225. Sechzig Jahre Goethe-Gesellschaft Hannover : 1925 - 1985 ; Rückschau 1965 - 1985"
+                        ],
+                        "publisherOriginalLocation_mv": [
+                            "Hannover"
+                        ],
+                        "searchBoost": 1,
+                        "titleMain_text": "Sechzig Jahre Goethe-Gesellschaft Hannover",
+                        "categoryMedium_mv": [
+                            "Band"
+                        ],
+                        "classification_category_mv": [
+                            "Kette Bibliothek",
+                            "Kette Bibliothek"
+                        ],
+                        "corporationBy_id_mv": [
+                            "KS00013736"
+                        ],
+                        "item_usageRestriction_mv": [
+                            "benutzbar"
+                        ],
+                        "categoryContent_mv": [
+                            "Text"
+                        ],
+                        "creator_display_mv": [
+                            "Goethe-Gesellschaft <Hannover>"
+                        ],
+                        "personAbout_id_mv": [
+                            "PE00000863"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "personAbout_display_mv": [
+                            "Goethe, Johann Wolfgang von (1749-1832)"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "dateOrigin": "1985",
+                        "item_accessionNumber_mv": [
+                            "G85.2225"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK00346864",
+                        "filterSubject_mv": [
+                            "Körperschaft ÜBER (vor 1999 erfaßt)",
+                            "Institutionen / Einzelne Institutionen",
+                            "Goethe, Johann Wolfgang von (1749-1832)",
+                            "Goethe-Gesellschaft"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Goethe-Gesellschaft <Hannover>␝Verfasser/Urheber",
+                            "Goethe-Gesellschaft (1885-)␝Behandelte Person/Körperschaft",
+                            "Goethe, Johann Wolfgang von (1749-1832)␝Behandelte Person/Körperschaft"
+                        ],
+                        "vendor_type_mv": [
+                            "K10Plus-PPN"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Sechzig Jahre Goethe-Gesellschaft Hannover</title>\n    <subTitle>1925 - 1985 ; Rückschau 1965 - 1985</subTitle>\n  </titleInfo>\n  <name type=\"corporate\">\n    <namePart>Goethe-Gesellschaft &lt;Hannover&gt;</namePart>\n    <nameIdentifier type=\"gnd\">1094380-8</nameIdentifier>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Buch</typeOfResource>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Hannover</placeTerm>\n    </place>\n    <publisher>Goethe-Ges.</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1985</dateIssued>\n    <displayDate>1985</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n    <extent>59 Seiten</extent>\n  </physicalDescription>\n  <note type=\"footnotes\">kart.</note>\n  <subject>\n    <topic>Körperschaft ÜBER (vor 1999 erfaßt)</topic>\n  </subject>\n  <subject>\n    <topic>Institutionen / Einzelne Institutionen</topic>\n  </subject>\n  <subject>\n    <topic>Goethe, Johann Wolfgang von (1749-1832)</topic>\n  </subject>\n  <subject>\n    <topic>Goethe-Gesellschaft</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Goethe, Johann Wolfgang von (1749-1832)</namePart>\n    </name>\n  </subject>\n  <subject>\n    <name type=\"corporate\">\n      <namePart>Goethe-Gesellschaft (1885-)</namePart>\n    </name>\n  </subject>\n  <classification authority=\"DE-Mar1\">Goethe-Gesellschaft / K0 Körperschaft ÜBER (vor 1999 erfaßt)</classification>\n  <classification authority=\"DE-Mar1\">Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Gesellschaft</classification>\n  <identifier type=\"kxp\">1385389109</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>A6 (Jockusch,Mar.)</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2008-03-28</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2010-07-30</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00346864</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Sechzig Jahre Goethe-Gesellschaft Hannover : 1925 - 1985 ; Rückschau 1965 - 1985</dc:title>\n  <dc:creator>Goethe-Gesellschaft &lt;Hannover&gt;</dc:creator>\n  <dc:type>Buch</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:publisher>Goethe-Ges.</dc:publisher>\n  <dc:date>1985</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>59 Seiten</dc:format>\n  <dc:description>kart.</dc:description>\n  <dc:subject>Körperschaft ÜBER (vor 1999 erfaßt)</dc:subject>\n  <dc:subject>Institutionen / Einzelne Institutionen</dc:subject>\n  <dc:subject>Goethe, Johann Wolfgang von (1749-1832)</dc:subject>\n  <dc:subject>Goethe-Gesellschaft</dc:subject>\n  <dc:subject>Goethe-Gesellschaft (1885-)</dc:subject>\n  <dc:subject>Goethe-Gesellschaft / K0 Körperschaft ÜBER (vor 1999 erfaßt)</dc:subject>\n  <dc:subject>Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Gesellschaft</dc:subject>\n  <dc:identifier>1385389109</dc:identifier>\n  <dc:identifier>A6 (Jockusch,Mar.)</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00346864</dc:identifier>\n  <dc:identifier>AK00346864</dc:identifier>\n</oai_dc:dc>",
+                        "corporationBy_display_mv": [
+                            "Goethe-Gesellschaft <Hannover>"
+                        ],
+                        "filterDateRange_mv": [
+                            "1985"
+                        ],
+                        "categorySubSub": "Druckschrift",
+                        "searchVariant_mv": [
+                            "Goethe-Gesellschaft in Weimar e.V.",
+                            "Goethe-Gesellschaft Weimar",
+                            "Goethe-Gesellschaft in Weimar",
+                            "Goethe-Gesellschaft <Weimar>",
+                            "Goethe Gesellschaft <Weimar>",
+                            "Geothe-Gesellschaft <Weimar>",
+                            "Goethe-Gesellschaft / Ortsvereinigung <Hannover>",
+                            "Goethe, Johann Wolfgang",
+                            "Gete, Iogann W.",
+                            "Goethe, Johann W.",
+                            "Gëte, Iogann V.",
+                            "Goethe, Wolfgang von",
+                            "Goethius, ...",
+                            "Goethe, Volfgango",
+                            "Goethe, Johan Wolphgang",
+                            "Gete, Johan Volfgang",
+                            "Goethe, Johann Wolfgang",
+                            "Göthe, J. W.",
+                            "Goethe, Johann W. von"
+                        ],
+                        "displayAddition1": "Hannover : Goethe-Ges., 1985 - 59 Seiten",
+                        "noteFootnote_type_mv": [
+                            "536"
+                        ],
+                        "filterAuthorityRelation_mv": [
+                            "Goethe-Gesellschaft <Hannover>␝Von",
+                            "Goethe-Gesellschaft (1885-)␝Über",
+                            "Goethe, Johann Wolfgang von (1749-1832)␝Über"
+                        ],
+                        "confidential": false,
+                        "corporationAbout_id_mv": [
+                            "KS00000833"
+                        ],
+                        "filterAuthority_mv": [
+                            "Goethe-Gesellschaft <Hannover>",
+                            "Goethe-Gesellschaft (1885-)",
+                            "Goethe, Johann Wolfgang von (1749-1832)"
+                        ],
+                        "filterRecent": "2008-03-28",
+                        "filterDatePoint_mv": [
+                            "1985-01-01T00:00:00Z"
+                        ],
+                        "dateCataloged": "2008-03-28",
+                        "searchNameBy_mv": [
+                            "Goethe-Gesellschaft <Hannover>"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "creator_id_mv": [
+                            "KS00013736"
+                        ],
+                        "classification_display_mv": [
+                            "Goethe-Gesellschaft / K0 Körperschaft ÜBER (vor 1999 erfaßt)",
+                            "Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Gesellschaft"
+                        ],
+                        "statusCataloging": "u-unklar",
+                        "searchClassification_id_mv": [
+                            "SE00125127",
+                            "SE00006669"
+                        ],
+                        "item_location_mv": [
+                            "Bibliotheksmagazin"
+                        ],
+                        "corporationAbout_display_mv": [
+                            "Goethe-Gesellschaft (1885-)"
+                        ],
+                        "corporationBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "corporationBy_creator_mv": [
+                            "creator"
+                        ],
+                        "title": "Sechzig Jahre Goethe-Gesellschaft Hannover : 1925 - 1985 ; Rückschau 1965 - 1985",
+                        "identifier_id_mv": [
+                            "90,B47,0474",
+                            "901414239",
+                            "0203_0558_1.tif",
+                            "0268_0464_1.tif"
+                        ],
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "searchDate_mv": [
+                            "1985"
+                        ],
+                        "publisher_id_mv": [
+                            "KS00018572"
+                        ],
+                        "statusEditing": "Retrokonversion",
+                        "searchNameAbout_mv": [
+                            "Goethe-Gesellschaft",
+                            "Goethe, Johann Wolfgang von"
+                        ],
+                        "display": "Sechzig Jahre Goethe-Gesellschaft Hannover : 1925 - 1985 ; Rückschau 1965 - 1985",
+                        "source": "AK",
+                        "extent": "59 Seiten",
+                        "categoryMedia_mv": [
+                            "Druckschrift"
+                        ],
+                        "exportRIS": "TY  - GEN\nA2  - Goethe-Gesellschaft\nA2  - Goethe, Johann Wolfgang von\nAU  - Goethe-Gesellschaft <Hannover>\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Hannover\nDA  - 1985\nID  - AK00346864\nKW  - Körperschaft ÜBER (vor 1999 erfaßt)\nKW  - Institutionen / Einzelne Institutionen\nKW  - Goethe, Johann Wolfgang von (1749-1832)\nKW  - Goethe-Gesellschaft\nLA  - Deutsch\nM2  - Buch\nN1  - Umfang: 59 Seiten\nN1  - Erscheinungsort: Hannover\nN1  - kart.\nPB  - Goethe-Ges.\nPY  - 1985\nTI  - Sechzig Jahre Goethe-Gesellschaft Hannover : 1925 - 1985 ; Rückschau 1965 - 1985\nUR  - https://www.dla-marbach.de/find/opac/id/AK00346864/\nER  -",
+                        "item_callNumberItem_mv": [
+                            "A6"
+                        ],
+                        "dateModified": "2010-07-30",
+                        "vendor_id_mv": [
+                            "1385389109"
+                        ],
+                        "item_callNumberItemSuffix_mv": [
+                            "Jockusch,Mar."
+                        ],
+                        "publisherOriginalText_mv": [
+                            "Goethe-Ges."
+                        ],
+                        "id": "AK00346864",
+                        "identifier_type_mv": [
+                            "574",
+                            "572",
+                            "572y",
+                            "572y"
+                        ],
+                        "publisher_display_mv": [
+                            "Goethe-Ges."
+                        ],
+                        "searchEntity_id_mv": [
+                            "KS00000833",
+                            "KS00013736",
+                            "PE00000863",
+                            "KS00018572"
+                        ],
+                        "classification_id_mv": [
+                            "SE00125127",
+                            "SE00006669"
+                        ],
+                        "titleSuffix": "1925 - 1985 ; Rückschau 1965 - 1985",
+                        "category": "Bibliotheksdokumente",
+                        "filterSource": "Bibliotheksmaterialien",
+                        "categorySub": "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                        "filterLocation_mv": [
+                            "Hannover"
+                        ],
+                        "dateOriginComment_mv": [
+                            "1985"
+                        ],
+                        "displayName": "Goethe-Gesellschaft <Hannover>",
+                        "score": 62.931717
+                    },
+                    {
+                        "filterLocationType_mv": [
+                            "Weimar␝Erscheinungsort"
+                        ],
+                        "default": [
+                            "Weimar␝Erscheinungsort",
+                            "In Fraktur",
+                            "AU00590926",
+                            "Goethe-Nationalmuseum",
+                            "Goethe, Johann Wolfgang von",
+                            "Goethe-Wohnhaus <Weimar>",
+                            "Gedrucktes",
+                            "HH:Kps. (Goethe,Joh.W.). G83.0650. Kurzer Führer durch das Goethehaus und das Goethe-Nationalmuseum",
+                            "Weimar",
+                            "1",
+                            "Kurzer Führer durch das Goethehaus und das Goethe-Nationalmuseum",
+                            "Band",
+                            "Kette Bibliothek",
+                            "Kette Bibliothek",
+                            "Kette Bibliothek",
+                            "Kette Bibliothek",
+                            "KS00014793",
+                            "benutzbar",
+                            "Text",
+                            "Goethe-Nationalmuseum (1885-)",
+                            "Aus dem Nachlass von Günther Müller",
+                            "PE00000863",
+                            "Deutsch",
+                            "Buch",
+                            "Goethe, Johann Wolfgang von (1749-1832)",
+                            "Deutsch",
+                            "1939",
+                            "Kurzer Führer durch das Goethehaus und das Goethe-Nationalmuseum",
+                            "https://www.dla-marbach.de/find/opac/id/AK01359808",
+                            "Institutionen / Einzelne Institutionen",
+                            "Darstellungen",
+                            "Goethe, Johann Wolfgang von (1749-1832)",
+                            "Goethe-Wohnhaus <Weimar>",
+                            "Goethe-Nationalmuseum",
+                            "Goethe-Nationalmuseum (1885-)␝Verfasser/Urheber",
+                            "Goethe, Johann Wolfgang von (1749-1832)␝Behandelte Person/Körperschaft",
+                            "Goethe-Wohnhaus <Weimar>␝Behandelte Person/Körperschaft",
+                            "Goethe-Nationalmuseum (1885-)␝Behandelte Person/Körperschaft",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Kurzer Führer durch das Goethehaus und das Goethe-Nationalmuseum</title>\n  </titleInfo>\n  <name type=\"corporate\">\n    <namePart>Goethe-Nationalmuseum (1885-)</namePart>\n    <nameIdentifier type=\"gnd\">2049358-7</nameIdentifier>\n    <namePart type=\"date\">1885-08-08</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Buch</typeOfResource>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Weimar</placeTerm>\n    </place>\n    <publisher>Uschmann</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1939</dateIssued>\n    <displayDate>1939</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n    <extent>31 Seiten</extent>\n  </physicalDescription>\n  <note type=\"footnotes\">In Fraktur</note>\n  <subject>\n    <topic>Institutionen / Einzelne Institutionen</topic>\n  </subject>\n  <subject>\n    <topic>Darstellungen</topic>\n  </subject>\n  <subject>\n    <topic>Goethe, Johann Wolfgang von (1749-1832)</topic>\n  </subject>\n  <subject>\n    <topic>Goethe-Wohnhaus &lt;Weimar&gt;</topic>\n  </subject>\n  <subject>\n    <topic>Goethe-Nationalmuseum</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Goethe, Johann Wolfgang von (1749-1832)</namePart>\n    </name>\n  </subject>\n  <subject>\n    <name type=\"corporate\">\n      <namePart>Goethe-Wohnhaus &lt;Weimar&gt;</namePart>\n    </name>\n  </subject>\n  <subject>\n    <name type=\"corporate\">\n      <namePart>Goethe-Nationalmuseum (1885-)</namePart>\n    </name>\n  </subject>\n  <classification authority=\"DE-Mar1\">Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Wohnhaus &lt;Weimar&gt;</classification>\n  <classification authority=\"DE-Mar1\">Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Nationalmuseum</classification>\n  <classification authority=\"DE-Mar1\">Goethe-Wohnhaus &lt;Weimar&gt; / K2 Darstellungen</classification>\n  <classification authority=\"DE-Mar1\">Goethe-Nationalmuseum / K2 Darstellungen</classification>\n  <identifier type=\"kxp\">1398425427</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>HH:Kps. (Goethe,Joh.W.)</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2013-11-21</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2013-11-21</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01359808</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Kurzer Führer durch das Goethehaus und das Goethe-Nationalmuseum</dc:title>\n  <dc:creator>Goethe-Nationalmuseum (1885-)</dc:creator>\n  <dc:type>Buch</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:publisher>Uschmann</dc:publisher>\n  <dc:date>1939</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>31 Seiten</dc:format>\n  <dc:description>In Fraktur</dc:description>\n  <dc:subject>Institutionen / Einzelne Institutionen</dc:subject>\n  <dc:subject>Darstellungen</dc:subject>\n  <dc:subject>Goethe, Johann Wolfgang von (1749-1832)</dc:subject>\n  <dc:subject>Goethe-Wohnhaus &lt;Weimar&gt;</dc:subject>\n  <dc:subject>Goethe-Nationalmuseum</dc:subject>\n  <dc:subject>Goethe-Nationalmuseum (1885-)</dc:subject>\n  <dc:subject>Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Wohnhaus &lt;Weimar&gt;</dc:subject>\n  <dc:subject>Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Nationalmuseum</dc:subject>\n  <dc:subject>Goethe-Wohnhaus &lt;Weimar&gt; / K2 Darstellungen</dc:subject>\n  <dc:subject>Goethe-Nationalmuseum / K2 Darstellungen</dc:subject>\n  <dc:identifier>1398425427</dc:identifier>\n  <dc:identifier>HH:Kps. (Goethe,Joh.W.)</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01359808</dc:identifier>\n  <dc:identifier>AK01359808</dc:identifier>\n</oai_dc:dc>",
+                            "Goethe-Nationalmuseum (1885-)",
+                            "1939",
+                            "Druckschrift",
+                            "Nationale Forschungs- und Gedenkstätten der Klassischen Deutschen Literatur <Weimar> / Goethe-Wohnhaus",
+                            "Goethes Wohnhaus <Weimar>",
+                            "Nationale Forschungs- und Gedenkstätten der Klassischen Deutschen Literatur <Weimar> / Goethes Wohnhaus",
+                            "Goethe's House <Weimar>",
+                            "Nationale Forschungs- und Gedenkstätten der Klassischen Deutschen Literatur <Weimar> / Goethe's House",
+                            "Goethehaus <Weimar>",
+                            "Museo Goethiano Nazionale",
+                            "Nationale Forschungs- und Gedenkstätten der Klassischen Deutschen Literatur",
+                            "Stiftung Weimarer Klassik",
+                            "Stiftung Weimarer Klassik und Kunstsammlungen",
+                            "Stiftung Weimarer Klassik und Kunstsammlungen",
+                            "Klassik Stiftung Weimar",
+                            "Klassik Stiftung Weimar",
+                            "Nationale Forschungs- und Gedenkstätten der Klassischen Deutschen Literatur",
+                            "Stiftung Weimarer Klassik",
+                            "Goethe-Nationalmuseum",
+                            "Nationale Forschungs- und Gedenkstätten der Klassischen Deutschen Literatur",
+                            "Klassik-Stiftung Weimar",
+                            "Goethe Museum",
+                            "Goethe-Nationalmuseum <Weimar>",
+                            "Weimar / Goethe-Nationalmuseum",
+                            "Stiftung Weimarer Klassik <Weimar> / Goethe Nationalmuseum",
+                            "Nationale Forschungs- und Gedenkstätten der Klassischen Deutschen Literatur <Weimar> / Goethe-Nationalmuseum",
+                            "Goethe, Johann Wolfgang",
+                            "Gete, Iogann W.",
+                            "Goethe, Johann W.",
+                            "Gëte, Iogann V.",
+                            "Goethe, Wolfgang von",
+                            "Goethius, ...",
+                            "Goethe, Volfgango",
+                            "Goethe, Johan Wolphgang",
+                            "Gete, Johan Volfgang",
+                            "Goethe, Johann Wolfgang",
+                            "Göthe, J. W.",
+                            "Goethe, Johann W. von",
+                            "Weimar : Uschmann, 1939 - 31 Seiten",
+                            "501",
+                            "Goethe-Nationalmuseum (1885-)␝Von",
+                            "Goethe, Johann Wolfgang von (1749-1832)␝Über",
+                            "Goethe-Wohnhaus <Weimar>␝Über",
+                            "Goethe-Nationalmuseum (1885-)␝Über",
+                            "false",
+                            "KS00032896",
+                            "KS00014793",
+                            "Goethe-Nationalmuseum (1885-)",
+                            "Goethe, Johann Wolfgang von (1749-1832)",
+                            "Goethe-Wohnhaus <Weimar>",
+                            "2013-11-21",
+                            "1939-01-01T00:00:00Z",
+                            "2013-11-21",
+                            "Goethe-Nationalmuseum",
+                            "1.0.0",
+                            "SE00027594",
+                            "SE00003382",
+                            "SE00027593",
+                            "SE00027592",
+                            "KS00014793",
+                            "Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Wohnhaus <Weimar>",
+                            "Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Nationalmuseum",
+                            "Goethe-Wohnhaus <Weimar> / K2 Darstellungen",
+                            "Goethe-Nationalmuseum / K2 Darstellungen",
+                            "Deutschland bis 1949",
+                            "f-fertig, i-fertig",
+                            "SE00027594",
+                            "SE00003382",
+                            "SE00027593",
+                            "SE00027592",
+                            "Bibliotheksmagazin",
+                            "Goethe-Wohnhaus <Weimar>",
+                            "Goethe-Nationalmuseum (1885-)",
+                            "Verfasser/Urheber",
+                            "creator",
+                            "K10Plus-PPN",
+                            "G83.0650",
+                            "Deutsch␝Original",
+                            "1939",
+                            "KS00058757",
+                            "Abgeschlossen",
+                            "Goethe, Johann Wolfgang von",
+                            "Goethe-Wohnhaus <Weimar>",
+                            "Goethe-Nationalmuseum",
+                            "Kurzer Führer durch das Goethehaus und das Goethe-Nationalmuseum",
+                            "AK",
+                            "31 Seiten",
+                            "Druckschrift",
+                            "TY  - GEN\nA2  - Goethe, Johann Wolfgang von\nA2  - Goethe-Wohnhaus <Weimar>\nA2  - Goethe-Nationalmuseum\nAU  - Goethe-Nationalmuseum\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Weimar\nDA  - 1939\nID  - AK01359808\nKW  - Institutionen / Einzelne Institutionen\nKW  - Darstellungen\nKW  - Goethe, Johann Wolfgang von (1749-1832)\nKW  - Goethe-Wohnhaus <Weimar>\nKW  - Goethe-Nationalmuseum\nLA  - Deutsch\nM2  - Buch\nN1  - Umfang: 31 Seiten; Ill.\nN1  - Erscheinungsort: Weimar\nN1  - In Fraktur\nPB  - Uschmann\nPY  - 1939\nTI  - Kurzer Führer durch das Goethehaus und das Goethe-Nationalmuseum\nUR  - https://www.dla-marbach.de/find/opac/id/AK01359808/\nER  -",
+                            "HH:Kps.",
+                            "2013-11-21",
+                            "1398425427",
+                            "Goethe,Joh.W.",
+                            "Uschmann",
+                            "AK01359808",
+                            "Uschmann",
+                            "KS00032896",
+                            "KS00014793",
+                            "PE00000863",
+                            "KS00058757",
+                            "Ill.",
+                            "Bibliotheksdokumente",
+                            "Bibliotheksmaterialien",
+                            "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                            "Weimar",
+                            "1939",
+                            "Goethe-Nationalmuseum (1885-)"
+                        ],
+                        "noteFootnote_text_mv": [
+                            "In Fraktur"
+                        ],
+                        "item_id_mv": [
+                            "AU00590926"
+                        ],
+                        "searchName_mv": [
+                            "Goethe-Nationalmuseum",
+                            "Goethe, Johann Wolfgang von",
+                            "Goethe-Wohnhaus <Weimar>"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "item_display_mv": [
+                            "HH:Kps. (Goethe,Joh.W.). G83.0650. Kurzer Führer durch das Goethehaus und das Goethe-Nationalmuseum"
+                        ],
+                        "publisherOriginalLocation_mv": [
+                            "Weimar"
+                        ],
+                        "searchBoost": 1,
+                        "titleMain_text": "Kurzer Führer durch das Goethehaus und das Goethe-Nationalmuseum",
+                        "categoryMedium_mv": [
+                            "Band"
+                        ],
+                        "classification_category_mv": [
+                            "Kette Bibliothek",
+                            "Kette Bibliothek",
+                            "Kette Bibliothek",
+                            "Kette Bibliothek"
+                        ],
+                        "corporationBy_id_mv": [
+                            "KS00014793"
+                        ],
+                        "item_usageRestriction_mv": [
+                            "benutzbar"
+                        ],
+                        "categoryContent_mv": [
+                            "Text"
+                        ],
+                        "creator_display_mv": [
+                            "Goethe-Nationalmuseum (1885-)"
+                        ],
+                        "item_note_mv": [
+                            "Aus dem Nachlass von Günther Müller"
+                        ],
+                        "personAbout_id_mv": [
+                            "PE00000863"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "personAbout_display_mv": [
+                            "Goethe, Johann Wolfgang von (1749-1832)"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "dateOrigin": "1939",
+                        "title": "Kurzer Führer durch das Goethehaus und das Goethe-Nationalmuseum",
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK01359808",
+                        "filterSubject_mv": [
+                            "Institutionen / Einzelne Institutionen",
+                            "Darstellungen",
+                            "Goethe, Johann Wolfgang von (1749-1832)",
+                            "Goethe-Wohnhaus <Weimar>",
+                            "Goethe-Nationalmuseum"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Goethe-Nationalmuseum (1885-)␝Verfasser/Urheber",
+                            "Goethe, Johann Wolfgang von (1749-1832)␝Behandelte Person/Körperschaft",
+                            "Goethe-Wohnhaus <Weimar>␝Behandelte Person/Körperschaft",
+                            "Goethe-Nationalmuseum (1885-)␝Behandelte Person/Körperschaft"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Kurzer Führer durch das Goethehaus und das Goethe-Nationalmuseum</title>\n  </titleInfo>\n  <name type=\"corporate\">\n    <namePart>Goethe-Nationalmuseum (1885-)</namePart>\n    <nameIdentifier type=\"gnd\">2049358-7</nameIdentifier>\n    <namePart type=\"date\">1885-08-08</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Buch</typeOfResource>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Weimar</placeTerm>\n    </place>\n    <publisher>Uschmann</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1939</dateIssued>\n    <displayDate>1939</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n    <extent>31 Seiten</extent>\n  </physicalDescription>\n  <note type=\"footnotes\">In Fraktur</note>\n  <subject>\n    <topic>Institutionen / Einzelne Institutionen</topic>\n  </subject>\n  <subject>\n    <topic>Darstellungen</topic>\n  </subject>\n  <subject>\n    <topic>Goethe, Johann Wolfgang von (1749-1832)</topic>\n  </subject>\n  <subject>\n    <topic>Goethe-Wohnhaus &lt;Weimar&gt;</topic>\n  </subject>\n  <subject>\n    <topic>Goethe-Nationalmuseum</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Goethe, Johann Wolfgang von (1749-1832)</namePart>\n    </name>\n  </subject>\n  <subject>\n    <name type=\"corporate\">\n      <namePart>Goethe-Wohnhaus &lt;Weimar&gt;</namePart>\n    </name>\n  </subject>\n  <subject>\n    <name type=\"corporate\">\n      <namePart>Goethe-Nationalmuseum (1885-)</namePart>\n    </name>\n  </subject>\n  <classification authority=\"DE-Mar1\">Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Wohnhaus &lt;Weimar&gt;</classification>\n  <classification authority=\"DE-Mar1\">Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Nationalmuseum</classification>\n  <classification authority=\"DE-Mar1\">Goethe-Wohnhaus &lt;Weimar&gt; / K2 Darstellungen</classification>\n  <classification authority=\"DE-Mar1\">Goethe-Nationalmuseum / K2 Darstellungen</classification>\n  <identifier type=\"kxp\">1398425427</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>HH:Kps. (Goethe,Joh.W.)</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2013-11-21</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2013-11-21</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01359808</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Kurzer Führer durch das Goethehaus und das Goethe-Nationalmuseum</dc:title>\n  <dc:creator>Goethe-Nationalmuseum (1885-)</dc:creator>\n  <dc:type>Buch</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:publisher>Uschmann</dc:publisher>\n  <dc:date>1939</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>31 Seiten</dc:format>\n  <dc:description>In Fraktur</dc:description>\n  <dc:subject>Institutionen / Einzelne Institutionen</dc:subject>\n  <dc:subject>Darstellungen</dc:subject>\n  <dc:subject>Goethe, Johann Wolfgang von (1749-1832)</dc:subject>\n  <dc:subject>Goethe-Wohnhaus &lt;Weimar&gt;</dc:subject>\n  <dc:subject>Goethe-Nationalmuseum</dc:subject>\n  <dc:subject>Goethe-Nationalmuseum (1885-)</dc:subject>\n  <dc:subject>Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Wohnhaus &lt;Weimar&gt;</dc:subject>\n  <dc:subject>Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Nationalmuseum</dc:subject>\n  <dc:subject>Goethe-Wohnhaus &lt;Weimar&gt; / K2 Darstellungen</dc:subject>\n  <dc:subject>Goethe-Nationalmuseum / K2 Darstellungen</dc:subject>\n  <dc:identifier>1398425427</dc:identifier>\n  <dc:identifier>HH:Kps. (Goethe,Joh.W.)</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01359808</dc:identifier>\n  <dc:identifier>AK01359808</dc:identifier>\n</oai_dc:dc>",
+                        "corporationBy_display_mv": [
+                            "Goethe-Nationalmuseum (1885-)"
+                        ],
+                        "filterDateRange_mv": [
+                            "1939"
+                        ],
+                        "categorySubSub": "Druckschrift",
+                        "searchVariant_mv": [
+                            "Nationale Forschungs- und Gedenkstätten der Klassischen Deutschen Literatur <Weimar> / Goethe-Wohnhaus",
+                            "Goethes Wohnhaus <Weimar>",
+                            "Nationale Forschungs- und Gedenkstätten der Klassischen Deutschen Literatur <Weimar> / Goethes Wohnhaus",
+                            "Goethe's House <Weimar>",
+                            "Nationale Forschungs- und Gedenkstätten der Klassischen Deutschen Literatur <Weimar> / Goethe's House",
+                            "Goethehaus <Weimar>",
+                            "Museo Goethiano Nazionale",
+                            "Nationale Forschungs- und Gedenkstätten der Klassischen Deutschen Literatur",
+                            "Stiftung Weimarer Klassik",
+                            "Stiftung Weimarer Klassik und Kunstsammlungen",
+                            "Stiftung Weimarer Klassik und Kunstsammlungen",
+                            "Klassik Stiftung Weimar",
+                            "Klassik Stiftung Weimar",
+                            "Nationale Forschungs- und Gedenkstätten der Klassischen Deutschen Literatur",
+                            "Stiftung Weimarer Klassik",
+                            "Goethe-Nationalmuseum",
+                            "Nationale Forschungs- und Gedenkstätten der Klassischen Deutschen Literatur",
+                            "Klassik-Stiftung Weimar",
+                            "Goethe Museum",
+                            "Goethe-Nationalmuseum <Weimar>",
+                            "Weimar / Goethe-Nationalmuseum",
+                            "Stiftung Weimarer Klassik <Weimar> / Goethe Nationalmuseum",
+                            "Nationale Forschungs- und Gedenkstätten der Klassischen Deutschen Literatur <Weimar> / Goethe-Nationalmuseum",
+                            "Goethe, Johann Wolfgang",
+                            "Gete, Iogann W.",
+                            "Goethe, Johann W.",
+                            "Gëte, Iogann V.",
+                            "Goethe, Wolfgang von",
+                            "Goethius, ...",
+                            "Goethe, Volfgango",
+                            "Goethe, Johan Wolphgang",
+                            "Gete, Johan Volfgang",
+                            "Goethe, Johann Wolfgang",
+                            "Göthe, J. W.",
+                            "Goethe, Johann W. von"
+                        ],
+                        "displayAddition1": "Weimar : Uschmann, 1939 - 31 Seiten",
+                        "noteFootnote_type_mv": [
+                            "501"
+                        ],
+                        "filterAuthorityRelation_mv": [
+                            "Goethe-Nationalmuseum (1885-)␝Von",
+                            "Goethe, Johann Wolfgang von (1749-1832)␝Über",
+                            "Goethe-Wohnhaus <Weimar>␝Über",
+                            "Goethe-Nationalmuseum (1885-)␝Über"
+                        ],
+                        "confidential": false,
+                        "corporationAbout_id_mv": [
+                            "KS00032896",
+                            "KS00014793"
+                        ],
+                        "filterAuthority_mv": [
+                            "Goethe-Nationalmuseum (1885-)",
+                            "Goethe, Johann Wolfgang von (1749-1832)",
+                            "Goethe-Wohnhaus <Weimar>"
+                        ],
+                        "filterRecent": "2013-11-21",
+                        "filterDatePoint_mv": [
+                            "1939-01-01T00:00:00Z"
+                        ],
+                        "dateCataloged": "2013-11-21",
+                        "searchNameBy_mv": [
+                            "Goethe-Nationalmuseum"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "classification_id_mv": [
+                            "SE00027594",
+                            "SE00003382",
+                            "SE00027593",
+                            "SE00027592"
+                        ],
+                        "creator_id_mv": [
+                            "KS00014793"
+                        ],
+                        "classification_display_mv": [
+                            "Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Wohnhaus <Weimar>",
+                            "Goethe, Johann Wolfgang von / A1.5.2 Institutionen / Einzelne Institutionen / Goethe-Nationalmuseum",
+                            "Goethe-Wohnhaus <Weimar> / K2 Darstellungen",
+                            "Goethe-Nationalmuseum / K2 Darstellungen"
+                        ],
+                        "country_mv": [
+                            "Deutschland bis 1949"
+                        ],
+                        "statusCataloging": "f-fertig, i-fertig",
+                        "searchClassification_id_mv": [
+                            "SE00027594",
+                            "SE00003382",
+                            "SE00027593",
+                            "SE00027592"
+                        ],
+                        "item_location_mv": [
+                            "Bibliotheksmagazin"
+                        ],
+                        "corporationAbout_display_mv": [
+                            "Goethe-Wohnhaus <Weimar>",
+                            "Goethe-Nationalmuseum (1885-)"
+                        ],
+                        "corporationBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "corporationBy_creator_mv": [
+                            "creator"
+                        ],
+                        "vendor_type_mv": [
+                            "K10Plus-PPN"
+                        ],
+                        "item_accessionNumber_mv": [
+                            "G83.0650"
+                        ],
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "searchDate_mv": [
+                            "1939"
+                        ],
+                        "publisher_id_mv": [
+                            "KS00058757"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "searchNameAbout_mv": [
+                            "Goethe, Johann Wolfgang von",
+                            "Goethe-Wohnhaus <Weimar>",
+                            "Goethe-Nationalmuseum"
+                        ],
+                        "display": "Kurzer Führer durch das Goethehaus und das Goethe-Nationalmuseum",
+                        "source": "AK",
+                        "extent": "31 Seiten",
+                        "categoryMedia_mv": [
+                            "Druckschrift"
+                        ],
+                        "exportRIS": "TY  - GEN\nA2  - Goethe, Johann Wolfgang von\nA2  - Goethe-Wohnhaus <Weimar>\nA2  - Goethe-Nationalmuseum\nAU  - Goethe-Nationalmuseum\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Weimar\nDA  - 1939\nID  - AK01359808\nKW  - Institutionen / Einzelne Institutionen\nKW  - Darstellungen\nKW  - Goethe, Johann Wolfgang von (1749-1832)\nKW  - Goethe-Wohnhaus <Weimar>\nKW  - Goethe-Nationalmuseum\nLA  - Deutsch\nM2  - Buch\nN1  - Umfang: 31 Seiten; Ill.\nN1  - Erscheinungsort: Weimar\nN1  - In Fraktur\nPB  - Uschmann\nPY  - 1939\nTI  - Kurzer Führer durch das Goethehaus und das Goethe-Nationalmuseum\nUR  - https://www.dla-marbach.de/find/opac/id/AK01359808/\nER  -",
+                        "item_callNumberItem_mv": [
+                            "HH:Kps."
+                        ],
+                        "dateModified": "2013-11-21",
+                        "vendor_id_mv": [
+                            "1398425427"
+                        ],
+                        "item_callNumberItemSuffix_mv": [
+                            "Goethe,Joh.W."
+                        ],
+                        "publisherOriginalText_mv": [
+                            "Uschmann"
+                        ],
+                        "id": "AK01359808",
+                        "publisher_display_mv": [
+                            "Uschmann"
+                        ],
+                        "searchEntity_id_mv": [
+                            "KS00032896",
+                            "KS00014793",
+                            "PE00000863",
+                            "KS00058757"
+                        ],
+                        "extentIllustrations_mv": [
+                            "Ill."
+                        ],
+                        "category": "Bibliotheksdokumente",
+                        "filterSource": "Bibliotheksmaterialien",
+                        "categorySub": "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                        "filterLocation_mv": [
+                            "Weimar"
+                        ],
+                        "dateOriginComment_mv": [
+                            "1939"
+                        ],
+                        "displayName": "Goethe-Nationalmuseum (1885-)",
+                        "score": 62.931717
+                    }
+                ]
+            }
+        }
+    }
+}

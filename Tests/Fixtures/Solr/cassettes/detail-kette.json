@@ -1,0 +1,107 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(SE00000121)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 4.1100974,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "SE00000121",
+                        "default": [
+                            "SE00000121",
+                            "Hesse, Hermann / A5.5.3 Erzählende Prosa / Einzelne Werke / Hesse, Hermann <1877-1962>. Siddhartha (Erzählung : 1922)",
+                            "Kette Bibliothek",
+                            "A5.5.3. Erzählende Prosa / Einzelne Werke",
+                            "SY00189548",
+                            "PE00002037 SA00189548 AK00031392",
+                            "1999-01-19",
+                            "2014-06-22",
+                            "Kette Bibliothek",
+                            "Systematikketten",
+                            "Hesse, Hermann (1877-1962)",
+                            "Hesse, Hermann <1877-1962>. Siddhartha (Erzählung : 1922)",
+                            "Normdaten",
+                            "Hesse, Hermann (1877-1962)",
+                            "PE00002037",
+                            "1.0.0",
+                            "0.3",
+                            "PE00002037",
+                            "AK00031392",
+                            "Person",
+                            "Autorenschema",
+                            "Werktitel",
+                            "SE",
+                            "Hesse, Hermann / A5.5.3 Erzählende Prosa / Einzelne Werke / Hesse, Hermann <1877-1962>. Siddhartha (Erzählung : 1922)",
+                            "https://www.dla-marbach.de/find/opac/id/SE00000121",
+                            "Hesse, Hermann (1877-1962). Siddhartha (Erzählung : 1922)",
+                            "AK00031392"
+                        ],
+                        "display": "Hesse, Hermann / A5.5.3 Erzählende Prosa / Einzelne Werke / Hesse, Hermann <1877-1962>. Siddhartha (Erzählung : 1922)",
+                        "category": "Kette Bibliothek",
+                        "classificationAuthor_display_mv": [
+                            "A5.5.3. Erzählende Prosa / Einzelne Werke"
+                        ],
+                        "classificationAuthor_id_mv": [
+                            "SY00189548"
+                        ],
+                        "classificationChain": "PE00002037 SA00189548 AK00031392",
+                        "dateCataloged": "1999-01-19",
+                        "dateModified": "2014-06-22",
+                        "displayAddition1": "Kette Bibliothek",
+                        "filterSource": "Systematikketten",
+                        "filterSubject_mv": [
+                            "Hesse, Hermann (1877-1962)",
+                            "Hesse, Hermann <1877-1962>. Siddhartha (Erzählung : 1922)"
+                        ],
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "person_display_mv": [
+                            "Hesse, Hermann (1877-1962)"
+                        ],
+                        "person_id_mv": [
+                            "PE00002037"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.3,
+                        "searchEntity_id_mv": [
+                            "PE00002037",
+                            "AK00031392"
+                        ],
+                        "sequence_mv": [
+                            "Person",
+                            "Autorenschema",
+                            "Werktitel"
+                        ],
+                        "source": "SE",
+                        "title": "Hesse, Hermann / A5.5.3 Erzählende Prosa / Einzelne Werke / Hesse, Hermann <1877-1962>. Siddhartha (Erzählung : 1922)",
+                        "url": "https://www.dla-marbach.de/find/opac/id/SE00000121",
+                        "work_display_mv": [
+                            "Hesse, Hermann (1877-1962). Siddhartha (Erzählung : 1922)"
+                        ],
+                        "work_id_mv": [
+                            "AK00031392"
+                        ],
+                        "score": 4.1100974
+                    }
+                ]
+            }
+        }
+    }
+}

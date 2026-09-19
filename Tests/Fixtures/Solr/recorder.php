@@ -73,6 +73,50 @@ $scenarios = [
     ],
 ];
 
+// Szenarien für Fluid-Partial-Rendering-Tests (Tests/Unit/Partials): geben komplette Solr-Dokumente
+// zurück (nicht wie oben nur ausgewählte Felder), damit die Partials mit realistischen Daten
+// gerendert werden können. Verwenden das Solarium-Client-Standardparameterschema
+// (omitHeader/wt/json.nl/start/fl), weil sie über einen echten Solarium\Client abgefragt werden
+// (siehe Tests/Support/SolrFixture.php), genau wie dla-find/Classes/Service/SolrServiceProvider.php
+// es in Produktion tut - im Unterschied zu den Szenarien oben, die per file_get_contents() aus den
+// Ajax-/Service-Klassen dieser Extension abgefragt werden.
+$solariumDefaults = [
+    'omitHeader' => 'true',
+    'wt' => 'json',
+    'json.nl' => 'flat',
+    'start' => '0',
+    'fl' => '*,score',
+];
+
+// Ein Dokument je Quelltyp (siehe Resources/Private/Templates/Search/Detail.html für die
+// source/filterSource-Weichen), damit alle Display/Detail/*-Partials mit echten Daten
+// abgedeckt werden können.
+$detailDocuments = [
+    'detail-person' => 'PE00000863',           // Goethe (Normdaten, source=PE, filterSource=Personen)
+    'detail-corporation' => 'KS00113059',      // Normdaten, source=KS, filterSource=Körperschaften
+    'detail-sachbegriff' => 'TH00000031',      // Normdaten, source=TH, filterSource=Orte und Sachbegriffe
+    'detail-fachsystematik' => 'SY00000015',   // Normdaten, source=SY, filterSource=Fachsystematik
+    'detail-kette' => 'SE00000121',            // Normdaten, source=SE, filterSource=Systematikketten
+    'detail-werk' => 'AK01600972',             // Normdaten, source=AK, filterSource=Werke
+    'detail-library' => 'AK01600951',          // Bibliotheksmaterialien, source=AK, filterType_mv=Gedrucktes
+    'detail-inventory' => 'BF00025111',        // Nachlässe und Spezialsammlungen, source=BF
+    'detail-manuscript' => 'HS00067821',       // Handschriften Einzelnachweise, source=HS
+    'detail-imagesandobjects' => 'BI00028331', // Bilder und Objekte, source=BI
+];
+foreach ($detailDocuments as $name => $id) {
+    $scenarios[$name] = [
+        'path' => '/solr/internformat/select',
+        'query' => $solariumDefaults + ['q' => 'id:(' . $id . ')', 'rows' => '1'],
+    ];
+}
+
+// Mehrere Dokumente unterschiedlichen Typs für Trefferlisten-Partials (Display/Result, Pager, ...).
+$scenarios['resultlist-goethe'] = [
+    'path' => '/solr/internformat/select',
+    'query' => $solariumDefaults + ['q' => 'goethe', 'rows' => '5'],
+];
+
+
 /**
  * Baut einen rohen Query-String, der auch mehrfach vorkommende Parameter (z.B. suggest.dictionary) unterstützt.
  */

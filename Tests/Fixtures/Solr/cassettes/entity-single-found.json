@@ -12,7 +12,7 @@
         "body": {
             "responseHeader": {
                 "status": 0,
-                "QTime": 2,
+                "QTime": 0,
                 "params": {
                     "q": "id:(PE00000863)",
                     "rows": "1"
@@ -47,7 +47,7 @@
                         "dateCataloged": "1997-06-17",
                         "dateLifespanEnd": "1832-03-22",
                         "dateLifespanStart": "1749-08-28",
-                        "dateModified": "2026-09-17",
+                        "dateModified": "2026-09-18",
                         "dateRetention": "1902",
                         "displayAddition1": "Schriftsteller, Politiker, Naturwissenschaftler",
                         "filterDatePoint_mv": [

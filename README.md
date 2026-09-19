@@ -89,6 +89,31 @@ Dazu vorher das gewünschte Szenario (Pfad + Query-Parameter) in
 antwortet der Mock-Server mit HTTP 404 und protokolliert die fehlende Anfrage in
 `Tests/Fixtures/Solr/missing-requests.log`.
 
+## Fluid-Partial-Rendering-Tests
+
+Zusätzlich zu den Service-/Ajax-Tests gibt es [Tests/Unit/Partials](Tests/Unit/Partials), die einzelne
+Fluid-Partials dieser Extension (aus [Resources/Private/Partials](Resources/Private/Partials)) direkt
+rendern und den erzeugten HTML-Ausschnitt prüfen. Laufen ebenfalls über `task test:php`, ohne DB/Solr-Tunnel.
+
+Basis ist [Tests/Support/FluidPartialTestCase.php](Tests/Support/FluidPartialTestCase.php): baut eine
+minimale Fluid-`RenderingContext` (ohne vollen TYPO3-Functional-Bootstrap) und rendert
+`<f:render partial="..." arguments="{_all}"/>` mit den im Test übergebenen Variablen. Zwei
+Fluid-Kern-ViewHelper sind darin durch schlanke Test-Ersatzimplementierungen ersetzt (siehe
+[Tests/Support/FluidViewHelperOverrides](Tests/Support/FluidViewHelperOverrides)), weil die echten in
+diesem minimalen Bootstrap ohne Weiteres nicht funktionieren:
+
+* `f:translate` – übersetzt immer in die Default-Sprache (keine Sprachauswahl über Request/Backend-User nötig)
+* `f:link.action` – rendert einen Platzhalter-Link (`href="#test-link"`), da echtes TYPO3-Routing einen
+  vollständigen Frontend-Request (Site-Konfiguration, TSFE) voraussetzt
+
+Für Partials, die reale Solr-Dokumente/Trefferlisten benötigen (z.B. `document.fields.*`), stellt
+[Tests/Support/SolrFixture.php](Tests/Support/SolrFixture.php) echte `Solarium\QueryType\Select\Result\Document`-
+bzw. `\Result`-Objekte bereit – erzeugt über einen echten Solarium-Client gegen den Solr-Mock-Server, genauso
+wie `dla-find/Classes/Service/SolrServiceProvider.php` es in Produktion tut. Die zugehörigen Cassetten
+(`detail-*.json`, `resultlist-*.json`) liegen ebenfalls in
+[Tests/Fixtures/Solr/cassettes](Tests/Fixtures/Solr/cassettes) und werden über dieselbe
+`recorder.php` aufgenommen (siehe die entsprechenden Szenarien am Ende der Datei).
+
 ## Weitere Hinweise
 
 Der Code der Extension ist über Symlinks eingebunden. Nach Änderungen am Code wie beispielsweise in [Configuration/TypoScript/setup.ts](Configuration/TypoScript/setup.ts) ist also lediglich ein Löschen des TYPO3-Caches erforderlich:

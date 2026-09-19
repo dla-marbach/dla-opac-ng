@@ -1,0 +1,113 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(SY00000015)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 2.7400649,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "SY00000015",
+                        "default": [
+                            "SY00000015",
+                            "A1. Forschung",
+                            "Autorenschema",
+                            "A1.1. Bibliographien, Hilfsmittel",
+                            "A1.2. Berichte, Sammelbesprechungen",
+                            "A1.3. Sammelwerke",
+                            "A1.4. Zeitschriften, Reihen",
+                            "A1.5. Institutionen",
+                            "A1.6. Forschung / Prinzipien und Methoden",
+                            "A1.7. Ausstellungen",
+                            "A1.8. Tagungen",
+                            "A1.9. Forschungsgeschichte",
+                            "SY00000016",
+                            "SY00000017",
+                            "SY00000018",
+                            "SY00000019",
+                            "SY00000020",
+                            "SY00000021",
+                            "SY00000022",
+                            "SY00000023",
+                            "SY00000024",
+                            "1998-12-21",
+                            "2014-07-31",
+                            "Autorenschema",
+                            "Fachsystematik",
+                            "Normdaten",
+                            "A1",
+                            "A. Literatur ÜBER Person",
+                            "SY00000069",
+                            "1.0.0",
+                            "0.2",
+                            "SY",
+                            "Forschung",
+                            "Forschung",
+                            "https://www.dla-marbach.de/find/opac/id/SY00000015"
+                        ],
+                        "display": "A1. Forschung",
+                        "category": "Autorenschema",
+                        "child_display_mv": [
+                            "A1.1. Bibliographien, Hilfsmittel",
+                            "A1.2. Berichte, Sammelbesprechungen",
+                            "A1.3. Sammelwerke",
+                            "A1.4. Zeitschriften, Reihen",
+                            "A1.5. Institutionen",
+                            "A1.6. Forschung / Prinzipien und Methoden",
+                            "A1.7. Ausstellungen",
+                            "A1.8. Tagungen",
+                            "A1.9. Forschungsgeschichte"
+                        ],
+                        "child_id_mv": [
+                            "SY00000016",
+                            "SY00000017",
+                            "SY00000018",
+                            "SY00000019",
+                            "SY00000020",
+                            "SY00000021",
+                            "SY00000022",
+                            "SY00000023",
+                            "SY00000024"
+                        ],
+                        "dateCataloged": "1998-12-21",
+                        "dateModified": "2014-07-31",
+                        "displayAddition1": "Autorenschema",
+                        "filterSource": "Fachsystematik",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "notation": "A1",
+                        "parent_display_mv": [
+                            "A. Literatur ÜBER Person"
+                        ],
+                        "parent_id_mv": [
+                            "SY00000069"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.2,
+                        "source": "SY",
+                        "title": "Forschung",
+                        "titleShort": "Forschung",
+                        "url": "https://www.dla-marbach.de/find/opac/id/SY00000015",
+                        "score": 2.7400649
+                    }
+                ]
+            }
+        }
+    }
+}

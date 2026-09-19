@@ -1,0 +1,267 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(BF00025111)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 19.996649,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00025111",
+                        "default": [
+                            "BF00025111",
+                            "COTTA:Briefe - [Bestand des Cotta-Archivs, Archiv]",
+                            "Bestand des Cotta-Archivs",
+                            "Archiv",
+                            "false",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)",
+                            "KS00011400",
+                            "KS00012421",
+                            "KS00012422",
+                            "2008-02-07",
+                            "2025-07-21",
+                            "Handschriften",
+                            "583 Kästen",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889); J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956); J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)",
+                            "Archiv, Handschriften [COTTA:Briefe]",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>COTTA:Briefe - [Bestand des Cotta-Archivs, Archiv]</dc:title>\n  <dc:creator>J.-G.-Cotta&apos;sche Buchhandlung &lt;Stuttgart&gt; (1810-1889)</dc:creator>\n  <dc:creator>J.-G.-Cotta&apos;sche Buchhandlung Nachfolger &lt;Stuttgart; Berlin&gt; (1889-1956)</dc:creator>\n  <dc:creator>J. G. Cotta&apos;sche Buchhandlung &lt;Tübingen&gt; (1659-1810)</dc:creator>\n  <dc:type>Archiv</dc:type>\n  <dc:type>Bestand</dc:type>\n  <dc:format>583 Kästen</dc:format>\n  <dc:identifier>COTTA:Briefe</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BF00025111</dc:identifier>\n  <dc:identifier>BF00025111</dc:identifier>\n</oai_dc:dc>",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>COTTA:Briefe - [Bestand des Cotta-Archivs, Archiv]</title>\n  </titleInfo>\n  <name type=\"corporate\">\n    <namePart>J.-G.-Cotta&apos;sche Buchhandlung &lt;Stuttgart&gt; (1810-1889)</namePart>\n    <nameIdentifier type=\"gnd\">5062045-9</nameIdentifier>\n    <namePart type=\"date\">1810 — 1889</namePart>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <name type=\"corporate\">\n    <namePart>J.-G.-Cotta&apos;sche Buchhandlung Nachfolger &lt;Stuttgart; Berlin&gt; (1889-1956)</namePart>\n    <nameIdentifier type=\"gnd\">2036169-5</nameIdentifier>\n    <namePart type=\"date\">1889 — 1956</namePart>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <name type=\"corporate\">\n    <namePart>J. G. Cotta&apos;sche Buchhandlung &lt;Tübingen&gt; (1659-1810)</namePart>\n    <nameIdentifier type=\"gnd\">5056474-2</nameIdentifier>\n    <namePart type=\"date\">1659 — 1810</namePart>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <typeOfResource collection=\"yes\">Bestand</typeOfResource>\n  <genre>Archiv</genre>\n  <physicalDescription>\n    <extent>583 Kästen</extent>\n  </physicalDescription>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>COTTA:Briefe</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2008-02-07</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2025-07-21</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00025111</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "TY  - GEN\nAU  - J.-G.-Cotta'sche Buchhandlung <Stuttgart>\nAU  - J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin>\nAU  - J. G. Cotta'sche Buchhandlung <Tübingen>\nAV  - Für nähere Angaben wenden Sie sich bitte an die Auskunft.. E-Mail: auskunft-handschriften@dla-marbach.de. Telefon: +49 7144 848 425\nCN  - BF000251118\nDB  - COTTA:Briefe\nID  - BF00025111\nM3  - Archiv\nN1  - Umfang: 583 Kästen\nN1  - katalogisiert: 568 Kästen\nN1  - nicht verzeichnet: 15 Kästen\nN1  - feingeordnet: 568 Kästen\nN1  - geordnet: 15 Kästen\nRN  - enthält auch Briefe aus dem 2010 aufgelösten Bestand A:Cotta\nTI  - COTTA:Briefe - [Bestand des Cotta-Archivs, Archiv]\nUR  - https://www.dla-marbach.de/find/opac/id/BF00025111/\nER  -",
+                            "583 Kästen",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)␝Unter",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)␝Unter",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)␝Unter",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)␝Bestandsbildner/Vorbesitzer",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)␝Bestandsbildner/Vorbesitzer",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)␝Bestandsbildner/Vorbesitzer",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)",
+                            "COTTA:Briefe",
+                            "Archiv",
+                            "true",
+                            "2008-02-07",
+                            "Nachlässe und Spezialsammlungen",
+                            "Handschriften",
+                            "568",
+                            "15",
+                            "katalogisiert",
+                            "nicht verzeichnet",
+                            "Kästen",
+                            "Kästen",
+                            "BF000251118",
+                            "enthält auch Briefe aus dem 2010 aufgelösten Bestand A:Cotta",
+                            "568",
+                            "15",
+                            "feingeordnet",
+                            "geordnet",
+                            "Kästen",
+                            "Kästen",
+                            "1.0.0",
+                            "1.4595749670016263",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)",
+                            "KS00011400",
+                            "KS00012421",
+                            "KS00012422",
+                            "KS00011400",
+                            "KS00012421",
+                            "KS00012422",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart>",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin>",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen>",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart>",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin>",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen>",
+                            "J.-G.-Cotta'sche Buchhandlung <Tübingen; Stuttgart>",
+                            "Cottaische Buchhandlung <Stuttgart>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Tübingen>",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; München>",
+                            "J. G. Cotta (Firma)",
+                            "Cotta (Firma)",
+                            "Cotta'sche Buchhandlung Nachfolger <Stuttgart>",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin>",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; München>",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; München>",
+                            "Cotta-Verlag <Stuttgart>",
+                            "Johann Georg Cottens Buchhandlung <Tübingen>",
+                            "Johann Georg Cotta, Bibliopola Academiae Tubingensis",
+                            "Cottens Buchladen <Tübingen>",
+                            "Cotta, Bibliopola Academiae Tubingensis",
+                            "J.-G.-Cotta'sche Buchhandlung <Tübingen>",
+                            "Cotta <Tübingen>",
+                            "J.-G.-Cotta <Tübingen>",
+                            "Johann Georg Cotta <Tübingen>",
+                            "Christoph Friedrich Cotta <Tübingen>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Tübingen>",
+                            "BF",
+                            "Am Standort",
+                            "COTTA:Briefe",
+                            "Briefe",
+                            "https://www.dla-marbach.de/find/opac/id/BF00025111",
+                            "benutzbar",
+                            "Für nähere Angaben wenden Sie sich bitte an die Auskunft.\nE-Mail: auskunft-handschriften@dla-marbach.de\nTelefon: +49 7144 848 425"
+                        ],
+                        "display": "COTTA:Briefe - [Bestand des Cotta-Archivs, Archiv]",
+                        "category": "Bestand des Cotta-Archivs",
+                        "categorySub": "Archiv",
+                        "confidential": false,
+                        "corporationAt_display_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)"
+                        ],
+                        "corporationAt_id_mv": [
+                            "KS00011400",
+                            "KS00012421",
+                            "KS00012422"
+                        ],
+                        "dateCataloged": "2008-02-07",
+                        "dateModified": "2025-07-21",
+                        "department": "Handschriften",
+                        "displayAddition1": "583 Kästen",
+                        "displayName": "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889); J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956); J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)",
+                        "displayTree": "Archiv, Handschriften [COTTA:Briefe]",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>COTTA:Briefe - [Bestand des Cotta-Archivs, Archiv]</dc:title>\n  <dc:creator>J.-G.-Cotta&apos;sche Buchhandlung &lt;Stuttgart&gt; (1810-1889)</dc:creator>\n  <dc:creator>J.-G.-Cotta&apos;sche Buchhandlung Nachfolger &lt;Stuttgart; Berlin&gt; (1889-1956)</dc:creator>\n  <dc:creator>J. G. Cotta&apos;sche Buchhandlung &lt;Tübingen&gt; (1659-1810)</dc:creator>\n  <dc:type>Archiv</dc:type>\n  <dc:type>Bestand</dc:type>\n  <dc:format>583 Kästen</dc:format>\n  <dc:identifier>COTTA:Briefe</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BF00025111</dc:identifier>\n  <dc:identifier>BF00025111</dc:identifier>\n</oai_dc:dc>",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>COTTA:Briefe - [Bestand des Cotta-Archivs, Archiv]</title>\n  </titleInfo>\n  <name type=\"corporate\">\n    <namePart>J.-G.-Cotta&apos;sche Buchhandlung &lt;Stuttgart&gt; (1810-1889)</namePart>\n    <nameIdentifier type=\"gnd\">5062045-9</nameIdentifier>\n    <namePart type=\"date\">1810 — 1889</namePart>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <name type=\"corporate\">\n    <namePart>J.-G.-Cotta&apos;sche Buchhandlung Nachfolger &lt;Stuttgart; Berlin&gt; (1889-1956)</namePart>\n    <nameIdentifier type=\"gnd\">2036169-5</nameIdentifier>\n    <namePart type=\"date\">1889 — 1956</namePart>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <name type=\"corporate\">\n    <namePart>J. G. Cotta&apos;sche Buchhandlung &lt;Tübingen&gt; (1659-1810)</namePart>\n    <nameIdentifier type=\"gnd\">5056474-2</nameIdentifier>\n    <namePart type=\"date\">1659 — 1810</namePart>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <typeOfResource collection=\"yes\">Bestand</typeOfResource>\n  <genre>Archiv</genre>\n  <physicalDescription>\n    <extent>583 Kästen</extent>\n  </physicalDescription>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>COTTA:Briefe</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2008-02-07</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2025-07-21</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00025111</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "exportRIS": "TY  - GEN\nAU  - J.-G.-Cotta'sche Buchhandlung <Stuttgart>\nAU  - J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin>\nAU  - J. G. Cotta'sche Buchhandlung <Tübingen>\nAV  - Für nähere Angaben wenden Sie sich bitte an die Auskunft.. E-Mail: auskunft-handschriften@dla-marbach.de. Telefon: +49 7144 848 425\nCN  - BF000251118\nDB  - COTTA:Briefe\nID  - BF00025111\nM3  - Archiv\nN1  - Umfang: 583 Kästen\nN1  - katalogisiert: 568 Kästen\nN1  - nicht verzeichnet: 15 Kästen\nN1  - feingeordnet: 568 Kästen\nN1  - geordnet: 15 Kästen\nRN  - enthält auch Briefe aus dem 2010 aufgelösten Bestand A:Cotta\nTI  - COTTA:Briefe - [Bestand des Cotta-Archivs, Archiv]\nUR  - https://www.dla-marbach.de/find/opac/id/BF00025111/\nER  -",
+                        "extent": "583 Kästen",
+                        "filterAuthorityRelation_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)␝Unter",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)␝Unter",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)␝Unter"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)␝Bestandsbildner/Vorbesitzer",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)␝Bestandsbildner/Vorbesitzer",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)␝Bestandsbildner/Vorbesitzer"
+                        ],
+                        "filterAuthority_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)"
+                        ],
+                        "filterCollection_mv": [
+                            "COTTA:Briefe"
+                        ],
+                        "filterFormContent_mv": [
+                            "Archiv"
+                        ],
+                        "filterMultipart": true,
+                        "filterRecent": "2008-02-07",
+                        "filterSource": "Nachlässe und Spezialsammlungen",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "itemization_extent_mv": [
+                            "568",
+                            "15"
+                        ],
+                        "itemization_status_mv": [
+                            "katalogisiert",
+                            "nicht verzeichnet"
+                        ],
+                        "itemization_unit_mv": [
+                            "Kästen",
+                            "Kästen"
+                        ],
+                        "mediaNumber": "BF000251118",
+                        "note": "enthält auch Briefe aus dem 2010 aufgelösten Bestand A:Cotta",
+                        "order_extent_mv": [
+                            "568",
+                            "15"
+                        ],
+                        "order_status_mv": [
+                            "feingeordnet",
+                            "geordnet"
+                        ],
+                        "order_unit_mv": [
+                            "Kästen",
+                            "Kästen"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 1.4595749,
+                        "searchCollectionCreator_display_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)"
+                        ],
+                        "searchCollectionCreator_id_mv": [
+                            "KS00011400",
+                            "KS00012421",
+                            "KS00012422"
+                        ],
+                        "searchEntity_id_mv": [
+                            "KS00011400",
+                            "KS00012421",
+                            "KS00012422"
+                        ],
+                        "searchNameAt_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart>",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin>",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen>"
+                        ],
+                        "searchName_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart>",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin>",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen>"
+                        ],
+                        "searchVariant_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Tübingen; Stuttgart>",
+                            "Cottaische Buchhandlung <Stuttgart>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Tübingen>",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; München>",
+                            "J. G. Cotta (Firma)",
+                            "Cotta (Firma)",
+                            "Cotta'sche Buchhandlung Nachfolger <Stuttgart>",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin>",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; München>",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; München>",
+                            "Cotta-Verlag <Stuttgart>",
+                            "Johann Georg Cottens Buchhandlung <Tübingen>",
+                            "Johann Georg Cotta, Bibliopola Academiae Tubingensis",
+                            "Cottens Buchladen <Tübingen>",
+                            "Cotta, Bibliopola Academiae Tubingensis",
+                            "J.-G.-Cotta'sche Buchhandlung <Tübingen>",
+                            "Cotta <Tübingen>",
+                            "J.-G.-Cotta <Tübingen>",
+                            "Johann Georg Cotta <Tübingen>",
+                            "Christoph Friedrich Cotta <Tübingen>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Tübingen>"
+                        ],
+                        "source": "BF",
+                        "statusLoan": "Am Standort",
+                        "title": "COTTA:Briefe",
+                        "titleShort": "Briefe",
+                        "url": "https://www.dla-marbach.de/find/opac/id/BF00025111",
+                        "usageRestriction": "benutzbar",
+                        "usageRestrictionNote": "Für nähere Angaben wenden Sie sich bitte an die Auskunft.\nE-Mail: auskunft-handschriften@dla-marbach.de\nTelefon: +49 7144 848 425",
+                        "score": 19.996649
+                    }
+                ]
+            }
+        }
+    }
+}

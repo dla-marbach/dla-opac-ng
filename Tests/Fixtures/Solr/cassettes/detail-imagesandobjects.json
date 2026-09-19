@@ -1,0 +1,203 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(BI00028331)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.700324,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BI00028331",
+                        "default": [
+                            "BI00028331",
+                            "Porträt Emma Haaser [Photographie]",
+                            "Einzelobjekt",
+                            "Photographie",
+                            "false",
+                            "2022-12-12",
+                            "2023-08-31",
+                            "1912-1915",
+                            "1915 oder etwas früher",
+                            " 10.0",
+                            "  7.2",
+                            "1915 oder etwas früher",
+                            "Inventarnummer: 16708 (Handschriften)",
+                            "Unbekannt",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Porträt Emma Haaser [Photographie]</dc:title>\n  <dc:creator>Unbekannt</dc:creator>\n  <dc:type>Fotografie</dc:type>\n  <dc:date>1912-1915</dc:date>\n  <dc:format> 10.0 x   7.2</dc:format>\n  <dc:format>Foto in einem gefalteten Papier eingeschlagen</dc:format>\n  <dc:description>Auf dem Einschlagpapier handschriftlich bezeichnet: &quot;Briefbeilage | Emma Haaser | an | Christian | Wagner | 3.VIII.1915&quot;</dc:description>\n  <dc:subject>Haaser, Emma (1878-1952)</dc:subject>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/HS00696117</dc:source>\n  <dc:identifier>16708 (Handschriften)</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BI00028331</dc:identifier>\n  <dc:identifier>BI00028331</dc:identifier>\n</oai_dc:dc>",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Porträt Emma Haaser [Photographie]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Unbekannt</namePart>\n    <role>\n      <roleTerm type=\"text\">Urheber/in</roleTerm>\n    </role>\n  </name>\n  <genre>Fotografie</genre>\n  <originInfo eventType=\"production\">\n    <dateCreated>1912-1915</dateCreated>\n  </originInfo>\n  <physicalDescription>\n    <form type=\"format\"> 10.0 x   7.2</form>\n    <form type=\"material\">Foto in einem gefalteten Papier eingeschlagen</form>\n  </physicalDescription>\n  <note type=\"description\">Auf dem Einschlagpapier handschriftlich bezeichnet: &quot;Briefbeilage | Emma Haaser | an | Christian | Wagner | 3.VIII.1915&quot;</note>\n  <subject>\n    <topic>Haaser, Emma (1878-1952)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Haaser, Emma (1878-1952)</namePart>\n    </name>\n  </subject>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS00696117</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <identifier type=\"inventory\">16708 (Handschriften)</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2022-12-12</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2023-08-31</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BI00028331</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "TY  - GEN\nA2  - Haaser, Emma\nAU  - Unbekannt\nCN  - BI000283318\nDA  - 1912\nDA  - 1915\nID  - BI00028331\nKW  - Haaser, Emma (1878-1952)\nLB  - Auf dem Einschlagpapier handschriftlich bezeichnet: \"Briefbeilage | Emma Haaser | an | Christian | Wagner | 3.VIII.1915\"\nM1  - 16708 (Handschriften)\nM3  - Fotografie\nN1  - Technik: Foto in einem gefalteten Papier eingeschlagen\nN1  - Maße:  10.0 x   7.2\nTI  - Porträt Emma Haaser [Photographie]\nUR  - https://www.dla-marbach.de/find/opac/id/BI00028331/\nER  -",
+                            "Unbekannt␝Von",
+                            "Haaser, Emma (1878-1952)␝Über",
+                            "Unbekannt␝Verfasser/Urheber",
+                            "Haaser, Emma (1878-1952)␝Dargestellte Person allein",
+                            "Unbekannt",
+                            "Haaser, Emma (1878-1952)",
+                            "1912-01-01T00:00:00Z",
+                            "1915-01-01T00:00:00Z",
+                            "[1912 TO 1915]",
+                            "Fotografie",
+                            "2022-12-12",
+                            "Bilder und Objekte",
+                            "Haaser, Emma (1878-1952)",
+                            "Bilder und Objekte",
+                            "Auf dem Einschlagpapier handschriftlich bezeichnet: \"Briefbeilage | Emma Haaser | an | Christian | Wagner | 3.VIII.1915\"",
+                            "16708 (Handschriften)",
+                            "Photographien Portraits Kleinformate",
+                            "Haaser, Emma an Wagner, Christian [Briefe]",
+                            "HS00696117",
+                            "Foto in einem gefalteten Papier eingeschlagen",
+                            "BI000283318",
+                            "Haaser, Emma (1878-1952)",
+                            "PE00018500",
+                            "Dargestellte Person allein",
+                            "Unbekannt",
+                            "PE00250583",
+                            "Urheber/in",
+                            "1.0.0",
+                            "1",
+                            "1912",
+                            "1915",
+                            "PE00018500",
+                            "PE00250583",
+                            "Haaser, Emma",
+                            "Unbekannt",
+                            "Unbekannt",
+                            "Haaser, Emma",
+                            "BI",
+                            "Am Standort",
+                            "Porträt Emma Haaser",
+                            "https://www.dla-marbach.de/find/opac/id/BI00028331",
+                            "eingeschränkt benutzbar",
+                            "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                        ],
+                        "display": "Porträt Emma Haaser [Photographie]",
+                        "category": "Einzelobjekt",
+                        "categorySub": "Photographie",
+                        "confidential": false,
+                        "dateCataloged": "2022-12-12",
+                        "dateModified": "2023-08-31",
+                        "dateOrigin": "1912-1915",
+                        "dateOriginComment_mv": [
+                            "1915 oder etwas früher"
+                        ],
+                        "dimension_height_mv": [
+                            " 10.0"
+                        ],
+                        "dimension_width_mv": [
+                            "  7.2"
+                        ],
+                        "displayAddition1": "1915 oder etwas früher",
+                        "displayAddition2": "Inventarnummer: 16708 (Handschriften)",
+                        "displayName": "Unbekannt",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Porträt Emma Haaser [Photographie]</dc:title>\n  <dc:creator>Unbekannt</dc:creator>\n  <dc:type>Fotografie</dc:type>\n  <dc:date>1912-1915</dc:date>\n  <dc:format> 10.0 x   7.2</dc:format>\n  <dc:format>Foto in einem gefalteten Papier eingeschlagen</dc:format>\n  <dc:description>Auf dem Einschlagpapier handschriftlich bezeichnet: &quot;Briefbeilage | Emma Haaser | an | Christian | Wagner | 3.VIII.1915&quot;</dc:description>\n  <dc:subject>Haaser, Emma (1878-1952)</dc:subject>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/HS00696117</dc:source>\n  <dc:identifier>16708 (Handschriften)</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BI00028331</dc:identifier>\n  <dc:identifier>BI00028331</dc:identifier>\n</oai_dc:dc>",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Porträt Emma Haaser [Photographie]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Unbekannt</namePart>\n    <role>\n      <roleTerm type=\"text\">Urheber/in</roleTerm>\n    </role>\n  </name>\n  <genre>Fotografie</genre>\n  <originInfo eventType=\"production\">\n    <dateCreated>1912-1915</dateCreated>\n  </originInfo>\n  <physicalDescription>\n    <form type=\"format\"> 10.0 x   7.2</form>\n    <form type=\"material\">Foto in einem gefalteten Papier eingeschlagen</form>\n  </physicalDescription>\n  <note type=\"description\">Auf dem Einschlagpapier handschriftlich bezeichnet: &quot;Briefbeilage | Emma Haaser | an | Christian | Wagner | 3.VIII.1915&quot;</note>\n  <subject>\n    <topic>Haaser, Emma (1878-1952)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Haaser, Emma (1878-1952)</namePart>\n    </name>\n  </subject>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS00696117</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <identifier type=\"inventory\">16708 (Handschriften)</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2022-12-12</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2023-08-31</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BI00028331</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "exportRIS": "TY  - GEN\nA2  - Haaser, Emma\nAU  - Unbekannt\nCN  - BI000283318\nDA  - 1912\nDA  - 1915\nID  - BI00028331\nKW  - Haaser, Emma (1878-1952)\nLB  - Auf dem Einschlagpapier handschriftlich bezeichnet: \"Briefbeilage | Emma Haaser | an | Christian | Wagner | 3.VIII.1915\"\nM1  - 16708 (Handschriften)\nM3  - Fotografie\nN1  - Technik: Foto in einem gefalteten Papier eingeschlagen\nN1  - Maße:  10.0 x   7.2\nTI  - Porträt Emma Haaser [Photographie]\nUR  - https://www.dla-marbach.de/find/opac/id/BI00028331/\nER  -",
+                        "filterAuthorityRelation_mv": [
+                            "Unbekannt␝Von",
+                            "Haaser, Emma (1878-1952)␝Über"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Unbekannt␝Verfasser/Urheber",
+                            "Haaser, Emma (1878-1952)␝Dargestellte Person allein"
+                        ],
+                        "filterAuthority_mv": [
+                            "Unbekannt",
+                            "Haaser, Emma (1878-1952)"
+                        ],
+                        "filterDatePoint_mv": [
+                            "1912-01-01T00:00:00Z",
+                            "1915-01-01T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "[1912 TO 1915]"
+                        ],
+                        "filterFormContent_mv": [
+                            "Fotografie"
+                        ],
+                        "filterRecent": "2022-12-12",
+                        "filterSource": "Bilder und Objekte",
+                        "filterSubject_mv": [
+                            "Haaser, Emma (1878-1952)"
+                        ],
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "inscription": "Auf dem Einschlagpapier handschriftlich bezeichnet: \"Briefbeilage | Emma Haaser | an | Christian | Wagner | 3.VIII.1915\"",
+                        "inventoryNumber": "16708 (Handschriften)",
+                        "location_mv": [
+                            "Photographien Portraits Kleinformate"
+                        ],
+                        "manuscript_display_mv": [
+                            "Haaser, Emma an Wagner, Christian [Briefe]"
+                        ],
+                        "manuscript_id_mv": [
+                            "HS00696117"
+                        ],
+                        "material": "Foto in einem gefalteten Papier eingeschlagen",
+                        "mediaNumber": "BI000283318",
+                        "personAbout_display_mv": [
+                            "Haaser, Emma (1878-1952)"
+                        ],
+                        "personAbout_id_mv": [
+                            "PE00018500"
+                        ],
+                        "personAbout_role_mv": [
+                            "Dargestellte Person allein"
+                        ],
+                        "personBy_display_mv": [
+                            "Unbekannt"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00250583"
+                        ],
+                        "personBy_role_mv": [
+                            "Urheber/in"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 1,
+                        "searchDate_mv": [
+                            "1912",
+                            "1915"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00018500",
+                            "PE00250583"
+                        ],
+                        "searchNameAbout_mv": [
+                            "Haaser, Emma"
+                        ],
+                        "searchNameBy_mv": [
+                            "Unbekannt"
+                        ],
+                        "searchName_mv": [
+                            "Unbekannt",
+                            "Haaser, Emma"
+                        ],
+                        "source": "BI",
+                        "statusLoan": "Am Standort",
+                        "title": "Porträt Emma Haaser",
+                        "url": "https://www.dla-marbach.de/find/opac/id/BI00028331",
+                        "usageRestriction": "eingeschränkt benutzbar",
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de",
+                        "score": 13.700324
+                    }
+                ]
+            }
+        }
+    }
+}

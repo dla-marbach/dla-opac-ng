@@ -1,0 +1,123 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(TH00000031)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 5.4801297,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "TH00000031",
+                        "default": [
+                            "TH00000031",
+                            "Nachruf",
+                            "Deskriptor",
+                            "Sachschlagwort",
+                            "1996-12-03",
+                            "2026-09-18",
+                            "Deskriptor. - Sachschlagwort",
+                            "Orte und Sachbegriffe",
+                            "Normdaten",
+                            "4128540-2",
+                            "z",
+                            "gegen M, RSWK Anl. 6",
+                            "soweit Formschlagwort nicht permutierend",
+                            "Obituaries",
+                            "(DLC)sh 85093651",
+                            "(uri)http://lccn.loc.gov/sh85093651",
+                            "lcsh",
+                            "v:MACS-Mapping. Bitte keine Änderungen vornehmen.",
+                            "Nécrologies",
+                            "(FrPBN)FRBNF119407616",
+                            "Regelwerk",
+                            "Quelle",
+                            "Benutzungshinweis",
+                            "Sachschlagwort - alternativ",
+                            "Sachschlagwort - alternativ",
+                            "Sachschlagwort - alternativ",
+                            "Sachschlagwort - alternativ",
+                            "Sachschlagwort - alternativ",
+                            "Sachschlagwort - alternativ",
+                            "Sachschlagwort - alternativ",
+                            "1.0.0",
+                            "0.4",
+                            "TH",
+                            "Nachruf",
+                            "https://www.dla-marbach.de/find/opac/id/TH00000031",
+                            "Gedächtnisschrift",
+                            "Nekrolog",
+                            "TH00012317",
+                            "TH00012316"
+                        ],
+                        "display": "Nachruf",
+                        "category": "Deskriptor",
+                        "categorySub": "Sachschlagwort",
+                        "dateCataloged": "1996-12-03",
+                        "dateModified": "2026-09-18",
+                        "displayAddition1": "Deskriptor. - Sachschlagwort",
+                        "filterSource": "Orte und Sachbegriffe",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "gnd_id_mv": [
+                            "4128540-2"
+                        ],
+                        "reference_text_mv": [
+                            "z",
+                            "gegen M, RSWK Anl. 6",
+                            "soweit Formschlagwort nicht permutierend",
+                            "Obituaries",
+                            "(DLC)sh 85093651",
+                            "(uri)http://lccn.loc.gov/sh85093651",
+                            "lcsh",
+                            "v:MACS-Mapping. Bitte keine Änderungen vornehmen.",
+                            "Nécrologies",
+                            "(FrPBN)FRBNF119407616"
+                        ],
+                        "reference_type_mv": [
+                            "Regelwerk",
+                            "Quelle",
+                            "Benutzungshinweis",
+                            "Sachschlagwort - alternativ",
+                            "Sachschlagwort - alternativ",
+                            "Sachschlagwort - alternativ",
+                            "Sachschlagwort - alternativ",
+                            "Sachschlagwort - alternativ",
+                            "Sachschlagwort - alternativ",
+                            "Sachschlagwort - alternativ"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.4,
+                        "source": "TH",
+                        "title": "Nachruf",
+                        "url": "https://www.dla-marbach.de/find/opac/id/TH00000031",
+                        "usedFor_display_mv": [
+                            "Gedächtnisschrift",
+                            "Nekrolog"
+                        ],
+                        "usedFor_id_mv": [
+                            "TH00012317",
+                            "TH00012316"
+                        ],
+                        "score": 5.4801297
+                    }
+                ]
+            }
+        }
+    }
+}

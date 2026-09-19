@@ -1,0 +1,189 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(AK01600972)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 8.220195,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "searchBoost": 0.6,
+                        "default": [
+                            "0.6",
+                            "Bürger, Peter",
+                            "PE00006305",
+                            "Normdaten",
+                            "1151731404",
+                            "nicht benutzbar\nnur bibliographischer Nachweis, nicht im Bestand des DLA!",
+                            "Bürger, Peter (1936-2017)",
+                            "Bürger, Peter (1936-2017)",
+                            "Deutsch",
+                            "Deutsch",
+                            "creator",
+                            "1151731404",
+                            "AK",
+                            "Bürger, Peter (1936-2017)␝Verfasser/Urheber",
+                            "Bürger, Peter (1936-2017)",
+                            "GND (Werktitel)",
+                            "1971",
+                            "2",
+                            "Bürger, Peter (1936-2017). Die frühen Komödien Pierre Corneilles und das französische Theater um 1630 (Habilitationsschrift : 1971)",
+                            "Bürger, Peter (1936-2017)␝Von",
+                            "1971",
+                            "Bürger, Peter (1936-2017)",
+                            "Habilitationsschrift",
+                            "2018-02-02",
+                            "1971-01-01T00:00:00Z",
+                            "2018-02-02",
+                            "Bürger, Peter",
+                            "PE00006305",
+                            "1971",
+                            "Verfasser/Urheber",
+                            "PE00006305",
+                            "AK01600972",
+                            "AK01600972␝Bürger, Peter (1936-2017). Die frühen Komödien Pierre Corneilles und das französische Theater um 1630 (Habilitationsschrift : 1971)",
+                            "https://www.dla-marbach.de/find/opac/id/AK01600972",
+                            "Deutsch␝Original",
+                            "1971",
+                            "Abgeschlossen",
+                            "Bürger, Peter (1936-2017). Die frühen Komödien Pierre Corneilles und das französische Theater um 1630 (Habilitationsschrift : 1971)",
+                            "Habilitationsschrift",
+                            "Bürger, Peter <1936-2017>. Die frühen Komödien Pierre Corneilles und das französische Theater um 1630 (Habilitationsschrift : 1971)",
+                            "Die frühen Komödien Pierre Corneilles und das französische Theater um 1630",
+                            "2018-02-13",
+                            "Verfasser/Urheber",
+                            "AK01600972",
+                            "Werktitel",
+                            "Werke",
+                            "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                            "Deutschland",
+                            "1.0.0",
+                            "1971"
+                        ],
+                        "searchName_mv": [
+                            "Bürger, Peter"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00006305"
+                        ],
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "vendor_id_mv": [
+                            "1151731404"
+                        ],
+                        "usageRestrictionNote": "nicht benutzbar\nnur bibliographischer Nachweis, nicht im Bestand des DLA!",
+                        "displayName": "Bürger, Peter (1936-2017)",
+                        "creator_display_mv": [
+                            "Bürger, Peter (1936-2017)"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "personBy_creator_mv": [
+                            "creator"
+                        ],
+                        "gnd_id_mv": [
+                            "1151731404"
+                        ],
+                        "source": "AK",
+                        "filterAuthorityRole_mv": [
+                            "Bürger, Peter (1936-2017)␝Verfasser/Urheber"
+                        ],
+                        "personBy_display_mv": [
+                            "Bürger, Peter (1936-2017)"
+                        ],
+                        "vendor_type_mv": [
+                            "GND (Werktitel)"
+                        ],
+                        "filterDateRange_mv": [
+                            "1971"
+                        ],
+                        "searchEntityScore": 2,
+                        "searchSuggestTerm_mv": [
+                            "Bürger, Peter (1936-2017). Die frühen Komödien Pierre Corneilles und das französische Theater um 1630 (Habilitationsschrift : 1971)"
+                        ],
+                        "filterAuthorityRelation_mv": [
+                            "Bürger, Peter (1936-2017)␝Von"
+                        ],
+                        "displayAddition1": "1971",
+                        "filterAuthority_mv": [
+                            "Bürger, Peter (1936-2017)"
+                        ],
+                        "genreOther_mv": [
+                            "Habilitationsschrift"
+                        ],
+                        "filterRecent": "2018-02-02",
+                        "filterDatePoint_mv": [
+                            "1971-01-01T00:00:00Z"
+                        ],
+                        "dateCataloged": "2018-02-02",
+                        "searchNameBy_mv": [
+                            "Bürger, Peter"
+                        ],
+                        "creator_id_mv": [
+                            "PE00006305"
+                        ],
+                        "dateOrigin": "1971",
+                        "creator_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00006305",
+                            "AK01600972"
+                        ],
+                        "searchSuggestPayload": "AK01600972␝Bürger, Peter (1936-2017). Die frühen Komödien Pierre Corneilles und das französische Theater um 1630 (Habilitationsschrift : 1971)",
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK01600972",
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "searchDate_mv": [
+                            "1971"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "display": "Bürger, Peter (1936-2017). Die frühen Komödien Pierre Corneilles und das französische Theater um 1630 (Habilitationsschrift : 1971)",
+                        "filterFormContent_mv": [
+                            "Habilitationsschrift"
+                        ],
+                        "title": "Bürger, Peter <1936-2017>. Die frühen Komödien Pierre Corneilles und das französische Theater um 1630 (Habilitationsschrift : 1971)",
+                        "titleMain_text": "Die frühen Komödien Pierre Corneilles und das französische Theater um 1630",
+                        "dateModified": "2018-02-13",
+                        "personBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "id": "AK01600972",
+                        "category": "Werktitel",
+                        "filterSource": "Werke",
+                        "categorySub": "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                        "country_mv": [
+                            "Deutschland"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "dateOriginComment_mv": [
+                            "1971"
+                        ],
+                        "score": 8.220195
+                    }
+                ]
+            }
+        }
+    }
+}

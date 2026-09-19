@@ -16,7 +16,7 @@
         "body": {
             "responseHeader": {
                 "status": 0,
-                "QTime": 0
+                "QTime": 2
             },
             "suggest": {
                 "mySuggester": {
@@ -282,252 +282,252 @@
                         "suggestions": [
                             {
                                 "term": "goethe",
-                                "weight": 8117867482753369,
+                                "weight": 8117737186068819,
                                 "payload": ""
                             },
                             {
                                 "term": "goethes",
-                                "weight": 3438943835473176,
+                                "weight": 3438796792592210,
                                 "payload": ""
                             },
                             {
                                 "term": "goethe's",
-                                "weight": 559389388785120,
+                                "weight": 559365470328976,
                                 "payload": ""
                             },
                             {
                                 "term": "goethezeit",
-                                "weight": 477215521207771,
+                                "weight": 477195116354293,
                                 "payload": ""
                             },
                             {
                                 "term": "goetheana",
-                                "weight": 80656144429482,
+                                "weight": 80652695721852,
                                 "payload": ""
                             },
                             {
                                 "term": "goethe:d",
-                                "weight": 49434411101940,
+                                "weight": 49432297377909,
                                 "payload": ""
                             },
                             {
                                 "term": "goethe:e",
-                                "weight": 43580336103026,
+                                "weight": 43578472688420,
                                 "payload": ""
                             },
                             {
                                 "term": "goethe:a",
-                                "weight": 39894437029636,
+                                "weight": 39892731217260,
                                 "payload": ""
                             },
                             {
                                 "term": "goetheschen",
-                                "weight": 37943078696665,
+                                "weight": 37941456320763,
                                 "payload": ""
                             },
                             {
                                 "term": "goethejahr",
-                                "weight": 26018111106284,
+                                "weight": 26016998619952,
                                 "payload": ""
                             },
                             {
                                 "term": "goethebund",
-                                "weight": 25801293513732,
+                                "weight": 25800190298119,
                                 "payload": ""
                             },
                             {
                                 "term": "goetheanum",
-                                "weight": 20814488885027,
+                                "weight": 20813598895961,
                                 "payload": ""
                             },
                             {
                                 "term": "goethe:c",
-                                "weight": 18646312959504,
+                                "weight": 18645515677632,
                                 "payload": ""
                             },
                             {
                                 "term": "goethehaus",
-                                "weight": 17562224996742,
+                                "weight": 17561474068467,
                                 "payload": ""
                             },
                             {
                                 "term": "goethebild",
-                                "weight": 16478137033980,
+                                "weight": 16477432459303,
                                 "payload": ""
                             },
                             {
                                 "term": "goethefeier",
-                                "weight": 14960413886113,
+                                "weight": 14959774206472,
                                 "payload": ""
                             },
                             {
                                 "term": "goethepreises",
-                                "weight": 11708149997828,
+                                "weight": 11707649378978,
                                 "payload": ""
                             },
                             {
                                 "term": "goethemuseum",
-                                "weight": 10840879627618,
+                                "weight": 10840416091646,
                                 "payload": ""
                             },
                             {
                                 "term": "goethe'schen",
-                                "weight": 10407244442513,
+                                "weight": 10406799447980,
                                 "payload": ""
                             },
                             {
                                 "term": "goethepreis",
-                                "weight": 10407244442513,
+                                "weight": 10406799447980,
                                 "payload": ""
                             },
                             {
                                 "term": "goethescher",
-                                "weight": 9756791664856,
+                                "weight": 9756374482482,
                                 "payload": ""
                             },
                             {
                                 "term": "goethesche",
-                                "weight": 8455886109542,
+                                "weight": 8455524551484,
                                 "payload": ""
                             },
                             {
                                 "term": "goethegesellschaft",
-                                "weight": 6721345369123,
+                                "weight": 6721057976821,
                                 "payload": ""
                             },
                             {
                                 "term": "goetheforschung",
-                                "weight": 6504527776571,
+                                "weight": 6504249654988,
                                 "payload": ""
                             },
                             {
                                 "term": "goetheliteratur",
-                                "weight": 5637257406361,
+                                "weight": 5637016367656,
                                 "payload": ""
                             },
                             {
                                 "term": "goetheplatz",
-                                "weight": 5420439813809,
+                                "weight": 5420208045823,
                                 "payload": ""
                             },
                             {
                                 "term": "goethego",
-                                "weight": 5203622221256,
+                                "weight": 5203399723990,
                                 "payload": ""
                             },
                             {
                                 "term": "goethehauses",
-                                "weight": 4553169443599,
+                                "weight": 4552974758491,
                                 "payload": ""
                             },
                             {
                                 "term": "goethestudien",
-                                "weight": 4119534258495,
+                                "weight": 4119358114825,
                                 "payload": ""
                             },
                             {
                                 "term": "goethezeichnungen",
-                                "weight": 3902716665942,
+                                "weight": 3902549792992,
                                 "payload": ""
                             },
                             {
                                 "term": "goethebuch",
-                                "weight": 3469081480837,
+                                "weight": 3468933149326,
                                 "payload": ""
                             },
                             {
                                 "term": "goethefeiern",
-                                "weight": 3252263888285,
+                                "weight": 3252124827494,
                                 "payload": ""
                             },
                             {
                                 "term": "goethen",
-                                "weight": 3252263888285,
+                                "weight": 3252124827494,
                                 "payload": ""
                             },
                             {
                                 "term": "goethe'scher",
-                                "weight": 3035446295733,
+                                "weight": 3035316505661,
                                 "payload": ""
                             },
                             {
                                 "term": "goetherezeption",
-                                "weight": 3035446295733,
+                                "weight": 3035316505661,
                                 "payload": ""
                             },
                             {
                                 "term": "goethe'sche",
-                                "weight": 2818628703180,
+                                "weight": 2818508183828,
                                 "payload": ""
                             },
                             {
                                 "term": "goethetexte",
-                                "weight": 2818628703180,
+                                "weight": 2818508183828,
                                 "payload": ""
                             },
                             {
                                 "term": "goethean",
-                                "weight": 2601811110628,
+                                "weight": 2601699861995,
                                 "payload": ""
                             },
                             {
                                 "term": "goethebiographie",
-                                "weight": 2601811110628,
+                                "weight": 2601699861995,
                                 "payload": ""
                             },
                             {
                                 "term": "goethedenkmal",
-                                "weight": 2384993518076,
+                                "weight": 2384891540162,
                                 "payload": ""
                             },
                             {
                                 "term": "goethekreis",
-                                "weight": 2384993518076,
+                                "weight": 2384891540162,
                                 "payload": ""
                             },
                             {
                                 "term": "goethemuseums",
-                                "weight": 2384993518076,
+                                "weight": 2384891540162,
                                 "payload": ""
                             },
                             {
                                 "term": "goethestadt",
-                                "weight": 2384993518076,
+                                "weight": 2384891540162,
                                 "payload": ""
                             },
                             {
                                 "term": "goethestätten",
-                                "weight": 2384993518076,
+                                "weight": 2384891540162,
                                 "payload": ""
                             },
                             {
                                 "term": "goethewoche",
-                                "weight": 2384993518076,
+                                "weight": 2384891540162,
                                 "payload": ""
                             },
                             {
                                 "term": "goethekreise",
-                                "weight": 2168175925523,
+                                "weight": 2168083218329,
                                 "payload": ""
                             },
                             {
                                 "term": "goethestadtmuseum",
-                                "weight": 2168175925523,
+                                "weight": 2168083218329,
                                 "payload": ""
                             },
                             {
                                 "term": "goethestiftung",
-                                "weight": 2168175925523,
+                                "weight": 2168083218329,
                                 "payload": ""
                             },
                             {
                                 "term": "goethe:f",
-                                "weight": 1951358332971,
+                                "weight": 1951274896496,
                                 "payload": ""
                             },
                             {
                                 "term": "goetheanismus",
-                                "weight": 1951358332971,
+                                "weight": 1951274896496,
                                 "payload": ""
                             }
                         ]
