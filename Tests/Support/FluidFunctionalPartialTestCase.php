@@ -2,6 +2,7 @@
 
 namespace Dla\DlaOpacNg\Tests\Support;
 
+use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
 use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\ExtbaseRequestParameters;
@@ -31,7 +32,12 @@ abstract class FluidFunctionalPartialTestCase extends FunctionalTestCase
         $extbaseParameters->setControllerName('Search');
         $extbaseParameters->setControllerActionName('index');
 
+        // f:translate ruft intern ApplicationType::fromRequest($request) auf, was das
+        // Request-Attribut "applicationType" voraussetzt. In Produktion setzt das die
+        // TYPO3-Frontend-Middleware (SystemEnvironmentBuilder), in diesem isolierten
+        // Partial-Rendering-Test (ohne vollen Request-Zyklus/TSFE) fehlt es sonst.
         $request = (new ServerRequest('https://example.invalid/?id=1'))
+            ->withAttribute('applicationType', SystemEnvironmentBuilder::REQUESTTYPE_FE)
             ->withAttribute('extbase', $extbaseParameters)
             ->withQueryParams($variables['arguments'] ?? []);
         $renderingContext->setRequest(new ExtbaseRequest($request));
