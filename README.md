@@ -114,6 +114,25 @@ wie `dla-find/Classes/Service/SolrServiceProvider.php` es in Produktion tut. Die
 [Tests/Fixtures/Solr/cassettes](Tests/Fixtures/Solr/cassettes) und werden über dieselbe
 `recorder.php` aufgenommen (siehe die entsprechenden Szenarien am Ende der Datei).
 
+### Fluid-Partial-Tests: Unit- vs. Functional-Bootstrap (Prototyp)
+
+Für einen Machbarkeitstest gibt es zusätzlich einen Functional-Prototyp:
+
+* Basisklasse: [Tests/Support/FluidFunctionalPartialTestCase.php](Tests/Support/FluidFunctionalPartialTestCase.php)
+* Repräsentativer Testfall: [Tests/Functional/Partials/ListPagerFunctionalTest.php](Tests/Functional/Partials/ListPagerFunctionalTest.php)
+* Ausführung: `task test:php:functional` (separat von `task test:php`)
+
+Mess-/Vergleichsergebnis (Stand dieses Prototyps):
+
+* **Laufzeitvergleich:** In dieser Sandbox nicht belastbar messbar, da `ddev` hier nicht verfügbar ist; die Messung muss in der regulären CI-/DDEV-Umgebung mit `time task test:php` (Unit) und `time task test:php:functional` erfolgen.
+* **Code-Komplexität:** Unit-Basis [Tests/Support/FluidPartialTestCase.php](Tests/Support/FluidPartialTestCase.php) umfasst aktuell ca. **151 Zeilen**, die neue Functional-Basis ca. **50 Zeilen**; der manuelle Cache-/Package-/LanguageService-Aufbau inkl. Reflection-Hack entfällt im Functional-Bootstrap.
+* **Routing-Erkenntnis:** Der Prototyp prüft `f:link.action` ohne Test-Override (`href="#test-link"`), nutzt dafür aber weiterhin kein vollständiges Frontend-Rendering einer Seite; falls künftig echte Site-/TSFE-Routingpfade assertionskritisch werden, sollte ein dedizierter Frontend-Functional-Test (Request-basiert) ergänzt werden.
+
+Empfehlung:
+
+* **Nicht sofort vollständig migrieren.** Der Functional-Ansatz reduziert zwar Boilerplate signifikant, sollte aber erst breit ausgerollt werden, wenn in CI die Laufzeit pro Testklasse gemessen und als akzeptabel bewertet wurde.
+* **Sinnvolle Zwischenstrategie:** Unit-Tests für schnelle, rein strukturelle Partial-Assertions beibehalten und nur ausgewählte Fälle mit echtem TYPO3-Verhalten (z.B. Link-/Sprachlogik) als Functional-Tests ergänzen.
+
 ## Weitere Hinweise
 
 Der Code der Extension ist über Symlinks eingebunden. Nach Änderungen am Code wie beispielsweise in [Configuration/TypoScript/setup.ts](Configuration/TypoScript/setup.ts) ist also lediglich ein Löschen des TYPO3-Caches erforderlich:

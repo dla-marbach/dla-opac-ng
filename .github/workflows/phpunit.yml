@@ -37,4 +37,7 @@ jobs:
         run: task install
 
       - name: Run PHPUnit tests
-        run: task test:php
+        run: time task test:php
+
+      - name: Run PHPUnit tests (functional bootstrap prototype)
+        run: time task test:php:functional

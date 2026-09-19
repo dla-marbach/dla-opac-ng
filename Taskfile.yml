@@ -53,6 +53,12 @@ tasks:
       - cp ../.devfiles/additional.php config/system/additional.php
       - cp ../.devfiles/robots.txt public/robots.txt
       - mkdir -p config/sites/dla-opac && cp ../.devfiles/siteconfig.yaml config/sites/dla-opac/config.yaml
+      # TYPO3 Functional-Tests (typo3/testing-framework) legen pro Testklasse eine
+      # temporäre Datenbank mit Präfix "func_" an und löschen sie danach wieder.
+      # Der reguläre DB-User "db" hat dafür standardmäßig keine Rechte, daher
+      # hier einmalig als root freischalten (nötig für: task test:php:functional).
+      - |
+        ddev mysql -uroot -proot -e "GRANT ALL PRIVILEGES ON \`func_%\`.* TO 'db'@'%'; FLUSH PRIVILEGES;"
 
   install_ext:
     dir: t3example
@@ -122,6 +128,12 @@ tasks:
     cmds:
       - ddev exec vendor/bin/phpunit -c packages/dla-dla_opac_ng/Tests/phpunit.xml
       - ddev exec vendor/bin/phpunit -c packages/dla-find/Tests/phpunit.xml
+
+  test:php:functional:
+    desc: Functional-PHPUnit-Prototyp für Fluid-Partial-Rendering (dla_opac_ng)
+    dir: t3example
+    cmds:
+      - ddev exec vendor/bin/phpunit -c packages/dla-dla_opac_ng/Tests/phpunit.functional.xml
 
   test:
     desc: Playwright-Test ausführen
