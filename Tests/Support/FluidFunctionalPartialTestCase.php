@@ -22,7 +22,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 abstract class FluidFunctionalPartialTestCase extends FunctionalTestCase
 {
-    private const SITE_IDENTIFIER = 'dla-opac';
     private const ROOT_PAGE_UID = 1;
     private const REQUEST_PAGE_UID = 2;
 
@@ -78,9 +77,10 @@ abstract class FluidFunctionalPartialTestCase extends FunctionalTestCase
     {
         $siteConfiguration = Yaml::parseFile(dirname(__DIR__, 2) . '/.devfiles/siteconfig.yaml');
         $siteConfiguration['rootPageId'] = self::ROOT_PAGE_UID;
+        $siteIdentifier = 'dla-opac-' . substr(md5(static::class), 0, 8);
         $siteWriter = $this->get(SiteWriter::class);
 
-        GeneralUtility::rmdir(Environment::getConfigPath() . '/sites/' . self::SITE_IDENTIFIER, true);
-        $siteWriter->write(self::SITE_IDENTIFIER, $siteConfiguration);
+        GeneralUtility::rmdir(Environment::getConfigPath() . '/sites/' . $siteIdentifier, true);
+        $siteWriter->write($siteIdentifier, $siteConfiguration);
     }
 }
