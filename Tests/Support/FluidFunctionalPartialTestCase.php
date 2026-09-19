@@ -4,6 +4,8 @@ namespace Dla\DlaOpacNg\Tests\Support;
 
 use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
 use TYPO3\CMS\Core\Http\ServerRequest;
+use TYPO3\CMS\Core\Http\Uri;
+use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\ExtbaseRequestParameters;
 use TYPO3\CMS\Extbase\Mvc\Request as ExtbaseRequest;
@@ -32,12 +34,17 @@ abstract class FluidFunctionalPartialTestCase extends FunctionalTestCase
         $extbaseParameters->setControllerName('Search');
         $extbaseParameters->setControllerActionName('index');
 
-        // f:translate ruft intern ApplicationType::fromRequest($request) auf, was das
-        // Request-Attribut "applicationType" voraussetzt. In Produktion setzt das die
-        // TYPO3-Frontend-Middleware (SystemEnvironmentBuilder), in diesem isolierten
-        // Partial-Rendering-Test (ohne vollen Request-Zyklus/TSFE) fehlt es sonst.
+        // f:translate ruft intern Locales::createLocaleFromRequest($request) auf, was für
+        // Frontend-Requests entweder das Request-Attribut "language" (SiteLanguage) oder
+        // ersatzweise "site" (Site::getDefaultLanguage()) voraussetzt. In Produktion setzt
+        // das TYPO3s Site-/Routing-Middleware, im isolierten Partial-Rendering-Test (ohne
+        // vollen Request-Zyklus/TSFE) fehlt beides - daher hier eine minimale, deutsche
+        // SiteLanguage direkt als "language"-Attribut setzen.
+        $siteLanguage = new SiteLanguage(0, 'de-DE', new Uri('/'), []);
+
         $request = (new ServerRequest('https://example.invalid/?id=1'))
             ->withAttribute('applicationType', SystemEnvironmentBuilder::REQUESTTYPE_FE)
+            ->withAttribute('language', $siteLanguage)
             ->withAttribute('extbase', $extbaseParameters)
             ->withQueryParams($variables['arguments'] ?? []);
         $renderingContext->setRequest(new ExtbaseRequest($request));
