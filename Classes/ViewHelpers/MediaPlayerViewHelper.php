@@ -2,6 +2,7 @@
 
 namespace Dla\DlaOpacNg\ViewHelpers;
 
+use Dla\DlaOpacNg\Service\M3uPlaylistParser;
 use Symfony\Component\HttpFoundation\IpUtils;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -10,7 +11,16 @@ use TYPO3\CMS\Core\Core\Environment;
 
 class MediaPlayerViewHelper extends AbstractViewHelper
 {
+    /**
+     * Datei-Endungen, die im Video.js-Player als Audio bzw. Video abgespielt werden können.
+     */
+    protected const AUDIO_EXTENSIONS = ['wav', 'mp3', 'mp2', 'm4a', 'ogg', 'oga', 'flac'];
+    protected const VIDEO_EXTENSIONS = ['mp4', 'webm', 'ogv', 'mov', 'm4v'];
 
+    /**
+     * Datei-Endungen, die als (Extended) M3U-Playlisten interpretiert werden.
+     */
+    protected const PLAYLIST_EXTENSIONS = ['m3u', 'm3u8'];
 
     /**
      * Register arguments.
@@ -23,6 +33,8 @@ class MediaPlayerViewHelper extends AbstractViewHelper
         $this->registerArgument('ext', 'mixed', 'ext', false, []);
         $this->registerArgument('access', 'mixed', 'access', true, []);
         $this->registerArgument('display', 'mixed', 'display labels', false, []);
+        $this->registerArgument('chapters', 'mixed', 'WebVTT-Kapitelmarken-URLs je Objekt', false, []);
+        $this->registerArgument('allowDownload', 'mixed', 'Download-Link zusätzlich zum Player anzeigen', false, true);
         $this->registerArgument('as', 'string', 'name of the label result variable', true, 'string');
     }
 
@@ -61,6 +73,42 @@ class MediaPlayerViewHelper extends AbstractViewHelper
      */
     public function render()
     {
+        $urls = $this->normalizeToArray($this->arguments['urls'] ?? null);
+        $ext = $this->normalizeToArray($this->arguments['ext'] ?? null);
+        $access = $this->normalizeToArray($this->arguments['access'] ?? null);
+        $display = $this->normalizeToArray($this->arguments['display'] ?? null);
+        $chapters = $this->normalizeToArray($this->arguments['chapters'] ?? null);
+        $allowDownload = (bool)($this->arguments['allowDownload'] ?? true);
+
+        $resultValue = $this->buildMediaData($urls, $ext, $access, $display, $chapters, $allowDownload);
+
+        $valueName = $this->arguments['as'];
+        if ($valueName !== null) {
+            if ($this->templateVariableContainer->exists($valueName)) {
+                $this->templateVariableContainer->remove($valueName);
+            }
+            $this->templateVariableContainer->add($valueName, $resultValue);
+//            $result = $this->renderChildren();
+        }
+
+    }
+
+    /**
+     * Builds the "links" (all digital objects, incl. forbidden ones) and "mediaplayer"
+     * (playable audio/video/playlist objects only) result structures from already
+     * normalized, index-aligned input arrays. Pure/side-effect-free besides the
+     * (best-effort) playlist HTTP fetch, kept separate from Fluid-specific plumbing
+     * so it can be unit tested directly.
+     *
+     * @param array $urls
+     * @param array $ext
+     * @param array $access
+     * @param array $display
+     * @param array $chapters
+     * @return array{links: array, mediaplayer: array}
+     */
+    public function buildMediaData(array $urls, array $ext, array $access, array $display, array $chapters, bool $allowDownload): array
+    {
         $campusRanges = explode(',', getenv('campusRanges'));
         $sandboxRanges = explode(',', getenv('sandboxRanges'));
         $staffRanges = explode(',', getenv('staffRanges'));
@@ -83,14 +131,7 @@ class MediaPlayerViewHelper extends AbstractViewHelper
 //        $restrictionGroups = ['op_admin', 'op_campus', 'op_sandbox', 'op_staff'];
 //        $userRestrictionGroup = 'public';
 
-        $mediaPlayerExt = ['wav', 'mp4', 'mp2', 'mp3'];
-        $linkExt = ['pdf', 'epub', 'rtf', 'jpg', 'txt', 'lnk'];
-
-        $urls = $this->normalizeToArray($this->arguments['urls'] ?? null);
-        $ext = $this->normalizeToArray($this->arguments['ext'] ?? null);
-        $access = $this->normalizeToArray($this->arguments['access'] ?? null);
-        $display = $this->normalizeToArray($this->arguments['display'] ?? null);
-        $resultValue = ['links' => []];
+        $resultValue = ['links' => [], 'mediaplayer' => []];
 
 //        $context = GeneralUtility::makeInstance(Context::class);
 //        $userAspect = $context->getAspect('frontend.user');
@@ -113,9 +154,12 @@ class MediaPlayerViewHelper extends AbstractViewHelper
         $i = 0;
         foreach ($access as $value) {
             // Show file data with information if file is forbidden
+            $currentExt = $ext[$i] ?? null;
+            $normalizedExt = is_string($currentExt) ? strtolower(ltrim(trim($currentExt), '.')) : null;
+
             $urlAccess = [
                 'url' => $urls[$i] ?? null,
-                'ext' => $ext[$i] ?? null,
+                'ext' => $currentExt,
                 'display' => $display[$i] ?? null,
                 'access' => $value,
                 'forbidden' => 1,
@@ -124,26 +168,77 @@ class MediaPlayerViewHelper extends AbstractViewHelper
                 $urlAccess['forbidden'] = 0;
             }
 
-            $resultValue['links'][] = $urlAccess;
+            $mediaType = $this->mediaTypeForExtension($normalizedExt);
+            if ($mediaType !== null && !empty($urlAccess['url'])) {
+                $mediaItem = $urlAccess;
+                $mediaItem['type'] = $mediaType;
+                $mediaItem['chapters'] = $chapters[$i] ?? null;
+                $mediaItem['allowDownload'] = $allowDownload;
 
-//            if (in_array($ext[$i], $mediaPlayerExt)) {
-//                $resultValue['mediaplayer'][] = $urlAccess;
-//            }
-//            if (in_array($ext[$i], $linkExt)) {
-//                $resultValue['links'][] = $urlAccess;
-//            }
+                if ($mediaType === 'playlist' && $urlAccess['forbidden'] === 0) {
+                    $mediaItem['tracks'] = $this->fetchPlaylistTracks($urlAccess['url']);
+                }
+
+                $resultValue['mediaplayer'][] = $mediaItem;
+            } else {
+                $resultValue['links'][] = $urlAccess;
+            }
+
             $i++;
         }
 
-        $valueName = $this->arguments['as'];
-        if ($valueName !== null) {
-            if ($this->templateVariableContainer->exists($valueName)) {
-                $this->templateVariableContainer->remove($valueName);
-            }
-            $this->templateVariableContainer->add($valueName, $resultValue);
-//            $result = $this->renderChildren();
+        return $resultValue;
+    }
+
+    /**
+     * Determine which kind of Video.js-Player entry (if any) a given file extension maps to.
+     *
+     * @return string|null "audio", "video", "playlist" or null if the extension is not playable.
+     */
+    protected function mediaTypeForExtension(?string $normalizedExt): ?string
+    {
+        if ($normalizedExt === null || $normalizedExt === '') {
+            return null;
         }
 
+        if (in_array($normalizedExt, static::PLAYLIST_EXTENSIONS, true)) {
+            return 'playlist';
+        }
+
+        if (in_array($normalizedExt, static::AUDIO_EXTENSIONS, true)) {
+            return 'audio';
+        }
+
+        if (in_array($normalizedExt, static::VIDEO_EXTENSIONS, true)) {
+            return 'video';
+        }
+
+        return null;
+    }
+
+    /**
+     * Loads an M3U/M3U8 playlist file and parses it into a plain track list.
+     * Returns an empty array if the playlist cannot be retrieved.
+     *
+     * @return array<int, array{url: string, title: string, duration: ?float}>
+     */
+    protected function fetchPlaylistTracks(string $url): array
+    {
+        $content = $this->fetchUrlContent($url);
+        if ($content === false || $content === '') {
+            return [];
+        }
+
+        return GeneralUtility::makeInstance(M3uPlaylistParser::class)->parse($content);
+    }
+
+    /**
+     * Wrapper around GeneralUtility::getUrl(), extracted for testability.
+     *
+     * @return string|false
+     */
+    protected function fetchUrlContent(string $url)
+    {
+        return GeneralUtility::getUrl($url);
     }
 }
-?>

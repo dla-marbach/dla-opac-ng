@@ -1753,6 +1753,10 @@
                 <source>Access to this object is not possible. *</source>
                 <target>Der Zugriff auf dieses Objekt ist nicht möglich. *</target>
             </trans-unit>
+            <trans-unit id="mediaplayer.download">
+                <source>Download</source>
+                <target>Download</target>
+            </trans-unit>
             <trans-unit id="maxRenderedRelationsNote">
                 <source>For technical reasons, only the first %s relations are shown.</source>
                 <target>Aus technischen Gründen werden nur die ersten %s Verknüpfungen angezeigt.</target>

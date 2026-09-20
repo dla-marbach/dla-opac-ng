@@ -1331,6 +1331,9 @@
             <trans-unit id="mediaplayer.access_file_forbidden_greenbox">
                 <source>Access to this object is not possible. *</source>
             </trans-unit>
+            <trans-unit id="mediaplayer.download">
+                <source>Download</source>
+            </trans-unit>
             <trans-unit id="maxRenderedRelationsNote">
                 <source>For technical reasons, only the first %s relations are shown.</source>
             </trans-unit>

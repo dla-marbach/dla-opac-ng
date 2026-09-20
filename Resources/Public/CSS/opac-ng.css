@@ -715,3 +715,34 @@ span.icon.bel-link01 {
     white-space: nowrap;
     pointer-events: none;
 }
+.dla-mediaplayer {
+    max-width: 640px;
+    margin-bottom: 1em;
+}
+
+.dla-mediaplayer-playlist {
+    list-style: none;
+    margin: 0.5em 0 0;
+    padding: 0;
+    border: 1px solid #ddd;
+}
+
+.dla-mediaplayer-playlist-item {
+    padding: 6px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.dla-mediaplayer-playlist-item:last-child {
+    border-bottom: none;
+}
+
+.dla-mediaplayer-playlist-item.active {
+    background-color: #fcff58;
+    font-weight: bold;
+}
+
+.dla-mediaplayer-download {
+    display: inline-block;
+    margin-top: 0.5em;
+}
