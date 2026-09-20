@@ -7,9 +7,11 @@ page.includeCSS.opac-ng = EXT:dla_opac_ng/Resources/Public/CSS/opac-ng.css
 page.includeCSS.belugino = EXT:dla_opac_ng/Resources/Public/CSS/belugino.css
 page.includeCSS.catalog = EXT:dla_opac_ng/Resources/Public/CSS/catalog.css
 page.includeCSS.tokeninput = EXT:dla_opac_ng/Resources/Public/CSS/token-input.css
+page.includeCSS.videojs = EXT:dla_opac_ng/Resources/Public/CSS/video.js/video-js.min.css
 
 # JavaScript-Basisbliotheken im Header laden wegen inline-<script>-Blöcken in Templates
 page.includeJS.jquery = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-3.6.0.js
+page.includeJS.videojs = EXT:dla_opac_ng/Resources/Public/JavaScript/video.js/video.min.js
 page.includeJS.jquery-ui = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-ui.min.js
 page.includeJS.nouislider = EXT:dla_opac_ng/Resources/Public/JavaScript/nouislider.js
 page.includeJS.chart = EXT:dla_opac_ng/Resources/Public/JavaScript/Chart-2.7.2.min.js
@@ -1390,6 +1392,12 @@ plugin.tx_find {
             }
             maximumPerPage = 100
             detailPagePaging = 1
+        }
+
+        # Der Abschnitt "mediaPlayer" steuert das Verhalten des Video.js-basierten Audio-/Videoplayers.
+        mediaPlayer {
+            # Legt fest, ob unterhalb des Players ein Download-Link fuer die Originaldatei angeboten wird.
+            allowDownload = 1
         }
 
         indexPageUid = 3
