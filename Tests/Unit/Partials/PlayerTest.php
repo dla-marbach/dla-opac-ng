@@ -50,6 +50,7 @@ class PlayerTest extends FluidPartialTestCase
         self::assertStringContainsString('<audio', $html);
         self::assertStringContainsString('controlslist="nodownload"', $html);
         self::assertStringNotContainsString('kind="chapters"', $html);
+        self::assertStringContainsString('class="video-js vjs-default-skin vjs-big-play-centered dla-mediaplayer dla-mediaplayer-audio"', $html);
         self::assertStringContainsString('videojs(el, {audioOnlyMode: true});', $html);
     }
 
@@ -74,6 +75,7 @@ class PlayerTest extends FluidPartialTestCase
         self::assertStringContainsString('dla-mediaplayer-playlist', $html);
         self::assertStringContainsString('Track A', $html);
         self::assertStringContainsString('Track B', $html);
+        self::assertStringContainsString('class="video-js vjs-default-skin vjs-big-play-centered dla-mediaplayer dla-mediaplayer-audio"', $html);
         self::assertSame(2, substr_count($html, '<li class="dla-mediaplayer-playlist-item'));
     }
 }
