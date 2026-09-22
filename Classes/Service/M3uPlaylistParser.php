@@ -23,7 +23,7 @@ class M3uPlaylistParser
     /**
      * @return array<int, array{url: string, title: string, duration: ?float}>
      */
-    public function parse(string $content): array
+    public function parse(string $content, ?string $playlistUrl = null): array
     {
         $lines = preg_split('/\R/', $content) ?: [];
         $tracks = [];
@@ -54,7 +54,7 @@ class M3uPlaylistParser
             }
 
             $tracks[] = [
-                'url' => $line,
+                'url' => $playlistUrl === null ? $line : $this->resolveUrl($line, $playlistUrl),
                 'title' => $pendingTitle !== null && $pendingTitle !== '' ? $pendingTitle : $this->titleFromUrl($line),
                 'duration' => $pendingDuration,
             ];
@@ -89,5 +89,34 @@ class M3uPlaylistParser
         $path = parse_url($url, PHP_URL_PATH) ?: $url;
 
         return pathinfo($path, PATHINFO_FILENAME);
+    }
+
+    private function resolveUrl(string $url, string $playlistUrl): string
+    {
+        if (parse_url($url, PHP_URL_SCHEME) !== null) {
+            return $url;
+        }
+
+        $playlistParts = parse_url($playlistUrl);
+        if (!is_array($playlistParts) || empty($playlistParts['scheme']) || empty($playlistParts['host'])) {
+            return $url;
+        }
+
+        $origin = $playlistParts['scheme'] . '://' . $playlistParts['host'];
+        if (isset($playlistParts['port'])) {
+            $origin .= ':' . $playlistParts['port'];
+        }
+
+        if (str_starts_with($url, '//')) {
+            return $playlistParts['scheme'] . ':' . $url;
+        }
+        if (str_starts_with($url, '/')) {
+            return $origin . $url;
+        }
+
+        $path = $playlistParts['path'] ?? '/';
+        $directory = rtrim(str_replace('\\', '/', dirname($path)), '/');
+
+        return $origin . ($directory === '' ? '' : $directory) . '/' . $url;
     }
 }

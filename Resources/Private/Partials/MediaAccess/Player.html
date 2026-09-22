@@ -20,9 +20,10 @@
                 <ol class="dla-mediaplayer-playlist">
                     <f:for each="{item.tracks}" as="track" iteration="trackIterator">
                         <li class="dla-mediaplayer-playlist-item{f:if(condition: trackIterator.isFirst, then: ' active')}"
-                            data-src="{track.url}"
-                            data-title="{track.title}">
-                            {track.title}
+                            data-src="{track.url}">
+                            <button type="button" class="dla-mediaplayer-playlist-button"
+                                aria-current="{f:if(condition: trackIterator.isFirst, then: 'true', else: 'false')}"
+                                data-title="{track.title}">{track.title}</button>
                         </li>
                     </f:for>
                 </ol>
@@ -46,14 +47,18 @@
                         if (!track) {
                             return;
                         }
-                        items.forEach(function (li) { li.classList.remove('active'); });
+                        items.forEach(function (li) {
+                            li.classList.remove('active');
+                            li.querySelector('button').removeAttribute('aria-current');
+                        });
                         track.classList.add('active');
+                        track.querySelector('button').setAttribute('aria-current', 'true');
                         player.src({ src: track.getAttribute('data-src') });
                         player.play();
                     }
 
                     items.forEach(function (li, index) {
-                        li.addEventListener('click', function () {
+                        li.querySelector('button').addEventListener('click', function () {
                             playIndex(index);
                         });
                     });
@@ -70,7 +75,7 @@
                     <audio id="{id}" class="{playerClasses}" controls="controls" preload="auto">
                         <source src="{item.url}" />
                         <f:if condition="{item.chapters}">
-                            <track kind="chapters" src="{item.chapters}" srclang="de" label="Kapitel" default="default" />
+                            <track kind="chapters" src="{item.chapters}" label="{f:translate(key: 'mediaplayer.chapters', extensionName: 'dla_opac_ng', default: 'Chapters')}" default="default" />
                         </f:if>
                     </audio>
                 </f:then>
@@ -78,7 +83,7 @@
                     <video id="{id}" class="{playerClasses}" controls="controls" playsinline="playsinline" preload="auto">
                         <source src="{item.url}" />
                         <f:if condition="{item.chapters}">
-                            <track kind="chapters" src="{item.chapters}" srclang="de" label="Kapitel" default="default" />
+                            <track kind="chapters" src="{item.chapters}" label="{f:translate(key: 'mediaplayer.chapters', extensionName: 'dla_opac_ng', default: 'Chapters')}" default="default" />
                         </f:if>
                     </video>
                 </f:else>

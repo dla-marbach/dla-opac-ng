@@ -148,7 +148,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
             '#EXTINF:10,Track A',
             'https://example.org/media/a.mp3',
             '#EXTINF:20,Track B',
-            'https://example.org/media/b.mp3',
+            'tracks/b.mp3',
         ]);
 
         $result = $viewHelper->buildMediaData(
@@ -166,6 +166,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertCount(2, $mediaItem['tracks']);
         self::assertSame('Track A', $mediaItem['tracks'][0]['title']);
         self::assertSame(10.0, $mediaItem['tracks'][0]['duration']);
+        self::assertSame('https://example.org/media/tracks/b.mp3', $mediaItem['tracks'][1]['url']);
     }
 
     /**

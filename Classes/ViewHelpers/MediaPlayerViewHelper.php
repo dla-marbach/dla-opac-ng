@@ -5,12 +5,16 @@ namespace Dla\DlaOpacNg\ViewHelpers;
 use Dla\DlaOpacNg\Service\M3uPlaylistParser;
 use Symfony\Component\HttpFoundation\IpUtils;
 use TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3\CMS\Core\Core\Environment;
 
 class MediaPlayerViewHelper extends AbstractViewHelper
 {
+    protected const PLAYLIST_CACHE_TTL = 300;
+    protected const PLAYLIST_CACHE_LIMIT = 100;
+    protected static array $playlistCache = [];
     /**
      * Datei-Endungen, die im Video.js-Player als Audio bzw. Video abgespielt werden können.
      */
@@ -224,12 +228,30 @@ class MediaPlayerViewHelper extends AbstractViewHelper
      */
     protected function fetchPlaylistTracks(string $url): array
     {
+        if (!$this->isSafeRemoteUrl($url)) {
+            return [];
+        }
+
+        $cacheKey = hash('sha256', $url);
+        if (isset(self::$playlistCache[$cacheKey]) && self::$playlistCache[$cacheKey]['expires'] > time()) {
+            return self::$playlistCache[$cacheKey]['tracks'];
+        }
+
         $content = $this->fetchUrlContent($url);
         if ($content === false || $content === '') {
             return [];
         }
 
-        return GeneralUtility::makeInstance(M3uPlaylistParser::class)->parse($content);
+        $tracks = GeneralUtility::makeInstance(M3uPlaylistParser::class)->parse($content, $url);
+        self::$playlistCache[$cacheKey] = [
+            'expires' => time() + self::PLAYLIST_CACHE_TTL,
+            'tracks' => $tracks,
+        ];
+        if (count(self::$playlistCache) > self::PLAYLIST_CACHE_LIMIT) {
+            array_shift(self::$playlistCache);
+        }
+
+        return $tracks;
     }
 
     /**
@@ -239,6 +261,40 @@ class MediaPlayerViewHelper extends AbstractViewHelper
      */
     protected function fetchUrlContent(string $url)
     {
-        return GeneralUtility::getUrl($url);
+        try {
+            $response = GeneralUtility::makeInstance(RequestFactory::class)->request($url, 'GET', [
+                'timeout' => 5,
+                'allow_redirects' => false,
+            ]);
+        } catch (\Throwable $exception) {
+            return false;
+        }
+
+        return $response->getStatusCode() >= 200 && $response->getStatusCode() < 300
+            ? $response->getBody()->getContents()
+            : false;
+    }
+
+    protected function isSafeRemoteUrl(string $url): bool
+    {
+        $parts = parse_url($url);
+        if (!is_array($parts) || !in_array(strtolower($parts['scheme'] ?? ''), ['http', 'https'], true)) {
+            return false;
+        }
+
+        $host = $parts['host'] ?? '';
+        if ($host === '' || filter_var($host, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
+            $addresses = gethostbynamel($host);
+            if ($addresses === false || $addresses === []) {
+                return false;
+            }
+            foreach ($addresses as $address) {
+                if (filter_var($address, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 }

@@ -1757,6 +1757,10 @@
                 <source>Download</source>
                 <target>Download</target>
             </trans-unit>
+            <trans-unit id="mediaplayer.chapters">
+                <source>Chapters</source>
+                <target>Kapitel</target>
+            </trans-unit>
             <trans-unit id="maxRenderedRelationsNote">
                 <source>For technical reasons, only the first %s relations are shown.</source>
                 <target>Aus technischen Gründen werden nur die ersten %s Verknüpfungen angezeigt.</target>

@@ -729,8 +729,21 @@ span.icon.bel-link01 {
 
 .dla-mediaplayer-playlist-item {
     padding: 6px 10px;
-    cursor: pointer;
     border-bottom: 1px solid #eee;
+}
+
+.dla-mediaplayer-playlist-button {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+}
+
+.dla-mediaplayer-playlist-button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
 }
 
 .dla-mediaplayer-playlist-item:last-child {
