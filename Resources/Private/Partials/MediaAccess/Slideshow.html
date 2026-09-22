@@ -1,0 +1,44 @@
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+<f:comment>
+    Rendert eine Bildergalerie/Slideshow für alle sichtbaren (nicht gesperrten) Bilder
+    eines digitalen Objekts, wie sie von MediaPlayerViewHelper::buildMediaData() in
+    "images" bereitgestellt werden (siehe Classes/ViewHelpers/MediaPlayerViewHelper.php).
+
+    Gesperrte Bilder tauchen hier bewusst NICHT als Platzhalter auf - sie werden
+    weiterhin ausschließlich über den bestehenden Link-/Rechtehinweis dargestellt
+    (siehe MediaAccess/RenderLinks.html bzw. MediaAccess/RenderItemLinks.html).
+
+    Erwartete Variablen:
+    - images: mediaData.images (nur nicht gesperrte Bilder)
+    - id:     eindeutige DOM-ID für diese Slideshow-Instanz auf der Seite
+</f:comment>
+
+<f:if condition="{images}">
+    <div id="{id}" class="dla-slideshow" data-dla-slideshow>
+        <div class="dla-slideshow-track">
+            <f:for each="{images}" as="image" iteration="iterator">
+                <div class="dla-slideshow-slide">
+                    <a href="{image.url}" target="_blank">
+                        <f:if condition="{image.thumbnail} && {image.thumbnail} != '␣'">
+                            <f:then>
+                                <img src="{image.thumbnail}" alt="{image.display}" />
+                            </f:then>
+                            <f:else>
+                                <img src="{image.url}" alt="{image.display}" />
+                            </f:else>
+                        </f:if>
+                    </a>
+                </div>
+            </f:for>
+        </div>
+        <f:if condition="{f:count(subject: images)} > 1">
+            <button type="button" class="dla-slideshow-prev" title="{f:translate(key:'previous')}">
+                <span class="icon bel-pfeil-r01"></span>
+            </button>
+            <button type="button" class="dla-slideshow-next" title="{f:translate(key:'next')}">
+                <span class="icon bel-pfeil-l01"></span>
+            </button>
+            <div class="dla-slideshow-dots"></div>
+        </f:if>
+    </div>
+</f:if>

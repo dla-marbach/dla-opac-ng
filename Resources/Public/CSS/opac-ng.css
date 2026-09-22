@@ -754,3 +754,78 @@ span.icon.bel-link01 {
     background-color: #fcff58;
     font-weight: bold;
 }
+
+.dla-slideshow {
+    position: relative;
+    overflow: hidden;
+    max-width: 640px;
+    margin-bottom: 1em;
+}
+
+.dla-slideshow-track {
+    display: flex;
+    transition: transform 0.35s ease;
+}
+
+.dla-slideshow-slide {
+    flex: 0 0 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.dla-slideshow-slide img {
+    max-width: 100%;
+    height: auto;
+}
+
+.dla-slideshow-prev,
+.dla-slideshow-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+    padding: 8px 10px;
+    border-radius: 50%;
+}
+
+.dla-slideshow-prev:hover,
+.dla-slideshow-next:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.dla-slideshow-prev {
+    left: 10px;
+}
+
+.dla-slideshow-next {
+    right: 10px;
+}
+
+.dla-slideshow-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 2;
+}
+
+.dla-slideshow-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+    margin: 0 4px;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+}
+
+.dla-slideshow-dot.is-active {
+    background: #000000;
+}

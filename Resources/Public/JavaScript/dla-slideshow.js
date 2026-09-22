@@ -1,17 +1,20 @@
 /**
- * Generisches, abhaengigkeitsfreies Carousel fuer die Vorschau mehrerer
- * digitaler Objekte in der Detailansicht (ersetzt das frueher genutzte
- * Lightbox2). Initialisiert jedes Element mit [data-dla-carousel].
+ * Generisches, abhaengigkeitsfreies Slideshow-/Carousel-Widget fuer die Bildergalerie
+ * eines digitalen Objekts (siehe Resources/Private/Partials/MediaAccess/Slideshow.html).
+ * Enthaelt ausschliesslich Bilder, auf die der aktuelle Nutzer bereits Zugriff hat -
+ * gesperrte Bilder werden serverseitig nicht in die Slideshow aufgenommen (siehe
+ * Classes/ViewHelpers/MediaPlayerViewHelper.php), sondern weiterhin ueber den
+ * bestehenden Link-/Rechtehinweis dargestellt.
  */
 (function () {
     'use strict';
 
-    function initCarousel(carousel) {
-        var track = carousel.querySelector('.dla-carousel-track');
-        var slides = carousel.querySelectorAll('.dla-carousel-slide');
-        var prevButton = carousel.querySelector('.dla-carousel-prev');
-        var nextButton = carousel.querySelector('.dla-carousel-next');
-        var dotsContainer = carousel.querySelector('.dla-carousel-dots');
+    function initSlideshow(slideshow) {
+        var track = slideshow.querySelector('.dla-slideshow-track');
+        var slides = slideshow.querySelectorAll('.dla-slideshow-slide');
+        var prevButton = slideshow.querySelector('.dla-slideshow-prev');
+        var nextButton = slideshow.querySelector('.dla-slideshow-next');
+        var dotsContainer = slideshow.querySelector('.dla-slideshow-dots');
 
         if (!track || slides.length <= 1) {
             return;
@@ -24,7 +27,7 @@
             track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
 
             if (dotsContainer) {
-                var dots = dotsContainer.querySelectorAll('.dla-carousel-dot');
+                var dots = dotsContainer.querySelectorAll('.dla-slideshow-dot');
                 for (var i = 0; i < dots.length; i++) {
                     dots[i].classList.toggle('is-active', i === currentIndex);
                 }
@@ -35,7 +38,7 @@
             for (var d = 0; d < slides.length; d++) {
                 var dot = document.createElement('button');
                 dot.type = 'button';
-                dot.className = 'dla-carousel-dot' + (d === 0 ? ' is-active' : '');
+                dot.className = 'dla-slideshow-dot' + (d === 0 ? ' is-active' : '');
                 dot.setAttribute('aria-label', 'Bild ' + (d + 1));
                 (function (index) {
                     dot.addEventListener('click', function () {
@@ -60,11 +63,11 @@
 
         // einfache Touch-/Wisch-Unterstuetzung
         var touchStartX = null;
-        carousel.addEventListener('touchstart', function (event) {
+        slideshow.addEventListener('touchstart', function (event) {
             touchStartX = event.touches[0].clientX;
         }, { passive: true });
 
-        carousel.addEventListener('touchend', function (event) {
+        slideshow.addEventListener('touchend', function (event) {
             if (touchStartX === null) {
                 return;
             }
@@ -79,9 +82,9 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        var carousels = document.querySelectorAll('[data-dla-carousel]');
-        for (var i = 0; i < carousels.length; i++) {
-            initCarousel(carousels[i]);
+        var slideshows = document.querySelectorAll('[data-dla-slideshow]');
+        for (var i = 0; i < slideshows.length; i++) {
+            initSlideshow(slideshows[i]);
         }
     });
 })();

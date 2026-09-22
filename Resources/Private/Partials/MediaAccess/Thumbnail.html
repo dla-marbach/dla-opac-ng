@@ -5,47 +5,27 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_thumbnail_mv')}" name="digitalObject_thumbnail_mv" />
 
 <dla:mediaPlayer
-    urls="{digitalObject_hyperlink_mv}"
-    access="{digitalObject_accessLevel_mv}"
+    urls="{digitalObject_hyperlink_mv.0}"
+    access="{digitalObject_accessLevel_mv.0}"
     as="mediaData"
 />
 
-<f:if condition="{digitalObject_thumbnail_mv}">
+<f:if condition="{digitalObject_thumbnail_mv.0} && {digitalObject_thumbnail_mv.0} != '␣'">
     <f:then>
-        <v:variable.set value="0" name="visibleSlideCount" />
-        <div class="dla-carousel" data-dla-carousel>
-            <div class="dla-carousel-track">
-                <f:for each="{digitalObject_thumbnail_mv}" as="thumb" iteration="iterator">
-                    <f:if condition="{thumb} && {thumb} != '␣'">
-                        <v:variable.set value="{visibleSlideCount + 1}" name="visibleSlideCount" />
-                        <div class="dla-carousel-slide">
-                            <f:if condition="{mediaData.links.{iterator.index}.forbidden} == 1">
-                                <f:then>
-                                    <div class="access-denied">
-                                        <span class="access-denied-message">
-                                            <f:translate key="mediaplayer.access_file_forbidden_greenbox" extensionName='dla_opac_ng'/>
-                                        </span>
-                                    </div>
-                                </f:then>
-                                <f:else>
-                                    <a href="{digitalObject_hyperlink_mv.{iterator.index}}" target="_blank">
-                                        <img src="{thumb}" alt="" />
-                                    </a>
-                                </f:else>
-                            </f:if>
-                        </div>
-                    </f:if>
-                </f:for>
-            </div>
-            <f:if condition="{visibleSlideCount} > 1">
-                <button type="button" class="dla-carousel-prev" title="{f:translate(key:'previous')}">
-                    <span class="icon bel-pfeil-r01"></span>
-                </button>
-                <button type="button" class="dla-carousel-next" title="{f:translate(key:'next')}">
-                    <span class="icon bel-pfeil-l01"></span>
-                </button>
-                <div class="dla-carousel-dots"></div>
-            </f:if>
-        </div>
+        <f:if condition="{mediaData.links.0.forbidden} == 1">
+            <f:then>
+                <div class="access-denied">
+                    <span class="access-denied-message">
+                        <f:translate key="mediaplayer.access_file_forbidden_greenbox" extensionName='dla_opac_ng'/>
+                    </span>
+                </div>
+            </f:then>
+            <f:else>
+                <a href="{digitalObject_hyperlink_mv.0}" target="_blank">
+                    <img src="{digitalObject_thumbnail_mv.0}"/>
+                </a>
+            </f:else>
+        </f:if>
+
     </f:then>
 </f:if>

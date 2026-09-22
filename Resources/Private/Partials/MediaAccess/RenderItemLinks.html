@@ -4,12 +4,14 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_digitalObject_display_mv')}" name="item_digitalObject_display_mv" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_digitalObject_hyperlink_mv')}" name="item_digitalObject_hyperlink_mv" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_digitalObject_fileExtension_mv')}" name="item_digitalObject_fileExtension_mv" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_digitalObject_thumbnail_mv')}" name="item_digitalObject_thumbnail_mv" />
 
 <dla:mediaPlayer
     urls="{item_digitalObject_hyperlink_mv.{iterator.index}}"
     display="{item_digitalObject_display_mv.{iterator.index}}"
     ext="{item_digitalObject_fileExtension_mv.{iterator.index}}"
     access="{item_digitalObject_accessLevel_mv.{iterator.index}}"
+    thumbnails="{item_digitalObject_thumbnail_mv.{iterator.index}}"
     as="mediaData"
 />
 
@@ -32,6 +34,8 @@
         </f:else>
     </f:if>
 </f:for>
+
+<f:render partial="MediaAccess/Slideshow" arguments="{images: mediaData.images, id: 'renderitemlinks-slideshow-{iterator.index}'}" />
 
 <f:for each="{mediaData.links}" as="item" iteration="itemIterator">
     <v:variable.set value="" name="fileExt" />
