@@ -2,7 +2,6 @@
 page.includeCSS.datetimepicker = EXT:dla_opac_ng/Resources/Public/CSS/jquery.datetimepicker.css
 page.includeCSS.jquery-ui = EXT:dla_opac_ng/Resources/Public/CSS/jquery-ui/jquery-ui.min.css
 page.includeCSS.nouislider = EXT:dla_opac_ng/Resources/Public/CSS/nouislider.css
-page.includeCSS.lightbox = EXT:dla_opac_ng/Resources/Public/CSS/lightbox.css
 page.includeCSS.opac-ng = EXT:dla_opac_ng/Resources/Public/CSS/opac-ng.css
 page.includeCSS.belugino = EXT:dla_opac_ng/Resources/Public/CSS/belugino.css
 page.includeCSS.catalog = EXT:dla_opac_ng/Resources/Public/CSS/catalog.css
@@ -22,7 +21,7 @@ page.includeJSFooter.datetimepicker = EXT:dla_opac_ng/Resources/Public/JavaScrip
 page.includeJSFooter.tokeninput = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.tokeninput.js
 page.includeJSFooter.jscookie = EXT:dla_opac_ng/Resources/Public/JavaScript/js.cookie.min.js
 page.includeJSFooter.jspdf = EXT:dla_opac_ng/Resources/Public/JavaScript/jspdf.min.js
-page.includeJSFooter.lightbox = EXT:dla_opac_ng/Resources/Public/JavaScript/lightbox.min.js
+page.includeJSFooter.dla_slideshow = EXT:dla_opac_ng/Resources/Public/JavaScript/dla-slideshow.js
 
 # Projektspezifisches JavaScript ebenfalls im Footer
 page.includeJSFooter.autocomplete = EXT:dla_opac_ng/Resources/Public/JavaScript/autocomplete.js
