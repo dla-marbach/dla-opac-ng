@@ -35,7 +35,7 @@
                     if (!el || typeof videojs === 'undefined') {
                         return;
                     }
-                    var player = videojs(el);
+                    var player = videojs(el, {audioOnlyMode: true});
                     var list = el.parentNode.querySelector('.dla-mediaplayer-playlist');
                     if (!list) {
                         return;
@@ -92,7 +92,14 @@
                 (function () {
                     var el = document.getElementById('{id}');
                     if (el && typeof videojs !== 'undefined') {
-                        videojs(el);
+                        <f:if condition="{item.type} == 'audio'">
+                            <f:then>
+                                videojs(el, {audioOnlyMode: true});
+                            </f:then>
+                            <f:else>
+                                videojs(el);
+                            </f:else>
+                        </f:if>
                     }
                 })();
             </script>

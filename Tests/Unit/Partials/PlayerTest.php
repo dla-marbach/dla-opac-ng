@@ -48,6 +48,7 @@ class PlayerTest extends FluidPartialTestCase
 
         self::assertStringContainsString('<audio', $html);
         self::assertStringNotContainsString('kind="chapters"', $html);
+        self::assertStringContainsString('videojs(el, {audioOnlyMode: true});', $html);
     }
 
     /**
