@@ -58,7 +58,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
     /**
      * @test
      */
-    public function forbiddenVideoFileIsListedButNotPlayable(): void
+    public function forbiddenVideoFileStaysInLinksAndIsNotExposedAsMediaplayerEntry(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
 
@@ -70,10 +70,9 @@ class MediaPlayerViewHelperTest extends UnitTestCase
             []
         );
 
-        self::assertCount(0, $result['links']);
-        self::assertCount(1, $result['mediaplayer']);
-        self::assertSame(1, $result['mediaplayer'][0]['forbidden']);
-        self::assertArrayNotHasKey('tracks', $result['mediaplayer'][0]);
+        self::assertCount(0, $result['mediaplayer']);
+        self::assertCount(1, $result['links']);
+        self::assertSame(1, $result['links'][0]['forbidden']);
     }
 
     /**
@@ -147,7 +146,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
     /**
      * @test
      */
-    public function forbiddenM3uPlaylistIsNotFetched(): void
+    public function forbiddenM3uPlaylistIsNotFetchedAndStaysInLinks(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
         // no entry in playlistContentByUrl -> fetchUrlContent() would return false anyway,
@@ -161,8 +160,10 @@ class MediaPlayerViewHelperTest extends UnitTestCase
             []
         );
 
-        self::assertSame(1, $result['mediaplayer'][0]['forbidden']);
-        self::assertArrayNotHasKey('tracks', $result['mediaplayer'][0]);
+        self::assertCount(0, $result['mediaplayer']);
+        self::assertCount(1, $result['links']);
+        self::assertSame(1, $result['links'][0]['forbidden']);
+        self::assertArrayNotHasKey('tracks', $result['links'][0]);
     }
 
     /**

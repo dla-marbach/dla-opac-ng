@@ -104,14 +104,22 @@ class MediaPlayerViewHelper extends AbstractViewHelper
     }
 
     /**
-     * Builds the "links" (all digital objects not otherwise categorized, incl. forbidden
-     * ones), "mediaplayer" (playable audio/video/playlist objects only, forbidden ones
-     * excluded from playback) and "images" (viewable, non-forbidden images only - forbidden
-     * images stay in "links" so the existing restricted-access notice keeps covering them,
-     * see Resources/Private/Partials/MediaAccess/RenderLinks.html) result structures from
-     * already normalized, index-aligned input arrays. Pure/side-effect-free besides the
-     * (best-effort) playlist HTTP fetch, kept separate from Fluid-specific plumbing
-     * so it can be unit tested directly.
+     * Builds the "links" (all digital objects not otherwise categorized, incl. every
+     * forbidden object regardless of its type), "mediaplayer" (playable audio/video/
+     * playlist objects that are NOT forbidden - a Player is only ever rendered for these,
+     * see Resources/Private/Partials/MediaAccess/Player.html) and "images" (viewable
+     * images that are NOT forbidden - a Slideshow is only ever rendered for these, see
+     * Resources/Private/Partials/MediaAccess/Slideshow.html) result structures from
+     * already normalized, index-aligned input arrays.
+     *
+     * Forbidden objects of every kind (media, image or plain file) are deliberately kept
+     * out of "mediaplayer"/"images" and stay in "links" instead, so they are all handled
+     * uniformly by the single existing restricted-access notice in
+     * Resources/Private/Partials/MediaAccess/RenderLinks.html (no placeholders, no
+     * separate per-type forbidden-handling in the Fluid partials).
+     *
+     * Pure/side-effect-free besides the (best-effort) playlist HTTP fetch, kept separate
+     * from Fluid-specific plumbing so it can be unit tested directly.
      *
      * @param array $urls
      * @param array $ext
@@ -183,11 +191,14 @@ class MediaPlayerViewHelper extends AbstractViewHelper
             }
 
             $mediaType = $this->mediaTypeForExtension($normalizedExt);
-            if ($mediaType !== null && !empty($urlAccess['url'])) {
+            if ($mediaType !== null && !empty($urlAccess['url']) && $urlAccess['forbidden'] === 0) {
+                // Gesperrte Audio-/Video-/Playlist-Dateien bewusst NICHT hier einsortieren:
+                // sie bleiben in "links", damit einheitlich mit Bildern (s.u.) und sonstigen
+                // Dateien nur der bestehende Rechtehinweis erscheint - nie ein Player.
                 $mediaItem = $urlAccess;
                 $mediaItem['type'] = $mediaType;
                 $mediaItem['chapters'] = $chapters[$i] ?? null;
-                if ($mediaType === 'playlist' && $urlAccess['forbidden'] === 0) {
+                if ($mediaType === 'playlist') {
                     $mediaItem['tracks'] = $this->fetchPlaylistTracks($urlAccess['url']);
                 }
 

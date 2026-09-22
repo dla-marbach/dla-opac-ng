@@ -16,23 +16,7 @@
 />
 
 <f:for each="{mediaData.mediaplayer}" as="item" iteration="mediaIterator">
-    <f:if condition="{item.forbidden} != 1">
-        <f:then>
-            <f:render partial="MediaAccess/Player" arguments="{item: item, id: 'renderlinks-player-{mediaIterator.index}'}" />
-        </f:then>
-        <f:else>
-            <f:if condition="{item.access} == 'campus'">
-                <f:then>
-                    <v:variable.set value="{campusLinks}<span class='access-denied-link'>{item.display} ({item.ext})</span><br />" name="campusLinks" />
-                    <v:variable.set value="1" name="campusSet" />
-                </f:then>
-                <f:else if="{item.access} == 'sandbox'">
-                    <v:variable.set value="{sandboxLinks}<span class='access-denied-link'>{item.display} ({item.ext})</span><br />" name="sandboxLinks" />
-                    <v:variable.set value="1" name="sandboxSet" />
-                </f:else>
-            </f:if>
-        </f:else>
-    </f:if>
+    <f:render partial="MediaAccess/Player" arguments="{item: item, id: 'renderlinks-player-{mediaIterator.index}'}" />
 </f:for>
 
 <f:render partial="MediaAccess/Slideshow" arguments="{images: mediaData.images, id: 'renderlinks-slideshow'}" />
