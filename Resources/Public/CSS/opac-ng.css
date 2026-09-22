@@ -720,6 +720,16 @@ span.icon.bel-link01 {
     margin-bottom: 1em;
 }
 
+.dla-mediaplayer .video-js.dla-mediaplayer-audio,
+.dla-mediaplayer .video-js.vjs-audio-only-mode {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 3em;
+    padding-top: 0;
+    background-color: transparent;
+}
+
 .dla-mediaplayer-playlist {
     list-style: none;
     margin: 0.5em 0 0;

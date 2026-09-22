@@ -14,7 +14,7 @@
 <div class="dla-mediaplayer" data-mediaplayer-type="{item.type}">
     <f:if condition="{item.type} == 'playlist'">
         <f:then>
-            <video id="{id}" class="{playerClasses}" controls="controls" controlslist="nodownload" playsinline="playsinline" preload="auto"></video>
+            <video id="{id}" class="{playerClasses} dla-mediaplayer-audio" controls="controls" controlslist="nodownload" playsinline="playsinline" preload="auto"></video>
 
             <f:if condition="{item.tracks}">
                 <ol class="dla-mediaplayer-playlist">
@@ -72,7 +72,7 @@
         <f:else>
             <f:if condition="{item.type} == 'audio'">
                 <f:then>
-                    <audio id="{id}" class="{playerClasses}" controls="controls" controlslist="nodownload" preload="auto">
+                    <audio id="{id}" class="{playerClasses} dla-mediaplayer-audio" controls="controls" controlslist="nodownload" preload="auto">
                         <source src="{item.url}" />
                         <f:if condition="{item.chapters}">
                             <track kind="chapters" src="{item.chapters}" label="{f:translate(key: 'mediaplayer.chapters', extensionName: 'dla_opac_ng', default: 'Chapters')}" default="default" />
