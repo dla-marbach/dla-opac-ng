@@ -1394,12 +1394,6 @@ plugin.tx_find {
             detailPagePaging = 1
         }
 
-        # Der Abschnitt "mediaPlayer" steuert das Verhalten des Video.js-basierten Audio-/Videoplayers.
-        mediaPlayer {
-            # Legt fest, ob unterhalb des Players ein Download-Link fuer die Originaldatei angeboten wird.
-            allowDownload = 1
-        }
-
         indexPageUid = 3
 
         citation {

@@ -21,7 +21,6 @@ class PlayerTest extends FluidPartialTestCase
                 'url' => 'https://example.org/media/talk.mp4',
                 'type' => 'video',
                 'chapters' => 'https://example.org/media/talk.vtt',
-                'allowDownload' => true,
             ],
         ]);
 
@@ -31,13 +30,12 @@ class PlayerTest extends FluidPartialTestCase
         self::assertStringContainsString('src="https://example.org/media/talk.mp4"', $html);
         self::assertStringContainsString('kind="chapters"', $html);
         self::assertStringContainsString('src="https://example.org/media/talk.vtt"', $html);
-        self::assertStringContainsString('dla-mediaplayer-download', $html);
     }
 
     /**
      * @test
      */
-    public function rendersAudioElementWithoutDownloadLinkWhenDisabled(): void
+    public function rendersAudioElementWithoutChapters(): void
     {
         $html = $this->renderPartial('MediaAccess/Player', [
             'id' => 'player-2',
@@ -45,12 +43,10 @@ class PlayerTest extends FluidPartialTestCase
                 'url' => 'https://example.org/media/track.mp3',
                 'type' => 'audio',
                 'chapters' => null,
-                'allowDownload' => false,
             ],
         ]);
 
         self::assertStringContainsString('<audio', $html);
-        self::assertStringNotContainsString('dla-mediaplayer-download', $html);
         self::assertStringNotContainsString('kind="chapters"', $html);
     }
 
@@ -65,7 +61,6 @@ class PlayerTest extends FluidPartialTestCase
                 'url' => 'https://example.org/media/playlist.m3u',
                 'type' => 'playlist',
                 'chapters' => null,
-                'allowDownload' => true,
                 'tracks' => [
                     ['url' => 'https://example.org/media/a.mp3', 'title' => 'Track A', 'duration' => 10.0],
                     ['url' => 'https://example.org/media/b.mp3', 'title' => 'Track B', 'duration' => 20.0],

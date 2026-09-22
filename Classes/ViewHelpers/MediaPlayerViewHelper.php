@@ -38,7 +38,6 @@ class MediaPlayerViewHelper extends AbstractViewHelper
         $this->registerArgument('access', 'mixed', 'access', true, []);
         $this->registerArgument('display', 'mixed', 'display labels', false, []);
         $this->registerArgument('chapters', 'mixed', 'WebVTT-Kapitelmarken-URLs je Objekt', false, []);
-        $this->registerArgument('allowDownload', 'mixed', 'Download-Link zusätzlich zum Player anzeigen', false, true);
         $this->registerArgument('as', 'string', 'name of the label result variable', true, 'string');
     }
 
@@ -82,9 +81,7 @@ class MediaPlayerViewHelper extends AbstractViewHelper
         $access = $this->normalizeToArray($this->arguments['access'] ?? null);
         $display = $this->normalizeToArray($this->arguments['display'] ?? null);
         $chapters = $this->normalizeToArray($this->arguments['chapters'] ?? null);
-        $allowDownload = (bool)($this->arguments['allowDownload'] ?? true);
-
-        $resultValue = $this->buildMediaData($urls, $ext, $access, $display, $chapters, $allowDownload);
+        $resultValue = $this->buildMediaData($urls, $ext, $access, $display, $chapters);
 
         $valueName = $this->arguments['as'];
         if ($valueName !== null) {
@@ -111,7 +108,7 @@ class MediaPlayerViewHelper extends AbstractViewHelper
      * @param array $chapters
      * @return array{links: array, mediaplayer: array}
      */
-    public function buildMediaData(array $urls, array $ext, array $access, array $display, array $chapters, bool $allowDownload): array
+    public function buildMediaData(array $urls, array $ext, array $access, array $display, array $chapters): array
     {
         $campusRanges = explode(',', getenv('campusRanges'));
         $sandboxRanges = explode(',', getenv('sandboxRanges'));
@@ -177,8 +174,6 @@ class MediaPlayerViewHelper extends AbstractViewHelper
                 $mediaItem = $urlAccess;
                 $mediaItem['type'] = $mediaType;
                 $mediaItem['chapters'] = $chapters[$i] ?? null;
-                $mediaItem['allowDownload'] = $allowDownload;
-
                 if ($mediaType === 'playlist' && $urlAccess['forbidden'] === 0) {
                     $mediaItem['tracks'] = $this->fetchPlaylistTracks($urlAccess['url']);
                 }

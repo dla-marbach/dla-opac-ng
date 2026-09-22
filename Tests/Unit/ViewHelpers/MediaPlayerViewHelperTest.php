@@ -43,8 +43,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
             ['mp3'],
             ['public'],
             ['Ein Hörspiel'],
-            [],
-            true
+            []
         );
 
         self::assertCount(0, $result['links']);
@@ -54,7 +53,6 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame('audio', $mediaItem['type']);
         self::assertSame('https://example.org/media/track.mp3', $mediaItem['url']);
         self::assertSame(0, $mediaItem['forbidden']);
-        self::assertTrue($mediaItem['allowDownload']);
     }
 
     /**
@@ -69,8 +67,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
             ['mp4'],
             ['campus'],
             ['Ein Film'],
-            [],
-            true
+            []
         );
 
         self::assertCount(0, $result['links']);
@@ -91,31 +88,11 @@ class MediaPlayerViewHelperTest extends UnitTestCase
             ['pdf'],
             ['public'],
             ['Ein Dokument'],
-            [],
-            true
+            []
         );
 
         self::assertCount(1, $result['links']);
         self::assertCount(0, $result['mediaplayer']);
-    }
-
-    /**
-     * @test
-     */
-    public function allowDownloadFlagIsPassedThroughToMediaplayerEntry(): void
-    {
-        $viewHelper = new TestableMediaPlayerViewHelper();
-
-        $result = $viewHelper->buildMediaData(
-            ['https://example.org/media/track.wav'],
-            ['wav'],
-            ['public'],
-            [''],
-            [],
-            false
-        );
-
-        self::assertFalse($result['mediaplayer'][0]['allowDownload']);
     }
 
     /**
@@ -130,8 +107,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
             ['mp4'],
             ['public'],
             ['Ein Vortrag'],
-            ['https://example.org/media/talk.vtt'],
-            true
+            ['https://example.org/media/talk.vtt']
         );
 
         self::assertSame('https://example.org/media/talk.vtt', $result['mediaplayer'][0]['chapters']);
@@ -156,8 +132,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
             ['m3u'],
             ['public'],
             ['Playlist'],
-            [],
-            true
+            []
         );
 
         self::assertCount(1, $result['mediaplayer']);
@@ -183,8 +158,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
             ['m3u'],
             ['campus'],
             ['Playlist'],
-            [],
-            true
+            []
         );
 
         self::assertSame(1, $result['mediaplayer'][0]['forbidden']);
