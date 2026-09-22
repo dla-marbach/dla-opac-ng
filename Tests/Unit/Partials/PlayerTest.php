@@ -27,6 +27,7 @@ class PlayerTest extends FluidPartialTestCase
         self::assertStringContainsString('<video', $html);
         self::assertStringContainsString('id="player-1"', $html);
         self::assertStringContainsString('video-js', $html);
+        self::assertStringContainsString('controlslist="nodownload"', $html);
         self::assertStringContainsString('src="https://example.org/media/talk.mp4"', $html);
         self::assertStringContainsString('kind="chapters"', $html);
         self::assertStringContainsString('src="https://example.org/media/talk.vtt"', $html);
@@ -47,6 +48,7 @@ class PlayerTest extends FluidPartialTestCase
         ]);
 
         self::assertStringContainsString('<audio', $html);
+        self::assertStringContainsString('controlslist="nodownload"', $html);
         self::assertStringNotContainsString('kind="chapters"', $html);
         self::assertStringContainsString('videojs(el, {audioOnlyMode: true});', $html);
     }
