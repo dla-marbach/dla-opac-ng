@@ -26,10 +26,25 @@
             currentIndex = (index + slides.length) % slides.length;
             track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
 
+            for (var s = 0; s < slides.length; s++) {
+                var isActive = s === currentIndex;
+                slides[s].setAttribute('aria-hidden', isActive ? 'false' : 'true');
+                var slideLink = slides[s].querySelector('a');
+                if (slideLink) {
+                    slideLink.setAttribute('tabindex', isActive ? '0' : '-1');
+                }
+            }
+
             if (dotsContainer) {
                 var dots = dotsContainer.querySelectorAll('.dla-slideshow-dot');
                 for (var i = 0; i < dots.length; i++) {
-                    dots[i].classList.toggle('is-active', i === currentIndex);
+                    var isCurrent = i === currentIndex;
+                    dots[i].classList.toggle('is-active', isCurrent);
+                    if (isCurrent) {
+                        dots[i].setAttribute('aria-current', 'true');
+                    } else {
+                        dots[i].removeAttribute('aria-current');
+                    }
                 }
             }
         }

@@ -17,8 +17,8 @@
     <div id="{id}" class="dla-slideshow" data-dla-slideshow>
         <div class="dla-slideshow-track">
             <f:for each="{images}" as="image" iteration="iterator">
-                <div class="dla-slideshow-slide">
-                    <a href="{image.url}" target="_blank">
+                <div class="dla-slideshow-slide" aria-hidden="{f:if(condition: iterator.isFirst, then: 'false', else: 'true')}">
+                    <a href="{image.url}" target="_blank" tabindex="{f:if(condition: iterator.isFirst, then: '0', else: '-1')}">
                         <f:if condition="{image.thumbnail} && {image.thumbnail} != '␣'">
                             <f:then>
                                 <img src="{image.thumbnail}" alt="{image.display}" />

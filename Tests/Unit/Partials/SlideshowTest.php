@@ -72,6 +72,25 @@ class SlideshowTest extends FluidPartialTestCase
     /**
      * @test
      */
+    public function onlyFirstSlideIsInitiallyVisibleToAssistiveTechnologyAndTabOrder(): void
+    {
+        $html = $this->renderPartial('MediaAccess/Slideshow', [
+            'id' => 'slideshow-4',
+            'images' => [
+                ['url' => 'https://example.org/media/a.jpg', 'thumbnail' => 'https://example.org/media/a_thumb.jpg', 'display' => 'Bild A'],
+                ['url' => 'https://example.org/media/b.jpg', 'thumbnail' => 'https://example.org/media/b_thumb.jpg', 'display' => 'Bild B'],
+            ],
+        ]);
+
+        self::assertStringContainsString('aria-hidden="false"', $html);
+        self::assertStringContainsString('aria-hidden="true"', $html);
+        self::assertStringContainsString('tabindex="0"', $html);
+        self::assertStringContainsString('tabindex="-1"', $html);
+    }
+
+    /**
+     * @test
+     */
     public function fallsBackToFullImageWhenNoThumbnailIsAvailable(): void
     {
         $html = $this->renderPartial('MediaAccess/Slideshow', [
