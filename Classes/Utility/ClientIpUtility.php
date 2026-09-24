@@ -88,6 +88,10 @@ class ClientIpUtility
             return false;
         }
 
+        if ($forwardedIpRanges === []) {
+            return true;
+        }
+
         foreach ($forwardedIpRanges as $forwardedIpRange) {
             try {
                 if (IpUtils::checkIp($ipAddress, $forwardedIpRange)) {
