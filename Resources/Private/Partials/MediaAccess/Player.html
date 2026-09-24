@@ -31,7 +31,7 @@
 
             <script>
                 (function () {
-                    var el = document.getElementById('{id}');
+                    var el = document.currentScript.parentNode.querySelector('video');
                     if (!el || typeof videojs === 'undefined') {
                         return;
                     }
@@ -90,7 +90,7 @@
             </f:if>
             <script>
                 (function () {
-                    var el = document.getElementById('{id}');
+                    var el = document.currentScript.parentNode.querySelector('video, audio');
                     if (el && typeof videojs !== 'undefined') {
                         <f:if condition="{item.type} == 'audio'">
                             <f:then>

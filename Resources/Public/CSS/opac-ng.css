@@ -725,9 +725,15 @@ span.icon.bel-link01 {
     display: block;
     width: 100%;
     max-width: 100%;
-    height: 3em;
     padding-top: 0;
     background-color: transparent;
+}
+
+/* Höhe der kompakten Steuerleiste: gilt nur für einzelne Audiodateien - bei
+   Playlisten passt Video.js die Höhe des Players selbst an die Steuerleiste an. */
+.dla-mediaplayer[data-mediaplayer-type="audio"] .video-js.dla-mediaplayer-audio,
+.dla-mediaplayer[data-mediaplayer-type="audio"] .video-js.vjs-audio-only-mode {
+    height: 3em;
 }
 
 .dla-mediaplayer-playlist {
