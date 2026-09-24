@@ -26,7 +26,7 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
     {
         $request = $this->createRequestWithServerParams([
             'HTTP_X_FORWARDED_FOR' => '10.23.45.67',
-            'REMOTE_ADDR' => '198.51.100.10',
+            'REMOTE_ADDR' => '192.168.1.10',
         ]);
 
         self::assertTrue($this->invokeIsWhitelistedIp($request));
@@ -39,7 +39,7 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
     {
         $request = $this->createRequestWithServerParams([
             'HTTP_X_FORWARDED_FOR' => '203.0.113.7, 10.23.45.67',
-            'REMOTE_ADDR' => '10.23.45.67',
+            'REMOTE_ADDR' => '192.168.1.10',
         ]);
 
         self::assertFalse($this->invokeIsWhitelistedIp($request));
@@ -68,6 +68,19 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
         ]);
 
         self::assertTrue($this->invokeIsWhitelistedIp($request));
+    }
+
+    /**
+     * @test
+     */
+    public function forwardedForHeaderIsIgnoredForDirectPublicRequests(): void
+    {
+        $request = $this->createRequestWithServerParams([
+            'HTTP_X_FORWARDED_FOR' => '10.23.45.67',
+            'REMOTE_ADDR' => '203.0.113.7',
+        ]);
+
+        self::assertFalse($this->invokeIsWhitelistedIp($request));
     }
 
     private function createRequestWithServerParams(array $serverParams): ServerRequestInterface&MockObject

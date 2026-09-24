@@ -81,6 +81,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
      */
     public function singleForwardedForAddressMatchingCampusRangeAllowsCampusMedia(): void
     {
+        $_SERVER['REMOTE_ADDR'] = '192.168.1.10';
         $_SERVER['HTTP_X_FORWARDED_FOR'] = '10.23.45.67';
         $viewHelper = new TestableMediaPlayerViewHelper();
 
@@ -101,6 +102,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
      */
     public function firstForwardedForAddressIsUsedWhenMultipleAddressesArePresent(): void
     {
+        $_SERVER['REMOTE_ADDR'] = '192.168.1.10';
         $_SERVER['HTTP_X_FORWARDED_FOR'] = '203.0.113.7, 10.23.45.67';
         $viewHelper = new TestableMediaPlayerViewHelper();
 
@@ -157,6 +159,28 @@ class MediaPlayerViewHelperTest extends UnitTestCase
 
         self::assertCount(1, $result['mediaplayer']);
         self::assertSame(0, $result['mediaplayer'][0]['forbidden']);
+    }
+
+    /**
+     * @test
+     */
+    public function forwardedForHeaderIsIgnoredForDirectPublicRequests(): void
+    {
+        $_SERVER['REMOTE_ADDR'] = '203.0.113.1';
+        $_SERVER['HTTP_X_FORWARDED_FOR'] = '10.23.45.67';
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/movie.mp4'],
+            ['mp4'],
+            ['campus'],
+            ['Ein Film'],
+            []
+        );
+
+        self::assertCount(0, $result['mediaplayer']);
+        self::assertCount(1, $result['links']);
+        self::assertSame(1, $result['links'][0]['forbidden']);
     }
 
     /**

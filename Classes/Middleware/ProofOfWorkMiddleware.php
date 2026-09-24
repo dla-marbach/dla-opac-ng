@@ -107,10 +107,11 @@ class ProofOfWorkMiddleware implements MiddlewareInterface
     private function isWhitelistedIp(ServerRequestInterface $request): bool
     {
         $serverParams = $request->getServerParams();
+        $remoteAddr = (string)($serverParams['REMOTE_ADDR'] ?? '');
         $forwardedFor = trim((string)($serverParams['HTTP_X_FORWARDED_FOR'] ?? ''));
-        $clientIp = $forwardedFor !== ''
+        $clientIp = $forwardedFor !== '' && $this->isTrustedProxyAddress($remoteAddr)
             ? trim(explode(',', $forwardedFor)[0])
-            : (string)($serverParams['REMOTE_ADDR'] ?? '');
+            : $remoteAddr;
         if ($clientIp === '') {
             return false;
         }
@@ -121,6 +122,23 @@ class ProofOfWorkMiddleware implements MiddlewareInterface
         }
 
         return IpUtils::checkIp($clientIp, $ranges);
+    }
+
+    private function isTrustedProxyAddress(string $ipAddress): bool
+    {
+        if ($ipAddress === '') {
+            return false;
+        }
+
+        return IpUtils::checkIp($ipAddress, [
+            '10.0.0.0/8',
+            '172.16.0.0/12',
+            '192.168.0.0/16',
+            '127.0.0.0/8',
+            'fc00::/7',
+            'fe80::/10',
+            '::1/128',
+        ]);
     }
 
     /**

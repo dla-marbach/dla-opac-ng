@@ -142,10 +142,11 @@ class MediaPlayerViewHelper extends AbstractViewHelper
             'campus' => $campusRanges
         ];
 
+        $remoteAddr = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
         $forwardedFor = trim((string)($_SERVER['HTTP_X_FORWARDED_FOR'] ?? ''));
-        $clientIp = $forwardedFor !== ''
+        $clientIp = $forwardedFor !== '' && $this->isTrustedProxyAddress($remoteAddr)
             ? trim(explode(',', $forwardedFor)[0])
-            : ($_SERVER['REMOTE_ADDR'] ?? '0.0.0.0');
+            : $remoteAddr;
         $currentGroup = [];
         foreach ($ipRanges as $group => $range) {
             if (IpUtils::checkIp($clientIp, $range)) {
@@ -325,5 +326,22 @@ class MediaPlayerViewHelper extends AbstractViewHelper
         }
 
         return true;
+    }
+
+    protected function isTrustedProxyAddress(string $ipAddress): bool
+    {
+        if ($ipAddress === '') {
+            return false;
+        }
+
+        return IpUtils::checkIp($ipAddress, [
+            '10.0.0.0/8',
+            '172.16.0.0/12',
+            '192.168.0.0/16',
+            '127.0.0.0/8',
+            'fc00::/7',
+            'fe80::/10',
+            '::1/128',
+        ]);
     }
 }
