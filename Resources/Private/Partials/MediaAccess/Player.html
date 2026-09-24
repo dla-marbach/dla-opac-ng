@@ -31,12 +31,13 @@
 
             <script>
                 (function () {
-                    var el = document.currentScript.parentNode.querySelector('video');
+                    var container = document.currentScript.parentNode;
+                    var el = container.querySelector('video');
                     if (!el || typeof videojs === 'undefined') {
                         return;
                     }
                     var player = videojs(el, {audioOnlyMode: true});
-                    var list = el.parentNode.querySelector('.dla-mediaplayer-playlist');
+                    var list = container.querySelector('.dla-mediaplayer-playlist');
                     if (!list) {
                         return;
                     }
