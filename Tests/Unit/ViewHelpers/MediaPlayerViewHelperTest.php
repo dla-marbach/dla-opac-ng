@@ -31,7 +31,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        foreach (['campusRanges', 'sandboxRanges', 'staffRanges', 'trustedProxyRanges'] as $envName) {
+        foreach (['campusRanges', 'sandboxRanges', 'staffRanges'] as $envName) {
             $this->previousEnv[$envName] = getenv($envName);
         }
         foreach (['REMOTE_ADDR', 'HTTP_X_FORWARDED_FOR'] as $serverKey) {
@@ -40,7 +40,6 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         $this->setEnvironmentVariable('campusRanges', '10.0.0.0/8');
         $this->setEnvironmentVariable('sandboxRanges', '192.168.0.0/16');
         $this->setEnvironmentVariable('staffRanges', '172.16.0.0/12');
-        $this->setEnvironmentVariable('trustedProxyRanges', '192.168.1.10/32');
         $_SERVER['REMOTE_ADDR'] = '203.0.113.1';
         unset($_SERVER['HTTP_X_FORWARDED_FOR']);
     }
@@ -130,7 +129,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
      */
     public function singleForwardedForAddressMatchingCampusRangeAllowsCampusMedia(): void
     {
-        $_SERVER['REMOTE_ADDR'] = '192.168.1.10';
+        $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
         $_SERVER['HTTP_X_FORWARDED_FOR'] = '10.23.45.67';
         $viewHelper = new TestableMediaPlayerViewHelper();
 
@@ -151,7 +150,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
      */
     public function firstForwardedForAddressIsUsedWhenMultipleAddressesArePresent(): void
     {
-        $_SERVER['REMOTE_ADDR'] = '192.168.1.10';
+        $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
         $_SERVER['HTTP_X_FORWARDED_FOR'] = '10.23.45.67, 172.16.1.5';
         $viewHelper = new TestableMediaPlayerViewHelper();
 
@@ -214,7 +213,6 @@ class MediaPlayerViewHelperTest extends UnitTestCase
      */
     public function forwardedForHeaderIsIgnoredForDirectPublicRequests(): void
     {
-        $this->setEnvironmentVariable('trustedProxyRanges', '');
         $_SERVER['REMOTE_ADDR'] = '203.0.113.1';
         $_SERVER['HTTP_X_FORWARDED_FOR'] = '10.23.45.67';
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -237,8 +235,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
      */
     public function invalidForwardedForEntryFallsBackToRemoteAddr(): void
     {
-        $this->setEnvironmentVariable('trustedProxyRanges', '10.23.45.67/32');
-        $_SERVER['REMOTE_ADDR'] = '10.23.45.67';
+        $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
         $_SERVER['HTTP_X_FORWARDED_FOR'] = 'unknown, 10.23.45.68';
         $viewHelper = new TestableMediaPlayerViewHelper();
 
@@ -250,8 +247,9 @@ class MediaPlayerViewHelperTest extends UnitTestCase
             []
         );
 
-        self::assertCount(1, $result['mediaplayer']);
-        self::assertSame(0, $result['mediaplayer'][0]['forbidden']);
+        self::assertCount(0, $result['mediaplayer']);
+        self::assertCount(1, $result['links']);
+        self::assertSame(1, $result['links'][0]['forbidden']);
     }
 
     /**

@@ -145,10 +145,7 @@ class MediaPlayerViewHelper extends AbstractViewHelper
 
         $clientIp = ClientIpUtility::resolveClientIp(
             $_SERVER,
-            ClientIpUtility::getRangesFromEnvironmentVariable('trustedProxyRanges'),
-            array_merge($staffRanges, $sandboxRanges, $campusRanges),
-            '0.0.0.0',
-            true
+            '0.0.0.0'
         );
         $currentGroup = [];
         foreach ($ipRanges as $group => $range) {
