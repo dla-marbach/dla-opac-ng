@@ -37,10 +37,10 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         foreach (['REMOTE_ADDR', 'HTTP_X_FORWARDED_FOR'] as $serverKey) {
             $this->previousServer[$serverKey] = $_SERVER[$serverKey] ?? null;
         }
-        putenv('campusRanges=10.0.0.0/8');
-        putenv('sandboxRanges=192.168.0.0/16');
-        putenv('staffRanges=172.16.0.0/12');
-        putenv('trustedProxyRanges=192.168.1.10/32');
+        $this->setEnvironmentVariable('campusRanges', '10.0.0.0/8');
+        $this->setEnvironmentVariable('sandboxRanges', '192.168.0.0/16');
+        $this->setEnvironmentVariable('staffRanges', '172.16.0.0/12');
+        $this->setEnvironmentVariable('trustedProxyRanges', '192.168.1.10/32');
         $_SERVER['REMOTE_ADDR'] = '203.0.113.1';
         unset($_SERVER['HTTP_X_FORWARDED_FOR']);
     }
@@ -69,6 +69,13 @@ class MediaPlayerViewHelperTest extends UnitTestCase
             return;
         }
 
+        putenv($envName . '=' . $value);
+        $_ENV[$envName] = $value;
+        $_SERVER[$envName] = $value;
+    }
+
+    private function setEnvironmentVariable(string $envName, string $value): void
+    {
         putenv($envName . '=' . $value);
         $_ENV[$envName] = $value;
         $_SERVER[$envName] = $value;
@@ -208,7 +215,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
      */
     public function forwardedForHeaderIsIgnoredForDirectPublicRequests(): void
     {
-        putenv('trustedProxyRanges=');
+        $this->setEnvironmentVariable('trustedProxyRanges', '');
         $_SERVER['REMOTE_ADDR'] = '203.0.113.1';
         $_SERVER['HTTP_X_FORWARDED_FOR'] = '10.23.45.67';
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -231,7 +238,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
      */
     public function invalidForwardedForEntryFallsBackToRemoteAddr(): void
     {
-        putenv('trustedProxyRanges=10.23.45.67/32');
+        $this->setEnvironmentVariable('trustedProxyRanges', '10.23.45.67/32');
         $_SERVER['REMOTE_ADDR'] = '10.23.45.67';
         $_SERVER['HTTP_X_FORWARDED_FOR'] = 'unknown, 10.23.45.68';
         $viewHelper = new TestableMediaPlayerViewHelper();

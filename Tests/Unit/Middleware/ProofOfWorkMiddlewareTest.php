@@ -20,10 +20,10 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
         foreach (['campusRanges', 'sandboxRanges', 'staffRanges', 'trustedProxyRanges'] as $envName) {
             $this->previousEnv[$envName] = getenv($envName);
         }
-        putenv('campusRanges=10.0.0.0/8');
-        putenv('sandboxRanges=192.168.0.0/16');
-        putenv('staffRanges=172.16.0.0/12');
-        putenv('trustedProxyRanges=192.168.1.10/32');
+        $this->setEnvironmentVariable('campusRanges', '10.0.0.0/8');
+        $this->setEnvironmentVariable('sandboxRanges', '192.168.0.0/16');
+        $this->setEnvironmentVariable('staffRanges', '172.16.0.0/12');
+        $this->setEnvironmentVariable('trustedProxyRanges', '192.168.1.10/32');
     }
 
     protected function tearDown(): void
@@ -91,7 +91,7 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
      */
     public function forwardedForHeaderIsIgnoredForDirectPublicRequests(): void
     {
-        putenv('trustedProxyRanges=');
+        $this->setEnvironmentVariable('trustedProxyRanges', '');
         $request = $this->createRequestWithServerParams([
             'HTTP_X_FORWARDED_FOR' => '10.23.45.67',
             'REMOTE_ADDR' => '203.0.113.7',
@@ -105,7 +105,7 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
      */
     public function invalidForwardedForEntryFallsBackToRemoteAddr(): void
     {
-        putenv('trustedProxyRanges=10.23.45.67/32');
+        $this->setEnvironmentVariable('trustedProxyRanges', '10.23.45.67/32');
         $request = $this->createRequestWithServerParams([
             'HTTP_X_FORWARDED_FOR' => 'unknown, 10.23.45.68',
             'REMOTE_ADDR' => '10.23.45.67',
@@ -119,7 +119,7 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
      */
     public function invalidTrustedProxyRangeDoesNotBreakWhitelistCheck(): void
     {
-        putenv('trustedProxyRanges=not-a-cidr');
+        $this->setEnvironmentVariable('trustedProxyRanges', 'not-a-cidr');
         $request = $this->createRequestWithServerParams([
             'HTTP_X_FORWARDED_FOR' => '10.23.45.67',
             'REMOTE_ADDR' => '203.0.113.7',
@@ -144,6 +144,13 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
             return;
         }
 
+        putenv($envName . '=' . $value);
+        $_ENV[$envName] = $value;
+        $_SERVER[$envName] = $value;
+    }
+
+    private function setEnvironmentVariable(string $envName, string $value): void
+    {
         putenv($envName . '=' . $value);
         $_ENV[$envName] = $value;
         $_SERVER[$envName] = $value;
