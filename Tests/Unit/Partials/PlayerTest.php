@@ -82,6 +82,7 @@ class PlayerTest extends FluidPartialTestCase
         self::assertStringContainsString('class="video-js vjs-default-skin vjs-big-play-centered dla-mediaplayer dla-mediaplayer-audio"', $html);
         self::assertSame(2, substr_count($html, '<li class="dla-mediaplayer-playlist-item'));
         self::assertStringNotContainsString('{id}', $html);
-        self::assertStringContainsString("document.currentScript.parentNode.querySelector('video')", $html);
+        self::assertStringContainsString("var container = document.currentScript.parentNode;", $html);
+        self::assertStringContainsString("var el = container.querySelector('video');", $html);
     }
 }
