@@ -186,6 +186,27 @@ class MediaPlayerViewHelperTest extends UnitTestCase
     /**
      * @test
      */
+    public function invalidForwardedForEntryFallsBackToRemoteAddr(): void
+    {
+        $_SERVER['REMOTE_ADDR'] = '10.23.45.67';
+        $_SERVER['HTTP_X_FORWARDED_FOR'] = 'unknown, 10.23.45.68';
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/movie.mp4'],
+            ['mp4'],
+            ['campus'],
+            ['Ein Film'],
+            []
+        );
+
+        self::assertCount(1, $result['mediaplayer']);
+        self::assertSame(0, $result['mediaplayer'][0]['forbidden']);
+    }
+
+    /**
+     * @test
+     */
     public function nonMediaExtensionIsOnlyExposedAsLink(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();

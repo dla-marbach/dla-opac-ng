@@ -83,6 +83,19 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
         self::assertFalse($this->invokeIsWhitelistedIp($request));
     }
 
+    /**
+     * @test
+     */
+    public function invalidForwardedForEntryFallsBackToRemoteAddr(): void
+    {
+        $request = $this->createRequestWithServerParams([
+            'HTTP_X_FORWARDED_FOR' => 'unknown, 10.23.45.68',
+            'REMOTE_ADDR' => '10.23.45.67',
+        ]);
+
+        self::assertTrue($this->invokeIsWhitelistedIp($request));
+    }
+
     private function createRequestWithServerParams(array $serverParams): ServerRequestInterface&MockObject
     {
         $request = $this->createMock(ServerRequestInterface::class);

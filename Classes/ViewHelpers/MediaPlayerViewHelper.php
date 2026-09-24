@@ -3,6 +3,7 @@
 namespace Dla\DlaOpacNg\ViewHelpers;
 
 use Dla\DlaOpacNg\Service\M3uPlaylistParser;
+use Dla\DlaOpacNg\Utility\ClientIpUtility;
 use Symfony\Component\HttpFoundation\IpUtils;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Http\RequestFactory;
@@ -142,11 +143,7 @@ class MediaPlayerViewHelper extends AbstractViewHelper
             'campus' => $campusRanges
         ];
 
-        $remoteAddr = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
-        $forwardedFor = trim((string)($_SERVER['HTTP_X_FORWARDED_FOR'] ?? ''));
-        $clientIp = $forwardedFor !== '' && $this->isTrustedProxyAddress($remoteAddr)
-            ? trim(explode(',', $forwardedFor)[0])
-            : $remoteAddr;
+        $clientIp = ClientIpUtility::resolveClientIp($_SERVER, '0.0.0.0');
         $currentGroup = [];
         foreach ($ipRanges as $group => $range) {
             if (IpUtils::checkIp($clientIp, $range)) {
@@ -326,22 +323,5 @@ class MediaPlayerViewHelper extends AbstractViewHelper
         }
 
         return true;
-    }
-
-    protected function isTrustedProxyAddress(string $ipAddress): bool
-    {
-        if ($ipAddress === '') {
-            return false;
-        }
-
-        return IpUtils::checkIp($ipAddress, [
-            '10.0.0.0/8',
-            '172.16.0.0/12',
-            '192.168.0.0/16',
-            '127.0.0.0/8',
-            'fc00::/7',
-            'fe80::/10',
-            '::1/128',
-        ]);
     }
 }
