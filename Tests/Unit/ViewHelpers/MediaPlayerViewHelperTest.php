@@ -29,6 +29,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         putenv('sandboxRanges=192.168.0.0/16');
         putenv('staffRanges=172.16.0.0/12');
         $_SERVER['REMOTE_ADDR'] = '203.0.113.1';
+        unset($_SERVER['HTTP_X_FORWARDED_FOR']);
     }
 
     /**
@@ -73,6 +74,89 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertCount(0, $result['mediaplayer']);
         self::assertCount(1, $result['links']);
         self::assertSame(1, $result['links'][0]['forbidden']);
+    }
+
+    /**
+     * @test
+     */
+    public function singleForwardedForAddressMatchingCampusRangeAllowsCampusMedia(): void
+    {
+        $_SERVER['HTTP_X_FORWARDED_FOR'] = '10.23.45.67';
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/movie.mp4'],
+            ['mp4'],
+            ['campus'],
+            ['Ein Film'],
+            []
+        );
+
+        self::assertCount(1, $result['mediaplayer']);
+        self::assertSame(0, $result['mediaplayer'][0]['forbidden']);
+    }
+
+    /**
+     * @test
+     */
+    public function firstForwardedForAddressIsUsedWhenMultipleAddressesArePresent(): void
+    {
+        $_SERVER['HTTP_X_FORWARDED_FOR'] = '203.0.113.7, 10.23.45.67';
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/movie.mp4'],
+            ['mp4'],
+            ['campus'],
+            ['Ein Film'],
+            []
+        );
+
+        self::assertCount(0, $result['mediaplayer']);
+        self::assertCount(1, $result['links']);
+        self::assertSame(1, $result['links'][0]['forbidden']);
+    }
+
+    /**
+     * @test
+     */
+    public function remoteAddrIsUsedWhenForwardedForHeaderIsEmpty(): void
+    {
+        $_SERVER['REMOTE_ADDR'] = '10.23.45.67';
+        $_SERVER['HTTP_X_FORWARDED_FOR'] = '   ';
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/movie.mp4'],
+            ['mp4'],
+            ['campus'],
+            ['Ein Film'],
+            []
+        );
+
+        self::assertCount(1, $result['mediaplayer']);
+        self::assertSame(0, $result['mediaplayer'][0]['forbidden']);
+    }
+
+    /**
+     * @test
+     */
+    public function remoteAddrIsUsedWhenForwardedForHeaderIsAbsent(): void
+    {
+        $_SERVER['REMOTE_ADDR'] = '10.23.45.67';
+        unset($_SERVER['HTTP_X_FORWARDED_FOR']);
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/movie.mp4'],
+            ['mp4'],
+            ['campus'],
+            ['Ein Film'],
+            []
+        );
+
+        self::assertCount(1, $result['mediaplayer']);
+        self::assertSame(0, $result['mediaplayer'][0]['forbidden']);
     }
 
     /**

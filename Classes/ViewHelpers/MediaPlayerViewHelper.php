@@ -142,7 +142,10 @@ class MediaPlayerViewHelper extends AbstractViewHelper
             'campus' => $campusRanges
         ];
 
-        $clientIp = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+        $forwardedFor = trim((string)($_SERVER['HTTP_X_FORWARDED_FOR'] ?? ''));
+        $clientIp = $forwardedFor !== ''
+            ? trim(explode(',', $forwardedFor)[0])
+            : ($_SERVER['REMOTE_ADDR'] ?? '0.0.0.0');
         $currentGroup = [];
         foreach ($ipRanges as $group => $range) {
             if (IpUtils::checkIp($clientIp, $range)) {

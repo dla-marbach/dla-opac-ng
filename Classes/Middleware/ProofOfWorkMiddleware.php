@@ -106,7 +106,11 @@ class ProofOfWorkMiddleware implements MiddlewareInterface
      */
     private function isWhitelistedIp(ServerRequestInterface $request): bool
     {
-        $clientIp = (string)($request->getServerParams()['REMOTE_ADDR'] ?? '');
+        $serverParams = $request->getServerParams();
+        $forwardedFor = trim((string)($serverParams['HTTP_X_FORWARDED_FOR'] ?? ''));
+        $clientIp = $forwardedFor !== ''
+            ? trim(explode(',', $forwardedFor)[0])
+            : (string)($serverParams['REMOTE_ADDR'] ?? '');
         if ($clientIp === '') {
             return false;
         }
