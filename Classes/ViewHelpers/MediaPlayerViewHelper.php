@@ -3,6 +3,7 @@
 namespace Dla\DlaOpacNg\ViewHelpers;
 
 use Dla\DlaOpacNg\Service\M3uPlaylistParser;
+use Dla\DlaOpacNg\Utility\ClientIpUtility;
 use Symfony\Component\HttpFoundation\IpUtils;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Http\RequestFactory;
@@ -142,7 +143,10 @@ class MediaPlayerViewHelper extends AbstractViewHelper
             'campus' => $campusRanges
         ];
 
-        $clientIp = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+        $clientIp = ClientIpUtility::resolveClientIp(
+            $_SERVER,
+            '0.0.0.0'
+        );
         $currentGroup = [];
         foreach ($ipRanges as $group => $range) {
             if (IpUtils::checkIp($clientIp, $range)) {

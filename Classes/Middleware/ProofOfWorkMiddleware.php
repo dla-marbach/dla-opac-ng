@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Dla\DlaOpacNg\Middleware;
 
+use Dla\DlaOpacNg\Utility\ClientIpUtility;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -106,13 +107,15 @@ class ProofOfWorkMiddleware implements MiddlewareInterface
      */
     private function isWhitelistedIp(ServerRequestInterface $request): bool
     {
-        $clientIp = (string)($request->getServerParams()['REMOTE_ADDR'] ?? '');
-        if ($clientIp === '') {
+        $ranges = $this->getWhitelistedIpRanges();
+        if ($ranges === []) {
             return false;
         }
 
-        $ranges = $this->getWhitelistedIpRanges();
-        if ($ranges === []) {
+        $clientIp = ClientIpUtility::resolveClientIp(
+            $request->getServerParams()
+        );
+        if ($clientIp === '') {
             return false;
         }
 

@@ -22,13 +22,62 @@ class TestableMediaPlayerViewHelper extends MediaPlayerViewHelper
 
 class MediaPlayerViewHelperTest extends UnitTestCase
 {
+    /** @var array<string, string|false> */
+    private array $previousEnv = [];
+
+    /** @var array<string, mixed> */
+    private array $previousServer = [];
+
     protected function setUp(): void
     {
         parent::setUp();
-        putenv('campusRanges=10.0.0.0/8');
-        putenv('sandboxRanges=192.168.0.0/16');
-        putenv('staffRanges=172.16.0.0/12');
+        foreach (['campusRanges', 'sandboxRanges', 'staffRanges'] as $envName) {
+            $this->previousEnv[$envName] = getenv($envName);
+        }
+        foreach (['REMOTE_ADDR', 'HTTP_X_FORWARDED_FOR'] as $serverKey) {
+            $this->previousServer[$serverKey] = $_SERVER[$serverKey] ?? null;
+        }
+        $this->setEnvironmentVariable('campusRanges', '10.0.0.0/8');
+        $this->setEnvironmentVariable('sandboxRanges', '192.168.0.0/16');
+        $this->setEnvironmentVariable('staffRanges', '172.16.0.0/12');
         $_SERVER['REMOTE_ADDR'] = '203.0.113.1';
+        unset($_SERVER['HTTP_X_FORWARDED_FOR']);
+    }
+
+    protected function tearDown(): void
+    {
+        foreach ($this->previousEnv as $envName => $value) {
+            $this->restoreEnvironmentVariable($envName, $value);
+        }
+        foreach ($this->previousServer as $serverKey => $value) {
+            if ($value === null) {
+                unset($_SERVER[$serverKey]);
+                continue;
+            }
+            $_SERVER[$serverKey] = $value;
+        }
+
+        parent::tearDown();
+    }
+
+    private function restoreEnvironmentVariable(string $envName, string|false $value): void
+    {
+        if ($value === false) {
+            putenv($envName);
+            unset($_ENV[$envName], $_SERVER[$envName]);
+            return;
+        }
+
+        putenv($envName . '=' . $value);
+        $_ENV[$envName] = $value;
+        $_SERVER[$envName] = $value;
+    }
+
+    private function setEnvironmentVariable(string $envName, string $value): void
+    {
+        putenv($envName . '=' . $value);
+        $_ENV[$envName] = $value;
+        $_SERVER[$envName] = $value;
     }
 
     /**
@@ -60,6 +109,134 @@ class MediaPlayerViewHelperTest extends UnitTestCase
      */
     public function forbiddenVideoFileStaysInLinksAndIsNotExposedAsMediaplayerEntry(): void
     {
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/movie.mp4'],
+            ['mp4'],
+            ['campus'],
+            ['Ein Film'],
+            []
+        );
+
+        self::assertCount(0, $result['mediaplayer']);
+        self::assertCount(1, $result['links']);
+        self::assertSame(1, $result['links'][0]['forbidden']);
+    }
+
+    /**
+     * @test
+     */
+    public function singleForwardedForAddressMatchingCampusRangeAllowsCampusMedia(): void
+    {
+        $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+        $_SERVER['HTTP_X_FORWARDED_FOR'] = '10.23.45.67';
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/movie.mp4'],
+            ['mp4'],
+            ['campus'],
+            ['Ein Film'],
+            []
+        );
+
+        self::assertCount(1, $result['mediaplayer']);
+        self::assertSame(0, $result['mediaplayer'][0]['forbidden']);
+    }
+
+    /**
+     * @test
+     */
+    public function firstForwardedForAddressIsUsedWhenMultipleAddressesArePresent(): void
+    {
+        $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+        $_SERVER['HTTP_X_FORWARDED_FOR'] = '10.23.45.67, 172.16.1.5';
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/movie.mp4'],
+            ['mp4'],
+            ['campus'],
+            ['Ein Film'],
+            []
+        );
+
+        self::assertCount(1, $result['mediaplayer']);
+        self::assertSame(0, $result['mediaplayer'][0]['forbidden']);
+    }
+
+    /**
+     * @test
+     */
+    public function remoteAddrIsUsedWhenForwardedForHeaderIsEmpty(): void
+    {
+        $_SERVER['REMOTE_ADDR'] = '10.23.45.67';
+        $_SERVER['HTTP_X_FORWARDED_FOR'] = '   ';
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/movie.mp4'],
+            ['mp4'],
+            ['campus'],
+            ['Ein Film'],
+            []
+        );
+
+        self::assertCount(1, $result['mediaplayer']);
+        self::assertSame(0, $result['mediaplayer'][0]['forbidden']);
+    }
+
+    /**
+     * @test
+     */
+    public function remoteAddrIsUsedWhenForwardedForHeaderIsAbsent(): void
+    {
+        $_SERVER['REMOTE_ADDR'] = '10.23.45.67';
+        unset($_SERVER['HTTP_X_FORWARDED_FOR']);
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/movie.mp4'],
+            ['mp4'],
+            ['campus'],
+            ['Ein Film'],
+            []
+        );
+
+        self::assertCount(1, $result['mediaplayer']);
+        self::assertSame(0, $result['mediaplayer'][0]['forbidden']);
+    }
+
+    /**
+     * @test
+     */
+    public function forwardedForHeaderIsIgnoredForDirectPublicRequests(): void
+    {
+        $_SERVER['REMOTE_ADDR'] = '203.0.113.1';
+        $_SERVER['HTTP_X_FORWARDED_FOR'] = '10.23.45.67';
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/movie.mp4'],
+            ['mp4'],
+            ['campus'],
+            ['Ein Film'],
+            []
+        );
+
+        self::assertCount(0, $result['mediaplayer']);
+        self::assertCount(1, $result['links']);
+        self::assertSame(1, $result['links'][0]['forbidden']);
+    }
+
+    /**
+     * @test
+     */
+    public function invalidForwardedForEntryFallsBackToRemoteAddr(): void
+    {
+        $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+        $_SERVER['HTTP_X_FORWARDED_FOR'] = 'unknown, 10.23.45.68';
         $viewHelper = new TestableMediaPlayerViewHelper();
 
         $result = $viewHelper->buildMediaData(
