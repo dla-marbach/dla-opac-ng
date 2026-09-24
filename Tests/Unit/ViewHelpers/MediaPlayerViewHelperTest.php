@@ -48,7 +48,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
     protected function tearDown(): void
     {
         foreach ($this->previousEnv as $envName => $value) {
-            putenv($value === false ? $envName : $envName . '=' . $value);
+            $this->restoreEnvironmentVariable($envName, $value);
         }
         foreach ($this->previousServer as $serverKey => $value) {
             if ($value === null) {
@@ -59,6 +59,19 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         }
 
         parent::tearDown();
+    }
+
+    private function restoreEnvironmentVariable(string $envName, string|false $value): void
+    {
+        if ($value === false) {
+            putenv($envName);
+            unset($_ENV[$envName], $_SERVER[$envName]);
+            return;
+        }
+
+        putenv($envName . '=' . $value);
+        $_ENV[$envName] = $value;
+        $_SERVER[$envName] = $value;
     }
 
     /**

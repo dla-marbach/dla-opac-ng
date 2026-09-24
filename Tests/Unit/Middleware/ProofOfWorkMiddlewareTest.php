@@ -29,7 +29,7 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
     protected function tearDown(): void
     {
         foreach ($this->previousEnv as $envName => $value) {
-            putenv($value === false ? $envName : $envName . '=' . $value);
+            $this->restoreEnvironmentVariable($envName, $value);
         }
 
         parent::tearDown();
@@ -134,6 +134,19 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
         $request->method('getServerParams')->willReturn($serverParams);
 
         return $request;
+    }
+
+    private function restoreEnvironmentVariable(string $envName, string|false $value): void
+    {
+        if ($value === false) {
+            putenv($envName);
+            unset($_ENV[$envName], $_SERVER[$envName]);
+            return;
+        }
+
+        putenv($envName . '=' . $value);
+        $_ENV[$envName] = $value;
+        $_SERVER[$envName] = $value;
     }
 
     private function invokeIsWhitelistedIp(ServerRequestInterface $request): bool
