@@ -115,7 +115,9 @@ class ProofOfWorkMiddleware implements MiddlewareInterface
         $clientIp = ClientIpUtility::resolveClientIp(
             $request->getServerParams(),
             ClientIpUtility::getRangesFromEnvironmentVariable('trustedProxyRanges'),
-            $ranges
+            $ranges,
+            '',
+            true
         );
         if ($clientIp === '') {
             return false;

@@ -16,7 +16,8 @@ class ClientIpUtility
         array $serverParams,
         array $trustedProxyRanges = [],
         array $forwardedIpRanges = [],
-        string $defaultRemoteAddr = ''
+        string $defaultRemoteAddr = '',
+        bool $requireForwardedIpRangeMatch = false
     ): string
     {
         $remoteAddr = (string)($serverParams['REMOTE_ADDR'] ?? $defaultRemoteAddr);
@@ -26,7 +27,7 @@ class ClientIpUtility
         }
 
         $forwardedClientIp = trim(explode(',', $forwardedFor)[0]);
-        return self::isAllowedForwardedClientIp($forwardedClientIp, $forwardedIpRanges)
+        return self::isAllowedForwardedClientIp($forwardedClientIp, $forwardedIpRanges, $requireForwardedIpRangeMatch)
             ? $forwardedClientIp
             : $remoteAddr;
     }
@@ -79,7 +80,11 @@ class ClientIpUtility
     /**
      * @param string[] $forwardedIpRanges
      */
-    private static function isAllowedForwardedClientIp(string $ipAddress, array $forwardedIpRanges): bool
+    private static function isAllowedForwardedClientIp(
+        string $ipAddress,
+        array $forwardedIpRanges,
+        bool $requireForwardedIpRangeMatch
+    ): bool
     {
         // Only forwarded IPs that actually fall into the configured access CIDRs
         // are relevant for these access checks; everything else can safely fall
@@ -88,7 +93,7 @@ class ClientIpUtility
             return false;
         }
 
-        if ($forwardedIpRanges === []) {
+        if (!$requireForwardedIpRangeMatch) {
             return true;
         }
 
