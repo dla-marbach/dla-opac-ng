@@ -9,13 +9,19 @@ use Symfony\Component\HttpFoundation\IpUtils;
 class ClientIpUtility
 {
     /**
+     * @param string[] $trustedProxyRanges
      * @param string[] $forwardedIpRanges
      */
-    public static function resolveClientIp(array $serverParams, array $forwardedIpRanges = [], string $defaultRemoteAddr = ''): string
+    public static function resolveClientIp(
+        array $serverParams,
+        array $trustedProxyRanges = [],
+        array $forwardedIpRanges = [],
+        string $defaultRemoteAddr = ''
+    ): string
     {
         $remoteAddr = (string)($serverParams['REMOTE_ADDR'] ?? $defaultRemoteAddr);
         $forwardedFor = trim((string)($serverParams['HTTP_X_FORWARDED_FOR'] ?? ''));
-        if ($forwardedFor === '' || !self::isTrustedProxyAddress($remoteAddr)) {
+        if ($forwardedFor === '' || !self::isTrustedProxyAddress($remoteAddr, $trustedProxyRanges)) {
             return $remoteAddr;
         }
 
@@ -25,13 +31,16 @@ class ClientIpUtility
             : $remoteAddr;
     }
 
-    public static function isTrustedProxyAddress(string $ipAddress): bool
+    /**
+     * @param string[] $trustedProxyRanges
+     */
+    public static function isTrustedProxyAddress(string $ipAddress, array $trustedProxyRanges): bool
     {
         if ($ipAddress === '') {
             return false;
         }
 
-        foreach (self::getTrustedProxyRanges() as $trustedProxyRange) {
+        foreach ($trustedProxyRanges as $trustedProxyRange) {
             try {
                 if (IpUtils::checkIp($ipAddress, $trustedProxyRange)) {
                     return true;
@@ -45,13 +54,13 @@ class ClientIpUtility
     }
 
     /**
+     * Parse a comma-separated IP/CIDR range list from an environment variable.
+     *
      * @return string[]
      */
-    private static function getTrustedProxyRanges(): array
+    public static function getRangesFromEnvironmentVariable(string $envName): array
     {
-        // `trustedProxyRanges` is a comma-separated list of IPs/CIDR ranges for
-        // proxy hops whose `X-Forwarded-For` header may be trusted.
-        $rawValue = getenv('trustedProxyRanges');
+        $rawValue = getenv($envName);
         if ($rawValue === false || $rawValue === '') {
             return [];
         }
