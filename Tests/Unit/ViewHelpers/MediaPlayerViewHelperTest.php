@@ -22,15 +22,43 @@ class TestableMediaPlayerViewHelper extends MediaPlayerViewHelper
 
 class MediaPlayerViewHelperTest extends UnitTestCase
 {
+    /** @var array<string, string|false> */
+    private array $previousEnv = [];
+
+    /** @var array<string, mixed> */
+    private array $previousServer = [];
+
     protected function setUp(): void
     {
         parent::setUp();
+        foreach (['campusRanges', 'sandboxRanges', 'staffRanges', 'trustedProxyRanges'] as $envName) {
+            $this->previousEnv[$envName] = getenv($envName);
+        }
+        foreach (['REMOTE_ADDR', 'HTTP_X_FORWARDED_FOR'] as $serverKey) {
+            $this->previousServer[$serverKey] = $_SERVER[$serverKey] ?? null;
+        }
         putenv('campusRanges=10.0.0.0/8');
         putenv('sandboxRanges=192.168.0.0/16');
         putenv('staffRanges=172.16.0.0/12');
         putenv('trustedProxyRanges=192.168.1.10/32');
         $_SERVER['REMOTE_ADDR'] = '203.0.113.1';
         unset($_SERVER['HTTP_X_FORWARDED_FOR']);
+    }
+
+    protected function tearDown(): void
+    {
+        foreach ($this->previousEnv as $envName => $value) {
+            putenv($value === false ? $envName : $envName . '=' . $value);
+        }
+        foreach ($this->previousServer as $serverKey => $value) {
+            if ($value === null) {
+                unset($_SERVER[$serverKey]);
+                continue;
+            }
+            $_SERVER[$serverKey] = $value;
+        }
+
+        parent::tearDown();
     }
 
     /**

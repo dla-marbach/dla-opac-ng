@@ -11,13 +11,28 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class ProofOfWorkMiddlewareTest extends UnitTestCase
 {
+    /** @var array<string, string|false> */
+    private array $previousEnv = [];
+
     protected function setUp(): void
     {
         parent::setUp();
+        foreach (['campusRanges', 'sandboxRanges', 'staffRanges', 'trustedProxyRanges'] as $envName) {
+            $this->previousEnv[$envName] = getenv($envName);
+        }
         putenv('campusRanges=10.0.0.0/8');
         putenv('sandboxRanges=192.168.0.0/16');
         putenv('staffRanges=172.16.0.0/12');
         putenv('trustedProxyRanges=192.168.1.10/32');
+    }
+
+    protected function tearDown(): void
+    {
+        foreach ($this->previousEnv as $envName => $value) {
+            putenv($value === false ? $envName : $envName . '=' . $value);
+        }
+
+        parent::tearDown();
     }
 
     /**
