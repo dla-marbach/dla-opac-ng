@@ -46,6 +46,8 @@ class ClientIpUtility
      */
     private static function getTrustedProxyRanges(): array
     {
+        // `trustedProxyRanges` is a comma-separated list of IPs/CIDR ranges for
+        // proxy hops whose `X-Forwarded-For` header may be trusted.
         $rawValue = getenv('trustedProxyRanges');
         if ($rawValue === false || $rawValue === '') {
             return [];
