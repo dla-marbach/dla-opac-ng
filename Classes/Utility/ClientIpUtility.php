@@ -8,16 +8,6 @@ use Symfony\Component\HttpFoundation\IpUtils;
 
 class ClientIpUtility
 {
-    private const TRUSTED_PROXY_RANGES = [
-        '10.0.0.0/8',
-        '172.16.0.0/12',
-        '192.168.0.0/16',
-        '127.0.0.0/8',
-        'fc00::/7',
-        'fe80::/10',
-        '::1/128',
-    ];
-
     public static function resolveClientIp(array $serverParams, string $defaultRemoteAddr = ''): string
     {
         $remoteAddr = (string)($serverParams['REMOTE_ADDR'] ?? $defaultRemoteAddr);
@@ -38,6 +28,28 @@ class ClientIpUtility
             return false;
         }
 
-        return IpUtils::checkIp($ipAddress, self::TRUSTED_PROXY_RANGES);
+        $trustedProxyRanges = self::getTrustedProxyRanges();
+        return $trustedProxyRanges !== [] && IpUtils::checkIp($ipAddress, $trustedProxyRanges);
+    }
+
+    /**
+     * @return string[]
+     */
+    private static function getTrustedProxyRanges(): array
+    {
+        $rawValue = getenv('trustedProxyRanges');
+        if ($rawValue === false || $rawValue === '') {
+            return [];
+        }
+
+        $ranges = [];
+        foreach (explode(',', $rawValue) as $range) {
+            $normalized = trim($range, " \t\n\r\0\x0B\"");
+            if ($normalized !== '') {
+                $ranges[] = $normalized;
+            }
+        }
+
+        return array_values(array_unique($ranges));
     }
 }
