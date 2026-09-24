@@ -28,8 +28,17 @@ class ClientIpUtility
             return false;
         }
 
-        $trustedProxyRanges = self::getTrustedProxyRanges();
-        return $trustedProxyRanges !== [] && IpUtils::checkIp($ipAddress, $trustedProxyRanges);
+        foreach (self::getTrustedProxyRanges() as $trustedProxyRange) {
+            try {
+                if (IpUtils::checkIp($ipAddress, $trustedProxyRange)) {
+                    return true;
+                }
+            } catch (\InvalidArgumentException $exception) {
+                continue;
+            }
+        }
+
+        return false;
     }
 
     /**
