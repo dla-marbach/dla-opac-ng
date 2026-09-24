@@ -31,6 +31,8 @@ class PlayerTest extends FluidPartialTestCase
         self::assertStringContainsString('src="https://example.org/media/talk.mp4"', $html);
         self::assertStringContainsString('kind="chapters"', $html);
         self::assertStringContainsString('src="https://example.org/media/talk.vtt"', $html);
+        self::assertStringNotContainsString('{id}', $html);
+        self::assertStringContainsString("document.currentScript.parentNode.querySelector('video, audio')", $html);
     }
 
     /**
@@ -52,6 +54,8 @@ class PlayerTest extends FluidPartialTestCase
         self::assertStringNotContainsString('kind="chapters"', $html);
         self::assertStringContainsString('class="video-js vjs-default-skin vjs-big-play-centered dla-mediaplayer dla-mediaplayer-audio"', $html);
         self::assertStringContainsString('videojs(el, {audioOnlyMode: true});', $html);
+        self::assertStringNotContainsString('{id}', $html);
+        self::assertStringContainsString("document.currentScript.parentNode.querySelector('video, audio')", $html);
     }
 
     /**
@@ -77,5 +81,7 @@ class PlayerTest extends FluidPartialTestCase
         self::assertStringContainsString('Track B', $html);
         self::assertStringContainsString('class="video-js vjs-default-skin vjs-big-play-centered dla-mediaplayer dla-mediaplayer-audio"', $html);
         self::assertSame(2, substr_count($html, '<li class="dla-mediaplayer-playlist-item'));
+        self::assertStringNotContainsString('{id}', $html);
+        self::assertStringContainsString("document.currentScript.parentNode.querySelector('video')", $html);
     }
 }
