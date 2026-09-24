@@ -26,6 +26,8 @@ class ClientIpUtility
             return $remoteAddr;
         }
 
+        // Trusted proxies listed in `trustedProxyRanges` must overwrite/sanitize
+        // X-Forwarded-For so the left-most value remains the original client IP.
         $forwardedClientIp = trim(explode(',', $forwardedFor)[0]);
         return self::isAllowedForwardedClientIp($forwardedClientIp, $forwardedIpRanges, $requireForwardedIpRangeMatch)
             ? $forwardedClientIp
