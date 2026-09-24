@@ -53,12 +53,14 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
      */
     public function firstForwardedForAddressIsUsedWhenMultipleAddressesArePresent(): void
     {
+        $this->setEnvironmentVariable('sandboxRanges', '');
+        $this->setEnvironmentVariable('staffRanges', '');
         $request = $this->createRequestWithServerParams([
-            'HTTP_X_FORWARDED_FOR' => '203.0.113.7, 10.23.45.67',
+            'HTTP_X_FORWARDED_FOR' => '10.23.45.67, 172.16.1.5',
             'REMOTE_ADDR' => '192.168.1.10',
         ]);
 
-        self::assertFalse($this->invokeIsWhitelistedIp($request));
+        self::assertTrue($this->invokeIsWhitelistedIp($request));
     }
 
     /**

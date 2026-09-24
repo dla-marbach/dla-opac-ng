@@ -107,13 +107,13 @@ class ProofOfWorkMiddleware implements MiddlewareInterface
      */
     private function isWhitelistedIp(ServerRequestInterface $request): bool
     {
-        $clientIp = ClientIpUtility::resolveClientIp($request->getServerParams());
-        if ($clientIp === '') {
+        $ranges = $this->getWhitelistedIpRanges();
+        if ($ranges === []) {
             return false;
         }
 
-        $ranges = $this->getWhitelistedIpRanges();
-        if ($ranges === []) {
+        $clientIp = ClientIpUtility::resolveClientIp($request->getServerParams(), $ranges);
+        if ($clientIp === '') {
             return false;
         }
 

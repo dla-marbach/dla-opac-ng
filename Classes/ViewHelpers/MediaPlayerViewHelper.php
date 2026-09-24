@@ -143,7 +143,11 @@ class MediaPlayerViewHelper extends AbstractViewHelper
             'campus' => $campusRanges
         ];
 
-        $clientIp = ClientIpUtility::resolveClientIp($_SERVER, '0.0.0.0');
+        $clientIp = ClientIpUtility::resolveClientIp(
+            $_SERVER,
+            array_merge($staffRanges, $sandboxRanges, $campusRanges),
+            '0.0.0.0'
+        );
         $currentGroup = [];
         foreach ($ipRanges as $group => $range) {
             if (IpUtils::checkIp($clientIp, $range)) {

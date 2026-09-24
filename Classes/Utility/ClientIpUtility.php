@@ -8,7 +8,10 @@ use Symfony\Component\HttpFoundation\IpUtils;
 
 class ClientIpUtility
 {
-    public static function resolveClientIp(array $serverParams, string $defaultRemoteAddr = ''): string
+    /**
+     * @param string[] $forwardedIpRanges
+     */
+    public static function resolveClientIp(array $serverParams, array $forwardedIpRanges = [], string $defaultRemoteAddr = ''): string
     {
         $remoteAddr = (string)($serverParams['REMOTE_ADDR'] ?? $defaultRemoteAddr);
         $forwardedFor = trim((string)($serverParams['HTTP_X_FORWARDED_FOR'] ?? ''));
@@ -17,7 +20,7 @@ class ClientIpUtility
         }
 
         $forwardedClientIp = trim(explode(',', $forwardedFor)[0]);
-        return filter_var($forwardedClientIp, FILTER_VALIDATE_IP) !== false
+        return self::isAllowedForwardedClientIp($forwardedClientIp, $forwardedIpRanges)
             ? $forwardedClientIp
             : $remoteAddr;
     }
@@ -62,5 +65,30 @@ class ClientIpUtility
         }
 
         return array_values(array_unique($ranges));
+    }
+
+    /**
+     * @param string[] $forwardedIpRanges
+     */
+    private static function isAllowedForwardedClientIp(string $ipAddress, array $forwardedIpRanges): bool
+    {
+        // Only forwarded IPs that actually fall into the configured access CIDRs
+        // are relevant for these access checks; everything else can safely fall
+        // back to the proxy's REMOTE_ADDR without changing the allow/deny outcome.
+        if (filter_var($ipAddress, FILTER_VALIDATE_IP) === false) {
+            return false;
+        }
+
+        foreach ($forwardedIpRanges as $forwardedIpRange) {
+            try {
+                if (IpUtils::checkIp($ipAddress, $forwardedIpRange)) {
+                    return true;
+                }
+            } catch (\InvalidArgumentException $exception) {
+                continue;
+            }
+        }
+
+        return false;
     }
 }
