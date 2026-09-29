@@ -10,22 +10,19 @@
     as="mediaData"
 />
 
-<f:if condition="{digitalObject_thumbnail_mv.0} && {digitalObject_thumbnail_mv.0} != '␣'">
+<f:if condition="{mediaData.links.0.forbidden} == 1">
     <f:then>
-        <f:if condition="{mediaData.links.0.forbidden} == 1">
-            <f:then>
-                <div class="access-denied">
-                    <span class="access-denied-message">
-                        <f:translate key="mediaplayer.access_file_forbidden_greenbox" extensionName='dla_opac_ng'/>
-                    </span>
-                </div>
-            </f:then>
-            <f:else>
-                <a href="{digitalObject_hyperlink_mv.0}" target="_blank">
-                    <img src="{digitalObject_thumbnail_mv.0}"/>
-                </a>
-            </f:else>
-        </f:if>
-
+        <div class="access-denied">
+            <span class="access-denied-message">
+                <f:translate key="mediaplayer.access_file_forbidden_greenbox" extensionName='dla_opac_ng'/>
+            </span>
+        </div>
     </f:then>
+    <f:else>
+        <f:if condition="{digitalObject_thumbnail_mv.0} && {digitalObject_thumbnail_mv.0} != '␣'">
+            <a href="{digitalObject_hyperlink_mv.0}" target="_blank">
+                <img src="{digitalObject_thumbnail_mv.0}"/>
+            </a>
+        </f:if>
+    </f:else>
 </f:if>
