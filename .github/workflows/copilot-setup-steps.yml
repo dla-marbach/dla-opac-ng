@@ -4,6 +4,9 @@ name: "Copilot Setup Steps"
 # Runs automatically for the agent; triggers here are only for manual/PR validation.
 # Installs DDEV/Task, pulls Docker images and runs `task install`, so that the agent
 # can run `task test:php` without further network access.
+# Note: only steps, permissions, runs-on, services, snapshot and timeout-minutes of the
+# job are honored by Copilot (e.g. job-level env is ignored, so set env per step).
+# A failing step skips all following steps, so keep verification out of this job.
 on:
   workflow_dispatch:
   pull_request:
@@ -16,8 +19,6 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: read
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout dla-opac-ng
         uses: actions/checkout@v4
@@ -39,6 +40,8 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Configure Composer GitHub token (avoids api.github.com auth failures)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p ~/.ddev/homeadditions/.composer
           printf '{"github-oauth":{"github.com":"%s"}}' "$GITHUB_TOKEN" > ~/.ddev/homeadditions/.composer/auth.json
@@ -47,5 +50,3 @@ jobs:
       - name: Install test environment
         run: task install
 
-      - name: Verify PHPUnit tests run
-        run: task test:php
