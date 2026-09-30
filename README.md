@@ -87,7 +87,23 @@ php Tests/Fixtures/Solr/recorder.php
 Dazu vorher das gewünschte Szenario (Pfad + Query-Parameter) in
 [Tests/Fixtures/Solr/recorder.php](Tests/Fixtures/Solr/recorder.php) ergänzen. Bei unbekannten Anfragen
 antwortet der Mock-Server mit HTTP 404 und protokolliert die fehlende Anfrage in
-`Tests/Fixtures/Solr/missing-requests.log`.
+`Tests/Fixtures/Solr/missing-requests.log`. Mit Szenarionamen als Argumente
+(`php Tests/Fixtures/Solr/recorder.php detail-person`) werden nur diese Szenarien neu aufgezeichnet.
+
+Unterabfragen, die Partials selbst per `dla:countFromSolr`/`dla:fromSolr` absetzen (z.B. die Zähler in
+`Display/Detail/Normdata/*`), müssen nicht einzeln als Szenario gepflegt werden: Der Task
+
+```
+task test:php:record
+```
+
+führt die Tests mit `SOLR_RECORD_BASE` (Solr-Tunnel nötig) aus. Der Mock-Server leitet dann jede noch
+unbekannte Anfrage an den echten Solr weiter und legt die Antwort als Cassette in
+[Tests/Fixtures/Solr/cassettes/subqueries](Tests/Fixtures/Solr/cassettes/subqueries) ab (Dateiname: Query-Auszug +
+Hash), von wo aus sie der Task in den Workspace kopiert. Nach Änderungen an den `queryFields` in
+[Configuration/TypoScript/setup.ts](Configuration/TypoScript/setup.ts) den Ordner `subqueries` vorher löschen
+(auch unter `t3example/.local-ext/dla-dla_opac_ng/Tests/Fixtures/Solr/cassettes/`), damit keine
+veralteten Cassetten zurückbleiben.
 
 ## Fluid-Partial-Rendering-Tests
 
@@ -113,6 +129,14 @@ wie `dla-find/Classes/Service/SolrServiceProvider.php` es in Produktion tut. Die
 (`detail-*.json`, `resultlist-*.json`) liegen ebenfalls in
 [Tests/Fixtures/Solr/cassettes](Tests/Fixtures/Solr/cassettes) und werden über dieselbe
 `recorder.php` aufgenommen (siehe die entsprechenden Szenarien am Ende der Datei).
+
+[Tests/Unit/Partials/Detail](Tests/Unit/Partials/Detail) rendert die Detail-Partials (`Display/Detail/Normdata/*`,
+`Library/*`, `Inventory/*`, `Manuscripts/*`, `ImagesAndObjects/*`) mit je einem Dokument pro Quelltyp. Die
+`settings` liefert `SolrFixture::settings()`: die echte TypoScript-Konfiguration (u.a. `queryFields` für
+`dla:solveQuery`) mit `connection` auf den Mock-Server, sodass auch die Unterabfragen der Partials gegen
+Cassetten laufen. `FluidPartialTestCase` lässt Tests fehlschlagen, wenn dabei eine Anfrage ohne Cassette
+ankommt (sonst würde `dla:countFromSolr` still `0` anzeigen). `dla:collection` (Bestandsbaum aus der Datenbank)
+wird durch `FakeCollectionService` ersetzt; Testdaten dafür über `FakeCollectionService::$parents`.
 
 ## Weitere Hinweise
 

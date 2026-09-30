@@ -1,0 +1,28 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "work_id_mv:(\"AK01600972\") OR workCompilation_id_mv:(\"AK01600972\") OR work_id_mv:(\"AK01600972\") OR workAbout_id_mv:(\"AK01600972\")",
+            "start": "0",
+            "rows": "0",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 21.146751,
+                "numFoundExact": true,
+                "docs": []
+            }
+        }
+    }
+}

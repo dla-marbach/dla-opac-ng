@@ -1,0 +1,283 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(KS00011400)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 6.8503633,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "KS00011400",
+                        "default": [
+                            "KS00011400",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "Firmen",
+                            "Körperschaft",
+                            "Verlage",
+                            "2f2",
+                            "Buchhandel, Verlagswesen / Einzelne Verlage und Buchhandlungen (I-M)",
+                            "S2.6.3.3",
+                            "false",
+                            "Deutschland bis 1949",
+                            "Deutschland Baden-Württemberg",
+                            "1999-03-22",
+                            "1889",
+                            "1810",
+                            "2026-09-29",
+                            "Körperschaft",
+                            "1810-01-01T00:00:00Z",
+                            "1889-01-01T00:00:00Z",
+                            "[1810 TO 1889]",
+                            "Körperschaften",
+                            "Normdaten",
+                            "5062045-9",
+                            "J.-G.-Cotta'sche Buchhandlung <Tübingen; Stuttgart>",
+                            "Cottaische Buchhandlung <Stuttgart>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Tübingen>",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; München>",
+                            "J. G. Cotta (Firma)",
+                            "Cotta (Firma)",
+                            "Cotta",
+                            "Zweigstellen in Augsburg (1810-1882 Redaktion der Allgemeinen Zeitung) und München (1827-1869/70 Literarisch-artistische Anstalt u.a.)",
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)",
+                            "KS00012422",
+                            "Lohrer: Cotta - Geschichte eines Verlages.",
+                            "KS00145701",
+                            "PE00481073",
+                            "PE00357855",
+                            "PE00476473",
+                            "PE00338641",
+                            "PE00461784",
+                            "PE00639981",
+                            "PE00133275",
+                            "PE00476498",
+                            "PE00406665",
+                            "PE00479216",
+                            "PE00480828",
+                            "PE00660023",
+                            "Literarisch-Artistische Anstalt (1827-1869)",
+                            "Brettinger, August (1856-)",
+                            "Cordier, Friedrich (1810-1882)",
+                            "Fleck, Franz (1856-)",
+                            "Griesenbeck, Eduard (-1873)",
+                            "Koch, Rudolf (1844-1922)",
+                            "Panholzer, Johann",
+                            "Reichel, Wilhelm (1753-1837)",
+                            "Schmiele, Wilhelm (1858-)",
+                            "Steub, Leopold",
+                            "Witzendorf, Richard (1848-1900)",
+                            "Zeller, August (1843-)",
+                            "Zimmermann, Ferdinand (1845-)",
+                            "Administrative Unterordnung",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "1.0.0",
+                            "0.5",
+                            "1810",
+                            "1889",
+                            "85890",
+                            "KS00011400",
+                            "KS00011400␝J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "J.-G.-Cotta'sche Buchhandlung <Tübingen; Stuttgart>",
+                            "Cottaische Buchhandlung <Stuttgart>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Tübingen>",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; München>",
+                            "J. G. Cotta (Firma)",
+                            "Cotta (Firma)",
+                            "Cotta",
+                            "Cotta",
+                            "KS00021741",
+                            "KS",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)",
+                            "KS00012421",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart>",
+                            "https://www.dla-marbach.de/find/opac/id/KS00011400"
+                        ],
+                        "display": "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                        "categoryEntity_mv": [
+                            "Firmen"
+                        ],
+                        "categoryIndex_mv": [
+                            "Körperschaft"
+                        ],
+                        "classificationNewspaper_comment_mv": [
+                            "Verlage"
+                        ],
+                        "classificationNewspaper_text_mv": [
+                            "2f2"
+                        ],
+                        "classificationOther_comment_mv": [
+                            "Buchhandel, Verlagswesen / Einzelne Verlage und Buchhandlungen (I-M)"
+                        ],
+                        "classificationOther_text_mv": [
+                            "S2.6.3.3"
+                        ],
+                        "confidential": false,
+                        "country_mv": [
+                            "Deutschland bis 1949",
+                            "Deutschland Baden-Württemberg"
+                        ],
+                        "dateCataloged": "1999-03-22",
+                        "dateLifespanEnd": "1889",
+                        "dateLifespanStart": "1810",
+                        "dateModified": "2026-09-29",
+                        "displayAddition2": "Körperschaft",
+                        "filterDatePoint_mv": [
+                            "1810-01-01T00:00:00Z",
+                            "1889-01-01T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "[1810 TO 1889]"
+                        ],
+                        "filterSource": "Körperschaften",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "gnd_id_mv": [
+                            "5062045-9"
+                        ],
+                        "nameAlternative_name_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Tübingen; Stuttgart>",
+                            "Cottaische Buchhandlung <Stuttgart>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Tübingen>",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; München>",
+                            "J. G. Cotta (Firma)",
+                            "Cotta (Firma)"
+                        ],
+                        "nameOriginal_mv": [
+                            "Cotta"
+                        ],
+                        "noteExplanatory_text_mv": [
+                            "Zweigstellen in Augsburg (1810-1882 Redaktion der Allgemeinen Zeitung) und München (1827-1869/70 Literarisch-artistische Anstalt u.a.)"
+                        ],
+                        "predecessor_display_mv": [
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)"
+                        ],
+                        "predecessor_id_mv": [
+                            "KS00012422"
+                        ],
+                        "reference_text_mv": [
+                            "Lohrer: Cotta - Geschichte eines Verlages."
+                        ],
+                        "relation_id_mv": [
+                            "KS00145701",
+                            "PE00481073",
+                            "PE00357855",
+                            "PE00476473",
+                            "PE00338641",
+                            "PE00461784",
+                            "PE00639981",
+                            "PE00133275",
+                            "PE00476498",
+                            "PE00406665",
+                            "PE00479216",
+                            "PE00480828",
+                            "PE00660023"
+                        ],
+                        "relation_text_mv": [
+                            "Literarisch-Artistische Anstalt (1827-1869)",
+                            "Brettinger, August (1856-)",
+                            "Cordier, Friedrich (1810-1882)",
+                            "Fleck, Franz (1856-)",
+                            "Griesenbeck, Eduard (-1873)",
+                            "Koch, Rudolf (1844-1922)",
+                            "Panholzer, Johann",
+                            "Reichel, Wilhelm (1753-1837)",
+                            "Schmiele, Wilhelm (1858-)",
+                            "Steub, Leopold",
+                            "Witzendorf, Richard (1848-1900)",
+                            "Zeller, August (1843-)",
+                            "Zimmermann, Ferdinand (1845-)"
+                        ],
+                        "relation_type_mv": [
+                            "Administrative Unterordnung",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.5,
+                        "searchDate_mv": [
+                            "1810",
+                            "1889"
+                        ],
+                        "searchEntityScore": 85890,
+                        "searchEntity_id_mv": [
+                            "KS00011400"
+                        ],
+                        "searchSuggestPayload": "KS00011400␝J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                        "searchSuggestTerm_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "J.-G.-Cotta'sche Buchhandlung <Tübingen; Stuttgart>",
+                            "Cottaische Buchhandlung <Stuttgart>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Tübingen>",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; München>",
+                            "J. G. Cotta (Firma)",
+                            "Cotta (Firma)",
+                            "Cotta"
+                        ],
+                        "seeAlso_display_mv": [
+                            "Cotta"
+                        ],
+                        "seeAlso_id_mv": [
+                            "KS00021741"
+                        ],
+                        "source": "KS",
+                        "successor_display_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)"
+                        ],
+                        "successor_id_mv": [
+                            "KS00012421"
+                        ],
+                        "title": "J.-G.-Cotta'sche Buchhandlung <Stuttgart>",
+                        "url": "https://www.dla-marbach.de/find/opac/id/KS00011400",
+                        "score": 6.8503633
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchCollectionCreator_id_mv:KS00011400 OR KS00012421 OR KS00012422",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 129085,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00025111",
+                        "display": "COTTA:Briefe - [Bestand des Cotta-Archivs, Archiv]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BF00025284",
+                        "display": "COTTA:Verträge - [Bestand des Cotta-Archivs, Archiv]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BF00025296",
+                        "display": "COTTA:Interna - [Bestand des Cotta-Archivs, Archiv]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BF00046317",
+                        "display": "COTTA:Zeitschriften/Allgemeine Zeitung - [Standortkonvolut, Archiv]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "display": "Meiners, Christoph an J. G. Cotta'sche Buchhandlung <Tübingen> [Briefe]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS01217705"
+                    }
+                ]
+            }
+        }
+    }
+}

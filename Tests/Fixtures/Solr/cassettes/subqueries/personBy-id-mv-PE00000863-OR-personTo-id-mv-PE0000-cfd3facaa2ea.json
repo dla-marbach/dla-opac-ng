@@ -1,0 +1,28 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "personBy_id_mv:(\"PE00000863\") OR personTo_id_mv:(\"PE00000863\") OR personAbout_id_mv:(\"PE00000863\") OR personAt_id_mv:(\"PE00000863\")",
+            "start": "0",
+            "rows": "0",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 31172,
+                "start": 0,
+                "maxScore": 14.821335,
+                "numFoundExact": true,
+                "docs": []
+            }
+        }
+    }
+}

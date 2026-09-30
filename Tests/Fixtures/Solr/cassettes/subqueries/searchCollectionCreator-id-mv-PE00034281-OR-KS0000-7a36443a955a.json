@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchCollectionCreator_id_mv:PE00034281 OR KS00002907 OR KS00055976 OR PE00072212",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 3327,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "display": "Critik der Urtheilskraft",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00983699"
+                    },
+                    {
+                        "id": "BF00019269",
+                        "display": "G:Schiller-Bibliothek I / II (Teilbibliothek des Autors und seiner Familie) - [Geschlossener Bestand der Bibliothek, Teilnachlass, Spezialsammlung]",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ]
+                    },
+                    {
+                        "display": "Thalia. - [N.F.] 3 (1793), 3",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01614013"
+                    },
+                    {
+                        "display": "Thalia. - [N.F.] 2 (1792), 6",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01614017"
+                    },
+                    {
+                        "display": "Thalia. - [N.F.] 3 (1793), 2",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01614018"
+                    }
+                ]
+            }
+        }
+    }
+}

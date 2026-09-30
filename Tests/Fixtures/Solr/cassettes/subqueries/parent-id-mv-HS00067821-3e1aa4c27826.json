@@ -1,0 +1,27 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "parent_id_mv:\"HS00067821\"",
+            "start": "0",
+            "rows": "500",
+            "fl": "id,display",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 0,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": []
+            }
+        }
+    }
+}

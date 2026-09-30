@@ -123,6 +123,14 @@ tasks:
       - ddev exec vendor/bin/phpunit -c packages/dla-dla_opac_ng/Tests/phpunit.xml
       - ddev exec vendor/bin/phpunit -c packages/dla-find/Tests/phpunit.xml
 
+  test:php:record:
+    desc: PHPUnit-Tests (dla_opac_ng) gegen den echten Solr ausführen und fehlende Solr-Cassetten aufzeichnen (Solr-Tunnel nötig)
+    cmds:
+      - rsync -a Tests/ t3example/.local-ext/dla-dla_opac_ng/Tests/
+      - cd t3example && ddev exec 'SOLR_RECORD_BASE=http://host.docker.internal:8983 vendor/bin/phpunit -c packages/dla-dla_opac_ng/Tests/phpunit.xml'
+      - mkdir -p Tests/Fixtures/Solr/cassettes/subqueries
+      - rsync -a --ignore-existing t3example/.local-ext/dla-dla_opac_ng/Tests/Fixtures/Solr/cassettes/subqueries/ Tests/Fixtures/Solr/cassettes/subqueries/
+
   test:
     desc: Playwright-Test ausführen
     dir: dla-opac-tests

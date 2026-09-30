@@ -3,8 +3,15 @@
 /**
  * Zeichnet reale Solr-Antworten als Fixtures auf, solange der Solr-Tunnel erreichbar ist.
  *
- * Aufruf: php Tests/Fixtures/Solr/recorder.php
+ * Aufruf: php Tests/Fixtures/Solr/recorder.php [szenario ...]
  * Optional: SOLR_RECORD_BASE=http://127.0.0.1:8983 php Tests/Fixtures/Solr/recorder.php
+ *
+ * Ohne Argumente werden alle Szenarien neu aufgezeichnet; mit Szenarionamen nur die genannten
+ * (vermeidet Änderungen an bestehenden Cassetten, wenn sich die Live-Daten inzwischen verändert haben).
+ *
+ * Die Unterabfragen der Partials (dla:countFromSolr, dla:fromSolr) werden hier nicht gelistet, sondern
+ * beim Testlauf mit gesetztem SOLR_RECORD_BASE automatisch nach cassettes/subqueries/ geschrieben
+ * (siehe MockSolrServer.php).
  */
 
 $base = getenv('SOLR_RECORD_BASE') ?: 'http://127.0.0.1:8983';
@@ -102,6 +109,9 @@ $detailDocuments = [
     'detail-inventory' => 'BF00025111',        // Nachlässe und Spezialsammlungen, source=BF
     'detail-manuscript' => 'HS00067821',       // Handschriften Einzelnachweise, source=HS
     'detail-imagesandobjects' => 'BI00028331', // Bilder und Objekte, source=BI
+    // Zusätzliche Varianten mit umfangreicheren Daten für die Unterabfragen der Partials:
+    'detail-corporation-cotta' => 'KS00011400', // Körperschaft mit vielen Treffern (Cotta-Verlag, source=KS)
+    'detail-library-items' => 'AK00983699',     // Gedrucktes mit 3 Exemplaren (Provenienz, Digitalisat), source=AK
 ];
 foreach ($detailDocuments as $name => $id) {
     $scenarios[$name] = [
@@ -132,6 +142,16 @@ function buildRawQuery(array $query): string
 }
 
 $failures = 0;
+
+$only = array_slice($argv, 1);
+if ($only !== []) {
+    $unknown = array_diff($only, array_keys($scenarios));
+    if ($unknown !== []) {
+        fwrite(STDERR, 'Unbekannte Szenarien: ' . implode(', ', $unknown) . "\n");
+        exit(1);
+    }
+    $scenarios = array_intersect_key($scenarios, array_flip($only));
+}
 
 foreach ($scenarios as $name => $scenario) {
     $queryString = buildRawQuery($scenario['query']);

@@ -1,0 +1,28 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "NOT corporationBy_id_mv:(\"KS00011400\") AND category:(\"Werktitel\" OR \"Ton- und Bildträger\") AND filterAuthority_mv:(\"J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)\")",
+            "start": "0",
+            "rows": "0",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 12.508778,
+                "numFoundExact": true,
+                "docs": []
+            }
+        }
+    }
+}

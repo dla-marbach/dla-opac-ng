@@ -1,0 +1,805 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(AK00983699)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.7007265,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "schemaVersion": "1.0.0",
+                        "default": [
+                            "1.0.0",
+                            "Druckschrift",
+                            "1218_0472_1.tif",
+                            "1218_0473_1.tif",
+                            "1218_0474_1.tif",
+                            "Deutsch",
+                            "Digitalisat: Zugang",
+                            "G:Schiller-Bibliothek I / II (Teilbibliothek des Autors und seiner Familie)",
+                            "G:Kowalewski, Arnold (Philosophische Teilbibliothek)",
+                            "SE00202959",
+                            "SE00284262",
+                            "SE00284263",
+                            "SE00201002",
+                            "SE00202855",
+                            "SE00201828",
+                            "SE00201829",
+                            "In Fraktur",
+                            "Berlin ; Libau : Lagarde und Friederich, 1790 - LVIII, 476 Seiten , [1] Blatt",
+                            "1790-01-01T00:00:00Z",
+                            "1810-01-01T00:00:00Z",
+                            "Schiller, Friedrich von (1759-1805)",
+                            "Schwäbischer Schillerverein (1895-1947)",
+                            "Deutsches Literaturarchiv Marbach. Bibliothek (2005-)",
+                            "Kowalewski, Arnold Christian (1873-1945)",
+                            "Verfasser/Urheber",
+                            "Bibliotheksmagazin",
+                            "Bibliotheksmagazin",
+                            "Bibliotheksmagazin",
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/AU00388814/files/images/AU00388814_0001.tif/full/!480,480/0/default.jpg",
+                            "Bitte verwenden Sie den Link zum Digitalen Objekt",
+                            "␣",
+                            "␣",
+                            "Kant, Immanuel (1724-1804). Kritik der Urteilskraft (1790)",
+                            "Kant, Immanuel (1724-1804)␝Verfasser/Urheber",
+                            "Schiller, Friedrich von (1759-1805)␝Bestandsbildner/Vorbesitzer",
+                            "Schiller, Ernst von (1796-1841)␝Bestandsbildner/Vorbesitzer",
+                            "Heyfelder, Johann Ferdinand (1798-1869)␝Bestandsbildner/Vorbesitzer",
+                            "Delitzsch, Friedrich (1850-1922)␝Bestandsbildner/Vorbesitzer",
+                            "Delitzsch, Kurt␝Bestandsbildner/Vorbesitzer",
+                            "Kowalewski, Arnold Christian (1873-1945)␝Bestandsbildner/Vorbesitzer",
+                            "Unbekannt␝Bestandsbildner/Vorbesitzer",
+                            "Delitzsch, Kurt␝Widmungsempfänger",
+                            "Kant, Immanuel (1724-1804)",
+                            "AK",
+                            "Bibliotheksdokumente",
+                            "true",
+                            "Kant, Immanuel",
+                            "Schiller, Friedrich von",
+                            "Schiller, Ernst von",
+                            "Heyfelder, Johann Ferdinand",
+                            "Delitzsch, Friedrich",
+                            "Delitzsch, Kurt",
+                            "Kowalewski, Arnold Christian",
+                            "Unbekannt",
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/AU00388814/files/images/AU00388814_0001.tif/full/!480,480/0/default.jpg",
+                            "␣",
+                            "␣",
+                            "Druckschrift",
+                            "Berlin␝Erscheinungsort",
+                            "Libau␝Erscheinungsort",
+                            "Buch",
+                            "Schiller, Friedrich von (1759-1805)␝Schiller, Ernst von (1796-1841)␝Heyfelder, Johann Ferdinand (1798-1869)␝Delitzsch, Friedrich (1850-1922)␝Delitzsch, Kurt",
+                            "␣",
+                            "Kowalewski, Arnold Christian (1873-1945)",
+                            "https://www.dla-marbach.de/find/opac/id/AK00983699",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Critik der Urtheilskraft</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Kant, Immanuel (1724-1804)</namePart>\n    <nameIdentifier type=\"gnd\">118559796</nameIdentifier>\n    <namePart type=\"date\">1724-04-22 — 1804-02-12</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Schiller, Friedrich von (1759-1805)</namePart>\n    <nameIdentifier type=\"gnd\">118607626</nameIdentifier>\n    <namePart type=\"date\">1759-11-10 — 1805-05-09</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Schiller, Ernst von (1796-1841)</namePart>\n    <nameIdentifier type=\"gnd\">117267090</nameIdentifier>\n    <namePart type=\"date\">1796-07-11 — 1841-05-19</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Heyfelder, Johann Ferdinand (1798-1869)</namePart>\n    <nameIdentifier type=\"gnd\">11679142X</nameIdentifier>\n    <namePart type=\"date\">1798-01-19 — 1869-06-21</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Delitzsch, Friedrich (1850-1922)</namePart>\n    <nameIdentifier type=\"gnd\">118671375</nameIdentifier>\n    <namePart type=\"date\">1850-09-03 — 1922-12-19</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Delitzsch, Kurt</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Kowalewski, Arnold Christian (1873-1945)</namePart>\n    <nameIdentifier type=\"gnd\">116345764</nameIdentifier>\n    <namePart type=\"date\">1873-11-27 — 1945-11-16</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Buch</typeOfResource>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Berlin</placeTerm>\n    </place>\n    <place>\n      <placeTerm type=\"text\">Libau</placeTerm>\n    </place>\n    <publisher>Lagarde und Friederich</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1790</dateIssued>\n    <displayDate>1790</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n    <extent>LVIII, 476 Seiten , [1] Blatt</extent>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">von Immanuel Kant</note>\n  <note type=\"footnotes\">In Fraktur</note>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00019269</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00019098</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <identifier type=\"kxp\">1100350160</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>Schiller-Bibl. I/Kant</shelfLocator>\n    <shelfLocator>R</shelfLocator>\n    <shelfLocator>Kowa2</shelfLocator>\n    <url access=\"object in context\">https://digital.dla-marbach.de/viewer/image/AU00388814/?media_access=public&amp;media_license=CC0&amp;media_thumbnail=AU00388814_0001.tif</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2009-10-08</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2025-10-02</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00983699</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Critik der Urtheilskraft</dc:title>\n  <dc:creator>Kant, Immanuel (1724-1804)</dc:creator>\n  <dc:contributor>Schiller, Friedrich von (1759-1805)</dc:contributor>\n  <dc:contributor>Schiller, Ernst von (1796-1841)</dc:contributor>\n  <dc:contributor>Heyfelder, Johann Ferdinand (1798-1869)</dc:contributor>\n  <dc:contributor>Delitzsch, Friedrich (1850-1922)</dc:contributor>\n  <dc:contributor>Delitzsch, Kurt</dc:contributor>\n  <dc:contributor>Kowalewski, Arnold Christian (1873-1945)</dc:contributor>\n  <dc:type>Buch</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:publisher>Lagarde und Friederich</dc:publisher>\n  <dc:date>1790</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>LVIII, 476 Seiten , [1] Blatt</dc:format>\n  <dc:description>In Fraktur</dc:description>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00019269https://www.dla-marbach.de/find/opac/id/BF00019098</dc:source>\n  <dc:identifier>1100350160</dc:identifier>\n  <dc:identifier>Schiller-Bibl. I/Kant</dc:identifier>\n  <dc:identifier>R</dc:identifier>\n  <dc:identifier>Kowa2</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/viewer/image/AU00388814/?media_access=public&amp;media_license=CC0&amp;media_thumbnail=AU00388814_0001.tif</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00983699</dc:identifier>\n  <dc:identifier>AK00983699</dc:identifier>\n</oai_dc:dc>",
+                            "Kritik Urteilskraft",
+                            "Lagarde und Friederich",
+                            "Berlin",
+                            "Libau",
+                            "Schiller, Friedrich von / Autogramm␝Schiller, Friedrich von / Marginalie␝Schiller, Friedrich von / Merkzeichen␝Unbekannt / Nummer␝Heyfelder, Johann Ferdinand / Notiz␝Delitzsch, Friedrich / Exemplar: Donator / Datum / 1810 Oktober 29␝Delitzsch, Kurt / Exemplar: Widmungsempfänger",
+                            "␣",
+                            "␣",
+                            "https://digital.dla-marbach.de/viewer/image/AU00388814/?media_access=public&media_license=CC0&media_thumbnail=AU00388814_0001.tif",
+                            "␣",
+                            "␣",
+                            "Kant, Immanuel (1724-1804)",
+                            "Kant, Immanuel (1724-1804)",
+                            "Schiller-Bibl. I/Kant",
+                            "R",
+                            "Kowa2",
+                            "2009-10-08",
+                            "Bibliotheksmaterialien",
+                            "AK00051876",
+                            "Digitalisat: Zugang",
+                            "␣",
+                            "␣",
+                            "G:Schiller-Bibliothek I / II",
+                            "␣",
+                            "G:Kowalewski, Arnold (Philosophische Teilbibliothek)",
+                            "501",
+                            "Critik der Urtheilskraft",
+                            "Deutsch␝Original",
+                            "1100350160",
+                            "1",
+                            "nicht benutzbar",
+                            "benutzbar",
+                            "benutzbar",
+                            "public",
+                            "BF00019269",
+                            "␣",
+                            "BF00019098",
+                            "Critik der Urtheilskraft",
+                            "Gedrucktes",
+                            "Schiller, Friedrich von",
+                            "Schiller, Ernst von",
+                            "Heyfelder, Johann Ferdinand",
+                            "Delitzsch, Friedrich",
+                            "Delitzsch, Kurt",
+                            "Kowalewski, Arnold Christian",
+                            "Unbekannt",
+                            "CC0",
+                            "MM01562043",
+                            "␣",
+                            "␣",
+                            "572y",
+                            "572y",
+                            "572y",
+                            "Delitzsch, Kurt",
+                            "Lagarde und Friederich",
+                            "f-fertig, i-fertig",
+                            "https://digital.dla-marbach.de/viewer/image/AU00388814/?media_access=public&media_license=CC0&media_thumbnail=AU00388814_0001.tif",
+                            "public",
+                            "␣",
+                            "␣",
+                            "G:Schiller-Bibliothek I / II (Teilbibliothek des Autors und seiner Familie) - [Geschlossener Bestand der Bibliothek, Teilnachlass, Spezialsammlung]",
+                            "␣",
+                            "G:Kowalewski, Arnold (Philosophische Teilbibliothek) - [Geschlossener Bestand der Bibliothek, Teilnachlass, Gelehrtenbibliothek]",
+                            "1790",
+                            "1810",
+                            "Kant, Immanuel (1724-1804)",
+                            "Schiller, Friedrich von (1759-1805)",
+                            "Schiller, Ernst von (1796-1841)",
+                            "Heyfelder, Johann Ferdinand (1798-1869)",
+                            "Delitzsch, Friedrich (1850-1922)",
+                            "Delitzsch, Kurt",
+                            "Kowalewski, Arnold Christian (1873-1945)",
+                            "Unbekannt",
+                            "Text",
+                            "2025-10-02",
+                            "1790",
+                            "1790",
+                            "1810",
+                            "1790",
+                            "AU00388814",
+                            "AU00412735",
+                            "AU00412737",
+                            "von Immanuel Kant",
+                            "Kant, Immanuel (1724-1804)␝Von",
+                            "Schiller, Friedrich von (1759-1805)␝Unter",
+                            "Schiller, Ernst von (1796-1841)␝Unter",
+                            "Heyfelder, Johann Ferdinand (1798-1869)␝Unter",
+                            "Delitzsch, Friedrich (1850-1922)␝Unter",
+                            "Delitzsch, Kurt␝Unter",
+                            "Kowalewski, Arnold Christian (1873-1945)␝Unter",
+                            "Unbekannt␝Unter",
+                            "Delitzsch, Kurt␝An",
+                            "PE00000095",
+                            "Kant, Immanuel",
+                            "CC0",
+                            "␣",
+                            "␣",
+                            "Deutschland bis 1949",
+                            "false",
+                            "creator",
+                            "32347 (Archiv)",
+                            "␣",
+                            "G89.2131",
+                            "Critik der Urtheilskraft",
+                            "Band",
+                            "Hogarth",
+                            "Schiller, Fridrich",
+                            "Schiller, Johann Christoph Friedrich",
+                            "Schiller, Johann Christoph Friedrich von",
+                            "Schiller, Friedrich",
+                            "Schiller, Ernst Friedrich Wilhelm von",
+                            "Schiller, Friedrich Wilhelm Ernst",
+                            "Delitzsch, Friedrich Conrad Gerhard",
+                            "Delitzsch, Friedrich Konrad",
+                            "Delitzsch, Friedrich C.",
+                            "Delitzsch, Frederick K.",
+                            "Delitzsch, Frederic",
+                            "Delitzsch, Fridericus",
+                            "Delitzsch, Fritz",
+                            "Delič, F.",
+                            "Delitzsch, F.",
+                            "F. D.",
+                            "Delic, F.",
+                            "Kowalewski, Arnold",
+                            "Kowalewski, Arnold Christian Felix",
+                            "Kantius",
+                            "Cant",
+                            "Pseudo-Kant",
+                            "Yi man nu er Kang de",
+                            "Yimannuer-Kangde",
+                            "Kang de",
+                            "Kangde",
+                            "Kant",
+                            "Kanto",
+                            "K'ang-tê",
+                            "K`ant`u",
+                            "K`ang-te",
+                            "Kant, Imanuil",
+                            "Kant, Immanuil",
+                            "Kant, Immanuel'",
+                            "Kant, Immanu'el",
+                            "Kant, Imanuell",
+                            "Kant, Immanowel",
+                            "Kanto, Imanueru",
+                            "Kant, ʿImanuil",
+                            "Kant, ʿAmanuil",
+                            "Kant, ʿImanuel",
+                            "Kant, ʿAmmanuil",
+                            "Kanti, Imanuel",
+                            "Kants, Imanuels",
+                            "Kants, Immanuels",
+                            "Kantas, I.",
+                            "Kantas, Imanuelis",
+                            "Kangde, Yimannuer",
+                            "Kant, Imm.",
+                            "Kant, Inmanuel",
+                            "Kant, Manuel",
+                            "Qant, Immanu'el",
+                            "K'ang-tê, I.",
+                            "Kant, Imainual",
+                            "Kant, Immanuïl",
+                            "Kant, Imanuwil",
+                            "Kant, Immanual",
+                            "Kant, Immanuell",
+                            "Kanto, I.",
+                            "Kant, Imanuel",
+                            "Kant, I.",
+                            "Kant, Emanuel",
+                            "Kant, Emanuele",
+                            "Kant, Emmanuel",
+                            "Kant, Emmanuele",
+                            "Kant, E.",
+                            "Kant, Manuele",
+                            "Kant, M.",
+                            "Kantius, Immanuel",
+                            "Kant, Amanuil",
+                            "Canto, I.",
+                            "Kant, Im.",
+                            "Kant, `Imanu'el",
+                            "Kant, `Ammanu'il",
+                            "Kant, IImmanuil",
+                            "Kantius, Immanowel",
+                            "Kant, Immanuel",
+                            "Kang te",
+                            "Kantu",
+                            "Kant, Immanuel",
+                            "Kant, Imanuil",
+                            "Kant, Amanuil",
+                            "Kant, Imanuel",
+                            "Kant, Ammanuil",
+                            "Qant, Immanuel",
+                            "Kang te, I.",
+                            "Kant, Immanuil",
+                            "Kritik der Urtheilskraft",
+                            "Critik der Urtheilskraft",
+                            "Le jugement esthétique",
+                            "Kritik der Urteilskraft",
+                            "Critik der Urheilskraft",
+                            "The critique of judgement",
+                            "Critique of the power of judgment",
+                            "Handanryoku hihan",
+                            "Krytyka władzy sądzenia",
+                            "Naqd-i quwih-i hukm",
+                            "KS00088542",
+                            "Abgeschlossen",
+                            "TY  - GEN\nA2  - Schiller, Friedrich von\nA2  - Schiller, Ernst von\nA2  - Heyfelder, Johann Ferdinand\nA2  - Delitzsch, Friedrich\nA2  - Delitzsch, Kurt\nA2  - Kowalewski, Arnold Christian\nA2  - Unbekannt\nAU  - Kant, Immanuel\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Berlin ; Libau\nDA  - 1790\nDA  - 1810\nDB  - G:Schiller-Bibliothek I / II (Teilbibliothek des Autors und seiner Familie); G:Kowalewski, Arnold (Philosophische Teilbibliothek)\nID  - AK00983699\nLA  - Deutsch\nM2  - Buch\nN1  - Umfang: LVIII, 476 Seiten , [1] Blatt\nN1  - Erscheinungsort: Berlin\nN1  - Erscheinungsort: Libau\nN1  - In Fraktur\nOP  - Kant, Immanuel (1724-1804). Kritik der Urteilskraft (1790)\nPB  - Lagarde und Friederich\nPY  - 1790\nTI  - Critik der Urtheilskraft\nUR  - https://digital.dla-marbach.de/viewer/image/AU00388814/?media_access=public&media_license=CC0&media_thumbnail=AU00388814_0001.tif\nUR  - https://www.dla-marbach.de/find/opac/id/AK00983699/\nER  -",
+                            "SE00202959␝SE00284262␝SE00284263␝SE00201002␝SE00202855␝SE00201828␝SE00201829",
+                            "␣",
+                            "␣",
+                            "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                            "Verfasser/Urheber",
+                            "true",
+                            "␣",
+                            "true",
+                            "LVIII, 476 Seiten , [1] Blatt",
+                            "Berlin ; Libau",
+                            "PE00034281",
+                            "PE00063258",
+                            "PE00200128",
+                            "PE00387550",
+                            "PE00387551",
+                            "PE00072212",
+                            "PE00000095",
+                            "KS00088542",
+                            "AK00051876",
+                            "2009-10-08",
+                            "Schiller-Bibl. I/Kant. 32347 (Archiv). Critik der Urtheilskraft",
+                            "R. Critik der Urtheilskraft",
+                            "Kowa2. G89.2131. Critik der Urtheilskraft",
+                            "AK00983699",
+                            "K10Plus-PPN",
+                            "PE00000095",
+                            "Deutsch",
+                            "MM01562043",
+                            "PE00034281␝PE00063258␝PE00200128␝PE00387550␝PE00387551",
+                            "␣",
+                            "PE00072212",
+                            "Vorbesitzer: Ernst von Schiller. - Mit handschriftlichem Namenszug, Annotationen und Anstreichungen von Friedrich Schiller. - Widmungen und Notizen teils von Friedrich Delitzsch und Johann Ferdinand Heyfelder. - Exemplarbeschreibung in: Wistoff, Andreas: Schillers Bibliothek. In: Schiller, Friedrich: Schillers Werke. - Nationalausg. - Weimar. Bd. 41,1 (2003). Titelnr. 158",
+                            "␣",
+                            "␣",
+                            "PE00034281",
+                            "KS00002907",
+                            "KS00055976",
+                            "PE00072212"
+                        ],
+                        "categorySubSub": "Druckschrift",
+                        "identifier_id_mv": [
+                            "1218_0472_1.tif",
+                            "1218_0473_1.tif",
+                            "1218_0474_1.tif"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "digitalObject_display_mv": [
+                            "Digitalisat: Zugang"
+                        ],
+                        "filterCollection_mv": [
+                            "G:Schiller-Bibliothek I / II (Teilbibliothek des Autors und seiner Familie)",
+                            "G:Kowalewski, Arnold (Philosophische Teilbibliothek)"
+                        ],
+                        "searchClassification_id_mv": [
+                            "SE00202959",
+                            "SE00284262",
+                            "SE00284263",
+                            "SE00201002",
+                            "SE00202855",
+                            "SE00201828",
+                            "SE00201829"
+                        ],
+                        "noteFootnote_text_mv": [
+                            "In Fraktur"
+                        ],
+                        "displayAddition1": "Berlin ; Libau : Lagarde und Friederich, 1790 - LVIII, 476 Seiten , [1] Blatt",
+                        "filterDatePoint_mv": [
+                            "1790-01-01T00:00:00Z",
+                            "1810-01-01T00:00:00Z"
+                        ],
+                        "searchCollectionCreator_display_mv": [
+                            "Schiller, Friedrich von (1759-1805)",
+                            "Schwäbischer Schillerverein (1895-1947)",
+                            "Deutsches Literaturarchiv Marbach. Bibliothek (2005-)",
+                            "Kowalewski, Arnold Christian (1873-1945)"
+                        ],
+                        "creator_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "item_location_mv": [
+                            "Bibliotheksmagazin",
+                            "Bibliotheksmagazin",
+                            "Bibliotheksmagazin"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/AU00388814/files/images/AU00388814_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "item_usageRestrictionNote_mv": [
+                            "Bitte verwenden Sie den Link zum Digitalen Objekt",
+                            "␣",
+                            "␣"
+                        ],
+                        "work_display_mv": [
+                            "Kant, Immanuel (1724-1804). Kritik der Urteilskraft (1790)"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Kant, Immanuel (1724-1804)␝Verfasser/Urheber",
+                            "Schiller, Friedrich von (1759-1805)␝Bestandsbildner/Vorbesitzer",
+                            "Schiller, Ernst von (1796-1841)␝Bestandsbildner/Vorbesitzer",
+                            "Heyfelder, Johann Ferdinand (1798-1869)␝Bestandsbildner/Vorbesitzer",
+                            "Delitzsch, Friedrich (1850-1922)␝Bestandsbildner/Vorbesitzer",
+                            "Delitzsch, Kurt␝Bestandsbildner/Vorbesitzer",
+                            "Kowalewski, Arnold Christian (1873-1945)␝Bestandsbildner/Vorbesitzer",
+                            "Unbekannt␝Bestandsbildner/Vorbesitzer",
+                            "Delitzsch, Kurt␝Widmungsempfänger"
+                        ],
+                        "personBy_display_mv": [
+                            "Kant, Immanuel (1724-1804)"
+                        ],
+                        "source": "AK",
+                        "category": "Bibliotheksdokumente",
+                        "filterDigital": true,
+                        "searchName_mv": [
+                            "Kant, Immanuel",
+                            "Schiller, Friedrich von",
+                            "Schiller, Ernst von",
+                            "Heyfelder, Johann Ferdinand",
+                            "Delitzsch, Friedrich",
+                            "Delitzsch, Kurt",
+                            "Kowalewski, Arnold Christian",
+                            "Unbekannt"
+                        ],
+                        "item_digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/AU00388814/files/images/AU00388814_0001.tif/full/!480,480/0/default.jpg",
+                            "␣",
+                            "␣"
+                        ],
+                        "categoryMedia_mv": [
+                            "Druckschrift"
+                        ],
+                        "filterLocationType_mv": [
+                            "Berlin␝Erscheinungsort",
+                            "Libau␝Erscheinungsort"
+                        ],
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "item_personAt_display_mv": [
+                            "Schiller, Friedrich von (1759-1805)␝Schiller, Ernst von (1796-1841)␝Heyfelder, Johann Ferdinand (1798-1869)␝Delitzsch, Friedrich (1850-1922)␝Delitzsch, Kurt",
+                            "␣",
+                            "Kowalewski, Arnold Christian (1873-1945)"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK00983699",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Critik der Urtheilskraft</dc:title>\n  <dc:creator>Kant, Immanuel (1724-1804)</dc:creator>\n  <dc:contributor>Schiller, Friedrich von (1759-1805)</dc:contributor>\n  <dc:contributor>Schiller, Ernst von (1796-1841)</dc:contributor>\n  <dc:contributor>Heyfelder, Johann Ferdinand (1798-1869)</dc:contributor>\n  <dc:contributor>Delitzsch, Friedrich (1850-1922)</dc:contributor>\n  <dc:contributor>Delitzsch, Kurt</dc:contributor>\n  <dc:contributor>Kowalewski, Arnold Christian (1873-1945)</dc:contributor>\n  <dc:type>Buch</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:publisher>Lagarde und Friederich</dc:publisher>\n  <dc:date>1790</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>LVIII, 476 Seiten , [1] Blatt</dc:format>\n  <dc:description>In Fraktur</dc:description>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00019269https://www.dla-marbach.de/find/opac/id/BF00019098</dc:source>\n  <dc:identifier>1100350160</dc:identifier>\n  <dc:identifier>Schiller-Bibl. I/Kant</dc:identifier>\n  <dc:identifier>R</dc:identifier>\n  <dc:identifier>Kowa2</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/viewer/image/AU00388814/?media_access=public&amp;media_license=CC0&amp;media_thumbnail=AU00388814_0001.tif</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00983699</dc:identifier>\n  <dc:identifier>AK00983699</dc:identifier>\n</oai_dc:dc>",
+                        "headword_mv": [
+                            "Kritik Urteilskraft"
+                        ],
+                        "publisher_display_mv": [
+                            "Lagarde und Friederich"
+                        ],
+                        "filterLocation_mv": [
+                            "Berlin",
+                            "Libau"
+                        ],
+                        "item_classification_display_mv": [
+                            "Schiller, Friedrich von / Autogramm␝Schiller, Friedrich von / Marginalie␝Schiller, Friedrich von / Merkzeichen␝Unbekannt / Nummer␝Heyfelder, Johann Ferdinand / Notiz␝Delitzsch, Friedrich / Exemplar: Donator / Datum / 1810 Oktober 29␝Delitzsch, Kurt / Exemplar: Widmungsempfänger",
+                            "␣",
+                            "␣"
+                        ],
+                        "item_digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/image/AU00388814/?media_access=public&media_license=CC0&media_thumbnail=AU00388814_0001.tif",
+                            "␣",
+                            "␣"
+                        ],
+                        "creator_display_mv": [
+                            "Kant, Immanuel (1724-1804)"
+                        ],
+                        "displayName": "Kant, Immanuel (1724-1804)",
+                        "item_callNumberItem_mv": [
+                            "Schiller-Bibl. I/Kant",
+                            "R",
+                            "Kowa2"
+                        ],
+                        "dateCataloged": "2009-10-08",
+                        "filterSource": "Bibliotheksmaterialien",
+                        "work_id_mv": [
+                            "AK00051876"
+                        ],
+                        "item_digitalObject_display_mv": [
+                            "Digitalisat: Zugang",
+                            "␣",
+                            "␣"
+                        ],
+                        "item_callNumberCollection_mv": [
+                            "G:Schiller-Bibliothek I / II",
+                            "␣",
+                            "G:Kowalewski, Arnold (Philosophische Teilbibliothek)"
+                        ],
+                        "noteFootnote_type_mv": [
+                            "501"
+                        ],
+                        "display": "Critik der Urtheilskraft",
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "vendor_id_mv": [
+                            "1100350160"
+                        ],
+                        "searchBoost": 1,
+                        "item_usageRestriction_mv": [
+                            "nicht benutzbar",
+                            "benutzbar",
+                            "benutzbar"
+                        ],
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ],
+                        "item_collection_id_mv": [
+                            "BF00019269",
+                            "␣",
+                            "BF00019098"
+                        ],
+                        "title": "Critik der Urtheilskraft",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "searchNameAt_mv": [
+                            "Schiller, Friedrich von",
+                            "Schiller, Ernst von",
+                            "Heyfelder, Johann Ferdinand",
+                            "Delitzsch, Friedrich",
+                            "Delitzsch, Kurt",
+                            "Kowalewski, Arnold Christian",
+                            "Unbekannt"
+                        ],
+                        "digitalObject_license_mv": [
+                            "CC0"
+                        ],
+                        "item_digitalObject_id_mv": [
+                            "MM01562043",
+                            "␣",
+                            "␣"
+                        ],
+                        "identifier_type_mv": [
+                            "572y",
+                            "572y",
+                            "572y"
+                        ],
+                        "searchNameTo_mv": [
+                            "Delitzsch, Kurt"
+                        ],
+                        "publisherOriginalText_mv": [
+                            "Lagarde und Friederich"
+                        ],
+                        "statusCataloging": "f-fertig, i-fertig",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/image/AU00388814/?media_access=public&media_license=CC0&media_thumbnail=AU00388814_0001.tif"
+                        ],
+                        "item_digitalObject_accessLevel_mv": [
+                            "public",
+                            "␣",
+                            "␣"
+                        ],
+                        "item_collection_display_mv": [
+                            "G:Schiller-Bibliothek I / II (Teilbibliothek des Autors und seiner Familie) - [Geschlossener Bestand der Bibliothek, Teilnachlass, Spezialsammlung]",
+                            "␣",
+                            "G:Kowalewski, Arnold (Philosophische Teilbibliothek) - [Geschlossener Bestand der Bibliothek, Teilnachlass, Gelehrtenbibliothek]"
+                        ],
+                        "searchDate_mv": [
+                            "1790",
+                            "1810"
+                        ],
+                        "filterAuthority_mv": [
+                            "Kant, Immanuel (1724-1804)",
+                            "Schiller, Friedrich von (1759-1805)",
+                            "Schiller, Ernst von (1796-1841)",
+                            "Heyfelder, Johann Ferdinand (1798-1869)",
+                            "Delitzsch, Friedrich (1850-1922)",
+                            "Delitzsch, Kurt",
+                            "Kowalewski, Arnold Christian (1873-1945)",
+                            "Unbekannt"
+                        ],
+                        "categoryContent_mv": [
+                            "Text"
+                        ],
+                        "dateModified": "2025-10-02",
+                        "dateOriginComment_mv": [
+                            "1790"
+                        ],
+                        "filterDateRange_mv": [
+                            "1790",
+                            "1810"
+                        ],
+                        "dateOrigin": "1790",
+                        "item_id_mv": [
+                            "AU00388814",
+                            "AU00412735",
+                            "AU00412737"
+                        ],
+                        "titleResponsability": "von Immanuel Kant",
+                        "filterAuthorityRelation_mv": [
+                            "Kant, Immanuel (1724-1804)␝Von",
+                            "Schiller, Friedrich von (1759-1805)␝Unter",
+                            "Schiller, Ernst von (1796-1841)␝Unter",
+                            "Heyfelder, Johann Ferdinand (1798-1869)␝Unter",
+                            "Delitzsch, Friedrich (1850-1922)␝Unter",
+                            "Delitzsch, Kurt␝Unter",
+                            "Kowalewski, Arnold Christian (1873-1945)␝Unter",
+                            "Unbekannt␝Unter",
+                            "Delitzsch, Kurt␝An"
+                        ],
+                        "creator_id_mv": [
+                            "PE00000095"
+                        ],
+                        "searchNameBy_mv": [
+                            "Kant, Immanuel"
+                        ],
+                        "item_digitalObject_license_mv": [
+                            "CC0",
+                            "␣",
+                            "␣"
+                        ],
+                        "country_mv": [
+                            "Deutschland bis 1949"
+                        ],
+                        "confidential": false,
+                        "personBy_creator_mv": [
+                            "creator"
+                        ],
+                        "item_accessionNumber_mv": [
+                            "32347 (Archiv)",
+                            "␣",
+                            "G89.2131"
+                        ],
+                        "titleMain_text": "Critik der Urtheilskraft",
+                        "categoryMedium_mv": [
+                            "Band"
+                        ],
+                        "searchVariant_mv": [
+                            "Hogarth",
+                            "Schiller, Fridrich",
+                            "Schiller, Johann Christoph Friedrich",
+                            "Schiller, Johann Christoph Friedrich von",
+                            "Schiller, Friedrich",
+                            "Schiller, Ernst Friedrich Wilhelm von",
+                            "Schiller, Friedrich Wilhelm Ernst",
+                            "Delitzsch, Friedrich Conrad Gerhard",
+                            "Delitzsch, Friedrich Konrad",
+                            "Delitzsch, Friedrich C.",
+                            "Delitzsch, Frederick K.",
+                            "Delitzsch, Frederic",
+                            "Delitzsch, Fridericus",
+                            "Delitzsch, Fritz",
+                            "Delič, F.",
+                            "Delitzsch, F.",
+                            "F. D.",
+                            "Delic, F.",
+                            "Kowalewski, Arnold",
+                            "Kowalewski, Arnold Christian Felix",
+                            "Kantius",
+                            "Cant",
+                            "Pseudo-Kant",
+                            "Yi man nu er Kang de",
+                            "Yimannuer-Kangde",
+                            "Kang de",
+                            "Kangde",
+                            "Kant",
+                            "Kanto",
+                            "K'ang-tê",
+                            "K`ant`u",
+                            "K`ang-te",
+                            "Kant, Imanuil",
+                            "Kant, Immanuil",
+                            "Kant, Immanuel'",
+                            "Kant, Immanu'el",
+                            "Kant, Imanuell",
+                            "Kant, Immanowel",
+                            "Kanto, Imanueru",
+                            "Kant, ʿImanuil",
+                            "Kant, ʿAmanuil",
+                            "Kant, ʿImanuel",
+                            "Kant, ʿAmmanuil",
+                            "Kanti, Imanuel",
+                            "Kants, Imanuels",
+                            "Kants, Immanuels",
+                            "Kantas, I.",
+                            "Kantas, Imanuelis",
+                            "Kangde, Yimannuer",
+                            "Kant, Imm.",
+                            "Kant, Inmanuel",
+                            "Kant, Manuel",
+                            "Qant, Immanu'el",
+                            "K'ang-tê, I.",
+                            "Kant, Imainual",
+                            "Kant, Immanuïl",
+                            "Kant, Imanuwil",
+                            "Kant, Immanual",
+                            "Kant, Immanuell",
+                            "Kanto, I.",
+                            "Kant, Imanuel",
+                            "Kant, I.",
+                            "Kant, Emanuel",
+                            "Kant, Emanuele",
+                            "Kant, Emmanuel",
+                            "Kant, Emmanuele",
+                            "Kant, E.",
+                            "Kant, Manuele",
+                            "Kant, M.",
+                            "Kantius, Immanuel",
+                            "Kant, Amanuil",
+                            "Canto, I.",
+                            "Kant, Im.",
+                            "Kant, `Imanu'el",
+                            "Kant, `Ammanu'il",
+                            "Kant, IImmanuil",
+                            "Kantius, Immanowel",
+                            "Kant, Immanuel",
+                            "Kang te",
+                            "Kantu",
+                            "Kant, Immanuel",
+                            "Kant, Imanuil",
+                            "Kant, Amanuil",
+                            "Kant, Imanuel",
+                            "Kant, Ammanuil",
+                            "Qant, Immanuel",
+                            "Kang te, I.",
+                            "Kant, Immanuil",
+                            "Kritik der Urtheilskraft",
+                            "Critik der Urtheilskraft",
+                            "Le jugement esthétique",
+                            "Kritik der Urteilskraft",
+                            "Critik der Urheilskraft",
+                            "The critique of judgement",
+                            "Critique of the power of judgment",
+                            "Handanryoku hihan",
+                            "Krytyka władzy sądzenia",
+                            "Naqd-i quwih-i hukm"
+                        ],
+                        "publisher_id_mv": [
+                            "KS00088542"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "exportRIS": "TY  - GEN\nA2  - Schiller, Friedrich von\nA2  - Schiller, Ernst von\nA2  - Heyfelder, Johann Ferdinand\nA2  - Delitzsch, Friedrich\nA2  - Delitzsch, Kurt\nA2  - Kowalewski, Arnold Christian\nA2  - Unbekannt\nAU  - Kant, Immanuel\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Berlin ; Libau\nDA  - 1790\nDA  - 1810\nDB  - G:Schiller-Bibliothek I / II (Teilbibliothek des Autors und seiner Familie); G:Kowalewski, Arnold (Philosophische Teilbibliothek)\nID  - AK00983699\nLA  - Deutsch\nM2  - Buch\nN1  - Umfang: LVIII, 476 Seiten , [1] Blatt\nN1  - Erscheinungsort: Berlin\nN1  - Erscheinungsort: Libau\nN1  - In Fraktur\nOP  - Kant, Immanuel (1724-1804). Kritik der Urteilskraft (1790)\nPB  - Lagarde und Friederich\nPY  - 1790\nTI  - Critik der Urtheilskraft\nUR  - https://digital.dla-marbach.de/viewer/image/AU00388814/?media_access=public&media_license=CC0&media_thumbnail=AU00388814_0001.tif\nUR  - https://www.dla-marbach.de/find/opac/id/AK00983699/\nER  -",
+                        "item_classification_id_mv": [
+                            "SE00202959␝SE00284262␝SE00284263␝SE00201002␝SE00202855␝SE00201828␝SE00201829",
+                            "␣",
+                            "␣"
+                        ],
+                        "categorySub": "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                        "personBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "item_provenance_mv": [
+                            true,
+                            false,
+                            true
+                        ],
+                        "extent": "LVIII, 476 Seiten , [1] Blatt",
+                        "publisherOriginalLocation_mv": [
+                            "Berlin ; Libau"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00034281",
+                            "PE00063258",
+                            "PE00200128",
+                            "PE00387550",
+                            "PE00387551",
+                            "PE00072212",
+                            "PE00000095",
+                            "KS00088542",
+                            "AK00051876"
+                        ],
+                        "filterRecent": "2009-10-08",
+                        "item_display_mv": [
+                            "Schiller-Bibl. I/Kant. 32347 (Archiv). Critik der Urtheilskraft",
+                            "R. Critik der Urtheilskraft",
+                            "Kowa2. G89.2131. Critik der Urtheilskraft"
+                        ],
+                        "id": "AK00983699",
+                        "vendor_type_mv": [
+                            "K10Plus-PPN"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00000095"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01562043"
+                        ],
+                        "item_personAt_id_mv": [
+                            "PE00034281␝PE00063258␝PE00200128␝PE00387550␝PE00387551",
+                            "␣",
+                            "PE00072212"
+                        ],
+                        "item_note_mv": [
+                            "Vorbesitzer: Ernst von Schiller. - Mit handschriftlichem Namenszug, Annotationen und Anstreichungen von Friedrich Schiller. - Widmungen und Notizen teils von Friedrich Delitzsch und Johann Ferdinand Heyfelder. - Exemplarbeschreibung in: Wistoff, Andreas: Schillers Bibliothek. In: Schiller, Friedrich: Schillers Werke. - Nationalausg. - Weimar. Bd. 41,1 (2003). Titelnr. 158",
+                            "␣",
+                            "␣"
+                        ],
+                        "searchCollectionCreator_id_mv": [
+                            "PE00034281",
+                            "KS00002907",
+                            "KS00055976",
+                            "PE00072212"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Critik der Urtheilskraft</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Kant, Immanuel (1724-1804)</namePart>\n    <nameIdentifier type=\"gnd\">118559796</nameIdentifier>\n    <namePart type=\"date\">1724-04-22 — 1804-02-12</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Schiller, Friedrich von (1759-1805)</namePart>\n    <nameIdentifier type=\"gnd\">118607626</nameIdentifier>\n    <namePart type=\"date\">1759-11-10 — 1805-05-09</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Schiller, Ernst von (1796-1841)</namePart>\n    <nameIdentifier type=\"gnd\">117267090</nameIdentifier>\n    <namePart type=\"date\">1796-07-11 — 1841-05-19</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Heyfelder, Johann Ferdinand (1798-1869)</namePart>\n    <nameIdentifier type=\"gnd\">11679142X</nameIdentifier>\n    <namePart type=\"date\">1798-01-19 — 1869-06-21</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Delitzsch, Friedrich (1850-1922)</namePart>\n    <nameIdentifier type=\"gnd\">118671375</nameIdentifier>\n    <namePart type=\"date\">1850-09-03 — 1922-12-19</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Delitzsch, Kurt</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Kowalewski, Arnold Christian (1873-1945)</namePart>\n    <nameIdentifier type=\"gnd\">116345764</nameIdentifier>\n    <namePart type=\"date\">1873-11-27 — 1945-11-16</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Buch</typeOfResource>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Berlin</placeTerm>\n    </place>\n    <place>\n      <placeTerm type=\"text\">Libau</placeTerm>\n    </place>\n    <publisher>Lagarde und Friederich</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1790</dateIssued>\n    <displayDate>1790</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n    <extent>LVIII, 476 Seiten , [1] Blatt</extent>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">von Immanuel Kant</note>\n  <note type=\"footnotes\">In Fraktur</note>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00019269</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00019098</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <identifier type=\"kxp\">1100350160</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>Schiller-Bibl. I/Kant</shelfLocator>\n    <shelfLocator>R</shelfLocator>\n    <shelfLocator>Kowa2</shelfLocator>\n    <url access=\"object in context\">https://digital.dla-marbach.de/viewer/image/AU00388814/?media_access=public&amp;media_license=CC0&amp;media_thumbnail=AU00388814_0001.tif</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2009-10-08</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2025-10-02</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00983699</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "score": 13.7007265
+                    }
+                ]
+            }
+        }
+    }
+}

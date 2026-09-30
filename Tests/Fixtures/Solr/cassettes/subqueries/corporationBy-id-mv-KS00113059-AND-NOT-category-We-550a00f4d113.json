@@ -1,0 +1,28 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "corporationBy_id_mv:(\"KS00113059\") AND NOT category:(\"Werktitel\" OR \"Ton- und Bildträger\") AND personBy_role_mv:(\"Widmungsempfänger\" OR \"Adressat\" OR \"Gefeierter\")",
+            "start": "0",
+            "rows": "0",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 0,
+                "start": 0,
+                "maxScore": 0,
+                "numFoundExact": true,
+                "docs": []
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "(personTo_id_mv:(\"PE00000863\") AND source:(\"HS\")) OR (filterAuthorityRelation_mv:(\"Goethe, Johann Wolfgang von (1749-1832)␝An\") AND source:(\"AK\"))",
+            "start": "0",
+            "rows": "0",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 299,
+                "start": 0,
+                "maxScore": 11.042558,
+                "numFoundExact": true,
+                "docs": []
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "( personAbout_id_mv:(PE00018500) ) AND filterType_mv:(\"Bilder und Objekte\")",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BI00028331",
+                        "display": "Porträt Emma Haaser [Photographie]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

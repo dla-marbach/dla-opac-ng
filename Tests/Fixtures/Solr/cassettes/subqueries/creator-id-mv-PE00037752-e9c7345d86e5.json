@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "creator_id_mv:PE00037752",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 147,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "display": "Cowboylyrik - 1. Aufl. : [Textsammlung (Anthologie u.a.m.)]",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00995067"
+                    },
+                    {
+                        "display": "Fachsprachen XXVIII - XXXVI",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01009653"
+                    },
+                    {
+                        "display": "stille tage in altaussee : fachsprachen XXXIV",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01013272"
+                    },
+                    {
+                        "display": "Noch einmal : über Avantgarde und experimentelle Lyrik",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01032955"
+                    },
+                    {
+                        "display": "Das deutsche Dichterabzeichen - Aktualisierte Fassung vom 03.03.2009",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01036899"
+                    }
+                ]
+            }
+        }
+    }
+}

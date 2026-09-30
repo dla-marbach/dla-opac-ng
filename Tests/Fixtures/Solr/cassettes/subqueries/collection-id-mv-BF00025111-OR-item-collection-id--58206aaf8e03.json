@@ -1,0 +1,28 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "collection_id_mv:(\"BF00025111\") OR item_collection_id_mv:(*BF00025111*)",
+            "start": "0",
+            "rows": "0",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 39424,
+                "start": 0,
+                "maxScore": 3.185271,
+                "numFoundExact": true,
+                "docs": []
+            }
+        }
+    }
+}

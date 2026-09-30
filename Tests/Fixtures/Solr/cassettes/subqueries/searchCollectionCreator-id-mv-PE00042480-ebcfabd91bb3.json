@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchCollectionCreator_id_mv:PE00042480",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 12528,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00000271",
+                        "display": "A:Zuckmayer, Carl - [Bestand, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BF00013526",
+                        "display": "A:Zuckmayer, Carl/Kopien - [Standortkonvolut, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BF00014448",
+                        "display": "A:Zuckmayer, Carl/S.-Fischer-Verlag - [Standortkonvolut, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BI00020964",
+                        "display": "Porträt Ludwig Berger [Photographie]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    },
+                    {
+                        "id": "BI00020965",
+                        "display": "Ludwig Berger mit Rudolf Bamberger [Photographie]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "NOT personBy_id_mv:(\"PE00000863\") AND filterAuthority_mv:(\"Goethe, Johann Wolfgang von\") AND category:(\"Ton- und Bildträger\")",
+            "start": "0",
+            "rows": "0",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 0,
+                "start": 0,
+                "maxScore": 0,
+                "numFoundExact": true,
+                "docs": []
+            }
+        }
+    }
+}

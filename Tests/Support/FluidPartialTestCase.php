@@ -2,6 +2,7 @@
 
 namespace Dla\DlaOpacNg\Tests\Support;
 
+use Dla\DlaOpacNg\ViewHelpers\CollectionViewHelper;
 use TYPO3\CMS\Core\Cache\Backend\NullBackend;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\DependencyInjection\FailsafeContainer;
@@ -36,6 +37,18 @@ abstract class FluidPartialTestCase extends UnitTestCase
     protected bool $resetSingletonInstances = true;
 
     private static ?RenderingContextFactory $renderingContextFactory = null;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        FakeCollectionService::$parents = [];
+        @unlink(self::missingRequestsLog());
+    }
+
+    private static function missingRequestsLog(): string
+    {
+        return dirname(__DIR__) . '/Fixtures/Solr/missing-requests.log';
+    }
 
     private function getRenderingContextFactory(): RenderingContextFactory
     {
@@ -118,6 +131,9 @@ abstract class FluidPartialTestCase extends UnitTestCase
 
     protected function renderPartial(string $partial, array $variables): string
     {
+        // <dla:collection> braucht CollectionService (Datenbank) per Konstruktor-Injektion, siehe FakeCollectionService.
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][CollectionViewHelper::class]['className'] = CollectionViewHelperWithFakeService::class;
+
         $extensionPath = dirname(__DIR__, 2) . '/Resources/Private/';
 
         $renderingContext = $this->getRenderingContextFactory()->create([
@@ -146,6 +162,34 @@ abstract class FluidPartialTestCase extends UnitTestCase
         );
         $view->assignMultiple($variables);
 
-        return $view->render();
+        $html = $view->render();
+
+        // dla:countFromSolr fängt HTTP-Fehler ab und zeigt dann still "0" an - fehlende Cassetten
+        // (z.B. nach Änderung einer queryFields-Definition) würden sonst unbemerkt bleiben.
+        $log = self::missingRequestsLog();
+        self::assertFileDoesNotExist(
+            $log,
+            "Solr-Anfragen ohne Cassette (Aufnahme siehe README, SOLR_RECORD_BASE):\n" . (string)@file_get_contents($log)
+        );
+
+        return $html;
+    }
+
+    /**
+     * Rendert ein Detail-Partial mit dem Dokument und dem Trefferset, wie es das Detail-Template
+     * übergibt (siehe SolrFixture::detailVariables()). Unterabfragen laufen gegen die Cassetten.
+     */
+    protected function renderDetailPartial(string $partial, string $documentId): string
+    {
+        return $this->renderPartial($partial, SolrFixture::detailVariables($documentId));
+    }
+
+    /** Sichtbarer Text des gerenderten HTML: ohne Tags/Kommentare/Skripte, Entities dekodiert, Whitespace zusammengefasst. */
+    protected static function visibleText(string $html): string
+    {
+        $html = (string)preg_replace(['/<!--.*?-->/s', '/<(script|style)\b.*?<\/\1>/is'], '', $html);
+        $withoutTags = preg_replace('/<[^>]*>/', ' ', $html);
+
+        return trim((string)preg_replace('/\s+/u', ' ', html_entity_decode((string)$withoutTags, ENT_QUOTES | ENT_HTML5)));
     }
 }

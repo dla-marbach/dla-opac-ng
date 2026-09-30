@@ -1,0 +1,28 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "(corporationTo_id_mv:(\"KS00011400\") AND source:(\"HS\")) OR (filterAuthorityRelation_mv:(\"J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)␝An\") AND source:(\"AK\"))",
+            "start": "0",
+            "rows": "0",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 15532,
+                "start": 0,
+                "maxScore": 5.863289,
+                "numFoundExact": true,
+                "docs": []
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "creator_id_mv:PE00000095",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 318,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "display": "Von der Macht des Gemüths durch den bloßen Vorsatz, seiner krankhaften Gefühle Meister zu sein",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00992507"
+                    },
+                    {
+                        "display": "Kant-Aussprüche - 11. - 14. Tsd.",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01007295"
+                    },
+                    {
+                        "display": "Critik der Urtheilskraft",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00983699"
+                    },
+                    {
+                        "display": "[Gesammelte Schriften] Kant's Gesammelte Schriften. - 1 : Abt. 1, Werke ; 1. Vorkritische Schriften 1, 1747 - 1756",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00977055"
+                    },
+                    {
+                        "display": "[Gesammelte Schriften] Kant's Gesammelte Schriften. - 2 : Abt. 1, Werke ; 2. Vorkritische Schriften 2, 1757 - 1777",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00977059"
+                    }
+                ]
+            }
+        }
+    }
+}

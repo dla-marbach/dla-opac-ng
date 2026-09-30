@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "personBy_id_mv:(PE00250583) AND personBy_role_mv:(\"Urheber/in\") AND filterType_mv:(\"Bilder und Objekte\")",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 7805,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BI00017982",
+                        "display": "Proklamation des preußischen Königs Friedrich Wilhelm IV zum 11. November 1948 [Druckgraphik]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    },
+                    {
+                        "id": "BI00017997",
+                        "display": "Porträt Anna Croissant-Rust [Photographie]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    },
+                    {
+                        "id": "BI00018032",
+                        "display": "Totenmaske Alfred Bäumler [Maske]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    },
+                    {
+                        "id": "BI00018056",
+                        "display": "Portrait Otto zur Linde [Photographie]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    },
+                    {
+                        "id": "BI00018075",
+                        "display": "Friedrich-Hölderlin-Preis der Stadt Bad Homburg aus dem Besitz von Peter Härtling [Medaille]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

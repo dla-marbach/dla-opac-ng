@@ -1,0 +1,28 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "(Bürger, Peter (1936-2017) Die frühen Komödien Pierre Corneilles und das französische Theater um 1630) AND filterFormContent_mv:(\"Rezension\") AND source:(\"HS\")",
+            "start": "0",
+            "rows": "0",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 0,
+                "start": 0,
+                "maxScore": 0,
+                "numFoundExact": true,
+                "docs": []
+            }
+        }
+    }
+}
