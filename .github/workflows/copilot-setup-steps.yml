@@ -28,23 +28,6 @@ jobs:
           repository: dla-marbach/typo3-find
           path: dla-find
 
-      - name: Checkout dla-opac-tests
-        uses: actions/checkout@v4
-        with:
-          repository: dla-marbach/dla-opac-tests
-          path: dla-opac-tests
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-
-      - name: Install Playwright and Chromium
-        working-directory: dla-opac-tests
-        run: |
-          npm ci
-          npx playwright install chromium --with-deps
-
       - name: Set up DDEV
         uses: ddev/github-action-setup-ddev@v1
         with:
