@@ -1,0 +1,6 @@
+[submodule "dla-find"]
+	path = dla-find
+	url = https://github.com/dla-marbach/typo3-find.git
+[submodule "dla-opac-tests"]
+	path = dla-opac-tests
+	url = https://github.com/dla-marbach/dla-opac-tests.git
