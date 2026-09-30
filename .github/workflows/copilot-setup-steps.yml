@@ -1,0 +1,53 @@
+name: "Copilot Setup Steps"
+
+# Prepares the environment for the Copilot cloud agent before its firewall is active.
+# Installs DDEV/Task, pulls Docker images and runs `task install`, so that the agent
+# can run `task test:php` without further network access.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout dla-opac-ng
+        uses: actions/checkout@v4
+
+      - name: Checkout dla-find
+        uses: actions/checkout@v4
+        with:
+          repository: dla-marbach/typo3-find
+          path: dla-find
+
+      - name: Set up DDEV
+        uses: ddev/github-action-setup-ddev@v1
+        with:
+          autostart: false
+
+      - name: Set up Task
+        uses: arduino/setup-task@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Composer GitHub token (avoids api.github.com auth failures)
+        run: |
+          mkdir -p ~/.ddev/homeadditions/.composer
+          printf '{"github-oauth":{"github.com":"%s"}}' "$GITHUB_TOKEN" > ~/.ddev/homeadditions/.composer/auth.json
+          chmod 600 ~/.ddev/homeadditions/.composer/auth.json
+
+      - name: Install test environment
+        run: task install
+
+      - name: Verify PHPUnit tests run
+        run: task test:php
