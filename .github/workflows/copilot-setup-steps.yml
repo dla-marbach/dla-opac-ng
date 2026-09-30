@@ -1,13 +1,11 @@
 name: "Copilot Setup Steps"
 
 # Prepares the environment for the Copilot cloud agent before its firewall is active.
+# Runs automatically for the agent; triggers here are only for manual/PR validation.
 # Installs DDEV/Task, pulls Docker images and runs `task install`, so that the agent
 # can run `task test:php` without further network access.
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - .github/workflows/copilot-setup-steps.yml
   pull_request:
     paths:
       - .github/workflows/copilot-setup-steps.yml
