@@ -23,7 +23,7 @@ mod.web_layout.BackendLayouts {
 mod.wizards.newContentElement.wizardItems.plugins {
     elements {
         find {
-            iconIdentifier = ext-find-ce-wizard
+            iconIdentifier = content-plugin
             title = LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_be.xlf:ce.title
             description = LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_be.xlf:ce.description
             tt_content_defValues {

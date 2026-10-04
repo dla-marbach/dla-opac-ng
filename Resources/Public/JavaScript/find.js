@@ -32,7 +32,8 @@ var tx_find = (function () {
           source: function (request, returnSuggestions) {
             var autocompleteURL = this.element.attr('autocompleteURL');
             if (autocompleteURL) {
-              autocompleteURL = autocompleteURL.replace('%25%25%25%25', request.term.toLowerCase());
+              var term = request.term.toLowerCase();
+              autocompleteURL = autocompleteURL.replace(/%25%25%25%25/g, function () { return term; });
               jQuery.getJSON(autocompleteURL, function (data) {
                 returnSuggestions(data);
               });
@@ -316,7 +317,7 @@ var tx_find = (function () {
       
       // Only change the location if the facet selection has changed.
       if (!(facetQueryString in activeFacetValues)) {
-        var facetLink = linkTemplate.replace('%25%25%25%25', escape(facetQueryString));
+        var facetLink = linkTemplate.replace(/%25%25%25%25/g, function () { return escape(facetQueryString); });
         window.location.href = facetLink;
       }
     };

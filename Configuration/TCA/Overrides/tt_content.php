@@ -7,5 +7,5 @@ defined('TYPO3') || die();
     'Find',
     'Find',
     'find',
-    'ext-find-ce-wizard'
+    'content-plugin'
 );
