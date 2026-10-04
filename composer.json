@@ -2,6 +2,7 @@
     "name": "dla/dla_opac_ng",
     "description": "TYPO3-Extension für den Katalog des DLA Marbach (enthält die ehemalige Extension dla/find, einen Fork von subugoe/find)",
     "type": "typo3-cms-extension",
+    "license": "GPL-3.0-or-later",
     "homepage": "https://www.dla-marbach.de",
     "authors": [
         {

@@ -314,4 +314,4 @@ Git-Historie in dieses Repository übernommen (`git log -- Classes/Find`).
 
 Der übernommene Code steht unter der GNU General Public License, Version 2 oder später
 ([LICENSES/find-GPL-2.0-or-later.txt](LICENSES/find-GPL-2.0-or-later.txt)); die Extension insgesamt steht unter
-der GNU General Public License, Version 3 ([LICENSE](LICENSE)).
+der GNU General Public License, Version 3 oder später ([LICENSE](LICENSE)).
