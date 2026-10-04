@@ -1,6 +1,6 @@
 <?php
 
-namespace Dla\Find\Tests\Unit\ViewHelpers\LinkedData;
+namespace Dla\Find\Tests\Unit\ViewHelpers\Logic;
 
 /* * *************************************************************
  *  Copyright notice
@@ -42,7 +42,7 @@ class NotViewHelperTest extends UnitTestCase
      */
     protected $fixture;
 
-    public function conditionProvider(): array
+    public static function conditionProvider(): array
     {
         return [
             [

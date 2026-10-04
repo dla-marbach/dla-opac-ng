@@ -1,6 +1,6 @@
 <?php
 
-namespace Dla\Tests\Unit\Service;
+namespace Dla\Find\Tests\Unit\Service;
 
 /* * *************************************************************
  *  Copyright notice

@@ -42,7 +42,7 @@ class AndViewHelperTest extends UnitTestCase
      */
     protected $fixture;
 
-    public function conditionProvider(): array
+    public static function conditionProvider(): array
     {
         return [
             [

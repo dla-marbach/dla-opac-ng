@@ -9,7 +9,7 @@ use Dla\Find\Utility\UpgradeUtility;
 
 class UpgradeUtilityTest extends TestCase
 {
-    public function settingsProvider(): array
+    public static function settingsProvider(): array
     {
         return [
             [

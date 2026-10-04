@@ -42,7 +42,7 @@ class RegexpViewHelperTest extends UnitTestCase
      */
     protected $fixture;
 
-    public function regexProvider(): array
+    public static function regexProvider(): array
     {
         return [
             ['behedeti', '/hed/', 'hrdr', false, 'behrdreti'],

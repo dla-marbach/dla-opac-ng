@@ -45,7 +45,7 @@ class XMLViewHelperTest extends UnitTestCase
     /**
      * @return array
      */
-    public function stringProvider()
+    public static function stringProvider()
     {
         return [
             [

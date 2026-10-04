@@ -54,7 +54,7 @@ class ItemViewHelperTest extends UnitTestCase
     /**
      * @return array
      */
-    public function linkedDataProvider()
+    public static function linkedDataProvider()
     {
         return [
             ['hrdr', 'is', 'thirsty', null, null, null, 'hrdr'],

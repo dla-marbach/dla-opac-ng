@@ -45,7 +45,7 @@ class StripViewHelperTest extends UnitTestCase
     /**
      * @return array
      */
-    public function stringProvider()
+    public static function stringProvider()
     {
         return [
             ['a', false, 'a'],
