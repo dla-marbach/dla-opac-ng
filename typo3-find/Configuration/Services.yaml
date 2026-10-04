@@ -1,0 +1,13 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Dla\Find\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Ajax/EidSettings.php'
+
+  Dla\Find\ViewHelpers\:
+    resource: '../Classes/ViewHelpers/*'
+    public: true
