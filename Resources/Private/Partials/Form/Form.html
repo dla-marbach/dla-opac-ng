@@ -224,7 +224,7 @@
                                     </f:then>
                                     <f:else>
                                         <div class="fieldContainer error">
-                                            <f:translate key="Missing type in configuration for queryField %s." arguments="{0:fieldInfo.id}"/>
+                                            <f:translate key="Missing type in configuration for queryField %s." extensionName="dla_opac_ng" arguments="{0:fieldInfo.id}"/>
                                         </div>
                                     </f:else>
                                     </f:if>
@@ -520,10 +520,10 @@
                                                             argumentsToBeExcludedFromQueryString="{0:'{config.prefixID}[extendedSearch]'}"
                                                             class="extendedSearch internal"
                                                             additionalAttributes="{
-                            simpleString:'{f:translate(key:\"extended Search\")}',
-                                                    extendedString:'{f:translate(key:\"basic Search\")}'
+                            simpleString:'{f:translate(key:\"extended Search\", extensionName:\"dla_opac_ng\")}',
+                                                    extendedString:'{f:translate(key:\"basic Search\", extensionName:\"dla_opac_ng\")}'
                                                     }">
-                                                    <f:translate key="basic Search"/>
+                                                    <f:translate key="basic Search" extensionName="dla_opac_ng"/>
                                                     </f:link.action>
                                                 </f:then>
                                                 <f:else>
@@ -532,10 +532,10 @@
                                                             arguments="{extendedSearch: 1}"
                                                             class="extendedSearch internal"
                                                             additionalAttributes="{
-                            simplestring:'{f:translate(key:\"extended Search\")}',
-                                                    extendedstring:'{f:translate(key:\"basic Search\")}'
+                            simplestring:'{f:translate(key:\"extended Search\", extensionName:\"dla_opac_ng\")}',
+                                                    extendedstring:'{f:translate(key:\"basic Search\", extensionName:\"dla_opac_ng\")}'
                                                     }">
-                                                    <f:translate key="extended Search"/>
+                                                    <f:translate key="extended Search" extensionName="dla_opac_ng"/>
                                                     </f:link.action>
                                                 </f:else>
                                             </f:if>

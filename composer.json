@@ -1,6 +1,6 @@
 {
     "name": "dla/dla_opac_ng",
-    "description": "Find configuration for DLA Catalog",
+    "description": "TYPO3-Extension für den Katalog des DLA Marbach (enthält die ehemalige Extension dla/find, einen Fork von subugoe/find)",
     "type": "typo3-cms-extension",
     "homepage": "https://www.dla-marbach.de",
     "authors": [
@@ -8,6 +8,11 @@
             "name": "DLA Marbach",
             "homepage": "https://www.dla-marbach.de",
             "role": "provider"
+        },
+        {
+            "name": "Sven-S. Porst, Ingo Pfennigstorf",
+            "homepage": "https://github.com/subugoe/typo3-find",
+            "role": "developer (subugoe/find)"
         },
         {
             "name": "effective WEBWORK",
@@ -26,12 +31,15 @@
     },
     "require": {
         "php": "^8.1",
+        "ext-curl": "*",
+        "ext-json": "*",
         "typo3/cms-core": "^12",
         "typo3/cms-extbase": "^12",
         "typo3/cms-fluid": "^12",
         "typo3/cms-frontend": "^12",
+        "typo3/cms-install": "^12",
         "fluidtypo3/vhs": "^6.0.1 || ^7",
-        "dla/find": "^6"
+        "solarium/solarium": "^6.3"
     },
     "suggest": {
         "typo3/cms-tstemplate": "Backend-Modul TypoScript, um das statische TypoScript dieser Extension in einem sys_template-Datensatz einzubinden"
@@ -40,16 +48,22 @@
         "typo3/testing-framework": "^8.3"
     },
     "replace": {
+        "dla/find": "self.version",
         "typo3-ter/dla_opac_ng": "self.version"
+    },
+    "conflict": {
+        "subugoe/find": "*"
     },
     "autoload": {
         "psr-4": {
-            "Dla\\DlaOpacNg\\": "Classes/"
+            "Dla\\DlaOpacNg\\": "Classes/",
+            "Dla\\Find\\": "Classes/Find/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Dla\\DlaOpacNg\\Tests\\": "Tests/"
+            "Dla\\DlaOpacNg\\Tests\\": "Tests/",
+            "Dla\\Find\\Tests\\": "Tests/Find/"
         }
     },
     "extra": {

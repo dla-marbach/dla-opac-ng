@@ -14,7 +14,6 @@ bash -c "$(curl --location https://ddev.com/install.sh)"
 bash -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b ~/.local/bin
 
 # git repositories
-git clone https://github.com/dla-marbach/typo3-find dla-find
 git clone https://github.com/dla-marbach/dla-opac-tests
 
 # playwright

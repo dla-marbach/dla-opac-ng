@@ -224,7 +224,7 @@ plugin.tx_find {
         jumpToID = tx_find
 
         CSSPaths.10 = {$plugin.tx_find.settings.CSSPath}
-        CSSPaths.20 = EXT:find/Resources/Public/CSS/fontello/css/fontello.css
+        CSSPaths.20 = EXT:dla_opac_ng/Resources/Public/CSS/fontello/css/fontello.css
         JSPaths.10 = {$plugin.tx_find.settings.JSPath}
 
         languageRootPath = {$plugin.tx_find.settings.languageRootPath}

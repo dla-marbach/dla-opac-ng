@@ -11,5 +11,8 @@
         <testsuite name="EXT:dla_opac_ng tests">
             <directory>./Unit/</directory>
         </testsuite>
+        <testsuite name="Find tests (ehemals dla/find)">
+            <directory>./Find/Unit/</directory>
+        </testsuite>
     </testsuites>
 </phpunit>

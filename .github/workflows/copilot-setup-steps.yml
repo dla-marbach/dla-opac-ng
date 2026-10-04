@@ -23,12 +23,6 @@ jobs:
       - name: Checkout dla-opac-ng
         uses: actions/checkout@v4
 
-      - name: Checkout dla-find
-        uses: actions/checkout@v4
-        with:
-          repository: dla-marbach/typo3-find
-          path: dla-find
-
       - name: Set up DDEV
         uses: ddev/github-action-setup-ddev@v1
         with:

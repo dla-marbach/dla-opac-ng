@@ -15,7 +15,7 @@ use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 /**
  * Baut echte Solarium-Client-Objekte gegen den Mock-Solr-Server auf (siehe MockSolrServerProcess),
  * um "document"/"results"-Variablen exakt so zu erzeugen, wie es
- * dla-find/Classes/Service/SolrServiceProvider.php in Produktion tut (echte
+ * Classes/Find/Service/SolrServiceProvider.php in Produktion tut (echte
  * \Solarium\QueryType\Select\Result\Document- bzw. \Solarium\QueryType\Select\Result\Result-Objekte,
  * keine Plain-Arrays). Damit lassen sich Fluid-Partials, die "document.fields.xxx" oder
  * "results.numfound" verwenden, mit realistischen Daten rendern.

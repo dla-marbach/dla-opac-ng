@@ -24,19 +24,19 @@ plugin.tx_find {
 
         count = 20
         # cat=plugin.tx_find/file; type=string; label=Path to CSS file (FE)
-        CSSPath = EXT:find/Resources/Public/CSS/find.css
+        CSSPath = EXT:dla_opac_ng/Resources/Public/CSS/find.css
         # cat=plugin.tx_find/file; type=string; label=Path to JavaScript file (FE)
-        JSPath = EXT:find/Resources/Public/JavaScript/find.js
+        JSPath = EXT:dla_opac_ng/Resources/Public/JavaScript/find.js
         # cat=plugin.tx_find/file; type=string; label=Path to template localisation files (FE)
-        languageRootPath = EXT:find/Resources/Private/Language/
+        languageRootPath = EXT:dla_opac_ng/Resources/Private/Language/
     }
 
     view {
         # cat=plugin.tx_find/file; type=string; label=Path to template root (FE)
-        templateRootPath = EXT:find/Resources/Private/Templates/
+        templateRootPath = EXT:dla_opac_ng/Resources/Private/Templates/
         # cat=plugin.tx_find/file; type=string; label=Path to template partials (FE)
-        partialRootPath = EXT:find/Resources/Private/Partials/
+        partialRootPath = EXT:dla_opac_ng/Resources/Private/Partials/
         # cat=plugin.tx_find/file; type=string; label=Path to template layouts (FE)
-        layoutRootPath = EXT:find/Resources/Private/Layouts/
+        layoutRootPath = EXT:dla_opac_ng/Resources/Private/Layouts/Find/
     }
 }
