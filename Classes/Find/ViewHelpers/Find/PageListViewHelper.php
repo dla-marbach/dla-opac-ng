@@ -45,6 +45,7 @@ class PageListViewHelper extends AbstractViewHelper
         $this->registerArgument('perPage', 'int', 'number of results per page', false, 10);
         $this->registerArgument('adjacentPages', 'int', 'number of neighbours of the current page to show', false, 3);
         $this->registerArgument('minimumGapSize', 'int', 'gaps of fewer items than this are filles', false, 2);
+        $this->registerArgument('maxResultWindow', 'int', 'maximum number of results that may be paged through (0 = unlimited)', false, 0);
     }
 
     /**
@@ -57,6 +58,16 @@ class PageListViewHelper extends AbstractViewHelper
     ) {
         $currentPage = ($arguments['currentPage'] ? (int) $arguments['currentPage'] : 1);
         $numberOfPages = (int) ceil($arguments['resultCount'] / $arguments['perPage']);
+        $truncated = false;
+        $maxResultWindow = (int) ($arguments['maxResultWindow'] ?? 0);
+        if ($maxResultWindow > 0) {
+            // Keine Seiten jenseits des erlaubten Trefferfensters (start + rows <= maxResultWindow) anbieten.
+            $maxPages = max(1, intdiv($maxResultWindow, (int) $arguments['perPage']));
+            if ($numberOfPages > $maxPages) {
+                $numberOfPages = $maxPages;
+                $truncated = true;
+            }
+        }
         $adjacentPages = (int) $arguments['adjacentPages'];
         $adjacentFirst = max($currentPage - $adjacentPages, 1);
         $adjacentLast = min($currentPage + $adjacentPages, $numberOfPages);
@@ -101,7 +112,8 @@ class PageListViewHelper extends AbstractViewHelper
             'pages' => $pages,
             'current' => $currentPage,
             'previous' => (1 === $currentPage) ? null : $currentPage - 1,
-            'next' => ($currentPage === $numberOfPages) ? null : $currentPage + 1,
+            'next' => ($currentPage === $numberOfPages || ($truncated && $currentPage >= $numberOfPages)) ? null : $currentPage + 1,
+            'truncated' => $truncated,
         ];
     }
 }

@@ -23,6 +23,15 @@ plugin.tx_find {
         }
 
         count = 20
+
+        limits {
+            # cat=plugin.tx_find/limits; type=int+; label=Maximales Trefferfenster (start + rows), 0 = unbegrenzt
+            maxResultWindow = 10000
+            # cat=plugin.tx_find/limits; type=int+; label=Maximales Trefferfenster der leeren Suche (start + rows), 0 = unbegrenzt
+            maxResultWindowEmptyQuery = 1000
+            # cat=plugin.tx_find/limits; type=int+; label=Maximale Anzahl gleichzeitig aktiver Facettenfilter, 0 = unbegrenzt
+            maxActiveFilters = 10
+        }
         # cat=plugin.tx_find/file; type=string; label=Path to CSS file (FE)
         CSSPath = EXT:dla_opac_ng/Resources/Public/CSS/find.css
         # cat=plugin.tx_find/file; type=string; label=Path to JavaScript file (FE)
