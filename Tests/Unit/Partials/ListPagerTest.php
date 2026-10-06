@@ -45,4 +45,40 @@ class ListPagerTest extends FluidPartialTestCase
 
         self::assertStringContainsString('ctg-bu-disable', $html);
     }
+
+    /**
+     * @test
+     */
+    public function doesNotLinkLastPageBeyondPageTen(): void
+    {
+        $results = SolrFixture::select('goethe', 5);
+        $lastPage = (int)ceil($results->getNumFound() / 20);
+        self::assertGreaterThan(10, $lastPage);
+
+        $html = $this->renderPartial('Pager/ListPager', [
+            'results' => $results,
+            'arguments' => ['page' => 1],
+            'settings' => ['paging' => ['perPage' => 20], 'jumpToID' => ''],
+        ]);
+
+        self::assertStringContainsString('<a class="ctg-button">' . $lastPage . '</a>', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function linksLastPageUpToPageTen(): void
+    {
+        $results = SolrFixture::select('goethe', 5);
+        $perPage = (int)ceil($results->getNumFound() / 7);
+
+        $html = $this->renderPartial('Pager/ListPager', [
+            'results' => $results,
+            'arguments' => ['page' => 1],
+            'settings' => ['paging' => ['perPage' => $perPage], 'jumpToID' => ''],
+        ]);
+
+        self::assertStringContainsString('7', $html);
+        self::assertStringNotContainsString('<a class="ctg-button">7</a>', $html);
+    }
 }
