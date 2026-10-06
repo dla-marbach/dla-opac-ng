@@ -22,23 +22,29 @@
 
 
       <f:for each="{pager.pages}" as="page">
-          <f:if condition="{current:page.current, gap:page.gap} == {current:FALSE , gap:FALSE}">
-            <f:then>
-              <f:link.action
-                arguments="{page:page.number}"
-                addQueryString="untrusted"
-                argumentsToBeExcludedFromQueryString="{0:'cHash',1:'tx_find_find[controller]',2:'tx_find_find[action]'}"
-                section="{settings.jumpToID}"
-                class="ctg-button"
-               additionalAttributes="{rel: 'nofollow'}">
-                {page.text}
-              </f:link.action>
-            </f:then>
-            <f:else>
-              <a class="ctg-button {f:if(condition:'{page.current}', then:'ctg-bu-active')} {f:if(condition:'{page.gap}', then:'ctg-pa-nomob')}">{page.text}</a>
-            </f:else>
-          </f:if>
-
+        <f:if condition="{page.status} == 'edge' && {page.number} > 10">
+          <f:then>
+            <a class="ctg-button">{page.text}</a>
+          </f:then>
+          <f:else>
+            <f:if condition="{current:page.current, gap:page.gap} == {current:FALSE , gap:FALSE}">
+              <f:then>
+                <f:link.action
+                  arguments="{page:page.number}"
+                  addQueryString="untrusted"
+                  argumentsToBeExcludedFromQueryString="{0:'cHash',1:'tx_find_find[controller]',2:'tx_find_find[action]'}"
+                  section="{settings.jumpToID}"
+                  class="ctg-button"
+                 additionalAttributes="{rel: 'nofollow'}">
+                  {page.text}
+                </f:link.action>
+              </f:then>
+              <f:else>
+                <a class="ctg-button {f:if(condition:'{page.current}', then:'ctg-bu-active')} {f:if(condition:'{page.gap}', then:'ctg-pa-nomob')}">{page.text}</a>
+              </f:else>
+            </f:if>
+          </f:else>
+        </f:if>
       </f:for>
 
     <span class="next">
