@@ -85,7 +85,8 @@ class CountFromSolrViewHelper extends AbstractViewHelper {
      */
     public function render() {
 
-        $findParameter = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('tx_find_find');
+        $request = $GLOBALS['TYPO3_REQUEST'] ?? null;
+        $findParameter = $request?->getParsedBody()['tx_find_find'] ?? $request?->getQueryParams()['tx_find_find'] ?? null;
 
         $activeFacets = $this->arguments['activeFacets'];
         $queryConcat = $this->arguments['queryConcat'] ?? '';

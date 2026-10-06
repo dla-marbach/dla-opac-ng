@@ -40,7 +40,7 @@
                             argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
                             section="{settings.jumpToID}"
                             class=""
-                            title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}" additionalAttributes="{rel: 'nofollow'}">
+                            title="{f:translate(key:'remove filter %s', extensionName:'dla_opac_ng', arguments:{0:facetTerm})}" additionalAttributes="{rel: 'nofollow'}">
                         <span class="icon bel-ok01"></span>
                     </f:link.action>
 
@@ -49,7 +49,7 @@
                             argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets, mode:'remove')}"
                             section="{settings.jumpToID}"
                             class=""
-                            title="{f:translate(key:'remove filter %s', arguments:{0:facetTerm})}" additionalAttributes="{rel: 'nofollow'}">
+                            title="{f:translate(key:'remove filter %s', extensionName:'dla_opac_ng', arguments:{0:facetTerm})}" additionalAttributes="{rel: 'nofollow'}">
                         <f:translate
                                 key="LLL:{settings.languageRootPath}locallang-facets.xml:facet.{facetInfo.id}.{facetTermDisplay}"
                                 default="{facetTermDisplay}"/><em>({itemCount})</em>

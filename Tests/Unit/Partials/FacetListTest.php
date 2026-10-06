@@ -7,7 +7,7 @@ use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
 /**
  * Rendert Resources/Private/Partials/Facets/Facet/List.html (und transitiv .../List/Item.html)
  * mit einer handgeschriebenen Facetten-Auszählung (term => count), wie sie von
- * dla-find/Classes/Service/SolrServiceProvider.php aus den Solr-facet_counts gebaut wird.
+ * Classes/Find/Service/SolrServiceProvider.php aus den Solr-facet_counts gebaut wird.
  */
 class FacetListTest extends FluidPartialTestCase
 {

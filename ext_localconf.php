@@ -1,6 +1,20 @@
 <?php
 defined('TYPO3') or die();
 
+// Such-Plugin aus der ehemaligen Extension dla/find. Extension- und Plugin-Name "Find" bleiben
+// erhalten, damit Plugin-Signatur (find_find), URL-Parameter (tx_find_find) und TypoScript
+// (plugin.tx_find) unverändert funktionieren.
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'Find',
+    'Find',
+    [
+        \Dla\Find\Controller\SearchController::class => 'index, detail, suggest',
+    ],
+    [
+        \Dla\Find\Controller\SearchController::class => 'index, detail, suggest',
+    ]
+);
+
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DlaOpacNg',
     'DlaStart',

@@ -2,6 +2,9 @@
 
 TYPO3-Extension für den Katalog des Deutschen Literaturarchivs Marbach https://www.dla-marbach.de/katalog
 
+Die Extension enthält seit Version 6 auch das Such-Plugin der früheren Extension `dla/find`
+(siehe [Herkunft und Credits](#herkunft-und-credits) und [Upgrade auf Version 6](#upgrade-auf-version-6)).
+
 ## Installation
 
 Einmalig nach Erstellen eines Codespaces aufrufen:
@@ -66,7 +69,7 @@ BASE_URL=https://www.dla-marbach.de task test -- -g "robots"
 
 ## PHPUnit-Tests mit Solr-Mockdaten
 
-Die PHP-Unit-Tests (`Tests/` in dieser Extension und in [dla-find/Tests](dla-find/Tests)) laufen gegen
+Die PHP-Unit-Tests (`Tests/`, inkl. der Tests des Such-Plugins in [Tests/Find](Tests/Find)) laufen gegen
 einen lokalen Solr-Mock-Server und benötigen dafür **keinen** Solr-Tunnel:
 
 ```
@@ -125,7 +128,7 @@ diesem minimalen Bootstrap ohne Weiteres nicht funktionieren:
 Für Partials, die reale Solr-Dokumente/Trefferlisten benötigen (z.B. `document.fields.*`), stellt
 [Tests/Support/SolrFixture.php](Tests/Support/SolrFixture.php) echte `Solarium\QueryType\Select\Result\Document`-
 bzw. `\Result`-Objekte bereit – erzeugt über einen echten Solarium-Client gegen den Solr-Mock-Server, genauso
-wie `dla-find/Classes/Service/SolrServiceProvider.php` es in Produktion tut. Die zugehörigen Cassetten
+wie `Classes/Find/Service/SolrServiceProvider.php` es in Produktion tut. Die zugehörigen Cassetten
 (`detail-*.json`, `resultlist-*.json`) liegen ebenfalls in
 [Tests/Fixtures/Solr/cassettes](Tests/Fixtures/Solr/cassettes) und werden über dieselbe
 `recorder.php` aufgenommen (siehe die entsprechenden Szenarien am Ende der Datei).
@@ -151,9 +154,6 @@ Nach einem Neustart des Codespaces ausführen:
 ```
 task reinstall
 ```
-
-Nach Änderungen an der dla-find Extension muss ein neuer Release/Tag erstellt werden:
-https://github.com/dla-marbach/typo3-find/releases
 
 ## Datenbankdump für TYPO3-Grundkonfiguration
 
@@ -213,7 +213,7 @@ Bei der Installation (task install) wird ein Datenbank-Dump [.devfiles/init.sql]
   * Oben im Pulldown "Edit Typoscript Record" aufrufen
   * Create a root TypoScript record
   * Edit the whole Typoscript record
-  * Reiter Advanced Options / Include TypoScript sets auswählen: Alle Fluid und Find Items
+  * Reiter Advanced Options / Include TypoScript sets auswählen: Alle Fluid Items und "Find configuration for DLA Catalog (dla_opac_ng)"
   * Reiter General im Bereich Setup einfügen:
 
     ```
@@ -236,7 +236,7 @@ Bei der Installation (task install) wird ein Datenbank-Dump [.devfiles/init.sql]
 
   * Create an additional TypoScript record
   * Edit the whole Typoscript record
-  * Reiter Advanced Options / Include TypoScript sets auswählen: Alle Fluid und Find Items
+  * Reiter Advanced Options / Include TypoScript sets auswählen: Alle Fluid Items und "Find configuration for DLA Catalog (dla_opac_ng)"
   * Reiter General im Bereich Setup einfügen:
 
     ```
@@ -280,3 +280,38 @@ Bei der Installation (task install) wird ein Datenbank-Dump [.devfiles/init.sql]
 ```
 ddev export-db t3example --gzip=false > .devfiles/init.sql
 ```
+
+## Upgrade auf Version 6
+
+Mit Version 6 ist die bisher separat installierte Extension `dla/find` (Repo
+[dla-marbach/typo3-find](https://github.com/dla-marbach/typo3-find)) in `dla/dla_opac_ng` aufgegangen.
+`dla/dla_opac_ng` ersetzt das Paket `dla/find` (Composer `replace`), es wird beim Update automatisch entfernt.
+
+Unverändert bleiben bewusst Plugin-Signatur (`find_find`), URL-Parameter (`tx_find_find[...]`),
+TypoScript-Pfad (`plugin.tx_find`) und der PHP-Namespace `Dla\Find\` (jetzt unter [Classes/Find](Classes/Find)).
+Bestehende Inhaltselemente, Links und TypoScript-Anpassungen funktionieren daher weiter.
+
+Schritte in einer bestehenden Installation:
+
+1. `composer require dla/dla_opac_ng:^6` (bzw. `composer update dla/dla_opac_ng dla/find -W`)
+2. Upgrade-Wizard "DLA OPAC: Statisches TypoScript von EXT:find entfernen" ausführen
+   (`vendor/bin/typo3 upgrade:run dlaOpacNg_findStaticTemplate` oder im Install Tool). Er entfernt
+   `EXT:find/Configuration/TypoScript` aus den TypoScript-Datensätzen, die Basiskonfiguration ist jetzt
+   Bestandteil des statischen TypoScripts von `dla_opac_ng`.
+3. Falls in eigenem TypoScript auf Dateien unter `EXT:find/...` verwiesen wird, auf
+   `EXT:dla_opac_ng/...` umstellen.
+4. `vendor/bin/typo3 cache:flush`
+
+## Herkunft und Credits
+
+Das Such-Plugin (Code unter [Classes/Find](Classes/Find), [Tests/Find](Tests/Find),
+[Configuration/TypoScript/Find](Configuration/TypoScript/Find) sowie Teile von `Resources/`) basiert auf der
+TYPO3-Extension [subugoe/typo3-find](https://github.com/subugoe/typo3-find) von Sven-S. Porst, Ingo Pfennigstorf
+und weiteren Beitragenden der Niedersächsischen Staats- und Universitätsbibliothek Göttingen (SUB Göttingen).
+Sie wurde als Fork [dla-marbach/typo3-find](https://github.com/dla-marbach/typo3-find) von effective WEBWORK
+und Open Culture Consulting für den Katalog des DLA Marbach weiterentwickelt und mit vollständiger
+Git-Historie in dieses Repository übernommen (`git log -- Classes/Find`).
+
+Der übernommene Code steht unter der GNU General Public License, Version 2 oder später
+([LICENSES/find-GPL-2.0-or-later.txt](LICENSES/find-GPL-2.0-or-later.txt)); die Extension insgesamt steht unter
+der GNU General Public License, Version 3 oder später ([LICENSE](LICENSE)).

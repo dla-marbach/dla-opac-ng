@@ -84,7 +84,7 @@ $scenarios = [
 // zurück (nicht wie oben nur ausgewählte Felder), damit die Partials mit realistischen Daten
 // gerendert werden können. Verwenden das Solarium-Client-Standardparameterschema
 // (omitHeader/wt/json.nl/start/fl), weil sie über einen echten Solarium\Client abgefragt werden
-// (siehe Tests/Support/SolrFixture.php), genau wie dla-find/Classes/Service/SolrServiceProvider.php
+// (siehe Tests/Support/SolrFixture.php), genau wie Classes/Find/Service/SolrServiceProvider.php
 // es in Produktion tut - im Unterschied zu den Szenarien oben, die per file_get_contents() aus den
 // Ajax-/Service-Klassen dieser Extension abgefragt werden.
 $solariumDefaults = [

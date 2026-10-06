@@ -32,7 +32,7 @@
                 class="ctg-button ctg-button-textnicon"
                 data="{'mobile-label': '{f:translate(key: \'Return to results list mobile\', extensionName: \'dla_opac_ng\')}'}"
                 additionalAttributes="{rel: 'nofollow'}">
-                <span class="icon bel-ende02"></span><f:translate key="Return to results list"/>
+                <span class="icon bel-ende02"></span><f:translate key="Return to results list" extensionName="dla_opac_ng"/>
               </f:link.action>
             </s:data.newArray>
           </f:format.raw>
@@ -49,10 +49,10 @@
       <div class="small-6 column ctg-ia-scnd-detail">
         <span class="ctg-info-text">
           <strong>
-            <f:translate key="result"/>
+            <f:translate key="result" extensionName="dla_opac_ng"/>
             {arguments.underlyingQuery.position}
           </strong>
-          <f:translate key="of"/>
+          <f:translate key="of" extensionName="dla_opac_ng"/>
           {results.numfound}
         </span>
 
@@ -66,11 +66,11 @@
 
                 class="ctg-button"
                 onclick="return tx_find.detailViewWithPaging(this, {document-previous-number});"
-                title="{f:translate(key:'previous')}: {s:data.valueForKey(array:document-previous.fields, key:settings.standardFields.title)}"
+                title="{f:translate(key:'previous', extensionName:'dla_opac_ng')}: {s:data.valueForKey(array:document-previous.fields, key:settings.standardFields.title)}"
               ><span class="icon bel-pfeil-r01"></span></f:link.action>
             </f:then>
             <f:else>
-              <a class="ctg-button ctg-bu-disable" title="{f:translate(key:'previous')}"><span class="icon bel-pfeil-r01"></span></a>
+              <a class="ctg-button ctg-bu-disable" title="{f:translate(key:'previous', extensionName:'dla_opac_ng')}"><span class="icon bel-pfeil-r01"></span></a>
             </f:else>
           </f:if>
           <f:if condition="{document-next}">
@@ -81,11 +81,11 @@
                 section="{settings.jumpToID}"
 
                 class="ctg-button"
-                onclick="return tx_find.detailViewWithPaging(this, {document-next-number});" title="{f:translate(key:'next')}: {s:data.valueForKey(array:document-next.fields, key:settings.standardFields.title)}"
+                onclick="return tx_find.detailViewWithPaging(this, {document-next-number});" title="{f:translate(key:'next', extensionName:'dla_opac_ng')}: {s:data.valueForKey(array:document-next.fields, key:settings.standardFields.title)}"
               ><span class="icon bel-pfeil-l01"></span></f:link.action>
             </f:then>
             <f:else>
-              <a class="ctg-button ctg-bu-disable" title="{f:translate(key:'next')}"><span class="icon bel-pfeil-l01"></span></a>
+              <a class="ctg-button ctg-bu-disable" title="{f:translate(key:'next', extensionName:'dla_opac_ng')}"><span class="icon bel-pfeil-l01"></span></a>
             </f:else>
           </f:if>
 

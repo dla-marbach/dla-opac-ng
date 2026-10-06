@@ -1,3 +1,6 @@
+# Basiskonfiguration des Such-Plugins (ehemals Extension dla/find, Fork von subugoe/typo3-find)
+@import 'EXT:dla_opac_ng/Configuration/TypoScript/Find/setup.typoscript'
+
 # CSS
 page.includeCSS.datetimepicker = EXT:dla_opac_ng/Resources/Public/CSS/jquery.datetimepicker.css
 page.includeCSS.jquery-ui = EXT:dla_opac_ng/Resources/Public/CSS/jquery-ui/jquery-ui.min.css
@@ -14,7 +17,7 @@ page.includeJS.videojs = EXT:dla_opac_ng/Resources/Public/JavaScript/video.js/vi
 page.includeJS.jquery-ui = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-ui.min.js
 page.includeJS.nouislider = EXT:dla_opac_ng/Resources/Public/JavaScript/nouislider.js
 page.includeJS.chart = EXT:dla_opac_ng/Resources/Public/JavaScript/Chart-2.7.2.min.js
-page.includeJS.find = EXT:find/Resources/Public/JavaScript/find.js
+page.includeJS.find = EXT:dla_opac_ng/Resources/Public/JavaScript/find.js
 
 # Weitere JavaScript-Bibliotheken im Footer laden
 page.includeJSFooter.datetimepicker = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.datetimepicker.min.js

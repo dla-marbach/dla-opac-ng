@@ -12,6 +12,17 @@ services:
     resource: '../Classes/*'
     exclude:
       - '../Classes/Ajax/EidSettings.php'
+      - '../Classes/Find/'
+
+  # Klassen der ehemaligen Extension dla/find
+  Dla\Find\:
+    resource: '../Classes/Find/*'
+    public: false
+    exclude: '../Classes/Find/Ajax/EidSettings.php'
+
+  Dla\Find\ViewHelpers\:
+    resource: '../Classes/Find/ViewHelpers/*'
+    public: true
 
   Dla\DlaOpacNg\Cli\Import:
     tags:

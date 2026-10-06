@@ -58,8 +58,6 @@ tasks:
     dir: t3example
     cmds:
       - mkdir -p .local-ext
-      - rm -rf .local-ext/dla-find
-      - cp -al ../dla-find .local-ext/dla-find
       - rm -rf .local-ext/dla-dla_opac_ng
       - mkdir -p .local-ext/dla-dla_opac_ng
       - |
@@ -72,8 +70,6 @@ tasks:
         ../composer.json \
         ../ext_* \
         .local-ext/dla-dla_opac_ng/
-      - rm -rf packages/dla-find
-      - ln -s ../.local-ext/dla-find packages/dla-find
       - rm -rf packages/dla-dla_opac_ng
       - ln -s ../.local-ext/dla-dla_opac_ng packages/dla-dla_opac_ng
       - |
@@ -82,8 +78,7 @@ tasks:
       - |
         mkdir -p packages/dla-dla_opac_ng/Resources/Public/CSS
         cp -al ../.devfiles/site.min.css packages/dla-dla_opac_ng/Resources/Public/CSS/
-      - ddev composer config repositories.dla-find '{"type":"path","url":"packages/dla-find","options":{"symlink":true}}'
-      - ddev composer require "dla/find:dev-main as 6.0-dev" "dla/dla_opac_ng:@dev"
+      - ddev composer require "dla/dla_opac_ng:@dev"
       - ddev composer require --dev "typo3/testing-framework:^8.3"
       - php ../.devfiles/add-test-autoload.php
       - ddev exec composer dump-autoload
@@ -96,7 +91,6 @@ tasks:
     dir: t3example
     desc: lösche den TYPO3-Cache, um Code-Änderungen wirksam zu machen
     cmds:
-      - rm -rf packages/dla-find
       - rm -rf packages/dla-dla_opac_ng
       - task: install_ext
       - ddev typo3 cache:flush
@@ -117,11 +111,10 @@ tasks:
       - cd .. && rm -rf t3example
 
   test:php:
-    desc: PHPUnit-Tests (dla_opac_ng + dla-find) mit Solr-Mockdaten ausführen, kein Solr-Tunnel nötig
+    desc: PHPUnit-Tests mit Solr-Mockdaten ausführen, kein Solr-Tunnel nötig
     dir: t3example
     cmds:
       - ddev exec vendor/bin/phpunit -c packages/dla-dla_opac_ng/Tests/phpunit.xml
-      - ddev exec vendor/bin/phpunit -c packages/dla-find/Tests/phpunit.xml
 
   test:php:record:
     desc: PHPUnit-Tests (dla_opac_ng) gegen den echten Solr ausführen und fehlende Solr-Cassetten aufzeichnen (Solr-Tunnel nötig)
