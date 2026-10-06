@@ -51,7 +51,7 @@ class NotViewHelperTest extends UnitTestCase
             ],
             [
                 (bool) 1,
-                true,
+                false,
             ],
             [
                 1 === 2,
@@ -73,10 +73,10 @@ class NotViewHelperTest extends UnitTestCase
      * @test
      * @dataProvider conditionProvider
      */
-    public function conditionIsMet(bool $conditions, bool $expected): void
+    public function conditionIsMet(bool $condition, bool $expected): void
     {
-        $this->fixture->setArguments([
-            'conditions' => $conditions,
+        $this->setArgumentsWithDefaults($this->fixture, [
+            'condition' => $condition,
         ]);
 
         self::assertSame($expected, $this->fixture->initializeArgumentsAndRender());

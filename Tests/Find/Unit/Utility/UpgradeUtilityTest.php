@@ -67,6 +67,20 @@ class UpgradeUtilityTest extends TestCase
      */
     public function configurationIsAutomaticallyUpgraded(array $settings, $expected): void
     {
-        self::assertSame($expected, UpgradeUtility::handleSolariumUpgrade($settings));
+        $deprecations = [];
+        set_error_handler(static function (int $errno, string $errstr) use (&$deprecations): bool {
+            $deprecations[] = $errstr;
+
+            return true;
+        }, E_USER_DEPRECATED);
+
+        try {
+            $result = UpgradeUtility::handleSolariumUpgrade($settings);
+        } finally {
+            restore_error_handler();
+        }
+
+        self::assertSame($expected, $result);
+        self::assertCount(1, $deprecations);
     }
 }

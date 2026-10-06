@@ -56,12 +56,12 @@ class ItemViewHelper extends AbstractViewHelper
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ) {
-        $container = $renderingContext->getVariableProvider()->get($arguments['name']);
-        if (!$container[$arguments['subject']]) {
+        $container = $renderingContext->getVariableProvider()->get($arguments['name']) ?? [];
+        if (!isset($container[$arguments['subject']])) {
             $container[$arguments['subject']] = [];
         }
 
-        if (!$container[$arguments['subject']][$arguments['predicate']]) {
+        if (!isset($container[$arguments['subject']][$arguments['predicate']])) {
             $container[$arguments['subject']][$arguments['predicate']] = [];
         }
 

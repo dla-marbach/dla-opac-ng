@@ -29,8 +29,8 @@ namespace Dla\Find\Tests\Unit\ViewHelpers\LinkedData;
 
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use Dla\Find\Tests\Unit\ViewHelpers\ViewHelperTestTrait;
-use Dla\Find\Tests\Unit\ViewHelpers\MockRenderingContextTrait;
 use Dla\Find\ViewHelpers\LinkedData\ItemViewHelper;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\Variables\StandardVariableProvider;
 
 /**
@@ -39,27 +39,11 @@ use TYPO3Fluid\Fluid\Core\Variables\StandardVariableProvider;
 class ItemViewHelperTest extends UnitTestCase
 {
     use ViewHelperTestTrait;
-    use MockRenderingContextTrait;
 
     /**
      * @var ItemViewHelper
      */
     protected $fixture;
-
-    /**
-     * @var StandardVariableProvider
-     */
-    protected $templateVariableContainer;
-
-    /**
-     * @return array
-     */
-    public static function linkedDataProvider()
-    {
-        return [
-            ['hrdr', 'is', 'thirsty', null, null, null, 'hrdr'],
-        ];
-    }
 
     protected function setUp(): void
     {
@@ -67,34 +51,25 @@ class ItemViewHelperTest extends UnitTestCase
         $this->fixture = $this->getMockBuilder(ItemViewHelper::class)
             ->onlyMethods([])
             ->getMock();
-        $this->templateVariableContainer = $this->getMockBuilder(StandardVariableProvider::class)
-            ->onlyMethods(['add', 'get', 'remove', 'exists'])
-            ->getMock();
-        $this->injectDependenciesIntoViewHelper($this->fixture);
     }
 
     /**
      * @test
-     * @dataProvider linkedDataProvider
      */
-    public function itemsAreAddedToContainer($subject, $predicate, $object, $objectType, $language, $name, $expected): void
+    public function itemsAreAddedToContainer(): void
     {
-        $this->fixture->setArguments(
-            [
-                'subject' => $subject,
-                'predicate' => $predicate,
-                'object' => $object,
-                'objectType' => $objectType,
-                'language' => $language,
-                'name' => $name,
-            ]
-        );
-        $this->renderingContext->getVariableProvider()->expects(self::once())->method('remove')->with($name);
-        $this->renderingContext->getVariableProvider()->expects(self::once())->method('add')->with($name)->willReturn('');
-        $this->inject($this->fixture, 'templateVariableContainer', $this->renderingContext->getVariableProvider());
+        $variableProvider = new StandardVariableProvider(['linkedDataContainer' => []]);
+        $renderingContext = $this->createMock(RenderingContextInterface::class);
+        $renderingContext->method('getVariableProvider')->willReturn($variableProvider);
+        $this->fixture->setRenderingContext($renderingContext);
 
+        $this->setArgumentsWithDefaults($this->fixture, [
+            'subject' => 'hrdr',
+            'predicate' => 'is',
+            'object' => 'thirsty',
+        ]);
         $this->fixture->initializeArgumentsAndRender();
 
-        self::markTestIncomplete('Todo');
+        self::assertSame(['hrdr' => ['is' => ['thirsty' => null]]], $variableProvider->get('linkedDataContainer'));
     }
 }

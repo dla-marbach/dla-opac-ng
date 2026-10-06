@@ -28,6 +28,7 @@ namespace Dla\Find\Tests\Unit\ViewHelpers;
 
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\Variables\StandardVariableProvider;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperInterface;
 
 /**
@@ -52,6 +53,17 @@ trait ViewHelperTestTrait
         }
         $viewHelper->setRenderingContext($this->renderingContext);
         $viewHelper->setArguments([]);
+    }
+
+    /** Setzt die Argumente und ergänzt die Standardwerte der nicht übergebenen Argumente wie Fluid im Normalbetrieb. */
+    protected function setArgumentsWithDefaults(AbstractViewHelper $viewHelper, array $arguments): void
+    {
+        foreach ($viewHelper->prepareArguments() as $name => $definition) {
+            if (!array_key_exists($name, $arguments)) {
+                $arguments[$name] = $definition->getDefaultValue();
+            }
+        }
+        $viewHelper->setArguments($arguments);
     }
 
     /** Reflection-based property/setter injection, replacing the removed AbstractTestCase::inject(). */

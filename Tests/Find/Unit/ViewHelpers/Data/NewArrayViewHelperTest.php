@@ -68,7 +68,7 @@ class NewArrayViewHelperTest extends UnitTestCase
             'hrdr' => 'behedeti',
         ];
 
-        $this->fixture->setArguments($arguments);
+        $this->setArgumentsWithDefaults($this->fixture, $arguments);
         self::assertSame($expected, $this->fixture->initializeArgumentsAndRender());
     }
 
@@ -88,7 +88,7 @@ class NewArrayViewHelperTest extends UnitTestCase
             'hrdr' => 'behedeti',
         ];
 
-        $this->fixture->setArguments($arguments);
+        $this->setArgumentsWithDefaults($this->fixture, $arguments);
         self::assertSame($expected, $this->fixture->initializeArgumentsAndRender());
     }
 
@@ -109,7 +109,7 @@ class NewArrayViewHelperTest extends UnitTestCase
             'horus' => 'edfu',
         ];
 
-        $this->fixture->setArguments($arguments);
+        $this->setArgumentsWithDefaults($this->fixture, $arguments);
         self::assertSame($expected, $this->fixture->initializeArgumentsAndRender());
     }
 
@@ -131,7 +131,7 @@ class NewArrayViewHelperTest extends UnitTestCase
             '' => '',
         ];
 
-        $this->fixture->setArguments($arguments);
+        $this->setArgumentsWithDefaults($this->fixture, $arguments);
         self::assertSame($expected, $this->fixture->initializeArgumentsAndRender());
     }
 }

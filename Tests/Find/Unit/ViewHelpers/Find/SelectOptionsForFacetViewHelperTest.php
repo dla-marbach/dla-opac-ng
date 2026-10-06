@@ -53,19 +53,20 @@ class SelectOptionsForFacetViewHelperTest extends UnitTestCase
     /**
      * @test
      */
-    public function returnTrueIfAPathExists()
+    public function leadingBlankAddsEmptyOption()
     {
-        $arguments = [
-            'values' => [],
-            'showCount' => false,
-            'leadingBlank' => false,
-            'sortByName' => false,
-            'sortPrefixSeparator' => null,
-            'localisationPrefix' => '',
-        ];
+        $this->setArgumentsWithDefaults($this->fixture, ['leadingBlank' => true]);
 
-        $this->fixture->setArguments($arguments);
+        self::assertSame(['' => ''], $this->fixture->initializeArgumentsAndRender());
+    }
 
-        self::markTestIncomplete('todo');
+    /**
+     * @test
+     */
+    public function noValuesYieldEmptyOptions()
+    {
+        $this->setArgumentsWithDefaults($this->fixture, []);
+
+        self::assertSame([], $this->fixture->initializeArgumentsAndRender());
     }
 }

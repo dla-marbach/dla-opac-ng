@@ -29,6 +29,10 @@ namespace Dla\Find\Tests\Unit\ViewHelpers\Find;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use Dla\Find\Tests\Unit\ViewHelpers\ViewHelperTestTrait;
 use Dla\Find\ViewHelpers\Find\HighlightFieldViewHelper;
+use Solarium\Component\Result\Highlighting\Highlighting;
+use Solarium\Component\Result\Highlighting\Result as HighlightingResult;
+use Solarium\QueryType\Select\Result\Document;
+use Solarium\QueryType\Select\Result\Result;
 
 /**
  * Test for HighlightField ViewHelper.
@@ -56,8 +60,32 @@ class HighlightFieldViewHelperTest extends UnitTestCase
     /**
      * @test
      */
+    public function fieldWithoutHighlightingIsEscaped()
+    {
+        $this->setArgumentsWithDefaults($this->fixture, [
+            'results' => $this->createMock(Result::class),
+            'document' => new Document(['id' => '1', 'title' => 'a & b']),
+            'field' => 'title',
+        ]);
+
+        self::assertSame('a &amp; b', $this->fixture->initializeArgumentsAndRender());
+    }
+
+    /**
+     * @test
+     */
     public function fieldIsCorrectlyHighlighted()
     {
-        self::markTestIncomplete('Still something to do with mocking solarium');
+        $results = $this->createMock(Result::class);
+        $results->method('getHighlighting')->willReturn(new Highlighting([
+            '1' => new HighlightingResult(['title' => ['Hello \ueeeeworld\ueeef']]),
+        ]));
+        $this->setArgumentsWithDefaults($this->fixture, [
+            'results' => $results,
+            'document' => new Document(['id' => '1', 'title' => 'Hello world']),
+            'field' => 'title',
+        ]);
+
+        self::assertSame('Hello <em class="highlight">world</em>', $this->fixture->initializeArgumentsAndRender());
     }
 }
