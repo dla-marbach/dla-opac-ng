@@ -1337,6 +1337,30 @@
             <trans-unit id="maxRenderedRelationsNote">
                 <source>For technical reasons, only the first %s relations are shown.</source>
             </trans-unit>
+
+            <trans-unit id="searchLimit.title">
+                <source>Please refine your search</source>
+            </trans-unit>
+
+            <trans-unit id="searchLimit.resultWindow">
+                <source>Only the first %s results of a search can be displayed.</source>
+            </trans-unit>
+
+            <trans-unit id="searchLimit.activeFilters">
+                <source>At most %s filters can be active at the same time.</source>
+            </trans-unit>
+
+            <trans-unit id="searchLimit.refine">
+                <source>Please refine your search with additional search terms or filters.</source>
+            </trans-unit>
+
+            <trans-unit id="searchLimit.backToSearch">
+                <source>Back to search</source>
+            </trans-unit>
+
+            <trans-unit id="searchLimit.pagerHint">
+                <source>Not all results can be paged through. Please refine your search.</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -34,6 +34,7 @@ use Solarium\Exception\HttpException;
 use Solarium\QueryType\Select\Query\Query;
 use Dla\Find\Utility\FrontendUtility;
 use Dla\Find\Utility\LoggerUtility;
+use Dla\Find\Utility\SearchLimitUtility;
 use Dla\Find\Utility\SettingsUtility;
 use Dla\Find\Utility\UpgradeUtility;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -135,8 +136,14 @@ class SolrServiceProvider extends AbstractServiceProvider
             }
 
             $this->createQueryForArguments($arguments);
+            $rows = $index['nextIndex'] - $index['previousIndex'] + 1;
+            // Nicht über das erlaubte Trefferfenster hinaus lesen (am Ende des Fensters entfällt »nächster Treffer«).
+            $maxResultWindow = SearchLimitUtility::getMaxResultWindow($arguments, $this->settings);
+            if ($maxResultWindow > 0) {
+                $rows = max(1, min($rows, $maxResultWindow - $index['previousIndex']));
+            }
             $this->query->setStart($index['previousIndex']);
-            $this->query->setRows($index['nextIndex'] - $index['previousIndex'] + 1);
+            $this->query->setRows($rows);
 
             $assignments = $this->getRecordsWithUnderlyingQuery($assignments, $index, $id, $arguments);
         } else {
@@ -886,14 +893,7 @@ class SolrServiceProvider extends AbstractServiceProvider
             $arguments = $this->getRequestArguments();
         }
 
-        $count = (int) $this->settings['paging']['perPage'];
-
-        if (array_key_exists('count', $arguments)) {
-            $count = (int) $arguments['count'];
-        }
-
-        $maxCount = (int) $this->settings['paging']['maximumPerPage'];
-        $count = min([$count, $maxCount]);
+        $count = SearchLimitUtility::getCount($arguments, $this->settings);
 
         $this->setConfigurationValue('count', $count);
 
@@ -985,13 +985,7 @@ class SolrServiceProvider extends AbstractServiceProvider
             $arguments = $this->requestArguments;
         }
 
-        $offset = 0;
-
-        if (array_key_exists('start', $arguments)) {
-            $offset = (int) $arguments['start'];
-        } elseif (array_key_exists('page', $arguments)) {
-            $offset = ((int) $arguments['page'] - 1) * $this->getCount();
-        }
+        $offset = SearchLimitUtility::getOffset($arguments, $this->settings);
 
         $this->setConfigurationValue('offset', $offset);
 
@@ -1306,6 +1300,7 @@ class SolrServiceProvider extends AbstractServiceProvider
     {
         $this->query->setStart($this->getOffset($arguments));
         $this->query->setRows($this->getCount($arguments));
+        $this->setConfigurationValue('maxResultWindow', SearchLimitUtility::getMaxResultWindow($arguments, $this->settings));
         $this->addResultCountOptionsToTemplate($arguments);
     }
 

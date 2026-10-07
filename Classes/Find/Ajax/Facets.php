@@ -2,6 +2,7 @@
 
 namespace Dla\Find\Ajax;
 
+use Dla\Find\Utility\SearchLimitUtility;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -67,7 +68,21 @@ class Facets implements MiddlewareInterface
         $fq = '';
         $solrQuery = '';
         $defaultQuery = '';
-        $activeFacets = $request->getQueryParams()['activeFacets'];
+        $activeFacets = $request->getQueryParams()['activeFacets'] ?? null;
+
+        // Zu viele gleichzeitig aktive Filter: keine Solr-Anfrage absetzen (siehe SearchLimitUtility).
+        $limitSettings = ['limits' => $templateService->setup['plugin.']['tx_find.']['settings.']['limits.'] ?? []];
+        if (is_array($activeFacets) && SearchLimitUtility::isActiveFilterLimitExceeded($activeFacets, $limitSettings)) {
+            return new JsonResponse(
+                [
+                    'error' => 'searchLimitExceeded',
+                    'reason' => SearchLimitUtility::VIOLATION_ACTIVE_FILTERS,
+                    'limit' => SearchLimitUtility::getMaxActiveFilters($limitSettings),
+                ],
+                400,
+                ['X-Robots-Tag' => 'noindex, nofollow']
+            );
+        }
 
         $query = $request->getQueryParams()['q'];
         if ($query === 'true') {

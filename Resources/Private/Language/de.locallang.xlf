@@ -1761,6 +1761,36 @@
                 <source>For technical reasons, only the first %s relations are shown.</source>
                 <target>Aus technischen Gründen werden nur die ersten %s Verknüpfungen angezeigt.</target>
             </trans-unit>
+
+            <trans-unit id="searchLimit.title">
+                <source>Please refine your search</source>
+                <target>Bitte grenzen Sie Ihre Suche ein</target>
+            </trans-unit>
+
+            <trans-unit id="searchLimit.resultWindow">
+                <source>Only the first %s results of a search can be displayed.</source>
+                <target>Von einer Suche können nur die ersten %s Treffer angezeigt werden.</target>
+            </trans-unit>
+
+            <trans-unit id="searchLimit.activeFilters">
+                <source>At most %s filters can be active at the same time.</source>
+                <target>Es können höchstens %s Filter gleichzeitig aktiv sein.</target>
+            </trans-unit>
+
+            <trans-unit id="searchLimit.refine">
+                <source>Please refine your search with additional search terms or filters.</source>
+                <target>Bitte verfeinern Sie Ihre Suche mit weiteren Suchbegriffen oder Filtern.</target>
+            </trans-unit>
+
+            <trans-unit id="searchLimit.backToSearch">
+                <source>Back to search</source>
+                <target>Zurück zur Suche</target>
+            </trans-unit>
+
+            <trans-unit id="searchLimit.pagerHint">
+                <source>Not all results can be paged through. Please refine your search.</source>
+                <target>Es können nicht alle Treffer durchgeblättert werden. Bitte grenzen Sie Ihre Suche ein.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
