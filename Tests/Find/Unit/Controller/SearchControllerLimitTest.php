@@ -128,8 +128,7 @@ class SearchControllerLimitTest extends UnitTestCase
         $body = (string)$response->getBody();
         self::assertStringContainsString('<meta name="robots" content="noindex, nofollow">', $body);
         self::assertStringContainsString('searchLimit.resultWindow:10000', $body);
-        self::assertStringContainsString('searchLimit.refine', $body);
-        self::assertStringContainsString('href="/find?x=&lt;y&gt;" rel="nofollow"', $body);
+        self::assertStringNotContainsString('<a ', $body);
     }
 
     /**
@@ -142,7 +141,7 @@ class SearchControllerLimitTest extends UnitTestCase
         );
 
         self::assertSame(400, $response->getStatusCode());
-        self::assertStringContainsString('searchLimit.resultWindow:1000', (string)$response->getBody());
+        self::assertStringContainsString('searchLimit.resultWindowEmptyQuery:1000', (string)$response->getBody());
     }
 
     /**

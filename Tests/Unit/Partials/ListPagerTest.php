@@ -85,7 +85,7 @@ class ListPagerTest extends FluidPartialTestCase
     /**
      * @test
      */
-    public function doesNotLinkPagesBeyondMaxResultWindowAndShowsHint(): void
+    public function doesNotLinkPagesBeyondMaxResultWindow(): void
     {
         $results = SolrFixture::select('goethe', 5);
         self::assertGreaterThan(100, $results->getNumFound());
@@ -98,8 +98,7 @@ class ListPagerTest extends FluidPartialTestCase
             'settings' => ['paging' => ['perPage' => 20], 'jumpToID' => ''],
         ]);
 
-        self::assertStringContainsString('ctg-pager-limit-hint', $html);
-        self::assertStringContainsString('Please refine your search', $html);
+        self::assertStringNotContainsString('ctg-pager-limit-hint', $html);
         // Seite 5 (letzte erlaubte) ist verlinkt, Seite 6 taucht nicht auf
         self::assertMatchesRegularExpression('#<a[^>]*rel="nofollow"[^>]*>\s*5\s*</a>#', $html);
         self::assertDoesNotMatchRegularExpression('#>\s*6\s*</a>#', $html);
