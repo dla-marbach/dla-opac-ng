@@ -1763,13 +1763,18 @@
             </trans-unit>
 
             <trans-unit id="searchLimit.title">
-                <source>Please refine your search</source>
-                <target>Bitte grenzen Sie Ihre Suche ein</target>
+                <source>Search request not possible</source>
+                <target>Suchanfrage nicht möglich</target>
             </trans-unit>
 
             <trans-unit id="searchLimit.resultWindow">
-                <source>Only the first %s results of a search can be displayed.</source>
-                <target>Von einer Suche können nur die ersten %s Treffer angezeigt werden.</target>
+                <source>Only the first %s results of a search can be displayed. Please refine your search with additional search terms or filters.</source>
+                <target>Von einer Suche können nur die ersten %s Treffer angezeigt werden. Bitte grenzen Sie Ihre Suche mit weiteren Suchbegriffen oder Filtern ein.</target>
+            </trans-unit>
+
+            <trans-unit id="searchLimit.resultWindowEmptyQuery">
+                <source>Without a search term, only the first %s results can be displayed. Please enter a search term.</source>
+                <target>Ohne Suchbegriff können nur die ersten %s Treffer angezeigt werden. Bitte geben Sie einen Suchbegriff ein.</target>
             </trans-unit>
 
             <trans-unit id="searchLimit.activeFilters">
@@ -1777,20 +1782,8 @@
                 <target>Es können höchstens %s Filter gleichzeitig aktiv sein.</target>
             </trans-unit>
 
-            <trans-unit id="searchLimit.refine">
-                <source>Please refine your search with additional search terms or filters.</source>
-                <target>Bitte verfeinern Sie Ihre Suche mit weiteren Suchbegriffen oder Filtern.</target>
-            </trans-unit>
 
-            <trans-unit id="searchLimit.backToSearch">
-                <source>Back to search</source>
-                <target>Zurück zur Suche</target>
-            </trans-unit>
 
-            <trans-unit id="searchLimit.pagerHint">
-                <source>Not all results can be paged through. Please refine your search.</source>
-                <target>Es können nicht alle Treffer durchgeblättert werden. Bitte grenzen Sie Ihre Suche ein.</target>
-            </trans-unit>
         </body>
     </file>
 </xliff>
