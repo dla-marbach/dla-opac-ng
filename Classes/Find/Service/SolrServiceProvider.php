@@ -1266,10 +1266,14 @@ class SolrServiceProvider extends AbstractServiceProvider
         $fieldsConfig = SettingsUtility::getMergedSettings('dataFields', $this->settings, $this->getAction());
         $fields = [];
 
-        // Use field list from query parameters or from defaults.
-        if (array_key_exists('data-fields', $arguments) && $arguments['data-fields']) {
-            $fields = explode(',', $arguments['data-fields']);
-        } elseif ($fieldsConfig['default']) {
+        // Use the field list from the configured defaults.
+        //
+        // The former request parameter »data-fields« is intentionally no longer honoured:
+        // it allowed callers to put arbitrary values (including Solr field pseudo-fields
+        // such as [explain] or [docid] and expensive transformers) into the Solr »fl«
+        // parameter, which exposed internal fields and enabled cheap denial-of-service.
+        // The returned fields are now controlled exclusively by TypoScript.
+        if (!empty($fieldsConfig['default'])) {
             $fields = array_values($fieldsConfig['default']);
         }
 
