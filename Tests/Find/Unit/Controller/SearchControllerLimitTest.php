@@ -13,7 +13,7 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * Prüft, dass SearchController Anfragen jenseits der Such-Limits abweist, bevor eine Verbindung
- * zu Solr aufgebaut wird (HTML-Seite und JSON-Datenpfad).
+ * zu Solr aufgebaut wird, und dass nur unterstützte Ausgabeformate angenommen werden.
  */
 class SearchControllerLimitTest extends UnitTestCase
 {
@@ -145,28 +145,43 @@ class SearchControllerLimitTest extends UnitTestCase
     }
 
     /**
+     * Das frühere »format=data« der Trefferliste und der Detailseite (Templates Index.data/Detail.data)
+     * existiert nicht mehr und wird ohne Solr-Anfrage mit 404 beantwortet.
+     *
      * @test
+     * @dataProvider unsupportedFormatProvider
      */
-    public function apiPathReturnsJsonError(): void
+    public function unsupportedFormatIsRejectedWithoutSolr(string $action, string $format): void
     {
+        $arguments = 'detail' === $action ? ['id' => 'HS00001'] : ['q' => ['default' => 'goethe']];
+        $arguments['data-format'] = '../Display/Result.html';
+
         $response = $this->initializeExpectingRejection(
-            $this->createController(['start' => '976'], 'index', 'data')
+            $this->createController($arguments, $action, $format)
         );
 
-        self::assertSame(400, $response->getStatusCode());
-        self::assertStringStartsWith('application/json', $response->getHeaderLine('Content-Type'));
-        $data = json_decode((string)$response->getBody(), true);
-        self::assertSame('searchLimitExceeded', $data['error']);
-        self::assertSame('resultWindow', $data['reason']);
-        self::assertSame(1000, $data['limit']);
+        self::assertSame(404, $response->getStatusCode());
+        self::assertSame('noindex, nofollow', $response->getHeaderLine('X-Robots-Tag'));
+    }
+
+    public static function unsupportedFormatProvider(): array
+    {
+        return [
+            'index data' => ['index', 'data'],
+            'detail data' => ['detail', 'data'],
+            'index other' => ['index', 'xml'],
+            'suggest html' => ['suggest', 'html'],
+        ];
     }
 
     /**
+     * Die Autocomplete-Aktion nutzt weiterhin »format=data« (Template Suggest.data).
+     *
      * @test
      */
-    public function apiPathAtLimitIsPassedToSolr(): void
+    public function suggestWithDataFormatIsPassedToSolr(): void
     {
-        $this->initialize($this->createController(['start' => '975'], 'index', 'data', true));
+        $this->initialize($this->createController(['q' => 'goe'], 'suggest', 'data', true));
     }
 
     /**

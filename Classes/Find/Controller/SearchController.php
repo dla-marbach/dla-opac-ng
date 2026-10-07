@@ -35,7 +35,6 @@ use Dla\Find\Utility\ArrayUtility;
 use Dla\Find\Utility\FrontendUtility;
 use Dla\Find\Utility\SearchLimitUtility;
 use TYPO3\CMS\Core\Http\HtmlResponse;
-use TYPO3\CMS\Core\Http\JsonResponse;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
 use TYPO3\CMS\Core\Log\LogManagerInterface;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
@@ -178,6 +177,9 @@ class SearchController extends ActionController
      */
     protected function initializeAction()
     {
+        // Nicht unterstützte Ausgabeformate abweisen, bevor Argumente ausgewertet oder Solr angefragt wird.
+        $this->rejectUnsupportedFormat();
+
         ksort($this->settings['queryFields']);
 
         $this->requestArguments = $this->request->getArguments();
@@ -192,6 +194,26 @@ class SearchController extends ActionController
         $this->searchProvider->setRequestArguments($this->requestArguments);
         $this->searchProvider->setAction($this->request->getControllerActionName());
         $this->searchProvider->setControllerExtensionKey($this->request->getControllerExtensionKey());
+    }
+
+    /**
+     * Lässt je Aktion nur das Ausgabeformat zu, für das ein Template existiert: »data« (JSON) für die
+     * Autocomplete-Aktion »suggest«, sonst »html«. Andere Formate (z. B. das frühere »format=data« der
+     * Trefferliste/Detailseite) werden mit HTTP 404 beantwortet statt mit einem Fehler beim Template-Laden.
+     *
+     * @throws PropagateResponseException
+     */
+    protected function rejectUnsupportedFormat(): void
+    {
+        $allowedFormat = 'suggest' === $this->request->getControllerActionName() ? 'data' : 'html';
+        if ($allowedFormat === $this->request->getFormat()) {
+            return;
+        }
+
+        throw new PropagateResponseException(
+            new HtmlResponse('Not Found', 404, ['X-Robots-Tag' => 'noindex, nofollow']),
+            1791590400
+        );
     }
 
     /**
@@ -237,7 +259,7 @@ class SearchController extends ActionController
     }
 
     /**
-     * Schlanke Fehlerantwort (HTTP 400) für überschrittene Limits; JSON für den Datenpfad (format=data).
+     * Schlanke Fehlerseite (HTTP 400) für überschrittene Limits.
      *
      * HTTP 400 statt 404: Die Suchseite existiert, nur die Parameter (Seite/Offset, Anzahl Filter) liegen
      * außerhalb des erlaubten Bereichs. 404 würde fälschlich »Ressource nicht vorhanden« signalisieren.
@@ -259,15 +281,6 @@ class SearchController extends ActionController
 
         $title = $this->translate('searchLimit.title');
         $message = $this->translate($messageKey, [$limit]);
-
-        if ('data' === $this->request->getFormat()) {
-            return new JsonResponse([
-                'error' => 'searchLimitExceeded',
-                'reason' => $violation,
-                'limit' => $limit,
-                'message' => $message,
-            ], $status, $headers);
-        }
 
         $siteLanguage = $this->request->getAttribute('language');
         $languageCode = $siteLanguage instanceof SiteLanguage
