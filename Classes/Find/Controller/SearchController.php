@@ -39,6 +39,7 @@ use TYPO3\CMS\Core\Http\JsonResponse;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
 use TYPO3\CMS\Core\Log\LogManagerInterface;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
+use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use TYPO3\CMS\Core\Utility\ArrayUtility as CoreArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Http\ForwardResponse;
@@ -268,15 +269,23 @@ class SearchController extends ActionController
             ], $status, $headers);
         }
 
-        $html = '<!DOCTYPE html>' . "\n"
-            . '<html><head><meta charset="utf-8">'
-            . '<meta name="robots" content="noindex, nofollow">'
-            . '<meta name="viewport" content="width=device-width, initial-scale=1">'
-            . '<title>' . htmlspecialchars($title) . '</title></head>'
-            . '<body><main>'
-            . '<h1>' . htmlspecialchars($title) . '</h1>'
-            . '<p>' . htmlspecialchars($message) . '</p>'
-            . '</main></body></html>';
+        $siteLanguage = $this->request->getAttribute('language');
+        $languageCode = $siteLanguage instanceof SiteLanguage
+            ? strtolower($siteLanguage->getLocale()->getLanguageCode())
+            : 'de';
+
+        $template = (string)file_get_contents(
+            dirname(__DIR__, 3) . '/Resources/Private/Templates/Middleware/SearchLimit.html'
+        );
+        $html = str_replace(
+            ['__LANG__', '__TITLE__', '__MESSAGE__'],
+            [
+                htmlspecialchars($languageCode, ENT_QUOTES, 'UTF-8'),
+                htmlspecialchars($title, ENT_QUOTES, 'UTF-8'),
+                htmlspecialchars($message, ENT_QUOTES, 'UTF-8'),
+            ],
+            $template
+        );
 
         return new HtmlResponse($html, $status, $headers);
     }
