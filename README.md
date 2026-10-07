@@ -168,6 +168,18 @@ Nach einem Neustart des Codespaces ausführen:
 task reinstall
 ```
 
+## Begrenzung der Suchanfragen (Schutz vor Crawlern)
+
+Tiefes Blättern und beliebig viele Facettenfilter erzeugen sehr teure Solr-Anfragen. Das Such-Plugin begrenzt daher (siehe [Classes/Find/Utility/SearchLimitUtility.php](Classes/Find/Utility/SearchLimitUtility.php)):
+
+| TypoScript-Konstante | Standard | Bedeutung |
+|---|---|---|
+| `plugin.tx_find.settings.limits.maxResultWindow` | `10000` | höchstens erlaubtes `start + rows` |
+| `plugin.tx_find.settings.limits.maxResultWindowEmptyQuery` | `1000` | höchstens erlaubtes `start + rows` bei leerer Suche (ohne Suchbegriff bzw. `*:*`), auch wenn nur Facetten gesetzt sind |
+| `plugin.tx_find.settings.limits.maxActiveFilters` | `10` | höchstens gleichzeitig aktive Facettenfilter/-ausschlüsse |
+
+Der Wert `0` schaltet die jeweilige Grenze ab. Wird eine Grenze überschritten, wird keine Solr-Anfrage abgesetzt, sondern eine schlanke Fehlerseite mit HTTP 400 ausgeliefert (JSON bei `tx_find_find[format]=data`). Die Paginierung zeigt keine Seiten jenseits der Grenze an und weist stattdessen darauf hin, die Suche einzugrenzen. Ergebnisseiten mit Filtern oder ab Seite 2 erhalten `<meta name="robots" content="noindex, nofollow">`.
+
 ## Datenbankdump für TYPO3-Grundkonfiguration
 
 Bei der Installation (task install) wird ein Datenbank-Dump [.devfiles/init.sql](.devfiles/init.sql) eingespielt. Bei einer neuen TYPO3-Version muss dieser Dump ggf. manuell neu erstellt werden.

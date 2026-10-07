@@ -214,6 +214,17 @@ plugin.tx_find {
             detailPagePaging = 1
         }
 
+        # Schutz vor Überlast durch Deep Paging und Facettenkombinationen (siehe Dla\Find\Utility\SearchLimitUtility).
+        # Anfragen jenseits der Limits werden ohne Solr-Anfrage mit HTTP 400 beantwortet. 0 = Limit deaktiviert.
+        limits {
+            # start + rows darf diesen Wert nicht überschreiten
+            maxResultWindow = {$plugin.tx_find.settings.limits.maxResultWindow}
+            # dasselbe für die leere Suche (kein Suchbegriff bzw. *:*)
+            maxResultWindowEmptyQuery = {$plugin.tx_find.settings.limits.maxResultWindowEmptyQuery}
+            # maximale Anzahl gleichzeitig aktiver Facettenfilter und -ausschlüsse
+            maxActiveFilters = {$plugin.tx_find.settings.limits.maxActiveFilters}
+        }
+
         jumpToID = tx_find
 
         CSSPaths.10 = {$plugin.tx_find.settings.CSSPath}
