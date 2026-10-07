@@ -7,18 +7,6 @@ plugin.tx_find {
             default {
                 # cat=plugin.tx_find/connections/default; type=string; label=Default Service Provider
                 provider = Dla\Find\Service\SolrServiceProvider
-                options {
-                    # cat=plugin.tx_find/connections/default; type=string; label=Solr Host
-                    host = 127.0.0.1
-                    # cat=plugin.tx_find/connections/default; type=int+; label=Solr Port
-                    port = 8080
-                    # cat=plugin.tx_find/connections/default; type=string; label=Path to the solr core in use
-                    path = /solr/mycore
-                    # cat=plugin.tx_find/connections/default; type=int+; label=Solr Connection Timeout
-                    timeout = 5
-                    # cat=plugin.tx_find/connections/default; type=string; label=Solr Connection Scheme
-                    scheme = http
-                }
             }
         }
 

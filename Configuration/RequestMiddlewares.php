@@ -2,15 +2,6 @@
 
 return [
     'frontend' => [
-        'Dla/Find/Ajax/Facets' => [
-            'target' => \Dla\Find\Ajax\Facets::class,
-            'after' => [
-                'typo3/cms-frontend/site'
-            ],
-            'before' => [
-                'typo3/cms-frontend/backend-user-authentication'
-            ],
-        ],
         'Dla/dla_opac_ng/proof-of-work' => [
             'target' => \Dla\DlaOpacNg\Middleware\ProofOfWorkMiddleware::class,
             'before' => [

@@ -49,28 +49,8 @@ plugin.tx_find {
         # Optionale URL zum Datendienst. Wird als Icon-Link unterhalb der Format-Buttons angezeigt.
         dataserviceInfoUrl = https://www.dla-marbach.de/katalog/datendienst/
 
-        # Der Abschnitt "connection" definiert die Verbindung zum Solr-Server.
-        # Wichtig ist die Angabe des zu verwendenden Solr-Cores in "path"!
-        connections {
-            default {
-                options {
-                    host = host.docker.internal
-                    port = 8983
-                    path = /
-                    scheme = http
-                    core = internformat
-                }
-            }
-        }
-        
-        connection {
-            host = host.docker.internal
-            port = 8983
-            path = /
-            timeout = 10
-            scheme = http
-            core = internformat
-        }
+        # Die Verbindung zum Solr-Server wird über die Umgebungsvariablen SOLR_HOST und SOLR_CORE
+        # konfiguriert (siehe Classes/Service/SolrConnection.php).
 
         mainQueryOperator = AND
 
@@ -1142,7 +1122,6 @@ plugin.tx_find {
                 showMissing = 1
                 labelMissing = nicht bestimmt
                 reverseFacet = 1
-                ajax = 0
                 displayDefault = 6
             }
 
@@ -1155,7 +1134,6 @@ plugin.tx_find {
                 showMissing = 1
                 labelMissing = nicht bestimmt
                 reverseFacet = 1
-                ajax = 0
                 displayDefault = 6
             }
 
@@ -1193,7 +1171,6 @@ plugin.tx_find {
                 showMissing = 1
                 labelMissing = nicht bestimmt
                 reverseFacet = 1
-                ajax = 0
                 displayDefault = 6
             }
 
@@ -1233,7 +1210,6 @@ plugin.tx_find {
                 showmissing = 0
 
                 collapse = 1
-                ajax = 0
                 displayDefault = 6
             }
 
@@ -1318,7 +1294,6 @@ plugin.tx_find {
                 showMissing = 1
                 labelMissing = nicht bestimmt
                 reverseFacet = 1
-                ajax = 0
                 displayDefault = 6
             }
 
@@ -1332,7 +1307,6 @@ plugin.tx_find {
                 labelMissing = nicht bestimmt
                 reverseFacet = 1
                 fixed = 1
-                ajax = 0
                 displayDefault = 6
             }
 

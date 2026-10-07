@@ -6,10 +6,16 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Dla\DlaOpacNg\Service\SolrConnection;
 use TYPO3\CMS\Core\Http\JsonResponse;
 
 class Autocomplete implements MiddlewareInterface
 {
+    public function __construct(
+        private readonly SolrConnection $solrConnection = new SolrConnection()
+    ) {
+    }
+
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $queryParams = $request->getQueryParams();
@@ -18,9 +24,6 @@ class Autocomplete implements MiddlewareInterface
             return $handler->handle($request);
         }
 
-        include_once 'EidSettings.php';
-
-        $solr_suggest_url = $host . $core . '/suggest';
         $solr_suggest_dictionary = 'mySuggester';
         $solr_suggest_text = 'text';
 
@@ -32,25 +35,13 @@ class Autocomplete implements MiddlewareInterface
             return new JsonResponse($suggests);
         }
 
-        $response = @file_get_contents(
-            $solr_suggest_url
-            . '?suggest=true'
-            . '&suggest.dictionary=' . urlencode($solr_suggest_dictionary)
-            . '&suggest.dictionary=' . urlencode($solr_suggest_text)
-            . '&suggest.q=' . urlencode($query),
-            false,
-            stream_context_create([
-                'http' => [
-                    'method' => 'GET',
-                    'follow_location' => 0,
-                    'timeout' => 1.0,
-                ],
-            ])
-        );
+        $json = $this->solrConnection->request('suggest', [
+            'suggest' => 'true',
+            'suggest.dictionary' => [$solr_suggest_dictionary, $solr_suggest_text],
+            'suggest.q' => $query,
+        ]);
 
-        if ($response !== false) {
-            $json = json_decode($response, true);
-
+        if ($json !== null) {
             if (isset($json['suggest'][$solr_suggest_text][$query]['suggestions']) && is_array($json['suggest'][$solr_suggest_text][$query]['suggestions'])) {
                 foreach ($json['suggest'][$solr_suggest_text][$query]['suggestions'] as $suggestion) {
                     $suggests[] = [

@@ -15,6 +15,19 @@ task install
 
 ## Verbindung zum Solr
 
+Alle Solr-Zugriffe (Such-Plugin, ViewHelper, Ajax-Endpunkte) laufen über
+[Classes/Service/SolrConnection.php](Classes/Service/SolrConnection.php) und werden ausschließlich über
+Umgebungsvariablen konfiguriert:
+
+| Variable | Beispiel | |
+|---|---|---|
+| `SOLR_HOST` | `http://host.docker.internal:8983/solr/` | Basis-URL inkl. Solr-Kontext |
+| `SOLR_CORE` | `internformat` | Name des Cores |
+| `SOLR_TIMEOUT` | `10` | optional, Timeout in Sekunden (Standard: 10) |
+
+Für die lokale Umgebung stehen die Werte in [.devfiles/.env](.devfiles/.env) (wird bei `task install` nach
+`t3example/.ddev/.env` kopiert).
+
 Lokal muss GitHub CLI [gh](https://cli.github.com) installiert sein.
 
 ### DLA Testsystem
@@ -136,8 +149,8 @@ wie `Classes/Find/Service/SolrServiceProvider.php` es in Produktion tut. Die zug
 [Tests/Unit/Partials/Detail](Tests/Unit/Partials/Detail) rendert die Detail-Partials (`Display/Detail/Normdata/*`,
 `Library/*`, `Inventory/*`, `Manuscripts/*`, `ImagesAndObjects/*`) mit je einem Dokument pro Quelltyp. Die
 `settings` liefert `SolrFixture::settings()`: die echte TypoScript-Konfiguration (u.a. `queryFields` für
-`dla:solveQuery`) mit `connection` auf den Mock-Server, sodass auch die Unterabfragen der Partials gegen
-Cassetten laufen. `FluidPartialTestCase` lässt Tests fehlschlagen, wenn dabei eine Anfrage ohne Cassette
+`dla:solveQuery`). Zusätzlich setzt `SolrFixture` `SOLR_HOST`/`SOLR_CORE` auf den Mock-Server, sodass auch die
+Unterabfragen der Partials gegen Cassetten laufen. `FluidPartialTestCase` lässt Tests fehlschlagen, wenn dabei eine Anfrage ohne Cassette
 ankommt (sonst würde `dla:countFromSolr` still `0` anzeigen). `dla:collection` (Bestandsbaum aus der Datenbank)
 wird durch `FakeCollectionService` ersetzt; Testdaten dafür über `FakeCollectionService::$parents`.
 
@@ -312,7 +325,11 @@ Schritte in einer bestehenden Installation:
    Bestandteil des statischen TypoScripts von `dla_opac_ng`.
 3. Falls in eigenem TypoScript auf Dateien unter `EXT:find/...` verwiesen wird, auf
    `EXT:dla_opac_ng/...` umstellen.
-4. `vendor/bin/typo3 cache:flush`
+4. Solr-Verbindung über die Umgebungsvariablen `SOLR_HOST` und `SOLR_CORE` konfigurieren (siehe
+   [Verbindung zum Solr](#verbindung-zum-solr)). Die TypoScript-Einstellungen
+   `plugin.tx_find.settings.connections.default.options.*` und `plugin.tx_find.settings.connection.*`
+   werden nicht mehr ausgewertet und können entfernt werden.
+5. `vendor/bin/typo3 cache:flush`
 
 ## Herkunft und Credits
 
