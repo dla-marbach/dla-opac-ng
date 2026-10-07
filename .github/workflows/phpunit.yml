@@ -26,6 +26,9 @@ jobs:
 
       - name: Set up Task
         uses: arduino/setup-task@v2
+        with:
+          # Authentifizierte Anfrage vermeidet das GitHub-API-Rate-Limit beim Ermitteln der Task-Version
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install test environment
         run: task install

@@ -29,6 +29,7 @@ namespace Dla\Find\Tests\Unit\Service;
 
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use Dla\Find\Service\SolrServiceProvider;
+use Solarium\QueryType\Select\Query\Query;
 
 /**
  * Solr ServiceProvider Test.
@@ -76,5 +77,67 @@ class SolrServiceProviderTest extends UnitTestCase
         $this->fixture->setConfigurationValue($key, $value);
         self::assertArrayHasKey($key, $this->fixture->getConfiguration());
         self::assertArrayHasKey($key1, $this->fixture->getConfiguration());
+    }
+
+    /**
+     * The request parameter »data-fields« must no longer influence the Solr field
+     * list (»fl«). Otherwise a caller could expose internal fields or inject
+     * expensive Solr pseudo-fields such as [explain] or [docid].
+     *
+     * @test
+     */
+    public function setFieldsIgnoresDataFieldsRequestParameter()
+    {
+        $query = $this->createMock(Query::class);
+        // With no configured dataFields the attacker-supplied field list must be
+        // dropped completely, so setFields() must never be called on the query.
+        $query->expects(self::never())->method('setFields');
+
+        $this->injectProperty($this->fixture, 'query', $query);
+        $this->injectProperty($this->fixture, 'settings', ['dataFields' => ['default' => []]]);
+        $this->injectProperty($this->fixture, 'action', 'index');
+
+        $this->invokeProtected($this->fixture, 'setFields', [
+            ['data-fields' => '*,[explain],[docid]'],
+        ]);
+    }
+
+    /**
+     * The configured default field list is still applied.
+     *
+     * @test
+     */
+    public function setFieldsUsesConfiguredDefaultFields()
+    {
+        $query = $this->createMock(Query::class);
+        $query->expects(self::once())
+            ->method('setFields')
+            ->with(['id', 'title']);
+
+        $this->injectProperty($this->fixture, 'query', $query);
+        $this->injectProperty($this->fixture, 'settings', [
+            'dataFields' => ['default' => ['default' => ['id', 'title']]],
+        ]);
+        $this->injectProperty($this->fixture, 'action', 'index');
+
+        // Even if »data-fields« is supplied, only the configured defaults are used.
+        $this->invokeProtected($this->fixture, 'setFields', [
+            ['data-fields' => 'secret_internal_field'],
+        ]);
+    }
+
+    private function injectProperty(object $object, string $property, $value): void
+    {
+        $reflection = new \ReflectionProperty($object, $property);
+        $reflection->setAccessible(true);
+        $reflection->setValue($object, $value);
+    }
+
+    private function invokeProtected(object $object, string $method, array $arguments)
+    {
+        $reflection = new \ReflectionMethod($object, $method);
+        $reflection->setAccessible(true);
+
+        return $reflection->invokeArgs($object, $arguments);
     }
 }
