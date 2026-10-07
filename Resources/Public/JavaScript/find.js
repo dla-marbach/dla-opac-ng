@@ -52,92 +52,13 @@ var tx_find = (function () {
       jQuery('.position .resultPosition', container).click(onClickRecordNumber);
 
       initializeHistogramFacets();
-	  loadAjaxFacets();
     });
   };
-
-	function getSearchParams(k){
-		var p={},r='';
-		location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){p[k]=v})
-        for (const [key, value] of Object.entries(p)) {
-          if (key.includes(k)) {
-            r += key + '=' + value + '&';
-          }
-        }
-        return r;
-		// return k?p[k]:p;
-	}
-
-  var loadAjaxFacets = function () {
-      var searchParameters = getSearchParams('tx_find_find%5Bq%5D');
-      var query = '';
-	  if (searchParameters) {
-		  query = 'true';
-	  }
-	  $('.ajax-facet').each(function () {
-		 var activeFacets = $(this).data('activefacets');
-		 if (!activeFacets) {
-			 activeFacets = '';
-		 }
-
-		 var facetId = $(this).attr('id');
-		 var url = window.location.origin + "?facetId=" + facetId + "&q=" + query + "&" + activeFacets + "&" + searchParameters;
-		  $.ajax({
-			  url: url
-		  }).done(function (data) {
-			  var i = $(data).length;
-			  $($(data).toArray().reverse()).each(function () {
-				  var elementClass = '';
-				  var iconClass = 'bel-kreis01';
-				  var displayDefault = $('#' + facetId).data('displaydefault');
-				  if (this.active) {
-					  elementClass = 'facetActive';
-					  iconClass = 'bel-ok01';
-					  // generate html for active facet block
-            $("section.active-facets ul").append('<li><a title="Filter '+this.label+' aufheben" href="' + this.link + '" rel="nofollow"><span class="icon bel-ende01"></span>'+this.label+'</a></li>');
-				  }
-				  if (i > displayDefault) {
-					  elementClass = elementClass + ' hidden';
-				  }
-				  $('#'+facetId+' ul.facetList')
-            .prepend('<li class="' + elementClass + '"><a href="' + this.link + '" rel="nofollow"><span class="icon '+ iconClass +'"></span></a><a class="facetAdd facetText internal" href="' + this.link + '" rel="nofollow">' + this.label + '<em>('+this.count+')</em></a><a class="facetExclude facetRemoveIcon hide-text" href="' + this.linkReverse + '" rel="nofollow"><span class="icon bel-verboten"></span></a></li>');
-				  i--;
-			  });
-
-			  // // if decisiontree (marbach only)
-			  // initDecisiontree($('#'+facetId));
-			  // // endif decisiontree
-
-		  });
-	  });
-  }
 
 // Localisation function. Currently not implemented.
   var localise = function (term) {
     return term;
   };
-
-
-  var googleMapsLoader = (function () {
-    var load = function () {
-      if (!window.google || !window.google.maps) {
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=tx_find.googleMapsLoader.mapsCallback';
-        document.body.appendChild(script);
-      }
-    };
-
-    var mapsCallback = function () {
-      jQuery(document).trigger('tx_find.mapsLoaded');
-    };
-
-    return {
-      'load': load,
-      'mapsCallback': mapsCallback
-    };
-
-  })();
 
 
   /**
@@ -592,143 +513,12 @@ var tx_find = (function () {
     'showAllFacetsOfType': showAllFacetsOfType,
     'detailViewWithPaging': detailViewWithPaging,
     'toggleExtendedSearch': toggleExtendedSearch,
-    'googleMapsLoader': googleMapsLoader,
     'changeURLParameterForPage': changeURLParameterForPage,
     'addURLParameter': addURLParameter,
     'removeURLParameter': removeURLParameter,
     'changeURL': changeURL,
     'URLParameterPrefix': URLParameterPrefix
   };
-
-})();
-
-
-/**
- * Object to set up the map in a facet.
- *
- * @type {object}
- */
-var tx_find_facetMap = (function () {
-  var interface = {};
-  var config;
-  var map;
-  var markers = {};
-  interface.markers = markers;
-
-  var init = function (parameters) {
-    config = parameters;
-    interface.config = config;
-    if (document.google !== undefined && google.maps) {
-      mapsLoadedCallback();
-    } else {
-      jQuery(document).bind('tx_find.mapsLoaded', mapsLoadedCallback);
-      tx_find.googleMapsLoader.load();
-    }
-  };
-  interface.init = init;
-
-  var mapsLoadedCallback = function () {
-    // Extract information from facet data.
-    // The facet term needs begin with the zero-padded zoom level,
-    // a dash and the geohash. The facet needs to be sorted by index.
-    var zoomInfo = {};
-    var lastZoomLevel = 0;
-    for (var facetIndex in config.facetData) {
-      var indexParts = facetIndex.split('-');
-      if (indexParts.length === 2) {
-        var geohashScale = parseInt(indexParts[0], 10);
-        lastZoomLevel = geohashScale;
-
-        if (!zoomInfo[geohashScale]) {
-          zoomInfo[geohashScale] = {};
-        }
-        zoomInfo[geohashScale][indexParts[1]] = config.facetData[facetIndex];
-      }
-    }
-
-    var lastZoomLevelIsComplete = (Object.keys(config.facetData).length < config.facetFetchMaximum);
-    if (!lastZoomLevelIsComplete) {
-      lastZoomLevel--;
-    }
-
-    // Create map.
-    var mapOptions = {
-      'mapTypeId': google.maps.MapTypeId.ROADMAP,
-      'mapTypeControl': false,
-      'streetViewControl': false,
-      'scrollwheel': false
-    };
-
-    map = new google.maps.Map(config.container, mapOptions);
-    interface.map = map;
-
-    // Use the last complete level of geo information to determine the bounding box.
-    var containingBounds = new google.maps.LatLngBounds();
-    var zoomLevelInfo = zoomInfo[lastZoomLevel];
-    for (var geohashString in zoomLevelInfo) {
-      var geohashBounds = geohash.bbox(geohashString);
-      var bounds = new google.maps.LatLngBounds(
-          new google.maps.LatLng(geohashBounds.s, geohashBounds.w),
-          new google.maps.LatLng(geohashBounds.n, geohashBounds.e)
-      );
-      containingBounds.union(bounds);
-    }
-
-    // Shrink the bounding box a little to compensate for Google’s generous margins.
-    var containingSpan = containingBounds.toSpan();
-    var shrinkFactor = 0.2;
-    var shrunkBounds = new google.maps.LatLngBounds(
-        new google.maps.LatLng(
-            containingBounds.getSouthWest().lat() + containingSpan.lat() * shrinkFactor,
-            containingBounds.getSouthWest().lng() + containingSpan.lng() * shrinkFactor
-        ),
-        new google.maps.LatLng(
-            containingBounds.getNorthEast().lat() - containingSpan.lat() * shrinkFactor,
-            containingBounds.getNorthEast().lng() - containingSpan.lng() * shrinkFactor
-        )
-    );
-
-    var centre = shrunkBounds.getCenter();
-    var bounds = shrunkBounds.extend(
-        new google.maps.LatLng(centre.lat() - 0.01, centre.lng() - 0.01)
-    ).extend(
-        new google.maps.LatLng(centre.lat() + 0.01, centre.lng() + 0.01)
-    );
-
-    map.fitBounds(shrunkBounds);
-
-    // Determine which zoom level to take the data from.
-    var geohashScaleForMarkers = 0;
-    for (var zoomLevel = 1; zoomLevel <= lastZoomLevel; zoomLevel++) {
-      if (Object.keys(zoomInfo[zoomLevel]).length < 100) {
-        geohashScaleForMarkers = zoomLevel;
-      }
-    }
-
-    zoomLevelInfo = zoomInfo[geohashScaleForMarkers];
-    for (var geohashString in zoomLevelInfo) {
-      var geohashPoint = geohash.decode_exactly(geohashString);
-      var point = new google.maps.LatLng(geohashPoint[0], geohashPoint[1]);
-      var resultCount = zoomLevelInfo[geohashString];
-      var marker = new google.maps.Marker({
-        'map': map,
-        'position': point,
-        'title': resultCount.toString(),
-        'icon': {
-          'path': google.maps.SymbolPath.CIRCLE,
-          'strokeColor': 'e33',
-          'fillColor': 'f33',
-          'fillOpacity': 1,
-          'scale': 0.5 + Math.min(Math.sqrt(resultCount), 5)
-        }
-      });
-      markers[geohashString] = marker;
-    }
-
-    jQuery(config.container).trigger('tx_find.facetMapLoaded');
-  };
-
-  return interface;
 
 })();
 

@@ -25,8 +25,8 @@ namespace Dla\DlaOpacNg\ViewHelpers;
 use Solarium\QueryType\Select\Result\Result;
 use Solarium\QueryType\Update\Query\Document\DocumentInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-use Symfony\Component\EventDispatcher\EventDispatcher;
-use Solarium\Core\Client\Adapter\Curl;
+use Dla\DlaOpacNg\Service\SolrConnection;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * FromSolrViewHelper
@@ -37,37 +37,12 @@ use Solarium\Core\Client\Adapter\Curl;
 class FromSolrViewHelper extends AbstractViewHelper {
 
     /**
-     * Wiederverwendbare Solarium-Clients je Konfiguration.
-     *
-     * @var array<string,\Solarium\Client>
-     */
-    private static array $solrClients = [];
-
-    /**
      * @var \Solarium\Client
      */
     protected $solr;
 
     public function initialize() {
-        $configuration = array(
-            'endpoint' => array(
-                'localhost' => array(
-                    'host' => $this->templateVariableContainer->get('settings')['connection']['host'],
-                    'port' => intval($this->templateVariableContainer->get('settings')['connection']['port']),
-                    'path' => $this->templateVariableContainer->get('settings')['connection']['path'],
-                    'timeout' => $this->templateVariableContainer->get('settings')['connection']['timeout'],
-                    'scheme' => $this->templateVariableContainer->get('settings')['connection']['scheme'],
-                    'core' => $this->templateVariableContainer->get('settings')['connection']['core'],
-                )
-            )
-        );
-        $cacheKey = md5((string)json_encode($configuration));
-        if (!isset(self::$solrClients[$cacheKey])) {
-            $adapter = new Curl();
-            self::$solrClients[$cacheKey] = new \Solarium\Client($adapter, new EventDispatcher, $configuration);
-        }
-
-        $this->solr = self::$solrClients[$cacheKey];
+        $this->solr = GeneralUtility::makeInstance(SolrConnection::class)->getClient();
     }
 
     /**

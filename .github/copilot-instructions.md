@@ -6,13 +6,14 @@ TYPO3-Extension `dla_opac_ng` (Composer: `dla/dla_opac_ng`, Namespace `Dla\DlaOp
 
 - TYPO3 v12, PHP ^8.1 (Entwicklungsumgebung: PHP 8.2, MariaDB 10.11 in DDEV)
 - Enthält das Such-Plugin der früheren Extension `dla/find` (Fork von subugoe/typo3-find, mit Historie aus `dla-marbach/typo3-find` übernommen): Code unter `Classes/Find/` (Namespace `Dla\Find\`, ViewHelper-Prefix `s:`), Plugin-Signatur `find_find`, TypoScript `plugin.tx_find`. Suche/Anzeige läuft über Solr (Solarium).
+- Solr-Verbindung ausschließlich über die Umgebungsvariablen `SOLR_HOST`/`SOLR_CORE` (optional `SOLR_TIMEOUT`); alle Solr-Zugriffe laufen über `Classes/Service/SolrConnection.php` (Solarium-Client bzw. `request()` für Rohanfragen).
 - Projektsprache (README, Commits, Task-Beschreibungen, Übersetzungen) ist überwiegend **Deutsch**.
 
 ## Repository-Struktur
 
 - `Classes/` – PHP-Code: `Ajax/` (eID-Endpunkte), `Cli/` (Konsolenbefehle, z.B. `dla_opac_ng:import`), `Controller/` (Plugins DlaStart, DlaCollection, DlaClassification), `Middleware/`, `Service/`, `Updates/` (Upgrade-Wizards), `Utility/`, `ViewHelpers/` (Fluid-ViewHelper, Namespace-Prefix `dla:`)
 - `Classes/Find/` – Such-Plugin (ehemals `dla/find`): `SearchController`, `Service/SolrServiceProvider`, ViewHelper (Prefix `s:`)
-- `Configuration/` – `TypoScript/setup.ts` + `constants.ts` (u.a. `queryFields`, Solr-Verbindung; importieren die Basiskonfiguration aus `TypoScript/Find/`), `Services.yaml`, `RequestMiddlewares.php`, `Commands.php`, `TCA/`
+- `Configuration/` – `TypoScript/setup.ts` + `constants.ts` (u.a. `queryFields`; importieren die Basiskonfiguration aus `TypoScript/Find/`), `Services.yaml`, `RequestMiddlewares.php`, `Commands.php`, `TCA/`
 - `Resources/Private/` – Fluid-`Templates/`, `Layouts/`, `Partials/`, Sprachdateien in `Language/` (XLIFF; englisch `locallang*.xlf` und deutsch `de.locallang*.xlf` immer gemeinsam pflegen)
 - `Resources/Public/` – CSS, JavaScript, Icons, Bilder, `Resolver/resolver.php`
 - `ext_localconf.php`, `ext_tables.php`, `ext_tables.sql` – TYPO3-Extension-Einstiegspunkte

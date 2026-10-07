@@ -14,11 +14,6 @@
   </f:comment>
     <f:for each="{config.facets}" as="facetInfo" key="facetKey">
         <f:if condition="{facetInfo.hidden}!=1">
-            <f:if condition="{facetInfo.ajax}==1">
-                <f:then>
-                    <f:comment><span id="{facetInfo.id}" class="ajax-facet" data-activefacets="{s:find.ArrayToUrlParameter(array:config.activeFacets)}"></span></f:comment>
-                </f:then>
-            </f:if>
             <f:render
                 partial="Facets/Facet"
                 arguments="{

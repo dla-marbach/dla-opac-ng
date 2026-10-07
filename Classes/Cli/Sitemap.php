@@ -15,6 +15,11 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 class Sitemap extends Command {
 
+    private const DOMAIN = 'https://www.dla-marbach.de/';
+    private const ABSOLUTE_DETAIL_URL = self::DOMAIN . 'find/opac/id/';
+    private const SITEMAP_DIR = '/server/data/www/apache/dla-www-prod-v10/www/fileadmin/';
+    private const SITEMAP_URL = self::DOMAIN . 'fileadmin/';
+
     /**
      * Configure the command by defining the name, options and arguments.
      *
@@ -43,10 +48,9 @@ class Sitemap extends Command {
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $extPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('dla_opac_ng');
-        include_once $extPath . 'Classes/Ajax/EidSettings.php';
-
-        $DETAIL_LINK = $ABSOLUTE_DETAIL_URL;
+        $DETAIL_LINK = self::ABSOLUTE_DETAIL_URL;
+        $SITEMAP_DIR = self::SITEMAP_DIR;
+        $SITEMAP_URL = self::SITEMAP_URL;
         $sitemapNamespace = "http://www.sitemaps.org/schemas/sitemap/0.9";
 
         // Make sure the _cli_ user is loaded
