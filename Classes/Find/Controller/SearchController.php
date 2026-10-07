@@ -251,27 +251,22 @@ class SearchController extends ActionController
             $messageKey = 'searchLimit.activeFilters';
         } else {
             $limit = SearchLimitUtility::getMaxResultWindow($this->requestArguments, $this->settings);
-            $messageKey = 'searchLimit.resultWindow';
+            $messageKey = SearchLimitUtility::isEmptyQuery($this->requestArguments, $this->settings)
+                ? 'searchLimit.resultWindowEmptyQuery'
+                : 'searchLimit.resultWindow';
         }
 
         $title = $this->translate('searchLimit.title');
         $message = $this->translate($messageKey, [$limit]);
-        $hint = $this->translate('searchLimit.refine');
 
         if ('data' === $this->request->getFormat()) {
             return new JsonResponse([
                 'error' => 'searchLimitExceeded',
                 'reason' => $violation,
                 'limit' => $limit,
-                'message' => $message . ' ' . $hint,
+                'message' => $message,
             ], $status, $headers);
         }
-
-        $searchArguments = [];
-        if (isset($this->requestArguments['q']) && is_array($this->requestArguments['q'])) {
-            $searchArguments['q'] = $this->requestArguments['q'];
-        }
-        $searchUri = $this->uriBuilder->reset()->uriFor('index', $searchArguments);
 
         $html = '<!DOCTYPE html>' . "\n"
             . '<html><head><meta charset="utf-8">'
@@ -281,9 +276,6 @@ class SearchController extends ActionController
             . '<body><main>'
             . '<h1>' . htmlspecialchars($title) . '</h1>'
             . '<p>' . htmlspecialchars($message) . '</p>'
-            . '<p>' . htmlspecialchars($hint) . '</p>'
-            . '<p><a href="' . htmlspecialchars($searchUri) . '" rel="nofollow">'
-            . htmlspecialchars($this->translate('searchLimit.backToSearch')) . '</a></p>'
             . '</main></body></html>';
 
         return new HtmlResponse($html, $status, $headers);
