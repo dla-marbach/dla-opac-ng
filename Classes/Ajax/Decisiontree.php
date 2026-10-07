@@ -6,25 +6,21 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use TYPO3\CMS\Core\Http\Response;
+use Dla\DlaOpacNg\Service\SolrConnection;
 use TYPO3\CMS\Core\Http\JsonResponse;
 
 class Decisiontree implements MiddlewareInterface
 {
+    public function __construct(
+        private readonly SolrConnection $solrConnection = new SolrConnection()
+    ) {
+    }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if (!isset($request->getQueryParams()['q'], $request->getQueryParams()['p'], $request->getQueryParams()['decisiontree'])) {
             return $handler->handle($request);
         }
-
-        include_once 'EidSettings.php';
-
-        // Configuration options
-        $solr_select_url = $host . $core . '/select';
-
-        // Array of entity facts
-        $entity = [];
 
         // Get query string
         $queryParams = $request->getQueryParams();
@@ -42,53 +38,25 @@ class Decisiontree implements MiddlewareInterface
             return new JsonResponse([]);
         }
 
-        $fq = 'fq=NOT%20source%3A(AU%20OR%20MM)';
-
         if ($activeFacets) {
             $query = $query . ' AND ' . $activeFacets;
         }
 
-
-
-        // Get relations
-        $responseField1 = file_get_contents(
-            $solr_select_url . '?facet.field=' . $relationField1 . '&facet=on&facet.mincount=1&facet.prefix=' . urlencode($prefix) . '&' . $fq . '&q=' . urlencode($query) . '&rows=0',
-            FALSE,
-            stream_context_create([
-                'http' => [
-                    'method' => 'GET',
-                    'follow_location' => 0,
-                    'timeout' => 1.0
-                ]
-            ])
-        );
-
         $output = [];
 
-        // Parse JSON response
-        if ($responseField1 !== FALSE) {
-            $jsonField1 = json_decode($responseField1, TRUE);
-            $arrayField1 = $jsonField1['facet_counts']['facet_fields'][$relationField1] ?? [];
-            $output[] = $arrayField1;
-        }
-
-        if ($relationField2 !== '') {
-            $responseField2 = file_get_contents(
-                $solr_select_url . '?facet.field=' . $relationField2 . '&facet=on&facet.mincount=1&facet.prefix=' . urlencode($prefix) . '&' . $fq . '&q=' . urlencode($query) . '&rows=0',
-                FALSE,
-                stream_context_create([
-                    'http' => [
-                        'method' => 'GET',
-                        'follow_location' => 0,
-                        'timeout' => 1.0
-                    ]
-                ])
-            );
-
-            if ($responseField2 !== FALSE) {
-                $jsonField2 = json_decode($responseField2, TRUE);
-                $arrayField2 = $jsonField2['facet_counts']['facet_fields'][$relationField2] ?? [];
-                $output[] = $arrayField2;
+        // Get relations
+        foreach (array_filter([$relationField1, $relationField2], static fn(string $field): bool => $field !== '') as $relationField) {
+            $json = $this->solrConnection->request('select', [
+                'facet.field' => $relationField,
+                'facet' => 'on',
+                'facet.mincount' => 1,
+                'facet.prefix' => $prefix,
+                'fq' => 'NOT source:(AU OR MM)',
+                'q' => $query,
+                'rows' => 0,
+            ]);
+            if ($json !== null) {
+                $output[] = $json['facet_counts']['facet_fields'][$relationField] ?? [];
             }
         }
 

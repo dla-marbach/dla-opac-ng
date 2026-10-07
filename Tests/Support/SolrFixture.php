@@ -2,8 +2,8 @@
 
 namespace Dla\DlaOpacNg\Tests\Support;
 
+use Dla\DlaOpacNg\Service\SolrConnection;
 use Solarium\Client;
-use Solarium\Core\Client\Adapter\Curl;
 use Solarium\QueryType\Select\Result\Document;
 use Solarium\QueryType\Select\Result\Result;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -25,30 +25,21 @@ use TYPO3\CMS\Core\TypoScript\TypoScriptService;
  */
 class SolrFixture
 {
-    private static ?Client $client = null;
+    /**
+     * Richtet die Solr-Verbindung (Classes/Service/SolrConnection.php) auf den Mock-Solr-Server aus.
+     */
+    public static function useMockSolr(): void
+    {
+        putenv('SOLR_HOST=' . MockSolrServerProcess::start()->getBaseUrl());
+        putenv('SOLR_CORE=internformat');
+        putenv('SOLR_TIMEOUT=5');
+    }
 
     public static function client(): Client
     {
-        if (self::$client === null) {
-            $mockSolr = MockSolrServerProcess::start();
-            $url = parse_url($mockSolr->getBaseUrl());
+        self::useMockSolr();
 
-            $adapter = new Curl();
-            $adapter->setTimeout(5);
-            self::$client = new Client($adapter, new EventDispatcher(), [
-                'endpoint' => [
-                    'default' => [
-                        'host' => $url['host'],
-                        'port' => $url['port'],
-                        'path' => '/',
-                        'scheme' => $url['scheme'],
-                        'core' => 'internformat',
-                    ],
-                ],
-            ]);
-        }
-
-        return self::$client;
+        return (new SolrConnection())->getClient();
     }
 
     /**
@@ -80,8 +71,8 @@ class SolrFixture
     /**
      * Liefert die "settings"-Variable, wie sie der Controller an die Templates übergibt: die
      * echte Konfiguration aus Configuration/TypoScript/setup.ts (plugin.tx_find.settings, u.a.
-     * queryFields für dla:solveQuery), nur mit "connection" auf den Mock-Solr-Server umgebogen.
-     * Damit laufen die Unterabfragen der Partials (dla:countFromSolr, dla:fromSolr) gegen die Cassetten.
+     * queryFields für dla:solveQuery). Zusätzlich wird die Solr-Verbindung auf den Mock-Solr-Server umgebogen,
+     * damit die Unterabfragen der Partials (dla:countFromSolr, dla:fromSolr) gegen die Cassetten laufen.
      */
     public static function settings(): array
     {
@@ -93,18 +84,9 @@ class SolrFixture
             $typoScriptSettings = $plain['plugin']['tx_find']['settings'];
         }
 
-        $url = parse_url(MockSolrServerProcess::start()->getBaseUrl());
+        self::useMockSolr();
 
-        return array_replace($typoScriptSettings, [
-            'connection' => [
-                'host' => $url['host'],
-                'port' => $url['port'],
-                'path' => '/',
-                'timeout' => 5,
-                'scheme' => $url['scheme'],
-                'core' => 'internformat',
-            ],
-        ]);
+        return $typoScriptSettings;
     }
 
     /**

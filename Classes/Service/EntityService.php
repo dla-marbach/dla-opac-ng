@@ -6,6 +6,11 @@ class EntityService
 {
     private const MAX_ENTITIES_PER_REQUEST = 200;
 
+    public function __construct(
+        private readonly SolrConnection $solrConnection = new SolrConnection()
+    ) {
+    }
+
     private function composeTitle(array $doc): string
     {
         $display = !empty($doc['display']) ? htmlspecialchars((string)$doc['display']) : '';
@@ -45,32 +50,13 @@ class EntityService
 
     public function getEntity($id): array
     {
-
-        $host = getenv('SOLR_HOST');
-        $core = getenv('SOLR_CORE');
-
-        // Configuration options
-        $solr_select_url = $host . $core . '/select';
-
         // Array of entity facts
         $entity = [];
 
         // Get Solr record
-        $response = file_get_contents(
-            $solr_select_url . '?q=' . urlencode('id:(' . $id . ')') . '&rows=1',
-            FALSE,
-            stream_context_create([
-                'http' => [
-                    'method' => 'GET',
-                    'follow_location' => 0,
-                    'timeout' => 1.0
-                ]
-            ])
-        );
+        $json = $this->solrConnection->request('select', ['q' => 'id:(' . $id . ')', 'rows' => 1]);
 
-        // Parse JSON response
-        if ($response !== FALSE) {
-            $json = json_decode($response, TRUE);
+        if ($json !== null) {
             $responseDocument = $json['response']['docs'][0];
             $entity = [
                 'id' => htmlspecialchars($responseDocument['id']),
@@ -86,8 +72,6 @@ class EntityService
 
     public function getEntities(String $query): array
     {
-        $host = getenv('SOLR_HOST');
-        $core = getenv('SOLR_CORE');
         $entities = [];
 
         $ids = array_filter(array_map('trim', explode(',', $query)), static fn(string $id): bool => $id !== '');
@@ -99,25 +83,10 @@ class EntityService
         $escapedIds = array_map([$this, 'escapeSolrTerm'], $ids);
         $solrIdQuery = 'id:("' . implode('" OR "', $escapedIds) . '")';
 
-        // Configuration options
-        $solr_select_url = $host . $core . '/select';
+        // Get Solr records
+        $json = $this->solrConnection->request('select', ['q' => $solrIdQuery, 'rows' => count($ids)]);
 
-        // Get Solr record
-        $response = file_get_contents(
-            $solr_select_url . '?q=' . urlencode($solrIdQuery) . '&rows=' . count($ids),
-            FALSE,
-            stream_context_create([
-                'http' => [
-                    'method' => 'GET',
-                    'follow_location' => 0,
-                    'timeout' => 1.0
-                ]
-            ])
-        );
-
-        // Parse JSON response
-        if ($response !== FALSE) {
-            $json = json_decode($response, TRUE);
+        if ($json !== null) {
             foreach ($json['response']['docs'] as $key => $doc) {
                 $title = $this->composeTitle($doc);
 

@@ -27,16 +27,14 @@ namespace Dla\Find\Service;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+use Dla\DlaOpacNg\Service\SolrConnection;
 use Solarium\Client;
-use Solarium\Core\Client\Adapter\Curl;
-use Solarium\Core\Client\Adapter\Http;
 use Solarium\Exception\HttpException;
 use Solarium\QueryType\Select\Query\Query;
 use Dla\Find\Utility\FrontendUtility;
 use Dla\Find\Utility\LoggerUtility;
 use Dla\Find\Utility\SettingsUtility;
-use Dla\Find\Utility\UpgradeUtility;
-use Symfony\Component\EventDispatcher\EventDispatcher;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
@@ -56,32 +54,7 @@ class SolrServiceProvider extends AbstractServiceProvider
 
     public function connect()
     {
-        $currentConnectionSettings = $this->settings['connections'][$this->connectionName]['options'];
-        // Upgrading to Solarium >= 5
-        if (!array_key_exists('core', $currentConnectionSettings)) {
-            $currentConnectionSettings = UpgradeUtility::handleSolariumUpgrade($currentConnectionSettings);
-        }
-
-        $connectionSettings = [
-            'endpoint' => [
-                $this->connectionName => [
-                    'host' => $currentConnectionSettings['host'],
-                    'port' => (int) $currentConnectionSettings['port'],
-                    'path' => $currentConnectionSettings['path'],
-                    'scheme' => $currentConnectionSettings['scheme'],
-                    'core' => $currentConnectionSettings['core'],
-                ],
-            ],
-        ];
-
-        // create an HTTP adapter instance
-        $adapter = new Curl();
-        $eventDispatcher = new EventDispatcher();
-        $adapter->setTimeout((int) $currentConnectionSettings['timeout']);
-        // create a client instance
-        $client = new Client($adapter, $eventDispatcher, $connectionSettings);
-
-        $this->setConnection($client);
+        $this->setConnection(GeneralUtility::makeInstance(SolrConnection::class)->getClient());
         $this->testConnection();
     }
 
