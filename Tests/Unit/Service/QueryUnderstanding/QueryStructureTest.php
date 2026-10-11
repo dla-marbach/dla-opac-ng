@@ -74,6 +74,16 @@ class QueryStructureTest extends UnitTestCase
     /**
      * @test
      */
+    public function keepsOrderOfMediaTypesFromModelAnswer(): void
+    {
+        $structure = QueryStructure::fromArray(['mediaTypes' => ['Video', 'Audio', 'Video']]);
+
+        self::assertSame(['Video', 'Audio'], $structure->mediaTypes);
+    }
+
+    /**
+     * @test
+     */
     public function allowsWildcardOnlyAtEndOfSingleWords(): void
     {
         $structure = QueryStructure::fromArray([

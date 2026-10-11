@@ -39,17 +39,26 @@ final class QueryUnderstandingConfiguration
     public static function fromEnvironment(): self
     {
         $timeout = (float)getenv('LLM_TIMEOUT');
-        $maxConcurrent = getenv('LLM_MAX_CONCURRENT');
-        $rateLimit = getenv('LLM_RATE_LIMIT');
 
         return new self(
             rtrim(trim((string)getenv('LLM_BASE_URL')), '/'),
             trim((string)getenv('LLM_MODEL')) ?: self::DEFAULT_MODEL,
             trim((string)getenv('LLM_API_KEY')),
             $timeout > 0 ? $timeout : self::DEFAULT_TIMEOUT,
-            $maxConcurrent !== false && trim($maxConcurrent) !== '' ? max(1, (int)$maxConcurrent) : self::DEFAULT_MAX_CONCURRENT,
-            $rateLimit !== false && trim($rateLimit) !== '' ? max(0, (int)$rateLimit) : self::DEFAULT_RATE_LIMIT,
+            max(1, self::integerFromEnvironment('LLM_MAX_CONCURRENT') ?? self::DEFAULT_MAX_CONCURRENT),
+            self::integerFromEnvironment('LLM_RATE_LIMIT') ?? self::DEFAULT_RATE_LIMIT,
         );
+    }
+
+    /**
+     * Nicht-negative Ganzzahl aus einer Umgebungsvariablen; null, wenn nicht gesetzt oder ungültig
+     * (z.B. "ten"), damit dann der sichere Standardwert gilt statt einer abgeschalteten Begrenzung.
+     */
+    private static function integerFromEnvironment(string $name): ?int
+    {
+        $value = trim((string)getenv($name));
+
+        return ctype_digit($value) ? (int)$value : null;
     }
 
     public function isEnabled(): bool

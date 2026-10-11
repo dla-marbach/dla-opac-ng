@@ -29,6 +29,37 @@ class SearchArgumentsBuilder
 
     private const MIN_DATE = 1000;
 
+    /**
+     * Felder der Facetten aus plugin.tx_find.settings.facets (Facetten-ID => Solr-Feld), mit denen sich
+     * beibehaltene Facetten einer Anfrage für die Trefferzählung in Filter-Queries übersetzen lassen.
+     */
+    private const FACET_FIELDS = [
+        'Personen' => 'filterAuthority_mv',
+        'filterAuthorityRelation_mv' => 'filterAuthorityRelation_mv',
+        'filterAuthorityRole_mv' => 'filterAuthorityRole_mv',
+        'Medientypen' => 'filterType_mv',
+        'FormUndInhalt' => 'filterFormContent_mv',
+        'Medium' => 'filterMedium_mv',
+        'Thema' => 'filterSubject_mv',
+        'Sprache' => 'filterLanguage_mv',
+        'filterLanguageType_mv' => 'filterLanguageType_mv',
+        'Ort' => 'filterLocation_mv',
+        'filterLocationType_mv' => 'filterLocationType_mv',
+        'Sammlung' => 'filterCollection_mv',
+        'Datenbestand' => 'filterSource',
+        'Bibliographie' => 'filterBibliography_mv',
+    ];
+
+    /**
+     * Facetten mit facettype = multi_select_facet: ausgewählte Werte werden ODER-verknüpft.
+     */
+    private const MULTI_SELECT_FACET_FIELDS = [
+        'MedientypenHidden' => 'filterType_mv',
+        'DatenbestandHidden' => 'filterSource',
+    ];
+
+    private const LABEL_MISSING = 'nicht bestimmt';
+
     public function __construct(
         private readonly VocabularyResolver $resolver = new VocabularyResolver()
     ) {
@@ -95,13 +126,53 @@ class SearchArgumentsBuilder
 
         $dateRange = null;
         if ($structure->dateFrom !== null || $structure->dateTo !== null) {
-            $dateRange = [
-                'from' => $structure->dateFrom ?? self::MIN_DATE,
-                'to' => $structure->dateTo ?? (int)date('Y'),
-            ];
+            $from = $structure->dateFrom ?? self::MIN_DATE;
+            // Bei offenem Ende bis heute, aber nie vor dem Anfangsjahr (z.B. "ab 2030")
+            $dateRange = ['from' => $from, 'to' => $structure->dateTo ?? max($from, (int)date('Y'))];
         }
 
         return new QueryInterpretation($facets, $textParts, $dateRange);
+    }
+
+    /**
+     * Übersetzt Facetten aus den Such-Argumenten (tx_find_find[facet][ID][Wert] = 1 bzw. "not") in Filter-Queries,
+     * wie sie das Such-Plugin erzeugt. Liefert null, sobald eine Facette nicht sicher übersetzt werden kann
+     * (unbekannte ID, "nicht bestimmt", vordefinierte Facetten-Queries); dann ist keine Trefferzählung möglich.
+     *
+     * @return list<string>|null
+     */
+    public static function filterQueriesForFacets(array $facets): ?array
+    {
+        $filterQueries = [];
+        foreach ($facets as $facetId => $terms) {
+            if (!is_array($terms)) {
+                return null;
+            }
+            $facetId = (string)$facetId;
+            if (isset(self::MULTI_SELECT_FACET_FIELDS[$facetId])) {
+                $values = array_map(static fn($term): string => VocabularyResolver::quote((string)$term), array_keys($terms));
+                if ($values !== []) {
+                    $filterQueries[] = self::MULTI_SELECT_FACET_FIELDS[$facetId] . ':(' . implode(' OR ', $values) . ')';
+                }
+                continue;
+            }
+
+            foreach ($terms as $term => $status) {
+                $term = (string)$term;
+                if ($facetId === self::FACET_DIGITAL) {
+                    $filterQuery = 'filterDigital:true';
+                } elseif ($facetId === 'Zeit' && preg_match('/^RANGE (-?\d+|\*) TO (-?\d+|\*)$/', $term, $matches)) {
+                    $filterQuery = 'filterDateRange_mv:[' . $matches[1] . ' TO ' . $matches[2] . ']';
+                } elseif (isset(self::FACET_FIELDS[$facetId]) && $term !== self::LABEL_MISSING) {
+                    $filterQuery = self::FACET_FIELDS[$facetId] . ':(' . VocabularyResolver::quote($term) . ')';
+                } else {
+                    return null;
+                }
+                $filterQueries[] = ((string)$status === 'not' ? 'NOT ' : '') . $filterQuery;
+            }
+        }
+
+        return $filterQueries;
     }
 
     /**

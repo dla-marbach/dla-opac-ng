@@ -135,6 +135,44 @@ class SearchArgumentsBuilderTest extends UnitTestCase
             ['from' => 1000, 'to' => 1799],
             $builder->build(QueryStructure::fromArray(['dateTo' => 1799]))->dateRange
         );
+        self::assertSame(
+            ['from' => 2090, 'to' => 2090],
+            $builder->build(QueryStructure::fromArray(['dateFrom' => 2090]))->dateRange,
+            'Offenes Ende darf nicht vor dem Anfangsjahr liegen'
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function translatesFacetsOfTheSearchPluginIntoFilterQueries(): void
+    {
+        self::assertSame([
+            'filterType_mv:("Handschriften")',
+            'NOT filterLanguage_mv:("Deutsch")',
+            'filterSource:("Werke" OR "Personen")',
+            'filterDateRange_mv:[1930 TO 1939]',
+            'filterDigital:true',
+            'filterAuthorityRelation_mv:("Hesse, Hermann (1877-1962)␝Von")',
+        ], SearchArgumentsBuilder::filterQueriesForFacets([
+            'Medientypen' => ['Handschriften' => '1'],
+            'Sprache' => ['Deutsch' => 'not'],
+            'DatenbestandHidden' => ['Werke' => '1', 'Personen' => '1'],
+            'Zeit' => ['RANGE 1930 TO 1939' => '1'],
+            'Digital' => ['true' => '1'],
+            'filterAuthorityRelation_mv' => ['Hesse, Hermann (1877-1962)␝Von' => '1'],
+        ]));
+        self::assertSame([], SearchArgumentsBuilder::filterQueriesForFacets([]));
+    }
+
+    /**
+     * @test
+     */
+    public function cannotTranslateUnknownOrSpecialFacets(): void
+    {
+        self::assertNull(SearchArgumentsBuilder::filterQueriesForFacets(['NeuImKatalog' => ['Woche' => '1']]));
+        self::assertNull(SearchArgumentsBuilder::filterQueriesForFacets(['Thema' => ['nicht bestimmt' => '1']]));
+        self::assertNull(SearchArgumentsBuilder::filterQueriesForFacets(['Medientypen' => 'kaputt']));
     }
 
     /**

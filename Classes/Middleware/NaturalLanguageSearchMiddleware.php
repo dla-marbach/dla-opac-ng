@@ -6,6 +6,7 @@ namespace Dla\DlaOpacNg\Middleware;
 
 use Dla\DlaOpacNg\Service\QueryUnderstanding\ConcurrencyLimiter;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryInterpretation;
+use Dla\DlaOpacNg\Service\QueryUnderstanding\SearchArgumentsBuilder;
 use Dla\DlaOpacNg\Service\QueryUnderstandingService;
 use Dla\DlaOpacNg\Utility\ClientIpUtility;
 use Psr\Http\Message\ResponseInterface;
@@ -84,12 +85,20 @@ class NaturalLanguageSearchMiddleware implements MiddlewareInterface, LoggerAwar
         $rawQuestion = $findArguments['q']['default'] ?? '';
         $question = QueryUnderstandingService::normalizeQuestion(is_string($rawQuestion) ? $rawQuestion : '');
 
-        $interpretation = $question !== '' ? $this->interpret($question, $request) : null;
+        // Facetten der Anfrage (z.B. gewählter Medientyp-Reiter) bleiben in der Weiterleitung erhalten und
+        // müssen deshalb auch beim Zählen für das schrittweise Lockern berücksichtigt werden.
+        $retainedFacets = $findArguments['facet'] ?? [];
+        $retainedFilterQueries = is_array($retainedFacets) ? SearchArgumentsBuilder::filterQueriesForFacets($retainedFacets) : [];
+
+        $interpretation = $question !== '' ? $this->interpret($question, $request, $retainedFilterQueries) : null;
 
         return $this->createRedirect($request, $question, $interpretation);
     }
 
-    private function interpret(string $question, ServerRequestInterface $request): ?QueryInterpretation
+    /**
+     * @param list<string>|null $retainedFilterQueries null, wenn beibehaltene Facetten nicht übersetzbar sind
+     */
+    private function interpret(string $question, ServerRequestInterface $request, ?array $retainedFilterQueries): ?QueryInterpretation
     {
         if (!$this->service->isEnabled()) {
             return null;
@@ -114,7 +123,7 @@ class NaturalLanguageSearchMiddleware implements MiddlewareInterface, LoggerAwar
             $this->concurrencyLimiter->release();
         }
 
-        return $structure === null ? null : $this->service->interpret($structure);
+        return $structure === null ? null : $this->service->interpret($structure, $retainedFilterQueries);
     }
 
     private function createRedirect(

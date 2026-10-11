@@ -12,6 +12,7 @@ use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryUnderstandingConfiguration;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\SearchArgumentsBuilder;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 
@@ -56,6 +57,15 @@ class QueryUnderstandingService implements LoggerAwareInterface
         $this->prompt = $prompt ?? new QueryPrompt();
         $this->builder = $builder ?? new SearchArgumentsBuilder();
         $this->logger = new NullLogger();
+    }
+
+    /**
+     * Gibt den Logger auch an den LLM-Client weiter, damit dessen Warnungen (Timeout, HTTP-Fehler) im Log landen.
+     */
+    public function setLogger(LoggerInterface $logger): void
+    {
+        $this->logger = $logger;
+        $this->llmClient->setLogger($logger);
     }
 
     public function isEnabled(): bool
@@ -122,13 +132,20 @@ class QueryUnderstandingService implements LoggerAwareInterface
 
     /**
      * Gleicht die Zerlegung mit dem Index ab und lässt weiche Bestandteile weg, solange es keine Treffer gibt.
+     *
+     * @param list<string>|null $additionalFilterQueries Filter, die in der Suche zusätzlich gelten (z.B. aus der
+     *        Anfrage übernommene Facetten). null: unbekannte Filter, dann wird nichts weggelassen, weil sich die
+     *        Trefferzahl nicht zuverlässig ermitteln lässt.
      */
-    public function interpret(QueryStructure $structure): QueryInterpretation
+    public function interpret(QueryStructure $structure, ?array $additionalFilterQueries = []): QueryInterpretation
     {
         $interpretation = $this->builder->build($structure);
+        if ($additionalFilterQueries === null) {
+            return $interpretation;
+        }
 
         foreach (QueryInterpretation::RELAXATION_ORDER as $kind) {
-            if (!$interpretation->hasPart($kind) || $this->countResults($interpretation) !== 0) {
+            if (!$interpretation->hasPart($kind) || $this->countResults($interpretation, $additionalFilterQueries) !== 0) {
                 continue;
             }
             $interpretation = $interpretation->without($kind);
@@ -139,13 +156,18 @@ class QueryUnderstandingService implements LoggerAwareInterface
 
     /**
      * Trefferzahl einer Interpretation; null, wenn Solr nicht erreichbar ist (dann wird nichts weggelassen).
+     *
+     * @param list<string> $additionalFilterQueries
      */
-    private function countResults(QueryInterpretation $interpretation): ?int
+    private function countResults(QueryInterpretation $interpretation, array $additionalFilterQueries): ?int
     {
         $resolver = $this->builder->getResolver();
         $queryString = $interpretation->getQueryString();
 
-        return $resolver->count($queryString !== '' ? $queryString : '*:*', $interpretation->getFilterQueries());
+        return $resolver->count(
+            $queryString !== '' ? $queryString : '*:*',
+            [...$additionalFilterQueries, ...$interpretation->getFilterQueries()]
+        );
     }
 
     private function cacheIdentifier(string $question): string

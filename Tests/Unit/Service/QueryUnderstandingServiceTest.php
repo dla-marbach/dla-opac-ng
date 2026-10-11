@@ -170,6 +170,63 @@ class QueryUnderstandingServiceTest extends UnitTestCase
     /**
      * @test
      */
+    public function interpretCountsWithAdditionalFilterQueries(): void
+    {
+        // Ohne den beibehaltenen Filter gäbe es Treffer, mit ihm erst nach dem Weglassen des Themas
+        $resolver = new FakeVocabularyResolver(
+            persons: ['Hesse' => ['id' => 'PE1', 'label' => 'Hesse, Hermann (1877-1962)']],
+            counter: static fn(string $query, array $filterQueries): int =>
+                in_array('filterCollection_mv:("X")', $filterQueries, true) && str_contains($query, 'exil') ? 0 : 5,
+        );
+        $service = $this->createService($this->createLlmClient(self::ANSWER), $resolver);
+
+        $interpretation = $service->interpret(QueryStructure::fromArray(self::ANSWER), ['filterCollection_mv:("X")']);
+
+        self::assertSame(['Atlantis', 'Exil'], $interpretation->dropped);
+        self::assertContains('filterCollection_mv:("X")', $resolver->countRequests[0]['filterQueries']);
+    }
+
+    /**
+     * @test
+     */
+    public function interpretDropsNothingWhenAdditionalFiltersAreUnknown(): void
+    {
+        $resolver = new FakeVocabularyResolver(counter: static fn(): int => 0);
+        $service = $this->createService($this->createLlmClient(self::ANSWER), $resolver);
+
+        $interpretation = $service->interpret(QueryStructure::fromArray(self::ANSWER), null);
+
+        self::assertSame([], $interpretation->dropped);
+        self::assertSame([], $resolver->countRequests);
+    }
+
+    /**
+     * @test
+     */
+    public function setLoggerIsPassedToLlmClient(): void
+    {
+        $logger = new class () extends \Psr\Log\AbstractLogger {
+            public array $messages = [];
+
+            public function log($level, string|\Stringable $message, array $context = []): void
+            {
+                $this->messages[] = $level . ': ' . $message;
+            }
+        };
+        $configuration = new QueryUnderstandingConfiguration(baseUrl: 'http://127.0.0.1:1/v1', timeout: 1.0);
+        $service = new QueryUnderstandingService(
+            configuration: $configuration,
+            builder: new SearchArgumentsBuilder(new FakeVocabularyResolver()),
+        );
+        $service->setLogger($logger);
+
+        self::assertNull($service->analyze('Briefe von Hesse'));
+        self::assertContains('warning: LLM-Anfrage fehlgeschlagen', $logger->messages);
+    }
+
+    /**
+     * @test
+     */
     public function interpretDropsNothingWhenSolrIsUnavailable(): void
     {
         $resolver = new FakeVocabularyResolver(counter: static fn(): ?int => null);

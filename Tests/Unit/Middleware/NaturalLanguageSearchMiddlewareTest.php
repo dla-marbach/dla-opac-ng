@@ -59,6 +59,7 @@ class NaturalLanguageSearchMiddlewareTest extends UnitTestCase
         int $rateLimit = 10,
         int $slots = 2,
         ?array $answer = self::ANSWER,
+        ?\Closure $counter = null,
     ): NaturalLanguageSearchMiddleware {
         $configuration = new QueryUnderstandingConfiguration(
             baseUrl: $baseUrl,
@@ -77,6 +78,7 @@ class NaturalLanguageSearchMiddlewareTest extends UnitTestCase
             llmClient: $llmClient,
             builder: new SearchArgumentsBuilder(new FakeVocabularyResolver(
                 persons: ['Hesse' => ['id' => 'PE1', 'label' => 'Hesse, Hermann (1877-1962)']],
+                counter: $counter,
             )),
             cache: $this->cache,
         );
@@ -166,6 +168,52 @@ class NaturalLanguageSearchMiddlewareTest extends UnitTestCase
             'nlstatus' => 'ok',
         ], $arguments);
         self::assertSame('noindex, nofollow', $response->getHeaderLine('X-Robots-Tag'));
+    }
+
+    /**
+     * @test
+     */
+    public function relaxesWithRetainedFacetsOfTheRequest(): void
+    {
+        $answer = ['topics' => [['term' => 'Exil', 'variants' => []]]] + self::ANSWER;
+        // Treffer nur ohne das Thema, sobald der beibehaltene Sprachfilter mitgezählt wird
+        $counter = static fn(string $query, array $filterQueries): int =>
+            in_array('filterLanguage_mv:("Deutsch")', $filterQueries, true) && $query === 'exil' ? 0 : 4;
+
+        $response = $this->createMiddleware(answer: $answer, counter: $counter)->process(
+            $this->createRequest([
+                'nl' => '1',
+                'q' => ['default' => 'Handschriften über Exil an Hesse'],
+                'facet' => ['Sprache' => ['Deutsch' => '1']],
+            ]),
+            $this->createHandler(false)
+        );
+
+        $arguments = $this->redirectArguments($response);
+        self::assertSame('relaxed', $arguments['nlstatus']);
+        self::assertSame('Exil', $arguments['nldropped']);
+        self::assertArrayNotHasKey('q', $arguments);
+    }
+
+    /**
+     * @test
+     */
+    public function doesNotRelaxWhenRetainedFacetsCannotBeCounted(): void
+    {
+        $answer = ['topics' => [['term' => 'Exil', 'variants' => []]]] + self::ANSWER;
+
+        $response = $this->createMiddleware(answer: $answer, counter: static fn(): int => 0)->process(
+            $this->createRequest([
+                'nl' => '1',
+                'q' => ['default' => 'Handschriften über Exil an Hesse'],
+                'facet' => ['NeuImKatalog' => ['Woche' => '1']],
+            ]),
+            $this->createHandler(false)
+        );
+
+        $arguments = $this->redirectArguments($response);
+        self::assertSame('ok', $arguments['nlstatus']);
+        self::assertSame('exil', $arguments['q']['default']);
     }
 
     /**

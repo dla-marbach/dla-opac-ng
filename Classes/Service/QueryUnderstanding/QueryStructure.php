@@ -79,10 +79,11 @@ final class QueryStructure
             $topics[] = ['term' => $term, 'variants' => array_values(array_unique($variants))];
         }
 
-        $mediaTypes = array_values(array_intersect(
-            QueryPrompt::MEDIA_TYPES,
-            array_map('strval', array_filter(self::listOf($data['mediaTypes'] ?? null, 7), 'is_string'))
-        ));
+        // Reihenfolge der Modellantwort beibehalten (der SearchArgumentsBuilder übernimmt den ersten Medientyp).
+        $mediaTypes = array_values(array_unique(array_filter(
+            self::listOf($data['mediaTypes'] ?? null, 7),
+            static fn($mediaType): bool => in_array($mediaType, QueryPrompt::MEDIA_TYPES, true)
+        )));
 
         $dateFrom = self::year($data['dateFrom'] ?? null);
         $dateTo = self::year($data['dateTo'] ?? null);

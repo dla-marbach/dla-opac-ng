@@ -7,8 +7,8 @@ namespace Dla\DlaOpacNg\Service\QueryUnderstanding;
 /**
  * Begrenzt die Anzahl gleichzeitiger LLM-Anfragen je Webserver über Dateisperren (flock).
  *
- * Es wird nie gewartet: Ist kein Platz frei, liefert acquire() null und der Aufrufer fällt sofort
- * auf die normale Suche zurück. Sperren werden beim Beenden des PHP-Prozesses automatisch freigegeben.
+ * Es wird nie gewartet: Ist kein Platz frei (oder das Sperrverzeichnis nicht beschreibbar), liefert
+ * acquire() false und der Aufrufer fällt sofort auf die normale Suche zurück. Sperren werden beim Beenden des PHP-Prozesses automatisch freigegeben.
  */
 class ConcurrencyLimiter
 {
@@ -30,8 +30,8 @@ class ConcurrencyLimiter
             return true;
         }
         if (!is_dir($this->lockDirectory) && !@mkdir($this->lockDirectory, 0775, true) && !is_dir($this->lockDirectory)) {
-            // Ohne Sperrverzeichnis nicht blockieren, sondern ohne Begrenzung fortfahren.
-            return true;
+            // Ohne Sperrverzeichnis lässt sich die Last nicht begrenzen: dann lieber normal suchen.
+            return false;
         }
 
         for ($slot = 0; $slot < max(1, $this->slots); $slot++) {
