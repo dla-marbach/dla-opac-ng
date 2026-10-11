@@ -87,6 +87,68 @@ tasks:
       - ddev exec vendor/bin/typo3 dla_opac_ng:import -t classification -f systematik.tsv -p 6
       - ddev exec vendor/bin/typo3 dla_opac_ng:import -t collection -f tektonik.tsv -p 6
 
+  llm:
+    desc: lokalen LLM-Dienst (Ollama in Docker) für die natürlichsprachige Suche starten und Modell laden
+    vars:
+      MODEL: '{{default "qwen2.5:3b" .MODEL}}'
+    cmds:
+      - |
+        if docker container inspect ollama >/dev/null 2>&1; then
+          docker start ollama >/dev/null
+        else
+          docker run -d --name ollama --restart unless-stopped \
+            -p 127.0.0.1:11434:11434 \
+            -v ollama:/root/.ollama \
+            -e OLLAMA_KEEP_ALIVE=24h \
+            -e OLLAMA_NUM_PARALLEL=2 \
+            -e OLLAMA_CONTEXT_LENGTH=8192 \
+            ollama/ollama
+        fi
+      - |
+        for i in $(seq 1 60); do
+          curl -sf http://127.0.0.1:11434/api/version >/dev/null && break
+          sleep 1
+        done
+        curl -sf http://127.0.0.1:11434/api/version
+      - docker exec ollama ollama pull {{.MODEL}}
+      - echo "LLM-Dienst läuft. In .ddev/.env LLM_MODEL={{.MODEL}} setzen, dann 'task llm:test' und 'task cache'."
+
+  llm:test:
+    desc: natürlichsprachige Suche gegen den lokalen LLM-Dienst testen (strukturierte JSON-Ausgabe)
+    vars:
+      MODEL: '{{default "qwen2.5:3b" .MODEL}}'
+      QUESTION: '{{default "Briefe von Hesse an Thomas Mann aus den 1930er Jahren über das Exil" .QUESTION}}'
+    cmds:
+      - |
+        curl -sS http://127.0.0.1:11434/v1/chat/completions \
+          -H 'Content-Type: application/json' \
+          -d @- <<JSON | jq -r '.choices[0].message.content' | jq .
+        {
+          "model": "{{.MODEL}}",
+          "temperature": 0,
+          "messages": [
+            {"role": "system", "content": $(jq -Rs . < Resources/Private/QueryUnderstanding/system-prompt.md)},
+            {"role": "user", "content": "{{.QUESTION}}"}
+          ],
+          "response_format": {
+            "type": "json_schema",
+            "json_schema": {
+              "name": "catalog_query",
+              "strict": true,
+              "schema": $(php -r 'require "Classes/Service/QueryUnderstanding/QueryPrompt.php"; echo json_encode(\Dla\DlaOpacNg\Service\QueryUnderstanding\QueryPrompt::getJsonSchema());')
+            }
+          }
+        }
+        JSON
+    preconditions:
+      - command -v jq
+      - command -v php
+
+  llm:stop:
+    desc: lokalen LLM-Dienst stoppen
+    cmds:
+      - docker stop ollama
+
   cache:
     dir: t3example
     desc: lösche den TYPO3-Cache, um Code-Änderungen wirksam zu machen

@@ -1,0 +1,19 @@
+{
+    "Briefe von Hesse an Thomas Mann aus den 1930er Jahren über das Exil": {
+        "text": "",
+        "persons": [
+            {"name": "Hesse", "relation": "Von"},
+            {"name": "Thomas Mann", "relation": "An"}
+        ],
+        "topics": [
+            {"term": "Exil", "variants": ["Exil*", "Emigration"]}
+        ],
+        "mediaTypes": ["Handschriften"],
+        "formContent": ["Brief"],
+        "languages": [],
+        "places": [],
+        "dateFrom": 1930,
+        "dateTo": 1939,
+        "digitalOnly": false
+    }
+}

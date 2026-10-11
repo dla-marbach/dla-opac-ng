@@ -1,0 +1,107 @@
+[
+    {
+        "question": "Briefe von Hesse an Thomas Mann aus den 1930er Jahren über das Exil",
+        "answer": {
+            "text": "",
+            "persons": [
+                {"name": "Hesse", "relation": "Von"},
+                {"name": "Thomas Mann", "relation": "An"}
+            ],
+            "topics": [
+                {"term": "Exil", "variants": ["Exil*", "Emigration", "Emigrant*"]}
+            ],
+            "mediaTypes": ["Handschriften"],
+            "formContent": ["Brief"],
+            "languages": [],
+            "places": [],
+            "dateFrom": 1930,
+            "dateTo": 1939,
+            "digitalOnly": false
+        }
+    },
+    {
+        "question": "Gibt es Tonaufnahmen von Lesungen Ingeborg Bachmanns?",
+        "answer": {
+            "text": "",
+            "persons": [
+                {"name": "Ingeborg Bachmann", "relation": "Von"}
+            ],
+            "topics": [],
+            "mediaTypes": ["Audio"],
+            "formContent": ["Lesung"],
+            "languages": [],
+            "places": [],
+            "dateFrom": null,
+            "dateTo": null,
+            "digitalOnly": false
+        }
+    },
+    {
+        "question": "Sekundärliteratur über Paul Celan nach 1970",
+        "answer": {
+            "text": "",
+            "persons": [
+                {"name": "Paul Celan", "relation": "Über"}
+            ],
+            "topics": [],
+            "mediaTypes": ["Gedrucktes"],
+            "formContent": [],
+            "languages": [],
+            "places": [],
+            "dateFrom": 1970,
+            "dateTo": null,
+            "digitalOnly": false
+        }
+    },
+    {
+        "question": "digitalisierte Fotos aus Marbach",
+        "answer": {
+            "text": "",
+            "persons": [],
+            "topics": [],
+            "mediaTypes": ["Bilder und Objekte"],
+            "formContent": [],
+            "languages": [],
+            "places": ["Marbach"],
+            "dateFrom": null,
+            "dateTo": null,
+            "digitalOnly": true
+        }
+    },
+    {
+        "question": "englische Übersetzungen von Kafkas Der Process",
+        "answer": {
+            "text": "Der Process",
+            "persons": [
+                {"name": "Kafka", "relation": "Von"}
+            ],
+            "topics": [],
+            "mediaTypes": [],
+            "formContent": ["Übersetzung"],
+            "languages": ["Englisch"],
+            "places": [],
+            "dateFrom": null,
+            "dateTo": null,
+            "digitalOnly": false
+        }
+    },
+    {
+        "question": "Bücher aus der Bibliothek von Siegfried Kracauer zum Thema Film",
+        "answer": {
+            "text": "",
+            "persons": [
+                {"name": "Siegfried Kracauer", "relation": "Unter"}
+            ],
+            "topics": [
+                {"term": "Film", "variants": ["Film*", "Kino"]}
+            ],
+            "mediaTypes": ["Gedrucktes"],
+            "formContent": [],
+            "languages": [],
+            "places": [],
+            "dateFrom": null,
+            "dateTo": null,
+            "digitalOnly": false
+        }
+    }
+]

@@ -180,6 +180,17 @@ Tiefes Blättern und beliebig viele Facettenfilter erzeugen sehr teure Solr-Anfr
 
 Der Wert `0` schaltet die jeweilige Grenze ab. Wird eine Grenze überschritten, wird keine Solr-Anfrage abgesetzt, sondern eine schlanke Fehlerseite mit HTTP 400 ausgeliefert. Die Paginierung zeigt keine Seiten jenseits der Grenze an und weist stattdessen darauf hin, die Suche einzugrenzen. Ergebnisseiten mit Filtern oder ab Seite 2 erhalten `<meta name="robots" content="noindex, nofollow">`.
 
+## Natürlichsprachige Suche (Proof of Concept)
+
+Mit „Als Frage verstehen (KI-Suche, Beta)“ zerlegt ein lokal betriebenes Sprachmodell eine Frage wie „Briefe von Hesse an Thomas Mann aus den 1930er Jahren“ in Suchbegriffe und Facettenfilter. Die Funktion ist nur aktiv, wenn die Umgebungsvariable `LLM_BASE_URL` gesetzt ist.
+
+```
+task llm        # LLM-Dienst (Ollama) lokal in Docker starten und Modell laden
+task llm:test   # strukturierte Ausgabe des Modells testen
+```
+
+Funktionsweise, Installation des LLM-Dienstes auf einem Server, Konfiguration und Fehlerbehebung: [docs/natuerlichsprachige-suche.md](docs/natuerlichsprachige-suche.md)
+
 ## Datenbankdump für TYPO3-Grundkonfiguration
 
 Bei der Installation (task install) wird ein Datenbank-Dump [.devfiles/init.sql](.devfiles/init.sql) eingespielt. Bei einer neuen TYPO3-Version muss dieser Dump ggf. manuell neu erstellt werden.

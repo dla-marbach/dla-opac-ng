@@ -57,3 +57,12 @@ $GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'] = array_mer
         '^tx_dlaopacng', // alle Parameter, die mit tx_dlaopacng beginnen
     ]
 );
+
+// Zwischenspeicher der natürlichsprachigen Suche: Zerlegungen je Frage und Zähler für das Rate Limit.
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][\Dla\DlaOpacNg\Service\QueryUnderstandingService::CACHE_IDENTIFIER] ??= [
+    'frontend' => \TYPO3\CMS\Core\Cache\Frontend\VariableFrontend::class,
+    'backend' => \TYPO3\CMS\Core\Cache\Backend\FileBackend::class,
+    'options' => [
+        'defaultLifetime' => 2592000,
+    ],
+];
