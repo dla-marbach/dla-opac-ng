@@ -9,10 +9,23 @@ class QueryUnderstandingConfigurationTest extends UnitTestCase
 {
     private const VARIABLES = ['LLM_BASE_URL', 'LLM_MODEL', 'LLM_API_KEY', 'LLM_TIMEOUT', 'LLM_MAX_CONCURRENT', 'LLM_RATE_LIMIT'];
 
+    /** @var array<string, string|false> */
+    private array $originalValues = [];
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        // In der DDEV-Umgebung sind LLM_* über .ddev/.env gesetzt; jeder Test beginnt mit leerer Konfiguration.
+        foreach (self::VARIABLES as $name) {
+            $this->originalValues[$name] = getenv($name);
+            putenv($name);
+        }
+    }
+
     protected function tearDown(): void
     {
-        foreach (self::VARIABLES as $name) {
-            putenv($name);
+        foreach ($this->originalValues as $name => $value) {
+            putenv($value === false ? $name : $name . '=' . $value);
         }
         parent::tearDown();
     }
