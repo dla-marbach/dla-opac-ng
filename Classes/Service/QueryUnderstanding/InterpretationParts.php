@@ -28,6 +28,7 @@ final class InterpretationParts
         'relationAn',
         'relationUeber',
         'relationUnter',
+        'subject',
         'place',
         'language',
         'date',
@@ -46,7 +47,7 @@ final class InterpretationParts
         'Sprache' => 'language',
         'Zeit' => 'date',
         'Digital' => 'digital',
-        'Thema' => 'topic',
+        'Thema' => 'subject',
     ];
 
     private const RELATION_ROLES = [

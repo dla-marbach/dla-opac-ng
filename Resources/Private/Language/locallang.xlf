@@ -1411,7 +1411,10 @@
                 <source>search terms: %s</source>
             </trans-unit>
             <trans-unit id="nl.part.topic">
-                <source>topic: %s</source>
+                <source>keyword: %s</source>
+            </trans-unit>
+            <trans-unit id="nl.part.subject">
+                <source>subject: %s</source>
             </trans-unit>
             <trans-unit id="nl.part.excluded">
                 <source>without: %s</source>

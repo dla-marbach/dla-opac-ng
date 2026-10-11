@@ -84,10 +84,10 @@ class NaturalLanguageSearchTest extends FluidPartialTestCase
         self::assertMatchesRegularExpression('#dla-nl-part-relationVon">\s*<a[^>]*>\s*<span class="icon bel-ende01"></span>\s*by Hesse, Hermann \(1877-1962\)#', $html);
         self::assertStringContainsString('1930–1939', $html);
         self::assertStringContainsString('search terms: Steppenwolf', $html);
-        self::assertStringContainsString('topic: Exil', $html);
+        self::assertStringContainsString('keyword: Exil', $html);
         // Selbst gewählte Filter gehören nicht zur Interpretation
         self::assertStringNotContainsString('Deutsch', $html);
-        // Reihenfolge: Medientyp, Person, Zeitraum, Suchbegriffe, Thema
+        // Reihenfolge: Medientyp, Person, Zeitraum, Suchbegriffe, Stichwort
         self::assertMatchesRegularExpression('#mediaType.*relationVon.*date.*part-text.*part-topic#s', $html);
     }
 
@@ -103,7 +103,7 @@ class NaturalLanguageSearchTest extends FluidPartialTestCase
         $html = $this->renderInterpretation($arguments);
 
         self::assertStringNotContainsString('dla-nl-part-mediaType', $html);
-        self::assertStringNotContainsString('topic: Exil', $html);
+        self::assertStringNotContainsString('keyword: Exil', $html);
         self::assertStringContainsString('by Hesse, Hermann (1877-1962)', $html);
     }
 

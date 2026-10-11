@@ -142,6 +142,22 @@ class InterpretationPartsTest extends UnitTestCase
     /**
      * @test
      */
+    public function distinguishesSubjectFacetFromKeyword(): void
+    {
+        $parts = InterpretationParts::fromArguments([
+            'q' => ['default' => '(exil OR emigration)'],
+            'facet' => ['Thema' => ['Weimarer Republik' => '1']],
+            'nlq' => 'Exil in der Weimarer Republik',
+            'nlf' => [['f' => 'Thema', 't' => 'Weimarer Republik']],
+            'nlt' => [['k' => 'topic', 'q' => '(exil OR emigration)', 'l' => 'Exil']],
+        ]);
+
+        self::assertSame([['subject', 'facet'], ['topic', 'text']], array_map(static fn(array $part): array => [$part['role'], $part['type']], $parts));
+    }
+
+    /**
+     * @test
+     */
     public function ignoresMalformedParameters(): void
     {
         $arguments = ['nlq' => 'Frage', 'nlf' => 'kaputt', 'nlt' => [['k' => 'topic'], 'x'], 'facet' => 'kaputt', 'q' => 'kaputt'];

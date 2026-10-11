@@ -61,12 +61,12 @@ Browser                         TYPO3 (dla-opac-ng)                             
   („Hesse“ → „Hermann Hesse“), sonst mit dem Namen aus der Frage (im Nominativ, „Rilkes“ → „Rilke“). Orte werden über
   die exakte Schreibweise oder den häufigsten Facettenwert aufgelöst, der den Begriff enthält (z. B. „Marbach“ →
   „Marbach am Neckar“). Themen werden nur bei exakter Schreibweise eines Schlagworts zur Facette Thema
-  (`filterSubject_mv`); Teiltreffer wie „Film“ → „Filmmusik“ wären als Filter zu eng. Was sich nicht auflösen lässt,
+  (`filterSubject_mv`, in der Interpretationszeile „Thema: …“, auch bei den aktiven Filtern); Teiltreffer wie „Film“ → „Filmmusik“ wären als Filter zu eng. Was sich nicht auflösen lässt,
   wird als weicher Suchbegriff übernommen.
 * **Keine Treffer:** Liefert die Suche 0 Treffer, weist die Interpretationszeile darauf hin, dass sich einzelne
   Bestandteile entfernen lassen. Es wird nichts automatisch weggelassen.
 * **Interpretationszeile:** Über der Trefferliste steht „Ihre Frage »…« wurde verstanden als:“ mit den einzelnen
-  Bestandteilen, z. B. `Handschriften ✕ · von Hesse, Hermann (1877-1962) ✕ · 1930–1939 ✕ · Thema: Exil ✕`. Jeder Teil
+  Bestandteilen, z. B. `Handschriften ✕ · von Hesse, Hermann (1877-1962) ✕ · 1930–1939 ✕ · Stichwort: Exil ✕`. Jeder Teil
   lässt sich entfernen: Filter über denselben Mechanismus wie bei den aktiven Filtern (`s:find.facetLinkArguments`),
   Suchbegriffe durch Entfernen aus dem Suchfeld. Maßgeblich ist immer der aktuelle Zustand der Suche; die Middleware
   vermerkt in der URL nur, welche Filter (`nlf`) und Suchbegriffe (`nlt`) aus der Frage stammen
@@ -393,7 +393,7 @@ Weitere Voraussetzungen:
   die Klasse `dla-nl-no-results`.
   Die Interpretationszeile ist eine Liste `ul.dla-nl-parts` mit `li.dla-nl-part` und je einer Klasse für die Rolle
   (`dla-nl-part-mediaType`, `-formContent`, `-person`, `-relationVon`, `-relationAn`, `-relationUeber`,
-  `-relationUnter`, `-place`, `-language`, `-date`, `-digital`, `-text`, `-topic`, `-unresolved`, `-excluded`); die Links nutzen
+  `-relationUnter`, `-subject`, `-place`, `-language`, `-date`, `-digital`, `-text`, `-topic`, `-unresolved`, `-excluded`); die Links nutzen
   wie die aktiven Filter das Symbol `bel-ende01`. Styles gehören in das Site-CSS.
 
 ## 5. Prompt und Beispiele anpassen
