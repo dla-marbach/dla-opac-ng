@@ -12,6 +12,10 @@ services:
     resource: '../Classes/*'
     exclude:
       - '../Classes/Find/'
+      # Natürlichsprachige Suche: Hilfsklassen mit Skalar-Parametern bzw. Wertobjekten werden von der
+      # NaturalLanguageSearchMiddleware selbst erzeugt (inkl. Zwischenspeicher), nicht per Autowiring.
+      - '../Classes/Service/QueryUnderstanding/'
+      - '../Classes/Service/QueryUnderstandingService.php'
 
   # Klassen der ehemaligen Extension dla/find
   Dla\Find\:
