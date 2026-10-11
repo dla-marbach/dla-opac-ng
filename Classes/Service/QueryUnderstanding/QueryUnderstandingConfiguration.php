@@ -8,7 +8,7 @@ namespace Dla\DlaOpacNg\Service\QueryUnderstanding;
  * Konfiguration der natürlichsprachigen Suche (Zerlegung von Suchanfragen durch ein lokales LLM).
  *
  * Einzige Konfigurationsquelle sind wie bei der Solr-Verbindung Umgebungsvariablen:
- * - LLM_BASE_URL: Basis-URL einer OpenAI-kompatiblen API inkl. "/v1", z.B. "http://host.docker.internal:11434/v1"
+ * - LLM_BASE_URL: Basis-URL einer OpenAI-kompatiblen API inkl. "/v1", z.B. "http://ollama:11434/v1"
  *   (Ollama, vLLM, llama.cpp). Ist die Variable leer, ist die natürlichsprachige Suche abgeschaltet.
  * - LLM_MODEL: Name des Modells, z.B. "qwen3:4b-instruct-2507-q4_K_M" (Standard; Qwen3-4B-Instruct-2507 ohne Thinking-Modus)
  * - LLM_API_KEY: optional, wird als Bearer-Token mitgeschickt

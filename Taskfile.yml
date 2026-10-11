@@ -111,8 +111,17 @@ tasks:
           sleep 1
         done
         curl -sf http://127.0.0.1:11434/api/version
+      # Der Port ist nur auf 127.0.0.1 des Hosts freigegeben und deshalb über host.docker.internal nicht erreichbar.
+      # Der Web-Container von DDEV erreicht Ollama stattdessen über das gemeinsame Docker-Netzwerk ddev_default.
+      - |
+        if docker network inspect ddev_default >/dev/null 2>&1; then
+          docker network connect ddev_default ollama 2>/dev/null || true
+          echo "Ollama ist für DDEV unter http://ollama:11434 erreichbar."
+        else
+          echo "Netzwerk ddev_default fehlt: erst DDEV starten (cd t3example && ddev start), dann 'task llm' wiederholen."
+        fi
       - docker exec ollama ollama pull {{.MODEL}}
-      - echo "LLM-Dienst läuft. In .ddev/.env LLM_MODEL={{.MODEL}} setzen, dann 'task llm:test' und 'task cache'."
+      - echo "LLM-Dienst läuft. Test mit 'task llm:test', dann im Katalog 'Als Frage verstehen' ausprobieren."
 
   llm:test:
     desc: natürlichsprachige Suche gegen den lokalen LLM-Dienst testen (strukturierte JSON-Ausgabe)
