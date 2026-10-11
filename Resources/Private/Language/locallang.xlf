@@ -1362,9 +1362,6 @@
             <trans-unit id="nl.status.ok">
                 <source>Your question »%s« was understood as:</source>
             </trans-unit>
-            <trans-unit id="nl.status.relaxed">
-                <source>Omitted because there would otherwise be no results: %s.</source>
-            </trans-unit>
             <trans-unit id="nl.status.unrecognized">
                 <source>No search terms or filters could be derived from your question »%s«. A normal search was performed.</source>
             </trans-unit>
@@ -1418,6 +1415,9 @@
             </trans-unit>
             <trans-unit id="nl.part.unresolved">
                 <source>search term: %s</source>
+            </trans-unit>
+            <trans-unit id="nl.parts.noResults">
+                <source>No results. Remove individual parts of the interpretation above to broaden the search.</source>
             </trans-unit>
         </body>
     </file>

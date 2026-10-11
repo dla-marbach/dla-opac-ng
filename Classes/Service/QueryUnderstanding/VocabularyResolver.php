@@ -7,11 +7,10 @@ namespace Dla\DlaOpacNg\Service\QueryUnderstanding;
 use Dla\DlaOpacNg\Service\SolrConnection;
 
 /**
- * Gleicht die vom LLM erkannten Bestandteile mit dem Index ab.
+ * Gleicht Personen und Orte, für die es zu viele Werte für eine feste Werteliste gibt, mit dem Index ab.
  *
- * Das LLM kennt weder Normdaten noch Facettenwerte. Personen werden deshalb über den Normdaten-Suggester
- * (mySuggester, wie die Autovervollständigung) aufgelöst, Facettenwerte über eine Zählabfrage auf
- * exakte Übereinstimmung geprüft. Nur Werte, die es im Index gibt, werden zu Filtern.
+ * Personen werden über den Normdaten-Suggester (mySuggester, wie die Autovervollständigung) aufgelöst, Orte über
+ * die Facettenwerte. Nur Werte, die es im Index gibt, werden zu Filtern.
  */
 class VocabularyResolver
 {
@@ -26,113 +25,71 @@ class VocabularyResolver
     private array $memo = [];
 
     public function __construct(
-        private readonly SolrConnection $solrConnection = new SolrConnection()
+        private readonly SolrConnection $solrConnection
     ) {
     }
 
     /**
-     * Löst einen Namen auf einen Normdatensatz auf.
+     * Löst einen Namen auf einen Normdatensatz auf: der erste (relevanteste) Vorschlag, der alle Namensbestandteile
+     * enthält, damit aus "Mann" nicht zufällig "Mannheim" wird.
      *
      * @return array{id: string, label: string}|null label ist der Wert der Facette filterAuthority_mv
      */
     public function resolvePerson(string $name): ?array
     {
         $key = 'person|' . $name;
-        if (array_key_exists($key, $this->memo)) {
-            return $this->memo[$key];
+        if (!array_key_exists($key, $this->memo)) {
+            $this->memo[$key] = $this->findPerson($name);
         }
 
-        $result = null;
+        return $this->memo[$key];
+    }
+
+    /**
+     * Facettenwert, der den Begriff enthält (Groß-/Kleinschreibung egal): die exakte Schreibweise, sonst der
+     * häufigste Wert, z.B. "Marbach" → "Marbach am Neckar".
+     */
+    public function resolveFacetValue(string $field, string $value): ?string
+    {
+        $key = 'facet|' . $field . '|' . $value;
+        if (!array_key_exists($key, $this->memo)) {
+            $json = $this->solrConnection->request('select', [
+                'q' => '*:*',
+                'rows' => '0',
+                'facet' => 'true',
+                'facet.field' => $field,
+                'facet.contains' => $value,
+                'facet.contains.ignoreCase' => 'true',
+                'facet.mincount' => '1',
+                'facet.limit' => '10',
+                'facet.sort' => 'count',
+                'json.nl' => 'map',
+            ], self::FACET_REQUEST_TIMEOUT);
+            $values = array_map('strval', array_keys((array)($json['facet_counts']['facet_fields'][$field] ?? [])));
+            $exact = array_values(array_filter($values, static fn(string $candidate): bool => mb_strtolower($candidate) === mb_strtolower($value)));
+            $this->memo[$key] = $exact[0] ?? $values[0] ?? null;
+        }
+
+        return $this->memo[$key];
+    }
+
+    private function findPerson(string $name): ?array
+    {
         $json = $this->solrConnection->request('suggest', [
             'suggest' => 'true',
             'suggest.dictionary' => self::SUGGEST_DICTIONARY,
             'suggest.q' => $name,
         ]);
-        $suggestions = $json['suggest'][self::SUGGEST_DICTIONARY][$name]['suggestions'] ?? [];
         $nameTokens = self::tokens($name);
 
-        // Vorschläge sind nach Relevanz (searchEntityScore) sortiert. Übernommen wird der erste Vorschlag,
-        // der alle Namensbestandteile der Anfrage enthält; so wird aus "Mann" nicht zufällig "Mannheim".
-        foreach (is_array($suggestions) ? $suggestions : [] as $suggestion) {
+        foreach ((array)($json['suggest'][self::SUGGEST_DICTIONARY][$name]['suggestions'] ?? []) as $suggestion) {
             [$id, $label] = array_pad(explode('␝', (string)($suggestion['payload'] ?? ''), 2), 2, '');
-            if ($id === '' || $label === '') {
-                continue;
-            }
-            $termTokens = self::tokens((string)($suggestion['term'] ?? '') . ' ' . $label);
-            if (array_diff($nameTokens, $termTokens) === []) {
-                $result = ['id' => $id, 'label' => $label];
-                break;
+            if ($id !== '' && $label !== '' && array_diff($nameTokens, self::tokens(($suggestion['term'] ?? '') . ' ' . $label)) === []) {
+                return ['id' => $id, 'label' => $label];
             }
         }
 
-        return $this->memo[$key] = $result;
-    }
-
-    /**
-     * Sucht einen Facettenwert für Felder mit sehr vielen Werten (z.B. Orte): zuerst die exakte Schreibweise,
-     * sonst den häufigsten Wert, der den Begriff enthält (Groß-/Kleinschreibung egal, z.B. "Marbach" →
-     * "Marbach am Neckar").
-     */
-    public function resolveFacetValue(string $field, string $value): ?string
-    {
-        $key = 'facet|' . $field . '|' . $value;
-        if (array_key_exists($key, $this->memo)) {
-            return $this->memo[$key];
-        }
-
-        $count = $this->count('*:*', [$field . ':' . self::quote($value)]);
-        if ($count !== null && $count > 0) {
-            return $this->memo[$key] = $value;
-        }
-
-        $json = $this->solrConnection->request('select', [
-            'q' => '*:*',
-            'rows' => '0',
-            'fl' => 'id',
-            'facet' => 'true',
-            'facet.field' => $field,
-            'facet.contains' => $value,
-            'facet.contains.ignoreCase' => 'true',
-            'facet.mincount' => '1',
-            'facet.limit' => '1',
-            'facet.sort' => 'count',
-            'json.nl' => 'map',
-        ], self::FACET_REQUEST_TIMEOUT);
-        $values = $json['facet_counts']['facet_fields'][$field] ?? [];
-        $resolved = is_array($values) && $values !== [] ? (string)array_key_first($values) : null;
-
-        return $this->memo[$key] = $resolved;
-    }
-
-    /**
-     * Anzahl der Treffer für eine Anfrage über den Request-Handler /select (mit dessen Standardwerten:
-     * eDisMax, q.op=AND, Ausschluss vertraulicher Datensätze). null bei Verbindungsfehlern.
-     *
-     * @param list<string> $filterQueries
-     */
-    public function count(string $query, array $filterQueries = []): ?int
-    {
-        $key = 'count|' . $query . '|' . implode('|', $filterQueries);
-        if (array_key_exists($key, $this->memo)) {
-            return $this->memo[$key];
-        }
-
-        $params = ['q' => $query, 'rows' => '0', 'fl' => 'id', 'facet' => 'false'];
-        if ($filterQueries !== []) {
-            $params['fq'] = $filterQueries;
-        }
-        $json = $this->solrConnection->request('select', $params);
-        $numFound = $json['response']['numFound'] ?? null;
-
-        return $this->memo[$key] = is_int($numFound) ? $numFound : null;
-    }
-
-    /**
-     * Setzt einen Wert für eine Solr-Phrasensuche in Anführungszeichen.
-     */
-    public static function quote(string $value): string
-    {
-        return '"' . addcslashes($value, '"\\') . '"';
+        return null;
     }
 
     /**
@@ -140,9 +97,6 @@ class VocabularyResolver
      */
     private static function tokens(string $value): array
     {
-        $value = mb_strtolower($value);
-        $parts = preg_split('/[^\p{L}\p{N}]+/u', $value, -1, PREG_SPLIT_NO_EMPTY) ?: [];
-
-        return array_values(array_unique($parts));
+        return array_values(array_unique(preg_split('/[^\p{L}\p{N}]+/u', mb_strtolower($value), -1, PREG_SPLIT_NO_EMPTY) ?: []));
     }
 }

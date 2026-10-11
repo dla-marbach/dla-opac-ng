@@ -5,6 +5,8 @@ namespace Dla\DlaOpacNg\Tests\Unit\Configuration;
 use Dla\DlaOpacNg\Middleware\NaturalLanguageSearchMiddleware;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryUnderstandingConfiguration;
 use Dla\DlaOpacNg\Service\QueryUnderstandingService;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -12,6 +14,8 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use TYPO3\CMS\Core\Cache\Backend\TransientMemoryBackend;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Frontend\VariableFrontend;
+use TYPO3\CMS\Core\Http\Client\GuzzleClientFactory;
+use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\RateLimiter\Storage\CachingFrameworkStorage;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
@@ -19,8 +23,8 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  * Baut Configuration/Services.yaml mit Symfony DI auf, wie TYPO3 es beim Aufbau des Containers tut.
  *
  * Geprüft werden die Services der natürlichsprachigen Suche; Core-Services (CacheManager, Speicher des
- * Rate Limiters) werden als synthetische Services bereitgestellt, weil es im Unit-Test-Bootstrap keinen
- * TYPO3-Container gibt.
+ * Rate Limiters, RequestFactory, Logger) werden als synthetische Services bereitgestellt, weil es im
+ * Unit-Test-Bootstrap keinen TYPO3-Container gibt.
  */
 class ServicesConfigurationTest extends UnitTestCase
 {
@@ -36,7 +40,8 @@ class ServicesConfigurationTest extends UnitTestCase
                 $container->removeDefinition($id);
             }
         }
-        foreach ([CacheManager::class, CachingFrameworkStorage::class] as $id) {
+        // Core-Services; LoggerInterface stellt in TYPO3 der LoggerInterfacePass je Klasse bereit.
+        foreach ([CacheManager::class, CachingFrameworkStorage::class, RequestFactory::class, LoggerInterface::class] as $id) {
             $container->setDefinition($id, (new Definition($id))->setSynthetic(true)->setPublic(true));
         }
 
@@ -64,6 +69,8 @@ class ServicesConfigurationTest extends UnitTestCase
         $cacheManager = $this->createCacheManager();
         $container->set(CacheManager::class, $cacheManager);
         $container->set(CachingFrameworkStorage::class, new CachingFrameworkStorage($cacheManager));
+        $container->set(RequestFactory::class, new RequestFactory(new GuzzleClientFactory()));
+        $container->set(LoggerInterface::class, new NullLogger());
 
         self::assertInstanceOf(NaturalLanguageSearchMiddleware::class, $container->get(NaturalLanguageSearchMiddleware::class));
         self::assertInstanceOf(QueryUnderstandingService::class, $container->get(QueryUnderstandingService::class));

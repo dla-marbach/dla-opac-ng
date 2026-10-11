@@ -7,16 +7,12 @@ namespace Dla\DlaOpacNg\Service\QueryUnderstanding;
 /**
  * Geprüfte, bereinigte Zerlegung einer Suchanfrage.
  *
- * Die Modellantwort wird nie direkt an Solr weitergegeben: Alle Werte werden hier gegen das Schema
- * geprüft, gekürzt und von Solr-Steuerzeichen befreit. Unbekannte Felder und Werte entfallen.
+ * Die Modellantwort wird nie direkt an Solr weitergegeben: Alle Werte werden hier gegen das Schema und das
+ * Vokabular des Index geprüft, gekürzt und von Solr-Steuerzeichen befreit. Unbekannte Felder und Werte entfallen.
  */
 final class QueryStructure
 {
-    private const MAX_STRING_LENGTH = 100;
-
-    private const MAX_TEXT_LENGTH = 200;
-
-    private const MIN_YEAR = 0;
+    private const MAX_LENGTH = 100;
 
     private const MAX_YEAR = 2100;
 
@@ -43,67 +39,43 @@ final class QueryStructure
     }
 
     /**
-     * @param array<string, list<string>>|null $vocabulary erlaubte Werte für mediaTypes, formContent und languages
-     *        (FacetVocabulary); null: Medientypen gegen die bekannten Werte, übrige Felder nur bereinigen
+     * @param array<string, list<string>> $vocabulary erlaubte Werte für mediaTypes, formContent und languages
      */
-    public static function fromArray(array $data, ?array $vocabulary = null): self
+    public static function fromArray(array $data, array $vocabulary): self
     {
         $persons = [];
-        foreach (self::listOf($data['persons'] ?? null, 3) as $person) {
-            if (!is_array($person)) {
-                continue;
+        foreach (self::listOf($data['persons'] ?? null) as $person) {
+            $name = self::clean($person['name'] ?? null);
+            $relation = $person['relation'] ?? '';
+            if ($name !== '') {
+                $persons[] = ['name' => $name, 'relation' => in_array($relation, QueryPrompt::RELATIONS, true) ? $relation : ''];
             }
-            $name = self::cleanTerm($person['name'] ?? '');
-            if ($name === '') {
-                continue;
-            }
-            $relation = (string)($person['relation'] ?? '');
-            $persons[] = [
-                'name' => $name,
-                'relation' => in_array($relation, QueryPrompt::RELATIONS, true) ? $relation : '',
-            ];
         }
 
         $topics = [];
-        foreach (self::listOf($data['topics'] ?? null, 3) as $topic) {
-            if (!is_array($topic)) {
-                continue;
-            }
-            $term = self::cleanTerm($topic['term'] ?? '', true);
+        foreach (self::listOf($data['topics'] ?? null) as $topic) {
+            $term = self::clean($topic['term'] ?? null, true);
             if ($term === '') {
                 continue;
             }
-            $variants = [];
-            foreach (self::listOf($topic['variants'] ?? null, 4) as $variant) {
-                $variant = self::cleanTerm($variant, true);
-                if ($variant !== '' && mb_strtolower($variant) !== mb_strtolower($term)) {
-                    $variants[] = $variant;
-                }
-            }
+            $variants = array_map(static fn($variant): string => self::clean($variant, true), self::listOf($topic['variants'] ?? null, 4));
+            $variants = array_filter($variants, static fn(string $variant): bool => $variant !== '' && mb_strtolower($variant) !== mb_strtolower($term));
             $topics[] = ['term' => $term, 'variants' => array_values(array_unique($variants))];
         }
 
-        // Reihenfolge der Modellantwort beibehalten (der SearchArgumentsBuilder übernimmt den ersten Medientyp).
-        $mediaTypes = self::allowedValues($data['mediaTypes'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'mediaTypes'));
-
-        $dateFrom = self::year($data['dateFrom'] ?? null);
-        $dateTo = self::year($data['dateTo'] ?? null);
+        [$dateFrom, $dateTo] = [self::year($data['dateFrom'] ?? null), self::year($data['dateTo'] ?? null)];
         if ($dateFrom !== null && $dateTo !== null && $dateFrom > $dateTo) {
             [$dateFrom, $dateTo] = [$dateTo, $dateFrom];
         }
 
         return new self(
-            self::cleanText($data['text'] ?? ''),
+            self::clean($data['text'] ?? null),
             $persons,
             $topics,
-            $mediaTypes,
-            $vocabulary === null
-                ? self::stringList($data['formContent'] ?? null)
-                : self::allowedValues($data['formContent'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'formContent')),
-            $vocabulary === null
-                ? self::stringList($data['languages'] ?? null)
-                : self::allowedValues($data['languages'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'languages')),
-            self::stringList($data['places'] ?? null),
+            self::allowed($data['mediaTypes'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'mediaTypes')),
+            self::allowed($data['formContent'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'formContent')),
+            self::allowed($data['languages'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'languages')),
+            array_values(array_unique(array_filter(array_map(self::clean(...), self::listOf($data['places'] ?? null))))),
             $dateFrom,
             $dateTo,
             ($data['digitalOnly'] ?? false) === true,
@@ -117,45 +89,23 @@ final class QueryStructure
 
     public function isEmpty(): bool
     {
-        return $this->text === '' && $this->persons === [] && $this->topics === [] && $this->mediaTypes === []
-            && $this->formContent === [] && $this->languages === [] && $this->places === []
-            && $this->dateFrom === null && $this->dateTo === null && !$this->digitalOnly;
+        return $this == new self();
     }
 
     /**
-     * Entfernt Solr-Steuerzeichen; erlaubt optional einen Stern am Wortende (Trunkierung).
+     * Entfernt Solr-Steuerzeichen und boolesche Operatoren; erlaubt optional einen Stern am Ende eines einzelnen
+     * Wortes mit mindestens drei Zeichen (Trunkierung).
      */
-    public static function cleanTerm(mixed $value, bool $allowTrailingWildcard = false): string
+    public static function clean(mixed $value, bool $allowTrailingWildcard = false): string
     {
         if (!is_string($value)) {
             return '';
         }
-
         $wildcard = $allowTrailingWildcard && str_ends_with(trim($value), '*');
-        $value = (string)preg_replace('/[\\\\+\-&|!(){}\[\]^"~*?:\/<>=]+/u', ' ', $value);
-        $value = (string)preg_replace('/\b(AND|OR|NOT)\b/', ' ', $value);
-        $value = trim((string)preg_replace('/\s+/u', ' ', $value));
-        $value = mb_substr($value, 0, self::MAX_STRING_LENGTH);
+        $value = (string)preg_replace(['/[\\\\+&|!(){}\[\]^"~*?:\/<>=]+/u', '/\b(AND|OR|NOT)\b/'], ' ', $value);
+        $value = mb_substr(trim((string)preg_replace('/\s+/u', ' ', $value)), 0, self::MAX_LENGTH);
 
-        // Trunkierung nur bei einzelnen Wörtern mit mindestens drei Zeichen zulassen.
-        if ($wildcard && $value !== '' && !str_contains($value, ' ') && mb_strlen($value) >= 3) {
-            $value .= '*';
-        }
-
-        return $value;
-    }
-
-    private static function cleanText(mixed $value): string
-    {
-        if (!is_string($value)) {
-            return '';
-        }
-
-        $value = (string)preg_replace('/[\\\\+&|!(){}\[\]^"~*?:\/<>=]+/u', ' ', $value);
-        // Boolesche Operatoren aus dem Modell nicht als Syntax durchreichen.
-        $value = (string)preg_replace('/\b(AND|OR|NOT)\b/', ' ', $value);
-
-        return trim(mb_substr(trim((string)preg_replace('/\s+/u', ' ', $value)), 0, self::MAX_TEXT_LENGTH));
+        return $wildcard && !str_contains($value, ' ') && mb_strlen($value) >= 3 ? $value . '*' : $value;
     }
 
     /**
@@ -164,42 +114,21 @@ final class QueryStructure
      * @param list<string> $allowed
      * @return list<string>
      */
-    private static function allowedValues(mixed $value, array $allowed): array
+    private static function allowed(mixed $values, array $allowed): array
     {
         return array_values(array_unique(array_filter(
-            self::listOf($value, 3),
-            static fn($item): bool => is_string($item) && in_array($item, $allowed, true)
+            self::listOf($values),
+            static fn($value): bool => in_array($value, $allowed, true)
         )));
     }
 
-    /**
-     * @return list<string>
-     */
-    private static function stringList(mixed $value): array
-    {
-        $result = [];
-        foreach (self::listOf($value, 3) as $item) {
-            $item = self::cleanTerm($item);
-            if ($item !== '' && !in_array($item, $result, true)) {
-                $result[] = $item;
-            }
-        }
-
-        return $result;
-    }
-
-    private static function listOf(mixed $value, int $max): array
+    private static function listOf(mixed $value, int $max = 3): array
     {
         return is_array($value) ? array_slice(array_values($value), 0, $max) : [];
     }
 
     private static function year(mixed $value): ?int
     {
-        if (!is_int($value) && !(is_string($value) && preg_match('/^-?\d{1,4}$/', $value))) {
-            return null;
-        }
-        $year = (int)$value;
-
-        return $year >= self::MIN_YEAR && $year <= self::MAX_YEAR ? $year : null;
+        return is_int($value) && $value >= 0 && $value <= self::MAX_YEAR ? $value : null;
     }
 }

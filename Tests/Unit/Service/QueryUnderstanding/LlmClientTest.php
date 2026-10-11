@@ -5,151 +5,98 @@ namespace Dla\DlaOpacNg\Tests\Unit\Service\QueryUnderstanding;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\LlmClient;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryPrompt;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryUnderstandingConfiguration;
-use Dla\DlaOpacNg\Tests\Support\MockLlmServerProcess;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Middleware;
+use GuzzleHttp\Psr7\Response;
+use Psr\Http\Message\RequestInterface;
+use Psr\Log\NullLogger;
+use TYPO3\CMS\Core\Http\Client\GuzzleClientFactory;
+use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
- * Testet den LLM-Client gegen einen lokalen Mock einer OpenAI-kompatiblen API (Tests/Fixtures/Llm/).
+ * Testet den LLM-Client mit Guzzles MockHandler statt einer echten OpenAI-kompatiblen API.
  */
 class LlmClientTest extends UnitTestCase
 {
-    private static ?MockLlmServerProcess $mockLlm = null;
+    /** @var list<array{request: RequestInterface, options: array}> */
+    private array $history = [];
 
-    public static function setUpBeforeClass(): void
+    private function createClient(array $responses, string $apiKey = '', string $baseUrl = 'http://llm.test/v1'): LlmClient
     {
-        parent::setUpBeforeClass();
-        self::$mockLlm = MockLlmServerProcess::start();
-    }
+        $stack = HandlerStack::create(new MockHandler($responses));
+        $stack->push(Middleware::history($this->history));
+        $guzzleFactory = $this->createMock(GuzzleClientFactory::class);
+        $guzzleFactory->method('getClient')->willReturn(new Client(['handler' => $stack]));
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-        self::$mockLlm->clearLastRequest();
-    }
-
-    private function createClient(float $timeout = 5.0, string $apiKey = ''): LlmClient
-    {
-        return new LlmClient(new QueryUnderstandingConfiguration(
-            baseUrl: self::$mockLlm->getBaseUrl(),
-            model: 'test-model',
-            apiKey: $apiKey,
-            timeout: $timeout,
-        ));
-    }
-
-    private function complete(LlmClient $client, string $question): ?array
-    {
-        return $client->completeJson(
-            (new QueryPrompt())->buildMessages($question),
-            QueryPrompt::getJsonSchema(),
-            'catalog_query'
+        return new LlmClient(
+            new QueryUnderstandingConfiguration(baseUrl: $baseUrl, model: 'test-model', apiKey: $apiKey, timeout: 5.0),
+            new RequestFactory($guzzleFactory),
+            new NullLogger()
         );
     }
 
-    /**
-     * @test
-     */
-    public function returnsDecodedJsonFromModelAnswer(): void
+    private static function answer(string $content): Response
     {
-        $result = $this->complete($this->createClient(), 'Briefe von Hesse an Thomas Mann aus den 1930er Jahren über das Exil');
+        return new Response(200, ['Content-Type' => 'application/json'], (string)json_encode([
+            'choices' => [['message' => ['role' => 'assistant', 'content' => $content]]],
+        ]));
+    }
 
-        self::assertSame('Hesse', $result['persons'][0]['name']);
-        self::assertSame(1930, $result['dateFrom']);
+    private static function complete(LlmClient $client): ?array
+    {
+        return $client->completeJson((new QueryPrompt())->buildMessages('Gedichte von Rilke'), QueryPrompt::getJsonSchema(), 'catalog_query');
     }
 
     /**
      * @test
      */
-    public function sendsModelSchemaAndFewShotExamples(): void
+    public function sendsSchemaAndReturnsDecodedAnswer(): void
     {
-        $this->complete($this->createClient(), 'Gedichte von Rilke');
+        $result = self::complete($this->createClient([self::answer('{"text": "Rilke"}')], 'secret'));
 
-        $body = self::$mockLlm->getLastRequest()['body'];
+        self::assertSame(['text' => 'Rilke'], $result);
+        $request = $this->history[0]['request'];
+        self::assertSame('http://llm.test/v1/chat/completions', (string)$request->getUri());
+        self::assertSame('Bearer secret', $request->getHeaderLine('Authorization'));
+        self::assertSame(5.0, $this->history[0]['options']['timeout']);
+        $body = json_decode((string)$request->getBody(), true);
         self::assertSame('test-model', $body['model']);
         self::assertSame(0, $body['temperature']);
-        self::assertSame('json_schema', $body['response_format']['type']);
-        self::assertTrue($body['response_format']['json_schema']['strict']);
         self::assertSame(QueryPrompt::getJsonSchema(), $body['response_format']['json_schema']['schema']);
-
-        self::assertSame('system', $body['messages'][0]['role']);
-        self::assertStringContainsString('Deutschen Literaturarchivs Marbach', $body['messages'][0]['content']);
-        // Beispiele als Frage/Antwort-Paare, danach die eigentliche Frage
-        self::assertSame('user', $body['messages'][1]['role']);
-        self::assertSame('assistant', $body['messages'][2]['role']);
-        self::assertIsArray(json_decode($body['messages'][2]['content'], true));
+        self::assertTrue($body['response_format']['json_schema']['strict']);
         self::assertSame(['role' => 'user', 'content' => 'Gedichte von Rilke'], end($body['messages']));
     }
 
     /**
      * @test
      */
-    public function sendsApiKeyAsBearerToken(): void
+    public function returnsNullOnErrors(): void
     {
-        $this->complete($this->createClient(apiKey: 'secret'), 'Gedichte von Rilke');
-
-        self::assertSame('Bearer secret', self::$mockLlm->getLastRequest()['authorization']);
+        self::assertNull(self::complete($this->createClient([new Response(500, [], 'model not found')])));
+        self::assertNull(self::complete($this->createClient([new ConnectException('timeout', new \GuzzleHttp\Psr7\Request('POST', 'x'))])));
+        self::assertNull(self::complete($this->createClient([self::answer('Das ist kein JSON')])));
+        self::assertNull(self::complete($this->createClient([new Response(200, [], 'kaputt')])));
     }
 
     /**
      * @test
      */
-    public function returnsNullOnServerError(): void
+    public function sendsNothingWhenDisabled(): void
     {
-        self::assertNull($this->complete($this->createClient(), '__error__'));
+        self::assertNull(self::complete($this->createClient([], baseUrl: '')));
+        self::assertSame([], $this->history);
     }
 
     /**
      * @test
      */
-    public function returnsNullOnInvalidJson(): void
+    public function decodeJsonContentToleratesThinkBlocksAndCodeFences(): void
     {
-        self::assertNull($this->complete($this->createClient(), '__invalid__'));
-    }
-
-    /**
-     * @test
-     */
-    public function returnsNullOnTimeout(): void
-    {
-        $start = microtime(true);
-        self::assertNull($this->complete($this->createClient(timeout: 0.5), '__slow__'));
-        self::assertLessThan(1.5, microtime(true) - $start);
-    }
-
-    /**
-     * @test
-     */
-    public function stripsThinkBlocksOfReasoningModels(): void
-    {
-        self::assertSame('gedacht', $this->complete($this->createClient(), '__think__')['text']);
-    }
-
-    /**
-     * @test
-     */
-    public function returnsNullWithoutRequestWhenDisabled(): void
-    {
-        $client = new LlmClient(new QueryUnderstandingConfiguration(baseUrl: ''));
-
-        self::assertNull($this->complete($client, 'Gedichte von Rilke'));
-        self::assertSame([], self::$mockLlm->getLastRequest());
-    }
-
-    /**
-     * @test
-     */
-    public function returnsNullWhenServerIsUnreachable(): void
-    {
-        $client = new LlmClient(new QueryUnderstandingConfiguration(baseUrl: 'http://127.0.0.1:1/v1', timeout: 1.0));
-
-        self::assertNull($this->complete($client, 'Gedichte von Rilke'));
-    }
-
-    /**
-     * @test
-     */
-    public function decodeJsonContentAcceptsMarkdownCodeBlocks(): void
-    {
+        self::assertSame(['text' => 'a'], LlmClient::decodeJsonContent("<think>…</think>\n{\"text\": \"a\"}"));
         self::assertSame(['text' => 'a'], LlmClient::decodeJsonContent("```json\n{\"text\": \"a\"}\n```"));
         self::assertNull(LlmClient::decodeJsonContent('[1, 2]'));
     }

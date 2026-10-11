@@ -1792,10 +1792,6 @@
                 <source>Your question »%s« was understood as:</source>
                 <target>Ihre Frage »%s« wurde verstanden als:</target>
             </trans-unit>
-            <trans-unit id="nl.status.relaxed">
-                <source>Omitted because there would otherwise be no results: %s.</source>
-                <target>Weggelassen, weil es sonst keine Treffer gäbe: %s.</target>
-            </trans-unit>
             <trans-unit id="nl.status.unrecognized">
                 <source>No search terms or filters could be derived from your question »%s«. A normal search was performed.</source>
                 <target>Aus Ihrer Frage »%s« ließen sich keine Suchbegriffe oder Filter ableiten. Es wurde normal gesucht.</target>
@@ -1867,6 +1863,10 @@
             <trans-unit id="nl.part.unresolved">
                 <source>search term: %s</source>
                 <target>Suchbegriff: %s</target>
+            </trans-unit>
+            <trans-unit id="nl.parts.noResults">
+                <source>No results. Remove individual parts of the interpretation above to broaden the search.</source>
+                <target>Keine Treffer. Entfernen Sie oben einzelne Bestandteile der Interpretation, um die Suche zu erweitern.</target>
             </trans-unit>
         </body>
     </file>

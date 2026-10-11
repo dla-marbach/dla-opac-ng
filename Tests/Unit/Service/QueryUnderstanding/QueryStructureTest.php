@@ -3,16 +3,22 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Service\QueryUnderstanding;
 
 use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryStructure;
+use Dla\DlaOpacNg\Tests\Support\FakeFacetVocabulary;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class QueryStructureTest extends UnitTestCase
 {
+    private static function fromArray(array $data): QueryStructure
+    {
+        return QueryStructure::fromArray($data, FakeFacetVocabulary::DEFAULT_VALUES);
+    }
+
     /**
      * @test
      */
     public function keepsValidValues(): void
     {
-        $structure = QueryStructure::fromArray([
+        $data = [
             'text' => 'Der Process',
             'persons' => [['name' => 'Kafka', 'relation' => 'Von']],
             'topics' => [['term' => 'Exil', 'variants' => ['Exil*', 'Emigration']]],
@@ -23,26 +29,18 @@ class QueryStructureTest extends UnitTestCase
             'dateFrom' => 1925,
             'dateTo' => 1930,
             'digitalOnly' => true,
-        ]);
+        ];
 
-        self::assertSame('Der Process', $structure->text);
-        self::assertSame([['name' => 'Kafka', 'relation' => 'Von']], $structure->persons);
-        self::assertSame([['term' => 'Exil', 'variants' => ['Exil*', 'Emigration']]], $structure->topics);
-        self::assertSame(['Gedrucktes'], $structure->mediaTypes);
-        self::assertSame(['Übersetzung'], $structure->formContent);
-        self::assertSame(['Englisch'], $structure->languages);
-        self::assertSame(['Prag'], $structure->places);
-        self::assertSame(1925, $structure->dateFrom);
-        self::assertSame(1930, $structure->dateTo);
-        self::assertTrue($structure->digitalOnly);
+        self::assertSame($data, self::fromArray($data)->toArray());
+        self::assertEquals(self::fromArray($data), self::fromArray(self::fromArray($data)->toArray()));
     }
 
     /**
      * @test
      */
-    public function removesSolrSyntaxFromAllValues(): void
+    public function removesSolrSyntaxAndOperators(): void
     {
-        $structure = QueryStructure::fromArray([
+        $structure = self::fromArray([
             'text' => 'id:* OR confidential:true',
             'persons' => [['name' => 'Hesse") OR (*:*', 'relation' => 'Von']],
             'places' => ['{!join from=id to=id}Berlin'],
@@ -56,29 +54,21 @@ class QueryStructureTest extends UnitTestCase
     /**
      * @test
      */
-    public function dropsUnknownEnumValuesAndFields(): void
+    public function keepsOnlyAllowedValuesInOrderOfTheAnswer(): void
     {
-        $structure = QueryStructure::fromArray([
+        $structure = self::fromArray([
             'persons' => [['name' => 'Hesse', 'relation' => 'Mit']],
-            'mediaTypes' => ['Handschriften', 'Zauberei', 42],
-            'unknownField' => 'ignored',
+            'mediaTypes' => ['Video', 'Zauberei', 'Audio', 'Video'],
+            'formContent' => ['Briefe', 'Brief'],
+            'languages' => ['Klingonisch'],
             'digitalOnly' => 'yes',
         ]);
 
         self::assertSame('', $structure->persons[0]['relation']);
-        self::assertSame(['Handschriften'], $structure->mediaTypes);
-        self::assertFalse($structure->digitalOnly);
-        self::assertArrayNotHasKey('unknownField', $structure->toArray());
-    }
-
-    /**
-     * @test
-     */
-    public function keepsOrderOfMediaTypesFromModelAnswer(): void
-    {
-        $structure = QueryStructure::fromArray(['mediaTypes' => ['Video', 'Audio', 'Video']]);
-
         self::assertSame(['Video', 'Audio'], $structure->mediaTypes);
+        self::assertSame(['Brief'], $structure->formContent);
+        self::assertSame([], $structure->languages);
+        self::assertFalse($structure->digitalOnly);
     }
 
     /**
@@ -86,9 +76,7 @@ class QueryStructureTest extends UnitTestCase
      */
     public function allowsWildcardOnlyAtEndOfSingleWords(): void
     {
-        $structure = QueryStructure::fromArray([
-            'topics' => [['term' => 'Ex*il', 'variants' => ['Exil*', 'Zweiter Weltkrieg*', 'Ex*', '*']]],
-        ]);
+        $structure = self::fromArray(['topics' => [['term' => 'Ex*il', 'variants' => ['Exil*', 'Zweiter Weltkrieg*', 'Ex*', '*']]]]);
 
         self::assertSame('Ex il', $structure->topics[0]['term']);
         self::assertSame(['Exil*', 'Zweiter Weltkrieg', 'Ex'], $structure->topics[0]['variants']);
@@ -99,43 +87,27 @@ class QueryStructureTest extends UnitTestCase
      */
     public function limitsListsAndValidatesYears(): void
     {
-        $structure = QueryStructure::fromArray([
+        $structure = self::fromArray([
             'persons' => array_fill(0, 10, ['name' => 'Hesse', 'relation' => '']),
-            'places' => ['Berlin', 'Berlin', 'Wien', 'Prag', 'Zürich'],
+            'places' => ['Berlin', 'Berlin', 'Wien', 'Prag'],
             'dateFrom' => 1950,
-            'dateTo' => '1920',
+            'dateTo' => 1920,
         ]);
 
         self::assertCount(3, $structure->persons);
         self::assertSame(['Berlin', 'Wien'], $structure->places);
-        self::assertSame(1920, $structure->dateFrom);
-        self::assertSame(1950, $structure->dateTo);
-
-        self::assertNull(QueryStructure::fromArray(['dateFrom' => 99999])->dateFrom);
-        self::assertNull(QueryStructure::fromArray(['dateFrom' => 19.5])->dateFrom);
+        self::assertSame([1920, 1950], [$structure->dateFrom, $structure->dateTo]);
+        self::assertNull(self::fromArray(['dateFrom' => 99999])->dateFrom);
+        self::assertNull(self::fromArray(['dateFrom' => '1950'])->dateFrom);
     }
 
     /**
      * @test
      */
-    public function emptyAnswerIsEmpty(): void
+    public function detectsEmptyAnswer(): void
     {
-        self::assertTrue(QueryStructure::fromArray([])->isEmpty());
-        self::assertTrue(QueryStructure::fromArray(['text' => '  ', 'persons' => [['name' => '"']]])->isEmpty());
-        self::assertFalse(QueryStructure::fromArray(['digitalOnly' => true])->isEmpty());
-    }
-
-    /**
-     * @test
-     */
-    public function roundTripsThroughArray(): void
-    {
-        $structure = QueryStructure::fromArray([
-            'text' => 'Steppenwolf',
-            'persons' => [['name' => 'Hesse', 'relation' => 'Von']],
-            'dateFrom' => 1927,
-        ]);
-
-        self::assertEquals($structure, QueryStructure::fromArray($structure->toArray()));
+        self::assertTrue(self::fromArray([])->isEmpty());
+        self::assertTrue(self::fromArray(['text' => '  ', 'persons' => [['name' => '"']]])->isEmpty());
+        self::assertFalse(self::fromArray(['digitalOnly' => true])->isEmpty());
     }
 }

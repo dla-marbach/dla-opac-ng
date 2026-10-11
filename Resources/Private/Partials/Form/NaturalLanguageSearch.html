@@ -6,8 +6,8 @@
     * Checkbox "Als Frage verstehen": nur sichtbar, wenn die Umgebungsvariable LLM_BASE_URL gesetzt ist.
       Sie schickt tx_find_find[nl]=1 mit; die Middleware zerlegt dann die Eingabe des Standardsuchfelds.
     * Hinweis nach der Weiterleitung: zeigt die ursprüngliche Frage (nlq) und den Status (nlstatus):
-      ok/relaxed (Interpretationszeile, bei relaxed mit weggelassenen Teilen aus nldropped),
-      unrecognized (nichts erkannt, normale Suche) oder fallback (KI-Suche nicht verfügbar, normale Suche).
+      ok (Interpretationszeile, bei 0 Treffern mit Hinweis), unrecognized (nichts erkannt, normale Suche)
+      oder fallback (KI-Suche nicht verfügbar, normale Suche).
     * Interpretationszeile: Bestandteile der Frage, die in der Suche noch aktiv sind (siehe InterpretationParts).
       Filter werden wie bei den aktiven Filtern über s:find.facetLinkArguments entfernt (die Box „Aktive Filter“
       zeigt sie unverändert ebenfalls an); Suchbegriffe werden aus dem Suchfeld entfernt.
@@ -50,31 +50,17 @@
                                                 </f:link.action>
                                             </f:then>
                                             <f:else>
-                                                <f:if condition="{part.remainingQuery}">
-                                                    <f:then>
-                                                        <f:link.action
-                                                                addQueryString="untrusted"
-                                                                arguments="{q: {default: part.remainingQuery}}"
-                                                                argumentsToBeExcludedFromQueryString="{1: 'tx_find_find[page]', 2: 'cHash', 3: 'tx_find_find[controller]', 4: 'tx_find_find[action]'}"
-                                                                section="{settings.jumpToID}"
-                                                                title="{f:translate(key:'nl.part.remove', extensionName:'dla_opac_ng', arguments:{0:part.label})}"
-                                                                additionalAttributes="{rel: 'nofollow'}">
-                                                            <span class="icon bel-ende01"></span>
-                                                            <f:translate key="nl.part.{part.role}" extensionName="dla_opac_ng" arguments="{0: part.label}"/>
-                                                        </f:link.action>
-                                                    </f:then>
-                                                    <f:else>
-                                                        <f:link.action
-                                                                addQueryString="untrusted"
-                                                                argumentsToBeExcludedFromQueryString="{1: 'tx_find_find[q][default]', 2: 'tx_find_find[page]', 3: 'cHash', 4: 'tx_find_find[controller]', 5: 'tx_find_find[action]'}"
-                                                                section="{settings.jumpToID}"
-                                                                title="{f:translate(key:'nl.part.remove', extensionName:'dla_opac_ng', arguments:{0:part.label})}"
-                                                                additionalAttributes="{rel: 'nofollow'}">
-                                                            <span class="icon bel-ende01"></span>
-                                                            <f:translate key="nl.part.{part.role}" extensionName="dla_opac_ng" arguments="{0: part.label}"/>
-                                                        </f:link.action>
-                                                    </f:else>
-                                                </f:if>
+                                                <f:comment>Leerer Rest entfernt das Suchfeld (leere Argumente verwirft das Such-Plugin).</f:comment>
+                                                <f:link.action
+                                                        addQueryString="untrusted"
+                                                        arguments="{q: {default: part.remainingQuery}}"
+                                                        argumentsToBeExcludedFromQueryString="{1: 'tx_find_find[page]', 2: 'cHash', 3: 'tx_find_find[controller]', 4: 'tx_find_find[action]'}"
+                                                        section="{settings.jumpToID}"
+                                                        title="{f:translate(key:'nl.part.remove', extensionName:'dla_opac_ng', arguments:{0:part.label})}"
+                                                        additionalAttributes="{rel: 'nofollow'}">
+                                                    <span class="icon bel-ende01"></span>
+                                                    <f:translate key="nl.part.{part.role}" extensionName="dla_opac_ng" arguments="{0: part.label}"/>
+                                                </f:link.action>
                                             </f:else>
                                         </f:if>
                                     </li>
@@ -85,8 +71,8 @@
                             <p class="dla-nl-parts-empty"><f:translate key="nl.parts.empty" extensionName="dla_opac_ng"/></p>
                         </f:else>
                     </f:if>
-                    <f:if condition="{arguments.nldropped}">
-                        <p class="dla-nl-dropped"><f:translate key="nl.status.relaxed" extensionName="dla_opac_ng" arguments="{0: arguments.nldropped}"/></p>
+                    <f:if condition="{parts} && {results} && {results.numfound} == 0">
+                        <p class="dla-nl-no-results"><f:translate key="nl.parts.noResults" extensionName="dla_opac_ng"/></p>
                     </f:if>
                 </f:alias>
             </f:defaultCase>

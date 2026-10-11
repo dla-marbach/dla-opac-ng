@@ -31,12 +31,11 @@ Browser                         TYPO3 (dla-opac-ng)                             
   │ GET …/find?tx_find_find[q][default]=Frage&tx_find_find[nl]=1
   ├──────────────────────────► ProofOfWorkMiddleware (Bot-Schutz, unverändert)
   │                             NaturalLanguageSearchMiddleware
-  │                               ├─ Zwischenspeicher? ─ nein ─► Rate Limit, freier Platz?
+  │                               ├─ Zwischenspeicher? ─ nein ─► Rate Limit
   │                               │                              └─ QueryUnderstandingService ─► POST /v1/chat/completions
   │                               │                                                               (JSON nach festem Schema)
   │                               ├─ QueryStructure: Antwort prüfen und bereinigen
-  │                               ├─ SearchArgumentsBuilder: Abgleich mit Solr (Normdaten-Suggester, Facettenwerte)
-  │                               └─ bei 0 Treffern: weiche Bestandteile schrittweise weglassen
+  │                               └─ SearchArgumentsBuilder: Abgleich mit Solr (Normdaten-Suggester, Orte)
   │ ◄──── 303 Redirect auf …/find?tx_find_find[facet][…]=1&tx_find_find[q][default]=…&tx_find_find[nlq]=Frage
   │ GET (normale Suche, wie bisher)
 ```
@@ -53,8 +52,8 @@ Browser                         TYPO3 (dla-opac-ng)                             
   aufgelöst (wie bei der Autovervollständigung), Orte über die exakte Schreibweise oder den häufigsten Facettenwert, der
   den Begriff enthält (z. B. „Marbach“ → „Marbach am Neckar“). Was sich nicht auflösen lässt, wird als weicher
   Suchbegriff übernommen.
-* **Schrittweises Lockern:** Liefert die Suche 0 Treffer, werden nacheinander nicht aufgelöste Begriffe, Themen und
-  der Zeitraum weggelassen. Die Oberfläche nennt die weggelassenen Bestandteile.
+* **Keine Treffer:** Liefert die Suche 0 Treffer, weist die Interpretationszeile darauf hin, dass sich einzelne
+  Bestandteile entfernen lassen. Es wird nichts automatisch weggelassen.
 * **Interpretationszeile:** Über der Trefferliste steht „Ihre Frage »…« wurde verstanden als:“ mit den einzelnen
   Bestandteilen, z. B. `Handschriften ✕ · von Hesse, Hermann (1877-1962) ✕ · 1930–1939 ✕ · Thema: Exil ✕`. Jeder Teil
   lässt sich entfernen: Filter über denselben Mechanismus wie bei den aktiven Filtern (`s:find.facetLinkArguments`),
@@ -73,13 +72,13 @@ Beteiligte Dateien:
 | Datei | Aufgabe |
 |---|---|
 | `Classes/Middleware/NaturalLanguageSearchMiddleware.php` | Einstieg, Begrenzungen, Weiterleitung |
-| `Classes/Service/QueryUnderstandingService.php` | Ablaufsteuerung, Zwischenspeicher, Lockern |
-| `Classes/Service/QueryUnderstanding/LlmClient.php` | Aufruf der OpenAI-kompatiblen API |
+| `Classes/Service/QueryUnderstandingService.php` | Ablaufsteuerung, Zwischenspeicher |
+| `Classes/Service/QueryUnderstanding/LlmClient.php` | Aufruf der OpenAI-kompatiblen API (über die `RequestFactory` von TYPO3) |
 | `Classes/Service/QueryUnderstanding/QueryPrompt.php` | Nachrichten und JSON-Schema |
 | `Classes/Service/QueryUnderstanding/QueryStructure.php` | Prüfung und Bereinigung der Modellantwort |
 | `Classes/Service/QueryUnderstanding/VocabularyResolver.php` | Abgleich mit Solr |
 | `Classes/Service/QueryUnderstanding/SearchArgumentsBuilder.php` | Abbildung auf Facetten und Suchbegriffe |
-| `Classes/Service/QueryUnderstanding/QueryInterpretation.php` | Ergebnis, Lockern, Such-Argumente |
+| `Classes/Service/QueryUnderstanding/QueryInterpretation.php` | Ergebnis: Facetten, Suchbegriffe, Such-Argumente |
 | `Classes/Service/QueryUnderstanding/FacetVocabulary.php` | Werte von Medientyp, Form/Inhalt und Sprache aus dem Index |
 | `Classes/Service/QueryUnderstanding/QueryUnderstandingConfiguration.php` | Konfiguration aus Umgebungsvariablen |
 | `Resources/Private/QueryUnderstanding/system-prompt.md` | Systemprompt (fachliche Regeln) |
@@ -355,7 +354,8 @@ Weitere Voraussetzungen:
   Modell ändern. Das Rate Limit nutzt den Core-Cache `ratelimiter`.
 * Die Proof-of-Work-Prüfung (`opacPowEnabled=1`) sollte aktiv sein; sie schützt auch den LLM-Aufruf.
 * Gestaltung: Checkbox und Hinweis haben die CSS-Klassen `dla-nl-toggle` und `dla-nl-notice`
-  (plus `dla-nl-notice-ok`, `dla-nl-notice-relaxed`, `dla-nl-notice-unrecognized`, `dla-nl-notice-fallback`).
+  (plus `dla-nl-notice-ok`, `dla-nl-notice-unrecognized`, `dla-nl-notice-fallback`), der Hinweis bei 0 Treffern
+  die Klasse `dla-nl-no-results`.
   Die Interpretationszeile ist eine Liste `ul.dla-nl-parts` mit `li.dla-nl-part` und je einer Klasse für die Rolle
   (`dla-nl-part-mediaType`, `-formContent`, `-person`, `-relationVon`, `-relationAn`, `-relationUeber`,
   `-relationUnter`, `-place`, `-language`, `-date`, `-digital`, `-text`, `-topic`, `-unresolved`); die Links nutzen
@@ -410,18 +410,18 @@ task test:php
 
 Die Tests laufen ohne LLM und ohne Solr:
 
-* `Tests/Fixtures/Llm/MockLlmServer.php` bildet die OpenAI-kompatible API nach (inkl. Fehler, Zeitüberschreitung,
-  ungültigem JSON und `<think>`-Blöcken); feste Antworten stehen in `Tests/Fixtures/Llm/responses.json`.
-* `Tests/Support/FakeVocabularyResolver.php` ersetzt den Abgleich mit Solr.
-* Getestet werden Client, Bereinigung, Abbildung auf Facetten, Lockern, Zwischenspeicher, Middleware (Weiterleitung,
-  Rückfall, Rate Limit, belegte Plätze) und das Partial.
+* Die LLM-API wird mit dem `MockHandler` von Guzzle nachgebildet (inkl. Fehler, Zeitüberschreitung, ungültigem JSON
+  und `<think>`-Blöcken).
+* `Tests/Support/FakeVocabularyResolver.php` und `Tests/Support/FakeFacetVocabulary.php` ersetzen den Abgleich mit Solr.
+* Getestet werden Client, Bereinigung, Abbildung auf Facetten, Zwischenspeicher, Middleware (Weiterleitung, Rückfall,
+  Rate Limit), Interpretationszeile, die Partials und die Dependency-Injection-Konfiguration.
 
 ## 8. Fehlerbehebung
 
 | Problem | Ursache und Lösung |
 |---|---|
 | Checkbox fehlt | `LLM_BASE_URL` ist im PHP-Prozess nicht gesetzt. In DDEV `.ddev/.env` prüfen und `ddev restart`. |
-| Es wird immer „normal gesucht“ | LLM nicht erreichbar oder zu langsam. Erreichbarkeit vom Webserver bzw. Web-Container prüfen: `curl http://<llm-host>:11434/api/version`. In `var/log/typo3_*.log` nach „LLM-Anfrage fehlgeschlagen“ suchen (Status 0 = keine Verbindung oder Timeout). |
+| Es wird immer „normal gesucht“ | LLM nicht erreichbar oder zu langsam. Erreichbarkeit vom Webserver bzw. Web-Container prüfen: `curl http://<llm-host>:11434/api/version`. In `var/log/typo3_*.log` nach „LLM-Anfrage fehlgeschlagen“ suchen (die Meldung nennt Verbindungsfehler, Timeout oder HTTP-Status). |
 | Erste Anfrage sehr langsam | Modell wird geladen. `OLLAMA_KEEP_ALIVE=24h` setzen, Modell vorab laden (3.4). |
 | Generell zu langsam | Modell zu groß für die Hardware: kleineres Modell oder GPU; `LLM_TIMEOUT` erhöhen. |
 | Status 404 mit „model … not found“ im Log | `LLM_MODEL` stimmt nicht mit `ollama list` überein. |
@@ -442,4 +442,4 @@ Die Tests laufen ohne LLM und ohne Solr:
   ein gemeinsames Cache-Backend (z. B. Redis) für `ratelimiter` und `dla_opac_ng_query_understanding` verwenden.
 * **Testmenge:** 100–200 echte Fragen mit erwarteter Zerlegung sammeln und damit Modelle und Prompt-Änderungen
   vergleichen (Trefferquote je Feld).
-* **Messen:** Anteil der Anfragen mit Rückfall bzw. Lockern, Antwortzeiten, Nutzung der Checkbox.
+* **Messen:** Anteil der Anfragen mit Rückfall bzw. ohne Treffer, Antwortzeiten, Nutzung der Checkbox, entfernte Bestandteile.

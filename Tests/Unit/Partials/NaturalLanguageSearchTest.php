@@ -121,13 +121,17 @@ class NaturalLanguageSearchTest extends FluidPartialTestCase
     /**
      * @test
      */
-    public function rendersNoticeWithDroppedParts(): void
+    public function suggestsRemovingPartsWhenThereAreNoResults(): void
     {
-        $html = $this->renderInterpretation(['nldropped' => 'Atlantis, 1920–1925', 'nlstatus' => 'relaxed'] + self::INTERPRETED);
+        $render = fn(int $numFound): string => $this->renderPartial('Form/NaturalLanguageSearch', [
+            'arguments' => self::INTERPRETED,
+            'config' => ['activeFacets' => []],
+            'settings' => ['jumpToID' => ''],
+            'results' => ['numfound' => $numFound],
+        ]);
 
-        self::assertStringContainsString('dla-nl-notice-relaxed', $html);
-        self::assertStringContainsString('was understood as:', $html);
-        self::assertStringContainsString('otherwise be no results: Atlantis, 1920–1925.', $html);
+        self::assertStringContainsString('No results. Remove individual parts of the interpretation above', $render(0));
+        self::assertStringNotContainsString('No results.', $render(12));
     }
 
     /**

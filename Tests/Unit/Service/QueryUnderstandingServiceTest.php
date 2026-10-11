@@ -3,14 +3,14 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Service;
 
 use Dla\DlaOpacNg\Service\QueryUnderstanding\LlmClient;
-use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryInterpretation;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryPrompt;
-use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryStructure;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryUnderstandingConfiguration;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\SearchArgumentsBuilder;
 use Dla\DlaOpacNg\Service\QueryUnderstandingService;
 use Dla\DlaOpacNg\Tests\Support\FakeFacetVocabulary;
 use Dla\DlaOpacNg\Tests\Support\FakeVocabularyResolver;
+use PHPUnit\Framework\MockObject\MockObject;
+use Psr\Log\NullLogger;
 use TYPO3\CMS\Core\Cache\Backend\TransientMemoryBackend;
 use TYPO3\CMS\Core\Cache\Frontend\VariableFrontend;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
@@ -20,260 +20,82 @@ class QueryUnderstandingServiceTest extends UnitTestCase
     protected bool $resetSingletonInstances = true;
 
     private const ANSWER = [
-        'text' => '',
         'persons' => [['name' => 'Hesse', 'relation' => 'Von']],
-        'topics' => [['term' => 'Exil', 'variants' => ['Emigration']]],
         'mediaTypes' => ['Handschriften'],
-        'formContent' => [],
-        'languages' => [],
-        'places' => ['Atlantis'],
-        'dateFrom' => 1930,
-        'dateTo' => 1939,
-        'digitalOnly' => false,
+        'formContent' => ['Brief', 'Briefe'],
     ];
 
-    private function createConfiguration(string $baseUrl = 'http://llm.invalid/v1'): QueryUnderstandingConfiguration
+    private LlmClient&MockObject $llmClient;
+
+    private function createService(?array $answer, string $baseUrl = 'http://llm.test/v1'): QueryUnderstandingService
     {
-        return new QueryUnderstandingConfiguration(baseUrl: $baseUrl, model: 'test-model');
-    }
+        $configuration = new QueryUnderstandingConfiguration(baseUrl: $baseUrl, model: 'test-model');
+        $this->llmClient = $this->createMock(LlmClient::class);
+        $this->llmClient->method('completeJson')->willReturn($answer);
 
-    /**
-     * LLM-Client, der eine feste Antwort liefert und die Aufrufe zählt.
-     */
-    private function createLlmClient(?array $answer): LlmClient
-    {
-        $client = $this->getMockBuilder(LlmClient::class)
-            ->setConstructorArgs([$this->createConfiguration()])
-            ->onlyMethods(['completeJson'])
-            ->getMock();
-        $client->method('completeJson')->willReturn($answer);
-
-        return $client;
-    }
-
-    private function createCache(): VariableFrontend
-    {
-        return new VariableFrontend('test', new TransientMemoryBackend('Testing'));
-    }
-
-    private function createService(
-        LlmClient $llmClient,
-        ?FakeVocabularyResolver $resolver = null,
-        ?VariableFrontend $cache = null,
-        ?QueryUnderstandingConfiguration $configuration = null,
-    ): QueryUnderstandingService {
         return new QueryUnderstandingService(
-            $configuration ?? $this->createConfiguration(),
-            $llmClient,
+            $configuration,
+            $this->llmClient,
             new QueryPrompt(),
-            new SearchArgumentsBuilder($resolver ?? new FakeVocabularyResolver()),
+            new SearchArgumentsBuilder(new FakeVocabularyResolver(['Hesse' => ['id' => 'PE1', 'label' => 'Hesse, Hermann (1877-1962)']])),
             new FakeFacetVocabulary(),
-            $cache ?? $this->createCache(),
+            new VariableFrontend('test', new TransientMemoryBackend('Testing')),
+            new NullLogger(),
         );
     }
 
     /**
      * @test
      */
-    public function analyzeReturnsValidatedStructure(): void
+    public function analyzesWithIndexVocabularyAndCachesPerQuestion(): void
     {
-        $structure = $this->createService($this->createLlmClient(self::ANSWER))->analyze('  Briefe   von Hesse  ');
-
-        self::assertSame('Hesse', $structure->persons[0]['name']);
-        self::assertSame(['Handschriften'], $structure->mediaTypes);
-    }
-
-    /**
-     * @test
-     */
-    public function analyzeCachesResultsPerQuestion(): void
-    {
-        $llmClient = $this->createLlmClient(self::ANSWER);
-        $llmClient->expects(self::once())->method('completeJson');
-        $service = $this->createService($llmClient, cache: $this->createCache());
+        $service = $this->createService(self::ANSWER);
+        $this->llmClient->expects(self::once())->method('completeJson')->with(
+            self::callback(static fn(array $messages): bool => str_contains($messages[0]['content'], '"formContent": "Brief", "Gedicht", "Übersetzung"')),
+            self::callback(static fn(array $schema): bool => $schema['properties']['formContent']['items']['enum'] === ['Brief', 'Gedicht', 'Übersetzung']),
+        );
 
         self::assertFalse($service->isCached('Briefe von Hesse'));
-        $first = $service->analyze('Briefe von Hesse');
-        self::assertTrue($service->isCached('briefe  von HESSE'));
-        $second = $service->analyze('briefe  von HESSE');
+        $structure = $service->analyze('  Briefe   von Hesse ');
+        self::assertTrue($service->isCached('briefe von HESSE'));
+        self::assertEquals($structure, $service->analyze('briefe von HESSE'));
 
-        self::assertEquals($first, $second);
+        self::assertSame(['Brief'], $structure->formContent, 'nur Werte aus dem Index');
+        self::assertSame(
+            ['filterAuthorityRelation_mv' => ['Hesse, Hermann (1877-1962)␝Von' => '1'], 'Medientypen' => ['Handschriften' => '1'], 'FormUndInhalt' => ['Brief' => '1']],
+            $service->interpret($structure)->toFindArguments()['facet']
+        );
     }
 
     /**
      * @test
      */
-    public function analyzeReturnsAndCachesEmptyStructureWhenNothingWasRecognized(): void
+    public function cachesAlsoWhenNothingWasRecognized(): void
     {
-        $llmClient = $this->createLlmClient(['text' => '']);
-        $llmClient->expects(self::once())->method('completeJson');
-        $service = $this->createService($llmClient);
+        $service = $this->createService(['text' => '']);
+        $this->llmClient->expects(self::once())->method('completeJson');
 
         self::assertTrue($service->analyze('???')->isEmpty());
-        self::assertTrue($service->isCached('???'));
-        self::assertTrue($service->analyze('???')->isEmpty(), 'Zweiter Aufruf aus dem Zwischenspeicher');
+        self::assertTrue($service->analyze('???')->isEmpty());
     }
 
     /**
      * @test
      */
-    public function analyzePassesIndexVocabularyToModelAndValidatesAnswer(): void
+    public function returnsNullWhenLlmFailsOrIsDisabled(): void
     {
-        $llmClient = $this->getMockBuilder(LlmClient::class)
-            ->setConstructorArgs([$this->createConfiguration()])
-            ->onlyMethods(['completeJson'])
-            ->getMock();
-        $llmClient->expects(self::once())->method('completeJson')
-            ->with(
-                self::callback(static fn(array $messages): bool => str_contains($messages[0]['content'], '"formContent": "Brief", "Gedicht", "Übersetzung"')),
-                self::callback(static fn(array $schema): bool => $schema['properties']['formContent']['items']['enum'] === ['Brief', 'Gedicht', 'Übersetzung']),
-            )
-            ->willReturn(['formContent' => ['Brief', 'Briefe'], 'languages' => ['Klingonisch']] + self::ANSWER);
+        self::assertNull($this->createService(null)->analyze('Briefe von Hesse'));
 
-        $structure = $this->createService($llmClient)->analyze('Briefe von Hesse');
-
-        self::assertSame(['Brief'], $structure->formContent);
-        self::assertSame([], $structure->languages);
+        $disabled = $this->createService(self::ANSWER, '');
+        $this->llmClient->expects(self::never())->method('completeJson');
+        self::assertFalse($disabled->isEnabled());
+        self::assertNull($disabled->analyze('Briefe von Hesse'));
     }
 
     /**
      * @test
      */
-    public function analyzeReturnsNullWhenLlmFails(): void
-    {
-        self::assertNull($this->createService($this->createLlmClient(null))->analyze('Briefe von Hesse'));
-    }
-
-    /**
-     * @test
-     */
-    public function analyzeDoesNotCallLlmWhenDisabled(): void
-    {
-        $llmClient = $this->createLlmClient(self::ANSWER);
-        $llmClient->expects(self::never())->method('completeJson');
-        $service = $this->createService($llmClient, configuration: $this->createConfiguration(''));
-
-        self::assertFalse($service->isEnabled());
-        self::assertNull($service->analyze('Briefe von Hesse'));
-    }
-
-    /**
-     * @test
-     */
-    public function interpretKeepsEverythingWhenThereAreResults(): void
-    {
-        $resolver = new FakeVocabularyResolver(
-            persons: ['Hesse' => ['id' => 'PE1', 'label' => 'Hesse, Hermann (1877-1962)']],
-            counter: static fn(): int => 12,
-        );
-        $service = $this->createService($this->createLlmClient(self::ANSWER), $resolver);
-
-        $interpretation = $service->interpret(QueryStructure::fromArray(self::ANSWER));
-
-        self::assertSame([], $interpretation->dropped);
-        self::assertSame('atlantis (exil OR emigration)', $interpretation->getQueryString());
-        self::assertSame(['from' => 1930, 'to' => 1939], $interpretation->dateRange);
-    }
-
-    /**
-     * @test
-     */
-    public function interpretRelaxesStepByStepUntilThereAreResults(): void
-    {
-        // Treffer erst, wenn weder "atlantis" noch das Thema Exil in der Anfrage stehen
-        $resolver = new FakeVocabularyResolver(
-            persons: ['Hesse' => ['id' => 'PE1', 'label' => 'Hesse, Hermann (1877-1962)']],
-            counter: static fn(string $query): int => $query === '*:*' ? 3 : 0,
-        );
-        $service = $this->createService($this->createLlmClient(self::ANSWER), $resolver);
-
-        $interpretation = $service->interpret(QueryStructure::fromArray(self::ANSWER));
-
-        self::assertSame(['Atlantis', 'Exil'], $interpretation->dropped);
-        self::assertSame('', $interpretation->getQueryString());
-        self::assertSame(['from' => 1930, 'to' => 1939], $interpretation->dateRange, 'Zeitraum bleibt, da es nun Treffer gibt');
-        self::assertContains('filterAuthorityRelation_mv:("Hesse, Hermann (1877-1962)␝Von")', $interpretation->getFilterQueries());
-    }
-
-    /**
-     * @test
-     */
-    public function interpretCountsWithAdditionalFilterQueries(): void
-    {
-        // Ohne den beibehaltenen Filter gäbe es Treffer, mit ihm erst nach dem Weglassen des Themas
-        $resolver = new FakeVocabularyResolver(
-            persons: ['Hesse' => ['id' => 'PE1', 'label' => 'Hesse, Hermann (1877-1962)']],
-            counter: static fn(string $query, array $filterQueries): int =>
-                in_array('filterCollection_mv:("X")', $filterQueries, true) && str_contains($query, 'exil') ? 0 : 5,
-        );
-        $service = $this->createService($this->createLlmClient(self::ANSWER), $resolver);
-
-        $interpretation = $service->interpret(QueryStructure::fromArray(self::ANSWER), ['filterCollection_mv:("X")']);
-
-        self::assertSame(['Atlantis', 'Exil'], $interpretation->dropped);
-        self::assertContains('filterCollection_mv:("X")', $resolver->countRequests[0]['filterQueries']);
-    }
-
-    /**
-     * @test
-     */
-    public function interpretDropsNothingWhenAdditionalFiltersAreUnknown(): void
-    {
-        $resolver = new FakeVocabularyResolver(counter: static fn(): int => 0);
-        $service = $this->createService($this->createLlmClient(self::ANSWER), $resolver);
-
-        $interpretation = $service->interpret(QueryStructure::fromArray(self::ANSWER), null);
-
-        self::assertSame([], $interpretation->dropped);
-        self::assertSame([], $resolver->countRequests);
-    }
-
-    /**
-     * @test
-     */
-    public function setLoggerIsPassedToLlmClient(): void
-    {
-        $logger = new class () extends \Psr\Log\AbstractLogger {
-            public array $messages = [];
-
-            public function log($level, string|\Stringable $message, array $context = []): void
-            {
-                $this->messages[] = $level . ': ' . $message;
-            }
-        };
-        $configuration = new QueryUnderstandingConfiguration(baseUrl: 'http://127.0.0.1:1/v1', timeout: 1.0);
-        $service = new QueryUnderstandingService(
-            $configuration,
-            new LlmClient($configuration),
-            new QueryPrompt(),
-            new SearchArgumentsBuilder(new FakeVocabularyResolver()),
-            new FakeFacetVocabulary(),
-            $this->createCache(),
-        );
-        $service->setLogger($logger);
-
-        self::assertNull($service->analyze('Briefe von Hesse'));
-        self::assertContains('warning: LLM-Anfrage fehlgeschlagen', $logger->messages);
-    }
-
-    /**
-     * @test
-     */
-    public function interpretDropsNothingWhenSolrIsUnavailable(): void
-    {
-        $resolver = new FakeVocabularyResolver(counter: static fn(): ?int => null);
-        $service = $this->createService($this->createLlmClient(self::ANSWER), $resolver);
-
-        $interpretation = $service->interpret(QueryStructure::fromArray(self::ANSWER));
-
-        self::assertSame([], $interpretation->dropped);
-        self::assertTrue($interpretation->hasPart(QueryInterpretation::PART_TOPIC));
-    }
-
-    /**
-     * @test
-     */
-    public function normalizeQuestionTrimsAndLimitsLength(): void
+    public function normalizesQuestions(): void
     {
         self::assertSame('Briefe von Hesse', QueryUnderstandingService::normalizeQuestion("  Briefe\n von   Hesse "));
         self::assertSame(300, mb_strlen(QueryUnderstandingService::normalizeQuestion(str_repeat('ä', 500))));
