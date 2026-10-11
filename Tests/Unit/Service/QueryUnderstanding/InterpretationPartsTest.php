@@ -9,7 +9,7 @@ class InterpretationPartsTest extends UnitTestCase
 {
     /**
      * Such-Argumente nach der Weiterleitung für "Briefe von Hesse an Thomas Mann aus den 1930ern über Exil",
-     * dazu ein selbst gewählter Filter (Sprache) und ein Ausschluss (Ort).
+     * dazu ein selbst gewählter Filter (Sprache) und ein Ausschluss (Ort), die nicht zur Interpretation gehören.
      */
     private const ARGUMENTS = [
         'q' => ['default' => 'steppenwolf (exil OR emigration) atlantis'],
@@ -95,30 +95,12 @@ class InterpretationPartsTest extends UnitTestCase
     /**
      * @test
      */
-    public function questionFacetsAreSeparatedFromOtherActiveFacets(): void
-    {
-        self::assertTrue(InterpretationParts::isQuestionFacet(self::ARGUMENTS, 'Medientypen', 'Handschriften'));
-        self::assertTrue(InterpretationParts::isQuestionFacet(self::ARGUMENTS, 'Zeit', 'RANGE 1930 TO 1939'));
-        self::assertFalse(InterpretationParts::isQuestionFacet(self::ARGUMENTS, 'Sprache', 'Deutsch'));
-        self::assertTrue(InterpretationParts::hasOtherActiveFacets(self::ARGUMENTS));
-
-        $onlyQuestion = self::ARGUMENTS;
-        unset($onlyQuestion['facet']['Sprache'], $onlyQuestion['facet']['Ort']);
-        self::assertFalse(InterpretationParts::hasOtherActiveFacets($onlyQuestion));
-    }
-
-    /**
-     * @test
-     */
     public function withoutQuestionEverythingIsAnOrdinaryFilter(): void
     {
         $arguments = self::ARGUMENTS;
         unset($arguments['nlq']);
 
         self::assertSame([], InterpretationParts::fromArguments($arguments));
-        self::assertFalse(InterpretationParts::isQuestionFacet($arguments, 'Medientypen', 'Handschriften'));
-        self::assertTrue(InterpretationParts::hasOtherActiveFacets($arguments));
-        self::assertFalse(InterpretationParts::hasOtherActiveFacets(['nlq' => 'x']));
     }
 
     /**
@@ -135,8 +117,6 @@ class InterpretationPartsTest extends UnitTestCase
 
         self::assertNotContains('Handschriften', $labels);
         self::assertNotContains('Woche', $labels);
-        self::assertFalse(InterpretationParts::isQuestionFacet($arguments, 'Medientypen', 'Handschriften'));
-        self::assertFalse(InterpretationParts::isQuestionFacet($arguments, 'NeuImKatalog', 'Woche'));
     }
 
     /**
@@ -147,7 +127,6 @@ class InterpretationPartsTest extends UnitTestCase
         $arguments = ['nlq' => 'Frage', 'nlf' => 'kaputt', 'nlt' => [['k' => 'topic'], 'x'], 'facet' => 'kaputt', 'q' => 'kaputt'];
 
         self::assertSame([], InterpretationParts::fromArguments($arguments));
-        self::assertFalse(InterpretationParts::hasOtherActiveFacets($arguments));
     }
 
     /**

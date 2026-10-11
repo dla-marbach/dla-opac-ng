@@ -12,8 +12,8 @@ namespace Dla\DlaOpacNg\Service\QueryUnderstanding;
  * Frage stammen. Angezeigt wird davon nur, was in der Suche noch aktiv ist: Entfernt man einen Filter in der
  * Interpretationszeile oder bei den aktiven Filtern, verschwindet er an beiden Stellen.
  *
- * Facetten aus der Frage erscheinen nur in der Interpretationszeile, nicht zusätzlich bei den aktiven
- * Filtern (siehe isQuestionFacet(), verwendet in Partials/Display/List/ActiveFacets.html).
+ * Die Box „Aktive Filter“ bleibt unverändert und zeigt alle Filter wie bei einer normalen Suche, also auch die
+ * aus der Frage; die Interpretationszeile ergänzt sie um die Rollen (von/an/über …) und die Suchbegriffe.
  */
 final class InterpretationParts
 {
@@ -106,40 +106,6 @@ final class InterpretationParts
             array_search($a['role'], self::ROLE_ORDER, true) <=> array_search($b['role'], self::ROLE_ORDER, true));
 
         return $parts;
-    }
-
-    /**
-     * Stammt diese Facette aus der Frage und ist sie noch aktiv? Dann wird sie in der Interpretationszeile
-     * angezeigt und bei den aktiven Filtern ausgelassen.
-     */
-    public static function isQuestionFacet(array $arguments, string $facetId, string $term): bool
-    {
-        if (!is_string($arguments['nlq'] ?? null) || $arguments['nlq'] === '' || !self::isActiveFacet($arguments, $facetId, $term)) {
-            return false;
-        }
-        foreach (self::questionFacets($arguments) as [$questionFacetId, $questionTerm]) {
-            if ($questionFacetId === $facetId && $questionTerm === $term && self::facetRoleAndLabel($facetId, $term)[0] !== null) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Gibt es aktive Facetten, die nicht aus der Frage stammen (für die Anzeige der aktiven Filter)?
-     */
-    public static function hasOtherActiveFacets(array $arguments): bool
-    {
-        foreach (is_array($arguments['facet'] ?? null) ? $arguments['facet'] : [] as $facetId => $terms) {
-            foreach (is_array($terms) ? $terms : [] as $term => $status) {
-                if ((string)$status !== '' && !self::isQuestionFacet($arguments, (string)$facetId, (string)$term)) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
     }
 
     /**

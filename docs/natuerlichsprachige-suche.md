@@ -60,9 +60,10 @@ Browser                         TYPO3 (dla-opac-ng)                             
   lässt sich entfernen: Filter über denselben Mechanismus wie bei den aktiven Filtern (`s:find.facetLinkArguments`),
   Suchbegriffe durch Entfernen aus dem Suchfeld. Maßgeblich ist immer der aktuelle Zustand der Suche; die Middleware
   vermerkt in der URL nur, welche Filter (`nlf`) und Suchbegriffe (`nlt`) aus der Frage stammen
-  (`InterpretationParts`). Filter aus der Frage erscheinen deshalb nur in der Interpretationszeile und nicht
-  zusätzlich bei den aktiven Filtern; wird ein Filter an einer Stelle entfernt oder geändert (z. B. der Zeitraum per
-  Schieberegler), verschwindet er aus der Zeile. Eine neue Suche über das Suchfeld beendet die Interpretation.
+  (`InterpretationParts`). Die Box „Aktive Filter“ bleibt unverändert und zeigt alle Filter wie bei einer normalen
+  Suche, auch die aus der Frage; die Interpretationszeile ergänzt sie um die Rollen (von/an/über …) und die
+  Suchbegriffe. Wird ein Filter an einer Stelle entfernt oder geändert (z. B. der Zeitraum per Schieberegler),
+  verschwindet er an beiden Stellen. Eine neue Suche über das Suchfeld beendet die Interpretation.
 * **Rückfall:** Ist das LLM nicht erreichbar, zu langsam oder ausgelastet, wird normal nach dem eingegebenen Text gesucht
   („KI-Suche nicht verfügbar“). Erkennt es in der Frage nichts, wird ebenfalls normal gesucht, mit eigenem Hinweis;
   auch dieses Ergebnis wird zwischengespeichert.
@@ -84,9 +85,8 @@ Beteiligte Dateien:
 | `Resources/Private/QueryUnderstanding/system-prompt.md` | Systemprompt (fachliche Regeln) |
 | `Resources/Private/QueryUnderstanding/examples.json` | Beispielpaare Frage → Antwort (few-shot) |
 | `Classes/Service/QueryUnderstanding/InterpretationParts.php` | Bestandteile der Interpretationszeile, Abgleich mit den aktiven Filtern |
-| `Classes/ViewHelpers/NaturalLanguage/*` | ViewHelper für Interpretationszeile und aktive Filter |
+| `Classes/ViewHelpers/NaturalLanguage/PartsViewHelper.php` | ViewHelper für die Interpretationszeile |
 | `Resources/Private/Partials/Form/NaturalLanguageSearch.html` | Checkbox, Hinweis und Interpretationszeile in der Suchmaske |
-| `Resources/Private/Partials/Display/List/ActiveFacets.html` | aktive Filter (ohne die Filter aus der Frage) |
 
 ## 2. Schnellstart in der Entwicklungsumgebung
 

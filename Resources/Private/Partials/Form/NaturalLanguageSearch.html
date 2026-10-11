@@ -9,8 +9,8 @@
       ok/relaxed (Interpretationszeile, bei relaxed mit weggelassenen Teilen aus nldropped),
       unrecognized (nichts erkannt, normale Suche) oder fallback (KI-Suche nicht verfügbar, normale Suche).
     * Interpretationszeile: Bestandteile der Frage, die in der Suche noch aktiv sind (siehe InterpretationParts).
-      Filter werden wie bei den aktiven Filtern über s:find.facetLinkArguments entfernt und dort nicht
-      zusätzlich angezeigt; Suchbegriffe werden aus dem Suchfeld entfernt.
+      Filter werden wie bei den aktiven Filtern über s:find.facetLinkArguments entfernt (die Box „Aktive Filter“
+      zeigt sie unverändert ebenfalls an); Suchbegriffe werden aus dem Suchfeld entfernt.
 </f:comment>
 <f:if condition="{dla:naturalLanguageSearchEnabled()}">
     <div class="dla-nl-toggle {f:if(condition: '{arguments.extended}==1', then: 'hidden')}">

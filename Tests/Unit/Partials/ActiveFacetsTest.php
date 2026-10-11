@@ -5,8 +5,9 @@ namespace Dla\DlaOpacNg\Tests\Unit\Partials;
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
 
 /**
- * Rendert Resources/Private/Partials/Display/List/ActiveFacets.html und prüft den Abgleich mit der
- * Interpretationszeile der natürlichsprachigen Suche: Filter aus der Frage erscheinen nur dort.
+ * Rendert Resources/Private/Partials/Display/List/ActiveFacets.html und prüft das Zusammenspiel mit der
+ * natürlichsprachigen Suche: Die Box zeigt alle Filter wie bei einer normalen Suche, auch die aus der Frage
+ * (die Interpretationszeile zeigt sie zusätzlich).
  */
 class ActiveFacetsTest extends FluidPartialTestCase
 {
@@ -59,7 +60,7 @@ class ActiveFacetsTest extends FluidPartialTestCase
     /**
      * @test
      */
-    public function omitsFiltersFromTheQuestion(): void
+    public function showsFiltersFromTheQuestionLikeAnyOtherFilter(): void
     {
         $html = $this->renderActiveFacets([
             'facet' => [
@@ -68,6 +69,7 @@ class ActiveFacetsTest extends FluidPartialTestCase
                 'filterAuthorityRelation_mv' => ['Hesse, Hermann (1877-1962)␝Von' => '1'],
             ],
             'nlq' => 'Handschriften von Hesse',
+            'nlstatus' => 'ok',
             'nlf' => [
                 ['f' => 'Medientypen', 't' => 'Handschriften'],
                 ['f' => 'filterAuthorityRelation_mv', 't' => 'Hesse, Hermann (1877-1962)␝Von'],
@@ -75,23 +77,25 @@ class ActiveFacetsTest extends FluidPartialTestCase
         ]);
 
         self::assertStringContainsString('active-facets', $html);
-        self::assertStringContainsString('Deutsch', $html, 'selbst gewählter Filter bleibt sichtbar');
-        self::assertStringNotContainsString('Handschriften', $html);
-        self::assertStringNotContainsString('Hesse', $html);
+        self::assertStringContainsString('Deutsch', $html);
+        self::assertStringContainsString('Handschriften', $html);
+        self::assertStringContainsString('Hesse, Hermann (1877-1962) in Relation Von', $html);
     }
 
     /**
      * @test
      */
-    public function hidesBoxWhenAllFiltersComeFromTheQuestion(): void
+    public function showsBoxWhenAllFiltersComeFromTheQuestion(): void
     {
         $html = $this->renderActiveFacets([
             'q' => ['default' => 'exil'],
             'facet' => ['Medientypen' => ['Handschriften' => '1']],
             'nlq' => 'Handschriften über Exil',
+            'nlstatus' => 'ok',
             'nlf' => [['f' => 'Medientypen', 't' => 'Handschriften']],
         ]);
 
-        self::assertStringNotContainsString('active-facets', $html);
+        self::assertStringContainsString('active-facets', $html);
+        self::assertStringContainsString('Handschriften', $html);
     }
 }

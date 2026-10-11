@@ -1,9 +1,4 @@
-<f:comment>
-    Filter aus der Frage der natürlichsprachigen Suche stehen in der Interpretationszeile
-    (Partials/Form/NaturalLanguageSearch.html) und werden hier nicht zusätzlich angezeigt.
-    Ohne natürlichsprachige Suche entspricht hasOtherActiveFacets der Prüfung auf {arguments.facet}.
-</f:comment>
-<f:if condition="{dla:naturalLanguage.hasOtherActiveFacets(arguments: arguments)} || {arguments.q} && {dla:isNull(variable:'{arguments.q.default}')}">
+<f:if condition="{arguments.facet} || {arguments.q} && {dla:isNull(variable:'{arguments.q.default}')}">
     <section class="ctg-facet active-facets">
         <h3>
             <f:translate key="search.facet.active_facets" extensionName="dla_opac_ng" />
@@ -65,7 +60,7 @@
                             <f:if condition="{facetTerm} == ''">
                                 <v:variable.set value="{facetInfo.labelMissing}" name="facetTerm" />
                             </f:if>
-                            <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)} && !{dla:naturalLanguage.isQuestionFacet(arguments: arguments, facetId: facetInfo.id, term: facetTerm)}">
+                            <f:if condition="{s:find.facetIsActive(facetID:facetInfo.id, facetTerm:facetTerm, activeFacets:config.activeFacets)}">
                                 <f:comment><hr class="active-facet-hr"/></f:comment>
                                 <li>
                                     <f:link.action
@@ -100,7 +95,6 @@
                 </f:for>
                 <f:if condition="{config.activeFacets.Zeit}">
                     <f:for each="{config.activeFacets.Zeit}" as="time">
-                        <f:if condition="!{dla:naturalLanguage.isQuestionFacet(arguments: arguments, facetId: 'Zeit', term: time.term)}">
                         <li>
                             <f:link.action
                                     addQueryString="untrusted"
@@ -113,7 +107,6 @@
                                 {output}
                             </f:link.action>
                         </li>
-                        </f:if>
                     </f:for>
                 </f:if>
                 <f:comment>
