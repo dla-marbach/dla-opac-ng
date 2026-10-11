@@ -4,8 +4,8 @@
         "answer": {
             "text": "",
             "persons": [
-                {"name": "Hesse", "relation": "Von"},
-                {"name": "Thomas Mann", "relation": "An"}
+                {"name": "Hesse", "fullName": "Hermann Hesse", "relation": "Von"},
+                {"name": "Thomas Mann", "fullName": "Thomas Mann", "relation": "An"}
             ],
             "topics": [
                 {"term": "Exil", "variants": ["Exil*", "Emigration", "Emigrant*"]}
@@ -16,7 +16,9 @@
             "places": [],
             "dateFrom": 1930,
             "dateTo": 1939,
-            "digitalOnly": false
+            "digitalOnly": false,
+            "knownItem": false,
+            "exclude": {"mediaTypes": [], "formContent": [], "terms": []}
         }
     },
     {
@@ -24,7 +26,7 @@
         "answer": {
             "text": "",
             "persons": [
-                {"name": "Ingeborg Bachmann", "relation": "Von"}
+                {"name": "Ingeborg Bachmann", "fullName": "Ingeborg Bachmann", "relation": "Von"}
             ],
             "topics": [],
             "mediaTypes": ["Audio"],
@@ -33,7 +35,9 @@
             "places": [],
             "dateFrom": null,
             "dateTo": null,
-            "digitalOnly": false
+            "digitalOnly": false,
+            "knownItem": false,
+            "exclude": {"mediaTypes": [], "formContent": [], "terms": []}
         }
     },
     {
@@ -41,7 +45,7 @@
         "answer": {
             "text": "",
             "persons": [
-                {"name": "Paul Celan", "relation": "Über"}
+                {"name": "Paul Celan", "fullName": "Paul Celan", "relation": "Über"}
             ],
             "topics": [],
             "mediaTypes": ["Gedrucktes"],
@@ -50,7 +54,9 @@
             "places": [],
             "dateFrom": 1970,
             "dateTo": null,
-            "digitalOnly": false
+            "digitalOnly": false,
+            "knownItem": false,
+            "exclude": {"mediaTypes": [], "formContent": [], "terms": []}
         }
     },
     {
@@ -65,7 +71,9 @@
             "places": ["Marbach"],
             "dateFrom": null,
             "dateTo": null,
-            "digitalOnly": true
+            "digitalOnly": true,
+            "knownItem": false,
+            "exclude": {"mediaTypes": [], "formContent": [], "terms": []}
         }
     },
     {
@@ -73,7 +81,7 @@
         "answer": {
             "text": "Der Process",
             "persons": [
-                {"name": "Kafka", "relation": "Von"}
+                {"name": "Kafka", "fullName": "Franz Kafka", "relation": "Von"}
             ],
             "topics": [],
             "mediaTypes": [],
@@ -82,7 +90,9 @@
             "places": [],
             "dateFrom": null,
             "dateTo": null,
-            "digitalOnly": false
+            "digitalOnly": false,
+            "knownItem": true,
+            "exclude": {"mediaTypes": [], "formContent": [], "terms": []}
         }
     },
     {
@@ -90,7 +100,7 @@
         "answer": {
             "text": "",
             "persons": [
-                {"name": "Siegfried Kracauer", "relation": "Unter"}
+                {"name": "Siegfried Kracauer", "fullName": "Siegfried Kracauer", "relation": "Unter"}
             ],
             "topics": [
                 {"term": "Film", "variants": ["Film*", "Kino"]}
@@ -101,7 +111,49 @@
             "places": [],
             "dateFrom": null,
             "dateTo": null,
-            "digitalOnly": false
+            "digitalOnly": false,
+            "knownItem": false,
+            "exclude": {"mediaTypes": [], "formContent": [], "terms": []}
+        }
+    },
+    {
+        "question": "Exilliteratur 1933–1945",
+        "answer": {
+            "text": "",
+            "persons": [],
+            "topics": [
+                {"term": "Exil", "variants": ["Exil*", "Emigration", "Emigrant*"]}
+            ],
+            "mediaTypes": ["Gedrucktes"],
+            "formContent": [],
+            "languages": [],
+            "places": [],
+            "dateFrom": null,
+            "dateTo": null,
+            "digitalOnly": false,
+            "knownItem": false,
+            "exclude": {"mediaTypes": [], "formContent": [], "terms": []}
+        }
+    },
+    {
+        "question": "Werke von Christa Wolf über die DDR, aber keine Übersetzungen",
+        "answer": {
+            "text": "",
+            "persons": [
+                {"name": "Christa Wolf", "fullName": "Christa Wolf", "relation": "Von"}
+            ],
+            "topics": [
+                {"term": "DDR", "variants": ["Deutsche Demokratische Republik", "Ostdeutschland"]}
+            ],
+            "mediaTypes": [],
+            "formContent": [],
+            "languages": [],
+            "places": [],
+            "dateFrom": null,
+            "dateTo": null,
+            "digitalOnly": false,
+            "knownItem": false,
+            "exclude": {"mediaTypes": [], "formContent": ["Übersetzung"], "terms": []}
         }
     }
 ]

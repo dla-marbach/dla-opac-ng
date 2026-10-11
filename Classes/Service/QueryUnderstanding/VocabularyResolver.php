@@ -7,10 +7,10 @@ namespace Dla\DlaOpacNg\Service\QueryUnderstanding;
 use Dla\DlaOpacNg\Service\SolrConnection;
 
 /**
- * Gleicht Personen und Orte, für die es zu viele Werte für eine feste Werteliste gibt, mit dem Index ab.
+ * Gleicht Personen, Orte und Themen, für die es zu viele Werte für eine feste Werteliste gibt, mit dem Index ab.
  *
- * Personen werden über den Normdaten-Suggester (mySuggester, wie die Autovervollständigung) aufgelöst, Orte über
- * die Facettenwerte. Nur Werte, die es im Index gibt, werden zu Filtern.
+ * Personen werden über den Normdaten-Suggester (mySuggester, wie die Autovervollständigung) aufgelöst, Orte und
+ * Themen über die Facettenwerte. Nur Werte, die es im Index gibt, werden zu Filtern.
  */
 class VocabularyResolver
 {
@@ -47,9 +47,20 @@ class VocabularyResolver
 
     /**
      * Facettenwert, der den Begriff enthält (Groß-/Kleinschreibung egal): die exakte Schreibweise, sonst der
-     * häufigste Wert, z.B. "Marbach" → "Marbach am Neckar".
+     * häufigste Wert, z.B. "Marbach" → "Marbach am Neckar". Mit $exactOnly nur die exakte Schreibweise.
      */
-    public function resolveFacetValue(string $field, string $value): ?string
+    public function resolveFacetValue(string $field, string $value, bool $exactOnly = false): ?string
+    {
+        $values = $this->facetValuesContaining($field, $value);
+        $exact = array_values(array_filter($values, static fn(string $candidate): bool => mb_strtolower($candidate) === mb_strtolower($value)));
+
+        return $exact[0] ?? ($exactOnly ? null : $values[0] ?? null);
+    }
+
+    /**
+     * @return list<string> die häufigsten Werte des Feldes, die den Begriff enthalten
+     */
+    private function facetValuesContaining(string $field, string $value): array
     {
         $key = 'facet|' . $field . '|' . $value;
         if (!array_key_exists($key, $this->memo)) {
@@ -65,9 +76,7 @@ class VocabularyResolver
                 'facet.sort' => 'count',
                 'json.nl' => 'map',
             ], self::FACET_REQUEST_TIMEOUT);
-            $values = array_map('strval', array_keys((array)($json['facet_counts']['facet_fields'][$field] ?? [])));
-            $exact = array_values(array_filter($values, static fn(string $candidate): bool => mb_strtolower($candidate) === mb_strtolower($value)));
-            $this->memo[$key] = $exact[0] ?? $values[0] ?? null;
+            $this->memo[$key] = array_map('strval', array_keys((array)($json['facet_counts']['facet_fields'][$field] ?? [])));
         }
 
         return $this->memo[$key];

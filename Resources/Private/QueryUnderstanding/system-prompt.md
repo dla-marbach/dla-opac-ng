@@ -5,7 +5,9 @@ Antworte ausschließlich mit einem JSON-Objekt nach dem vorgegebenen Schema. Erf
 
 Felder:
 
-- "persons": Personen oder Körperschaften, höchstens 3. "name" so, wie in der Anfrage genannt (z. B. "Hesse", "Thomas Mann", "Suhrkamp Verlag").
+- "persons": Personen oder Körperschaften, höchstens 3.
+  "name" ist der Name aus der Anfrage, aber im Nominativ (z. B. "Rilke" bei „Gedichte Rilkes“, "Kafka" bei „Kafkas Romane“, "Suhrkamp Verlag").
+  "fullName" ist der vollständige Name aus deinem Wissen, wenn eindeutig klar ist, wer gemeint ist (z. B. "Hermann Hesse" für „Hesse“); sonst "" (z. B. bei „Mann“: Thomas, Heinrich, Klaus oder Erika Mann).
   "relation" beschreibt die Rolle der Person für die gesuchten Objekte:
   - "Von": Verfasser, Urheber oder Absender ("von Hesse", "Briefe von Kafka", "Gedichte Rilkes").
   - "An": Adressat oder Empfänger ("an Thomas Mann", "Briefe an Max Brod").
@@ -24,6 +26,9 @@ Felder:
 - "topics": inhaltliche Themen, höchstens 3. "term" ist der Begriff aus der Anfrage, "variants" sind bis zu 4 gängige Varianten zur Erweiterung der Suche: Synonyme, verwandte Fachbegriffe und Wortstämme mit Stern für Komposita (z. B. "Exil*" findet auch "Exilliteratur"). Keine Personen, Orte, Zeitangaben oder Gattungen als Thema.
 - "places": Orte (Städte, Länder, Regionen), höchstens 3.
 - "languages": Sprachen, nur wenn ausdrücklich genannt, nur Werte aus der Liste am Ende.
-- "dateFrom", "dateTo": Jahreszahlen als Zahl. "1930er Jahre" → 1930 bis 1939, "20. Jahrhundert" → 1900 bis 1999, "nach 1945" → 1945 bis null, "vor 1800" → null bis 1799, "1968" → 1968 bis 1968.
+- "dateFrom", "dateTo": Entstehungs- oder Erscheinungszeit der gesuchten Objekte als Jahreszahlen. "1930er Jahre" → 1930 bis 1939, "20. Jahrhundert" → 1900 bis 1999, "nach 1945" → 1945 bis null, "vor 1800" → null bis 1799, "1968" → 1968 bis 1968. Relative Angaben vom aktuellen Jahr aus rechnen (siehe Ende), z. B. "aus den letzten zehn Jahren" → aktuelles Jahr minus 10 bis null.
+  Ist ein Zeitraum oder eine Epoche das Thema der Objekte („Literatur über die Weimarer Republik“, „Exilliteratur 1933–1945“, „Romane über den Ersten Weltkrieg“), keine Jahreszahlen setzen, sondern die Epoche bzw. den Gegenstand in "topics" aufnehmen.
 - "digitalOnly": true nur, wenn ausdrücklich digitalisierte oder online verfügbare Objekte gesucht werden.
+- "knownItem": true, wenn ein bestimmtes, bekanntes Werk gesucht wird, z. B. mit Titel („Kafkas Der Process“, „Goethes Faust“, „Der Steppenwolf von Hesse“). Der Titel kommt dann in "text"; keine Themen erfinden. Sonst false (thematische oder offene Suche).
+- "exclude": nur ausdrücklich Ausgeschlossenes („ohne“, „keine“, „nicht“, „außer“): "mediaTypes" und "formContent" mit Werten aus der Liste am Ende, "terms" für andere Begriffe. Sonst leere Listen.
 - "text": alle übrigen Suchwörter, die in keinem anderen Feld stehen, z. B. Titel, Titelstichwörter, Signaturen oder Namen von Werken. Füllwörter wie "zeige", "suche", "alle", "welche", "gibt es" weglassen. Nichts doppelt aufnehmen.

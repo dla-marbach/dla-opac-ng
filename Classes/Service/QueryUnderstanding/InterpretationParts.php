@@ -35,6 +35,7 @@ final class InterpretationParts
         'text',
         'topic',
         'unresolved',
+        'excluded',
     ];
 
     private const FACET_ROLES = [
@@ -45,6 +46,7 @@ final class InterpretationParts
         'Sprache' => 'language',
         'Zeit' => 'date',
         'Digital' => 'digital',
+        'Thema' => 'topic',
     ];
 
     private const RELATION_ROLES = [
@@ -58,6 +60,7 @@ final class InterpretationParts
         QueryInterpretation::PART_TEXT => 'text',
         QueryInterpretation::PART_TOPIC => 'topic',
         QueryInterpretation::PART_UNRESOLVED => 'unresolved',
+        QueryInterpretation::PART_EXCLUDED => 'excluded',
     ];
 
     /**
@@ -76,11 +79,12 @@ final class InterpretationParts
         }
 
         $parts = [];
-        foreach (self::questionFacets($arguments) as [$facetId, $term]) {
-            if (!self::isActiveFacet($arguments, $facetId, $term)) {
+        foreach (self::questionFacets($arguments) as [$facetId, $term, $not]) {
+            if (!self::isActiveFacet($arguments, $facetId, $term, $not)) {
                 continue;
             }
             [$role, $label] = self::facetRoleAndLabel($facetId, $term);
+            $role = $not && $role !== null ? 'excluded' : $role;
             if ($role === null) {
                 continue;
             }
@@ -123,26 +127,32 @@ final class InterpretationParts
     }
 
     /**
-     * @return list<array{0: string, 1: string}>
+     * @return list<array{0: string, 1: string, 2: bool}> Facette, Wert, Ausschluss
      */
     private static function questionFacets(array $arguments): array
     {
         $facets = [];
         foreach (is_array($arguments['nlf'] ?? null) ? $arguments['nlf'] : [] as $facet) {
             if (is_array($facet) && is_string($facet['f'] ?? null) && is_string($facet['t'] ?? null)) {
-                $facets[] = [$facet['f'], $facet['t']];
+                $facets[] = [$facet['f'], $facet['t'], ($facet['n'] ?? '') === '1'];
             }
         }
 
         return $facets;
     }
 
-    private static function isActiveFacet(array $arguments, string $facetId, string $term): bool
+    /**
+     * Aktiv mit dem Status aus der Frage: Ausschluss ("not") oder Filter. Wurde ein Filter aus der Frage später
+     * umgekehrt (oder umgekehrt), gehört er nicht mehr zur Interpretation.
+     */
+    private static function isActiveFacet(array $arguments, string $facetId, string $term, bool $not): bool
     {
         $status = $arguments['facet'][$facetId][$term] ?? null;
+        if ($status === null || (string)$status === '') {
+            return false;
+        }
 
-        // Ausschlüsse ("not") sind keine Interpretation der Frage.
-        return $status !== null && (string)$status !== '' && (string)$status !== 'not';
+        return ((string)$status === 'not') === $not;
     }
 
     /**

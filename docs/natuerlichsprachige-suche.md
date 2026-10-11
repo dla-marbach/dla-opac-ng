@@ -43,15 +43,26 @@ Browser                         TYPO3 (dla-opac-ng)                             
 * **Das LLM wird nur beim Absenden der Frage aufgerufen.** Danach folgt eine Weiterleitung auf eine normale Such-URL
   (Post/Redirect/Get). Blättern, Facettenklicks und Links lösen keinen weiteren LLM-Aufruf aus.
 * **Das LLM erzeugt keine Solr-Syntax.** Es liefert nur ein JSON-Objekt mit festen Feldern (`persons`, `mediaTypes`,
-  `formContent`, `topics`, `places`, `languages`, `dateFrom`, `dateTo`, `digitalOnly`, `text`). Die Abfrage wird aus
-  geprüften Werten zusammengesetzt.
+  `formContent`, `topics`, `places`, `languages`, `dateFrom`, `dateTo`, `digitalOnly`, `knownItem`, `exclude`, `text`).
+  Die Abfrage wird aus geprüften Werten zusammengesetzt.
+* **Suchabsicht:** Bei einem bestimmten Werk (`knownItem`, z. B. „Kafkas Der Process“) kommen Titel und nicht
+  aufgelöste Namen als Phrase in die Suche, und Themen werden nicht um Varianten erweitert.
+* **Zeitraum als Filter oder als Thema:** `dateFrom`/`dateTo` meinen die Entstehungs- bzw. Erscheinungszeit der
+  Objekte („Briefe aus den 1930er Jahren“ → Facette Zeit). Ist der Zeitraum das Thema („Literatur über die Weimarer
+  Republik“, „Exilliteratur 1933–1945“), wird er zum Thema statt zum Zeitfilter. Relative Angaben („aus den letzten
+  zehn Jahren“) rechnet das Modell vom aktuellen Jahr aus, das zur Laufzeit in den Prompt kommt.
+* **Ausschlüsse:** „ohne“, „keine“, „außer“ werden zu ausgeschlossenen Facettenwerten (Medientyp, Form/Inhalt, Status
+  `not` wie beim Ausschließen in der Facettenliste) bzw. zu `NOT begriff` im Suchfeld.
 * **Kleine Wertelisten gibt der Index vor.** Für Medientyp, Form/Inhalt und Sprache werden die häufigsten Werte der
   jeweiligen Facette aus Solr geholt (einen Tag zwischengespeichert) und als erlaubte Werte (`enum`) ins JSON-Schema
   und in den Prompt gesetzt (`FacetVocabulary`). Das Modell kann nur Werte liefern, die es im Index gibt.
 * **Große Wertelisten löst Solr auf, nicht das LLM.** Personen werden über den Normdaten-Suggester `mySuggester`
-  aufgelöst (wie bei der Autovervollständigung), Orte über die exakte Schreibweise oder den häufigsten Facettenwert, der
-  den Begriff enthält (z. B. „Marbach“ → „Marbach am Neckar“). Was sich nicht auflösen lässt, wird als weicher
-  Suchbegriff übernommen.
+  aufgelöst (wie bei der Autovervollständigung), zuerst mit dem vollständigen Namen, den das Modell ergänzt
+  („Hesse“ → „Hermann Hesse“), sonst mit dem Namen aus der Frage (im Nominativ, „Rilkes“ → „Rilke“). Orte werden über
+  die exakte Schreibweise oder den häufigsten Facettenwert aufgelöst, der den Begriff enthält (z. B. „Marbach“ →
+  „Marbach am Neckar“). Themen werden nur bei exakter Schreibweise eines Schlagworts zur Facette Thema
+  (`filterSubject_mv`); Teiltreffer wie „Film“ → „Filmmusik“ wären als Filter zu eng. Was sich nicht auflösen lässt,
+  wird als weicher Suchbegriff übernommen.
 * **Keine Treffer:** Liefert die Suche 0 Treffer, weist die Interpretationszeile darauf hin, dass sich einzelne
   Bestandteile entfernen lassen. Es wird nichts automatisch weggelassen.
 * **Interpretationszeile:** Über der Trefferliste steht „Ihre Frage »…« wurde verstanden als:“ mit den einzelnen
@@ -197,7 +208,7 @@ Environment="OLLAMA_NUM_PARALLEL=2"
 Environment="OLLAMA_MAX_QUEUE=4"
 # nur ein Modell gleichzeitig laden
 Environment="OLLAMA_MAX_LOADED_MODELS=1"
-# Kontextlänge: Prompt und Beispiele umfassen ca. 1.600 Tokens
+# Kontextlänge: Prompt, Beispiele und Wertelisten aus dem Index umfassen bis zu ca. 5.000 Tokens
 Environment="OLLAMA_CONTEXT_LENGTH=8192"
 ```
 
@@ -358,7 +369,7 @@ Weitere Voraussetzungen:
   die Klasse `dla-nl-no-results`.
   Die Interpretationszeile ist eine Liste `ul.dla-nl-parts` mit `li.dla-nl-part` und je einer Klasse für die Rolle
   (`dla-nl-part-mediaType`, `-formContent`, `-person`, `-relationVon`, `-relationAn`, `-relationUeber`,
-  `-relationUnter`, `-place`, `-language`, `-date`, `-digital`, `-text`, `-topic`, `-unresolved`); die Links nutzen
+  `-relationUnter`, `-place`, `-language`, `-date`, `-digital`, `-text`, `-topic`, `-unresolved`, `-excluded`); die Links nutzen
   wie die aktiven Filter das Symbol `bel-ende01`. Styles gehören in das Site-CSS.
 
 ## 5. Prompt und Beispiele anpassen
@@ -432,8 +443,10 @@ Die Tests laufen ohne LLM und ohne Solr:
 ## 9. Grenzen des Proof of Concept und nächste Schritte
 
 * **Fachlich prüfen:** Relationen (insbesondere „Unter“), Zuordnung der Medientypen, Beispiele.
-* **Schlagwörter:** Themen werden als Suchbegriffe mit Varianten gesucht, noch nicht gegen die Facette `filterSubject_mv`
-  bzw. die Systematik abgeglichen.
+* **Schlagwörter:** Ein exakt passendes Schlagwort wird zum Filter Thema. Das ist genauer, schließt aber Datensätze
+  ohne Schlagwörter aus (z. B. viele Handschriften); an echten Fragen prüfen und ggf. in
+  `SearchArgumentsBuilder::build()` abschalten. Die Systematik wird noch nicht abgeglichen: Sie ist nicht als Facette
+  konfiguriert und wird nur über Identnummern gesucht.
 * **Mehrere Medientypen:** Es wird nur der erste übernommen. Die ODER-Facette `MedientypenHidden` eignet sich dafür
   noch nicht: Das Such-Plugin verbindet ihre Werte mit Leerzeichen und ohne Anführungszeichen
   (`filterType_mv:(Audio Video)`); mit `q.op=AND` aus der `solrconfig.xml` wird daraus vermutlich ein UND, und

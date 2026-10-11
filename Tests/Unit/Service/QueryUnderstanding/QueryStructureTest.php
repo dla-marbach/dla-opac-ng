@@ -20,7 +20,7 @@ class QueryStructureTest extends UnitTestCase
     {
         $data = [
             'text' => 'Der Process',
-            'persons' => [['name' => 'Kafka', 'relation' => 'Von']],
+            'persons' => [['name' => 'Kafka', 'fullName' => 'Franz Kafka', 'relation' => 'Von']],
             'topics' => [['term' => 'Exil', 'variants' => ['Exil*', 'Emigration']]],
             'mediaTypes' => ['Gedrucktes'],
             'formContent' => ['Übersetzung'],
@@ -29,6 +29,8 @@ class QueryStructureTest extends UnitTestCase
             'dateFrom' => 1925,
             'dateTo' => 1930,
             'digitalOnly' => true,
+            'knownItem' => true,
+            'exclude' => ['mediaTypes' => ['Audio'], 'formContent' => ['Brief'], 'terms' => ['Zeitung']],
         ];
 
         self::assertSame($data, self::fromArray($data)->toArray());
@@ -62,6 +64,7 @@ class QueryStructureTest extends UnitTestCase
             'formContent' => ['Briefe', 'Brief'],
             'languages' => ['Klingonisch'],
             'digitalOnly' => 'yes',
+            'exclude' => ['mediaTypes' => ['Zauberei'], 'formContent' => 'Brief', 'terms' => ['"Zeitung"', '']],
         ]);
 
         self::assertSame('', $structure->persons[0]['relation']);
@@ -69,6 +72,7 @@ class QueryStructureTest extends UnitTestCase
         self::assertSame(['Brief'], $structure->formContent);
         self::assertSame([], $structure->languages);
         self::assertFalse($structure->digitalOnly);
+        self::assertSame(['mediaTypes' => [], 'formContent' => [], 'terms' => ['Zeitung']], $structure->exclude);
     }
 
     /**
@@ -108,6 +112,8 @@ class QueryStructureTest extends UnitTestCase
     {
         self::assertTrue(self::fromArray([])->isEmpty());
         self::assertTrue(self::fromArray(['text' => '  ', 'persons' => [['name' => '"']]])->isEmpty());
+        self::assertTrue(self::fromArray(['knownItem' => true])->isEmpty(), 'Suchabsicht allein ist keine Suche');
         self::assertFalse(self::fromArray(['digitalOnly' => true])->isEmpty());
+        self::assertFalse(self::fromArray(['exclude' => ['terms' => ['Zeitung']]])->isEmpty());
     }
 }

@@ -1413,6 +1413,9 @@
             <trans-unit id="nl.part.topic">
                 <source>topic: %s</source>
             </trans-unit>
+            <trans-unit id="nl.part.excluded">
+                <source>without: %s</source>
+            </trans-unit>
             <trans-unit id="nl.part.unresolved">
                 <source>search term: %s</source>
             </trans-unit>

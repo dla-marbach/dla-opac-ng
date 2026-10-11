@@ -16,8 +16,10 @@ class SearchArgumentsBuilderTest extends UnitTestCase
             persons: [
                 'Hesse' => ['id' => 'PE1', 'label' => 'Hesse, Hermann (1877-1962)'],
                 'Thomas Mann' => ['id' => 'PE2', 'label' => 'Mann, Thomas (1875-1955)'],
+                'Rainer Maria Rilke' => ['id' => 'PE3', 'label' => 'Rilke, Rainer Maria (1875-1926)'],
             ],
             places: ['Marbach' => 'Marbach am Neckar'],
+            subjects: ['Weimarer Republik' => 'Weimarer Republik'],
         ));
         $interpretation = $builder->build(QueryStructure::fromArray($data, FakeFacetVocabulary::DEFAULT_VALUES));
 
@@ -89,5 +91,68 @@ class SearchArgumentsBuilderTest extends UnitTestCase
     public function emptyStructureGivesNoArguments(): void
     {
         self::assertSame(['nlf' => [], 'nlt' => []], self::build([]));
+    }
+
+    /**
+     * @test
+     */
+    public function resolvesPersonsByFullNameFirst(): void
+    {
+        $arguments = self::build(['persons' => [
+            ['name' => 'Rilke', 'fullName' => 'Rainer Maria Rilke', 'relation' => 'Von'],
+            ['name' => 'Hesse', 'fullName' => 'Hermann Karl Hesse', 'relation' => 'Von'],
+            ['name' => 'Mann', 'fullName' => '', 'relation' => 'Über'],
+        ]]);
+
+        self::assertSame([
+            'Rilke, Rainer Maria (1875-1926)␝Von' => '1',
+            'Hesse, Hermann (1877-1962)␝Von' => '1',
+        ], $arguments['facet']['filterAuthorityRelation_mv']);
+        self::assertSame('mann', $arguments['q']['default'], 'nicht aufgelöst: Name aus der Frage');
+    }
+
+    /**
+     * @test
+     */
+    public function searchesKnownItemsAsPhraseWithoutTopicVariants(): void
+    {
+        $data = [
+            'text' => 'Der Process',
+            'persons' => [['name' => 'Max Unbekannt', 'fullName' => '', 'relation' => 'Von']],
+            'topics' => [['term' => 'Prozess', 'variants' => ['Gericht*']]],
+        ];
+
+        self::assertSame('Der Process max unbekannt (prozess OR gericht*)', self::build($data)['q']['default']);
+        self::assertSame('"Der Process" "max unbekannt" prozess', self::build(['knownItem' => true] + $data)['q']['default']);
+    }
+
+    /**
+     * @test
+     */
+    public function filtersTopicsByExactSubjectHeading(): void
+    {
+        $arguments = self::build(['topics' => [
+            ['term' => 'Weimarer Republik', 'variants' => ['Weimarer Zeit']],
+            ['term' => 'Exil', 'variants' => ['Emigration']],
+        ]]);
+
+        self::assertSame(['Thema' => ['Weimarer Republik' => '1']], $arguments['facet']);
+        self::assertSame('(exil OR emigration)', $arguments['q']['default']);
+    }
+
+    /**
+     * @test
+     */
+    public function excludesMediaTypesFormsAndTerms(): void
+    {
+        $arguments = self::build([
+            'persons' => [['name' => 'Hesse', 'fullName' => '', 'relation' => 'Über']],
+            'exclude' => ['mediaTypes' => ['Audio'], 'formContent' => ['Übersetzung'], 'terms' => ['Zeitung', 'Kritik*']],
+        ]);
+
+        self::assertSame(['Audio' => 'not'], $arguments['facet']['Medientypen']);
+        self::assertSame(['Übersetzung' => 'not'], $arguments['facet']['FormUndInhalt']);
+        self::assertContains(['f' => 'FormUndInhalt', 't' => 'Übersetzung', 'n' => '1'], $arguments['nlf']);
+        self::assertSame('NOT zeitung NOT kritik*', $arguments['q']['default']);
     }
 }

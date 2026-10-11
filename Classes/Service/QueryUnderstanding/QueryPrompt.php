@@ -11,6 +11,7 @@ namespace Dla\DlaOpacNg\Service\QueryUnderstanding;
  * (system-prompt.md, examples.json). Die Beispiele werden als Frage/Antwort-Paare in den Dialog gelegt
  * (few-shot), das JSON-Schema erzwingt über "response_format" eine gültige Antwortstruktur.
  *
+ * Zur Laufzeit kommt das aktuelle Jahr in den Systemprompt (für Angaben wie „aus den letzten zehn Jahren“).
  * Für Medientyp, Form/Inhalt und Sprache werden die tatsächlichen Werte des Index (FacetVocabulary) als
  * enum ins Schema und als Liste in den Systemprompt gesetzt. Das Vokabular wird als Array übergeben
  * (Feldname => Werte); fehlt ein Feld (null), sind für Form/Inhalt und Sprache freie Texte erlaubt.
@@ -60,11 +61,12 @@ final class QueryPrompt
     }
 
     /**
-     * Systemprompt aus system-prompt.md, ergänzt um die erlaubten Werte aus dem Index.
+     * Systemprompt aus system-prompt.md, ergänzt um das aktuelle Jahr und die erlaubten Werte aus dem Index.
      */
     public function getSystemPrompt(?array $vocabulary = null): string
     {
-        $prompt = trim((string)@file_get_contents($this->resourcePath . '/system-prompt.md'));
+        $prompt = trim((string)@file_get_contents($this->resourcePath . '/system-prompt.md'))
+            . "\n\nAktuelles Jahr: " . date('Y');
         if ($vocabulary === null) {
             return $prompt;
         }
@@ -130,6 +132,8 @@ final class QueryPrompt
                 'dateFrom',
                 'dateTo',
                 'digitalOnly',
+                'knownItem',
+                'exclude',
             ],
             'properties' => [
                 'text' => ['type' => 'string'],
@@ -139,9 +143,10 @@ final class QueryPrompt
                     'items' => [
                         'type' => 'object',
                         'additionalProperties' => false,
-                        'required' => ['name', 'relation'],
+                        'required' => ['name', 'fullName', 'relation'],
                         'properties' => [
                             'name' => ['type' => 'string'],
+                            'fullName' => ['type' => 'string'],
                             'relation' => ['type' => 'string', 'enum' => self::RELATIONS],
                         ],
                     ],
@@ -166,6 +171,17 @@ final class QueryPrompt
                 'dateFrom' => ['type' => ['integer', 'null']],
                 'dateTo' => ['type' => ['integer', 'null']],
                 'digitalOnly' => ['type' => 'boolean'],
+                'knownItem' => ['type' => 'boolean'],
+                'exclude' => [
+                    'type' => 'object',
+                    'additionalProperties' => false,
+                    'required' => ['mediaTypes', 'formContent', 'terms'],
+                    'properties' => [
+                        'mediaTypes' => $vocabularyList('mediaTypes', 3),
+                        'formContent' => $vocabularyList('formContent', 3),
+                        'terms' => $stringList(3),
+                    ],
+                ],
             ],
         ];
     }

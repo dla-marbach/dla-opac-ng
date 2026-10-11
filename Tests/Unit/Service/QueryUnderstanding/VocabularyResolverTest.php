@@ -78,4 +78,16 @@ class VocabularyResolverTest extends UnitTestCase
         self::assertSame('Marbach am Neckar', $resolver->resolveFacetValue('filterLocation_mv', 'Marbach'));
         self::assertNull($this->createResolver(null)->resolveFacetValue('filterLocation_mv', 'Atlantis'));
     }
+
+    /**
+     * @test
+     */
+    public function resolvesOnlyExactValueIfRequested(): void
+    {
+        $resolver = $this->createResolver(['facet_counts' => ['facet_fields' => ['filterSubject_mv' => ['Filmmusik' => 50, 'Film' => 40]]]]);
+
+        self::assertSame('Film', $resolver->resolveFacetValue('filterSubject_mv', 'film', true));
+        self::assertNull($resolver->resolveFacetValue('filterSubject_mv', 'Filmmus', true));
+        self::assertSame('Filmmusik', $resolver->resolveFacetValue('filterSubject_mv', 'Filmmus'));
+    }
 }

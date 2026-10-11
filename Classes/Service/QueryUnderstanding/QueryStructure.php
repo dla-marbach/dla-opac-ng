@@ -16,13 +16,16 @@ final class QueryStructure
 
     private const MAX_YEAR = 2100;
 
+    public const NO_EXCLUSIONS = ['mediaTypes' => [], 'formContent' => [], 'terms' => []];
+
     /**
-     * @param list<array{name: string, relation: string}> $persons
+     * @param list<array{name: string, fullName: string, relation: string}> $persons
      * @param list<array{term: string, variants: list<string>}> $topics
      * @param list<string> $mediaTypes
      * @param list<string> $formContent
      * @param list<string> $languages
      * @param list<string> $places
+     * @param array{mediaTypes: list<string>, formContent: list<string>, terms: list<string>} $exclude
      */
     public function __construct(
         public readonly string $text = '',
@@ -35,6 +38,8 @@ final class QueryStructure
         public readonly ?int $dateFrom = null,
         public readonly ?int $dateTo = null,
         public readonly bool $digitalOnly = false,
+        public readonly bool $knownItem = false,
+        public readonly array $exclude = self::NO_EXCLUSIONS,
     ) {
     }
 
@@ -48,7 +53,11 @@ final class QueryStructure
             $name = self::clean($person['name'] ?? null);
             $relation = $person['relation'] ?? '';
             if ($name !== '') {
-                $persons[] = ['name' => $name, 'relation' => in_array($relation, QueryPrompt::RELATIONS, true) ? $relation : ''];
+                $persons[] = [
+                    'name' => $name,
+                    'fullName' => self::clean($person['fullName'] ?? null),
+                    'relation' => in_array($relation, QueryPrompt::RELATIONS, true) ? $relation : '',
+                ];
             }
         }
 
@@ -68,6 +77,8 @@ final class QueryStructure
             [$dateFrom, $dateTo] = [$dateTo, $dateFrom];
         }
 
+        $exclude = is_array($data['exclude'] ?? null) ? $data['exclude'] : [];
+
         return new self(
             self::clean($data['text'] ?? null),
             $persons,
@@ -75,10 +86,16 @@ final class QueryStructure
             self::allowed($data['mediaTypes'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'mediaTypes')),
             self::allowed($data['formContent'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'formContent')),
             self::allowed($data['languages'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'languages')),
-            array_values(array_unique(array_filter(array_map(self::clean(...), self::listOf($data['places'] ?? null))))),
+            self::cleanList($data['places'] ?? null),
             $dateFrom,
             $dateTo,
             ($data['digitalOnly'] ?? false) === true,
+            ($data['knownItem'] ?? false) === true,
+            [
+                'mediaTypes' => self::allowed($exclude['mediaTypes'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'mediaTypes')),
+                'formContent' => self::allowed($exclude['formContent'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'formContent')),
+                'terms' => self::cleanList($exclude['terms'] ?? null, true),
+            ],
         );
     }
 
@@ -87,9 +104,12 @@ final class QueryStructure
         return get_object_vars($this);
     }
 
+    /**
+     * Nichts erkannt; die Suchabsicht allein ergibt keine Suche.
+     */
     public function isEmpty(): bool
     {
-        return $this == new self();
+        return $this == new self(knownItem: $this->knownItem);
     }
 
     /**
@@ -120,6 +140,16 @@ final class QueryStructure
             self::listOf($values),
             static fn($value): bool => in_array($value, $allowed, true)
         )));
+    }
+
+    /**
+     * @return list<string>
+     */
+    private static function cleanList(mixed $values, bool $allowTrailingWildcard = false): array
+    {
+        $values = array_map(static fn($value): string => self::clean($value, $allowTrailingWildcard), self::listOf($values));
+
+        return array_values(array_unique(array_filter($values)));
     }
 
     private static function listOf(mixed $value, int $max = 3): array

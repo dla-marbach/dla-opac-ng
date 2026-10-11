@@ -106,9 +106,10 @@ class InterpretationPartsTest extends UnitTestCase
     /**
      * @test
      */
-    public function exclusionsAndUnknownFacetsAreNotPartOfTheInterpretation(): void
+    public function invertedAndUnknownFacetsAreNotPartOfTheInterpretation(): void
     {
         $arguments = self::ARGUMENTS;
+        // Filter aus der Frage wurde nachträglich in einen Ausschluss umgekehrt
         $arguments['facet']['Medientypen']['Handschriften'] = 'not';
         $arguments['nlf'][] = ['f' => 'NeuImKatalog', 't' => 'Woche'];
         $arguments['facet']['NeuImKatalog'] = ['Woche' => '1'];
@@ -117,6 +118,25 @@ class InterpretationPartsTest extends UnitTestCase
 
         self::assertNotContains('Handschriften', $labels);
         self::assertNotContains('Woche', $labels);
+    }
+
+    /**
+     * @test
+     */
+    public function showsExclusionsFromTheQuestion(): void
+    {
+        $arguments = [
+            'q' => ['default' => 'grass NOT zeitung'],
+            'facet' => ['FormUndInhalt' => ['Übersetzung' => 'not', 'Brief' => '1']],
+            'nlq' => 'Grass ohne Übersetzungen und Zeitung',
+            'nlf' => [['f' => 'FormUndInhalt', 't' => 'Übersetzung', 'n' => '1'], ['f' => 'FormUndInhalt', 't' => 'Brief', 'n' => '1']],
+            'nlt' => [['k' => 'excluded', 'q' => 'NOT zeitung', 'l' => 'Zeitung']],
+        ];
+
+        $parts = InterpretationParts::fromArguments($arguments);
+
+        self::assertSame([['excluded', 'Übersetzung'], ['excluded', 'Zeitung']], array_map(static fn(array $part): array => [$part['role'], $part['label']], $parts));
+        self::assertSame('grass', $parts[1]['remainingQuery']);
     }
 
     /**
