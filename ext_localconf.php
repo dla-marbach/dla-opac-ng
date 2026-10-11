@@ -58,11 +58,14 @@ $GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'] = array_mer
     ]
 );
 
-// Zwischenspeicher der natürlichsprachigen Suche: Zerlegungen je Frage und Zähler für das Rate Limit.
+// Zwischenspeicher der natürlichsprachigen Suche: Zerlegungen je Frage und Facetten-Vokabular.
+// Eigene Gruppe, damit er nicht mit den Seiten-Caches geleert wird; "Alle Caches leeren" bzw. cache:flush
+// leeren ihn trotzdem. Einträge werden ohnehin ungültig, sobald sich Prompt, Beispiele, Vokabular oder Modell ändern.
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][\Dla\DlaOpacNg\Service\QueryUnderstandingService::CACHE_IDENTIFIER] ??= [
     'frontend' => \TYPO3\CMS\Core\Cache\Frontend\VariableFrontend::class,
     'backend' => \TYPO3\CMS\Core\Cache\Backend\FileBackend::class,
     'options' => [
         'defaultLifetime' => 2592000,
     ],
+    'groups' => ['dla_opac_ng'],
 ];

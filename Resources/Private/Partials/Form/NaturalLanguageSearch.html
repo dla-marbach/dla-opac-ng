@@ -5,7 +5,8 @@
     * Checkbox "Als Frage verstehen": nur sichtbar, wenn die Umgebungsvariable LLM_BASE_URL gesetzt ist.
       Sie schickt tx_find_find[nl]=1 mit; die Middleware zerlegt dann die Eingabe des Standardsuchfelds.
     * Hinweis nach der Weiterleitung: zeigt die ursprüngliche Frage (nlq) und den Status (nlstatus):
-      ok, relaxed (Bestandteile weggelassen, siehe nldropped) oder fallback (normale Suche).
+      ok, relaxed (Bestandteile weggelassen, siehe nldropped), unrecognized (nichts erkannt, normale Suche)
+      oder fallback (KI-Suche nicht verfügbar, normale Suche).
 </f:comment>
 <f:if condition="{dla:naturalLanguageSearchEnabled()}">
     <div class="dla-nl-toggle {f:if(condition: '{arguments.extended}==1', then: 'hidden')}">
@@ -19,6 +20,7 @@
     <p class="dla-nl-notice dla-nl-notice-{arguments.nlstatus}" role="status">
         <f:switch expression="{arguments.nlstatus}">
             <f:case value="fallback"><f:translate key="nl.status.fallback" extensionName="dla_opac_ng" arguments="{0: arguments.nlq}"/></f:case>
+            <f:case value="unrecognized"><f:translate key="nl.status.unrecognized" extensionName="dla_opac_ng" arguments="{0: arguments.nlq}"/></f:case>
             <f:case value="relaxed"><f:translate key="nl.status.relaxed" extensionName="dla_opac_ng" arguments="{0: arguments.nlq, 1: arguments.nldropped}"/></f:case>
             <f:defaultCase><f:translate key="nl.status.ok" extensionName="dla_opac_ng" arguments="{0: arguments.nlq}"/></f:defaultCase>
         </f:switch>

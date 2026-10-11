@@ -101,6 +101,7 @@ tasks:
             -v ollama:/root/.ollama \
             -e OLLAMA_KEEP_ALIVE=24h \
             -e OLLAMA_NUM_PARALLEL=2 \
+            -e OLLAMA_MAX_QUEUE=4 \
             -e OLLAMA_CONTEXT_LENGTH=8192 \
             ollama/ollama
         fi

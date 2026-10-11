@@ -67,6 +67,19 @@ class NaturalLanguageSearchTest extends FluidPartialTestCase
     /**
      * @test
      */
+    public function rendersNoticeForUnrecognizedQuestion(): void
+    {
+        $html = $this->renderPartial('Form/NaturalLanguageSearch', [
+            'arguments' => ['nlq' => 'Wie spät ist es?', 'nlstatus' => 'unrecognized'],
+        ]);
+
+        self::assertStringContainsString('dla-nl-notice-unrecognized', $html);
+        self::assertStringContainsString('No search terms or filters could be derived from your question »Wie spät ist es?«.', $html);
+    }
+
+    /**
+     * @test
+     */
     public function rendersFallbackNotice(): void
     {
         $html = $this->renderPartial('Form/NaturalLanguageSearch', [

@@ -7,7 +7,7 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class QueryUnderstandingConfigurationTest extends UnitTestCase
 {
-    private const VARIABLES = ['LLM_BASE_URL', 'LLM_MODEL', 'LLM_API_KEY', 'LLM_TIMEOUT', 'LLM_MAX_CONCURRENT', 'LLM_RATE_LIMIT'];
+    private const VARIABLES = ['LLM_BASE_URL', 'LLM_MODEL', 'LLM_API_KEY', 'LLM_TIMEOUT', 'LLM_RATE_LIMIT'];
 
     /** @var array<string, string|false> */
     private array $originalValues = [];
@@ -38,8 +38,7 @@ class QueryUnderstandingConfigurationTest extends UnitTestCase
         putenv('LLM_BASE_URL=http://llm:11434/v1/');
         putenv('LLM_MODEL=qwen2.5:3b');
         putenv('LLM_TIMEOUT=7.5');
-        putenv('LLM_MAX_CONCURRENT= 4 ');
-        putenv('LLM_RATE_LIMIT=0');
+        putenv('LLM_RATE_LIMIT= 0 ');
 
         $configuration = QueryUnderstandingConfiguration::fromEnvironment();
 
@@ -47,7 +46,6 @@ class QueryUnderstandingConfigurationTest extends UnitTestCase
         self::assertSame('http://llm:11434/v1', $configuration->baseUrl);
         self::assertSame('qwen2.5:3b', $configuration->model);
         self::assertSame(7.5, $configuration->timeout);
-        self::assertSame(4, $configuration->maxConcurrent);
         self::assertSame(0, $configuration->rateLimitPerMinute, '0 schaltet das Rate Limit bewusst ab');
     }
 
@@ -56,7 +54,6 @@ class QueryUnderstandingConfigurationTest extends UnitTestCase
      */
     public function usesSafeDefaultsForMissingOrMalformedValues(): void
     {
-        putenv('LLM_MAX_CONCURRENT=viele');
         putenv('LLM_RATE_LIMIT=ten');
         putenv('LLM_TIMEOUT=-1');
 
@@ -64,7 +61,6 @@ class QueryUnderstandingConfigurationTest extends UnitTestCase
 
         self::assertFalse($configuration->isEnabled());
         self::assertSame(QueryUnderstandingConfiguration::DEFAULT_MODEL, $configuration->model);
-        self::assertSame(QueryUnderstandingConfiguration::DEFAULT_MAX_CONCURRENT, $configuration->maxConcurrent);
         self::assertSame(QueryUnderstandingConfiguration::DEFAULT_RATE_LIMIT, $configuration->rateLimitPerMinute);
         self::assertSame(QueryUnderstandingConfiguration::DEFAULT_TIMEOUT, $configuration->timeout);
     }

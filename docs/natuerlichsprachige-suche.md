@@ -46,12 +46,18 @@ Browser                         TYPO3 (dla-opac-ng)                             
 * **Das LLM erzeugt keine Solr-Syntax.** Es liefert nur ein JSON-Objekt mit festen Feldern (`persons`, `mediaTypes`,
   `formContent`, `topics`, `places`, `languages`, `dateFrom`, `dateTo`, `digitalOnly`, `text`). Die Abfrage wird aus
   geprüften Werten zusammengesetzt.
-* **Namen und Facettenwerte löst Solr auf, nicht das LLM.** Personen werden über den Normdaten-Suggester `mySuggester`
-  aufgelöst (wie bei der Autovervollständigung), Form/Inhalt, Sprache und Ort werden per Zählabfrage auf exakte
-  Übereinstimmung geprüft. Was sich nicht auflösen lässt, wird als Suchbegriff übernommen.
+* **Kleine Wertelisten gibt der Index vor.** Für Medientyp, Form/Inhalt und Sprache werden die häufigsten Werte der
+  jeweiligen Facette aus Solr geholt (einen Tag zwischengespeichert) und als erlaubte Werte (`enum`) ins JSON-Schema
+  und in den Prompt gesetzt (`FacetVocabulary`). Das Modell kann nur Werte liefern, die es im Index gibt.
+* **Große Wertelisten löst Solr auf, nicht das LLM.** Personen werden über den Normdaten-Suggester `mySuggester`
+  aufgelöst (wie bei der Autovervollständigung), Orte über die exakte Schreibweise oder den häufigsten Facettenwert, der
+  den Begriff enthält (z. B. „Marbach“ → „Marbach am Neckar“). Was sich nicht auflösen lässt, wird als weicher
+  Suchbegriff übernommen.
 * **Schrittweises Lockern:** Liefert die Suche 0 Treffer, werden nacheinander nicht aufgelöste Begriffe, Themen und
   der Zeitraum weggelassen. Die Oberfläche nennt die weggelassenen Bestandteile.
-* **Rückfall:** Ist das LLM nicht erreichbar, zu langsam oder ausgelastet, wird normal nach dem eingegebenen Text gesucht.
+* **Rückfall:** Ist das LLM nicht erreichbar, zu langsam oder ausgelastet, wird normal nach dem eingegebenen Text gesucht
+  („KI-Suche nicht verfügbar“). Erkennt es in der Frage nichts, wird ebenfalls normal gesucht, mit eigenem Hinweis;
+  auch dieses Ergebnis wird zwischengespeichert.
 
 Beteiligte Dateien:
 
@@ -65,7 +71,7 @@ Beteiligte Dateien:
 | `Classes/Service/QueryUnderstanding/VocabularyResolver.php` | Abgleich mit Solr |
 | `Classes/Service/QueryUnderstanding/SearchArgumentsBuilder.php` | Abbildung auf Facetten und Suchbegriffe |
 | `Classes/Service/QueryUnderstanding/QueryInterpretation.php` | Ergebnis, Lockern, Such-Argumente |
-| `Classes/Service/QueryUnderstanding/ConcurrencyLimiter.php` | Begrenzung gleichzeitiger LLM-Anfragen |
+| `Classes/Service/QueryUnderstanding/FacetVocabulary.php` | Werte von Medientyp, Form/Inhalt und Sprache aus dem Index |
 | `Classes/Service/QueryUnderstanding/QueryUnderstandingConfiguration.php` | Konfiguration aus Umgebungsvariablen |
 | `Resources/Private/QueryUnderstanding/system-prompt.md` | Systemprompt (fachliche Regeln) |
 | `Resources/Private/QueryUnderstanding/examples.json` | Beispielpaare Frage → Antwort (few-shot) |
@@ -174,8 +180,11 @@ Im Editor zwischen den Kommentarzeilen einfügen:
 Environment="OLLAMA_HOST=0.0.0.0:11434"
 # Modell 24 Stunden im Speicher halten (sonst wird es nach 5 Minuten entladen und die nächste Anfrage ist langsam)
 Environment="OLLAMA_KEEP_ALIVE=24h"
-# Anzahl parallel bearbeiteter Anfragen je Modell (entspricht LLM_MAX_CONCURRENT in TYPO3)
+# Anzahl parallel bearbeiteter Anfragen je Modell
 Environment="OLLAMA_NUM_PARALLEL=2"
+# Höchstens 4 wartende Anfragen; weitere beantwortet Ollama sofort mit HTTP 503, TYPO3 sucht dann normal.
+# Begrenzt so auch, wie viele PHP-Prozesse gleichzeitig auf das LLM warten (Standard von Ollama: 512).
+Environment="OLLAMA_MAX_QUEUE=4"
 # nur ein Modell gleichzeitig laden
 Environment="OLLAMA_MAX_LOADED_MODELS=1"
 # Kontextlänge: Prompt und Beispiele umfassen ca. 1.600 Tokens
@@ -282,13 +291,13 @@ Prompt der Extension testet `task llm:test` (im Repository, gegen `127.0.0.1:114
 # ohne GPU
 docker run -d --name ollama --restart unless-stopped \
   -p 127.0.0.1:11434:11434 -v ollama:/root/.ollama \
-  -e OLLAMA_KEEP_ALIVE=24h -e OLLAMA_NUM_PARALLEL=2 -e OLLAMA_CONTEXT_LENGTH=8192 \
+  -e OLLAMA_KEEP_ALIVE=24h -e OLLAMA_NUM_PARALLEL=2 -e OLLAMA_MAX_QUEUE=4 -e OLLAMA_CONTEXT_LENGTH=8192 \
   ollama/ollama
 
 # mit NVIDIA-GPU (vorher NVIDIA Container Toolkit installieren)
 docker run -d --name ollama --restart unless-stopped --gpus=all \
   -p 127.0.0.1:11434:11434 -v ollama:/root/.ollama \
-  -e OLLAMA_KEEP_ALIVE=24h -e OLLAMA_NUM_PARALLEL=2 -e OLLAMA_CONTEXT_LENGTH=8192 \
+  -e OLLAMA_KEEP_ALIVE=24h -e OLLAMA_NUM_PARALLEL=2 -e OLLAMA_MAX_QUEUE=4 -e OLLAMA_CONTEXT_LENGTH=8192 \
   ollama/ollama
 
 docker exec ollama ollama pull qwen2.5:7b
@@ -308,7 +317,8 @@ docker run -d --name vllm --restart unless-stopped --gpus=all --ipc=host \
 ```
 
 TYPO3-Konfiguration dazu: `LLM_BASE_URL=http://<server>:8000/v1`, `LLM_MODEL=Qwen/Qwen2.5-7B-Instruct`,
-`LLM_API_KEY=GEHEIMER-TOKEN`, `LLM_MAX_CONCURRENT` höher setzen (z. B. 8).
+`LLM_API_KEY=GEHEIMER-TOKEN`. vLLM lehnt bei Überlast nicht ab, sondern stellt Anfragen in eine Warteschlange;
+`LLM_TIMEOUT` begrenzt dann, wie lange TYPO3 wartet.
 
 ## 4. TYPO3 konfigurieren
 
@@ -321,7 +331,6 @@ Die natürlichsprachige Suche wird wie die Solr-Verbindung ausschließlich über
 | `LLM_MODEL` | `qwen2.5:7b` | Modellname (Standard: `qwen2.5:7b`) |
 | `LLM_API_KEY` | | optional, wird als Bearer-Token mitgeschickt |
 | `LLM_TIMEOUT` | `15` | optional, Sekunden bis zum Rückfall auf die normale Suche (Standard: 15) |
-| `LLM_MAX_CONCURRENT` | `2` | optional, gleichzeitige LLM-Anfragen je Webserver (Standard: 2); weitere Anfragen fallen sofort auf die normale Suche zurück |
 | `LLM_RATE_LIMIT` | `10` | optional, LLM-Anfragen je Client-IP und Minute (Standard: 10, `0` = keine Begrenzung) |
 
 Nach Änderungen: PHP-Prozess bzw. Container neu starten (Umgebungsvariablen) und den TYPO3-Cache leeren
@@ -329,11 +338,14 @@ Nach Änderungen: PHP-Prozess bzw. Container neu starten (Umgebungsvariablen) un
 
 Weitere Voraussetzungen:
 
-* Das Verzeichnis `var/` von TYPO3 muss beschreibbar sein: Sperrdateien liegen in `var/dla_opac_ng/llm-locks/`,
-  der Zwischenspeicher im Cache-Verzeichnis (`var/cache/data/dla_opac_ng_query_understanding/`).
+* Der Zwischenspeicher liegt im Cache-Verzeichnis (`var/cache/data/dla_opac_ng_query_understanding/`, eigene
+  Cache-Gruppe `dla_opac_ng`, gezielt leerbar mit `vendor/bin/typo3 cache:flush -g dla_opac_ng`). „Alle Caches leeren“
+  bzw. `cache:flush` leeren ihn mit; Einträge werden ohnehin ungültig, sobald sich Prompt, Beispiele, Vokabular oder
+  Modell ändern. Das Rate Limit nutzt den Core-Cache `ratelimiter`.
 * Die Proof-of-Work-Prüfung (`opacPowEnabled=1`) sollte aktiv sein; sie schützt auch den LLM-Aufruf.
 * Gestaltung: Checkbox und Hinweis haben die CSS-Klassen `dla-nl-toggle` und `dla-nl-notice`
-  (plus `dla-nl-notice-ok`, `dla-nl-notice-relaxed`, `dla-nl-notice-fallback`). Styles gehören in das Site-CSS.
+  (plus `dla-nl-notice-ok`, `dla-nl-notice-relaxed`, `dla-nl-notice-unrecognized`, `dla-nl-notice-fallback`).
+  Styles gehören in das Site-CSS.
 
 ## 5. Prompt und Beispiele anpassen
 
@@ -351,21 +363,24 @@ Hinweise:
 * Jede Antwort muss alle Felder enthalten (siehe vorhandene Beispiele).
 * Mehr Beispiele bedeuten einen längeren Prompt. Mit Ollama bleibt die Antwortzeit trotzdem gering, weil der
   gleichbleibende Anfang des Prompts zwischengespeichert wird.
-* Zwischengespeicherte Zerlegungen werden automatisch ungültig, sobald sich Prompt, Beispiele oder Modell ändern.
-* Erlaubte Medientypen und Relationen stehen zusätzlich in `QueryPrompt::MEDIA_TYPES` bzw. `QueryPrompt::RELATIONS`
-  (JSON-Schema). Neue Werte müssen an beiden Stellen ergänzt werden.
+* Zwischengespeicherte Zerlegungen werden automatisch ungültig, sobald sich Prompt, Beispiele, Vokabular oder Modell ändern.
+* Die erlaubten Werte für Medientyp, Form/Inhalt und Sprache werden automatisch aus dem Index an den Prompt angehängt
+  (`FacetVocabulary::FIELDS` legt fest, wie viele der häufigsten Werte je Facette). Beispiele sollten nur Werte
+  verwenden, die es im Index gibt.
+* Die Relationen stehen zusätzlich in `QueryPrompt::RELATIONS` (JSON-Schema); neue Relationen müssen auch dort ergänzt werden.
 
 ## 6. Last, Sicherheit und Datenschutz
 
 * **Bot-Schutz:** Die Anfrage enthält `tx_find_find` und läuft deshalb zuerst durch die `ProofOfWorkMiddleware`.
   Ausgenommene IP-Bereiche (Campus, Sandbox, Personal) erreichen das LLM ohne Rechenaufgabe, sind aber weiterhin durch
   das Rate Limit begrenzt.
-* **Begrenzungen:** je Client-IP und Minute (`LLM_RATE_LIMIT`) und gleichzeitige Anfragen je Webserver
-  (`LLM_MAX_CONCURRENT`). Bei Überschreitung wird sofort normal gesucht; es gibt keine Warteschlange.
+* **Begrenzungen:** je Client-IP und Minute (`LLM_RATE_LIMIT`, mit `symfony/rate-limiter`). Gleichzeitige Anfragen
+  begrenzt der LLM-Server (`OLLAMA_NUM_PARALLEL`, `OLLAMA_MAX_QUEUE`); bei Überlast antwortet er mit HTTP 503 und es
+  wird sofort normal gesucht.
 * **Zwischenspeicher:** Zerlegungen werden 30 Tage je Frage gespeichert (unabhängig von Groß-/Kleinschreibung und
   Leerzeichen). Wiederholte Fragen kosten keinen LLM-Aufruf und unterliegen keiner Begrenzung.
 * **Keine Abfrage-Injection:** Das LLM liefert nur Werte nach festem Schema. Solr-Steuerzeichen und boolesche
-  Operatoren werden entfernt, Facettenwerte nur übernommen, wenn sie im Index existieren. Vertrauliche Datensätze
+  Operatoren werden entfernt, Facettenwerte stammen aus dem Index bzw. werden nur übernommen, wenn sie dort existieren. Vertrauliche Datensätze
   bleiben ausgeschlossen, weil `NOT confidential:true` in den `appends` der `solrconfig.xml` steht.
 * **Indexierung:** Die Weiterleitung sendet `X-Robots-Tag: noindex, nofollow`.
 * **Datenschutz:** Die Fragen verlassen das Haus nicht, wenn der LLM-Dienst selbst betrieben wird. Der Dienst
@@ -405,9 +420,12 @@ Die Tests laufen ohne LLM und ohne Solr:
 * **Fachlich prüfen:** Relationen (insbesondere „Unter“), Zuordnung der Medientypen, Beispiele.
 * **Schlagwörter:** Themen werden als Suchbegriffe mit Varianten gesucht, noch nicht gegen die Facette `filterSubject_mv`
   bzw. die Systematik abgeglichen.
-* **Mehrere Medientypen:** Es wird nur der erste übernommen, weil mehrere Facettenfilter UND-verknüpft würden.
-* **Begrenzungen:** Rate Limit und gleichzeitige Anfragen gelten je Webserver; bei mehreren Webservern ein gemeinsames
-  Cache-Backend (z. B. Redis) für den Zwischenspeicher verwenden.
+* **Mehrere Medientypen:** Es wird nur der erste übernommen. Die ODER-Facette `MedientypenHidden` eignet sich dafür
+  noch nicht: Das Such-Plugin verbindet ihre Werte mit Leerzeichen und ohne Anführungszeichen
+  (`filterType_mv:(Audio Video)`); mit `q.op=AND` aus der `solrconfig.xml` wird daraus vermutlich ein UND, und
+  Werte mit Leerzeichen („Bilder und Objekte“) funktionieren nicht. Das sollte zuerst im Such-Plugin behoben werden.
+* **Mehrere Webserver:** Rate Limit und Zwischenspeicher liegen im jeweiligen `var/`-Verzeichnis; für mehrere Webserver
+  ein gemeinsames Cache-Backend (z. B. Redis) für `ratelimiter` und `dla_opac_ng_query_understanding` verwenden.
 * **Testmenge:** 100–200 echte Fragen mit erwarteter Zerlegung sammeln und damit Modelle und Prompt-Änderungen
   vergleichen (Trefferquote je Feld).
 * **Messen:** Anteil der Anfragen mit Rückfall bzw. Lockern, Antwortzeiten, Nutzung der Checkbox.

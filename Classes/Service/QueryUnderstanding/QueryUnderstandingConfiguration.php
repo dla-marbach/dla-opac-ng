@@ -13,16 +13,16 @@ namespace Dla\DlaOpacNg\Service\QueryUnderstanding;
  * - LLM_MODEL: Name des Modells, z.B. "qwen2.5:7b" (Standard)
  * - LLM_API_KEY: optional, wird als Bearer-Token mitgeschickt
  * - LLM_TIMEOUT: optional, Timeout in Sekunden für eine LLM-Anfrage (Standard: 15)
- * - LLM_MAX_CONCURRENT: optional, maximale Anzahl gleichzeitiger LLM-Anfragen je Webserver (Standard: 2)
  * - LLM_RATE_LIMIT: optional, maximale Anzahl LLM-Anfragen je Client-IP und Minute (Standard: 10, 0 = aus)
+ *
+ * Gleichzeitige Anfragen begrenzt der LLM-Server selbst (Ollama: OLLAMA_NUM_PARALLEL, OLLAMA_MAX_QUEUE).
+ * Wird als Service über die Factory fromEnvironment() erzeugt (siehe Configuration/Services.yaml).
  */
 final class QueryUnderstandingConfiguration
 {
     public const DEFAULT_MODEL = 'qwen2.5:7b';
 
     public const DEFAULT_TIMEOUT = 15.0;
-
-    public const DEFAULT_MAX_CONCURRENT = 2;
 
     public const DEFAULT_RATE_LIMIT = 10;
 
@@ -31,7 +31,6 @@ final class QueryUnderstandingConfiguration
         public readonly string $model = self::DEFAULT_MODEL,
         public readonly string $apiKey = '',
         public readonly float $timeout = self::DEFAULT_TIMEOUT,
-        public readonly int $maxConcurrent = self::DEFAULT_MAX_CONCURRENT,
         public readonly int $rateLimitPerMinute = self::DEFAULT_RATE_LIMIT,
     ) {
     }
@@ -45,7 +44,6 @@ final class QueryUnderstandingConfiguration
             trim((string)getenv('LLM_MODEL')) ?: self::DEFAULT_MODEL,
             trim((string)getenv('LLM_API_KEY')),
             $timeout > 0 ? $timeout : self::DEFAULT_TIMEOUT,
-            max(1, self::integerFromEnvironment('LLM_MAX_CONCURRENT') ?? self::DEFAULT_MAX_CONCURRENT),
             self::integerFromEnvironment('LLM_RATE_LIMIT') ?? self::DEFAULT_RATE_LIMIT,
         );
     }

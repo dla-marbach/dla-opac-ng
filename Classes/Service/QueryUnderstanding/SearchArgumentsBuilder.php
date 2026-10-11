@@ -8,8 +8,8 @@ namespace Dla\DlaOpacNg\Service\QueryUnderstanding;
  * Bildet eine geprüfte QueryStructure auf Facetten und Suchbegriffe des Katalogs ab.
  *
  * Die Facetten-IDs entsprechen der TypoScript-Konfiguration plugin.tx_find.settings.facets.
- * Werte, die sich nicht im Index auflösen lassen, werden nicht verworfen, sondern als weiche
- * Suchbegriffe ins Standardsuchfeld übernommen.
+ * Personen und Orte, die sich nicht im Index auflösen lassen, werden nicht verworfen, sondern als weiche
+ * Suchbegriffe ins Standardsuchfeld übernommen (beim Lockern werden sie zuerst entfernt).
  */
 class SearchArgumentsBuilder
 {
@@ -61,7 +61,7 @@ class SearchArgumentsBuilder
     private const LABEL_MISSING = 'nicht bestimmt';
 
     public function __construct(
-        private readonly VocabularyResolver $resolver = new VocabularyResolver()
+        private readonly VocabularyResolver $resolver
     ) {
     }
 
@@ -97,18 +97,22 @@ class SearchArgumentsBuilder
             $facets[] = self::facet(self::FACET_MEDIA_TYPE, $structure->mediaTypes[0], 'filterType_mv');
         }
 
-        foreach ([
-            [self::FACET_FORM_CONTENT, 'filterFormContent_mv', $structure->formContent],
-            [self::FACET_LANGUAGE, 'filterLanguage_mv', $structure->languages],
-            [self::FACET_PLACE, 'filterLocation_mv', $structure->places],
-        ] as [$facetId, $field, $values]) {
-            foreach ($values as $value) {
-                $resolved = $this->resolver->resolveFacetValue($field, $value);
-                if ($resolved === null) {
-                    $textParts[] = self::unresolvedPart($value);
-                } else {
-                    $facets[] = self::facet($facetId, $resolved, $field);
-                }
+        // Form/Inhalt und Sprache stammen aus dem Vokabular des Index (enum im JSON-Schema) und werden direkt
+        // zu Facetten; ein Abgleich mit Solr ist nicht nötig.
+        foreach ($structure->formContent as $value) {
+            $facets[] = self::facet(self::FACET_FORM_CONTENT, $value, 'filterFormContent_mv');
+        }
+        foreach ($structure->languages as $value) {
+            $facets[] = self::facet(self::FACET_LANGUAGE, $value, 'filterLanguage_mv');
+        }
+
+        // Orte sind zu viele für eine feste Werteliste: Abgleich mit dem Index, sonst weicher Suchbegriff.
+        foreach ($structure->places as $value) {
+            $resolved = $this->resolver->resolveFacetValue('filterLocation_mv', $value);
+            if ($resolved === null) {
+                $textParts[] = self::unresolvedPart($value);
+            } else {
+                $facets[] = self::facet(self::FACET_PLACE, $resolved, 'filterLocation_mv');
             }
         }
 

@@ -15,8 +15,8 @@ class VocabularyResolverTest extends UnitTestCase
     {
         $connection = $this->getMockBuilder(SolrConnection::class)->onlyMethods(['request'])->getMock();
         $connection->method('request')->willReturnCallback(
-            function (string $handler, array $params) use ($responder, &$requests): ?array {
-                $requests[] = ['handler' => $handler, 'params' => $params];
+            function (string $handler, array $params, float $timeout = 1.0) use ($responder, &$requests): ?array {
+                $requests[] = ['handler' => $handler, 'params' => $params, 'timeout' => $timeout];
                 return $responder($handler, $params);
             }
         );
@@ -102,20 +102,53 @@ class VocabularyResolverTest extends UnitTestCase
     /**
      * @test
      */
-    public function resolveFacetValueTriesCapitalizedSpelling(): void
+    public function resolveFacetValuePrefersExactValue(): void
     {
         $requests = [];
         $resolver = new VocabularyResolver($this->createConnection(
-            static fn(string $handler, array $params): array => [
-                'response' => ['numFound' => $params['fq'] === ['filterFormContent_mv:"Brief"'] ? 42 : 0],
-            ],
+            static fn(string $handler, array $params): array => ['response' => ['numFound' => 42]],
             $requests
         ));
 
-        self::assertSame('Brief', $resolver->resolveFacetValue('filterFormContent_mv', 'brief'));
-        self::assertSame(['filterFormContent_mv:"brief"'], $requests[0]['params']['fq']);
-        self::assertSame('0', $requests[0]['params']['rows']);
-        self::assertNull($resolver->resolveFacetValue('filterFormContent_mv', 'gibtsnicht'));
+        self::assertSame('Berlin', $resolver->resolveFacetValue('filterLocation_mv', 'Berlin'));
+        self::assertSame(['filterLocation_mv:"Berlin"'], $requests[0]['params']['fq']);
+        self::assertCount(1, $requests, 'keine Facettensuche, wenn der Wert exakt vorkommt');
+    }
+
+    /**
+     * @test
+     */
+    public function resolveFacetValueFallsBackToMostFrequentValueContainingTerm(): void
+    {
+        $requests = [];
+        $resolver = new VocabularyResolver($this->createConnection(
+            static fn(string $handler, array $params): array => isset($params['facet.contains'])
+                ? ['response' => ['numFound' => 4000000], 'facet_counts' => ['facet_fields' => ['filterLocation_mv' => ['Marbach am Neckar' => 1234]]]]
+                : ['response' => ['numFound' => 0]],
+            $requests
+        ));
+
+        self::assertSame('Marbach am Neckar', $resolver->resolveFacetValue('filterLocation_mv', 'marbach'));
+        self::assertSame('marbach', $requests[1]['params']['facet.contains']);
+        self::assertSame('true', $requests[1]['params']['facet.contains.ignoreCase']);
+        self::assertSame('count', $requests[1]['params']['facet.sort']);
+        self::assertSame(3.0, $requests[1]['timeout']);
+    }
+
+    /**
+     * @test
+     */
+    public function resolveFacetValueReturnsNullWithoutMatch(): void
+    {
+        $requests = [];
+        $resolver = new VocabularyResolver($this->createConnection(
+            static fn(string $handler, array $params): array => isset($params['facet.contains'])
+                ? ['facet_counts' => ['facet_fields' => ['filterLocation_mv' => []]]]
+                : ['response' => ['numFound' => 0]],
+            $requests
+        ));
+
+        self::assertNull($resolver->resolveFacetValue('filterLocation_mv', 'Atlantis'));
     }
 
     /**

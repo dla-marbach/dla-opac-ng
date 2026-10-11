@@ -17,6 +17,11 @@ class VocabularyResolver
 {
     private const SUGGEST_DICTIONARY = 'mySuggester';
 
+    /**
+     * Die Facettensuche über alle Werte eines großen Feldes darf länger dauern als die schnellen Ajax-Anfragen.
+     */
+    private const FACET_REQUEST_TIMEOUT = 3.0;
+
     /** @var array<string,mixed> */
     private array $memo = [];
 
@@ -64,24 +69,39 @@ class VocabularyResolver
     }
 
     /**
-     * Prüft, ob ein Facettenwert im Index vorkommt, und liefert die exakte Schreibweise
-     * (versucht auch die Schreibweise mit großem Anfangsbuchstaben).
+     * Sucht einen Facettenwert für Felder mit sehr vielen Werten (z.B. Orte): zuerst die exakte Schreibweise,
+     * sonst den häufigsten Wert, der den Begriff enthält (Groß-/Kleinschreibung egal, z.B. "Marbach" →
+     * "Marbach am Neckar").
      */
     public function resolveFacetValue(string $field, string $value): ?string
     {
-        $candidates = array_values(array_unique([
-            $value,
-            mb_strtoupper(mb_substr($value, 0, 1)) . mb_substr($value, 1),
-        ]));
-
-        foreach ($candidates as $candidate) {
-            $count = $this->count('*:*', [$field . ':' . self::quote($candidate)]);
-            if ($count !== null && $count > 0) {
-                return $candidate;
-            }
+        $key = 'facet|' . $field . '|' . $value;
+        if (array_key_exists($key, $this->memo)) {
+            return $this->memo[$key];
         }
 
-        return null;
+        $count = $this->count('*:*', [$field . ':' . self::quote($value)]);
+        if ($count !== null && $count > 0) {
+            return $this->memo[$key] = $value;
+        }
+
+        $json = $this->solrConnection->request('select', [
+            'q' => '*:*',
+            'rows' => '0',
+            'fl' => 'id',
+            'facet' => 'true',
+            'facet.field' => $field,
+            'facet.contains' => $value,
+            'facet.contains.ignoreCase' => 'true',
+            'facet.mincount' => '1',
+            'facet.limit' => '1',
+            'facet.sort' => 'count',
+            'json.nl' => 'map',
+        ], self::FACET_REQUEST_TIMEOUT);
+        $values = $json['facet_counts']['facet_fields'][$field] ?? [];
+        $resolved = is_array($values) && $values !== [] ? (string)array_key_first($values) : null;
+
+        return $this->memo[$key] = $resolved;
     }
 
     /**

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Dla\DlaOpacNg\Middleware;
 
-use Dla\DlaOpacNg\Service\QueryUnderstanding\ConcurrencyLimiter;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryInterpretation;
+use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryUnderstandingConfiguration;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\SearchArgumentsBuilder;
 use Dla\DlaOpacNg\Service\QueryUnderstandingService;
 use Dla\DlaOpacNg\Utility\ClientIpUtility;
@@ -16,11 +16,9 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
-use TYPO3\CMS\Core\Cache\CacheManager;
-use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
-use TYPO3\CMS\Core\Core\Environment;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\RateLimiter\Storage\StorageInterface;
 use TYPO3\CMS\Core\Http\RedirectResponse;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Natürlichsprachige Suche (Proof of Concept).
@@ -33,7 +31,9 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * Schutz vor Last:
  * - läuft nach der ProofOfWorkMiddleware (die Anfrage enthält tx_find_find und ist damit geschützt)
  * - Zwischenspeicher je Frage (wiederholte Fragen ohne LLM-Aufruf)
- * - Begrenzung je Client-IP und Minute (LLM_RATE_LIMIT) und gleichzeitiger Anfragen (LLM_MAX_CONCURRENT)
+ * - Rate Limit je Client-IP (LLM_RATE_LIMIT) mit symfony/rate-limiter
+ * - gleichzeitige Anfragen begrenzt der LLM-Server selbst (bei Ollama OLLAMA_NUM_PARALLEL und OLLAMA_MAX_QUEUE;
+ *   bei Überlast antwortet er mit HTTP 503)
  * - bei Überlast, Zeitüberschreitung oder Fehlern Rückfall auf die normale Suche mit der Frage als Suchbegriff
  */
 class NaturalLanguageSearchMiddleware implements MiddlewareInterface, LoggerAwareInterface
@@ -52,25 +52,33 @@ class NaturalLanguageSearchMiddleware implements MiddlewareInterface, LoggerAwar
 
     public const STATUS_RELAXED = 'relaxed';
 
+    /**
+     * Das LLM hat in der Frage nichts erkannt; es wurde normal gesucht.
+     */
+    public const STATUS_UNRECOGNIZED = 'unrecognized';
+
+    /**
+     * Das LLM war nicht verfügbar (Fehler, Zeitüberschreitung, Überlast, Rate Limit); es wurde normal gesucht.
+     */
     public const STATUS_FALLBACK = 'fallback';
 
-    private readonly ?FrontendInterface $cache;
+    private const RATE_LIMITER_ID = 'dla-opac-ng-natural-language-search';
 
-    private readonly QueryUnderstandingService $service;
-
-    private readonly ConcurrencyLimiter $concurrencyLimiter;
+    private readonly ?RateLimiterFactory $rateLimiterFactory;
 
     public function __construct(
-        ?QueryUnderstandingService $service = null,
-        ?FrontendInterface $cache = null,
-        ?ConcurrencyLimiter $concurrencyLimiter = null,
+        private readonly QueryUnderstandingService $service,
+        QueryUnderstandingConfiguration $configuration,
+        StorageInterface $rateLimiterStorage,
     ) {
-        $this->cache = $cache ?? self::getDefaultCache();
-        $this->service = $service ?? new QueryUnderstandingService(cache: $this->cache);
-        $this->concurrencyLimiter = $concurrencyLimiter ?? new ConcurrencyLimiter(
-            Environment::getVarPath() . '/dla_opac_ng/llm-locks',
-            $this->service->getConfiguration()->maxConcurrent
-        );
+        $this->rateLimiterFactory = $configuration->rateLimitPerMinute > 0
+            ? new RateLimiterFactory([
+                'id' => self::RATE_LIMITER_ID,
+                'policy' => 'sliding_window',
+                'limit' => $configuration->rateLimitPerMinute,
+                'interval' => '1 minute',
+            ], $rateLimiterStorage)
+            : null;
         $this->logger = new NullLogger();
     }
 
@@ -84,51 +92,53 @@ class NaturalLanguageSearchMiddleware implements MiddlewareInterface, LoggerAwar
 
         $rawQuestion = $findArguments['q']['default'] ?? '';
         $question = QueryUnderstandingService::normalizeQuestion(is_string($rawQuestion) ? $rawQuestion : '');
+        if ($question === '') {
+            return $this->createRedirect($request, '', self::STATUS_FALLBACK, null);
+        }
 
         // Facetten der Anfrage (z.B. gewählter Medientyp-Reiter) bleiben in der Weiterleitung erhalten und
         // müssen deshalb auch beim Zählen für das schrittweise Lockern berücksichtigt werden.
         $retainedFacets = $findArguments['facet'] ?? [];
         $retainedFilterQueries = is_array($retainedFacets) ? SearchArgumentsBuilder::filterQueriesForFacets($retainedFacets) : [];
 
-        $interpretation = $question !== '' ? $this->interpret($question, $request, $retainedFilterQueries) : null;
+        [$status, $interpretation] = $this->interpret($question, $request, $retainedFilterQueries);
 
-        return $this->createRedirect($request, $question, $interpretation);
+        return $this->createRedirect($request, $question, $status, $interpretation);
     }
 
     /**
      * @param list<string>|null $retainedFilterQueries null, wenn beibehaltene Facetten nicht übersetzbar sind
+     * @return array{0: string, 1: QueryInterpretation|null} Status und Interpretation
      */
-    private function interpret(string $question, ServerRequestInterface $request, ?array $retainedFilterQueries): ?QueryInterpretation
+    private function interpret(string $question, ServerRequestInterface $request, ?array $retainedFilterQueries): array
     {
         if (!$this->service->isEnabled()) {
-            return null;
+            return [self::STATUS_FALLBACK, null];
         }
-        $this->service->setLogger($this->logger);
 
         // Zwischengespeicherte Fragen kosten keinen LLM-Aufruf und unterliegen daher keiner Begrenzung.
-        if (!$this->service->isCached($question)) {
-            if (!$this->isWithinRateLimit($request)) {
-                $this->logger->notice('Natürlichsprachige Suche: Rate Limit erreicht');
-                return null;
-            }
-            if (!$this->concurrencyLimiter->acquire()) {
-                $this->logger->notice('Natürlichsprachige Suche: alle LLM-Plätze belegt');
-                return null;
-            }
+        if (!$this->service->isCached($question) && !$this->isWithinRateLimit($request)) {
+            $this->logger->notice('Natürlichsprachige Suche: Rate Limit erreicht');
+            return [self::STATUS_FALLBACK, null];
         }
 
-        try {
-            $structure = $this->service->analyze($question);
-        } finally {
-            $this->concurrencyLimiter->release();
+        $structure = $this->service->analyze($question);
+        if ($structure === null) {
+            return [self::STATUS_FALLBACK, null];
+        }
+        if ($structure->isEmpty()) {
+            return [self::STATUS_UNRECOGNIZED, null];
         }
 
-        return $structure === null ? null : $this->service->interpret($structure, $retainedFilterQueries);
+        $interpretation = $this->service->interpret($structure, $retainedFilterQueries);
+
+        return [$interpretation->dropped === [] ? self::STATUS_OK : self::STATUS_RELAXED, $interpretation];
     }
 
     private function createRedirect(
         ServerRequestInterface $request,
         string $question,
+        string $status,
         ?QueryInterpretation $interpretation
     ): ResponseInterface {
         $queryParams = $request->getQueryParams();
@@ -153,7 +163,6 @@ class NaturalLanguageSearchMiddleware implements MiddlewareInterface, LoggerAwar
             $findArguments[self::ARGUMENT_QUESTION] = $question;
             if ($interpretation === null) {
                 $findArguments['q']['default'] = $question;
-                $findArguments[self::ARGUMENT_STATUS] = self::STATUS_FALLBACK;
             } else {
                 $arguments = $interpretation->toFindArguments();
                 if (isset($arguments['q']['default'])) {
@@ -167,11 +176,11 @@ class NaturalLanguageSearchMiddleware implements MiddlewareInterface, LoggerAwar
                         $findArguments['facet'][$facetId][$term] = $value;
                     }
                 }
-                $findArguments[self::ARGUMENT_STATUS] = $interpretation->dropped === [] ? self::STATUS_OK : self::STATUS_RELAXED;
                 if ($interpretation->dropped !== []) {
                     $findArguments[self::ARGUMENT_DROPPED] = implode(', ', $interpretation->dropped);
                 }
             }
+            $findArguments[self::ARGUMENT_STATUS] = $status;
         }
 
         if (isset($findArguments['q']) && $findArguments['q'] === []) {
@@ -189,33 +198,14 @@ class NaturalLanguageSearchMiddleware implements MiddlewareInterface, LoggerAwar
         ]);
     }
 
-    /**
-     * Einfacher Zähler je Client-IP und Minute im Zwischenspeicher (für einen Proof of Concept ausreichend genau).
-     */
     private function isWithinRateLimit(ServerRequestInterface $request): bool
     {
-        $limit = $this->service->getConfiguration()->rateLimitPerMinute;
-        if ($limit === 0 || $this->cache === null) {
+        if ($this->rateLimiterFactory === null) {
             return true;
         }
 
         $clientIp = ClientIpUtility::resolveClientIp($request->getServerParams());
-        $identifier = 'rl_' . sha1($clientIp . '|' . intdiv(time(), 60));
-        $count = (int)($this->cache->get($identifier) ?: 0);
-        if ($count >= $limit) {
-            return false;
-        }
-        $this->cache->set($identifier, $count + 1, [], 120);
 
-        return true;
-    }
-
-    private static function getDefaultCache(): ?FrontendInterface
-    {
-        try {
-            return GeneralUtility::makeInstance(CacheManager::class)->getCache(QueryUnderstandingService::CACHE_IDENTIFIER);
-        } catch (\Throwable) {
-            return null;
-        }
+        return $this->rateLimiterFactory->create($clientIp)->consume()->isAccepted();
     }
 }

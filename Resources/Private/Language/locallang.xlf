@@ -1365,6 +1365,9 @@
             <trans-unit id="nl.status.relaxed">
                 <source>Your question »%s« was automatically translated into search terms and filters. Omitted because there would otherwise be no results: %s.</source>
             </trans-unit>
+            <trans-unit id="nl.status.unrecognized">
+                <source>No search terms or filters could be derived from your question »%s«. A normal search was performed.</source>
+            </trans-unit>
             <trans-unit id="nl.status.fallback">
                 <source>The AI search is currently unavailable. A normal search was performed for »%s«.</source>
             </trans-unit>

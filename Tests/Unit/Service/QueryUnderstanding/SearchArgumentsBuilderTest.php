@@ -18,8 +18,6 @@ class SearchArgumentsBuilderTest extends UnitTestCase
                 'Thomas Mann' => ['id' => 'PE00005678', 'label' => 'Mann, Thomas (1875-1955)'],
             ],
             facetValues: [
-                'filterFormContent_mv' => ['Brief'],
-                'filterLanguage_mv' => ['Englisch'],
                 'filterLocation_mv' => ['Marbach'],
             ],
         ));
@@ -36,7 +34,7 @@ class SearchArgumentsBuilderTest extends UnitTestCase
                 ['name' => 'Thomas Mann', 'relation' => ''],
             ],
             'mediaTypes' => ['Handschriften'],
-            'formContent' => ['brief'],
+            'formContent' => ['Brief'],
             'languages' => ['Englisch'],
             'places' => ['Marbach'],
             'digitalOnly' => true,

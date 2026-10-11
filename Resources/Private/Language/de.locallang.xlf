@@ -1796,6 +1796,10 @@
                 <source>Your question »%s« was automatically translated into search terms and filters. Omitted because there would otherwise be no results: %s.</source>
                 <target>Ihre Frage »%s« wurde automatisch in Suchbegriffe und Filter übersetzt. Weggelassen, weil es sonst keine Treffer gäbe: %s.</target>
             </trans-unit>
+            <trans-unit id="nl.status.unrecognized">
+                <source>No search terms or filters could be derived from your question »%s«. A normal search was performed.</source>
+                <target>Aus Ihrer Frage »%s« ließen sich keine Suchbegriffe oder Filter ableiten. Es wurde normal gesucht.</target>
+            </trans-unit>
             <trans-unit id="nl.status.fallback">
                 <source>The AI search is currently unavailable. A normal search was performed for »%s«.</source>
                 <target>Die KI-Suche ist gerade nicht verfügbar. Es wurde normal nach »%s« gesucht.</target>

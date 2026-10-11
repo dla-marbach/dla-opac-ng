@@ -42,7 +42,11 @@ final class QueryStructure
     ) {
     }
 
-    public static function fromArray(array $data): self
+    /**
+     * @param array<string, list<string>>|null $vocabulary erlaubte Werte für mediaTypes, formContent und languages
+     *        (FacetVocabulary); null: Medientypen gegen die bekannten Werte, übrige Felder nur bereinigen
+     */
+    public static function fromArray(array $data, ?array $vocabulary = null): self
     {
         $persons = [];
         foreach (self::listOf($data['persons'] ?? null, 3) as $person) {
@@ -80,10 +84,7 @@ final class QueryStructure
         }
 
         // Reihenfolge der Modellantwort beibehalten (der SearchArgumentsBuilder übernimmt den ersten Medientyp).
-        $mediaTypes = array_values(array_unique(array_filter(
-            self::listOf($data['mediaTypes'] ?? null, 7),
-            static fn($mediaType): bool => in_array($mediaType, QueryPrompt::MEDIA_TYPES, true)
-        )));
+        $mediaTypes = self::allowedValues($data['mediaTypes'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'mediaTypes'));
 
         $dateFrom = self::year($data['dateFrom'] ?? null);
         $dateTo = self::year($data['dateTo'] ?? null);
@@ -96,8 +97,12 @@ final class QueryStructure
             $persons,
             $topics,
             $mediaTypes,
-            self::stringList($data['formContent'] ?? null),
-            self::stringList($data['languages'] ?? null),
+            $vocabulary === null
+                ? self::stringList($data['formContent'] ?? null)
+                : self::allowedValues($data['formContent'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'formContent')),
+            $vocabulary === null
+                ? self::stringList($data['languages'] ?? null)
+                : self::allowedValues($data['languages'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'languages')),
             self::stringList($data['places'] ?? null),
             $dateFrom,
             $dateTo,
@@ -151,6 +156,20 @@ final class QueryStructure
         $value = (string)preg_replace('/\b(AND|OR|NOT)\b/', ' ', $value);
 
         return trim(mb_substr(trim((string)preg_replace('/\s+/u', ' ', $value)), 0, self::MAX_TEXT_LENGTH));
+    }
+
+    /**
+     * Nur Werte aus der Liste der erlaubten Werte, in der Reihenfolge der Modellantwort.
+     *
+     * @param list<string> $allowed
+     * @return list<string>
+     */
+    private static function allowedValues(mixed $value, array $allowed): array
+    {
+        return array_values(array_unique(array_filter(
+            self::listOf($value, 3),
+            static fn($item): bool => is_string($item) && in_array($item, $allowed, true)
+        )));
     }
 
     /**

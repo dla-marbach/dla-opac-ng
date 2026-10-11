@@ -12,10 +12,29 @@ services:
     resource: '../Classes/*'
     exclude:
       - '../Classes/Find/'
-      # Natürlichsprachige Suche: Hilfsklassen mit Skalar-Parametern bzw. Wertobjekten werden von der
-      # NaturalLanguageSearchMiddleware selbst erzeugt (inkl. Zwischenspeicher), nicht per Autowiring.
-      - '../Classes/Service/QueryUnderstanding/'
-      - '../Classes/Service/QueryUnderstandingService.php'
+
+  # Natürlichsprachige Suche: Konfiguration aus Umgebungsvariablen (LLM_*), siehe docs/natuerlichsprachige-suche.md
+  Dla\DlaOpacNg\Service\QueryUnderstanding\QueryUnderstandingConfiguration:
+    factory: ['Dla\DlaOpacNg\Service\QueryUnderstanding\QueryUnderstandingConfiguration', 'fromEnvironment']
+
+  # Zwischenspeicher für Zerlegungen und das Facetten-Vokabular (Konfiguration in ext_localconf.php)
+  cache.dla_opac_ng_query_understanding:
+    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
+    factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
+    arguments: ['dla_opac_ng_query_understanding']
+
+  Dla\DlaOpacNg\Service\QueryUnderstandingService:
+    arguments:
+      $cache: '@cache.dla_opac_ng_query_understanding'
+
+  Dla\DlaOpacNg\Service\QueryUnderstanding\FacetVocabulary:
+    arguments:
+      $cache: '@cache.dla_opac_ng_query_understanding'
+
+  # Rate Limit mit symfony/rate-limiter; Zustände im Core-Cache "ratelimiter"
+  Dla\DlaOpacNg\Middleware\NaturalLanguageSearchMiddleware:
+    arguments:
+      $rateLimiterStorage: '@TYPO3\CMS\Core\RateLimiter\Storage\CachingFrameworkStorage'
 
   # Klassen der ehemaligen Extension dla/find
   Dla\Find\:

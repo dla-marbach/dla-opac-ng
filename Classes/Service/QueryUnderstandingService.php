@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Dla\DlaOpacNg\Service;
 
+use Dla\DlaOpacNg\Service\QueryUnderstanding\FacetVocabulary;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\LlmClient;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryInterpretation;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryPrompt;
@@ -37,25 +38,18 @@ class QueryUnderstandingService implements LoggerAwareInterface
 
     private const MAX_QUESTION_LENGTH = 300;
 
-    private readonly QueryUnderstandingConfiguration $configuration;
-
-    private readonly LlmClient $llmClient;
-
-    private readonly QueryPrompt $prompt;
-
-    private readonly SearchArgumentsBuilder $builder;
-
+    /**
+     * Abhängigkeiten per Dependency Injection, siehe Configuration/Services.yaml
+     * (Konfiguration aus Umgebungsvariablen und Zwischenspeicher über Factories).
+     */
     public function __construct(
-        ?QueryUnderstandingConfiguration $configuration = null,
-        ?LlmClient $llmClient = null,
-        ?QueryPrompt $prompt = null,
-        ?SearchArgumentsBuilder $builder = null,
-        private readonly ?FrontendInterface $cache = null,
+        private readonly QueryUnderstandingConfiguration $configuration,
+        private readonly LlmClient $llmClient,
+        private readonly QueryPrompt $prompt,
+        private readonly SearchArgumentsBuilder $builder,
+        private readonly FacetVocabulary $vocabulary,
+        private readonly FrontendInterface $cache,
     ) {
-        $this->configuration = $configuration ?? QueryUnderstandingConfiguration::fromEnvironment();
-        $this->llmClient = $llmClient ?? new LlmClient($this->configuration);
-        $this->prompt = $prompt ?? new QueryPrompt();
-        $this->builder = $builder ?? new SearchArgumentsBuilder();
         $this->logger = new NullLogger();
     }
 
@@ -73,10 +67,6 @@ class QueryUnderstandingService implements LoggerAwareInterface
         return $this->configuration->isEnabled();
     }
 
-    public function getConfiguration(): QueryUnderstandingConfiguration
-    {
-        return $this->configuration;
-    }
 
     public static function normalizeQuestion(string $question): string
     {
@@ -90,11 +80,13 @@ class QueryUnderstandingService implements LoggerAwareInterface
      */
     public function isCached(string $question): bool
     {
-        return $this->cache !== null && $this->cache->has($this->cacheIdentifier(self::normalizeQuestion($question)));
+        return $this->cache->has($this->cacheIdentifier(self::normalizeQuestion($question)));
     }
 
     /**
-     * Zerlegt die Frage. Liefert null, wenn das LLM nicht verfügbar ist oder nichts erkannt hat.
+     * Zerlegt die Frage. Liefert null, wenn das LLM nicht verfügbar ist, und eine leere QueryStructure
+     * (isEmpty()), wenn es nichts erkannt hat. Beides wird unterschiedlich angezeigt; auch leere Ergebnisse
+     * werden zwischengespeichert, damit dieselbe Frage nicht erneut ans LLM geht.
      */
     public function analyze(string $question): ?QueryStructure
     {
@@ -103,29 +95,28 @@ class QueryUnderstandingService implements LoggerAwareInterface
             return null;
         }
 
-        $cacheIdentifier = $this->cacheIdentifier($question);
-        $cached = $this->cache?->get($cacheIdentifier);
+        $vocabulary = $this->vocabulary->getAll();
+        $cacheIdentifier = $this->cacheIdentifier($question, $vocabulary);
+        $cached = $this->cache->get($cacheIdentifier);
         if (is_array($cached)) {
-            return QueryStructure::fromArray($cached);
+            return QueryStructure::fromArray($cached, $vocabulary);
         }
 
         $result = $this->llmClient->completeJson(
-            $this->prompt->buildMessages($question),
-            QueryPrompt::getJsonSchema(),
+            $this->prompt->buildMessages($question, $vocabulary),
+            QueryPrompt::getJsonSchema($vocabulary),
             'catalog_query'
         );
         if ($result === null) {
             return null;
         }
 
-        $structure = QueryStructure::fromArray($result);
-        if ($structure->isEmpty()) {
-            $this->logger->info('LLM hat in der Frage nichts erkannt', ['question' => $question]);
-            return null;
-        }
-
-        $this->cache?->set($cacheIdentifier, $structure->toArray(), [], self::CACHE_LIFETIME);
-        $this->logger->info('Frage zerlegt', ['question' => $question, 'structure' => $structure->toArray()]);
+        $structure = QueryStructure::fromArray($result, $vocabulary);
+        $this->cache->set($cacheIdentifier, $structure->toArray(), [], self::CACHE_LIFETIME);
+        $this->logger->info(
+            $structure->isEmpty() ? 'LLM hat in der Frage nichts erkannt' : 'Frage zerlegt',
+            ['question' => $question, 'structure' => $structure->toArray()]
+        );
 
         return $structure;
     }
@@ -170,8 +161,10 @@ class QueryUnderstandingService implements LoggerAwareInterface
         );
     }
 
-    private function cacheIdentifier(string $question): string
+    private function cacheIdentifier(string $question, ?array $vocabulary = null): string
     {
-        return 'q_' . sha1($this->configuration->model . '|' . $this->prompt->getVersion() . '|' . mb_strtolower($question));
+        $vocabulary ??= $this->vocabulary->getAll();
+
+        return 'q_' . sha1($this->configuration->model . '|' . $this->prompt->getVersion($vocabulary) . '|' . mb_strtolower($question));
     }
 }

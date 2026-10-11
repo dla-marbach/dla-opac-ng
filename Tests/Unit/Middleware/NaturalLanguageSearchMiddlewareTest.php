@@ -3,14 +3,16 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Middleware;
 
 use Dla\DlaOpacNg\Middleware\NaturalLanguageSearchMiddleware;
-use Dla\DlaOpacNg\Service\QueryUnderstanding\ConcurrencyLimiter;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\LlmClient;
+use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryPrompt;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryUnderstandingConfiguration;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\SearchArgumentsBuilder;
 use Dla\DlaOpacNg\Service\QueryUnderstandingService;
+use Dla\DlaOpacNg\Tests\Support\FakeFacetVocabulary;
 use Dla\DlaOpacNg\Tests\Support\FakeVocabularyResolver;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 use TYPO3\CMS\Core\Cache\Backend\TransientMemoryBackend;
 use TYPO3\CMS\Core\Cache\Frontend\VariableFrontend;
 use TYPO3\CMS\Core\Http\HtmlResponse;
@@ -34,37 +36,26 @@ class NaturalLanguageSearchMiddlewareTest extends UnitTestCase
         'digitalOnly' => false,
     ];
 
-    private string $lockDirectory;
-
     private VariableFrontend $cache;
+
+    private InMemoryStorage $rateLimiterStorage;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->lockDirectory = sys_get_temp_dir() . '/dla-nl-test-' . bin2hex(random_bytes(4));
         $this->cache = new VariableFrontend('test', new TransientMemoryBackend('Testing'));
-    }
-
-    protected function tearDown(): void
-    {
-        foreach (glob($this->lockDirectory . '/*') ?: [] as $file) {
-            @unlink($file);
-        }
-        @rmdir($this->lockDirectory);
-        parent::tearDown();
+        $this->rateLimiterStorage = new InMemoryStorage();
     }
 
     private function createMiddleware(
         string $baseUrl = 'http://llm.invalid/v1',
         int $rateLimit = 10,
-        int $slots = 2,
         ?array $answer = self::ANSWER,
         ?\Closure $counter = null,
     ): NaturalLanguageSearchMiddleware {
         $configuration = new QueryUnderstandingConfiguration(
             baseUrl: $baseUrl,
             model: 'test-model',
-            maxConcurrent: $slots,
             rateLimitPerMinute: $rateLimit,
         );
         $llmClient = $this->getMockBuilder(LlmClient::class)
@@ -74,20 +65,18 @@ class NaturalLanguageSearchMiddlewareTest extends UnitTestCase
         $llmClient->method('completeJson')->willReturn($answer);
 
         $service = new QueryUnderstandingService(
-            configuration: $configuration,
-            llmClient: $llmClient,
-            builder: new SearchArgumentsBuilder(new FakeVocabularyResolver(
+            $configuration,
+            $llmClient,
+            new QueryPrompt(),
+            new SearchArgumentsBuilder(new FakeVocabularyResolver(
                 persons: ['Hesse' => ['id' => 'PE1', 'label' => 'Hesse, Hermann (1877-1962)']],
                 counter: $counter,
             )),
-            cache: $this->cache,
+            new FakeFacetVocabulary(),
+            $this->cache,
         );
 
-        return new NaturalLanguageSearchMiddleware(
-            $service,
-            $this->cache,
-            new ConcurrencyLimiter($this->lockDirectory, $slots)
-        );
+        return new NaturalLanguageSearchMiddleware($service, $configuration, $this->rateLimiterStorage);
     }
 
     private function createRequest(array $findArguments, string $clientIp = '192.0.2.1'): ServerRequest
@@ -297,22 +286,31 @@ class NaturalLanguageSearchMiddlewareTest extends UnitTestCase
     /**
      * @test
      */
-    public function fallsBackWhenAllLlmSlotsAreBusy(): void
+    public function reportsUnrecognizedQuestionSeparatelyFromUnavailableLlm(): void
     {
-        $busy = new ConcurrencyLimiter($this->lockDirectory, 1);
-        self::assertTrue($busy->acquire());
-
-        $response = $this->createMiddleware(slots: 1)->process(
-            $this->createRequest(['nl' => '1', 'q' => ['default' => 'Briefe von Hesse']]),
+        $response = $this->createMiddleware(answer: ['text' => ''])->process(
+            $this->createRequest(['nl' => '1', 'q' => ['default' => 'Wie spät ist es?']]),
             $this->createHandler(false)
         );
-        self::assertSame('fallback', $this->redirectArguments($response)['nlstatus']);
 
-        $busy->release();
-        $response = $this->createMiddleware(slots: 1)->process(
-            $this->createRequest(['nl' => '1', 'q' => ['default' => 'Briefe von Hesse']]),
-            $this->createHandler(false)
-        );
-        self::assertSame('ok', $this->redirectArguments($response)['nlstatus']);
+        self::assertSame([
+            'q' => ['default' => 'Wie spät ist es?'],
+            'nlq' => 'Wie spät ist es?',
+            'nlstatus' => 'unrecognized',
+        ], $this->redirectArguments($response));
+    }
+
+    /**
+     * @test
+     */
+    public function rateLimitCanBeDisabled(): void
+    {
+        $middleware = $this->createMiddleware(rateLimit: 0);
+        $handler = $this->createHandler(false);
+
+        foreach (['eins', 'zwei', 'drei'] as $question) {
+            $response = $middleware->process($this->createRequest(['nl' => '1', 'q' => ['default' => 'Frage ' . $question]]), $handler);
+            self::assertSame('ok', $this->redirectArguments($response)['nlstatus']);
+        }
     }
 }

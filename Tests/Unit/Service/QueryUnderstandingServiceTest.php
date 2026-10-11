@@ -4,10 +4,12 @@ namespace Dla\DlaOpacNg\Tests\Unit\Service;
 
 use Dla\DlaOpacNg\Service\QueryUnderstanding\LlmClient;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryInterpretation;
+use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryPrompt;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryStructure;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\QueryUnderstandingConfiguration;
 use Dla\DlaOpacNg\Service\QueryUnderstanding\SearchArgumentsBuilder;
 use Dla\DlaOpacNg\Service\QueryUnderstandingService;
+use Dla\DlaOpacNg\Tests\Support\FakeFacetVocabulary;
 use Dla\DlaOpacNg\Tests\Support\FakeVocabularyResolver;
 use TYPO3\CMS\Core\Cache\Backend\TransientMemoryBackend;
 use TYPO3\CMS\Core\Cache\Frontend\VariableFrontend;
@@ -61,10 +63,12 @@ class QueryUnderstandingServiceTest extends UnitTestCase
         ?QueryUnderstandingConfiguration $configuration = null,
     ): QueryUnderstandingService {
         return new QueryUnderstandingService(
-            configuration: $configuration ?? $this->createConfiguration(),
-            llmClient: $llmClient,
-            builder: new SearchArgumentsBuilder($resolver ?? new FakeVocabularyResolver()),
-            cache: $cache,
+            $configuration ?? $this->createConfiguration(),
+            $llmClient,
+            new QueryPrompt(),
+            new SearchArgumentsBuilder($resolver ?? new FakeVocabularyResolver()),
+            new FakeFacetVocabulary(),
+            $cache ?? $this->createCache(),
         );
     }
 
@@ -99,13 +103,37 @@ class QueryUnderstandingServiceTest extends UnitTestCase
     /**
      * @test
      */
-    public function analyzeReturnsNullAndCachesNothingWhenNothingWasRecognized(): void
+    public function analyzeReturnsAndCachesEmptyStructureWhenNothingWasRecognized(): void
     {
-        $cache = $this->createCache();
-        $service = $this->createService($this->createLlmClient(['text' => '']), cache: $cache);
+        $llmClient = $this->createLlmClient(['text' => '']);
+        $llmClient->expects(self::once())->method('completeJson');
+        $service = $this->createService($llmClient);
 
-        self::assertNull($service->analyze('???'));
-        self::assertFalse($service->isCached('???'));
+        self::assertTrue($service->analyze('???')->isEmpty());
+        self::assertTrue($service->isCached('???'));
+        self::assertTrue($service->analyze('???')->isEmpty(), 'Zweiter Aufruf aus dem Zwischenspeicher');
+    }
+
+    /**
+     * @test
+     */
+    public function analyzePassesIndexVocabularyToModelAndValidatesAnswer(): void
+    {
+        $llmClient = $this->getMockBuilder(LlmClient::class)
+            ->setConstructorArgs([$this->createConfiguration()])
+            ->onlyMethods(['completeJson'])
+            ->getMock();
+        $llmClient->expects(self::once())->method('completeJson')
+            ->with(
+                self::callback(static fn(array $messages): bool => str_contains($messages[0]['content'], '"formContent": "Brief", "Gedicht", "Übersetzung"')),
+                self::callback(static fn(array $schema): bool => $schema['properties']['formContent']['items']['enum'] === ['Brief', 'Gedicht', 'Übersetzung']),
+            )
+            ->willReturn(['formContent' => ['Brief', 'Briefe'], 'languages' => ['Klingonisch']] + self::ANSWER);
+
+        $structure = $this->createService($llmClient)->analyze('Briefe von Hesse');
+
+        self::assertSame(['Brief'], $structure->formContent);
+        self::assertSame([], $structure->languages);
     }
 
     /**
@@ -215,8 +243,12 @@ class QueryUnderstandingServiceTest extends UnitTestCase
         };
         $configuration = new QueryUnderstandingConfiguration(baseUrl: 'http://127.0.0.1:1/v1', timeout: 1.0);
         $service = new QueryUnderstandingService(
-            configuration: $configuration,
-            builder: new SearchArgumentsBuilder(new FakeVocabularyResolver()),
+            $configuration,
+            new LlmClient($configuration),
+            new QueryPrompt(),
+            new SearchArgumentsBuilder(new FakeVocabularyResolver()),
+            new FakeFacetVocabulary(),
+            $this->createCache(),
         );
         $service->setLogger($logger);
 
