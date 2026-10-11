@@ -119,7 +119,8 @@ und Solr-Tunnel). Das LLM läuft als Docker-Container neben DDEV und ist aus dem
    task llm:test QUESTION="Gedichte von Rilke aus Paris"
    ```
 
-   Erwartet wird ein JSON-Objekt mit den Feldern `persons`, `mediaTypes` usw.
+   Die Anfrage enthält wie im Katalog Systemprompt (mit aktuellem Jahr), Beispiele und JSON-Schema, nur ohne die
+   Wertelisten aus Solr. Erwartet wird ein JSON-Objekt mit den Feldern `persons`, `mediaTypes` usw., ohne `<think>`-Block.
 
 3. Umgebungsvariablen für TYPO3 sind in `.devfiles/.env` bereits gesetzt und werden bei `task install` nach
    `t3example/.ddev/.env` kopiert. In einer bestehenden Installation die beiden Zeilen ergänzen und DDEV neu starten:
