@@ -66,16 +66,18 @@ class QueryPromptTest extends UnitTestCase
     public function examplesMatchTheSchema(): void
     {
         $schema = QueryPrompt::getJsonSchema();
+        $allowed = static fn(array $schema): array => array_keys($schema['properties']);
         foreach ((new QueryPrompt())->getExamples() as $example) {
-            self::assertSame($schema['required'], array_keys($example['answer']), $example['question']);
-            self::assertSame(
-                $schema['properties']['exclude']['required'],
-                array_keys($example['answer']['exclude']),
-                $example['question']
-            );
-            foreach ($example['answer']['persons'] as $person) {
-                self::assertSame($schema['properties']['persons']['items']['required'], array_keys($person), $example['question']);
+            $answer = $example['answer'];
+            self::assertSame([], array_diff(array_keys($answer), $allowed($schema)), $example['question']);
+            self::assertSame([], array_diff(array_keys($answer['exclude'] ?? []), $allowed($schema['properties']['exclude'])), $example['question']);
+            foreach ($answer['persons'] ?? [] as $person) {
+                $personSchema = $schema['properties']['persons']['items'];
+                self::assertSame([], array_diff(array_keys($person), $allowed($personSchema)), $example['question']);
+                self::assertSame([], array_diff($personSchema['required'], array_keys($person)), $example['question']);
             }
+            // Kompakte Antworten: keine leeren Felder, damit das Modell sie auch nicht ausgibt
+            self::assertNotContains(true, array_map(static fn($value): bool => in_array($value, ['', [], null, false], true), $answer), $example['question']);
         }
     }
 

@@ -21,8 +21,8 @@ class FacetVocabulary
      */
     public const FIELDS = [
         'mediaTypes' => ['filterType_mv', 20],
-        'formContent' => ['filterFormContent_mv', 100],
-        'languages' => ['filterLanguage_mv', 60],
+        'formContent' => ['filterFormContent_mv', 40],
+        'languages' => ['filterLanguage_mv', 25],
     ];
 
     /**

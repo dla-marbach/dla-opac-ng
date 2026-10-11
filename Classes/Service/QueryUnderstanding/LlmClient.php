@@ -53,7 +53,7 @@ class LlmClient
                     'stream' => false,
                     'response_format' => [
                         'type' => 'json_schema',
-                        'json_schema' => ['name' => $schemaName, 'strict' => true, 'schema' => $jsonSchema],
+                        'json_schema' => ['name' => $schemaName, 'strict' => false, 'schema' => $jsonSchema],
                     ],
                 ],
                 'timeout' => $this->configuration->timeout,

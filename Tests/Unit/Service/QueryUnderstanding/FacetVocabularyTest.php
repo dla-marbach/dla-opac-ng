@@ -55,7 +55,7 @@ class FacetVocabularyTest extends UnitTestCase
         ], $vocabulary->getAll());
         self::assertSame('select', $params['__handler']);
         self::assertSame(['filterType_mv', 'filterFormContent_mv', 'filterLanguage_mv'], $params['facet.field']);
-        self::assertSame('100', $params['f.filterFormContent_mv.facet.limit']);
+        self::assertSame('40', $params['f.filterFormContent_mv.facet.limit']);
         self::assertSame('0', $params['rows']);
         self::assertGreaterThan(1.0, $params['__timeout']);
     }

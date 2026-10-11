@@ -2,99 +2,57 @@
     {
         "question": "Briefe von Hesse an Thomas Mann aus den 1930er Jahren über das Exil",
         "answer": {
-            "text": "",
             "persons": [
                 {"name": "Hesse", "fullName": "Hermann Hesse", "relation": "Von"},
-                {"name": "Thomas Mann", "fullName": "Thomas Mann", "relation": "An"}
+                {"name": "Thomas Mann", "relation": "An"}
             ],
             "topics": [
                 {"term": "Exil", "variants": ["Exil*", "Emigration", "Emigrant*"]}
             ],
             "mediaTypes": ["Handschriften"],
             "formContent": ["Brief"],
-            "languages": [],
-            "places": [],
             "dateFrom": 1930,
-            "dateTo": 1939,
-            "digitalOnly": false,
-            "knownItem": false,
-            "exclude": {"mediaTypes": [], "formContent": [], "terms": []}
+            "dateTo": 1939
         }
     },
     {
         "question": "Gibt es Tonaufnahmen von Lesungen Ingeborg Bachmanns?",
         "answer": {
-            "text": "",
             "persons": [
-                {"name": "Ingeborg Bachmann", "fullName": "Ingeborg Bachmann", "relation": "Von"}
+                {"name": "Ingeborg Bachmann", "relation": "Von"}
             ],
-            "topics": [],
             "mediaTypes": ["Audio"],
-            "formContent": ["Lesung"],
-            "languages": [],
-            "places": [],
-            "dateFrom": null,
-            "dateTo": null,
-            "digitalOnly": false,
-            "knownItem": false,
-            "exclude": {"mediaTypes": [], "formContent": [], "terms": []}
+            "formContent": ["Lesung"]
         }
     },
     {
         "question": "Werke von Christa Wolf über die DDR, aber keine Übersetzungen",
         "answer": {
-            "text": "",
             "persons": [
-                {"name": "Christa Wolf", "fullName": "Christa Wolf", "relation": "Von"}
+                {"name": "Christa Wolf", "relation": "Von"}
             ],
             "topics": [
                 {"term": "DDR", "variants": ["Deutsche Demokratische Republik", "Ostdeutschland"]}
             ],
-            "mediaTypes": [],
-            "formContent": [],
-            "languages": [],
-            "places": [],
-            "dateFrom": null,
-            "dateTo": null,
-            "digitalOnly": false,
-            "knownItem": false,
-            "exclude": {"mediaTypes": [], "formContent": ["Übersetzung"], "terms": []}
+            "exclude": {"formContent": ["Übersetzung"]}
         }
     },
     {
         "question": "Sekundärliteratur über Paul Celan nach 1970",
         "answer": {
-            "text": "",
             "persons": [
-                {"name": "Paul Celan", "fullName": "Paul Celan", "relation": "Über"}
+                {"name": "Paul Celan", "relation": "Über"}
             ],
-            "topics": [],
             "mediaTypes": ["Gedrucktes"],
-            "formContent": [],
-            "languages": [],
-            "places": [],
-            "dateFrom": 1970,
-            "dateTo": null,
-            "digitalOnly": false,
-            "knownItem": false,
-            "exclude": {"mediaTypes": [], "formContent": [], "terms": []}
+            "dateFrom": 1970
         }
     },
     {
         "question": "digitalisierte Fotos aus Marbach",
         "answer": {
-            "text": "",
-            "persons": [],
-            "topics": [],
             "mediaTypes": ["Bilder und Objekte"],
-            "formContent": [],
-            "languages": [],
             "places": ["Marbach"],
-            "dateFrom": null,
-            "dateTo": null,
-            "digitalOnly": true,
-            "knownItem": false,
-            "exclude": {"mediaTypes": [], "formContent": [], "terms": []}
+            "digitalOnly": true
         }
     },
     {
@@ -104,56 +62,30 @@
             "persons": [
                 {"name": "Kafka", "fullName": "Franz Kafka", "relation": "Von"}
             ],
-            "topics": [],
-            "mediaTypes": [],
             "formContent": ["Übersetzung"],
             "languages": ["Englisch"],
-            "places": [],
-            "dateFrom": null,
-            "dateTo": null,
-            "digitalOnly": false,
-            "knownItem": true,
-            "exclude": {"mediaTypes": [], "formContent": [], "terms": []}
+            "knownItem": true
         }
     },
     {
         "question": "Bücher aus der Bibliothek von Siegfried Kracauer zum Thema Film",
         "answer": {
-            "text": "",
             "persons": [
-                {"name": "Siegfried Kracauer", "fullName": "Siegfried Kracauer", "relation": "Unter"}
+                {"name": "Siegfried Kracauer", "relation": "Unter"}
             ],
             "topics": [
                 {"term": "Film", "variants": ["Film*", "Kino"]}
             ],
-            "mediaTypes": ["Gedrucktes"],
-            "formContent": [],
-            "languages": [],
-            "places": [],
-            "dateFrom": null,
-            "dateTo": null,
-            "digitalOnly": false,
-            "knownItem": false,
-            "exclude": {"mediaTypes": [], "formContent": [], "terms": []}
+            "mediaTypes": ["Gedrucktes"]
         }
     },
     {
         "question": "Exilliteratur 1933–1945",
         "answer": {
-            "text": "",
-            "persons": [],
             "topics": [
                 {"term": "Exil", "variants": ["Exil*", "Emigration", "Emigrant*"]}
             ],
-            "mediaTypes": ["Gedrucktes"],
-            "formContent": [],
-            "languages": [],
-            "places": [],
-            "dateFrom": null,
-            "dateTo": null,
-            "digitalOnly": false,
-            "knownItem": false,
-            "exclude": {"mediaTypes": [], "formContent": [], "terms": []}
+            "mediaTypes": ["Gedrucktes"]
         }
     }
 ]

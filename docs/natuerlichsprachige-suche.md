@@ -166,10 +166,14 @@ mit vielen gleichzeitigen Anfragen siehe [3.8 vLLM](#38-alternative-für-den-pro
 | Testserver mit GPU (empfohlen) | NVIDIA-GPU mit ≥ 8 GB VRAM, z. B. L4, A10, RTX 4000 | `qwen3:4b-instruct-2507-q4_K_M` oder `qwen3:4b-instruct-2507-q8_0` | 2,5–4,3 GB | ca. 1–2 s (geschätzt) |
 | Produktion | NVIDIA-GPU mit 24 GB VRAM | `Qwen/Qwen3-4B-Instruct-2507` mit vLLM | | < 1 s (geschätzt) |
 
-Ohne GPU ist die KI-Suche nur zum Ausprobieren geeignet: Im Codespace (4 CPU-Kerne) dauert die erste Anfrage mit
-Laden des Modells und Verarbeitung des Prompts etwa eine Minute, jede weitere 15–20 Sekunden. Die meiste Zeit
-kostet die Ausgabe von rund 150–200 Tokens JSON mit wenigen Tokens pro Sekunde; der gleichbleibende Anfang des
-Prompts (Systemprompt und Beispiele) wird nach der ersten Anfrage aus dem Zwischenspeicher von Ollama gelesen.
+Ohne GPU ist die KI-Suche nur zum Ausprobieren geeignet: Im Codespace (4 CPU-Kerne) dauerte die erste Anfrage mit
+Laden des Modells und Verarbeitung des Prompts etwa eine Minute, jede weitere 15–20 Sekunden (gemessen, bevor
+Antworten und Prompt verkürzt wurden). Die meiste Zeit kostet die Ausgabe des JSON mit wenigen Tokens pro Sekunde;
+der gleichbleibende Anfang des Prompts (Systemprompt, Wertelisten und Beispiele) wird nach der ersten Anfrage aus dem
+Zwischenspeicher von Ollama gelesen, sofern die Anfrage im selben Slot landet (`OLLAMA_NUM_PARALLEL`). Deshalb gibt
+das Modell nur gefüllte Felder aus (im JSON-Schema sind fast alle Felder optional, die Beispiele sind kompakt), und
+die Wertelisten sind auf die häufigsten Werte begrenzt (`FacetVocabulary::FIELDS`: 40 Werte für Form/Inhalt, 25
+Sprachen).
 In der Entwicklungsumgebung ist deshalb `LLM_TIMEOUT="90"` gesetzt (`.devfiles/.env`); mit dem Standard von
 15 Sekunden würde dort fast immer normal gesucht. Für den Betrieb ist eine GPU nötig, damit Antworten in 1–2
 Sekunden kommen. `task llm:test` zeigt unter `usage` die Zahl der Tokens; die Dauer misst `time task llm:test`.
@@ -405,7 +409,8 @@ Die fachlichen Regeln stehen nicht im PHP-Code, sondern in zwei Dateien, die ohn
 
 Hinweise:
 
-* Jede Antwort muss alle Felder enthalten (siehe vorhandene Beispiele).
+* Antworten in den Beispielen enthalten nur gefüllte Felder, ohne leere Werte (`""`, `[]`, `null`, `false`). Das
+  Modell ahmt das nach und gibt weniger Tokens aus, was die Antwortzeit deutlich verkürzt. Ein Test prüft das.
 * Mehr Beispiele bedeuten einen längeren Prompt. Mit Ollama bleibt die Antwortzeit trotzdem gering, weil der
   gleichbleibende Anfang des Prompts zwischengespeichert wird.
 * Zwischengespeicherte Zerlegungen werden automatisch ungültig, sobald sich Prompt, Beispiele, Vokabular oder Modell ändern.

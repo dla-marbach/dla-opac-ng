@@ -100,8 +100,9 @@ final class QueryPrompt
     }
 
     /**
-     * JSON-Schema der Antwort (kompatibel mit "strict" structured outputs: alle Felder required,
-     * keine zusätzlichen Felder).
+     * JSON-Schema der Antwort: keine zusätzlichen Felder, aber fast alle Felder optional. Das Modell gibt nur die
+     * gefüllten Felder aus; das spart Ausgabe-Tokens, die auf der CPU den größten Teil der Antwortzeit ausmachen.
+     * Fehlende Felder gelten als leer (QueryStructure::fromArray()).
      */
     public static function getJsonSchema(?array $vocabulary = null): array
     {
@@ -121,20 +122,6 @@ final class QueryPrompt
         return [
             'type' => 'object',
             'additionalProperties' => false,
-            'required' => [
-                'text',
-                'persons',
-                'topics',
-                'mediaTypes',
-                'formContent',
-                'languages',
-                'places',
-                'dateFrom',
-                'dateTo',
-                'digitalOnly',
-                'knownItem',
-                'exclude',
-            ],
             'properties' => [
                 'text' => ['type' => 'string'],
                 'persons' => [
@@ -143,7 +130,7 @@ final class QueryPrompt
                     'items' => [
                         'type' => 'object',
                         'additionalProperties' => false,
-                        'required' => ['name', 'fullName', 'relation'],
+                        'required' => ['name', 'relation'],
                         'properties' => [
                             'name' => ['type' => 'string'],
                             'fullName' => ['type' => 'string'],
@@ -168,14 +155,13 @@ final class QueryPrompt
                 'formContent' => $vocabularyList('formContent', 3),
                 'languages' => $vocabularyList('languages', 3),
                 'places' => $stringList(3),
-                'dateFrom' => ['type' => ['integer', 'null']],
-                'dateTo' => ['type' => ['integer', 'null']],
+                'dateFrom' => ['type' => 'integer'],
+                'dateTo' => ['type' => 'integer'],
                 'digitalOnly' => ['type' => 'boolean'],
                 'knownItem' => ['type' => 'boolean'],
                 'exclude' => [
                     'type' => 'object',
                     'additionalProperties' => false,
-                    'required' => ['mediaTypes', 'formContent', 'terms'],
                     'properties' => [
                         'mediaTypes' => $vocabularyList('mediaTypes', 3),
                         'formContent' => $vocabularyList('formContent', 3),

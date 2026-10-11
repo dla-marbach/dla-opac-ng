@@ -67,7 +67,7 @@ class LlmClientTest extends UnitTestCase
         self::assertSame('test-model', $body['model']);
         self::assertSame(0, $body['temperature']);
         self::assertSame(QueryPrompt::getJsonSchema(), $body['response_format']['json_schema']['schema']);
-        self::assertTrue($body['response_format']['json_schema']['strict']);
+        self::assertFalse($body['response_format']['json_schema']['strict']);
         self::assertSame(['role' => 'user', 'content' => 'Gedichte von Rilke'], end($body['messages']));
     }
 
