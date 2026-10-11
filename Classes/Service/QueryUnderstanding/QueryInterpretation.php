@@ -120,4 +120,27 @@ final class QueryInterpretation
 
         return $arguments;
     }
+
+    /**
+     * Bestandteile für die Interpretationszeile (siehe InterpretationParts): welche Facetten und welche Teile des
+     * Suchfelds aus der Frage stammen. Wird als tx_find_find[nlf] bzw. tx_find_find[nlt] in die URL geschrieben.
+     *
+     * @return array{nlf: list<array{f: string, t: string}>, nlt: list<array{k: string, q: string, l: string}>}
+     */
+    public function toUrlParts(): array
+    {
+        $facets = [];
+        foreach ($this->toFindArguments()['facet'] ?? [] as $facetId => $terms) {
+            foreach (array_keys($terms) as $term) {
+                $facets[] = ['f' => (string)$facetId, 't' => (string)$term];
+            }
+        }
+
+        $textParts = [];
+        foreach ($this->textParts as $part) {
+            $textParts[] = ['k' => $part['kind'], 'q' => $part['query'], 'l' => $part['label']];
+        }
+
+        return ['nlf' => $facets, 'nlt' => $textParts];
+    }
 }

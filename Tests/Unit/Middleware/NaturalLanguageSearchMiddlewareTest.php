@@ -154,6 +154,10 @@ class NaturalLanguageSearchMiddlewareTest extends UnitTestCase
             ],
             'count' => '25',
             'nlq' => 'Handschriften an Hesse',
+            'nlf' => [
+                ['f' => 'filterAuthorityRelation_mv', 't' => 'Hesse, Hermann (1877-1962)␝An'],
+                ['f' => 'Medientypen', 't' => 'Handschriften'],
+            ],
             'nlstatus' => 'ok',
         ], $arguments);
         self::assertSame('noindex, nofollow', $response->getHeaderLine('X-Robots-Tag'));
@@ -182,6 +186,37 @@ class NaturalLanguageSearchMiddlewareTest extends UnitTestCase
         self::assertSame('relaxed', $arguments['nlstatus']);
         self::assertSame('Exil', $arguments['nldropped']);
         self::assertArrayNotHasKey('q', $arguments);
+    }
+
+    /**
+     * @test
+     */
+    public function replacesInterpretationOfAPreviousQuestion(): void
+    {
+        $answer = ['text' => 'Steppenwolf', 'topics' => [['term' => 'Exil', 'variants' => ['Emigration']]]] + self::ANSWER;
+
+        $response = $this->createMiddleware(answer: $answer)->process(
+            $this->createRequest([
+                'nl' => '1',
+                'q' => ['default' => 'Steppenwolf-Handschriften an Hesse über Exil'],
+                'nlq' => 'alte Frage',
+                'nlstatus' => 'relaxed',
+                'nldropped' => 'Atlantis',
+                'nlf' => [['f' => 'Ort', 't' => 'Atlantis']],
+                'nlt' => [['k' => 'text', 'q' => 'alt', 'l' => 'alt']],
+            ]),
+            $this->createHandler(false)
+        );
+
+        $arguments = $this->redirectArguments($response);
+        self::assertSame('Steppenwolf (exil OR emigration)', $arguments['q']['default']);
+        self::assertSame([
+            ['k' => 'text', 'q' => 'Steppenwolf', 'l' => 'Steppenwolf'],
+            ['k' => 'topic', 'q' => '(exil OR emigration)', 'l' => 'Exil'],
+        ], $arguments['nlt']);
+        self::assertNotContains(['f' => 'Ort', 't' => 'Atlantis'], $arguments['nlf']);
+        self::assertArrayNotHasKey('nldropped', $arguments);
+        self::assertSame('ok', $arguments['nlstatus']);
     }
 
     /**

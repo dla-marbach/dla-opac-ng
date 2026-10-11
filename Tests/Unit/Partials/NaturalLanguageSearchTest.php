@@ -39,16 +39,83 @@ class NaturalLanguageSearchTest extends FluidPartialTestCase
     }
 
     /**
+     * Argumente nach der Weiterleitung, dazu ein selbst gewählter Filter (Sprache)
+     */
+    private const INTERPRETED = [
+        'q' => ['default' => 'steppenwolf (exil OR emigration)'],
+        'facet' => [
+            'Sprache' => ['Deutsch' => '1'],
+            'filterAuthorityRelation_mv' => ['Hesse, Hermann (1877-1962)␝Von' => '1'],
+            'Medientypen' => ['Handschriften' => '1'],
+            'Zeit' => ['RANGE 1930 TO 1939' => '1'],
+        ],
+        'nlq' => 'Briefe von Hesse aus den 1930ern über Exil',
+        'nlstatus' => 'ok',
+        'nlf' => [
+            ['f' => 'filterAuthorityRelation_mv', 't' => 'Hesse, Hermann (1877-1962)␝Von'],
+            ['f' => 'Medientypen', 't' => 'Handschriften'],
+            ['f' => 'Zeit', 't' => 'RANGE 1930 TO 1939'],
+        ],
+        'nlt' => [
+            ['k' => 'text', 'q' => 'steppenwolf', 'l' => 'Steppenwolf'],
+            ['k' => 'topic', 'q' => '(exil OR emigration)', 'l' => 'Exil'],
+        ],
+    ];
+
+    private function renderInterpretation(array $arguments): string
+    {
+        return $this->renderPartial('Form/NaturalLanguageSearch', [
+            'arguments' => $arguments,
+            'config' => ['activeFacets' => []],
+            'settings' => ['jumpToID' => ''],
+        ]);
+    }
+
+    /**
      * @test
      */
-    public function rendersNoticeForInterpretedQuestion(): void
+    public function rendersInterpretationLineWithRemovableParts(): void
     {
-        $html = $this->renderPartial('Form/NaturalLanguageSearch', [
-            'arguments' => ['nlq' => 'Briefe von Hesse', 'nlstatus' => 'ok'],
-        ]);
+        $html = $this->renderInterpretation(self::INTERPRETED);
 
         self::assertStringContainsString('dla-nl-notice-ok', $html);
-        self::assertStringContainsString('Your question »Briefe von Hesse« was automatically translated', $html);
+        self::assertStringContainsString('Your question »Briefe von Hesse aus den 1930ern über Exil« was understood as:', $html);
+        self::assertStringContainsString('dla-nl-part-mediaType', $html);
+        self::assertMatchesRegularExpression('#dla-nl-part-relationVon">\s*<a[^>]*>\s*<span class="icon bel-ende01"></span>\s*by Hesse, Hermann \(1877-1962\)#', $html);
+        self::assertStringContainsString('1930–1939', $html);
+        self::assertStringContainsString('search terms: Steppenwolf', $html);
+        self::assertStringContainsString('topic: Exil', $html);
+        // Selbst gewählte Filter gehören nicht zur Interpretation
+        self::assertStringNotContainsString('Deutsch', $html);
+        // Reihenfolge: Medientyp, Person, Zeitraum, Suchbegriffe, Thema
+        self::assertMatchesRegularExpression('#mediaType.*relationVon.*date.*part-text.*part-topic#s', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function removedPartsAreNotShownAnymore(): void
+    {
+        $arguments = self::INTERPRETED;
+        unset($arguments['facet']['Medientypen']);
+        $arguments['q']['default'] = 'steppenwolf';
+
+        $html = $this->renderInterpretation($arguments);
+
+        self::assertStringNotContainsString('dla-nl-part-mediaType', $html);
+        self::assertStringNotContainsString('topic: Exil', $html);
+        self::assertStringContainsString('by Hesse, Hermann (1877-1962)', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function saysSoWhenAllPartsWereRemoved(): void
+    {
+        $html = $this->renderInterpretation(['nlq' => 'Briefe von Hesse', 'nlstatus' => 'ok', 'nlf' => [['f' => 'Medientypen', 't' => 'Handschriften']]]);
+
+        self::assertStringNotContainsString('dla-nl-parts"', $html);
+        self::assertStringContainsString('All parts of the interpretation have been removed.', $html);
     }
 
     /**
@@ -56,12 +123,11 @@ class NaturalLanguageSearchTest extends FluidPartialTestCase
      */
     public function rendersNoticeWithDroppedParts(): void
     {
-        $html = $this->renderPartial('Form/NaturalLanguageSearch', [
-            'arguments' => ['nlq' => 'Briefe über Exil', 'nlstatus' => 'relaxed', 'nldropped' => 'Exil, 1930–1939'],
-        ]);
+        $html = $this->renderInterpretation(['nldropped' => 'Atlantis, 1920–1925', 'nlstatus' => 'relaxed'] + self::INTERPRETED);
 
         self::assertStringContainsString('dla-nl-notice-relaxed', $html);
-        self::assertStringContainsString('otherwise be no results: Exil, 1930–1939.', $html);
+        self::assertStringContainsString('was understood as:', $html);
+        self::assertStringContainsString('otherwise be no results: Atlantis, 1920–1925.', $html);
     }
 
     /**

@@ -48,6 +48,16 @@ class NaturalLanguageSearchMiddleware implements MiddlewareInterface, LoggerAwar
 
     public const ARGUMENT_DROPPED = 'nldropped';
 
+    /**
+     * Facetten aus der Frage (für die Interpretationszeile), siehe QueryInterpretation::toUrlParts()
+     */
+    public const ARGUMENT_FACETS = 'nlf';
+
+    /**
+     * Teile des Suchfelds aus der Frage (für die Interpretationszeile), siehe QueryInterpretation::toUrlParts()
+     */
+    public const ARGUMENT_TERMS = 'nlt';
+
     public const STATUS_OK = 'ok';
 
     public const STATUS_RELAXED = 'relaxed';
@@ -148,6 +158,8 @@ class NaturalLanguageSearchMiddleware implements MiddlewareInterface, LoggerAwar
             $findArguments[self::ARGUMENT_QUESTION],
             $findArguments[self::ARGUMENT_STATUS],
             $findArguments[self::ARGUMENT_DROPPED],
+            $findArguments[self::ARGUMENT_FACETS],
+            $findArguments[self::ARGUMENT_TERMS],
             $findArguments['page'],
             $findArguments['start'],
         );
@@ -178,6 +190,13 @@ class NaturalLanguageSearchMiddleware implements MiddlewareInterface, LoggerAwar
                 }
                 if ($interpretation->dropped !== []) {
                     $findArguments[self::ARGUMENT_DROPPED] = implode(', ', $interpretation->dropped);
+                }
+                $urlParts = $interpretation->toUrlParts();
+                if ($urlParts['nlf'] !== []) {
+                    $findArguments[self::ARGUMENT_FACETS] = $urlParts['nlf'];
+                }
+                if ($urlParts['nlt'] !== []) {
+                    $findArguments[self::ARGUMENT_TERMS] = $urlParts['nlt'];
                 }
             }
             $findArguments[self::ARGUMENT_STATUS] = $status;
