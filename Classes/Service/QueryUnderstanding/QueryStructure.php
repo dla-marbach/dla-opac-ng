@@ -68,10 +68,20 @@ final class QueryStructure
             }
         }
 
+        // Personen sind kein Thema: kleine Modelle wiederholen den Namen sonst gern als Thema ("Literatur über Hesse"),
+        // was nur unnötig einschränkt. Verglichen wird mit Name, vollständigem Namen und deren einzelnen Wörtern.
+        $personNames = [];
+        foreach ($persons as $person) {
+            foreach ([$person['name'], $person['fullName']] as $name) {
+                $personNames[] = mb_strtolower($name);
+                array_push($personNames, ...preg_split('/\s+/u', mb_strtolower($name), -1, PREG_SPLIT_NO_EMPTY) ?: []);
+            }
+        }
+
         $topics = [];
         foreach (self::listOf($data['topics'] ?? null) as $topic) {
             $term = self::clean($topic['term'] ?? null, true);
-            if ($term === '') {
+            if ($term === '' || in_array(mb_strtolower(rtrim($term, '*')), $personNames, true)) {
                 continue;
             }
             $variants = array_map(static fn($variant): string => self::clean($variant, true), self::listOf($topic['variants'] ?? null, 4));

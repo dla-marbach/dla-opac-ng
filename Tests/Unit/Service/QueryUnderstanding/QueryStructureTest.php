@@ -122,6 +122,27 @@ class QueryStructureTest extends UnitTestCase
     /**
      * @test
      */
+    public function dropsTopicsThatRepeatAPerson(): void
+    {
+        $structure = self::fromArray([
+            'persons' => [['name' => 'Hesse', 'relation' => 'Über'], ['name' => 'Mann', 'fullName' => 'Thomas Mann', 'relation' => 'An']],
+            'topics' => [
+                ['term' => 'Hesse', 'variants' => ['Hess*']],
+                ['term' => 'Mann*', 'variants' => []],
+                ['term' => 'Exil', 'variants' => []],
+            ],
+        ]);
+
+        self::assertSame(['Exil'], array_column($structure->topics, 'term'));
+        self::assertSame([], self::fromArray([
+            'persons' => [['name' => 'Mann', 'fullName' => 'Thomas Mann', 'relation' => '']],
+            'topics' => [['term' => 'Thomas Mann', 'variants' => []]],
+        ])->topics);
+    }
+
+    /**
+     * @test
+     */
     public function detectsEmptyAnswer(): void
     {
         self::assertTrue(self::fromArray([])->isEmpty());
