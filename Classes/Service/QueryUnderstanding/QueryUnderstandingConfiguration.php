@@ -10,7 +10,7 @@ namespace Dla\DlaOpacNg\Service\QueryUnderstanding;
  * Einzige Konfigurationsquelle sind wie bei der Solr-Verbindung Umgebungsvariablen:
  * - LLM_BASE_URL: Basis-URL einer OpenAI-kompatiblen API inkl. "/v1", z.B. "http://host.docker.internal:11434/v1"
  *   (Ollama, vLLM, llama.cpp). Ist die Variable leer, ist die natürlichsprachige Suche abgeschaltet.
- * - LLM_MODEL: Name des Modells, z.B. "qwen2.5:7b" (Standard)
+ * - LLM_MODEL: Name des Modells, z.B. "qwen3:4b-instruct-2507-q4_K_M" (Standard; Qwen3-4B-Instruct-2507 ohne Thinking-Modus)
  * - LLM_API_KEY: optional, wird als Bearer-Token mitgeschickt
  * - LLM_TIMEOUT: optional, Timeout in Sekunden für eine LLM-Anfrage (Standard: 15)
  * - LLM_RATE_LIMIT: optional, maximale Anzahl LLM-Anfragen je Client-IP und Minute (Standard: 10, 0 = aus)
@@ -20,7 +20,7 @@ namespace Dla\DlaOpacNg\Service\QueryUnderstanding;
  */
 final class QueryUnderstandingConfiguration
 {
-    public const DEFAULT_MODEL = 'qwen2.5:7b';
+    public const DEFAULT_MODEL = 'qwen3:4b-instruct-2507-q4_K_M';
 
     public const DEFAULT_TIMEOUT = 15.0;
 

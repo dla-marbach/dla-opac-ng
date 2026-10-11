@@ -36,7 +36,7 @@ class QueryUnderstandingConfigurationTest extends UnitTestCase
     public function readsValuesFromEnvironment(): void
     {
         putenv('LLM_BASE_URL=http://llm:11434/v1/');
-        putenv('LLM_MODEL=qwen2.5:3b');
+        putenv('LLM_MODEL=qwen3:4b-instruct-2507-q8_0');
         putenv('LLM_TIMEOUT=7.5');
         putenv('LLM_RATE_LIMIT= 0 ');
 
@@ -44,7 +44,7 @@ class QueryUnderstandingConfigurationTest extends UnitTestCase
 
         self::assertTrue($configuration->isEnabled());
         self::assertSame('http://llm:11434/v1', $configuration->baseUrl);
-        self::assertSame('qwen2.5:3b', $configuration->model);
+        self::assertSame('qwen3:4b-instruct-2507-q8_0', $configuration->model);
         self::assertSame(7.5, $configuration->timeout);
         self::assertSame(0, $configuration->rateLimitPerMinute, '0 schaltet das Rate Limit bewusst ab');
     }

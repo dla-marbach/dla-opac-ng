@@ -90,7 +90,7 @@ tasks:
   llm:
     desc: lokalen LLM-Dienst (Ollama in Docker) für die natürlichsprachige Suche starten und Modell laden
     vars:
-      MODEL: '{{default "qwen2.5:3b" .MODEL}}'
+      MODEL: '{{default "qwen3:4b-instruct-2507-q4_K_M" .MODEL}}'
     cmds:
       - |
         if docker container inspect ollama >/dev/null 2>&1; then
@@ -117,7 +117,7 @@ tasks:
   llm:test:
     desc: natürlichsprachige Suche gegen den lokalen LLM-Dienst testen (strukturierte JSON-Ausgabe)
     vars:
-      MODEL: '{{default "qwen2.5:3b" .MODEL}}'
+      MODEL: '{{default "qwen3:4b-instruct-2507-q4_K_M" .MODEL}}'
       QUESTION: '{{default "Briefe von Hesse an Thomas Mann aus den 1930er Jahren über das Exil" .QUESTION}}'
     cmds:
       - |

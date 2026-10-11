@@ -110,7 +110,7 @@ und Solr-Tunnel). Das LLM läuft als Docker-Container neben DDEV und ist aus dem
    task llm
    ```
 
-   Standardmodell ist `qwen2.5:3b`, weil Codespaces keine GPU haben. Ein anderes Modell: `task llm MODEL=qwen2.5:7b`.
+   Standardmodell ist `qwen3:4b-instruct-2507-q4_K_M` (ca. 2,5 GB, läuft auch ohne GPU). Ein anderes Modell: `task llm MODEL=qwen3:4b-instruct-2507-q8_0`.
 
 2. Funktionstest des LLM-Dienstes (benötigt `jq`):
 
@@ -127,7 +127,7 @@ und Solr-Tunnel). Das LLM läuft als Docker-Container neben DDEV und ist aus dem
    ```sh
    cat >> t3example/.ddev/.env <<'EOF'
    LLM_BASE_URL="http://host.docker.internal:11434/v1"
-   LLM_MODEL="qwen2.5:3b"
+   LLM_MODEL="qwen3:4b-instruct-2507-q4_K_M"
    EOF
    (cd t3example && ddev restart)
    task cache
@@ -155,10 +155,10 @@ mit vielen gleichzeitigen Anfragen siehe [3.8 vLLM](#38-alternative-für-den-pro
 
 | Einsatz | Hardware | Modell (`LLM_MODEL`) | Größe | Antwortzeit (Richtwert) |
 |---|---|---|---|---|
-| Entwicklung, Codespace | 4+ CPU-Kerne, 8 GB RAM | `qwen2.5:3b` | ca. 2 GB | einige Sekunden |
-| Testserver ohne GPU | 8+ CPU-Kerne, 16 GB RAM | `qwen2.5:3b` (oder `qwen2.5:7b`, deutlich langsamer) | 2–5 GB | einige Sekunden (7b: 10 s und mehr) |
-| Testserver mit GPU (empfohlen) | NVIDIA-GPU mit ≥ 8 GB VRAM, z. B. L4, A10, RTX 4000 | `qwen2.5:7b` | ca. 5 GB | ca. 1–2 s |
-| Produktion | NVIDIA-GPU mit 24 GB VRAM | `qwen2.5:7b` oder größer, mit vLLM | | < 1 s |
+| Entwicklung, Codespace | 4+ CPU-Kerne, 8 GB RAM | `qwen3:4b-instruct-2507-q4_K_M` | ca. 2,5 GB | einige Sekunden |
+| Testserver ohne GPU | 8+ CPU-Kerne, 16 GB RAM | `qwen3:4b-instruct-2507-q4_K_M` | ca. 2,5 GB | einige Sekunden |
+| Testserver mit GPU (empfohlen) | NVIDIA-GPU mit ≥ 8 GB VRAM, z. B. L4, A10, RTX 4000 | `qwen3:4b-instruct-2507-q4_K_M` oder `qwen3:4b-instruct-2507-q8_0` | 2,5–4,3 GB | ca. 1 s |
+| Produktion | NVIDIA-GPU mit 24 GB VRAM | `Qwen/Qwen3-4B-Instruct-2507` mit vLLM | | < 1 s |
 
 Die Antwortzeiten sind grobe Schätzungen und hängen stark von der Hardware ab. Bitte mit `task llm:test` bzw. dem
 `curl`-Befehl aus [3.6](#36-funktionstest) selbst messen. Die erste Anfrage nach dem Laden des Modells dauert länger.
@@ -167,6 +167,16 @@ Andere geeignete Modelle (mehrsprachig, mit Deutsch, gute JSON-Ausgabe) finden s
 [Ollama-Bibliothek](https://ollama.com/library), z. B. aus den Familien Qwen, Mistral, Gemma oder Llama. Die Auswahl
 sollte mit eigenen Testfragen verglichen werden (siehe [Abschnitt 9](#9-grenzen-des-proof-of-concept-und-nächste-schritte)).
 Reasoning-Modelle („thinking“) sind für diese Aufgabe unnötig langsam.
+
+**Wichtig: genau die Instruct-Variante verwenden.** Qwen3-4B-Instruct-2507 (Apache 2.0, August 2025) arbeitet laut
+[Modellkarte](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507) ausschließlich ohne Thinking-Modus und erzeugt keine
+`<think>`-Blöcke. In Ollama heißt es `qwen3:4b-instruct-2507-q4_K_M` (bzw. `-q8_0`, `-fp16`). Nicht einfach `qwen3`, `qwen3:4b` oder ein anderes
+`qwen3`-Tag verwenden: Diese können auf das ursprüngliche Qwen3 mit Thinking-Modus oder auf die Thinking-Variante
+zeigen. Beim ursprünglichen Qwen3 müsste Thinking über Laufzeit bzw. Chat-Template abgeschaltet werden; eine
+Anweisung im Prompt („antworte kurz“) ist dafür kein zuverlässiger Ersatz. Die Modellnamen in Ollama weichen von den
+Namen bei Qwen ab, deshalb den Tag vor dem Einsatz auf [ollama.com/library/qwen3/tags](https://ollama.com/library/qwen3/tags)
+prüfen. Sollte doch ein `<think>`-Block in der Antwort stehen, entfernt ihn der `LlmClient`, die Antwort dauert dann
+aber deutlich länger.
 
 ### 3.2 Installation (Ubuntu/Debian)
 
@@ -222,16 +232,14 @@ sudo systemctl restart ollama
 ### 3.4 Modell laden
 
 ```sh
-ollama pull qwen2.5:7b      # mit GPU
-# oder
-ollama pull qwen2.5:3b      # ohne GPU
+ollama pull qwen3:4b-instruct-2507-q4_K_M
 ollama list
 ```
 
 Optional das Modell gleich in den Speicher laden, damit die erste Anfrage schnell ist:
 
 ```sh
-ollama run qwen2.5:7b "Hallo" >/dev/null
+ollama run qwen3:4b-instruct-2507-q4_K_M "Hallo" >/dev/null
 ```
 
 ### 3.5 Absichern
@@ -277,7 +285,7 @@ Vom TYPO3-Server aus (IP/Host des LLM-Servers und Modell anpassen):
 curl -s http://10.0.0.5:11434/v1/chat/completions \
   -H 'Content-Type: application/json' \
   -d '{
-    "model": "qwen2.5:7b",
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
     "temperature": 0,
     "messages": [
       {"role": "system", "content": "Zerlege die Suchanfrage. Antworte nur mit JSON."},
@@ -321,7 +329,7 @@ docker run -d --name ollama --restart unless-stopped --gpus=all \
   -e OLLAMA_KEEP_ALIVE=24h -e OLLAMA_NUM_PARALLEL=2 -e OLLAMA_MAX_QUEUE=4 -e OLLAMA_CONTEXT_LENGTH=8192 \
   ollama/ollama
 
-docker exec ollama ollama pull qwen2.5:7b
+docker exec ollama ollama pull qwen3:4b-instruct-2507-q4_K_M
 ```
 
 ### 3.8 Alternative für den Produktivbetrieb: vLLM
@@ -333,11 +341,11 @@ prefix caching) und erzwingt das JSON-Schema ebenfalls über `response_format`. 
 docker run -d --name vllm --restart unless-stopped --gpus=all --ipc=host \
   -p 127.0.0.1:8000:8000 -v ~/.cache/huggingface:/root/.cache/huggingface \
   vllm/vllm-openai \
-  --model Qwen/Qwen2.5-7B-Instruct --max-model-len 8192 \
+  --model Qwen/Qwen3-4B-Instruct-2507 --max-model-len 8192 \
   --enable-prefix-caching --api-key GEHEIMER-TOKEN
 ```
 
-TYPO3-Konfiguration dazu: `LLM_BASE_URL=http://<server>:8000/v1`, `LLM_MODEL=Qwen/Qwen2.5-7B-Instruct`,
+TYPO3-Konfiguration dazu: `LLM_BASE_URL=http://<server>:8000/v1`, `LLM_MODEL=Qwen/Qwen3-4B-Instruct-2507`,
 `LLM_API_KEY=GEHEIMER-TOKEN`. vLLM lehnt bei Überlast nicht ab, sondern stellt Anfragen in eine Warteschlange;
 `LLM_TIMEOUT` begrenzt dann, wie lange TYPO3 wartet.
 
@@ -349,7 +357,7 @@ Die natürlichsprachige Suche wird wie die Solr-Verbindung ausschließlich über
 | Variable | Beispiel | Bedeutung |
 |---|---|---|
 | `LLM_BASE_URL` | `http://10.0.0.5:11434/v1` | Basis-URL der OpenAI-kompatiblen API inkl. `/v1`. **Leer = Funktion aus** (keine Checkbox). |
-| `LLM_MODEL` | `qwen2.5:7b` | Modellname (Standard: `qwen2.5:7b`) |
+| `LLM_MODEL` | `qwen3:4b-instruct-2507-q4_K_M` | Modellname (Standard: `qwen3:4b-instruct-2507-q4_K_M`) |
 | `LLM_API_KEY` | | optional, wird als Bearer-Token mitgeschickt |
 | `LLM_TIMEOUT` | `15` | optional, Sekunden bis zum Rückfall auf die normale Suche (Standard: 15) |
 | `LLM_RATE_LIMIT` | `10` | optional, LLM-Anfragen je Client-IP und Minute (Standard: 10, `0` = keine Begrenzung) |
