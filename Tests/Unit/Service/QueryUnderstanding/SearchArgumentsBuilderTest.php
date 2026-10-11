@@ -72,6 +72,7 @@ class SearchArgumentsBuilderTest extends UnitTestCase
         self::assertSame(['RANGE 1945 TO ' . date('Y') => '1'], self::build(['dateFrom' => 1945])['facet']['Zeit']);
         self::assertSame(['RANGE 1000 TO 1799' => '1'], self::build(['dateTo' => 1799])['facet']['Zeit']);
         self::assertSame(['RANGE 2090 TO 2090' => '1'], self::build(['dateFrom' => 2090])['facet']['Zeit']);
+        self::assertSame(['RANGE 0 TO 499' => '1'], self::build(['dateTo' => 499])['facet']['Zeit']);
     }
 
     /**

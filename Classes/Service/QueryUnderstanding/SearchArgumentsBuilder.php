@@ -67,7 +67,8 @@ class SearchArgumentsBuilder
             }
         }
         if ($structure->dateFrom !== null || $structure->dateTo !== null) {
-            $from = $structure->dateFrom ?? self::MIN_DATE;
+            // Bei offenem Anfang ab MIN_DATE, bei früherem Endjahr (z.B. "vor 500") ab Jahr 0
+            $from = $structure->dateFrom ?? ($structure->dateTo !== null && $structure->dateTo < self::MIN_DATE ? 0 : self::MIN_DATE);
             // Bei offenem Ende bis heute, aber nie vor dem Anfangsjahr (z.B. "ab 2030")
             $to = $structure->dateTo ?? max($from, (int)date('Y'));
             $facets[] = self::facet('Zeit', sprintf('RANGE %d TO %d', $from, $to));

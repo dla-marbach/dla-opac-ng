@@ -6,9 +6,17 @@ use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
 
 class NaturalLanguageSearchTest extends FluidPartialTestCase
 {
+    private string|false $originalBaseUrl = false;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->originalBaseUrl = getenv('LLM_BASE_URL');
+    }
+
     protected function tearDown(): void
     {
-        putenv('LLM_BASE_URL');
+        putenv($this->originalBaseUrl === false ? 'LLM_BASE_URL' : 'LLM_BASE_URL=' . $this->originalBaseUrl);
         parent::tearDown();
     }
 

@@ -90,4 +90,20 @@ class VocabularyResolverTest extends UnitTestCase
         self::assertNull($resolver->resolveFacetValue('filterSubject_mv', 'Filmmus', true));
         self::assertSame('Filmmusik', $resolver->resolveFacetValue('filterSubject_mv', 'Filmmus'));
     }
+
+    /**
+     * @test
+     */
+    public function findsExactValueEvenIfLessFrequentThanTheTopTen(): void
+    {
+        $containing = array_fill_keys(array_map(static fn(int $i): string => 'Exilliteratur ' . $i, range(1, 10)), 100);
+        $resolver = $this->createResolver(['facet_counts' => [
+            'facet_queries' => ['filterSubject_mv:"exil"' => 0, 'filterSubject_mv:"Exil"' => 12],
+            'facet_fields' => ['filterSubject_mv' => $containing],
+        ]]);
+
+        self::assertSame('Exil', $resolver->resolveFacetValue('filterSubject_mv', 'exil', true));
+        self::assertSame(['filterSubject_mv:"exil"', 'filterSubject_mv:"Exil"'], $this->requests[0]['params']['facet.query']);
+        self::assertCount(1, $this->requests, 'eine Anfrage für exakte und enthaltende Werte');
+    }
 }
