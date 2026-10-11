@@ -41,6 +41,27 @@
         }
     },
     {
+        "question": "Werke von Christa Wolf über die DDR, aber keine Übersetzungen",
+        "answer": {
+            "text": "",
+            "persons": [
+                {"name": "Christa Wolf", "fullName": "Christa Wolf", "relation": "Von"}
+            ],
+            "topics": [
+                {"term": "DDR", "variants": ["Deutsche Demokratische Republik", "Ostdeutschland"]}
+            ],
+            "mediaTypes": [],
+            "formContent": [],
+            "languages": [],
+            "places": [],
+            "dateFrom": null,
+            "dateTo": null,
+            "digitalOnly": false,
+            "knownItem": false,
+            "exclude": {"mediaTypes": [], "formContent": ["Übersetzung"], "terms": []}
+        }
+    },
+    {
         "question": "Sekundärliteratur über Paul Celan nach 1970",
         "answer": {
             "text": "",
@@ -133,27 +154,6 @@
             "digitalOnly": false,
             "knownItem": false,
             "exclude": {"mediaTypes": [], "formContent": [], "terms": []}
-        }
-    },
-    {
-        "question": "Werke von Christa Wolf über die DDR, aber keine Übersetzungen",
-        "answer": {
-            "text": "",
-            "persons": [
-                {"name": "Christa Wolf", "fullName": "Christa Wolf", "relation": "Von"}
-            ],
-            "topics": [
-                {"term": "DDR", "variants": ["Deutsche Demokratische Republik", "Ostdeutschland"]}
-            ],
-            "mediaTypes": [],
-            "formContent": [],
-            "languages": [],
-            "places": [],
-            "dateFrom": null,
-            "dateTo": null,
-            "digitalOnly": false,
-            "knownItem": false,
-            "exclude": {"mediaTypes": [], "formContent": ["Übersetzung"], "terms": []}
         }
     }
 ]

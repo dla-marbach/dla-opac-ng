@@ -19,6 +19,12 @@ final class QueryStructure
     public const NO_EXCLUSIONS = ['mediaTypes' => [], 'formContent' => [], 'terms' => []];
 
     /**
+     * Ausschlüsse übernehmen wir nur, wenn die Frage eine Verneinung enthält. Kleine Modelle übertragen sonst
+     * gelegentlich Ausschlüsse aus den Beispielen, und ein falscher Ausschluss entfernt unbemerkt Treffer.
+     */
+    private const NEGATION = '/\b(ohne|kein\w*|nicht|au(ß|ss)er|ausgenommen|exklusive|abgesehen)\b/iu';
+
+    /**
      * @param list<array{name: string, fullName: string, relation: string}> $persons
      * @param list<array{term: string, variants: list<string>}> $topics
      * @param list<string> $mediaTypes
@@ -45,8 +51,9 @@ final class QueryStructure
 
     /**
      * @param array<string, list<string>> $vocabulary erlaubte Werte für mediaTypes, formContent und languages
+     * @param string|null $question Frage; ohne Verneinung darin werden Ausschlüsse verworfen
      */
-    public static function fromArray(array $data, array $vocabulary): self
+    public static function fromArray(array $data, array $vocabulary, ?string $question = null): self
     {
         $persons = [];
         foreach (self::listOf($data['persons'] ?? null) as $person) {
@@ -77,7 +84,9 @@ final class QueryStructure
             [$dateFrom, $dateTo] = [$dateTo, $dateFrom];
         }
 
-        $exclude = is_array($data['exclude'] ?? null) ? $data['exclude'] : [];
+        $exclude = is_array($data['exclude'] ?? null) && ($question === null || preg_match(self::NEGATION, $question) === 1)
+            ? $data['exclude']
+            : [];
 
         return new self(
             self::clean($data['text'] ?? null),

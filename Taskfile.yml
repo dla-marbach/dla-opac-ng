@@ -143,7 +143,7 @@ tasks:
           ], JSON_UNESCAPED_UNICODE);
         ' \
         | curl -sS http://127.0.0.1:11434/v1/chat/completions -H 'Content-Type: application/json' -d @- \
-        | jq -r '.choices[0].message.content' | jq .
+        | jq '(.choices[0].message.content | fromjson), {usage}'
     preconditions:
       - command -v jq
       - command -v php

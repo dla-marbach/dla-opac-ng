@@ -108,6 +108,20 @@ class QueryStructureTest extends UnitTestCase
     /**
      * @test
      */
+    public function keepsExclusionsOnlyIfTheQuestionNegates(): void
+    {
+        $data = ['text' => 'Grass', 'exclude' => ['formContent' => ['Übersetzung'], 'terms' => ['Zeitung']]];
+        $vocabulary = FakeFacetVocabulary::DEFAULT_VALUES;
+
+        self::assertSame(QueryStructure::NO_EXCLUSIONS, QueryStructure::fromArray($data, $vocabulary, 'Briefe von Grass')->exclude);
+        foreach (['Grass ohne Übersetzungen', 'Grass, aber keine Zeitungen', 'Grass außer Übersetzungen', 'Grass, nicht übersetzt'] as $question) {
+            self::assertSame(['Übersetzung'], QueryStructure::fromArray($data, $vocabulary, $question)->exclude['formContent'], $question);
+        }
+    }
+
+    /**
+     * @test
+     */
     public function detectsEmptyAnswer(): void
     {
         self::assertTrue(self::fromArray([])->isEmpty());

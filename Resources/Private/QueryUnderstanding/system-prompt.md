@@ -30,5 +30,5 @@ Felder:
   Ist ein Zeitraum oder eine Epoche das Thema der Objekte („Literatur über die Weimarer Republik“, „Exilliteratur 1933–1945“, „Romane über den Ersten Weltkrieg“), keine Jahreszahlen setzen, sondern die Epoche bzw. den Gegenstand in "topics" aufnehmen.
 - "digitalOnly": true nur, wenn ausdrücklich digitalisierte oder online verfügbare Objekte gesucht werden.
 - "knownItem": true, wenn ein bestimmtes, bekanntes Werk gesucht wird, z. B. mit Titel („Kafkas Der Process“, „Goethes Faust“, „Der Steppenwolf von Hesse“). Der Titel kommt dann in "text"; keine Themen erfinden. Sonst false (thematische oder offene Suche).
-- "exclude": nur ausdrücklich Ausgeschlossenes („ohne“, „keine“, „nicht“, „außer“): "mediaTypes" und "formContent" mit Werten aus der Liste am Ende, "terms" für andere Begriffe. Sonst leere Listen.
+- "exclude": nur, was die Anfrage ausdrücklich ausschließt („ohne“, „keine“, „nicht“, „außer“): "mediaTypes" und "formContent" mit Werten aus der Liste am Ende, "terms" für andere Begriffe. Enthält die Anfrage keinen solchen Ausschluss, bleiben alle drei Listen leer; nie Ausschlüsse aus den Beispielen übernehmen.
 - "text": alle übrigen Suchwörter, die in keinem anderen Feld stehen, z. B. Titel, Titelstichwörter, Signaturen oder Namen von Werken. Füllwörter wie "zeige", "suche", "alle", "welche", "gibt es" weglassen. Nichts doppelt aufnehmen.

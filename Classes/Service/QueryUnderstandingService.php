@@ -88,7 +88,7 @@ class QueryUnderstandingService
             return null;
         }
 
-        $structure = QueryStructure::fromArray($result, $vocabulary);
+        $structure = QueryStructure::fromArray($result, $vocabulary, $question);
         $this->cache->set($cacheIdentifier, $structure->toArray(), [], self::CACHE_LIFETIME);
         $this->logger->info('Frage zerlegt', ['question' => $question, 'structure' => $structure->toArray()]);
 

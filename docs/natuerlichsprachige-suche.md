@@ -156,13 +156,19 @@ mit vielen gleichzeitigen Anfragen siehe [3.8 vLLM](#38-alternative-für-den-pro
 
 | Einsatz | Hardware | Modell (`LLM_MODEL`) | Größe | Antwortzeit (Richtwert) |
 |---|---|---|---|---|
-| Entwicklung, Codespace | 4+ CPU-Kerne, 8 GB RAM | `qwen3:4b-instruct-2507-q4_K_M` | ca. 2,5 GB | einige Sekunden |
-| Testserver ohne GPU | 8+ CPU-Kerne, 16 GB RAM | `qwen3:4b-instruct-2507-q4_K_M` | ca. 2,5 GB | einige Sekunden |
-| Testserver mit GPU (empfohlen) | NVIDIA-GPU mit ≥ 8 GB VRAM, z. B. L4, A10, RTX 4000 | `qwen3:4b-instruct-2507-q4_K_M` oder `qwen3:4b-instruct-2507-q8_0` | 2,5–4,3 GB | ca. 1 s |
-| Produktion | NVIDIA-GPU mit 24 GB VRAM | `Qwen/Qwen3-4B-Instruct-2507` mit vLLM | | < 1 s |
+| Entwicklung, Codespace | 4 CPU-Kerne, 8 GB RAM | `qwen3:4b-instruct-2507-q4_K_M` | ca. 2,5 GB | erste Anfrage ca. 1 min, danach ca. 15–20 s (gemessen) |
+| Testserver ohne GPU | 8+ CPU-Kerne, 16 GB RAM | `qwen3:4b-instruct-2507-q4_K_M` | ca. 2,5 GB | ca. 10 s (geschätzt), nur für Tests |
+| Testserver mit GPU (empfohlen) | NVIDIA-GPU mit ≥ 8 GB VRAM, z. B. L4, A10, RTX 4000 | `qwen3:4b-instruct-2507-q4_K_M` oder `qwen3:4b-instruct-2507-q8_0` | 2,5–4,3 GB | ca. 1–2 s (geschätzt) |
+| Produktion | NVIDIA-GPU mit 24 GB VRAM | `Qwen/Qwen3-4B-Instruct-2507` mit vLLM | | < 1 s (geschätzt) |
 
-Die Antwortzeiten sind grobe Schätzungen und hängen stark von der Hardware ab. Bitte mit `task llm:test` bzw. dem
-`curl`-Befehl aus [3.6](#36-funktionstest) selbst messen. Die erste Anfrage nach dem Laden des Modells dauert länger.
+Ohne GPU ist die KI-Suche nur zum Ausprobieren geeignet: Im Codespace (4 CPU-Kerne) dauert die erste Anfrage mit
+Laden des Modells und Verarbeitung des Prompts etwa eine Minute, jede weitere 15–20 Sekunden. Die meiste Zeit
+kostet die Ausgabe von rund 150–200 Tokens JSON mit wenigen Tokens pro Sekunde; der gleichbleibende Anfang des
+Prompts (Systemprompt und Beispiele) wird nach der ersten Anfrage aus dem Zwischenspeicher von Ollama gelesen.
+In der Entwicklungsumgebung ist deshalb `LLM_TIMEOUT="90"` gesetzt (`.devfiles/.env`); mit dem Standard von
+15 Sekunden würde dort fast immer normal gesucht. Für den Betrieb ist eine GPU nötig, damit Antworten in 1–2
+Sekunden kommen. `task llm:test` zeigt unter `usage` die Zahl der Tokens; die Dauer misst `time task llm:test`.
+Die erste Anfrage nach dem Laden des Modells dauert immer länger.
 
 Andere geeignete Modelle (mehrsprachig, mit Deutsch, gute JSON-Ausgabe) finden sich in der
 [Ollama-Bibliothek](https://ollama.com/library), z. B. aus den Familien Qwen, Mistral, Gemma oder Llama. Die Auswahl
