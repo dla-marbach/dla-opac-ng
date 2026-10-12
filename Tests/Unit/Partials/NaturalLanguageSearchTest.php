@@ -43,7 +43,7 @@ class NaturalLanguageSearchTest extends FluidPartialTestCase
         $html = $this->renderPartial('Form/NaturalLanguageSearch', ['arguments' => []]);
 
         self::assertStringContainsString('name="tx_find_find[nl]" value="1"', $html);
-        self::assertStringContainsString('Understand as a question', $html);
+        self::assertStringContainsString('Detect filters automatically', $html);
     }
 
     /**
@@ -87,7 +87,7 @@ class NaturalLanguageSearchTest extends FluidPartialTestCase
         $html = $this->renderInterpretation(self::INTERPRETED);
 
         self::assertStringContainsString('dla-nl-notice-ok', $html);
-        self::assertStringContainsString('Your question »Briefe von Hesse aus den 1930ern über Exil« was understood as:', $html);
+        self::assertStringContainsString('Recognized in your search »Briefe von Hesse aus den 1930ern über Exil«:', $html);
         self::assertStringContainsString('dla-nl-part-mediaType', $html);
         self::assertMatchesRegularExpression('#dla-nl-part-relationVon">\s*<a[^>]*>\s*<span class="icon bel-ende01"></span>\s*by Hesse, Hermann \(1877-1962\)#', $html);
         self::assertStringContainsString('1930–1939', $html);
@@ -123,7 +123,7 @@ class NaturalLanguageSearchTest extends FluidPartialTestCase
         $html = $this->renderInterpretation(['nlq' => 'Briefe von Hesse', 'nlstatus' => 'ok', 'nlf' => [['f' => 'Medientypen', 't' => 'Handschriften']]]);
 
         self::assertStringNotContainsString('dla-nl-parts"', $html);
-        self::assertStringContainsString('All parts of the interpretation have been removed.', $html);
+        self::assertStringContainsString('All recognized parts have been removed.', $html);
     }
 
     /**
@@ -138,7 +138,7 @@ class NaturalLanguageSearchTest extends FluidPartialTestCase
             'results' => ['numfound' => $numFound],
         ]);
 
-        self::assertStringContainsString('No results. Remove individual parts of the interpretation above', $render(0));
+        self::assertStringContainsString('No results. Remove individual recognized parts above', $render(0));
         self::assertStringNotContainsString('No results.', $render(12));
     }
 
@@ -152,7 +152,7 @@ class NaturalLanguageSearchTest extends FluidPartialTestCase
         ]);
 
         self::assertStringContainsString('dla-nl-notice-unrecognized', $html);
-        self::assertStringContainsString('No search terms or filters could be derived from your question »Wie spät ist es?«.', $html);
+        self::assertStringContainsString('No filters were recognized in »Wie spät ist es?«', $html);
     }
 
     /**
@@ -165,6 +165,6 @@ class NaturalLanguageSearchTest extends FluidPartialTestCase
         ]);
 
         self::assertStringContainsString('dla-nl-notice-fallback', $html);
-        self::assertStringContainsString('A normal search was performed for »Briefe von Hesse«.', $html);
+        self::assertStringContainsString('a normal search was performed for »Briefe von Hesse«.', $html);
     }
 }

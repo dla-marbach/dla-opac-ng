@@ -1785,24 +1785,24 @@
 
 
             <trans-unit id="nl.toggle">
-                <source>Understand as a question (AI search, beta)</source>
-                <target>Als Frage verstehen (KI-Suche, Beta)</target>
+                <source>Detect filters automatically (AI, beta)</source>
+                <target>Filter automatisch erkennen (KI, Beta)</target>
             </trans-unit>
             <trans-unit id="nl.status.ok">
-                <source>Your question »%s« was understood as:</source>
-                <target>Ihre Frage »%s« wurde verstanden als:</target>
+                <source>Recognized in your search »%s«:</source>
+                <target>In Ihrer Suche »%s« erkannt:</target>
             </trans-unit>
             <trans-unit id="nl.status.unrecognized">
-                <source>No search terms or filters could be derived from your question »%s«. A normal search was performed.</source>
-                <target>Aus Ihrer Frage »%s« ließen sich keine Suchbegriffe oder Filter ableiten. Es wurde normal gesucht.</target>
+                <source>No filters were recognized in »%s«; a normal search was performed.</source>
+                <target>In »%s« wurden keine Filter erkannt; es wurde normal gesucht.</target>
             </trans-unit>
             <trans-unit id="nl.status.fallback">
-                <source>The AI search is currently unavailable. A normal search was performed for »%s«.</source>
-                <target>Die KI-Suche ist gerade nicht verfügbar. Es wurde normal nach »%s« gesucht.</target>
+                <source>Automatic detection is currently unavailable; a normal search was performed for »%s«.</source>
+                <target>Die automatische Erkennung ist gerade nicht verfügbar; es wurde normal nach »%s« gesucht.</target>
             </trans-unit>
             <trans-unit id="nl.parts.empty">
-                <source>All parts of the interpretation have been removed.</source>
-                <target>Alle Bestandteile der Interpretation wurden entfernt.</target>
+                <source>All recognized parts have been removed.</source>
+                <target>Alle erkannten Bestandteile wurden entfernt.</target>
             </trans-unit>
             <trans-unit id="nl.part.remove">
                 <source>remove %s from the search</source>
@@ -1869,8 +1869,8 @@
                 <target>Suchbegriff: %s</target>
             </trans-unit>
             <trans-unit id="nl.parts.noResults">
-                <source>No results. Remove individual parts of the interpretation above to broaden the search.</source>
-                <target>Keine Treffer. Entfernen Sie oben einzelne Bestandteile der Interpretation, um die Suche zu erweitern.</target>
+                <source>No results. Remove individual recognized parts above to broaden the search.</source>
+                <target>Keine Treffer. Entfernen Sie oben einzelne erkannte Bestandteile, um die Suche zu erweitern.</target>
             </trans-unit>
         </body>
     </file>

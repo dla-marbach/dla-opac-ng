@@ -1357,19 +1357,19 @@
 
 
             <trans-unit id="nl.toggle">
-                <source>Understand as a question (AI search, beta)</source>
+                <source>Detect filters automatically (AI, beta)</source>
             </trans-unit>
             <trans-unit id="nl.status.ok">
-                <source>Your question »%s« was understood as:</source>
+                <source>Recognized in your search »%s«:</source>
             </trans-unit>
             <trans-unit id="nl.status.unrecognized">
-                <source>No search terms or filters could be derived from your question »%s«. A normal search was performed.</source>
+                <source>No filters were recognized in »%s«; a normal search was performed.</source>
             </trans-unit>
             <trans-unit id="nl.status.fallback">
-                <source>The AI search is currently unavailable. A normal search was performed for »%s«.</source>
+                <source>Automatic detection is currently unavailable; a normal search was performed for »%s«.</source>
             </trans-unit>
             <trans-unit id="nl.parts.empty">
-                <source>All parts of the interpretation have been removed.</source>
+                <source>All recognized parts have been removed.</source>
             </trans-unit>
             <trans-unit id="nl.part.remove">
                 <source>remove %s from the search</source>
@@ -1420,7 +1420,7 @@
                 <source>search term: %s</source>
             </trans-unit>
             <trans-unit id="nl.parts.noResults">
-                <source>No results. Remove individual parts of the interpretation above to broaden the search.</source>
+                <source>No results. Remove individual recognized parts above to broaden the search.</source>
             </trans-unit>
         </body>
     </file>

@@ -182,7 +182,7 @@ Der Wert `0` schaltet die jeweilige Grenze ab. Wird eine Grenze überschritten, 
 
 ## Natürlichsprachige Suche (Proof of Concept)
 
-Mit „Als Frage verstehen (KI-Suche, Beta)“ zerlegt ein lokal betriebenes Sprachmodell eine Frage wie „Briefe von Hesse an Thomas Mann aus den 1930er Jahren“ in Suchbegriffe und Facettenfilter. Die Funktion ist nur aktiv, wenn die Umgebungsvariable `LLM_BASE_URL` gesetzt ist.
+Mit „Filter automatisch erkennen (KI, Beta)“ zerlegt ein lokal betriebenes Sprachmodell eine Suchanfrage in natürlicher Sprache wie „Briefe von Hesse an Thomas Mann aus den 1930er Jahren“ in Suchbegriffe und Facettenfilter. Die Funktion ist nur aktiv, wenn die Umgebungsvariable `LLM_BASE_URL` gesetzt ist.
 
 ```
 task llm        # LLM-Dienst (Ollama) lokal in Docker starten und Modell laden

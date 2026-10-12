@@ -1,8 +1,8 @@
 # Natürlichsprachige Suche (Proof of Concept)
 
-Nutzerinnen und Nutzer können im Suchschlitz eine Frage stellen und „Als Frage verstehen (KI-Suche, Beta)“ ankreuzen,
+Nutzerinnen und Nutzer können im Suchschlitz eine Suchanfrage in natürlicher Sprache eingeben und „Filter automatisch erkennen (KI, Beta)“ ankreuzen,
 z. B. *„Briefe von Hesse an Thomas Mann aus den 1930er Jahren über das Exil“*. Ein lokal betriebenes Sprachmodell (LLM)
-zerlegt die Frage in Suchbegriffe und Filter; der Katalog zeigt danach eine ganz normale Trefferliste mit gesetzten Facetten:
+zerlegt die Eingabe in Suchbegriffe und Filter; der Katalog zeigt danach eine ganz normale Trefferliste mit gesetzten Facetten:
 
 | Erkannt | wird im Katalog zu |
 |---|---|
@@ -28,7 +28,7 @@ Inhalt:
 
 ```
 Browser                         TYPO3 (dla-opac-ng)                                   LLM-Dienst (Ollama)
-  │ GET …/find?tx_find_find[q][default]=Frage&tx_find_find[nl]=1
+  │ GET …/find?tx_find_find[q][default]=Eingabe&tx_find_find[nl]=1
   ├──────────────────────────► ProofOfWorkMiddleware (Bot-Schutz, unverändert)
   │                             NaturalLanguageSearchMiddleware
   │                               ├─ Zwischenspeicher? ─ nein ─► Rate Limit
@@ -36,11 +36,11 @@ Browser                         TYPO3 (dla-opac-ng)                             
   │                               │                                                               (JSON nach festem Schema)
   │                               ├─ QueryStructure: Antwort prüfen und bereinigen
   │                               └─ SearchArgumentsBuilder: Abgleich mit Solr (Normdaten-Suggester, Orte)
-  │ ◄──── 303 Redirect auf …/find?tx_find_find[facet][…]=1&tx_find_find[q][default]=…&tx_find_find[nlq]=Frage
+  │ ◄──── 303 Redirect auf …/find?tx_find_find[facet][…]=1&tx_find_find[q][default]=…&tx_find_find[nlq]=Eingabe
   │ GET (normale Suche, wie bisher)
 ```
 
-* **Das LLM wird nur beim Absenden der Frage aufgerufen.** Danach folgt eine Weiterleitung auf eine normale Such-URL
+* **Das LLM wird nur beim Absenden der Suche aufgerufen.** Danach folgt eine Weiterleitung auf eine normale Such-URL
   (Post/Redirect/Get). Blättern, Facettenklicks und Links lösen keinen weiteren LLM-Aufruf aus.
 * **Das LLM erzeugt keine Solr-Syntax.** Es liefert nur ein JSON-Objekt mit festen Feldern (`persons`, `mediaTypes`,
   `formContent`, `topics`, `places`, `languages`, `dateFrom`, `dateTo`, `digitalOnly`, `knownItem`, `exclude`, `text`).
@@ -58,7 +58,7 @@ Browser                         TYPO3 (dla-opac-ng)                             
   und in den Prompt gesetzt (`FacetVocabulary`). Das Modell kann nur Werte liefern, die es im Index gibt.
 * **Große Wertelisten löst Solr auf, nicht das LLM.** Personen werden über den Normdaten-Suggester `mySuggester`
   aufgelöst (wie bei der Autovervollständigung), zuerst mit dem vollständigen Namen, den das Modell ergänzt
-  („Hesse“ → „Hermann Hesse“), sonst mit dem Namen aus der Frage (im Nominativ, „Rilkes“ → „Rilke“). Orte werden über
+  („Hesse“ → „Hermann Hesse“), sonst mit dem Namen aus der Eingabe (im Nominativ, „Rilkes“ → „Rilke“). Orte werden über
   die exakte Schreibweise oder den häufigsten Facettenwert aufgelöst, der den Begriff enthält (z. B. „Marbach“ →
   „Marbach am Neckar“); die exakte Schreibweise gewinnt nur, wenn sie nicht mehr als zehnmal seltener ist als der häufigste enthaltende Wert (ein seltenes „Marbach“ unterliegt „Marbach am Neckar“). Was sich
   nicht auflösen lässt, wird als weicher Suchbegriff übernommen. Themen werden immer zu Suchbegriffen mit Varianten
@@ -66,17 +66,17 @@ Browser                         TYPO3 (dla-opac-ng)                             
   sonst ausgeschlossen.
 * **Keine Treffer:** Liefert die Suche 0 Treffer, weist die Interpretationszeile darauf hin, dass sich einzelne
   Bestandteile entfernen lassen. Es wird nichts automatisch weggelassen.
-* **Interpretationszeile:** Über der Trefferliste steht „Ihre Frage »…« wurde verstanden als:“ mit den einzelnen
+* **Interpretationszeile:** Über der Trefferliste steht „In Ihrer Suche »…« erkannt:“ mit den einzelnen
   Bestandteilen, z. B. `Handschriften ✕ · von Hesse, Hermann (1877-1962) ✕ · 1930–1939 ✕ · Stichwort: Exil ✕`. Jeder Teil
   lässt sich entfernen: Filter über denselben Mechanismus wie bei den aktiven Filtern (`s:find.facetLinkArguments`),
   Suchbegriffe durch Entfernen aus dem Suchfeld. Maßgeblich ist immer der aktuelle Zustand der Suche; die Middleware
-  vermerkt in der URL nur, welche Filter (`nlf`) und Suchbegriffe (`nlt`) aus der Frage stammen
+  vermerkt in der URL nur, welche Filter (`nlf`) und Suchbegriffe (`nlt`) aus der Eingabe stammen
   (`InterpretationParts`). Die Box „Aktive Filter“ bleibt unverändert und zeigt alle Filter wie bei einer normalen
-  Suche, auch die aus der Frage; die Interpretationszeile ergänzt sie um die Rollen (von/an/über …) und die
+  Suche, auch die erkannten; die Interpretationszeile ergänzt sie um die Rollen (von/an/über …) und die
   Suchbegriffe. Wird ein Filter an einer Stelle entfernt oder geändert (z. B. der Zeitraum per Schieberegler),
   verschwindet er an beiden Stellen. Eine neue Suche über das Suchfeld beendet die Interpretation.
 * **Rückfall:** Ist das LLM nicht erreichbar, zu langsam oder ausgelastet, wird normal nach dem eingegebenen Text gesucht
-  („KI-Suche nicht verfügbar“). Erkennt es in der Frage nichts, wird ebenfalls normal gesucht, mit eigenem Hinweis;
+  („automatische Erkennung nicht verfügbar“). Erkennt es in der Eingabe nichts, wird ebenfalls normal gesucht, mit eigenem Hinweis;
   auch dieses Ergebnis wird zwischengespeichert.
 
 Beteiligte Dateien:
@@ -94,7 +94,7 @@ Beteiligte Dateien:
 | `Classes/Service/QueryUnderstanding/FacetVocabulary.php` | Werte von Medientyp, Form/Inhalt und Sprache aus dem Index |
 | `Classes/Service/QueryUnderstanding/QueryUnderstandingConfiguration.php` | Konfiguration aus Umgebungsvariablen |
 | `Resources/Private/QueryUnderstanding/system-prompt.md` | Systemprompt (fachliche Regeln) |
-| `Resources/Private/QueryUnderstanding/examples.json` | Beispielpaare Frage → Antwort (few-shot) |
+| `Resources/Private/QueryUnderstanding/examples.json` | Beispielpaare Eingabe → Antwort (few-shot) |
 | `Classes/Service/QueryUnderstanding/InterpretationParts.php` | Bestandteile der Interpretationszeile, Abgleich mit den aktiven Filtern |
 | `Classes/ViewHelpers/NaturalLanguage/PartsViewHelper.php` | ViewHelper für die Interpretationszeile |
 | `Resources/Private/Partials/Form/NaturalLanguageSearch.html` | Checkbox, Hinweis und Interpretationszeile in der Suchmaske |
@@ -146,8 +146,8 @@ nicht, weil der Port aus Sicherheitsgründen nur auf `127.0.0.1` des Hosts freig
    (cd t3example && ddev exec curl -s http://ollama:11434/api/version)
    ```
 
-5. Katalog öffnen (http://127.0.0.1/katalog), unter dem Suchschlitz „Als Frage verstehen (KI-Suche, Beta)“ ankreuzen
-   und eine Frage stellen.
+5. Katalog öffnen (http://127.0.0.1/katalog), unter dem Suchschlitz „Filter automatisch erkennen (KI, Beta)“ ankreuzen
+   und eine Suchanfrage in natürlicher Sprache eingeben.
 
 Den Dienst stoppen: `task llm:stop`.
 
@@ -182,7 +182,7 @@ Die erste Anfrage nach dem Laden des Modells dauert immer länger.
 
 Andere geeignete Modelle (mehrsprachig, mit Deutsch, gute JSON-Ausgabe) finden sich in der
 [Ollama-Bibliothek](https://ollama.com/library), z. B. aus den Familien Qwen, Mistral, Gemma oder Llama. Die Auswahl
-sollte mit eigenen Testfragen verglichen werden (siehe [Abschnitt 9](#9-grenzen-des-proof-of-concept-und-nächste-schritte)).
+sollte mit eigenen Testanfragen verglichen werden (siehe [Abschnitt 9](#9-grenzen-des-proof-of-concept-und-nächste-schritte)).
 Reasoning-Modelle („thinking“) sind für diese Aufgabe unnötig langsam.
 
 **Wichtig: genau die Instruct-Variante verwenden.** Qwen3-4B-Instruct-2507 (Apache 2.0, August 2025) arbeitet laut
@@ -404,15 +404,15 @@ Die fachlichen Regeln stehen nicht im PHP-Code, sondern in zwei Dateien, die ohn
 * `Resources/Private/QueryUnderstanding/system-prompt.md`: Beschreibung der Felder und Regeln, z. B. wann eine Person
   „Von“, „An“, „Über“ oder „Unter“ ist und welche Medientypen es gibt. **Die Beschreibungen der Relationen bitte
   fachlich prüfen.**
-* `Resources/Private/QueryUnderstanding/examples.json`: Beispielpaare aus Frage und erwarteter Antwort. Sie sind der
-  wirksamste Hebel für gute Ergebnisse. Am besten echte Fragen aus den Suchlogs verwenden und typische
+* `Resources/Private/QueryUnderstanding/examples.json`: Beispielpaare aus Eingabe und erwarteter Antwort. Sie sind der
+  wirksamste Hebel für gute Ergebnisse. Am besten echte Suchanfragen aus den Suchlogs verwenden und typische
   DLA-Formulierungen abdecken (Nachlass, Autorenbibliothek, Sekundärliteratur, Übersetzungen …).
 
 Hinweise:
 
 * Die Felder werden im Prompt automatisch alphabetisch sortiert, im Schema wie in den Beispielen. Ollama gibt sie
   ohnehin in alphabetischer Reihenfolge aus; abweichende Beispiele führten dazu, dass das Modell Felder ausließ.
-* Personen, Orte und Themen werden nur übernommen, wenn sie (bzw. eine Themen-Variante) in der Frage vorkommen;
+* Personen, Orte und Themen werden nur übernommen, wenn sie (bzw. eine Themen-Variante) in der Eingabe vorkommen;
   kleine Modelle übernehmen sonst gelegentlich Werte aus den Beispielen. Ausschlüsse nur bei einer Verneinung.
 * Antworten in den Beispielen enthalten nur gefüllte Felder, ohne leere Werte (`""`, `[]`, `null`, `false`). Das
   Modell ahmt das nach und gibt weniger Tokens aus, was die Antwortzeit deutlich verkürzt. Ein Test prüft das.
@@ -432,14 +432,14 @@ Hinweise:
 * **Begrenzungen:** je Client-IP und Minute (`LLM_RATE_LIMIT`, mit `symfony/rate-limiter`). Gleichzeitige Anfragen
   begrenzt der LLM-Server (`OLLAMA_NUM_PARALLEL`, `OLLAMA_MAX_QUEUE`); bei Überlast antwortet er mit HTTP 503 und es
   wird sofort normal gesucht.
-* **Zwischenspeicher:** Zerlegungen werden 30 Tage je Frage gespeichert (unabhängig von Groß-/Kleinschreibung und
-  Leerzeichen). Wiederholte Fragen kosten keinen LLM-Aufruf und unterliegen keiner Begrenzung.
+* **Zwischenspeicher:** Zerlegungen werden 30 Tage je Eingabe gespeichert (unabhängig von Groß-/Kleinschreibung und
+  Leerzeichen). Wiederholte Eingaben kosten keinen LLM-Aufruf und unterliegen keiner Begrenzung.
 * **Keine Abfrage-Injection:** Das LLM liefert nur Werte nach festem Schema. Solr-Steuerzeichen und boolesche
   Operatoren werden entfernt, Facettenwerte stammen aus dem Index bzw. werden nur übernommen, wenn sie dort existieren. Vertrauliche Datensätze
   bleiben ausgeschlossen, weil `NOT confidential:true` in den `appends` der `solrconfig.xml` steht.
 * **Indexierung:** Die Weiterleitung sendet `X-Robots-Tag: noindex, nofollow`.
-* **Datenschutz:** Die Fragen verlassen das Haus nicht, wenn der LLM-Dienst selbst betrieben wird. Der Dienst
-  protokolliert Fragen und Zerlegungen auf Log-Level `info`; die Standardkonfiguration von TYPO3 schreibt erst ab
+* **Datenschutz:** Die Suchanfragen verlassen das Haus nicht, wenn der LLM-Dienst selbst betrieben wird. Der Dienst
+  protokolliert Suchanfragen und Zerlegungen auf Log-Level `info`; die Standardkonfiguration von TYPO3 schreibt erst ab
   `warning` in die Logdatei. Für eine Auswertung kann das Level für den Namespace `Dla\DlaOpacNg\Service` gesenkt
   werden. Dabei die Datenschutzregeln für Suchanfragen beachten.
 
@@ -467,7 +467,7 @@ Die Tests laufen ohne LLM und ohne Solr:
 | Generell zu langsam | Modell zu groß für die Hardware: kleineres Modell oder GPU; `LLM_TIMEOUT` erhöhen. |
 | Status 404 mit „model … not found“ im Log | `LLM_MODEL` stimmt nicht mit `ollama list` überein. |
 | Antwort ist kein JSON | Ältere Ollama-Version ohne Unterstützung für `response_format` mit `json_schema`: Ollama aktualisieren (Installationsskript erneut ausführen). |
-| Falsche Person erkannt | Der Normdaten-Suggester liefert einen anderen Datensatz zuerst. Die Facette lässt sich in der Trefferliste entfernen. Vollständigere Namen in der Frage helfen. |
+| Falsche Person erkannt | Der Normdaten-Suggester liefert einen anderen Datensatz zuerst. Die Facette lässt sich in der Trefferliste entfernen. Vollständigere Namen in der Eingabe helfen. |
 | Unpassende Zerlegung | Prompt bzw. Beispiele ergänzen (Abschnitt 5). |
 
 ## 9. Grenzen des Proof of Concept und nächste Schritte
@@ -482,6 +482,6 @@ Die Tests laufen ohne LLM und ohne Solr:
   Werte mit Leerzeichen („Bilder und Objekte“) funktionieren nicht. Das sollte zuerst im Such-Plugin behoben werden.
 * **Mehrere Webserver:** Rate Limit und Zwischenspeicher liegen im jeweiligen `var/`-Verzeichnis; für mehrere Webserver
   ein gemeinsames Cache-Backend (z. B. Redis) für `ratelimiter` und `dla_opac_ng_query_understanding` verwenden.
-* **Testmenge:** 100–200 echte Fragen mit erwarteter Zerlegung sammeln und damit Modelle und Prompt-Änderungen
+* **Testmenge:** 100–200 echte Suchanfragen mit erwarteter Zerlegung sammeln und damit Modelle und Prompt-Änderungen
   vergleichen (Trefferquote je Feld).
 * **Messen:** Anteil der Anfragen mit Rückfall bzw. ohne Treffer, Antwortzeiten, Nutzung der Checkbox, entfernte Bestandteile.
