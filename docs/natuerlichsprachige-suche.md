@@ -409,6 +409,10 @@ Die fachlichen Regeln stehen nicht im PHP-Code, sondern in zwei Dateien, die ohn
 
 Hinweise:
 
+* Die Felder werden im Prompt automatisch alphabetisch sortiert, im Schema wie in den Beispielen. Ollama gibt sie
+  ohnehin in alphabetischer Reihenfolge aus; abweichende Beispiele führten dazu, dass das Modell Felder ausließ.
+* Personen, Orte und Themen werden nur übernommen, wenn sie (bzw. eine Themen-Variante) in der Frage vorkommen;
+  kleine Modelle übernehmen sonst gelegentlich Werte aus den Beispielen. Ausschlüsse nur bei einer Verneinung.
 * Antworten in den Beispielen enthalten nur gefüllte Felder, ohne leere Werte (`""`, `[]`, `null`, `false`). Das
   Modell ahmt das nach und gibt weniger Tokens aus, was die Antwortzeit deutlich verkürzt. Ein Test prüft das.
 * Mehr Beispiele bedeuten einen längeren Prompt. Mit Ollama bleibt die Antwortzeit trotzdem gering, weil der

@@ -63,6 +63,25 @@ class QueryPromptTest extends UnitTestCase
     /**
      * @test
      */
+    public function schemaAndExamplesUseAlphabeticalFieldOrder(): void
+    {
+        $properties = array_keys(QueryPrompt::getJsonSchema()['properties']);
+        $sorted = $properties;
+        sort($sorted, SORT_STRING);
+        self::assertSame($sorted, $properties);
+
+        $messages = (new QueryPrompt())->buildMessages('Frage');
+        $answer = json_decode($messages[2]['content'], true);
+        $keys = array_keys($answer);
+        $sortedKeys = $keys;
+        sort($sortedKeys, SORT_STRING);
+        self::assertSame($sortedKeys, $keys);
+        self::assertSame(['fullName', 'name', 'relation'], array_keys($answer['persons'][0]));
+    }
+
+    /**
+     * @test
+     */
     public function examplesMatchTheSchema(): void
     {
         $schema = QueryPrompt::getJsonSchema();

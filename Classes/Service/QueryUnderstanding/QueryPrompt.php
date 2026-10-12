@@ -40,7 +40,7 @@ final class QueryPrompt
             $messages[] = ['role' => 'user', 'content' => (string)$example['question']];
             $messages[] = [
                 'role' => 'assistant',
-                'content' => (string)json_encode($example['answer'], JSON_UNESCAPED_UNICODE),
+                'content' => (string)json_encode(self::sortKeys($example['answer']), JSON_UNESCAPED_UNICODE),
             ];
         }
 
@@ -119,11 +119,10 @@ final class QueryPrompt
             ? $stringList($maxItems)
             : $enumList($maxItems, self::vocabularyValues($vocabulary, $field));
 
-        return [
+        return self::sortKeys([
             'type' => 'object',
             'additionalProperties' => false,
             'properties' => [
-                'text' => ['type' => 'string'],
                 'persons' => [
                     'type' => 'array',
                     'maxItems' => 3,
@@ -138,6 +137,12 @@ final class QueryPrompt
                         ],
                     ],
                 ],
+                'mediaTypes' => $vocabularyList('mediaTypes', 3),
+                'formContent' => $vocabularyList('formContent', 3),
+                'dateFrom' => ['type' => 'integer'],
+                'dateTo' => ['type' => 'integer'],
+                'places' => $stringList(3),
+                'languages' => $vocabularyList('languages', 3),
                 'topics' => [
                     'type' => 'array',
                     'maxItems' => 3,
@@ -151,14 +156,9 @@ final class QueryPrompt
                         ],
                     ],
                 ],
-                'mediaTypes' => $vocabularyList('mediaTypes', 3),
-                'formContent' => $vocabularyList('formContent', 3),
-                'languages' => $vocabularyList('languages', 3),
-                'places' => $stringList(3),
-                'dateFrom' => ['type' => 'integer'],
-                'dateTo' => ['type' => 'integer'],
-                'digitalOnly' => ['type' => 'boolean'],
+                'text' => ['type' => 'string'],
                 'knownItem' => ['type' => 'boolean'],
+                'digitalOnly' => ['type' => 'boolean'],
                 'exclude' => [
                     'type' => 'object',
                     'additionalProperties' => false,
@@ -169,7 +169,24 @@ final class QueryPrompt
                     ],
                 ],
             ],
-        ];
+        ]);
+    }
+
+    /**
+     * Sortiert die Schlüssel von Objekten (nicht von Listen) rekursiv alphabetisch.
+     *
+     * Ollama gibt die Felder in alphabetischer Reihenfolge aus, unabhängig von der Reihenfolge im Schema, und lässt
+     * nach einem Feld nur noch spätere zu. Stehen die Felder in den Beispielen in anderer Reihenfolge (z.B. "persons"
+     * vor "mediaTypes"), beginnt das Modell mit "persons" und kann Medientyp, Form und Zeitraum danach nicht mehr
+     * ausgeben. Schema und Beispiele verwenden deshalb dieselbe, alphabetische Reihenfolge.
+     */
+    private static function sortKeys(array $value): array
+    {
+        if (!array_is_list($value)) {
+            ksort($value, SORT_STRING);
+        }
+
+        return array_map(static fn($item) => is_array($item) ? self::sortKeys($item) : $item, $value);
     }
 
     /**

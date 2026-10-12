@@ -143,6 +143,26 @@ class QueryStructureTest extends UnitTestCase
     /**
      * @test
      */
+    public function keepsOnlyPersonsPlacesAndTopicsMentionedInTheQuestion(): void
+    {
+        $structure = QueryStructure::fromArray([
+            'persons' => [['name' => 'Rilke', 'relation' => 'Von'], ['name' => 'Thomas Mann', 'relation' => 'An']],
+            'places' => ['Paris', 'Marbach'],
+            'topics' => [
+                ['term' => 'Exil', 'variants' => ['Emigration']],
+                ['term' => 'Liebe', 'variants' => []],
+                ['term' => 'Krieg', 'variants' => ['Weltkrieg*']],
+            ],
+        ], FakeFacetVocabulary::DEFAULT_VALUES, 'Gedichte Rilkes aus Paris über die Liebe im Ersten Weltkrieg');
+
+        self::assertSame(['Rilke'], array_column($structure->persons, 'name'));
+        self::assertSame(['Paris'], $structure->places);
+        self::assertSame(['Liebe', 'Krieg'], array_column($structure->topics, 'term'), 'Krieg über die Variante Weltkrieg*');
+    }
+
+    /**
+     * @test
+     */
     public function detectsEmptyAnswer(): void
     {
         self::assertTrue(self::fromArray([])->isEmpty());

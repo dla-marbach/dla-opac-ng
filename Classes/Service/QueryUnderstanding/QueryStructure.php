@@ -51,7 +51,8 @@ final class QueryStructure
 
     /**
      * @param array<string, list<string>> $vocabulary erlaubte Werte für mediaTypes, formContent und languages
-     * @param string|null $question Frage; ohne Verneinung darin werden Ausschlüsse verworfen
+     * @param string|null $question Frage; ohne Verneinung darin werden Ausschlüsse verworfen, und Personen, Orte und
+     *                              Themen bleiben nur, wenn sie in der Frage vorkommen (siehe occursIn())
      */
     public static function fromArray(array $data, array $vocabulary, ?string $question = null): self
     {
@@ -59,7 +60,7 @@ final class QueryStructure
         foreach (self::listOf($data['persons'] ?? null) as $person) {
             $name = self::clean($person['name'] ?? null);
             $relation = $person['relation'] ?? '';
-            if ($name !== '') {
+            if ($name !== '' && self::occursIn($name, $question)) {
                 $persons[] = [
                     'name' => $name,
                     'fullName' => self::clean($person['fullName'] ?? null),
@@ -85,6 +86,9 @@ final class QueryStructure
                 continue;
             }
             $variants = array_map(static fn($variant): string => self::clean($variant, true), self::listOf($topic['variants'] ?? null, 4));
+            if (!self::occursIn(implode(' ', [$term, ...$variants]), $question)) {
+                continue;
+            }
             $variants = array_filter($variants, static fn(string $variant): bool => $variant !== '' && mb_strtolower($variant) !== mb_strtolower($term));
             $topics[] = ['term' => $term, 'variants' => array_values(array_unique($variants))];
         }
@@ -105,7 +109,7 @@ final class QueryStructure
             self::allowed($data['mediaTypes'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'mediaTypes')),
             self::allowed($data['formContent'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'formContent')),
             self::allowed($data['languages'] ?? null, QueryPrompt::vocabularyValues($vocabulary, 'languages')),
-            self::cleanList($data['places'] ?? null),
+            array_values(array_filter(self::cleanList($data['places'] ?? null), static fn(string $place): bool => self::occursIn($place, $question))),
             $dateFrom,
             $dateTo,
             ($data['digitalOnly'] ?? false) === true,
@@ -159,6 +163,31 @@ final class QueryStructure
             self::listOf($values),
             static fn($value): bool => in_array($value, $allowed, true)
         )));
+    }
+
+    /**
+     * Kommt eines der Wörter (ab drei Buchstaben) in der Frage vor? Verglichen werden die ersten fünf Buchstaben, damit
+     * Beugungen und Komposita passen ("Rilke" in „Rilkes“, "Exil" in „Exilliteratur“). Kleine Modelle übernehmen
+     * sonst gelegentlich Werte aus den Beispielen, z.B. das Thema "Exil" bei einer Frage ohne Exil. Ohne Frage (aus
+     * dem Zwischenspeicher, bereits geprüft) oder ohne prüfbares Wort gilt der Wert als vorhanden.
+     */
+    private static function occursIn(string $value, ?string $question): bool
+    {
+        if ($question === null) {
+            return true;
+        }
+        $words = array_filter(
+            preg_split('/[^\p{L}\p{N}]+/u', mb_strtolower($value), -1, PREG_SPLIT_NO_EMPTY) ?: [],
+            static fn(string $word): bool => mb_strlen($word) >= 3
+        );
+        $question = mb_strtolower($question);
+        foreach ($words as $word) {
+            if (str_contains($question, mb_substr($word, 0, 5))) {
+                return true;
+            }
+        }
+
+        return $words === [];
     }
 
     /**
