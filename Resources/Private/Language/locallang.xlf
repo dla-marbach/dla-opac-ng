@@ -1413,9 +1413,6 @@
             <trans-unit id="nl.part.topic">
                 <source>keyword: %s</source>
             </trans-unit>
-            <trans-unit id="nl.part.subject">
-                <source>subject: %s</source>
-            </trans-unit>
             <trans-unit id="nl.part.excluded">
                 <source>without: %s</source>
             </trans-unit>

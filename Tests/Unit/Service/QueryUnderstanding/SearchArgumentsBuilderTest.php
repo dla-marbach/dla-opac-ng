@@ -19,7 +19,6 @@ class SearchArgumentsBuilderTest extends UnitTestCase
                 'Rainer Maria Rilke' => ['id' => 'PE3', 'label' => 'Rilke, Rainer Maria (1875-1926)'],
             ],
             places: ['Marbach' => 'Marbach am Neckar'],
-            subjects: ['Weimarer Republik' => 'Weimarer Republik'],
         ));
         $interpretation = $builder->build(QueryStructure::fromArray($data, FakeFacetVocabulary::DEFAULT_VALUES));
 
@@ -125,20 +124,6 @@ class SearchArgumentsBuilderTest extends UnitTestCase
 
         self::assertSame('Der Process max unbekannt (prozess OR gericht*)', self::build($data)['q']['default']);
         self::assertSame('"Der Process" "max unbekannt" prozess', self::build(['knownItem' => true] + $data)['q']['default']);
-    }
-
-    /**
-     * @test
-     */
-    public function filtersTopicsByExactSubjectHeading(): void
-    {
-        $arguments = self::build(['topics' => [
-            ['term' => 'Weimarer Republik', 'variants' => ['Weimarer Zeit']],
-            ['term' => 'Exil', 'variants' => ['Emigration']],
-        ]]);
-
-        self::assertSame(['Thema' => ['Weimarer Republik' => '1']], $arguments['facet']);
-        self::assertSame('(exil OR emigration)', $arguments['q']['default']);
     }
 
     /**

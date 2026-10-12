@@ -7,10 +7,10 @@ namespace Dla\DlaOpacNg\Service\QueryUnderstanding;
 use Dla\DlaOpacNg\Service\SolrConnection;
 
 /**
- * Gleicht Personen, Orte und Themen, für die es zu viele Werte für eine feste Werteliste gibt, mit dem Index ab.
+ * Gleicht Personen und Orte, für die es zu viele Werte für eine feste Werteliste gibt, mit dem Index ab.
  *
- * Personen werden über den Normdaten-Suggester (mySuggester, wie die Autovervollständigung) aufgelöst, Orte und
- * Themen über die Facettenwerte. Nur Werte, die es im Index gibt, werden zu Filtern.
+ * Personen werden über den Normdaten-Suggester (mySuggester, wie die Autovervollständigung) aufgelöst, Orte über
+ * die Facettenwerte. Nur Werte, die es im Index gibt, werden zu Filtern.
  */
 class VocabularyResolver
 {
@@ -47,9 +47,9 @@ class VocabularyResolver
 
     /**
      * Facettenwert zum Begriff: die exakte Schreibweise (Groß-/Kleinschreibung egal), sonst der häufigste Wert, der
-     * den Begriff enthält, z.B. "Marbach" → "Marbach am Neckar". Mit $exactOnly nur die exakte Schreibweise.
+     * den Begriff enthält, z.B. "Marbach" → "Marbach am Neckar".
      */
-    public function resolveFacetValue(string $field, string $value, bool $exactOnly = false): ?string
+    public function resolveFacetValue(string $field, string $value): ?string
     {
         $key = 'facet|' . $field . '|' . $value;
         if (!array_key_exists($key, $this->memo)) {
@@ -57,7 +57,7 @@ class VocabularyResolver
         }
         ['exact' => $exact, 'containing' => $containing] = $this->memo[$key];
 
-        return $exact ?? ($exactOnly ? null : $containing[0] ?? null);
+        return $exact ?? $containing[0] ?? null;
     }
 
     /**

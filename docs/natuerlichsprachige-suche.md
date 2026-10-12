@@ -60,9 +60,10 @@ Browser                         TYPO3 (dla-opac-ng)                             
   aufgelöst (wie bei der Autovervollständigung), zuerst mit dem vollständigen Namen, den das Modell ergänzt
   („Hesse“ → „Hermann Hesse“), sonst mit dem Namen aus der Frage (im Nominativ, „Rilkes“ → „Rilke“). Orte werden über
   die exakte Schreibweise oder den häufigsten Facettenwert aufgelöst, der den Begriff enthält (z. B. „Marbach“ →
-  „Marbach am Neckar“). Themen werden nur bei exakter Schreibweise eines Schlagworts zur Facette Thema
-  (`filterSubject_mv`, in der Interpretationszeile „Thema: …“, auch bei den aktiven Filtern); Teiltreffer wie „Film“ → „Filmmusik“ wären als Filter zu eng. Was sich nicht auflösen lässt,
-  wird als weicher Suchbegriff übernommen.
+  „Marbach am Neckar“); die exakte Schreibweise wird auch gefunden, wenn sie seltener ist als längere Werte. Was sich
+  nicht auflösen lässt, wird als weicher Suchbegriff übernommen. Themen werden immer zu Suchbegriffen mit Varianten
+  („Stichwort: …“), nicht zur Facette Thema: Viele Datensätze, z. B. Handschriften, haben keine Schlagwörter und würden
+  sonst ausgeschlossen.
 * **Keine Treffer:** Liefert die Suche 0 Treffer, weist die Interpretationszeile darauf hin, dass sich einzelne
   Bestandteile entfernen lassen. Es wird nichts automatisch weggelassen.
 * **Interpretationszeile:** Über der Trefferliste steht „Ihre Frage »…« wurde verstanden als:“ mit den einzelnen
@@ -393,7 +394,7 @@ Weitere Voraussetzungen:
   die Klasse `dla-nl-no-results`.
   Die Interpretationszeile ist eine Liste `ul.dla-nl-parts` mit `li.dla-nl-part` und je einer Klasse für die Rolle
   (`dla-nl-part-mediaType`, `-formContent`, `-person`, `-relationVon`, `-relationAn`, `-relationUeber`,
-  `-relationUnter`, `-subject`, `-place`, `-language`, `-date`, `-digital`, `-text`, `-topic`, `-unresolved`, `-excluded`); die Links nutzen
+  `-relationUnter`, `-place`, `-language`, `-date`, `-digital`, `-text`, `-topic`, `-unresolved`, `-excluded`); die Links nutzen
   wie die aktiven Filter das Symbol `bel-ende01`. Styles gehören in das Site-CSS.
 
 ## 5. Prompt und Beispiele anpassen
@@ -472,10 +473,9 @@ Die Tests laufen ohne LLM und ohne Solr:
 ## 9. Grenzen des Proof of Concept und nächste Schritte
 
 * **Fachlich prüfen:** Relationen (insbesondere „Unter“), Zuordnung der Medientypen, Beispiele.
-* **Schlagwörter:** Ein exakt passendes Schlagwort wird zum Filter Thema. Das ist genauer, schließt aber Datensätze
-  ohne Schlagwörter aus (z. B. viele Handschriften); an echten Fragen prüfen und ggf. in
-  `SearchArgumentsBuilder::build()` abschalten. Die Systematik wird noch nicht abgeglichen: Sie ist nicht als Facette
-  konfiguriert und wird nur über Identnummern gesucht.
+* **Schlagwörter und Systematik:** Themen werden nicht gegen die Facette Thema (`filterSubject_mv`) abgeglichen, weil
+  ein Filter alle Datensätze ohne Schlagwörter ausschließt (im Test hatten alle Handschriften „nicht bestimmt“). Die
+  Systematik ist nicht als Facette konfiguriert und wird nur über Identnummern gesucht.
 * **Mehrere Medientypen:** Es wird nur der erste übernommen. Die ODER-Facette `MedientypenHidden` eignet sich dafür
   noch nicht: Das Such-Plugin verbindet ihre Werte mit Leerzeichen und ohne Anführungszeichen
   (`filterType_mv:(Audio Video)`); mit `q.op=AND` aus der `solrconfig.xml` wird daraus vermutlich ein UND, und

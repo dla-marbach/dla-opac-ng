@@ -8,8 +8,8 @@ namespace Dla\DlaOpacNg\Service\QueryUnderstanding;
  * Bildet eine geprüfte QueryStructure auf Facetten und Suchbegriffe des Katalogs ab.
  *
  * Die Facetten-IDs entsprechen der TypoScript-Konfiguration plugin.tx_find.settings.facets. Medientyp, Form/Inhalt
- * und Sprache stammen aus dem Vokabular des Index (FacetVocabulary) und werden direkt zu Facetten. Personen, Orte und
- * Themen werden mit dem Index abgeglichen; was sich nicht auflösen lässt, wird zum Suchbegriff.
+ * und Sprache stammen aus dem Vokabular des Index (FacetVocabulary) und werden direkt zu Facetten. Personen und Orte
+ * werden mit dem Index abgeglichen; was sich nicht auflösen lässt, wird zum Suchbegriff.
  *
  * Bei der Suche nach einem bestimmten Werk (knownItem) kommen Titel und nicht aufgelöste Namen als Phrase in die
  * Suche, und Themen werden nicht um Varianten erweitert, damit die Suche nicht zerfasert.
@@ -84,18 +84,14 @@ class SearchArgumentsBuilder
             $facets[] = self::facet('FormUndInhalt', $value, true);
         }
 
+        // Themen nur als Suchbegriffe, nicht als Facette Thema: Viele Datensätze (z.B. Handschriften) haben keine
+        // Schlagwörter und würden durch den Filter ausgeschlossen.
         foreach ($structure->topics as $topic) {
-            // Nur die exakte Schlagwort-Schreibweise wird zum Filter; Teiltreffer wie "Film" → "Filmmusik" wären zu eng.
-            $subject = str_ends_with($topic['term'], '*') ? null : $this->resolver->resolveFacetValue('filterSubject_mv', $topic['term'], true);
-            if ($subject !== null) {
-                $facets[] = self::facet('Thema', $subject);
-            } else {
-                $textParts[] = self::textPart(
-                    QueryInterpretation::PART_TOPIC,
-                    self::topicQuery($topic['term'], $knownItem ? [] : $topic['variants']),
-                    $topic['term']
-                );
-            }
+            $textParts[] = self::textPart(
+                QueryInterpretation::PART_TOPIC,
+                self::topicQuery($topic['term'], $knownItem ? [] : $topic['variants']),
+                $topic['term']
+            );
         }
         foreach ($structure->exclude['terms'] as $term) {
             $textParts[] = self::textPart(QueryInterpretation::PART_EXCLUDED, 'NOT ' . self::termQuery($term), $term);

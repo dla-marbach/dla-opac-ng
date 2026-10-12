@@ -1860,10 +1860,6 @@
                 <source>keyword: %s</source>
                 <target>Stichwort: %s</target>
             </trans-unit>
-            <trans-unit id="nl.part.subject">
-                <source>subject: %s</source>
-                <target>Thema: %s</target>
-            </trans-unit>
             <trans-unit id="nl.part.excluded">
                 <source>without: %s</source>
                 <target>ohne: %s</target>
