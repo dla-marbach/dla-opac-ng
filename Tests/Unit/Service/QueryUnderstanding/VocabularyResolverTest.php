@@ -94,4 +94,17 @@ class VocabularyResolverTest extends UnitTestCase
         self::assertSame(['filterLocation_mv:"berlin"', 'filterLocation_mv:"Berlin"'], $this->requests[0]['params']['facet.query']);
         self::assertCount(1, $this->requests, 'eine Anfrage für exakte und enthaltende Werte');
     }
+
+    /**
+     * @test
+     */
+    public function prefersMuchMoreFrequentContainingValueOverRareExactValue(): void
+    {
+        $resolver = $this->createResolver(['facet_counts' => [
+            'facet_queries' => ['filterLocation_mv:"Marbach"' => 12],
+            'facet_fields' => ['filterLocation_mv' => ['Marbach am Neckar' => 45000, 'Marbach' => 12]],
+        ]]);
+
+        self::assertSame('Marbach am Neckar', $resolver->resolveFacetValue('filterLocation_mv', 'Marbach'));
+    }
 }

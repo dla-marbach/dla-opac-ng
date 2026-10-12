@@ -60,7 +60,7 @@ Browser                         TYPO3 (dla-opac-ng)                             
   aufgelöst (wie bei der Autovervollständigung), zuerst mit dem vollständigen Namen, den das Modell ergänzt
   („Hesse“ → „Hermann Hesse“), sonst mit dem Namen aus der Frage (im Nominativ, „Rilkes“ → „Rilke“). Orte werden über
   die exakte Schreibweise oder den häufigsten Facettenwert aufgelöst, der den Begriff enthält (z. B. „Marbach“ →
-  „Marbach am Neckar“); die exakte Schreibweise wird auch gefunden, wenn sie seltener ist als längere Werte. Was sich
+  „Marbach am Neckar“); die exakte Schreibweise gewinnt nur, wenn sie nicht mehr als zehnmal seltener ist als der häufigste enthaltende Wert (ein seltenes „Marbach“ unterliegt „Marbach am Neckar“). Was sich
   nicht auflösen lässt, wird als weicher Suchbegriff übernommen. Themen werden immer zu Suchbegriffen mit Varianten
   („Stichwort: …“), nicht zur Facette Thema: Viele Datensätze, z. B. Handschriften, haben keine Schlagwörter und würden
   sonst ausgeschlossen.
