@@ -4,3 +4,6 @@ dla-opac-transform/
 t3example/
 vendor/
 Tests/Fixtures/Solr/missing-requests.log
+/composer.lock
+/public/
+.phpunit.result.cache

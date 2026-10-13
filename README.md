@@ -83,11 +83,15 @@ BASE_URL=https://www.dla-marbach.de task test -- -g "robots"
 ## PHPUnit-Tests mit Solr-Mockdaten
 
 Die PHP-Unit-Tests (`Tests/`, inkl. der Tests des Such-Plugins in [Tests/Find](Tests/Find)) laufen gegen
-einen lokalen Solr-Mock-Server und benötigen dafür **keinen** Solr-Tunnel:
+einen lokalen Solr-Mock-Server und benötigen dafür **keinen** Solr-Tunnel. Sie brauchen auch weder DDEV noch
+Datenbank, sondern laufen mit lokalem PHP (`composer install` im Repository, wie in der CI
+[.github/workflows/phpunit.yml](.github/workflows/phpunit.yml)):
 
 ```
 task test:php
 ```
+
+Einzelne Tests: `task test:php -- --filter MediaPlayer`
 
 Der Mock-Server ([Tests/Fixtures/Solr/MockSolrServer.php](Tests/Fixtures/Solr/MockSolrServer.php)) beantwortet
 Anfragen anhand aufgezeichneter, echter Solr-Antworten ([Tests/Fixtures/Solr/cassettes](Tests/Fixtures/Solr/cassettes)),
@@ -116,10 +120,9 @@ task test:php:record
 führt die Tests mit `SOLR_RECORD_BASE` (Solr-Tunnel nötig) aus. Der Mock-Server leitet dann jede noch
 unbekannte Anfrage an den echten Solr weiter und legt die Antwort als Cassette in
 [Tests/Fixtures/Solr/cassettes/subqueries](Tests/Fixtures/Solr/cassettes/subqueries) ab (Dateiname: Query-Auszug +
-Hash), von wo aus sie der Task in den Workspace kopiert. Nach Änderungen an den `queryFields` in
-[Configuration/TypoScript/setup.ts](Configuration/TypoScript/setup.ts) den Ordner `subqueries` vorher löschen
-(auch unter `t3example/.local-ext/dla-dla_opac_ng/Tests/Fixtures/Solr/cassettes/`), damit keine
-veralteten Cassetten zurückbleiben.
+Hash). Nach Änderungen an den `queryFields` in
+[Configuration/TypoScript/setup.ts](Configuration/TypoScript/setup.ts) den Ordner `subqueries` vorher löschen,
+damit keine veralteten Cassetten zurückbleiben.
 
 ## Fluid-Partial-Rendering-Tests
 

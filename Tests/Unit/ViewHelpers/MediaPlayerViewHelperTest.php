@@ -295,7 +295,8 @@ class MediaPlayerViewHelperTest extends UnitTestCase
     public function publicM3uPlaylistIsResolvedIntoTracks(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
-        $viewHelper->playlistContentByUrl['https://example.org/media/playlist.m3u'] = implode("\n", [
+        // öffentliche IP-Adresse statt Hostname: isSafeRemoteUrl() braucht dann keine DNS-Abfrage
+        $viewHelper->playlistContentByUrl['https://93.184.215.14/media/playlist.m3u'] = implode("\n", [
             '#EXTM3U',
             '#EXTINF:10,Track A',
             'https://example.org/media/a.mp3',
@@ -304,7 +305,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         ]);
 
         $result = $viewHelper->buildMediaData(
-            ['https://example.org/media/playlist.m3u'],
+            ['https://93.184.215.14/media/playlist.m3u'],
             ['m3u'],
             ['public'],
             ['Playlist'],
@@ -317,7 +318,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertCount(2, $mediaItem['tracks']);
         self::assertSame('Track A', $mediaItem['tracks'][0]['title']);
         self::assertSame(10.0, $mediaItem['tracks'][0]['duration']);
-        self::assertSame('https://example.org/media/tracks/b.mp3', $mediaItem['tracks'][1]['url']);
+        self::assertSame('https://93.184.215.14/media/tracks/b.mp3', $mediaItem['tracks'][1]['url']);
     }
 
     /**
