@@ -421,9 +421,9 @@ class SolrServiceProvider extends AbstractServiceProvider
 
                                     $start = 'NOW/YEAR-' . $startTimeYears . 'YEARS';
 
-                                    $end = $nowDate
-                                        ->add(new \DateInterval('P1Y'))
-                                        ->format('Y-m-d\TH:i:s\Z');
+                                    // Solr-Datumsausdruck statt sekundengenauem Zeitstempel: hält die Anfrage
+                                    // stabil (Solr-Cache, aufgezeichnete Solr-Antworten der Entwicklungsumgebung)
+                                    $end = 'NOW/DAY+1YEAR';
 
                                     $queryForFacet = $facetSet->createFacetRange($facet['field'] ? $facetID : $facet['field']);
                                     $queryForFacet->setField($facet['field'] ? $facet['field'] : $facetID)
