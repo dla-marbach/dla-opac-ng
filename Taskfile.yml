@@ -65,7 +65,6 @@ tasks:
         ../Classes \
         ../Configuration \
         ../Resources \
-        ../Tests \
         ../LICENSE \
         ../composer.json \
         ../ext_* \
@@ -76,9 +75,6 @@ tasks:
         mkdir -p packages/dla-dla_opac_ng/Resources/Public/Fonts
         cp -al ../.devfiles/*.woff2 packages/dla-dla_opac_ng/Resources/Public/Fonts
       - ddev composer require "dla/dla_opac_ng:@dev"
-      - ddev composer require --dev "typo3/testing-framework:^8.3"
-      - php ../.devfiles/add-test-autoload.php
-      - ddev exec composer dump-autoload
       - cp -f ../.devfiles/systematik.tsv systematik.tsv
       - cp -f ../.devfiles/tektonik.tsv tektonik.tsv
       - ddev exec vendor/bin/typo3 dla_opac_ng:import -t classification -f systematik.tsv -p 6
@@ -108,24 +104,16 @@ tasks:
       - cd .. && rm -rf t3example
 
   test:php:
-    desc: PHPUnit-Tests mit Solr-Mockdaten ausführen, kein Solr-Tunnel nötig
-    dir: t3example
-    cmds:
-      - ddev exec vendor/bin/phpunit -c packages/dla-dla_opac_ng/Tests/phpunit.xml
-
-  test:php:local:
-    desc: PHPUnit-Tests ohne DDEV direkt mit lokalem PHP ausführen (wie in der CI), kein Solr-Tunnel nötig
+    desc: PHPUnit-Tests mit Solr-Mockdaten ausführen (lokales PHP, ohne DDEV, wie in der CI), kein Solr-Tunnel nötig
     cmds:
       - COMPOSER_NO_SECURITY_BLOCKING=1 composer install --no-interaction --no-progress
       - vendor/bin/phpunit -c Tests/phpunit.xml {{.CLI_ARGS}}
 
   test:php:record:
-    desc: PHPUnit-Tests (dla_opac_ng) gegen den echten Solr ausführen und fehlende Solr-Cassetten aufzeichnen (Solr-Tunnel nötig)
+    desc: PHPUnit-Tests gegen den echten Solr ausführen und fehlende Solr-Cassetten aufzeichnen (Solr-Tunnel nötig)
     cmds:
-      - rsync -a Tests/ t3example/.local-ext/dla-dla_opac_ng/Tests/
-      - cd t3example && ddev exec 'SOLR_RECORD_BASE=http://host.docker.internal:8983 vendor/bin/phpunit -c packages/dla-dla_opac_ng/Tests/phpunit.xml'
-      - mkdir -p Tests/Fixtures/Solr/cassettes/subqueries
-      - rsync -a --ignore-existing t3example/.local-ext/dla-dla_opac_ng/Tests/Fixtures/Solr/cassettes/subqueries/ Tests/Fixtures/Solr/cassettes/subqueries/
+      - COMPOSER_NO_SECURITY_BLOCKING=1 composer install --no-interaction --no-progress
+      - SOLR_RECORD_BASE=http://127.0.0.1:8983 vendor/bin/phpunit -c Tests/phpunit.xml {{.CLI_ARGS}}
 
   test:
     desc: Playwright-Test ausführen

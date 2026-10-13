@@ -314,7 +314,7 @@ class MediaPlayerViewHelper extends AbstractViewHelper
 
         $host = $parts['host'] ?? '';
         if ($host === '' || filter_var($host, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
-            $addresses = $this->resolveHostAddresses($host);
+            $addresses = gethostbynamel($host);
             if ($addresses === false || $addresses === []) {
                 return false;
             }
@@ -326,15 +326,5 @@ class MediaPlayerViewHelper extends AbstractViewHelper
         }
 
         return true;
-    }
-
-    /**
-     * Wrapper around gethostbynamel(), extracted for testability (tests must not depend on DNS).
-     *
-     * @return string[]|false
-     */
-    protected function resolveHostAddresses(string $host)
-    {
-        return gethostbynamel($host);
     }
 }

@@ -84,18 +84,14 @@ BASE_URL=https://www.dla-marbach.de task test -- -g "robots"
 
 Die PHP-Unit-Tests (`Tests/`, inkl. der Tests des Such-Plugins in [Tests/Find](Tests/Find)) laufen gegen
 einen lokalen Solr-Mock-Server und benötigen dafür **keinen** Solr-Tunnel. Sie brauchen auch weder DDEV noch
-Datenbank und laufen direkt mit lokalem PHP (`composer install` im Repository, wie in der CI
+Datenbank, sondern laufen mit lokalem PHP (`composer install` im Repository, wie in der CI
 [.github/workflows/phpunit.yml](.github/workflows/phpunit.yml)):
-
-```
-task test:php:local
-```
-
-Einzelne Tests: `task test:php:local -- --filter MediaPlayer`. Alternativ in der DDEV-Instanz (nach `task install`):
 
 ```
 task test:php
 ```
+
+Einzelne Tests: `task test:php -- --filter MediaPlayer`
 
 Der Mock-Server ([Tests/Fixtures/Solr/MockSolrServer.php](Tests/Fixtures/Solr/MockSolrServer.php)) beantwortet
 Anfragen anhand aufgezeichneter, echter Solr-Antworten ([Tests/Fixtures/Solr/cassettes](Tests/Fixtures/Solr/cassettes)),
@@ -124,16 +120,15 @@ task test:php:record
 führt die Tests mit `SOLR_RECORD_BASE` (Solr-Tunnel nötig) aus. Der Mock-Server leitet dann jede noch
 unbekannte Anfrage an den echten Solr weiter und legt die Antwort als Cassette in
 [Tests/Fixtures/Solr/cassettes/subqueries](Tests/Fixtures/Solr/cassettes/subqueries) ab (Dateiname: Query-Auszug +
-Hash), von wo aus sie der Task in den Workspace kopiert. Nach Änderungen an den `queryFields` in
-[Configuration/TypoScript/setup.ts](Configuration/TypoScript/setup.ts) den Ordner `subqueries` vorher löschen
-(auch unter `t3example/.local-ext/dla-dla_opac_ng/Tests/Fixtures/Solr/cassettes/`), damit keine
-veralteten Cassetten zurückbleiben.
+Hash). Nach Änderungen an den `queryFields` in
+[Configuration/TypoScript/setup.ts](Configuration/TypoScript/setup.ts) den Ordner `subqueries` vorher löschen,
+damit keine veralteten Cassetten zurückbleiben.
 
 ## Fluid-Partial-Rendering-Tests
 
 Zusätzlich zu den Service-/Ajax-Tests gibt es [Tests/Unit/Partials](Tests/Unit/Partials), die einzelne
 Fluid-Partials dieser Extension (aus [Resources/Private/Partials](Resources/Private/Partials)) direkt
-rendern und den erzeugten HTML-Ausschnitt prüfen. Laufen ebenfalls über `task test:php:local` bzw. `task test:php`, ohne DB/Solr-Tunnel.
+rendern und den erzeugten HTML-Ausschnitt prüfen. Laufen ebenfalls über `task test:php`, ohne DB/Solr-Tunnel.
 
 Basis ist [Tests/Support/FluidPartialTestCase.php](Tests/Support/FluidPartialTestCase.php): baut eine
 minimale Fluid-`RenderingContext` (ohne vollen TYPO3-Functional-Bootstrap) und rendert

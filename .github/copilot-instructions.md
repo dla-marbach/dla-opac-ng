@@ -28,8 +28,7 @@ Alle Abläufe laufen über [Task](https://taskfile.dev) (`Taskfile.yml`) und DDE
 
 - `task install` – DDEV/TYPO3 in `t3example/` aufsetzen und die Extension einbinden
 - `task cache` – Extension-Code neu nach `t3example/.local-ext/` spiegeln und TYPO3-Cache leeren. **Nach Codeänderungen (insbesondere neuen/gelöschten Dateien) vor dem Testen ausführen**, da die Extension per Hardlink-Kopie (`cp -al`) und nicht direkt eingebunden ist.
-- `task test:php:local` – PHPUnit-Tests (inkl. `Tests/Find`) ohne DDEV direkt mit lokalem PHP (`composer install` im Repository + `vendor/bin/phpunit -c Tests/phpunit.xml`, wie in der CI), gegen einen Solr-Mock-Server (kein Solr-Tunnel nötig). Bevorzugter Weg, um Tests schnell auszuführen.
-- `task test:php` – dieselben PHPUnit-Tests im DDEV-Container (nach `task install`)
+- `task test:php` – PHPUnit-Tests (inkl. `Tests/Find`) mit lokalem PHP ohne DDEV (`composer install` im Repository + `vendor/bin/phpunit -c Tests/phpunit.xml`, wie in der CI), gegen einen Solr-Mock-Server (kein Solr-Tunnel nötig)
 - `task test:php:record` – Tests gegen echten Solr ausführen und fehlende Cassetten aufzeichnen (nur mit Solr-Tunnel)
 - `task test -- "katalog/"` – Playwright-Tests (benötigen laufende Instanz und Solr-Verbindung)
 - `task reinstall` – Umgebung komplett neu aufsetzen
