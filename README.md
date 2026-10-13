@@ -7,11 +7,30 @@ Die Extension enthält seit Version 6 auch das Such-Plugin der früheren Extensi
 
 ## Installation
 
-Einmalig nach Erstellen eines Codespaces aufrufen:
+Die Entwicklungsumgebung kommt ohne Docker/DDEV aus: PHP 8.3, Composer und MariaDB werden per `apt` installiert
+(Ubuntu 24.04), TYPO3 läuft im eingebauten PHP-Webserver (`php -S`) auf Port 80. MariaDB wird nach Möglichkeit
+in derselben Version wie im Produktivsystem (11.8) aus dem MariaDB-Repository installiert, sonst in der Version
+der Distribution (10.11). Läuft bereits eine Datenbank auf Port 3306 (z.B. Service-Container in der Copilot-Umgebung),
+wird diese verwendet.
+
+In einem Codespace wird alles beim Erstellen automatisch eingerichtet ([.devcontainer/startup.sh](.devcontainer/startup.sh))
+und nach jedem Neustart per `task start` gestartet. Manuell (z.B. in anderen Ubuntu-Umgebungen):
 
 ```
 task install
 ```
+
+| Task | |
+|---|---|
+| `task install` | PHP/Composer/MariaDB installieren (falls nötig), TYPO3 in `t3example/` aufsetzen, Extension einbinden und starten |
+| `task start` / `task stop` | MariaDB und PHP-Webserver starten bzw. Webserver stoppen (Log: `/tmp/typo3-web.log`) |
+| `task cache` | Extension neu einbinden und TYPO3-Cache leeren |
+| `task reinstall` | TYPO3-Instanz und Datenbank löschen und neu aufsetzen |
+
+Der Webserver kann auch auf einem anderen Port laufen, z.B. `WEB_PORT=8080 task start`.
+
+Für Claude-Code-Cloud-Sessions richtet [.claude/hooks/session-start.sh](.claude/hooks/session-start.sh) dieselbe Umgebung ein,
+für den Copilot-Agent [.github/workflows/copilot-setup-steps.yml](.github/workflows/copilot-setup-steps.yml).
 
 ## Verbindung zum Solr
 
@@ -21,12 +40,13 @@ Umgebungsvariablen konfiguriert:
 
 | Variable | Beispiel | |
 |---|---|---|
-| `SOLR_HOST` | `http://host.docker.internal:8983/solr/` | Basis-URL inkl. Solr-Kontext |
+| `SOLR_HOST` | `http://127.0.0.1:18983/solr/` | Basis-URL inkl. Solr-Kontext |
 | `SOLR_CORE` | `internformat` | Name des Cores |
 | `SOLR_TIMEOUT` | `10` | optional, Timeout in Sekunden (Standard: 10) |
 
-Für die lokale Umgebung stehen die Werte in [.devfiles/.env](.devfiles/.env) (wird bei `task install` nach
-`t3example/.ddev/.env` kopiert).
+Für die lokale Umgebung stehen die Werte in [.devfiles/.env](.devfiles/.env) (werden von `task install`, `task start`
+und `task cache` als Umgebungsvariablen gesetzt, bereits gesetzte Variablen haben Vorrang). Der Solr-Tunnel (siehe unten)
+endet direkt auf `127.0.0.1:18983`.
 
 Lokal muss GitHub CLI [gh](https://cli.github.com) installiert sein.
 
@@ -83,7 +103,7 @@ BASE_URL=https://www.dla-marbach.de task test -- -g "robots"
 ## PHPUnit-Tests mit Solr-Mockdaten
 
 Die PHP-Unit-Tests (`Tests/`, inkl. der Tests des Such-Plugins in [Tests/Find](Tests/Find)) laufen gegen
-einen lokalen Solr-Mock-Server und benötigen dafür **keinen** Solr-Tunnel. Sie brauchen auch weder DDEV noch
+einen lokalen Solr-Mock-Server und benötigen dafür **keinen** Solr-Tunnel. Sie brauchen auch weder TYPO3-Instanz noch
 Datenbank, sondern laufen mit lokalem PHP (`composer install` im Repository, wie in der CI
 [.github/workflows/phpunit.yml](.github/workflows/phpunit.yml)):
 
@@ -165,7 +185,8 @@ Der Code der Extension ist über Symlinks eingebunden. Nach Änderungen am Code 
 task cache
 ```
 
-Nach einem Neustart des Codespaces ausführen:
+Nach einem Neustart des Codespaces werden MariaDB und Webserver automatisch gestartet (sonst `task start`).
+Eine komplett neue Instanz liefert:
 
 ```
 task reinstall
@@ -306,7 +327,7 @@ Bei der Installation (task install) wird ein Datenbank-Dump [.devfiles/init.sql]
 2. init.sql ersetzen:
 
 ```
-ddev export-db t3example --gzip=false > .devfiles/init.sql
+task db:export
 ```
 
 ## Upgrade auf Version 6

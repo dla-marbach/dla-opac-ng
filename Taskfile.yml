@@ -2,43 +2,88 @@
 
 version: '3'
 
+vars:
+  # Port des PHP-Webservers, abweichend z.B. mit WEB_PORT=8080 task start
+  WEB_PORT:
+    sh: echo "${WEB_PORT:-80}"
+  MARIADB_VERSION: '11.8'
+
 tasks:
   install:
-    desc: installiere und starte alle benötigten Komponenten
+    desc: installiere und starte alle benötigten Komponenten (ohne Docker/DDEV)
     cmds:
-      - task: install_socat
-      - task: install_ddev
+      - task: install_packages
+      - task: db:start
+      - task: install_typo3
       - task: install_ext
+      - task: start
 
-  install_socat:
+  install_packages:
+    desc: installiere PHP, Composer und MariaDB per apt, falls noch nicht vorhanden
     cmds:
-      - sudo apt-get update || true
-      - sudo apt-get install -y socat
       - |
-        if lsof -iTCP:8983 -sTCP:LISTEN -Pn >/dev/null 2>&1; then
-          echo "socat läuft bereits auf Port 8983"
+        SUDO=$([ "$(id -u)" -eq 0 ] || echo sudo)
+        PACKAGES=""
+        command -v php >/dev/null || PACKAGES="$PACKAGES php-cli php-curl php-gd php-intl php-mbstring php-mysql php-xml php-zip unzip"
+        command -v composer >/dev/null || PACKAGES="$PACKAGES composer"
+        # setcap für den Webserver auf Port 80 ohne root (task start)
+        [ -z "$SUDO" ] || command -v setcap >/dev/null || PACKAGES="$PACKAGES libcap2-bin"
+        # MariaDB nur installieren, wenn keine Datenbank läuft (z.B. Service-Container in der Copilot-Umgebung)
+        if ! php -r 'exit(@fsockopen("127.0.0.1", 3306) ? 0 : 1);' 2>/dev/null && ! command -v mariadbd >/dev/null; then
+          PACKAGES="$PACKAGES mariadb-server mariadb-client"
+          # Version wie im Produktivsystem aus dem MariaDB-Repository, sonst die Version der Distribution
+          if curl -fsSL -m 20 -o /tmp/mariadb_repo_setup https://r.mariadb.com/downloads/mariadb_repo_setup; then
+            $SUDO bash /tmp/mariadb_repo_setup --mariadb-server-version="mariadb-{{.MARIADB_VERSION}}" --skip-maxscale --skip-tools \
+              || echo "MariaDB-Repository nicht verfügbar, verwende MariaDB der Distribution"
+          else
+            echo "MariaDB-Repository nicht erreichbar, verwende MariaDB der Distribution"
+          fi
+        fi
+        if [ -n "$PACKAGES" ]; then
+          $SUDO apt-get update || true
+          $SUDO env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends $PACKAGES
+        fi
+        php -r 'foreach (["curl", "intl", "mbstring", "mysqli", "pdo_mysql", "xml", "zip"] as $e) { if (!extension_loaded($e)) { fwrite(STDERR, "PHP-Erweiterung fehlt: $e\n"); exit(1); } }'
+
+  db:start:
+    desc: starte MariaDB (falls nötig) und lege Datenbank und Benutzer an
+    cmds:
+      - |
+        SUDO=$([ "$(id -u)" -eq 0 ] || echo sudo)
+        if php -r 'exit(@fsockopen("127.0.0.1", 3306) ? 0 : 1);'; then
+          echo "MariaDB läuft bereits"
         else
-          bash -c 'nohup socat TCP-LISTEN:8983,fork,bind=0.0.0.0,reuseaddr TCP:127.0.0.1:18983 >/tmp/socat-8983.log 2>&1 &'
-          echo "socat wurde im Hintergrund gestartet (Log: /tmp/socat-8983.log)"
+          $SUDO service mariadb start
+        fi
+        MYSQL=$(command -v mariadb || command -v mysql)
+        if ! $MYSQL -h127.0.0.1 -udb -pdb db -e 'SELECT 1' >/dev/null 2>&1; then
+          $SUDO $MYSQL -e "CREATE DATABASE IF NOT EXISTS db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+            CREATE USER IF NOT EXISTS 'db'@'localhost' IDENTIFIED BY 'db';
+            CREATE USER IF NOT EXISTS 'db'@'%' IDENTIFIED BY 'db';
+            GRANT ALL ON db.* TO 'db'@'localhost';
+            GRANT ALL ON db.* TO 'db'@'%';"
         fi
 
-  install_ddev:
+  db:export:
+    desc: exportiere die Datenbank nach .devfiles/init.sql
+    cmds:
+      - $(command -v mariadb-dump || command -v mysqldump) -h127.0.0.1 -udb -pdb db > .devfiles/init.sql
+
+  install_typo3:
+    cmds:
+      - COMPOSER_NO_SECURITY_BLOCKING=1 composer create-project "typo3/cms-base-distribution:^12" t3example --no-interaction --no-progress
+      - task: install_typo3_config
+
+  install_typo3_config:
+    dotenv: ['../.devfiles/.env']
     dir: t3example
     cmds:
       - |
-        ddev config --project-type typo3 \
-        --docroot public \
-        --php-version 8.2 \
-        --database=mariadb:10.11
-      - cp ../.devfiles/.env .ddev/.env
-      - ddev start -y
-      - ddev composer create-project "typo3/cms-base-distribution:^12" --no-security-blocking
-      - |
-        ddev typo3 setup \
+        vendor/bin/typo3 setup \
         --no-interaction \
         --server-type=other \
         --driver=mysqli \
-        --host=db \
+        --host=127.0.0.1 \
         --port=3306 \
         --dbname=db \
         --username=db \
@@ -48,16 +93,27 @@ tasks:
         --admin-email="info@example.com" \
         --project-name="DLA OPAC" \
         --force
-      - ddev composer require fluidtypo3/flux
-      - ddev import-db < ../.devfiles/init.sql
+      - COMPOSER_NO_SECURITY_BLOCKING=1 composer require fluidtypo3/flux --no-interaction --no-progress
+      - $(command -v mariadb || command -v mysql) -h127.0.0.1 -udb -pdb db < ../.devfiles/init.sql
       - cp ../.devfiles/additional.php config/system/additional.php
       - cp ../.devfiles/robots.txt public/robots.txt
       - mkdir -p config/sites/dla-opac && cp ../.devfiles/siteconfig.yaml config/sites/dla-opac/config.yaml
 
   install_ext:
+    dotenv: ['../.devfiles/.env']
     dir: t3example
     cmds:
-      - mkdir -p .local-ext
+      - task: sync_ext
+      - COMPOSER_NO_SECURITY_BLOCKING=1 composer require "dla/dla_opac_ng:@dev" --no-interaction --no-progress
+      - cp -f ../.devfiles/systematik.tsv systematik.tsv
+      - cp -f ../.devfiles/tektonik.tsv tektonik.tsv
+      - vendor/bin/typo3 dla_opac_ng:import -t classification -f systematik.tsv -p 6
+      - vendor/bin/typo3 dla_opac_ng:import -t collection -f tektonik.tsv -p 6
+
+  sync_ext:
+    dir: t3example
+    cmds:
+      - mkdir -p .local-ext packages
       - rm -rf .local-ext/dla-dla_opac_ng
       - mkdir -p .local-ext/dla-dla_opac_ng
       - |
@@ -74,20 +130,41 @@ tasks:
       - |
         mkdir -p packages/dla-dla_opac_ng/Resources/Public/Fonts
         cp -al ../.devfiles/*.woff2 packages/dla-dla_opac_ng/Resources/Public/Fonts
-      - ddev composer require "dla/dla_opac_ng:@dev"
-      - cp -f ../.devfiles/systematik.tsv systematik.tsv
-      - cp -f ../.devfiles/tektonik.tsv tektonik.tsv
-      - ddev exec vendor/bin/typo3 dla_opac_ng:import -t classification -f systematik.tsv -p 6
-      - ddev exec vendor/bin/typo3 dla_opac_ng:import -t collection -f tektonik.tsv -p 6
+
+  start:
+    desc: starte MariaDB und den PHP-Webserver (z.B. nach einem Neustart des Codespaces)
+    dotenv: ['../.devfiles/.env']
+    deps: [db:start]
+    dir: t3example
+    cmds:
+      - |
+        if php -r 'exit(@fsockopen("127.0.0.1", {{.WEB_PORT}}) ? 0 : 1);'; then
+          echo "Webserver läuft bereits auf Port {{.WEB_PORT}}"
+          exit 0
+        fi
+        # Ports unter 1024 ohne root: dem PHP-Binary das Recht dazu geben
+        if [ {{.WEB_PORT}} -lt 1024 ] && [ "$(id -u)" -ne 0 ]; then
+          sudo setcap cap_net_bind_service=+ep "$(readlink -f "$(command -v php)")"
+        fi
+        PHP_CLI_SERVER_WORKERS=4 setsid nohup php -S 0.0.0.0:{{.WEB_PORT}} -t public ../.devfiles/router.php \
+          > /tmp/typo3-web.log 2>&1 < /dev/null &
+        sleep 1
+        php -r 'exit(@fsockopen("127.0.0.1", {{.WEB_PORT}}) ? 0 : 1);' || { cat /tmp/typo3-web.log; exit 1; }
+        echo "TYPO3 läuft auf http://127.0.0.1:{{.WEB_PORT}}/ (Log: /tmp/typo3-web.log)"
+
+  stop:
+    desc: stoppe den PHP-Webserver
+    cmds:
+      - pkill -f "php -S 0.0.0.0:{{.WEB_PORT}}" || true
 
   cache:
-    dir: t3example
     desc: lösche den TYPO3-Cache, um Code-Änderungen wirksam zu machen
+    dotenv: ['../.devfiles/.env']
+    dir: t3example
     cmds:
-      - rm -rf packages/dla-dla_opac_ng
-      - task: install_ext
-      - ddev typo3 cache:flush
-      - ddev exec composer dump-autoload
+      - task: sync_ext
+      - vendor/bin/typo3 cache:flush
+      - composer dump-autoload
 
   reinstall:
     desc: löschen, neuinstallieren und starten
@@ -96,15 +173,17 @@ tasks:
       - task: install
 
   delete:
-    desc: lösche die gesamten DDEV Container
-    dir: t3example
+    desc: lösche die TYPO3-Instanz und leere die Datenbank
     cmds:
-      - ddev poweroff
-      - ddev delete -y --omit-snapshot || true
-      - cd .. && rm -rf t3example
+      - task: stop
+      - task: db:start
+      - |
+        $(command -v mariadb || command -v mysql) -h127.0.0.1 -udb -pdb \
+          -e "DROP DATABASE IF EXISTS db; CREATE DATABASE db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+      - rm -rf t3example
 
   test:php:
-    desc: PHPUnit-Tests mit Solr-Mockdaten ausführen (lokales PHP, ohne DDEV, wie in der CI), kein Solr-Tunnel nötig
+    desc: PHPUnit-Tests mit Solr-Mockdaten ausführen (ohne TYPO3-Instanz, wie in der CI), kein Solr-Tunnel nötig
     cmds:
       - COMPOSER_NO_SECURITY_BLOCKING=1 composer install --no-interaction --no-progress
       - vendor/bin/phpunit -c Tests/phpunit.xml {{.CLI_ARGS}}
@@ -113,7 +192,7 @@ tasks:
     desc: PHPUnit-Tests gegen den echten Solr ausführen und fehlende Solr-Cassetten aufzeichnen (Solr-Tunnel nötig)
     cmds:
       - COMPOSER_NO_SECURITY_BLOCKING=1 composer install --no-interaction --no-progress
-      - SOLR_RECORD_BASE=http://127.0.0.1:8983 vendor/bin/phpunit -c Tests/phpunit.xml {{.CLI_ARGS}}
+      - SOLR_RECORD_BASE=http://127.0.0.1:18983 vendor/bin/phpunit -c Tests/phpunit.xml {{.CLI_ARGS}}
 
   test:
     desc: Playwright-Test ausführen
@@ -121,4 +200,4 @@ tasks:
     cmds:
       - npx playwright test {{.CLI_ARGS}}
     env:
-      BASE_URL: http://127.0.0.1/
+      BASE_URL: http://127.0.0.1:{{.WEB_PORT}}/

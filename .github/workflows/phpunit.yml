@@ -19,12 +19,12 @@ jobs:
       - name: Checkout dla-opac-ng
         uses: actions/checkout@v4
 
-      # Die Unit-Tests brauchen weder DDEV noch Datenbank oder Solr (Solr-Mock-Server, siehe README),
-      # daher direkt mit PHP auf dem Runner. PHP-Version wie in der DDEV-Umgebung (Taskfile.yml).
+      # Die Unit-Tests brauchen weder TYPO3-Instanz noch Datenbank oder Solr (Solr-Mock-Server, siehe README),
+      # daher direkt mit PHP auf dem Runner. PHP-Version wie im Produktivsystem.
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: '8.3'
           tools: composer:v2
           coverage: none
 

@@ -2,9 +2,10 @@ name: "Copilot Setup Steps"
 
 # Prepares the environment for the Copilot cloud agent before its firewall is active.
 # Runs automatically for the agent; triggers here are only for manual/PR validation.
-# Installs DDEV/Task, PHP with the Composer dependencies of this repository, pulls Docker images
-# and runs `task install`, so that the agent can run `task test:php` and Psalm (docker)
-# without further network access.
+# Installs Task and PHP with the Composer dependencies of this repository, sets up a TYPO3 instance
+# without Docker/DDEV (`task install`: MariaDB service container, PHP built-in web server on port 80)
+# and pulls the Psalm image, so that the agent can run `task test:php`, Psalm (docker) and requests
+# against http://127.0.0.1/ without further network access.
 # Note: only steps, permissions, runs-on, services, snapshot and timeout-minutes of the
 # job are honored by Copilot (e.g. job-level env is ignored, so set env per step).
 # A failing step skips all following steps, so keep verification out of this job.
@@ -20,14 +21,27 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: read
+
+    # Gleiche MariaDB-Version wie im Produktivsystem; task install erkennt die laufende Datenbank
+    services:
+      mariadb:
+        image: mariadb:11.8
+        env:
+          MARIADB_ROOT_PASSWORD: root
+          MARIADB_DATABASE: db
+          MARIADB_USER: db
+          MARIADB_PASSWORD: db
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=20
+
     steps:
       - name: Checkout dla-opac-ng
         uses: actions/checkout@v4
-
-      - name: Set up DDEV
-        uses: ddev/github-action-setup-ddev@v1
-        with:
-          autostart: false
 
       - name: Set up Task
         uses: arduino/setup-task@v2
@@ -35,27 +49,20 @@ jobs:
           # Authentifizierte Anfrage vermeidet das GitHub-API-Rate-Limit beim Ermitteln der Task-Version
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-      # PHP + Composer-Abhängigkeiten im Repository, damit der Agent die PHPUnit-Tests ohne DDEV
-      # ausführen kann (task test:php)
+      # PHP-Version wie im Produktivsystem; setup-php hinterlegt das GITHUB_TOKEN auch für Composer
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: '8.3'
+          extensions: intl, mysqli, pdo_mysql
           tools: composer:v2
           coverage: none
 
+      # Composer-Abhängigkeiten im Repository für die PHPUnit-Tests (task test:php)
       - name: Install Composer dependencies
         env:
           COMPOSER_NO_SECURITY_BLOCKING: 1
         run: composer install --no-interaction --no-progress
-
-      - name: Configure Composer GitHub token (avoids api.github.com auth failures)
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          mkdir -p ~/.ddev/homeadditions/.composer
-          printf '{"github-oauth":{"github.com":"%s"}}' "$GITHUB_TOKEN" > ~/.ddev/homeadditions/.composer/auth.json
-          chmod 600 ~/.ddev/homeadditions/.composer/auth.json
 
       - name: Install test environment
         run: task install
@@ -63,4 +70,3 @@ jobs:
       # Same image/version as .github/workflows/psalm.yml; allows running Psalm offline
       - name: Pull Psalm image
         run: docker pull ghcr.io/psalm/psalm-github-actions:6.16.1
-

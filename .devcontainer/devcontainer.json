@@ -1,24 +1,28 @@
 {
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22"
+    }
+  },
   "postCreateCommand": "bash .devcontainer/startup.sh",
-  "forwardPorts": [80, 3306, 8027],
-  	"portsAttributes": {
-  		"80": {
-  			"label": "TYPO3"
-  		},
-  		"3306": {
-  			"label": "mariadb"
-  		},
-  		"8027": {
-  			"label": "Mailpit"
-  		}
-  	},
+  "postStartCommand": "task start",
+  "forwardPorts": [80, 3306],
+  "portsAttributes": {
+    "80": {
+      "label": "TYPO3"
+    },
+    "3306": {
+      "label": "mariadb"
+    }
+  },
   "customizations": {
     "codespaces": {
       "repositories": {
-				"dla-marbach/typo3-find": {
-					"permissions": "write-all"
-				},
-				"dla-marbach/dla-opac-tests": {
+        "dla-marbach/typo3-find": {
+          "permissions": "write-all"
+        },
+        "dla-marbach/dla-opac-tests": {
           "permissions": "write-all"
         }
       }

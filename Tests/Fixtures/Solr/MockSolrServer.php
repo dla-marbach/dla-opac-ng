@@ -90,7 +90,7 @@ function findCassette(string $cassetteDir, string $path, array $query): ?array
 }
 
 /**
- * Aufnahmemodus (nur wenn SOLR_RECORD_BASE gesetzt ist, z.B. http://host.docker.internal:8983):
+ * Aufnahmemodus (nur wenn SOLR_RECORD_BASE gesetzt ist, z.B. http://127.0.0.1:18983):
  * Unbekannte Requests werden an den echten Solr weitergereicht und als Cassette in
  * cassettes/subqueries/ abgelegt. Dadurch werden alle Unterabfragen der Partials (siehe
  * Tests/Unit/Partials/Detail/) beim Ausführen der Tests automatisch mitgeschrieben.
