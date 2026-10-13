@@ -19,7 +19,7 @@ TYPO3-Extension `dla_opac_ng` (Composer: `dla/dla_opac_ng`, Namespace `Dla\DlaOp
 - `ext_localconf.php`, `ext_tables.php`, `ext_tables.sql` – TYPO3-Extension-Einstiegspunkte
 - `Tests/` – PHPUnit-Tests (`Unit/`, Tests des Such-Plugins unter `Find/Unit/`), Test-Hilfen (`Support/`), Solr-Fixtures (`Fixtures/Solr/`)
 - `dla-opac-tests/` – Submodul mit Playwright-End-to-End-Tests
-- `.devfiles/` – Dateien für die lokale Installation (DB-Dump `init.sql`, Site-Konfiguration, TSV-Importdaten, Fonts, CSS)
+- `.devfiles/` – Dateien für die lokale Installation (DB-Dump `init.sql`, Site-Konfiguration, TSV-Importdaten, Fonts)
 - `t3example/` – lokal erzeugte TYPO3-Instanz (DDEV), in `.gitignore`; **nicht committen und nicht manuell bearbeiten**
 
 ## Entwicklungsumgebung und Befehle
@@ -28,16 +28,17 @@ Alle Abläufe laufen über [Task](https://taskfile.dev) (`Taskfile.yml`) und DDE
 
 - `task install` – DDEV/TYPO3 in `t3example/` aufsetzen und die Extension einbinden
 - `task cache` – Extension-Code neu nach `t3example/.local-ext/` spiegeln und TYPO3-Cache leeren. **Nach Codeänderungen (insbesondere neuen/gelöschten Dateien) vor dem Testen ausführen**, da die Extension per Hardlink-Kopie (`cp -al`) und nicht direkt eingebunden ist.
-- `task test:php` – PHPUnit-Tests (inkl. `Tests/Find`) im DDEV-Container, gegen einen Solr-Mock-Server (kein Solr-Tunnel nötig)
+- `task test:php:local` – PHPUnit-Tests (inkl. `Tests/Find`) ohne DDEV direkt mit lokalem PHP (`composer install` im Repository + `vendor/bin/phpunit -c Tests/phpunit.xml`, wie in der CI), gegen einen Solr-Mock-Server (kein Solr-Tunnel nötig). Bevorzugter Weg, um Tests schnell auszuführen.
+- `task test:php` – dieselben PHPUnit-Tests im DDEV-Container (nach `task install`)
 - `task test:php:record` – Tests gegen echten Solr ausführen und fehlende Cassetten aufzeichnen (nur mit Solr-Tunnel)
 - `task test -- "katalog/"` – Playwright-Tests (benötigen laufende Instanz und Solr-Verbindung)
 - `task reinstall` – Umgebung komplett neu aufsetzen
 
 CI (`.github/workflows/`):
 
-- `phpunit.yml` – `task install` + `task test:php`
+- `phpunit.yml` – PHPUnit ohne DDEV: PHP 8.2 per `setup-php`, `composer install` im Repository (mit Composer-Cache), `vendor/bin/phpunit -c Tests/phpunit.xml`
 - `psalm.yml` – Psalm-Sicherheitsanalyse (`psalm.xml`, errorLevel 8) mit dem Docker-Image `ghcr.io/psalm/psalm-github-actions:6.16.1`
-- `copilot-setup-steps.yml` – bereitet die Umgebung für den Copilot-Agent vor (DDEV, Task, `task install`, Psalm-Image)
+- `copilot-setup-steps.yml` – bereitet die Umgebung für den Copilot-Agent vor (DDEV, Task, PHP + `composer install` im Repository, `task install`, Psalm-Image)
 
 ## Tests
 

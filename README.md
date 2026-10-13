@@ -83,7 +83,15 @@ BASE_URL=https://www.dla-marbach.de task test -- -g "robots"
 ## PHPUnit-Tests mit Solr-Mockdaten
 
 Die PHP-Unit-Tests (`Tests/`, inkl. der Tests des Such-Plugins in [Tests/Find](Tests/Find)) laufen gegen
-einen lokalen Solr-Mock-Server und benötigen dafür **keinen** Solr-Tunnel:
+einen lokalen Solr-Mock-Server und benötigen dafür **keinen** Solr-Tunnel. Sie brauchen auch weder DDEV noch
+Datenbank und laufen direkt mit lokalem PHP (`composer install` im Repository, wie in der CI
+[.github/workflows/phpunit.yml](.github/workflows/phpunit.yml)):
+
+```
+task test:php:local
+```
+
+Einzelne Tests: `task test:php:local -- --filter MediaPlayer`. Alternativ in der DDEV-Instanz (nach `task install`):
 
 ```
 task test:php
@@ -125,7 +133,7 @@ veralteten Cassetten zurückbleiben.
 
 Zusätzlich zu den Service-/Ajax-Tests gibt es [Tests/Unit/Partials](Tests/Unit/Partials), die einzelne
 Fluid-Partials dieser Extension (aus [Resources/Private/Partials](Resources/Private/Partials)) direkt
-rendern und den erzeugten HTML-Ausschnitt prüfen. Laufen ebenfalls über `task test:php`, ohne DB/Solr-Tunnel.
+rendern und den erzeugten HTML-Ausschnitt prüfen. Laufen ebenfalls über `task test:php:local` bzw. `task test:php`, ohne DB/Solr-Tunnel.
 
 Basis ist [Tests/Support/FluidPartialTestCase.php](Tests/Support/FluidPartialTestCase.php): baut eine
 minimale Fluid-`RenderingContext` (ohne vollen TYPO3-Functional-Bootstrap) und rendert

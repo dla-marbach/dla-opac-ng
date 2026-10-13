@@ -75,9 +75,6 @@ tasks:
       - |
         mkdir -p packages/dla-dla_opac_ng/Resources/Public/Fonts
         cp -al ../.devfiles/*.woff2 packages/dla-dla_opac_ng/Resources/Public/Fonts
-      - |
-        mkdir -p packages/dla-dla_opac_ng/Resources/Public/CSS
-        cp -al ../.devfiles/site.min.css packages/dla-dla_opac_ng/Resources/Public/CSS/
       - ddev composer require "dla/dla_opac_ng:@dev"
       - ddev composer require --dev "typo3/testing-framework:^8.3"
       - php ../.devfiles/add-test-autoload.php
@@ -115,6 +112,12 @@ tasks:
     dir: t3example
     cmds:
       - ddev exec vendor/bin/phpunit -c packages/dla-dla_opac_ng/Tests/phpunit.xml
+
+  test:php:local:
+    desc: PHPUnit-Tests ohne DDEV direkt mit lokalem PHP ausführen (wie in der CI), kein Solr-Tunnel nötig
+    cmds:
+      - COMPOSER_NO_SECURITY_BLOCKING=1 composer install --no-interaction --no-progress
+      - vendor/bin/phpunit -c Tests/phpunit.xml {{.CLI_ARGS}}
 
   test:php:record:
     desc: PHPUnit-Tests (dla_opac_ng) gegen den echten Solr ausführen und fehlende Solr-Cassetten aufzeichnen (Solr-Tunnel nötig)

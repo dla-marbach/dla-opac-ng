@@ -7,16 +7,27 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * Test-Double, das den echten HTTP-Aufruf einer Playlist-Datei durch einen
- * fest hinterlegten Inhalt ersetzt, damit die Tests ohne Netzwerkzugriff laufen.
+ * fest hinterlegten Inhalt und die DNS-Auflösung durch feste Adressen ersetzt,
+ * damit die Tests ohne Netzwerkzugriff laufen.
  */
 class TestableMediaPlayerViewHelper extends MediaPlayerViewHelper
 {
     /** @var array<string, string|false> */
     public array $playlistContentByUrl = [];
 
+    /** @var array<string, string[]> */
+    public array $addressesByHost = [
+        'example.org' => ['93.184.215.14'],
+    ];
+
     protected function fetchUrlContent(string $url)
     {
         return $this->playlistContentByUrl[$url] ?? false;
+    }
+
+    protected function resolveHostAddresses(string $host)
+    {
+        return $this->addressesByHost[$host] ?? false;
     }
 }
 
@@ -318,6 +329,30 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame('Track A', $mediaItem['tracks'][0]['title']);
         self::assertSame(10.0, $mediaItem['tracks'][0]['duration']);
         self::assertSame('https://example.org/media/tracks/b.mp3', $mediaItem['tracks'][1]['url']);
+    }
+
+    /**
+     * @test
+     */
+    public function m3uPlaylistOnHostWithPrivateAddressIsNotFetched(): void
+    {
+        $viewHelper = new TestableMediaPlayerViewHelper();
+        $viewHelper->addressesByHost['intranet.example.org'] = ['10.1.2.3'];
+        $viewHelper->playlistContentByUrl['https://intranet.example.org/playlist.m3u'] = implode("\n", [
+            '#EXTM3U',
+            'https://example.org/media/a.mp3',
+        ]);
+
+        $result = $viewHelper->buildMediaData(
+            ['https://intranet.example.org/playlist.m3u'],
+            ['m3u'],
+            ['public'],
+            ['Playlist'],
+            []
+        );
+
+        self::assertCount(1, $result['mediaplayer']);
+        self::assertSame([], $result['mediaplayer'][0]['tracks']);
     }
 
     /**
