@@ -18,7 +18,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 /**
  * Proof-of-Work middleware to protect search result list pages from bot crawling.
  *
- * When a request contains the tx_find_find parameter,
+ * When a request contains the tx_find_find or tx_web2pdf_pi1 parameter,
  * the middleware checks for a valid PoW cookie. If absent, it serves a
  * challenge page whose embedded JavaScript solves a SHA-256 PoW puzzle.
  * Once solved, a signed cookie is set allowing 24 hours of access.
@@ -79,12 +79,13 @@ class ProofOfWorkMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Determine whether the request contains tx_find_find parameters.
+     * Determine whether the request contains tx_find_find or tx_web2pdf_pi1
+     * (web2pdf PDF generation) parameters.
      */
     private function isSearchResultRequest(ServerRequestInterface $request): bool
     {
         $params = $request->getQueryParams();
-        return isset($params['tx_find_find']);
+        return isset($params['tx_find_find']) || isset($params['tx_web2pdf_pi1']);
     }
 
     /**
