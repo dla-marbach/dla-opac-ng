@@ -22,8 +22,8 @@ task install
 | Task | |
 |---|---|
 | `task install` | PHP/Composer/Apache/MariaDB installieren (falls nötig), TYPO3 in `t3example/` aufsetzen, Extension einbinden und starten |
-| `task start` / `task stop` | MariaDB, Solr-Mock-Server, PHP-FPM und Apache starten bzw. stoppen |
-| `task cache` | Extension neu einbinden und TYPO3-Cache leeren |
+| `task start` / `task stop` | MariaDB, Solr-Mock-Server, PHP-FPM und Apache starten bzw. Solr-Mock-Server, PHP-FPM und Apache stoppen (MariaDB läuft weiter) |
+| `task cache` | TYPO3-Cache leeren |
 | `task reinstall` | TYPO3-Instanz und Datenbank löschen und neu aufsetzen |
 
 Logs: `/tmp/typo3-apache-error.log`, `/tmp/typo3-php-error.log`, `t3example/var/log/` und `/tmp/solr-mock.log`.
@@ -204,7 +204,7 @@ wird durch `FakeCollectionService` ersetzt; Testdaten dafür über `FakeCollecti
 
 ## Weitere Hinweise
 
-Der Code der Extension ist über Symlinks eingebunden. Nach Änderungen am Code wie beispielsweise in [Configuration/TypoScript/setup.ts](Configuration/TypoScript/setup.ts) ist also lediglich ein Löschen des TYPO3-Caches erforderlich:
+Die Extension ist per Composer-Path-Repository eingebunden (`t3example/packages/dla-dla_opac_ng` ist ein Symlink auf dieses Repository), Änderungen am Code wirken also direkt. Nach Änderungen z.B. an [Configuration/TypoScript/setup.ts](Configuration/TypoScript/setup.ts), `Configuration/Services.yaml` oder `ext_localconf.php` ist lediglich ein Löschen des TYPO3-Caches erforderlich:
 
 ```
 task cache

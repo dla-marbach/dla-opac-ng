@@ -180,10 +180,13 @@ if ($proxyBase && isReachable($proxyBase)) {
     }
 }
 
-$cassette = findCassette($cassetteDir, $path, $query);
+// Cassetten werden nur für GET-Anfragen aufgezeichnet und abgespielt (Identität = Pfad + Query-String);
+// andere Methoden werden nur im Durchreichmodus beantwortet.
+$isGet = ($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'GET';
+$cassette = $isGet ? findCassette($cassetteDir, $path, $query) : null;
 
 $recordBase = getenv('SOLR_RECORD_BASE');
-if ($cassette === null && $recordBase) {
+if ($cassette === null && $recordBase && $isGet) {
     $cassette = recordCassette($recordBase, $cassetteDir, $path, $query);
 }
 

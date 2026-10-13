@@ -30,11 +30,13 @@ tasks:
       - |
         SUDO=$([ "$(id -u)" -eq 0 ] || echo sudo)
         PACKAGES=""
-        command -v php{{.PHP_VERSION}} >/dev/null || PACKAGES="$PACKAGES unzip $(printf 'php{{.PHP_VERSION}}-%s ' cli curl gd intl mbstring mysql xml zip)"
-        [ -x /usr/sbin/php-fpm{{.PHP_VERSION}} ] || PACKAGES="$PACKAGES php{{.PHP_VERSION}}-fpm"
-        [ -x /usr/sbin/apache2 ] || PACKAGES="$PACKAGES apache2"
+        # PHP-Erweiterungen auch dann prüfen, wenn PHP schon vorhanden ist (CLI und FPM nutzen dieselben Pakete)
+        for PACKAGE in unzip apache2 $(printf 'php{{.PHP_VERSION}}-%s ' cli fpm curl gd intl mbstring mysql xml zip); do
+          dpkg -s "$PACKAGE" >/dev/null 2>&1 || PACKAGES="$PACKAGES $PACKAGE"
+        done
         command -v composer >/dev/null || PACKAGES="$PACKAGES composer"
-        # MariaDB nur installieren, wenn keine Datenbank läuft (z.B. Service-Container in der Copilot-Umgebung)
+        command -v mariadb >/dev/null || command -v mysql >/dev/null || PACKAGES="$PACKAGES mariadb-client"
+        # MariaDB-Server nur installieren, wenn keine Datenbank läuft (z.B. Service-Container in der Copilot-Umgebung)
         if ! bash -c '</dev/tcp/127.0.0.1/3306' 2>/dev/null && ! command -v mariadbd >/dev/null; then
           PACKAGES="$PACKAGES mariadb-server mariadb-client"
           # Version wie im Produktivsystem aus dem MariaDB-Repository, sonst die Version der Distribution
@@ -90,33 +92,26 @@ tasks:
     dir: t3example
     dotenv: ['../.devfiles/.env']
     cmds:
-      - task: sync_ext
+      - task: link_ext
       - '{{.COMPOSER}} require "dla/dla_opac_ng:@dev" --no-interaction --no-progress'
       - cp -f ../.devfiles/systematik.tsv systematik.tsv
       - cp -f ../.devfiles/tektonik.tsv tektonik.tsv
       - '{{.PHP}} vendor/bin/typo3 dla_opac_ng:import -t classification -f systematik.tsv -p 6'
       - '{{.PHP}} vendor/bin/typo3 dla_opac_ng:import -t collection -f tektonik.tsv -p 6'
 
-  sync_ext:
+  link_ext:
     dir: t3example
     cmds:
-      - mkdir -p .local-ext packages
-      - rm -rf .local-ext/dla-dla_opac_ng
-      - mkdir -p .local-ext/dla-dla_opac_ng
-      - |
-        cp -al \
-        ../Classes \
-        ../Configuration \
-        ../Resources \
-        ../LICENSE \
-        ../composer.json \
-        ../ext_* \
-        .local-ext/dla-dla_opac_ng/
+      # Composer-Path-Repository (packages/*): die Extension ist das Repository selbst, Änderungen wirken sofort
+      - mkdir -p packages
       - rm -rf packages/dla-dla_opac_ng
-      - ln -s ../.local-ext/dla-dla_opac_ng packages/dla-dla_opac_ng
+      - ln -s ../.. packages/dla-dla_opac_ng
+      # Schriften liegen nur für die Entwicklungsumgebung in .devfiles/ (Resources/Public/Fonts/ ist in .gitignore)
       - |
-        mkdir -p packages/dla-dla_opac_ng/Resources/Public/Fonts
-        cp -al ../.devfiles/*.woff2 packages/dla-dla_opac_ng/Resources/Public/Fonts
+        mkdir -p ../Resources/Public/Fonts
+        for FONT in ../.devfiles/*.woff2; do
+          ln -sf "../../../.devfiles/$(basename "$FONT")" ../Resources/Public/Fonts/
+        done
 
   start:
     desc: starte MariaDB, Solr-Mock-Server, PHP-FPM und Apache (z.B. nach einem Neustart des Codespaces)
@@ -126,7 +121,7 @@ tasks:
       - task: web:start
 
   stop:
-    desc: stoppe Apache, PHP-FPM und Solr-Mock-Server
+    desc: stoppe Apache, PHP-FPM und Solr-Mock-Server (MariaDB läuft weiter)
     cmds:
       - task: web:stop
       - task: solr:stop
@@ -214,7 +209,11 @@ tasks:
         # über bash starten, damit der Server nach dem Ende von task weiterläuft
         bash -c 'setsid nohup "$0" -S 127.0.0.1:{{.SOLR_MOCK_PORT}} -t Tests/Fixtures/Solr Tests/Fixtures/Solr/MockSolrServer.php \
           > /tmp/solr-mock.log 2>&1 < /dev/null &' {{.PHP}}
-        for i in $(seq 20); do bash -c '</dev/tcp/127.0.0.1/{{.SOLR_MOCK_PORT}}' 2>/dev/null && break; sleep 0.25; done
+        for i in $(seq 20); do
+          bash -c '</dev/tcp/127.0.0.1/{{.SOLR_MOCK_PORT}}' 2>/dev/null && break
+          [ "$i" -lt 20 ] || { echo "Solr-Mock-Server startet nicht:"; cat /tmp/solr-mock.log; exit 1; }
+          sleep 0.25
+        done
         echo "Solr-Mock-Server ({{.MODE}}) läuft auf Port {{.SOLR_MOCK_PORT}} (Log: /tmp/solr-mock.log)"
 
   solr:record:
@@ -230,17 +229,19 @@ tasks:
       - pkill -f "^[^ ]*php[^ ]* -S 127.0.0.1:{{.SOLR_MOCK_PORT}} " || true
 
   cache:
-    desc: lösche den TYPO3-Cache, um Code-Änderungen wirksam zu machen
+    desc: lösche den TYPO3-Cache (z.B. nach Änderungen an TypoScript, Services.yaml oder ext_localconf.php)
     dir: t3example
     dotenv: ['../.devfiles/.env']
     cmds:
-      - task: sync_ext
+      - task: link_ext
       - '{{.PHP}} vendor/bin/typo3 cache:flush'
       - '{{.COMPOSER}} dump-autoload'
 
   reinstall:
     desc: löschen, neuinstallieren und starten
     cmds:
+      # zuerst, damit delete auch in einer frischen Umgebung MariaDB starten kann
+      - task: install_packages
       - task: delete
       - task: install
 

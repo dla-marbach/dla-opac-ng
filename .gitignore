@@ -7,3 +7,4 @@ Tests/Fixtures/Solr/missing-requests.log
 /composer.lock
 /public/
 .phpunit.result.cache
+/Resources/Public/Fonts/

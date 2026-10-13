@@ -6,7 +6,7 @@ Gilt für GitHub Copilot, Claude Code und andere Agenten, die `AGENTS.md` lesen.
 
 TYPO3-Extension `dla_opac_ng` (Composer: `dla/dla_opac_ng`, Namespace `Dla\DlaOpacNg\`) für den Katalog (OPAC) des Deutschen Literaturarchivs Marbach (https://www.dla-marbach.de/katalog).
 
-- TYPO3 v12, PHP ^8.1 (Produktivsystem: TYPO3 12.4, PHP 8.3, MariaDB 11.8, Apache; Entwicklungsumgebung: PHP 8.3, MariaDB 11.8 bzw. 10.11, Apache mit PHP-FPM)
+- TYPO3 v12; `composer.json` erlaubt PHP ^8.1, entwickelt und getestet wird mit PHP 8.3 (Produktivsystem: TYPO3 12.4, PHP 8.3, MariaDB 11.8, Apache; Entwicklungsumgebung: PHP 8.3, MariaDB 11.8 bzw. 10.11, Apache mit PHP-FPM)
 - Enthält das Such-Plugin der früheren Extension `dla/find` (Fork von subugoe/typo3-find, mit Historie aus `dla-marbach/typo3-find` übernommen): Code unter `Classes/Find/` (Namespace `Dla\Find\`, ViewHelper-Prefix `s:`), Plugin-Signatur `find_find`, TypoScript `plugin.tx_find`. Suche/Anzeige läuft über Solr (Solarium).
 - Solr-Verbindung ausschließlich über die Umgebungsvariablen `SOLR_HOST`/`SOLR_CORE` (optional `SOLR_TIMEOUT`); alle Solr-Zugriffe laufen über `Classes/Service/SolrConnection.php` (Solarium-Client bzw. `request()` für Rohanfragen).
 - Projektsprache (README, Commits, Task-Beschreibungen, Übersetzungen) ist überwiegend **Deutsch**.
@@ -29,8 +29,8 @@ TYPO3-Extension `dla_opac_ng` (Composer: `dla/dla_opac_ng`, Namespace `Dla\DlaOp
 Alle Abläufe laufen über [Task](https://taskfile.dev) (`Taskfile.yml`): PHP 8.3, Composer, Apache und MariaDB werden per apt installiert, TYPO3 läuft unter http://127.0.0.1/ (Backend `/typo3`, admin / `Dla1337!`). Logs: `/tmp/typo3-apache-error.log`, `/tmp/typo3-php-error.log`, `t3example/var/log/`, Solr-Mock `/tmp/solr-mock.log`. PHP-Befehle mit PHP 8.3 ausführen (`php8.3`, falls `php` eine andere Version ist).
 
 - `task install` – PHP/Composer/Apache/MariaDB installieren (falls nötig), TYPO3 in `t3example/` aufsetzen, die Extension einbinden und starten
-- `task start` / `task stop` – MariaDB, Solr-Mock-Server, PHP-FPM und Apache starten (idempotent) bzw. stoppen. Antwortet http://127.0.0.1/ nicht, zuerst `task start` ausführen.
-- `task cache` – Extension-Code neu nach `t3example/.local-ext/` spiegeln und TYPO3-Cache leeren. **Nach Codeänderungen (insbesondere neuen/gelöschten Dateien) vor dem Testen ausführen**, da die Extension per Hardlink-Kopie (`cp -al`) und nicht direkt eingebunden ist.
+- `task start` / `task stop` – MariaDB, Solr-Mock-Server, PHP-FPM und Apache starten (idempotent) bzw. Solr-Mock-Server, PHP-FPM und Apache stoppen (MariaDB läuft weiter). Antwortet http://127.0.0.1/ nicht, zuerst `task start` ausführen.
+- `task cache` – TYPO3-Cache leeren. Die Extension ist per Composer-Path-Repository eingebunden (`t3example/packages/dla-dla_opac_ng` → Repository), Codeänderungen wirken direkt; nach Änderungen an TypoScript, `Services.yaml`, `ext_localconf.php` o.ä. vor dem Testen `task cache` ausführen.
 - `task test:php` – PHPUnit-Tests (inkl. `Tests/Find`) mit lokalem PHP ohne TYPO3-Instanz (`composer install` im Repository + `vendor/bin/phpunit -c Tests/phpunit.xml`, wie in der CI), gegen einen Solr-Mock-Server (kein Solr-Tunnel nötig)
 - `task test:php:record` – Tests gegen echten Solr ausführen und fehlende Cassetten aufzeichnen (nur mit Solr-Tunnel)
 - `task test -- "katalog/"` – Playwright-Tests (benötigen laufende Instanz)
