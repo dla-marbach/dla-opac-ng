@@ -7,11 +7,10 @@ Die Extension enthält seit Version 6 auch das Such-Plugin der früheren Extensi
 
 ## Installation
 
-Die Entwicklungsumgebung kommt ohne Docker/DDEV aus: PHP 8.3, Composer und MariaDB werden per `apt` installiert
-(Ubuntu 24.04), TYPO3 läuft im eingebauten PHP-Webserver (`php -S`) auf Port 80. MariaDB wird nach Möglichkeit
-in derselben Version wie im Produktivsystem (11.8) aus dem MariaDB-Repository installiert, sonst in der Version
-der Distribution (10.11). Läuft bereits eine Datenbank auf Port 3306 (z.B. Service-Container in der Copilot-Umgebung),
-wird diese verwendet.
+PHP 8.3, Composer, Apache (mit PHP-FPM) und MariaDB werden per `apt` installiert (Ubuntu 24.04), TYPO3 läuft
+unter http://127.0.0.1/. MariaDB wird nach Möglichkeit in derselben Version wie im Produktivsystem (11.8) aus dem
+MariaDB-Repository installiert, sonst in der Version der Distribution (10.11). Läuft bereits eine Datenbank auf
+Port 3306 (z.B. Service-Container in der Copilot-Umgebung), wird diese verwendet.
 
 In einem Codespace wird alles beim Erstellen automatisch eingerichtet ([.devcontainer/startup.sh](.devcontainer/startup.sh))
 und nach jedem Neustart per `task start` gestartet. Manuell (z.B. in anderen Ubuntu-Umgebungen):
@@ -22,15 +21,19 @@ task install
 
 | Task | |
 |---|---|
-| `task install` | PHP/Composer/MariaDB installieren (falls nötig), TYPO3 in `t3example/` aufsetzen, Extension einbinden und starten |
-| `task start` / `task stop` | MariaDB und PHP-Webserver starten bzw. Webserver stoppen (Log: `/tmp/typo3-web.log`) |
+| `task install` | PHP/Composer/Apache/MariaDB installieren (falls nötig), TYPO3 in `t3example/` aufsetzen, Extension einbinden und starten |
+| `task start` / `task stop` | MariaDB, Solr-Mock-Server, PHP-FPM und Apache starten bzw. stoppen |
 | `task cache` | Extension neu einbinden und TYPO3-Cache leeren |
 | `task reinstall` | TYPO3-Instanz und Datenbank löschen und neu aufsetzen |
 
-Der Webserver kann auch auf einem anderen Port laufen, z.B. `WEB_PORT=8080 task start`.
+Logs: `/tmp/typo3-apache-error.log`, `/tmp/typo3-php-error.log`, `t3example/var/log/` und `/tmp/solr-mock.log`.
+Die Konfiguration von Apache und PHP-FPM steht in [.devfiles/apache.conf](.devfiles/apache.conf) und
+[.devfiles/php-fpm.conf](.devfiles/php-fpm.conf), die Umgebungsvariablen in [.devfiles/.env](.devfiles/.env)
+(Änderungen werden mit `task start` übernommen).
 
 Für Claude-Code-Cloud-Sessions richtet [.claude/hooks/session-start.sh](.claude/hooks/session-start.sh) dieselbe Umgebung ein,
 für den Copilot-Agent [.github/workflows/copilot-setup-steps.yml](.github/workflows/copilot-setup-steps.yml).
+Anweisungen für die Agenten stehen in [AGENTS.md](AGENTS.md).
 
 ## Verbindung zum Solr
 
@@ -40,25 +43,47 @@ Umgebungsvariablen konfiguriert:
 
 | Variable | Beispiel | |
 |---|---|---|
-| `SOLR_HOST` | `http://127.0.0.1:18983/solr/` | Basis-URL inkl. Solr-Kontext |
+| `SOLR_HOST` | `http://127.0.0.1:8984/solr/` | Basis-URL inkl. Solr-Kontext |
 | `SOLR_CORE` | `internformat` | Name des Cores |
 | `SOLR_TIMEOUT` | `10` | optional, Timeout in Sekunden (Standard: 10) |
 
-Für die lokale Umgebung stehen die Werte in [.devfiles/.env](.devfiles/.env) (werden von `task install`, `task start`
-und `task cache` als Umgebungsvariablen gesetzt, bereits gesetzte Variablen haben Vorrang). Der Solr-Tunnel (siehe unten)
-endet direkt auf `127.0.0.1:18983`.
+### Solr-Mock-Server
 
-Lokal muss GitHub CLI [gh](https://cli.github.com) installiert sein.
+Die lokale TYPO3-Instanz fragt nicht direkt einen Solr ab, sondern den Solr-Mock-Server
+([Tests/Fixtures/Solr/MockSolrServer.php](Tests/Fixtures/Solr/MockSolrServer.php)) auf Port 8984, der mit
+`task start` automatisch gestartet wird:
 
-### DLA Testsystem
+* **Ohne Tunnel** beantwortet er Anfragen aus den aufgezeichneten Antworten (Cassetten) in
+  [Tests/Fixtures/Solr/cassettes](Tests/Fixtures/Solr/cassettes). Damit funktioniert die Instanz auch ohne
+  Solr-Zugriff (z.B. für Copilot und Claude), allerdings nur für bereits aufgezeichnete Anfragen. Fehlende Anfragen
+  werden mit HTTP 404 beantwortet und in `Tests/Fixtures/Solr/missing-requests.log` protokolliert.
+* **Mit Tunnel** (echter Solr auf `127.0.0.1:8983`, siehe unten) reicht er alle Anfragen unverändert an den echten
+  Solr durch (Antwort-Header `X-Solr-Mock: proxy`). Es ist kein Umschalten nötig: Sobald der Tunnel steht, liefert
+  die Instanz echte Daten, nach dem Beenden wieder die Cassetten.
 
-Auf dem lokalen PC mit aktiver VPN-Verbindung:
+Neue Cassetten für die Instanz aufnehmen (Tunnel nötig):
 
 ```
-gh codespace ssh -- -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -R 127.0.0.1:18983:serene.dla-marbach.de:8983
+task solr:record
 ```
 
-### Entwicklungssystem
+Danach die gewünschten Seiten im Browser aufrufen bzw. die Playwright-Tests ausführen. Anfragen, für die noch keine
+Cassette existiert, werden vom echten Solr geholt und in
+[Tests/Fixtures/Solr/cassettes/typo3](Tests/Fixtures/Solr/cassettes/typo3) gespeichert. Anschließend mit
+`task solr:stop solr:start` in den normalen Modus zurückwechseln und die neuen Dateien committen.
+
+### Tunnel zum Solr
+
+Der Tunnel wird vom lokalen PC aus per GitHub CLI [gh](https://cli.github.com) in den Codespace aufgebaut und endet
+dort auf `127.0.0.1:8983`.
+
+DLA Testsystem (auf dem lokalen PC mit aktiver VPN-Verbindung):
+
+```
+gh codespace ssh -- -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -R 127.0.0.1:8983:serene.dla-marbach.de:8983
+```
+
+Entwicklungssystem:
 
 1. Codespace mit Repo https://github.com/dla-marbach/dla-opac-transform starten und im Codespace `task solr` ausführen
 
@@ -66,7 +91,7 @@ gh codespace ssh -- -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o 
 
 ```
 SOLR="127.0.0.1"
-gh codespace ssh -- -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -R 127.0.0.1:18983:$SOLR:8983
+gh codespace ssh -- -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -R 127.0.0.1:8983:$SOLR:8983
 ```
 
 ## GUIs
@@ -185,7 +210,7 @@ Der Code der Extension ist über Symlinks eingebunden. Nach Änderungen am Code 
 task cache
 ```
 
-Nach einem Neustart des Codespaces werden MariaDB und Webserver automatisch gestartet (sonst `task start`).
+Nach einem Neustart des Codespaces werden alle Dienste automatisch gestartet (sonst `task start`).
 Eine komplett neue Instanz liefert:
 
 ```

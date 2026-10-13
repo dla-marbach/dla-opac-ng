@@ -1,10 +1,4 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
-  "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "22"
-    }
-  },
   "postCreateCommand": "bash .devcontainer/startup.sh",
   "postStartCommand": "task start",
   "forwardPorts": [80, 3306],

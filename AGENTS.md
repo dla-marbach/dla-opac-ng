@@ -1,10 +1,12 @@
-# Copilot Instructions für dla-opac-ng
+# Anweisungen für KI-Agenten (dla-opac-ng)
+
+Gilt für GitHub Copilot, Claude Code und andere Agenten, die `AGENTS.md` lesen.
 
 ## Projektüberblick
 
 TYPO3-Extension `dla_opac_ng` (Composer: `dla/dla_opac_ng`, Namespace `Dla\DlaOpacNg\`) für den Katalog (OPAC) des Deutschen Literaturarchivs Marbach (https://www.dla-marbach.de/katalog).
 
-- TYPO3 v12, PHP ^8.1 (Produktivsystem: TYPO3 12.4, PHP 8.3, MariaDB 11.8, Apache; Entwicklungsumgebung: PHP 8.3, MariaDB 11.8 bzw. 10.11, PHP-Webserver, ohne Docker/DDEV)
+- TYPO3 v12, PHP ^8.1 (Produktivsystem: TYPO3 12.4, PHP 8.3, MariaDB 11.8, Apache; Entwicklungsumgebung: PHP 8.3, MariaDB 11.8 bzw. 10.11, Apache mit PHP-FPM)
 - Enthält das Such-Plugin der früheren Extension `dla/find` (Fork von subugoe/typo3-find, mit Historie aus `dla-marbach/typo3-find` übernommen): Code unter `Classes/Find/` (Namespace `Dla\Find\`, ViewHelper-Prefix `s:`), Plugin-Signatur `find_find`, TypoScript `plugin.tx_find`. Suche/Anzeige läuft über Solr (Solarium).
 - Solr-Verbindung ausschließlich über die Umgebungsvariablen `SOLR_HOST`/`SOLR_CORE` (optional `SOLR_TIMEOUT`); alle Solr-Zugriffe laufen über `Classes/Service/SolrConnection.php` (Solarium-Client bzw. `request()` für Rohanfragen).
 - Projektsprache (README, Commits, Task-Beschreibungen, Übersetzungen) ist überwiegend **Deutsch**.
@@ -19,29 +21,29 @@ TYPO3-Extension `dla_opac_ng` (Composer: `dla/dla_opac_ng`, Namespace `Dla\DlaOp
 - `ext_localconf.php`, `ext_tables.php`, `ext_tables.sql` – TYPO3-Extension-Einstiegspunkte
 - `Tests/` – PHPUnit-Tests (`Unit/`, Tests des Such-Plugins unter `Find/Unit/`), Test-Hilfen (`Support/`), Solr-Fixtures (`Fixtures/Solr/`)
 - `dla-opac-tests/` – Submodul mit Playwright-End-to-End-Tests
-- `.devfiles/` – Dateien für die lokale Installation (DB-Dump `init.sql`, Umgebungsvariablen `.env`, Site-Konfiguration, Router für den PHP-Webserver, TSV-Importdaten, Fonts)
+- `.devfiles/` – Dateien für die lokale Installation (DB-Dump `init.sql`, Umgebungsvariablen `.env`, Site-Konfiguration, Apache- und PHP-FPM-Konfiguration, TSV-Importdaten, Fonts)
 - `t3example/` – lokal erzeugte TYPO3-Instanz, in `.gitignore`; **nicht committen und nicht manuell bearbeiten**
 
 ## Entwicklungsumgebung und Befehle
 
-Alle Abläufe laufen über [Task](https://taskfile.dev) (`Taskfile.yml`), ohne Docker/DDEV: PHP, Composer und MariaDB nativ (apt), TYPO3 im eingebauten PHP-Webserver unter http://127.0.0.1/ (Backend `/typo3`, admin / `Dla1337!`, Log `/tmp/typo3-web.log`, TYPO3-Log in `t3example/var/log/`):
+Alle Abläufe laufen über [Task](https://taskfile.dev) (`Taskfile.yml`): PHP 8.3, Composer, Apache und MariaDB werden per apt installiert, TYPO3 läuft unter http://127.0.0.1/ (Backend `/typo3`, admin / `Dla1337!`). Logs: `/tmp/typo3-apache-error.log`, `/tmp/typo3-php-error.log`, `t3example/var/log/`, Solr-Mock `/tmp/solr-mock.log`. PHP-Befehle mit PHP 8.3 ausführen (`php8.3`, falls `php` eine andere Version ist).
 
-- `task install` – PHP/Composer/MariaDB installieren (falls nötig), TYPO3 in `t3example/` aufsetzen, die Extension einbinden und starten
-- `task start` / `task stop` – MariaDB und PHP-Webserver starten (idempotent) bzw. Webserver stoppen. Antwortet http://127.0.0.1/ nicht, zuerst `task start` ausführen.
+- `task install` – PHP/Composer/Apache/MariaDB installieren (falls nötig), TYPO3 in `t3example/` aufsetzen, die Extension einbinden und starten
+- `task start` / `task stop` – MariaDB, Solr-Mock-Server, PHP-FPM und Apache starten (idempotent) bzw. stoppen. Antwortet http://127.0.0.1/ nicht, zuerst `task start` ausführen.
 - `task cache` – Extension-Code neu nach `t3example/.local-ext/` spiegeln und TYPO3-Cache leeren. **Nach Codeänderungen (insbesondere neuen/gelöschten Dateien) vor dem Testen ausführen**, da die Extension per Hardlink-Kopie (`cp -al`) und nicht direkt eingebunden ist.
 - `task test:php` – PHPUnit-Tests (inkl. `Tests/Find`) mit lokalem PHP ohne TYPO3-Instanz (`composer install` im Repository + `vendor/bin/phpunit -c Tests/phpunit.xml`, wie in der CI), gegen einen Solr-Mock-Server (kein Solr-Tunnel nötig)
 - `task test:php:record` – Tests gegen echten Solr ausführen und fehlende Cassetten aufzeichnen (nur mit Solr-Tunnel)
-- `task test -- "katalog/"` – Playwright-Tests (benötigen laufende Instanz und Solr-Verbindung)
-- Ohne Solr-Tunnel (Agent-Umgebungen) funktionieren Seiten mit Solr-Abfragen (z.B. `/find`) nicht; Bestandsübersicht/Systematik (Datenbank) und Backend schon.
+- `task test -- "katalog/"` – Playwright-Tests (benötigen laufende Instanz)
+- Die TYPO3-Instanz fragt Solr über den Solr-Mock-Server (Port 8984) ab: Ohne Tunnel liefert er aufgezeichnete Antworten (`Tests/Fixtures/Solr/cassettes/`, Aufnahmen der Instanz in `typo3/`), mit Tunnel auf Port 8983 reicht er an den echten Solr durch. Seiten, deren Solr-Anfragen nicht aufgezeichnet sind, schlagen ohne Tunnel fehl (fehlende Anfragen in `Tests/Fixtures/Solr/missing-requests.log`); Bestandsübersicht/Systematik (Datenbank) und Backend funktionieren immer.
 - `task reinstall` – Umgebung komplett neu aufsetzen
 
 CI (`.github/workflows/`):
 
 - `phpunit.yml` – PHPUnit ohne TYPO3-Instanz: PHP 8.3 per `setup-php`, `composer install` im Repository (mit Composer-Cache), `vendor/bin/phpunit -c Tests/phpunit.xml`
 - `psalm.yml` – Psalm-Sicherheitsanalyse (`psalm.xml`, errorLevel 8) mit dem Docker-Image `ghcr.io/psalm/psalm-github-actions:6.16.1`
-- `copilot-setup-steps.yml` – bereitet die Umgebung für den Copilot-Agent vor (MariaDB-11.8-Service-Container, Task, PHP 8.3 + `composer install` im Repository, `task install`, Psalm-Image)
+- `copilot-setup-steps.yml` – bereitet die Umgebung für den Copilot-Agent vor (MariaDB-11.8-Service-Container, Task, PHP 8.3 + `composer install` im Repository, `task install`, Psalm-Image); TYPO3 läuft danach bereits
 
-Claude-Code-Cloud-Sessions richten die Umgebung über den SessionStart-Hook `.claude/hooks/session-start.sh` ein.
+Claude-Code-Cloud-Sessions richten die Umgebung über den SessionStart-Hook `.claude/hooks/session-start.sh` ein: PHPUnit-Abhängigkeiten sofort, die TYPO3-Instanz im Hintergrund (bereit, sobald `/tmp/typo3-ready` existiert; Log `/tmp/typo3-setup.log`). Nur warten, wenn die Aufgabe die Instanz tatsächlich braucht.
 
 ## Tests
 

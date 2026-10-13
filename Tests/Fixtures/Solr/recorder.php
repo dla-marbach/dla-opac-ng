@@ -4,7 +4,7 @@
  * Zeichnet reale Solr-Antworten als Fixtures auf, solange der Solr-Tunnel erreichbar ist.
  *
  * Aufruf: php Tests/Fixtures/Solr/recorder.php [szenario ...]
- * Optional: SOLR_RECORD_BASE=http://127.0.0.1:18983 php Tests/Fixtures/Solr/recorder.php
+ * Optional: SOLR_RECORD_BASE=http://127.0.0.1:8983 php Tests/Fixtures/Solr/recorder.php
  *
  * Ohne Argumente werden alle Szenarien neu aufgezeichnet; mit Szenarionamen nur die genannten
  * (vermeidet Änderungen an bestehenden Cassetten, wenn sich die Live-Daten inzwischen verändert haben).
@@ -14,7 +14,7 @@
  * (siehe MockSolrServer.php).
  */
 
-$base = getenv('SOLR_RECORD_BASE') ?: 'http://127.0.0.1:18983';
+$base = getenv('SOLR_RECORD_BASE') ?: 'http://127.0.0.1:8983';
 $cassetteDir = __DIR__ . '/cassettes';
 
 if (!is_dir($cassetteDir) && !mkdir($cassetteDir, 0777, true) && !is_dir($cassetteDir)) {

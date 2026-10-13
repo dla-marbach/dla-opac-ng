@@ -10,7 +10,7 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
  * Zentrale Solr-Verbindung für Such-Plugin, ViewHelper, Ajax-Endpunkte und Services.
  *
  * Einzige Konfigurationsquelle sind die Umgebungsvariablen:
- * - SOLR_HOST: Basis-URL des Solr-Servers inkl. Kontext, z.B. "http://host.docker.internal:8983/solr/"
+ * - SOLR_HOST: Basis-URL des Solr-Servers inkl. Kontext, z.B. "http://127.0.0.1:8983/solr/"
  * - SOLR_CORE: Name des Cores, z.B. "internformat"
  * - SOLR_TIMEOUT: optional, Timeout in Sekunden für Solarium-Anfragen (Standard: 10)
  */
