@@ -1,6 +1,6 @@
 # Anweisungen für KI-Agenten (dla-opac-ng)
 
-Gilt für GitHub Copilot, Claude Code (`CLAUDE.md` verweist hierher) und andere Agenten, die `AGENTS.md` lesen.
+Gilt für GitHub Copilot, Claude Code und andere Agenten, die `AGENTS.md` lesen.
 Ausführliche Beschreibung der Abläufe: [README.md](README.md).
 
 ## Projekt
