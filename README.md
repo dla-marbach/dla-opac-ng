@@ -31,8 +31,7 @@ Die Konfiguration von Apache und PHP-FPM steht in [.devfiles/apache.conf](.devfi
 [.devfiles/php-fpm.conf](.devfiles/php-fpm.conf), die Umgebungsvariablen in [.devfiles/.env](.devfiles/.env)
 (Änderungen werden mit `task start` übernommen).
 
-Für Claude-Code-Cloud-Sessions richtet [.claude/hooks/session-start.sh](.claude/hooks/session-start.sh) dieselbe Umgebung ein,
-für den Copilot-Agent [.github/workflows/copilot-setup-steps.yml](.github/workflows/copilot-setup-steps.yml).
+Für den Copilot-Agent richtet [.github/workflows/copilot-setup-steps.yml](.github/workflows/copilot-setup-steps.yml) dieselbe Umgebung ein.
 Anweisungen für die Agenten stehen in [AGENTS.md](AGENTS.md).
 
 ## Verbindung zum Solr

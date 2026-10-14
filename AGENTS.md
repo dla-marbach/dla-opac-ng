@@ -43,8 +43,6 @@ CI (`.github/workflows/`):
 - `psalm.yml` – Psalm-Sicherheitsanalyse (`psalm.xml`, errorLevel 8) mit dem Docker-Image `ghcr.io/psalm/psalm-github-actions:6.16.1`
 - `copilot-setup-steps.yml` – bereitet die Umgebung für den Copilot-Agent vor (MariaDB-11.8-Service-Container, Task, PHP 8.3 + `composer install` im Repository, `task install`, Psalm-Image); TYPO3 läuft danach bereits
 
-Claude-Code-Cloud-Sessions richten die Umgebung über den SessionStart-Hook `.claude/hooks/session-start.sh` ein: PHPUnit-Abhängigkeiten sofort, die TYPO3-Instanz im Hintergrund (bereit, sobald `/tmp/typo3-ready` existiert; Log `/tmp/typo3-setup.log`). Nur warten, wenn die Aufgabe die Instanz tatsächlich braucht.
-
 ## Tests
 
 - Neue Funktionalität bzw. Bugfixes möglichst mit PHPUnit-Tests unter `Tests/Unit/` absichern (Namespace `Dla\DlaOpacNg\Tests\`).
