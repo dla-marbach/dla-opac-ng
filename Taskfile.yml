@@ -15,6 +15,9 @@ vars:
 
 env:
   COMPOSER_NO_SECURITY_BLOCKING: '1'
+  # Composer deaktiviert als root sonst die Plugins (z.B. in der Claude-Code-Cloud-Umgebung), ohne
+  # typo3/cms-composer-installers fehlt TYPO3_PATH_ROOT im Autoloader und die PHPUnit-Tests brechen ab
+  COMPOSER_ALLOW_SUPERUSER: '1'
 
 tasks:
   install:

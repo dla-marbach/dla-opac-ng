@@ -22,13 +22,19 @@ Ausführliche Beschreibung der Abläufe: [README.md](README.md).
 
 ## Umgebung und Befehle
 
-In der GitHub-Copilot-Umgebung wird TYPO3 beim Start durch `.github/workflows/copilot-setup-steps.yml` eingerichtet und läuft unter http://127.0.0.1/ (Backend `/typo3`, admin / `Dla1337!`). Für andere Umgebungen siehe `task install` in der README. PHP-Befehle mit PHP 8.3 ausführen (`php8.3`, falls `php` eine andere Version ist).
+In der GitHub-Copilot-Umgebung wird TYPO3 beim Start durch `.github/workflows/copilot-setup-steps.yml` eingerichtet und läuft unter http://127.0.0.1/ (Backend `/typo3`, admin / `Dla1337!`). PHP-Befehle mit PHP 8.3 ausführen (`php8.3`, falls `php` eine andere Version ist).
+
+In anderen Umgebungen (z.B. Claude Code in der Cloud) ist nichts vorbereitet. `task test:php` funktioniert sofort; für die übrigen Tests vorher einmalig einrichten:
+
+- `task install` – TYPO3-Instanz (einige Minuten; ist `r.mariadb.com` nicht erreichbar, wird MariaDB der Distribution verwendet)
+- `git submodule update --init` und `npm ci` in `dla-opac-tests/`; ist Chromium vorinstalliert (z.B. `PLAYWRIGHT_BROWSERS_PATH`), entfällt `npx playwright install`
+- Psalm: Docker-Daemon ggf. selbst starten (`dockerd`), dann `docker pull ghcr.io/psalm/psalm-github-actions:6.16.1`; scheitert der Download an der Netzwerkrichtlinie, Psalm nicht ausführen und im PR darauf hinweisen
 
 - `task start` – MariaDB, Solr-Mock-Server, PHP-FPM und Apache starten (idempotent), falls http://127.0.0.1/ nicht antwortet
 - `task cache` – TYPO3-Cache leeren; Code wirkt direkt (Symlink `t3example/packages/dla-dla_opac_ng`), aber nach Änderungen an TypoScript, `Services.yaml`, `ext_localconf.php` u.ä. nötig
 - `task test:php` – PHPUnit-Tests ohne TYPO3-Instanz, wie in der CI (`.github/workflows/phpunit.yml`); einzelne Tests mit `task test:php -- --filter Name`
-- `task test -- "katalog/"` – Playwright-Tests gegen die laufende Instanz
-- Psalm-Sicherheitsanalyse wie in der CI (`.github/workflows/psalm.yml`, Konfiguration `psalm.xml`), Image ist vorab geladen: `docker run --rm -v "$PWD":/app -w /app --entrypoint /composer/vendor/bin/psalm ghcr.io/psalm/psalm-github-actions:6.16.1 --taint-analysis --no-cache`
+- `task test -- "katalog/"` – Playwright-Tests gegen die laufende Instanz; Tests, die externe Dienste aufrufen (Downloads von `digital.dla-marbach.de`, Datendienst `dataservice.dla-marbach.de`, z.B. „Merkliste“, „Multimedia“, `datendienst/`), schlagen ohne Netzwerkzugriff fehl
+- Psalm-Sicherheitsanalyse wie in der CI (`.github/workflows/psalm.yml`, Konfiguration `psalm.xml`), Image ist in der Copilot-Umgebung vorab geladen: `docker run --rm -v "$PWD":/app -w /app --entrypoint /composer/vendor/bin/psalm ghcr.io/psalm/psalm-github-actions:6.16.1 --taint-analysis --no-cache`
 - Logs: `/tmp/typo3-apache-error.log`, `/tmp/typo3-php-error.log`, `t3example/var/log/`, `/tmp/solr-mock.log`
 
 ## Solr ohne Netzwerkzugriff
