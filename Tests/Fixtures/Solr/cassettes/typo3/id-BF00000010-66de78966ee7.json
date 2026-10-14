@@ -1,0 +1,164 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:BF00000010",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.70128,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00000010",
+                        "default": [
+                            "BF00000010",
+                            "H:Ackerknecht, Erwin - [Geschlossener Bestand der Mediendokumentation, Nachlass]",
+                            "Geschlossener Bestand der Mediendokumentation",
+                            "Nachlass",
+                            "false",
+                            "Texte von und über Erwin Ackerknecht, sonstige Texte",
+                            "1998-12-03",
+                            "2025-03-31",
+                            "Mediendokumentation",
+                            "2 Kästen",
+                            "Ackerknecht, Erwin (1880-1960)",
+                            "Nachlass, Mediendokumentation [H:Ackerknecht, Erwin]",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>H:Ackerknecht, Erwin - [Geschlossener Bestand der Mediendokumentation, Nachlass]</dc:title>\n  <dc:creator>Ackerknecht, Erwin (1880-1960)</dc:creator>\n  <dc:type>Nachlass</dc:type>\n  <dc:type>Bestand</dc:type>\n  <dc:format>2 Kästen</dc:format>\n  <dc:description>Texte von und über Erwin Ackerknecht, sonstige Texte</dc:description>\n  <dc:identifier>H:Ackerknecht, Erwin</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BF00000010</dc:identifier>\n  <dc:identifier>BF00000010</dc:identifier>\n</oai_dc:dc>",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>H:Ackerknecht, Erwin - [Geschlossener Bestand der Mediendokumentation, Nachlass]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Ackerknecht, Erwin (1880-1960)</namePart>\n    <nameIdentifier type=\"gnd\">118500457</nameIdentifier>\n    <namePart type=\"date\">1880-12-15 — 1960-08-24</namePart>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <typeOfResource collection=\"yes\">Bestand</typeOfResource>\n  <genre>Nachlass</genre>\n  <physicalDescription>\n    <extent>2 Kästen</extent>\n  </physicalDescription>\n  <abstract>Texte von und über Erwin Ackerknecht, sonstige Texte</abstract>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>H:Ackerknecht, Erwin</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">1998-12-03</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2025-03-31</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00000010</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "TY  - GEN\nAU  - Ackerknecht, Erwin\nAV  - bedingt benutzbar. Die Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Mediendokumentation.. E-Mail: mediendokumentation@dla-marbach.de\nCN  - BF000000109\nDB  - H:Ackerknecht, Erwin\nID  - BF00000010\nM3  - Nachlass\nN1  - Umfang: 2 Kästen\nN1  - vorgeordnet: 2 Kästen\nN2  - Texte von und über Erwin Ackerknecht, sonstige Texte\nTI  - H:Ackerknecht, Erwin - [Geschlossener Bestand der Mediendokumentation, Nachlass]\nUR  - https://www.dla-marbach.de/find/opac/id/BF00000010/\nER  -",
+                            "2 Kästen",
+                            "Ackerknecht, Erwin (1880-1960)␝Unter",
+                            "Ackerknecht, Erwin (1880-1960)␝Bestandsbildner/Vorbesitzer",
+                            "Ackerknecht, Erwin (1880-1960)",
+                            "H:Ackerknecht, Erwin",
+                            "Nachlass",
+                            "true",
+                            "1998-12-03",
+                            "Nachlässe und Spezialsammlungen",
+                            "Gedrucktes",
+                            "Regalachse D 19",
+                            "BF000000109",
+                            "2",
+                            "vorgeordnet",
+                            "Kästen",
+                            "Ackerknecht, Erwin (1880-1960)",
+                            "PE00046925",
+                            "1.0.0",
+                            "1",
+                            "Ackerknecht, Erwin (1880-1960)",
+                            "PE00046925",
+                            "PE00046925",
+                            "Ackerknecht, Erwin",
+                            "Ackerknecht, Erwin",
+                            "Ackerknecht, Erwin Julius",
+                            "BF",
+                            "Magazin Fellbach - Bitte 2 Wochen im Voraus bestellen!",
+                            "H:Ackerknecht, Erwin",
+                            "Ackerknecht, Erwin",
+                            "https://www.dla-marbach.de/find/opac/id/BF00000010",
+                            "benutzbar",
+                            "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Mediendokumentation.\nE-Mail: mediendokumentation@dla-marbach.de"
+                        ],
+                        "display": "H:Ackerknecht, Erwin - [Geschlossener Bestand der Mediendokumentation, Nachlass]",
+                        "category": "Geschlossener Bestand der Mediendokumentation",
+                        "categorySub": "Nachlass",
+                        "confidential": false,
+                        "content": "Texte von und über Erwin Ackerknecht, sonstige Texte",
+                        "dateCataloged": "1998-12-03",
+                        "dateModified": "2025-03-31",
+                        "department": "Mediendokumentation",
+                        "displayAddition1": "2 Kästen",
+                        "displayName": "Ackerknecht, Erwin (1880-1960)",
+                        "displayTree": "Nachlass, Mediendokumentation [H:Ackerknecht, Erwin]",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>H:Ackerknecht, Erwin - [Geschlossener Bestand der Mediendokumentation, Nachlass]</dc:title>\n  <dc:creator>Ackerknecht, Erwin (1880-1960)</dc:creator>\n  <dc:type>Nachlass</dc:type>\n  <dc:type>Bestand</dc:type>\n  <dc:format>2 Kästen</dc:format>\n  <dc:description>Texte von und über Erwin Ackerknecht, sonstige Texte</dc:description>\n  <dc:identifier>H:Ackerknecht, Erwin</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BF00000010</dc:identifier>\n  <dc:identifier>BF00000010</dc:identifier>\n</oai_dc:dc>",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>H:Ackerknecht, Erwin - [Geschlossener Bestand der Mediendokumentation, Nachlass]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Ackerknecht, Erwin (1880-1960)</namePart>\n    <nameIdentifier type=\"gnd\">118500457</nameIdentifier>\n    <namePart type=\"date\">1880-12-15 — 1960-08-24</namePart>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <typeOfResource collection=\"yes\">Bestand</typeOfResource>\n  <genre>Nachlass</genre>\n  <physicalDescription>\n    <extent>2 Kästen</extent>\n  </physicalDescription>\n  <abstract>Texte von und über Erwin Ackerknecht, sonstige Texte</abstract>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>H:Ackerknecht, Erwin</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">1998-12-03</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2025-03-31</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00000010</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "exportRIS": "TY  - GEN\nAU  - Ackerknecht, Erwin\nAV  - bedingt benutzbar. Die Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Mediendokumentation.. E-Mail: mediendokumentation@dla-marbach.de\nCN  - BF000000109\nDB  - H:Ackerknecht, Erwin\nID  - BF00000010\nM3  - Nachlass\nN1  - Umfang: 2 Kästen\nN1  - vorgeordnet: 2 Kästen\nN2  - Texte von und über Erwin Ackerknecht, sonstige Texte\nTI  - H:Ackerknecht, Erwin - [Geschlossener Bestand der Mediendokumentation, Nachlass]\nUR  - https://www.dla-marbach.de/find/opac/id/BF00000010/\nER  -",
+                        "extent": "2 Kästen",
+                        "filterAuthorityRelation_mv": [
+                            "Ackerknecht, Erwin (1880-1960)␝Unter"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Ackerknecht, Erwin (1880-1960)␝Bestandsbildner/Vorbesitzer"
+                        ],
+                        "filterAuthority_mv": [
+                            "Ackerknecht, Erwin (1880-1960)"
+                        ],
+                        "filterCollection_mv": [
+                            "H:Ackerknecht, Erwin"
+                        ],
+                        "filterFormContent_mv": [
+                            "Nachlass"
+                        ],
+                        "filterMultipart": true,
+                        "filterRecent": "1998-12-03",
+                        "filterSource": "Nachlässe und Spezialsammlungen",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "location_mv": [
+                            "Regalachse D 19"
+                        ],
+                        "mediaNumber": "BF000000109",
+                        "order_extent_mv": [
+                            "2"
+                        ],
+                        "order_status_mv": [
+                            "vorgeordnet"
+                        ],
+                        "order_unit_mv": [
+                            "Kästen"
+                        ],
+                        "personAt_display_mv": [
+                            "Ackerknecht, Erwin (1880-1960)"
+                        ],
+                        "personAt_id_mv": [
+                            "PE00046925"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 1,
+                        "searchCollectionCreator_display_mv": [
+                            "Ackerknecht, Erwin (1880-1960)"
+                        ],
+                        "searchCollectionCreator_id_mv": [
+                            "PE00046925"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00046925"
+                        ],
+                        "searchNameAt_mv": [
+                            "Ackerknecht, Erwin"
+                        ],
+                        "searchName_mv": [
+                            "Ackerknecht, Erwin"
+                        ],
+                        "searchVariant_mv": [
+                            "Ackerknecht, Erwin Julius"
+                        ],
+                        "source": "BF",
+                        "statusLoan": "Magazin Fellbach - Bitte 2 Wochen im Voraus bestellen!",
+                        "title": "H:Ackerknecht, Erwin",
+                        "titleShort": "Ackerknecht, Erwin",
+                        "url": "https://www.dla-marbach.de/find/opac/id/BF00000010",
+                        "usageRestriction": "benutzbar",
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Mediendokumentation.\nE-Mail: mediendokumentation@dla-marbach.de",
+                        "score": 13.70128
+                    }
+                ]
+            }
+        }
+    }
+}

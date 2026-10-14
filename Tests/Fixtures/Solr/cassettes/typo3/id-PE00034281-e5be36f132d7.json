@@ -1,0 +1,389 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(PE00034281)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 1,
+                "params": {
+                    "q": "id:(PE00034281)",
+                    "rows": "1"
+                }
+            },
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "PE00034281",
+                        "display": "Schiller, Friedrich von (1759-1805)",
+                        "categoryEntity_mv": [
+                            "Person"
+                        ],
+                        "categoryIndex_mv": [
+                            "Literarische/r Autor/in im Sinne der Bibliothek",
+                            "Person der Zeitungsausschnittsammlung",
+                            "Bestandsbildner/in im Sinne der Handschriftensammlung",
+                            "Bestandsbildner/in im Sinne der Sammlung Bilder und Objekte",
+                            "Komponist/in"
+                        ],
+                        "classificationNewspaper_comment_mv": [
+                            "Autoren, Kritiker und Übersetzer"
+                        ],
+                        "classificationNewspaper_text_mv": [
+                            "xy"
+                        ],
+                        "country_mv": [
+                            "Deutschland"
+                        ],
+                        "dateCataloged": "1997-06-17",
+                        "dateLifespanEnd": "1805-05-09",
+                        "dateLifespanStart": "1759-11-10",
+                        "dateModified": "2026-10-13",
+                        "displayAddition1": "Schriftsteller, Dramatiker, Historiker, Arzt, Hochschullehrer",
+                        "filterDatePoint_mv": [
+                            "1759-11-10T00:00:00Z",
+                            "1805-05-09T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "[1759-11-10 TO 1805-05-09]"
+                        ],
+                        "filterLocationType_mv": [
+                            "Marbach am Neckar␝Geburtsort",
+                            "Weimar␝Sterbeort"
+                        ],
+                        "filterLocation_mv": [
+                            "Marbach am Neckar",
+                            "Weimar"
+                        ],
+                        "filterSource": "Personen",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "gender": "männlich",
+                        "gnd_id_mv": [
+                            "118607626"
+                        ],
+                        "gnd_type_mv": [
+                            "GND-Nr."
+                        ],
+                        "linkCommonsImage_file_mv": [
+                            "Friedrich%20Schiller%20by%20Ludovike%20Simanowiz.jpg"
+                        ],
+                        "linkCommonsImage_rights_mv": [
+                            "Ludovike Simanowiz | Wikimedia Commons | Public domain"
+                        ],
+                        "linkCommonsSignature_file_mv": [
+                            "Friedrich%20Schiller%20Signature.svg"
+                        ],
+                        "linkCommonsSignature_rights_mv": [
+                            "Friedrich Schiller | Wikimedia Commons | Public domain"
+                        ],
+                        "linkDeutscheBiographie_mv": [
+                            "pnd118607626.html#adbcontent",
+                            "pnd118607626.html#ndbcontent"
+                        ],
+                        "linkFilmportal_mv": [
+                            "76dc042c1c20404eb780b3ba8a3b1ba7"
+                        ],
+                        "linkWikidata": "Q22670",
+                        "linkWikipedia": "Friedrich_Schiller",
+                        "nameAlternative_name_mv": [
+                            "Hogarth",
+                            "Schiller, Fridrich",
+                            "Schiller, Johann Christoph Friedrich",
+                            "Schiller, Johann Christoph Friedrich von",
+                            "Schiller, Friedrich"
+                        ],
+                        "nameAlternative_type_mv": [
+                            "Pseudonym",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣"
+                        ],
+                        "noteExplanatory_text_mv": [
+                            "1789 Professor für Geschichte in Jena; 1802 nobilitiert"
+                        ],
+                        "noteExplanatory_type_mv": [
+                            "Geschichte des Werks"
+                        ],
+                        "occupation_mv": [
+                            "Schriftsteller",
+                            "Dramatiker",
+                            "Historiker",
+                            "Arzt",
+                            "Hochschullehrer"
+                        ],
+                        "placeBirth": "Marbach am Neckar",
+                        "placeDeath": "Weimar",
+                        "place_mv": [
+                            "Marbach am Neckar",
+                            "Weimar"
+                        ],
+                        "reference_text_mv": [
+                            "Kosch Lit.<3>",
+                            "Wilpert/Gühring: Erstausgaben deutscher Dichtung. 2. Aufl.",
+                            "GND",
+                            "ADB",
+                            "Wikipedia [Stand: 13.03.2017]"
+                        ],
+                        "reference_type_mv": [
+                            "positiv",
+                            "positiv",
+                            "positiv",
+                            "positiv",
+                            "positiv"
+                        ],
+                        "relation_comment_mv": [
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Jugendliebe",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Geschwister",
+                            "␣",
+                            "Tochter",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Tochter",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Freund",
+                            "Geschwister",
+                            "␣",
+                            "Sohn",
+                            "Ehefrau seit 1790",
+                            "Mutter",
+                            "Sohn",
+                            "␣",
+                            "Vater",
+                            "␣",
+                            "␣",
+                            "Schwägerin",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣"
+                        ],
+                        "relation_id_mv": [
+                            "␣",
+                            "PE00003973",
+                            "PE00218975",
+                            "PE00022398",
+                            "PE00692313",
+                            "PE00200380",
+                            "TH00000151",
+                            "TH00019095",
+                            "TH00020928",
+                            "TH00000798",
+                            "PE00428322",
+                            "PE00621262",
+                            "PE00063034",
+                            "PE00063044",
+                            "PE00063045",
+                            "PE00223917",
+                            "PE00161797",
+                            "PE00047974",
+                            "PE00223921",
+                            "PE00523166",
+                            "PE00063107",
+                            "PE00184688",
+                            "PE00344247",
+                            "PE00255093",
+                            "PE00023910",
+                            "PE00063233",
+                            "PE00032194",
+                            "PE00063256",
+                            "PE00063257",
+                            "PE00053469",
+                            "PE00063258",
+                            "PE00192347",
+                            "PE00063259",
+                            "PE00034285",
+                            "PE00342470",
+                            "PE00041847",
+                            "KS00011436",
+                            "TH00001621",
+                            "TH00019888",
+                            "AK01776880",
+                            "TH00628436",
+                            "KS00143785",
+                            "AK01805867",
+                            "TH00942047",
+                            "TH00939028",
+                            "TH00030411",
+                            "TH00022433",
+                            "TH00038793",
+                            "TH00038694",
+                            "AK01805868",
+                            "TH00001912"
+                        ],
+                        "relation_text_mv": [
+                            "Dr. med.",
+                            "Conz, Karl Philipp (1762-1827)",
+                            "Harbaur, Josef (1776-1824)",
+                            "Kalb, Charlotte von (1761-1843)",
+                            "Schwan, Anna Margaretha (1766-1796)",
+                            "Wolzogen, Charlotte von (1766-)",
+                            "Arzt",
+                            "Dramatiker",
+                            "Historiker",
+                            "Hochschullehrer",
+                            "Franckh, Gottlieb (1829-1886)",
+                            "Franckh, Johann Gottlieb (1802-1835)",
+                            "Franckh, Louise (1766-1836)",
+                            "Gleichen-Russwurm, Alexander von (1865-1947)",
+                            "Gleichen-Russwurm, Emilie von (1804-1872)",
+                            "Gleichen-Russwurm, Friederike von (1765-1852)",
+                            "Gleichen-Russwurm, Heinrich Adalbert von (1803-1887)",
+                            "Gleichen-Russwurm, Ludwig von (1836-1901)",
+                            "Gleichen-Russwurm, Wilhelm Heinrich Karl von (1765-1816)",
+                            "Henßler, Elise (1867-1946)",
+                            "Junot, Caroline (1799-1850)",
+                            "Kießling-Krieger, Amalie (1862-1941)",
+                            "Kodweiss, Johannes (1640-1698)",
+                            "Krieger, Amalie (1836-1889)",
+                            "Körner, Christian Gottfried (1756-1831)",
+                            "Reinwald, Christophine (1757-1847)",
+                            "Reinwald, Wilhelm Friedrich Hermann (1737-1815)",
+                            "Schiller, Carl von (1793-1857)",
+                            "Schiller, Charlotte von (1766-1826)",
+                            "Schiller, Elisabetha Dorothea (1732-1802)",
+                            "Schiller, Ernst von (1796-1841)",
+                            "Schiller, Friedrich Ludwig Ernst von (1826-1877)",
+                            "Schiller, Johann Caspar (1723-1796)",
+                            "Schiller, Johann Friedrich (1737-1814)",
+                            "Stoll, Elisabeth Margaretha (1731-1815)",
+                            "Wolzogen, Caroline von (1763-1847)",
+                            "Schiller-Nationalmuseum (1922-1955)",
+                            "Schriftsteller",
+                            "Marbach am Neckar",
+                            "Burschell, Friedrich (1889-1970). Schiller (Biografie : 1968)",
+                            "Grand Prix Schiller",
+                            "Kulturbund der Deutschen Demokratischen Republik. Zentraler Arbeitskreis Friedrich Schiller",
+                            "Lachner, Vinzenz (1811-1893). Turandot, Prinzessin von China (Ouvertüre : 1843)",
+                            "Schiller-Denkmal <Berlin>",
+                            "Schiller-Denkmal Marbach",
+                            "Schiller-Gedächtnispreis",
+                            "Schillerpreis der Stadt Mannheim",
+                            "Schillerpreis der Stadt Marbach am Neckar",
+                            "Stuttgarter Schillertüte",
+                            "Weber, Carl Maria von (1786-1826). Musik zu Turandot (Schauspielmusik : 1809)",
+                            "Weimar"
+                        ],
+                        "relation_type_mv": [
+                            "Akad. Grad",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Beruf/Funktion",
+                            "Beruf/Funktion",
+                            "Beruf/Funktion",
+                            "Beruf/Funktion",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung thematisch",
+                            "Charakt. Beruf",
+                            "Geburtsort",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Sterbeort"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.5,
+                        "searchDate_mv": [
+                            "10.11.1759",
+                            "1759-11-10",
+                            "09.05.1805",
+                            "1805-05-09"
+                        ],
+                        "searchEntityScore": 24775,
+                        "searchEntity_id_mv": [
+                            "PE00034281"
+                        ],
+                        "searchSuggestPayload": "PE00034281␝Schiller, Friedrich von (1759-1805)",
+                        "searchSuggestTerm_mv": [
+                            "Schiller, Friedrich von (1759-1805)",
+                            "Hogarth",
+                            "Schiller, Fridrich",
+                            "Schiller, Johann Christoph Friedrich",
+                            "Schiller, Johann Christoph Friedrich von",
+                            "Schiller, Friedrich"
+                        ],
+                        "source": "PE",
+                        "statusEditing": "individualisiert",
+                        "title": "Schiller, Friedrich von",
+                        "url": "https://www.dla-marbach.de/find/opac/id/PE00034281"
+                    }
+                ]
+            }
+        }
+    }
+}

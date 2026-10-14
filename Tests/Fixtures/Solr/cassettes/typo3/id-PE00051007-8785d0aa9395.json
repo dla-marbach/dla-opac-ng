@@ -1,0 +1,150 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(PE00051007)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0,
+                "params": {
+                    "q": "id:(PE00051007)",
+                    "rows": "1"
+                }
+            },
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "PE00051007",
+                        "display": "Weill, Kurt (1900-1950)",
+                        "categoryIndex_mv": [
+                            "Person der Zeitungsausschnittsammlung",
+                            "Komponist/in"
+                        ],
+                        "classificationNewspaper_comment_mv": [
+                            "Komponisten"
+                        ],
+                        "classificationNewspaper_text_mv": [
+                            "6l"
+                        ],
+                        "dateCataloged": "1998-03-24",
+                        "dateLifespanEnd": "1950-04-03",
+                        "dateLifespanStart": "1900-03-02",
+                        "dateModified": "2026-10-13",
+                        "dateRetention": "2020",
+                        "filterDatePoint_mv": [
+                            "1900-03-02T00:00:00Z",
+                            "1950-04-03T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "[1900-03-02 TO 1950-04-03]"
+                        ],
+                        "filterLocationType_mv": [
+                            "Dessau␝Geburtsort",
+                            "New York␝Sterbeort"
+                        ],
+                        "filterLocation_mv": [
+                            "Dessau",
+                            "New York"
+                        ],
+                        "filterSource": "Personen",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "gender": "männlich",
+                        "gnd_id_mv": [
+                            "118630202"
+                        ],
+                        "gnd_type_mv": [
+                            "GND-Nr."
+                        ],
+                        "linkCommonsImage_file_mv": [
+                            "Bundesarchiv%20Bild%20146-2005-0119%2C%20Kurt%20Weill.jpg"
+                        ],
+                        "linkCommonsImage_rights_mv": [
+                            "Wikimedia Commons | CC BY-SA 3.0 de"
+                        ],
+                        "linkFilmportal_mv": [
+                            "81249f6830e747bc8cc9ea4faee59b3a"
+                        ],
+                        "linkWikidata": "Q55004",
+                        "linkWikidataWebsite_mv": [
+                            "http://www.kwf.org/"
+                        ],
+                        "linkWikipedia": "Kurt_Weill",
+                        "nameAlternative_name_mv": [
+                            "Weill, Kurt Julian"
+                        ],
+                        "nameAlternative_type_mv": [
+                            "Wirklicher Name"
+                        ],
+                        "placeBirth": "Dessau",
+                        "placeDeath": "New York",
+                        "place_mv": [
+                            "Dessau",
+                            "New York"
+                        ],
+                        "reference_text_mv": [
+                            "Metzler Kabarett Lexikon",
+                            "HSA, Rechtekartei (ohne Quelle)"
+                        ],
+                        "relation_id_mv": [
+                            "PE00049157",
+                            "␣",
+                            "AK01703425",
+                            "AK01694708",
+                            "KS00131124",
+                            "␣"
+                        ],
+                        "relation_text_mv": [
+                            "Lenya, Lotte (1898-1981)",
+                            "Dessau",
+                            "Drew, David (1930-2009). Über Kurt Weill (Zusammenstellung : 1975)",
+                            "Rosteck, Jens (1962-). Zwei auf einer Insel (1999)",
+                            "The Estate of Kurt Weill",
+                            "New York"
+                        ],
+                        "relation_type_mv": [
+                            "Beziehung familiär",
+                            "Geburtsort",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Sterbeort"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.5,
+                        "searchDate_mv": [
+                            "02.03.1900",
+                            "1900-03-02",
+                            "03.04.1950",
+                            "1950-04-03"
+                        ],
+                        "searchEntityScore": 878,
+                        "searchEntity_id_mv": [
+                            "PE00051007"
+                        ],
+                        "searchSuggestPayload": "PE00051007␝Weill, Kurt (1900-1950)",
+                        "searchSuggestTerm_mv": [
+                            "Weill, Kurt (1900-1950)",
+                            "Weill, Kurt Julian"
+                        ],
+                        "source": "PE",
+                        "statusEditing": "individualisiert",
+                        "title": "Weill, Kurt",
+                        "url": "https://www.dla-marbach.de/find/opac/id/PE00051007"
+                    }
+                ]
+            }
+        }
+    }
+}

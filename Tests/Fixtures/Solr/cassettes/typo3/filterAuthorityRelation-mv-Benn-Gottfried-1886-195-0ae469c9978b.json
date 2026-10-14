@@ -1,0 +1,28 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "(filterAuthorityRelation_mv:(\"Benn, Gottfried (1886-1956)␝Über\") AND source:(\"BI\"))",
+            "start": "0",
+            "rows": "0",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 177,
+                "start": 0,
+                "maxScore": 11.326445,
+                "numFoundExact": true,
+                "docs": []
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "*:*",
+            "start": "0",
+            "rows": "0",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "score desc",
+            "fq": [
+                "NOT source:(AU OR BE OR MM)",
+                "filterCollection_mv:(\"D:Kafka, Franz°Weltsch\")"
+            ],
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "stats": "true",
+            "stats.field": "filterDatePoint_mv"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 30,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": []
+            },
+            "highlighting": [],
+            "stats": {
+                "stats_fields": {
+                    "filterDatePoint_mv": {
+                        "min": "1913-01-01T00:00:00Z",
+                        "max": "1968-01-01T00:00:00Z",
+                        "count": 21,
+                        "missing": 12,
+                        "sum": -25297574400000,
+                        "mean": "1931-10-30T08:00:00Z",
+                        "sumOfSquares": 3.5961775327457277e+25,
+                        "stddev": 523791151021.33594
+                    }
+                }
+            }
+        }
+    }
+}

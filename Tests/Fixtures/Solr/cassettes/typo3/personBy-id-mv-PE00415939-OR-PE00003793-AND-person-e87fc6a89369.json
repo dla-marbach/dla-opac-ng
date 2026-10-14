@@ -1,0 +1,56 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "personBy_id_mv:(PE00415939 OR PE00003793) AND personBy_role_mv:(\"Urheber/in\") AND filterType_mv:(\"Bilder und Objekte\")",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 4,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BI00008813",
+                        "display": "Portrait Franz Böhm [Photographie]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    },
+                    {
+                        "id": "BI00010195",
+                        "display": "Portrait Marietta Ceconi [Photographie]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    },
+                    {
+                        "id": "BI00031758",
+                        "display": "Porträt Ricarda Huch [Photographie]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    },
+                    {
+                        "id": "BI00031760",
+                        "display": "Porträt Ricarda Huch [Photographie]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

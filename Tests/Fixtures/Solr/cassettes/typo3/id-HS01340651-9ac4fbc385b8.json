@@ -1,0 +1,32 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:(HS01340651)",
+            "start": "0",
+            "rows": "10",
+            "fl": "id,display",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "display": "Pinthus, Kurt: Einlagen 85 [Verschiedenes. Provenienzmaterial]",
+                        "id": "HS01340651"
+                    }
+                ]
+            }
+        }
+    }
+}

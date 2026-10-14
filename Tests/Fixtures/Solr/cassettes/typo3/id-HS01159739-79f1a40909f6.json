@@ -1,0 +1,246 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:HS01159739",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.70128,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>J.-G.-Cotta&apos;sche Buchhandlung &lt;Stuttgart&gt; an Centralstelle für die Landwirtschaft</dc:title>\n  <dc:creator>J.-G.-Cotta&apos;sche Buchhandlung &lt;Stuttgart&gt; (1810-1889)</dc:creator>\n  <dc:contributor>Centralstelle für die Landwirtschaft</dc:contributor>\n  <dc:type>Brief</dc:type>\n  <dc:type>Handschrift</dc:type>\n  <dc:date>1851-12</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00031653</dc:source>\n  <dc:identifier>COTTA:Gelehrten-Copierbuch III</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/HS01159739</dc:identifier>\n  <dc:identifier>HS01159739</dc:identifier>\n</oai_dc:dc>",
+                        "default": [
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>J.-G.-Cotta&apos;sche Buchhandlung &lt;Stuttgart&gt; an Centralstelle für die Landwirtschaft</dc:title>\n  <dc:creator>J.-G.-Cotta&apos;sche Buchhandlung &lt;Stuttgart&gt; (1810-1889)</dc:creator>\n  <dc:contributor>Centralstelle für die Landwirtschaft</dc:contributor>\n  <dc:type>Brief</dc:type>\n  <dc:type>Handschrift</dc:type>\n  <dc:date>1851-12</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00031653</dc:source>\n  <dc:identifier>COTTA:Gelehrten-Copierbuch III</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/HS01159739</dc:identifier>\n  <dc:identifier>HS01159739</dc:identifier>\n</oai_dc:dc>",
+                            "KS00011400",
+                            "CENTRALSTELLE FUER DIE LANDWIRTSCHAFT",
+                            "HS011597390",
+                            "KS00011400",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> an Centralstelle für die Landwirtschaft",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)␝Von",
+                            "Centralstelle für die Landwirtschaft␝An",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>J.-G.-Cotta&apos;sche Buchhandlung &lt;Stuttgart&gt; an Centralstelle für die Landwirtschaft</title>\n  </titleInfo>\n  <name type=\"corporate\">\n    <namePart>J.-G.-Cotta&apos;sche Buchhandlung &lt;Stuttgart&gt; (1810-1889)</namePart>\n    <nameIdentifier type=\"gnd\">5062045-9</nameIdentifier>\n    <namePart type=\"date\">1810 — 1889</namePart>\n    <role>\n      <roleTerm type=\"text\">[Verfasser]</roleTerm>\n    </role>\n  </name>\n  <name type=\"corporate\">\n    <namePart>Centralstelle für die Landwirtschaft</namePart>\n    <nameIdentifier type=\"gnd\">5079381-0</nameIdentifier>\n    <role>\n      <roleTerm type=\"text\">[Adressat]</roleTerm>\n    </role>\n  </name>\n  <typeOfResource manuscript=\"yes\">Handschrift</typeOfResource>\n  <genre>Brief</genre>\n  <originInfo eventType=\"manufacture\">\n    <place>\n      <placeTerm type=\"text\">Stuttgart</placeTerm>\n    </place>\n    <dateCreated point=\"start\" encoding=\"iso8601\">1851-12</dateCreated>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00031653</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>COTTA:Gelehrten-Copierbuch III</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2019-03-20</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2019-03-20</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS01159739</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Briefe von",
+                            "eingeschränkt benutzbar",
+                            "HS",
+                            "Deutsch",
+                            "12.1851",
+                            "1851-12",
+                            "Stuttgart",
+                            "1.0.0",
+                            "Centralstelle für die Landwirtschaft",
+                            "Deutsch␝Original",
+                            "Briefe",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "BF00031653",
+                            "https://www.dla-marbach.de/find/opac/id/HS01159739",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889) [Verfasser]; Centralstelle für die Landwirtschaft [Adressat]",
+                            "KS00055098",
+                            "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                            "J.-G.-Cotta'sche Buchhandlung <Tübingen; Stuttgart>",
+                            "Cottaische Buchhandlung <Stuttgart>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Tübingen>",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; München>",
+                            "J. G. Cotta (Firma)",
+                            "Cotta (Firma)",
+                            "Königliche Centralstelle für die Landwirtschaft <Stuttgart>",
+                            "Königl. Centralstelle für die Landwirtschaft",
+                            "Central-Stelle für die Landwirtschaft",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "Centralstelle für die Landwirtschaft",
+                            "2019-03-20",
+                            "Handschriften Einzelnachweise",
+                            "false",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)␝Verfasser/Urheber",
+                            "Centralstelle für die Landwirtschaft␝Adressat",
+                            "J.G.COTTA SCHE BUCHHANDLUNG STUTTGART",
+                            "2019-03-20",
+                            "COTTA:Gelehrten-Copierbuch III - [Bestand des Cotta-Archivs, Archiv]",
+                            "COTTA:Gelehrten-Copierbuch III",
+                            "1851-12-01T00:00:00Z",
+                            "Handschriften",
+                            "KS00011400",
+                            "KS00055098",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "12.1851",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart>",
+                            "Deutsch",
+                            "Stuttgart␝Entstehungsort",
+                            "HS01159739",
+                            "Am Standort",
+                            "1",
+                            "1851-12",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> an Centralstelle für die Landwirtschaft [Briefe]",
+                            "2019-03-20",
+                            "Centralstelle für die Landwirtschaft",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart>",
+                            "Centralstelle für die Landwirtschaft",
+                            "COTTA:Gelehrten-Copierbuch III - [Bestand des Cotta-Archivs, Archiv]",
+                            "Handschrift",
+                            "S.649",
+                            "TY  - GEN\nA2  - Centralstelle für die Landwirtschaft\nAU  - J.-G.-Cotta'sche Buchhandlung <Stuttgart>\nCN  - HS011597390\nDA  - 1851/12\nDB  - COTTA:Gelehrten-Copierbuch III\nID  - HS01159739\nLA  - Deutsch\nM3  - Brief\nN1  - Entstehungsort: Stuttgart\nST  - J.-G.-Cotta'sche Buchhandlung <Stuttgart> an Centralstelle für die Landwirtschaft\nTI  - J.-G.-Cotta'sche Buchhandlung <Stuttgart> an Centralstelle für die Landwirtschaft [Briefe]\nUR  - https://www.dla-marbach.de/find/opac/id/HS01159739/\nER  -",
+                            "1851-12",
+                            "[Adressat]",
+                            "Brief",
+                            "[Verfasser]",
+                            "Stuttgart"
+                        ],
+                        "searchCollectionCreator_id_mv": [
+                            "KS00011400"
+                        ],
+                        "sortingKeySub": "CENTRALSTELLE FUER DIE LANDWIRTSCHAFT",
+                        "mediaNumber": "HS011597390",
+                        "corporationBy_id_mv": [
+                            "KS00011400"
+                        ],
+                        "title": "J.-G.-Cotta'sche Buchhandlung <Stuttgart> an Centralstelle für die Landwirtschaft",
+                        "filterAuthorityRelation_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)␝Von",
+                            "Centralstelle für die Landwirtschaft␝An"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>J.-G.-Cotta&apos;sche Buchhandlung &lt;Stuttgart&gt; an Centralstelle für die Landwirtschaft</title>\n  </titleInfo>\n  <name type=\"corporate\">\n    <namePart>J.-G.-Cotta&apos;sche Buchhandlung &lt;Stuttgart&gt; (1810-1889)</namePart>\n    <nameIdentifier type=\"gnd\">5062045-9</nameIdentifier>\n    <namePart type=\"date\">1810 — 1889</namePart>\n    <role>\n      <roleTerm type=\"text\">[Verfasser]</roleTerm>\n    </role>\n  </name>\n  <name type=\"corporate\">\n    <namePart>Centralstelle für die Landwirtschaft</namePart>\n    <nameIdentifier type=\"gnd\">5079381-0</nameIdentifier>\n    <role>\n      <roleTerm type=\"text\">[Adressat]</roleTerm>\n    </role>\n  </name>\n  <typeOfResource manuscript=\"yes\">Handschrift</typeOfResource>\n  <genre>Brief</genre>\n  <originInfo eventType=\"manufacture\">\n    <place>\n      <placeTerm type=\"text\">Stuttgart</placeTerm>\n    </place>\n    <dateCreated point=\"start\" encoding=\"iso8601\">1851-12</dateCreated>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00031653</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>COTTA:Gelehrten-Copierbuch III</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2019-03-20</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2019-03-20</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS01159739</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "category": "Briefe von",
+                        "usageRestriction": "eingeschränkt benutzbar",
+                        "source": "HS",
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "searchDate_mv": [
+                            "12.1851",
+                            "1851-12"
+                        ],
+                        "filterLocation_mv": [
+                            "Stuttgart"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchNameTo_mv": [
+                            "Centralstelle für die Landwirtschaft"
+                        ],
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "genre": "Briefe",
+                        "searchCollectionCreator_display_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)"
+                        ],
+                        "collection_id_mv": [
+                            "BF00031653"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/HS01159739",
+                        "displayName": "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889) [Verfasser]; Centralstelle für die Landwirtschaft [Adressat]",
+                        "corporationTo_id_mv": [
+                            "KS00055098"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "searchVariant_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Tübingen; Stuttgart>",
+                            "Cottaische Buchhandlung <Stuttgart>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Tübingen>",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; Augsburg>",
+                            "Verlag der J.-G.-Cotta'schen Buchhandlung <Stuttgart; München>",
+                            "J. G. Cotta (Firma)",
+                            "Cotta (Firma)",
+                            "Königliche Centralstelle für die Landwirtschaft <Stuttgart>",
+                            "Königl. Centralstelle für die Landwirtschaft",
+                            "Central-Stelle für die Landwirtschaft"
+                        ],
+                        "filterAuthority_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "Centralstelle für die Landwirtschaft"
+                        ],
+                        "dateModified": "2019-03-20",
+                        "filterSource": "Handschriften Einzelnachweise",
+                        "confidential": false,
+                        "filterAuthorityRole_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)␝Verfasser/Urheber",
+                            "Centralstelle für die Landwirtschaft␝Adressat"
+                        ],
+                        "sortingKey": "J.G.COTTA SCHE BUCHHANDLUNG STUTTGART",
+                        "dateCataloged": "2019-03-20",
+                        "displayAddition2": "COTTA:Gelehrten-Copierbuch III - [Bestand des Cotta-Archivs, Archiv]",
+                        "filterCollection_mv": [
+                            "COTTA:Gelehrten-Copierbuch III"
+                        ],
+                        "filterDatePoint_mv": [
+                            "1851-12-01T00:00:00Z"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "searchEntity_id_mv": [
+                            "KS00011400",
+                            "KS00055098"
+                        ],
+                        "corporationBy_display_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)"
+                        ],
+                        "displayAddition1": "12.1851",
+                        "searchNameBy_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart>"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "filterLocationType_mv": [
+                            "Stuttgart␝Entstehungsort"
+                        ],
+                        "id": "HS01159739",
+                        "statusLoan": "Am Standort",
+                        "searchBoost": 1,
+                        "filterDateRange_mv": [
+                            "1851-12"
+                        ],
+                        "display": "J.-G.-Cotta'sche Buchhandlung <Stuttgart> an Centralstelle für die Landwirtschaft [Briefe]",
+                        "filterRecent": "2019-03-20",
+                        "corporationTo_display_mv": [
+                            "Centralstelle für die Landwirtschaft"
+                        ],
+                        "searchName_mv": [
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart>",
+                            "Centralstelle für die Landwirtschaft"
+                        ],
+                        "collection_display_mv": [
+                            "COTTA:Gelehrten-Copierbuch III - [Bestand des Cotta-Archivs, Archiv]"
+                        ],
+                        "categorySub": "Handschrift",
+                        "location_mv": [
+                            "S.649"
+                        ],
+                        "exportRIS": "TY  - GEN\nA2  - Centralstelle für die Landwirtschaft\nAU  - J.-G.-Cotta'sche Buchhandlung <Stuttgart>\nCN  - HS011597390\nDA  - 1851/12\nDB  - COTTA:Gelehrten-Copierbuch III\nID  - HS01159739\nLA  - Deutsch\nM3  - Brief\nN1  - Entstehungsort: Stuttgart\nST  - J.-G.-Cotta'sche Buchhandlung <Stuttgart> an Centralstelle für die Landwirtschaft\nTI  - J.-G.-Cotta'sche Buchhandlung <Stuttgart> an Centralstelle für die Landwirtschaft [Briefe]\nUR  - https://www.dla-marbach.de/find/opac/id/HS01159739/\nER  -",
+                        "dateOriginStart": "1851-12",
+                        "corporationTo_role_mv": [
+                            "[Adressat]"
+                        ],
+                        "filterFormContent_mv": [
+                            "Brief"
+                        ],
+                        "corporationBy_role_mv": [
+                            "[Verfasser]"
+                        ],
+                        "place_mv": [
+                            "Stuttgart"
+                        ],
+                        "score": 13.70128
+                    }
+                ]
+            }
+        }
+    }
+}

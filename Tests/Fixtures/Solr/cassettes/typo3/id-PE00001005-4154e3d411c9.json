@@ -1,0 +1,426 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:PE00001005",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 6.85064,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "PE00001005",
+                        "default": [
+                            "PE00001005",
+                            "Kafka, Franz (1883-1924)",
+                            "Person",
+                            "Literarische/r Autor/in im Sinne der Bibliothek",
+                            "Person der Zeitungsausschnittsammlung",
+                            "Bestandsbildner/in im Sinne der Handschriftensammlung",
+                            "Autoren, Kritiker und Übersetzer",
+                            "xy",
+                            "Österreich",
+                            "Tschechische Republik",
+                            "1997-06-17",
+                            "1924-06-03",
+                            "1883-07-03",
+                            "2026-10-13",
+                            "1994",
+                            "Schriftsteller, Jurist",
+                            "1883-07-03T00:00:00Z",
+                            "1924-06-03T00:00:00Z",
+                            "[1883-07-03 TO 1924-06-03]",
+                            "Prag␝Geburtsort",
+                            "Kierling␝Sterbeort",
+                            "Prag",
+                            "Kierling",
+                            "Personen",
+                            "Normdaten",
+                            "männlich",
+                            "118559230",
+                            "GND-Nr.",
+                            "Franz%20Kafka%2C%201923.jpg",
+                            "Wikimedia Commons | Public domain",
+                            "Franz%20Kafka%27s%20signature.svg",
+                            "Original:  Franz Kafka Vector:  Jon C | Wikimedia Commons | Public domain",
+                            "pnd118559230.html#ndbcontent",
+                            "88095881996d432a9588d026a568071e",
+                            "Q905",
+                            "Franz_Kafka",
+                            "Kafka, Franc",
+                            "Sammlung: Archiv der Schocken Library, Jerusalem.",
+                            "Schriftsteller",
+                            "Jurist",
+                            "Prag",
+                            "Kierling",
+                            "Prag",
+                            "Kierling",
+                            "Killy",
+                            "Kussmaul",
+                            "HSA, Rechtekartei (2/1989)",
+                            "Literaturblatt für Baden u. W. 9.2002, H. 1, S. 4",
+                            "GND",
+                            "positiv",
+                            "positiv",
+                            "positiv",
+                            "positiv",
+                            "positiv",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Freund",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Verlobte",
+                            "Eltern",
+                            "Geschwister",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Korrespondentin",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "PE00161506",
+                            "PE00011633",
+                            "PE00005296",
+                            "PE00043182",
+                            "TH00000925",
+                            "TH00001621",
+                            "PE00056279",
+                            "PE00086403",
+                            "PE00099682",
+                            "PE00516529",
+                            "PE00122718",
+                            "PE00698423",
+                            "KS00167619",
+                            "TH00002163",
+                            "PE00161506",
+                            "TH00023539",
+                            "AK01524522",
+                            "AK01524529",
+                            "AK01524531",
+                            "AK01630401",
+                            "AK01523779",
+                            "TH00589205",
+                            "Dr. jur.",
+                            "Bloch, Grete (1892-1944)",
+                            "Brand, Karl (1885-1917)",
+                            "Brod, Max (1884-1968)",
+                            "Weltsch, Felix (1884-1964)",
+                            "Jurist",
+                            "Schriftsteller",
+                            "Hermes, Roger",
+                            "Bauer, Felice (1887-1960)",
+                            "Kafka, Hermann (1852-1931)",
+                            "Pollak, Valerie (1890-1942)",
+                            "Saudková, Věra (1929-2015)",
+                            "Steiner, Marianna (1913-2000)",
+                            "\"K\" (Veranstaltung) (2020 : Mailand) (2020-2020)",
+                            "Prag",
+                            "Bloch, Grete (1892-1944)",
+                            "Franz-Kafka-Preis",
+                            "Stach, Reiner (1951-). Die Jahre der Entscheidungen (Biografie : 2002)",
+                            "Stach, Reiner (1951-). Die Jahre der Erkenntnis (Biografie : 2008)",
+                            "Stach, Reiner (1951-). Die frühen Jahre (Biografie : 2014)",
+                            "Stach, Reiner (1951-). Ist das Kafka? (Zusammenstellung : 2012)",
+                            "Stach, Reiner (1951-). Kafka (Biografie)",
+                            "Kierling",
+                            "Akad. Grad",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Beruf/Funktion",
+                            "Beruf/Funktion",
+                            "Beziehung beruflich",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung thematisch",
+                            "Geburtsort",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Sterbeort",
+                            "1.0.0",
+                            "0.5",
+                            "03.07.1883",
+                            "1883-07-03",
+                            "03.06.1924",
+                            "1924-06-03",
+                            "8904",
+                            "PE00001005",
+                            "PE00001005␝Kafka, Franz (1883-1924)",
+                            "Kafka, Franz (1883-1924)",
+                            "Kafka, Franc",
+                            "PE",
+                            "individualisiert",
+                            "Kafka, Franz",
+                            "https://www.dla-marbach.de/find/opac/id/PE00001005",
+                            "Stand: 29.01.2019",
+                            "https://de.wikipedia.org/wiki/Franz_Kafka"
+                        ],
+                        "display": "Kafka, Franz (1883-1924)",
+                        "categoryEntity_mv": [
+                            "Person"
+                        ],
+                        "categoryIndex_mv": [
+                            "Literarische/r Autor/in im Sinne der Bibliothek",
+                            "Person der Zeitungsausschnittsammlung",
+                            "Bestandsbildner/in im Sinne der Handschriftensammlung"
+                        ],
+                        "classificationNewspaper_comment_mv": [
+                            "Autoren, Kritiker und Übersetzer"
+                        ],
+                        "classificationNewspaper_text_mv": [
+                            "xy"
+                        ],
+                        "country_mv": [
+                            "Österreich",
+                            "Tschechische Republik"
+                        ],
+                        "dateCataloged": "1997-06-17",
+                        "dateLifespanEnd": "1924-06-03",
+                        "dateLifespanStart": "1883-07-03",
+                        "dateModified": "2026-10-13",
+                        "dateRetention": "1994",
+                        "displayAddition1": "Schriftsteller, Jurist",
+                        "filterDatePoint_mv": [
+                            "1883-07-03T00:00:00Z",
+                            "1924-06-03T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "[1883-07-03 TO 1924-06-03]"
+                        ],
+                        "filterLocationType_mv": [
+                            "Prag␝Geburtsort",
+                            "Kierling␝Sterbeort"
+                        ],
+                        "filterLocation_mv": [
+                            "Prag",
+                            "Kierling"
+                        ],
+                        "filterSource": "Personen",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "gender": "männlich",
+                        "gnd_id_mv": [
+                            "118559230"
+                        ],
+                        "gnd_type_mv": [
+                            "GND-Nr."
+                        ],
+                        "linkCommonsImage_file_mv": [
+                            "Franz%20Kafka%2C%201923.jpg"
+                        ],
+                        "linkCommonsImage_rights_mv": [
+                            "Wikimedia Commons | Public domain"
+                        ],
+                        "linkCommonsSignature_file_mv": [
+                            "Franz%20Kafka%27s%20signature.svg"
+                        ],
+                        "linkCommonsSignature_rights_mv": [
+                            "Original:  Franz Kafka Vector:  Jon C | Wikimedia Commons | Public domain"
+                        ],
+                        "linkDeutscheBiographie_mv": [
+                            "pnd118559230.html#ndbcontent"
+                        ],
+                        "linkFilmportal_mv": [
+                            "88095881996d432a9588d026a568071e"
+                        ],
+                        "linkWikidata": "Q905",
+                        "linkWikipedia": "Franz_Kafka",
+                        "nameAlternative_name_mv": [
+                            "Kafka, Franc"
+                        ],
+                        "noteExplanatory_text_mv": [
+                            "Sammlung: Archiv der Schocken Library, Jerusalem."
+                        ],
+                        "occupation_mv": [
+                            "Schriftsteller",
+                            "Jurist"
+                        ],
+                        "placeBirth": "Prag",
+                        "placeDeath": "Kierling",
+                        "place_mv": [
+                            "Prag",
+                            "Kierling"
+                        ],
+                        "reference_text_mv": [
+                            "Killy",
+                            "Kussmaul",
+                            "HSA, Rechtekartei (2/1989)",
+                            "Literaturblatt für Baden u. W. 9.2002, H. 1, S. 4",
+                            "GND"
+                        ],
+                        "reference_type_mv": [
+                            "positiv",
+                            "positiv",
+                            "positiv",
+                            "positiv",
+                            "positiv"
+                        ],
+                        "relation_comment_mv": [
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Freund",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Verlobte",
+                            "Eltern",
+                            "Geschwister",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Korrespondentin",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣"
+                        ],
+                        "relation_id_mv": [
+                            "␣",
+                            "PE00161506",
+                            "PE00011633",
+                            "PE00005296",
+                            "PE00043182",
+                            "TH00000925",
+                            "TH00001621",
+                            "PE00056279",
+                            "PE00086403",
+                            "PE00099682",
+                            "PE00516529",
+                            "PE00122718",
+                            "PE00698423",
+                            "KS00167619",
+                            "TH00002163",
+                            "PE00161506",
+                            "TH00023539",
+                            "AK01524522",
+                            "AK01524529",
+                            "AK01524531",
+                            "AK01630401",
+                            "AK01523779",
+                            "TH00589205"
+                        ],
+                        "relation_text_mv": [
+                            "Dr. jur.",
+                            "Bloch, Grete (1892-1944)",
+                            "Brand, Karl (1885-1917)",
+                            "Brod, Max (1884-1968)",
+                            "Weltsch, Felix (1884-1964)",
+                            "Jurist",
+                            "Schriftsteller",
+                            "Hermes, Roger",
+                            "Bauer, Felice (1887-1960)",
+                            "Kafka, Hermann (1852-1931)",
+                            "Pollak, Valerie (1890-1942)",
+                            "Saudková, Věra (1929-2015)",
+                            "Steiner, Marianna (1913-2000)",
+                            "\"K\" (Veranstaltung) (2020 : Mailand) (2020-2020)",
+                            "Prag",
+                            "Bloch, Grete (1892-1944)",
+                            "Franz-Kafka-Preis",
+                            "Stach, Reiner (1951-). Die Jahre der Entscheidungen (Biografie : 2002)",
+                            "Stach, Reiner (1951-). Die Jahre der Erkenntnis (Biografie : 2008)",
+                            "Stach, Reiner (1951-). Die frühen Jahre (Biografie : 2014)",
+                            "Stach, Reiner (1951-). Ist das Kafka? (Zusammenstellung : 2012)",
+                            "Stach, Reiner (1951-). Kafka (Biografie)",
+                            "Kierling"
+                        ],
+                        "relation_type_mv": [
+                            "Akad. Grad",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Beruf/Funktion",
+                            "Beruf/Funktion",
+                            "Beziehung beruflich",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung thematisch",
+                            "Geburtsort",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Sterbeort"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.5,
+                        "searchDate_mv": [
+                            "03.07.1883",
+                            "1883-07-03",
+                            "03.06.1924",
+                            "1924-06-03"
+                        ],
+                        "searchEntityScore": 8904,
+                        "searchEntity_id_mv": [
+                            "PE00001005"
+                        ],
+                        "searchSuggestPayload": "PE00001005␝Kafka, Franz (1883-1924)",
+                        "searchSuggestTerm_mv": [
+                            "Kafka, Franz (1883-1924)",
+                            "Kafka, Franc"
+                        ],
+                        "source": "PE",
+                        "statusEditing": "individualisiert",
+                        "title": "Kafka, Franz",
+                        "url": "https://www.dla-marbach.de/find/opac/id/PE00001005",
+                        "website_description_mv": [
+                            "Stand: 29.01.2019"
+                        ],
+                        "website_url_mv": [
+                            "https://de.wikipedia.org/wiki/Franz_Kafka"
+                        ],
+                        "score": 6.85064
+                    }
+                ]
+            }
+        }
+    }
+}

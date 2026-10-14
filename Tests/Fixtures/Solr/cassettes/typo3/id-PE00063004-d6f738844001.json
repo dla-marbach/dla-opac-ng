@@ -1,0 +1,304 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(PE00063004)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0,
+                "params": {
+                    "q": "id:(PE00063004)",
+                    "rows": "1"
+                }
+            },
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "PE00063004",
+                        "display": "Cotta, Johann Friedrich (1764-1832)",
+                        "categoryEntity_mv": [
+                            "Person"
+                        ],
+                        "categoryIndex_mv": [
+                            "Bestandsbildner/in im Sinne der Handschriftensammlung",
+                            "Person der Zeitungsausschnittsammlung"
+                        ],
+                        "classificationNewspaper_comment_mv": [
+                            "Verleger"
+                        ],
+                        "classificationNewspaper_text_mv": [
+                            "2f3"
+                        ],
+                        "country_mv": [
+                            "Deutschland"
+                        ],
+                        "dateCataloged": "1999-06-14",
+                        "dateLifespanEnd": "1832-12-29",
+                        "dateLifespanStart": "1764-04-27",
+                        "dateModified": "2026-10-13",
+                        "dateRetention": "1902",
+                        "displayAddition1": "Verleger, Buchhändler, Politiker, Unternehmer",
+                        "filterDatePoint_mv": [
+                            "1764-04-27T00:00:00Z",
+                            "1832-12-29T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "[1764-04-27 TO 1832-12-29]"
+                        ],
+                        "filterLocationType_mv": [
+                            "Stuttgart␝Geburtsort",
+                            "Tübingen␝Wirkungsort",
+                            "Stuttgart␝Wirkungsort"
+                        ],
+                        "filterLocation_mv": [
+                            "Stuttgart",
+                            "Tübingen",
+                            "Stuttgart"
+                        ],
+                        "filterSource": "Personen",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "gender": "männlich",
+                        "gnd_id_mv": [
+                            "11852240X"
+                        ],
+                        "gnd_type_mv": [
+                            "GND-Nr."
+                        ],
+                        "linkCommonsImage_file_mv": [
+                            "Karl%20Jakob%20Theodor%20Leybold%20-%20Bildnis%20des%20Johann%20Friedrich%20von%20Cotta.jpg"
+                        ],
+                        "linkCommonsImage_rights_mv": [
+                            "Karl Jakob Theodor Leybold | Wikimedia Commons | Public domain"
+                        ],
+                        "linkDeutscheBiographie_mv": [
+                            "pnd11852240X.html#adbcontent",
+                            "pnd11852240X.html#ndbcontent"
+                        ],
+                        "linkWikidata": "Q71529",
+                        "linkWikipedia": "Johann_Friedrich_Cotta",
+                        "nameAlternative_name_mv": [
+                            "Cotta, Johann Friedrich von",
+                            "Cottendorf, Johann Friedrich Cotta von",
+                            "Cottendorf, Johann F. von",
+                            "Cotta von Cottendorf, Johann F.",
+                            "Cotta, Johann Friedrich von Cottendorf",
+                            "Cotta, Johann F.",
+                            "Cotta, J. F."
+                        ],
+                        "nameAlternative_type_mv": [
+                            "GND-Ansetzung",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣"
+                        ],
+                        "noteExplanatory_text_mv": [
+                            "seit 1817: Cottendorf, Johann Friedrich Cotta von"
+                        ],
+                        "occupation_mv": [
+                            "Verleger",
+                            "Buchhändler",
+                            "Politiker",
+                            "Unternehmer"
+                        ],
+                        "placeBirth": "Stuttgart",
+                        "place_mv": [
+                            "Stuttgart",
+                            "Tübingen",
+                            "Stuttgart"
+                        ],
+                        "reference_text_mv": [
+                            "Kussmaul",
+                            "SWB",
+                            "ADB",
+                            "DLA Marbach, Bestand Cotta:Briefe"
+                        ],
+                        "reference_type_mv": [
+                            "positiv",
+                            "positiv",
+                            "positiv",
+                            "positiv"
+                        ],
+                        "relation_comment_mv": [
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Geschwister",
+                            "␣",
+                            "Sohn",
+                            "Kind",
+                            "Geschwister",
+                            "Geschwister",
+                            "Eltern",
+                            "Ehepaar",
+                            "␣",
+                            "Geschwister",
+                            "␣",
+                            "␣",
+                            "Geschwister",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣"
+                        ],
+                        "relation_id_mv": [
+                            "TH00061035",
+                            "PE00600463",
+                            "PE00379484",
+                            "PE00610738",
+                            "PE00063123",
+                            "PE00023808",
+                            "PE00633963",
+                            "TH00002998",
+                            "TH00001427",
+                            "TH00016528",
+                            "PE00611278",
+                            "PE00112063",
+                            "PE00006762",
+                            "PE00394506",
+                            "PE00063003",
+                            "PE00632989",
+                            "PE00323019",
+                            "PE00693585",
+                            "PE00416813",
+                            "PE00224864",
+                            "PE00670259",
+                            "PE00206473",
+                            "PE00136119",
+                            "PE00377915",
+                            "PE00386142",
+                            "PE00694015",
+                            "PE00656719",
+                            "TH00003164",
+                            "TH00017603",
+                            "KS00096723",
+                            "TH00017603",
+                            "TH00001830"
+                        ],
+                        "relation_text_mv": [
+                            "Freiherr",
+                            "Griesinger, Christoph Maximilian (1763-1831)",
+                            "Griesinger, Ludwig Friedrich (1767-1845)",
+                            "Hartmann, Ludwig von (1766-1852)",
+                            "Kölle, Christoph Friedrich Karl von (1781-1848)",
+                            "Kölle, Friedrich (1781-1848)",
+                            "Mannhardt, C. L.",
+                            "Buchhändler",
+                            "Politiker",
+                            "Unternehmer",
+                            "Hasselbrink, Gottlieb (1782-1822)",
+                            "Adlerflycht, Sophie von (1801-1838)",
+                            "Cotta, Christoph Friedrich <der Jüngere> (1758-1838)",
+                            "Cotta, Emil (1798-1875)",
+                            "Cotta, Georg von <der Ältere> (1796-1863)",
+                            "Cotta, Ida von (1806-1862)",
+                            "Cotta, Johann Georg (1761-1836)",
+                            "Cotta, Johanne W. (1770-1848)",
+                            "Cotta, Rosalia (1738-1812)",
+                            "Cotta, Wilhelmine von (1769-1821)",
+                            "Harpprecht, Valentin Christian Heinrich (1762-1840)",
+                            "Hutten, Charlotte (1763-1841)",
+                            "Hügel, Elisabeth von (1789-1859)",
+                            "Hügel, Karl Eugen von (1805-1870)",
+                            "König, Friederike von (1765-1839)",
+                            "Mülberger, Johann Heinrich (1764-1843)",
+                            "Weber, Christian Gottfried (1758-1836)",
+                            "Verleger",
+                            "Stuttgart",
+                            "Cotta & Co. (1825-)",
+                            "Stuttgart",
+                            "Tübingen"
+                        ],
+                        "relation_type_mv": [
+                            "Adelstitel",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Beruf/Funktion",
+                            "Beruf/Funktion",
+                            "Beruf/Funktion",
+                            "Beziehung beruflich",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Charakt. Beruf",
+                            "Geburtsort",
+                            "Relation",
+                            "Wirkungsort",
+                            "Wirkungsort"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.5,
+                        "searchDate_mv": [
+                            "27.04.1764",
+                            "1764-04-27",
+                            "29.12.1832",
+                            "1832-12-29"
+                        ],
+                        "searchEntityScore": 1045,
+                        "searchEntity_id_mv": [
+                            "PE00063004"
+                        ],
+                        "searchSuggestPayload": "PE00063004␝Cotta, Johann Friedrich (1764-1832)",
+                        "searchSuggestTerm_mv": [
+                            "Cotta, Johann Friedrich (1764-1832)",
+                            "Cotta, Johann Friedrich von",
+                            "Cottendorf, Johann Friedrich Cotta von",
+                            "Cottendorf, Johann F. von",
+                            "Cotta von Cottendorf, Johann F.",
+                            "Cotta, Johann Friedrich von Cottendorf",
+                            "Cotta, Johann F.",
+                            "Cotta, J. F."
+                        ],
+                        "source": "PE",
+                        "statusEditing": "individualisiert",
+                        "title": "Cotta, Johann Friedrich",
+                        "url": "https://www.dla-marbach.de/find/opac/id/PE00063004"
+                    }
+                ]
+            }
+        }
+    }
+}

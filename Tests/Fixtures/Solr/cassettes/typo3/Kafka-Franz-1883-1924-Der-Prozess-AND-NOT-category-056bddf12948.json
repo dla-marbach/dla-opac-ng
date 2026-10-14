@@ -1,0 +1,28 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "(Kafka, Franz (1883-1924) Der Prozess) AND NOT category:(\"Werktitel\" OR \"Ton- und Bildträger\") AND filterFormContent_mv:(\"Übersetzung\" OR \"Übersetzung, deutsch\" OR \"Übersetzung, fremdsprachig\") AND source:(\"AK\")",
+            "start": "0",
+            "rows": "0",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 39,
+                "start": 0,
+                "maxScore": 221.82277,
+                "numFoundExact": true,
+                "docs": []
+            }
+        }
+    }
+}

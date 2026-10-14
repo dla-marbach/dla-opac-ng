@@ -1,0 +1,191 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(PE00043182)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0,
+                "params": {
+                    "q": "id:(PE00043182)",
+                    "rows": "1"
+                }
+            },
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "PE00043182",
+                        "display": "Weltsch, Felix (1884-1964)",
+                        "categoryEntity_mv": [
+                            "Person"
+                        ],
+                        "categoryIndex_mv": [
+                            "Bestandsbildner/in im Sinne der Handschriftensammlung"
+                        ],
+                        "country_mv": [
+                            "Österreich (- 12.11.1918)",
+                            "Israel",
+                            "Tschechische Republik"
+                        ],
+                        "dateCataloged": "1997-06-17",
+                        "dateLifespanEnd": "1964-11-09",
+                        "dateLifespanStart": "1884-10-06",
+                        "dateModified": "2026-10-13",
+                        "dateRetention": "2034",
+                        "displayAddition1": "Bibliothekar, Philosoph, Religionswissenschaftler",
+                        "filterDatePoint_mv": [
+                            "1884-10-06T00:00:00Z",
+                            "1964-11-09T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "[1884-10-06 TO 1964-11-09]"
+                        ],
+                        "filterLocationType_mv": [
+                            "Prag␝Geburtsort",
+                            "Jerusalem␝Sterbeort"
+                        ],
+                        "filterLocation_mv": [
+                            "Prag",
+                            "Jerusalem"
+                        ],
+                        "filterSource": "Personen",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "gender": "männlich",
+                        "gnd_id_mv": [
+                            "117279234"
+                        ],
+                        "gnd_type_mv": [
+                            "GND-Nr."
+                        ],
+                        "linkCommonsImage_file_mv": [
+                            "Felix%20Weltsch.jpg"
+                        ],
+                        "linkCommonsImage_rights_mv": [
+                            "Wikimedia Commons | Public domain"
+                        ],
+                        "linkWikidata": "Q85937",
+                        "linkWikipedia": "Felix_Weltsch",
+                        "noteExplanatory_text_mv": [
+                            "Emigration: 1939 Palästina",
+                            "Gehört zum Prager Dichterkreis",
+                            "Tochter: Ruth Weltsch-Gorenstein (1920-1991)"
+                        ],
+                        "occupation_mv": [
+                            "Bibliothekar",
+                            "Philosoph",
+                            "Religionswissenschaftler"
+                        ],
+                        "placeBirth": "Prag",
+                        "placeDeath": "Jerusalem",
+                        "place_mv": [
+                            "Prag",
+                            "Jerusalem"
+                        ],
+                        "reference_text_mv": [
+                            "Killy",
+                            "Kussmaul"
+                        ],
+                        "reference_type_mv": [
+                            "positiv",
+                            "positiv"
+                        ],
+                        "relation_comment_mv": [
+                            "␣",
+                            "Enger Freund",
+                            "Enger Freund",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Kind",
+                            "Ehefrau",
+                            "Cousin",
+                            "␣",
+                            "␣"
+                        ],
+                        "relation_id_mv": [
+                            "␣",
+                            "PE00005296",
+                            "PE00001005",
+                            "TH00003244",
+                            "TH00019912",
+                            "TH00526928",
+                            "PE00575727",
+                            "PE00678293",
+                            "PE00396776",
+                            "PE00575727",
+                            "TH00002163",
+                            "TH00000897"
+                        ],
+                        "relation_text_mv": [
+                            "Dr. jur, phil.",
+                            "Brod, Max (1884-1968)",
+                            "Kafka, Franz (1883-1924)",
+                            "Bibliothekar",
+                            "Philosoph",
+                            "Religionswissenschaftler",
+                            "Weltsch, Robert (1891-1982)",
+                            "Gorenstein, Ruth (1920-1990)",
+                            "Weltsch, Irma (1892-1969)",
+                            "Weltsch, Robert (1891-1982)",
+                            "Prag",
+                            "Jerusalem"
+                        ],
+                        "relation_type_mv": [
+                            "Akad. Grad",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Beruf/Funktion",
+                            "Beruf/Funktion",
+                            "Beruf/Funktion",
+                            "Beziehung beruflich",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Geburtsort",
+                            "Sterbeort"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.5,
+                        "searchDate_mv": [
+                            "06.10.1884",
+                            "1884-10-06",
+                            "09.11.1964",
+                            "1964-11-09"
+                        ],
+                        "searchEntityScore": 114,
+                        "searchEntity_id_mv": [
+                            "PE00043182"
+                        ],
+                        "searchSuggestPayload": "PE00043182␝Weltsch, Felix (1884-1964)",
+                        "searchSuggestTerm_mv": [
+                            "Weltsch, Felix (1884-1964)"
+                        ],
+                        "source": "PE",
+                        "statusEditing": "individualisiert",
+                        "title": "Weltsch, Felix",
+                        "url": "https://www.dla-marbach.de/find/opac/id/PE00043182",
+                        "website_description_mv": [
+                            "Wikipedia; Stand:10.03.2022"
+                        ],
+                        "website_url_mv": [
+                            "https://de.wikipedia.org/w/index.php?title=Felix_Weltsch&oldid=217299752"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

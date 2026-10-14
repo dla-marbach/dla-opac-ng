@@ -1,0 +1,51 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "dürrenmatt besuch film",
+            "start": "0",
+            "rows": "0",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "score desc",
+            "fq": "NOT source:(AU OR BE OR MM)",
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(dürrenmatt besuch film) OR displayAddition1:(dürrenmatt besuch film) OR displayAddition2:(dürrenmatt besuch film) OR displayName:(dürrenmatt besuch film)))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "stats": "true",
+            "stats.field": "filterDatePoint_mv"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 9,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": []
+            },
+            "highlighting": [],
+            "stats": {
+                "stats_fields": {
+                    "filterDatePoint_mv": {
+                        "min": "1955-01-01T00:00:00Z",
+                        "max": "2011-01-01T00:00:00Z",
+                        "count": 10,
+                        "missing": 0,
+                        "sum": 5576428800000,
+                        "mean": "1987-09-03T04:48:00Z",
+                        "sumOfSquares": 7.535914116341759e+24,
+                        "stddev": 701289154200.6221
+                    }
+                }
+            }
+        }
+    }
+}

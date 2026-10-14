@@ -1,0 +1,54 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "schiller",
+            "start": "0",
+            "rows": "0",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "score desc",
+            "fq": [
+                "NOT source:(AU OR BE OR MM)",
+                "filterDateRange_mv:[1800 TO 1801]"
+            ],
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(schiller) OR displayAddition1:(schiller) OR displayAddition2:(schiller) OR displayName:(schiller)))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "stats": "true",
+            "stats.field": "filterDatePoint_mv"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 458,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": []
+            },
+            "highlighting": [],
+            "stats": {
+                "stats_fields": {
+                    "filterDatePoint_mv": {
+                        "min": "0192-04-17T00:00:00Z",
+                        "max": "2012-05-11T00:00:00Z",
+                        "count": 623,
+                        "missing": 0,
+                        "sum": -3293423280000000,
+                        "mean": "1802-06-25T21:18:12.135Z",
+                        "sumOfSquares": 2.0589326299821677e+28,
+                        "stddev": 2260735089132.814
+                    }
+                }
+            }
+        }
+    }
+}

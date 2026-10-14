@@ -1,0 +1,2160 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "schiller",
+            "start": "0",
+            "rows": "25",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "score desc",
+            "fq": [
+                "NOT source:(AU OR BE OR MM)",
+                "filterAuthorityRole_mv:(\"Schiller, Friedrich von (1759-1805)␝Verfasser/Urheber\")",
+                "filterLanguageType_mv:(\"Deutsch␝Original\")"
+            ],
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(schiller) OR displayAddition1:(schiller) OR displayAddition2:(schiller) OR displayName:(schiller)))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "facet.field": [
+                "{!key=Digital}filterDigital",
+                "{!key=Medientypen}filterType_mv",
+                "{!key=FormUndInhalt}filterFormContent_mv",
+                "{!key=Medium}filterMedium_mv",
+                "{!key=Personen}filterAuthority_mv",
+                "{!key=Thema}filterSubject_mv",
+                "{!key=Sprache}filterLanguage_mv",
+                "{!key=filterLanguageType_mv}filterLanguageType_mv",
+                "{!key=Ort}filterLocation_mv",
+                "{!key=filterLocationType_mv}filterLocationType_mv",
+                "{!key=Sammlung}filterCollection_mv",
+                "{!key=Datenbestand}filterSource",
+                "{!key=Bibliographie}filterBibliography_mv",
+                "{!key=filterAuthorityRole_mv}filterAuthorityRole_mv",
+                "{!key=filterAuthorityRelation_mv}filterAuthorityRelation_mv",
+                "{!key=entities}searchEntity_id_mv"
+            ],
+            "f.filterDigital.facet.sort": "count",
+            "f.filterDigital.facet.limit": "50",
+            "f.filterDigital.facet.mincount": "1",
+            "f.filterType_mv.facet.sort": "count",
+            "f.filterType_mv.facet.limit": "50",
+            "f.filterType_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.sort": "count",
+            "f.filterFormContent_mv.facet.limit": "50",
+            "f.filterFormContent_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.missing": "true",
+            "f.filterMedium_mv.facet.sort": "count",
+            "f.filterMedium_mv.facet.limit": "50",
+            "f.filterMedium_mv.facet.mincount": "1",
+            "f.filterMedium_mv.facet.missing": "true",
+            "f.filterAuthority_mv.facet.sort": "count",
+            "f.filterAuthority_mv.facet.limit": "50",
+            "f.filterAuthority_mv.facet.mincount": "1",
+            "facet.range": "{!key=Zeit}filterDateRange_mv",
+            "f.filterDateRange_mv.facet.range.start": "NOW/YEAR-255YEARS",
+            "f.filterDateRange_mv.facet.range.end": "NOW/DAY+1YEAR",
+            "f.filterDateRange_mv.facet.range.gap": "+5YEAR",
+            "f.filterSubject_mv.facet.sort": "count",
+            "f.filterSubject_mv.facet.limit": "50",
+            "f.filterSubject_mv.facet.mincount": "1",
+            "f.filterSubject_mv.facet.missing": "true",
+            "facet.query": [
+                "{!key=Woche ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]",
+                "{!key=Monat ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]",
+                "{!key=Quartal ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Halbjahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Jahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1YEAR TO NOW/DAY+1DAY]"
+            ],
+            "f.filterLanguage_mv.facet.sort": "count",
+            "f.filterLanguage_mv.facet.limit": "50",
+            "f.filterLanguage_mv.facet.mincount": "1",
+            "f.filterLanguageType_mv.facet.sort": "count",
+            "f.filterLanguageType_mv.facet.limit": "50",
+            "f.filterLanguageType_mv.facet.mincount": "1",
+            "f.filterLocation_mv.facet.sort": "count",
+            "f.filterLocation_mv.facet.limit": "50",
+            "f.filterLocation_mv.facet.mincount": "1",
+            "f.filterLocationType_mv.facet.sort": "count",
+            "f.filterLocationType_mv.facet.limit": "50",
+            "f.filterLocationType_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.sort": "count",
+            "f.filterCollection_mv.facet.limit": "50",
+            "f.filterCollection_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.missing": "true",
+            "f.filterSource.facet.sort": "count",
+            "f.filterSource.facet.limit": "50",
+            "f.filterSource.facet.mincount": "1",
+            "f.filterSource.facet.missing": "true",
+            "f.filterBibliography_mv.facet.sort": "count",
+            "f.filterBibliography_mv.facet.limit": "50",
+            "f.filterBibliography_mv.facet.mincount": "1",
+            "f.filterBibliography_mv.facet.missing": "true",
+            "f.filterAuthorityRole_mv.facet.sort": "count",
+            "f.filterAuthorityRole_mv.facet.limit": "50",
+            "f.filterAuthorityRole_mv.facet.mincount": "1",
+            "f.filterAuthorityRelation_mv.facet.sort": "count",
+            "f.filterAuthorityRelation_mv.facet.limit": "50",
+            "f.filterAuthorityRelation_mv.facet.mincount": "1",
+            "f.searchEntity_id_mv.facet.sort": "count",
+            "f.searchEntity_id_mv.facet.limit": "2",
+            "f.searchEntity_id_mv.facet.mincount": "1",
+            "facet": "true"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 6722,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Stuttgart ; Tübingen : Cotta, 1846 - 201 Seiten",
+                        "displayName": "Schiller, Friedrich von (1759-1805)",
+                        "id": "AK00263183",
+                        "display": "Maria Stuart : ein Trauerspiel",
+                        "item_provenance_mv": [
+                            false,
+                            true
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242238"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242238/files/images/HS_00242238_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Elisabetha Dorothea (1732-1802) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569285"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "08.01.1796",
+                        "filterDigital": true,
+                        "id": "HS00242238",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242238/?media_access=public&media_license=CC0&media_thumbnail=HS_00242238_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242240"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242240/files/images/HS_00242240_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Elisabetha Dorothea (1732-1802) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569286"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "21.11.1794",
+                        "filterDigital": true,
+                        "id": "HS00242240",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242240/?media_access=public&media_license=CC0&media_thumbnail=HS_00242240_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242242"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242242/files/images/HS_00242242_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Elisabetha Dorothea (1732-1802) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569287"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "08.11.1793",
+                        "filterDigital": true,
+                        "id": "HS00242242",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242242/?media_access=public&media_license=CC0&media_thumbnail=HS_00242242_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242248"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242248/files/images/HS_00242248_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Elisabetha Dorothea (1732-1802) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569290"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "26.06.1790",
+                        "filterDigital": true,
+                        "id": "HS00242248",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242248/?media_access=public&media_license=CC0&media_thumbnail=HS_00242248_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242251"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242251/files/images/HS_00242251_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Elisabetha Dorothea (1732-1802) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569291"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "13.05.1790",
+                        "filterDigital": true,
+                        "id": "HS00242251",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242251/?media_access=public&media_license=CC0&media_thumbnail=HS_00242251_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242262"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242262/files/images/HS_00242262_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Elisabetha Dorothea (1732-1802) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569296"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "19.11.1782",
+                        "filterDigital": true,
+                        "id": "HS00242262",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242262/?media_access=public&media_license=CC0&media_thumbnail=HS_00242262_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Zürich : Frank, 1910 - 14 Seiten",
+                        "displayName": "Schiller, Friedrich von (1759-1805)",
+                        "id": "AK00278335",
+                        "display": "Schiller und Lotte : Montag den 31. Oktober 1910 im kleinen Tonhallesaal : [Programmheft]"
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00171031"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00171031/files/images/HS_00171031_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Charlotte von (1766-1826) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569241"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "13.08.1802",
+                        "filterDigital": true,
+                        "id": "HS00171031",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00171031/?media_access=public&media_license=CC0&media_thumbnail=HS_00171031_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Charlotte von [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Beitrag"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805)",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Erschienen in: Archiv für Litteraturgeschichte. - 10 (1881), Seite 218-219",
+                        "id": "AK00278192",
+                        "display": "Ein unbekannter Brief Schillers an seine Frau. [v. 1. Jun. 1800.] Mitgeth. v. Wilhelm Arndt"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805); Schiller, Friedrich von (1759-1805); Schiller, Charlotte von (1766-1826); Schiller, Friedrich von (1759-1805); Schiller, Charlotte von (1766-1826)",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Leipzig : Amelang, 1990 - 111 Seiten",
+                        "id": "AK00278209",
+                        "display": "Schillers Liebesfrühling : Aus seinem Briefwechsel mit Lotte während der Brautzeit"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Berlin [u.a.] : Harz, 1923 - 112 Seiten",
+                        "displayName": "Schiller, Friedrich von (1759-1805); Schiller, Friedrich von (1759-1805); Schiller, Charlotte von (1766-1826)",
+                        "id": "AK00278213",
+                        "display": "Schiller an Lotte"
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242236"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242236/files/images/HS_00242236_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Johann Caspar (1723-1796) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569284"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "21.03.1796",
+                        "filterDigital": true,
+                        "id": "HS00242236",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242236/?media_access=public&media_license=CC0&media_thumbnail=HS_00242236_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Johann Caspar [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242245"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242245/files/images/HS_00242245_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Johann Caspar (1723-1796) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569288"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "29.12.1790",
+                        "filterDigital": true,
+                        "id": "HS00242245",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242245/?media_access=public&media_license=CC0&media_thumbnail=HS_00242245_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Johann Caspar [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242246"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242246/files/images/HS_00242246_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Johann Caspar (1723-1796) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569289"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "26.10.1790",
+                        "filterDigital": true,
+                        "id": "HS00242246",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242246/?media_access=public&media_license=CC0&media_thumbnail=HS_00242246_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Johann Caspar [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242254"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242254/files/images/HS_00242254_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Johann Caspar (1723-1796) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569292"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "10.03.1790",
+                        "filterDigital": true,
+                        "id": "HS00242254",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242254/?media_access=public&media_license=CC0&media_thumbnail=HS_00242254_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Johann Caspar [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242256"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242256/files/images/HS_00242256_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Johann Caspar (1723-1796) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569293"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "04.02.1790",
+                        "filterDigital": true,
+                        "id": "HS00242256",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242256/?media_access=public&media_license=CC0&media_thumbnail=HS_00242256_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Johann Caspar [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242257"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242257/files/images/HS_00242257_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Johann Caspar (1723-1796) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569294"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "13.01.1790",
+                        "filterDigital": true,
+                        "id": "HS00242257",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242257/?media_access=public&media_license=CC0&media_thumbnail=HS_00242257_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Johann Caspar [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242258"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242258/files/images/HS_00242258_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Johann Caspar (1723-1796) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569295"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "07.01.1790",
+                        "filterDigital": true,
+                        "id": "HS00242258",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242258/?media_access=public&media_license=CC0&media_thumbnail=HS_00242258_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Johann Caspar [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242264"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242264/files/images/HS_00242264_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Elisabetha Dorothea (1732-1802) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569297"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "08.10.1799",
+                        "filterDigital": true,
+                        "id": "HS00242264",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242264/?media_access=public&media_license=CC0&media_thumbnail=HS_00242264_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242265"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242265/files/images/HS_00242265_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Elisabetha Dorothea (1732-1802) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569298"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "19.09.1796",
+                        "filterDigital": true,
+                        "id": "HS00242265",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242265/?media_access=public&media_license=CC0&media_thumbnail=HS_00242265_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242267"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242267/files/images/HS_00242267_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Charlotte von (1766-1826) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569300"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "13.10.1788",
+                        "filterDigital": true,
+                        "id": "HS00242267",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242267/?media_access=public&media_license=CC0&media_thumbnail=HS_00242267_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Charlotte von [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242268"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242268/files/images/HS_00242268_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Charlotte von (1766-1826) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569301"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "06.09.1788",
+                        "filterDigital": true,
+                        "id": "HS00242268",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242268/?media_access=public&media_license=CC0&media_thumbnail=HS_00242268_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Charlotte von [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242269"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242269/files/images/HS_00242269_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Charlotte von (1766-1826) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569302"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "30.05.1788",
+                        "filterDigital": true,
+                        "id": "HS00242269",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242269/?media_access=public&media_license=CC0&media_thumbnail=HS_00242269_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Charlotte von [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242271"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242271/files/images/HS_00242271_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Charlotte von (1766-1826) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569303"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "03.1788",
+                        "filterDigital": true,
+                        "id": "HS00242271",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242271/?media_access=public&media_license=CC0&media_thumbnail=HS_00242271_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Charlotte von [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    }
+                ]
+            },
+            "facet_counts": {
+                "facet_queries": {
+                    "Woche": 0,
+                    "Monat": 12,
+                    "Quartal": 58,
+                    "Halbjahr": 93,
+                    "Jahr": 157
+                },
+                "facet_fields": {
+                    "Digital": [
+                        "true",
+                        745
+                    ],
+                    "Medientypen": [
+                        "Gedrucktes",
+                        4783,
+                        "Handschriften",
+                        1124,
+                        "Audio",
+                        528,
+                        "Normdaten",
+                        228,
+                        "Video",
+                        56,
+                        "Daten",
+                        3
+                    ],
+                    "FormUndInhalt": [
+                        "Dramatisches",
+                        1929,
+                        "Lyrik",
+                        1164,
+                        "Brief",
+                        866,
+                        "Sonstige Texte",
+                        602,
+                        "Aufsatz",
+                        537,
+                        "Übersetzung, fremdsprachig",
+                        437,
+                        "Prosa",
+                        431,
+                        "Werke, Teilausgabe",
+                        393,
+                        "Musikalia",
+                        306,
+                        "Lesung",
+                        286,
+                        "Lied",
+                        201,
+                        "Werke, Gesamtausgabe",
+                        178,
+                        "Verschiedenes",
+                        106,
+                        "Kompositionen",
+                        62,
+                        "Theaterinszenierung",
+                        54,
+                        "Anthologie",
+                        52,
+                        "Vertonung",
+                        52,
+                        "Aufsatzsammlung",
+                        27,
+                        "Hörspiel",
+                        26,
+                        "Nichttextuelle Produktion",
+                        22,
+                        "Pressendruck",
+                        21,
+                        "Reprint",
+                        21,
+                        "Faksimile",
+                        17,
+                        "Register",
+                        17,
+                        "Versepos",
+                        16,
+                        "Bilderbuch",
+                        15,
+                        "Künstlerbuch",
+                        15,
+                        "Film",
+                        12,
+                        "Übersetzung, deutsch",
+                        12,
+                        "Zusammenstellung",
+                        11,
+                        "Abschrift",
+                        10,
+                        "Abbildung",
+                        9,
+                        "Essay",
+                        9,
+                        "Rede / Vortrag",
+                        9,
+                        "Rundfunkmanuskript",
+                        9,
+                        "Lieferungswerk",
+                        8,
+                        "Bildband",
+                        7,
+                        "Herausgegebenes",
+                        7,
+                        "Hochschulschrift",
+                        7,
+                        "Hörbuch",
+                        7,
+                        "Bearbeitung",
+                        6,
+                        "Mundartliteratur",
+                        5,
+                        "Programmheft",
+                        5,
+                        "Tagebuch",
+                        5,
+                        "Werk",
+                        5,
+                        "Ballade",
+                        4,
+                        "Erzählung",
+                        4,
+                        "Festschrift",
+                        4,
+                        "Gespräch / Interview",
+                        4,
+                        "Kalender",
+                        4,
+                        null,
+                        964
+                    ],
+                    "Medium": [
+                        "Buch",
+                        4189,
+                        "Beitrag",
+                        537,
+                        "Mehrteiliges Werk",
+                        387,
+                        "Noten",
+                        368,
+                        "Audio-CD",
+                        350,
+                        "Buchumschlag",
+                        103,
+                        "Schallplatte",
+                        93,
+                        "Audiokassette",
+                        76,
+                        "Audiodatei",
+                        37,
+                        "Videokassette",
+                        33,
+                        "CD-ROM",
+                        20,
+                        "E-Book",
+                        17,
+                        "Zeitschriftenheft",
+                        13,
+                        "Medienkombination",
+                        12,
+                        "Videodatei",
+                        5,
+                        "Online-Ressource",
+                        3,
+                        "Video-DVD",
+                        3,
+                        "Zeitschriftenband",
+                        2,
+                        "Mikroform",
+                        1,
+                        "Tonband",
+                        1,
+                        "Zeitschrift",
+                        1,
+                        null,
+                        1297
+                    ],
+                    "Personen": [
+                        "Schiller, Friedrich von (1759-1805)",
+                        6722,
+                        "Cotta",
+                        431,
+                        "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)",
+                        250,
+                        "Körner, Christian Gottfried (1756-1831)",
+                        169,
+                        "Goethe, Johann Wolfgang von (1749-1832)",
+                        157,
+                        "Wiese, Benno von (1903-1987)",
+                        111,
+                        "Schubert, Franz (1797-1828)",
+                        105,
+                        "Goedeke, Karl (1814-1887)",
+                        104,
+                        "Oellers, Norbert (1936-)",
+                        85,
+                        "Unbekannt",
+                        84,
+                        "Petersen, Julius (1878-1941)",
+                        78,
+                        "Seidel, Siegfried (1925-1991)",
+                        75,
+                        "Blumenthal, Lieselotte (1906-1992)",
+                        73,
+                        "Göpfert, Herbert Georg (1907-2007)",
+                        65,
+                        "Fricke, Gerhard (1901-1980)",
+                        53,
+                        "Eberle, Josef (1901-1986)",
+                        52,
+                        "Bellermann, Ludwig (1836-1915)",
+                        46,
+                        "Boxberger, Robert (1836-1890)",
+                        46,
+                        "Glück, Franz (1899-1981)",
+                        44,
+                        "Schocken, Salman (1877-1959)",
+                        44,
+                        "Schockenbibliothek",
+                        44,
+                        "Wolfskehl, Karl (1869-1948)",
+                        44,
+                        "Kutscher, Artur (1878-1960)",
+                        38,
+                        "Zumsteeg, Johann Rudolph (1760-1802)",
+                        36,
+                        "Huber, Ludwig Ferdinand (1764-1804)",
+                        35,
+                        "Hellen, Eduard von der (1863-1927)",
+                        34,
+                        "Romberg, Andreas Jakob (1767-1821)",
+                        34,
+                        "Göschen, Georg Joachim (1752-1828)",
+                        33,
+                        "Gerstenbergk, Heinrich von (1814-1887)",
+                        32,
+                        "Stubenrauch, Herbert (1896-1958)",
+                        32,
+                        "Buchwald, Reinhard (1884-1983)",
+                        31,
+                        "Merker, Paul (1881-1945)",
+                        30,
+                        "Stammler, Wolfgang (1886-1965)",
+                        27,
+                        "Beethoven, Ludwig van (1770-1827)",
+                        26,
+                        "Humboldt, Wilhelm von (1767-1835)",
+                        26,
+                        "Leitzmann, Albert (1867-1950)",
+                        26,
+                        "Müller, Ernst (1900-1976)",
+                        26,
+                        "Petsch, Robert (1875-1945)",
+                        26,
+                        "Reichardt, Johann Friedrich (1752-1814)",
+                        26,
+                        "Kippenberg, Katharina (1876-1947)",
+                        25,
+                        "Insel Verlag Anton Kippenberg <Leipzig> (1906-1991)",
+                        24,
+                        "Kippenberg, Anton (1874-1950)",
+                        24,
+                        "Höfer, Conrad (1872-1947)",
+                        23,
+                        "J.-G.-Cotta'sche Buchhandlung <Stuttgart> / Archiv",
+                        23,
+                        "Hesse, Hermann (1877-1962)",
+                        22,
+                        "Maltzahn, Wendelin von",
+                        22,
+                        "Schiller, Charlotte von (1766-1826)",
+                        22,
+                        "Westphal, Gert (1920-2002)",
+                        22,
+                        "Coleridge, Samuel Taylor (1772-1834)",
+                        21,
+                        "Hesse, Ninon (1895-1966)",
+                        21
+                    ],
+                    "Thema": [
+                        "Schiller, Friedrich von (1759-1805)",
+                        979,
+                        "Wirkungsgeschichte / Aufführungen, Veranstaltungen und Rezitationen auf der Textgrundlage des Autors / Einzelne Werke",
+                        276,
+                        "Vertonungen / Einzelne Werke",
+                        127,
+                        "Wirkungsgeschichte / Aufführungen, Veranstaltungen und Rezitationen auf der Textgrundlage des Autors / Allgemeines",
+                        84,
+                        "Schiller, Friedrich von <1759-1805>. Wilhelm Tell (Drama : 1804)",
+                        73,
+                        "Andere Bearbeitungen / Einzelne Werke",
+                        66,
+                        "Person und Werk als Thema",
+                        52,
+                        "Schiller, Friedrich von <1759-1805>. Kabale und Liebe (Drama : 1784)",
+                        52,
+                        "Der Autor im Schulunterricht / Einzelne Werke",
+                        51,
+                        "Schiller, Friedrich von <1759-1805>. Maria Stuart (Drama : 1801)",
+                        46,
+                        "Schiller, Friedrich von <1759-1805>. Die Räuber (Drama : 1781)",
+                        45,
+                        "Schiller, Friedrich von <1759-1805>. Der Handschuh (Lyrik : 1798)",
+                        43,
+                        "Schiller, Friedrich von <1759-1805>. Die Bürgschaft (Ballade : 1798)",
+                        43,
+                        "Schiller, Friedrich von <1759-1805>. An die Freude (Lyrik : 1785-1787)",
+                        42,
+                        "Dramatisches / Einzelne Werke",
+                        40,
+                        "Schiller, Friedrich von <1759-1805>. Don Carlos (Drama : 1787)",
+                        40,
+                        "Primärliteratur / Literarische Gattungen / Lyrik",
+                        38,
+                        "Wirkungsgeschichte / Illustrationen / Einzelne Werke",
+                        32,
+                        "Schiller, Friedrich von <1759-1805>. Das Lied von der Glocke (Lyrik : 1799)",
+                        29,
+                        "Schiller, Friedrich von <1759-1805>. Wallenstein (Zusammenstellung : 1800)",
+                        27,
+                        "Umfassende Darstellungen",
+                        25,
+                        "Primärliteratur / Literarische Gattungen / Dramatische Werke und Fragmente",
+                        24,
+                        "Goethe, Johann Wolfgang von (1749-1832)",
+                        23,
+                        "Vertonungen / Allgemeines",
+                        23,
+                        "Schiller, Friedrich von <1759-1805>. Demetrius (Drama : 1815-)",
+                        20,
+                        "Schiller, Friedrich von <1759-1805>. Der Taucher (Lyrik : 1797)",
+                        19,
+                        "Mary <Scotland, Queen> (1542-1587)",
+                        18,
+                        "Schiller, Friedrich von <1759-1805>. Die Verschwörung des Fiesco zu Genua (Drama : 1783)",
+                        18,
+                        "Sekundärliteratur (nicht weiter differenziert)",
+                        18,
+                        "Schiller, Friedrich von <1759-1805>. Der Verbrecher aus verlorener Ehre (Erzählung : 1786)",
+                        17,
+                        "Schiller, Friedrich von <1759-1805>. Die Jungfrau von Orleans (Drama : 1802)",
+                        17,
+                        "Biographische Gesamtdarstellungen",
+                        16,
+                        "Handschriften",
+                        16,
+                        "Lyrik / Einzelne Werke",
+                        15,
+                        "Schiller, Friedrich von <1759-1805>. Die Kraniche des Ibykus (Lyrik : 1798)",
+                        15,
+                        "Beziehungen / Familie und Zeitgenossen / Einzelne Personen und Gruppen",
+                        14,
+                        "Jeanne <d'Arc> (1412-1431)",
+                        14,
+                        "Schiller, Friedrich von <1759-1805>. Wallensteins Tod (Drama : 1800)",
+                        14,
+                        "Schiller, Friedrich von <1759-1805>. Xenien (Zusammenstellung : 1797)",
+                        14,
+                        "Lieder",
+                        13,
+                        "Sammelwerke",
+                        13,
+                        "Schiller, Friedrich von <1759-1805>. Des Mädchens Klage (Lyrik : 1798)",
+                        12,
+                        "Schiller, Friedrich von <1759-1805>. Nänie (Lyrik : 1800)",
+                        12,
+                        "Sekundärliteratur / Wirkungsgeschichte / Vertonungen",
+                        12,
+                        "Verfilmungen / Einzelne Werke",
+                        12,
+                        "Gespräche, Interviews",
+                        11,
+                        "Schiller, Friedrich von <1759-1805>. Der Ring des Polykrates (Lyrik : 1797)",
+                        11,
+                        "Bilder",
+                        10,
+                        "Kürzere Darstellungen",
+                        10,
+                        "Schiller, Friedrich von <1759-1805>. Das verschleierte Bild zu Sais (Lyrik : 1795)",
+                        10,
+                        null,
+                        5499
+                    ],
+                    "Sprache": [
+                        "Deutsch",
+                        6722,
+                        "Englisch",
+                        137,
+                        "Französisch",
+                        60,
+                        "Italienisch",
+                        54,
+                        "Spanisch",
+                        39,
+                        "Russisch",
+                        30,
+                        "Ungarisch",
+                        27,
+                        "Latein",
+                        23,
+                        "Polnisch",
+                        23,
+                        "Niederländisch",
+                        20,
+                        "Portugiesisch",
+                        18,
+                        "Chinesisch",
+                        14,
+                        "Tschechisch",
+                        14,
+                        "Türkisch",
+                        13,
+                        "Griechisch",
+                        10,
+                        "Japanisch",
+                        10,
+                        "Schwedisch",
+                        10,
+                        "Deutsche Dialekte",
+                        9,
+                        "Bulgarisch",
+                        7,
+                        "Koreanisch",
+                        6,
+                        "Rumänisch",
+                        6,
+                        "Slowakisch",
+                        5,
+                        "Albanisch",
+                        4,
+                        "Dänisch",
+                        4,
+                        "Katalanisch",
+                        4,
+                        "Norwegisch",
+                        4,
+                        "Armenisch",
+                        3,
+                        "Litauisch",
+                        3,
+                        "Serbisch",
+                        3,
+                        "Ukrainisch",
+                        3,
+                        "mehrere Sprachen",
+                        3,
+                        "Baskisch",
+                        2,
+                        "Esperanto",
+                        2,
+                        "Finnisch",
+                        2,
+                        "Georgisch (= Grusinisch)",
+                        2,
+                        "Kroatisch",
+                        2,
+                        "Lettisch",
+                        2,
+                        "Mongolisch",
+                        2,
+                        "Slowenisch",
+                        2,
+                        "Tagalog",
+                        2,
+                        "Aserbeidschanisch",
+                        1,
+                        "Bosnisch",
+                        1,
+                        "Estnisch",
+                        1,
+                        "Friaulisch",
+                        1,
+                        "Gälisch, Schottisches Gälisch",
+                        1,
+                        "Osmanische Sprache (1500-1928)",
+                        1,
+                        "Ossetische Sprache",
+                        1,
+                        "Persisch",
+                        1,
+                        "Serbokroatisch (bis 1991)",
+                        1,
+                        "Sorbische Sprachen",
+                        1
+                    ],
+                    "filterLanguageType_mv": [
+                        "Deutsch␝Original",
+                        6722,
+                        "Englisch␝Übersetzung",
+                        112,
+                        "Deutsch␝Übersetzung",
+                        77,
+                        "Französisch␝Übersetzung",
+                        53,
+                        "Italienisch␝Übersetzung",
+                        52,
+                        "Spanisch␝Übersetzung",
+                        39,
+                        "Russisch␝Übersetzung",
+                        29,
+                        "Englisch␝Original",
+                        26,
+                        "Ungarisch␝Übersetzung",
+                        26,
+                        "Polnisch␝Übersetzung",
+                        23,
+                        "Niederländisch␝Übersetzung",
+                        18,
+                        "Portugiesisch␝Übersetzung",
+                        18,
+                        "Latein␝Übersetzung",
+                        16,
+                        "Chinesisch␝Übersetzung",
+                        14,
+                        "Tschechisch␝Übersetzung",
+                        14,
+                        "Türkisch␝Übersetzung",
+                        13,
+                        "Japanisch␝Übersetzung",
+                        10,
+                        "Schwedisch␝Übersetzung",
+                        10,
+                        "Griechisch␝Übersetzung",
+                        9,
+                        "Deutsche Dialekte␝Original",
+                        8,
+                        "Bulgarisch␝Übersetzung",
+                        7,
+                        "Französisch␝Original",
+                        7,
+                        "Latein␝Original",
+                        7,
+                        "Koreanisch␝Übersetzung",
+                        6,
+                        "Rumänisch␝Übersetzung",
+                        6,
+                        "Slowakisch␝Übersetzung",
+                        5,
+                        "Albanisch␝Übersetzung",
+                        4,
+                        "Dänisch␝Übersetzung",
+                        4,
+                        "Katalanisch␝Übersetzung",
+                        4,
+                        "Norwegisch␝Übersetzung",
+                        4,
+                        "Armenisch␝Übersetzung",
+                        3,
+                        "Litauisch␝Übersetzung",
+                        3,
+                        "Serbisch␝Übersetzung",
+                        3,
+                        "Ukrainisch␝Übersetzung",
+                        3,
+                        "mehrere Sprachen␝Übersetzung",
+                        3,
+                        "Baskisch␝Übersetzung",
+                        2,
+                        "Esperanto␝Übersetzung",
+                        2,
+                        "Finnisch␝Übersetzung",
+                        2,
+                        "Georgisch (= Grusinisch)␝Übersetzung",
+                        2,
+                        "Italienisch␝Original",
+                        2,
+                        "Kroatisch␝Übersetzung",
+                        2,
+                        "Lettisch␝Übersetzung",
+                        2,
+                        "Mongolisch␝Übersetzung",
+                        2,
+                        "Niederländisch␝Original",
+                        2,
+                        "Slowenisch␝Übersetzung",
+                        2,
+                        "Tagalog␝Übersetzung",
+                        2,
+                        "Aserbeidschanisch␝Übersetzung",
+                        1,
+                        "Bosnisch␝Übersetzung",
+                        1,
+                        "Deutsche Dialekte␝Übersetzung",
+                        1,
+                        "Estnisch␝Übersetzung",
+                        1
+                    ],
+                    "Ort": [
+                        "Jena",
+                        436,
+                        "Leipzig",
+                        430,
+                        "Stuttgart",
+                        397,
+                        "Berlin",
+                        371,
+                        "Weimar",
+                        279,
+                        "Wien",
+                        188,
+                        "München",
+                        137,
+                        "Hamburg",
+                        115,
+                        "Tübingen",
+                        77,
+                        "London",
+                        76,
+                        "Mannheim",
+                        71,
+                        "Paris",
+                        67,
+                        "Frankfurt am Main",
+                        61,
+                        "Augsburg",
+                        56,
+                        "Dresden",
+                        49,
+                        "Jerusalem",
+                        44,
+                        "Kiechlinsbergen",
+                        44,
+                        "Köln",
+                        44,
+                        "Mainz",
+                        41,
+                        "Zürich",
+                        32,
+                        "Paderborn",
+                        31,
+                        "S.l.",
+                        31,
+                        "Frankfurt",
+                        30,
+                        "Budapest",
+                        28,
+                        "New York",
+                        28,
+                        "Milano",
+                        26,
+                        "Reutlingen",
+                        21,
+                        "Bonn",
+                        19,
+                        "Braunschweig",
+                        17,
+                        "Carlsruhe",
+                        17,
+                        "Düsseldorf",
+                        17,
+                        "Ditzingen",
+                        16,
+                        "Nürnberg",
+                        16,
+                        "Amsterdam",
+                        15,
+                        "Hannover",
+                        15,
+                        "Hollfeld",
+                        15,
+                        "Ludwigsburg",
+                        15,
+                        "Madrid",
+                        15,
+                        "s.l.",
+                        14,
+                        "Frankfurt a. M.",
+                        13,
+                        "Barcelona",
+                        12,
+                        "Bielefeld",
+                        12,
+                        "Aachen",
+                        11,
+                        "Grätz",
+                        11,
+                        "Gütersloh",
+                        11,
+                        "Kopenhagen",
+                        11,
+                        "Rudolstadt",
+                        11,
+                        "Cambridge",
+                        10,
+                        "Chicago",
+                        10,
+                        "Moskva [Moskau]",
+                        10
+                    ],
+                    "filterLocationType_mv": [
+                        "Leipzig␝Erscheinungsort",
+                        422,
+                        "Jena␝Entstehungsort",
+                        414,
+                        "Stuttgart␝Erscheinungsort",
+                        374,
+                        "Berlin␝Erscheinungsort",
+                        327,
+                        "Weimar␝Entstehungsort",
+                        243,
+                        "Wien␝Erscheinungsort",
+                        188,
+                        "München␝Erscheinungsort",
+                        137,
+                        "Hamburg␝Erscheinungsort",
+                        115,
+                        "London␝Erscheinungsort",
+                        76,
+                        "Tübingen␝Erscheinungsort",
+                        75,
+                        "Paris␝Erscheinungsort",
+                        67,
+                        "Frankfurt am Main␝Erscheinungsort",
+                        61,
+                        "Augsburg␝Erscheinungsort",
+                        56,
+                        "Berlin␝Provenienzort",
+                        44,
+                        "Jerusalem␝Provenienzort",
+                        44,
+                        "Kiechlinsbergen␝Provenienzort",
+                        44,
+                        "Köln␝Erscheinungsort",
+                        44,
+                        "Mannheim␝Erscheinungsort",
+                        44,
+                        "Mainz␝Erscheinungsort",
+                        40,
+                        "Weimar␝Erscheinungsort",
+                        35,
+                        "Zürich␝Erscheinungsort",
+                        32,
+                        "Paderborn␝Erscheinungsort",
+                        31,
+                        "S.l.␝Erscheinungsort",
+                        31,
+                        "Budapest␝Erscheinungsort",
+                        28,
+                        "Frankfurt␝Erscheinungsort",
+                        28,
+                        "New York␝Erscheinungsort",
+                        28,
+                        "Mannheim␝Entstehungsort",
+                        27,
+                        "Dresden␝Entstehungsort",
+                        26,
+                        "Milano␝Erscheinungsort",
+                        26,
+                        "Dresden␝Erscheinungsort",
+                        23,
+                        "Stuttgart␝Entstehungsort",
+                        23,
+                        "Jena␝Erscheinungsort",
+                        22,
+                        "Reutlingen␝Erscheinungsort",
+                        21,
+                        "Bonn␝Erscheinungsort",
+                        19,
+                        "Braunschweig␝Erscheinungsort",
+                        17,
+                        "Carlsruhe␝Erscheinungsort",
+                        17,
+                        "Düsseldorf␝Erscheinungsort",
+                        17,
+                        "Ditzingen␝Erscheinungsort",
+                        16,
+                        "Nürnberg␝Erscheinungsort",
+                        16,
+                        "Amsterdam␝Erscheinungsort",
+                        15,
+                        "Hannover␝Erscheinungsort",
+                        15,
+                        "Hollfeld␝Erscheinungsort",
+                        15,
+                        "Madrid␝Erscheinungsort",
+                        15,
+                        "Ludwigsburg␝Entstehungsort",
+                        14,
+                        "s.l.␝Erscheinungsort",
+                        14,
+                        "Frankfurt a. M.␝Erscheinungsort",
+                        13,
+                        "Barcelona␝Erscheinungsort",
+                        12,
+                        "Bielefeld␝Erscheinungsort",
+                        12,
+                        "Aachen␝Erscheinungsort",
+                        11,
+                        "Grätz␝Erscheinungsort",
+                        11
+                    ],
+                    "Sammlung": [
+                        "A:Schiller, Friedrich von",
+                        537,
+                        "COTTA:Cotta-Archiv (Verlagsproduktion / Stiftung der Stuttgarter Zeitung)",
+                        436,
+                        "COTTA:Briefe",
+                        311,
+                        "COTTA:Manuskripte",
+                        63,
+                        "G:Eberle, Josef (Bibliothek des Autors)",
+                        52,
+                        "G:Glück, Franz (Sammlerbibliothek)",
+                        44,
+                        "G:Wolfskehl, Karl (Virtuelle Bibliothek Kiechlinsbergen 1937)",
+                        44,
+                        "G:Wolfskehl, Karl (Virtuelle Rekonstruktion des Buchbesitzes)",
+                        44,
+                        "A:Schiller, Friedrich von/Gerstenbergksche Fälschungen",
+                        33,
+                        "A:Schiller, Friedrich von/Faksimiles",
+                        30,
+                        "A:Schiller, Friedrich von/Kopien",
+                        30,
+                        "A:Silcher, Friedrich",
+                        29,
+                        "COTTA:Korrekturen",
+                        25,
+                        "G:Kippenberg, Anton (Verleger-Bibliothek / Teilproduktion des Insel Verlags)",
+                        24,
+                        "G:Hesse, Hermann (Hesse-Archiv / Marbacher Bestand)",
+                        21,
+                        "G:Bovenschen, Silvia (Teilbibliothek der Autorin)",
+                        19,
+                        "G:Döblin, Alfred (Teilbibliothek des Autors)",
+                        19,
+                        "G:Jean-Paul-Archiv (Bibliothek Eduard Berend)",
+                        18,
+                        "G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices)",
+                        17,
+                        "G:Jünger, Ernst (Bibliothek des Autors / Wilflinger Bestand)",
+                        16,
+                        "G:Lehmann, Wilhelm (Bibliothek des Autors)",
+                        15,
+                        "G:Pinthus, Kurt (Bibliothek des Autors)",
+                        15,
+                        "D:Schiller, Friedrich von",
+                        14,
+                        "G:Celan, Paul (Bibliothek des Autors)",
+                        13,
+                        "G:Mörike, Eduard (Sammlung Fritz Kauffmann)",
+                        13,
+                        "G:Schiller-Bibliothek I / II (Teilbibliothek des Autors und seiner Familie)",
+                        12,
+                        "G:Sebald, W. G. (Bibliothek des Autors)",
+                        11,
+                        "G:Koselleck, Reinhart (Historisch-politische Teilbibliothek und Sonderdruck-Sammlung)",
+                        9,
+                        "A:Günther, Georg",
+                        7,
+                        "G:Badenhop, Wilhelm (Sammlung / Literatur des 20. Jahrhunderts)",
+                        6,
+                        "B:Preis, Karl",
+                        5,
+                        "G:Kracauer, Siegfried (Bibliothek des Autors)",
+                        5,
+                        "A:Goeckingk°Goeckingk, Leopold Friedrich Günther von",
+                        3,
+                        "A:Hölderlin, Friedrich",
+                        3,
+                        "A:Stockmayer, Erich",
+                        3,
+                        "A:Wiedemann, Gisela und Hans-Rudolf°Schiller",
+                        3,
+                        "G:Steiner, Herbert (Arbeitsbibliothek / Paul-Valéry-Sammlung)",
+                        3,
+                        "A:Dingeldey <Familie>°Schiller",
+                        2,
+                        "A:Kauffmann, Fritz°Kauffmann, Ernst Friedrich",
+                        2,
+                        "A:Kauffmann, Fritz°Schiller",
+                        2,
+                        "A:Schiller, Friedrich von°Gleichen-Rußwurm, Emilie von",
+                        2,
+                        "COTTA:Objekte",
+                        2,
+                        "D:Urach, Wilhelm von",
+                        2,
+                        "G:Curtius-Picht (Teile der Familienbibliothek)",
+                        2,
+                        "G:Jünger, Ernst (Bibliothek des Autors / Marbacher Bestand)",
+                        2,
+                        "G:Leonhard, Kurt (Teilbibliothek des Autors)",
+                        2,
+                        "G:Mörike, Eduard (Sammlung Klaus Berge)",
+                        2,
+                        "H:Mickel, Karl/Bild- und Tonträger",
+                        2,
+                        "A:Grüneisen, Carl",
+                        1,
+                        "A:Hauff-Kölle (Morgenblatt)°Kölle, Christoph Friedrich Karl von",
+                        1,
+                        null,
+                        4909
+                    ],
+                    "Datenbestand": [
+                        "Bibliotheksmaterialien",
+                        5370,
+                        "Handschriften Einzelnachweise",
+                        1124,
+                        "Werke",
+                        228,
+                        null,
+                        0
+                    ],
+                    "Bibliographie": [
+                        "Schiller-Bibliographie",
+                        109,
+                        "Schiller-Bibliographie vorgesehen",
+                        105,
+                        null,
+                        6508
+                    ],
+                    "filterAuthorityRole_mv": [
+                        "Schiller, Friedrich von (1759-1805)␝Verfasser/Urheber",
+                        6722,
+                        "Schiller, Friedrich von (1759-1805)␝Behandelte Person/Körperschaft",
+                        966,
+                        "Cotta␝Bestandsbildner/Vorbesitzer",
+                        431,
+                        "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)␝Adressat",
+                        250,
+                        "Körner, Christian Gottfried (1756-1831)␝Adressat",
+                        154,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Verfasser/Urheber",
+                        152,
+                        "Schubert, Franz (1797-1828)␝Komponist",
+                        105,
+                        "Oellers, Norbert (1936-)␝Herausgeber",
+                        84,
+                        "Seidel, Siegfried (1925-1991)␝Herausgeber",
+                        75,
+                        "Goedeke, Karl (1814-1887)␝Verfasser eines Vor- oder Nachworts",
+                        73,
+                        "Blumenthal, Lieselotte (1906-1992)␝fortgeführt",
+                        72,
+                        "Petersen, Julius (1878-1941)␝Begründer",
+                        72,
+                        "Wiese, Benno von (1903-1987)␝fortgeführt",
+                        72,
+                        "Unbekannt␝Bestandsbildner/Vorbesitzer",
+                        66,
+                        "Göpfert, Herbert Georg (1907-2007)␝Herausgeber",
+                        65,
+                        "Eberle, Josef (1901-1986)␝Bestandsbildner/Vorbesitzer",
+                        52,
+                        "Boxberger, Robert (1836-1890)␝Herausgeber",
+                        46,
+                        "Glück, Franz (1899-1981)␝Bestandsbildner/Vorbesitzer",
+                        44,
+                        "Schocken, Salman (1877-1959)␝Bestandsbildner/Vorbesitzer",
+                        44,
+                        "Schockenbibliothek␝Bestandsbildner/Vorbesitzer",
+                        44,
+                        "Wolfskehl, Karl (1869-1948)␝Bestandsbildner/Vorbesitzer",
+                        44,
+                        "Fricke, Gerhard (1901-1980)␝Herausgeber",
+                        42,
+                        "Bellermann, Ludwig (1836-1915)␝Herausgeber",
+                        41,
+                        "Kutscher, Artur (1878-1960)␝Herausgeber",
+                        38,
+                        "Göschen, Georg Joachim (1752-1828)␝Adressat",
+                        33,
+                        "Zumsteeg, Johann Rudolph (1760-1802)␝Komponist",
+                        33,
+                        "Huber, Ludwig Ferdinand (1764-1804)␝Adressat",
+                        32,
+                        "Goedeke, Karl (1814-1887)␝Herausgeber",
+                        31,
+                        "Schiller, Friedrich von (1759-1805)␝Korrespondent",
+                        31,
+                        "Buchwald, Reinhard (1884-1983)␝Herausgeber",
+                        30,
+                        "Merker, Paul (1881-1945)␝Herausgeber",
+                        30,
+                        "Wiese, Benno von (1903-1987)␝Herausgeber",
+                        30,
+                        "Gerstenbergk, Heinrich von (1814-1887)␝Schreiber (Abschrift)",
+                        29,
+                        "Romberg, Andreas Jakob (1767-1821)␝Komponist",
+                        28,
+                        "Stubenrauch, Herbert (1896-1958)␝Mitarbeiter",
+                        28,
+                        "Stammler, Wolfgang (1886-1965)␝Herausgeber",
+                        27,
+                        "Leitzmann, Albert (1867-1950)␝Herausgeber",
+                        26,
+                        "Müller, Ernst (1900-1976)␝Herausgeber",
+                        26,
+                        "Petsch, Robert (1875-1945)␝Herausgeber",
+                        26,
+                        "Reichardt, Johann Friedrich (1752-1814)␝Komponist",
+                        25,
+                        "Beethoven, Ludwig van (1770-1827)␝Komponist",
+                        24,
+                        "Insel Verlag Anton Kippenberg <Leipzig> (1906-1991)␝Bestandsbildner/Vorbesitzer",
+                        24,
+                        "Kippenberg, Anton (1874-1950)␝Bestandsbildner/Vorbesitzer",
+                        24,
+                        "Kippenberg, Katharina (1876-1947)␝Bestandsbildner/Vorbesitzer",
+                        24,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Behandelte Person/Körperschaft",
+                        23,
+                        "Höfer, Conrad (1872-1947)␝Herausgeber",
+                        23,
+                        "J.-G.-Cotta'sche Buchhandlung <Stuttgart> / Archiv␝Bestandsbildner/Vorbesitzer",
+                        23,
+                        "Maltzahn, Wendelin von␝Herausgeber",
+                        22,
+                        "Coleridge, Samuel Taylor (1772-1834)␝Übersetzer",
+                        21,
+                        "Hesse, Hermann (1877-1962)␝Bestandsbildner/Vorbesitzer",
+                        21
+                    ],
+                    "filterAuthorityRelation_mv": [
+                        "Schiller, Friedrich von (1759-1805)␝Von",
+                        6722,
+                        "Schiller, Friedrich von (1759-1805)␝Über",
+                        979,
+                        "Cotta␝Unter",
+                        431,
+                        "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)␝An",
+                        250,
+                        "Körner, Christian Gottfried (1756-1831)␝An",
+                        154,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Von",
+                        153,
+                        "Wiese, Benno von (1903-1987)␝Von",
+                        111,
+                        "Schubert, Franz (1797-1828)␝Von",
+                        105,
+                        "Goedeke, Karl (1814-1887)␝Von",
+                        104,
+                        "Oellers, Norbert (1936-)␝Von",
+                        85,
+                        "Petersen, Julius (1878-1941)␝Von",
+                        78,
+                        "Seidel, Siegfried (1925-1991)␝Von",
+                        75,
+                        "Blumenthal, Lieselotte (1906-1992)␝Von",
+                        73,
+                        "Unbekannt␝Unter",
+                        66,
+                        "Göpfert, Herbert Georg (1907-2007)␝Von",
+                        65,
+                        "Fricke, Gerhard (1901-1980)␝Von",
+                        53,
+                        "Eberle, Josef (1901-1986)␝Unter",
+                        52,
+                        "Bellermann, Ludwig (1836-1915)␝Von",
+                        46,
+                        "Boxberger, Robert (1836-1890)␝Von",
+                        46,
+                        "Glück, Franz (1899-1981)␝Unter",
+                        44,
+                        "Schocken, Salman (1877-1959)␝Unter",
+                        44,
+                        "Schockenbibliothek␝Unter",
+                        44,
+                        "Wolfskehl, Karl (1869-1948)␝Unter",
+                        44,
+                        "Kutscher, Artur (1878-1960)␝Von",
+                        38,
+                        "Hellen, Eduard von der (1863-1927)␝Von",
+                        34,
+                        "Romberg, Andreas Jakob (1767-1821)␝Von",
+                        34,
+                        "Göschen, Georg Joachim (1752-1828)␝An",
+                        33,
+                        "Zumsteeg, Johann Rudolph (1760-1802)␝Von",
+                        33,
+                        "Gerstenbergk, Heinrich von (1814-1887)␝Von",
+                        32,
+                        "Huber, Ludwig Ferdinand (1764-1804)␝An",
+                        32,
+                        "Stubenrauch, Herbert (1896-1958)␝Von",
+                        32,
+                        "Buchwald, Reinhard (1884-1983)␝Von",
+                        31,
+                        "Merker, Paul (1881-1945)␝Von",
+                        30,
+                        "Stammler, Wolfgang (1886-1965)␝Von",
+                        27,
+                        "Leitzmann, Albert (1867-1950)␝Von",
+                        26,
+                        "Müller, Ernst (1900-1976)␝Von",
+                        26,
+                        "Petsch, Robert (1875-1945)␝Von",
+                        26,
+                        "Beethoven, Ludwig van (1770-1827)␝Von",
+                        25,
+                        "Reichardt, Johann Friedrich (1752-1814)␝Von",
+                        25,
+                        "Insel Verlag Anton Kippenberg <Leipzig> (1906-1991)␝Unter",
+                        24,
+                        "Kippenberg, Anton (1874-1950)␝Unter",
+                        24,
+                        "Kippenberg, Katharina (1876-1947)␝Unter",
+                        24,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Über",
+                        23,
+                        "Höfer, Conrad (1872-1947)␝Von",
+                        23,
+                        "J.-G.-Cotta'sche Buchhandlung <Stuttgart> / Archiv␝Unter",
+                        23,
+                        "Maltzahn, Wendelin von␝Von",
+                        22,
+                        "Westphal, Gert (1920-2002)␝Von",
+                        22,
+                        "Coleridge, Samuel Taylor (1772-1834)␝Von",
+                        21,
+                        "Hesse, Hermann (1877-1962)␝Unter",
+                        21,
+                        "Hesse, Ninon (1895-1966)␝Unter",
+                        21
+                    ],
+                    "entities": [
+                        "PE00034281",
+                        6722,
+                        "KS00021741",
+                        431
+                    ]
+                },
+                "facet_ranges": {
+                    "Zeit": {
+                        "counts": [
+                            "1771-01-01T00:00:00Z",
+                            2,
+                            "1776-01-01T00:00:00Z",
+                            14,
+                            "1781-01-01T00:00:00Z",
+                            116,
+                            "1786-01-01T00:00:00Z",
+                            213,
+                            "1791-01-01T00:00:00Z",
+                            249,
+                            "1796-01-01T00:00:00Z",
+                            332,
+                            "1801-01-01T00:00:00Z",
+                            309,
+                            "1806-01-01T00:00:00Z",
+                            122,
+                            "1811-01-01T00:00:00Z",
+                            91,
+                            "1816-01-01T00:00:00Z",
+                            227,
+                            "1821-01-01T00:00:00Z",
+                            125,
+                            "1826-01-01T00:00:00Z",
+                            140,
+                            "1831-01-01T00:00:00Z",
+                            73,
+                            "1836-01-01T00:00:00Z",
+                            132,
+                            "1841-01-01T00:00:00Z",
+                            83,
+                            "1846-01-01T00:00:00Z",
+                            78,
+                            "1851-01-01T00:00:00Z",
+                            58,
+                            "1856-01-01T00:00:00Z",
+                            102,
+                            "1861-01-01T00:00:00Z",
+                            53,
+                            "1866-01-01T00:00:00Z",
+                            155,
+                            "1871-01-01T00:00:00Z",
+                            80,
+                            "1876-01-01T00:00:00Z",
+                            83,
+                            "1881-01-01T00:00:00Z",
+                            66,
+                            "1886-01-01T00:00:00Z",
+                            64,
+                            "1891-01-01T00:00:00Z",
+                            88,
+                            "1896-01-01T00:00:00Z",
+                            51,
+                            "1901-01-01T00:00:00Z",
+                            202,
+                            "1906-01-01T00:00:00Z",
+                            106,
+                            "1911-01-01T00:00:00Z",
+                            72,
+                            "1916-01-01T00:00:00Z",
+                            40,
+                            "1921-01-01T00:00:00Z",
+                            109,
+                            "1926-01-01T00:00:00Z",
+                            65,
+                            "1931-01-01T00:00:00Z",
+                            33,
+                            "1936-01-01T00:00:00Z",
+                            98,
+                            "1941-01-01T00:00:00Z",
+                            39,
+                            "1946-01-01T00:00:00Z",
+                            164,
+                            "1951-01-01T00:00:00Z",
+                            153,
+                            "1956-01-01T00:00:00Z",
+                            181,
+                            "1961-01-01T00:00:00Z",
+                            79,
+                            "1966-01-01T00:00:00Z",
+                            119,
+                            "1971-01-01T00:00:00Z",
+                            34,
+                            "1976-01-01T00:00:00Z",
+                            68,
+                            "1981-01-01T00:00:00Z",
+                            143,
+                            "1986-01-01T00:00:00Z",
+                            133,
+                            "1991-01-01T00:00:00Z",
+                            127,
+                            "1996-01-01T00:00:00Z",
+                            165,
+                            "2001-01-01T00:00:00Z",
+                            414,
+                            "2006-01-01T00:00:00Z",
+                            212,
+                            "2011-01-01T00:00:00Z",
+                            137,
+                            "2016-01-01T00:00:00Z",
+                            141,
+                            "2021-01-01T00:00:00Z",
+                            105,
+                            "2026-01-01T00:00:00Z",
+                            3
+                        ],
+                        "gap": "+5YEAR",
+                        "start": "1771-01-01T00:00:00Z",
+                        "end": "2031-01-01T00:00:00Z"
+                    }
+                },
+                "facet_intervals": [],
+                "facet_heatmaps": []
+            },
+            "highlighting": {
+                "AK00263183": {
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805)"
+                    ]
+                },
+                "HS00242238": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Elisabetha Dorothea [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Elisabetha Dorothea (1732-1802) [Adressat/in]"
+                    ]
+                },
+                "HS00242240": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Elisabetha Dorothea [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Elisabetha Dorothea (1732-1802) [Adressat/in]"
+                    ]
+                },
+                "HS00242242": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Elisabetha Dorothea [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Elisabetha Dorothea (1732-1802) [Adressat/in]"
+                    ]
+                },
+                "HS00242248": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Elisabetha Dorothea [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Elisabetha Dorothea (1732-1802) [Adressat/in]"
+                    ]
+                },
+                "HS00242251": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Elisabetha Dorothea [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Elisabetha Dorothea (1732-1802) [Adressat/in]"
+                    ]
+                },
+                "HS00242262": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Elisabetha Dorothea [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Elisabetha Dorothea (1732-1802) [Adressat/in]"
+                    ]
+                },
+                "AK00278335": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef und Lotte : Montag den 31. Oktober 1910 im kleinen Tonhallesaal : [Programmheft]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805)"
+                    ]
+                },
+                "HS00171031": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Charlotte von [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Charlotte von (1766-1826) [Adressat/in]"
+                    ]
+                },
+                "AK00278192": {
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805)"
+                    ]
+                },
+                "AK00278209": {
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805); \\ueeeeSchiller\\ueeef, Friedrich von (1759-1805); \\ueeeeSchiller\\ueeef, Charlotte von (1766-1826); \\ueeeeSchiller\\ueeef, Friedrich von (1759-1805); \\ueeeeSchiller\\ueeef, Charlotte von (1766-1826)"
+                    ]
+                },
+                "AK00278213": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef an Lotte"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805); \\ueeeeSchiller\\ueeef, Friedrich von (1759-1805); \\ueeeeSchiller\\ueeef, Charlotte von (1766-1826)"
+                    ]
+                },
+                "HS00242236": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Johann Caspar [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Johann Caspar (1723-1796) [Adressat/in]"
+                    ]
+                },
+                "HS00242245": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Johann Caspar [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Johann Caspar (1723-1796) [Adressat/in]"
+                    ]
+                },
+                "HS00242246": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Johann Caspar [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Johann Caspar (1723-1796) [Adressat/in]"
+                    ]
+                },
+                "HS00242254": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Johann Caspar [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Johann Caspar (1723-1796) [Adressat/in]"
+                    ]
+                },
+                "HS00242256": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Johann Caspar [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Johann Caspar (1723-1796) [Adressat/in]"
+                    ]
+                },
+                "HS00242257": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Johann Caspar [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Johann Caspar (1723-1796) [Adressat/in]"
+                    ]
+                },
+                "HS00242258": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Johann Caspar [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Johann Caspar (1723-1796) [Adressat/in]"
+                    ]
+                },
+                "HS00242264": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Elisabetha Dorothea [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Elisabetha Dorothea (1732-1802) [Adressat/in]"
+                    ]
+                },
+                "HS00242265": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Elisabetha Dorothea [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Elisabetha Dorothea (1732-1802) [Adressat/in]"
+                    ]
+                },
+                "HS00242267": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Charlotte von [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Charlotte von (1766-1826) [Adressat/in]"
+                    ]
+                },
+                "HS00242268": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Charlotte von [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Charlotte von (1766-1826) [Adressat/in]"
+                    ]
+                },
+                "HS00242269": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Charlotte von [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Charlotte von (1766-1826) [Adressat/in]"
+                    ]
+                },
+                "HS00242271": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Charlotte von [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Charlotte von (1766-1826) [Adressat/in]"
+                    ]
+                }
+            }
+        }
+    }
+}

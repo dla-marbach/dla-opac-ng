@@ -1,0 +1,59 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "facet.field": "filterAuthorityRelation_mv",
+            "facet": "on",
+            "facet.mincount": "1",
+            "facet.prefix": "Schiller, Friedrich von (1759-1805)␝",
+            "fq": "NOT source:(AU OR MM)",
+            "q": "schiller",
+            "rows": "0"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 12,
+                "params": {
+                    "q": "schiller",
+                    "facet.field": "filterAuthorityRelation_mv",
+                    "facet.prefix": "Schiller, Friedrich von (1759-1805)␝",
+                    "facet.mincount": "1",
+                    "fq": "NOT source:(AU OR MM)",
+                    "rows": "0",
+                    "facet": "on"
+                }
+            },
+            "response": {
+                "numFound": 39597,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": []
+            },
+            "facet_counts": {
+                "facet_queries": [],
+                "facet_fields": {
+                    "filterAuthorityRelation_mv": [
+                        "Schiller, Friedrich von (1759-1805)␝Über",
+                        15041,
+                        "Schiller, Friedrich von (1759-1805)␝Von",
+                        8397,
+                        "Schiller, Friedrich von (1759-1805)␝An",
+                        1117,
+                        "Schiller, Friedrich von (1759-1805)␝Unter",
+                        89,
+                        "Schiller, Friedrich von (1759-1805)␝nicht bestimmt",
+                        1
+                    ]
+                },
+                "facet_ranges": [],
+                "facet_intervals": [],
+                "facet_heatmaps": []
+            }
+        }
+    }
+}

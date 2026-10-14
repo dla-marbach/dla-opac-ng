@@ -1,0 +1,288 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/suggest",
+        "query": {
+            "suggest": "true",
+            "suggest.dictionary": [
+                "mySuggester",
+                "text"
+            ],
+            "suggest.q": "dürrenmatt besuch fil"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0
+            },
+            "suggest": {
+                "mySuggester": {
+                    "dürrenmatt besuch fil": {
+                        "numFound": 0,
+                        "suggestions": []
+                    }
+                },
+                "text": {
+                    "dürrenmatt besuch fil": {
+                        "numFound": 50,
+                        "suggestions": [
+                            {
+                                "term": "film",
+                                "weight": 505914664256207,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmkritik",
+                                "weight": 72149758954820,
+                                "payload": ""
+                            },
+                            {
+                                "term": "films",
+                                "weight": 38084815125527,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filme",
+                                "weight": 29421299400885,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filosofia",
+                                "weight": 21624135248707,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmzeitschrift",
+                                "weight": 17188415197690,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filologie",
+                                "weight": 12336846391890,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filologia",
+                                "weight": 9564521360005,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmproduktion",
+                                "weight": 8143704781163,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filip",
+                                "weight": 7450623523192,
+                                "payload": ""
+                            },
+                            {
+                                "term": "fils",
+                                "weight": 7104082894206,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmen",
+                                "weight": 6792196328119,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmkunst",
+                                "weight": 5579304126669,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filosofía",
+                                "weight": 5336725686379,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filippo",
+                                "weight": 4678298491306,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmblatt",
+                                "weight": 4608990365509,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmfestspiele",
+                                "weight": 4505028176813,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filiale",
+                                "weight": 3950563170436,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmemacher",
+                                "weight": 3707984730146,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filozofickej",
+                                "weight": 3534714415654,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmische",
+                                "weight": 3500060352755,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmtage",
+                                "weight": 3396098164059,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmbuch",
+                                "weight": 3257481912465,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filz",
+                                "weight": 3257481912465,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmgesellschaft",
+                                "weight": 3049557535074,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmverleih",
+                                "weight": 2980249409276,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmgeschichte",
+                                "weight": 2945595346378,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmwissenschaftliche",
+                                "weight": 2737670968986,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filología",
+                                "weight": 2703016906088,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filológiai",
+                                "weight": 2668362843189,
+                                "payload": ""
+                            },
+                            {
+                                "term": "fille",
+                                "weight": 2633708780291,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmmuseum",
+                                "weight": 2599054717392,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filologii",
+                                "weight": 2425784402899,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmerzählung",
+                                "weight": 2321822214204,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmologie",
+                                "weight": 2252514088406,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmtheorie",
+                                "weight": 2113897836812,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filosofici",
+                                "weight": 1905973459421,
+                                "payload": ""
+                            },
+                            {
+                                "term": "file",
+                                "weight": 1732703144928,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmlexikon",
+                                "weight": 1732703144928,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filosofie",
+                                "weight": 1698049082029,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmexil",
+                                "weight": 1663395019131,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmischen",
+                                "weight": 1628740956232,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filologiczne",
+                                "weight": 1594086893334,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filser",
+                                "weight": 1594086893334,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmzensur",
+                                "weight": 1559432830435,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmmusik",
+                                "weight": 1490124704638,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filles",
+                                "weight": 1455470641739,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filbinger",
+                                "weight": 1420816578841,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filips",
+                                "weight": 1420816578841,
+                                "payload": ""
+                            },
+                            {
+                                "term": "filmkritiken",
+                                "weight": 1316854390145,
+                                "payload": ""
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

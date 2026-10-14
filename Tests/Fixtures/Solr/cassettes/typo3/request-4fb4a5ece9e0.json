@@ -1,0 +1,149 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/suggest",
+        "query": {
+            "suggest": "true",
+            "suggest.dictionary": [
+                "mySuggester",
+                "text"
+            ],
+            "suggest.q": "physiker"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0
+            },
+            "suggest": {
+                "mySuggester": {
+                    "physiker": {
+                        "numFound": 18,
+                        "suggestions": [
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)",
+                                "weight": 91,
+                                "payload": "AK00049913␝Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)"
+                            },
+                            {
+                                "term": "Segré, Emilio (1905-1989). Die großen Physiker und ihre Entdeckungen",
+                                "weight": 8,
+                                "payload": "AK00306526␝Segré, Emilio (1905-1989). Die großen Physiker und ihre Entdeckungen"
+                            },
+                            {
+                                "term": "Physiker-Theologen-Gespräch <7, 1956, Göttingen>",
+                                "weight": 5,
+                                "payload": "KS00091777␝Physiker-Theologen-Gespräch <7, 1956, Göttingen>"
+                            },
+                            {
+                                "term": "Fladt, Hartmut (1945-). Leben des Physikers - Lamento (Lied)",
+                                "weight": 4,
+                                "payload": "AK01892242␝Fladt, Hartmut (1945-). Leben des Physikers - Lamento (Lied)"
+                            },
+                            {
+                                "term": "Ritter, Johann Wilhelm (1776-1810). Fragmente aus dem Nachlasse eines jungen Physikers (1810)",
+                                "weight": 4,
+                                "payload": "AK01839136␝Ritter, Johann Wilhelm (1776-1810). Fragmente aus dem Nachlasse eines jungen Physikers (1810)"
+                            },
+                            {
+                                "term": "Ritter, Johann Wilhelm (1776-1810): Fragmente aus dem Nachlasse eines jungen Physikers : ein Taschenbuch für Freunde der Natur",
+                                "weight": 4,
+                                "payload": "AK01839136␝Ritter, Johann Wilhelm (1776-1810). Fragmente aus dem Nachlasse eines jungen Physikers (1810)"
+                            },
+                            {
+                                "term": "Janouch, František (Physiker)",
+                                "weight": 4,
+                                "payload": "PE00641984␝Janouch, František (1931-)"
+                            },
+                            {
+                                "term": "Gottwald, Benjamin (1987-). Die Physiker (Graphic Novel : 2018)",
+                                "weight": 2,
+                                "payload": "AK01777143␝Gottwald, Benjamin (1987-). Die Physiker (Graphic Novel : 2018)"
+                            },
+                            {
+                                "term": "Bense, Max (1910-1990). Die moderne Ästhetik wird von Mathematikern und Physikern gemacht (Interview : 1975)",
+                                "weight": 2,
+                                "payload": "AK01710153␝Bense, Max (1910-1990). Die moderne Ästhetik wird von Mathematikern und Physikern gemacht (Interview : 1975)"
+                            },
+                            {
+                                "term": "Streit, Ludwig (Physiker)",
+                                "weight": 2,
+                                "payload": "PE00658362␝Streit, Ludwig (1938-)"
+                            },
+                            {
+                                "term": "Hoffmann, Alfons. Die Physiker (Hörspiel : 1963)",
+                                "weight": 1,
+                                "payload": "AK01777144␝Hoffmann, Alfons. Die Physiker (Hörspiel : 1963)"
+                            },
+                            {
+                                "term": "Hoffmann, Alfons. Die Physiker (Hörspielmanuskript : 1963)",
+                                "weight": 1,
+                                "payload": "AK01777148␝Hoffmann, Alfons. Die Physiker (Hörspielmanuskript : 1963)"
+                            },
+                            {
+                                "term": "Umgelter, Fritz (1922-1981). Die Physiker (Fernsehsendung : 1964)",
+                                "weight": 1,
+                                "payload": "AK01777184␝Umgelter, Fritz (1922-1981). Die Physiker (Fernsehsendung : 1964)"
+                            },
+                            {
+                                "term": "Böhmermann, Jan (1981-). Die Physiker (Fernsehsendung : 2017)",
+                                "weight": 1,
+                                "payload": "AK01777185␝Böhmermann, Jan (1981-). Die Physiker (Fernsehsendung : 2017)"
+                            },
+                            {
+                                "term": "Böhmermann, Jan (1981-): Letzte Stunde vor den Ferien : Die Physiker",
+                                "weight": 1,
+                                "payload": "AK01777185␝Böhmermann, Jan (1981-). Die Physiker (Fernsehsendung : 2017)"
+                            },
+                            {
+                                "term": "Pflüger, Andreas (1957-). Die Physiker (Oper : 2000)",
+                                "weight": 1,
+                                "payload": "AK01777192␝Pflüger, Andreas (1957-). Die Physiker (Oper : 2000)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990). 21 Punkte zu den Physikern (1962)",
+                                "weight": 1,
+                                "payload": "AK01777445␝Dürrenmatt, Friedrich (1921-1990). 21 Punkte zu den Physikern (1962)"
+                            },
+                            {
+                                "term": "Kohlrausch, Rudolf (Physiker)",
+                                "weight": 1,
+                                "payload": "PE00609311␝Kohlrausch, Rudolf (1809-1858)"
+                            }
+                        ]
+                    }
+                },
+                "text": {
+                    "physiker": {
+                        "numFound": 4,
+                        "suggestions": [
+                            {
+                                "term": "physiker",
+                                "weight": 46782984913068,
+                                "payload": ""
+                            },
+                            {
+                                "term": "physikers",
+                                "weight": 12128922014499,
+                                "payload": ""
+                            },
+                            {
+                                "term": "physikern",
+                                "weight": 3248818396740,
+                                "payload": ""
+                            },
+                            {
+                                "term": "physikerin",
+                                "weight": 216587893116,
+                                "payload": ""
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

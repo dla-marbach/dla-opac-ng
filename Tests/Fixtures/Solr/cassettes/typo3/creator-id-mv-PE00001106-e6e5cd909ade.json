@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "creator_id_mv:PE00001106",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 61,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01194199",
+                        "display": "Erzählung mit einem tiefen Wasser : [Übersetzung ins Deutsche]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01033905",
+                        "display": "Das besetzte Haus : Erzählungen : [Werke Sammlung]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01028335",
+                        "display": "Geschichten der Cronopien und Famen - 1. Aufl."
+                    },
+                    {
+                        "display": "[Interview] Erzählen Sie von Ihrem Doppelgänger, Herr Cortázar! [Die Fragen stellte Jean Montalbetti : Aus d. Franz. von Elke Wehr]",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01065389"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01068637",
+                        "display": "Ende des Spiels : [Erzählende Prosa. Aus dem Spanischen übers. von Edith Aron.]"
+                    }
+                ]
+            }
+        }
+    }
+}

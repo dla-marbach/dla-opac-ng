@@ -1,0 +1,54 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "Goethe",
+            "start": "0",
+            "rows": "0",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "score desc",
+            "fq": [
+                "NOT source:(AU OR BE OR MM)",
+                "filterCollection_mv:(\"COTTA:Cotta-Archiv (Verlagsproduktion / Stiftung der Stuttgarter Zeitung)\")"
+            ],
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(Goethe) OR displayAddition1:(Goethe) OR displayAddition2:(Goethe) OR displayName:(Goethe)))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "stats": "true",
+            "stats.field": "filterDatePoint_mv"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 649,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": []
+            },
+            "highlighting": [],
+            "stats": {
+                "stats_fields": {
+                    "filterDatePoint_mv": {
+                        "min": "1731-01-01T00:00:00Z",
+                        "max": "2019-01-01T00:00:00Z",
+                        "count": 736,
+                        "missing": 5,
+                        "sum": -2544852124800000,
+                        "mean": "1860-06-06T13:28:02.609Z",
+                        "sumOfSquares": 1.1626408908132893e+28,
+                        "stddev": 1961231683463.3975
+                    }
+                }
+            }
+        }
+    }
+}

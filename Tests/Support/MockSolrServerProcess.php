@@ -38,7 +38,7 @@ class MockSolrServerProcess
         ];
 
         $process = proc_open(
-            ['php', '-S', '127.0.0.1:' . $port, '-t', $docroot, $router],
+            [PHP_BINARY, '-S', '127.0.0.1:' . $port, '-t', $docroot, $router],
             $descriptorSpec,
             $pipes
         );

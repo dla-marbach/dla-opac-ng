@@ -1,44 +1,30 @@
 <?php
 
-if (getenv('IS_DDEV_PROJECT') == 'true') {
-    $GLOBALS['TYPO3_CONF_VARS'] = array_replace_recursive(
-        $GLOBALS['TYPO3_CONF_VARS'],
-        [
-            'DB' => [
-                'Connections' => [
-                    'Default' => [
-                        'dbname' => 'db',
-                        'driver' => 'mysqli',
-                        'host' => 'db',
-                        'password' => 'db',
-                        'port' => 3306,
-                        'user' => 'db',
-                    ],
-                ],
+// Nur für die lokale Entwicklungsumgebung (task install), Datenbankzugang steht in settings.php
+$GLOBALS['TYPO3_CONF_VARS'] = array_replace_recursive(
+    $GLOBALS['TYPO3_CONF_VARS'],
+    [
+        // cHash deaktivieren
+        'FE' => [
+            'cacheHash' => [
+                'enforceValidation' => false,
             ],
-            // cHash deaktivieren
-            'FE' => [
-                'cacheHash' => [
-                    'enforceValidation' => false,
-                ],
-            ],
-            // This GFX configuration allows processing by installed ImageMagick 6
-            'GFX' => [
-                'processor' => 'ImageMagick',
-                'processor_path' => '/usr/bin/',
-                'processor_path_lzw' => '/usr/bin/',
-            ],
-            // This mail configuration sends all emails to mailpit
-            'MAIL' => [
-                'transport' => 'smtp',
-                'transport_smtp_encrypt' => false,
-                'transport_smtp_server' => 'localhost:1025',
-            ],
-            'SYS' => [
-                'trustedHostsPattern' => '.*.*',
-                'devIPmask' => '*',
-                'displayErrors' => 1,
-            ],
-        ]
-    );
-}
+        ],
+        // This GFX configuration allows processing by ImageMagick, if installed
+        'GFX' => [
+            'processor' => 'ImageMagick',
+            'processor_path' => '/usr/bin/',
+            'processor_path_lzw' => '/usr/bin/',
+        ],
+        // E-Mails nicht versenden, sondern in var/log/mail.mbox ablegen
+        'MAIL' => [
+            'transport' => 'mbox',
+            'transport_mbox_file' => \TYPO3\CMS\Core\Core\Environment::getVarPath() . '/log/mail.mbox',
+        ],
+        'SYS' => [
+            'trustedHostsPattern' => '.*.*',
+            'devIPmask' => '*',
+            'displayErrors' => 1,
+        ],
+    ]
+);

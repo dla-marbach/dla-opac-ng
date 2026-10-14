@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchCollectionCreator_id_mv:PE00039120",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 2462,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00000009",
+                        "display": "A:Uhland, Ludwig - [Bestand, Teilnachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BF00013829",
+                        "display": "A:Uhland, Ludwig/Familie - [Standortkonvolut, Teilnachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00704588",
+                        "display": "[Briefwechsel] Uhlands Briefwechsel. - 1. 1795 - 1815"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00000006",
+                        "display": "Uhland, Ludwig an Meyer, Ludwig [Briefe]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00000007",
+                        "display": "Uhland, Emilie an Meyer, Ludwig [Briefe]"
+                    }
+                ]
+            }
+        }
+    }
+}

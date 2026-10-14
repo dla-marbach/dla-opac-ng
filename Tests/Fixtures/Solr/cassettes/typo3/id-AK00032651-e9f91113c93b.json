@@ -1,0 +1,315 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(AK00032651)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0,
+                "params": {
+                    "q": "id:(AK00032651)",
+                    "rows": "1"
+                }
+            },
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "reference_text_mv": [
+                            "Kindler neu"
+                        ],
+                        "searchSuggestTerm_mv": [
+                            "Goethe, Johann Wolfgang von (1749-1832). Faust (Drama)",
+                            "Goethe, Johann Wolfgang von (1749-1832): Faust et le second Faust",
+                            "Goethe, Johann Wolfgang von (1749-1832): Fausti"
+                        ],
+                        "searchSuggestPayload": "AK00032651␝Goethe, Johann Wolfgang von (1749-1832). Faust (Drama)",
+                        "noteExplanatory_type_mv": [
+                            "Geschichte des Werks",
+                            "Verwendungshinweis"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "category": "Werktitel",
+                        "filterAuthorityRelation_mv": [
+                            "Goethe, Johann Wolfgang von (1749-1832)␝Von"
+                        ],
+                        "linkCommonsImage_file_mv": [
+                            "Anton%20Kaulbach%20Faust%20und%20MephistoFXD.jpg"
+                        ],
+                        "creator_id_mv": [
+                            "PE00000863"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "linkWikidata": "Q29478",
+                        "searchEntityScore": 2228,
+                        "schemaVersion": "1.0.0",
+                        "source": "AK",
+                        "searchName_mv": [
+                            "Goethe, Johann Wolfgang von"
+                        ],
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "titleOther_type_mv": [
+                            "370n",
+                            "370n"
+                        ],
+                        "relation_comment_mv": [
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Parodiert als",
+                            "Anregung für",
+                            "Anregung für",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Vorangegangen ist",
+                            "Angeregt durch",
+                            "Angeregt durch",
+                            "Angeregt durch"
+                        ],
+                        "gnd_id_mv": [
+                            "4128140-8"
+                        ],
+                        "titleOther_text_mv": [
+                            "Faust et le second Faust",
+                            "Fausti"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK00032651",
+                        "creator_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "vendor_id_mv": [
+                            "4128140-8",
+                            "105719544"
+                        ],
+                        "usageRestrictionNote": "nicht benutzbar\nnur bibliographischer Nachweis, nicht im Bestand des DLA!",
+                        "searchVariant_mv": [
+                            "Goethe, Johann Wolfgang",
+                            "Gete, Iogann W.",
+                            "Goethe, Johann W.",
+                            "Gëte, Iogann V.",
+                            "Goethe, Wolfgang von",
+                            "Goethius, ...",
+                            "Goethe, Volfgango",
+                            "Goethe, Johan Wolphgang",
+                            "Gete, Johan Volfgang",
+                            "Goethe, Johann Wolfgang",
+                            "Göthe, J. W.",
+                            "Goethe, Johann W. von",
+                            "Faust et le second Faust",
+                            "Fausti"
+                        ],
+                        "filterAuthority_mv": [
+                            "Goethe, Johann Wolfgang von (1749-1832)"
+                        ],
+                        "displayName": "Goethe, Johann Wolfgang von (1749-1832)",
+                        "filterFormContent_mv": [
+                            "Dramatisches"
+                        ],
+                        "reference_type_mv": [
+                            "positiv"
+                        ],
+                        "classificationSubjectOther_mv": [
+                            "12.2p",
+                            "832.6"
+                        ],
+                        "relation_id_mv": [
+                            "AK01752265",
+                            "AK00256630",
+                            "AK01801020",
+                            "AK01845712",
+                            "AK01770515",
+                            "AK01885758",
+                            "AK01837668",
+                            "AK01795985",
+                            "AK01762677",
+                            "AK01612604",
+                            "AK01761925",
+                            "AK01762681",
+                            "AK01678966",
+                            "AK01865418",
+                            "AK01875061",
+                            "AK01823821",
+                            "AK01776262",
+                            "AK01640585",
+                            "AK01878343",
+                            "AK00036644",
+                            "AK00036645",
+                            "AK00257244",
+                            "AK01350339",
+                            "AK00118010",
+                            "AK01842852",
+                            "AK00033782",
+                            "␣",
+                            "AK01749276",
+                            "AK00036360",
+                            "␣",
+                            "␣",
+                            "␣"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Goethe, Johann Wolfgang von (1749-1832)␝Verfasser/Urheber"
+                        ],
+                        "dateCataloged": "1999-02-08",
+                        "display": "Goethe, Johann Wolfgang von (1749-1832). Faust (Drama)",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "personBy_display_mv": [
+                            "Goethe, Johann Wolfgang von (1749-1832)"
+                        ],
+                        "searchNameBy_mv": [
+                            "Goethe, Johann Wolfgang von"
+                        ],
+                        "relation_text_mv": [
+                            "Fabian, Jo (1960-). Antifaust (Drama : 2020)",
+                            "Heine, Heinrich (1797-1856). Der Doktor Faust (Drama : 1851)",
+                            "Immermann, Karl (1796-1840). Merlin (Drama : 1832)",
+                            "Schumann, Robert (1810-1856). Szenen aus Goethes Faust (1853)",
+                            "Prühl, Karsten (1982-). Goethes Faust (Film : 2019)",
+                            "Faust (Comic : 2024)",
+                            "Kuck, Jürgen (1952-). Faust (Comic : 2005)",
+                            "Brusilovsky, Noam (1989-). Faust (hab' ich nie gelesen) (Hörspiel : 2022)",
+                            "Peuckert, Tom (1962-). Die berühmtesten Dramen der Welt. 4: Goethe \"Faust\" (Hörspiel : 2010)",
+                            "Reffert, Thilo (1970-). Faustinchen (Hörspiel : 2017)",
+                            "Janssen, Holger (1951-). Gretes Fuust (Hörspielmanuskript : 2018)",
+                            "Peuckert, Tom (1962-). Die berühmtesten Dramen der Welt. 4: Goethe \"Faust\" (Hörspielmanuskript : 2010)",
+                            "Reffert, Thilo (1970-). Faustinchen einszweidrei (Hörspielmanuskript : 2016)",
+                            "Bernard, Joseph Carl (1780-1850). Faust (Libretto : 1816)",
+                            "Berlioz, Hector (1803-1869). La damnation de Faust (Oper : 1846)",
+                            "Bertin, Louise-Angélique (1805-1877). Fausto (Oper : 1831)",
+                            "Brian, Havergal (1876-1972). Faust (Oper : 1955)",
+                            "Gounod, Charles (1818-1893). Faust (Oper : 1859)",
+                            "Turgenjew, Iwan S. (1818-1883). Faust (Erzählung : 1856)",
+                            "Goethe, Johann Wolfgang von (1749-1832). Faust, 1 (Drama : 1808)",
+                            "Goethe, Johann Wolfgang von (1749-1832). Faust, 2 (Drama : 1832)",
+                            "Eichendorff, Joseph von (1788-1857). Auch ich war in Arkadien! (Satire : 1866)",
+                            "Hahn-Hahn, Ida (1805-1880). Gräfin Faustine (Roman : 1841)",
+                            "Lenau, Nikolaus (1802-1850). Faust (Drama : 1836)",
+                            "Liszt, Franz (1811-1886). Eine Faust-Symphonie (Lied : 1854)",
+                            "Mann, Thomas (1875-1955). Doktor Faustus (Roman : 1947)",
+                            "Marlowe, Christopher: Doctor Faustus",
+                            "Goethe, Johann Wolfgang von (1749-1832). Faust. Ein Fragment (Drama : 1790)",
+                            "Goethe, Johann Wolfgang von (1749-1832). Urfaust (Drama)",
+                            "Haydn, Joseph: Der Hexenschabbas, H 29a, 2",
+                            "Neumann, Johann Georg: Disquisitio historica de Fausto praestigiatore",
+                            "Rembrandt: Faust"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "titleMain_text": "Faust",
+                        "personBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "id": "AK00032651",
+                        "noteExplanatory_text_mv": [
+                            "Tragödie in 2 Teilen, Teil 1 ersch. 1808, Teil 2 1832",
+                            "Benutzt für das Gesamtwerk, bestehend aus Teil 1 und Teil 2"
+                        ],
+                        "searchBoost": 0.6,
+                        "dateModified": "2025-03-25",
+                        "creator_display_mv": [
+                            "Goethe, Johann Wolfgang von (1749-1832)"
+                        ],
+                        "vendor_type_mv": [
+                            "GND (Werktitel)",
+                            "K10Plus-PPN"
+                        ],
+                        "personBy_creator_mv": [
+                            "creator"
+                        ],
+                        "filterRecent": "1999-02-08",
+                        "linkCommonsImage_rights_mv": [
+                            "Anton Kaulbach | Wikimedia Commons | Public domain"
+                        ],
+                        "genreOther_mv": [
+                            "Drama"
+                        ],
+                        "categorySub": "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                        "relation_type_mv": [
+                            "Anregung für",
+                            "Anregung für",
+                            "Anregung für",
+                            "Anregung für",
+                            "Bearbeitet als Film",
+                            "Bearbeitet als Graphic Novel",
+                            "Bearbeitet als Graphic Novel",
+                            "Bearbeitet als Hörspiel",
+                            "Bearbeitet als Hörspiel",
+                            "Bearbeitet als Hörspiel",
+                            "Bearbeitet als Hörspielmanuskript",
+                            "Bearbeitet als Hörspielmanuskript",
+                            "Bearbeitet als Hörspielmanuskript",
+                            "Bearbeitet als Libretto",
+                            "Bearbeitet als Oper",
+                            "Bearbeitet als Oper",
+                            "Bearbeitet als Oper",
+                            "Bearbeitet als Oper",
+                            "Bearbeitet als",
+                            "Enthält",
+                            "Enthält",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Vertont als",
+                            "Verwandter Eintrag",
+                            "Verwandter Eintrag",
+                            "Vorangegangen ist",
+                            "Vorgänger",
+                            "Vorlage",
+                            "Vorlage",
+                            "Vorlage"
+                        ],
+                        "title": "Goethe, Johann Wolfgang von <1749-1832>. Faust (Drama)",
+                        "titleOther_language_mv": [
+                            "␣",
+                            "Albanisch"
+                        ],
+                        "filterSource": "Werke",
+                        "personBy_id_mv": [
+                            "PE00000863"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00000863",
+                            "AK00032651"
+                        ],
+                        "statusCataloging": "f-fehlt,i-fehlt"
+                    }
+                ]
+            }
+        }
+    }
+}

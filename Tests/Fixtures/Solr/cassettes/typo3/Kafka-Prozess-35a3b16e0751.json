@@ -1,0 +1,51 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "Kafka Prozess",
+            "start": "0",
+            "rows": "0",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "filterDatePoint_mv asc",
+            "fq": "NOT source:(AU OR BE OR MM)",
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(Kafka Prozess) OR displayAddition1:(Kafka Prozess) OR displayAddition2:(Kafka Prozess) OR displayName:(Kafka Prozess)))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "stats": "true",
+            "stats.field": "filterDatePoint_mv"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 692,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": []
+            },
+            "highlighting": [],
+            "stats": {
+                "stats_fields": {
+                    "filterDatePoint_mv": {
+                        "min": "1912-01-01T00:00:00Z",
+                        "max": "2026-01-01T00:00:00Z",
+                        "count": 682,
+                        "missing": 36,
+                        "sum": 407814307200000,
+                        "mean": "1988-12-12T22:16:32.375Z",
+                        "sumOfSquares": 5.954375619826793e+26,
+                        "stddev": 718516968614.6594
+                    }
+                }
+            }
+        }
+    }
+}

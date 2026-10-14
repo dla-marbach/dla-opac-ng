@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "classification_id_mv:(SE00186094 OR SE00160245 OR SE00186093 OR SE00002768 OR SE00000357)",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 444,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "id": "AK01359271",
+                        "display": "Der ganze Prozess : Ausstellungseröffnung : [Vortrag, Rede]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01358916",
+                        "display": "Der ganze Prozess : 33 Nahaufnahmen von Kafkas Manuskript ; [erscheint zur gleichnamigen Ausstellung \"Der ganze Prozess\", Literaturmuseum der Moderne, Marbach am Neckar, 7. November bis 9. Februar 2014] : [Aufsatzsammlung]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "id": "AK01359276",
+                        "display": "Kulturwelt. - 2013.11.08. \"Der ganze Prozess\" : die Kafka-Ausstellung im Literaturmuseum der Moderne ; [Interview mit Heike Gfrereis] : [Gespräch, Interview]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00254086",
+                        "display": "Franz Kafka, Der Proceß : die Handschrift redet : [für die Ausstellung vom 24. April bis 1. Juli 1990 im Schiller-Nationalmuseum Marbach am Neckar] - 2., durchgesehene Auflage, 7.-9. Tausend : [Ausstellungskatalog]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00032497",
+                        "display": "Franz Kafka, Der Proceß : die Handschrift redet : [für die Ausstellung vom 24. April bis 1. Juli 1990 im Schiller-Nationalmuseum Marbach am Neckar] : [Ausstellungskatalog]"
+                    }
+                ]
+            }
+        }
+    }
+}
