@@ -4,7 +4,8 @@ name: "Copilot Setup Steps"
 # Runs automatically for the agent; triggers here are only for manual/PR validation.
 # Installs Task and PHP with the Composer dependencies of this repository, sets up and starts a TYPO3 instance
 # (`task install`: MariaDB service container, Apache with PHP-FPM on port 80, Solr mock server) and pulls the
-# Psalm image, so that the agent can run `task test:php`, Psalm (docker) and requests against http://127.0.0.1/
+# Psalm image, checks out the Playwright submodule and installs Playwright with Chromium, so that the agent can run
+# `task test:php`, `task test`, Psalm (docker) and requests against http://127.0.0.1/
 # without further network access.
 # Note: only steps, permissions, runs-on, services, snapshot and timeout-minutes of the
 # job are honored by Copilot (e.g. job-level env is ignored, so set env per step).
@@ -42,6 +43,9 @@ jobs:
     steps:
       - name: Checkout dla-opac-ng
         uses: actions/checkout@v4
+        with:
+          # Submodul dla-opac-tests (Playwright-End-to-End-Tests)
+          submodules: true
 
       - name: Set up Task
         uses: arduino/setup-task@v2
@@ -64,6 +68,18 @@ jobs:
 
       - name: Install test environment
         run: task install
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      # Playwright-Abhängigkeiten und Chromium, damit `task test` ohne Netzwerkzugriff läuft
+      - name: Install Playwright
+        working-directory: dla-opac-tests
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
 
       # Same image/version as .github/workflows/psalm.yml; allows running Psalm offline
       - name: Pull Psalm image
