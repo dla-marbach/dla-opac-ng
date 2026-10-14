@@ -73,6 +73,8 @@ Cassette existiert, werden vom echten Solr geholt und in
 `task solr:stop solr:start` in den normalen Modus zurückwechseln und die neuen Dateien committen.
 Ein zweiter Durchlauf sollte keine neuen Dateien mehr erzeugen. Sonst enthält eine Anfrage veränderliche Parameter
 (z.B. sekundengenaue Zeitstempel statt Solr-Datumsausdrücken wie `NOW/DAY`), und die Cassette passt beim nächsten Mal nicht.
+Der Anfang der Datumsfacette in den Trefferlisten hängt vom aktuellen Jahr ab (`NOW/YEAR-…YEARS`): Nach dem
+Jahreswechsel die Cassetten in `typo3/` daher neu aufnehmen.
 
 ### Tunnel zum Solr
 
