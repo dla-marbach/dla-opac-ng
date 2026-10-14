@@ -48,6 +48,33 @@ class VocabularyResolverTest extends UnitTestCase
     /**
      * @test
      */
+    public function prefersPersonOverMoreFrequentCorporateBody(): void
+    {
+        $resolver = $this->createResolver(self::suggestions('Anton Kippenberg', [
+            ['term' => 'Insel Verlag Anton Kippenberg <Frankfurt am Main> (1960-1991)', 'payload' => 'KS00003264␝Insel Verlag Anton Kippenberg <Frankfurt am Main> (1960-1991)'],
+            ['term' => 'Kippenberg, Anton (1874-1950)', 'payload' => 'PE00023126␝Kippenberg, Anton (1874-1950)'],
+        ]));
+
+        self::assertSame(['id' => 'PE00023126', 'label' => 'Kippenberg, Anton (1874-1950)'], $resolver->resolvePerson('Anton Kippenberg'));
+    }
+
+    /**
+     * @test
+     */
+    public function resolvesCorporateBodyIfNoPersonMatches(): void
+    {
+        $resolver = $this->createResolver(self::suggestions('Suhrkamp Verlag', [
+            ['term' => 'Suhrkamp, Peter', 'payload' => 'PE1␝Suhrkamp, Peter (1891-1959)'],
+            ['term' => 'Suhrkamp Verlag <Frankfurt am Main>', 'payload' => 'KS1␝Suhrkamp Verlag <Frankfurt am Main>'],
+            ['term' => 'Suhrkamp Verlag <Berlin>', 'payload' => 'KS2␝Suhrkamp Verlag <Berlin>'],
+        ]));
+
+        self::assertSame(['id' => 'KS1', 'label' => 'Suhrkamp Verlag <Frankfurt am Main>'], $resolver->resolvePerson('Suhrkamp Verlag'));
+    }
+
+    /**
+     * @test
+     */
     public function returnsNullForUnknownPersonOrUnavailableSolr(): void
     {
         self::assertNull($this->createResolver(self::suggestions('Unbekannt', [['term' => 'X', 'payload' => '']]))->resolvePerson('Unbekannt'));

@@ -17,6 +17,11 @@ class VocabularyResolver
     private const SUGGEST_DICTIONARY = 'mySuggester';
 
     /**
+     * ID-Präfix der Personen-Normdatensätze (Körperschaften: KS, Titel: AK).
+     */
+    private const PERSON_ID_PREFIX = 'PE';
+
+    /**
      * Die Facettensuche über alle Werte eines großen Feldes darf länger dauern als die schnellen Ajax-Anfragen.
      */
     private const FACET_REQUEST_TIMEOUT = 3.0;
@@ -36,7 +41,9 @@ class VocabularyResolver
 
     /**
      * Löst einen Namen auf einen Normdatensatz auf: der erste (relevanteste) Vorschlag, der alle Namensbestandteile
-     * enthält, damit aus "Mann" nicht zufällig "Mannheim" wird.
+     * enthält, damit aus "Mann" nicht zufällig "Mannheim" wird. Personen gehen vor: Der Suggester sortiert nach der
+     * Zahl der Verknüpfungen, und "Insel Verlag Anton Kippenberg" hat mehr als die Person "Kippenberg, Anton".
+     * Gibt es keine passende Person, gilt der erste passende Vorschlag (z.B. eine Körperschaft wie "Suhrkamp Verlag").
      *
      * @return array{id: string, label: string}|null label ist der Wert der Facette filterAuthority_mv
      */
@@ -130,14 +137,18 @@ class VocabularyResolver
         ]);
         $nameTokens = self::tokens($name);
 
+        $firstMatch = null;
         foreach ((array)($json['suggest'][self::SUGGEST_DICTIONARY][$name]['suggestions'] ?? []) as $suggestion) {
             [$id, $label] = array_pad(explode('␝', (string)($suggestion['payload'] ?? ''), 2), 2, '');
             if ($id !== '' && $label !== '' && array_diff($nameTokens, self::tokens(($suggestion['term'] ?? '') . ' ' . $label)) === []) {
-                return ['id' => $id, 'label' => $label];
+                if (str_starts_with($id, self::PERSON_ID_PREFIX)) {
+                    return ['id' => $id, 'label' => $label];
+                }
+                $firstMatch ??= ['id' => $id, 'label' => $label];
             }
         }
 
-        return null;
+        return $firstMatch;
     }
 
     /**

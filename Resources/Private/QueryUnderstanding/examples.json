@@ -34,7 +34,49 @@
             "topics": [
                 {"term": "DDR", "variants": ["Deutsche Demokratische Republik", "Ostdeutschland"]}
             ],
-            "exclude": {"formContent": ["Übersetzung"]}
+            "exclude": {"formContent": ["Übersetzung, deutsch", "Übersetzung, fremdsprachig"]}
+        }
+    },
+    {
+        "question": "Manuskripte von Max Frisch, aber keine Briefe",
+        "answer": {
+            "persons": [
+                {"name": "Max Frisch", "relation": "Von"}
+            ],
+            "mediaTypes": ["Handschriften"],
+            "exclude": {"formContent": ["Brief"]}
+        }
+    },
+    {
+        "question": "Aufsätze über Hölderlin ohne Diotima",
+        "answer": {
+            "persons": [
+                {"name": "Hölderlin", "fullName": "Friedrich Hölderlin", "relation": "Über"}
+            ],
+            "mediaTypes": ["Gedrucktes"],
+            "formContent": ["Aufsatz"],
+            "exclude": {"terms": ["Diotima"]}
+        }
+    },
+    {
+        "question": "Bücher über Ernst Jünger, keine Rezensionen",
+        "answer": {
+            "persons": [
+                {"name": "Ernst Jünger", "relation": "Über"}
+            ],
+            "mediaTypes": ["Gedrucktes"],
+            "exclude": {"formContent": ["Rezension"]}
+        }
+    },
+    {
+        "question": "Briefe an Gottfried Benn, aber nicht von Oelze",
+        "answer": {
+            "persons": [
+                {"name": "Gottfried Benn", "relation": "An"}
+            ],
+            "mediaTypes": ["Handschriften"],
+            "formContent": ["Brief"],
+            "exclude": {"terms": ["Oelze"]}
         }
     },
     {
@@ -62,8 +104,25 @@
             "persons": [
                 {"name": "Kafka", "fullName": "Franz Kafka", "relation": "Von"}
             ],
-            "formContent": ["Übersetzung"],
+            "formContent": ["Übersetzung, fremdsprachig"],
             "languages": ["Englisch"],
+            "knownItem": true
+        }
+    },
+    {
+        "question": "Die Blechtrommel",
+        "answer": {
+            "text": "Die Blechtrommel",
+            "knownItem": true
+        }
+    },
+    {
+        "question": "Goethes Wahlverwandtschaften",
+        "answer": {
+            "text": "Wahlverwandtschaften",
+            "persons": [
+                {"name": "Goethe", "fullName": "Johann Wolfgang von Goethe", "relation": "Von"}
+            ],
             "knownItem": true
         }
     },

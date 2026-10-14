@@ -19,7 +19,7 @@ use TYPO3\CMS\Core\Http\RedirectResponse;
 /**
  * Natürlichsprachige Suche (Proof of Concept).
  *
- * Greift bei Suchanfragen mit tx_find_find[nl]=1 ("Als Frage verstehen"): Die Frage aus dem Standardsuchfeld
+ * Greift bei Suchanfragen mit tx_find_find[nl]=1 ("Filter automatisch erkennen"): Die Eingabe aus dem Standardsuchfeld
  * wird vom QueryUnderstandingService in Suchbegriffe und Facetten zerlegt; anschließend wird per 303 auf
  * eine normale, strukturierte Such-URL weitergeleitet (Post/Redirect/Get). Blättern, Facettenklicks und
  * Links lösen dadurch nie einen weiteren LLM-Aufruf aus.
