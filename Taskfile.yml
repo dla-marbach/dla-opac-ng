@@ -60,7 +60,7 @@ tasks:
       - task: install_typo3_config
       - task: install_ext
       - task: start
-      # Markierung für eine vollständige Installation (siehe .claude/hooks/session-start.sh)
+      # Markierung für eine vollständige Installation
       - touch t3example/.installed
 
   install_typo3_config:
