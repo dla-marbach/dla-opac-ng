@@ -9,7 +9,7 @@
     Vorschaubild oberhalb der Metadaten: das erste Vorschaubild, auf das der Nutzer
     zugreifen darf. Gibt es einen Player oder eine Bildergalerie, springt der Link zum
     Abschnitt "Digitales Objekt" (id="digitales-objekt" in Display/Detail/*/Details.html),
-    sonst öffnet er die Datei.
+    sonst öffnet er die Datei. Aufrufer ohne diesen Abschnitt übergeben withoutJump: 1.
 </f:comment>
 <dla:mediaPlayer
     urls="{digitalObject_hyperlink_mv}"
@@ -21,7 +21,7 @@
 
 <f:if condition="{mediaData.teaser}">
     <f:then>
-        <f:if condition="{mediaData.teaser.jump}">
+        <f:if condition="{mediaData.teaser.jump} && {withoutJump} != 1">
             <f:then>
                 <f:render partial="MediaAccess/TeaserJump" arguments="{teaser: mediaData.teaser, summary: mediaData.summary}" />
             </f:then>

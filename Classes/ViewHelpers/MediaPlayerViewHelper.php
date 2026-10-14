@@ -133,7 +133,7 @@ class MediaPlayerViewHelper extends AbstractViewHelper
      * "accessDenied" is set if there are digital objects but none of them is accessible.
      * "summary" lists the number of accessible objects per kind in the order of the
      * section "Digitales Objekt" (video, audio, playlist, image, link; kinds without
-     * objects are omitted) for the badge on the teaser (MediaAccess/TeaserBadge.html).
+     * objects are omitted) for the badge on the teaser (MediaAccess/TeaserJump.html).
      *
      * @param array $thumbnails
      * @return array{links: array, mediaplayer: array, images: array, teaser: ?array, accessDenied: bool, summary: array}

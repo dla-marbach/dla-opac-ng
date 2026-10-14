@@ -81,8 +81,9 @@ class ThumbnailTest extends FluidPartialTestCase
      * @param array<int, string> $hyperlinks
      * @param array<int, string>|null $thumbnails
      * @param array<int, string> $extensions
+     * @param array<string, mixed> $additionalArguments
      */
-    private function renderThumbnail(array $accessLevels, array $hyperlinks, ?array $thumbnails, array $extensions = []): string
+    private function renderThumbnail(array $accessLevels, array $hyperlinks, ?array $thumbnails, array $extensions = [], array $additionalArguments = []): string
     {
         $fields = [
             'digitalObject_accessLevel_mv' => $accessLevels,
@@ -95,7 +96,7 @@ class ThumbnailTest extends FluidPartialTestCase
 
         return $this->renderPartial('MediaAccess/Thumbnail', [
             'document' => ['fields' => $fields],
-        ]);
+        ] + $additionalArguments);
     }
 
     /**
@@ -268,5 +269,24 @@ class ThumbnailTest extends FluidPartialTestCase
 
         self::assertStringContainsString('<div class="ctg-ri-image">', $html);
         self::assertStringContainsString('src="https://example.org/media/b_thumb.jpg"', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function thumbnailOpensFileWhenCallerHasNoDigitalObjectSection(): void
+    {
+        // z.B. Display/Detail/Normdata/Werk.html
+        $html = $this->renderThumbnail(
+            ['public'],
+            ['https://example.org/media/a.jpg'],
+            ['https://example.org/media/a_thumb.jpg'],
+            ['jpg'],
+            ['withoutJump' => 1]
+        );
+
+        self::assertStringNotContainsString('#digitales-objekt', $html);
+        self::assertStringContainsString('href="https://example.org/media/a.jpg"', $html);
+        self::assertStringContainsString('src="https://example.org/media/a_thumb.jpg"', $html);
     }
 }

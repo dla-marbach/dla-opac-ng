@@ -70,7 +70,8 @@
 </div>
 
 <div class="ctg-detailview-media">
-    <f:render partial="MediaAccess/Thumbnail" arguments="{_all}"/>
+    <f:comment>Werk-Normdaten haben keinen Abschnitt "Digitales Objekt", daher ohne Sprung</f:comment>
+    <f:render partial="MediaAccess/Thumbnail" arguments="{results: results, document: document, withoutJump: 1}"/>
 </div>
 
 <div class="ctg-detailview-tabs">
