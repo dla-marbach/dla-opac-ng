@@ -100,4 +100,13 @@ class LlmClientTest extends UnitTestCase
         self::assertSame(['text' => 'a'], LlmClient::decodeJsonContent("```json\n{\"text\": \"a\"}\n```"));
         self::assertNull(LlmClient::decodeJsonContent('[1, 2]'));
     }
+
+    /**
+     * @test
+     */
+    public function decodeJsonContentAcceptsEmptyObjectButNotEmptyList(): void
+    {
+        self::assertSame([], LlmClient::decodeJsonContent('{}'));
+        self::assertNull(LlmClient::decodeJsonContent('[]'));
+    }
 }

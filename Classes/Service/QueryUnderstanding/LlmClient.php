@@ -82,7 +82,8 @@ class LlmClient
 
     /**
      * Dekodiert die Modellantwort. Entfernt vorsorglich "<think>"-Blöcke von Reasoning-Modellen
-     * und Markdown-Codeblöcke, falls ein Server das JSON-Schema nicht erzwingt.
+     * und Markdown-Codeblöcke, falls ein Server das JSON-Schema nicht erzwingt. Ein leeres Objekt "{}" ist eine
+     * gültige Antwort (nichts erkannt), eine Liste nicht; json_decode() liefert für beide ein leeres Array.
      */
     public static function decodeJsonContent(string $content): ?array
     {
@@ -92,6 +93,6 @@ class LlmClient
         }
         $decoded = json_decode($content, true);
 
-        return is_array($decoded) && !array_is_list($decoded) ? $decoded : null;
+        return is_array($decoded) && str_starts_with($content, '{') ? $decoded : null;
     }
 }
