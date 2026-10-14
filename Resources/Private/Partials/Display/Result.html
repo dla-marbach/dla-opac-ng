@@ -94,11 +94,7 @@
         </p>
     </div>
 
-    <f:if condition="{document.digitalObject_thumbnail_mv} && {document.digitalObject_thumbnail_mv.0}!='␣'">
-        <div class="ctg-ri-image">
-            <f:render partial="MediaAccess/ThumbnailResult" arguments="{_all}"/>
-        </div>
-    </f:if>
+    <f:render partial="MediaAccess/ThumbnailResult" arguments="{_all}"/>
 
     <div class="ctg-ri-actions">
         <ul>

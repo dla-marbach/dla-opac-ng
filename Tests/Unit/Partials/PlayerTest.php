@@ -13,7 +13,7 @@ class PlayerTest extends FluidPartialTestCase
     /**
      * @test
      */
-    public function rendersVideoElementWithSourceAndChapters(): void
+    public function rendersVideoElementWithSourceChaptersAndPoster(): void
     {
         $html = $this->renderPartial('MediaAccess/Player', [
             'id' => 'player-1',
@@ -21,6 +21,7 @@ class PlayerTest extends FluidPartialTestCase
                 'url' => 'https://example.org/media/talk.mp4',
                 'type' => 'video',
                 'chapters' => 'https://example.org/media/talk.vtt',
+                'thumbnail' => 'https://example.org/media/talk-thumbnail.png',
             ],
         ]);
 
@@ -31,8 +32,11 @@ class PlayerTest extends FluidPartialTestCase
         self::assertStringContainsString('src="https://example.org/media/talk.mp4"', $html);
         self::assertStringContainsString('kind="chapters"', $html);
         self::assertStringContainsString('src="https://example.org/media/talk.vtt"', $html);
+        self::assertStringContainsString('poster="https://example.org/media/talk-thumbnail.png"', $html);
+        self::assertStringContainsString('data-mediaplayer-type="video"', $html);
         self::assertStringNotContainsString('{id}', $html);
-        self::assertStringContainsString("document.currentScript.parentNode.querySelector('video, audio')", $html);
+        // Initialisierung erfolgt durch Resources/Public/JavaScript/dla-mediaplayer.js
+        self::assertStringNotContainsString('<script', $html);
     }
 
     /**
@@ -53,36 +57,105 @@ class PlayerTest extends FluidPartialTestCase
         self::assertStringContainsString('controlslist="nodownload"', $html);
         self::assertStringNotContainsString('kind="chapters"', $html);
         self::assertStringContainsString('class="video-js vjs-default-skin vjs-big-play-centered dla-mediaplayer dla-mediaplayer-audio"', $html);
-        self::assertStringContainsString('videojs(el, {audioOnlyMode: true});', $html);
+        self::assertStringContainsString('data-mediaplayer-type="audio"', $html);
+        self::assertStringNotContainsString('dla-mediaplayer-caption', $html);
         self::assertStringNotContainsString('{id}', $html);
-        self::assertStringContainsString("document.currentScript.parentNode.querySelector('video, audio')", $html);
     }
 
     /**
      * @test
      */
-    public function rendersPlaylistWithTrackList(): void
+    public function rendersCaptionWithDisplayLabelAndFileExtensionForAudio(): void
+    {
+        $html = $this->renderPartial('MediaAccess/Player', [
+            'id' => 'player-4',
+            'item' => [
+                'url' => 'https://example.org/media/track.mp3',
+                'type' => 'audio',
+                'display' => 'Audiodatei (Rückseite): Zugang',
+                'ext' => 'mp3',
+            ],
+        ]);
+
+        self::assertStringContainsString('<span class="dla-mediaplayer-caption-title">Audiodatei (Rückseite): Zugang</span>', $html);
+        self::assertStringContainsString('<span class="dla-mediaplayer-caption-ext">(mp3)</span>', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function omitsCaptionForPlaceholderDisplayLabel(): void
+    {
+        $html = $this->renderPartial('MediaAccess/Player', [
+            'id' => 'player-5',
+            'item' => [
+                'url' => 'https://example.org/media/track.mp3',
+                'type' => 'audio',
+                'display' => '␣',
+                'ext' => 'mp3',
+            ],
+        ]);
+
+        self::assertStringNotContainsString('dla-mediaplayer-caption', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function rendersPlaylistAsNumberedTracklistWithHeading(): void
     {
         $html = $this->renderPartial('MediaAccess/Player', [
             'id' => 'player-3',
             'item' => [
                 'url' => 'https://example.org/media/playlist.m3u',
                 'type' => 'playlist',
+                'display' => 'Lesungen 2013',
+                'ext' => 'm3u',
                 'chapters' => null,
+                'hasArtists' => true,
+                'hasDurations' => true,
                 'tracks' => [
-                    ['url' => 'https://example.org/media/a.mp3', 'title' => 'Track A', 'duration' => 10.0],
-                    ['url' => 'https://example.org/media/b.mp3', 'title' => 'Track B', 'duration' => 20.0],
+                    ['url' => 'https://example.org/media/a.mp3', 'artist' => 'Interpret A', 'title' => 'Track A', 'duration' => 10.0, 'number' => '01', 'durationFormatted' => '0:10'],
+                    ['url' => 'https://example.org/media/b.mp3', 'artist' => null, 'title' => 'Track B', 'duration' => null, 'number' => '02', 'durationFormatted' => null],
                 ],
             ],
         ]);
 
-        self::assertStringContainsString('dla-mediaplayer-playlist', $html);
-        self::assertStringContainsString('Track A', $html);
-        self::assertStringContainsString('Track B', $html);
+        self::assertStringContainsString('<span class="dla-mediaplayer-caption-title">Lesungen 2013</span>', $html);
+        self::assertStringNotContainsString('(m3u)', $html);
         self::assertStringContainsString('class="video-js vjs-default-skin vjs-big-play-centered dla-mediaplayer dla-mediaplayer-audio"', $html);
-        self::assertSame(2, substr_count($html, '<li class="dla-mediaplayer-playlist-item'));
+        self::assertStringContainsString('<table class="dla-mediaplayer-tracklist">', $html);
+        self::assertSame(2, substr_count($html, '<tr class="dla-mediaplayer-track'));
+        self::assertStringContainsString('<tr class="dla-mediaplayer-track active" data-src="https://example.org/media/a.mp3">', $html);
+        self::assertStringContainsString('<td class="dla-mediaplayer-track-number">01</td>', $html);
+        self::assertStringContainsString('<td class="dla-mediaplayer-track-number">02</td>', $html);
+        self::assertStringContainsString('<td class="dla-mediaplayer-track-artist">Interpret A</td>', $html);
+        self::assertStringContainsString('<td class="dla-mediaplayer-track-duration">0:10</td>', $html);
+        self::assertStringContainsString('aria-current="true">Track A</button>', $html);
+        self::assertStringContainsString('aria-current="false">Track B</button>', $html);
         self::assertStringNotContainsString('{id}', $html);
-        self::assertStringContainsString("var container = document.currentScript.parentNode;", $html);
-        self::assertStringContainsString("var el = container.querySelector('video');", $html);
+    }
+
+    /**
+     * @test
+     */
+    public function omitsArtistAndDurationColumnsWithoutPlaylistMetadata(): void
+    {
+        $html = $this->renderPartial('MediaAccess/Player', [
+            'id' => 'player-6',
+            'item' => [
+                'url' => 'https://example.org/media/playlist.m3u',
+                'type' => 'playlist',
+                'hasArtists' => false,
+                'hasDurations' => false,
+                'tracks' => [
+                    ['url' => 'https://example.org/media/a.mp3', 'artist' => null, 'title' => 'a', 'duration' => null, 'number' => '01', 'durationFormatted' => null],
+                ],
+            ],
+        ]);
+
+        self::assertStringContainsString('dla-mediaplayer-track-title', $html);
+        self::assertStringNotContainsString('dla-mediaplayer-track-artist', $html);
+        self::assertStringNotContainsString('dla-mediaplayer-track-duration', $html);
     }
 }

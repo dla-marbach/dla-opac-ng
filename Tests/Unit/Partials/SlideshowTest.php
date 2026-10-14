@@ -43,6 +43,11 @@ class SlideshowTest extends FluidPartialTestCase
 
         self::assertStringContainsString('id="slideshow-1"', $html);
         self::assertStringContainsString('data-dla-slideshow', $html);
+        // fokussierbar für die Bedienung mit Cursortasten (dla-slideshow.js)
+        self::assertStringContainsString('tabindex="0"', $html);
+        self::assertStringContainsString('aria-roledescription="carousel"', $html);
+        self::assertStringContainsString('aria-label="Image gallery"', $html);
+        self::assertStringContainsString('data-label-image="Image %s of %s"', $html);
         self::assertStringContainsString('src="https://example.org/media/picture_thumb.jpg"', $html);
         self::assertStringContainsString('href="https://example.org/media/picture.jpg"', $html);
         self::assertStringNotContainsString('dla-slideshow-prev', $html);

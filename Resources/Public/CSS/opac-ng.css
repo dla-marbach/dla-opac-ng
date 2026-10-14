@@ -715,67 +715,253 @@ span.icon.bel-link01 {
     white-space: nowrap;
     pointer-events: none;
 }
+.dla-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Vorschaubild mit Schild, das den Inhalt des Abschnitts "Digitales Objekt" zusammenfasst
+   (MediaAccess/TeaserJump.html) */
+.dla-teaser-jump {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    line-height: 0;
+    text-decoration: none;
+}
+
+.dla-teaser-badge {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 4px 12px;
+    max-width: calc(100% - 16px);
+    box-sizing: border-box;
+    padding: 6px 9px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 13px;
+    line-height: 1.2;
+}
+
+.dla-teaser-badge-entry {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+}
+
+/* belugino.css setzt Icons mit !important auf 2rem. Die Glyphen füllen nur einen Teil
+   ihres Em-Quadrats und haben je Icon unterschiedlich viel Leerraum an den Seiten.
+   Negative Ränder (je Icon gemessen) schneiden diesen ab, damit Größe (etwas über
+   Versalhöhe), Mitte und Abstand zum Text bei allen Icons gleich sind. */
+.dla-teaser-badge .icon {
+    display: block;
+    width: auto;
+    height: 1em;
+    margin: -0.3em -0.25em -0.3em -0.22em;
+    font-size: 28px !important;
+    line-height: 1 !important;
+    transform: translateY(0.03em);
+}
+
+.dla-teaser-badge .bel-film {
+    margin-right: -0.25em;
+    margin-left: -0.23em;
+}
+
+.dla-teaser-badge .bel-ton {
+    margin-right: -0.34em;
+    margin-left: -0.31em;
+}
+
+.dla-teaser-badge .bel-notekom01 {
+    margin-right: -0.245em;
+    margin-left: -0.22em;
+}
+
+.dla-teaser-badge .bel-link02 {
+    margin-right: -0.35em;
+    margin-left: -0.3em;
+}
+
+/* Player für Audio, Video und Audio-Playlisten (MediaAccess/Player.html),
+   Farben angelehnt an die Trefferliste */
 .dla-mediaplayer {
     max-width: 640px;
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
+}
+
+.dla-mediaplayer-caption {
+    margin-bottom: 0.4em;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+.dla-mediaplayer-caption-ext {
+    font-weight: normal;
+    color: #666;
+}
+
+/* Video passt sich der Spaltenbreite an; das Seitenverhältnis setzt Video.js (fluid) */
+.dla-mediaplayer .video-js {
+    width: 100%;
+    max-width: 100%;
 }
 
 .dla-mediaplayer .video-js.dla-mediaplayer-audio,
 .dla-mediaplayer .video-js.vjs-audio-only-mode {
     display: block;
-    width: 100%;
-    max-width: 100%;
+    height: 3em;
     padding-top: 0;
     background-color: transparent;
 }
 
-/* Höhe der kompakten Steuerleiste: gilt nur für einzelne Audiodateien - bei
-   Playlisten passt Video.js die Höhe des Players selbst an die Steuerleiste an. */
-.dla-mediaplayer[data-mediaplayer-type="audio"] .video-js.dla-mediaplayer-audio,
-.dla-mediaplayer[data-mediaplayer-type="audio"] .video-js.vjs-audio-only-mode {
-    height: 3em;
+.dla-mediaplayer .video-js .vjs-control-bar {
+    background-color: #2b2b2b;
 }
 
-.dla-mediaplayer-playlist {
-    list-style: none;
-    margin: 0.5em 0 0;
-    padding: 0;
-    border: 1px solid #ddd;
+.dla-mediaplayer .video-js .vjs-play-progress,
+.dla-mediaplayer .video-js .vjs-volume-level {
+    background-color: #b61f24;
 }
 
-.dla-mediaplayer-playlist-item {
-    padding: 6px 10px;
-    border-bottom: 1px solid #eee;
+/* Steuerleiste auf Touch-Geräten etwas größer */
+@media (pointer: coarse) {
+    .dla-mediaplayer .video-js {
+        font-size: 12px;
+    }
+
+    .dla-mediaplayer .video-js.dla-mediaplayer-audio,
+    .dla-mediaplayer .video-js.vjs-audio-only-mode {
+        height: 3.5em;
+    }
 }
 
-.dla-mediaplayer-playlist-button {
+.dla-mediaplayer-tracklist {
     width: 100%;
+    margin: 0;
+    border: 0;
+    border-collapse: collapse;
+    border-top: 1px solid #dadada;
+    background: transparent;
+}
+
+.dla-mediaplayer-tracklist thead {
+    background: transparent;
+}
+
+.dla-mediaplayer-tracklist th {
+    padding: 8px 10px;
+    border-bottom: 1px solid #dadada;
+    font-size: 0.85em;
+    font-weight: normal;
+    color: #666;
+    text-align: left;
+}
+
+.dla-mediaplayer-tracklist td {
+    padding: 10px;
+    border-bottom: 1px solid #dadada;
+    vertical-align: top;
+}
+
+.dla-mediaplayer-track {
+    cursor: pointer;
+    transition: background 0.3s linear;
+}
+
+.dla-mediaplayer-track:hover {
+    background: #f5f5f5;
+}
+
+.dla-mediaplayer-tracklist .dla-mediaplayer-track-number {
+    width: 2.5em;
+    color: #666;
+    font-variant-numeric: tabular-nums;
+}
+
+.dla-mediaplayer-tracklist .dla-mediaplayer-track-duration {
+    width: 5em;
+    text-align: right;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.dla-mediaplayer-track-button {
+    display: inline;
+    margin: 0;
     padding: 0;
     border: 0;
+    text-decoration: none;
     background: transparent;
+    font: inherit;
+    font-weight: bold;
+    color: inherit;
     text-align: left;
     cursor: pointer;
 }
 
-.dla-mediaplayer-playlist-button:focus-visible {
-    outline: 2px solid currentColor;
+.dla-mediaplayer-track-button:focus-visible {
+    outline: 2px solid #b61f24;
     outline-offset: 2px;
 }
 
-.dla-mediaplayer-playlist-item:last-child {
-    border-bottom: none;
+.dla-mediaplayer-track.active .dla-mediaplayer-track-number,
+.dla-mediaplayer-track.active .dla-mediaplayer-track-button {
+    color: #b61f24;
 }
 
-.dla-mediaplayer-playlist-item.active {
-    background-color: #fcff58;
-    font-weight: bold;
+.dla-mediaplayer-track.active {
+    box-shadow: inset 3px 0 0 #b61f24;
 }
 
+.dla-mediaplayer-track-artist-inline {
+    display: none;
+}
+
+/* Schmale Bildschirme: Interpret unter dem Titel statt in eigener Spalte */
+@media (max-width: 600px) {
+    .dla-mediaplayer-tracklist .dla-mediaplayer-track-artist {
+        display: none;
+    }
+
+    .dla-mediaplayer-track-artist-inline {
+        display: block;
+        font-size: 0.9em;
+        color: #666;
+    }
+
+    .dla-mediaplayer-tracklist td,
+    .dla-mediaplayer-tracklist th {
+        padding: 10px 6px;
+    }
+}
+
+/* Bildergalerie (MediaAccess/Slideshow.html), angelehnt an die Galerie auf
+   www.dla-marbach.de/bilder-und-objekte/ */
 .dla-slideshow {
     position: relative;
     overflow: hidden;
     max-width: 640px;
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
+    background: #f5f5f5;
+}
+
+.dla-slideshow:focus-visible {
+    outline: 2px solid #b61f24;
+    outline-offset: 2px;
 }
 
 .dla-slideshow-track {
@@ -784,15 +970,27 @@ span.icon.bel-link01 {
 }
 
 .dla-slideshow-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex: 0 0 100%;
     max-width: 100%;
+    height: min(480px, 75vw);
     box-sizing: border-box;
-    text-align: center;
+}
+
+.dla-slideshow-slide a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
 .dla-slideshow-slide img {
     max-width: 100%;
-    height: auto;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 .dla-slideshow-prev,
@@ -800,25 +998,48 @@ span.icon.bel-link01 {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.8);
-    border: none;
-    cursor: pointer;
     z-index: 2;
-    padding: 8px 10px;
-    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 50px;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.75);
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* belugino.css zeichnet die Glyphe mit 2rem (!important), eine globale .icon-Regel
+   begrenzt die Box aber auf 20px - der Pfeil ragt dann nach rechts unten heraus. Volle
+   Em-Box, damit Flexbox ihn mittig setzt; Feinversatz per Pixelmessung (Chrome). */
+.dla-slideshow-prev .icon,
+.dla-slideshow-next .icon {
+    display: block;
+    width: 1em;
+    height: 1em;
+    margin: 0;
+    line-height: 1 !important;
+    transform: translate(0.25px, -0.35px);
 }
 
 .dla-slideshow-prev:hover,
-.dla-slideshow-next:hover {
-    background: rgba(255, 255, 255, 0.95);
+.dla-slideshow-next:hover,
+.dla-slideshow-prev:focus-visible,
+.dla-slideshow-next:focus-visible {
+    background: #fff;
+    color: #b61f24;
 }
 
 .dla-slideshow-prev {
-    left: 10px;
+    left: 12px;
 }
 
 .dla-slideshow-next {
-    right: 10px;
+    right: 12px;
 }
 
 .dla-slideshow-dots {

@@ -14,14 +14,17 @@ namespace Dla\DlaOpacNg\Service;
  *   #EXTINF:-1,Another Title
  *   https://example.org/track2.mp3
  *
+ * The "#EXTINF" title is split into "artist" and "title" at the first " - "
+ * (format "Artist - Title"); without separator "artist" is null.
+ *
  * Plain M3U files without "#EXTINF" metadata (just a list of URLs, one per
  * line) are supported as well; in that case "title" falls back to the file
- * name and "duration" is null.
+ * name and "artist" and "duration" are null.
  */
 class M3uPlaylistParser
 {
     /**
-     * @return array<int, array{url: string, title: string, duration: ?float}>
+     * @return array<int, array{url: string, artist: ?string, title: string, duration: ?float}>
      */
     public function parse(string $content, ?string $playlistUrl = null): array
     {
@@ -53,9 +56,11 @@ class M3uPlaylistParser
                 continue;
             }
 
+            [$artist, $title] = $this->splitArtistAndTitle($pendingTitle);
             $tracks[] = [
                 'url' => $playlistUrl === null ? $line : $this->resolveUrl($line, $playlistUrl),
-                'title' => $pendingTitle !== null && $pendingTitle !== '' ? $pendingTitle : $this->titleFromUrl($line),
+                'artist' => $artist,
+                'title' => $title !== null ? $title : $this->titleFromUrl($line),
                 'duration' => $pendingDuration,
             ];
 
@@ -82,6 +87,23 @@ class M3uPlaylistParser
         }
 
         return [$duration, $title];
+    }
+
+    /**
+     * @return array{0: ?string, 1: ?string}
+     */
+    private function splitArtistAndTitle(?string $extinfTitle): array
+    {
+        if ($extinfTitle === null || $extinfTitle === '') {
+            return [null, null];
+        }
+
+        $parts = explode(' - ', $extinfTitle, 2);
+        if (count($parts) === 2 && trim($parts[0]) !== '' && trim($parts[1]) !== '') {
+            return [trim($parts[0]), trim($parts[1])];
+        }
+
+        return [null, $extinfTitle];
     }
 
     private function titleFromUrl(string $url): string

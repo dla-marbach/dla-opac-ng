@@ -21,6 +21,11 @@
         }
 
         var currentIndex = 0;
+        var labelPattern = slideshow.getAttribute('data-label-image') || 'Bild %s von %s';
+
+        function imageLabel(index) {
+            return labelPattern.replace('%s', String(index + 1)).replace('%s', String(slides.length));
+        }
 
         function goTo(index) {
             currentIndex = (index + slides.length) % slides.length;
@@ -54,7 +59,7 @@
                 var dot = document.createElement('button');
                 dot.type = 'button';
                 dot.className = 'dla-slideshow-dot' + (d === 0 ? ' is-active' : '');
-                dot.setAttribute('aria-label', 'Bild ' + (d + 1));
+                dot.setAttribute('aria-label', imageLabel(d));
                 (function (index) {
                     dot.addEventListener('click', function () {
                         goTo(index);
@@ -75,6 +80,14 @@
                 goTo(currentIndex + 1);
             });
         }
+
+        // Cursortasten, solange die Galerie oder eines ihrer Elemente den Fokus hat
+        slideshow.addEventListener('keydown', function (event) {
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+                event.preventDefault();
+                goTo(event.key === 'ArrowLeft' ? currentIndex - 1 : currentIndex + 1);
+            }
+        });
 
         // einfache Touch-/Wisch-Unterstuetzung
         var touchStartX = null;
