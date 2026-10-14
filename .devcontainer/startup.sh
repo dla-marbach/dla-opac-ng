@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 # GPG error: https://dl.yarnpkg.com/debian stable InRelease
 sudo rm -f /etc/apt/sources.list.d/yarn.list || true
@@ -14,7 +15,7 @@ task install
 task test:php:install
 
 # git repositories
-git clone https://github.com/dla-marbach/dla-opac-tests
+[ -e dla-opac-tests/package.json ] || git clone https://github.com/dla-marbach/dla-opac-tests
 
 # playwright
 cd dla-opac-tests

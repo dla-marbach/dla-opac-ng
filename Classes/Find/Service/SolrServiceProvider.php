@@ -400,32 +400,7 @@ class SolrServiceProvider extends AbstractServiceProvider
                                     if (!$minValue)
                                         $minValue = '0000-01-01';
 
-                                    $date = new \DateTime($minValue);
-                                    //$maxDate = new \DateTime($maxValue);
-
-                                    $nowDate = new \DateTime('now');
-
-                                    // Differenz der Jahreszahlen statt date_diff(): ändert sich nur zum Jahreswechsel,
-                                    // nicht am Jahrestag des ältesten Datums (stabile Solr-Anfragen über das Jahr)
-                                    $years = (int)$nowDate->format('Y') - (int)$date->format('Y');
-
-                                    if ($years < 50) {
-                                        $gap = 1;
-                                    } else {
-                                        $gap = round($years / 50);
-                                    }
-
-                                    // calculate start date so the gap divide evenly
-                                    $mod = $years % $gap;
-                                    $adding = $gap - $mod;
-
-                                    $startTimeYears = $years + $adding;
-
-                                    $start = 'NOW/YEAR-' . $startTimeYears . 'YEARS';
-
-                                    // Solr-Datumsausdruck statt sekundengenauem Zeitstempel: hält die Anfrage
-                                    // stabil (Solr-Cache, aufgezeichnete Solr-Antworten der Entwicklungsumgebung)
-                                    $end = 'NOW/DAY+1YEAR';
+                                    [$start, $end, $gap] = $this->getDateRangeFacetBounds((string)$minValue, new \DateTimeImmutable('now'));
 
                                     $queryForFacet = $facetSet->createFacetRange($facet['field'] ? $facetID : $facet['field']);
                                     $queryForFacet->setField($facet['field'] ? $facet['field'] : $facetID)
@@ -468,6 +443,28 @@ class SolrServiceProvider extends AbstractServiceProvider
         }
 
         $this->setConfigurationValue('facets', $facetConfiguration);
+    }
+
+    /**
+     * Start, Ende und Abstand (in Jahren) einer Datumsfacette vom ältesten Datum bis heute.
+     * Start und Ende sind Solr-Datumsausdrücke relativ zu NOW, damit die Anfrage stabil bleibt
+     * (Solr-Cache, aufgezeichnete Solr-Antworten der Entwicklungsumgebung): Der Start ändert sich nur
+     * zum Jahreswechsel, das Ende gar nicht.
+     *
+     * @return array{0: string, 1: string, 2: int} [start, end, gap]
+     */
+    protected function getDateRangeFacetBounds(string $minValue, \DateTimeInterface $now): array
+    {
+        // Differenz der Jahreszahlen statt date_diff(): ändert sich nur zum Jahreswechsel,
+        // nicht am Jahrestag des ältesten Datums
+        $years = (int)$now->format('Y') - (int)(new \DateTimeImmutable($minValue))->format('Y');
+
+        $gap = $years < 50 ? 1 : (int)round($years / 50);
+
+        // calculate start date so the gap divide evenly
+        $startTimeYears = $years + $gap - ($years % $gap);
+
+        return ['NOW/YEAR-' . $startTimeYears . 'YEARS', 'NOW/DAY+1YEAR', $gap];
     }
 
     protected function addFeatures(): void
