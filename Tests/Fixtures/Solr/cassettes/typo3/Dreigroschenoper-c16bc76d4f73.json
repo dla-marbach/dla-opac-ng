@@ -1,0 +1,1611 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "Dreigroschenoper",
+            "start": "0",
+            "rows": "25",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "score desc",
+            "fq": "NOT source:(AU OR BE OR MM)",
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(Dreigroschenoper) OR displayAddition1:(Dreigroschenoper) OR displayAddition2:(Dreigroschenoper) OR displayName:(Dreigroschenoper)))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "facet.field": [
+                "{!key=Digital}filterDigital",
+                "{!key=Medientypen}filterType_mv",
+                "{!key=FormUndInhalt}filterFormContent_mv",
+                "{!key=Medium}filterMedium_mv",
+                "{!key=Personen}filterAuthority_mv",
+                "{!key=Thema}filterSubject_mv",
+                "{!key=Sprache}filterLanguage_mv",
+                "{!key=filterLanguageType_mv}filterLanguageType_mv",
+                "{!key=Ort}filterLocation_mv",
+                "{!key=filterLocationType_mv}filterLocationType_mv",
+                "{!key=Sammlung}filterCollection_mv",
+                "{!key=Datenbestand}filterSource",
+                "{!key=Bibliographie}filterBibliography_mv",
+                "{!key=filterAuthorityRole_mv}filterAuthorityRole_mv",
+                "{!key=filterAuthorityRelation_mv}filterAuthorityRelation_mv",
+                "{!key=entities}searchEntity_id_mv"
+            ],
+            "f.filterDigital.facet.sort": "count",
+            "f.filterDigital.facet.limit": "50",
+            "f.filterDigital.facet.mincount": "1",
+            "f.filterType_mv.facet.sort": "count",
+            "f.filterType_mv.facet.limit": "50",
+            "f.filterType_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.sort": "count",
+            "f.filterFormContent_mv.facet.limit": "50",
+            "f.filterFormContent_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.missing": "true",
+            "f.filterMedium_mv.facet.sort": "count",
+            "f.filterMedium_mv.facet.limit": "50",
+            "f.filterMedium_mv.facet.mincount": "1",
+            "f.filterMedium_mv.facet.missing": "true",
+            "f.filterAuthority_mv.facet.sort": "count",
+            "f.filterAuthority_mv.facet.limit": "50",
+            "f.filterAuthority_mv.facet.mincount": "1",
+            "facet.range": "{!key=Zeit}filterDateRange_mv",
+            "f.filterDateRange_mv.facet.range.start": "NOW/YEAR-988YEARS",
+            "f.filterDateRange_mv.facet.range.end": "NOW/DAY+1YEAR",
+            "f.filterDateRange_mv.facet.range.gap": "+19YEAR",
+            "f.filterSubject_mv.facet.sort": "count",
+            "f.filterSubject_mv.facet.limit": "50",
+            "f.filterSubject_mv.facet.mincount": "1",
+            "f.filterSubject_mv.facet.missing": "true",
+            "facet.query": [
+                "{!key=Woche ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]",
+                "{!key=Monat ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]",
+                "{!key=Quartal ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Halbjahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Jahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1YEAR TO NOW/DAY+1DAY]"
+            ],
+            "f.filterLanguage_mv.facet.sort": "count",
+            "f.filterLanguage_mv.facet.limit": "50",
+            "f.filterLanguage_mv.facet.mincount": "1",
+            "f.filterLanguageType_mv.facet.sort": "count",
+            "f.filterLanguageType_mv.facet.limit": "50",
+            "f.filterLanguageType_mv.facet.mincount": "1",
+            "f.filterLocation_mv.facet.sort": "count",
+            "f.filterLocation_mv.facet.limit": "50",
+            "f.filterLocation_mv.facet.mincount": "1",
+            "f.filterLocationType_mv.facet.sort": "count",
+            "f.filterLocationType_mv.facet.limit": "50",
+            "f.filterLocationType_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.sort": "count",
+            "f.filterCollection_mv.facet.limit": "50",
+            "f.filterCollection_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.missing": "true",
+            "f.filterSource.facet.sort": "count",
+            "f.filterSource.facet.limit": "50",
+            "f.filterSource.facet.mincount": "1",
+            "f.filterSource.facet.missing": "true",
+            "f.filterBibliography_mv.facet.sort": "count",
+            "f.filterBibliography_mv.facet.limit": "50",
+            "f.filterBibliography_mv.facet.mincount": "1",
+            "f.filterBibliography_mv.facet.missing": "true",
+            "f.filterAuthorityRole_mv.facet.sort": "count",
+            "f.filterAuthorityRole_mv.facet.limit": "50",
+            "f.filterAuthorityRole_mv.facet.mincount": "1",
+            "f.filterAuthorityRelation_mv.facet.sort": "count",
+            "f.filterAuthorityRelation_mv.facet.limit": "50",
+            "f.filterAuthorityRelation_mv.facet.mincount": "1",
+            "f.searchEntity_id_mv.facet.sort": "count",
+            "f.searchEntity_id_mv.facet.limit": "2",
+            "f.searchEntity_id_mv.facet.mincount": "1",
+            "facet": "true"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 555,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterMedium_mv": [
+                            "Schallplatte"
+                        ],
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "displayAddition1": "Germany : Vintage, 1974 - 1 Schallplatte",
+                        "id": "AK01870295",
+                        "displayName": "Weill, Kurt (1900-1950); Brecht, Bertolt (1898-1956)",
+                        "display": "Dreigroschenoper"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Audio-CD",
+                            "Beitrag"
+                        ],
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "displayAddition1": "Erschienen in: Dramen - Hörspieled. : [Werke Sammlung]. \\ Bertolt Brecht. Einf. von Wolfgang Höbel. Sprecher: Elisabeth Schwarz, Ernst Jacobi, Günther Lüders .... - [Berlin] : Der Audio Verlag, 2006 - 10 CDs (646 Min.)",
+                        "id": "AK00331960",
+                        "displayName": "Brecht, Bertolt (1898-1956); Dirichs, Ursula; Eichhorn, Werner; Goguel, Hans; Dresp, Wolf; Weill, Kurt (1900-1950); Lauterbach, Ulrich",
+                        "display": "Die Dreigroschenoper"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Video-DVD"
+                        ],
+                        "filterType_mv": [
+                            "Video"
+                        ],
+                        "displayAddition1": "Bonn : Lingua Video, 2007 - 1 DVD-Video (128 Min.)",
+                        "id": "AK01357483",
+                        "displayName": "Brecht, Bertolt (1898-1956); Wilms, André; Weill, Kurt (1900-1950); Neuhäuser, Karin (1955-); Koch, Wolfram; Icks, Sascha; Schauspiel Frankfurt (1902-1944)",
+                        "display": "Die Dreigroschenoper"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Beitrag"
+                        ],
+                        "displayName": "Brecht, Bertolt (1898-1956)",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Erschienen in: Die berühmtesten Dramen der Welt - für die Gegenwart bearbeitet und gekürzt. - (2010)",
+                        "id": "AK01325688",
+                        "display": "Die Dreigroschenoper"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Video-DVD"
+                        ],
+                        "filterType_mv": [
+                            "Video"
+                        ],
+                        "displayAddition1": "[Mainz] : ZDF, 2012 - 1 DVD-Video (55 Min.)",
+                        "displayName": "Klein, Günther; Becker, Ben (1964-); Hassenfratz, Felix",
+                        "id": "AK01335678",
+                        "display": "Die Dreigroschenoper"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Beitrag"
+                        ],
+                        "displayName": "Weissenborn, Günther",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Erschienen in: Der gespaltene Horizont : Niederschriften eines Außenseiters. - (1964), Seite 264-271",
+                        "id": "AK00657710",
+                        "display": "Dreigroschenoper : [Brecht]"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Video-DVD"
+                        ],
+                        "filterType_mv": [
+                            "Video"
+                        ],
+                        "displayAddition1": "[Walluf] : Filmverlag Fernsehjuwelen, ©2016 - 1 DVD-Video (117 min)",
+                        "displayName": "Jürgens, Curd (1915-1982); Knef, Hildegard (1925-2002); Fröbe, Gert (1913-1988); Staudte, Wolfgang (1906-1984); Weisenborn, Günther (1902-1969); Brecht, Bertolt (1898-1956); Weill, Kurt (1900-1950)",
+                        "id": "AK01542059",
+                        "display": "Die Dreigroschenoper"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Beitrag"
+                        ],
+                        "displayName": "Adorno, Theodor W. (1903-1969); Reiniger, Lotte (1899-1981)",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Erschienen in: Die Musik : Monatsschrift. - 21 (19[28/]29), 6 (März). - Seite 424-428",
+                        "id": "AK00172650",
+                        "display": "Zur Dreigroschenoper"
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "tts-ed-101-m01-s01-t01-v01.wav",
+                            "tts-ed-102-m01-s01-t01-v01.wav"
+                        ],
+                        "filterMedium_mv": [
+                            "Audiokassette",
+                            "Audiodatei"
+                        ],
+                        "usageRestrictionNote": "Bitte wählen Sie über den Reiter 'Details' ein Heft oder einen Band aus (über den Link Enthaltene Bände und Hefte).",
+                        "displayName": "Brecht, Bertolt (1898-1956); Weill, Kurt (1900-1950); Dresp, Wolf; Lauterbach, Ulrich; Tappert, Horst (1923-2008); Trenk-Trebitsch, Willy (1902-1983); Hatheyer, Heidemarie (1918-1990)",
+                        "digitalObject_id_mv": [
+                            "MM01564171",
+                            "MM01564172"
+                        ],
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "displayAddition1": "[Frankfurt] : HR",
+                        "id": "AK00147843",
+                        "display": "Die Dreigroschenoper"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Videokassette"
+                        ],
+                        "filterType_mv": [
+                            "Video"
+                        ],
+                        "displayAddition1": "[Mainz] : ZDF, 1972 - 1 Videokassette (VHS, 117 Min.)",
+                        "displayName": "Weill, Kurt (1900-1950); Brecht, Bertolt (1898-1956); Giesing, Dieter (1934-2026); Boysen, Rolf (1920-2014); Buhre, Traugott (1929-2009); Trowe, Gisela (1922-2010); Burike, Ewald; Deutsches Schauspielhaus <Hamburg>",
+                        "id": "AK00275558",
+                        "display": "Die Dreigroschenoper"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Video-DVD"
+                        ],
+                        "filterType_mv": [
+                            "Video"
+                        ],
+                        "displayAddition1": "[Berlin] : Absolut Medien, 2008 - 2 DVD-Videos (203 Min.)",
+                        "displayName": "Pabst, Georg Wilhelm (1885-1967); Brecht, Bertolt (1898-1956); Weill, Kurt (1900-1950); Lania, Leo (1896-1961); Vajda, Ladislaus; Balázs, Béla (1884-1949); Weinberg, Herman G.; Forster, Rudolf (1884-1968); Mackeben, Theo (1897-1953); Neher, Carola (1900-1942); Schünzel, Reinhold (1888-1954); Lenya, Lotte (1898-1981)",
+                        "id": "AK00568726",
+                        "display": "Die Dreigroschenoper"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Audio-CD"
+                        ],
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "displayAddition1": "[Hamburg] : Polydor, 2006 - 2 CDs (125 Min.)",
+                        "id": "AK00305627",
+                        "displayName": "Weill, Kurt (1900-1950); Brecht, Bertolt (1898-1956); Clarin, Hans (1929-2005); Baal, Karin (1940-2024); Degenhardt, Franz Josef (1931-2011); Vock, Harald; Last, James (1929-)",
+                        "display": "Die Dreigroschenoper - Gesamtaufnahme"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Beitrag"
+                        ],
+                        "displayName": "Weiskopf, Franz Carl (1900-1955)",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Erschienen in: Neue deutsche Blätter : Monatsschr. für Literatur u. Kritik. - 2 (1934/35), Seite 189-190",
+                        "id": "AK00657725",
+                        "display": "Dreigroschenoper in Prag"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Schallplatte"
+                        ],
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "displayAddition1": "Berlin : VEB Dt. Schallpl., Eterna, 1989 - 1 Schallpl.",
+                        "displayName": "Weill, Kurt (1900-1950); Brecht, Bertolt (1898-1956); Gerron, Kurt (1897-1944); Lenya, Lotte (1898-1981); Ponto, Erich (1884-1957)",
+                        "id": "AK00832730",
+                        "display": "Die Dreigroschenoper - Auszüge"
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "tts-ed-101-m01-s01-t01-v01.wav"
+                        ],
+                        "filterMedium_mv": [
+                            "Audiokassette",
+                            "Audiodatei"
+                        ],
+                        "displayName": "Brecht, Bertolt (1898-1956); Weill, Kurt (1900-1950); Dresp, Wolf; Lauterbach, Ulrich; Tappert, Horst (1923-2008); Trenk-Trebitsch, Willy (1902-1983); Hatheyer, Heidemarie (1918-1990)",
+                        "digitalObject_id_mv": [
+                            "MM01564171"
+                        ],
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "displayAddition1": "[Frankfurt] : HR, 1967 - 1 Tonkassette (DAT, 75 Min.)",
+                        "id": "AK00147844",
+                        "display": "Die Dreigroschenoper. - [1]."
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "tts-ed-102-m01-s01-t01-v01.wav"
+                        ],
+                        "filterMedium_mv": [
+                            "Audiokassette",
+                            "Audiodatei"
+                        ],
+                        "displayName": "Brecht, Bertolt (1898-1956); Weill, Kurt (1900-1950); Dresp, Wolf; Lauterbach, Ulrich; Tappert, Horst (1923-2008); Trenk-Trebitsch, Willy (1902-1983); Hatheyer, Heidemarie (1918-1990)",
+                        "digitalObject_id_mv": [
+                            "MM01564172"
+                        ],
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "displayAddition1": "[Frankfurt] : HR, 1967 - 1 Tonkassette (DAT, 66 Min.)",
+                        "id": "AK00147845",
+                        "display": "Die Dreigroschenoper. - [2]."
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Schallplatte",
+                            "Beitrag"
+                        ],
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "displayAddition1": "Erschienen in: [Weill, Kurt <1900-1950>. Die Dreigroschenoper (Musiktheater : 1928)] Kleine Dreigroschenmusik für Blasorchester : (Suite aus der Dreigroschenoper) : [Textsammlung (Anthologie u.a.m.)].. - [Hamburg] : Polydor International GmbH, [1976] - 1 Schallplatte",
+                        "id": "AK01881784",
+                        "displayName": "Weill, Kurt (1900-1950); Atherton, David (1944-); Bell, Sebastian; Williams, Averil; Lamb, Anthony; London Sinfonietta",
+                        "display": "[Weill, Kurt <1900-1950>. Die Dreigroschenoper (Musiktheater : 1928)] Kleine Dreigroschenoper für Blasorchester : (Suite aus der «Dreigroschenoper»)"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Audio-CD"
+                        ],
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "displayAddition1": "Wien : Polygram GesmbH, 1988 - 1 CD (58:09 min)",
+                        "displayName": "Weill, Kurt (1900-1950); Brecht, Bertolt (1898-1956); Rosvaenge, Helge (1897-1972); Adler, F. Charles (1889-1959); Staatsoper <Wien> / Chor; Staatsoper <Wien> / Orchester",
+                        "id": "AK01844578",
+                        "display": "[Weill, Kurt <1900-1950>. Die Dreigroschenoper (Musiktheater : 1928)] Die Dreigroschenoper"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Audio-CD"
+                        ],
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "displayAddition1": "London : The Decca Record Company Limited, 1990 - 1 CD (74:07 min)",
+                        "displayName": "Weill, Kurt (1900-1950); Brecht, Bertolt (1898-1956); Kollo, René (1937-); Mauceri, John (1945-); RIAS-Kammerchor <Berlin>; Rundfunk im Amerikanischen Sektor Berlins / Symphonie-Orchester",
+                        "id": "AK01847369",
+                        "display": "[Weill, Kurt <1900-1950>. Die Dreigroschenoper (Musiktheater : 1928)] Die Dreigroschenoper"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Audio-CD"
+                        ],
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "displayAddition1": "[Hamburg] : Philips, [1990] - 1 CD (56:54 min)",
+                        "displayName": "Weill, Kurt (1900-1950); Brecht, Bertolt (1898-1956); Brammer, Dieter (1925-1996); Rennert, Wolfgang (1922-2012); Städtische Bühnen <Frankfurt, Main> / Oper / Chor; Oper Frankfurt. Orchester",
+                        "id": "AK01853625",
+                        "display": "[Weill, Kurt <1900-1950>. Die Dreigroschenoper (Musiktheater : 1928)] Die Dreigroschenoper"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Audiokassette",
+                            "Beitrag"
+                        ],
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "displayAddition1": "Erschienen in: Bertholt Brecht : eine Auswahl : historische Aufnahmen : [Werke Sammlung]. \\ Zusammenstellung: Isot Kilian. - Berlin : VEB Deutsche Schallplatten, [1986?] - 6 Audiokassetten",
+                        "id": "AK01880362",
+                        "displayName": "Brecht, Bertolt (1898-1956); Weill, Kurt (1900-1950); Kaiser, Wolf (1916-1992); Naumann, Günter; Berliner Ensemble. Orchester",
+                        "display": "[Weill, Kurt <1900-1950>. Die Dreigroschenoper (Musiktheater : 1928)] Die Dreigroschenoper"
+                    },
+                    {
+                        "display": "Dreigroschenoper : Moritatensänger-Motiv, Finale",
+                        "filterMedium_mv": [
+                            "Schallplatte",
+                            "Beitrag"
+                        ],
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "displayAddition1": "Erschienen in: \"Und jetzt will ich euch mal etwas sagen ...\" : Neue Heimat präsentiert Hörbilder aus der Geschichte der Deutschen Gewerkschaftsbewegung. - (1980)",
+                        "id": "AK00291004",
+                        "displayName": "Weill, Kurt (1900-1950); Brecht, Bertolt (1898-1956)"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Audio-CD"
+                        ],
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "displayAddition1": "[Köln] : Virgin Music, 2006 - 1 CD (20 Min.)",
+                        "displayName": "Weill, Kurt (1900-1950); Brecht, Bertolt (1898-1956); Slut <Ingolstadt>",
+                        "id": "AK01356923",
+                        "display": "Songs aus \"Die Dreigroschenoper\""
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Beitrag"
+                        ],
+                        "displayName": "Faber, Karl",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Erschienen in: Frankfurter Hefte : Zeitschr. für Kultur u. Politik. - 12 (1957), Seite 285-287",
+                        "id": "AK00658964",
+                        "display": "Dreigroschenoper im Fernsehen : [Brecht]"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Berlin : Kiepenheuer, 1928 - 26 Seiten",
+                        "id": "AK00092334",
+                        "displayName": "Brecht, Bertolt (1898-1956)",
+                        "display": "Die Songs der Dreigroschenoper"
+                    }
+                ]
+            },
+            "facet_counts": {
+                "facet_queries": {
+                    "Woche": 0,
+                    "Monat": 3,
+                    "Quartal": 13,
+                    "Halbjahr": 40,
+                    "Jahr": 51
+                },
+                "facet_fields": {
+                    "Digital": [
+                        "true",
+                        8
+                    ],
+                    "Medientypen": [
+                        "Gedrucktes",
+                        243,
+                        "Audio",
+                        132,
+                        "Handschriften",
+                        103,
+                        "Normdaten",
+                        55,
+                        "Video",
+                        17,
+                        "Bilder und Objekte",
+                        5
+                    ],
+                    "FormUndInhalt": [
+                        "Aufsatz",
+                        256,
+                        "Lied",
+                        96,
+                        "Brief",
+                        95,
+                        "Rezension",
+                        60,
+                        "Dramatisches",
+                        38,
+                        "Oper",
+                        35,
+                        "Übersetzung, fremdsprachig",
+                        21,
+                        "Sonstige Texte",
+                        13,
+                        "Film",
+                        11,
+                        "Lyrik",
+                        11,
+                        "Lesung",
+                        9,
+                        "Rundfunkfeature",
+                        9,
+                        "Werke, Teilausgabe",
+                        8,
+                        "Rundfunkmanuskript",
+                        7,
+                        "Hochschulschrift",
+                        6,
+                        "Hörspiel",
+                        6,
+                        "Theaterinszenierung",
+                        5,
+                        "Verschiedenes",
+                        5,
+                        "Anthologie",
+                        4,
+                        "Aufsatzsammlung",
+                        3,
+                        "Drehbuch",
+                        3,
+                        "Fotografie",
+                        3,
+                        "Gespräch / Interview",
+                        3,
+                        "Hörspielmanuskript",
+                        3,
+                        "Musikalia",
+                        3,
+                        "Musiktheater",
+                        3,
+                        "Zusammenstellung",
+                        3,
+                        "Abbildung",
+                        2,
+                        "Prosa",
+                        2,
+                        "Reisebericht",
+                        2,
+                        "Theaterprogramm",
+                        2,
+                        "Ausstellungskatalog",
+                        1,
+                        "Autobiografisches",
+                        1,
+                        "Ballade",
+                        1,
+                        "Bildband",
+                        1,
+                        "Biografie",
+                        1,
+                        "Bucheinlagen",
+                        1,
+                        "Druckgrafik",
+                        1,
+                        "Essay",
+                        1,
+                        "Filmkritik",
+                        1,
+                        "Fotokonvolut",
+                        1,
+                        "Gutachten",
+                        1,
+                        "Kabarett",
+                        1,
+                        "Libretto",
+                        1,
+                        "Materialsammlung",
+                        1,
+                        "Moritat",
+                        1,
+                        "Plakat",
+                        1,
+                        "Pressendruck",
+                        1,
+                        "Roman",
+                        1,
+                        "Sammlung",
+                        1,
+                        null,
+                        48
+                    ],
+                    "Medium": [
+                        "Beitrag",
+                        256,
+                        "Audio-CD",
+                        80,
+                        "Buch",
+                        69,
+                        "Schallplatte",
+                        42,
+                        "Audiokassette",
+                        10,
+                        "Audiodatei",
+                        9,
+                        "Video-DVD",
+                        8,
+                        "Buchumschlag",
+                        7,
+                        "Videokassette",
+                        7,
+                        "Noten",
+                        3,
+                        "Mehrteiliges Werk",
+                        2,
+                        "Videodatei",
+                        2,
+                        "Medienkombination",
+                        1,
+                        "Tonband",
+                        1,
+                        null,
+                        173
+                    ],
+                    "Personen": [
+                        "Brecht, Bertolt (1898-1956)",
+                        455,
+                        "Weill, Kurt (1900-1950)",
+                        218,
+                        "Hauptmann, Elisabeth (1897-1973)",
+                        82,
+                        "Suhrkamp-Verlag <Frankfurt, Main> (1950-)",
+                        65,
+                        "Lenya, Lotte (1898-1981)",
+                        23,
+                        "Suhrkamp, Peter (1891-1959)",
+                        20,
+                        "Ritzerfeld, Helene (1914-2000)",
+                        16,
+                        "Gay, John (1685-1732)",
+                        14,
+                        "Gerron, Kurt (1897-1944)",
+                        14,
+                        "Kracauer, Siegfried (1889-1966)",
+                        14,
+                        "Universal-Edition (1901-)",
+                        11,
+                        "Unseld, Siegfried (1924-2002)",
+                        10,
+                        "Weigel, Helene (1900-1971)",
+                        10,
+                        "Neher, Carola (1900-1942)",
+                        8,
+                        "Balázs, Béla (1884-1949)",
+                        7,
+                        "Dresp, Wolf",
+                        6,
+                        "Mackeben, Theo (1897-1953)",
+                        6,
+                        "Berliner Ensemble",
+                        5,
+                        "Hecht, Werner (1926-2017)",
+                        5,
+                        "Ihering, Herbert (1888-1977)",
+                        5,
+                        "Manheim, Ralph (1907-1992)",
+                        5,
+                        "Trenk-Trebitsch, Willy (1902-1983)",
+                        5,
+                        "Hollaender, Friedrich (1896-1976)",
+                        4,
+                        "Horváth, Ödön von (1901-1938)",
+                        4,
+                        "Kaiser, Wolf (1916-1992)",
+                        4,
+                        "Lang, Joachim (1959-)",
+                        4,
+                        "Lania, Leo (1896-1961)",
+                        4,
+                        "Lauterbach, Ulrich",
+                        4,
+                        "Lewis-Ruth-Band (1927-1933)",
+                        4,
+                        "Linzer, Martin",
+                        4,
+                        "Lucchesi, Joachim",
+                        4,
+                        "Pabst, Georg Wilhelm (1885-1967)",
+                        4,
+                        "Peuckert, Tom (1962-)",
+                        4,
+                        "Skasa, Michael",
+                        4,
+                        "Staudte, Wolfgang (1906-1984)",
+                        4,
+                        "Wille, Franz (1960-)",
+                        4,
+                        "Willett, John (1917-2002)",
+                        4,
+                        "Atherton, David (1944-)",
+                        3,
+                        "Balanchine, George (1904-1983)",
+                        3,
+                        "Bloch, Ernst (1885-1977)",
+                        3,
+                        "Dietrich, Marlene (1901-1992)",
+                        3,
+                        "Eggert, Moritz (1965-)",
+                        3,
+                        "Felix Bloch Erben (1887-)",
+                        3,
+                        "Forster, Rudolf (1884-1968)",
+                        3,
+                        "Fromm, Friedrich Karl (1906-1968)",
+                        3,
+                        "Grosz, Wilhelm (1894-1939)",
+                        3,
+                        "Hatheyer, Heidemarie (1918-1990)",
+                        3,
+                        "Kittstein, Lothar (1970-)",
+                        3,
+                        "London Sinfonietta",
+                        3,
+                        "Müller, André",
+                        3
+                    ],
+                    "Thema": [
+                        "Brecht, Bertolt (1898-1956)",
+                        404,
+                        "Weill, Kurt <1900-1950>. Die Dreigroschenoper (Musiktheater : 1928)",
+                        284,
+                        "Wirkungsgeschichte / Aufführungen, Veranstaltungen und Rezitationen auf der Textgrundlage des Autors / Einzelne Werke",
+                        188,
+                        "Weill, Kurt (1900-1950)",
+                        80,
+                        "Brecht, Bertolt <1898-1956>. Die Dreigroschenoper (Drama : 1928)",
+                        76,
+                        "Dramatisches / Einzelne Werke",
+                        67,
+                        "Hauptmann, Elisabeth (1897-1973)",
+                        61,
+                        "Sekundärliteratur (nicht weiter differenziert)",
+                        55,
+                        "Die Stimme des Autors",
+                        15,
+                        "Andere Bearbeitungen / Einzelne Werke",
+                        13,
+                        "Verfilmungen / Einzelne Werke",
+                        13,
+                        "Wirkungsgeschichte / Verfilmungen",
+                        13,
+                        "Weill, Kurt <1900-1950>. Die Dreigroschenoper. Moritat von Mackie Messer (Moritat)",
+                        12,
+                        "Kracauer, Siegfried (1889-1966)",
+                        11,
+                        "Vertonungen / Einzelne Werke",
+                        10,
+                        "Gay, John (1685-1732)",
+                        9,
+                        "Primärliteratur / Beiträge in Zeitschriften, Zeitungen, Sammelwerken",
+                        9,
+                        "Englische Literatur / Einzelne Autoren",
+                        7,
+                        "Vertonungen / Allgemeines",
+                        6,
+                        "Lenya, Lotte (1898-1981)",
+                        5,
+                        "Theater / Geschichte / Einzelne Orte",
+                        5,
+                        "Theater / Geschichte / Einzelne Personen und Kollektive",
+                        5,
+                        "Beziehungen / Familie und Zeitgenossen / Einzelne Personen und Gruppen",
+                        4,
+                        "Der Autor im Schulunterricht / Einzelne Werke",
+                        4,
+                        "Hauptmann, Elisabeth <1897-1973>. Happy End (Drama : 1929)",
+                        4,
+                        "Horváth, Ödön von (1901-1938)",
+                        4,
+                        "Ihering, Herbert (1888-1977)",
+                        4,
+                        "Kracauer, Siegfried <1889-1966>. Der Prozess um die Dreigroschenoper (1930)",
+                        4,
+                        "Weill, Kurt <1900-1950>. Aufstieg und Fall der Stadt Mahagonny (Oper : 1929)",
+                        4,
+                        "Weill, Kurt <1900-1950>. Die Dreigroschenoper. Kanonen-Song (Song : 1928)",
+                        4,
+                        "Weill, Kurt <1900-1950>. Mahagonny (Kurzoper : 1927)",
+                        4,
+                        "Wirkungsgeschichte / Übersetzungen / Einzelne Werke",
+                        4,
+                        "Afrikanische Autoren und deutsche Literatur",
+                        3,
+                        "Balanchine, George (1904-1983)",
+                        3,
+                        "Balázs, Béla (1884-1949)",
+                        3,
+                        "Bildungswelt, Weltbild / Einzelne Personen",
+                        3,
+                        "Brecht, Bertolt <1898-1956>. Mutter Courage und ihre Kinder (Drama : 1949)",
+                        3,
+                        "Deutsche Autoren und afrikanische Literatur",
+                        3,
+                        "Dramatisches / Einzelnes",
+                        3,
+                        "Hollaender, Friedrich (1896-1976)",
+                        3,
+                        "Horváth, Ödön von <1901-1938>. Geschichten aus dem Wiener Wald (Drama : 1931)",
+                        3,
+                        "Kittstein, Lothar (1970-)",
+                        3,
+                        "Kittstein, Lothar <1970->. Dreigroschenoper (Drama : 2023)",
+                        3,
+                        "Lebensphasen",
+                        3,
+                        "Person und Werk als Thema",
+                        3,
+                        "Soyinka, Wole (1934-)",
+                        3,
+                        "Soyinka, Wole <1934->. Opera Wonyosi",
+                        3,
+                        "Weill, Kurt <1900-1950>. Die Dreigroschenoper. Das Lied von der Unzulänglichkeit menschlichen Strebens (Lied : 1928)",
+                        3,
+                        "Weill, Kurt <1900-1950>. Die Dreigroschenoper. Seeräuberjenny (Lied : 1928)",
+                        3,
+                        "Weill, Kurt <1900-1950>. Die sieben Todsünden (Ballettmusik : 1933)",
+                        3,
+                        null,
+                        94
+                    ],
+                    "Sprache": [
+                        "Deutsch",
+                        354,
+                        "Englisch",
+                        36,
+                        "Französisch",
+                        20,
+                        "Italienisch",
+                        12,
+                        "Spanisch",
+                        4,
+                        "Polnisch",
+                        2,
+                        "Schwedisch",
+                        2,
+                        "Niederländisch",
+                        1,
+                        "Norwegisch",
+                        1,
+                        "Russisch",
+                        1,
+                        "Serbisch",
+                        1
+                    ],
+                    "filterLanguageType_mv": [
+                        "Deutsch␝Original",
+                        353,
+                        "Englisch␝Original",
+                        26,
+                        "Französisch␝Original",
+                        15,
+                        "Englisch␝Übersetzung",
+                        10,
+                        "Italienisch␝Original",
+                        8,
+                        "Deutsch␝Übersetzung",
+                        5,
+                        "Französisch␝Übersetzung",
+                        5,
+                        "Italienisch␝Übersetzung",
+                        4,
+                        "Spanisch␝Übersetzung",
+                        3,
+                        "Niederländisch␝Original",
+                        1,
+                        "Norwegisch␝Übersetzung",
+                        1,
+                        "Polnisch␝Original",
+                        1,
+                        "Polnisch␝Übersetzung",
+                        1,
+                        "Russisch␝Übersetzung",
+                        1,
+                        "Schwedisch␝Original",
+                        1,
+                        "Schwedisch␝Übersetzung",
+                        1,
+                        "Serbisch␝Übersetzung",
+                        1,
+                        "Spanisch␝Original",
+                        1
+                    ],
+                    "Ort": [
+                        "Frankfurt am Main",
+                        53,
+                        "Berlin",
+                        21,
+                        "Hamburg",
+                        16,
+                        "Wien",
+                        15,
+                        "New York, NY",
+                        14,
+                        "Berlin (Ost)",
+                        10,
+                        "Köln",
+                        10,
+                        "Paris",
+                        8,
+                        "London",
+                        7,
+                        "Berlin-Wilmersdorf",
+                        5,
+                        "Baden-Baden",
+                        4,
+                        "Berlin-Zehlendorf",
+                        4,
+                        "Leipzig",
+                        4,
+                        "München",
+                        4,
+                        "Baarn",
+                        3,
+                        "Darmstadt",
+                        3,
+                        "Frankfurt",
+                        3,
+                        "Mailand",
+                        3,
+                        "Mainz",
+                        3,
+                        "Mexiko (Stadt)",
+                        3,
+                        "Prag",
+                        3,
+                        "Athen",
+                        2,
+                        "Berlin-Charlottenburg",
+                        2,
+                        "Berlin-Spandau",
+                        2,
+                        "Bonn",
+                        2,
+                        "Buenos Aires",
+                        2,
+                        "Frankfurt a. M.",
+                        2,
+                        "Montréal",
+                        2,
+                        "New York",
+                        2,
+                        "Rom",
+                        2,
+                        "S.l.",
+                        2,
+                        "Stuttgart",
+                        2,
+                        "Torino [Turin]",
+                        2,
+                        "Zagreb",
+                        2,
+                        "Zürich",
+                        2,
+                        "Afrika",
+                        1,
+                        "Ann Arbor, Mich.",
+                        1,
+                        "Bad Aussee (Steiermark)",
+                        1,
+                        "Balzers",
+                        1,
+                        "Beograd",
+                        1,
+                        "Berlin (West)",
+                        1,
+                        "Berlin-Schöneberg",
+                        1,
+                        "Bern",
+                        1,
+                        "Beverly Hills, Calif.",
+                        1,
+                        "Bochum",
+                        1,
+                        "Boston",
+                        1,
+                        "Braunschweig",
+                        1,
+                        "Canterano",
+                        1,
+                        "Dresden",
+                        1,
+                        "Fano",
+                        1
+                    ],
+                    "filterLocationType_mv": [
+                        "Frankfurt am Main␝Entstehungsort",
+                        43,
+                        "Berlin␝Erscheinungsort",
+                        19,
+                        "Hamburg␝Erscheinungsort",
+                        13,
+                        "New York, NY␝Entstehungsort",
+                        12,
+                        "Berlin (Ost)␝Entstehungsort",
+                        10,
+                        "Frankfurt am Main␝Erscheinungsort",
+                        10,
+                        "Köln␝Erscheinungsort",
+                        8,
+                        "Wien␝Entstehungsort",
+                        8,
+                        "Wien␝Erscheinungsort",
+                        7,
+                        "Berlin-Wilmersdorf␝Entstehungsort",
+                        5,
+                        "Baden-Baden␝Erscheinungsort",
+                        4,
+                        "Berlin-Zehlendorf␝Entstehungsort",
+                        4,
+                        "London␝Entstehungsort",
+                        4,
+                        "München␝Erscheinungsort",
+                        4,
+                        "Paris␝Entstehungsort",
+                        4,
+                        "Frankfurt␝Erscheinungsort",
+                        3,
+                        "Hamburg␝Entstehungsort",
+                        3,
+                        "Leipzig␝Erscheinungsort",
+                        3,
+                        "London␝Erscheinungsort",
+                        3,
+                        "Mailand␝Entstehungsort",
+                        3,
+                        "Mainz␝Erscheinungsort",
+                        3,
+                        "Mexiko (Stadt)␝Entstehungsort",
+                        3,
+                        "Paris␝Erscheinungsort",
+                        3,
+                        "Athen␝Entstehungsort",
+                        2,
+                        "Baarn␝Entstehungsort",
+                        2,
+                        "Berlin-Charlottenburg␝Entstehungsort",
+                        2,
+                        "Berlin-Spandau␝Entstehungsort",
+                        2,
+                        "Bonn␝Erscheinungsort",
+                        2,
+                        "Buenos Aires␝Entstehungsort",
+                        2,
+                        "Darmstadt␝Entstehungsort",
+                        2,
+                        "Frankfurt a. M.␝Erscheinungsort",
+                        2,
+                        "Köln␝Schlagwort",
+                        2,
+                        "Montréal␝Entstehungsort",
+                        2,
+                        "New York, NY␝Erscheinungsort",
+                        2,
+                        "New York␝Erscheinungsort",
+                        2,
+                        "Prag␝Entstehungsort",
+                        2,
+                        "S.l.␝Erscheinungsort",
+                        2,
+                        "Stuttgart␝Erscheinungsort",
+                        2,
+                        "Torino [Turin]␝Erscheinungsort",
+                        2,
+                        "Zagreb␝Entstehungsort",
+                        2,
+                        "Zürich␝Entstehungsort",
+                        2,
+                        "Afrika␝Schlagwort",
+                        1,
+                        "Ann Arbor, Mich.␝Erscheinungsort",
+                        1,
+                        "Baarn␝Erscheinungsort",
+                        1,
+                        "Bad Aussee (Steiermark)␝Geburtsort",
+                        1,
+                        "Balzers␝Erscheinungsort",
+                        1,
+                        "Beograd␝Erscheinungsort",
+                        1,
+                        "Berlin (West)␝Entstehungsort",
+                        1,
+                        "Berlin-Schöneberg␝Erscheinungsort",
+                        1,
+                        "Berlin␝Entstehungsort",
+                        1
+                    ],
+                    "Sammlung": [
+                        "SUA:Suhrkamp°Peter-Suhrkamp-Archiv/01 Verlagsleitung/Autorenkonvolute/Brecht, Bertolt",
+                        84,
+                        "SUA:Suhrkamp°Peter-Suhrkamp-Archiv/01 Verlagsleitung/Allgemeine Korrespondenz",
+                        8,
+                        "SUA:Suhrkamp",
+                        3,
+                        "G:Glück, Franz (Sammlerbibliothek)",
+                        2,
+                        "G:Lehmann, Wilhelm (Bibliothek des Autors)",
+                        2,
+                        "A:Blumenberg, Hans",
+                        1,
+                        "A:Haas, Willy",
+                        1,
+                        "C:Kracauer, Siegfried und Elisabeth",
+                        1,
+                        "G:Badenhop, Wilhelm (Sammlung / Literatur des 20. Jahrhunderts)",
+                        1,
+                        "G:Kracauer, Siegfried (Bibliothek des Autors)",
+                        1,
+                        "G:Tucholsky-Archiv (Marbacher Forschungsbibliothek)",
+                        1,
+                        "H:Brecht, Bertolt (Sammlung Barbara Glauert-Heße)",
+                        1,
+                        "H:Martin-Walser-Archiv/Bild- und Tonträger",
+                        1,
+                        "H:Suhrkamp-Verlag/Bild- und Tonträger",
+                        1,
+                        "J:Fischer, Heinrich",
+                        1,
+                        "J:Kästner, Erich",
+                        1,
+                        "SUA:Suhrkamp/01 Verlagsleitung/Allgemeine Korrespondenz",
+                        1,
+                        "SUA:Suhrkamp/01 Verlagsleitung/Autorenkonvolute/Brecht, Bertolt",
+                        1,
+                        "SUA:Suhrkamp/01 Verlagsleitung/Reiseberichte",
+                        1,
+                        "SUA:Suhrkamp/01 Verlagsleitung°Unseld, Siegfried",
+                        1,
+                        "SUA:Suhrkamp/03 Lektorate/suhrkamp taschenbuch",
+                        1,
+                        null,
+                        442
+                    ],
+                    "Datenbestand": [
+                        "Bibliotheksmaterialien",
+                        388,
+                        "Handschriften Einzelnachweise",
+                        103,
+                        "Werke",
+                        34,
+                        "Systematikketten",
+                        18,
+                        "Bilder und Objekte",
+                        5,
+                        "Nachlässe und Spezialsammlungen",
+                        4,
+                        "Personen",
+                        3,
+                        null,
+                        0
+                    ],
+                    "Bibliographie": [
+                        "Kracauer-Bibliographie",
+                        10,
+                        null,
+                        545
+                    ],
+                    "filterAuthorityRole_mv": [
+                        "Brecht, Bertolt (1898-1956)␝Behandelte Person/Körperschaft",
+                        301,
+                        "Brecht, Bertolt (1898-1956)␝Verfasser/Urheber",
+                        168,
+                        "Weill, Kurt (1900-1950)␝Komponist",
+                        136,
+                        "Brecht, Bertolt (1898-1956)␝Werktitel Person/Körperschaft",
+                        74,
+                        "Hauptmann, Elisabeth (1897-1973)␝Werktitel Person/Körperschaft",
+                        61,
+                        "Suhrkamp-Verlag <Frankfurt, Main> (1950-)␝Korrespondent",
+                        54,
+                        "Suhrkamp-Verlag <Frankfurt, Main> (1950-)␝nicht bestimmt",
+                        54,
+                        "Weill, Kurt (1900-1950)␝Behandelte Person/Körperschaft",
+                        45,
+                        "Weill, Kurt (1900-1950)␝Werktitel Person/Körperschaft",
+                        35,
+                        "Suhrkamp, Peter (1891-1959)␝Korrespondent",
+                        20,
+                        "Suhrkamp, Peter (1891-1959)␝nicht bestimmt",
+                        20,
+                        "Brecht, Bertolt (1898-1956)␝Librettist",
+                        16,
+                        "Ritzerfeld, Helene (1914-2000)␝Korrespondent",
+                        16,
+                        "Ritzerfeld, Helene (1914-2000)␝nicht bestimmt",
+                        16,
+                        "Brecht, Bertolt (1898-1956)␝Sprecher",
+                        13,
+                        "Kracauer, Siegfried (1889-1966)␝Verfasser/Urheber",
+                        12,
+                        "Lenya, Lotte (1898-1981)␝Sänger",
+                        10,
+                        "Gay, John (1685-1732)␝Werktitel Person/Körperschaft",
+                        9,
+                        "Brecht, Bertolt (1898-1956)␝Verfasser der literarischen Vorlage",
+                        8,
+                        "Gerron, Kurt (1897-1944)␝Sänger",
+                        8,
+                        "Hauptmann, Elisabeth (1897-1973)␝Verfasser/Urheber",
+                        7,
+                        "Mackeben, Theo (1897-1953)␝Dirigent",
+                        6,
+                        "Universal-Edition (1901-)␝Verfasser/Urheber",
+                        6,
+                        "Balázs, Béla (1884-1949)␝Verfasser/Urheber",
+                        5,
+                        "Gerron, Kurt (1897-1944)␝Interpret",
+                        5,
+                        "Lenya, Lotte (1898-1981)␝Behandelte Person/Körperschaft",
+                        5,
+                        "Manheim, Ralph (1907-1992)␝Übersetzer",
+                        5,
+                        "Unseld, Siegfried (1924-2002)␝Korrespondent",
+                        5,
+                        "Unseld, Siegfried (1924-2002)␝nicht bestimmt",
+                        5,
+                        "Brecht, Bertolt (1898-1956)␝Adressat",
+                        4,
+                        "Dresp, Wolf␝Bearbeiter",
+                        4,
+                        "Hauptmann, Elisabeth (1897-1973)␝Übersetzer",
+                        4,
+                        "Hollaender, Friedrich (1896-1976)␝Verfasser/Urheber",
+                        4,
+                        "Horváth, Ödön von (1901-1938)␝Behandelte Person/Körperschaft",
+                        4,
+                        "Ihering, Herbert (1888-1977)␝Behandelte Person/Körperschaft",
+                        4,
+                        "Kracauer, Siegfried (1889-1966)␝Rezensent",
+                        4,
+                        "Lania, Leo (1896-1961)␝Verfasser/Urheber",
+                        4,
+                        "Lauterbach, Ulrich␝Regisseur",
+                        4,
+                        "Pabst, Georg Wilhelm (1885-1967)␝Regisseur",
+                        4,
+                        "Peuckert, Tom (1962-)␝Verfasser/Urheber",
+                        4,
+                        "Suhrkamp-Verlag <Frankfurt, Main> (1950-)␝Adressat",
+                        4,
+                        "Suhrkamp-Verlag <Frankfurt, Main> (1950-)␝Bestandsbildner/Vorbesitzer",
+                        4,
+                        "Weigel, Helene (1900-1971)␝Adressat",
+                        4,
+                        "Weigel, Helene (1900-1971)␝Korrespondent",
+                        4,
+                        "Weigel, Helene (1900-1971)␝nicht bestimmt",
+                        4,
+                        "Weill, Kurt (1900-1950)␝Verfasser/Urheber",
+                        4,
+                        "Wille, Franz (1960-)␝Rezensent",
+                        4,
+                        "Atherton, David (1944-)␝Dirigent",
+                        3,
+                        "Balanchine, George (1904-1983)␝Werktitel Person/Körperschaft",
+                        3,
+                        "Balázs, Béla (1884-1949)␝Behandelte Person/Körperschaft",
+                        3
+                    ],
+                    "filterAuthorityRelation_mv": [
+                        "Brecht, Bertolt (1898-1956)␝Über",
+                        376,
+                        "Brecht, Bertolt (1898-1956)␝Von",
+                        192,
+                        "Weill, Kurt (1900-1950)␝Von",
+                        142,
+                        "Weill, Kurt (1900-1950)␝Über",
+                        80,
+                        "Hauptmann, Elisabeth (1897-1973)␝Über",
+                        61,
+                        "Suhrkamp-Verlag <Frankfurt, Main> (1950-)␝An",
+                        58,
+                        "Suhrkamp-Verlag <Frankfurt, Main> (1950-)␝Von",
+                        57,
+                        "Hauptmann, Elisabeth (1897-1973)␝Von",
+                        25,
+                        "Suhrkamp, Peter (1891-1959)␝An",
+                        20,
+                        "Suhrkamp, Peter (1891-1959)␝Von",
+                        20,
+                        "Lenya, Lotte (1898-1981)␝Von",
+                        19,
+                        "Ritzerfeld, Helene (1914-2000)␝An",
+                        16,
+                        "Ritzerfeld, Helene (1914-2000)␝Von",
+                        16,
+                        "Gerron, Kurt (1897-1944)␝Von",
+                        13,
+                        "Kracauer, Siegfried (1889-1966)␝Von",
+                        12,
+                        "Unseld, Siegfried (1924-2002)␝Von",
+                        10,
+                        "Gay, John (1685-1732)␝Über",
+                        9,
+                        "Weigel, Helene (1900-1971)␝An",
+                        9,
+                        "Neher, Carola (1900-1942)␝Von",
+                        8,
+                        "Universal-Edition (1901-)␝Von",
+                        8,
+                        "Dresp, Wolf␝Von",
+                        6,
+                        "Mackeben, Theo (1897-1953)␝Von",
+                        6,
+                        "Balázs, Béla (1884-1949)␝Von",
+                        5,
+                        "Gay, John (1685-1732)␝Von",
+                        5,
+                        "Hauptmann, Elisabeth (1897-1973)␝An",
+                        5,
+                        "Hecht, Werner (1926-2017)␝Von",
+                        5,
+                        "Lenya, Lotte (1898-1981)␝Über",
+                        5,
+                        "Manheim, Ralph (1907-1992)␝Von",
+                        5,
+                        "Trenk-Trebitsch, Willy (1902-1983)␝Von",
+                        5,
+                        "Universal-Edition (1901-)␝An",
+                        5,
+                        "Unseld, Siegfried (1924-2002)␝An",
+                        5,
+                        "Weigel, Helene (1900-1971)␝Von",
+                        5,
+                        "Brecht, Bertolt (1898-1956)␝An",
+                        4,
+                        "Hollaender, Friedrich (1896-1976)␝Von",
+                        4,
+                        "Horváth, Ödön von (1901-1938)␝Über",
+                        4,
+                        "Ihering, Herbert (1888-1977)␝Über",
+                        4,
+                        "Kaiser, Wolf (1916-1992)␝Von",
+                        4,
+                        "Lang, Joachim (1959-)␝Von",
+                        4,
+                        "Lania, Leo (1896-1961)␝Von",
+                        4,
+                        "Lauterbach, Ulrich␝Von",
+                        4,
+                        "Lewis-Ruth-Band (1927-1933)␝Von",
+                        4,
+                        "Linzer, Martin␝Von",
+                        4,
+                        "Lucchesi, Joachim␝Von",
+                        4,
+                        "Pabst, Georg Wilhelm (1885-1967)␝Von",
+                        4,
+                        "Peuckert, Tom (1962-)␝Von",
+                        4,
+                        "Skasa, Michael␝Von",
+                        4,
+                        "Staudte, Wolfgang (1906-1984)␝Von",
+                        4,
+                        "Suhrkamp-Verlag <Frankfurt, Main> (1950-)␝Unter",
+                        4,
+                        "Wille, Franz (1960-)␝Von",
+                        4,
+                        "Willett, John (1917-2002)␝Von",
+                        4
+                    ],
+                    "entities": [
+                        "PE00001131",
+                        471,
+                        "PE00051007",
+                        358
+                    ]
+                },
+                "facet_ranges": {
+                    "Zeit": {
+                        "counts": [
+                            "1038-01-01T00:00:00Z",
+                            1,
+                            "1057-01-01T00:00:00Z",
+                            0,
+                            "1076-01-01T00:00:00Z",
+                            0,
+                            "1095-01-01T00:00:00Z",
+                            0,
+                            "1114-01-01T00:00:00Z",
+                            0,
+                            "1133-01-01T00:00:00Z",
+                            0,
+                            "1152-01-01T00:00:00Z",
+                            0,
+                            "1171-01-01T00:00:00Z",
+                            0,
+                            "1190-01-01T00:00:00Z",
+                            0,
+                            "1209-01-01T00:00:00Z",
+                            0,
+                            "1228-01-01T00:00:00Z",
+                            0,
+                            "1247-01-01T00:00:00Z",
+                            0,
+                            "1266-01-01T00:00:00Z",
+                            0,
+                            "1285-01-01T00:00:00Z",
+                            0,
+                            "1304-01-01T00:00:00Z",
+                            0,
+                            "1323-01-01T00:00:00Z",
+                            0,
+                            "1342-01-01T00:00:00Z",
+                            0,
+                            "1361-01-01T00:00:00Z",
+                            0,
+                            "1380-01-01T00:00:00Z",
+                            0,
+                            "1399-01-01T00:00:00Z",
+                            0,
+                            "1418-01-01T00:00:00Z",
+                            0,
+                            "1437-01-01T00:00:00Z",
+                            0,
+                            "1456-01-01T00:00:00Z",
+                            0,
+                            "1475-01-01T00:00:00Z",
+                            0,
+                            "1494-01-01T00:00:00Z",
+                            0,
+                            "1513-01-01T00:00:00Z",
+                            0,
+                            "1532-01-01T00:00:00Z",
+                            0,
+                            "1551-01-01T00:00:00Z",
+                            0,
+                            "1570-01-01T00:00:00Z",
+                            0,
+                            "1589-01-01T00:00:00Z",
+                            0,
+                            "1608-01-01T00:00:00Z",
+                            0,
+                            "1627-01-01T00:00:00Z",
+                            0,
+                            "1646-01-01T00:00:00Z",
+                            0,
+                            "1665-01-01T00:00:00Z",
+                            0,
+                            "1684-01-01T00:00:00Z",
+                            0,
+                            "1703-01-01T00:00:00Z",
+                            0,
+                            "1722-01-01T00:00:00Z",
+                            1,
+                            "1741-01-01T00:00:00Z",
+                            0,
+                            "1760-01-01T00:00:00Z",
+                            0,
+                            "1779-01-01T00:00:00Z",
+                            0,
+                            "1798-01-01T00:00:00Z",
+                            0,
+                            "1817-01-01T00:00:00Z",
+                            0,
+                            "1836-01-01T00:00:00Z",
+                            0,
+                            "1855-01-01T00:00:00Z",
+                            0,
+                            "1874-01-01T00:00:00Z",
+                            0,
+                            "1893-01-01T00:00:00Z",
+                            0,
+                            "1912-01-01T00:00:00Z",
+                            39,
+                            "1931-01-01T00:00:00Z",
+                            25,
+                            "1950-01-01T00:00:00Z",
+                            146,
+                            "1969-01-01T00:00:00Z",
+                            97,
+                            "1988-01-01T00:00:00Z",
+                            150,
+                            "2007-01-01T00:00:00Z",
+                            62,
+                            "2026-01-01T00:00:00Z",
+                            2
+                        ],
+                        "gap": "+19YEAR",
+                        "start": "1038-01-01T00:00:00Z",
+                        "end": "2045-01-01T00:00:00Z"
+                    }
+                },
+                "facet_intervals": [],
+                "facet_heatmaps": []
+            },
+            "highlighting": {
+                "AK01870295": {
+                    "display": [
+                        "\\ueeeeDreigroschenoper\\ueeef"
+                    ]
+                },
+                "AK00331960": {
+                    "display": [
+                        "Die \\ueeeeDreigroschenoper\\ueeef"
+                    ]
+                },
+                "AK01357483": {
+                    "display": [
+                        "Die \\ueeeeDreigroschenoper\\ueeef"
+                    ]
+                },
+                "AK01325688": {
+                    "display": [
+                        "Die \\ueeeeDreigroschenoper\\ueeef"
+                    ]
+                },
+                "AK01335678": {
+                    "display": [
+                        "Die \\ueeeeDreigroschenoper\\ueeef"
+                    ]
+                },
+                "AK00657710": {
+                    "display": [
+                        "\\ueeeeDreigroschenoper\\ueeef : [Brecht]"
+                    ]
+                },
+                "AK01542059": {
+                    "display": [
+                        "Die \\ueeeeDreigroschenoper\\ueeef"
+                    ]
+                },
+                "AK00172650": {
+                    "display": [
+                        "Zur \\ueeeeDreigroschenoper\\ueeef"
+                    ]
+                },
+                "AK00147843": {
+                    "display": [
+                        "Die \\ueeeeDreigroschenoper\\ueeef"
+                    ]
+                },
+                "AK00275558": {
+                    "display": [
+                        "Die \\ueeeeDreigroschenoper\\ueeef"
+                    ]
+                },
+                "AK00568726": {
+                    "display": [
+                        "Die \\ueeeeDreigroschenoper\\ueeef"
+                    ]
+                },
+                "AK00305627": {
+                    "display": [
+                        "Die \\ueeeeDreigroschenoper\\ueeef - Gesamtaufnahme"
+                    ]
+                },
+                "AK00657725": {
+                    "display": [
+                        "\\ueeeeDreigroschenoper\\ueeef in Prag"
+                    ]
+                },
+                "AK00832730": {
+                    "display": [
+                        "Die \\ueeeeDreigroschenoper\\ueeef - Auszüge"
+                    ]
+                },
+                "AK00147844": {
+                    "display": [
+                        "Die \\ueeeeDreigroschenoper\\ueeef. - [1]."
+                    ]
+                },
+                "AK00147845": {
+                    "display": [
+                        "Die \\ueeeeDreigroschenoper\\ueeef. - [2]."
+                    ]
+                },
+                "AK01881784": {
+                    "displayAddition1": [
+                        "Erschienen in: [Weill, Kurt <1900-1950>. Die \\ueeeeDreigroschenoper\\ueeef (Musiktheater : 1928)] Kleine Dreigroschenmusik für Blasorchester : (Suite aus der \\ueeeeDreigroschenoper\\ueeef) : [Textsammlung (Anthologie u.a.m.)].. - [Hamburg] : Polydor International GmbH, [1976] - 1 Schallplatte"
+                    ],
+                    "display": [
+                        "[Weill, Kurt <1900-1950>. Die \\ueeeeDreigroschenoper\\ueeef (Musiktheater : 1928)] Kleine \\ueeeeDreigroschenoper\\ueeef für Blasorchester : (Suite aus der «\\ueeeeDreigroschenoper\\ueeef»)"
+                    ]
+                },
+                "AK01844578": {
+                    "display": [
+                        "[Weill, Kurt <1900-1950>. Die \\ueeeeDreigroschenoper\\ueeef (Musiktheater : 1928)] Die \\ueeeeDreigroschenoper\\ueeef"
+                    ]
+                },
+                "AK01847369": {
+                    "display": [
+                        "[Weill, Kurt <1900-1950>. Die \\ueeeeDreigroschenoper\\ueeef (Musiktheater : 1928)] Die \\ueeeeDreigroschenoper\\ueeef"
+                    ]
+                },
+                "AK01853625": {
+                    "display": [
+                        "[Weill, Kurt <1900-1950>. Die \\ueeeeDreigroschenoper\\ueeef (Musiktheater : 1928)] Die \\ueeeeDreigroschenoper\\ueeef"
+                    ]
+                },
+                "AK01880362": {
+                    "display": [
+                        "[Weill, Kurt <1900-1950>. Die \\ueeeeDreigroschenoper\\ueeef (Musiktheater : 1928)] Die \\ueeeeDreigroschenoper\\ueeef"
+                    ]
+                },
+                "AK00291004": {
+                    "display": [
+                        "\\ueeeeDreigroschenoper\\ueeef : Moritatensänger-Motiv, Finale"
+                    ]
+                },
+                "AK01356923": {
+                    "display": [
+                        "Songs aus \"Die \\ueeeeDreigroschenoper\\ueeef\""
+                    ]
+                },
+                "AK00658964": {
+                    "display": [
+                        "\\ueeeeDreigroschenoper\\ueeef im Fernsehen : [Brecht]"
+                    ]
+                },
+                "AK00092334": {
+                    "display": [
+                        "Die Songs der \\ueeeeDreigroschenoper\\ueeef"
+                    ]
+                }
+            }
+        }
+    }
+}

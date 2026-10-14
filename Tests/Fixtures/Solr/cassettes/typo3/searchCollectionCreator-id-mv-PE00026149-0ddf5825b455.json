@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchCollectionCreator_id_mv:PE00026149",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 284,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00012423",
+                        "display": "A:Lieblich, Karl - [Bestand, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00061577",
+                        "display": "Edschmid, Kasimir an Lieblich, Karl [Briefe]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00160221",
+                        "display": "Lieblich, Karl an Lieblich <Familie> [Briefe]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00160224",
+                        "display": "Lieblich, Karl an Lieblich <Familie> [Briefe]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00160227",
+                        "display": "Lieblich, Karl an Lieblich <Familie> [Briefe]"
+                    }
+                ]
+            }
+        }
+    }
+}

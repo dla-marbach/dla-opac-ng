@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchCollectionCreator_id_mv:PE00016819 OR PE00063202 OR PE00063047 OR PE00023126 OR PE00023127 OR KS00002072 OR PE00001114 OR PE00030955",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 64131,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00476246",
+                        "display": "Duineser Elegien"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00476361",
+                        "display": "Die Sonette an Orpheus : geschrieben als ein Grab-Mal für Wera Ouckama Knoop"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00397613",
+                        "display": "Rainer Maria Rilke"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00486218",
+                        "display": "Kanzonnair"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00079038",
+                        "display": "Narciss : oder Mythos und Einbildungskraft : [Werke Sammlung]"
+                    }
+                ]
+            }
+        }
+    }
+}

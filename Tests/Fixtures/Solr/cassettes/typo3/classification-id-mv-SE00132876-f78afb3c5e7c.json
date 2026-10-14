@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "classification_id_mv:(SE00132876)",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 133,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01187105",
+                        "display": "Das Ungeheure und das Geordnete : die Schweiz in Goethes Werk"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01177760",
+                        "display": "Die Schweiz verkaufen : Wechselverhältnisse zwischen Tourismus, Literatur und Künsten seit 1800 : [Konferenzschrift]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01182222",
+                        "display": "Goethes Erlebnis der Schweiz"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01182229",
+                        "display": "Mit Goethe in der Schweiz : ein Bildband"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01182429",
+                        "display": "Tagebuch einer Reise durch die Schweiz : d. Aufzeichnungen von Goethes Schreiber 1797"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,281 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(PE00007078)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0,
+                "params": {
+                    "q": "id:(PE00007078)",
+                    "rows": "1"
+                }
+            },
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "PE00007078",
+                        "display": "Benn, Gottfried (1886-1956)",
+                        "categoryEntity_mv": [
+                            "Person"
+                        ],
+                        "categoryIndex_mv": [
+                            "Literarische/r Autor/in im Sinne der Bibliothek",
+                            "Person der Zeitungsausschnittsammlung",
+                            "Bestandsbildner/in im Sinne der Handschriftensammlung",
+                            "Bestandsbildner/in im Sinne der Sammlung Bilder und Objekte"
+                        ],
+                        "classificationNewspaper_comment_mv": [
+                            "Autoren, Kritiker und Übersetzer"
+                        ],
+                        "classificationNewspaper_text_mv": [
+                            "xy"
+                        ],
+                        "country_mv": [
+                            "Deutschland"
+                        ],
+                        "dateCataloged": "1997-06-17",
+                        "dateLifespanEnd": "1956-07-07",
+                        "dateLifespanStart": "1886-05-02",
+                        "dateModified": "2026-10-13",
+                        "dateRetention": "2026",
+                        "displayAddition1": "Schriftsteller, Arzt",
+                        "filterDatePoint_mv": [
+                            "1886-05-02T00:00:00Z",
+                            "1956-07-07T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "[1886-05-02 TO 1956-07-07]"
+                        ],
+                        "filterLocationType_mv": [
+                            "Mansfeld␝Geburtsort",
+                            "Berlin␝Sterbeort"
+                        ],
+                        "filterLocation_mv": [
+                            "Mansfeld",
+                            "Berlin"
+                        ],
+                        "filterSource": "Personen",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "gender": "männlich",
+                        "gnd_id_mv": [
+                            "118509047"
+                        ],
+                        "gnd_type_mv": [
+                            "GND-Nr."
+                        ],
+                        "linkCommonsImage_file_mv": [
+                            "Bundesarchiv-Bild-183-1984-1116-500%2C-Gottfried-Benn-Arzt-und-Schriftsteller%20cropped.jpg"
+                        ],
+                        "linkCommonsImage_rights_mv": [
+                            "Bundesarchiv_Bild_183-1984-1116-500,_Gottfried_Ben... | Wikimedia Commons | CC BY-SA 3.0 de"
+                        ],
+                        "linkCommonsSignature_file_mv": [
+                            "Gottfried%20Benn%20Signature.jpg"
+                        ],
+                        "linkCommonsSignature_rights_mv": [
+                            "Deutsche Bundespost | Wikimedia Commons | Public domain"
+                        ],
+                        "linkFilmportal_mv": [
+                            "9c1d77a20faf40a48baf8e3831d52308"
+                        ],
+                        "linkWikidata": "Q57277",
+                        "linkWikidataWebsite_mv": [
+                            "https://gottfriedbenn.de"
+                        ],
+                        "linkWikipedia": "Gottfried_Benn",
+                        "noteExplanatory_text_mv": [
+                            "Ein großer Teil seiner Bibliothek (1387 Bände) befindet sich seit 1986 im Deutschen Literaturarchiv Marbach. 1996 wurde die umfangreiche Benn-Sammlung des Freiburger Buchhändlers Fritz Werner übernommen."
+                        ],
+                        "occupation_mv": [
+                            "Schriftsteller",
+                            "Arzt"
+                        ],
+                        "placeBirth": "Mansfeld",
+                        "placeDeath": "Berlin",
+                        "place_mv": [
+                            "Mansfeld",
+                            "Berlin"
+                        ],
+                        "reference_text_mv": [
+                            "Killy",
+                            "Kussmaul",
+                            "Kosch Lit. <20. Jh.>"
+                        ],
+                        "reference_type_mv": [
+                            "positiv",
+                            "positiv",
+                            "positiv"
+                        ],
+                        "relation_comment_mv": [
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Mutter",
+                            "1. Ehefrau (1914-1922)",
+                            "Geschwister",
+                            "Vater",
+                            "2. Ehefrau (1938-1945)",
+                            "3. Ehefrau (1946-1956)",
+                            "Geschwister",
+                            "Geschwister",
+                            "Geschwister",
+                            "␣",
+                            "Tochter",
+                            "Enkelin",
+                            "Enkel",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣"
+                        ],
+                        "relation_id_mv": [
+                            "␣",
+                            "PE00466569",
+                            "PE00063197",
+                            "PE00146706",
+                            "PE00660490",
+                            "PE00063262",
+                            "TH00000151",
+                            "PE00402328",
+                            "PE00177895",
+                            "PE00178434",
+                            "PE00177894",
+                            "PE00177893",
+                            "PE00668528",
+                            "PE00062973",
+                            "PE00402527",
+                            "PE00178366",
+                            "PE00635277",
+                            "PE00030097",
+                            "PE00244750",
+                            "PE00661257",
+                            "PE00112588",
+                            "PE00149623",
+                            "TH00001621",
+                            "TH00041927",
+                            "AK01458988",
+                            "AK01704569",
+                            "AK01612576",
+                            "AK01609822",
+                            "AK01616132",
+                            "KS00017343"
+                        ],
+                        "relation_text_mv": [
+                            "Dr. med.",
+                            "Marcus, Max (1892-1983)",
+                            "Niedermayer, Max (1905-1968)",
+                            "Oelze, Charlotte (1896-1974)",
+                            "Pfau, Gerda (1913-2004)",
+                            "Schlüter, Marguerite (1928-2018)",
+                            "Arzt",
+                            "Benn, Andreas (1911-1930)",
+                            "Benn, Caroline (1858-1912)",
+                            "Benn, Edith (1878-1922)",
+                            "Benn, Edith (1901-1988)",
+                            "Benn, Gustav (1857-1939)",
+                            "Benn, Herta (-1945)",
+                            "Benn, Ilse (1913-1995)",
+                            "Benn, Ruth (1885-1952)",
+                            "Benn, Siegfried (1892-1916)",
+                            "Benn, Stephan (1889-1974)",
+                            "Osterloh, Adele (1857-1946)",
+                            "Soerensen, Nele Poul (1915-2012)",
+                            "Topsøe Larsen, Tine (1944-)",
+                            "Topsøe, Vilhelm (1944-)",
+                            "Heintel, Helmut (1926-2003)",
+                            "Schriftsteller",
+                            "Mansfeld",
+                            "Döblin, Alfred (1878-1957). Über Gottfried Benn (Rede : 1988)",
+                            "Hillebrand, Bruno (1935-2016). Über Gottfried Benn (Zusammenstellung : 1987)",
+                            "Hohendahl, Peter Uwe (1936-). Benn - Wirkung wider Willen (Zusammenstellung : 1971)",
+                            "Horch, Hans Otto (1944-). \"ins süße Benn-Engramm\"? (1988)",
+                            "Schäfer, Hans Dieter (1939-). Herr Oelze aus Bremen (2001)",
+                            "Berlin"
+                        ],
+                        "relation_type_mv": [
+                            "Akad. Grad",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Beruf/Funktion",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung thematisch",
+                            "Charakt. Beruf",
+                            "Geburtsort",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Sterbeort"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.5,
+                        "searchDate_mv": [
+                            "02.05.1886",
+                            "1886-05-02",
+                            "07.07.1956",
+                            "1956-07-07"
+                        ],
+                        "searchEntityScore": 7662,
+                        "searchEntity_id_mv": [
+                            "PE00007078"
+                        ],
+                        "searchSuggestPayload": "PE00007078␝Benn, Gottfried (1886-1956)",
+                        "searchSuggestTerm_mv": [
+                            "Benn, Gottfried (1886-1956)"
+                        ],
+                        "source": "PE",
+                        "statusEditing": "individualisiert",
+                        "title": "Benn, Gottfried",
+                        "url": "https://www.dla-marbach.de/find/opac/id/PE00007078",
+                        "website_description_mv": [
+                            "Stand: 10.02.2023"
+                        ],
+                        "website_url_mv": [
+                            "https://gottfriedbenn.de/lebenslauf.html"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

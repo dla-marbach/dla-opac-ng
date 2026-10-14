@@ -1,0 +1,300 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "Cortázar Unzeiten Erzählungen 1993",
+            "start": "0",
+            "rows": "25",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "score desc",
+            "fq": "NOT source:(AU OR BE OR MM)",
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(Cortázar Unzeiten Erzählungen 1993) OR displayAddition1:(Cortázar Unzeiten Erzählungen 1993) OR displayAddition2:(Cortázar Unzeiten Erzählungen 1993) OR displayName:(Cortázar Unzeiten Erzählungen 1993)))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "facet.field": [
+                "{!key=Digital}filterDigital",
+                "{!key=Medientypen}filterType_mv",
+                "{!key=FormUndInhalt}filterFormContent_mv",
+                "{!key=Medium}filterMedium_mv",
+                "{!key=Personen}filterAuthority_mv",
+                "{!key=Thema}filterSubject_mv",
+                "{!key=Sprache}filterLanguage_mv",
+                "{!key=filterLanguageType_mv}filterLanguageType_mv",
+                "{!key=Ort}filterLocation_mv",
+                "{!key=filterLocationType_mv}filterLocationType_mv",
+                "{!key=Sammlung}filterCollection_mv",
+                "{!key=Datenbestand}filterSource",
+                "{!key=Bibliographie}filterBibliography_mv",
+                "{!key=filterAuthorityRole_mv}filterAuthorityRole_mv",
+                "{!key=filterAuthorityRelation_mv}filterAuthorityRelation_mv",
+                "{!key=entities}searchEntity_id_mv"
+            ],
+            "f.filterDigital.facet.sort": "count",
+            "f.filterDigital.facet.limit": "50",
+            "f.filterDigital.facet.mincount": "1",
+            "f.filterType_mv.facet.sort": "count",
+            "f.filterType_mv.facet.limit": "50",
+            "f.filterType_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.sort": "count",
+            "f.filterFormContent_mv.facet.limit": "50",
+            "f.filterFormContent_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.missing": "true",
+            "f.filterMedium_mv.facet.sort": "count",
+            "f.filterMedium_mv.facet.limit": "50",
+            "f.filterMedium_mv.facet.mincount": "1",
+            "f.filterMedium_mv.facet.missing": "true",
+            "f.filterAuthority_mv.facet.sort": "count",
+            "f.filterAuthority_mv.facet.limit": "50",
+            "f.filterAuthority_mv.facet.mincount": "1",
+            "facet.range": "{!key=Zeit}filterDateRange_mv",
+            "f.filterDateRange_mv.facet.range.start": "NOW/YEAR-34YEARS",
+            "f.filterDateRange_mv.facet.range.end": "NOW/DAY+1YEAR",
+            "f.filterDateRange_mv.facet.range.gap": "+1YEAR",
+            "f.filterSubject_mv.facet.sort": "count",
+            "f.filterSubject_mv.facet.limit": "50",
+            "f.filterSubject_mv.facet.mincount": "1",
+            "f.filterSubject_mv.facet.missing": "true",
+            "facet.query": [
+                "{!key=Woche ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]",
+                "{!key=Monat ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]",
+                "{!key=Quartal ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Halbjahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Jahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1YEAR TO NOW/DAY+1DAY]"
+            ],
+            "f.filterLanguage_mv.facet.sort": "count",
+            "f.filterLanguage_mv.facet.limit": "50",
+            "f.filterLanguage_mv.facet.mincount": "1",
+            "f.filterLanguageType_mv.facet.sort": "count",
+            "f.filterLanguageType_mv.facet.limit": "50",
+            "f.filterLanguageType_mv.facet.mincount": "1",
+            "f.filterLocation_mv.facet.sort": "count",
+            "f.filterLocation_mv.facet.limit": "50",
+            "f.filterLocation_mv.facet.mincount": "1",
+            "f.filterLocationType_mv.facet.sort": "count",
+            "f.filterLocationType_mv.facet.limit": "50",
+            "f.filterLocationType_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.sort": "count",
+            "f.filterCollection_mv.facet.limit": "50",
+            "f.filterCollection_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.missing": "true",
+            "f.filterSource.facet.sort": "count",
+            "f.filterSource.facet.limit": "50",
+            "f.filterSource.facet.mincount": "1",
+            "f.filterSource.facet.missing": "true",
+            "f.filterBibliography_mv.facet.sort": "count",
+            "f.filterBibliography_mv.facet.limit": "50",
+            "f.filterBibliography_mv.facet.mincount": "1",
+            "f.filterBibliography_mv.facet.missing": "true",
+            "f.filterAuthorityRole_mv.facet.sort": "count",
+            "f.filterAuthorityRole_mv.facet.limit": "50",
+            "f.filterAuthorityRole_mv.facet.mincount": "1",
+            "f.filterAuthorityRelation_mv.facet.sort": "count",
+            "f.filterAuthorityRelation_mv.facet.limit": "50",
+            "f.filterAuthorityRelation_mv.facet.mincount": "1",
+            "f.searchEntity_id_mv.facet.sort": "count",
+            "f.searchEntity_id_mv.facet.limit": "2",
+            "f.searchEntity_id_mv.facet.mincount": "1",
+            "facet": "true"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterMedium_mv": [
+                            "Buch",
+                            "Buchumschlag"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Frankfurt am Main : Suhrkamp, 1993 - 178 Seiten",
+                        "displayName": "Cortázar, Julio (1914-1984)",
+                        "id": "AK00001513",
+                        "display": "Unzeiten : Erzählungen - 1. Aufl."
+                    }
+                ]
+            },
+            "facet_counts": {
+                "facet_queries": {
+                    "Woche": 0,
+                    "Monat": 0,
+                    "Quartal": 0,
+                    "Halbjahr": 0,
+                    "Jahr": 0
+                },
+                "facet_fields": {
+                    "Digital": [],
+                    "Medientypen": [
+                        "Gedrucktes",
+                        1
+                    ],
+                    "FormUndInhalt": [
+                        null,
+                        1
+                    ],
+                    "Medium": [
+                        "Buch",
+                        1,
+                        "Buchumschlag",
+                        1,
+                        null,
+                        0
+                    ],
+                    "Personen": [
+                        "Cortázar, Julio (1914-1984)",
+                        1
+                    ],
+                    "Thema": [
+                        "Hispanoamerikanische Literatur / Einzelne Autoren",
+                        1,
+                        null,
+                        0
+                    ],
+                    "Sprache": [
+                        "Deutsch",
+                        1
+                    ],
+                    "filterLanguageType_mv": [
+                        "Deutsch␝Original",
+                        1
+                    ],
+                    "Ort": [
+                        "Frankfurt am Main",
+                        1
+                    ],
+                    "filterLocationType_mv": [
+                        "Frankfurt am Main␝Erscheinungsort",
+                        1
+                    ],
+                    "Sammlung": [
+                        null,
+                        1
+                    ],
+                    "Datenbestand": [
+                        "Bibliotheksmaterialien",
+                        1,
+                        null,
+                        0
+                    ],
+                    "Bibliographie": [
+                        null,
+                        1
+                    ],
+                    "filterAuthorityRole_mv": [
+                        "Cortázar, Julio (1914-1984)␝Verfasser/Urheber",
+                        1
+                    ],
+                    "filterAuthorityRelation_mv": [
+                        "Cortázar, Julio (1914-1984)␝Von",
+                        1
+                    ],
+                    "entities": [
+                        "AK01707911",
+                        1,
+                        "KS00000156",
+                        1
+                    ]
+                },
+                "facet_ranges": {
+                    "Zeit": {
+                        "counts": [
+                            "1992-01-01T00:00:00Z",
+                            0,
+                            "1993-01-01T00:00:00Z",
+                            1,
+                            "1994-01-01T00:00:00Z",
+                            0,
+                            "1995-01-01T00:00:00Z",
+                            0,
+                            "1996-01-01T00:00:00Z",
+                            0,
+                            "1997-01-01T00:00:00Z",
+                            0,
+                            "1998-01-01T00:00:00Z",
+                            0,
+                            "1999-01-01T00:00:00Z",
+                            0,
+                            "2000-01-01T00:00:00Z",
+                            0,
+                            "2001-01-01T00:00:00Z",
+                            0,
+                            "2002-01-01T00:00:00Z",
+                            0,
+                            "2003-01-01T00:00:00Z",
+                            0,
+                            "2004-01-01T00:00:00Z",
+                            0,
+                            "2005-01-01T00:00:00Z",
+                            0,
+                            "2006-01-01T00:00:00Z",
+                            0,
+                            "2007-01-01T00:00:00Z",
+                            0,
+                            "2008-01-01T00:00:00Z",
+                            0,
+                            "2009-01-01T00:00:00Z",
+                            0,
+                            "2010-01-01T00:00:00Z",
+                            0,
+                            "2011-01-01T00:00:00Z",
+                            0,
+                            "2012-01-01T00:00:00Z",
+                            0,
+                            "2013-01-01T00:00:00Z",
+                            0,
+                            "2014-01-01T00:00:00Z",
+                            0,
+                            "2015-01-01T00:00:00Z",
+                            0,
+                            "2016-01-01T00:00:00Z",
+                            0,
+                            "2017-01-01T00:00:00Z",
+                            0,
+                            "2018-01-01T00:00:00Z",
+                            0,
+                            "2019-01-01T00:00:00Z",
+                            0,
+                            "2020-01-01T00:00:00Z",
+                            0,
+                            "2021-01-01T00:00:00Z",
+                            0,
+                            "2022-01-01T00:00:00Z",
+                            0,
+                            "2023-01-01T00:00:00Z",
+                            0,
+                            "2024-01-01T00:00:00Z",
+                            0,
+                            "2025-01-01T00:00:00Z",
+                            0,
+                            "2026-01-01T00:00:00Z",
+                            0,
+                            "2027-01-01T00:00:00Z",
+                            0
+                        ],
+                        "gap": "+1YEAR",
+                        "start": "1992-01-01T00:00:00Z",
+                        "end": "2028-01-01T00:00:00Z"
+                    }
+                },
+                "facet_intervals": [],
+                "facet_heatmaps": []
+            },
+            "highlighting": {
+                "AK00001513": []
+            }
+        }
+    }
+}

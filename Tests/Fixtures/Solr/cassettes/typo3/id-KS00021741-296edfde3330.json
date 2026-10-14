@@ -1,0 +1,74 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(KS00021741)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0,
+                "params": {
+                    "q": "id:(KS00021741)",
+                    "rows": "1"
+                }
+            },
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "KS00021741",
+                        "display": "Cotta",
+                        "categoryEntity_mv": [
+                            "Sonstige Körperschaft"
+                        ],
+                        "categoryIndex_mv": [
+                            "Körperschaft"
+                        ],
+                        "country_mv": [
+                            "Deutschland"
+                        ],
+                        "dateCataloged": "2000-03-10",
+                        "dateModified": "2026-10-13",
+                        "displayAddition2": "Körperschaft",
+                        "filterSource": "Körperschaften",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.5,
+                        "searchEntityScore": 7063,
+                        "searchEntity_id_mv": [
+                            "KS00021741"
+                        ],
+                        "searchSuggestPayload": "KS00021741␝Cotta",
+                        "searchSuggestTerm_mv": [
+                            "Cotta"
+                        ],
+                        "seeAlso_display_mv": [
+                            "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)",
+                            "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                            "J.-G.-Cotta'sche Buchhandlung Nachfolger <Stuttgart; Berlin> (1889-1956)"
+                        ],
+                        "seeAlso_id_mv": [
+                            "KS00012422",
+                            "KS00011400",
+                            "KS00012421"
+                        ],
+                        "source": "KS",
+                        "statusCataloging": "Ansetzung Cotta-Archiv",
+                        "title": "Cotta",
+                        "url": "https://www.dla-marbach.de/find/opac/id/KS00021741"
+                    }
+                ]
+            }
+        }
+    }
+}

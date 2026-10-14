@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "creator_id_mv:PE00001397",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 3143,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01192815",
+                        "display": "Ich lebe mein Leben in wachsenden Ringen : täglich ein Text : [Werke Sammlung]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01203834",
+                        "display": "Die Aufzeichnungen des Malte Laurids Brigge : Roman - 1. Aufl."
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01207785",
+                        "display": "Versions de Rilke - 1. ed. : [Übersetzung deutschspr. Literatur]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01207796",
+                        "display": "Histoires pragoises : récits - Texte Intégral : [Übersetzung deutschspr. Literatur]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01207825",
+                        "display": "La princesse blanche : scène au bord de la mer : [Übersetzung deutschspr. Literatur]"
+                    }
+                ]
+            }
+        }
+    }
+}

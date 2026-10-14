@@ -1,0 +1,908 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "*:*",
+            "start": "0",
+            "rows": "25",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "score desc",
+            "fq": [
+                "NOT source:(AU OR BE OR MM)",
+                "filterCollection_mv:(\"D:Kafka, Franz°Weltsch\")"
+            ],
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "facet.field": [
+                "{!key=Digital}filterDigital",
+                "{!key=Medientypen}filterType_mv",
+                "{!key=FormUndInhalt}filterFormContent_mv",
+                "{!key=Medium}filterMedium_mv",
+                "{!key=Personen}filterAuthority_mv",
+                "{!key=Thema}filterSubject_mv",
+                "{!key=Sprache}filterLanguage_mv",
+                "{!key=filterLanguageType_mv}filterLanguageType_mv",
+                "{!key=Ort}filterLocation_mv",
+                "{!key=filterLocationType_mv}filterLocationType_mv",
+                "{!key=Sammlung}filterCollection_mv",
+                "{!key=Datenbestand}filterSource",
+                "{!key=Bibliographie}filterBibliography_mv",
+                "{!key=filterAuthorityRole_mv}filterAuthorityRole_mv",
+                "{!key=filterAuthorityRelation_mv}filterAuthorityRelation_mv",
+                "{!key=entities}searchEntity_id_mv"
+            ],
+            "f.filterDigital.facet.sort": "count",
+            "f.filterDigital.facet.limit": "50",
+            "f.filterDigital.facet.mincount": "1",
+            "f.filterType_mv.facet.sort": "count",
+            "f.filterType_mv.facet.limit": "50",
+            "f.filterType_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.sort": "count",
+            "f.filterFormContent_mv.facet.limit": "50",
+            "f.filterFormContent_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.missing": "true",
+            "f.filterMedium_mv.facet.sort": "count",
+            "f.filterMedium_mv.facet.limit": "50",
+            "f.filterMedium_mv.facet.mincount": "1",
+            "f.filterMedium_mv.facet.missing": "true",
+            "f.filterAuthority_mv.facet.sort": "count",
+            "f.filterAuthority_mv.facet.limit": "50",
+            "f.filterAuthority_mv.facet.mincount": "1",
+            "facet.range": "{!key=Zeit}filterDateRange_mv",
+            "f.filterDateRange_mv.facet.range.start": "NOW/YEAR-114YEARS",
+            "f.filterDateRange_mv.facet.range.end": "NOW/DAY+1YEAR",
+            "f.filterDateRange_mv.facet.range.gap": "+2YEAR",
+            "f.filterSubject_mv.facet.sort": "count",
+            "f.filterSubject_mv.facet.limit": "50",
+            "f.filterSubject_mv.facet.mincount": "1",
+            "f.filterSubject_mv.facet.missing": "true",
+            "facet.query": [
+                "{!key=Woche ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]",
+                "{!key=Monat ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]",
+                "{!key=Quartal ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Halbjahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Jahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1YEAR TO NOW/DAY+1DAY]"
+            ],
+            "f.filterLanguage_mv.facet.sort": "count",
+            "f.filterLanguage_mv.facet.limit": "50",
+            "f.filterLanguage_mv.facet.mincount": "1",
+            "f.filterLanguageType_mv.facet.sort": "count",
+            "f.filterLanguageType_mv.facet.limit": "50",
+            "f.filterLanguageType_mv.facet.mincount": "1",
+            "f.filterLocation_mv.facet.sort": "count",
+            "f.filterLocation_mv.facet.limit": "50",
+            "f.filterLocation_mv.facet.mincount": "1",
+            "f.filterLocationType_mv.facet.sort": "count",
+            "f.filterLocationType_mv.facet.limit": "50",
+            "f.filterLocationType_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.sort": "count",
+            "f.filterCollection_mv.facet.limit": "50",
+            "f.filterCollection_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.missing": "true",
+            "f.filterSource.facet.sort": "count",
+            "f.filterSource.facet.limit": "50",
+            "f.filterSource.facet.mincount": "1",
+            "f.filterSource.facet.missing": "true",
+            "f.filterBibliography_mv.facet.sort": "count",
+            "f.filterBibliography_mv.facet.limit": "50",
+            "f.filterBibliography_mv.facet.mincount": "1",
+            "f.filterBibliography_mv.facet.missing": "true",
+            "f.filterAuthorityRole_mv.facet.sort": "count",
+            "f.filterAuthorityRole_mv.facet.limit": "50",
+            "f.filterAuthorityRole_mv.facet.mincount": "1",
+            "f.filterAuthorityRelation_mv.facet.sort": "count",
+            "f.filterAuthorityRelation_mv.facet.limit": "50",
+            "f.filterAuthorityRelation_mv.facet.mincount": "1",
+            "f.searchEntity_id_mv.facet.sort": "count",
+            "f.searchEntity_id_mv.facet.limit": "2",
+            "f.searchEntity_id_mv.facet.mincount": "1",
+            "facet": "true"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 30,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterMedium_mv": [
+                            "Buch",
+                            "Buchumschlag"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Prag : Verlag Heinr. Mercy Sohn, 1937 - 287 Seiten",
+                        "displayName": "Brod, Max (1884-1968); Kafka, Franz (1883-1924)",
+                        "id": "AK00402624",
+                        "display": "Franz Kafka : eine Biographie : (Erinnerungen und Dokumente) : [Biographie]",
+                        "item_provenance_mv": [
+                            true,
+                            false,
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch",
+                            "Buchumschlag"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Berlin ; Frankfurt am Main : S. Fischer, 1954 - 357 Seiten , [5] Blatt",
+                        "displayName": "Brod, Max (1884-1968)",
+                        "id": "AK00402630",
+                        "display": "Franz Kafka : eine Biographie - 3., erw. Aufl., Lizenzausg.",
+                        "item_provenance_mv": [
+                            false,
+                            false,
+                            true,
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch",
+                            "Buchumschlag"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Prag : Mercy, 1936 - 319 Seiten",
+                        "displayName": "Kafka, Franz (1883-1924); Brod, Max (1884-1968)",
+                        "id": "AK01323834",
+                        "display": "Gesammelte Schriften. - [5]. Beschreibung eines Kampfes : Novellen, Skizzen, Aphorismen aus dem Nachlass",
+                        "item_provenance_mv": [
+                            false,
+                            true,
+                            false
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch",
+                            "Buchumschlag"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Prag : Mercy, 1937 - 349 Seiten",
+                        "displayName": "Kafka, Franz (1883-1924); Brod, Max (1884-1968)",
+                        "item_provenance_mv": [
+                            false,
+                            true,
+                            false
+                        ],
+                        "id": "AK01323835",
+                        "display": "Gesammelte Schriften. - 6. Tagebücher und Briefe : [Tagebuch]"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Frankfurt am Main : S. Fischer, 1952 - 286 Seiten",
+                        "item_provenance_mv": [
+                            true,
+                            true,
+                            false,
+                            true
+                        ],
+                        "displayName": "Kafka, Franz (1883-1924); Haas, Willy (1891-1973); Jesenská, Milena (1896-1944)",
+                        "id": "AK00579137",
+                        "display": "Briefe an Milena - 1. - 6. Tsd., Lizenzausg. : [Brief(e)]"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch",
+                            "Buchumschlag"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Frankfurt am Main : S. Fischer, 1951 - 734 Seiten",
+                        "displayName": "Kafka, Franz (1883-1924); Brod, Max (1884-1968)",
+                        "item_provenance_mv": [
+                            true,
+                            true,
+                            true,
+                            false,
+                            true
+                        ],
+                        "id": "AK00579145",
+                        "display": "Tagebücher 1910 - 1923 - 1. - 5. Tsd., Lizenzausg. : [Tagebuch]"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "[Mährisch-Ostrau] : Verlag Julius Kittls Nachfolger, [1935] - 30 Seiten",
+                        "id": "AK01547044",
+                        "displayName": "Weltsch, Felix (1884-1964)",
+                        "display": "Das Rätsel des Lachens",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Leipzig : Kurt Wolff Verlag, 1913 - 247 Seiten",
+                        "displayName": "Brod, Max (1884-1968); Weltsch, Felix (1884-1964)",
+                        "id": "AK01547083",
+                        "display": "Anschauung und Begriff : Grundzüge eines Systems der Begriffsbildung",
+                        "item_provenance_mv": [
+                            true,
+                            true,
+                            true,
+                            false
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Frankfurt am Main : Fischer, 1951 - 138 Seiten",
+                        "displayName": "Janouch, Gustav (1903-1968)",
+                        "displayAddition2": "Döblin-Bibliographie",
+                        "id": "AK01547092",
+                        "display": "Gespräche mit Kafka : Erinnerungen und Aufzeichnungen - 1. - 5. Tsd.",
+                        "item_provenance_mv": [
+                            true,
+                            false,
+                            true
+                        ]
+                    },
+                    {
+                        "displayName": "Weltsch, Felix (1884-1964)",
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "M.-Ostrau : Kittl, [1937] - 174 Seiten",
+                        "id": "AK00052512",
+                        "display": "Das Wagnis der Mitte : ein Beitrag zur Ethik und Politik der Zeit",
+                        "item_provenance_mv": [
+                            false,
+                            true
+                        ]
+                    },
+                    {
+                        "id": "BF00013127",
+                        "display": "D:Kafka, Franz°Weltsch - [Kryptobestand, Sammlung]",
+                        "displayAddition1": "2 Kästen",
+                        "displayName": "Weltsch, Felix (1884-1964)",
+                        "filterMultipart": true,
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "usageRestrictionNote": "Für nähere Angaben wenden Sie sich bitte an die Auskunft.\nE-Mail: auskunft-handschriften@dla-marbach.de\nTelefon: +49 7144 848 425"
+                    },
+                    {
+                        "usageRestrictionNote": "Nur mit Einverständnis der beteiligten Personen ausleihbar!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "displayName": "Herz, Georg [Verfasser/in]; Weltsch, Felix (1884-1964) [Adressat/in]",
+                        "displayAddition2": "D:Kafka, Franz°Weltsch - [Kryptobestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "27.11.1916",
+                        "id": "HS00717835",
+                        "display": "Herz, Georg an Weltsch, Felix [Briefe]"
+                    },
+                    {
+                        "displayName": "Skoda-Werke (1859-) [Verfasser]; Herz, Georg [Adressat/in]",
+                        "usageRestrictionNote": "Nur mit Einverständnis der beteiligten Personen ausleihbar!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "displayAddition2": "D:Kafka, Franz°Weltsch - [Kryptobestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "22.11.1916",
+                        "id": "HS00717846",
+                        "display": "Skoda-Werke an Herz, Georg [Briefe]"
+                    },
+                    {
+                        "displayName": "Weltsch, Felix (1884-1964) [Verfasser/in]; Kafka, Franz (1883-1924) [Adressat/in]",
+                        "displayAddition2": "D:Kafka, Franz°Weltsch - [Kryptobestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "1917 - 1918",
+                        "id": "HS00468718",
+                        "display": "Weltsch, Felix an Kafka, Franz [Briefe]"
+                    },
+                    {
+                        "displayName": "Weltsch, Felix (1884-1964) [Verfasser/in]",
+                        "displayAddition2": "D:Kafka, Franz°Weltsch - [Kryptobestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00941532",
+                        "display": "Weltsch, Felix: Anstreichungen und Korrekturen [Verschiedenes]"
+                    },
+                    {
+                        "displayName": "Weltsch, Felix (1884-1964) [Verfasser/in]",
+                        "displayAddition2": "D:Kafka, Franz°Weltsch - [Kryptobestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00941533",
+                        "display": "Weltsch, Felix: Anstreichungen und Korrekturen [Verschiedenes]"
+                    },
+                    {
+                        "displayName": "Weltsch, Felix (1884-1964) [Verfasser/in]",
+                        "displayAddition2": "D:Kafka, Franz°Weltsch - [Kryptobestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00941534",
+                        "display": "Weltsch, Felix: Anstreichungen und Korrekturen [Verschiedenes]"
+                    },
+                    {
+                        "displayName": "Weltsch, Felix (1884-1964) [Verfasser/in]",
+                        "displayAddition2": "D:Kafka, Franz°Weltsch - [Kryptobestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00941535",
+                        "display": "Weltsch, Felix: Anstreichungen und Korrekturen [Verschiedenes]"
+                    },
+                    {
+                        "displayName": "Weltsch, Felix (1884-1964) [Verfasser/in]",
+                        "displayAddition2": "D:Kafka, Franz°Weltsch - [Kryptobestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00941536",
+                        "display": "Weltsch, Felix: Anstreichungen und Korrekturen [Verschiedenes]"
+                    },
+                    {
+                        "displayName": "Weltsch, Felix (1884-1964) [Verfasser/in]",
+                        "displayAddition2": "D:Kafka, Franz°Weltsch - [Kryptobestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00941537",
+                        "display": "Weltsch, Felix: Anstreichungen und Korrekturen, z. T. in Stenographie [Verschiedenes]"
+                    },
+                    {
+                        "displayName": "Weltsch, Felix (1884-1964) [Verfasser/in]",
+                        "displayAddition2": "D:Kafka, Franz°Weltsch - [Kryptobestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00941539",
+                        "display": "Weltsch, Felix: Anstreichungen und Korrekturen in Stenografie [Verschiedenes]"
+                    },
+                    {
+                        "displayName": "Weltsch, Felix (1884-1964) [Verfasser/in]",
+                        "displayAddition2": "D:Kafka, Franz°Weltsch - [Kryptobestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00941540",
+                        "display": "Weltsch, Felix: Anstreichungen und korrekturen in Stenografie [Verschiedenes]"
+                    },
+                    {
+                        "displayName": "Weltsch, Felix (1884-1964) [Verfasser/in]",
+                        "displayAddition2": "D:Kafka, Franz°Weltsch - [Kryptobestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00941541",
+                        "display": "Weltsch, Felix: Anstreichungen und Korrekturen in Stenografie [Verschiedenes]"
+                    },
+                    {
+                        "displayName": "Weltsch, Felix (1884-1964) [Verfasser/in]",
+                        "displayAddition2": "D:Kafka, Franz°Weltsch - [Kryptobestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00941542",
+                        "display": "Weltsch, Felix: Anstreichungen und Korrekturen in Stenografie [Verschiedenes]"
+                    },
+                    {
+                        "displayName": "Weltsch, Felix (1884-1964) [Verfasser/in]",
+                        "displayAddition2": "D:Kafka, Franz°Weltsch - [Kryptobestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "01.07.1943",
+                        "id": "HS00941545",
+                        "display": "Weltsch, Felix: Testament [Verschiedenes]"
+                    }
+                ]
+            },
+            "facet_counts": {
+                "facet_queries": {
+                    "Woche": 0,
+                    "Monat": 0,
+                    "Quartal": 0,
+                    "Halbjahr": 0,
+                    "Jahr": 0
+                },
+                "facet_fields": {
+                    "Digital": [],
+                    "Medientypen": [
+                        "Handschriften",
+                        20,
+                        "Gedrucktes",
+                        10
+                    ],
+                    "FormUndInhalt": [
+                        "Verschiedenes",
+                        12,
+                        "Brief",
+                        8,
+                        "Sonstige Texte",
+                        4,
+                        "Autobiografisches",
+                        2,
+                        "Tagebuch",
+                        2,
+                        "Biografie",
+                        1,
+                        "Sammlung",
+                        1,
+                        null,
+                        3
+                    ],
+                    "Medium": [
+                        "Buch",
+                        10,
+                        "Buchumschlag",
+                        5,
+                        null,
+                        20
+                    ],
+                    "Personen": [
+                        "Weltsch, Felix (1884-1964)",
+                        29,
+                        "Kafka, Franz (1883-1924)",
+                        8,
+                        "Brod, Max (1884-1968)",
+                        6,
+                        "Pinthus, Kurt (1886-1975)",
+                        5,
+                        "Celan, Paul (1920-1970)",
+                        3,
+                        "Badenhop, Wilhelm (1902-1961)",
+                        2,
+                        "Herz, Georg",
+                        2,
+                        "Binder, Hartmut (1937-)",
+                        1,
+                        "Celan-Lestrange, Gisèle (1927-1991)",
+                        1,
+                        "Döblin, Alfred (1878-1957)",
+                        1,
+                        "Goll, Claire (1891-1977)",
+                        1,
+                        "Goll, Iwan (1891-1950)",
+                        1,
+                        "Haas, Willy (1891-1973)",
+                        1,
+                        "Herz <Familie>",
+                        1,
+                        "Janouch, Gustav (1903-1968)",
+                        1,
+                        "Jesenská, Milena (1896-1944)",
+                        1,
+                        "Kunz, Johann",
+                        1,
+                        "Riedl, Elizabeth",
+                        1,
+                        "Skoda-Werke (1859-)",
+                        1,
+                        "Weltsch, Heinrich",
+                        1,
+                        "Weltsch, Irma (1892-1969)",
+                        1
+                    ],
+                    "Thema": [
+                        "Kafka, Franz (1883-1924)",
+                        3,
+                        "Biographische Gesamtdarstellungen",
+                        2,
+                        "Erinnerungen, Äußerungen in Briefen, Gesprächen und Tagebüchern Dritter",
+                        2,
+                        "Döblin, Alfred (1878-1957)",
+                        1,
+                        "Psychologie",
+                        1,
+                        "Sekundärquellen / Quellen und Forschung zur Wirkungsgeschichte / Wirkung auf einzelne Personen, Gruppen, Institutionen",
+                        1,
+                        null,
+                        26
+                    ],
+                    "Sprache": [
+                        "Deutsch",
+                        29
+                    ],
+                    "filterLanguageType_mv": [
+                        "Deutsch␝Original",
+                        29
+                    ],
+                    "Ort": [
+                        "Prag",
+                        6,
+                        "Frankfurt am Main",
+                        4,
+                        "Pilsen",
+                        2,
+                        "Berlin",
+                        1,
+                        "Karlsbad",
+                        1,
+                        "Leipzig",
+                        1,
+                        "M.-Ostrau",
+                        1,
+                        "Mährisch-Ostrau",
+                        1
+                    ],
+                    "filterLocationType_mv": [
+                        "Prag␝Entstehungsort",
+                        5,
+                        "Frankfurt am Main␝Erscheinungsort",
+                        4,
+                        "Pilsen␝Entstehungsort",
+                        2,
+                        "Berlin␝Erscheinungsort",
+                        1,
+                        "Karlsbad␝Entstehungsort",
+                        1,
+                        "Leipzig␝Erscheinungsort",
+                        1,
+                        "M.-Ostrau␝Erscheinungsort",
+                        1,
+                        "Mährisch-Ostrau␝Erscheinungsort",
+                        1,
+                        "Prag␝Erscheinungsort",
+                        1
+                    ],
+                    "Sammlung": [
+                        "D:Kafka, Franz°Weltsch",
+                        30,
+                        "G:Pinthus, Kurt (Bibliothek des Autors)",
+                        5,
+                        "G:Celan, Paul (Bibliothek des Autors)",
+                        3,
+                        "G:Badenhop, Wilhelm (Sammlung / Literatur des 20. Jahrhunderts)",
+                        2,
+                        "G:Binder, Hartmut II (Kafkas verlorene Bücher)",
+                        1,
+                        "G:Goll, Claire und Yvan (Teilbibliothek der Autoren)",
+                        1,
+                        "G:Tucholsky-Archiv (Marbacher Forschungsbibliothek)",
+                        1,
+                        null,
+                        0
+                    ],
+                    "Datenbestand": [
+                        "Handschriften Einzelnachweise",
+                        19,
+                        "Bibliotheksmaterialien",
+                        10,
+                        "Nachlässe und Spezialsammlungen",
+                        1,
+                        null,
+                        0
+                    ],
+                    "Bibliographie": [
+                        "Döblin-Bibliographie",
+                        1,
+                        null,
+                        29
+                    ],
+                    "filterAuthorityRole_mv": [
+                        "Weltsch, Felix (1884-1964)␝Verfasser/Urheber",
+                        20,
+                        "Weltsch, Felix (1884-1964)␝Bestandsbildner/Vorbesitzer",
+                        11,
+                        "Pinthus, Kurt (1886-1975)␝Bestandsbildner/Vorbesitzer",
+                        5,
+                        "Brod, Max (1884-1968)␝Herausgeber",
+                        3,
+                        "Brod, Max (1884-1968)␝Verfasser/Urheber",
+                        3,
+                        "Celan, Paul (1920-1970)␝Bestandsbildner/Vorbesitzer",
+                        3,
+                        "Kafka, Franz (1883-1924)␝Behandelte Person/Körperschaft",
+                        3,
+                        "Kafka, Franz (1883-1924)␝Verfasser/Urheber",
+                        3,
+                        "Badenhop, Wilhelm (1902-1961)␝Bestandsbildner/Vorbesitzer",
+                        2,
+                        "Binder, Hartmut (1937-)␝Bestandsbildner/Vorbesitzer",
+                        1,
+                        "Celan, Paul (1920-1970)␝Widmungsempfänger",
+                        1,
+                        "Celan-Lestrange, Gisèle (1927-1991)␝Bestandsbildner/Vorbesitzer",
+                        1,
+                        "Döblin, Alfred (1878-1957)␝Behandelte Person/Körperschaft",
+                        1,
+                        "Goll, Claire (1891-1977)␝Bestandsbildner/Vorbesitzer",
+                        1,
+                        "Goll, Claire (1891-1977)␝Widmungsempfänger",
+                        1,
+                        "Goll, Iwan (1891-1950)␝Bestandsbildner/Vorbesitzer",
+                        1,
+                        "Haas, Willy (1891-1973)␝Herausgeber",
+                        1,
+                        "Herz <Familie>␝Adressat",
+                        1,
+                        "Herz, Georg␝Adressat",
+                        1,
+                        "Herz, Georg␝Verfasser/Urheber",
+                        1,
+                        "Janouch, Gustav (1903-1968)␝Verfasser/Urheber",
+                        1,
+                        "Jesenská, Milena (1896-1944)␝Adressat",
+                        1,
+                        "Kafka, Franz (1883-1924)␝Adressat",
+                        1,
+                        "Kafka, Franz (1883-1924)␝Illustrator",
+                        1,
+                        "Kafka, Franz (1883-1924)␝Korrespondent",
+                        1,
+                        "Kunz, Johann␝Bestandsbildner/Vorbesitzer",
+                        1,
+                        "Riedl, Elizabeth␝Adressat",
+                        1,
+                        "Skoda-Werke (1859-)␝Verfasser/Urheber",
+                        1,
+                        "Weltsch, Felix (1884-1964)␝Adressat",
+                        1,
+                        "Weltsch, Heinrich␝Adressat",
+                        1,
+                        "Weltsch, Irma (1892-1969)␝Adressat",
+                        1
+                    ],
+                    "filterAuthorityRelation_mv": [
+                        "Weltsch, Felix (1884-1964)␝Von",
+                        20,
+                        "Weltsch, Felix (1884-1964)␝Unter",
+                        11,
+                        "Brod, Max (1884-1968)␝Von",
+                        6,
+                        "Kafka, Franz (1883-1924)␝Von",
+                        5,
+                        "Pinthus, Kurt (1886-1975)␝Unter",
+                        5,
+                        "Celan, Paul (1920-1970)␝Unter",
+                        3,
+                        "Kafka, Franz (1883-1924)␝Über",
+                        3,
+                        "Badenhop, Wilhelm (1902-1961)␝Unter",
+                        2,
+                        "Binder, Hartmut (1937-)␝Unter",
+                        1,
+                        "Celan, Paul (1920-1970)␝An",
+                        1,
+                        "Celan-Lestrange, Gisèle (1927-1991)␝Unter",
+                        1,
+                        "Döblin, Alfred (1878-1957)␝Über",
+                        1,
+                        "Goll, Claire (1891-1977)␝An",
+                        1,
+                        "Goll, Claire (1891-1977)␝Unter",
+                        1,
+                        "Goll, Iwan (1891-1950)␝Unter",
+                        1,
+                        "Haas, Willy (1891-1973)␝Von",
+                        1,
+                        "Herz <Familie>␝An",
+                        1,
+                        "Herz, Georg␝An",
+                        1,
+                        "Herz, Georg␝Von",
+                        1,
+                        "Janouch, Gustav (1903-1968)␝Von",
+                        1,
+                        "Jesenská, Milena (1896-1944)␝An",
+                        1,
+                        "Kafka, Franz (1883-1924)␝An",
+                        1,
+                        "Kunz, Johann␝Unter",
+                        1,
+                        "Riedl, Elizabeth␝An",
+                        1,
+                        "Skoda-Werke (1859-)␝Von",
+                        1,
+                        "Weltsch, Felix (1884-1964)␝An",
+                        1,
+                        "Weltsch, Heinrich␝An",
+                        1,
+                        "Weltsch, Irma (1892-1969)␝An",
+                        1
+                    ],
+                    "entities": [
+                        "PE00043182",
+                        29,
+                        "PE00001005",
+                        8
+                    ]
+                },
+                "facet_ranges": {
+                    "Zeit": {
+                        "counts": [
+                            "1912-01-01T00:00:00Z",
+                            1,
+                            "1914-01-01T00:00:00Z",
+                            1,
+                            "1916-01-01T00:00:00Z",
+                            6,
+                            "1918-01-01T00:00:00Z",
+                            3,
+                            "1920-01-01T00:00:00Z",
+                            1,
+                            "1922-01-01T00:00:00Z",
+                            0,
+                            "1924-01-01T00:00:00Z",
+                            0,
+                            "1926-01-01T00:00:00Z",
+                            0,
+                            "1928-01-01T00:00:00Z",
+                            0,
+                            "1930-01-01T00:00:00Z",
+                            0,
+                            "1932-01-01T00:00:00Z",
+                            0,
+                            "1934-01-01T00:00:00Z",
+                            1,
+                            "1936-01-01T00:00:00Z",
+                            4,
+                            "1938-01-01T00:00:00Z",
+                            0,
+                            "1940-01-01T00:00:00Z",
+                            0,
+                            "1942-01-01T00:00:00Z",
+                            1,
+                            "1944-01-01T00:00:00Z",
+                            0,
+                            "1946-01-01T00:00:00Z",
+                            0,
+                            "1948-01-01T00:00:00Z",
+                            0,
+                            "1950-01-01T00:00:00Z",
+                            2,
+                            "1952-01-01T00:00:00Z",
+                            1,
+                            "1954-01-01T00:00:00Z",
+                            1,
+                            "1956-01-01T00:00:00Z",
+                            0,
+                            "1958-01-01T00:00:00Z",
+                            0,
+                            "1960-01-01T00:00:00Z",
+                            0,
+                            "1962-01-01T00:00:00Z",
+                            0,
+                            "1964-01-01T00:00:00Z",
+                            0,
+                            "1966-01-01T00:00:00Z",
+                            0,
+                            "1968-01-01T00:00:00Z",
+                            1,
+                            "1970-01-01T00:00:00Z",
+                            0,
+                            "1972-01-01T00:00:00Z",
+                            0,
+                            "1974-01-01T00:00:00Z",
+                            0,
+                            "1976-01-01T00:00:00Z",
+                            0,
+                            "1978-01-01T00:00:00Z",
+                            0,
+                            "1980-01-01T00:00:00Z",
+                            0,
+                            "1982-01-01T00:00:00Z",
+                            0,
+                            "1984-01-01T00:00:00Z",
+                            0,
+                            "1986-01-01T00:00:00Z",
+                            0,
+                            "1988-01-01T00:00:00Z",
+                            0,
+                            "1990-01-01T00:00:00Z",
+                            0,
+                            "1992-01-01T00:00:00Z",
+                            0,
+                            "1994-01-01T00:00:00Z",
+                            0,
+                            "1996-01-01T00:00:00Z",
+                            0,
+                            "1998-01-01T00:00:00Z",
+                            0,
+                            "2000-01-01T00:00:00Z",
+                            0,
+                            "2002-01-01T00:00:00Z",
+                            0,
+                            "2004-01-01T00:00:00Z",
+                            0,
+                            "2006-01-01T00:00:00Z",
+                            0,
+                            "2008-01-01T00:00:00Z",
+                            0,
+                            "2010-01-01T00:00:00Z",
+                            0,
+                            "2012-01-01T00:00:00Z",
+                            0,
+                            "2014-01-01T00:00:00Z",
+                            0,
+                            "2016-01-01T00:00:00Z",
+                            0,
+                            "2018-01-01T00:00:00Z",
+                            0,
+                            "2020-01-01T00:00:00Z",
+                            0,
+                            "2022-01-01T00:00:00Z",
+                            0,
+                            "2024-01-01T00:00:00Z",
+                            0,
+                            "2026-01-01T00:00:00Z",
+                            0
+                        ],
+                        "gap": "+2YEAR",
+                        "start": "1912-01-01T00:00:00Z",
+                        "end": "2028-01-01T00:00:00Z"
+                    }
+                },
+                "facet_intervals": [],
+                "facet_heatmaps": []
+            },
+            "highlighting": {
+                "AK00402624": [],
+                "AK00402630": [],
+                "AK01323834": [],
+                "AK01323835": [],
+                "AK00579137": [],
+                "AK00579145": [],
+                "AK01547044": [],
+                "AK01547083": [],
+                "AK01547092": [],
+                "AK00052512": [],
+                "BF00013127": [],
+                "HS00717835": [],
+                "HS00717846": [],
+                "HS00468718": [],
+                "HS00941532": [],
+                "HS00941533": [],
+                "HS00941534": [],
+                "HS00941535": [],
+                "HS00941536": [],
+                "HS00941537": [],
+                "HS00941539": [],
+                "HS00941540": [],
+                "HS00941541": [],
+                "HS00941542": [],
+                "HS00941545": []
+            }
+        }
+    }
+}

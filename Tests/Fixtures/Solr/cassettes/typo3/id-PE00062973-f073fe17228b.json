@@ -1,0 +1,146 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(PE00062973)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0,
+                "params": {
+                    "q": "id:(PE00062973)",
+                    "rows": "1"
+                }
+            },
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "PE00062973",
+                        "display": "Benn, Ilse (1913-1995)",
+                        "categoryEntity_mv": [
+                            "Person"
+                        ],
+                        "categoryIndex_mv": [
+                            "Bestandsbildner/in im Sinne der Handschriftensammlung"
+                        ],
+                        "country_mv": [
+                            "Deutschland"
+                        ],
+                        "dateCataloged": "1999-06-14",
+                        "dateLifespanEnd": "1995-03-18",
+                        "dateLifespanStart": "1913-07-14",
+                        "dateModified": "2026-10-13",
+                        "dateRetention": "2065",
+                        "displayAddition1": "Zahnärztin",
+                        "filterDatePoint_mv": [
+                            "1913-07-14T00:00:00Z",
+                            "1995-03-18T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "[1913-07-14 TO 1995-03-18]"
+                        ],
+                        "filterSource": "Personen",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "gender": "weiblich",
+                        "gnd_id_mv": [
+                            "116121041"
+                        ],
+                        "gnd_type_mv": [
+                            "GND-Nr."
+                        ],
+                        "linkWikidata": "Q94732763",
+                        "nameAlternative_name_mv": [
+                            "Kaul, Ilse"
+                        ],
+                        "nameAlternative_type_mv": [
+                            "Geburtsname"
+                        ],
+                        "occupation_mv": [
+                            "Zahnärztin"
+                        ],
+                        "reference_text_mv": [
+                            "Kussmaul",
+                            "DLA Marbach, Bestand A:Benn, Gottfried",
+                            "GND"
+                        ],
+                        "reference_type_mv": [
+                            "positiv",
+                            "positiv",
+                            "positiv"
+                        ],
+                        "relation_comment_mv": [
+                            "Ehemann",
+                            "␣",
+                            "Geschwister",
+                            "Eltern",
+                            "Eltern",
+                            "␣"
+                        ],
+                        "relation_id_mv": [
+                            "PE00007078",
+                            "PE00678999",
+                            "PE00161869",
+                            "PE00678852",
+                            "PE00678851",
+                            "TH00034920"
+                        ],
+                        "relation_text_mv": [
+                            "Benn, Gottfried (1886-1956)",
+                            "Hartmann, Albrecht",
+                            "Hartmann, Eva (-1997)",
+                            "Kaul, Frida",
+                            "Kaul, Karl (1888-)",
+                            "Zahnärztin"
+                        ],
+                        "relation_type_mv": [
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Charakt. Beruf"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.5,
+                        "searchDate_mv": [
+                            "14.07.1913",
+                            "1913-07-14",
+                            "18.03.1995",
+                            "1995-03-18"
+                        ],
+                        "searchEntityScore": 524,
+                        "searchEntity_id_mv": [
+                            "PE00062973"
+                        ],
+                        "searchSuggestPayload": "PE00062973␝Benn, Ilse (1913-1995)",
+                        "searchSuggestTerm_mv": [
+                            "Benn, Ilse (1913-1995)",
+                            "Kaul, Ilse"
+                        ],
+                        "source": "PE",
+                        "statusEditing": "individualisiert",
+                        "title": "Benn, Ilse",
+                        "url": "https://www.dla-marbach.de/find/opac/id/PE00062973",
+                        "website_description_mv": [
+                            "Stand: 11.11.2015"
+                        ],
+                        "website_url_mv": [
+                            "http://www.geni.com/people/Dr-Ilse-Benn/6000000023821386720"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

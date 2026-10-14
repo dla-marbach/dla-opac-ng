@@ -1,0 +1,460 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "\"Dürrenmatt Besuch\"",
+            "start": "0",
+            "rows": "25",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "score desc",
+            "fq": "NOT source:(AU OR BE OR MM)",
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(\"Dürrenmatt Besuch\") OR displayAddition1:(\"Dürrenmatt Besuch\") OR displayAddition2:(\"Dürrenmatt Besuch\") OR displayName:(\"Dürrenmatt Besuch\")))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "facet.field": [
+                "{!key=Digital}filterDigital",
+                "{!key=Medientypen}filterType_mv",
+                "{!key=FormUndInhalt}filterFormContent_mv",
+                "{!key=Medium}filterMedium_mv",
+                "{!key=Personen}filterAuthority_mv",
+                "{!key=Thema}filterSubject_mv",
+                "{!key=Sprache}filterLanguage_mv",
+                "{!key=filterLanguageType_mv}filterLanguageType_mv",
+                "{!key=Ort}filterLocation_mv",
+                "{!key=filterLocationType_mv}filterLocationType_mv",
+                "{!key=Sammlung}filterCollection_mv",
+                "{!key=Datenbestand}filterSource",
+                "{!key=Bibliographie}filterBibliography_mv",
+                "{!key=filterAuthorityRole_mv}filterAuthorityRole_mv",
+                "{!key=filterAuthorityRelation_mv}filterAuthorityRelation_mv",
+                "{!key=entities}searchEntity_id_mv"
+            ],
+            "f.filterDigital.facet.sort": "count",
+            "f.filterDigital.facet.limit": "50",
+            "f.filterDigital.facet.mincount": "1",
+            "f.filterType_mv.facet.sort": "count",
+            "f.filterType_mv.facet.limit": "50",
+            "f.filterType_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.sort": "count",
+            "f.filterFormContent_mv.facet.limit": "50",
+            "f.filterFormContent_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.missing": "true",
+            "f.filterMedium_mv.facet.sort": "count",
+            "f.filterMedium_mv.facet.limit": "50",
+            "f.filterMedium_mv.facet.mincount": "1",
+            "f.filterMedium_mv.facet.missing": "true",
+            "f.filterAuthority_mv.facet.sort": "count",
+            "f.filterAuthority_mv.facet.limit": "50",
+            "f.filterAuthority_mv.facet.mincount": "1",
+            "facet.range": "{!key=Zeit}filterDateRange_mv",
+            "f.filterDateRange_mv.facet.range.start": "NOW/YEAR-71YEARS",
+            "f.filterDateRange_mv.facet.range.end": "NOW/DAY+1YEAR",
+            "f.filterDateRange_mv.facet.range.gap": "+1YEAR",
+            "f.filterSubject_mv.facet.sort": "count",
+            "f.filterSubject_mv.facet.limit": "50",
+            "f.filterSubject_mv.facet.mincount": "1",
+            "f.filterSubject_mv.facet.missing": "true",
+            "facet.query": [
+                "{!key=Woche ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]",
+                "{!key=Monat ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]",
+                "{!key=Quartal ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Halbjahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Jahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1YEAR TO NOW/DAY+1DAY]"
+            ],
+            "f.filterLanguage_mv.facet.sort": "count",
+            "f.filterLanguage_mv.facet.limit": "50",
+            "f.filterLanguage_mv.facet.mincount": "1",
+            "f.filterLanguageType_mv.facet.sort": "count",
+            "f.filterLanguageType_mv.facet.limit": "50",
+            "f.filterLanguageType_mv.facet.mincount": "1",
+            "f.filterLocation_mv.facet.sort": "count",
+            "f.filterLocation_mv.facet.limit": "50",
+            "f.filterLocation_mv.facet.mincount": "1",
+            "f.filterLocationType_mv.facet.sort": "count",
+            "f.filterLocationType_mv.facet.limit": "50",
+            "f.filterLocationType_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.sort": "count",
+            "f.filterCollection_mv.facet.limit": "50",
+            "f.filterCollection_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.missing": "true",
+            "f.filterSource.facet.sort": "count",
+            "f.filterSource.facet.limit": "50",
+            "f.filterSource.facet.mincount": "1",
+            "f.filterSource.facet.missing": "true",
+            "f.filterBibliography_mv.facet.sort": "count",
+            "f.filterBibliography_mv.facet.limit": "50",
+            "f.filterBibliography_mv.facet.mincount": "1",
+            "f.filterBibliography_mv.facet.missing": "true",
+            "f.filterAuthorityRole_mv.facet.sort": "count",
+            "f.filterAuthorityRole_mv.facet.limit": "50",
+            "f.filterAuthorityRole_mv.facet.mincount": "1",
+            "f.filterAuthorityRelation_mv.facet.sort": "count",
+            "f.filterAuthorityRelation_mv.facet.limit": "50",
+            "f.filterAuthorityRelation_mv.facet.mincount": "1",
+            "f.searchEntity_id_mv.facet.sort": "count",
+            "f.searchEntity_id_mv.facet.limit": "2",
+            "f.searchEntity_id_mv.facet.mincount": "1",
+            "facet": "true"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 4,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterMedium_mv": [
+                            "Beitrag"
+                        ],
+                        "displayName": "Drese, Claus Helmut (1922-2011)",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Erschienen in: Eckart : Blätter für evangelische Geisteskultur. - 28 (1959), Seite 385-388",
+                        "id": "AK00810279",
+                        "display": "Friedrich Dürrenmatt : [Besuch der alten Dame]"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Beitrag"
+                        ],
+                        "displayName": "Bachmann, Claus Henning",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Erschienen in: Wort in der Zeit : österreichische Literaturzeitschrift. - 3 (1957), Seite 360-363",
+                        "id": "AK00810276",
+                        "display": "Hamburger Theaterbrief : [Zu Calderon, Der standhafte Prinz. Josef Conrad, Geheimagent. Friedrich Dürrenmatt, Besuch der alten Dame. u.a.]"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Beitrag"
+                        ],
+                        "displayName": "Winter, Hanns",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Erschienen in: Wort in der Zeit : österreichische Literaturzeitschrift. - 2 (1956), Seite 626-630",
+                        "id": "AK00810275",
+                        "display": "Dichter, nicht Richter : Die großen Wiener Bühnen. [Theaterbericht. u.a. zu.Friedrich Dürrenmatt, Besuch der alten Dame. Jean Anouihl, Ornifle oder der erzürnte Himmel.]"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Beitrag"
+                        ],
+                        "displayName": "Winston, Krishna",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Erschienen in: The Germanic review : literature, culture, theory. - 51 (1976), Seite 312-322",
+                        "id": "AK00707846",
+                        "display": "The Old Lady's Day of Judgment : Notes on a Mysterious Relationship Between Friedrich Dürrenmatt and Ödön von Horváth. [Zu Dürrenmatt;\"Besuch der alten Dame\"und Horváth:\"Zur schönen Aussicht\"ä und \"Der jüngste Tag\".]"
+                    }
+                ]
+            },
+            "facet_counts": {
+                "facet_queries": {
+                    "Woche": 0,
+                    "Monat": 0,
+                    "Quartal": 0,
+                    "Halbjahr": 0,
+                    "Jahr": 0
+                },
+                "facet_fields": {
+                    "Digital": [],
+                    "Medientypen": [
+                        "Gedrucktes",
+                        4
+                    ],
+                    "FormUndInhalt": [
+                        "Aufsatz",
+                        4,
+                        null,
+                        0
+                    ],
+                    "Medium": [
+                        "Beitrag",
+                        4,
+                        null,
+                        0
+                    ],
+                    "Personen": [
+                        "Dürrenmatt, Friedrich (1921-1990)",
+                        4,
+                        "Bachmann, Claus Henning",
+                        1,
+                        "Drese, Claus Helmut (1922-2011)",
+                        1,
+                        "Horváth, Ödön von (1901-1938)",
+                        1,
+                        "Winston, Krishna",
+                        1,
+                        "Winter, Hanns",
+                        1
+                    ],
+                    "Thema": [
+                        "Dramatisches / Einzelne Werke",
+                        4,
+                        "Dürrenmatt, Friedrich (1921-1990)",
+                        4,
+                        "Dürrenmatt, Friedrich <1921-1990>. Der Besuch der alten Dame (Drama : 1955)",
+                        4,
+                        "Beziehungen / Familie und Zeitgenossen / Einzelne Personen und Gruppen",
+                        1,
+                        "Horváth, Ödön von (1901-1938)",
+                        1,
+                        "Horváth, Ödön von <1901-1938>. Der jüngste Tag (Drama : 1937)",
+                        1,
+                        "Horváth, Ödön von <1901-1938>. Zur schönen Aussicht (Drama : 1926)",
+                        1,
+                        "Werkvergleiche",
+                        1,
+                        null,
+                        0
+                    ],
+                    "Sprache": [],
+                    "filterLanguageType_mv": [],
+                    "Ort": [],
+                    "filterLocationType_mv": [],
+                    "Sammlung": [
+                        null,
+                        4
+                    ],
+                    "Datenbestand": [
+                        "Bibliotheksmaterialien",
+                        4,
+                        null,
+                        0
+                    ],
+                    "Bibliographie": [
+                        null,
+                        4
+                    ],
+                    "filterAuthorityRole_mv": [
+                        "Dürrenmatt, Friedrich (1921-1990)␝Behandelte Person/Körperschaft",
+                        4,
+                        "Bachmann, Claus Henning␝Verfasser/Urheber",
+                        1,
+                        "Drese, Claus Helmut (1922-2011)␝Verfasser/Urheber",
+                        1,
+                        "Horváth, Ödön von (1901-1938)␝Behandelte Person/Körperschaft",
+                        1,
+                        "Winston, Krishna␝Verfasser/Urheber",
+                        1,
+                        "Winter, Hanns␝Verfasser/Urheber",
+                        1
+                    ],
+                    "filterAuthorityRelation_mv": [
+                        "Dürrenmatt, Friedrich (1921-1990)␝Über",
+                        4,
+                        "Bachmann, Claus Henning␝Von",
+                        1,
+                        "Drese, Claus Helmut (1922-2011)␝Von",
+                        1,
+                        "Horváth, Ödön von (1901-1938)␝Über",
+                        1,
+                        "Winston, Krishna␝Von",
+                        1,
+                        "Winter, Hanns␝Von",
+                        1
+                    ],
+                    "entities": [
+                        "AK00045751",
+                        4,
+                        "PE00000565",
+                        4
+                    ]
+                },
+                "facet_ranges": {
+                    "Zeit": {
+                        "counts": [
+                            "1955-01-01T00:00:00Z",
+                            0,
+                            "1956-01-01T00:00:00Z",
+                            1,
+                            "1957-01-01T00:00:00Z",
+                            1,
+                            "1958-01-01T00:00:00Z",
+                            0,
+                            "1959-01-01T00:00:00Z",
+                            1,
+                            "1960-01-01T00:00:00Z",
+                            0,
+                            "1961-01-01T00:00:00Z",
+                            0,
+                            "1962-01-01T00:00:00Z",
+                            0,
+                            "1963-01-01T00:00:00Z",
+                            0,
+                            "1964-01-01T00:00:00Z",
+                            0,
+                            "1965-01-01T00:00:00Z",
+                            0,
+                            "1966-01-01T00:00:00Z",
+                            0,
+                            "1967-01-01T00:00:00Z",
+                            0,
+                            "1968-01-01T00:00:00Z",
+                            0,
+                            "1969-01-01T00:00:00Z",
+                            0,
+                            "1970-01-01T00:00:00Z",
+                            0,
+                            "1971-01-01T00:00:00Z",
+                            0,
+                            "1972-01-01T00:00:00Z",
+                            0,
+                            "1973-01-01T00:00:00Z",
+                            0,
+                            "1974-01-01T00:00:00Z",
+                            0,
+                            "1975-01-01T00:00:00Z",
+                            0,
+                            "1976-01-01T00:00:00Z",
+                            1,
+                            "1977-01-01T00:00:00Z",
+                            0,
+                            "1978-01-01T00:00:00Z",
+                            0,
+                            "1979-01-01T00:00:00Z",
+                            0,
+                            "1980-01-01T00:00:00Z",
+                            0,
+                            "1981-01-01T00:00:00Z",
+                            0,
+                            "1982-01-01T00:00:00Z",
+                            0,
+                            "1983-01-01T00:00:00Z",
+                            0,
+                            "1984-01-01T00:00:00Z",
+                            0,
+                            "1985-01-01T00:00:00Z",
+                            0,
+                            "1986-01-01T00:00:00Z",
+                            0,
+                            "1987-01-01T00:00:00Z",
+                            0,
+                            "1988-01-01T00:00:00Z",
+                            0,
+                            "1989-01-01T00:00:00Z",
+                            0,
+                            "1990-01-01T00:00:00Z",
+                            0,
+                            "1991-01-01T00:00:00Z",
+                            0,
+                            "1992-01-01T00:00:00Z",
+                            0,
+                            "1993-01-01T00:00:00Z",
+                            0,
+                            "1994-01-01T00:00:00Z",
+                            0,
+                            "1995-01-01T00:00:00Z",
+                            0,
+                            "1996-01-01T00:00:00Z",
+                            0,
+                            "1997-01-01T00:00:00Z",
+                            0,
+                            "1998-01-01T00:00:00Z",
+                            0,
+                            "1999-01-01T00:00:00Z",
+                            0,
+                            "2000-01-01T00:00:00Z",
+                            0,
+                            "2001-01-01T00:00:00Z",
+                            0,
+                            "2002-01-01T00:00:00Z",
+                            0,
+                            "2003-01-01T00:00:00Z",
+                            0,
+                            "2004-01-01T00:00:00Z",
+                            0,
+                            "2005-01-01T00:00:00Z",
+                            0,
+                            "2006-01-01T00:00:00Z",
+                            0,
+                            "2007-01-01T00:00:00Z",
+                            0,
+                            "2008-01-01T00:00:00Z",
+                            0,
+                            "2009-01-01T00:00:00Z",
+                            0,
+                            "2010-01-01T00:00:00Z",
+                            0,
+                            "2011-01-01T00:00:00Z",
+                            0,
+                            "2012-01-01T00:00:00Z",
+                            0,
+                            "2013-01-01T00:00:00Z",
+                            0,
+                            "2014-01-01T00:00:00Z",
+                            0,
+                            "2015-01-01T00:00:00Z",
+                            0,
+                            "2016-01-01T00:00:00Z",
+                            0,
+                            "2017-01-01T00:00:00Z",
+                            0,
+                            "2018-01-01T00:00:00Z",
+                            0,
+                            "2019-01-01T00:00:00Z",
+                            0,
+                            "2020-01-01T00:00:00Z",
+                            0,
+                            "2021-01-01T00:00:00Z",
+                            0,
+                            "2022-01-01T00:00:00Z",
+                            0,
+                            "2023-01-01T00:00:00Z",
+                            0,
+                            "2024-01-01T00:00:00Z",
+                            0,
+                            "2025-01-01T00:00:00Z",
+                            0,
+                            "2026-01-01T00:00:00Z",
+                            0,
+                            "2027-01-01T00:00:00Z",
+                            0
+                        ],
+                        "gap": "+1YEAR",
+                        "start": "1955-01-01T00:00:00Z",
+                        "end": "2028-01-01T00:00:00Z"
+                    }
+                },
+                "facet_intervals": [],
+                "facet_heatmaps": []
+            },
+            "highlighting": {
+                "AK00810279": {
+                    "display": [
+                        "Friedrich \\ueeeeDürrenmatt : [Besuch\\ueeef der alten Dame]"
+                    ]
+                },
+                "AK00810276": {
+                    "display": [
+                        "Josef Conrad, Geheimagent. Friedrich \\ueeeeDürrenmatt, Besuch\\ueeef der alten Dame. u.a.]"
+                    ]
+                },
+                "AK00810275": {
+                    "display": [
+                        "[Theaterbericht. u.a. zu.Friedrich \\ueeeeDürrenmatt, Besuch\\ueeef der alten Dame. Jean Anouihl, Ornifle oder der erzürnte Himmel.]"
+                    ]
+                },
+                "AK00707846": {
+                    "display": [
+                        "The Old Lady's Day of Judgment : Notes on a Mysterious Relationship Between Friedrich Dürrenmatt and Ödön von Horváth. [Zu \\ueeeeDürrenmatt;\"Besuch\\ueeef der alten Dame\"und Horváth:\"Zur schönen Aussicht\"ä und \"Der jüngste Tag\".]"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,439 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchName_mv:(Kästner) AND ((display:(Das doppelte Lottchen) AND source:(AK OR BI OR BF OR HS OR dbis OR ezb)) OR (work_display_mv:(Das doppelte Lottchen) AND source:(AK OR BI OR HS)) OR titleOther_text_mv:(Das doppelte Lottchen) OR titleMain_comment:(Das doppelte Lottchen) OR titleOther_comment_mv:(Das doppelte Lottchen) OR titleOriginal:(Das doppelte Lottchen)) AND (filterDateRange_mv:[2000-01-01 TO *]) AND (filterDateRange_mv:[* TO 2010-01-01])",
+            "start": "0",
+            "rows": "25",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "filterDatePoint_mv asc",
+            "fq": "NOT source:(AU OR BE OR MM)",
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(Kästner) OR displayAddition1:(Kästner) OR displayAddition2:(Kästner) OR displayName:(Kästner))) OR ((display:(Das doppelte Lottchen) OR displayAddition1:(Das doppelte Lottchen) OR displayAddition2:(Das doppelte Lottchen) OR displayName:(Das doppelte Lottchen))) OR ((display:(2000-01-01) OR displayAddition1:(2000-01-01) OR displayAddition2:(2000-01-01) OR displayName:(2000-01-01))) OR ((display:(2010-01-01) OR displayAddition1:(2010-01-01) OR displayAddition2:(2010-01-01) OR displayName:(2010-01-01)))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "facet.field": [
+                "{!key=Digital}filterDigital",
+                "{!key=Medientypen}filterType_mv",
+                "{!key=FormUndInhalt}filterFormContent_mv",
+                "{!key=Medium}filterMedium_mv",
+                "{!key=Personen}filterAuthority_mv",
+                "{!key=Thema}filterSubject_mv",
+                "{!key=Sprache}filterLanguage_mv",
+                "{!key=filterLanguageType_mv}filterLanguageType_mv",
+                "{!key=Ort}filterLocation_mv",
+                "{!key=filterLocationType_mv}filterLocationType_mv",
+                "{!key=Sammlung}filterCollection_mv",
+                "{!key=Datenbestand}filterSource",
+                "{!key=Bibliographie}filterBibliography_mv",
+                "{!key=filterAuthorityRole_mv}filterAuthorityRole_mv",
+                "{!key=filterAuthorityRelation_mv}filterAuthorityRelation_mv",
+                "{!key=entities}searchEntity_id_mv"
+            ],
+            "f.filterDigital.facet.sort": "count",
+            "f.filterDigital.facet.limit": "50",
+            "f.filterDigital.facet.mincount": "1",
+            "f.filterType_mv.facet.sort": "count",
+            "f.filterType_mv.facet.limit": "50",
+            "f.filterType_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.sort": "count",
+            "f.filterFormContent_mv.facet.limit": "50",
+            "f.filterFormContent_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.missing": "true",
+            "f.filterMedium_mv.facet.sort": "count",
+            "f.filterMedium_mv.facet.limit": "50",
+            "f.filterMedium_mv.facet.mincount": "1",
+            "f.filterMedium_mv.facet.missing": "true",
+            "f.filterAuthority_mv.facet.sort": "count",
+            "f.filterAuthority_mv.facet.limit": "50",
+            "f.filterAuthority_mv.facet.mincount": "1",
+            "facet.range": "{!key=Zeit}filterDateRange_mv",
+            "f.filterDateRange_mv.facet.range.start": "NOW/YEAR-24YEARS",
+            "f.filterDateRange_mv.facet.range.end": "NOW/DAY+1YEAR",
+            "f.filterDateRange_mv.facet.range.gap": "+1YEAR",
+            "f.filterSubject_mv.facet.sort": "count",
+            "f.filterSubject_mv.facet.limit": "50",
+            "f.filterSubject_mv.facet.mincount": "1",
+            "f.filterSubject_mv.facet.missing": "true",
+            "facet.query": [
+                "{!key=Woche ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]",
+                "{!key=Monat ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]",
+                "{!key=Quartal ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Halbjahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Jahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1YEAR TO NOW/DAY+1DAY]"
+            ],
+            "f.filterLanguage_mv.facet.sort": "count",
+            "f.filterLanguage_mv.facet.limit": "50",
+            "f.filterLanguage_mv.facet.mincount": "1",
+            "f.filterLanguageType_mv.facet.sort": "count",
+            "f.filterLanguageType_mv.facet.limit": "50",
+            "f.filterLanguageType_mv.facet.mincount": "1",
+            "f.filterLocation_mv.facet.sort": "count",
+            "f.filterLocation_mv.facet.limit": "50",
+            "f.filterLocation_mv.facet.mincount": "1",
+            "f.filterLocationType_mv.facet.sort": "count",
+            "f.filterLocationType_mv.facet.limit": "50",
+            "f.filterLocationType_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.sort": "count",
+            "f.filterCollection_mv.facet.limit": "50",
+            "f.filterCollection_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.missing": "true",
+            "f.filterSource.facet.sort": "count",
+            "f.filterSource.facet.limit": "50",
+            "f.filterSource.facet.mincount": "1",
+            "f.filterSource.facet.missing": "true",
+            "f.filterBibliography_mv.facet.sort": "count",
+            "f.filterBibliography_mv.facet.limit": "50",
+            "f.filterBibliography_mv.facet.mincount": "1",
+            "f.filterBibliography_mv.facet.missing": "true",
+            "f.filterAuthorityRole_mv.facet.sort": "count",
+            "f.filterAuthorityRole_mv.facet.limit": "50",
+            "f.filterAuthorityRole_mv.facet.mincount": "1",
+            "f.filterAuthorityRelation_mv.facet.sort": "count",
+            "f.filterAuthorityRelation_mv.facet.limit": "50",
+            "f.filterAuthorityRelation_mv.facet.mincount": "1",
+            "f.searchEntity_id_mv.facet.sort": "count",
+            "f.searchEntity_id_mv.facet.limit": "2",
+            "f.searchEntity_id_mv.facet.mincount": "1",
+            "facet": "true"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 3,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterMedium_mv": [
+                            "Video-DVD"
+                        ],
+                        "filterType_mv": [
+                            "Video"
+                        ],
+                        "displayAddition1": "[Ismaning] : EuroVideo, 2003 - 1 DVD-Video (94 Min.)",
+                        "displayName": "Vilsmaier, Joseph (1939-); Kästner, Erich (1899-1974); Eichhorn, Fritzi; Eichhorn, Floriane; Lauterbach, Heiner (1953-); Reinhart, Stephan; Richter, Klaus (1943-2017)",
+                        "id": "AK00234341",
+                        "display": "Charlie & Louise - Das doppelte Lottchen : nach dem Roman von Erich Kästner"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Video-DVD"
+                        ],
+                        "displayName": "Kästner, Erich (1899-1974); Baky, Josef von (1902-1966); Günther, Jutta (1930-); Günther, Isa (1930-); Mosbacher, Peter (1912-1977)",
+                        "filterType_mv": [
+                            "Video"
+                        ],
+                        "displayAddition1": "München : Universum Film, 2003 - 1 DVD-Video (99 Min.)",
+                        "id": "AK00155487",
+                        "display": "Das doppelte Lottchen"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Video-DVD"
+                        ],
+                        "displayName": "Vogt, Céline; Tietze, Carin C.; Kling, Anja (1970-); Dieckmann, Rolf; Schaack, Michael (1957-); Genkel, Toby (1970-)",
+                        "filterType_mv": [
+                            "Video"
+                        ],
+                        "displayAddition1": "Hamburg : Warner Home Video, 2007 - 1 DVD-Video (79 Min.)",
+                        "id": "AK00372254",
+                        "display": "[Das doppelte Lottchen] Erich Kästner's Das doppelte Lottchen : [Zeichentrickfilm]"
+                    }
+                ]
+            },
+            "facet_counts": {
+                "facet_queries": {
+                    "Woche": 0,
+                    "Monat": 0,
+                    "Quartal": 0,
+                    "Halbjahr": 0,
+                    "Jahr": 0
+                },
+                "facet_fields": {
+                    "Digital": [],
+                    "Medientypen": [
+                        "Video",
+                        3
+                    ],
+                    "FormUndInhalt": [
+                        "Film",
+                        3,
+                        "Zeichentrickfilm",
+                        1,
+                        null,
+                        0
+                    ],
+                    "Medium": [
+                        "Video-DVD",
+                        3,
+                        null,
+                        0
+                    ],
+                    "Personen": [
+                        "Kästner, Erich (1899-1974)",
+                        3,
+                        "Baky, Josef von (1902-1966)",
+                        1,
+                        "Dieckmann, Rolf",
+                        1,
+                        "Eichhorn, Floriane",
+                        1,
+                        "Eichhorn, Fritzi",
+                        1,
+                        "Genkel, Toby (1970-)",
+                        1,
+                        "Günther, Isa (1930-)",
+                        1,
+                        "Günther, Jutta (1930-)",
+                        1,
+                        "Kling, Anja (1970-)",
+                        1,
+                        "Lauterbach, Heiner (1953-)",
+                        1,
+                        "Mosbacher, Peter (1912-1977)",
+                        1,
+                        "Reinhart, Stephan",
+                        1,
+                        "Richter, Klaus (1943-2017)",
+                        1,
+                        "Schaack, Michael (1957-)",
+                        1,
+                        "Tietze, Carin C.",
+                        1,
+                        "Vilsmaier, Joseph (1939-)",
+                        1,
+                        "Vogt, Céline",
+                        1
+                    ],
+                    "Thema": [
+                        "Kästner, Erich (1899-1974)",
+                        2,
+                        "Kästner, Erich <1899-1974>. Das doppelte Lottchen (Kinderbuch : 1949)",
+                        2,
+                        "Verfilmungen / Einzelne Werke",
+                        2,
+                        null,
+                        1
+                    ],
+                    "Sprache": [
+                        "Deutsch",
+                        2
+                    ],
+                    "filterLanguageType_mv": [
+                        "Deutsch␝Original",
+                        2
+                    ],
+                    "Ort": [
+                        "Hamburg",
+                        1,
+                        "Ismaning",
+                        1,
+                        "München",
+                        1
+                    ],
+                    "filterLocationType_mv": [
+                        "Hamburg␝Erscheinungsort",
+                        1,
+                        "Ismaning␝Erscheinungsort",
+                        1,
+                        "München␝Erscheinungsort",
+                        1
+                    ],
+                    "Sammlung": [
+                        null,
+                        3
+                    ],
+                    "Datenbestand": [
+                        "Bibliotheksmaterialien",
+                        3,
+                        null,
+                        0
+                    ],
+                    "Bibliographie": [
+                        null,
+                        3
+                    ],
+                    "filterAuthorityRole_mv": [
+                        "Kästner, Erich (1899-1974)␝Behandelte Person/Körperschaft",
+                        2,
+                        "Baky, Josef von (1902-1966)␝Regisseur",
+                        1,
+                        "Dieckmann, Rolf␝Verfasser/Urheber",
+                        1,
+                        "Eichhorn, Floriane␝Schauspieler",
+                        1,
+                        "Eichhorn, Fritzi␝Schauspieler",
+                        1,
+                        "Genkel, Toby (1970-)␝Regisseur",
+                        1,
+                        "Günther, Isa (1930-)␝Schauspieler",
+                        1,
+                        "Günther, Jutta (1930-)␝Schauspieler",
+                        1,
+                        "Kling, Anja (1970-)␝Interpret",
+                        1,
+                        "Kästner, Erich (1899-1974)␝Verfasser der literarischen Vorlage",
+                        1,
+                        "Kästner, Erich (1899-1974)␝Verfasser/Urheber",
+                        1,
+                        "Lauterbach, Heiner (1953-)␝Schauspieler",
+                        1,
+                        "Mosbacher, Peter (1912-1977)␝Schauspieler",
+                        1,
+                        "Reinhart, Stephan␝Verfasser/Urheber",
+                        1,
+                        "Richter, Klaus (1943-2017)␝Verfasser/Urheber",
+                        1,
+                        "Schaack, Michael (1957-)␝Regisseur",
+                        1,
+                        "Tietze, Carin C.␝Interpret",
+                        1,
+                        "Vilsmaier, Joseph (1939-)␝Regisseur",
+                        1,
+                        "Vogt, Céline␝Interpret",
+                        1
+                    ],
+                    "filterAuthorityRelation_mv": [
+                        "Kästner, Erich (1899-1974)␝Von",
+                        2,
+                        "Kästner, Erich (1899-1974)␝Über",
+                        2,
+                        "Baky, Josef von (1902-1966)␝Von",
+                        1,
+                        "Dieckmann, Rolf␝Von",
+                        1,
+                        "Eichhorn, Floriane␝Von",
+                        1,
+                        "Eichhorn, Fritzi␝Von",
+                        1,
+                        "Genkel, Toby (1970-)␝Von",
+                        1,
+                        "Günther, Isa (1930-)␝Von",
+                        1,
+                        "Günther, Jutta (1930-)␝Von",
+                        1,
+                        "Kling, Anja (1970-)␝Von",
+                        1,
+                        "Lauterbach, Heiner (1953-)␝Von",
+                        1,
+                        "Mosbacher, Peter (1912-1977)␝Von",
+                        1,
+                        "Reinhart, Stephan␝Von",
+                        1,
+                        "Richter, Klaus (1943-2017)␝Von",
+                        1,
+                        "Schaack, Michael (1957-)␝Von",
+                        1,
+                        "Tietze, Carin C.␝Von",
+                        1,
+                        "Vilsmaier, Joseph (1939-)␝Von",
+                        1,
+                        "Vogt, Céline␝Von",
+                        1
+                    ],
+                    "entities": [
+                        "PE00022301",
+                        3,
+                        "AK01795765",
+                        2
+                    ]
+                },
+                "facet_ranges": {
+                    "Zeit": {
+                        "counts": [
+                            "2002-01-01T00:00:00Z",
+                            0,
+                            "2003-01-01T00:00:00Z",
+                            2,
+                            "2004-01-01T00:00:00Z",
+                            0,
+                            "2005-01-01T00:00:00Z",
+                            0,
+                            "2006-01-01T00:00:00Z",
+                            0,
+                            "2007-01-01T00:00:00Z",
+                            1,
+                            "2008-01-01T00:00:00Z",
+                            0,
+                            "2009-01-01T00:00:00Z",
+                            0,
+                            "2010-01-01T00:00:00Z",
+                            0,
+                            "2011-01-01T00:00:00Z",
+                            0,
+                            "2012-01-01T00:00:00Z",
+                            0,
+                            "2013-01-01T00:00:00Z",
+                            0,
+                            "2014-01-01T00:00:00Z",
+                            0,
+                            "2015-01-01T00:00:00Z",
+                            0,
+                            "2016-01-01T00:00:00Z",
+                            0,
+                            "2017-01-01T00:00:00Z",
+                            0,
+                            "2018-01-01T00:00:00Z",
+                            0,
+                            "2019-01-01T00:00:00Z",
+                            0,
+                            "2020-01-01T00:00:00Z",
+                            0,
+                            "2021-01-01T00:00:00Z",
+                            0,
+                            "2022-01-01T00:00:00Z",
+                            0,
+                            "2023-01-01T00:00:00Z",
+                            0,
+                            "2024-01-01T00:00:00Z",
+                            0,
+                            "2025-01-01T00:00:00Z",
+                            0,
+                            "2026-01-01T00:00:00Z",
+                            0,
+                            "2027-01-01T00:00:00Z",
+                            0
+                        ],
+                        "gap": "+1YEAR",
+                        "start": "2002-01-01T00:00:00Z",
+                        "end": "2028-01-01T00:00:00Z"
+                    }
+                },
+                "facet_intervals": [],
+                "facet_heatmaps": []
+            },
+            "highlighting": {
+                "AK00234341": {
+                    "display": [
+                        "Charlie & Louise - \\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef : nach dem Roman von Erich \\ueeeeKästner\\ueeef"
+                    ],
+                    "displayName": [
+                        "Vilsmaier, Joseph (1939-); \\ueeeeKästner\\ueeef, Erich (1899-1974); Eichhorn, Fritzi; Eichhorn, Floriane; Lauterbach, Heiner (1953-); Reinhart, Stephan; Richter, Klaus (1943-2017)"
+                    ]
+                },
+                "AK00155487": {
+                    "display": [
+                        "\\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974); Baky, Josef von (1902-1966); Günther, Jutta (1930-); Günther, Isa (1930-); Mosbacher, Peter (1912-1977)"
+                    ]
+                },
+                "AK00372254": {
+                    "display": [
+                        "[\\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef] Erich Kästner's \\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef : [Zeichentrickfilm]"
+                    ]
+                }
+            }
+        }
+    }
+}

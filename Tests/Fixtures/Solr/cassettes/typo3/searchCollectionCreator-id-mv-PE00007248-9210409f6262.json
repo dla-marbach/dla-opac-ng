@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchCollectionCreator_id_mv:PE00007248",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 531,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00000001",
+                        "display": "A:Pannwitz, Rudolf - [Bestand, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00000062",
+                        "display": "Pannwitz, Rudolf: Sammlung Urblick [Gedichte]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00000063",
+                        "display": "Pannwitz, Rudolf: Der Gott [Gedichte]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00000064",
+                        "display": "Pannwitz, Rudolf: Aufruf zum Heiligen Kriege der Lebendigen [Prosa]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00000065",
+                        "display": "Pannwitz, Rudolf: Vierter allgemeiner Tag für deutsche Erziehung. Weimar 20. und 21. Mai [Verschiedenes]"
+                    }
+                ]
+            }
+        }
+    }
+}

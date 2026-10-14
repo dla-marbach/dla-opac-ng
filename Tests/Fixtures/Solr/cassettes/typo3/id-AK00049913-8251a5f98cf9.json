@@ -1,0 +1,307 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(AK00049913)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0,
+                "params": {
+                    "q": "id:(AK00049913)",
+                    "rows": "1"
+                }
+            },
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "searchSuggestPayload": "AK00049913␝Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)",
+                        "noteExplanatory_type_mv": [
+                            "Geschichte des Werks",
+                            "Redaktionelle Bemerkung"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "category": "Werktitel",
+                        "filterAuthorityRelation_mv": [
+                            "Dürrenmatt, Friedrich (1921-1990)␝Von"
+                        ],
+                        "searchVariant_mv": [
+                            "Djurrjenmatt, Fridrikh",
+                            "Djurrenmatt, Fridrih",
+                            "Дюрренматт, Фридрих",
+                            "د�رنمات، فريدريش",
+                            "뒤렌마트, 프리드리히",
+                            "דירנמט, פרידריך",
+                            "弗里德里希・迪伦马��",
+                            "迪伦马��, 弗里德里希",
+                            "デュレンマッ�, フリー�゙リヒ",
+                            "Dürrenmatt, Friedr.",
+                            "Dürrenmatt, Fritz",
+                            "Diurenmatas, Fridrikas",
+                            "Dîrenmaṭ, Frîdrîḵ",
+                            "Tṻrrenmǎtt, Fritrij",
+                            "Dürrenmatt, Fridericus",
+                            "Durrenmatt, Frıedrıch",
+                            "Durrenmatt, Friedrich",
+                            "Dūranmāt, Frīdrīš",
+                            "Dūrinmāt, Frīdrīš",
+                            "Dyrrenmat, Fridrih",
+                            "Fu li de li xi Di lun ma te",
+                            "Fulidelixi-Dilunmate",
+                            "Dilunmate, Fulidelixi",
+                            "Dürrenmatt, Fr.",
+                            "Dürrenmatt, F.",
+                            "Duerrenmatt, Friedrich",
+                            "Dürrenmat, Friederich",
+                            "Direnmat, Fridrik",
+                            "Direnmāṭ, Fridrik",
+                            "Dirrenmats, Frīdrihs",
+                            "Diurenmatas, F.",
+                            "Djurenmatt, Fridrich",
+                            "Djurrenmatt, F.",
+                            "Ntyrenmat, Phrintrich",
+                            "Ntyrenmat, Phrēntrich",
+                            "Twirenmat'ŭ, P'ŭridŭrihi",
+                            "Dyurenmatto, Furīdorihhi",
+                            "Dyurenmatto, Furīdorihi",
+                            "Duerrenmatt, Frederick",
+                            "Direnmat, Fridrih",
+                            "Djurenmat, Fridrich",
+                            "Djurrenmatt, Fridrich",
+                            "Dūrinmāt, Fridrīš",
+                            "Diurenmatas, Frydrichas",
+                            "Dürrenmatt, Fridrix",
+                            "Direnmaṭ, Fridriḵ",
+                            "Duranmat, Fridris",
+                            "Durinmat, Fridris",
+                            "Fulidelixi Dilunmate",
+                            "Direnmaṭ, Fridrik",
+                            "Ntyrenmat, Phrentrich",
+                            "Twirenmatu, Puridurihi",
+                            "Dyurenmatto, Furidorihhi",
+                            "Dyurenmatto, Furidorihi",
+                            "Les physiciens",
+                            "The Physicists",
+                            "Fizici",
+                            "Fysikerne",
+                            "Füüsikud",
+                            "Fizikai",
+                            "A fizikusok",
+                            "I fisiki",
+                            "De fysici",
+                            "Fyzikové",
+                            "Los físicos"
+                        ],
+                        "creator_id_mv": [
+                            "PE00000565"
+                        ],
+                        "searchSuggestTerm_mv": [
+                            "Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)",
+                            "Dürrenmatt, Friedrich (1921-1990): Les physiciens",
+                            "Dürrenmatt, Friedrich (1921-1990): The Physicists",
+                            "Dürrenmatt, Friedrich (1921-1990): Fizici",
+                            "Dürrenmatt, Friedrich (1921-1990): Fysikerne",
+                            "Dürrenmatt, Friedrich (1921-1990): Füüsikud",
+                            "Dürrenmatt, Friedrich (1921-1990): Fizikai",
+                            "Dürrenmatt, Friedrich (1921-1990): A fizikusok",
+                            "Dürrenmatt, Friedrich (1921-1990): I fisiki",
+                            "Dürrenmatt, Friedrich (1921-1990): De fysici",
+                            "Dürrenmatt, Friedrich (1921-1990): Fyzikové",
+                            "Dürrenmatt, Friedrich (1921-1990): Los físicos"
+                        ],
+                        "linkWikidata": "Q260824",
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "searchDate_mv": [
+                            "1962"
+                        ],
+                        "dateOrigin": "1962",
+                        "source": "AK",
+                        "searchName_mv": [
+                            "Dürrenmatt, Friedrich"
+                        ],
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "titleOther_type_mv": [
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n"
+                        ],
+                        "searchEntityScore": 91,
+                        "gnd_id_mv": [
+                            "4099172-6"
+                        ],
+                        "titleOther_text_mv": [
+                            "Les physiciens",
+                            "The Physicists",
+                            "Fizici",
+                            "Fysikerne",
+                            "Füüsikud",
+                            "Fizikai",
+                            "A fizikusok",
+                            "I fisiki",
+                            "De fysici",
+                            "Fyzikové",
+                            "Los físicos"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK00049913",
+                        "creator_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "vendor_id_mv": [
+                            "4099172-6"
+                        ],
+                        "usageRestrictionNote": "nicht benutzbar\nnur bibliographischer Nachweis, nicht im Bestand des DLA!",
+                        "searchEntity_id_mv": [
+                            "PE00000565",
+                            "AK00049913"
+                        ],
+                        "filterAuthority_mv": [
+                            "Dürrenmatt, Friedrich (1921-1990)"
+                        ],
+                        "dateModified": "2020-01-20",
+                        "reference_text_mv": [
+                            "Kindler",
+                            "GVÜ"
+                        ],
+                        "reference_type_mv": [
+                            "positiv",
+                            "positiv"
+                        ],
+                        "filterSource": "Werke",
+                        "relation_id_mv": [
+                            "AK01777445",
+                            "AK01777194",
+                            "AK01777184",
+                            "AK01777143",
+                            "AK01777144",
+                            "AK01777148",
+                            "AK01777192",
+                            "␣",
+                            "AK01777185"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Dürrenmatt, Friedrich (1921-1990)␝Verfasser/Urheber"
+                        ],
+                        "dateCataloged": "1999-09-10",
+                        "display": "Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)",
+                        "filterDatePoint_mv": [
+                            "1962-01-01T00:00:00Z"
+                        ],
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "filterFormContent_mv": [
+                            "Dramatisches"
+                        ],
+                        "displayAddition1": "1962",
+                        "searchNameBy_mv": [
+                            "Dürrenmatt, Friedrich"
+                        ],
+                        "relation_text_mv": [
+                            "Dürrenmatt, Friedrich (1921-1990). 21 Punkte zu den Physikern (1962)",
+                            "Cikker, Ján (1911-). Orchestrálne štúdie k činohre (1965)",
+                            "Umgelter, Fritz (1922-1981). Die Physiker (Fernsehsendung : 1964)",
+                            "Gottwald, Benjamin (1987-). Die Physiker (Graphic Novel : 2018)",
+                            "Hoffmann, Alfons. Die Physiker (Hörspiel : 1963)",
+                            "Hoffmann, Alfons. Die Physiker (Hörspielmanuskript : 1963)",
+                            "Pflüger, Andreas (1957-). Die Physiker (Oper : 2000)",
+                            "␣",
+                            "Böhmermann, Jan (1981-). Die Physiker (Fernsehsendung : 2017)"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "titleMain_text": "Die Physiker",
+                        "personBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "id": "AK00049913",
+                        "noteExplanatory_text_mv": [
+                            "Komödie, entstanden 1961, Uraufführung und erschienen 1962, 1980 zweite Fassung in der Werkausgabe",
+                            "Werktitel als Wissensraum"
+                        ],
+                        "searchBoost": 0.6,
+                        "displayName": "Dürrenmatt, Friedrich (1921-1990)",
+                        "creator_display_mv": [
+                            "Dürrenmatt, Friedrich (1921-1990)"
+                        ],
+                        "vendor_type_mv": [
+                            "GND (Werktitel)"
+                        ],
+                        "personBy_creator_mv": [
+                            "creator"
+                        ],
+                        "filterRecent": "1999-09-10",
+                        "genreOther_mv": [
+                            "Drama"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "categorySub": "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                        "relation_type_mv": [
+                            "Abgeleitet",
+                            "Anregung für",
+                            "Bearbeitet als Fernsehsendung",
+                            "Bearbeitet als Graphic Novel",
+                            "Bearbeitet als Hörspiel",
+                            "Bearbeitet als Hörspielmanuskript",
+                            "Bearbeitet als Oper",
+                            "Gefeiertes Ereignis",
+                            "Parodiert als"
+                        ],
+                        "title": "Dürrenmatt, Friedrich <1921-1990>. Die Physiker (Drama : 1962)",
+                        "titleOther_language_mv": [
+                            "Französisch",
+                            "Englisch",
+                            "Bulgarisch",
+                            "Dänisch",
+                            "Estnisch",
+                            "Litauisch",
+                            "Ungarisch",
+                            "Italienisch",
+                            "Niederländisch",
+                            "Tschechisch",
+                            "Spanisch"
+                        ],
+                        "classificationSubjectOther_mv": [
+                            "12.2p"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00000565"
+                        ],
+                        "personBy_display_mv": [
+                            "Dürrenmatt, Friedrich (1921-1990)"
+                        ],
+                        "statusCataloging": "f-fehlt,i-fehlt",
+                        "filterDateRange_mv": [
+                            "1962"
+                        ],
+                        "dateOriginComment_mv": [
+                            "1962",
+                            "1961"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

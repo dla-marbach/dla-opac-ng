@@ -1,0 +1,28 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "corporationBy_id_mv:(\"KS00000004\") OR corporationTo_id_mv:(\"KS00000004\") OR corporationAbout_id_mv:(\"KS00000004\") OR corporationAt_id_mv:(\"KS00000004\")",
+            "start": "0",
+            "rows": "0",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 285,
+                "start": 0,
+                "maxScore": 15.451986,
+                "numFoundExact": true,
+                "docs": []
+            }
+        }
+    }
+}

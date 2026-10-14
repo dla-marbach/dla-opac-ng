@@ -1,0 +1,51 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchName_mv:(Kästner) AND ((display:(Das doppelte Lottchen) AND source:(AK OR BI OR BF OR HS OR dbis OR ezb)) OR (work_display_mv:(Das doppelte Lottchen) AND source:(AK OR BI OR HS)) OR titleOther_text_mv:(Das doppelte Lottchen) OR titleMain_comment:(Das doppelte Lottchen) OR titleOther_comment_mv:(Das doppelte Lottchen) OR titleOriginal:(Das doppelte Lottchen)) AND (filterDateRange_mv:[2000-01-01 TO *]) AND (filterDateRange_mv:[* TO 2010-01-01])",
+            "start": "0",
+            "rows": "0",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "filterDatePoint_mv desc",
+            "fq": "NOT source:(AU OR BE OR MM)",
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(Kästner) OR displayAddition1:(Kästner) OR displayAddition2:(Kästner) OR displayName:(Kästner))) OR ((display:(Das doppelte Lottchen) OR displayAddition1:(Das doppelte Lottchen) OR displayAddition2:(Das doppelte Lottchen) OR displayName:(Das doppelte Lottchen))) OR ((display:(2000-01-01) OR displayAddition1:(2000-01-01) OR displayAddition2:(2000-01-01) OR displayName:(2000-01-01))) OR ((display:(2010-01-01) OR displayAddition1:(2010-01-01) OR displayAddition2:(2010-01-01) OR displayName:(2010-01-01)))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "stats": "true",
+            "stats.field": "filterDatePoint_mv"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 3,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": []
+            },
+            "highlighting": [],
+            "stats": {
+                "stats_fields": {
+                    "filterDatePoint_mv": {
+                        "min": "2003-01-01T00:00:00Z",
+                        "max": "2007-01-01T00:00:00Z",
+                        "count": 3,
+                        "missing": 0,
+                        "sum": 3250368000000,
+                        "mean": "2004-05-02T00:00:00Z",
+                        "sumOfSquares": 3.53225345439744e+24,
+                        "stddev": 72879155419.9138
+                    }
+                }
+            }
+        }
+    }
+}

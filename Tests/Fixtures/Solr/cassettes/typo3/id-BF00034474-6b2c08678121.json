@@ -1,0 +1,216 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:BF00034474",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.70128,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00034474",
+                        "default": [
+                            "BF00034474",
+                            "G:Lieblich, Karl (Bibliothek des Autors) - [Geschlossener Bestand der Bibliothek, Nachlass, Autorenbibliothek]",
+                            "BB.2012.0017",
+                            "BE00006308",
+                            "BE00006308",
+                            "Geschlossener Bestand der Bibliothek",
+                            "Nachlass",
+                            "Autorenbibliothek",
+                            "false",
+                            "Zugangsjahr: 2012.\nDie Bibliothek des Stuttgarter Schriftstellers, der 1938 wegen seiner jüdischen Herkunft nach Brasilien ausgewandert ist, enthält alles, was zu einem Stück \"Lese-Heimat\" gehört: Vom Kochbuch bis zum Sprachführer Portugiesisch, von leichter Unterhaltungsliteratur bis zu den Klassikern wie Schiller, aber auch seltene kulturgeschichtliche Judaica.\n\nAufstellung\nBibl. Lieblich:1 - Verfasserwerke\nBibl. Lieblich:2 - Sachtitelwerke\nBibl. Lieblich:3 - Periodika\nBibl. Lieblich:4 - Kapselschriften (Sonderdrucke, u.a.)\nBibl. Lieblich:5 - Großformat (Quart)\nDaneben gibt es auch ein kleines Konvolut, das Fragmente enthält.",
+                            "2012-05-21",
+                            "2026-05-07",
+                            "Bibliothek",
+                            "public",
+                            "Bibliothek Karl Lieblich - Titelliste",
+                            "pdf",
+                            "https://digital.dla-marbach.de/files/dbst02/public/2023/20230209/20230209-0001.pdf?media_access=public",
+                            "MM01545753",
+                            "ca. 835 Bände",
+                            "Lieblich, Karl (1895-1984)",
+                            "Nachlass, Bibliothek [G:Lieblich, Karl (Bibliothek des Autors)]",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>G:Lieblich, Karl (Bibliothek des Autors) - [Geschlossener Bestand der Bibliothek, Nachlass, Autorenbibliothek]</dc:title>\n  <dc:creator>Lieblich, Karl (1895-1984)</dc:creator>\n  <dc:type>Nachlass</dc:type>\n  <dc:type>Bestand</dc:type>\n  <dc:format>ca. 835 Bände</dc:format>\n  <dc:description>Zugangsjahr: 2012.\nDie Bibliothek des Stuttgarter Schriftstellers, der 1938 wegen seiner jüdischen Herkunft nach Brasilien ausgewandert ist, enthält alles, was zu einem Stück &quot;Lese-Heimat&quot; gehört: Vom Kochbuch bis zum Sprachführer Portugiesisch, von leichter Unterhaltungsliteratur bis zu den Klassikern wie Schiller, aber auch seltene kulturgeschichtliche Judaica.\n\nAufstellung\nBibl. Lieblich:1 - Verfasserwerke\nBibl. Lieblich:2 - Sachtitelwerke\nBibl. Lieblich:3 - Periodika\nBibl. Lieblich:4 - Kapselschriften (Sonderdrucke, u.a.)\nBibl. Lieblich:5 - Großformat (Quart)\nDaneben gibt es auch ein kleines Konvolut, das Fragmente enthält.</dc:description>\n  <dc:identifier>G:Lieblich, Karl (Bibliothek des Autors)</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/files/dbst02/public/2023/20230209/20230209-0001.pdf?media_access=public</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BF00034474</dc:identifier>\n  <dc:identifier>BF00034474</dc:identifier>\n</oai_dc:dc>",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>G:Lieblich, Karl (Bibliothek des Autors) - [Geschlossener Bestand der Bibliothek, Nachlass, Autorenbibliothek]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Lieblich, Karl (1895-1984)</namePart>\n    <nameIdentifier type=\"gnd\">116997222</nameIdentifier>\n    <namePart type=\"date\">1895-08-01 — 1984-03-01</namePart>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <typeOfResource collection=\"yes\">Bestand</typeOfResource>\n  <genre>Nachlass</genre>\n  <physicalDescription>\n    <extent>ca. 835 Bände</extent>\n  </physicalDescription>\n  <abstract>Zugangsjahr: 2012.\nDie Bibliothek des Stuttgarter Schriftstellers, der 1938 wegen seiner jüdischen Herkunft nach Brasilien ausgewandert ist, enthält alles, was zu einem Stück &quot;Lese-Heimat&quot; gehört: Vom Kochbuch bis zum Sprachführer Portugiesisch, von leichter Unterhaltungsliteratur bis zu den Klassikern wie Schiller, aber auch seltene kulturgeschichtliche Judaica.\n\nAufstellung\nBibl. Lieblich:1 - Verfasserwerke\nBibl. Lieblich:2 - Sachtitelwerke\nBibl. Lieblich:3 - Periodika\nBibl. Lieblich:4 - Kapselschriften (Sonderdrucke, u.a.)\nBibl. Lieblich:5 - Großformat (Quart)\nDaneben gibt es auch ein kleines Konvolut, das Fragmente enthält.</abstract>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>G:Lieblich, Karl (Bibliothek des Autors)</shelfLocator>\n    <url access=\"object in context\">https://digital.dla-marbach.de/files/dbst02/public/2023/20230209/20230209-0001.pdf?media_access=public</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2012-05-21</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2026-05-07</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00034474</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "TY  - GEN\nAN  - BB.2012.0017\nAU  - Lieblich, Karl\nAV  - bedingt benutzbar. Benutzung bedingt möglich nach vorheriger Terminabsprache. Bitte nehmen Sie Kontakt zu uns auf.. E-Mail: bibliothek@dla-marbach.de. Telefon: +49 7144 848 317\nCN  - BF000344745\nDB  - G:Lieblich, Karl (Bibliothek des Autors)\nID  - BF00034474\nM3  - Nachlass\nN1  - Umfang: ca. 835 Bände\nN1  - eigene Liste: ca. 835 Bände\nN1  - alphabetisch nach Autoren/Sachtiteln: 835 Bände\nN1  - Literatur: Reinhard Andress: Karl Lieblich. Ein deutsch-jüdisches und schriftstellerisches Emigrantenschicksal zwischen Deutschland und Brasilien. In: Pandaemonium Germanicum. 10 (2006), S. 197-226./BR/Christoph Manasse: Auf der Suche nach einer neuen jüdischen Identität. Der Schriftsteller Karl Lieblich (1895-1984) und seine Vision einer interterritorialen Nation. Köln u.a.: Böhlau, 2015, 364 S.\nN2  - Zugangsjahr: 2012.. Die Bibliothek des Stuttgarter Schriftstellers, der 1938 wegen seiner jüdischen Herkunft nach Brasilien ausgewandert ist, enthält alles, was zu einem Stück \"Lese-Heimat\" gehört: Vom Kochbuch bis zum Sprachführer Portugiesisch, von leichter Unterhaltungsliteratur bis zu den Klassikern wie Schiller, aber auch seltene kulturgeschichtliche Judaica.. . Aufstellung. Bibl. Lieblich:1 - Verfasserwerke. Bibl. Lieblich:2 - Sachtitelwerke. Bibl. Lieblich:3 - Periodika. Bibl. Lieblich:4 - Kapselschriften (Sonderdrucke, u.a.). Bibl. Lieblich:5 - Großformat (Quart). Daneben gibt es auch ein kleines Konvolut, das Fragmente enthält.\nRN  - Grundsignatur: Bibl. Lieblich\nTI  - G:Lieblich, Karl (Bibliothek des Autors) - [Geschlossener Bestand der Bibliothek, Nachlass, Autorenbibliothek]\nUR  - https://digital.dla-marbach.de/files/dbst02/public/2023/20230209/20230209-0001.pdf?media_access=public\nUR  - https://www.dla-marbach.de/find/opac/id/BF00034474/\nER  -",
+                            "ca. 835 Bände",
+                            "Lieblich, Karl (1895-1984)␝Unter",
+                            "Lieblich, Karl (1895-1984)␝Bestandsbildner/Vorbesitzer",
+                            "Lieblich, Karl (1895-1984)",
+                            "G:Lieblich, Karl (Bibliothek des Autors)",
+                            "Nachlass",
+                            "true",
+                            "2012-05-21",
+                            "Nachlässe und Spezialsammlungen",
+                            "Gedrucktes",
+                            "ca. 835",
+                            "eigene Liste",
+                            "Bände",
+                            "Bibliotheksmagazin 5 (Block IV: Achse 58a)",
+                            "BF000344745",
+                            "Grundsignatur: Bibl. Lieblich",
+                            "835",
+                            "alphabetisch nach Autoren/Sachtiteln",
+                            "Bände",
+                            "Lieblich, Karl (1895-1984)",
+                            "PE00026149",
+                            "Reinhard Andress: Karl Lieblich. Ein deutsch-jüdisches und schriftstellerisches Emigrantenschicksal zwischen Deutschland und Brasilien. In: Pandaemonium Germanicum. 10 (2006), S. 197-226./BR/Christoph Manasse: Auf der Suche nach einer neuen jüdischen Identität. Der Schriftsteller Karl Lieblich (1895-1984) und seine Vision einer interterritorialen Nation. Köln u.a.: Böhlau, 2015, 364 S.",
+                            "1.0.0",
+                            "1",
+                            "Lieblich, Karl (1895-1984)",
+                            "PE00026149",
+                            "PE00026149",
+                            "Lieblich, Karl",
+                            "Lieblich, Karl",
+                            "Borowsky, Alexander",
+                            "Schillbeil, Ark",
+                            "Schillberl, Ark",
+                            "BF",
+                            "Am Standort",
+                            "G:Lieblich, Karl (Bibliothek des Autors)",
+                            "Lieblich, Karl (Bibliothek des Autors)",
+                            "https://www.dla-marbach.de/find/opac/id/BF00034474",
+                            "benutzbar",
+                            "Rara-Bestand. Kopierverbot wegen des teilweise schlechten Erhaltungszustands.",
+                            "bedingt benutzbar\nBenutzung bedingt möglich nach vorheriger Terminabsprache. Bitte nehmen Sie Kontakt zu uns auf.\nE-Mail: bibliothek@dla-marbach.de\nTelefon: +49 7144 848 317"
+                        ],
+                        "display": "G:Lieblich, Karl (Bibliothek des Autors) - [Geschlossener Bestand der Bibliothek, Nachlass, Autorenbibliothek]",
+                        "accessionNumber": "BB.2012.0017",
+                        "accession_display": "BE00006308",
+                        "accession_id": "BE00006308",
+                        "category": "Geschlossener Bestand der Bibliothek",
+                        "categorySub": "Nachlass",
+                        "categorySubSub": "Autorenbibliothek",
+                        "confidential": false,
+                        "content": "Zugangsjahr: 2012.\nDie Bibliothek des Stuttgarter Schriftstellers, der 1938 wegen seiner jüdischen Herkunft nach Brasilien ausgewandert ist, enthält alles, was zu einem Stück \"Lese-Heimat\" gehört: Vom Kochbuch bis zum Sprachführer Portugiesisch, von leichter Unterhaltungsliteratur bis zu den Klassikern wie Schiller, aber auch seltene kulturgeschichtliche Judaica.\n\nAufstellung\nBibl. Lieblich:1 - Verfasserwerke\nBibl. Lieblich:2 - Sachtitelwerke\nBibl. Lieblich:3 - Periodika\nBibl. Lieblich:4 - Kapselschriften (Sonderdrucke, u.a.)\nBibl. Lieblich:5 - Großformat (Quart)\nDaneben gibt es auch ein kleines Konvolut, das Fragmente enthält.",
+                        "dateCataloged": "2012-05-21",
+                        "dateModified": "2026-05-07",
+                        "department": "Bibliothek",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "Bibliothek Karl Lieblich - Titelliste"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "pdf"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/files/dbst02/public/2023/20230209/20230209-0001.pdf?media_access=public"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01545753"
+                        ],
+                        "displayAddition1": "ca. 835 Bände",
+                        "displayName": "Lieblich, Karl (1895-1984)",
+                        "displayTree": "Nachlass, Bibliothek [G:Lieblich, Karl (Bibliothek des Autors)]",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>G:Lieblich, Karl (Bibliothek des Autors) - [Geschlossener Bestand der Bibliothek, Nachlass, Autorenbibliothek]</dc:title>\n  <dc:creator>Lieblich, Karl (1895-1984)</dc:creator>\n  <dc:type>Nachlass</dc:type>\n  <dc:type>Bestand</dc:type>\n  <dc:format>ca. 835 Bände</dc:format>\n  <dc:description>Zugangsjahr: 2012.\nDie Bibliothek des Stuttgarter Schriftstellers, der 1938 wegen seiner jüdischen Herkunft nach Brasilien ausgewandert ist, enthält alles, was zu einem Stück &quot;Lese-Heimat&quot; gehört: Vom Kochbuch bis zum Sprachführer Portugiesisch, von leichter Unterhaltungsliteratur bis zu den Klassikern wie Schiller, aber auch seltene kulturgeschichtliche Judaica.\n\nAufstellung\nBibl. Lieblich:1 - Verfasserwerke\nBibl. Lieblich:2 - Sachtitelwerke\nBibl. Lieblich:3 - Periodika\nBibl. Lieblich:4 - Kapselschriften (Sonderdrucke, u.a.)\nBibl. Lieblich:5 - Großformat (Quart)\nDaneben gibt es auch ein kleines Konvolut, das Fragmente enthält.</dc:description>\n  <dc:identifier>G:Lieblich, Karl (Bibliothek des Autors)</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/files/dbst02/public/2023/20230209/20230209-0001.pdf?media_access=public</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BF00034474</dc:identifier>\n  <dc:identifier>BF00034474</dc:identifier>\n</oai_dc:dc>",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>G:Lieblich, Karl (Bibliothek des Autors) - [Geschlossener Bestand der Bibliothek, Nachlass, Autorenbibliothek]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Lieblich, Karl (1895-1984)</namePart>\n    <nameIdentifier type=\"gnd\">116997222</nameIdentifier>\n    <namePart type=\"date\">1895-08-01 — 1984-03-01</namePart>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <typeOfResource collection=\"yes\">Bestand</typeOfResource>\n  <genre>Nachlass</genre>\n  <physicalDescription>\n    <extent>ca. 835 Bände</extent>\n  </physicalDescription>\n  <abstract>Zugangsjahr: 2012.\nDie Bibliothek des Stuttgarter Schriftstellers, der 1938 wegen seiner jüdischen Herkunft nach Brasilien ausgewandert ist, enthält alles, was zu einem Stück &quot;Lese-Heimat&quot; gehört: Vom Kochbuch bis zum Sprachführer Portugiesisch, von leichter Unterhaltungsliteratur bis zu den Klassikern wie Schiller, aber auch seltene kulturgeschichtliche Judaica.\n\nAufstellung\nBibl. Lieblich:1 - Verfasserwerke\nBibl. Lieblich:2 - Sachtitelwerke\nBibl. Lieblich:3 - Periodika\nBibl. Lieblich:4 - Kapselschriften (Sonderdrucke, u.a.)\nBibl. Lieblich:5 - Großformat (Quart)\nDaneben gibt es auch ein kleines Konvolut, das Fragmente enthält.</abstract>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>G:Lieblich, Karl (Bibliothek des Autors)</shelfLocator>\n    <url access=\"object in context\">https://digital.dla-marbach.de/files/dbst02/public/2023/20230209/20230209-0001.pdf?media_access=public</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2012-05-21</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2026-05-07</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00034474</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "exportRIS": "TY  - GEN\nAN  - BB.2012.0017\nAU  - Lieblich, Karl\nAV  - bedingt benutzbar. Benutzung bedingt möglich nach vorheriger Terminabsprache. Bitte nehmen Sie Kontakt zu uns auf.. E-Mail: bibliothek@dla-marbach.de. Telefon: +49 7144 848 317\nCN  - BF000344745\nDB  - G:Lieblich, Karl (Bibliothek des Autors)\nID  - BF00034474\nM3  - Nachlass\nN1  - Umfang: ca. 835 Bände\nN1  - eigene Liste: ca. 835 Bände\nN1  - alphabetisch nach Autoren/Sachtiteln: 835 Bände\nN1  - Literatur: Reinhard Andress: Karl Lieblich. Ein deutsch-jüdisches und schriftstellerisches Emigrantenschicksal zwischen Deutschland und Brasilien. In: Pandaemonium Germanicum. 10 (2006), S. 197-226./BR/Christoph Manasse: Auf der Suche nach einer neuen jüdischen Identität. Der Schriftsteller Karl Lieblich (1895-1984) und seine Vision einer interterritorialen Nation. Köln u.a.: Böhlau, 2015, 364 S.\nN2  - Zugangsjahr: 2012.. Die Bibliothek des Stuttgarter Schriftstellers, der 1938 wegen seiner jüdischen Herkunft nach Brasilien ausgewandert ist, enthält alles, was zu einem Stück \"Lese-Heimat\" gehört: Vom Kochbuch bis zum Sprachführer Portugiesisch, von leichter Unterhaltungsliteratur bis zu den Klassikern wie Schiller, aber auch seltene kulturgeschichtliche Judaica.. . Aufstellung. Bibl. Lieblich:1 - Verfasserwerke. Bibl. Lieblich:2 - Sachtitelwerke. Bibl. Lieblich:3 - Periodika. Bibl. Lieblich:4 - Kapselschriften (Sonderdrucke, u.a.). Bibl. Lieblich:5 - Großformat (Quart). Daneben gibt es auch ein kleines Konvolut, das Fragmente enthält.\nRN  - Grundsignatur: Bibl. Lieblich\nTI  - G:Lieblich, Karl (Bibliothek des Autors) - [Geschlossener Bestand der Bibliothek, Nachlass, Autorenbibliothek]\nUR  - https://digital.dla-marbach.de/files/dbst02/public/2023/20230209/20230209-0001.pdf?media_access=public\nUR  - https://www.dla-marbach.de/find/opac/id/BF00034474/\nER  -",
+                        "extent": "ca. 835 Bände",
+                        "filterAuthorityRelation_mv": [
+                            "Lieblich, Karl (1895-1984)␝Unter"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Lieblich, Karl (1895-1984)␝Bestandsbildner/Vorbesitzer"
+                        ],
+                        "filterAuthority_mv": [
+                            "Lieblich, Karl (1895-1984)"
+                        ],
+                        "filterCollection_mv": [
+                            "G:Lieblich, Karl (Bibliothek des Autors)"
+                        ],
+                        "filterFormContent_mv": [
+                            "Nachlass"
+                        ],
+                        "filterMultipart": true,
+                        "filterRecent": "2012-05-21",
+                        "filterSource": "Nachlässe und Spezialsammlungen",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "itemization_extent_mv": [
+                            "ca. 835"
+                        ],
+                        "itemization_status_mv": [
+                            "eigene Liste"
+                        ],
+                        "itemization_unit_mv": [
+                            "Bände"
+                        ],
+                        "location_mv": [
+                            "Bibliotheksmagazin 5 (Block IV: Achse 58a)"
+                        ],
+                        "mediaNumber": "BF000344745",
+                        "note": "Grundsignatur: Bibl. Lieblich",
+                        "order_extent_mv": [
+                            "835"
+                        ],
+                        "order_status_mv": [
+                            "alphabetisch nach Autoren/Sachtiteln"
+                        ],
+                        "order_unit_mv": [
+                            "Bände"
+                        ],
+                        "personAt_display_mv": [
+                            "Lieblich, Karl (1895-1984)"
+                        ],
+                        "personAt_id_mv": [
+                            "PE00026149"
+                        ],
+                        "reference_text_mv": [
+                            "Reinhard Andress: Karl Lieblich. Ein deutsch-jüdisches und schriftstellerisches Emigrantenschicksal zwischen Deutschland und Brasilien. In: Pandaemonium Germanicum. 10 (2006), S. 197-226./BR/Christoph Manasse: Auf der Suche nach einer neuen jüdischen Identität. Der Schriftsteller Karl Lieblich (1895-1984) und seine Vision einer interterritorialen Nation. Köln u.a.: Böhlau, 2015, 364 S."
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 1,
+                        "searchCollectionCreator_display_mv": [
+                            "Lieblich, Karl (1895-1984)"
+                        ],
+                        "searchCollectionCreator_id_mv": [
+                            "PE00026149"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00026149"
+                        ],
+                        "searchNameAt_mv": [
+                            "Lieblich, Karl"
+                        ],
+                        "searchName_mv": [
+                            "Lieblich, Karl"
+                        ],
+                        "searchVariant_mv": [
+                            "Borowsky, Alexander",
+                            "Schillbeil, Ark",
+                            "Schillberl, Ark"
+                        ],
+                        "source": "BF",
+                        "statusLoan": "Am Standort",
+                        "title": "G:Lieblich, Karl (Bibliothek des Autors)",
+                        "titleShort": "Lieblich, Karl (Bibliothek des Autors)",
+                        "url": "https://www.dla-marbach.de/find/opac/id/BF00034474",
+                        "usageRestriction": "benutzbar",
+                        "usageRestrictionComment": "Rara-Bestand. Kopierverbot wegen des teilweise schlechten Erhaltungszustands.",
+                        "usageRestrictionNote": "bedingt benutzbar\nBenutzung bedingt möglich nach vorheriger Terminabsprache. Bitte nehmen Sie Kontakt zu uns auf.\nE-Mail: bibliothek@dla-marbach.de\nTelefon: +49 7144 848 317",
+                        "score": 13.70128
+                    }
+                ]
+            }
+        }
+    }
+}

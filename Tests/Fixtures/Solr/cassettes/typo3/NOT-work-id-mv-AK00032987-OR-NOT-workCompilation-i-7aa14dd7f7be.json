@@ -1,0 +1,28 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "(NOT work_id_mv:(\"AK00032987\") OR NOT workCompilation_id_mv:(\"AK00032987\")) AND (titleMain_text:(\"Der Prozess\") OR titleOther_text_mv:(\"Der Prozess\")) AND creator_id_mv:(\"PE00001005\") AND NOT category:(\"Werktitel\" OR \"Ton- und Bildträger\")",
+            "start": "0",
+            "rows": "0",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 16.230766,
+                "numFoundExact": true,
+                "docs": []
+            }
+        }
+    }
+}

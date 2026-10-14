@@ -1,0 +1,1864 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "schiller",
+            "start": "0",
+            "rows": "25",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "score desc",
+            "fq": [
+                "NOT source:(AU OR BE OR MM)",
+                "NOT filterType_mv:(\"Gedrucktes\")"
+            ],
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(schiller) OR displayAddition1:(schiller) OR displayAddition2:(schiller) OR displayName:(schiller)))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "facet.field": [
+                "{!key=Digital}filterDigital",
+                "{!key=Medientypen}filterType_mv",
+                "{!key=FormUndInhalt}filterFormContent_mv",
+                "{!key=Medium}filterMedium_mv",
+                "{!key=Personen}filterAuthority_mv",
+                "{!key=Thema}filterSubject_mv",
+                "{!key=Sprache}filterLanguage_mv",
+                "{!key=filterLanguageType_mv}filterLanguageType_mv",
+                "{!key=Ort}filterLocation_mv",
+                "{!key=filterLocationType_mv}filterLocationType_mv",
+                "{!key=Sammlung}filterCollection_mv",
+                "{!key=Datenbestand}filterSource",
+                "{!key=Bibliographie}filterBibliography_mv",
+                "{!key=filterAuthorityRole_mv}filterAuthorityRole_mv",
+                "{!key=filterAuthorityRelation_mv}filterAuthorityRelation_mv",
+                "{!key=entities}searchEntity_id_mv"
+            ],
+            "f.filterDigital.facet.sort": "count",
+            "f.filterDigital.facet.limit": "50",
+            "f.filterDigital.facet.mincount": "1",
+            "f.filterType_mv.facet.sort": "count",
+            "f.filterType_mv.facet.limit": "50",
+            "f.filterType_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.sort": "count",
+            "f.filterFormContent_mv.facet.limit": "50",
+            "f.filterFormContent_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.missing": "true",
+            "f.filterMedium_mv.facet.sort": "count",
+            "f.filterMedium_mv.facet.limit": "50",
+            "f.filterMedium_mv.facet.mincount": "1",
+            "f.filterMedium_mv.facet.missing": "true",
+            "f.filterAuthority_mv.facet.sort": "count",
+            "f.filterAuthority_mv.facet.limit": "50",
+            "f.filterAuthority_mv.facet.mincount": "1",
+            "facet.range": "{!key=Zeit}filterDateRange_mv",
+            "f.filterDateRange_mv.facet.range.start": "NOW/YEAR-1850YEARS",
+            "f.filterDateRange_mv.facet.range.end": "NOW/DAY+1YEAR",
+            "f.filterDateRange_mv.facet.range.gap": "+37YEAR",
+            "f.filterSubject_mv.facet.sort": "count",
+            "f.filterSubject_mv.facet.limit": "50",
+            "f.filterSubject_mv.facet.mincount": "1",
+            "f.filterSubject_mv.facet.missing": "true",
+            "facet.query": [
+                "{!key=Woche ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]",
+                "{!key=Monat ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]",
+                "{!key=Quartal ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Halbjahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Jahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1YEAR TO NOW/DAY+1DAY]"
+            ],
+            "f.filterLanguage_mv.facet.sort": "count",
+            "f.filterLanguage_mv.facet.limit": "50",
+            "f.filterLanguage_mv.facet.mincount": "1",
+            "f.filterLanguageType_mv.facet.sort": "count",
+            "f.filterLanguageType_mv.facet.limit": "50",
+            "f.filterLanguageType_mv.facet.mincount": "1",
+            "f.filterLocation_mv.facet.sort": "count",
+            "f.filterLocation_mv.facet.limit": "50",
+            "f.filterLocation_mv.facet.mincount": "1",
+            "f.filterLocationType_mv.facet.sort": "count",
+            "f.filterLocationType_mv.facet.limit": "50",
+            "f.filterLocationType_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.sort": "count",
+            "f.filterCollection_mv.facet.limit": "50",
+            "f.filterCollection_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.missing": "true",
+            "f.filterSource.facet.sort": "count",
+            "f.filterSource.facet.limit": "50",
+            "f.filterSource.facet.mincount": "1",
+            "f.filterSource.facet.missing": "true",
+            "f.filterBibliography_mv.facet.sort": "count",
+            "f.filterBibliography_mv.facet.limit": "50",
+            "f.filterBibliography_mv.facet.mincount": "1",
+            "f.filterBibliography_mv.facet.missing": "true",
+            "f.filterAuthorityRole_mv.facet.sort": "count",
+            "f.filterAuthorityRole_mv.facet.limit": "50",
+            "f.filterAuthorityRole_mv.facet.mincount": "1",
+            "f.filterAuthorityRelation_mv.facet.sort": "count",
+            "f.filterAuthorityRelation_mv.facet.limit": "50",
+            "f.filterAuthorityRelation_mv.facet.mincount": "1",
+            "f.searchEntity_id_mv.facet.sort": "count",
+            "f.searchEntity_id_mv.facet.limit": "2",
+            "f.searchEntity_id_mv.facet.mincount": "1",
+            "facet": "true"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 15270,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00012726",
+                        "display": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "displayAddition1": "63 Kästen, mit den Kryptonachlässen",
+                        "displayName": "Schiller, Friedrich von (1759-1805)",
+                        "filterMultipart": true,
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "usageRestrictionNote": "Für nähere Angaben wenden Sie sich bitte an die Auskunft.\nE-Mail: auskunft-handschriften@dla-marbach.de\nTelefon: +49 7144 848 425"
+                    },
+                    {
+                        "id": "BF00024546",
+                        "display": "A:Schiller-Nationalmuseum - [Bestand, Archiv]",
+                        "displayName": "Schiller-Nationalmuseum (1922-1955)",
+                        "filterMultipart": true,
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "usageRestrictionNote": "Für nähere Angaben wenden Sie sich bitte an die Auskunft.\nE-Mail: auskunft-handschriften@dla-marbach.de\nTelefon: +49 7144 848 425"
+                    },
+                    {
+                        "id": "BF00013084",
+                        "display": "A:Schiller, Friedrich von°Schiller, Carl von - [Kryptobestand, Teilnachlass]",
+                        "displayAddition1": "3 Kästen",
+                        "displayName": "Schiller, Carl von (1793-1857)",
+                        "filterMultipart": true,
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "usageRestrictionNote": "Für nähere Angaben wenden Sie sich bitte an die Auskunft.\nE-Mail: auskunft-handschriften@dla-marbach.de\nTelefon: +49 7144 848 425"
+                    },
+                    {
+                        "id": "BF00013085",
+                        "display": "A:Schiller, Friedrich von°Schiller, Charlotte von - [Kryptobestand, Teilnachlass]",
+                        "displayAddition1": "1 Kasten",
+                        "displayName": "Schiller, Charlotte von (1766-1826)",
+                        "filterMultipart": true,
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "usageRestrictionNote": "Für nähere Angaben wenden Sie sich bitte an die Auskunft.\nE-Mail: auskunft-handschriften@dla-marbach.de\nTelefon: +49 7144 848 425"
+                    },
+                    {
+                        "id": "BI00032137",
+                        "display": "Bildkonvolut Familie Carl von Schiller [Nachlass]",
+                        "displayAddition2": "Inventarnummer: B 2024.F",
+                        "filterMultipart": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "id": "BI00032138",
+                        "display": "Gemäldekonvolut Familie Carl von Schiller [Gemäldekonvolut]",
+                        "displayAddition2": "Inventarnummer: B 2024.F 1",
+                        "filterMultipart": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "id": "BI00032139",
+                        "display": "Konvolut Erinnerungsstücke Familie Carl von Schiller [Konvolut Erinnerungsstücke]",
+                        "displayAddition2": "Inventarnummer: B 2024.F 2",
+                        "filterMultipart": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "id": "BI00032192",
+                        "display": "Graphik-Sammlung Familie Carl von Schiller [Graphik-Sammlung]",
+                        "displayAddition2": "Inventarnummer: B 2024.F 3",
+                        "filterMultipart": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "id": "BI00009390",
+                        "display": "Teetisch aus Schillers Haushalt [Gegenstand]",
+                        "digitalObject_accessLevel_mv": [
+                            "public",
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "D20110617-142",
+                            "D20110617-143"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg",
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-142.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-143.jpg/full/full/0/default.jpg?media_access=public"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01498403",
+                            "MM01498404"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-142.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-143.jpg/full/!480,480/0/default.jpg?media_access=public"
+                        ],
+                        "displayAddition1": "Um 1790",
+                        "displayAddition2": "Inventarnummer: 5080",
+                        "filterDigital": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "nicht benutzbar\nDie Benutzung ist leider nicht möglich. Bei Fragen wenden Sie sich bitte an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "id": "BI00011916",
+                        "display": "Zylindersekretär aus dem Besitz von Friedrich Schiller [Gegenstand]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "C20040305-36"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fC20040305%2fC20040305-36.jpg/full/full/0/default.jpg?media_access=public"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM00024393"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fC20040305%2fC20040305-36.jpg/full/!480,480/0/default.jpg?media_access=public"
+                        ],
+                        "displayAddition1": "1789",
+                        "displayAddition2": "Inventarnummer: 5078",
+                        "filterDigital": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "id": "BI00015349",
+                        "display": "Zylindersekretär aus dem Besitz von Charlotte Schiller [Gegenstand]",
+                        "digitalObject_accessLevel_mv": [
+                            "public",
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "D20141008-111",
+                            "D20141008-118"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg",
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20141008%2fD20141008-111.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20141008%2fD20141008-118.jpg/full/full/0/default.jpg?media_access=public"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01513515",
+                            "MM01513516"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20141008%2fD20141008-111.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20141008%2fD20141008-118.jpg/full/!480,480/0/default.jpg?media_access=public"
+                        ],
+                        "displayAddition1": "spätes 18. Jh.",
+                        "displayAddition2": "Inventarnummer: 6464",
+                        "filterDigital": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Videodatei",
+                            "Beitrag"
+                        ],
+                        "displayName": "Schöneberger, Christoph",
+                        "filterType_mv": [
+                            "Video"
+                        ],
+                        "displayAddition1": "Erschienen in: Baden-Württemberg aktuell. - [2025.10.30]. [SWR aktuell Baden-Württemberg 30.10.2025].. - [Stuttgart] : SWR, 2025 - 1 Online-Ressource (Videodatei, 29 min)",
+                        "id": "AK01870837",
+                        "display": "[Wiedereröffnung des Schiller-Nationalmuseums]"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Videodatei",
+                            "Beitrag"
+                        ],
+                        "displayName": "Vialkowitsch, Niko",
+                        "filterType_mv": [
+                            "Video"
+                        ],
+                        "displayAddition1": "Erschienen in: [SWR Kultur 16.11.2025].. - [Stuttgart] : SWR, @ 2025 - 1 Online-Ressource (Videodatei, 30 min)",
+                        "id": "AK01872835",
+                        "display": "Wiedersehen mit Schiller - Das Schiller-Nationalmuseum neu eröffnet"
+                    },
+                    {
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nNur mit Einverständnis der beteiligten Personen ausleihbar!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "displayName": "Schiller, Johann Caspar (1723-1796) [Dokumentierte Person]",
+                        "displayAddition2": "A:Schiller, Friedrich von°Schiller, Johann Caspar - [Kryptobestand, Teilnachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "1902",
+                        "id": "HS00888909",
+                        "display": "Schiller, Johann Caspar: Auszug aus dem Familienregister [Dokumente]"
+                    },
+                    {
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "displayName": "Schiller, Charlotte von (1766-1826) [Verfasser/in]; Schiller, Johann Caspar (1723-1796) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von°Schiller, Johann Caspar - [Kryptobestand, Teilnachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "29.12.1789",
+                        "id": "HS00887915",
+                        "display": "Schiller, Charlotte von an Schiller, Johann Caspar [Briefe]"
+                    },
+                    {
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "displayName": "Schiller, Charlotte von (1766-1826) [Verfasser/in]; Schiller, Johann Caspar (1723-1796) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von°Schiller, Johann Caspar - [Kryptobestand, Teilnachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "30.12.1790",
+                        "id": "HS00887918",
+                        "display": "Schiller, Charlotte von an Schiller, Johann Caspar [Briefe]"
+                    },
+                    {
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "displayName": "Schiller, Johann Caspar (1723-1796) [Verfasser/in]; Schiller, Friedrich von (1759-1805) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "20.08.1793",
+                        "id": "HS00241616",
+                        "display": "Schiller, Johann Caspar an Schiller, Friedrich von [Briefe]"
+                    },
+                    {
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "displayName": "Schiller, Johann Caspar (1723-1796) [Verfasser/in]; Schiller, Friedrich von (1759-1805) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "06.08.1791",
+                        "id": "HS00241617",
+                        "display": "Schiller, Johann Caspar an Schiller, Friedrich von [Briefe]"
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242238"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242238/files/images/HS_00242238_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Elisabetha Dorothea (1732-1802) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569285"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "08.01.1796",
+                        "filterDigital": true,
+                        "id": "HS00242238",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242238/?media_access=public&media_license=CC0&media_thumbnail=HS_00242238_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242240"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242240/files/images/HS_00242240_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Elisabetha Dorothea (1732-1802) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569286"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "21.11.1794",
+                        "filterDigital": true,
+                        "id": "HS00242240",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242240/?media_access=public&media_license=CC0&media_thumbnail=HS_00242240_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242242"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242242/files/images/HS_00242242_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Elisabetha Dorothea (1732-1802) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569287"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "08.11.1793",
+                        "filterDigital": true,
+                        "id": "HS00242242",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242242/?media_access=public&media_license=CC0&media_thumbnail=HS_00242242_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242248"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242248/files/images/HS_00242248_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Elisabetha Dorothea (1732-1802) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569290"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "26.06.1790",
+                        "filterDigital": true,
+                        "id": "HS00242248",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242248/?media_access=public&media_license=CC0&media_thumbnail=HS_00242248_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242251"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242251/files/images/HS_00242251_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Elisabetha Dorothea (1732-1802) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569291"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "13.05.1790",
+                        "filterDigital": true,
+                        "id": "HS00242251",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242251/?media_access=public&media_license=CC0&media_thumbnail=HS_00242251_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "digitalObject_display_mv": [
+                            "HS00242262"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242262/files/images/HS_00242262_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Elisabetha Dorothea (1732-1802) [Adressat/in]",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "digitalObject_id_mv": [
+                            "MM01569296"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "19.11.1782",
+                        "filterDigital": true,
+                        "id": "HS00242262",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242262/?media_access=public&media_license=CC0&media_thumbnail=HS_00242262_0001.tif"
+                        ],
+                        "display": "Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ]
+                    },
+                    {
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Dokumentierte Person]",
+                        "displayAddition2": "A:Schiller, Friedrich von/Carlsschule - [Standortkonvolut, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "23.09.1774",
+                        "id": "HS00501165",
+                        "display": "Schiller, Friedrich von: Urkundliche Erklärung der Eltern beim Eintritt Friedrich Schillers in die herzogliche Militär-Akademie [Dokumente]"
+                    }
+                ]
+            },
+            "facet_counts": {
+                "facet_queries": {
+                    "Woche": 2,
+                    "Monat": 28,
+                    "Quartal": 119,
+                    "Halbjahr": 199,
+                    "Jahr": 354
+                },
+                "facet_fields": {
+                    "Digital": [
+                        "true",
+                        1727
+                    ],
+                    "Medientypen": [
+                        "Handschriften",
+                        8195,
+                        "Normdaten",
+                        3569,
+                        "Audio",
+                        1742,
+                        "Bilder und Objekte",
+                        1136,
+                        "Video",
+                        585,
+                        "Daten",
+                        46
+                    ],
+                    "FormUndInhalt": [
+                        "Brief",
+                        5867,
+                        "Aufsatz",
+                        1261,
+                        "Lyrik",
+                        1031,
+                        "Verschiedenes",
+                        1022,
+                        "Lesung",
+                        853,
+                        "Fotografie",
+                        581,
+                        "Prosa",
+                        499,
+                        "Lied",
+                        385,
+                        "Dramatisches",
+                        370,
+                        "Dokument",
+                        363,
+                        "Rede / Vortrag",
+                        306,
+                        "Rundfunkfeature",
+                        252,
+                        "Widmung",
+                        151,
+                        "Oper",
+                        131,
+                        "Theaterinszenierung",
+                        125,
+                        "Sonstige Texte",
+                        98,
+                        "Zeichnung",
+                        95,
+                        "Druckgrafik",
+                        94,
+                        "Gespräch / Interview",
+                        89,
+                        "Hörspiel",
+                        79,
+                        "Kompositionen",
+                        76,
+                        "Gegenstand",
+                        74,
+                        "Sammlung",
+                        61,
+                        "Vertonung",
+                        59,
+                        "Medaille",
+                        57,
+                        "Nachlass",
+                        57,
+                        "Skulptur",
+                        57,
+                        "Film",
+                        51,
+                        "Gemälde",
+                        51,
+                        "Vertrag",
+                        49,
+                        "Anthologie",
+                        47,
+                        "Abschrift",
+                        40,
+                        "Diskussion",
+                        36,
+                        "Bucheinlagen",
+                        35,
+                        "Übersetzung",
+                        35,
+                        "Gutachten",
+                        34,
+                        "Relief",
+                        31,
+                        "Verlagsnotizen",
+                        26,
+                        "Zusammenstellung",
+                        26,
+                        "Plakat",
+                        25,
+                        "Teilnachlass",
+                        24,
+                        "Autobiografisches",
+                        22,
+                        "Aquarell",
+                        18,
+                        "Herausgegebenes",
+                        18,
+                        "Druck",
+                        17,
+                        "Bearbeitung",
+                        16,
+                        "Konzert",
+                        15,
+                        "Scherenschnitt",
+                        15,
+                        "Fotoalbum",
+                        14,
+                        "Hörbuch",
+                        14,
+                        null,
+                        3324
+                    ],
+                    "Medium": [
+                        "Beitrag",
+                        1261,
+                        "Audio-CD",
+                        1067,
+                        "Videokassette",
+                        343,
+                        "Audiokassette",
+                        264,
+                        "Audiodatei",
+                        227,
+                        "Schallplatte",
+                        185,
+                        "Video-DVD",
+                        160,
+                        "Noten",
+                        76,
+                        "Tonband",
+                        53,
+                        "Videodatei",
+                        44,
+                        "CD-ROM",
+                        36,
+                        "Online-Ressource",
+                        35,
+                        "Buch",
+                        18,
+                        "Datenbank",
+                        11,
+                        "Filmrolle",
+                        9,
+                        "Reihe",
+                        7,
+                        "Mehrteiliges Werk",
+                        3,
+                        "Sonstiger Datenträger",
+                        1,
+                        null,
+                        12827
+                    ],
+                    "Personen": [
+                        "Schiller, Friedrich von (1759-1805)",
+                        5043,
+                        "Schiller-Nationalmuseum und Deutsches Literaturarchiv <Marbach, Neckar> (1955-2005)",
+                        932,
+                        "Gleichen-Russwurm, Emilie von (1804-1872)",
+                        689,
+                        "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)",
+                        519,
+                        "Schiller-Nationalmuseum (1922-1955)",
+                        510,
+                        "Schiller, Charlotte von (1766-1826)",
+                        428,
+                        "Unbekannt",
+                        382,
+                        "Schiller, Carl von (1793-1857)",
+                        298,
+                        "Michaelis, Mathias (1948-)",
+                        297,
+                        "Cotta, Johann Friedrich (1764-1832)",
+                        282,
+                        "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)",
+                        262,
+                        "Reinwald, Christophine (1757-1847)",
+                        260,
+                        "Goethe, Johann Wolfgang von (1749-1832)",
+                        242,
+                        "Zeller, Bernhard (1919-2008)",
+                        241,
+                        "Schiller, Ernst von (1796-1841)",
+                        222,
+                        "Meyer, Joachim (1803-1865)",
+                        220,
+                        "Körner, Christian Gottfried (1756-1831)",
+                        218,
+                        "Hoffmann, Bernd (1957-)",
+                        173,
+                        "Knebel, Karl Ludwig von (1744-1834)",
+                        152,
+                        "Franckh, Louise (1766-1836)",
+                        139,
+                        "Schubert, Franz (1797-1828)",
+                        132,
+                        "Suhrkamp-Verlag <Frankfurt, Main> (1950-)",
+                        128,
+                        "Junot, Caroline (1799-1850)",
+                        126,
+                        "Mörike, Eduard (1804-1875)",
+                        115,
+                        "Schiller, Johann Caspar (1723-1796)",
+                        108,
+                        "Zwierlein, Marie (1802-1875)",
+                        108,
+                        "Gleichen-Russwurm, Alexander von (1865-1947)",
+                        100,
+                        "Quadflieg, Will (1914-2003)",
+                        91,
+                        "Karl Eugen, Württemberg, Herzog (1728-1793)",
+                        84,
+                        "Schiller-Theater (Berlin, West)",
+                        84,
+                        "Verdi, Giuseppe (1813-1901)",
+                        81,
+                        "Schiller-Nationalmuseum und Deutsches Literaturarchiv <Marbach, Neckar> / Bibliothek (1955-2005)",
+                        76,
+                        "Wolzogen, Alfred von",
+                        76,
+                        "Humboldt, Wilhelm von (1767-1835)",
+                        75,
+                        "Ott, Ulrich (1939-)",
+                        75,
+                        "Goethe- und Schiller-Archiv (1889-)",
+                        74,
+                        "Reinwald, Wilhelm Friedrich Hermann (1737-1815)",
+                        73,
+                        "Göschen, Georg Joachim (1752-1828)",
+                        72,
+                        "Verschiedene",
+                        72,
+                        "Schiller, Elisabetha Dorothea (1732-1802)",
+                        68,
+                        "R. Piper und Co. <München> (1904-)",
+                        63,
+                        "Schiller, Monika",
+                        63,
+                        "Pfäfflin, Friedrich (1935-)",
+                        62,
+                        "Schiller-Nationalmuseum und Deutsches Literaturarchiv <Marbach, Neckar> / Handschriftenabteilung (1955-2005)",
+                        62,
+                        "Korner, Chris (1968-2024)",
+                        61,
+                        "Schiller, Friedrich Ludwig Ernst von (1826-1877)",
+                        61,
+                        "Karl Alexander <Sachsen-Weimar-Eisenach, Großherzog> (1818-1901)",
+                        59,
+                        "Unseld, Siegfried (1924-2002)",
+                        59,
+                        "Huber, Ludwig Ferdinand (1764-1804)",
+                        58,
+                        "Insel-Verlag",
+                        58
+                    ],
+                    "Thema": [
+                        "Schiller, Friedrich von (1759-1805)",
+                        4345,
+                        "Wirkungsgeschichte / Aufführungen, Veranstaltungen und Rezitationen auf der Textgrundlage des Autors / Einzelne Werke",
+                        781,
+                        "Vertonungen / Einzelne Werke",
+                        371,
+                        "Schiller-Nationalmuseum und Deutsches Literaturarchiv <Marbach, Neckar>",
+                        306,
+                        "Wirkungsgeschichte / Aufführungen, Veranstaltungen und Rezitationen auf der Textgrundlage des Autors / Allgemeines",
+                        202,
+                        "Die Stimme des Autors",
+                        190,
+                        "Goethe, Johann Wolfgang von (1749-1832)",
+                        185,
+                        "Schiller, Friedrich von <1759-1805>. Wilhelm Tell (Drama : 1804)",
+                        155,
+                        "Schiller, Friedrich von <1759-1805>. Don Carlos (Drama : 1787)",
+                        135,
+                        "Schiller, Friedrich von <1759-1805>. Die Räuber (Drama : 1781)",
+                        114,
+                        "Schiller, Friedrich von <1759-1805>. Kabale und Liebe (Drama : 1784)",
+                        109,
+                        "Andere Bearbeitungen / Einzelne Werke",
+                        94,
+                        "Schiller, Friedrich von <1759-1805>. Maria Stuart (Drama : 1801)",
+                        87,
+                        "Schiller, Friedrich von <1759-1805>. Wallenstein (Zusammenstellung : 1800)",
+                        75,
+                        "Person und Werk als Thema",
+                        74,
+                        "Schiller, Friedrich von <1759-1805>. An die Freude (Lyrik : 1785-1787)",
+                        71,
+                        "Schiller, Friedrich von <1759-1805>. Der Handschuh (Lyrik : 1798)",
+                        67,
+                        "Schiller, Friedrich von <1759-1805>. Die Bürgschaft (Ballade : 1798)",
+                        67,
+                        "Schiller, Friedrich von <1759-1805>. Das Lied von der Glocke (Lyrik : 1799)",
+                        64,
+                        "Mörike, Eduard (1804-1875)",
+                        58,
+                        "Schiller, Friedrich von <1759-1805>. Die Jungfrau von Orleans (Drama : 1802)",
+                        54,
+                        "Darstellungen",
+                        52,
+                        "Sekundärliteratur (nicht weiter differenziert)",
+                        52,
+                        "Schiller-Nationalmuseum",
+                        50,
+                        "Wirkungsgeschichte / Würdigungen, Einschätzungen",
+                        49,
+                        "Kürzere Darstellungen",
+                        46,
+                        "Vertonungen / Allgemeines",
+                        46,
+                        "Dramatisches / Einzelne Werke",
+                        44,
+                        "Einzelne Ausstellungen zur deutschen Literatur",
+                        44,
+                        "Schiller, Friedrich von <1759-1805>. Die Verschwörung des Fiesco zu Genua (Drama : 1783)",
+                        40,
+                        "Schiller, Friedrich von <1759-1805>. Der Taucher (Lyrik : 1797)",
+                        38,
+                        "Mann, Thomas (1875-1955)",
+                        37,
+                        "Gespräche, Interviews",
+                        36,
+                        "Verfilmungen / Einzelne Werke",
+                        35,
+                        "Dokumente",
+                        34,
+                        "Wirkungsgeschichte / Verehrung / Einzelnes",
+                        34,
+                        "Schiller, Friedrich von <1759-1805>. Die Kraniche des Ibykus (Lyrik : 1798)",
+                        33,
+                        "J.-G.-Cotta'sche Buchhandlung <Stuttgart>",
+                        31,
+                        "Feier",
+                        30,
+                        "Bildungswelt, Weltbild / Einzelne Begriffe",
+                        29,
+                        "Schiller, Charlotte von (1766-1826)",
+                        29,
+                        "Schiller, Friedrich von <1759-1805>. Wallensteins Tod (Drama : 1800)",
+                        29,
+                        "Schiller, Friedrich von <1759-1805>. Demetrius (Drama : 1815-)",
+                        28,
+                        "Umfassende Darstellungen",
+                        28,
+                        "Schiller, Friedrich von <1759-1805>. Der Verbrecher aus verlorener Ehre (Erzählung : 1786)",
+                        27,
+                        "Ausstellungen",
+                        26,
+                        "Hölderlin, Friedrich (1770-1843)",
+                        26,
+                        "Schiller, Johann Caspar (1723-1796)",
+                        26,
+                        "Heine, Heinrich (1797-1856)",
+                        25,
+                        "Erzählende Prosa / Einzelne Werke",
+                        24,
+                        null,
+                        8761
+                    ],
+                    "Sprache": [
+                        "Deutsch",
+                        9698,
+                        "Italienisch",
+                        75,
+                        "Englisch",
+                        49,
+                        "Französisch",
+                        44,
+                        "Latein",
+                        20,
+                        "Deutsche Dialekte",
+                        7,
+                        "Spanisch",
+                        4,
+                        "Dänisch",
+                        2,
+                        "Griechisch",
+                        2,
+                        "Portugiesisch",
+                        2,
+                        "Russisch",
+                        2,
+                        "Tschechisch",
+                        2,
+                        "Altgriechisch (bis 1453)",
+                        1,
+                        "Hebräisch",
+                        1,
+                        "Japanisch",
+                        1,
+                        "Lettisch",
+                        1,
+                        "kein linguistischer Inhalt",
+                        1
+                    ],
+                    "filterLanguageType_mv": [
+                        "Deutsch␝Original",
+                        9691,
+                        "Italienisch␝Original",
+                        73,
+                        "Englisch␝Original",
+                        46,
+                        "Französisch␝Original",
+                        43,
+                        "Latein␝Original",
+                        20,
+                        "Deutsche Dialekte␝Original",
+                        7,
+                        "Deutsch␝Übersetzung",
+                        7,
+                        "Spanisch␝Original",
+                        4,
+                        "Englisch␝Übersetzung",
+                        3,
+                        "Dänisch␝Original",
+                        2,
+                        "Griechisch␝Original",
+                        2,
+                        "Italienisch␝Übersetzung",
+                        2,
+                        "Portugiesisch␝Original",
+                        2,
+                        "Russisch␝Original",
+                        2,
+                        "Tschechisch␝Original",
+                        2,
+                        "Altgriechisch (bis 1453)␝Original",
+                        1,
+                        "Französisch␝Übersetzung",
+                        1,
+                        "Hebräisch␝Original",
+                        1,
+                        "Japanisch␝Original",
+                        1,
+                        "Lettisch␝Original",
+                        1,
+                        "kein linguistischer Inhalt␝Original",
+                        1
+                    ],
+                    "Ort": [
+                        "Weimar",
+                        734,
+                        "Stuttgart",
+                        659,
+                        "Jena",
+                        644,
+                        "Marbach am Neckar",
+                        436,
+                        "Berlin",
+                        413,
+                        "Greifenstein",
+                        387,
+                        "Tübingen",
+                        274,
+                        "Leipzig",
+                        220,
+                        "München",
+                        207,
+                        "Meiningen",
+                        173,
+                        "Hamburg",
+                        167,
+                        "Rudolstadt",
+                        129,
+                        "Köln",
+                        127,
+                        "Dresden",
+                        122,
+                        "Frankfurt am Main",
+                        109,
+                        "Ludwigsburg",
+                        94,
+                        "Wien",
+                        84,
+                        "Mainz",
+                        77,
+                        "Würzburg",
+                        67,
+                        "Nürnberg",
+                        66,
+                        "Solitude",
+                        64,
+                        "Marbach a. N.",
+                        63,
+                        "Marbach",
+                        61,
+                        "Bonn",
+                        56,
+                        "Möckmühl",
+                        55,
+                        "Reichenberg",
+                        53,
+                        "S.l.",
+                        53,
+                        "Leonberg",
+                        52,
+                        "Mannheim",
+                        47,
+                        "Heidelberg",
+                        32,
+                        "Tegel",
+                        31,
+                        "Lorch (Ostalbkreis)",
+                        29,
+                        "Darmstadt",
+                        28,
+                        "Zürich",
+                        28,
+                        "Trier",
+                        27,
+                        "Kopenhagen",
+                        26,
+                        "Paris",
+                        26,
+                        "Hohenheim",
+                        24,
+                        "Düsseldorf",
+                        22,
+                        "Rottweil",
+                        22,
+                        "London",
+                        21,
+                        "Schiller-Nationalmuseum",
+                        21,
+                        "Breslau",
+                        20,
+                        "Erfurt",
+                        20,
+                        "Heilbronn",
+                        19,
+                        "Rom",
+                        18,
+                        "Baden-Baden",
+                        17,
+                        "Berlin-Charlottenburg",
+                        17,
+                        "Bremen",
+                        17,
+                        "Hannover",
+                        17
+                    ],
+                    "filterLocationType_mv": [
+                        "Weimar␝Entstehungsort",
+                        675,
+                        "Jena␝Entstehungsort",
+                        569,
+                        "Stuttgart␝Entstehungsort",
+                        535,
+                        "Greifenstein␝Entstehungsort",
+                        385,
+                        "Marbach am Neckar␝Entstehungsort",
+                        366,
+                        "Tübingen␝Entstehungsort",
+                        267,
+                        "Berlin␝Entstehungsort",
+                        265,
+                        "Leipzig␝Entstehungsort",
+                        174,
+                        "Meiningen␝Entstehungsort",
+                        169,
+                        "München␝Entstehungsort",
+                        143,
+                        "Rudolstadt␝Entstehungsort",
+                        121,
+                        "Dresden␝Entstehungsort",
+                        111,
+                        "Berlin␝Erscheinungsort",
+                        107,
+                        "Hamburg␝Erscheinungsort",
+                        101,
+                        "Stuttgart␝Erscheinungsort",
+                        94,
+                        "Frankfurt am Main␝Entstehungsort",
+                        89,
+                        "Ludwigsburg␝Entstehungsort",
+                        82,
+                        "Köln␝Entstehungsort",
+                        81,
+                        "Solitude␝Entstehungsort",
+                        64,
+                        "Marbach a. N.␝Erscheinungsort",
+                        63,
+                        "Nürnberg␝Entstehungsort",
+                        63,
+                        "Würzburg␝Entstehungsort",
+                        60,
+                        "Mainz␝Erscheinungsort",
+                        58,
+                        "Hamburg␝Entstehungsort",
+                        56,
+                        "München␝Erscheinungsort",
+                        55,
+                        "S.l.␝Erscheinungsort",
+                        53,
+                        "Leonberg␝Entstehungsort",
+                        52,
+                        "Reichenberg␝Entstehungsort",
+                        51,
+                        "Möckmühl␝Entstehungsort",
+                        50,
+                        "Wien␝Entstehungsort",
+                        50,
+                        "Marbach␝Erscheinungsort",
+                        47,
+                        "Bonn␝Entstehungsort",
+                        42,
+                        "Jena␝Wirkungsort",
+                        40,
+                        "Mannheim␝Entstehungsort",
+                        39,
+                        "Köln␝Erscheinungsort",
+                        36,
+                        "Tegel␝Entstehungsort",
+                        31,
+                        "Leipzig␝Erscheinungsort",
+                        29,
+                        "Lorch (Ostalbkreis)␝Entstehungsort",
+                        29,
+                        "Berlin␝Wirkungsort",
+                        26,
+                        "Trier␝Entstehungsort",
+                        25,
+                        "Hohenheim␝Entstehungsort",
+                        24,
+                        "Kopenhagen␝Entstehungsort",
+                        23,
+                        "Marbach am Neckar␝Erscheinungsort",
+                        23,
+                        "Darmstadt␝Entstehungsort",
+                        22,
+                        "Heidelberg␝Entstehungsort",
+                        22,
+                        "Rottweil␝Entstehungsort",
+                        22,
+                        "Paris␝Entstehungsort",
+                        21,
+                        "Schiller-Nationalmuseum␝Darstellungsort",
+                        21,
+                        "Weimar␝Wirkungsort",
+                        21,
+                        "Jena␝Sitz",
+                        20
+                    ],
+                    "Sammlung": [
+                        "A:Schiller, Friedrich von",
+                        1299,
+                        "COTTA:Briefe",
+                        1129,
+                        "A:Schiller, Friedrich von°Gleichen-Rußwurm, Emilie von",
+                        485,
+                        "A:Schiller-Nationalmuseum",
+                        412,
+                        "COTTA:Manuskripte",
+                        229,
+                        "A:Schiller, Friedrich von°Schiller, Carl von",
+                        203,
+                        "A:Schiller, Friedrich von°Schiller, Charlotte von",
+                        163,
+                        "A:Schiller, Friedrich von°Franckh, Louise",
+                        150,
+                        "A:Schiller, Friedrich von/Carlsschule",
+                        145,
+                        "A:Knebel, Karl Ludwig von",
+                        143,
+                        "A:Schiller, Friedrich von°Reinwald, Christophine",
+                        138,
+                        "A:Schiller, Friedrich von°Schiller, Ernst von",
+                        105,
+                        "A:Schiller, Friedrich von°Junot",
+                        100,
+                        "A:Schiller, Friedrich von°Gleichen-Rußwurm, Alexander von",
+                        66,
+                        "A:Schiller, Friedrich von°Schiller, Johann Caspar",
+                        64,
+                        "A:Piper, Reinhard Verlag",
+                        63,
+                        "COTTA:Verträge",
+                        60,
+                        "J:Gleichen-Rußwurm <Familie> (Familienarchiv)",
+                        60,
+                        "A:Schiller, Friedrich von°Kühner <Familie>",
+                        52,
+                        "A:Schiller, Friedrich von/Kopien",
+                        48,
+                        "SUA:Suhrkamp/01 Verlagsleitung/Allgemeine Korrespondenz",
+                        48,
+                        "A:Rühmkorf, Peter",
+                        42,
+                        "A:Schiller, Friedrich von°Reinwald, Wilhelm Friedrich Hermann",
+                        38,
+                        "A:Ackerknecht, Erwin",
+                        34,
+                        "A:Schiller, Friedrich von/Gerstenbergksche Fälschungen",
+                        34,
+                        "A:Bense, Max",
+                        33,
+                        "A:Schiller, Friedrich von/Faksimiles",
+                        32,
+                        "A:Silcher, Friedrich",
+                        31,
+                        "A:Schiller, Friedrich von°Schiller, Friedrich Ludwig Ernst von",
+                        30,
+                        "A:Zuckmayer, Carl",
+                        30,
+                        "A:Schiller, Friedrich von°Gleichen-Russwurm, Ludwig von",
+                        29,
+                        "A:Schiller, Friedrich von°Schiller, Ernst von/Privilegien",
+                        29,
+                        "A:Scholz, Wilhelm von",
+                        29,
+                        "A:Weltrich, Richard/Schiller-Materialien",
+                        29,
+                        "A:Schiller, Friedrich von°Schiller, Magdalena von",
+                        27,
+                        "COTTA:Gelehrten-Copierbuch VI",
+                        27,
+                        "A:Reclam-Verlag/Reclam-Archiv Leipzig/Lektorat",
+                        26,
+                        "COTTA:Gelehrten-Copierbuch IV",
+                        26,
+                        "SUA:Suhrkamp/03 Lektorate/Insel-Verlag",
+                        26,
+                        "A:Beißner, Friedrich",
+                        25,
+                        "A:Fischer, Samuel Verlag",
+                        25,
+                        "COTTA:Faszikel",
+                        25,
+                        "COTTA:Interna",
+                        25,
+                        "COTTA:Korrekturen",
+                        25,
+                        "A:Schiller, Friedrich von°Schiller, Luise Friederike von",
+                        24,
+                        "D:Schiller, Friedrich von°Gleichen-Russwurm, Alexander von",
+                        24,
+                        "A:Borchardt, Rudolf",
+                        22,
+                        "COTTA:Gelehrten-Copierbuch VII",
+                        22,
+                        "D:Schiller, Friedrich von",
+                        21,
+                        "A:Pinthus, Kurt",
+                        20,
+                        null,
+                        7019
+                    ],
+                    "Datenbestand": [
+                        "Handschriften Einzelnachweise",
+                        8055,
+                        "Bibliotheksmaterialien",
+                        2356,
+                        "Systematikketten",
+                        2060,
+                        "Bilder und Objekte",
+                        1135,
+                        "Personen",
+                        528,
+                        "Werke",
+                        512,
+                        "Körperschaften",
+                        284,
+                        "Orte und Sachbegriffe",
+                        181,
+                        "Nachlässe und Spezialsammlungen",
+                        144,
+                        "Digitale Nachschlagewerke",
+                        11,
+                        "Fachsystematik",
+                        4,
+                        null,
+                        0
+                    ],
+                    "Bibliographie": [
+                        "Schiller-Bibliographie vorgesehen",
+                        69,
+                        "Schiller-Bibliographie",
+                        48,
+                        "Döblin-Bibliographie",
+                        1,
+                        null,
+                        15152
+                    ],
+                    "filterAuthorityRole_mv": [
+                        "Schiller, Friedrich von (1759-1805)␝Verfasser/Urheber",
+                        2418,
+                        "Schiller, Friedrich von (1759-1805)␝Behandelte Person/Körperschaft",
+                        1905,
+                        "Schiller, Friedrich von (1759-1805)␝Adressat",
+                        863,
+                        "Gleichen-Russwurm, Emilie von (1804-1872)␝Verfasser/Urheber",
+                        480,
+                        "Schiller-Nationalmuseum (1922-1955)␝Adressat",
+                        399,
+                        "Schiller-Nationalmuseum und Deutsches Literaturarchiv <Marbach, Neckar> (1955-2005)␝Verfasser/Urheber",
+                        309,
+                        "Michaelis, Mathias (1948-)␝Verfasser/Urheber",
+                        297,
+                        "Schiller, Charlotte von (1766-1826)␝Verfasser/Urheber",
+                        283,
+                        "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)␝Adressat",
+                        265,
+                        "Cotta, Johann Friedrich (1764-1832)␝Verfasser/Urheber",
+                        264,
+                        "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)␝Adressat",
+                        253,
+                        "Schiller, Friedrich von (1759-1805)␝Dargestellte Person allein",
+                        228,
+                        "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)␝Verfasser/Urheber",
+                        214,
+                        "Unbekannt␝Verfasser/Urheber",
+                        212,
+                        "Schiller-Nationalmuseum und Deutsches Literaturarchiv <Marbach, Neckar> (1955-2005)␝Veranstaltung",
+                        199,
+                        "Schiller-Nationalmuseum und Deutsches Literaturarchiv <Marbach, Neckar> (1955-2005)␝Adressat",
+                        197,
+                        "Schiller, Friedrich von (1759-1805)␝Werktitel Person/Körperschaft",
+                        195,
+                        "Gleichen-Russwurm, Emilie von (1804-1872)␝Adressat",
+                        179,
+                        "Hoffmann, Bernd (1957-)␝Verfasser/Urheber",
+                        173,
+                        "Schiller, Carl von (1793-1857)␝Verfasser/Urheber",
+                        164,
+                        "Körner, Christian Gottfried (1756-1831)␝Adressat",
+                        160,
+                        "Reinwald, Christophine (1757-1847)␝Verfasser/Urheber",
+                        154,
+                        "Knebel, Karl Ludwig von (1744-1834)␝Adressat",
+                        145,
+                        "Meyer, Joachim (1803-1865)␝Adressat",
+                        145,
+                        "Schiller, Ernst von (1796-1841)␝Verfasser/Urheber",
+                        144,
+                        "Schiller, Friedrich von (1759-1805)␝Dokumentierte Person/Körperschaft",
+                        144,
+                        "Schiller, Friedrich von (1759-1805)␝Verfasser der literarischen Vorlage",
+                        136,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Behandelte Person/Körperschaft",
+                        134,
+                        "Schubert, Franz (1797-1828)␝Komponist",
+                        132,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Verfasser/Urheber",
+                        129,
+                        "Unbekannt␝Adressat",
+                        123,
+                        "Zeller, Bernhard (1919-2008)␝Verfasser/Urheber",
+                        122,
+                        "Zwierlein, Marie (1802-1875)␝Adressat",
+                        106,
+                        "Schiller, Carl von (1793-1857)␝Adressat",
+                        102,
+                        "Suhrkamp-Verlag <Frankfurt, Main> (1950-)␝Korrespondent",
+                        99,
+                        "Suhrkamp-Verlag <Frankfurt, Main> (1950-)␝nicht bestimmt",
+                        99,
+                        "Franckh, Louise (1766-1836)␝Adressat",
+                        94,
+                        "Schiller, Charlotte von (1766-1826)␝Adressat",
+                        92,
+                        "Junot, Caroline (1799-1850)␝Verfasser/Urheber",
+                        87,
+                        "Reinwald, Christophine (1757-1847)␝Adressat",
+                        83,
+                        "Mörike, Eduard (1804-1875)␝Verfasser/Urheber",
+                        80,
+                        "Schiller-Nationalmuseum und Deutsches Literaturarchiv <Marbach, Neckar> (1955-2005)␝Behandelte Person/Körperschaft",
+                        78,
+                        "Wolzogen, Alfred von␝Adressat",
+                        76,
+                        "Verdi, Giuseppe (1813-1901)␝Komponist",
+                        75,
+                        "Zeller, Bernhard (1919-2008)␝Adressat",
+                        67,
+                        "Quadflieg, Will (1914-2003)␝Interpret",
+                        62,
+                        "Schiller-Nationalmuseum und Deutsches Literaturarchiv <Marbach, Neckar> (1955-2005)␝nicht bestimmt",
+                        62,
+                        "Korner, Chris (1968-2024)␝Verfasser/Urheber",
+                        61,
+                        "Schiller, Ernst von (1796-1841)␝Adressat",
+                        61,
+                        "Meyer, Joachim (1803-1865)␝Verfasser/Urheber",
+                        60
+                    ],
+                    "filterAuthorityRelation_mv": [
+                        "Schiller, Friedrich von (1759-1805)␝Von",
+                        2625,
+                        "Schiller, Friedrich von (1759-1805)␝Über",
+                        2550,
+                        "Schiller, Friedrich von (1759-1805)␝An",
+                        870,
+                        "Gleichen-Russwurm, Emilie von (1804-1872)␝Von",
+                        487,
+                        "Schiller-Nationalmuseum (1922-1955)␝An",
+                        427,
+                        "Schiller-Nationalmuseum und Deutsches Literaturarchiv <Marbach, Neckar> (1955-2005)␝Von",
+                        393,
+                        "Schiller-Nationalmuseum und Deutsches Literaturarchiv <Marbach, Neckar> (1955-2005)␝An",
+                        317,
+                        "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)␝An",
+                        302,
+                        "Michaelis, Mathias (1948-)␝Von",
+                        297,
+                        "Schiller, Charlotte von (1766-1826)␝Von",
+                        295,
+                        "Schiller-Nationalmuseum und Deutsches Literaturarchiv <Marbach, Neckar> (1955-2005)␝Über",
+                        283,
+                        "Cotta, Johann Friedrich (1764-1832)␝Von",
+                        264,
+                        "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)␝An",
+                        253,
+                        "Unbekannt␝Von",
+                        251,
+                        "J.-G.-Cotta'sche Buchhandlung <Stuttgart> (1810-1889)␝Von",
+                        215,
+                        "Gleichen-Russwurm, Emilie von (1804-1872)␝An",
+                        179,
+                        "Hoffmann, Bernd (1957-)␝Von",
+                        173,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Über",
+                        167,
+                        "Schiller, Carl von (1793-1857)␝Von",
+                        165,
+                        "Körner, Christian Gottfried (1756-1831)␝An",
+                        160,
+                        "Reinwald, Christophine (1757-1847)␝Von",
+                        160,
+                        "Zeller, Bernhard (1919-2008)␝Von",
+                        152,
+                        "Meyer, Joachim (1803-1865)␝An",
+                        146,
+                        "Knebel, Karl Ludwig von (1744-1834)␝An",
+                        145,
+                        "Schiller, Ernst von (1796-1841)␝Von",
+                        144,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Von",
+                        137,
+                        "Schubert, Franz (1797-1828)␝Von",
+                        132,
+                        "Unbekannt␝An",
+                        128,
+                        "Suhrkamp-Verlag <Frankfurt, Main> (1950-)␝Von",
+                        121,
+                        "Zwierlein, Marie (1802-1875)␝An",
+                        108,
+                        "Suhrkamp-Verlag <Frankfurt, Main> (1950-)␝An",
+                        106,
+                        "Schiller, Carl von (1793-1857)␝An",
+                        105,
+                        "Franckh, Louise (1766-1836)␝An",
+                        95,
+                        "Junot, Caroline (1799-1850)␝Von",
+                        95,
+                        "Schiller, Charlotte von (1766-1826)␝An",
+                        93,
+                        "Zeller, Bernhard (1919-2008)␝An",
+                        92,
+                        "Mörike, Eduard (1804-1875)␝Von",
+                        89,
+                        "Quadflieg, Will (1914-2003)␝Von",
+                        88,
+                        "Reinwald, Christophine (1757-1847)␝An",
+                        84,
+                        "Verdi, Giuseppe (1813-1901)␝Von",
+                        76,
+                        "Wolzogen, Alfred von␝An",
+                        76,
+                        "Meyer, Joachim (1803-1865)␝Von",
+                        73,
+                        "Schiller-Nationalmuseum (1922-1955)␝Von",
+                        66,
+                        "Schiller-Theater (Berlin, West)␝Von",
+                        66,
+                        "Verschiedene␝Von",
+                        65,
+                        "Korner, Chris (1968-2024)␝Von",
+                        61,
+                        "Schiller, Ernst von (1796-1841)␝An",
+                        61,
+                        "Karl Eugen, Württemberg, Herzog (1728-1793)␝An",
+                        60,
+                        "Ott, Ulrich (1939-)␝Von",
+                        59,
+                        "Karl Alexander <Sachsen-Weimar-Eisenach, Großherzog> (1818-1901)␝Von",
+                        57
+                    ],
+                    "entities": [
+                        "PE00034281",
+                        6857,
+                        "KS00000246",
+                        960
+                    ]
+                },
+                "facet_ranges": {
+                    "Zeit": {
+                        "counts": [
+                            "0176-01-01T00:00:00Z",
+                            1,
+                            "0213-01-01T00:00:00Z",
+                            1,
+                            "0250-01-01T00:00:00Z",
+                            1,
+                            "0287-01-01T00:00:00Z",
+                            1,
+                            "0324-01-01T00:00:00Z",
+                            1,
+                            "0361-01-01T00:00:00Z",
+                            1,
+                            "0398-01-01T00:00:00Z",
+                            1,
+                            "0435-01-01T00:00:00Z",
+                            1,
+                            "0472-01-01T00:00:00Z",
+                            1,
+                            "0509-01-01T00:00:00Z",
+                            1,
+                            "0546-01-01T00:00:00Z",
+                            1,
+                            "0583-01-01T00:00:00Z",
+                            1,
+                            "0620-01-01T00:00:00Z",
+                            1,
+                            "0657-01-01T00:00:00Z",
+                            1,
+                            "0694-01-01T00:00:00Z",
+                            1,
+                            "0731-01-01T00:00:00Z",
+                            1,
+                            "0768-01-01T00:00:00Z",
+                            1,
+                            "0805-01-01T00:00:00Z",
+                            1,
+                            "0842-01-01T00:00:00Z",
+                            1,
+                            "0879-01-01T00:00:00Z",
+                            1,
+                            "0916-01-01T00:00:00Z",
+                            1,
+                            "0953-01-01T00:00:00Z",
+                            1,
+                            "0990-01-01T00:00:00Z",
+                            1,
+                            "1027-01-01T00:00:00Z",
+                            1,
+                            "1064-01-01T00:00:00Z",
+                            1,
+                            "1101-01-01T00:00:00Z",
+                            1,
+                            "1138-01-01T00:00:00Z",
+                            1,
+                            "1175-01-01T00:00:00Z",
+                            1,
+                            "1212-01-01T00:00:00Z",
+                            1,
+                            "1249-01-01T00:00:00Z",
+                            1,
+                            "1286-01-01T00:00:00Z",
+                            1,
+                            "1323-01-01T00:00:00Z",
+                            1,
+                            "1360-01-01T00:00:00Z",
+                            1,
+                            "1397-01-01T00:00:00Z",
+                            1,
+                            "1434-01-01T00:00:00Z",
+                            1,
+                            "1471-01-01T00:00:00Z",
+                            1,
+                            "1508-01-01T00:00:00Z",
+                            1,
+                            "1545-01-01T00:00:00Z",
+                            2,
+                            "1582-01-01T00:00:00Z",
+                            3,
+                            "1619-01-01T00:00:00Z",
+                            5,
+                            "1656-01-01T00:00:00Z",
+                            5,
+                            "1693-01-01T00:00:00Z",
+                            15,
+                            "1730-01-01T00:00:00Z",
+                            95,
+                            "1767-01-01T00:00:00Z",
+                            2384,
+                            "1804-01-01T00:00:00Z",
+                            1495,
+                            "1841-01-01T00:00:00Z",
+                            1550,
+                            "1878-01-01T00:00:00Z",
+                            587,
+                            "1915-01-01T00:00:00Z",
+                            596,
+                            "1952-01-01T00:00:00Z",
+                            2109,
+                            "1989-01-01T00:00:00Z",
+                            2820,
+                            "2026-01-01T00:00:00Z",
+                            3
+                        ],
+                        "gap": "+37YEAR",
+                        "start": "0176-01-01T00:00:00Z",
+                        "end": "2063-01-01T00:00:00Z"
+                    }
+                },
+                "facet_intervals": [],
+                "facet_heatmaps": []
+            },
+            "highlighting": {
+                "BF00012726": {
+                    "display": [
+                        "A:\\ueeeeSchiller\\ueeef, Friedrich von - [Bestand, Sammlung]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805)"
+                    ]
+                },
+                "BF00024546": {
+                    "display": [
+                        "A:\\ueeeeSchiller\\ueeef-Nationalmuseum - [Bestand, Archiv]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef-Nationalmuseum (1922-1955)"
+                    ]
+                },
+                "BF00013084": {
+                    "display": [
+                        "A:\\ueeeeSchiller\\ueeef, Friedrich von°\\ueeeeSchiller\\ueeef, Carl von - [Kryptobestand, Teilnachlass]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Carl von (1793-1857)"
+                    ]
+                },
+                "BF00013085": {
+                    "display": [
+                        "A:\\ueeeeSchiller\\ueeef, Friedrich von°\\ueeeeSchiller\\ueeef, Charlotte von - [Kryptobestand, Teilnachlass]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Charlotte von (1766-1826)"
+                    ]
+                },
+                "BI00032137": {
+                    "display": [
+                        "Bildkonvolut Familie Carl von \\ueeeeSchiller\\ueeef [Nachlass]"
+                    ]
+                },
+                "BI00032138": {
+                    "display": [
+                        "Gemäldekonvolut Familie Carl von \\ueeeeSchiller\\ueeef [Gemäldekonvolut]"
+                    ]
+                },
+                "BI00032139": {
+                    "display": [
+                        "Konvolut Erinnerungsstücke Familie Carl von \\ueeeeSchiller\\ueeef [Konvolut Erinnerungsstücke]"
+                    ]
+                },
+                "BI00032192": {
+                    "display": [
+                        "Graphik-Sammlung Familie Carl von \\ueeeeSchiller\\ueeef [Graphik-Sammlung]"
+                    ]
+                },
+                "BI00009390": [],
+                "BI00011916": {
+                    "display": [
+                        "Zylindersekretär aus dem Besitz von Friedrich \\ueeeeSchiller\\ueeef [Gegenstand]"
+                    ]
+                },
+                "BI00015349": {
+                    "display": [
+                        "Zylindersekretär aus dem Besitz von Charlotte \\ueeeeSchiller\\ueeef [Gegenstand]"
+                    ]
+                },
+                "AK01870837": {
+                    "display": [
+                        "[Wiedereröffnung des \\ueeeeSchiller\\ueeef-Nationalmuseums]"
+                    ]
+                },
+                "AK01872835": {
+                    "display": [
+                        "Wiedersehen mit \\ueeeeSchiller\\ueeef - Das \\ueeeeSchiller\\ueeef-Nationalmuseum neu eröffnet"
+                    ]
+                },
+                "HS00888909": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Johann Caspar: Auszug aus dem Familienregister [Dokumente]"
+                    ],
+                    "displayAddition2": [
+                        "A:Schiller, Friedrich von°\\ueeeeSchiller\\ueeef, Johann Caspar - [Kryptobestand, Teilnachlass]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Johann Caspar (1723-1796) [Dokumentierte Person]"
+                    ]
+                },
+                "HS00887915": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Charlotte von an \\ueeeeSchiller\\ueeef, Johann Caspar [Briefe]"
+                    ],
+                    "displayAddition2": [
+                        "A:Schiller, Friedrich von°\\ueeeeSchiller\\ueeef, Johann Caspar - [Kryptobestand, Teilnachlass]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Charlotte von (1766-1826) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Johann Caspar (1723-1796) [Adressat/in]"
+                    ]
+                },
+                "HS00887918": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Charlotte von an \\ueeeeSchiller\\ueeef, Johann Caspar [Briefe]"
+                    ],
+                    "displayAddition2": [
+                        "A:Schiller, Friedrich von°\\ueeeeSchiller\\ueeef, Johann Caspar - [Kryptobestand, Teilnachlass]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Charlotte von (1766-1826) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Johann Caspar (1723-1796) [Adressat/in]"
+                    ]
+                },
+                "HS00241616": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Johann Caspar an \\ueeeeSchiller\\ueeef, Friedrich von [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Johann Caspar (1723-1796) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Adressat/in]"
+                    ]
+                },
+                "HS00241617": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Johann Caspar an \\ueeeeSchiller\\ueeef, Friedrich von [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Johann Caspar (1723-1796) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Adressat/in]"
+                    ]
+                },
+                "HS00242238": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Elisabetha Dorothea [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Elisabetha Dorothea (1732-1802) [Adressat/in]"
+                    ]
+                },
+                "HS00242240": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Elisabetha Dorothea [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Elisabetha Dorothea (1732-1802) [Adressat/in]"
+                    ]
+                },
+                "HS00242242": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Elisabetha Dorothea [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Elisabetha Dorothea (1732-1802) [Adressat/in]"
+                    ]
+                },
+                "HS00242248": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Elisabetha Dorothea [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Elisabetha Dorothea (1732-1802) [Adressat/in]"
+                    ]
+                },
+                "HS00242251": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Elisabetha Dorothea [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Elisabetha Dorothea (1732-1802) [Adressat/in]"
+                    ]
+                },
+                "HS00242262": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von an \\ueeeeSchiller\\ueeef, Elisabetha Dorothea [Briefe]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Verfasser/in]; \\ueeeeSchiller\\ueeef, Elisabetha Dorothea (1732-1802) [Adressat/in]"
+                    ]
+                },
+                "HS00501165": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von: Urkundliche Erklärung der Eltern beim Eintritt Friedrich Schillers in die herzogliche Militär-Akademie [Dokumente]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805) [Dokumentierte Person]"
+                    ]
+                }
+            }
+        }
+    }
+}

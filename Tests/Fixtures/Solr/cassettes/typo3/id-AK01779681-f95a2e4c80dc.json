@@ -1,0 +1,408 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:AK01779681",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.70128,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "item_note_mv": [
+                            "Mit handschriftlicher Widmung von Albrecht Goes an seine Frau Elisabeth Goes"
+                        ],
+                        "default": [
+                            "Mit handschriftlicher Widmung von Albrecht Goes an seine Frau Elisabeth Goes",
+                            "SE00208183␝SE00269064",
+                            "AU01031542",
+                            "Atlantis-Verl.",
+                            "Huch, Ricarda (1864-1947)␝Von",
+                            "Goes, Albrecht (1908-2000)␝Unter",
+                            "Goes, Elisabeth (1911-2007)␝Unter",
+                            "Goes, Elisabeth (1911-2007)␝An",
+                            "Goes, Albrecht",
+                            "Goes, Elisabeth",
+                            "Bibliotheksdokumente",
+                            "Atlantis-Verlag",
+                            "Deutsch",
+                            "Zürich",
+                            "Freiburg",
+                            "1948",
+                            "Zürich ; Freiburg",
+                            "https://www.dla-marbach.de/find/opac/id/AK01779681",
+                            "SE00132876",
+                            "SE00208183",
+                            "SE00269064",
+                            "Buch",
+                            "Buchumschlag",
+                            "Abgeschlossen",
+                            "Bibliotheksmaterialien",
+                            "4. Auflage",
+                            "1948",
+                            "176998268",
+                            "Gedrucktes",
+                            "Geographie Europas / Einzelne Länder / Schweiz / Übergreifende Darstellungen",
+                            "Goes, Albrecht / Widmung / Autogramm␝Goes, Elisabeth / Exemplar: Widmungsempfänger",
+                            "Zürich ; Freiburg : Atlantis-Verlag, [1948] - 120 Seiten",
+                            "Deutsch",
+                            "Zürich␝Erscheinungsort",
+                            "Freiburg␝Erscheinungsort",
+                            "AK00100607",
+                            "S22.3.5.10.1 Geographie Europas / Einzelne Länder / Schweiz / Übergreifende Darstellungen",
+                            "Jugenderinnerungen",
+                            "1",
+                            "2022-07-20",
+                            "K10Plus-PPN",
+                            "creator",
+                            "2022-03-28",
+                            "Huch, Ricarda",
+                            "Goes, Albrecht",
+                            "Goes, Elisabeth",
+                            "120 Seiten",
+                            "TY  - GEN\nA2  - Goes, Albrecht\nA2  - Goes, Elisabeth\nAU  - Huch, Ricarda\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Zürich ; Freiburg\nDA  - 1948\nID  - AK01779681\nET  - 4. Auflage\nKW  - Geographie Europas / Einzelne Länder / Schweiz / Übergreifende Darstellungen\nLA  - Deutsch\nM2  - Buch\nM2  - Buchumschlag\nM3  - Autobiografisches\nN1  - Umfang: 120 Seiten\nN1  - Erscheinungsort: Zürich\nN1  - Erscheinungsort: Freiburg\nOP  - Huch, Ricarda (1864-1947). Frühling in der Schweiz (Autobiografie : 1838)\nPB  - Atlantis-Verlag\nPY  - 1948\nTI  - Frühling in der Schweiz : Jugenderinnerungen - 4. Auflage : [Erinnerung, Autobiographisches, Memoiren]\nUR  - https://www.dla-marbach.de/find/opac/id/AK01779681/\nER  -",
+                            "Frühling in der Schweiz : Jugenderinnerungen",
+                            "Goes, Albrecht (1908-2000)␝Goes, Elisabeth (1911-2007)",
+                            "PE00003793",
+                            "Huch, Ricarda (1864-1947)",
+                            "f-fertig, i-fertig",
+                            "Kette Bibliothek",
+                            "4",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Frühling in der Schweiz : Jugenderinnerungen - 4. Auflage : [Erinnerung, Autobiographisches, Memoiren]</dc:title>\n  <dc:creator>Huch, Ricarda (1864-1947)</dc:creator>\n  <dc:contributor>Goes, Albrecht (1908-2000)</dc:contributor>\n  <dc:contributor>Goes, Elisabeth (1911-2007)</dc:contributor>\n  <dc:type>Buch</dc:type>\n  <dc:type>Buchumschlag</dc:type>\n  <dc:type>Autobiografisches</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:publisher>Atlantis-Verlag</dc:publisher>\n  <dc:date>1948</dc:date>\n  <dc:date>[1948]</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>120 Seiten</dc:format>\n  <dc:subject>Geographie Europas / Einzelne Länder / Schweiz / Übergreifende Darstellungen</dc:subject>\n  <dc:subject>S22.3.5.10.1 Geographie Europas / Einzelne Länder / Schweiz / Übergreifende Darstellungen</dc:subject>\n  <dc:identifier>176998268</dc:identifier>\n  <dc:identifier>K</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01779681</dc:identifier>\n  <dc:identifier>AK01779681</dc:identifier>\n</oai_dc:dc>",
+                            "K",
+                            "PE00003793",
+                            "Druckschrift",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Frühling in der Schweiz</title>\n    <subTitle>Jugenderinnerungen</subTitle>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Huch, Ricarda (1864-1947)</namePart>\n    <nameIdentifier type=\"gnd\">118554190</nameIdentifier>\n    <namePart type=\"date\">1864-07-18 — 1947-11-17</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Goes, Albrecht (1908-2000)</namePart>\n    <nameIdentifier type=\"gnd\">118695894</nameIdentifier>\n    <namePart type=\"date\">1908-03-22 — 2000-02-23</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Goes, Elisabeth (1911-2007)</namePart>\n    <nameIdentifier type=\"gnd\">1012788865</nameIdentifier>\n    <namePart type=\"date\">1911-11-16 — 2007-08-23</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Buch</typeOfResource>\n  <typeOfResource>Buchumschlag</typeOfResource>\n  <genre>Autobiografisches</genre>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Zürich</placeTerm>\n    </place>\n    <place>\n      <placeTerm type=\"text\">Freiburg</placeTerm>\n    </place>\n    <publisher>Atlantis-Verlag</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1948</dateIssued>\n    <displayDate>[1948]</displayDate>\n    <edition>4. Auflage</edition>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n    <extent>120 Seiten</extent>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">von Ricarda Huch</note>\n  <subject>\n    <topic>Geographie Europas / Einzelne Länder / Schweiz / Übergreifende Darstellungen</topic>\n  </subject>\n  <classification authority=\"DE-Mar1\">S22.3.5.10.1 Geographie Europas / Einzelne Länder / Schweiz / Übergreifende Darstellungen</classification>\n  <identifier type=\"kxp\">176998268</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>K</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2022-03-28</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2022-07-20</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01779681</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Goes, Elisabeth",
+                            "Text",
+                            "AK",
+                            "844970853",
+                            "452120160",
+                            "Erinnerung, Autobiographisches, Memoiren",
+                            "1.0.0",
+                            "Huch, Ricarda (1864-1947). Frühling in der Schweiz (Autobiografie : 1838)",
+                            "Huch, Ricarda (1864-1947)",
+                            "true",
+                            "K. 202203281. Frühling in der Schweiz : Jugenderinnerungen - 4. Auflage : [Erinnerung, Autobiographisches, Memoiren]",
+                            "1948-01-01T00:00:00Z",
+                            "Frühling in der Schweiz",
+                            "Huch, Ricarda (1864-1947)",
+                            "Goes, Albrecht (1908-2000)",
+                            "Goes, Elisabeth (1911-2007)",
+                            "Huch, Ricarda (1864-1947)",
+                            "Autobiografisches",
+                            "false",
+                            "Huch, Ricarda (1864-1947)␝Verfasser/Urheber",
+                            "Goes, Albrecht (1908-2000)␝Bestandsbildner/Vorbesitzer",
+                            "Goes, Elisabeth (1911-2007)␝Bestandsbildner/Vorbesitzer",
+                            "Goes, Elisabeth (1911-2007)␝Widmungsempfänger",
+                            "2022-03-28",
+                            " Huch, Ricarda *1864-1947* ;  Huggenberger, Alfred *1867-1960*",
+                            "Warteschleife",
+                            "Goes, D. Albrecht",
+                            "Schneider, Elisabeth",
+                            "Hugo, Richard",
+                            "Ceconi, Ricarda",
+                            "Huch, Ricarda Oktavia",
+                            "Zecconi, Ricarda",
+                            "Huch, Ricarda Octavia",
+                            "Chuch, Rikarda",
+                            "Huch, Ricarda O.",
+                            "Ceconi-Huch, Ricarda",
+                            "Ceconi Huch, Ricarda",
+                            "Frühling in der Schweiz : Jugenderinnerungen",
+                            "PE00005654␝PE00096674",
+                            "Huch, Ricarda",
+                            "Band",
+                            "Verfasser/Urheber",
+                            "AK01779681",
+                            "Schweiz",
+                            "Deutschland",
+                            "KS00001815",
+                            "SE00132876",
+                            "Deutsch␝Original",
+                            "Frühling in der Schweiz : Jugenderinnerungen - 4. Auflage : [Erinnerung, Autobiographisches, Memoiren]",
+                            "572o",
+                            "572",
+                            "Druckschrift",
+                            "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                            "benutzbar",
+                            "true",
+                            "von Ricarda Huch",
+                            "Verfasser/Urheber",
+                            "PE00005654",
+                            "PE00096674",
+                            "PE00003793",
+                            "KS00001815",
+                            "AK00100607",
+                            "1948",
+                            "[1948]",
+                            "202203281"
+                        ],
+                        "item_classification_id_mv": [
+                            "SE00208183␝SE00269064"
+                        ],
+                        "item_id_mv": [
+                            "AU01031542"
+                        ],
+                        "publisher_display_mv": [
+                            "Atlantis-Verl."
+                        ],
+                        "filterAuthorityRelation_mv": [
+                            "Huch, Ricarda (1864-1947)␝Von",
+                            "Goes, Albrecht (1908-2000)␝Unter",
+                            "Goes, Elisabeth (1911-2007)␝Unter",
+                            "Goes, Elisabeth (1911-2007)␝An"
+                        ],
+                        "searchNameAt_mv": [
+                            "Goes, Albrecht",
+                            "Goes, Elisabeth"
+                        ],
+                        "category": "Bibliotheksdokumente",
+                        "publisherOriginalText_mv": [
+                            "Atlantis-Verlag"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "filterLocation_mv": [
+                            "Zürich",
+                            "Freiburg"
+                        ],
+                        "dateOrigin": "1948",
+                        "publisherOriginalLocation_mv": [
+                            "Zürich ; Freiburg"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK01779681",
+                        "searchClassification_id_mv": [
+                            "SE00132876",
+                            "SE00208183",
+                            "SE00269064"
+                        ],
+                        "filterMedium_mv": [
+                            "Buch",
+                            "Buchumschlag"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "filterSource": "Bibliotheksmaterialien",
+                        "edition": "4. Auflage",
+                        "searchDate_mv": [
+                            "1948"
+                        ],
+                        "vendor_id_mv": [
+                            "176998268"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "filterSubject_mv": [
+                            "Geographie Europas / Einzelne Länder / Schweiz / Übergreifende Darstellungen"
+                        ],
+                        "item_classification_display_mv": [
+                            "Goes, Albrecht / Widmung / Autogramm␝Goes, Elisabeth / Exemplar: Widmungsempfänger"
+                        ],
+                        "displayAddition1": "Zürich ; Freiburg : Atlantis-Verlag, [1948] - 120 Seiten",
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "filterLocationType_mv": [
+                            "Zürich␝Erscheinungsort",
+                            "Freiburg␝Erscheinungsort"
+                        ],
+                        "work_id_mv": [
+                            "AK00100607"
+                        ],
+                        "classification_display_mv": [
+                            "S22.3.5.10.1 Geographie Europas / Einzelne Länder / Schweiz / Übergreifende Darstellungen"
+                        ],
+                        "titleSuffix": "Jugenderinnerungen",
+                        "searchBoost": 1,
+                        "dateModified": "2022-07-20",
+                        "vendor_type_mv": [
+                            "K10Plus-PPN"
+                        ],
+                        "personBy_creator_mv": [
+                            "creator"
+                        ],
+                        "filterRecent": "2022-03-28",
+                        "searchName_mv": [
+                            "Huch, Ricarda",
+                            "Goes, Albrecht",
+                            "Goes, Elisabeth"
+                        ],
+                        "extent": "120 Seiten",
+                        "exportRIS": "TY  - GEN\nA2  - Goes, Albrecht\nA2  - Goes, Elisabeth\nAU  - Huch, Ricarda\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Zürich ; Freiburg\nDA  - 1948\nID  - AK01779681\nET  - 4. Auflage\nKW  - Geographie Europas / Einzelne Länder / Schweiz / Übergreifende Darstellungen\nLA  - Deutsch\nM2  - Buch\nM2  - Buchumschlag\nM3  - Autobiografisches\nN1  - Umfang: 120 Seiten\nN1  - Erscheinungsort: Zürich\nN1  - Erscheinungsort: Freiburg\nOP  - Huch, Ricarda (1864-1947). Frühling in der Schweiz (Autobiografie : 1838)\nPB  - Atlantis-Verlag\nPY  - 1948\nTI  - Frühling in der Schweiz : Jugenderinnerungen - 4. Auflage : [Erinnerung, Autobiographisches, Memoiren]\nUR  - https://www.dla-marbach.de/find/opac/id/AK01779681/\nER  -",
+                        "title": "Frühling in der Schweiz : Jugenderinnerungen",
+                        "item_personAt_display_mv": [
+                            "Goes, Albrecht (1908-2000)␝Goes, Elisabeth (1911-2007)"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00003793"
+                        ],
+                        "personBy_display_mv": [
+                            "Huch, Ricarda (1864-1947)"
+                        ],
+                        "statusCataloging": "f-fertig, i-fertig",
+                        "classification_category_mv": [
+                            "Kette Bibliothek"
+                        ],
+                        "editionNormalized": "4",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Frühling in der Schweiz : Jugenderinnerungen - 4. Auflage : [Erinnerung, Autobiographisches, Memoiren]</dc:title>\n  <dc:creator>Huch, Ricarda (1864-1947)</dc:creator>\n  <dc:contributor>Goes, Albrecht (1908-2000)</dc:contributor>\n  <dc:contributor>Goes, Elisabeth (1911-2007)</dc:contributor>\n  <dc:type>Buch</dc:type>\n  <dc:type>Buchumschlag</dc:type>\n  <dc:type>Autobiografisches</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:publisher>Atlantis-Verlag</dc:publisher>\n  <dc:date>1948</dc:date>\n  <dc:date>[1948]</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>120 Seiten</dc:format>\n  <dc:subject>Geographie Europas / Einzelne Länder / Schweiz / Übergreifende Darstellungen</dc:subject>\n  <dc:subject>S22.3.5.10.1 Geographie Europas / Einzelne Länder / Schweiz / Übergreifende Darstellungen</dc:subject>\n  <dc:identifier>176998268</dc:identifier>\n  <dc:identifier>K</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01779681</dc:identifier>\n  <dc:identifier>AK01779681</dc:identifier>\n</oai_dc:dc>",
+                        "item_callNumberItem_mv": [
+                            "K"
+                        ],
+                        "creator_id_mv": [
+                            "PE00003793"
+                        ],
+                        "categoryMedia_mv": [
+                            "Druckschrift"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Frühling in der Schweiz</title>\n    <subTitle>Jugenderinnerungen</subTitle>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Huch, Ricarda (1864-1947)</namePart>\n    <nameIdentifier type=\"gnd\">118554190</nameIdentifier>\n    <namePart type=\"date\">1864-07-18 — 1947-11-17</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Goes, Albrecht (1908-2000)</namePart>\n    <nameIdentifier type=\"gnd\">118695894</nameIdentifier>\n    <namePart type=\"date\">1908-03-22 — 2000-02-23</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Goes, Elisabeth (1911-2007)</namePart>\n    <nameIdentifier type=\"gnd\">1012788865</nameIdentifier>\n    <namePart type=\"date\">1911-11-16 — 2007-08-23</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Buch</typeOfResource>\n  <typeOfResource>Buchumschlag</typeOfResource>\n  <genre>Autobiografisches</genre>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Zürich</placeTerm>\n    </place>\n    <place>\n      <placeTerm type=\"text\">Freiburg</placeTerm>\n    </place>\n    <publisher>Atlantis-Verlag</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1948</dateIssued>\n    <displayDate>[1948]</displayDate>\n    <edition>4. Auflage</edition>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n    <extent>120 Seiten</extent>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">von Ricarda Huch</note>\n  <subject>\n    <topic>Geographie Europas / Einzelne Länder / Schweiz / Übergreifende Darstellungen</topic>\n  </subject>\n  <classification authority=\"DE-Mar1\">S22.3.5.10.1 Geographie Europas / Einzelne Länder / Schweiz / Übergreifende Darstellungen</classification>\n  <identifier type=\"kxp\">176998268</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>K</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2022-03-28</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2022-07-20</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01779681</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "searchNameTo_mv": [
+                            "Goes, Elisabeth"
+                        ],
+                        "categoryContent_mv": [
+                            "Text"
+                        ],
+                        "source": "AK",
+                        "identifier_id_mv": [
+                            "844970853",
+                            "452120160"
+                        ],
+                        "categoryPublication_mv": [
+                            "Erinnerung, Autobiographisches, Memoiren"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "work_display_mv": [
+                            "Huch, Ricarda (1864-1947). Frühling in der Schweiz (Autobiografie : 1838)"
+                        ],
+                        "creator_display_mv": [
+                            "Huch, Ricarda (1864-1947)"
+                        ],
+                        "item_enveloped_mv": [
+                            true
+                        ],
+                        "item_display_mv": [
+                            "K. 202203281. Frühling in der Schweiz : Jugenderinnerungen - 4. Auflage : [Erinnerung, Autobiographisches, Memoiren]"
+                        ],
+                        "filterDatePoint_mv": [
+                            "1948-01-01T00:00:00Z"
+                        ],
+                        "titleMain_text": "Frühling in der Schweiz",
+                        "filterAuthority_mv": [
+                            "Huch, Ricarda (1864-1947)",
+                            "Goes, Albrecht (1908-2000)",
+                            "Goes, Elisabeth (1911-2007)"
+                        ],
+                        "displayName": "Huch, Ricarda (1864-1947)",
+                        "filterFormContent_mv": [
+                            "Autobiografisches"
+                        ],
+                        "confidential": false,
+                        "filterAuthorityRole_mv": [
+                            "Huch, Ricarda (1864-1947)␝Verfasser/Urheber",
+                            "Goes, Albrecht (1908-2000)␝Bestandsbildner/Vorbesitzer",
+                            "Goes, Elisabeth (1911-2007)␝Bestandsbildner/Vorbesitzer",
+                            "Goes, Elisabeth (1911-2007)␝Widmungsempfänger"
+                        ],
+                        "dateCataloged": "2022-03-28",
+                        "subjectOther_mv": [
+                            " Huch, Ricarda *1864-1947* ;  Huggenberger, Alfred *1867-1960*"
+                        ],
+                        "item_location_mv": [
+                            "Warteschleife"
+                        ],
+                        "searchVariant_mv": [
+                            "Goes, D. Albrecht",
+                            "Schneider, Elisabeth",
+                            "Hugo, Richard",
+                            "Ceconi, Ricarda",
+                            "Huch, Ricarda Oktavia",
+                            "Zecconi, Ricarda",
+                            "Huch, Ricarda Octavia",
+                            "Chuch, Rikarda",
+                            "Huch, Ricarda O.",
+                            "Ceconi-Huch, Ricarda",
+                            "Ceconi Huch, Ricarda",
+                            "Frühling in der Schweiz : Jugenderinnerungen"
+                        ],
+                        "item_personAt_id_mv": [
+                            "PE00005654␝PE00096674"
+                        ],
+                        "searchNameBy_mv": [
+                            "Huch, Ricarda"
+                        ],
+                        "categoryMedium_mv": [
+                            "Band"
+                        ],
+                        "personBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "id": "AK01779681",
+                        "country_mv": [
+                            "Schweiz",
+                            "Deutschland"
+                        ],
+                        "publisher_id_mv": [
+                            "KS00001815"
+                        ],
+                        "classification_id_mv": [
+                            "SE00132876"
+                        ],
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "display": "Frühling in der Schweiz : Jugenderinnerungen - 4. Auflage : [Erinnerung, Autobiographisches, Memoiren]",
+                        "identifier_type_mv": [
+                            "572o",
+                            "572"
+                        ],
+                        "categorySubSub": "Druckschrift",
+                        "categorySub": "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                        "item_usageRestriction_mv": [
+                            "benutzbar"
+                        ],
+                        "item_provenance_mv": [
+                            true
+                        ],
+                        "titleResponsability": "von Ricarda Huch",
+                        "creator_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00005654",
+                            "PE00096674",
+                            "PE00003793",
+                            "KS00001815",
+                            "AK00100607"
+                        ],
+                        "filterDateRange_mv": [
+                            "1948"
+                        ],
+                        "dateOriginComment_mv": [
+                            "[1948]"
+                        ],
+                        "item_accessionNumber_mv": [
+                            "202203281"
+                        ],
+                        "score": 13.70128
+                    }
+                ]
+            }
+        }
+    }
+}
