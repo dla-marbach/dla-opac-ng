@@ -2,7 +2,7 @@
 
 TYPO3-Extension für den Katalog des Deutschen Literaturarchivs Marbach https://www.dla-marbach.de/katalog
 
-Die Extension enthält auch das Such-Plugin der früheren Extension `dla/find` (siehe [Herkunft und Credits](#herkunft-und-credits)).
+Die Extension basiert auf subugoe/typo3-find (siehe [Herkunft und Credits](#herkunft-und-credits)).
 
 ## Installation
 
@@ -29,7 +29,9 @@ dieses Repository), Änderungen am Code wirken also direkt. Konfiguration: [.dev
 `t3example/var/log/` und `/tmp/solr-mock.log`.
 
 Für den Copilot-Agent richtet [.github/workflows/copilot-setup-steps.yml](.github/workflows/copilot-setup-steps.yml)
-dieselbe Umgebung ein. Anweisungen für KI-Agenten stehen in [AGENTS.md](AGENTS.md).
+dieselbe Umgebung ein.
+
+Anweisungen für KI-Agenten stehen in [AGENTS.md](AGENTS.md).
 
 ## GUIs
 
@@ -79,8 +81,6 @@ Neue Cassetten lassen sich nur bei bestehendem Tunnel aufnehmen; anschließend d
 
 Hinweise:
 
-* Ein zweiter Durchlauf sollte keine neuen Dateien erzeugen. Sonst enthält eine Anfrage veränderliche Parameter
-  (z.B. sekundengenaue Zeitstempel statt Solr-Datumsausdrücken wie `NOW/DAY`), und die Cassette passt beim nächsten Mal nicht.
 * Der Anfang der Datumsfacette in den Trefferlisten hängt vom aktuellen Jahr ab (`NOW/YEAR-…YEARS`): Nach dem
   Jahreswechsel die Cassetten in `typo3/` neu aufnehmen.
 * Nach Änderungen an den `queryFields` in [Configuration/TypoScript/setup.ts](Configuration/TypoScript/setup.ts) den
