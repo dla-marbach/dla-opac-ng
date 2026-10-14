@@ -1,0 +1,1530 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "Goethe",
+            "start": "0",
+            "rows": "25",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "score desc",
+            "fq": [
+                "NOT source:(AU OR BE OR MM)",
+                "filterCollection_mv:(\"COTTA:Cotta-Archiv (Verlagsproduktion / Stiftung der Stuttgarter Zeitung)\")"
+            ],
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(Goethe) OR displayAddition1:(Goethe) OR displayAddition2:(Goethe) OR displayName:(Goethe)))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "facet.field": [
+                "{!key=Digital}filterDigital",
+                "{!key=Medientypen}filterType_mv",
+                "{!key=FormUndInhalt}filterFormContent_mv",
+                "{!key=Medium}filterMedium_mv",
+                "{!key=Personen}filterAuthority_mv",
+                "{!key=Thema}filterSubject_mv",
+                "{!key=Sprache}filterLanguage_mv",
+                "{!key=filterLanguageType_mv}filterLanguageType_mv",
+                "{!key=Ort}filterLocation_mv",
+                "{!key=filterLocationType_mv}filterLocationType_mv",
+                "{!key=Sammlung}filterCollection_mv",
+                "{!key=Datenbestand}filterSource",
+                "{!key=Bibliographie}filterBibliography_mv",
+                "{!key=filterAuthorityRole_mv}filterAuthorityRole_mv",
+                "{!key=filterAuthorityRelation_mv}filterAuthorityRelation_mv",
+                "{!key=entities}searchEntity_id_mv"
+            ],
+            "f.filterDigital.facet.sort": "count",
+            "f.filterDigital.facet.limit": "50",
+            "f.filterDigital.facet.mincount": "1",
+            "f.filterType_mv.facet.sort": "count",
+            "f.filterType_mv.facet.limit": "50",
+            "f.filterType_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.sort": "count",
+            "f.filterFormContent_mv.facet.limit": "50",
+            "f.filterFormContent_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.missing": "true",
+            "f.filterMedium_mv.facet.sort": "count",
+            "f.filterMedium_mv.facet.limit": "50",
+            "f.filterMedium_mv.facet.mincount": "1",
+            "f.filterMedium_mv.facet.missing": "true",
+            "f.filterAuthority_mv.facet.sort": "count",
+            "f.filterAuthority_mv.facet.limit": "50",
+            "f.filterAuthority_mv.facet.mincount": "1",
+            "facet.range": "{!key=Zeit}filterDateRange_mv",
+            "f.filterDateRange_mv.facet.range.start": "NOW/YEAR-300YEARS",
+            "f.filterDateRange_mv.facet.range.end": "NOW/DAY+1YEAR",
+            "f.filterDateRange_mv.facet.range.gap": "+6YEAR",
+            "f.filterSubject_mv.facet.sort": "count",
+            "f.filterSubject_mv.facet.limit": "50",
+            "f.filterSubject_mv.facet.mincount": "1",
+            "f.filterSubject_mv.facet.missing": "true",
+            "facet.query": [
+                "{!key=Woche ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]",
+                "{!key=Monat ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]",
+                "{!key=Quartal ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Halbjahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Jahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1YEAR TO NOW/DAY+1DAY]"
+            ],
+            "f.filterLanguage_mv.facet.sort": "count",
+            "f.filterLanguage_mv.facet.limit": "50",
+            "f.filterLanguage_mv.facet.mincount": "1",
+            "f.filterLanguageType_mv.facet.sort": "count",
+            "f.filterLanguageType_mv.facet.limit": "50",
+            "f.filterLanguageType_mv.facet.mincount": "1",
+            "f.filterLocation_mv.facet.sort": "count",
+            "f.filterLocation_mv.facet.limit": "50",
+            "f.filterLocation_mv.facet.mincount": "1",
+            "f.filterLocationType_mv.facet.sort": "count",
+            "f.filterLocationType_mv.facet.limit": "50",
+            "f.filterLocationType_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.sort": "count",
+            "f.filterCollection_mv.facet.limit": "50",
+            "f.filterCollection_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.missing": "true",
+            "f.filterSource.facet.sort": "count",
+            "f.filterSource.facet.limit": "50",
+            "f.filterSource.facet.mincount": "1",
+            "f.filterSource.facet.missing": "true",
+            "f.filterBibliography_mv.facet.sort": "count",
+            "f.filterBibliography_mv.facet.limit": "50",
+            "f.filterBibliography_mv.facet.mincount": "1",
+            "f.filterBibliography_mv.facet.missing": "true",
+            "f.filterAuthorityRole_mv.facet.sort": "count",
+            "f.filterAuthorityRole_mv.facet.limit": "50",
+            "f.filterAuthorityRole_mv.facet.mincount": "1",
+            "f.filterAuthorityRelation_mv.facet.sort": "count",
+            "f.filterAuthorityRelation_mv.facet.limit": "50",
+            "f.filterAuthorityRelation_mv.facet.mincount": "1",
+            "f.searchEntity_id_mv.facet.sort": "count",
+            "f.searchEntity_id_mv.facet.limit": "2",
+            "f.searchEntity_id_mv.facet.mincount": "1",
+            "facet": "true"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 649,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "displayName": "Suphan, Bernhard (1845-1911)",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "[S.l.], 1890 - o.A.",
+                        "id": "AK01181102",
+                        "display": "Bericht der fünften Generalversammlung der Goethe-Gesellschaft am 31. Mai 1890 : [Sonderdruck]",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Frankfurt a.M. : Literarische Anstalt, Rütten & Loening, 1903 - 290 Seiten",
+                        "displayName": "Witkowski, Georg (1863-1939); Goethe, Cornelia (1750-1777)",
+                        "id": "AK01182300",
+                        "display": "Cornelia, die Schwester Goethes : mit ihren z. Teil ungedruckten Briefen u. Tagebuchblättern, einem Bildnis u. einem Facsimile",
+                        "item_provenance_mv": [
+                            false,
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Zeitschriftenband"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Weimar : [s.n.], [1.]1829/30 - 2.1831/32[?]., [1829/30]",
+                        "id": "AK01480098",
+                        "displayName": "Goethe, Ottilie von (1796-1872)",
+                        "display": "Chaos. - [1] ([1829/30]), 1-23u.25-52",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Stuttgart et Tubingae : Cotta, 1845 - 38 Seiten",
+                        "id": "AK01004173",
+                        "displayName": "Goethe, Wolfgang von (1820-1883)",
+                        "display": "De fragmento Vegoiae, cuius sit momenti in tractandis antiquitatibus juris Romani dissertatio : [Hochschulschrift]",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "displayName": "Goethe, Wolfgang von (1820-1883)",
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Stuttgart [u.a.] : Cotta, 1851 - 238 Seiten",
+                        "id": "AK01004175",
+                        "display": "Erlinde - 2. Aufl.",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "[S.l.], [s.a.] - 2 Blatt",
+                        "id": "AK01185532",
+                        "display": "Verzeichniß des handschriftlichen Riemerschen Nachlasses : A. Goethe betreffend ; B. Literär. Nachlaß",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Cassel : Balde, 1852 - VI, 82 Seiten",
+                        "id": "AK01180674",
+                        "display": "Die Göthe-Literatur in Deutschland : vollständiger Catalog sämmtlicher in Deutschland erschienenen Werke J. W. v. Göthe's, sowohl Gesammt- als Einzel-Ausgaben, aller bezüglichen Erläuterungs- und Ergänzungsschriften, wie endlich aller mit ihm in irgend einer Beziehung stehenden sonstigen literarischen Erscheinungen ; von 1773 bis Ende 1851 ; Supplement zu allen Werken J. W. Göthe's",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Zeitschriftenheft"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Leipzig : Velhagen & Klasing, 1932 - 20 Seiten",
+                        "id": "AK01180959",
+                        "display": "Daheim : ein deutsches Familienblatt mit Illustrationen. - 68 (1932), 25 : Goetheheft",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Zeitschriftenheft"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Frankfurt/M. : Diesterweg, 1932",
+                        "id": "AK01181081",
+                        "display": "Zeitschrift für deutsche Bildung. - 8 (1932), 3 : Goethe-Sonderheft",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Berlin : Schroeder, 1861 - 79 Seiten",
+                        "id": "AK01181280",
+                        "display": "Verzeichniß von Goethes Handschriften, Zeichnungen und Radirungen, Drucken seiner Werke, Compositionen und Illustrationen seiner Dichtungen, Büsten, Medaillen und Gemälden, Portraits aus seinem Freundeskreise, Andenken und Erinnerungszeichen, welche im Concertsaale des Königlichen Schauspielhauses vom 19ten Mai 1861 ausgestellt sind : mit 2 Schrifttafeln",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Köln : Kölner Verlags-Anst.Dr., 1899 - 42 Seiten",
+                        "id": "AK01181286",
+                        "display": "Führer durch die Goethe-Ausstellung in der Aula des Marzellengymnasiums zu Köln 5. - 7. Nov. 1899",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Frankfurt, 1932 - 8 Seiten",
+                        "id": "AK01181544",
+                        "displayName": "Goethe, Johann Wolfgang von (1749-1832)",
+                        "display": "Zum 22. März 1932 : Gedenkblatt der Frankfurter Zeitung zum 100. Todestag von Johann Wolfgang von Goethe",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "[Weimar], [1849] - [5] Blatt",
+                        "id": "AK01181782",
+                        "display": "Zur Erinnerung an die Feier des 28. August 1849 auf der Grossherzoglichen Bibliothek zur Weimar",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Frankfurt a. M., 1844 - IV, 83 Seiten : Ill.",
+                        "displayName": "Goethe, Johann Wolfgang von (1749-1832)",
+                        "id": "AK01039345",
+                        "display": "Das Goethe-Denkmal in Frankfurt a. M.",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Offenbach : Weiß, 1775 - 56 Seiten",
+                        "id": "AK01039441",
+                        "display": "Über meine künftige Gattin : eine Frühlingsbetrachtung von einem Jüngling ; [dem Herrn Doktor Göthe in Frankfurt gewidmet]",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Bern : Walthard, 1776 - 58 Seiten",
+                        "id": "AK01046432",
+                        "displayName": "Goethe, Johann Wolfgang von (1749-1832)",
+                        "display": "Erwin und Elmire : ein Schauspiel mit Gesang",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "displayName": "Goethe, Johann Wolfgang von (1749-1832)",
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Leipzig : Weygand, 1774 - Seiten 116 - 224",
+                        "id": "AK01023772",
+                        "display": "Die Leiden des jungen Werthers. - 2.",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "displayName": "Goethe, Johann Wolfgang von (1749-1832)",
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Hanau ; Düsseldorf, 1775 - 102 - 200 Seiten",
+                        "id": "AK01023817",
+                        "display": "Die Leiden des jungen Werthers. - 2. - Aechte Aufl.",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "displayName": "Goethe, Johann Wolfgang von (1749-1832)",
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Freystadt, 1775 - Seiten 74 - 143",
+                        "id": "AK01023888",
+                        "display": "Die Leiden des jungen Werthers. - 2.",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "displayName": "Goethe, Johann Wolfgang von (1749-1832)",
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Frankfurt ; Leipzig : [Verlag nicht ermittelbar], 1775, 1775 - 1 ungezähltes Blatt, 1 ungezählte Seite, Seiten 116-224",
+                        "id": "AK01023907",
+                        "display": "Die Leiden des jungen Werthers - Zweyter Theil",
+                        "item_provenance_mv": [
+                            false,
+                            true
+                        ]
+                    },
+                    {
+                        "displayName": "Goethe, Johann Wolfgang von (1749-1832)",
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Strasburg [Straßburg] ; Hanau, 1775 - Seiten 100 - 192",
+                        "id": "AK01024596",
+                        "display": "Die Leiden des jungen Werthers. - 2. - 2. ächte Aufl.",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "displayName": "Goethe, Johann Wolfgang von (1749-1832)",
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Frankfurt ; Leipzig : [Verlag nicht ermittelbar], 1790, 1790 - 95 Seiten",
+                        "id": "AK01024924",
+                        "display": "Die Leiden des jungen Werthers - Zweiter Theil - Neue, verbesserte Auflage",
+                        "item_provenance_mv": [
+                            true
+                        ]
+                    },
+                    {
+                        "displayName": "Goethe, Johann Wolfgang von (1749-1832)",
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Tübingen : Cotta, 1816 - 444 Seiten",
+                        "id": "AK00345491",
+                        "display": "Aus meinem Leben : Dichtung und Wahrheit. - Abth. 2, Th. 1. [Italienische Reise ; 1]",
+                        "item_provenance_mv": [
+                            false,
+                            true,
+                            true
+                        ]
+                    },
+                    {
+                        "displayName": "Goethe, Johann Wolfgang von (1749-1832)",
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Tübingen : Cotta, 1817 - 448 Seiten",
+                        "id": "AK00345492",
+                        "display": "Aus meinem Leben : Dichtung und Wahrheit. - Abth. 2, Th. 2. [Italienische Reise ; 2]",
+                        "item_provenance_mv": [
+                            false,
+                            false,
+                            true,
+                            true
+                        ]
+                    },
+                    {
+                        "displayName": "Goethe, Johann Wolfgang von (1749-1832)",
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Tübingen : Cotta, 1822 - 506 Seiten",
+                        "id": "AK00345494",
+                        "display": "Aus meinem Leben : Dichtung und Wahrheit. - Abth. 2, Th. 5. [Kampagne in Frankreich. Belagerung von Mainz]",
+                        "item_provenance_mv": [
+                            false,
+                            false,
+                            true,
+                            true
+                        ]
+                    }
+                ]
+            },
+            "facet_counts": {
+                "facet_queries": {
+                    "Woche": 0,
+                    "Monat": 0,
+                    "Quartal": 0,
+                    "Halbjahr": 0,
+                    "Jahr": 0
+                },
+                "facet_fields": {
+                    "Digital": [
+                        "true",
+                        1
+                    ],
+                    "Medientypen": [
+                        "Gedrucktes",
+                        649
+                    ],
+                    "FormUndInhalt": [
+                        "Dramatisches",
+                        136,
+                        "Prosa",
+                        72,
+                        "Sonderdruck",
+                        39,
+                        "Sonstige Texte",
+                        38,
+                        "Lyrik",
+                        33,
+                        "Brief",
+                        29,
+                        "Versepos",
+                        28,
+                        "Autobiografisches",
+                        20,
+                        "Aufsatzsammlung",
+                        8,
+                        "Ausstellungskatalog",
+                        8,
+                        "Hochschulschrift",
+                        8,
+                        "Übersetzung, deutsch",
+                        8,
+                        "Festschrift",
+                        4,
+                        "Rede / Vortrag",
+                        4,
+                        "Konferenzschrift",
+                        3,
+                        "Abbildung",
+                        2,
+                        "Register",
+                        2,
+                        "Rezension",
+                        2,
+                        "Anthologie",
+                        1,
+                        "Bibliografie",
+                        1,
+                        "Faksimile",
+                        1,
+                        "Musikalia",
+                        1,
+                        "Programmheft",
+                        1,
+                        "Reisebericht",
+                        1,
+                        "Reprint",
+                        1,
+                        "Tagebuch",
+                        1,
+                        "Werke, Teilausgabe",
+                        1,
+                        null,
+                        252
+                    ],
+                    "Medium": [
+                        "Buch",
+                        615,
+                        "Zeitschriftenheft",
+                        20,
+                        "Zeitschriftenband",
+                        14,
+                        "Buchumschlag",
+                        5,
+                        "Noten",
+                        1,
+                        null,
+                        0
+                    ],
+                    "Personen": [
+                        "Cotta",
+                        576,
+                        "Goethe, Johann Wolfgang von (1749-1832)",
+                        571,
+                        "J.-G.-Cotta'sche Buchhandlung <Stuttgart> / Archiv",
+                        94,
+                        "Glück, Franz (1899-1981)",
+                        63,
+                        "Mörike, Eduard (1804-1875)",
+                        42,
+                        "Schocken, Salman (1877-1959)",
+                        41,
+                        "Schockenbibliothek",
+                        41,
+                        "Wolfskehl, Karl (1869-1948)",
+                        41,
+                        "Schiller, Friedrich von (1759-1805)",
+                        33,
+                        "Flaischlen, Cäsar (1864-1920)",
+                        32,
+                        "Unbekannt",
+                        31,
+                        "Düntzer, Heinrich (1813-1901)",
+                        16,
+                        "Jünger, Ernst (1895-1998)",
+                        11,
+                        "Witkowski, Georg (1863-1939)",
+                        10,
+                        "Neureuther, Eugen Napoleon (1806-1882)",
+                        9,
+                        "Meyer, Alfred Gotthold (1864-1904)",
+                        8,
+                        "Schröer, Karl Julius (1825-1900)",
+                        8,
+                        "Steiner, Rudolf (1861-1925)",
+                        8,
+                        "Berend, Eduard (1883-1973)",
+                        6,
+                        "Cellini, Benvenuto (1500-1571)",
+                        6,
+                        "Diderot, Denis (1713-1784)",
+                        6,
+                        "Fischer, Kuno (1824-1907)",
+                        6,
+                        "Grimm, Herman (1828-1901)",
+                        5,
+                        "Grumach, Ernst (1902-1967)",
+                        5,
+                        "Morris, Max (1859-1918)",
+                        5,
+                        "Retzsch, Moritz (1779-1857)",
+                        5,
+                        "Wieland, Christoph Martin (1733-1813)",
+                        5,
+                        "Hesse, Hermann (1877-1962)",
+                        4,
+                        "Hesse, Ninon (1895-1966)",
+                        4,
+                        "Hirzel, Salomon (1804-1877)",
+                        4,
+                        "Kaulbach, Wilhelm von (1805-1874)",
+                        4,
+                        "Praschek, Helmut",
+                        4,
+                        "Stein, Charlotte von (1742-1827)",
+                        4,
+                        "Winckelmann, Johann Joachim (1717-1768)",
+                        4,
+                        "Bernays, Michael (1834-1897)",
+                        3,
+                        "Burkhardt, Karl August Hugo (1830-1910)",
+                        3,
+                        "Cotta, Johann Friedrich (1764-1832)",
+                        3,
+                        "Diezmann, Johann August (1805-1869)",
+                        3,
+                        "Goethe, Wolfgang von (1820-1883)",
+                        3,
+                        "Haarhaus, Julius R. (1867-1947)",
+                        3,
+                        "Hagen, Waltraud",
+                        3,
+                        "Herder, Johann Gottfried (1744-1803)",
+                        3,
+                        "Jünger, Liselotte (1917-2010)",
+                        3,
+                        "Lehmann, Wilhelm (1882-1968)",
+                        3,
+                        "Maync, Harry (1874-1947)",
+                        3,
+                        "Riemer, Friedrich Wilhelm (1774-1845)",
+                        3,
+                        "Steiner, Herbert (1892-1966)",
+                        3,
+                        "Uhde, Hermann (1845-1879)",
+                        3,
+                        "Voltaire (1694-1778)",
+                        3,
+                        "Weißschedel, ...",
+                        3
+                    ],
+                    "Thema": [
+                        "Goethe, Johann Wolfgang von (1749-1832)",
+                        151,
+                        "Beziehungen / Familie und Zeitgenossen / Einzelne Personen und Gruppen",
+                        26,
+                        "Schiller, Friedrich von (1759-1805)",
+                        19,
+                        "Sekundärliteratur (nicht weiter differenziert)",
+                        17,
+                        "Goethe, Johann Wolfgang von <1749-1832>. Faust (Drama)",
+                        11,
+                        "Dramatisches / Einzelne Werke",
+                        10,
+                        "Umfassende Darstellungen",
+                        10,
+                        "Erinnerungen, Äußerungen in Briefen, Gesprächen und Tagebüchern Dritter",
+                        8,
+                        "Lyrik / Einzelne Werke",
+                        8,
+                        "Person und Werk als Thema",
+                        8,
+                        "Erzählende Prosa / Einzelne Werke",
+                        7,
+                        "Lebensphasen / Einzelnes",
+                        7,
+                        "Sammelwerke",
+                        7,
+                        "Wirkungsgeschichte / Illustrationen / Einzelne Werke",
+                        7,
+                        "Beziehungen / Einzelne Länder und Orte",
+                        6,
+                        "Goethezeit / Vergleiche und Beziehungen",
+                        6,
+                        "Wirkungsgeschichte / Illustrationen / Allgemeines",
+                        6,
+                        "Wirkungsgeschichte / Verehrung / Einzelnes",
+                        6,
+                        "Ausstellungen",
+                        5,
+                        "Kunst / Einzelne Künstler",
+                        5,
+                        "Kürzere Darstellungen",
+                        5,
+                        "Einzelne Ausstellungen zur deutschen Literatur",
+                        4,
+                        "Gespräche, Interviews",
+                        4,
+                        "Goethe, Johann Wolfgang von <1749-1832>. West-östlicher Divan (Zusammenstellung : 1819)",
+                        4,
+                        "Goethezeit",
+                        4,
+                        "Journalistische Schriften",
+                        4,
+                        "Sachtexte / Allgemeines",
+                        4,
+                        "Textkritik, Editionen / Einzelne Werke",
+                        4,
+                        "Alter",
+                        3,
+                        "Bibliographien",
+                        3,
+                        "Buchgeschichte / Einzelne Epochen",
+                        3,
+                        "Feier",
+                        3,
+                        "Sachtexte / Einzelne Werke",
+                        3,
+                        "Stein, Charlotte von (1742-1827)",
+                        3,
+                        "Versepen / Einzelne Werke",
+                        3,
+                        "Andere Bearbeitungen / Einzelne Werke",
+                        2,
+                        "Berichte, Sammelbesprechungen",
+                        2,
+                        "Beziehungen",
+                        2,
+                        "Beziehungen / Familie und Zeitgenossen / Allgemeines",
+                        2,
+                        "Bildungswelt, Weltbild / Sonstige Disziplinen",
+                        2,
+                        "Cotta, Johann Friedrich (1764-1832)",
+                        2,
+                        "Darstellungen",
+                        2,
+                        "Denkmal",
+                        2,
+                        "Dokumente",
+                        2,
+                        "Einzelne Volksbücher",
+                        2,
+                        "Frau",
+                        2,
+                        "Geographie und Topographie Deutschlands / Einzelne Orte",
+                        2,
+                        "Goethe, Johann Wolfgang von <1749-1832>. Novelle (Novelle : 1828)",
+                        2,
+                        "Goethe, Johann Wolfgang von <1749-1832>. Reineke Fuchs (Epik)",
+                        2,
+                        "Goethe, Johann Wolfgang von <1749-1832>. Torquato Tasso (Drama : 1790)",
+                        2,
+                        null,
+                        456
+                    ],
+                    "Sprache": [
+                        "Deutsch",
+                        571,
+                        "Französisch",
+                        5,
+                        "Italienisch",
+                        4,
+                        "Englisch",
+                        2,
+                        "Latein",
+                        1,
+                        "Serbokroatisch (bis 1991)",
+                        1
+                    ],
+                    "filterLanguageType_mv": [
+                        "Deutsch␝Original",
+                        565,
+                        "Deutsch␝Übersetzung",
+                        6,
+                        "Französisch␝Original",
+                        5,
+                        "Italienisch␝Original",
+                        4,
+                        "Englisch␝Original",
+                        2,
+                        "Latein␝Original",
+                        1,
+                        "Serbokroatisch (bis 1991)␝Original",
+                        1
+                    ],
+                    "Ort": [
+                        "Berlin",
+                        84,
+                        "Stuttgart",
+                        84,
+                        "Leipzig",
+                        65,
+                        "Jerusalem",
+                        41,
+                        "Kiechlinsbergen",
+                        41,
+                        "Tübingen",
+                        41,
+                        "S.l.",
+                        28,
+                        "Weimar",
+                        20,
+                        "Frankfurt",
+                        9,
+                        "Wien",
+                        7,
+                        "Augsburg",
+                        6,
+                        "Hamburg",
+                        6,
+                        "München",
+                        6,
+                        "Frankfurt am Main",
+                        5,
+                        "Heidelberg",
+                        5,
+                        "Jena",
+                        4,
+                        "London",
+                        4,
+                        "Stuttgart & Tübingen",
+                        4,
+                        "Stuttgart und Tübingen",
+                        4,
+                        "Bern",
+                        3,
+                        "Braunschweig",
+                        3,
+                        "Frankfurt a. M.",
+                        3,
+                        "Köln",
+                        3,
+                        "Nürnberg",
+                        3,
+                        "Stuttgard [Stuttgart]",
+                        3,
+                        "Zürich",
+                        3,
+                        "Bonn",
+                        2,
+                        "Bremen",
+                        2,
+                        "Breslau",
+                        2,
+                        "Darmstadt",
+                        2,
+                        "Deutschland",
+                        2,
+                        "Dresden",
+                        2,
+                        "Frankfurt/M.",
+                        2,
+                        "Freiburg im Breisgau",
+                        2,
+                        "Halberstadt",
+                        2,
+                        "Italien",
+                        2,
+                        "Paris",
+                        2,
+                        "Würzburg",
+                        2,
+                        "Aachen",
+                        1,
+                        "Als Ms. gedr.",
+                        1,
+                        "Altenburg",
+                        1,
+                        "Argentorati",
+                        1,
+                        "Athen",
+                        1,
+                        "Bad Pyrmont",
+                        1,
+                        "Baltimore, Md.",
+                        1,
+                        "Basel",
+                        1,
+                        "Beograd",
+                        1,
+                        "Cassel",
+                        1,
+                        "Coblenz",
+                        1,
+                        "Cotta",
+                        1
+                    ],
+                    "filterLocationType_mv": [
+                        "Stuttgart␝Erscheinungsort",
+                        84,
+                        "Leipzig␝Erscheinungsort",
+                        65,
+                        "Berlin␝Erscheinungsort",
+                        45,
+                        "Berlin␝Provenienzort",
+                        41,
+                        "Jerusalem␝Provenienzort",
+                        41,
+                        "Kiechlinsbergen␝Provenienzort",
+                        41,
+                        "Tübingen␝Erscheinungsort",
+                        41,
+                        "S.l.␝Erscheinungsort",
+                        28,
+                        "Weimar␝Erscheinungsort",
+                        19,
+                        "Frankfurt␝Erscheinungsort",
+                        9,
+                        "Wien␝Erscheinungsort",
+                        7,
+                        "Augsburg␝Erscheinungsort",
+                        6,
+                        "Hamburg␝Erscheinungsort",
+                        6,
+                        "München␝Erscheinungsort",
+                        6,
+                        "Frankfurt am Main␝Erscheinungsort",
+                        5,
+                        "Heidelberg␝Erscheinungsort",
+                        5,
+                        "Jena␝Erscheinungsort",
+                        4,
+                        "London␝Erscheinungsort",
+                        4,
+                        "Stuttgart & Tübingen␝Erscheinungsort",
+                        4,
+                        "Stuttgart und Tübingen␝Erscheinungsort",
+                        4,
+                        "Bern␝Erscheinungsort",
+                        3,
+                        "Braunschweig␝Erscheinungsort",
+                        3,
+                        "Frankfurt a. M.␝Erscheinungsort",
+                        3,
+                        "Köln␝Erscheinungsort",
+                        3,
+                        "Nürnberg␝Erscheinungsort",
+                        3,
+                        "Stuttgard [Stuttgart]␝Erscheinungsort",
+                        3,
+                        "Zürich␝Erscheinungsort",
+                        3,
+                        "Bonn␝Erscheinungsort",
+                        2,
+                        "Bremen␝Erscheinungsort",
+                        2,
+                        "Breslau␝Erscheinungsort",
+                        2,
+                        "Darmstadt␝Erscheinungsort",
+                        2,
+                        "Deutschland␝Erscheinungsort",
+                        2,
+                        "Dresden␝Erscheinungsort",
+                        2,
+                        "Frankfurt/M.␝Erscheinungsort",
+                        2,
+                        "Freiburg im Breisgau␝Erscheinungsort",
+                        2,
+                        "Halberstadt␝Erscheinungsort",
+                        2,
+                        "Italien␝Schlagwort",
+                        2,
+                        "Paris␝Erscheinungsort",
+                        2,
+                        "Weimar␝Schlagwort",
+                        2,
+                        "Würzburg␝Erscheinungsort",
+                        2,
+                        "Aachen␝Erscheinungsort",
+                        1,
+                        "Als Ms. gedr.␝Erscheinungsort",
+                        1,
+                        "Altenburg␝Erscheinungsort",
+                        1,
+                        "Argentorati␝Erscheinungsort",
+                        1,
+                        "Athen␝Erscheinungsort",
+                        1,
+                        "Bad Pyrmont␝Schlagwort",
+                        1,
+                        "Baltimore, Md.␝Erscheinungsort",
+                        1,
+                        "Basel␝Erscheinungsort",
+                        1,
+                        "Beograd␝Erscheinungsort",
+                        1,
+                        "Cassel␝Erscheinungsort",
+                        1
+                    ],
+                    "Sammlung": [
+                        "COTTA:Cotta-Archiv (Verlagsproduktion / Stiftung der Stuttgarter Zeitung)",
+                        649,
+                        "G:Glück, Franz (Sammlerbibliothek)",
+                        63,
+                        "G:Mörike-Archiv (Marbacher Forschungsbibliothek)",
+                        42,
+                        "G:Mörike, Eduard (Virtuelle Rekonstruktion des Buchbesitzes)",
+                        41,
+                        "G:Wolfskehl, Karl (Virtuelle Bibliothek Kiechlinsbergen 1937)",
+                        41,
+                        "G:Wolfskehl, Karl (Virtuelle Rekonstruktion des Buchbesitzes)",
+                        41,
+                        "G:Jünger, Ernst (Bibliothek des Autors / Wilflinger Bestand)",
+                        10,
+                        "G:Jean-Paul-Archiv (Bibliothek Eduard Berend)",
+                        6,
+                        "G:Schiller-Bibliothek I / II (Teilbibliothek des Autors und seiner Familie)",
+                        6,
+                        "COTTA:Manuskripte",
+                        4,
+                        "G:Hesse, Hermann (Hesse-Archiv / Marbacher Bestand)",
+                        4,
+                        "G:Lehmann, Wilhelm (Bibliothek des Autors)",
+                        3,
+                        "G:Steiner, Herbert (Arbeitsbibliothek / Paul-Valéry-Sammlung)",
+                        3,
+                        "G:Eberle, Josef (Bibliothek des Autors)",
+                        2,
+                        "G:Groddeck, Georg (Teilbibliothek des Autors)",
+                        2,
+                        "G:Blumenberg, Hans (Philosophisch-literarische Teilbibliothek)",
+                        1,
+                        "G:Jünger, Ernst (Bibliothek des Autors / Marbacher Bestand)",
+                        1,
+                        "G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices)",
+                        1,
+                        "G:Koselleck, Reinhart (Historisch-politische Teilbibliothek und Sonderdruck-Sammlung)",
+                        1,
+                        "G:Mörike, Eduard (Sammlung Fritz Kauffmann)",
+                        1,
+                        "G:Mörike, Eduard (Sammlung Klaus Berge)",
+                        1,
+                        null,
+                        0
+                    ],
+                    "Datenbestand": [
+                        "Bibliotheksmaterialien",
+                        649,
+                        null,
+                        0
+                    ],
+                    "Bibliographie": [
+                        null,
+                        649
+                    ],
+                    "filterAuthorityRole_mv": [
+                        "Cotta␝Bestandsbildner/Vorbesitzer",
+                        576,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Verfasser/Urheber",
+                        391,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Behandelte Person/Körperschaft",
+                        151,
+                        "J.-G.-Cotta'sche Buchhandlung <Stuttgart> / Archiv␝Bestandsbildner/Vorbesitzer",
+                        94,
+                        "Glück, Franz (1899-1981)␝Bestandsbildner/Vorbesitzer",
+                        63,
+                        "Mörike, Eduard (1804-1875)␝Bestandsbildner/Vorbesitzer",
+                        42,
+                        "Schocken, Salman (1877-1959)␝Bestandsbildner/Vorbesitzer",
+                        41,
+                        "Schockenbibliothek␝Bestandsbildner/Vorbesitzer",
+                        41,
+                        "Wolfskehl, Karl (1869-1948)␝Bestandsbildner/Vorbesitzer",
+                        41,
+                        "Flaischlen, Cäsar (1864-1920)␝Bestandsbildner/Vorbesitzer",
+                        32,
+                        "Unbekannt␝Bestandsbildner/Vorbesitzer",
+                        31,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Herausgeber",
+                        23,
+                        "Schiller, Friedrich von (1759-1805)␝Behandelte Person/Körperschaft",
+                        19,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Übersetzer",
+                        15,
+                        "Jünger, Ernst (1895-1998)␝Bestandsbildner/Vorbesitzer",
+                        11,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Korrespondent",
+                        10,
+                        "Düntzer, Heinrich (1813-1901)␝Herausgeber",
+                        9,
+                        "Neureuther, Eugen Napoleon (1806-1882)␝Illustrator",
+                        9,
+                        "Witkowski, Georg (1863-1939)␝Herausgeber",
+                        9,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Mitwirkender",
+                        8,
+                        "Meyer, Alfred Gotthold (1864-1904)␝Herausgeber",
+                        8,
+                        "Schiller, Friedrich von (1759-1805)␝Verfasser/Urheber",
+                        8,
+                        "Schröer, Karl Julius (1825-1900)␝Herausgeber",
+                        8,
+                        "Steiner, Rudolf (1861-1925)␝Herausgeber",
+                        8,
+                        "Berend, Eduard (1883-1973)␝Bestandsbildner/Vorbesitzer",
+                        6,
+                        "Cellini, Benvenuto (1500-1571)␝Verfasser/Urheber",
+                        6,
+                        "Schiller, Friedrich von (1759-1805)␝Korrespondent",
+                        6,
+                        "Diderot, Denis (1713-1784)␝Verfasser/Urheber",
+                        5,
+                        "Düntzer, Heinrich (1813-1901)␝Verfasser/Urheber",
+                        5,
+                        "Fischer, Kuno (1824-1907)␝Verfasser/Urheber",
+                        5,
+                        "Retzsch, Moritz (1779-1857)␝Verfasser/Urheber",
+                        5,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Adressat",
+                        4,
+                        "Grumach, Ernst (1902-1967)␝Herausgeber",
+                        4,
+                        "Hesse, Hermann (1877-1962)␝Bestandsbildner/Vorbesitzer",
+                        4,
+                        "Hesse, Ninon (1895-1966)␝Bestandsbildner/Vorbesitzer",
+                        4,
+                        "Morris, Max (1859-1918)␝Verfasser/Urheber",
+                        4,
+                        "Praschek, Helmut␝Verfasser/Urheber",
+                        4,
+                        "Schiller, Friedrich von (1759-1805)␝Adressat",
+                        4,
+                        "Bernays, Michael (1834-1897)␝Verfasser/Urheber",
+                        3,
+                        "Diezmann, Johann August (1805-1869)␝Herausgeber",
+                        3,
+                        "Goethe, Wolfgang von (1820-1883)␝Verfasser/Urheber",
+                        3,
+                        "Grimm, Herman (1828-1901)␝Verfasser/Urheber",
+                        3,
+                        "Haarhaus, Julius R. (1867-1947)␝Verfasser/Urheber",
+                        3,
+                        "Hirzel, Salomon (1804-1877)␝Verfasser eines Vor- oder Nachworts",
+                        3,
+                        "Jünger, Liselotte (1917-2010)␝Widmungsempfänger",
+                        3,
+                        "Kaulbach, Wilhelm von (1805-1874)␝Illustrator",
+                        3,
+                        "Lehmann, Wilhelm (1882-1968)␝Bestandsbildner/Vorbesitzer",
+                        3,
+                        "Stein, Charlotte von (1742-1827)␝Behandelte Person/Körperschaft",
+                        3,
+                        "Steiner, Herbert (1892-1966)␝Bestandsbildner/Vorbesitzer",
+                        3,
+                        "Voltaire (1694-1778)␝Verfasser/Urheber",
+                        3
+                    ],
+                    "filterAuthorityRelation_mv": [
+                        "Cotta␝Unter",
+                        576,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Von",
+                        440,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝Über",
+                        151,
+                        "J.-G.-Cotta'sche Buchhandlung <Stuttgart> / Archiv␝Unter",
+                        94,
+                        "Glück, Franz (1899-1981)␝Unter",
+                        63,
+                        "Mörike, Eduard (1804-1875)␝Unter",
+                        42,
+                        "Schocken, Salman (1877-1959)␝Unter",
+                        41,
+                        "Schockenbibliothek␝Unter",
+                        41,
+                        "Wolfskehl, Karl (1869-1948)␝Unter",
+                        41,
+                        "Flaischlen, Cäsar (1864-1920)␝Unter",
+                        32,
+                        "Unbekannt␝Unter",
+                        31,
+                        "Schiller, Friedrich von (1759-1805)␝Über",
+                        19,
+                        "Schiller, Friedrich von (1759-1805)␝Von",
+                        17,
+                        "Düntzer, Heinrich (1813-1901)␝Von",
+                        16,
+                        "Jünger, Ernst (1895-1998)␝Unter",
+                        11,
+                        "Witkowski, Georg (1863-1939)␝Von",
+                        10,
+                        "Neureuther, Eugen Napoleon (1806-1882)␝Von",
+                        9,
+                        "Meyer, Alfred Gotthold (1864-1904)␝Von",
+                        8,
+                        "Schröer, Karl Julius (1825-1900)␝Von",
+                        8,
+                        "Steiner, Rudolf (1861-1925)␝Von",
+                        8,
+                        "Berend, Eduard (1883-1973)␝Unter",
+                        6,
+                        "Cellini, Benvenuto (1500-1571)␝Von",
+                        6,
+                        "Fischer, Kuno (1824-1907)␝Von",
+                        6,
+                        "Diderot, Denis (1713-1784)␝Von",
+                        5,
+                        "Goethe, Johann Wolfgang von (1749-1832)␝An",
+                        5,
+                        "Grimm, Herman (1828-1901)␝Von",
+                        5,
+                        "Grumach, Ernst (1902-1967)␝Von",
+                        5,
+                        "Morris, Max (1859-1918)␝Von",
+                        5,
+                        "Retzsch, Moritz (1779-1857)␝Von",
+                        5,
+                        "Hesse, Hermann (1877-1962)␝Unter",
+                        4,
+                        "Hesse, Ninon (1895-1966)␝Unter",
+                        4,
+                        "Hirzel, Salomon (1804-1877)␝Von",
+                        4,
+                        "Praschek, Helmut␝Von",
+                        4,
+                        "Schiller, Friedrich von (1759-1805)␝An",
+                        4,
+                        "Wieland, Christoph Martin (1733-1813)␝Von",
+                        4,
+                        "Winckelmann, Johann Joachim (1717-1768)␝Von",
+                        4,
+                        "Bernays, Michael (1834-1897)␝Von",
+                        3,
+                        "Burkhardt, Karl August Hugo (1830-1910)␝Von",
+                        3,
+                        "Diezmann, Johann August (1805-1869)␝Von",
+                        3,
+                        "Goethe, Wolfgang von (1820-1883)␝Von",
+                        3,
+                        "Haarhaus, Julius R. (1867-1947)␝Von",
+                        3,
+                        "Hagen, Waltraud␝Von",
+                        3,
+                        "Jünger, Liselotte (1917-2010)␝An",
+                        3,
+                        "Kaulbach, Wilhelm von (1805-1874)␝Von",
+                        3,
+                        "Lehmann, Wilhelm (1882-1968)␝Unter",
+                        3,
+                        "Maync, Harry (1874-1947)␝Von",
+                        3,
+                        "Riemer, Friedrich Wilhelm (1774-1845)␝Von",
+                        3,
+                        "Stein, Charlotte von (1742-1827)␝Über",
+                        3,
+                        "Steiner, Herbert (1892-1966)␝Unter",
+                        3,
+                        "Uhde, Hermann (1845-1879)␝Von",
+                        3
+                    ],
+                    "entities": [
+                        "KS00021741",
+                        576,
+                        "PE00000863",
+                        571
+                    ]
+                },
+                "facet_ranges": {
+                    "Zeit": {
+                        "counts": [
+                            "1726-01-01T00:00:00Z",
+                            1,
+                            "1732-01-01T00:00:00Z",
+                            0,
+                            "1738-01-01T00:00:00Z",
+                            0,
+                            "1744-01-01T00:00:00Z",
+                            0,
+                            "1750-01-01T00:00:00Z",
+                            0,
+                            "1756-01-01T00:00:00Z",
+                            0,
+                            "1762-01-01T00:00:00Z",
+                            0,
+                            "1768-01-01T00:00:00Z",
+                            7,
+                            "1774-01-01T00:00:00Z",
+                            48,
+                            "1780-01-01T00:00:00Z",
+                            2,
+                            "1786-01-01T00:00:00Z",
+                            25,
+                            "1792-01-01T00:00:00Z",
+                            12,
+                            "1798-01-01T00:00:00Z",
+                            20,
+                            "1804-01-01T00:00:00Z",
+                            26,
+                            "1810-01-01T00:00:00Z",
+                            46,
+                            "1816-01-01T00:00:00Z",
+                            50,
+                            "1822-01-01T00:00:00Z",
+                            28,
+                            "1828-01-01T00:00:00Z",
+                            63,
+                            "1834-01-01T00:00:00Z",
+                            15,
+                            "1840-01-01T00:00:00Z",
+                            53,
+                            "1846-01-01T00:00:00Z",
+                            17,
+                            "1852-01-01T00:00:00Z",
+                            22,
+                            "1858-01-01T00:00:00Z",
+                            23,
+                            "1864-01-01T00:00:00Z",
+                            3,
+                            "1870-01-01T00:00:00Z",
+                            8,
+                            "1876-01-01T00:00:00Z",
+                            10,
+                            "1882-01-01T00:00:00Z",
+                            16,
+                            "1888-01-01T00:00:00Z",
+                            17,
+                            "1894-01-01T00:00:00Z",
+                            15,
+                            "1900-01-01T00:00:00Z",
+                            9,
+                            "1906-01-01T00:00:00Z",
+                            17,
+                            "1912-01-01T00:00:00Z",
+                            8,
+                            "1918-01-01T00:00:00Z",
+                            4,
+                            "1924-01-01T00:00:00Z",
+                            2,
+                            "1930-01-01T00:00:00Z",
+                            11,
+                            "1936-01-01T00:00:00Z",
+                            42,
+                            "1942-01-01T00:00:00Z",
+                            0,
+                            "1948-01-01T00:00:00Z",
+                            5,
+                            "1954-01-01T00:00:00Z",
+                            5,
+                            "1960-01-01T00:00:00Z",
+                            9,
+                            "1966-01-01T00:00:00Z",
+                            7,
+                            "1972-01-01T00:00:00Z",
+                            5,
+                            "1978-01-01T00:00:00Z",
+                            8,
+                            "1984-01-01T00:00:00Z",
+                            9,
+                            "1990-01-01T00:00:00Z",
+                            6,
+                            "1996-01-01T00:00:00Z",
+                            6,
+                            "2002-01-01T00:00:00Z",
+                            7,
+                            "2008-01-01T00:00:00Z",
+                            1,
+                            "2014-01-01T00:00:00Z",
+                            2,
+                            "2020-01-01T00:00:00Z",
+                            0,
+                            "2026-01-01T00:00:00Z",
+                            0
+                        ],
+                        "gap": "+6YEAR",
+                        "start": "1726-01-01T00:00:00Z",
+                        "end": "2032-01-01T00:00:00Z"
+                    }
+                },
+                "facet_intervals": [],
+                "facet_heatmaps": []
+            },
+            "highlighting": {
+                "AK01181102": {
+                    "display": [
+                        "Bericht der fünften Generalversammlung der \\ueeeeGoethe\\ueeef-Gesellschaft am 31. Mai 1890 : [Sonderdruck]"
+                    ]
+                },
+                "AK01182300": {
+                    "displayName": [
+                        "Witkowski, Georg (1863-1939); \\ueeeeGoethe\\ueeef, Cornelia (1750-1777)"
+                    ]
+                },
+                "AK01480098": {
+                    "displayName": [
+                        "\\ueeeeGoethe\\ueeef, Ottilie von (1796-1872)"
+                    ]
+                },
+                "AK01004173": {
+                    "displayName": [
+                        "\\ueeeeGoethe\\ueeef, Wolfgang von (1820-1883)"
+                    ]
+                },
+                "AK01004175": {
+                    "displayName": [
+                        "\\ueeeeGoethe\\ueeef, Wolfgang von (1820-1883)"
+                    ]
+                },
+                "AK01185532": {
+                    "display": [
+                        "Verzeichniß des handschriftlichen Riemerschen Nachlasses : A. \\ueeeeGoethe\\ueeef betreffend ; B. Literär. Nachlaß"
+                    ]
+                },
+                "AK01180674": {
+                    "display": [
+                        "Die \\ueeeeGöthe\\ueeef-Literatur in Deutschland : vollständiger Catalog sämmtlicher in Deutschland erschienenen Werke J. "
+                    ]
+                },
+                "AK01180959": [],
+                "AK01181081": {
+                    "display": [
+                        "Zeitschrift für deutsche Bildung. - 8 (1932), 3 : \\ueeeeGoethe\\ueeef-Sonderheft"
+                    ]
+                },
+                "AK01181280": [],
+                "AK01181286": {
+                    "display": [
+                        "Führer durch die \\ueeeeGoethe\\ueeef-Ausstellung in der Aula des Marzellengymnasiums zu Köln 5. - 7. "
+                    ]
+                },
+                "AK01181544": {
+                    "display": [
+                        "Todestag von Johann Wolfgang von \\ueeeeGoethe\\ueeef"
+                    ],
+                    "displayName": [
+                        "\\ueeeeGoethe\\ueeef, Johann Wolfgang von (1749-1832)"
+                    ]
+                },
+                "AK01181782": [],
+                "AK01039345": {
+                    "display": [
+                        "Das \\ueeeeGoethe\\ueeef-Denkmal in Frankfurt a. M."
+                    ],
+                    "displayName": [
+                        "\\ueeeeGoethe\\ueeef, Johann Wolfgang von (1749-1832)"
+                    ]
+                },
+                "AK01039441": {
+                    "display": [
+                        "Über meine künftige Gattin : eine Frühlingsbetrachtung von einem Jüngling ; [dem Herrn Doktor \\ueeeeGöthe\\ueeef in Frankfurt gewidmet]"
+                    ]
+                },
+                "AK01046432": {
+                    "displayName": [
+                        "\\ueeeeGoethe\\ueeef, Johann Wolfgang von (1749-1832)"
+                    ]
+                },
+                "AK01023772": {
+                    "displayName": [
+                        "\\ueeeeGoethe\\ueeef, Johann Wolfgang von (1749-1832)"
+                    ]
+                },
+                "AK01023817": {
+                    "displayName": [
+                        "\\ueeeeGoethe\\ueeef, Johann Wolfgang von (1749-1832)"
+                    ]
+                },
+                "AK01023888": {
+                    "displayName": [
+                        "\\ueeeeGoethe\\ueeef, Johann Wolfgang von (1749-1832)"
+                    ]
+                },
+                "AK01023907": {
+                    "displayName": [
+                        "\\ueeeeGoethe\\ueeef, Johann Wolfgang von (1749-1832)"
+                    ]
+                },
+                "AK01024596": {
+                    "displayName": [
+                        "\\ueeeeGoethe\\ueeef, Johann Wolfgang von (1749-1832)"
+                    ]
+                },
+                "AK01024924": {
+                    "displayName": [
+                        "\\ueeeeGoethe\\ueeef, Johann Wolfgang von (1749-1832)"
+                    ]
+                },
+                "AK00345491": {
+                    "displayName": [
+                        "\\ueeeeGoethe\\ueeef, Johann Wolfgang von (1749-1832)"
+                    ]
+                },
+                "AK00345492": {
+                    "displayName": [
+                        "\\ueeeeGoethe\\ueeef, Johann Wolfgang von (1749-1832)"
+                    ]
+                },
+                "AK00345494": {
+                    "displayName": [
+                        "\\ueeeeGoethe\\ueeef, Johann Wolfgang von (1749-1832)"
+                    ]
+                }
+            }
+        }
+    }
+}

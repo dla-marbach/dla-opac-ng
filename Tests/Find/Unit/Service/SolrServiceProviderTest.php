@@ -126,6 +126,50 @@ class SolrServiceProviderTest extends UnitTestCase
         ]);
     }
 
+    public static function dateRangeFacetBoundsProvider(): array
+    {
+        return [
+            'weniger als 50 Jahre: Abstand 1 Jahr' => ['2000-06-15', '2026-03-01', 'NOW/YEAR-27YEARS', 1],
+            'mehr als 50 Jahre: Abstand gerundet' => ['1900-01-01', '2026-10-14', 'NOW/YEAR-129YEARS', 3],
+            'Fallback Jahr 0' => ['0000-01-01', '2026-10-14', 'NOW/YEAR-2050YEARS', 41],
+            'Solr-Zeitstempel als Minimum' => ['1910-06-15T00:00:00Z', '2026-10-14', 'NOW/YEAR-118YEARS', 2],
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider dateRangeFacetBoundsProvider
+     */
+    public function getDateRangeFacetBoundsUsesSolrDateMathRelativeToNow(string $minValue, string $now, string $expectedStart, int $expectedGap)
+    {
+        [$start, $end, $gap] = $this->invokeProtected($this->fixture, 'getDateRangeFacetBounds', [
+            $minValue,
+            new \DateTimeImmutable($now),
+        ]);
+
+        self::assertSame($expectedStart, $start);
+        self::assertSame('NOW/DAY+1YEAR', $end);
+        self::assertSame($expectedGap, $gap);
+    }
+
+    /**
+     * @test
+     */
+    public function getDateRangeFacetBoundsOnlyChangeAtNewYear()
+    {
+        $start = fn (string $now) => $this->invokeProtected($this->fixture, 'getDateRangeFacetBounds', [
+            '2000-06-15',
+            new \DateTimeImmutable($now),
+        ])[0];
+
+        // Unverändert über das ganze Jahr, auch am Jahrestag des ältesten Datums
+        self::assertSame('NOW/YEAR-27YEARS', $start('2026-01-01T00:00:00Z'));
+        self::assertSame('NOW/YEAR-27YEARS', $start('2026-06-15T12:00:00Z'));
+        self::assertSame('NOW/YEAR-27YEARS', $start('2026-12-31T23:59:59Z'));
+        // Änderung erst zum Jahreswechsel
+        self::assertSame('NOW/YEAR-28YEARS', $start('2027-01-01T00:00:00Z'));
+    }
+
     private function injectProperty(object $object, string $property, $value): void
     {
         $reflection = new \ReflectionProperty($object, $property);

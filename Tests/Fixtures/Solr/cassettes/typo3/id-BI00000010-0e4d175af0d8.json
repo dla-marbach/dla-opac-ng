@@ -1,0 +1,306 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:BI00000010",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.70128,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BI00000010",
+                        "default": [
+                            "BI00000010",
+                            "Portrait Rafik Schami [Photographie]",
+                            "BI.1999.0003",
+                            "BE00000063",
+                            "BE00000063",
+                            "Einzelobjekt",
+                            "Photographie",
+                            "false",
+                            "1999-01-22",
+                            "2004-08-04",
+                            "1995-1995",
+                            "1995",
+                            "campus",
+                            "9403-30",
+                            "jpg",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2f9403%2f9403-30.jpg/full/full/0/default.jpg?media_access=campus",
+                            "MM00021409",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2f9403%2f9403-30.jpg/full/!480,480/0/default.jpg?media_access=campus",
+                            " 18.2",
+                            " 12.7",
+                            "1995",
+                            "Inventarnummer: B 1999.0010",
+                            "André, Holger",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Portrait Rafik Schami [Photographie]</dc:title>\n  <dc:creator>André, Holger</dc:creator>\n  <dc:type>Fotografie</dc:type>\n  <dc:date>1995-1995</dc:date>\n  <dc:format> 18.2 x  12.7</dc:format>\n  <dc:format>Farbphoto. Vergrößerung auf Kunststoffpapier</dc:format>\n  <dc:description>Rückseite mit Aufkleber des Photographen</dc:description>\n  <dc:subject>Schami, Rafik (1946-)</dc:subject>\n  <dc:identifier>B 1999.0010</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/iiif/2/0%2f1%2f9403%2f9403-30.jpg/full/full/0/default.jpg?media_access=campus</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BI00000010</dc:identifier>\n  <dc:identifier>BI00000010</dc:identifier>\n</oai_dc:dc>",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Portrait Rafik Schami [Photographie]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>André, Holger</namePart>\n    <nameIdentifier type=\"gnd\">1072494817</nameIdentifier>\n    <role>\n      <roleTerm type=\"text\">Urheber/in</roleTerm>\n    </role>\n  </name>\n  <genre>Fotografie</genre>\n  <originInfo eventType=\"production\">\n    <dateCreated>1995-1995</dateCreated>\n  </originInfo>\n  <physicalDescription>\n    <form type=\"format\"> 18.2 x  12.7</form>\n    <form type=\"material\">Farbphoto. Vergrößerung auf Kunststoffpapier</form>\n  </physicalDescription>\n  <note type=\"description\">Rückseite mit Aufkleber des Photographen</note>\n  <subject>\n    <topic>Schami, Rafik (1946-)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Schami, Rafik (1946-)</namePart>\n    </name>\n  </subject>\n  <identifier type=\"inventory\">B 1999.0010</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <url access=\"object in context\">https://digital.dla-marbach.de/iiif/2/0%2f1%2f9403%2f9403-30.jpg/full/full/0/default.jpg?media_access=campus</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">1999-01-22</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2004-08-04</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BI00000010</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "TY  - GEN\nA2  - Schami, Rafik\nAN  - BI.1999.0003\nAU  - André, Holger\nCN  - BI000000109\nDA  - 1995\nID  - BI00000010\nKW  - Schami, Rafik (1946-)\nLB  - Rückseite mit Aufkleber des Photographen\nM1  - B 1999.0010\nM3  - Fotografie\nN1  - Technik: Farbphoto. Vergrößerung auf Kunststoffpapier\nN1  - Maße:  18.2 x  12.7\nTI  - Portrait Rafik Schami [Photographie]\nUR  - https://digital.dla-marbach.de/iiif/2/0%2f1%2f9403%2f9403-30.jpg/full/full/0/default.jpg?media_access=campus\nUR  - https://www.dla-marbach.de/find/opac/id/BI00000010/\nER  -",
+                            "André, Holger␝Von",
+                            "Schami, Rafik (1946-)␝Über",
+                            "André, Holger␝Verfasser/Urheber",
+                            "Schami, Rafik (1946-)␝Dargestellte Person allein",
+                            "André, Holger",
+                            "Schami, Rafik (1946-)",
+                            "1995-01-01T00:00:00Z",
+                            "1995",
+                            "true",
+                            "Fotografie",
+                            "1999-01-22",
+                            "Bilder und Objekte",
+                            "Schami, Rafik (1946-)",
+                            "Bilder und Objekte",
+                            "Rückseite mit Aufkleber des Photographen",
+                            "B 1999.0010",
+                            "Photographien Portraits Kleinformate",
+                            "Farbphoto. Vergrößerung auf Kunststoffpapier",
+                            "BI000000109",
+                            "Schami, Rafik (1946-)",
+                            "PE00004570",
+                            "Dargestellte Person allein",
+                            "André, Holger",
+                            "PE00053129",
+                            "Urheber/in",
+                            "9403-30",
+                            "1.0.0",
+                            "1",
+                            "1995",
+                            "PE00004570",
+                            "PE00053129",
+                            "Schami, Rafik",
+                            "André, Holger",
+                            "André, Holger",
+                            "Schami, Rafik",
+                            "Fadél, Suheil",
+                            "Fāḍel, Suheil",
+                            "�ᅣ미, 라픽",
+                            "شامي، رفيق",
+                            "ラフィク・シャミ",
+                            "シャミ, ラフィク",
+                            "שאמי, רפיק",
+                            "Шами, Рафик",
+                            "شامي, رفيق",
+                            "Shami, Rafik",
+                            "Shami, Rafiq",
+                            "Rafik Schami",
+                            "Sami, Raphik",
+                            "Šâmî, Rāfîq",
+                            "Šāmī, Rafīq",
+                            "Shiyami, Rafuiku",
+                            "Shami, Rafiku",
+                            "Shami, Rafuka",
+                            "Šami, Rafik",
+                            "Shami, Rafiḳ",
+                            "La fei ke Sha mi",
+                            "Lafeike-Shami",
+                            "Shami, Lafeike",
+                            "La pi keu Sya mi",
+                            "Lapikeu-Syami",
+                            "Syami, Lapikeu",
+                            "Syami, Rap'ik'ŭ",
+                            "Šomij, Rafik̦",
+                            "Šomij, Rafiķ",
+                            "Fadel, Suheil",
+                            "Faḍel, Suheil",
+                            "Sami, Rafik",
+                            "Sami, Rafiq",
+                            "Lafeike Shami",
+                            "Lapikeu Syami",
+                            "Syami, Rapiku",
+                            "Somij, Rafik̦",
+                            "Somij, Rafik",
+                            "BI",
+                            "Am Standort",
+                            "Portrait Rafik Schami",
+                            "https://www.dla-marbach.de/find/opac/id/BI00000010",
+                            "eingeschränkt benutzbar",
+                            "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                        ],
+                        "display": "Portrait Rafik Schami [Photographie]",
+                        "accessionNumber": "BI.1999.0003",
+                        "accession_display": "BE00000063",
+                        "accession_id": "BE00000063",
+                        "category": "Einzelobjekt",
+                        "categorySub": "Photographie",
+                        "confidential": false,
+                        "dateCataloged": "1999-01-22",
+                        "dateModified": "2004-08-04",
+                        "dateOrigin": "1995-1995",
+                        "dateOriginComment_mv": [
+                            "1995"
+                        ],
+                        "digitalObject_accessLevel_mv": [
+                            "campus"
+                        ],
+                        "digitalObject_display_mv": [
+                            "9403-30"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2f9403%2f9403-30.jpg/full/full/0/default.jpg?media_access=campus"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM00021409"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2f9403%2f9403-30.jpg/full/!480,480/0/default.jpg?media_access=campus"
+                        ],
+                        "dimension_height_mv": [
+                            " 18.2"
+                        ],
+                        "dimension_width_mv": [
+                            " 12.7"
+                        ],
+                        "displayAddition1": "1995",
+                        "displayAddition2": "Inventarnummer: B 1999.0010",
+                        "displayName": "André, Holger",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Portrait Rafik Schami [Photographie]</dc:title>\n  <dc:creator>André, Holger</dc:creator>\n  <dc:type>Fotografie</dc:type>\n  <dc:date>1995-1995</dc:date>\n  <dc:format> 18.2 x  12.7</dc:format>\n  <dc:format>Farbphoto. Vergrößerung auf Kunststoffpapier</dc:format>\n  <dc:description>Rückseite mit Aufkleber des Photographen</dc:description>\n  <dc:subject>Schami, Rafik (1946-)</dc:subject>\n  <dc:identifier>B 1999.0010</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/iiif/2/0%2f1%2f9403%2f9403-30.jpg/full/full/0/default.jpg?media_access=campus</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BI00000010</dc:identifier>\n  <dc:identifier>BI00000010</dc:identifier>\n</oai_dc:dc>",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Portrait Rafik Schami [Photographie]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>André, Holger</namePart>\n    <nameIdentifier type=\"gnd\">1072494817</nameIdentifier>\n    <role>\n      <roleTerm type=\"text\">Urheber/in</roleTerm>\n    </role>\n  </name>\n  <genre>Fotografie</genre>\n  <originInfo eventType=\"production\">\n    <dateCreated>1995-1995</dateCreated>\n  </originInfo>\n  <physicalDescription>\n    <form type=\"format\"> 18.2 x  12.7</form>\n    <form type=\"material\">Farbphoto. Vergrößerung auf Kunststoffpapier</form>\n  </physicalDescription>\n  <note type=\"description\">Rückseite mit Aufkleber des Photographen</note>\n  <subject>\n    <topic>Schami, Rafik (1946-)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Schami, Rafik (1946-)</namePart>\n    </name>\n  </subject>\n  <identifier type=\"inventory\">B 1999.0010</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <url access=\"object in context\">https://digital.dla-marbach.de/iiif/2/0%2f1%2f9403%2f9403-30.jpg/full/full/0/default.jpg?media_access=campus</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">1999-01-22</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2004-08-04</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BI00000010</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "exportRIS": "TY  - GEN\nA2  - Schami, Rafik\nAN  - BI.1999.0003\nAU  - André, Holger\nCN  - BI000000109\nDA  - 1995\nID  - BI00000010\nKW  - Schami, Rafik (1946-)\nLB  - Rückseite mit Aufkleber des Photographen\nM1  - B 1999.0010\nM3  - Fotografie\nN1  - Technik: Farbphoto. Vergrößerung auf Kunststoffpapier\nN1  - Maße:  18.2 x  12.7\nTI  - Portrait Rafik Schami [Photographie]\nUR  - https://digital.dla-marbach.de/iiif/2/0%2f1%2f9403%2f9403-30.jpg/full/full/0/default.jpg?media_access=campus\nUR  - https://www.dla-marbach.de/find/opac/id/BI00000010/\nER  -",
+                        "filterAuthorityRelation_mv": [
+                            "André, Holger␝Von",
+                            "Schami, Rafik (1946-)␝Über"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "André, Holger␝Verfasser/Urheber",
+                            "Schami, Rafik (1946-)␝Dargestellte Person allein"
+                        ],
+                        "filterAuthority_mv": [
+                            "André, Holger",
+                            "Schami, Rafik (1946-)"
+                        ],
+                        "filterDatePoint_mv": [
+                            "1995-01-01T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "1995"
+                        ],
+                        "filterDigital": true,
+                        "filterFormContent_mv": [
+                            "Fotografie"
+                        ],
+                        "filterRecent": "1999-01-22",
+                        "filterSource": "Bilder und Objekte",
+                        "filterSubject_mv": [
+                            "Schami, Rafik (1946-)"
+                        ],
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "inscription": "Rückseite mit Aufkleber des Photographen",
+                        "inventoryNumber": "B 1999.0010",
+                        "location_mv": [
+                            "Photographien Portraits Kleinformate"
+                        ],
+                        "material": "Farbphoto. Vergrößerung auf Kunststoffpapier",
+                        "mediaNumber": "BI000000109",
+                        "personAbout_display_mv": [
+                            "Schami, Rafik (1946-)"
+                        ],
+                        "personAbout_id_mv": [
+                            "PE00004570"
+                        ],
+                        "personAbout_role_mv": [
+                            "Dargestellte Person allein"
+                        ],
+                        "personBy_display_mv": [
+                            "André, Holger"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00053129"
+                        ],
+                        "personBy_role_mv": [
+                            "Urheber/in"
+                        ],
+                        "photoNegativeNumber_mv": [
+                            "9403-30"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 1,
+                        "searchDate_mv": [
+                            "1995"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00004570",
+                            "PE00053129"
+                        ],
+                        "searchNameAbout_mv": [
+                            "Schami, Rafik"
+                        ],
+                        "searchNameBy_mv": [
+                            "André, Holger"
+                        ],
+                        "searchName_mv": [
+                            "André, Holger",
+                            "Schami, Rafik"
+                        ],
+                        "searchVariant_mv": [
+                            "Fadél, Suheil",
+                            "Fāḍel, Suheil",
+                            "�ᅣ미, 라픽",
+                            "شامي، رفيق",
+                            "ラフィク・シャミ",
+                            "シャミ, ラフィク",
+                            "שאמי, רפיק",
+                            "Шами, Рафик",
+                            "شامي, رفيق",
+                            "Shami, Rafik",
+                            "Shami, Rafiq",
+                            "Rafik Schami",
+                            "Sami, Raphik",
+                            "Šâmî, Rāfîq",
+                            "Šāmī, Rafīq",
+                            "Shiyami, Rafuiku",
+                            "Shami, Rafiku",
+                            "Shami, Rafuka",
+                            "Šami, Rafik",
+                            "Shami, Rafiḳ",
+                            "La fei ke Sha mi",
+                            "Lafeike-Shami",
+                            "Shami, Lafeike",
+                            "La pi keu Sya mi",
+                            "Lapikeu-Syami",
+                            "Syami, Lapikeu",
+                            "Syami, Rap'ik'ŭ",
+                            "Šomij, Rafik̦",
+                            "Šomij, Rafiķ",
+                            "Fadel, Suheil",
+                            "Faḍel, Suheil",
+                            "Sami, Rafik",
+                            "Sami, Rafiq",
+                            "Lafeike Shami",
+                            "Lapikeu Syami",
+                            "Syami, Rapiku",
+                            "Somij, Rafik̦",
+                            "Somij, Rafik"
+                        ],
+                        "source": "BI",
+                        "statusLoan": "Am Standort",
+                        "title": "Portrait Rafik Schami",
+                        "url": "https://www.dla-marbach.de/find/opac/id/BI00000010",
+                        "usageRestriction": "eingeschränkt benutzbar",
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de",
+                        "score": 13.70128
+                    }
+                ]
+            }
+        }
+    }
+}

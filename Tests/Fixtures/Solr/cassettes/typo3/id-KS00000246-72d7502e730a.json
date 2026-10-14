@@ -1,0 +1,171 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(KS00000246)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0,
+                "params": {
+                    "q": "id:(KS00000246)",
+                    "rows": "1"
+                }
+            },
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "KS00000246",
+                        "display": "Schiller-Nationalmuseum und Deutsches Literaturarchiv <Marbach, Neckar> (1955-2005)",
+                        "categoryIndex_mv": [
+                            "Körperschaft"
+                        ],
+                        "classificationNewspaper_comment_mv": [
+                            "Literaturarchive",
+                            "Literaturmuseen"
+                        ],
+                        "classificationNewspaper_text_mv": [
+                            "3d2b",
+                            "3d3b"
+                        ],
+                        "classificationOther_comment_mv": [
+                            "Quellenkunde / Einzelne Literaturarchive",
+                            "Quellenkunde / Bibliotheken mit literarischen Sammlungen",
+                            "Quellenkunde / Einzelne Museen und Gedenkstätten"
+                        ],
+                        "classificationOther_text_mv": [
+                            "S8.2.6.3.2",
+                            "S8.2.6.2.3",
+                            "S8.2.6.4.2"
+                        ],
+                        "country_mv": [
+                            "Deutschland"
+                        ],
+                        "dateCataloged": "1989-04-18",
+                        "dateLifespanEnd": "2005",
+                        "dateLifespanStart": "1955",
+                        "dateModified": "2026-10-13",
+                        "displayAddition2": "Körperschaft",
+                        "filterDatePoint_mv": [
+                            "1955-01-01T00:00:00Z",
+                            "2005-01-01T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "[1955 TO 2005]"
+                        ],
+                        "filterSource": "Körperschaften",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "gnd_id_mv": [
+                            "2008819-X"
+                        ],
+                        "nameAlternative_name_mv": [
+                            "Literaturarchiv <Marbach, Neckar>",
+                            "Schiller-Nationalmuseum <Marbach, Neckar, 1955 ->",
+                            "Deutsches Literaturarchiv <Marbach, Neckar>",
+                            "DLA <Marbach, Neckar>",
+                            "SNM und DLA <Marbach, Neckar>"
+                        ],
+                        "nameAlternative_type_mv": [
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Abkürzung",
+                            "Abkürzung"
+                        ],
+                        "nameOriginal_mv": [
+                            "Schiller-Nationalmuseum"
+                        ],
+                        "predecessor_display_mv": [
+                            "Schiller-Nationalmuseum (1922-1955)"
+                        ],
+                        "predecessor_id_mv": [
+                            "KS00011436"
+                        ],
+                        "reference_text_mv": [
+                            "Satzung der Dt. Schillergesellschaft"
+                        ],
+                        "relation_id_mv": [
+                            "KS00031769",
+                            "KS00126238",
+                            "KS00011436",
+                            "PE00017877",
+                            "PE00152347",
+                            "PE00049478",
+                            "PE00049643",
+                            "KS00124629",
+                            "KS00147022"
+                        ],
+                        "relation_text_mv": [
+                            "Umschlagsammlung Curt Tillmann",
+                            "Ausstellung Der Georg-Büchner-Preis Neunzehnhunderteinundfünfzig bis Neunzehnhundertsiebenundachtzig (1987 : Marbach am Neckar) (1987 : Marbach am Neckar) (1987-)",
+                            "Schiller-Nationalmuseum (1922-1955)",
+                            "Greve, Ludwig (1924-1991)",
+                            "Leopold, Fritz (1949-2023)",
+                            "Migge, Walter (1912-1998)",
+                            "Nickel, Gunther (1961-)",
+                            "Ausstellung 75 Jahre Insel Verlag <1974, Frankfurt am Main> (1974-)",
+                            "Protest! Literatur um 1968 (Veranstaltung) (1998 : Marbach am Neckar) (Veranstaltung) (1998 : Marbach am Neckar) (1998-)"
+                        ],
+                        "relation_type_mv": [
+                            "Administrative Unterordnung",
+                            "Ausstellung",
+                            "Name, zeitweise",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Veranstaltung",
+                            "Veranstaltung"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.5,
+                        "searchDate_mv": [
+                            "1955",
+                            "2005"
+                        ],
+                        "searchEntityScore": 1606,
+                        "searchEntity_id_mv": [
+                            "KS00000246"
+                        ],
+                        "searchSuggestPayload": "KS00000246␝Schiller-Nationalmuseum und Deutsches Literaturarchiv <Marbach, Neckar> (1955-2005)",
+                        "searchSuggestTerm_mv": [
+                            "Schiller-Nationalmuseum und Deutsches Literaturarchiv <Marbach, Neckar> (1955-2005)",
+                            "Literaturarchiv <Marbach, Neckar>",
+                            "Schiller-Nationalmuseum <Marbach, Neckar, 1955 ->",
+                            "Deutsches Literaturarchiv <Marbach, Neckar>",
+                            "DLA <Marbach, Neckar>",
+                            "SNM und DLA <Marbach, Neckar>",
+                            "Schiller-Nationalmuseum"
+                        ],
+                        "source": "KS",
+                        "successor_display_mv": [
+                            "Deutsches Literaturarchiv Marbach (2005-)"
+                        ],
+                        "successor_id_mv": [
+                            "KS00055968"
+                        ],
+                        "title": "Schiller-Nationalmuseum und Deutsches Literaturarchiv <Marbach, Neckar>",
+                        "url": "https://www.dla-marbach.de/find/opac/id/KS00000246",
+                        "website_description_mv": [
+                            "Homepage"
+                        ],
+                        "website_url_mv": [
+                            "http://www.dla-marbach.de/"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

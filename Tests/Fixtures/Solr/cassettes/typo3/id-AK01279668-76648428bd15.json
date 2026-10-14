@@ -1,0 +1,410 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:AK01279668",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.70128,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "item_note_mv": [
+                            "mit wenigen handschriftl. Anstreichungen von Reinhart Koselleck. - Einlagen zwischen vorderem Buchdeckel und Titelblatt: Zeitungsausschnitt (Der Bürger Mitscherlich / Klaus Horn, 28.06.1982); Zeitungsausschnitt (Der Psychiater / Asmus Finzen); Zeitungsausschnitt (Symphonische Beschreibung / Karl-Peter Kisker, 26.11.1974)\nEinlagen im Archiv, C:Koselleck, Einlagen 2855"
+                        ],
+                        "default": [
+                            "mit wenigen handschriftl. Anstreichungen von Reinhart Koselleck. - Einlagen zwischen vorderem Buchdeckel und Titelblatt: Zeitungsausschnitt (Der Bürger Mitscherlich / Klaus Horn, 28.06.1982); Zeitungsausschnitt (Der Psychiater / Asmus Finzen); Zeitungsausschnitt (Symphonische Beschreibung / Karl-Peter Kisker, 26.11.1974)\nEinlagen im Archiv, C:Koselleck, Einlagen 2855",
+                            "SE00203896␝SE00203884",
+                            "Verfasser/Urheber",
+                            "AU00526514",
+                            "Vandenhoeck & Ruprecht",
+                            "HS00822418",
+                            "Wyss, Dieter",
+                            "Koselleck, Reinhart",
+                            "Koselleck, Reinhart",
+                            "PE00041993",
+                            "Vandenhoeck & Ruprecht",
+                            "Koselleck, Reinhart (1923-2006)",
+                            "Kleine Vandenhoeck-Reihe ; 309/311",
+                            "Göttingen",
+                            "1969",
+                            "Göttingen",
+                            "https://www.dla-marbach.de/find/opac/id/AK01279668",
+                            "SE00203896",
+                            "SE00203884",
+                            "Buch",
+                            "Buchumschlag",
+                            "Abgeschlossen",
+                            "Göttingen : Vandenhoeck & Ruprecht, 1 (1954)-1582 (1997)[?].",
+                            "G:Koselleck, Reinhart (Historisch-politische Teilbibliothek und Sonderdruck-Sammlung) - [Geschlossener Bestand der Bibliothek, Nachlass, Gelehrtenbibliothek]",
+                            "309/311",
+                            "Bibliotheksmaterialien",
+                            "BF00026423",
+                            "1969",
+                            "1093980869",
+                            "Gedrucktes",
+                            "Koselleck, Reinhart / Merkzeichen / Notiz␝Koselleck, Reinhart / Einlage: Zettel",
+                            "Göttingen : Vandenhoeck & Ruprecht, 1969 - 114 Seiten",
+                            "Deutsch",
+                            "Göttingen␝Erscheinungsort",
+                            "ihr Verhältnis zur modernen Anthropologie",
+                            "1",
+                            "Wyss, Dieter (1923-1994)",
+                            "K10Plus-PPN",
+                            "creator",
+                            "2012-06-26",
+                            "Wyss, Dieter (1923-1994)␝Von",
+                            "Koselleck, Reinhart (1923-2006)␝Unter",
+                            "114 Seiten",
+                            "http://digitool.hbz-nrw.de:1801/webclient/DeliveryManager?pid=3096094",
+                            "Sammlungsbezogener Suchbegriff: Koselleck-Schlagwort-Notiz",
+                            "Sonstige Texte",
+                            "TY  - GEN\nA2  - Koselleck, Reinhart\nAU  - Wyss, Dieter\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Göttingen\nDA  - 1969\nDB  - G:Koselleck, Reinhart (Historisch-politische Teilbibliothek und Sonderdruck-Sammlung)\nID  - AK01279668\nLA  - Deutsch\nM2  - Buch\nM2  - Buchumschlag\nM3  - Sonstige Texte\nN1  - Umfang: 114 Seiten\nN1  - Erscheinungsort: Göttingen\nPB  - Vandenhoeck & Ruprecht\nPY  - 1969\nTI  - Marx und Freud : ihr Verhältnis zur modernen Anthropologie\nT3  - Kleine Vandenhoeck-Reihe\nUR  - http://digitool.hbz-nrw.de:1801/webclient/DeliveryManager?pid=3096094\nUR  - https://www.dla-marbach.de/find/opac/id/AK01279668/\nVL  - 309/311\nER  -",
+                            "Marx und Freud : ihr Verhältnis zur modernen Anthropologie",
+                            "Koselleck, Reinhart (1923-2006)",
+                            "PE00041993",
+                            "Wyss, Dieter (1923-1994)",
+                            "f-fertig,i-offen",
+                            "3309 3311",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Marx und Freud : ihr Verhältnis zur modernen Anthropologie</dc:title>\n  <dc:title>Kleine Vandenhoeck-Reihe ; 309/311</dc:title>\n  <dc:creator>Wyss, Dieter (1923-1994)</dc:creator>\n  <dc:contributor>Koselleck, Reinhart (1923-2006)</dc:contributor>\n  <dc:type>Buch</dc:type>\n  <dc:type>Buchumschlag</dc:type>\n  <dc:type>Sonstige Texte</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:publisher>Vandenhoeck &amp; Ruprecht</dc:publisher>\n  <dc:date>1969</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>114 Seiten</dc:format>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00000772</dc:source>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00026423</dc:source>\n  <dc:identifier>1093980869</dc:identifier>\n  <dc:identifier>BRK8.1</dc:identifier>\n  <dc:identifier>http://digitool.hbz-nrw.de:1801/webclient/DeliveryManager?pid=3096094</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01279668</dc:identifier>\n  <dc:identifier>AK01279668</dc:identifier>\n</oai_dc:dc>",
+                            "false",
+                            "BRK8.1",
+                            "Bibliotheksdokumente",
+                            "Druckschrift",
+                            "G:Koselleck, Reinhart",
+                            "Inhaltsverzeichnis",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Marx und Freud</title>\n    <subTitle>ihr Verhältnis zur modernen Anthropologie</subTitle>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Wyss, Dieter (1923-1994)</namePart>\n    <nameIdentifier type=\"gnd\">118771507</nameIdentifier>\n    <namePart type=\"date\">1923-12-20 — 1994-07-06</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Koselleck, Reinhart (1923-2006)</namePart>\n    <nameIdentifier type=\"gnd\">119120224</nameIdentifier>\n    <namePart type=\"date\">1923-04-23 — 2006-02-03</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Buch</typeOfResource>\n  <typeOfResource>Buchumschlag</typeOfResource>\n  <genre>Sonstige Texte</genre>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Göttingen</placeTerm>\n    </place>\n    <publisher>Vandenhoeck &amp; Ruprecht</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1969</dateIssued>\n    <displayDate>1969</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n    <extent>114 Seiten</extent>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Dieter Wyss</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Kleine Vandenhoeck-Reihe</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00000772</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00026423</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <identifier type=\"kxp\">1093980869</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>BRK8.1</shelfLocator>\n    <url access=\"object in context\">http://digitool.hbz-nrw.de:1801/webclient/DeliveryManager?pid=3096094</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2012-06-26</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2012-06-26</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01279668</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Deutsch",
+                            "Text",
+                            "AK",
+                            "Band/Teil mit unabhängigem Titel: gezählt",
+                            "1.0.0",
+                            "Deutsch␝Original",
+                            "true",
+                            "BRK8.1. 201209767. Marx und Freud : ihr Verhältnis zur modernen Anthropologie",
+                            "1969-01-01T00:00:00Z",
+                            "Marx und Freud",
+                            "Wyss, Dieter (1923-1994)",
+                            "Koselleck, Reinhart (1923-2006)",
+                            "2012-06-26",
+                            "Kleine Vandenhoeck-Reihe",
+                            "PE00000144",
+                            "Wyss, Dieter (1923-1994)␝Verfasser/Urheber",
+                            "Koselleck, Reinhart (1923-2006)␝Bestandsbildner/Vorbesitzer",
+                            "2012-06-26",
+                            "Freud, Sigmund / Anthropologie",
+                            "Marx, Karl / Anthropologie",
+                            "Marx, Karl 1818 - 1883",
+                            "Anthropology",
+                            "Freud, Sigmund 1856 - 1939",
+                            "G:Koselleck, Reinhart (Historisch-politische Teilbibliothek und Sonderdruck-Sammlung)",
+                            "Bibliotheksmagazin",
+                            "Koselleck, Reinhard",
+                            "K'ojellek, Rainharut'u",
+                            "Kozellek, Rajnhart",
+                            "Kozelek, Rajnchart",
+                            "Kozellek, Rajngart",
+                            "Rainharut'u K'ojellek",
+                            "Kojellek, Rainharutu",
+                            "Rainharutu Kojellek",
+                            "Wyss-Sonnenburg, Dieter",
+                            "Sonnenburg, Dieter Wyss-",
+                            "PE00000144",
+                            "Sonstige Texte",
+                            "Wyss, Dieter",
+                            "Band",
+                            "AK00000772",
+                            "AK01279668",
+                            "Deutschland",
+                            "KS00000045",
+                            "Wyss, Dieter (1923-1994)",
+                            "Marx und Freud : ihr Verhältnis zur modernen Anthropologie",
+                            "Druckschrift",
+                            "Einzelne Einheit / Stücktitel, Band",
+                            "benutzbar",
+                            "true",
+                            "Dieter Wyss",
+                            "Verfasser/Urheber",
+                            "PE00000144",
+                            "PE00041993",
+                            "KS00000045",
+                            "1969",
+                            "1969",
+                            "201209767"
+                        ],
+                        "item_classification_id_mv": [
+                            "SE00203896␝SE00203884"
+                        ],
+                        "personBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "item_id_mv": [
+                            "AU00526514"
+                        ],
+                        "publisher_display_mv": [
+                            "Vandenhoeck & Ruprecht"
+                        ],
+                        "item_supplements_id_mv": [
+                            "HS00822418"
+                        ],
+                        "searchName_mv": [
+                            "Wyss, Dieter",
+                            "Koselleck, Reinhart"
+                        ],
+                        "searchNameAt_mv": [
+                            "Koselleck, Reinhart"
+                        ],
+                        "creator_id_mv": [
+                            "PE00041993"
+                        ],
+                        "publisherOriginalText_mv": [
+                            "Vandenhoeck & Ruprecht"
+                        ],
+                        "searchCollectionCreator_display_mv": [
+                            "Koselleck, Reinhart (1923-2006)"
+                        ],
+                        "parentTitleOriginal_mv": [
+                            "Kleine Vandenhoeck-Reihe ; 309/311"
+                        ],
+                        "filterLocation_mv": [
+                            "Göttingen"
+                        ],
+                        "dateOrigin": "1969",
+                        "publisherOriginalLocation_mv": [
+                            "Göttingen"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK01279668",
+                        "searchClassification_id_mv": [
+                            "SE00203896",
+                            "SE00203884"
+                        ],
+                        "filterMedium_mv": [
+                            "Buch",
+                            "Buchumschlag"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "parent_displayAddition1_mv": [
+                            "Göttingen : Vandenhoeck & Ruprecht, 1 (1954)-1582 (1997)[?]."
+                        ],
+                        "item_collection_display_mv": [
+                            "G:Koselleck, Reinhart (Historisch-politische Teilbibliothek und Sonderdruck-Sammlung) - [Geschlossener Bestand der Bibliothek, Nachlass, Gelehrtenbibliothek]"
+                        ],
+                        "parentVolume_mv": [
+                            "309/311"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "item_collection_id_mv": [
+                            "BF00026423"
+                        ],
+                        "searchDate_mv": [
+                            "1969"
+                        ],
+                        "vendor_id_mv": [
+                            "1093980869"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "item_classification_display_mv": [
+                            "Koselleck, Reinhart / Merkzeichen / Notiz␝Koselleck, Reinhart / Einlage: Zettel"
+                        ],
+                        "displayAddition1": "Göttingen : Vandenhoeck & Ruprecht, 1969 - 114 Seiten",
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "filterLocationType_mv": [
+                            "Göttingen␝Erscheinungsort"
+                        ],
+                        "titleSuffix": "ihr Verhältnis zur modernen Anthropologie",
+                        "searchBoost": 1,
+                        "displayName": "Wyss, Dieter (1923-1994)",
+                        "vendor_type_mv": [
+                            "K10Plus-PPN"
+                        ],
+                        "personBy_creator_mv": [
+                            "creator"
+                        ],
+                        "filterRecent": "2012-06-26",
+                        "filterAuthorityRelation_mv": [
+                            "Wyss, Dieter (1923-1994)␝Von",
+                            "Koselleck, Reinhart (1923-2006)␝Unter"
+                        ],
+                        "extent": "114 Seiten",
+                        "website_url_mv": [
+                            "http://digitool.hbz-nrw.de:1801/webclient/DeliveryManager?pid=3096094"
+                        ],
+                        "item_noteProvenance_mv": [
+                            "Sammlungsbezogener Suchbegriff: Koselleck-Schlagwort-Notiz"
+                        ],
+                        "genreOther_mv": [
+                            "Sonstige Texte"
+                        ],
+                        "exportRIS": "TY  - GEN\nA2  - Koselleck, Reinhart\nAU  - Wyss, Dieter\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Göttingen\nDA  - 1969\nDB  - G:Koselleck, Reinhart (Historisch-politische Teilbibliothek und Sonderdruck-Sammlung)\nID  - AK01279668\nLA  - Deutsch\nM2  - Buch\nM2  - Buchumschlag\nM3  - Sonstige Texte\nN1  - Umfang: 114 Seiten\nN1  - Erscheinungsort: Göttingen\nPB  - Vandenhoeck & Ruprecht\nPY  - 1969\nTI  - Marx und Freud : ihr Verhältnis zur modernen Anthropologie\nT3  - Kleine Vandenhoeck-Reihe\nUR  - http://digitool.hbz-nrw.de:1801/webclient/DeliveryManager?pid=3096094\nUR  - https://www.dla-marbach.de/find/opac/id/AK01279668/\nVL  - 309/311\nER  -",
+                        "title": "Marx und Freud : ihr Verhältnis zur modernen Anthropologie",
+                        "item_personAt_display_mv": [
+                            "Koselleck, Reinhart (1923-2006)"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00041993"
+                        ],
+                        "personBy_display_mv": [
+                            "Wyss, Dieter (1923-1994)"
+                        ],
+                        "statusCataloging": "f-fertig,i-offen",
+                        "parentVolumeNormalized_mv": [
+                            "3309 3311"
+                        ],
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Marx und Freud : ihr Verhältnis zur modernen Anthropologie</dc:title>\n  <dc:title>Kleine Vandenhoeck-Reihe ; 309/311</dc:title>\n  <dc:creator>Wyss, Dieter (1923-1994)</dc:creator>\n  <dc:contributor>Koselleck, Reinhart (1923-2006)</dc:contributor>\n  <dc:type>Buch</dc:type>\n  <dc:type>Buchumschlag</dc:type>\n  <dc:type>Sonstige Texte</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:publisher>Vandenhoeck &amp; Ruprecht</dc:publisher>\n  <dc:date>1969</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>114 Seiten</dc:format>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00000772</dc:source>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00026423</dc:source>\n  <dc:identifier>1093980869</dc:identifier>\n  <dc:identifier>BRK8.1</dc:identifier>\n  <dc:identifier>http://digitool.hbz-nrw.de:1801/webclient/DeliveryManager?pid=3096094</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01279668</dc:identifier>\n  <dc:identifier>AK01279668</dc:identifier>\n</oai_dc:dc>",
+                        "confidential": false,
+                        "item_callNumberItem_mv": [
+                            "BRK8.1"
+                        ],
+                        "category": "Bibliotheksdokumente",
+                        "categoryMedia_mv": [
+                            "Druckschrift"
+                        ],
+                        "item_callNumberCollection_mv": [
+                            "G:Koselleck, Reinhart"
+                        ],
+                        "website_description_mv": [
+                            "Inhaltsverzeichnis"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Marx und Freud</title>\n    <subTitle>ihr Verhältnis zur modernen Anthropologie</subTitle>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Wyss, Dieter (1923-1994)</namePart>\n    <nameIdentifier type=\"gnd\">118771507</nameIdentifier>\n    <namePart type=\"date\">1923-12-20 — 1994-07-06</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Koselleck, Reinhart (1923-2006)</namePart>\n    <nameIdentifier type=\"gnd\">119120224</nameIdentifier>\n    <namePart type=\"date\">1923-04-23 — 2006-02-03</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Buch</typeOfResource>\n  <typeOfResource>Buchumschlag</typeOfResource>\n  <genre>Sonstige Texte</genre>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Göttingen</placeTerm>\n    </place>\n    <publisher>Vandenhoeck &amp; Ruprecht</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1969</dateIssued>\n    <displayDate>1969</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n    <extent>114 Seiten</extent>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Dieter Wyss</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Kleine Vandenhoeck-Reihe</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00000772</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00026423</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <identifier type=\"kxp\">1093980869</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>BRK8.1</shelfLocator>\n    <url access=\"object in context\">http://digitool.hbz-nrw.de:1801/webclient/DeliveryManager?pid=3096094</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2012-06-26</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2012-06-26</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01279668</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "categoryContent_mv": [
+                            "Text"
+                        ],
+                        "source": "AK",
+                        "parent_type_mv": [
+                            "Band/Teil mit unabhängigem Titel: gezählt"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "item_enveloped_mv": [
+                            true
+                        ],
+                        "item_display_mv": [
+                            "BRK8.1. 201209767. Marx und Freud : ihr Verhältnis zur modernen Anthropologie"
+                        ],
+                        "filterDatePoint_mv": [
+                            "1969-01-01T00:00:00Z"
+                        ],
+                        "titleMain_text": "Marx und Freud",
+                        "filterAuthority_mv": [
+                            "Wyss, Dieter (1923-1994)",
+                            "Koselleck, Reinhart (1923-2006)"
+                        ],
+                        "dateModified": "2012-06-26",
+                        "parent_display_mv": [
+                            "Kleine Vandenhoeck-Reihe"
+                        ],
+                        "searchCollectionCreator_id_mv": [
+                            "PE00000144"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Wyss, Dieter (1923-1994)␝Verfasser/Urheber",
+                            "Koselleck, Reinhart (1923-2006)␝Bestandsbildner/Vorbesitzer"
+                        ],
+                        "dateCataloged": "2012-06-26",
+                        "subjectOther_mv": [
+                            "Freud, Sigmund / Anthropologie",
+                            "Marx, Karl / Anthropologie",
+                            "Marx, Karl 1818 - 1883",
+                            "Anthropology",
+                            "Freud, Sigmund 1856 - 1939"
+                        ],
+                        "filterCollection_mv": [
+                            "G:Koselleck, Reinhart (Historisch-politische Teilbibliothek und Sonderdruck-Sammlung)"
+                        ],
+                        "item_location_mv": [
+                            "Bibliotheksmagazin"
+                        ],
+                        "searchVariant_mv": [
+                            "Koselleck, Reinhard",
+                            "K'ojellek, Rainharut'u",
+                            "Kozellek, Rajnhart",
+                            "Kozelek, Rajnchart",
+                            "Kozellek, Rajngart",
+                            "Rainharut'u K'ojellek",
+                            "Kojellek, Rainharutu",
+                            "Rainharutu Kojellek",
+                            "Wyss-Sonnenburg, Dieter",
+                            "Sonnenburg, Dieter Wyss-"
+                        ],
+                        "item_personAt_id_mv": [
+                            "PE00000144"
+                        ],
+                        "filterFormContent_mv": [
+                            "Sonstige Texte"
+                        ],
+                        "searchNameBy_mv": [
+                            "Wyss, Dieter"
+                        ],
+                        "categoryMedium_mv": [
+                            "Band"
+                        ],
+                        "parent_id_mv": [
+                            "AK00000772"
+                        ],
+                        "id": "AK01279668",
+                        "country_mv": [
+                            "Deutschland"
+                        ],
+                        "publisher_id_mv": [
+                            "KS00000045"
+                        ],
+                        "creator_display_mv": [
+                            "Wyss, Dieter (1923-1994)"
+                        ],
+                        "display": "Marx und Freud : ihr Verhältnis zur modernen Anthropologie",
+                        "categorySubSub": "Druckschrift",
+                        "categorySub": "Einzelne Einheit / Stücktitel, Band",
+                        "item_usageRestriction_mv": [
+                            "benutzbar"
+                        ],
+                        "item_provenance_mv": [
+                            true
+                        ],
+                        "titleResponsability": "Dieter Wyss",
+                        "creator_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00000144",
+                            "PE00041993",
+                            "KS00000045"
+                        ],
+                        "filterDateRange_mv": [
+                            "1969"
+                        ],
+                        "dateOriginComment_mv": [
+                            "1969"
+                        ],
+                        "item_accessionNumber_mv": [
+                            "201209767"
+                        ],
+                        "score": 13.70128
+                    }
+                ]
+            }
+        }
+    }
+}

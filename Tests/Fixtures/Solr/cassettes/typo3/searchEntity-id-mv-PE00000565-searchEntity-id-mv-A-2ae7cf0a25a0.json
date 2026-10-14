@@ -1,0 +1,54 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchEntity_id_mv:PE00000565 searchEntity_id_mv:AK00049913 1962",
+            "start": "0",
+            "rows": "0",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "score desc",
+            "fq": [
+                "NOT source:(AU OR BE OR MM)",
+                "filterType_mv:(\"Gedrucktes\")"
+            ],
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(searchEntity_id_mv:PE00000565 searchEntity_id_mv:AK00049913 1962) OR displayAddition1:(searchEntity_id_mv:PE00000565 searchEntity_id_mv:AK00049913 1962) OR displayAddition2:(searchEntity_id_mv:PE00000565 searchEntity_id_mv:AK00049913 1962) OR displayName:(searchEntity_id_mv:PE00000565 searchEntity_id_mv:AK00049913 1962)))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "stats": "true",
+            "stats.field": "filterDatePoint_mv"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 74,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": []
+            },
+            "highlighting": [],
+            "stats": {
+                "stats_fields": {
+                    "filterDatePoint_mv": {
+                        "min": "1962-01-01T00:00:00Z",
+                        "max": "2025-01-01T00:00:00Z",
+                        "count": 75,
+                        "missing": 0,
+                        "sum": 43332710400000,
+                        "mean": "1988-04-23T03:31:12Z",
+                        "sumOfSquares": 5.500977823936509e+25,
+                        "stddev": 636432848533.349
+                    }
+                }
+            }
+        }
+    }
+}

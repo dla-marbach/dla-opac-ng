@@ -25,11 +25,13 @@ class M3uPlaylistParserTest extends UnitTestCase
         self::assertCount(2, $tracks);
         self::assertSame([
             'url' => 'https://example.org/media/track1.mp3',
-            'title' => 'Artist - Title One',
+            'artist' => 'Artist',
+            'title' => 'Title One',
             'duration' => 123.0,
         ], $tracks[0]);
         self::assertSame([
             'url' => 'https://example.org/media/track2.mp3',
+            'artist' => null,
             'title' => 'Title Two',
             'duration' => null,
         ], $tracks[1]);
@@ -46,6 +48,7 @@ class M3uPlaylistParserTest extends UnitTestCase
 
         self::assertCount(2, $tracks);
         self::assertSame('track1', $tracks[0]['title']);
+        self::assertNull($tracks[0]['artist']);
         self::assertNull($tracks[0]['duration']);
         self::assertSame('https://example.org/media/track2.mp3', $tracks[1]['url']);
     }
@@ -69,6 +72,27 @@ class M3uPlaylistParserTest extends UnitTestCase
         self::assertCount(1, $tracks);
         self::assertSame('Only Track', $tracks[0]['title']);
         self::assertSame(42.0, $tracks[0]['duration']);
+    }
+
+    /**
+     * @test
+     */
+    public function splitsArtistAndTitleOnlyAtFirstSeparator(): void
+    {
+        $content = <<<M3U
+        #EXTM3U
+        #EXTINF:4860,Durs Grünbein; Jan Bürger - Koloss im Nebel - Lesung
+        https://example.org/media/lesung.mp3
+        #EXTINF:10,- Ohne Interpret
+        https://example.org/media/ohne.mp3
+        M3U;
+
+        $tracks = (new M3uPlaylistParser())->parse($content);
+
+        self::assertSame('Durs Grünbein; Jan Bürger', $tracks[0]['artist']);
+        self::assertSame('Koloss im Nebel - Lesung', $tracks[0]['title']);
+        self::assertNull($tracks[1]['artist']);
+        self::assertSame('- Ohne Interpret', $tracks[1]['title']);
     }
 
     /**

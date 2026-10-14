@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "classification_id_mv:(SE00026756)",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 29,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00396332",
+                        "display": "Salzburger Trakl-Symposion : [Festschrift]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00371682",
+                        "display": "Internationales Georg-Trakl-Symposium : Albany, N.Y., [18. und 19. März 1983] : [Konferenzschrift]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00000008",
+                        "display": "Trakl-Forum 1987 : [Dokumentationsband der Vorträge zum 100. Geburtstag Georg Trakls und der Verleihung des Trakl-Preises für Lyrik und bildende Kunst] : [Konferenzschrift]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00000010",
+                        "display": "Antworten auf Georg Trakl"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00000906",
+                        "display": "The dark flutes of fall : critical essays on Georg Trakl"
+                    }
+                ]
+            }
+        }
+    }
+}

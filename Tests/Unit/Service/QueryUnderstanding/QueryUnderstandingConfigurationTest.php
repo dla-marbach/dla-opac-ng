@@ -15,7 +15,7 @@ class QueryUnderstandingConfigurationTest extends UnitTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        // In der DDEV-Umgebung sind LLM_* über .ddev/.env gesetzt; jeder Test beginnt mit leerer Konfiguration.
+        // In der Entwicklungsumgebung können LLM_* über .devfiles/.env gesetzt sein; jeder Test beginnt mit leerer Konfiguration.
         foreach (self::VARIABLES as $name) {
             $this->originalValues[$name] = getenv($name);
             putenv($name);

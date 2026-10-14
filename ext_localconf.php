@@ -55,6 +55,7 @@ $GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'] = array_mer
     [
         '^tx_find_find', // alle Parameter, die mit tx_find_find beginnen
         '^tx_dlaopacng', // alle Parameter, die mit tx_dlaopacng beginnen
+        '^tx_web2pdf', // alle Parameter, die mit tx_web2pdf beginnen (PDF-Link auf Detailseiten)
     ]
 );
 

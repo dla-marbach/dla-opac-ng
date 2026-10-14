@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "creator_id_mv:PE00041993",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 20,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01333759",
+                        "display": "Zum Unbekannten noch des Neuen Spur : Bemerkungen zum Problem der Sensation in der modernen Literatur. [Radioessay]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01279668",
+                        "display": "Marx und Freud : ihr Verhältnis zur modernen Anthropologie"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01542612",
+                        "display": "Der Surrealismus : eine Einführung und Deutung surrealistischer Literatur und Malerei"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00189276",
+                        "display": "Einstein rettet die Welt : (surreal durch Wissenschaft und Politik)"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01440456",
+                        "display": "Schlafende Sonnen"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -102,6 +102,13 @@ $(document).ready(function(){
         $('#tabdetail').toggleClass('ctg-dtvt-menu-active');
     });
 
+    // Vorschaubild springt zum Abschnitt "Digitales Objekt", der im Tab "Details" liegt
+    $('a[href="#digitales-objekt"]').on("click", function () {
+        if ($('#detail').is(':hidden')) {
+            $('#tabdetail').trigger('click');
+        }
+    });
+
 
     $('.dlaResultCountSelect').change(function (event) {
         //$('#countHidden').val($(this).val());

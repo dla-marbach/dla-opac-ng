@@ -1,0 +1,349 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/suggest",
+        "query": {
+            "suggest": "true",
+            "suggest.dictionary": [
+                "mySuggester",
+                "text"
+            ],
+            "suggest.q": "dürrenmatt be"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0
+            },
+            "suggest": {
+                "mySuggester": {
+                    "dürrenmatt be": {
+                        "numFound": 12,
+                        "suggestions": [
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Besøk av gammel dame",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Den gamle dame besøger byen",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Die Besoek van die ou dame",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): De rechter en zijn beul",
+                                "weight": 61,
+                                "payload": "AK00089137␝Dürrenmatt, Friedrich (1921-1990). Der Richter und sein Henker (Roman : 1952)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Die belofte",
+                                "weight": 29,
+                                "payload": "AK00070124␝Dürrenmatt, Friedrich (1921-1990). Das Versprechen (Roman : 1958)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Der Auftrag oder Vom Beobachten des Beobachters der Beobachter",
+                                "weight": 13,
+                                "payload": "AK00074491␝Dürrenmatt, Friedrich (1921-1990). Der Auftrag (Novelle : 1986)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Vom Beobachten des Beobachters der Beobachter",
+                                "weight": 13,
+                                "payload": "AK00074491␝Dürrenmatt, Friedrich (1921-1990). Der Auftrag (Novelle : 1986)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Uppdraget eller betraktarens betraktande av betraktarna",
+                                "weight": 13,
+                                "payload": "AK00074491␝Dürrenmatt, Friedrich (1921-1990). Der Auftrag (Novelle : 1986)"
+                            },
+                            {
+                                "term": "Colloque sur le Thème de l'Historicité et de la Postériorité dans le Théâtre Contemporain, Élargi à Quelques Précurseurs Majeurs comme Friedrich Dürrenmatt, Peter Weiss et Thomas Bernhard <2007, Toulouse>",
+                                "weight": 3,
+                                "payload": "KS00118772␝Colloque sur le Thème de l'Historicité et de la Postériorité dans le Théâtre Contemporain, Élargi à Quelques Précurseurs Majeurs comme Friedrich Dürrenmatt, Peter Weiss et Thomas Bernhard <2007, Toulouse>"
+                            },
+                            {
+                                "term": "Exhibition Friedrich Dürrenmatt: The Happy Pessimist <1994 -, Bern u.a.>",
+                                "weight": 3,
+                                "payload": "KS00033543␝Exhibition Friedrich Dürrenmatt: The Happy Pessimist <1994 -, Bern u.a.>"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Libretto : 1971)",
+                                "weight": 1,
+                                "payload": "AK01777003␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Libretto : 1971)"
+                            }
+                        ]
+                    }
+                },
+                "text": {
+                    "dürrenmatt be": {
+                        "numFound": 50,
+                        "suggestions": [
+                            {
+                                "term": "dürrenmatt berlin",
+                                "weight": 16274145631856684,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenmatt bernergeist",
+                                "weight": 16274145631856684,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenmatt besuch",
+                                "weight": 16274145631856684,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenmatt bernhard",
+                                "weight": 12205609223892514,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenmatt beitrag",
+                                "weight": 4068536407964171,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenmatt bemerkungen",
+                                "weight": 4068536407964171,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenmatt bericht",
+                                "weight": 4068536407964171,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenmatt betrachtung",
+                                "weight": 4068536407964171,
+                                "payload": ""
+                            },
+                            {
+                                "term": "bei",
+                                "weight": 2474993172215792,
+                                "payload": ""
+                            },
+                            {
+                                "term": "beiträge",
+                                "weight": 1690511823349438,
+                                "payload": ""
+                            },
+                            {
+                                "term": "berliner",
+                                "weight": 1218003675727451,
+                                "payload": ""
+                            },
+                            {
+                                "term": "beziehungen",
+                                "weight": 1063013379413601,
+                                "payload": ""
+                            },
+                            {
+                                "term": "benno",
+                                "weight": 1033210885320832,
+                                "payload": ""
+                            },
+                            {
+                                "term": "berthold",
+                                "weight": 811598153084484,
+                                "payload": ""
+                            },
+                            {
+                                "term": "bertolt",
+                                "weight": 766028060372865,
+                                "payload": ""
+                            },
+                            {
+                                "term": "benn",
+                                "weight": 720198062189508,
+                                "payload": ""
+                            },
+                            {
+                                "term": "berichte",
+                                "weight": 573438105814069,
+                                "payload": ""
+                            },
+                            {
+                                "term": "benjamin",
+                                "weight": 477099810956047,
+                                "payload": ""
+                            },
+                            {
+                                "term": "bense",
+                                "weight": 474154215609669,
+                                "payload": ""
+                            },
+                            {
+                                "term": "begriffe",
+                                "weight": 466270416300244,
+                                "payload": ""
+                            },
+                            {
+                                "term": "beim",
+                                "weight": 462978280324880,
+                                "payload": ""
+                            },
+                            {
+                                "term": "bestand",
+                                "weight": 446864141077046,
+                                "payload": ""
+                            },
+                            {
+                                "term": "becker",
+                                "weight": 423386013463265,
+                                "payload": ""
+                            },
+                            {
+                                "term": "bernd",
+                                "weight": 407878320316156,
+                                "payload": ""
+                            },
+                            {
+                                "term": "begegnung",
+                                "weight": 396962290503106,
+                                "payload": ""
+                            },
+                            {
+                                "term": "beilage",
+                                "weight": 389684937294407,
+                                "payload": ""
+                            },
+                            {
+                                "term": "beispiel",
+                                "weight": 385959625532811,
+                                "payload": ""
+                            },
+                            {
+                                "term": "bern",
+                                "weight": 383533841129911,
+                                "payload": ""
+                            },
+                            {
+                                "term": "betrachtungen",
+                                "weight": 337010761688582,
+                                "payload": ""
+                            },
+                            {
+                                "term": "bedeutung",
+                                "weight": 329906678794376,
+                                "payload": ""
+                            },
+                            {
+                                "term": "bearbeitungen",
+                                "weight": 324881839674083,
+                                "payload": ""
+                            },
+                            {
+                                "term": "bermann",
+                                "weight": 299324468286389,
+                                "payload": ""
+                            },
+                            {
+                                "term": "begegnungen",
+                                "weight": 280091463377683,
+                                "payload": ""
+                            },
+                            {
+                                "term": "beil",
+                                "weight": 271427947653041,
+                                "payload": ""
+                            },
+                            {
+                                "term": "berg",
+                                "weight": 271427947653041,
+                                "payload": ""
+                            },
+                            {
+                                "term": "bearb",
+                                "weight": 260165377211006,
+                                "payload": ""
+                            },
+                            {
+                                "term": "bettina",
+                                "weight": 254360821675495,
+                                "payload": ""
+                            },
+                            {
+                                "term": "becher",
+                                "weight": 216674528273302,
+                                "payload": ""
+                            },
+                            {
+                                "term": "besondere",
+                                "weight": 206018403931992,
+                                "payload": ""
+                            },
+                            {
+                                "term": "bewegung",
+                                "weight": 200733659339960,
+                                "payload": ""
+                            },
+                            {
+                                "term": "besten",
+                                "weight": 200647024182714,
+                                "payload": ""
+                            },
+                            {
+                                "term": "besitz",
+                                "weight": 184879425563865,
+                                "payload": ""
+                            },
+                            {
+                                "term": "beck",
+                                "weight": 184446249777633,
+                                "payload": ""
+                            },
+                            {
+                                "term": "berger",
+                                "weight": 178468423927629,
+                                "payload": ""
+                            },
+                            {
+                                "term": "beschreibung",
+                                "weight": 177861977826904,
+                                "payload": ""
+                            },
+                            {
+                                "term": "bernard",
+                                "weight": 172230692605887,
+                                "payload": ""
+                            },
+                            {
+                                "term": "begriff",
+                                "weight": 168245475372552,
+                                "payload": ""
+                            },
+                            {
+                                "term": "beiden",
+                                "weight": 165386515183420,
+                                "payload": ""
+                            },
+                            {
+                                "term": "beiblatt",
+                                "weight": 163740447195738,
+                                "payload": ""
+                            },
+                            {
+                                "term": "berücksichtigung",
+                                "weight": 152044700967471,
+                                "payload": ""
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

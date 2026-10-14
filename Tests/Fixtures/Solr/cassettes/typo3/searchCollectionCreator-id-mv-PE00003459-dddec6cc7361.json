@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchCollectionCreator_id_mv:PE00003459",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 7879,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00019677",
+                        "display": "G:Kracauer, Siegfried (Bibliothek des Autors) - [Geschlossener Bestand der Bibliothek, Nachlass, Autorenbibliothek]",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ]
+                    },
+                    {
+                        "id": "BF00012346",
+                        "display": "A:Kracauer, Siegfried - [Bestand, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BF00043962",
+                        "display": "C:Kracauer, Siegfried und Elisabeth - [Provenienzbestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BF00000298",
+                        "display": "H:Kracauer, Siegfried - [Geschlossener Bestand der Mediendokumentation, Nachlass]",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ]
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK01184840",
+                        "display": "Adalbert Stifter : Geschichte seines Lebens - Zweite, neubearbeitete Auflage : [Biographie]"
+                    }
+                ]
+            }
+        }
+    }
+}

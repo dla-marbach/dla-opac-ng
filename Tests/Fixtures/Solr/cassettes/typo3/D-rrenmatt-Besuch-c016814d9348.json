@@ -1,0 +1,51 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "\"Dürrenmatt Besuch\"",
+            "start": "0",
+            "rows": "0",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "score desc",
+            "fq": "NOT source:(AU OR BE OR MM)",
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(\"Dürrenmatt Besuch\") OR displayAddition1:(\"Dürrenmatt Besuch\") OR displayAddition2:(\"Dürrenmatt Besuch\") OR displayName:(\"Dürrenmatt Besuch\")))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "stats": "true",
+            "stats.field": "filterDatePoint_mv"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 4,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": []
+            },
+            "highlighting": [],
+            "stats": {
+                "stats_fields": {
+                    "filterDatePoint_mv": {
+                        "min": "1956-01-01T00:00:00Z",
+                        "max": "1976-01-01T00:00:00Z",
+                        "count": 4,
+                        "missing": 0,
+                        "sum": -1009929600000,
+                        "mean": "1961-12-31T18:00:00Z",
+                        "sumOfSquares": 5.1986955617279996e+23,
+                        "stddev": 297142001369.5809
+                    }
+                }
+            }
+        }
+    }
+}

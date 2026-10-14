@@ -13,25 +13,25 @@ jobs:
   phpunit:
     name: PHPUnit tests
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15
 
     steps:
       - name: Checkout dla-opac-ng
         uses: actions/checkout@v4
 
-      - name: Set up DDEV
-        uses: ddev/github-action-setup-ddev@v1
+      # Die Unit-Tests brauchen weder TYPO3-Instanz noch Datenbank oder Solr (Solr-Mock-Server, siehe README),
+      # daher direkt mit PHP auf dem Runner. PHP-Version wie im Produktivsystem.
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
         with:
-          autostart: false
+          php-version: '8.3'
+          tools: composer:v2
+          coverage: none
 
-      - name: Set up Task
-        uses: arduino/setup-task@v2
-        with:
-          # Authentifizierte Anfrage vermeidet das GitHub-API-Rate-Limit beim Ermitteln der Task-Version
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install test environment
-        run: task install
+      - name: Install dependencies (mit Composer-Cache)
+        uses: ramsey/composer-install@v3
+        env:
+          COMPOSER_NO_SECURITY_BLOCKING: 1
 
       - name: Run PHPUnit tests
-        run: task test:php
+        run: vendor/bin/phpunit -c Tests/phpunit.xml

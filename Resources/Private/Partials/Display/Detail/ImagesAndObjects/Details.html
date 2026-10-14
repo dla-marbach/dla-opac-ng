@@ -890,7 +890,7 @@
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_hyperlink_mv')}" name="digitalObject_hyperlink_mv" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'category')}" name="category" />
         <f:if condition="{digitalObject_hyperlink_mv}">
-            <div class="ctg-dtvt-row">
+            <div class="ctg-dtvt-row" id="digitales-objekt">
                 <div class="ctg-dtvt-label">
                     <f:if condition="{category}=='Konvolut' || {dla:stringContains(input: digitalObject_hyperlink_mv, search: 'dbst02')}">
                         <f:then>

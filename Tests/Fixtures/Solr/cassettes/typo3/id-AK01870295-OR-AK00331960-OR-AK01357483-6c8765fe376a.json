@@ -1,0 +1,803 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(\"AK01870295\" OR \"AK00331960\" OR \"AK01357483\")",
+            "rows": "3"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0,
+                "params": {
+                    "q": "id:(\"AK01870295\" OR \"AK00331960\" OR \"AK01357483\")",
+                    "rows": "3"
+                }
+            },
+            "response": {
+                "numFound": 3,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "personBy_role_mv": [
+                            "Verfasser",
+                            "Interpret",
+                            "Interpret",
+                            "Interpret",
+                            "Bearbeiter",
+                            "Komponist",
+                            "Regisseur"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "categoryMedia_mv": [
+                            "CD",
+                            "Tonträger"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "filterAuthorityRelation_mv": [
+                            "Brecht, Bertolt (1898-1956)␝Von",
+                            "Dirichs, Ursula␝Von",
+                            "Eichhorn, Werner␝Von",
+                            "Goguel, Hans␝Von",
+                            "Dresp, Wolf␝Von",
+                            "Weill, Kurt (1900-1950)␝Von",
+                            "Lauterbach, Ulrich␝Von",
+                            "Brecht, Bertolt (1898-1956)␝Über"
+                        ],
+                        "personAbout_id_mv": [
+                            "PE00001131",
+                            "PE00051007"
+                        ],
+                        "searchDate_mv": [
+                            "2006"
+                        ],
+                        "category": "Ton- und Bildträger",
+                        "source": "AK",
+                        "personAbout_display_mv": [
+                            "Brecht, Bertolt (1898-1956)",
+                            "Weill, Kurt (1900-1950)"
+                        ],
+                        "parent_display_mv": [
+                            "Dramen - Hörspieled. : [Werke Sammlung]"
+                        ],
+                        "contributor_display_mv": [
+                            "Brecht, Bertolt (1898-1956)",
+                            "Dirichs, Ursula",
+                            "Eichhorn, Werner",
+                            "Goguel, Hans",
+                            "Dresp, Wolf",
+                            "Weill, Kurt (1900-1950)",
+                            "Lauterbach, Ulrich"
+                        ],
+                        "parentVolumeTotal": "(2006)",
+                        "work_display_mv": [
+                            "Lauterbach, Ulrich (1911-1988). Die Dreigroschenoper (Hörspiel : 1968)"
+                        ],
+                        "searchName_mv": [
+                            "Brecht, Bertolt",
+                            "Dirichs, Ursula",
+                            "Eichhorn, Werner",
+                            "Goguel, Hans",
+                            "Dresp, Wolf",
+                            "Weill, Kurt",
+                            "Lauterbach, Ulrich"
+                        ],
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "searchNameAbout_mv": [
+                            "Brecht, Bertolt"
+                        ],
+                        "contributor_id_mv": [
+                            "PE00001131",
+                            "PE00129400",
+                            "PE00052571",
+                            "PE00066363",
+                            "PE00129057",
+                            "PE00051007",
+                            "PE00057952"
+                        ],
+                        "noteFootnote_text_mv": [
+                            "Prod.: HR 1968"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK00331960",
+                        "workAbout_id_mv": [
+                            "AK01602711"
+                        ],
+                        "searchClassification_id_mv": [
+                            "SE00019531"
+                        ],
+                        "filterMedium_mv": [
+                            "Audio-CD",
+                            "Beitrag"
+                        ],
+                        "classification_id_mv": [
+                            "SE00019531"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00001131",
+                            "PE00051007",
+                            "PE00129400",
+                            "PE00052571",
+                            "PE00066363",
+                            "PE00129057",
+                            "PE00057952",
+                            "AK01762215",
+                            "AK01602711"
+                        ],
+                        "filterAuthority_mv": [
+                            "Brecht, Bertolt (1898-1956)",
+                            "Dirichs, Ursula",
+                            "Eichhorn, Werner",
+                            "Goguel, Hans",
+                            "Dresp, Wolf",
+                            "Weill, Kurt (1900-1950)",
+                            "Lauterbach, Ulrich"
+                        ],
+                        "parent_displayAddition1_mv": [
+                            "[Berlin] : Der Audio Verlag, 2006 - 10 CDs (646 Min.)"
+                        ],
+                        "dateModified": "2021-05-26",
+                        "noteFootnote_type_mv": [
+                            "501"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "filterAuthorityRole_mv": [
+                            "Brecht, Bertolt (1898-1956)␝Verfasser/Urheber",
+                            "Dirichs, Ursula␝Interpret",
+                            "Eichhorn, Werner␝Interpret",
+                            "Goguel, Hans␝Interpret",
+                            "Dresp, Wolf␝Bearbeiter",
+                            "Weill, Kurt (1900-1950)␝Komponist",
+                            "Lauterbach, Ulrich␝Regisseur",
+                            "Brecht, Bertolt (1898-1956)␝Behandelte Person/Körperschaft"
+                        ],
+                        "searchVariant_mv": [
+                            "Brecht, Eugen Berthold Friedrich",
+                            "Brecht-Neher, ...",
+                            "Brecht, Bert",
+                            "Brišt, Birt¯uld",
+                            "Brecht, Bertold",
+                            "Brẹṣt, Byeṛtoḷta.",
+                            "Brecht, Eugen Bertolt Friedrich",
+                            "Brecht, Eugen B.",
+                            "Burechito, Berutoruto",
+                            "Brecht Neher, ...",
+                            "Brist, Birtuld",
+                            "Weill, Kurt Julian",
+                            "The threepenny opera",
+                            "Die 3 Groschenoper",
+                            "Die 3-Groschenoper"
+                        ],
+                        "dateCataloged": "2007-07-18",
+                        "dateOrigin": "2006",
+                        "filterDatePoint_mv": [
+                            "2006-01-01T00:00:00Z"
+                        ],
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "personBy_display_mv": [
+                            "Brecht, Bertolt (1898-1956)",
+                            "Dirichs, Ursula",
+                            "Eichhorn, Werner",
+                            "Goguel, Hans",
+                            "Dresp, Wolf",
+                            "Weill, Kurt (1900-1950)",
+                            "Lauterbach, Ulrich"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00001131",
+                            "PE00129400",
+                            "PE00052571",
+                            "PE00066363",
+                            "PE00129057",
+                            "PE00051007",
+                            "PE00057952"
+                        ],
+                        "displayAddition1": "Erschienen in: Dramen - Hörspieled. : [Werke Sammlung]. \\ Bertolt Brecht. Einf. von Wolfgang Höbel. Sprecher: Elisabeth Schwarz, Ernst Jacobi, Günther Lüders .... - [Berlin] : Der Audio Verlag, 2006 - 10 CDs (646 Min.)",
+                        "personBy_creator_mv": [
+                            "contributor",
+                            "contributor",
+                            "contributor",
+                            "contributor",
+                            "contributor",
+                            "contributor",
+                            "contributor"
+                        ],
+                        "searchNameBy_mv": [
+                            "Brecht, Bertolt",
+                            "Dirichs, Ursula",
+                            "Eichhorn, Werner",
+                            "Goguel, Hans",
+                            "Dresp, Wolf",
+                            "Weill, Kurt",
+                            "Lauterbach, Ulrich"
+                        ],
+                        "categoryMedium_mv": [
+                            "Audiodisk"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "titleMain_text": "Die Dreigroschenoper",
+                        "parent_id_mv": [
+                            "AK00285861"
+                        ],
+                        "id": "AK00331960",
+                        "work_id_mv": [
+                            "AK01762215"
+                        ],
+                        "classification_display_mv": [
+                            "Brecht, Bertolt / A6.10.3 Andere Bearbeitungen / Einzelne Werke / Weill, Kurt <1900-1950>. Die Dreigroschenoper (Musiktheater : 1928)"
+                        ],
+                        "searchBoost": 1,
+                        "displayName": "Brecht, Bertolt (1898-1956); Dirichs, Ursula; Eichhorn, Werner; Goguel, Hans; Dresp, Wolf; Weill, Kurt (1900-1950); Lauterbach, Ulrich",
+                        "contributor_role_mv": [
+                            "Verfasser",
+                            "Interpret",
+                            "Interpret",
+                            "Interpret",
+                            "Bearbeiter",
+                            "Komponist",
+                            "Regisseur"
+                        ],
+                        "workAbout_titleOther_text_mv": [
+                            "The threepenny opera\nDie 3 Groschenoper\nDie 3-Groschenoper"
+                        ],
+                        "display": "Die Dreigroschenoper",
+                        "filterRecent": "2007-07-18",
+                        "workAbout_display_mv": [
+                            "Weill, Kurt (1900-1950). Die Dreigroschenoper (Musiktheater : 1928)"
+                        ],
+                        "genreOther_mv": [
+                            "Hörspiel"
+                        ],
+                        "extent": "143 Min.",
+                        "categorySubSub": "CD",
+                        "categorySub": "Einzelbestandteil / unselbständiges Werk",
+                        "title": "Die Dreigroschenoper",
+                        "titleResponsability": "Bertolt Brecht. Sprecher: Ursula Dirichs, Werner Eichhorn, Hans Goguel ... Bearb.: Wolf Dresp. Komp.: Kurt Weill. Regie: Ulrich Lauterbach",
+                        "parent_titleResponsability_mv": [
+                            "Bertolt Brecht. Einf. von Wolfgang Höbel. Sprecher: Elisabeth Schwarz, Ernst Jacobi, Günther Lüders ..."
+                        ],
+                        "filterFormContent_mv": [
+                            "Hörspiel",
+                            "Aufsatz"
+                        ],
+                        "statusCataloging": "f-fertig, i-fertig",
+                        "filterDateRange_mv": [
+                            "2006"
+                        ],
+                        "dateOriginComment_mv": [
+                            "2006"
+                        ],
+                        "parent_type_mv": [
+                            "Teil einer monografischen Zusammenstellung, unselbständiges Stück"
+                        ],
+                        "classification_category_mv": [
+                            "Kette Bibliothek"
+                        ],
+                        "filterSubject_mv": [
+                            "Andere Bearbeitungen / Einzelne Werke",
+                            "Brecht, Bertolt (1898-1956)",
+                            "Weill, Kurt <1900-1950>. Die Dreigroschenoper (Musiktheater : 1928)"
+                        ]
+                    },
+                    {
+                        "corporationBy_role_mv": [
+                            "Sonstige Person, Familie und Körperschaft"
+                        ],
+                        "publisher_display_mv": [
+                            "Lingua Video"
+                        ],
+                        "personBy_role_mv": [
+                            "Verfasser",
+                            "Regisseur",
+                            "Komponist",
+                            "Schauspieler",
+                            "Schauspieler",
+                            "Schauspieler"
+                        ],
+                        "item_id_mv": [
+                            "AU00589131"
+                        ],
+                        "item_callNumberItem_mv": [
+                            "BTS:DZK 1465"
+                        ],
+                        "categoryMedia_mv": [
+                            "DVD-Video",
+                            "Bildtonträger"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "filterAuthorityRelation_mv": [
+                            "Brecht, Bertolt (1898-1956)␝Von",
+                            "Wilms, André␝Von",
+                            "Weill, Kurt (1900-1950)␝Von",
+                            "Neuhäuser, Karin (1955-)␝Von",
+                            "Koch, Wolfram␝Von",
+                            "Icks, Sascha␝Von",
+                            "Schauspiel Frankfurt (1902-1944)␝Von",
+                            "Brecht, Bertolt (1898-1956)␝Über"
+                        ],
+                        "corporationBy_id_mv": [
+                            "KS00069264"
+                        ],
+                        "personAbout_id_mv": [
+                            "PE00001131",
+                            "PE00051007"
+                        ],
+                        "searchDate_mv": [
+                            "2007"
+                        ],
+                        "category": "Ton- und Bildträger",
+                        "categoryContent_mv": [
+                            "zweidimensionales bewegtes Bild"
+                        ],
+                        "publisherOriginalText_mv": [
+                            "Lingua Video"
+                        ],
+                        "source": "AK",
+                        "schemaVersion": "1.0.0",
+                        "personAbout_display_mv": [
+                            "Brecht, Bertolt (1898-1956)",
+                            "Weill, Kurt (1900-1950)"
+                        ],
+                        "filterLocation_mv": [
+                            "Bonn"
+                        ],
+                        "contributor_display_mv": [
+                            "Brecht, Bertolt (1898-1956)",
+                            "Wilms, André",
+                            "Weill, Kurt (1900-1950)",
+                            "Neuhäuser, Karin (1955-)",
+                            "Koch, Wolfram",
+                            "Icks, Sascha",
+                            "Schauspiel Frankfurt (1902-1944)"
+                        ],
+                        "dateOrigin": "2007",
+                        "description_text_mv": [
+                            "farb."
+                        ],
+                        "publisherOriginalLocation_mv": [
+                            "Bonn"
+                        ],
+                        "workAbout_titleOther_text_mv": [
+                            "The threepenny opera\nDie 3 Groschenoper\nDie 3-Groschenoper"
+                        ],
+                        "searchNameAbout_mv": [
+                            "Brecht, Bertolt"
+                        ],
+                        "searchClassification_id_mv": [
+                            "SE00001356"
+                        ],
+                        "contributor_id_mv": [
+                            "PE00001131",
+                            "PE00115715",
+                            "PE00051007",
+                            "PE00117697",
+                            "PE00128988",
+                            "PE00075858",
+                            "KS00069264"
+                        ],
+                        "noteFootnote_text_mv": [
+                            "Prod.: ZDF"
+                        ],
+                        "item_display_mv": [
+                            "BTS:DZK 1465. 201311182. Die Dreigroschenoper"
+                        ],
+                        "workAbout_id_mv": [
+                            "AK01602711"
+                        ],
+                        "item_location_mv": [
+                            "Mediendokumentation"
+                        ],
+                        "filterMedium_mv": [
+                            "Video-DVD"
+                        ],
+                        "classification_id_mv": [
+                            "SE00001356"
+                        ],
+                        "searchEntity_id_mv": [
+                            "KS00069264",
+                            "PE00001131",
+                            "PE00051007",
+                            "PE00115715",
+                            "PE00117697",
+                            "PE00128988",
+                            "PE00075858",
+                            "KS00051551",
+                            "AK01602711"
+                        ],
+                        "filterAuthority_mv": [
+                            "Brecht, Bertolt (1898-1956)",
+                            "Wilms, André",
+                            "Weill, Kurt (1900-1950)",
+                            "Neuhäuser, Karin (1955-)",
+                            "Koch, Wolfram",
+                            "Icks, Sascha",
+                            "Schauspiel Frankfurt (1902-1944)"
+                        ],
+                        "dateModified": "2013-11-08",
+                        "filterSource": "Bibliotheksmaterialien",
+                        "filterAuthorityRole_mv": [
+                            "Brecht, Bertolt (1898-1956)␝Verfasser/Urheber",
+                            "Wilms, André␝Regisseur",
+                            "Weill, Kurt (1900-1950)␝Komponist",
+                            "Neuhäuser, Karin (1955-)␝Schauspieler",
+                            "Koch, Wolfram␝Schauspieler",
+                            "Icks, Sascha␝Schauspieler",
+                            "Schauspiel Frankfurt (1902-1944)␝Sonstige Person, Familie und Körperschaft",
+                            "Brecht, Bertolt (1898-1956)␝Behandelte Person/Körperschaft"
+                        ],
+                        "searchName_mv": [
+                            "Brecht, Bertolt",
+                            "Wilms, André",
+                            "Weill, Kurt",
+                            "Neuhäuser, Karin",
+                            "Koch, Wolfram",
+                            "Icks, Sascha",
+                            "Schauspiel Frankfurt"
+                        ],
+                        "searchVariant_mv": [
+                            "Schauspiel",
+                            "Städtische Bühnen Frankfurt am Main",
+                            "Schauspielhaus Frankfurt am Main",
+                            "Schauspielhaus Frankfurt",
+                            "schauspielfrankfurt",
+                            "Brecht, Eugen Berthold Friedrich",
+                            "Brecht-Neher, ...",
+                            "Brecht, Bert",
+                            "Brišt, Birt¯uld",
+                            "Brecht, Bertold",
+                            "Brẹṣt, Byeṛtoḷta.",
+                            "Brecht, Eugen Bertolt Friedrich",
+                            "Brecht, Eugen B.",
+                            "Burechito, Berutoruto",
+                            "Brecht Neher, ...",
+                            "Brist, Birtuld",
+                            "Weill, Kurt Julian",
+                            "The threepenny opera",
+                            "Die 3 Groschenoper",
+                            "Die 3-Groschenoper"
+                        ],
+                        "dateCataloged": "2013-10-31",
+                        "personBy_creator_mv": [
+                            "contributor",
+                            "contributor",
+                            "contributor",
+                            "contributor",
+                            "contributor",
+                            "contributor"
+                        ],
+                        "filterDatePoint_mv": [
+                            "2007-01-01T00:00:00Z"
+                        ],
+                        "filterType_mv": [
+                            "Video"
+                        ],
+                        "personBy_display_mv": [
+                            "Brecht, Bertolt (1898-1956)",
+                            "Wilms, André",
+                            "Weill, Kurt (1900-1950)",
+                            "Neuhäuser, Karin (1955-)",
+                            "Koch, Wolfram",
+                            "Icks, Sascha"
+                        ],
+                        "corporationBy_display_mv": [
+                            "Schauspiel Frankfurt (1902-1944)"
+                        ],
+                        "displayAddition1": "Bonn : Lingua Video, 2007 - 1 DVD-Video (128 Min.)",
+                        "searchNameBy_mv": [
+                            "Brecht, Bertolt",
+                            "Wilms, André",
+                            "Weill, Kurt",
+                            "Neuhäuser, Karin",
+                            "Koch, Wolfram",
+                            "Icks, Sascha",
+                            "Schauspiel Frankfurt"
+                        ],
+                        "categoryMedium_mv": [
+                            "Videodisk"
+                        ],
+                        "noteFootnote_type_mv": [
+                            "501"
+                        ],
+                        "titleMain_text": "Die Dreigroschenoper",
+                        "filterLocationType_mv": [
+                            "Bonn␝Erscheinungsort"
+                        ],
+                        "id": "AK01357483",
+                        "classification_display_mv": [
+                            "Brecht, Bertolt / A6.7.3 Wirkungsgeschichte / Aufführungen, Veranstaltungen und Rezitationen auf der Textgrundlage des Autors / Einzelne Werke / Weill, Kurt <1900-1950>. Die Dreigroschenoper (Musiktheater : 1928)"
+                        ],
+                        "publisher_id_mv": [
+                            "KS00051551"
+                        ],
+                        "searchBoost": 1,
+                        "displayName": "Brecht, Bertolt (1898-1956); Wilms, André; Weill, Kurt (1900-1950); Neuhäuser, Karin (1955-); Koch, Wolfram; Icks, Sascha; Schauspiel Frankfurt (1902-1944)",
+                        "contributor_role_mv": [
+                            "Verfasser",
+                            "Regisseur",
+                            "Komponist",
+                            "Schauspieler",
+                            "Schauspieler",
+                            "Schauspieler",
+                            "Verfasser"
+                        ],
+                        "vendor_id_mv": [
+                            "1465998691"
+                        ],
+                        "vendor_type_mv": [
+                            "K10Plus-PPN"
+                        ],
+                        "display": "Die Dreigroschenoper",
+                        "filterRecent": "2013-10-31",
+                        "corporationBy_creator_mv": [
+                            "contributor"
+                        ],
+                        "genreOther_mv": [
+                            "Oper"
+                        ],
+                        "extent": "1 DVD-Video (128 Min.)",
+                        "categorySubSub": "DVD-Video",
+                        "categorySub": "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                        "item_usageRestriction_mv": [
+                            "benutzbar"
+                        ],
+                        "title": "Die Dreigroschenoper",
+                        "titleResponsability": "nach Bertolt Brecht. Eine Inszenierung von André Wilms am Schauspiel Frankfurt 2007. Musik: Kurt Weill. [Darst.:] Karin Neuhäuser, Wolfram Koch, Sascha Icks ...",
+                        "workAbout_display_mv": [
+                            "Weill, Kurt (1900-1950). Die Dreigroschenoper (Musiktheater : 1928)"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00001131",
+                            "PE00115715",
+                            "PE00051007",
+                            "PE00117697",
+                            "PE00128988",
+                            "PE00075858"
+                        ],
+                        "filterFormContent_mv": [
+                            "Oper"
+                        ],
+                        "statusCataloging": "f-fertig, i-fertig",
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK01357483",
+                        "filterDateRange_mv": [
+                            "2007"
+                        ],
+                        "dateOriginComment_mv": [
+                            "2007"
+                        ],
+                        "item_accessionNumber_mv": [
+                            "201311182"
+                        ],
+                        "classification_category_mv": [
+                            "Kette Bibliothek"
+                        ],
+                        "filterSubject_mv": [
+                            "Wirkungsgeschichte / Aufführungen, Veranstaltungen und Rezitationen auf der Textgrundlage des Autors / Einzelne Werke",
+                            "Brecht, Bertolt (1898-1956)",
+                            "Weill, Kurt <1900-1950>. Die Dreigroschenoper (Musiktheater : 1928)"
+                        ]
+                    },
+                    {
+                        "publisher_display_mv": [
+                            "Vintage"
+                        ],
+                        "personBy_role_mv": [
+                            "Komponist",
+                            "Verfasser/Urheber"
+                        ],
+                        "item_id_mv": [
+                            "AU01118364"
+                        ],
+                        "item_callNumberItem_mv": [
+                            "TTS:AY 369"
+                        ],
+                        "creator_id_mv": [
+                            "PE00051007",
+                            "PE00001131"
+                        ],
+                        "categoryMedia_mv": [
+                            "Tonträger",
+                            "Schallplatte"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "filterAuthorityRelation_mv": [
+                            "Weill, Kurt (1900-1950)␝Von",
+                            "Brecht, Bertolt (1898-1956)␝Von"
+                        ],
+                        "category": "Ton- und Bildträger",
+                        "categoryContent_mv": [
+                            "aufgeführte Musik"
+                        ],
+                        "publisherOriginalText_mv": [
+                            "Vintage"
+                        ],
+                        "source": "AK",
+                        "identifier_id_mv": [
+                            "7850 001"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchDate_mv": [
+                            "1974"
+                        ],
+                        "filterLocation_mv": [
+                            "Germany"
+                        ],
+                        "dateOrigin": "1974",
+                        "description_text_mv": [
+                            "33 UpM",
+                            "Stereo"
+                        ],
+                        "extentFormat": "30 cm",
+                        "publisherOriginalLocation_mv": [
+                            "Germany"
+                        ],
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "titleOther_type_mv": [
+                            "370n"
+                        ],
+                        "vendor_id_mv": [
+                            "1942702795",
+                            "BV024006470"
+                        ],
+                        "description_type_mv": [
+                            "Abspielgeschwindigkeit",
+                            "Aufnahme- und Wiedergabeverfahren"
+                        ],
+                        "noteFootnote_text_mv": [
+                            "Enthält Lieder aus der Dreigroschenoper sowie weitere Lieder von Brecht und Weill"
+                        ],
+                        "item_display_mv": [
+                            "TTS:AY 369. 79.5198. Dreigroschenoper"
+                        ],
+                        "item_location_mv": [
+                            "Mediendokumentation"
+                        ],
+                        "titleResponsability": "von Bert Brecht und Kurt Weill",
+                        "filterMedium_mv": [
+                            "Schallplatte"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00051007",
+                            "PE00001131",
+                            "KS00169789"
+                        ],
+                        "filterAuthority_mv": [
+                            "Weill, Kurt (1900-1950)",
+                            "Brecht, Bertolt (1898-1956)"
+                        ],
+                        "dateModified": "2025-11-27",
+                        "noteFootnote_type_mv": [
+                            "501"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "filterAuthorityRole_mv": [
+                            "Weill, Kurt (1900-1950)␝Komponist",
+                            "Brecht, Bertolt (1898-1956)␝Verfasser/Urheber"
+                        ],
+                        "searchName_mv": [
+                            "Weill, Kurt",
+                            "Brecht, Bertolt"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK01870295",
+                        "dateCataloged": "2025-11-27",
+                        "personBy_creator_mv": [
+                            "creator",
+                            "creator"
+                        ],
+                        "filterDatePoint_mv": [
+                            "1974-01-01T00:00:00Z"
+                        ],
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "personBy_display_mv": [
+                            "Weill, Kurt (1900-1950)",
+                            "Brecht, Bertolt (1898-1956)"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00051007",
+                            "PE00001131"
+                        ],
+                        "displayAddition1": "Germany : Vintage, 1974 - 1 Schallplatte",
+                        "searchNameBy_mv": [
+                            "Weill, Kurt",
+                            "Brecht, Bertolt"
+                        ],
+                        "categoryMedium_mv": [
+                            "Audiodisk"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "titleMain_text": "Dreigroschenoper",
+                        "filterLocationType_mv": [
+                            "Germany␝Erscheinungsort"
+                        ],
+                        "id": "AK01870295",
+                        "searchVariant_mv": [
+                            "Weill, Kurt Julian",
+                            "Brecht, Eugen Berthold Friedrich",
+                            "Brecht-Neher, ...",
+                            "Brecht, Bert",
+                            "Brišt, Birt¯uld",
+                            "Brecht, Bertold",
+                            "Brẹṣt, Byeṛtoḷta.",
+                            "Brecht, Eugen Bertolt Friedrich",
+                            "Brecht, Eugen B.",
+                            "Burechito, Berutoruto",
+                            "Brecht Neher, ...",
+                            "Brist, Birtuld"
+                        ],
+                        "publisher_id_mv": [
+                            "KS00169789"
+                        ],
+                        "searchBoost": 1,
+                        "displayName": "Weill, Kurt (1900-1950); Brecht, Bertolt (1898-1956)",
+                        "creator_display_mv": [
+                            "Weill, Kurt (1900-1950)",
+                            "Brecht, Bertolt (1898-1956)"
+                        ],
+                        "vendor_type_mv": [
+                            "K10Plus-PPN",
+                            "BVB"
+                        ],
+                        "display": "Dreigroschenoper",
+                        "filterRecent": "2025-11-27",
+                        "genreOther_mv": [
+                            "Oper",
+                            "Lied"
+                        ],
+                        "extent": "1 Schallplatte",
+                        "categorySubSub": "Schallplatte",
+                        "categorySub": "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                        "item_usageRestriction_mv": [
+                            "benutzbar"
+                        ],
+                        "title": "Dreigroschenoper",
+                        "identifier_type_mv": [
+                            "551a"
+                        ],
+                        "titleOther_text_mv": [
+                            "3 Groschen Oper"
+                        ],
+                        "creator_role_mv": [
+                            "Komponist",
+                            "Verfasser/Urheber"
+                        ],
+                        "filterFormContent_mv": [
+                            "Oper",
+                            "Lied"
+                        ],
+                        "statusCataloging": "f-fertig, i-fertig",
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "filterDateRange_mv": [
+                            "1974"
+                        ],
+                        "dateOriginComment_mv": [
+                            "1974"
+                        ],
+                        "item_accessionNumber_mv": [
+                            "79.5198"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

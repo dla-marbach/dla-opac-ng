@@ -1,0 +1,53 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "facet.field": "filterLanguageType_mv",
+            "facet": "on",
+            "facet.mincount": "1",
+            "facet.prefix": "Deutsch␝",
+            "fq": "NOT source:(AU OR MM)",
+            "q": "schiller AND filterAuthorityRole_mv:\"Schiller, Friedrich von (1759-1805)␝Verfasser/Urheber\"",
+            "rows": "0"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 4,
+                "params": {
+                    "q": "schiller AND filterAuthorityRole_mv:\"Schiller, Friedrich von (1759-1805)␝Verfasser/Urheber\"",
+                    "facet.field": "filterLanguageType_mv",
+                    "facet.prefix": "Deutsch␝",
+                    "facet.mincount": "1",
+                    "fq": "NOT source:(AU OR MM)",
+                    "rows": "0",
+                    "facet": "on"
+                }
+            },
+            "response": {
+                "numFound": 7622,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": []
+            },
+            "facet_counts": {
+                "facet_queries": [],
+                "facet_fields": {
+                    "filterLanguageType_mv": [
+                        "Deutsch␝Original",
+                        6722,
+                        "Deutsch␝Übersetzung",
+                        84
+                    ]
+                },
+                "facet_ranges": [],
+                "facet_intervals": [],
+                "facet_heatmaps": []
+            }
+        }
+    }
+}

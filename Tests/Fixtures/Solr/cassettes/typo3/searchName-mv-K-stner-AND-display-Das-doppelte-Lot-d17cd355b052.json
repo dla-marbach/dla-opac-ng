@@ -1,0 +1,846 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchName_mv:(Kästner) AND ((display:(Das doppelte Lottchen) AND source:(AK OR BI OR BF OR HS OR dbis OR ezb)) OR (work_display_mv:(Das doppelte Lottchen) AND source:(AK OR BI OR HS)) OR titleOther_text_mv:(Das doppelte Lottchen) OR titleMain_comment:(Das doppelte Lottchen) OR titleOther_comment_mv:(Das doppelte Lottchen) OR titleOriginal:(Das doppelte Lottchen)) AND (*:* AND -filterDateRange_mv:*)",
+            "start": "0",
+            "rows": "25",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "score desc",
+            "fq": "NOT source:(AU OR BE OR MM)",
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(Kästner) OR displayAddition1:(Kästner) OR displayAddition2:(Kästner) OR displayName:(Kästner))) OR ((display:(Das doppelte Lottchen) OR displayAddition1:(Das doppelte Lottchen) OR displayAddition2:(Das doppelte Lottchen) OR displayName:(Das doppelte Lottchen))) OR ((display:(*) OR displayAddition1:(*) OR displayAddition2:(*) OR displayName:(*)))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "facet.field": [
+                "{!key=Digital}filterDigital",
+                "{!key=Medientypen}filterType_mv",
+                "{!key=FormUndInhalt}filterFormContent_mv",
+                "{!key=Medium}filterMedium_mv",
+                "{!key=Personen}filterAuthority_mv",
+                "{!key=Thema}filterSubject_mv",
+                "{!key=Sprache}filterLanguage_mv",
+                "{!key=filterLanguageType_mv}filterLanguageType_mv",
+                "{!key=Ort}filterLocation_mv",
+                "{!key=filterLocationType_mv}filterLocationType_mv",
+                "{!key=Sammlung}filterCollection_mv",
+                "{!key=Datenbestand}filterSource",
+                "{!key=Bibliographie}filterBibliography_mv",
+                "{!key=filterAuthorityRole_mv}filterAuthorityRole_mv",
+                "{!key=filterAuthorityRelation_mv}filterAuthorityRelation_mv",
+                "{!key=entities}searchEntity_id_mv"
+            ],
+            "f.filterDigital.facet.sort": "count",
+            "f.filterDigital.facet.limit": "50",
+            "f.filterDigital.facet.mincount": "1",
+            "f.filterType_mv.facet.sort": "count",
+            "f.filterType_mv.facet.limit": "50",
+            "f.filterType_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.sort": "count",
+            "f.filterFormContent_mv.facet.limit": "50",
+            "f.filterFormContent_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.missing": "true",
+            "f.filterMedium_mv.facet.sort": "count",
+            "f.filterMedium_mv.facet.limit": "50",
+            "f.filterMedium_mv.facet.mincount": "1",
+            "f.filterMedium_mv.facet.missing": "true",
+            "f.filterAuthority_mv.facet.sort": "count",
+            "f.filterAuthority_mv.facet.limit": "50",
+            "f.filterAuthority_mv.facet.mincount": "1",
+            "facet.range": "{!key=Zeit}filterDateRange_mv",
+            "f.filterDateRange_mv.facet.range.start": "NOW/YEAR-2050YEARS",
+            "f.filterDateRange_mv.facet.range.end": "NOW/DAY+1YEAR",
+            "f.filterDateRange_mv.facet.range.gap": "+41YEAR",
+            "f.filterSubject_mv.facet.sort": "count",
+            "f.filterSubject_mv.facet.limit": "50",
+            "f.filterSubject_mv.facet.mincount": "1",
+            "f.filterSubject_mv.facet.missing": "true",
+            "facet.query": [
+                "{!key=Woche ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]",
+                "{!key=Monat ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]",
+                "{!key=Quartal ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Halbjahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Jahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1YEAR TO NOW/DAY+1DAY]"
+            ],
+            "f.filterLanguage_mv.facet.sort": "count",
+            "f.filterLanguage_mv.facet.limit": "50",
+            "f.filterLanguage_mv.facet.mincount": "1",
+            "f.filterLanguageType_mv.facet.sort": "count",
+            "f.filterLanguageType_mv.facet.limit": "50",
+            "f.filterLanguageType_mv.facet.mincount": "1",
+            "f.filterLocation_mv.facet.sort": "count",
+            "f.filterLocation_mv.facet.limit": "50",
+            "f.filterLocation_mv.facet.mincount": "1",
+            "f.filterLocationType_mv.facet.sort": "count",
+            "f.filterLocationType_mv.facet.limit": "50",
+            "f.filterLocationType_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.sort": "count",
+            "f.filterCollection_mv.facet.limit": "50",
+            "f.filterCollection_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.missing": "true",
+            "f.filterSource.facet.sort": "count",
+            "f.filterSource.facet.limit": "50",
+            "f.filterSource.facet.mincount": "1",
+            "f.filterSource.facet.missing": "true",
+            "f.filterBibliography_mv.facet.sort": "count",
+            "f.filterBibliography_mv.facet.limit": "50",
+            "f.filterBibliography_mv.facet.mincount": "1",
+            "f.filterBibliography_mv.facet.missing": "true",
+            "f.filterAuthorityRole_mv.facet.sort": "count",
+            "f.filterAuthorityRole_mv.facet.limit": "50",
+            "f.filterAuthorityRole_mv.facet.mincount": "1",
+            "f.filterAuthorityRelation_mv.facet.sort": "count",
+            "f.filterAuthorityRelation_mv.facet.limit": "50",
+            "f.filterAuthorityRelation_mv.facet.mincount": "1",
+            "f.searchEntity_id_mv.facet.sort": "count",
+            "f.searchEntity_id_mv.facet.limit": "2",
+            "f.searchEntity_id_mv.facet.mincount": "1",
+            "facet": "true"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 20,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "displayAddition2": "A:Kästner, Erich/Kopien - [Standortkonvolut, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00074714",
+                        "displayName": "Kästner, Erich (1899-1974) [Verfasser/in]; Johannes-Gemeinde <Heidelberg> / Theatergruppe [Bearbeiter]",
+                        "display": "Johannes-Gemeinde <Heidelberg> / Theatergruppe: Das doppelte Lottchen [Bearbeitungen]"
+                    },
+                    {
+                        "usageRestrictionNote": "Nur mit Einverständnis der beteiligten Personen ausleihbar!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayName": "Cantz, Stefan (1956-) [Bearbeiter/in]",
+                        "displayAddition2": "A:Kästner, Erich - [Bestand, Nachlass]",
+                        "id": "HS00074698",
+                        "display": "Cantz, Stefan: Charlie und Louise. Das doppelte Lottchen. Drehbuch [Bearbeitungen]"
+                    },
+                    {
+                        "usageRestrictionNote": "Nur mit Einverständnis der beteiligten Personen ausleihbar!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "displayName": "Madeisky, Uschi [Bearbeiter/in]",
+                        "displayAddition2": "A:Kästner, Erich - [Bestand, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00074686",
+                        "display": "Madeisky, Uschi: Das doppelte Lottchen. Drehbuch zu einem Spielfilm [Bearbeitungen]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayName": "Kästner, Erich (1899-1974) [Verfasser/in]",
+                        "displayAddition2": "A:Kästner, Erich - [Bestand, Nachlass]",
+                        "id": "HS00074614",
+                        "display": "Kästner, Erich: Das doppelte Lottchen [Prosa]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayName": "Kästner, Erich (1899-1974) [Verfasser/in]",
+                        "displayAddition2": "A:Kästner, Erich - [Bestand, Nachlass]",
+                        "id": "HS00074634",
+                        "display": "Kästner, Erich: Das doppelte Lottchen [Prosa]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayName": "Kästner, Erich (1899-1974) [Verfasser/in]",
+                        "displayAddition2": "A:Kästner, Erich - [Bestand, Nachlass]",
+                        "id": "HS00152168",
+                        "display": "Kästner, Erich: Das doppelte Lottchen [Prosa]"
+                    },
+                    {
+                        "displayName": "Kästner, Erich (1899-1974) [Verfasser/in]",
+                        "displayAddition2": "A:Kästner, Erich - [Bestand, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00074619",
+                        "display": "Kästner, Erich: Schutzklappentext für \"Das doppelte Lottchen\" [Prosa]"
+                    },
+                    {
+                        "id": "HS00168107",
+                        "displayAddition2": "H:Kästner, Erich/Versfabrik - [Geschlossener Bestand der Mediendokumentation, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayName": "Kästner, Erich (1899-1974) [Verfasser/in]",
+                        "display": "Kästner, Erich: Sammlung [32] Das doppelte Lottchen [Verschiedenes]"
+                    },
+                    {
+                        "displayName": "Kästner, Erich (1899-1974) [Vor-/Nachwort]",
+                        "displayAddition2": "A:Kästner, Erich/Archiv - [Standortkonvolut, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS01344897",
+                        "display": "Kästner, Erich: Kästner, Erich: Das doppelte Lottchen [Prosa. Vor- u. Nachworte]"
+                    },
+                    {
+                        "displayName": "Kästner, Erich (1899-1974) [Dokumentierte Person]",
+                        "displayAddition2": "A:Kästner, Erich - [Bestand, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00217555",
+                        "display": "Kästner, Erich: Beteiligung Kästners an der Verfilmung von \"Das doppelte Lottchen\" 1951-1953 [Dokumente]"
+                    },
+                    {
+                        "usageRestrictionNote": "Nur mit Einverständnis der beteiligten Personen ausleihbar!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "displayAddition2": "A:Kästner, Erich - [Bestand, Nachlass]",
+                        "display": "Kästner, Erich: Handakte [Verschiedenes]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00082620",
+                        "displayName": "Kästner, Erich (1899-1974) [Verfasser/in]; Atrium-Verlag <Zürich> (1934-) [Korrespondenzpartner]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayName": "Kästner, Erich (1899-1974) [Verfasser/in]",
+                        "displayAddition2": "A:Kästner, Erich - [Bestand, Nachlass]",
+                        "id": "HS00074629",
+                        "display": "Kästner, Erich: Das doppelte Lottchen [Prosa]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayName": "Kästner, Erich (1899-1974) [Verfasser/in]",
+                        "displayAddition2": "A:Kästner, Erich - [Bestand, Nachlass]",
+                        "id": "HS00074680",
+                        "display": "Kästner, Erich: Das doppelte Lottchen [Dramatisches]"
+                    },
+                    {
+                        "usageRestrictionNote": "Nur mit Einverständnis der beteiligten Personen ausleihbar!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "displayName": "Kästner, Erich (1899-1974) [Verfasser/in]",
+                        "displayAddition2": "A:Kästner, Erich - [Bestand, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00074602",
+                        "display": "Kästner, Erich: Das doppelte Lottchen [Prosa]"
+                    },
+                    {
+                        "displayName": "Kästner, Erich (1899-1974) [Verfasser/in]",
+                        "displayAddition2": "A:Kästner, Erich - [Bestand, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00074648",
+                        "display": "Kästner, Erich: Das doppelte Lottchen [Dramatisches]"
+                    },
+                    {
+                        "displayName": "Kästner, Erich (1899-1974) [Dokumentierte Person]; Carlton Film Gesellschaft <München> [Dokumentierte Körperschaft]",
+                        "displayAddition2": "A:Kästner, Erich - [Bestand, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00085916",
+                        "display": "Kästner, Erich: Vertrag [Dokumente]"
+                    },
+                    {
+                        "displayName": "Kästner, Erich (1899-1974) [Dokumentierte Person]; Carlton Film Gesellschaft <München> [Dokumentierte Körperschaft]",
+                        "displayAddition2": "A:Kästner, Erich - [Bestand, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00085936",
+                        "display": "Kästner, Erich: Vertrag [Dokumente]"
+                    },
+                    {
+                        "id": "HS00086080",
+                        "usageRestrictionNote": "Nur mit Einverständnis der beteiligten Personen ausleihbar!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "displayAddition2": "A:Kästner, Erich/Kopien - [Standortkonvolut, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayName": "Constantin, Ulrich (-2006) [Dokumentierte Person]; Walt Disney Productions <Burbank, Calif.> [Dokumentierte Körperschaft]",
+                        "display": "Constantin, Ulrich: Vertrag [Dokumente]"
+                    },
+                    {
+                        "usageRestrictionNote": "Nur mit Einverständnis der beteiligten Personen ausleihbar!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayName": "Kästner, Erich (1899-1974) [Verfasser/in]",
+                        "displayAddition2": "A:Kästner, Erich - [Bestand, Nachlass]",
+                        "id": "HS00082673",
+                        "display": "Kästner, Erich: Handakte [Verschiedenes]"
+                    },
+                    {
+                        "usageRestrictionNote": "Nur mit Einverständnis der beteiligten Personen ausleihbar!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "displayName": "Kästner, Erich (1899-1974) [Verfasser/in]",
+                        "displayAddition2": "A:Kästner, Erich/Archiv - [Standortkonvolut, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "id": "HS00478824",
+                        "display": "Kästner, Erich: Konvolut Ordner 31: C. Archiv. Zum Teil Unveröffentlichtes [Verschiedenes]"
+                    }
+                ]
+            },
+            "facet_counts": {
+                "facet_queries": {
+                    "Woche": 0,
+                    "Monat": 0,
+                    "Quartal": 0,
+                    "Halbjahr": 0,
+                    "Jahr": 0
+                },
+                "facet_fields": {
+                    "Digital": [],
+                    "Medientypen": [
+                        "Handschriften",
+                        20
+                    ],
+                    "FormUndInhalt": [
+                        "Prosa",
+                        12,
+                        "Dokument",
+                        5,
+                        "Dramatisches",
+                        5,
+                        "Verschiedenes",
+                        4,
+                        "Bearbeitung",
+                        3,
+                        "Brief",
+                        3,
+                        "Lyrik",
+                        1,
+                        "Rede / Vortrag",
+                        1,
+                        "Rezension",
+                        1,
+                        "Vorwort / Nachwort",
+                        1,
+                        null,
+                        0
+                    ],
+                    "Medium": [
+                        null,
+                        20
+                    ],
+                    "Personen": [
+                        "Kästner, Erich (1899-1974)",
+                        20,
+                        "Carlton Film Gesellschaft <München>",
+                        3,
+                        "Baky, Josef von (1902-1966)",
+                        2,
+                        "Moeller, Paul E.",
+                        2,
+                        "Walt Disney Productions <Burbank, Calif.>",
+                        2,
+                        "Aichinger, Alfred",
+                        1,
+                        "Atrium-Verlag <Zürich> (1934-)",
+                        1,
+                        "Cantz, Stefan (1956-)",
+                        1,
+                        "Colorama Filmproduktion <Frankfurt, Main>",
+                        1,
+                        "Constantin, Ulrich (-2006)",
+                        1,
+                        "Enderle, Luiselotte (1908-1991)",
+                        1,
+                        "Friedenthal, Richard (1896-1979)",
+                        1,
+                        "Gulbransson, Olaf (1873-1958)",
+                        1,
+                        "Johannes-Gemeinde <Heidelberg> / Theatergruppe",
+                        1,
+                        "Kesten, Hermann (1900-1996)",
+                        1,
+                        "Klooss, Reinhard (1954-)",
+                        1,
+                        "Kästner, Thomas (1957-)",
+                        1,
+                        "Madeisky, Uschi",
+                        1,
+                        "Richter, Klaus (1943-2017)",
+                        1,
+                        "Siebert, Friedhilde (1926-1986)",
+                        1,
+                        "Temple, Shirley (1928-)",
+                        1,
+                        "Werner, Klaus",
+                        1,
+                        "Widmann, Hugo",
+                        1
+                    ],
+                    "Thema": [
+                        "Kästner, Erich <1899-1974>. Das doppelte Lottchen (Kinderbuch : 1949)",
+                        10,
+                        "Kästner, Erich (1899-1974)",
+                        8,
+                        "Carlton Film Gesellschaft <München>",
+                        3,
+                        "Vertrag",
+                        3,
+                        "Baky, Josef von (1902-1966)",
+                        2,
+                        "Das doppelte Lottchen (Film : 1950)",
+                        2,
+                        "Aichinger, Alfred",
+                        1,
+                        "Colorama Filmproduktion <Frankfurt, Main>",
+                        1,
+                        "Constantin, Ulrich (-2006)",
+                        1,
+                        "Enderle, Luiselotte (1908-1991)",
+                        1,
+                        "Gulbransson, Olaf (1873-1958)",
+                        1,
+                        "Kesten, Hermann (1900-1996)",
+                        1,
+                        "Kästner, Erich <1899-1974>. Emil und die Detektive (Kinderbuch : 1928)",
+                        1,
+                        "Kästner, Thomas (1957-)",
+                        1,
+                        "Siebert, Friedhilde (1926-1986)",
+                        1,
+                        "Temple, Shirley (1928-)",
+                        1,
+                        "Walt Disney Productions <Burbank, Calif.>",
+                        1,
+                        null,
+                        5
+                    ],
+                    "Sprache": [
+                        "Deutsch",
+                        20
+                    ],
+                    "filterLanguageType_mv": [
+                        "Deutsch␝Original",
+                        20
+                    ],
+                    "Ort": [],
+                    "filterLocationType_mv": [],
+                    "Sammlung": [
+                        "A:Kästner, Erich",
+                        15,
+                        "A:Kästner, Erich/Archiv",
+                        2,
+                        "A:Kästner, Erich/Kopien",
+                        2,
+                        "H:Kästner, Erich/Versfabrik",
+                        1,
+                        null,
+                        0
+                    ],
+                    "Datenbestand": [
+                        "Handschriften Einzelnachweise",
+                        20,
+                        null,
+                        0
+                    ],
+                    "Bibliographie": [
+                        null,
+                        20
+                    ],
+                    "filterAuthorityRole_mv": [
+                        "Kästner, Erich (1899-1974)␝Verfasser/Urheber",
+                        15,
+                        "Kästner, Erich (1899-1974)␝Werktitel Person/Körperschaft",
+                        8,
+                        "Kästner, Erich (1899-1974)␝Dokumentierte Person/Körperschaft",
+                        3,
+                        "Baky, Josef von (1902-1966)␝Werktitel Person/Körperschaft",
+                        2,
+                        "Carlton Film Gesellschaft <München>␝Dokumentierte Person/Körperschaft",
+                        2,
+                        "Moeller, Paul E.␝Korrespondent",
+                        2,
+                        "Aichinger, Alfred␝Behandelte Person/Körperschaft",
+                        1,
+                        "Atrium-Verlag <Zürich> (1934-)␝Korrespondent",
+                        1,
+                        "Cantz, Stefan (1956-)␝Bearbeiter",
+                        1,
+                        "Carlton Film Gesellschaft <München>␝Behandelte Person/Körperschaft",
+                        1,
+                        "Colorama Filmproduktion <Frankfurt, Main>␝Behandelte Person/Körperschaft",
+                        1,
+                        "Constantin, Ulrich (-2006)␝Dokumentierte Person/Körperschaft",
+                        1,
+                        "Enderle, Luiselotte (1908-1991)␝Dokumentierte Person/Körperschaft",
+                        1,
+                        "Friedenthal, Richard (1896-1979)␝nicht bestimmt",
+                        1,
+                        "Gulbransson, Olaf (1873-1958)␝Behandelte Person/Körperschaft",
+                        1,
+                        "Johannes-Gemeinde <Heidelberg> / Theatergruppe␝Bearbeiter",
+                        1,
+                        "Kesten, Hermann (1900-1996)␝Behandelte Person/Körperschaft",
+                        1,
+                        "Klooss, Reinhard (1954-)␝Bearbeiter",
+                        1,
+                        "Kästner, Erich (1899-1974)␝Verfasser eines Vor- oder Nachworts",
+                        1,
+                        "Kästner, Thomas (1957-)␝Dokumentierte Person/Körperschaft",
+                        1,
+                        "Madeisky, Uschi␝Bearbeiter",
+                        1,
+                        "Richter, Klaus (1943-2017)␝Bearbeiter",
+                        1,
+                        "Siebert, Friedhilde (1926-1986)␝Dokumentierte Person/Körperschaft",
+                        1,
+                        "Temple, Shirley (1928-)␝Behandelte Person/Körperschaft",
+                        1,
+                        "Walt Disney Productions <Burbank, Calif.>␝Dokumentierte Person/Körperschaft",
+                        1,
+                        "Walt Disney Productions <Burbank, Calif.>␝Korrespondent",
+                        1,
+                        "Werner, Klaus␝Bearbeiter",
+                        1,
+                        "Widmann, Hugo␝Korrespondent",
+                        1
+                    ],
+                    "filterAuthorityRelation_mv": [
+                        "Kästner, Erich (1899-1974)␝Von",
+                        16,
+                        "Kästner, Erich (1899-1974)␝Über",
+                        8,
+                        "Carlton Film Gesellschaft <München>␝Über",
+                        3,
+                        "Baky, Josef von (1902-1966)␝Über",
+                        2,
+                        "Moeller, Paul E.␝Von",
+                        2,
+                        "Aichinger, Alfred␝Über",
+                        1,
+                        "Atrium-Verlag <Zürich> (1934-)␝Von",
+                        1,
+                        "Cantz, Stefan (1956-)␝Von",
+                        1,
+                        "Colorama Filmproduktion <Frankfurt, Main>␝Über",
+                        1,
+                        "Constantin, Ulrich (-2006)␝Über",
+                        1,
+                        "Enderle, Luiselotte (1908-1991)␝Über",
+                        1,
+                        "Friedenthal, Richard (1896-1979)␝An",
+                        1,
+                        "Gulbransson, Olaf (1873-1958)␝Über",
+                        1,
+                        "Johannes-Gemeinde <Heidelberg> / Theatergruppe␝Von",
+                        1,
+                        "Kesten, Hermann (1900-1996)␝Über",
+                        1,
+                        "Klooss, Reinhard (1954-)␝Von",
+                        1,
+                        "Kästner, Thomas (1957-)␝Über",
+                        1,
+                        "Madeisky, Uschi␝Von",
+                        1,
+                        "Richter, Klaus (1943-2017)␝Von",
+                        1,
+                        "Siebert, Friedhilde (1926-1986)␝Über",
+                        1,
+                        "Temple, Shirley (1928-)␝Über",
+                        1,
+                        "Walt Disney Productions <Burbank, Calif.>␝Von",
+                        1,
+                        "Walt Disney Productions <Burbank, Calif.>␝Über",
+                        1,
+                        "Werner, Klaus␝Von",
+                        1,
+                        "Widmann, Hugo␝Von",
+                        1
+                    ],
+                    "entities": [
+                        "PE00022301",
+                        20,
+                        "AK01795765",
+                        10
+                    ]
+                },
+                "facet_ranges": {
+                    "Zeit": {
+                        "counts": [
+                            "-0024-01-01T00:00:00Z",
+                            0,
+                            "0017-01-01T00:00:00Z",
+                            0,
+                            "0058-01-01T00:00:00Z",
+                            0,
+                            "0099-01-01T00:00:00Z",
+                            0,
+                            "0140-01-01T00:00:00Z",
+                            0,
+                            "0181-01-01T00:00:00Z",
+                            0,
+                            "0222-01-01T00:00:00Z",
+                            0,
+                            "0263-01-01T00:00:00Z",
+                            0,
+                            "0304-01-01T00:00:00Z",
+                            0,
+                            "0345-01-01T00:00:00Z",
+                            0,
+                            "0386-01-01T00:00:00Z",
+                            0,
+                            "0427-01-01T00:00:00Z",
+                            0,
+                            "0468-01-01T00:00:00Z",
+                            0,
+                            "0509-01-01T00:00:00Z",
+                            0,
+                            "0550-01-01T00:00:00Z",
+                            0,
+                            "0591-01-01T00:00:00Z",
+                            0,
+                            "0632-01-01T00:00:00Z",
+                            0,
+                            "0673-01-01T00:00:00Z",
+                            0,
+                            "0714-01-01T00:00:00Z",
+                            0,
+                            "0755-01-01T00:00:00Z",
+                            0,
+                            "0796-01-01T00:00:00Z",
+                            0,
+                            "0837-01-01T00:00:00Z",
+                            0,
+                            "0878-01-01T00:00:00Z",
+                            0,
+                            "0919-01-01T00:00:00Z",
+                            0,
+                            "0960-01-01T00:00:00Z",
+                            0,
+                            "1001-01-01T00:00:00Z",
+                            0,
+                            "1042-01-01T00:00:00Z",
+                            0,
+                            "1083-01-01T00:00:00Z",
+                            0,
+                            "1124-01-01T00:00:00Z",
+                            0,
+                            "1165-01-01T00:00:00Z",
+                            0,
+                            "1206-01-01T00:00:00Z",
+                            0,
+                            "1247-01-01T00:00:00Z",
+                            0,
+                            "1288-01-01T00:00:00Z",
+                            0,
+                            "1329-01-01T00:00:00Z",
+                            0,
+                            "1370-01-01T00:00:00Z",
+                            0,
+                            "1411-01-01T00:00:00Z",
+                            0,
+                            "1452-01-01T00:00:00Z",
+                            0,
+                            "1493-01-01T00:00:00Z",
+                            0,
+                            "1534-01-01T00:00:00Z",
+                            0,
+                            "1575-01-01T00:00:00Z",
+                            0,
+                            "1616-01-01T00:00:00Z",
+                            0,
+                            "1657-01-01T00:00:00Z",
+                            0,
+                            "1698-01-01T00:00:00Z",
+                            0,
+                            "1739-01-01T00:00:00Z",
+                            0,
+                            "1780-01-01T00:00:00Z",
+                            0,
+                            "1821-01-01T00:00:00Z",
+                            0,
+                            "1862-01-01T00:00:00Z",
+                            0,
+                            "1903-01-01T00:00:00Z",
+                            0,
+                            "1944-01-01T00:00:00Z",
+                            0,
+                            "1985-01-01T00:00:00Z",
+                            0,
+                            "2026-01-01T00:00:00Z",
+                            0
+                        ],
+                        "gap": "+41YEAR",
+                        "start": "-0024-01-01T00:00:00Z",
+                        "end": "2067-01-01T00:00:00Z"
+                    }
+                },
+                "facet_intervals": [],
+                "facet_heatmaps": []
+            },
+            "highlighting": {
+                "HS00074714": {
+                    "display": [
+                        "Johannes-Gemeinde <Heidelberg> / Theatergruppe: \\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef [Bearbeitungen]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Verfasser/in]; Johannes-Gemeinde <Heidelberg> / Theatergruppe [Bearbeiter]"
+                    ]
+                },
+                "HS00074698": {
+                    "display": [
+                        "Cantz, Stefan: Charlie und Louise. \\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef. Drehbuch [Bearbeitungen]"
+                    ]
+                },
+                "HS00074686": {
+                    "display": [
+                        "Madeisky, Uschi: \\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef. Drehbuch zu einem Spielfilm [Bearbeitungen]"
+                    ]
+                },
+                "HS00074614": {
+                    "display": [
+                        "\\ueeeeKästner\\ueeef, Erich: \\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef [Prosa]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Verfasser/in]"
+                    ]
+                },
+                "HS00074634": {
+                    "display": [
+                        "\\ueeeeKästner\\ueeef, Erich: \\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef [Prosa]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Verfasser/in]"
+                    ]
+                },
+                "HS00152168": {
+                    "display": [
+                        "\\ueeeeKästner\\ueeef, Erich: \\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef [Prosa]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Verfasser/in]"
+                    ]
+                },
+                "HS00074619": {
+                    "display": [
+                        "\\ueeeeKästner\\ueeef, Erich: Schutzklappentext für \"\\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef\" [Prosa]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Verfasser/in]"
+                    ]
+                },
+                "HS00168107": {
+                    "display": [
+                        "\\ueeeeKästner\\ueeef, Erich: Sammlung [32] \\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef [Verschiedenes]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Verfasser/in]"
+                    ]
+                },
+                "HS01344897": {
+                    "display": [
+                        "\\ueeeeKästner\\ueeef, Erich: \\ueeeeKästner\\ueeef, Erich: \\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef [Prosa. Vor- u. "
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Vor-/Nachwort]"
+                    ]
+                },
+                "HS00217555": {
+                    "display": [
+                        "\\ueeeeKästner\\ueeef, Erich: Beteiligung Kästners an der Verfilmung von \"\\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef\" 1951-1953 [Dokumente]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Dokumentierte Person]"
+                    ]
+                },
+                "HS00082620": {
+                    "display": [
+                        "\\ueeeeKästner\\ueeef, Erich: Handakte [Verschiedenes]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Verfasser/in]; Atrium-Verlag <Zürich> (1934-) [Korrespondenzpartner]"
+                    ]
+                },
+                "HS00074629": {
+                    "display": [
+                        "\\ueeeeKästner\\ueeef, Erich: \\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef [Prosa]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Verfasser/in]"
+                    ]
+                },
+                "HS00074680": {
+                    "display": [
+                        "\\ueeeeKästner\\ueeef, Erich: \\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef [Dramatisches]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Verfasser/in]"
+                    ]
+                },
+                "HS00074602": {
+                    "display": [
+                        "\\ueeeeKästner\\ueeef, Erich: \\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef [Prosa]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Verfasser/in]"
+                    ]
+                },
+                "HS00074648": {
+                    "display": [
+                        "\\ueeeeKästner\\ueeef, Erich: \\ueeeeDas\\ueeef \\ueeeedoppelte\\ueeef \\ueeeeLottchen\\ueeef [Dramatisches]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Verfasser/in]"
+                    ]
+                },
+                "HS00085916": {
+                    "display": [
+                        "\\ueeeeKästner\\ueeef, Erich: Vertrag [Dokumente]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Dokumentierte Person]; Carlton Film Gesellschaft <München> [Dokumentierte Körperschaft]"
+                    ]
+                },
+                "HS00085936": {
+                    "display": [
+                        "\\ueeeeKästner\\ueeef, Erich: Vertrag [Dokumente]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Dokumentierte Person]; Carlton Film Gesellschaft <München> [Dokumentierte Körperschaft]"
+                    ]
+                },
+                "HS00086080": [],
+                "HS00082673": {
+                    "display": [
+                        "\\ueeeeKästner\\ueeef, Erich: Handakte [Verschiedenes]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Verfasser/in]"
+                    ]
+                },
+                "HS00478824": {
+                    "display": [
+                        "\\ueeeeKästner\\ueeef, Erich: Konvolut Ordner 31: C. Archiv. Zum Teil Unveröffentlichtes [Verschiedenes]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeKästner\\ueeef, Erich (1899-1974) [Verfasser/in]"
+                    ]
+                }
+            }
+        }
+    }
+}

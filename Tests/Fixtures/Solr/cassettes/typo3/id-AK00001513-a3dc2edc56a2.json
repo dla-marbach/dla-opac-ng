@@ -1,0 +1,334 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:AK00001513",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.70128,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "publisher_display_mv": [
+                            "Suhrkamp"
+                        ],
+                        "default": [
+                            "Suhrkamp",
+                            "Verfasser/Urheber",
+                            "AU00006736",
+                            "Cortázar, Julio (1914-1984)␝Von",
+                            "Bibliotheksdokumente",
+                            "Suhrkamp",
+                            "Frankfurt am Main",
+                            "1993",
+                            "Frankfurt am Main",
+                            "SE00131643",
+                            "Buch",
+                            "Buchumschlag",
+                            "Retrokonversion",
+                            "Berlin : Suhrkamp, 1.1951 -.",
+                            "1129",
+                            "Bibliotheksmaterialien",
+                            "2019-11-12",
+                            "1. Aufl.",
+                            "1993",
+                            "Deshoras, dt.",
+                            "Gedrucktes",
+                            "Hispanoamerikanische Literatur / Einzelne Autoren",
+                            "Frankfurt am Main : Suhrkamp, 1993 - 178 Seiten",
+                            "Deutsch",
+                            "Frankfurt am Main␝Erscheinungsort",
+                            "AK01707911",
+                            "S6.2.6.12 Hispanoamerikanische Literatur / Einzelne Autoren",
+                            "Erzählungen",
+                            "1",
+                            "https://www.dla-marbach.de/find/opac/id/AK00001513",
+                            "K10Plus-PPN",
+                            "128505605",
+                            "1993-09-14",
+                            "Cortázar, Julio",
+                            "178 Seiten",
+                            "TY  - GEN\nAU  - Cortázar, Julio\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Frankfurt am Main\nDA  - 1993\nID  - AK00001513\nET  - 1. Aufl.\nKW  - Hispanoamerikanische Literatur / Einzelne Autoren\nLA  - Deutsch\nM2  - Buch\nM2  - Buchumschlag\nN1  - Umfang: 178 Seiten\nN1  - Erscheinungsort: Frankfurt am Main\nOP  - Cortázar, Julio (1914-1984). Deshoras (Zusammenstellung : 1982)\nPB  - Suhrkamp\nPY  - 1993\nSN  - 3-518-22129-9\nTI  - Unzeiten : Erzählungen - 1. Aufl.\nT3  - Bibliothek Suhrkamp\nUR  - https://www.dla-marbach.de/find/opac/id/AK00001513/\nVL  - 1129\nER  -",
+                            "Unzeiten : Erzählungen",
+                            "PE00001106",
+                            "Cortázar, Julio (1914-1984)",
+                            "Kette Bibliothek",
+                            "41129",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Unzeiten : Erzählungen - 1. Aufl.</dc:title>\n  <dc:creator>Cortázar, Julio (1914-1984)</dc:creator>\n  <dc:type>Buch</dc:type>\n  <dc:type>Buchumschlag</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:publisher>Suhrkamp</dc:publisher>\n  <dc:date>1993</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>178 Seiten</dc:format>\n  <dc:subject>Hispanoamerikanische Literatur / Einzelne Autoren</dc:subject>\n  <dc:subject>S6.2.6.12 Hispanoamerikanische Literatur / Einzelne Autoren</dc:subject>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00001475</dc:source>\n  <dc:identifier>3-518-22129-9</dc:identifier>\n  <dc:identifier>128505605</dc:identifier>\n  <dc:identifier>QF3 (Deshoras, dt.)</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00001513</dc:identifier>\n  <dc:identifier>AK00001513</dc:identifier>\n</oai_dc:dc>",
+                            "QF3",
+                            "PE00001106",
+                            "Druckschrift",
+                            "3-518-22129-9",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Unzeiten</title>\n    <subTitle>Erzählungen</subTitle>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Cortázar, Julio (1914-1984)</namePart>\n    <nameIdentifier type=\"gnd\">118522272</nameIdentifier>\n    <namePart type=\"date\">1914-08-26 — 1984-02-12</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Buch</typeOfResource>\n  <typeOfResource>Buchumschlag</typeOfResource>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Frankfurt am Main</placeTerm>\n    </place>\n    <publisher>Suhrkamp</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1993</dateIssued>\n    <displayDate>1993</displayDate>\n    <edition>1. Aufl.</edition>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n    <extent>178 Seiten</extent>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Julio Cortázar</note>\n  <subject>\n    <topic>Hispanoamerikanische Literatur / Einzelne Autoren</topic>\n  </subject>\n  <classification authority=\"DE-Mar1\">S6.2.6.12 Hispanoamerikanische Literatur / Einzelne Autoren</classification>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Bibliothek Suhrkamp</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00001475</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <identifier type=\"isbn\">3-518-22129-9</identifier>\n  <identifier type=\"kxp\">128505605</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>QF3 (Deshoras, dt.)</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">1993-09-14</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2019-11-12</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00001513</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Deutsch",
+                            "Text",
+                            "AK",
+                            "0067_0480_1.tif",
+                            "Bibliothek Suhrkamp",
+                            "1.0.0",
+                            "Cortázar, Julio (1914-1984). Deshoras (Zusammenstellung : 1982)",
+                            "Deutsch␝Original",
+                            "true",
+                            "QF3 (Deshoras, dt.). 93.3583. Unzeiten : Erzählungen - 1. Aufl.",
+                            "1993-01-01T00:00:00Z",
+                            "Unzeiten",
+                            "Cortázar, Julio (1914-1984)",
+                            "Cortázar, Julio (1914-1984)",
+                            "Band/Teil mit unabhängigem Titel: gezählt",
+                            "false",
+                            "Cortázar, Julio (1914-1984)␝Verfasser/Urheber",
+                            "1993-09-14",
+                            "Bibliotheksmagazin",
+                            "Denís, Julio",
+                            "Kortasar, Chulio",
+                            "Kortasar, Chuljo",
+                            "Unzeiten",
+                            "creator",
+                            "Cortázar, Julio",
+                            "Band",
+                            "AK00001475",
+                            "AK00001513",
+                            "KS00000156",
+                            "SE00131643",
+                            "Cortázar, Julio (1914-1984)",
+                            "Unzeiten : Erzählungen - 1. Aufl.",
+                            "1993",
+                            "572y",
+                            "Druckschrift",
+                            "Einzelne Einheit / Stücktitel, Band",
+                            "benutzbar",
+                            "Julio Cortázar",
+                            "Verfasser/Urheber",
+                            "PE00001106",
+                            "KS00000156",
+                            "AK01707911",
+                            "1993",
+                            "1",
+                            "93.3583"
+                        ],
+                        "personBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "item_id_mv": [
+                            "AU00006736"
+                        ],
+                        "filterAuthorityRelation_mv": [
+                            "Cortázar, Julio (1914-1984)␝Von"
+                        ],
+                        "category": "Bibliotheksdokumente",
+                        "publisherOriginalText_mv": [
+                            "Suhrkamp"
+                        ],
+                        "filterLocation_mv": [
+                            "Frankfurt am Main"
+                        ],
+                        "dateOrigin": "1993",
+                        "publisherOriginalLocation_mv": [
+                            "Frankfurt am Main"
+                        ],
+                        "searchClassification_id_mv": [
+                            "SE00131643"
+                        ],
+                        "filterMedium_mv": [
+                            "Buch",
+                            "Buchumschlag"
+                        ],
+                        "statusEditing": "Retrokonversion",
+                        "parent_displayAddition1_mv": [
+                            "Berlin : Suhrkamp, 1.1951 -."
+                        ],
+                        "parentVolume_mv": [
+                            "1129"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "dateModified": "2019-11-12",
+                        "edition": "1. Aufl.",
+                        "searchDate_mv": [
+                            "1993"
+                        ],
+                        "item_callNumberItemSuffix_mv": [
+                            "Deshoras, dt."
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "filterSubject_mv": [
+                            "Hispanoamerikanische Literatur / Einzelne Autoren"
+                        ],
+                        "displayAddition1": "Frankfurt am Main : Suhrkamp, 1993 - 178 Seiten",
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "filterLocationType_mv": [
+                            "Frankfurt am Main␝Erscheinungsort"
+                        ],
+                        "work_id_mv": [
+                            "AK01707911"
+                        ],
+                        "classification_display_mv": [
+                            "S6.2.6.12 Hispanoamerikanische Literatur / Einzelne Autoren"
+                        ],
+                        "titleSuffix": "Erzählungen",
+                        "searchBoost": 1,
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK00001513",
+                        "vendor_type_mv": [
+                            "K10Plus-PPN"
+                        ],
+                        "vendor_id_mv": [
+                            "128505605"
+                        ],
+                        "filterRecent": "1993-09-14",
+                        "searchName_mv": [
+                            "Cortázar, Julio"
+                        ],
+                        "extent": "178 Seiten",
+                        "exportRIS": "TY  - GEN\nAU  - Cortázar, Julio\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Frankfurt am Main\nDA  - 1993\nID  - AK00001513\nET  - 1. Aufl.\nKW  - Hispanoamerikanische Literatur / Einzelne Autoren\nLA  - Deutsch\nM2  - Buch\nM2  - Buchumschlag\nN1  - Umfang: 178 Seiten\nN1  - Erscheinungsort: Frankfurt am Main\nOP  - Cortázar, Julio (1914-1984). Deshoras (Zusammenstellung : 1982)\nPB  - Suhrkamp\nPY  - 1993\nSN  - 3-518-22129-9\nTI  - Unzeiten : Erzählungen - 1. Aufl.\nT3  - Bibliothek Suhrkamp\nUR  - https://www.dla-marbach.de/find/opac/id/AK00001513/\nVL  - 1129\nER  -",
+                        "title": "Unzeiten : Erzählungen",
+                        "personBy_id_mv": [
+                            "PE00001106"
+                        ],
+                        "personBy_display_mv": [
+                            "Cortázar, Julio (1914-1984)"
+                        ],
+                        "classification_category_mv": [
+                            "Kette Bibliothek"
+                        ],
+                        "parentVolumeNormalized_mv": [
+                            "41129"
+                        ],
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Unzeiten : Erzählungen - 1. Aufl.</dc:title>\n  <dc:creator>Cortázar, Julio (1914-1984)</dc:creator>\n  <dc:type>Buch</dc:type>\n  <dc:type>Buchumschlag</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:publisher>Suhrkamp</dc:publisher>\n  <dc:date>1993</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>178 Seiten</dc:format>\n  <dc:subject>Hispanoamerikanische Literatur / Einzelne Autoren</dc:subject>\n  <dc:subject>S6.2.6.12 Hispanoamerikanische Literatur / Einzelne Autoren</dc:subject>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00001475</dc:source>\n  <dc:identifier>3-518-22129-9</dc:identifier>\n  <dc:identifier>128505605</dc:identifier>\n  <dc:identifier>QF3 (Deshoras, dt.)</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00001513</dc:identifier>\n  <dc:identifier>AK00001513</dc:identifier>\n</oai_dc:dc>",
+                        "item_callNumberItem_mv": [
+                            "QF3"
+                        ],
+                        "creator_id_mv": [
+                            "PE00001106"
+                        ],
+                        "categoryMedia_mv": [
+                            "Druckschrift"
+                        ],
+                        "isbn_mv": [
+                            "3-518-22129-9"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Unzeiten</title>\n    <subTitle>Erzählungen</subTitle>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Cortázar, Julio (1914-1984)</namePart>\n    <nameIdentifier type=\"gnd\">118522272</nameIdentifier>\n    <namePart type=\"date\">1914-08-26 — 1984-02-12</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Buch</typeOfResource>\n  <typeOfResource>Buchumschlag</typeOfResource>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Frankfurt am Main</placeTerm>\n    </place>\n    <publisher>Suhrkamp</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1993</dateIssued>\n    <displayDate>1993</displayDate>\n    <edition>1. Aufl.</edition>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n    <extent>178 Seiten</extent>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Julio Cortázar</note>\n  <subject>\n    <topic>Hispanoamerikanische Literatur / Einzelne Autoren</topic>\n  </subject>\n  <classification authority=\"DE-Mar1\">S6.2.6.12 Hispanoamerikanische Literatur / Einzelne Autoren</classification>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Bibliothek Suhrkamp</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00001475</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <identifier type=\"isbn\">3-518-22129-9</identifier>\n  <identifier type=\"kxp\">128505605</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>QF3 (Deshoras, dt.)</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">1993-09-14</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2019-11-12</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00001513</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "categoryContent_mv": [
+                            "Text"
+                        ],
+                        "source": "AK",
+                        "identifier_id_mv": [
+                            "0067_0480_1.tif"
+                        ],
+                        "parent_display_mv": [
+                            "Bibliothek Suhrkamp"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "work_display_mv": [
+                            "Cortázar, Julio (1914-1984). Deshoras (Zusammenstellung : 1982)"
+                        ],
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "item_enveloped_mv": [
+                            true
+                        ],
+                        "item_display_mv": [
+                            "QF3 (Deshoras, dt.). 93.3583. Unzeiten : Erzählungen - 1. Aufl."
+                        ],
+                        "filterDatePoint_mv": [
+                            "1993-01-01T00:00:00Z"
+                        ],
+                        "titleMain_text": "Unzeiten",
+                        "filterAuthority_mv": [
+                            "Cortázar, Julio (1914-1984)"
+                        ],
+                        "displayName": "Cortázar, Julio (1914-1984)",
+                        "parent_type_mv": [
+                            "Band/Teil mit unabhängigem Titel: gezählt"
+                        ],
+                        "confidential": false,
+                        "filterAuthorityRole_mv": [
+                            "Cortázar, Julio (1914-1984)␝Verfasser/Urheber"
+                        ],
+                        "dateCataloged": "1993-09-14",
+                        "item_location_mv": [
+                            "Bibliotheksmagazin"
+                        ],
+                        "searchVariant_mv": [
+                            "Denís, Julio",
+                            "Kortasar, Chulio",
+                            "Kortasar, Chuljo",
+                            "Unzeiten"
+                        ],
+                        "personBy_creator_mv": [
+                            "creator"
+                        ],
+                        "searchNameBy_mv": [
+                            "Cortázar, Julio"
+                        ],
+                        "categoryMedium_mv": [
+                            "Band"
+                        ],
+                        "parent_id_mv": [
+                            "AK00001475"
+                        ],
+                        "id": "AK00001513",
+                        "publisher_id_mv": [
+                            "KS00000156"
+                        ],
+                        "classification_id_mv": [
+                            "SE00131643"
+                        ],
+                        "creator_display_mv": [
+                            "Cortázar, Julio (1914-1984)"
+                        ],
+                        "display": "Unzeiten : Erzählungen - 1. Aufl.",
+                        "dateOriginComment_mv": [
+                            "1993"
+                        ],
+                        "identifier_type_mv": [
+                            "572y"
+                        ],
+                        "categorySubSub": "Druckschrift",
+                        "categorySub": "Einzelne Einheit / Stücktitel, Band",
+                        "item_usageRestriction_mv": [
+                            "benutzbar"
+                        ],
+                        "titleResponsability": "Julio Cortázar",
+                        "creator_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00001106",
+                            "KS00000156",
+                            "AK01707911"
+                        ],
+                        "filterDateRange_mv": [
+                            "1993"
+                        ],
+                        "editionNormalized": "1",
+                        "item_accessionNumber_mv": [
+                            "93.3583"
+                        ],
+                        "score": 13.70128
+                    }
+                ]
+            }
+        }
+    }
+}

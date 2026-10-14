@@ -1,0 +1,162 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(KS00001261)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0,
+                "params": {
+                    "q": "id:(KS00001261)",
+                    "rows": "1"
+                }
+            },
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "KS00001261",
+                        "display": "Suhrkamp-Verlag <Frankfurt, Main> (1950-)",
+                        "categoryEntity_mv": [
+                            "Sonstige Körperschaft"
+                        ],
+                        "categoryIndex_mv": [
+                            "Körperschaft"
+                        ],
+                        "classificationNewspaper_comment_mv": [
+                            "Verlage"
+                        ],
+                        "classificationNewspaper_text_mv": [
+                            "2f2"
+                        ],
+                        "classificationOther_comment_mv": [
+                            "Buchhandel, Verlagswesen / Einzelne Verlage und Buchhandlungen (N-S)"
+                        ],
+                        "classificationOther_text_mv": [
+                            "S2.6.3.4"
+                        ],
+                        "country_mv": [
+                            "Deutschland"
+                        ],
+                        "dateActivityEnd": "2010",
+                        "dateCataloged": "1989-04-18",
+                        "dateLifespanStart": "1950",
+                        "dateModified": "2026-10-13",
+                        "displayAddition1": "Frankfurt am Main",
+                        "displayAddition2": "Körperschaft",
+                        "filterDatePoint_mv": [
+                            "1950-01-01T00:00:00Z",
+                            "2010-01-01T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "1950",
+                            "2010"
+                        ],
+                        "filterLocationType_mv": [
+                            "Frankfurt am Main␝Sitz"
+                        ],
+                        "filterLocation_mv": [
+                            "Frankfurt am Main"
+                        ],
+                        "filterSource": "Körperschaften",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "gnd_id_mv": [
+                            "300755-8"
+                        ],
+                        "linkCommonsImage_file_mv": [
+                            "Suhrkamp%20Verlag%20Logo.svg",
+                            "Frankfurta%20librofoiro%202012%20eldonejo%20Suhrkamp.JPG"
+                        ],
+                        "linkCommonsImage_rights_mv": [
+                            "Suhrkamp Verlag | Wikimedia Commons | Public domain",
+                            "Thomas Pusch | Wikimedia Commons | CC BY-SA 3.0"
+                        ],
+                        "linkWikidata": "Q301609",
+                        "linkWikidataWebsite_mv": [
+                            "https://www.suhrkamp.de/"
+                        ],
+                        "linkWikipedia": "Suhrkamp_Verlag",
+                        "nameAlternative_name_mv": [
+                            "Suhrkamp-Theaterverlag <Frankfurt, Main>",
+                            "Suhrkamp-Verlag <Berlin und Frankfurt, Main>"
+                        ],
+                        "nameOriginal_mv": [
+                            "Suhrkamp"
+                        ],
+                        "nameTemporary_display_mv": [
+                            "Suhrkamp-Verlag <Berlin> (1945-)"
+                        ],
+                        "nameTemporary_id_mv": [
+                            "KS00011788"
+                        ],
+                        "noteExplanatory_text_mv": [
+                            "Gründer: Peter Suhrkamp; sein Nachfolger: Siegfried Unseld\nNach Gründung des Suhrkamp-Verlags 1950 bestand noch mind. 5 Jahre eine Zweigstelle in Berlin\n2010 erfolgte der Umzug nach Berlin"
+                        ],
+                        "place_mv": [
+                            "Frankfurt am Main"
+                        ],
+                        "reference_text_mv": [
+                            "DLA Marbach, Interne Information (Abteilung Archiv)",
+                            "DLA Marbach, Bestand A:Bertsch Briefe an Bertsch vom Suhrkamp-Verlag"
+                        ],
+                        "reference_type_mv": [
+                            "positiv",
+                            "positiv"
+                        ],
+                        "relation_id_mv": [
+                            "PE00460339",
+                            "KS00014375"
+                        ],
+                        "relation_text_mv": [
+                            "Ständer, Claudia (1952-)",
+                            "Frankfurt <Main>"
+                        ],
+                        "relation_type_mv": [
+                            "Relation",
+                            "Sitz, Ort"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.5,
+                        "searchDate_mv": [
+                            "1950",
+                            "2010"
+                        ],
+                        "searchEntityScore": 101412,
+                        "searchEntity_id_mv": [
+                            "KS00001261"
+                        ],
+                        "searchSuggestPayload": "KS00001261␝Suhrkamp-Verlag <Frankfurt, Main> (1950-)",
+                        "searchSuggestTerm_mv": [
+                            "Suhrkamp-Verlag <Frankfurt, Main> (1950-)",
+                            "Suhrkamp-Theaterverlag <Frankfurt, Main>",
+                            "Suhrkamp-Verlag <Berlin und Frankfurt, Main>",
+                            "Suhrkamp"
+                        ],
+                        "source": "KS",
+                        "title": "Suhrkamp-Verlag <Frankfurt, Main>",
+                        "url": "https://www.dla-marbach.de/find/opac/id/KS00001261",
+                        "website_description_mv": [
+                            "Stand: 24.04.2022",
+                            "␣"
+                        ],
+                        "website_url_mv": [
+                            "https://www.suhrkamp.de/",
+                            "http://www.suhrkamp.de/suhrkamp-verlag/verlagsgeschichte_66.html"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

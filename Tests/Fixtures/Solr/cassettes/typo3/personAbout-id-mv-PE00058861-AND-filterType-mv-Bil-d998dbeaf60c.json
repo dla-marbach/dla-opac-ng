@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "( personAbout_id_mv:(PE00058861) ) AND filterType_mv:(\"Bilder und Objekte\")",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 6,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BI00022410",
+                        "display": "Franz Böhm mit Marie Baum und einer Unbekannten [Photographie]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    },
+                    {
+                        "id": "BI00008616",
+                        "display": "Thornton Wilder und Franz Böhm [Photographie]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    },
+                    {
+                        "id": "BI00008618",
+                        "display": "Thornton Wilder, Franz Böhm und Theodor Spira [Photographie]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    },
+                    {
+                        "id": "BI00008620",
+                        "display": "Thornton Wilder und Franz Böhm [Photographie]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    },
+                    {
+                        "id": "BI00008813",
+                        "display": "Portrait Franz Böhm [Photographie]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

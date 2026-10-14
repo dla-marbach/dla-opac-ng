@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "classification_id_mv:(SE00131643)",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 596,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00914451",
+                        "display": "Die Ahnentafel des \"Che\" : [Gedicht. Aus dem Span. übers. - Nachdichtung: Klaus-Peter Schwarz]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00914799",
+                        "display": "Ich fordere : Wohin werden wir gehen? [Gedichte. Aus d. Span. übers. von Christa Schuenke]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00915575",
+                        "display": "servet, michael, span. theologe..."
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00916129",
+                        "display": "... oder Über den Optimismus : [Gedicht auf Roque Dalton]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00916132",
+                        "display": "Die Nacht : [Gedicht. Aus dem Span. übers. - Nachdichtung: Klaus-Peter Schwarz]"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "( personAbout_id_mv:(PE00004570) ) AND filterType_mv:(\"Bilder und Objekte\")",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 29,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BI00026971",
+                        "display": "CD-R aus dem Besitz von Rafik Schami: Lesungen im Kulturforum Schorndorf 1980-2016 [Datenträger]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    },
+                    {
+                        "id": "BI00026979",
+                        "display": "Veranstaltungsplakat \"Rafik Schami | Elisabeth-Langgässer-Literaturpreis 2018\" [Plakat]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    },
+                    {
+                        "id": "BI00028530",
+                        "display": "Carl-Zuckmayer-Medaille aus dem Besitz von Rafik Schami [Medaille]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    },
+                    {
+                        "id": "BI00028531",
+                        "display": "Rafik Schami mit Malu Dreyer [Photographie]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    },
+                    {
+                        "id": "BI00032875",
+                        "display": "Rafik Schami / Porträts / Rafik Schami allein [Fotomappe DLA]",
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -2,27 +2,41 @@
 
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_accessLevel_mv')}" name="digitalObject_accessLevel_mv" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_hyperlink_mv')}" name="digitalObject_hyperlink_mv" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_fileExtension_mv')}" name="digitalObject_fileExtension_mv" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_thumbnail_mv')}" name="digitalObject_thumbnail_mv" />
 
+<f:comment>
+    Vorschaubild oberhalb der Metadaten: das erste Vorschaubild, auf das der Nutzer
+    zugreifen darf. Gibt es einen Player oder eine Bildergalerie, springt der Link zum
+    Abschnitt "Digitales Objekt" (id="digitales-objekt" in Display/Detail/*/Details.html),
+    sonst öffnet er die Datei. Aufrufer ohne diesen Abschnitt übergeben withoutJump: 1.
+</f:comment>
 <dla:mediaPlayer
-    urls="{digitalObject_hyperlink_mv.0}"
-    access="{digitalObject_accessLevel_mv.0}"
+    urls="{digitalObject_hyperlink_mv}"
+    ext="{digitalObject_fileExtension_mv}"
+    access="{digitalObject_accessLevel_mv}"
+    thumbnails="{digitalObject_thumbnail_mv}"
     as="mediaData"
 />
 
-<f:if condition="{mediaData.links.0.forbidden} == 1">
+<f:if condition="{mediaData.teaser}">
     <f:then>
+        <f:if condition="{mediaData.teaser.jump} && {withoutJump} != 1">
+            <f:then>
+                <f:render partial="MediaAccess/TeaserJump" arguments="{teaser: mediaData.teaser, summary: mediaData.summary}" />
+            </f:then>
+            <f:else>
+                <a href="{mediaData.teaser.url}" target="_blank">
+                    <img src="{mediaData.teaser.thumbnail}" alt="" />
+                </a>
+            </f:else>
+        </f:if>
+    </f:then>
+    <f:else if="{mediaData.accessDenied}">
         <div class="access-denied">
             <span class="access-denied-message">
                 <f:translate key="mediaplayer.access_file_forbidden_greenbox" extensionName='dla_opac_ng'/>
             </span>
         </div>
-    </f:then>
-    <f:else>
-        <f:if condition="{digitalObject_thumbnail_mv.0} && {digitalObject_thumbnail_mv.0} != '␣'">
-            <a href="{digitalObject_hyperlink_mv.0}" target="_blank">
-                <img src="{digitalObject_thumbnail_mv.0}"/>
-            </a>
-        </f:if>
     </f:else>
 </f:if>

@@ -1,0 +1,440 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:AK00000010",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.70128,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "item_note_mv": [
+                            "Beiträge katalogisiert"
+                        ],
+                        "default": [
+                            "Beiträge katalogisiert",
+                            "Herausgeber",
+                            "AU00005695",
+                            "O. Müller",
+                            "Finck, Adrien",
+                            "Trakl, Georg",
+                            "PE00038827",
+                            "Bibliotheksdokumente",
+                            "Müller",
+                            "Trakl, Georg / A1.3 Sammelwerke",
+                            "Salzburg",
+                            "1992",
+                            "Salzburg",
+                            "Trakl, Georg",
+                            "PE00000003",
+                            "https://www.dla-marbach.de/find/opac/id/AK00000010",
+                            "SE00026756",
+                            "Buch",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2f10685%2f10685-9.jpg/full/!480,480/0/default.jpg?media_access=campus",
+                            "Retrokonversion",
+                            "Salzburg ; Wien : Müller",
+                            "18",
+                            "Bibliotheksmaterialien",
+                            "jpg",
+                            "1992",
+                            "Trakl,Geo.",
+                            "MM00020143",
+                            "Gedrucktes",
+                            "Sammelwerke",
+                            "Trakl, Georg (1887-1914)",
+                            "Salzburg : Müller, 1992 - 188 Seiten",
+                            "Deutsch",
+                            "Salzburg␝Erscheinungsort",
+                            "Trakl, Georg (1887-1914)",
+                            "1",
+                            "2024-06-14",
+                            "Herausgeber",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2f10685%2f10685-9.jpg/full/full/0/default.jpg?media_access=campus",
+                            "K10Plus-PPN",
+                            "BDG",
+                            "contributor",
+                            "1992-12-28",
+                            "Finck, Adrien (1930-2008)␝Von",
+                            "Trakl, Georg (1887-1914)␝Über",
+                            "188 Seiten",
+                            "Prosa",
+                            "TY  - GEN\nA2  - Finck, Adrien\nA2  - Trakl, Georg\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Salzburg\nDA  - 1992\nID  - AK00000010\nKW  - Sammelwerke\nKW  - Trakl, Georg (1887-1914)\nLA  - Deutsch\nM2  - Buch\nM3  - Prosa\nN1  - Umfang: 188 Seiten\nN1  - Erscheinungsort: Salzburg\nPB  - Müller\nPY  - 1992\nSN  - 3-7013-0839-X\nTI  - Antworten auf Georg Trakl\nT3  - Trakl-Studien\nUR  - https://digital.dla-marbach.de/iiif/2/0%2f1%2f10685%2f10685-9.jpg/full/full/0/default.jpg?media_access=campus\nUR  - https://www.dla-marbach.de/find/opac/id/AK00000010/\nVL  - 18\nER  -",
+                            "Antworten auf Georg Trakl",
+                            "PE00000003",
+                            "Finck, Adrien (1930-2008)",
+                            "f-fertig,i-fehlt",
+                            "Kette Bibliothek",
+                            "218",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Antworten auf Georg Trakl</dc:title>\n  <dc:contributor>Finck, Adrien (1930-2008)</dc:contributor>\n  <dc:type>Buch</dc:type>\n  <dc:type>Prosa</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:publisher>Müller</dc:publisher>\n  <dc:date>1992</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>188 Seiten</dc:format>\n  <dc:subject>Sammelwerke</dc:subject>\n  <dc:subject>Trakl, Georg (1887-1914)</dc:subject>\n  <dc:subject>Trakl, Georg / A1.3 Sammelwerke</dc:subject>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00000007</dc:source>\n  <dc:identifier>3-7013-0839-X</dc:identifier>\n  <dc:identifier>161097218X</dc:identifier>\n  <dc:identifier>LL (Trakl,Geo.)</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/iiif/2/0%2f1%2f10685%2f10685-9.jpg/full/full/0/default.jpg?media_access=campus</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00000010</dc:identifier>\n  <dc:identifier>AK00000010</dc:identifier>\n</oai_dc:dc>",
+                            "10685-9",
+                            "LL",
+                            "Druckschrift",
+                            "3-7013-0839-X",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Antworten auf Georg Trakl</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Finck, Adrien (1930-2008)</namePart>\n    <nameIdentifier type=\"gnd\">12481686X</nameIdentifier>\n    <namePart type=\"date\">1930-10-19 — 2008-06-08</namePart>\n    <role>\n      <roleTerm type=\"text\">Herausgeber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Buch</typeOfResource>\n  <genre>Prosa</genre>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Salzburg</placeTerm>\n    </place>\n    <publisher>Müller</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1992</dateIssued>\n    <displayDate>1992</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n    <extent>188 Seiten</extent>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">hrsg. von Adrien Finck ...</note>\n  <subject>\n    <topic>Sammelwerke</topic>\n  </subject>\n  <subject>\n    <topic>Trakl, Georg (1887-1914)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Trakl, Georg (1887-1914)</namePart>\n    </name>\n  </subject>\n  <classification authority=\"DE-Mar1\">Trakl, Georg / A1.3 Sammelwerke</classification>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Trakl-Studien</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00000007</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <identifier type=\"isbn\">3-7013-0839-X</identifier>\n  <identifier type=\"kxp\">161097218X</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>LL (Trakl,Geo.)</shelfLocator>\n    <url access=\"object in context\">https://digital.dla-marbach.de/iiif/2/0%2f1%2f10685%2f10685-9.jpg/full/full/0/default.jpg?media_access=campus</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">1992-12-28</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2024-06-14</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00000010</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Deutsch",
+                            "Text",
+                            "AK",
+                            "0135_0689_1.tif",
+                            "0849_0292_1.tif",
+                            "Trakl-Studien",
+                            "Finck, Adrien (1930-2008)",
+                            "1.0.0",
+                            "Deutsch␝Original",
+                            "LL (Trakl,Geo.). 93.0186. Antworten auf Georg Trakl",
+                            "1992-01-01T00:00:00Z",
+                            "Antworten auf Georg Trakl",
+                            "Finck, Adrien (1930-2008)",
+                            "Trakl, Georg (1887-1914)",
+                            "Finck, Adrien (1930-2008)",
+                            "Band/Teil mit unabhängigem Titel: gezählt",
+                            "false",
+                            "Finck, Adrien (1930-2008)␝Herausgeber",
+                            "Trakl, Georg (1887-1914)␝Behandelte Person/Körperschaft",
+                            "1992-12-28",
+                            "Trakl, Georg / Rezeption / Deutsches Sprachgebiet / Schriftsteller / Kongreß / Salzburg <1991>",
+                            "1991 / Trakl, Georg",
+                            "Bibliotheksmagazin",
+                            "트라클, 게오르크",
+                            "טראקל, גיאורג",
+                            "ゲオルク・�ラークル",
+                            "Тракль, Геарг",
+                            "게오르크 트라클",
+                            "Тракль, Геарг",
+                            "Traklʹ, Georg",
+                            "Trākl, Ġiyūrġ",
+                            "Torâkuru, G.",
+                            "Torākuru, ...",
+                            "Trakël, Georg",
+                            "Trākls, Georgs",
+                            "Trakl, Jiří",
+                            "Trakl, George",
+                            "Trakl', Hearh",
+                            "Trakl",
+                            "Teu la keul, Ge o leu keu",
+                            "Traklʹ, Gearg",
+                            "T̕rakli, Georg",
+                            "Ṭrākl, Jārj",
+                            "Trakl, Gearg",
+                            "Trakl, Giyurg",
+                            "Torakuru, G.",
+                            "Torakuru, ...",
+                            "Trakel, Georg",
+                            "Trakls, Georgs",
+                            "Trakl, Jiri",
+                            "Trakl, Hearh",
+                            "Ṭrakl, Jarj",
+                            "Prosa",
+                            "true",
+                            "Finck, Adrien",
+                            "Band",
+                            "AK00000007",
+                            "AK00000010",
+                            "KS00000006",
+                            "SE00026756",
+                            "161097218X",
+                            "GEMEL. 20080418",
+                            "Antworten auf Georg Trakl",
+                            "572y",
+                            "572y",
+                            "campus",
+                            "Druckschrift",
+                            "Einzelne Einheit / Stücktitel, Band",
+                            "benutzbar",
+                            "hrsg. von Adrien Finck ...",
+                            "PE00038827",
+                            "PE00000003",
+                            "KS00000006",
+                            "1992",
+                            "1992",
+                            "93.0186"
+                        ],
+                        "personBy_role_mv": [
+                            "Herausgeber"
+                        ],
+                        "item_id_mv": [
+                            "AU00005695"
+                        ],
+                        "publisher_display_mv": [
+                            "O. Müller"
+                        ],
+                        "searchName_mv": [
+                            "Finck, Adrien",
+                            "Trakl, Georg"
+                        ],
+                        "personAbout_id_mv": [
+                            "PE00038827"
+                        ],
+                        "category": "Bibliotheksdokumente",
+                        "publisherOriginalText_mv": [
+                            "Müller"
+                        ],
+                        "classification_display_mv": [
+                            "Trakl, Georg / A1.3 Sammelwerke"
+                        ],
+                        "filterLocation_mv": [
+                            "Salzburg"
+                        ],
+                        "dateOrigin": "1992",
+                        "publisherOriginalLocation_mv": [
+                            "Salzburg"
+                        ],
+                        "searchNameAbout_mv": [
+                            "Trakl, Georg"
+                        ],
+                        "contributor_id_mv": [
+                            "PE00000003"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK00000010",
+                        "searchClassification_id_mv": [
+                            "SE00026756"
+                        ],
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2f10685%2f10685-9.jpg/full/!480,480/0/default.jpg?media_access=campus"
+                        ],
+                        "statusEditing": "Retrokonversion",
+                        "parent_displayAddition1_mv": [
+                            "Salzburg ; Wien : Müller"
+                        ],
+                        "parentVolume_mv": [
+                            "18"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "digitalObject_fileExtension_mv": [
+                            "jpg"
+                        ],
+                        "searchDate_mv": [
+                            "1992"
+                        ],
+                        "item_callNumberItemSuffix_mv": [
+                            "Trakl,Geo."
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM00020143"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "filterSubject_mv": [
+                            "Sammelwerke",
+                            "Trakl, Georg (1887-1914)"
+                        ],
+                        "displayAddition1": "Salzburg : Müller, 1992 - 188 Seiten",
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "filterLocationType_mv": [
+                            "Salzburg␝Erscheinungsort"
+                        ],
+                        "personAbout_display_mv": [
+                            "Trakl, Georg (1887-1914)"
+                        ],
+                        "searchBoost": 1,
+                        "dateModified": "2024-06-14",
+                        "contributor_role_mv": [
+                            "Herausgeber"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2f10685%2f10685-9.jpg/full/full/0/default.jpg?media_access=campus"
+                        ],
+                        "vendor_type_mv": [
+                            "K10Plus-PPN",
+                            "BDG"
+                        ],
+                        "personBy_creator_mv": [
+                            "contributor"
+                        ],
+                        "filterRecent": "1992-12-28",
+                        "filterAuthorityRelation_mv": [
+                            "Finck, Adrien (1930-2008)␝Von",
+                            "Trakl, Georg (1887-1914)␝Über"
+                        ],
+                        "extent": "188 Seiten",
+                        "genreOther_mv": [
+                            "Prosa"
+                        ],
+                        "exportRIS": "TY  - GEN\nA2  - Finck, Adrien\nA2  - Trakl, Georg\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Salzburg\nDA  - 1992\nID  - AK00000010\nKW  - Sammelwerke\nKW  - Trakl, Georg (1887-1914)\nLA  - Deutsch\nM2  - Buch\nM3  - Prosa\nN1  - Umfang: 188 Seiten\nN1  - Erscheinungsort: Salzburg\nPB  - Müller\nPY  - 1992\nSN  - 3-7013-0839-X\nTI  - Antworten auf Georg Trakl\nT3  - Trakl-Studien\nUR  - https://digital.dla-marbach.de/iiif/2/0%2f1%2f10685%2f10685-9.jpg/full/full/0/default.jpg?media_access=campus\nUR  - https://www.dla-marbach.de/find/opac/id/AK00000010/\nVL  - 18\nER  -",
+                        "title": "Antworten auf Georg Trakl",
+                        "personBy_id_mv": [
+                            "PE00000003"
+                        ],
+                        "personBy_display_mv": [
+                            "Finck, Adrien (1930-2008)"
+                        ],
+                        "statusCataloging": "f-fertig,i-fehlt",
+                        "classification_category_mv": [
+                            "Kette Bibliothek"
+                        ],
+                        "parentVolumeNormalized_mv": [
+                            "218"
+                        ],
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Antworten auf Georg Trakl</dc:title>\n  <dc:contributor>Finck, Adrien (1930-2008)</dc:contributor>\n  <dc:type>Buch</dc:type>\n  <dc:type>Prosa</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:publisher>Müller</dc:publisher>\n  <dc:date>1992</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>188 Seiten</dc:format>\n  <dc:subject>Sammelwerke</dc:subject>\n  <dc:subject>Trakl, Georg (1887-1914)</dc:subject>\n  <dc:subject>Trakl, Georg / A1.3 Sammelwerke</dc:subject>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00000007</dc:source>\n  <dc:identifier>3-7013-0839-X</dc:identifier>\n  <dc:identifier>161097218X</dc:identifier>\n  <dc:identifier>LL (Trakl,Geo.)</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/iiif/2/0%2f1%2f10685%2f10685-9.jpg/full/full/0/default.jpg?media_access=campus</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00000010</dc:identifier>\n  <dc:identifier>AK00000010</dc:identifier>\n</oai_dc:dc>",
+                        "digitalObject_display_mv": [
+                            "10685-9"
+                        ],
+                        "item_callNumberItem_mv": [
+                            "LL"
+                        ],
+                        "categoryMedia_mv": [
+                            "Druckschrift"
+                        ],
+                        "isbn_mv": [
+                            "3-7013-0839-X"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Antworten auf Georg Trakl</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Finck, Adrien (1930-2008)</namePart>\n    <nameIdentifier type=\"gnd\">12481686X</nameIdentifier>\n    <namePart type=\"date\">1930-10-19 — 2008-06-08</namePart>\n    <role>\n      <roleTerm type=\"text\">Herausgeber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Buch</typeOfResource>\n  <genre>Prosa</genre>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Salzburg</placeTerm>\n    </place>\n    <publisher>Müller</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1992</dateIssued>\n    <displayDate>1992</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n    <extent>188 Seiten</extent>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">hrsg. von Adrien Finck ...</note>\n  <subject>\n    <topic>Sammelwerke</topic>\n  </subject>\n  <subject>\n    <topic>Trakl, Georg (1887-1914)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Trakl, Georg (1887-1914)</namePart>\n    </name>\n  </subject>\n  <classification authority=\"DE-Mar1\">Trakl, Georg / A1.3 Sammelwerke</classification>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Trakl-Studien</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00000007</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <identifier type=\"isbn\">3-7013-0839-X</identifier>\n  <identifier type=\"kxp\">161097218X</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>LL (Trakl,Geo.)</shelfLocator>\n    <url access=\"object in context\">https://digital.dla-marbach.de/iiif/2/0%2f1%2f10685%2f10685-9.jpg/full/full/0/default.jpg?media_access=campus</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">1992-12-28</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2024-06-14</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00000010</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "categoryContent_mv": [
+                            "Text"
+                        ],
+                        "source": "AK",
+                        "identifier_id_mv": [
+                            "0135_0689_1.tif",
+                            "0849_0292_1.tif"
+                        ],
+                        "parent_display_mv": [
+                            "Trakl-Studien"
+                        ],
+                        "contributor_display_mv": [
+                            "Finck, Adrien (1930-2008)"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "item_display_mv": [
+                            "LL (Trakl,Geo.). 93.0186. Antworten auf Georg Trakl"
+                        ],
+                        "filterDatePoint_mv": [
+                            "1992-01-01T00:00:00Z"
+                        ],
+                        "titleMain_text": "Antworten auf Georg Trakl",
+                        "filterAuthority_mv": [
+                            "Finck, Adrien (1930-2008)",
+                            "Trakl, Georg (1887-1914)"
+                        ],
+                        "displayName": "Finck, Adrien (1930-2008)",
+                        "parent_type_mv": [
+                            "Band/Teil mit unabhängigem Titel: gezählt"
+                        ],
+                        "confidential": false,
+                        "filterAuthorityRole_mv": [
+                            "Finck, Adrien (1930-2008)␝Herausgeber",
+                            "Trakl, Georg (1887-1914)␝Behandelte Person/Körperschaft"
+                        ],
+                        "dateCataloged": "1992-12-28",
+                        "subjectOther_mv": [
+                            "Trakl, Georg / Rezeption / Deutsches Sprachgebiet / Schriftsteller / Kongreß / Salzburg <1991>",
+                            "1991 / Trakl, Georg"
+                        ],
+                        "item_location_mv": [
+                            "Bibliotheksmagazin"
+                        ],
+                        "searchVariant_mv": [
+                            "트라클, 게오르크",
+                            "טראקל, גיאורג",
+                            "ゲオルク・�ラークル",
+                            "Тракль, Геарг",
+                            "게오르크 트라클",
+                            "Тракль, Геарг",
+                            "Traklʹ, Georg",
+                            "Trākl, Ġiyūrġ",
+                            "Torâkuru, G.",
+                            "Torākuru, ...",
+                            "Trakël, Georg",
+                            "Trākls, Georgs",
+                            "Trakl, Jiří",
+                            "Trakl, George",
+                            "Trakl', Hearh",
+                            "Trakl",
+                            "Teu la keul, Ge o leu keu",
+                            "Traklʹ, Gearg",
+                            "T̕rakli, Georg",
+                            "Ṭrākl, Jārj",
+                            "Trakl, Gearg",
+                            "Trakl, Giyurg",
+                            "Torakuru, G.",
+                            "Torakuru, ...",
+                            "Trakel, Georg",
+                            "Trakls, Georgs",
+                            "Trakl, Jiri",
+                            "Trakl, Hearh",
+                            "Ṭrakl, Jarj"
+                        ],
+                        "filterFormContent_mv": [
+                            "Prosa"
+                        ],
+                        "filterDigital": true,
+                        "searchNameBy_mv": [
+                            "Finck, Adrien"
+                        ],
+                        "categoryMedium_mv": [
+                            "Band"
+                        ],
+                        "parent_id_mv": [
+                            "AK00000007"
+                        ],
+                        "id": "AK00000010",
+                        "publisher_id_mv": [
+                            "KS00000006"
+                        ],
+                        "classification_id_mv": [
+                            "SE00026756"
+                        ],
+                        "vendor_id_mv": [
+                            "161097218X",
+                            "GEMEL. 20080418"
+                        ],
+                        "display": "Antworten auf Georg Trakl",
+                        "identifier_type_mv": [
+                            "572y",
+                            "572y"
+                        ],
+                        "digitalObject_accessLevel_mv": [
+                            "campus"
+                        ],
+                        "categorySubSub": "Druckschrift",
+                        "categorySub": "Einzelne Einheit / Stücktitel, Band",
+                        "item_usageRestriction_mv": [
+                            "benutzbar"
+                        ],
+                        "titleResponsability": "hrsg. von Adrien Finck ...",
+                        "searchEntity_id_mv": [
+                            "PE00038827",
+                            "PE00000003",
+                            "KS00000006"
+                        ],
+                        "filterDateRange_mv": [
+                            "1992"
+                        ],
+                        "dateOriginComment_mv": [
+                            "1992"
+                        ],
+                        "item_accessionNumber_mv": [
+                            "93.0186"
+                        ],
+                        "score": 13.70128
+                    }
+                ]
+            }
+        }
+    }
+}

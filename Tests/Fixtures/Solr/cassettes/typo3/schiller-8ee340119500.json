@@ -1,0 +1,113 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "facet.field": "filterAuthorityRole_mv",
+            "facet": "on",
+            "facet.mincount": "1",
+            "facet.prefix": "Schiller, Friedrich von (1759-1805)␝",
+            "fq": "NOT source:(AU OR MM)",
+            "q": "schiller",
+            "rows": "0"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 5,
+                "params": {
+                    "q": "schiller",
+                    "facet.field": "filterAuthorityRole_mv",
+                    "facet.prefix": "Schiller, Friedrich von (1759-1805)␝",
+                    "facet.mincount": "1",
+                    "fq": "NOT source:(AU OR MM)",
+                    "rows": "0",
+                    "facet": "on"
+                }
+            },
+            "response": {
+                "numFound": 39597,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": []
+            },
+            "facet_counts": {
+                "facet_queries": [],
+                "facet_fields": {
+                    "filterAuthorityRole_mv": [
+                        "Schiller, Friedrich von (1759-1805)␝Behandelte Person/Körperschaft",
+                        14396,
+                        "Schiller, Friedrich von (1759-1805)␝Verfasser/Urheber",
+                        7622,
+                        "Schiller, Friedrich von (1759-1805)␝Adressat",
+                        1054,
+                        "Schiller, Friedrich von (1759-1805)␝Korrespondent",
+                        332,
+                        "Schiller, Friedrich von (1759-1805)␝Dargestellte Person allein",
+                        228,
+                        "Schiller, Friedrich von (1759-1805)␝Werktitel Person/Körperschaft",
+                        195,
+                        "Schiller, Friedrich von (1759-1805)␝Verfasser der literarischen Vorlage",
+                        188,
+                        "Schiller, Friedrich von (1759-1805)␝Dokumentierte Person/Körperschaft",
+                        144,
+                        "Schiller, Friedrich von (1759-1805)␝Herausgeber",
+                        109,
+                        "Schiller, Friedrich von (1759-1805)␝Bestandsbildner/Vorbesitzer",
+                        89,
+                        "Schiller, Friedrich von (1759-1805)␝Übersetzer",
+                        88,
+                        "Schiller, Friedrich von (1759-1805)␝Gefeierter",
+                        56,
+                        "Schiller, Friedrich von (1759-1805)␝Mitwirkender",
+                        46,
+                        "Schiller, Friedrich von (1759-1805)␝Denkmal",
+                        43,
+                        "Schiller, Friedrich von (1759-1805)␝Dargestellte Person mit anderen",
+                        29,
+                        "Schiller, Friedrich von (1759-1805)␝Sonstiger Bezug",
+                        24,
+                        "Schiller, Friedrich von (1759-1805)␝Sonstige Person, Familie und Körperschaft",
+                        19,
+                        "Schiller, Friedrich von (1759-1805)␝Lebensstätte",
+                        16,
+                        "Schiller, Friedrich von (1759-1805)␝Bearbeiter",
+                        11,
+                        "Schiller, Friedrich von (1759-1805)␝nicht bestimmt",
+                        8,
+                        "Schiller, Friedrich von (1759-1805)␝angeblicheR VerfasserIn",
+                        6,
+                        "Schiller, Friedrich von (1759-1805)␝Verfasser eines Vor- oder Nachworts",
+                        5,
+                        "Schiller, Friedrich von (1759-1805)␝Komponist",
+                        4,
+                        "Schiller, Friedrich von (1759-1805)␝Mitarbeiter",
+                        4,
+                        "Schiller, Friedrich von (1759-1805)␝Illustrator",
+                        3,
+                        "Schiller, Friedrich von (1759-1805)␝Widmungsempfänger",
+                        3,
+                        "Schiller, Friedrich von (1759-1805)␝Schreiber (Abschrift)",
+                        2,
+                        "Schiller, Friedrich von (1759-1805)␝Widmungsschreiber",
+                        2,
+                        "Schiller, Friedrich von (1759-1805)␝Grab",
+                        1,
+                        "Schiller, Friedrich von (1759-1805)␝Künstler",
+                        1,
+                        "Schiller, Friedrich von (1759-1805)␝Rezensent",
+                        1,
+                        "Schiller, Friedrich von (1759-1805)␝Verfasser von ergänzendem Text",
+                        1
+                    ]
+                },
+                "facet_ranges": [],
+                "facet_intervals": [],
+                "facet_heatmaps": []
+            }
+        }
+    }
+}

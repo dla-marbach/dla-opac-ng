@@ -101,11 +101,9 @@ Beteiligte Dateien:
 
 ## 2. Schnellstart in der Entwicklungsumgebung
 
-Voraussetzung: die Entwicklungsumgebung aus der [README](../README.md) (Codespace bzw. Devcontainer mit DDEV, Docker
-und Solr-Tunnel). Das LLM läuft als Docker-Container `ollama` neben DDEV. `task llm` hängt ihn an das Docker-Netzwerk
-`ddev_default`, über das ihn der Web-Container als `http://ollama:11434` erreicht. (Über `host.docker.internal` geht es
-nicht, weil der Port aus Sicherheitsgründen nur auf `127.0.0.1` des Hosts freigegeben ist.) DDEV muss deshalb vor
-`task llm` laufen.
+Voraussetzung: die Entwicklungsumgebung aus der [README](../README.md) (Codespace bzw. Devcontainer mit Docker und
+Solr-Tunnel). Das LLM läuft als Docker-Container `ollama`, dessen Port nur auf `127.0.0.1:11434` freigegeben ist.
+PHP-FPM läuft direkt im Codespace und erreicht ihn dort als `http://127.0.0.1:11434`.
 
 1. LLM-Dienst starten und Modell laden (beim ersten Mal ca. 2 GB Download):
 
@@ -125,25 +123,18 @@ nicht, weil der Port aus Sicherheitsgründen nur auf `127.0.0.1` des Hosts freig
    Die Anfrage enthält wie im Katalog Systemprompt (mit aktuellem Jahr), Beispiele und JSON-Schema, nur ohne die
    Wertelisten aus Solr. Erwartet wird ein JSON-Objekt mit den Feldern `persons`, `mediaTypes` usw., ohne `<think>`-Block.
 
-3. Umgebungsvariablen für TYPO3 sind in `.devfiles/.env` bereits gesetzt und werden bei `task install` nach
-   `t3example/.ddev/.env` kopiert. In einer bestehenden Installation die Zeilen ergänzen bzw. ersetzen und DDEV neu
-   starten:
+3. Umgebungsvariablen für TYPO3 sind in `.devfiles/.env` bereits gesetzt (`LLM_BASE_URL="http://127.0.0.1:11434/v1"`)
+   und werden mit `task start` in die PHP-FPM-Konfiguration übernommen. Nach Änderungen an `.devfiles/.env`:
 
    ```sh
-   sed -i '/^LLM_/d' t3example/.ddev/.env
-   cat >> t3example/.ddev/.env <<'EOF'
-   LLM_BASE_URL="http://ollama:11434/v1"
-   LLM_MODEL="qwen3:4b-instruct-2507-q4_K_M"
-   LLM_TIMEOUT="90"
-   EOF
-   (cd t3example && ddev restart)
+   task start
    task cache
    ```
 
-4. Prüfen, ob der LLM-Dienst aus dem Web-Container erreichbar ist:
+4. Prüfen, ob der LLM-Dienst erreichbar ist:
 
    ```sh
-   (cd t3example && ddev exec curl -s http://ollama:11434/api/version)
+   curl -s http://127.0.0.1:11434/api/version
    ```
 
 5. Katalog öffnen (http://127.0.0.1/katalog), unter dem Suchschlitz „Filter automatisch erkennen (KI, Beta)“ ankreuzen
@@ -272,7 +263,7 @@ sudo ufw deny 11434/tcp
 sudo ufw status
 ```
 
-Läuft TYPO3 auf demselben Server, genügt `OLLAMA_HOST=127.0.0.1:11434` (Standard). Bei einem DDEV- oder
+Läuft TYPO3 auf demselben Server, genügt `OLLAMA_HOST=127.0.0.1:11434` (Standard). Bei einem
 Docker-basierten TYPO3 auf demselben Server ist der Dienst aus dem Container über `host.docker.internal` bzw. die
 Docker-Bridge-IP erreichbar; dann `OLLAMA_HOST` auf diese IP setzen.
 
@@ -369,7 +360,7 @@ TYPO3-Konfiguration dazu: `LLM_BASE_URL=http://<server>:8000/v1`, `LLM_MODEL=Qwe
 ## 4. TYPO3 konfigurieren
 
 Die natürlichsprachige Suche wird wie die Solr-Verbindung ausschließlich über Umgebungsvariablen konfiguriert
-(dort setzen, wo auch `SOLR_HOST` und `SOLR_CORE` gesetzt werden, in DDEV in `.ddev/.env`):
+(dort setzen, wo auch `SOLR_HOST` und `SOLR_CORE` gesetzt werden, in der Entwicklungsumgebung in `.devfiles/.env`):
 
 | Variable | Beispiel | Bedeutung |
 |---|---|---|
@@ -461,8 +452,8 @@ Die Tests laufen ohne LLM und ohne Solr:
 
 | Problem | Ursache und Lösung |
 |---|---|
-| Checkbox fehlt | `LLM_BASE_URL` ist im PHP-Prozess nicht gesetzt. In DDEV `.ddev/.env` prüfen und `ddev restart`. |
-| Es wird immer „normal gesucht“ | LLM nicht erreichbar oder zu langsam. Erreichbarkeit vom Webserver bzw. Web-Container prüfen: `curl http://<llm-host>:11434/api/version` (in DDEV: `ddev exec curl -s http://ollama:11434/api/version`; schlägt das fehl, `task llm` erneut ausführen, während DDEV läuft). Kommt der Hinweis nach etwa 2 Sekunden, ist der Dienst nicht erreichbar (Verbindungs-Timeout); nach `LLM_TIMEOUT` Sekunden ist er zu langsam. In `var/log/typo3_*.log` nach „LLM-Anfrage fehlgeschlagen“ suchen (die Meldung nennt Verbindungsfehler, Timeout oder HTTP-Status). |
+| Checkbox fehlt | `LLM_BASE_URL` ist im PHP-Prozess nicht gesetzt. In der Entwicklungsumgebung `.devfiles/.env` prüfen und `task start`. |
+| Es wird immer „normal gesucht“ | LLM nicht erreichbar oder zu langsam. Erreichbarkeit vom Webserver bzw. Web-Container prüfen: `curl http://<llm-host>:11434/api/version` (in der Entwicklungsumgebung: `curl -s http://127.0.0.1:11434/api/version`; schlägt das fehl, `task llm` erneut ausführen). Kommt der Hinweis nach etwa 2 Sekunden, ist der Dienst nicht erreichbar (Verbindungs-Timeout); nach `LLM_TIMEOUT` Sekunden ist er zu langsam. In `var/log/typo3_*.log` nach „LLM-Anfrage fehlgeschlagen“ suchen (die Meldung nennt Verbindungsfehler, Timeout oder HTTP-Status). |
 | Erste Anfrage sehr langsam | Modell wird geladen. `OLLAMA_KEEP_ALIVE=24h` setzen, Modell vorab laden (3.4). |
 | Generell zu langsam | Modell zu groß für die Hardware: kleineres Modell oder GPU; `LLM_TIMEOUT` erhöhen. |
 | Status 404 mit „model … not found“ im Log | `LLM_MODEL` stimmt nicht mit `ollama list` überein. |

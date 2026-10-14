@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchCollectionCreator_id_mv:PE00037392 OR PE00062967 OR PE00030955",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 25012,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00397735",
+                        "display": "Das Fest der Jugend : des Gartens der Erkenntnis erster Teil - 4. u. 5. Aufl."
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00364065",
+                        "display": "Briefwechsel mit Hugo von Hofmannsthal - 1.-10. Tausend : [Brief(e)]"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00182538",
+                        "display": "Die Berührung der Sphären - Erste bis dritte Auflage"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00974445",
+                        "display": "Der junge David : sieben Bilder - 1. - 3. Aufl."
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "id": "AK00401330",
+                        "display": "Versuch über Victor Hugo : [Hochschulschrift]"
+                    }
+                ]
+            }
+        }
+    }
+}

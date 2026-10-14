@@ -1,0 +1,690 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:AK00364083",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.70128,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "item_note_mv": [
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Einlage: Handbeschriebener Notizzettel. - Einlagen im Archiv C:Pinthus, Kurt, Einlagen 85"
+                        ],
+                        "default": [
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Einlage: Handbeschriebener Notizzettel. - Einlagen im Archiv C:Pinthus, Kurt, Einlagen 85",
+                            "Korrespondent",
+                            "Korrespondent",
+                            "Herausgeber",
+                            "Adressat",
+                            "Adressat",
+                            "AU01064573",
+                            "AU00235587",
+                            "AU00560482",
+                            "AU00913910",
+                            "Franklin Press",
+                            "Franklin Press",
+                            "bedingt benutzbar\nMagazin Fellbach. Bereitstellung mit Wartezeit bis zu 2 Wochen. Bitte bestellen Sie rechtzeitig im Voraus.",
+                            "␣",
+                            "␣",
+                            "nicht benutzbar\nBitte wenden Sie sich an die Auskunft der Bibliothek.\nE-Mail: bibliothek@dla-marbach.de\nTelefon: +49 7144 848 317",
+                            "Hofmannsthal, Hugo von (1874-1929)␝Von",
+                            "Wildgans, Anton (1881-1932)␝Von",
+                            "Bradish, Joseph A. von␝Von",
+                            "Hofmannsthal, Hugo von (1874-1929)␝An",
+                            "Wildgans, Anton (1881-1932)␝An",
+                            "Steiner, Herbert (1892-1966)␝Unter",
+                            "Badenhop, Wilhelm (1902-1961)␝Unter",
+                            "Pinthus, Kurt (1886-1975)␝Unter",
+                            "Steiner, Herbert",
+                            "Badenhop, Wilhelm",
+                            "Pinthus, Kurt",
+                            "Bibliotheksdokumente",
+                            "Brief(e)",
+                            "Franklin Press",
+                            "Franklin Press",
+                            "Steiner, Herbert (1892-1966)",
+                            "Badenhop, Wilhelm (1902-1961)",
+                            "Pinthus, Kurt (1886-1975)",
+                            "Veröffentlichungen des Verbandes Deutscher Schriftsteller und Literaturfreunde in New York : Wissenschaftliche Folge ; 3",
+                            "Zürich",
+                            "München",
+                            "Paris",
+                            "1935",
+                            "Zürich ; München ; Paris",
+                            "PE00000970",
+                            "PE00041238",
+                            "PE00133333",
+                            "PE00000970",
+                            "PE00041238",
+                            "https://www.dla-marbach.de/find/opac/id/AK00364083",
+                            "SE00254628",
+                            "Buch",
+                            "Verband Deutscher Schriftsteller und Literaturfreunde in New York",
+                            "Abgeschlossen",
+                            "New York, NY : Westermann [1937], 1.1933; 2.1932 - 4.1937[?].",
+                            "G:Steiner, Herbert (Arbeitsbibliothek / Paul-Valéry-Sammlung) - [Geschlossener Bestand der Bibliothek, Nachlass, Autorenbibliothek]",
+                            "␣",
+                            "G:Badenhop, Wilhelm (Sammlung / Literatur des 20. Jahrhunderts) - [Geschlossener Bestand der Bibliothek, Sammlung, Sammlerbibliothek]",
+                            "G:Pinthus, Kurt (Bibliothek des Autors) - [Geschlossener Bestand der Bibliothek, Nachlass, Autorenbibliothek]",
+                            "3",
+                            "Bibliotheksmaterialien",
+                            "BF00019188",
+                            "␣",
+                            "BF00018880",
+                            "BF00019453",
+                            "Erg. und verb. Neudr.",
+                            "1935",
+                            "␣",
+                            "Hofmannsthal,Hug.:Briefe",
+                            "Hofmannsthal,Hug.:Briefe",
+                            "Hofmannsthal,Hug.:Briefe",
+                            "Gedrucktes",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Pinthus, Kurt / Einlage: Zettel / Notiz",
+                            "Zürich ; München ; Paris : Franklin Press, 1935 - 68 Seiten",
+                            "Deutsch",
+                            "Zürich␝Erscheinungsort",
+                            "München␝Erscheinungsort",
+                            "Paris␝Erscheinungsort",
+                            "1",
+                            "2013-01-31",
+                            "Korrespondent",
+                            "Korrespondent",
+                            "Herausgeber",
+                            "Adressat",
+                            "Adressat",
+                            "K10Plus-PPN",
+                            "contributor",
+                            "contributor",
+                            "contributor",
+                            "contributor",
+                            "contributor",
+                            "2007-10-12",
+                            "Hofmannsthal, Hugo von",
+                            "Wildgans, Anton",
+                            "Bradish, Joseph A. von",
+                            "Steiner, Herbert",
+                            "Badenhop, Wilhelm",
+                            "Pinthus, Kurt",
+                            "68 Seiten",
+                            "TY  - GEN\nA2  - Hofmannsthal, Hugo von\nA2  - Wildgans, Anton\nA2  - Bradish, Joseph A. von\nA2  - Steiner, Herbert\nA2  - Badenhop, Wilhelm\nA2  - Pinthus, Kurt\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Zürich ; München ; Paris\nDA  - 1935\nDB  - G:Steiner, Herbert (Arbeitsbibliothek / Paul-Valéry-Sammlung); G:Badenhop, Wilhelm (Sammlung / Literatur des 20. Jahrhunderts); G:Pinthus, Kurt (Bibliothek des Autors)\nID  - AK00364083\nET  - Erg. und verb. Neudr.\nLA  - Deutsch\nM2  - Buch\nM3  - Brief\nN1  - Umfang: 68 Seiten\nN1  - Erscheinungsort: Zürich\nN1  - Erscheinungsort: München\nN1  - Erscheinungsort: Paris\nPB  - Franklin Press; Franklin Press\nPY  - 1935\nTI  - Der Briefwechsel Hofmannsthal - Wildgans - Erg. und verb. Neudr. : [Brief(e)]\nT3  - [Veröffentlichungen des Verbandes Deutscher Schriftsteller und Literaturfreunde in New York / Wissenschaftliche Folge] Veröffentlichungen des Verbandes Deutscher Schriftsteller und Literaturfreunde in New York\nUR  - https://www.dla-marbach.de/find/opac/id/AK00364083/\nVL  - 3\nER  -",
+                            "Der Briefwechsel Hofmannsthal - Wildgans",
+                            "Steiner, Herbert (1892-1966)",
+                            "␣",
+                            "Badenhop, Wilhelm (1902-1961)",
+                            "Pinthus, Kurt (1886-1975)",
+                            "PE00000970",
+                            "PE00041238",
+                            "PE00133333",
+                            "PE00000970",
+                            "PE00041238",
+                            "Hofmannsthal, Hugo von (1874-1929)",
+                            "Wildgans, Anton (1881-1932)",
+                            "Bradish, Joseph A. von",
+                            "Hofmannsthal, Hugo von (1874-1929)",
+                            "Wildgans, Anton (1881-1932)",
+                            "f-fertig, i-fertig",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Der Briefwechsel Hofmannsthal - Wildgans</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Hofmannsthal, Hugo von (1874-1929)</namePart>\n    <nameIdentifier type=\"gnd\">118552759</nameIdentifier>\n    <namePart type=\"date\">1874-02-01 — 1929-07-15</namePart>\n    <role>\n      <roleTerm type=\"text\">Korrespondent</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Wildgans, Anton (1881-1932)</namePart>\n    <nameIdentifier type=\"gnd\">118632841</nameIdentifier>\n    <namePart type=\"date\">1881-04-17 — 1932-05-03</namePart>\n    <role>\n      <roleTerm type=\"text\">Korrespondent</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Bradish, Joseph A. von</namePart>\n    <role>\n      <roleTerm type=\"text\">Herausgeber</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Hofmannsthal, Hugo von (1874-1929)</namePart>\n    <nameIdentifier type=\"gnd\">118552759</nameIdentifier>\n    <namePart type=\"date\">1874-02-01 — 1929-07-15</namePart>\n    <role>\n      <roleTerm type=\"text\">Adressat</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Wildgans, Anton (1881-1932)</namePart>\n    <nameIdentifier type=\"gnd\">118632841</nameIdentifier>\n    <namePart type=\"date\">1881-04-17 — 1932-05-03</namePart>\n    <role>\n      <roleTerm type=\"text\">Adressat</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Steiner, Herbert (1892-1966)</namePart>\n    <nameIdentifier type=\"gnd\">118753207</nameIdentifier>\n    <namePart type=\"date\">1892-08-15 — 1966-02-15</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Badenhop, Wilhelm (1902-1961)</namePart>\n    <nameIdentifier type=\"gnd\">116030550</nameIdentifier>\n    <namePart type=\"date\">1902-09-14 — 1961-01-11</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Pinthus, Kurt (1886-1975)</namePart>\n    <nameIdentifier type=\"gnd\">118742647</nameIdentifier>\n    <namePart type=\"date\">1886-04-29 — 1975-07-11</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Buch</typeOfResource>\n  <genre>Brief</genre>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Zürich</placeTerm>\n    </place>\n    <place>\n      <placeTerm type=\"text\">München</placeTerm>\n    </place>\n    <place>\n      <placeTerm type=\"text\">Paris</placeTerm>\n    </place>\n    <publisher>Franklin Press</publisher>\n    <publisher>Franklin Press</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1935</dateIssued>\n    <displayDate>1935</displayDate>\n    <edition>Erg. und verb. Neudr.</edition>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n    <extent>68 Seiten</extent>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">von Joseph A. von Bradish</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>[Veröffentlichungen des Verbandes Deutscher Schriftsteller und Literaturfreunde in New York / Wissenschaftliche Folge] Veröffentlichungen des Verbandes Deutscher Schriftsteller und Literaturfreunde in New York</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00364084</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00019188</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00018880</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00019453</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <identifier type=\"kxp\">1072707586</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>BHS:1</shelfLocator>\n    <shelfLocator>K (Hofmannsthal,Hug.:Briefe)</shelfLocator>\n    <shelfLocator>Slg.Badenhop/B976 (Hofmannsthal,Hug.:Briefe)</shelfLocator>\n    <shelfLocator>BKP4 (Hofmannsthal,Hug.:Briefe)</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2007-10-12</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2013-01-31</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00364083</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Der Briefwechsel Hofmannsthal - Wildgans - Erg. und verb. Neudr. : [Brief(e)]</dc:title>\n  <dc:title>Veröffentlichungen des Verbandes Deutscher Schriftsteller und Literaturfreunde in New York : Wissenschaftliche Folge ; 3</dc:title>\n  <dc:contributor>Hofmannsthal, Hugo von (1874-1929)</dc:contributor>\n  <dc:contributor>Wildgans, Anton (1881-1932)</dc:contributor>\n  <dc:contributor>Bradish, Joseph A. von</dc:contributor>\n  <dc:contributor>Steiner, Herbert (1892-1966)</dc:contributor>\n  <dc:contributor>Badenhop, Wilhelm (1902-1961)</dc:contributor>\n  <dc:contributor>Pinthus, Kurt (1886-1975)</dc:contributor>\n  <dc:type>Buch</dc:type>\n  <dc:type>Brief</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:publisher>Franklin Press</dc:publisher>\n  <dc:date>1935</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>68 Seiten</dc:format>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00364084</dc:source>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00019188https://www.dla-marbach.de/find/opac/id/BF00018880https://www.dla-marbach.de/find/opac/id/BF00019453</dc:source>\n  <dc:identifier>1072707586</dc:identifier>\n  <dc:identifier>BHS:1</dc:identifier>\n  <dc:identifier>K (Hofmannsthal,Hug.:Briefe)</dc:identifier>\n  <dc:identifier>Slg.Badenhop/B976 (Hofmannsthal,Hug.:Briefe)</dc:identifier>\n  <dc:identifier>BKP4 (Hofmannsthal,Hug.:Briefe)</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00364083</dc:identifier>\n  <dc:identifier>AK00364083</dc:identifier>\n</oai_dc:dc>",
+                            "false",
+                            "BHS:1",
+                            "K",
+                            "Slg.Badenhop/B976",
+                            "BKP4",
+                            "Hofmannsthal, Hugo von",
+                            "Wildgans, Anton",
+                            "Druckschrift",
+                            "G:Steiner, Herbert (Arbeitsbibliothek / Paul-Valéry-Sammlung)",
+                            "␣",
+                            "G:Badenhop, Wilhelm (Sammlung / Literatur des 20. Jahrhunderts)",
+                            "G:Pinthus, Kurt (Bibliothek des Autors)",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "HS01340651",
+                            "Deutsch",
+                            "Text",
+                            "AK",
+                            "0530_0241_1.tif",
+                            "Band/Teil mit unabhängigem Titel: gezählt",
+                            "Hofmannsthal, Hugo von (1874-1929)",
+                            "Wildgans, Anton (1881-1932)",
+                            "Bradish, Joseph A. von",
+                            "Hofmannsthal, Hugo von (1874-1929)",
+                            "Wildgans, Anton (1881-1932)",
+                            "1.0.0",
+                            "Deutsch␝Original",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "SE00254628",
+                            "BHS:1. 202403926. Der Briefwechsel Hofmannsthal - Wildgans - Erg. und verb. Neudr. : [Brief(e)]",
+                            "K (Hofmannsthal,Hug.:Briefe). 930.60. Der Briefwechsel Hofmannsthal - Wildgans - Erg. und verb. Neudr. : [Brief(e)]",
+                            "Slg.Badenhop/B976 (Hofmannsthal,Hug.:Briefe). 2896.62. Der Briefwechsel Hofmannsthal - Wildgans - Erg. und verb. Neudr. : [Brief(e)]",
+                            "BKP4 (Hofmannsthal,Hug.:Briefe). 202009437. Der Briefwechsel Hofmannsthal - Wildgans - Erg. und verb. Neudr. : [Brief(e)]",
+                            "1935-01-01T00:00:00Z",
+                            "ne",
+                            "Der Briefwechsel Hofmannsthal - Wildgans",
+                            "Hofmannsthal, Hugo von (1874-1929)",
+                            "Wildgans, Anton (1881-1932)",
+                            "Bradish, Joseph A. von",
+                            "Steiner, Herbert (1892-1966)",
+                            "Badenhop, Wilhelm (1902-1961)",
+                            "Pinthus, Kurt (1886-1975)",
+                            "Hofmannsthal, Hugo von (1874-1929); Wildgans, Anton (1881-1932); Bradish, Joseph A. von; Hofmannsthal, Hugo von (1874-1929); Wildgans, Anton (1881-1932)",
+                            "[Veröffentlichungen des Verbandes Deutscher Schriftsteller und Literaturfreunde in New York / Wissenschaftliche Folge] Veröffentlichungen des Verbandes Deutscher Schriftsteller und Literaturfreunde in New York",
+                            "PE00037392",
+                            "PE00062967",
+                            "PE00030955",
+                            "Hofmannsthal, Hugo von (1874-1929)␝Korrespondent",
+                            "Wildgans, Anton (1881-1932)␝Korrespondent",
+                            "Bradish, Joseph A. von␝Herausgeber",
+                            "Hofmannsthal, Hugo von (1874-1929)␝Adressat",
+                            "Wildgans, Anton (1881-1932)␝Adressat",
+                            "Steiner, Herbert (1892-1966)␝Bestandsbildner/Vorbesitzer",
+                            "Badenhop, Wilhelm (1902-1961)␝Bestandsbildner/Vorbesitzer",
+                            "Pinthus, Kurt (1886-1975)␝Bestandsbildner/Vorbesitzer",
+                            "2007-10-12",
+                            "Hofmannsthal, Hugo von / Briefsammlung",
+                            "G:Steiner, Herbert (Arbeitsbibliothek / Paul-Valéry-Sammlung)",
+                            "G:Badenhop, Wilhelm (Sammlung / Literatur des 20. Jahrhunderts)",
+                            "G:Pinthus, Kurt (Bibliothek des Autors)",
+                            "Magazin Fellbach",
+                            "Bibliotheksmagazin",
+                            "Bibliotheksmagazin",
+                            "Bibliotheksmagazin",
+                            "Albrecht, Franz",
+                            "Badenhop, Wilhelm Heinrich Friedrich",
+                            "Potter, Paulus",
+                            "Hofmannsthal, Hugo Laurenz August von",
+                            "Hofmannsthal-Schnitzler",
+                            "Hofumansutaru",
+                            "Loris",
+                            "Melikow, Loris",
+                            "Eranos",
+                            "Morren, Theophil",
+                            "Hofmannsthal, Hugo v.",
+                            "Hofmannsthal, Hugo",
+                            "Hofmannsthal, Hugo H. von",
+                            "Hofmannsthal, Hugo von H.",
+                            "Von Hofmannsthal, Hugo",
+                            "Hoffmansthal, Hugo von",
+                            "Hofmansthal, Hugo von",
+                            "Hofmannstal, Hugo von",
+                            "Hofmanstal, Hugo fon",
+                            "Hofmann von Hofmannsthal, Hugo",
+                            "Hofmann von Hofmannsthal, Hugo von",
+                            "Hofmann, Hugo Laurenz August",
+                            "Hoffmann von Hofmannsthal, Hugo",
+                            "Chofmanstal, Chugo von",
+                            "Hofmannsthal, Hugo Hoffmann von",
+                            "Gofmanstal, Gugo fon",
+                            "Hofmannsthal Schnitzler",
+                            "PE00037392",
+                            "␣",
+                            "PE00062967",
+                            "PE00030955",
+                            "Brief",
+                            "Hofmannsthal, Hugo von",
+                            "Wildgans, Anton",
+                            "Bradish, Joseph A. von",
+                            "Band",
+                            "AK00364084",
+                            "AK00364083",
+                            "Deutschland bis 1949",
+                            "KS00111867",
+                            "KS00111867",
+                            "1072707586",
+                            "Der Briefwechsel Hofmannsthal - Wildgans - Erg. und verb. Neudr. : [Brief(e)]",
+                            "1935",
+                            "572y",
+                            "Druckschrift",
+                            "Einzelne Einheit / Stücktitel, Band",
+                            "eingeschränkt benutzbar",
+                            "benutzbar",
+                            "benutzbar",
+                            "nicht benutzbar",
+                            "␣",
+                            "␣",
+                            "true",
+                            "true",
+                            "von Joseph A. von Bradish",
+                            "PE00037392",
+                            "PE00062967",
+                            "PE00030955",
+                            "PE00000970",
+                            "PE00041238",
+                            "PE00133333",
+                            "KS00111867",
+                            "1935",
+                            "13",
+                            "202403926",
+                            "930.60",
+                            "2896.62",
+                            "202009437"
+                        ],
+                        "personBy_role_mv": [
+                            "Korrespondent",
+                            "Korrespondent",
+                            "Herausgeber",
+                            "Adressat",
+                            "Adressat"
+                        ],
+                        "item_id_mv": [
+                            "AU01064573",
+                            "AU00235587",
+                            "AU00560482",
+                            "AU00913910"
+                        ],
+                        "publisher_display_mv": [
+                            "Franklin Press",
+                            "Franklin Press"
+                        ],
+                        "item_usageRestrictionNote_mv": [
+                            "bedingt benutzbar\nMagazin Fellbach. Bereitstellung mit Wartezeit bis zu 2 Wochen. Bitte bestellen Sie rechtzeitig im Voraus.",
+                            "␣",
+                            "␣",
+                            "nicht benutzbar\nBitte wenden Sie sich an die Auskunft der Bibliothek.\nE-Mail: bibliothek@dla-marbach.de\nTelefon: +49 7144 848 317"
+                        ],
+                        "filterAuthorityRelation_mv": [
+                            "Hofmannsthal, Hugo von (1874-1929)␝Von",
+                            "Wildgans, Anton (1881-1932)␝Von",
+                            "Bradish, Joseph A. von␝Von",
+                            "Hofmannsthal, Hugo von (1874-1929)␝An",
+                            "Wildgans, Anton (1881-1932)␝An",
+                            "Steiner, Herbert (1892-1966)␝Unter",
+                            "Badenhop, Wilhelm (1902-1961)␝Unter",
+                            "Pinthus, Kurt (1886-1975)␝Unter"
+                        ],
+                        "searchNameAt_mv": [
+                            "Steiner, Herbert",
+                            "Badenhop, Wilhelm",
+                            "Pinthus, Kurt"
+                        ],
+                        "category": "Bibliotheksdokumente",
+                        "categoryPublication_mv": [
+                            "Brief(e)"
+                        ],
+                        "publisherOriginalText_mv": [
+                            "Franklin Press",
+                            "Franklin Press"
+                        ],
+                        "searchCollectionCreator_display_mv": [
+                            "Steiner, Herbert (1892-1966)",
+                            "Badenhop, Wilhelm (1902-1961)",
+                            "Pinthus, Kurt (1886-1975)"
+                        ],
+                        "parentTitleOriginal_mv": [
+                            "Veröffentlichungen des Verbandes Deutscher Schriftsteller und Literaturfreunde in New York : Wissenschaftliche Folge ; 3"
+                        ],
+                        "filterLocation_mv": [
+                            "Zürich",
+                            "München",
+                            "Paris"
+                        ],
+                        "dateOrigin": "1935",
+                        "publisherOriginalLocation_mv": [
+                            "Zürich ; München ; Paris"
+                        ],
+                        "contributor_id_mv": [
+                            "PE00000970",
+                            "PE00041238",
+                            "PE00133333",
+                            "PE00000970",
+                            "PE00041238"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK00364083",
+                        "searchClassification_id_mv": [
+                            "SE00254628"
+                        ],
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "parent_titleResponsability_mv": [
+                            "Verband Deutscher Schriftsteller und Literaturfreunde in New York"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "parent_displayAddition1_mv": [
+                            "New York, NY : Westermann [1937], 1.1933; 2.1932 - 4.1937[?]."
+                        ],
+                        "item_collection_display_mv": [
+                            "G:Steiner, Herbert (Arbeitsbibliothek / Paul-Valéry-Sammlung) - [Geschlossener Bestand der Bibliothek, Nachlass, Autorenbibliothek]",
+                            "␣",
+                            "G:Badenhop, Wilhelm (Sammlung / Literatur des 20. Jahrhunderts) - [Geschlossener Bestand der Bibliothek, Sammlung, Sammlerbibliothek]",
+                            "G:Pinthus, Kurt (Bibliothek des Autors) - [Geschlossener Bestand der Bibliothek, Nachlass, Autorenbibliothek]"
+                        ],
+                        "parentVolume_mv": [
+                            "3"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "item_collection_id_mv": [
+                            "BF00019188",
+                            "␣",
+                            "BF00018880",
+                            "BF00019453"
+                        ],
+                        "edition": "Erg. und verb. Neudr.",
+                        "searchDate_mv": [
+                            "1935"
+                        ],
+                        "item_callNumberItemSuffix_mv": [
+                            "␣",
+                            "Hofmannsthal,Hug.:Briefe",
+                            "Hofmannsthal,Hug.:Briefe",
+                            "Hofmannsthal,Hug.:Briefe"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "item_classification_display_mv": [
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Pinthus, Kurt / Einlage: Zettel / Notiz"
+                        ],
+                        "displayAddition1": "Zürich ; München ; Paris : Franklin Press, 1935 - 68 Seiten",
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "filterLocationType_mv": [
+                            "Zürich␝Erscheinungsort",
+                            "München␝Erscheinungsort",
+                            "Paris␝Erscheinungsort"
+                        ],
+                        "searchBoost": 1,
+                        "dateModified": "2013-01-31",
+                        "contributor_role_mv": [
+                            "Korrespondent",
+                            "Korrespondent",
+                            "Herausgeber",
+                            "Adressat",
+                            "Adressat"
+                        ],
+                        "vendor_type_mv": [
+                            "K10Plus-PPN"
+                        ],
+                        "personBy_creator_mv": [
+                            "contributor",
+                            "contributor",
+                            "contributor",
+                            "contributor",
+                            "contributor"
+                        ],
+                        "filterRecent": "2007-10-12",
+                        "searchName_mv": [
+                            "Hofmannsthal, Hugo von",
+                            "Wildgans, Anton",
+                            "Bradish, Joseph A. von",
+                            "Steiner, Herbert",
+                            "Badenhop, Wilhelm",
+                            "Pinthus, Kurt"
+                        ],
+                        "extent": "68 Seiten",
+                        "exportRIS": "TY  - GEN\nA2  - Hofmannsthal, Hugo von\nA2  - Wildgans, Anton\nA2  - Bradish, Joseph A. von\nA2  - Steiner, Herbert\nA2  - Badenhop, Wilhelm\nA2  - Pinthus, Kurt\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Zürich ; München ; Paris\nDA  - 1935\nDB  - G:Steiner, Herbert (Arbeitsbibliothek / Paul-Valéry-Sammlung); G:Badenhop, Wilhelm (Sammlung / Literatur des 20. Jahrhunderts); G:Pinthus, Kurt (Bibliothek des Autors)\nID  - AK00364083\nET  - Erg. und verb. Neudr.\nLA  - Deutsch\nM2  - Buch\nM3  - Brief\nN1  - Umfang: 68 Seiten\nN1  - Erscheinungsort: Zürich\nN1  - Erscheinungsort: München\nN1  - Erscheinungsort: Paris\nPB  - Franklin Press; Franklin Press\nPY  - 1935\nTI  - Der Briefwechsel Hofmannsthal - Wildgans - Erg. und verb. Neudr. : [Brief(e)]\nT3  - [Veröffentlichungen des Verbandes Deutscher Schriftsteller und Literaturfreunde in New York / Wissenschaftliche Folge] Veröffentlichungen des Verbandes Deutscher Schriftsteller und Literaturfreunde in New York\nUR  - https://www.dla-marbach.de/find/opac/id/AK00364083/\nVL  - 3\nER  -",
+                        "title": "Der Briefwechsel Hofmannsthal - Wildgans",
+                        "item_personAt_display_mv": [
+                            "Steiner, Herbert (1892-1966)",
+                            "␣",
+                            "Badenhop, Wilhelm (1902-1961)",
+                            "Pinthus, Kurt (1886-1975)"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00000970",
+                            "PE00041238",
+                            "PE00133333",
+                            "PE00000970",
+                            "PE00041238"
+                        ],
+                        "personBy_display_mv": [
+                            "Hofmannsthal, Hugo von (1874-1929)",
+                            "Wildgans, Anton (1881-1932)",
+                            "Bradish, Joseph A. von",
+                            "Hofmannsthal, Hugo von (1874-1929)",
+                            "Wildgans, Anton (1881-1932)"
+                        ],
+                        "statusCataloging": "f-fertig, i-fertig",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Der Briefwechsel Hofmannsthal - Wildgans - Erg. und verb. Neudr. : [Brief(e)]</dc:title>\n  <dc:title>Veröffentlichungen des Verbandes Deutscher Schriftsteller und Literaturfreunde in New York : Wissenschaftliche Folge ; 3</dc:title>\n  <dc:contributor>Hofmannsthal, Hugo von (1874-1929)</dc:contributor>\n  <dc:contributor>Wildgans, Anton (1881-1932)</dc:contributor>\n  <dc:contributor>Bradish, Joseph A. von</dc:contributor>\n  <dc:contributor>Steiner, Herbert (1892-1966)</dc:contributor>\n  <dc:contributor>Badenhop, Wilhelm (1902-1961)</dc:contributor>\n  <dc:contributor>Pinthus, Kurt (1886-1975)</dc:contributor>\n  <dc:type>Buch</dc:type>\n  <dc:type>Brief</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:publisher>Franklin Press</dc:publisher>\n  <dc:date>1935</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>68 Seiten</dc:format>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00364084</dc:source>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00019188https://www.dla-marbach.de/find/opac/id/BF00018880https://www.dla-marbach.de/find/opac/id/BF00019453</dc:source>\n  <dc:identifier>1072707586</dc:identifier>\n  <dc:identifier>BHS:1</dc:identifier>\n  <dc:identifier>K (Hofmannsthal,Hug.:Briefe)</dc:identifier>\n  <dc:identifier>Slg.Badenhop/B976 (Hofmannsthal,Hug.:Briefe)</dc:identifier>\n  <dc:identifier>BKP4 (Hofmannsthal,Hug.:Briefe)</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00364083</dc:identifier>\n  <dc:identifier>AK00364083</dc:identifier>\n</oai_dc:dc>",
+                        "confidential": false,
+                        "item_callNumberItem_mv": [
+                            "BHS:1",
+                            "K",
+                            "Slg.Badenhop/B976",
+                            "BKP4"
+                        ],
+                        "searchNameTo_mv": [
+                            "Hofmannsthal, Hugo von",
+                            "Wildgans, Anton"
+                        ],
+                        "categoryMedia_mv": [
+                            "Druckschrift"
+                        ],
+                        "item_callNumberCollection_mv": [
+                            "G:Steiner, Herbert (Arbeitsbibliothek / Paul-Valéry-Sammlung)",
+                            "␣",
+                            "G:Badenhop, Wilhelm (Sammlung / Literatur des 20. Jahrhunderts)",
+                            "G:Pinthus, Kurt (Bibliothek des Autors)"
+                        ],
+                        "item_supplements_id_mv": [
+                            "␣",
+                            "␣",
+                            "␣",
+                            "HS01340651"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "categoryContent_mv": [
+                            "Text"
+                        ],
+                        "source": "AK",
+                        "identifier_id_mv": [
+                            "0530_0241_1.tif"
+                        ],
+                        "parent_type_mv": [
+                            "Band/Teil mit unabhängigem Titel: gezählt"
+                        ],
+                        "contributor_display_mv": [
+                            "Hofmannsthal, Hugo von (1874-1929)",
+                            "Wildgans, Anton (1881-1932)",
+                            "Bradish, Joseph A. von",
+                            "Hofmannsthal, Hugo von (1874-1929)",
+                            "Wildgans, Anton (1881-1932)"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "item_classification_id_mv": [
+                            "␣",
+                            "␣",
+                            "␣",
+                            "SE00254628"
+                        ],
+                        "item_display_mv": [
+                            "BHS:1. 202403926. Der Briefwechsel Hofmannsthal - Wildgans - Erg. und verb. Neudr. : [Brief(e)]",
+                            "K (Hofmannsthal,Hug.:Briefe). 930.60. Der Briefwechsel Hofmannsthal - Wildgans - Erg. und verb. Neudr. : [Brief(e)]",
+                            "Slg.Badenhop/B976 (Hofmannsthal,Hug.:Briefe). 2896.62. Der Briefwechsel Hofmannsthal - Wildgans - Erg. und verb. Neudr. : [Brief(e)]",
+                            "BKP4 (Hofmannsthal,Hug.:Briefe). 202009437. Der Briefwechsel Hofmannsthal - Wildgans - Erg. und verb. Neudr. : [Brief(e)]"
+                        ],
+                        "filterDatePoint_mv": [
+                            "1935-01-01T00:00:00Z"
+                        ],
+                        "editionNormalized": "ne",
+                        "titleMain_text": "Der Briefwechsel Hofmannsthal - Wildgans",
+                        "filterAuthority_mv": [
+                            "Hofmannsthal, Hugo von (1874-1929)",
+                            "Wildgans, Anton (1881-1932)",
+                            "Bradish, Joseph A. von",
+                            "Steiner, Herbert (1892-1966)",
+                            "Badenhop, Wilhelm (1902-1961)",
+                            "Pinthus, Kurt (1886-1975)"
+                        ],
+                        "displayName": "Hofmannsthal, Hugo von (1874-1929); Wildgans, Anton (1881-1932); Bradish, Joseph A. von; Hofmannsthal, Hugo von (1874-1929); Wildgans, Anton (1881-1932)",
+                        "parent_display_mv": [
+                            "[Veröffentlichungen des Verbandes Deutscher Schriftsteller und Literaturfreunde in New York / Wissenschaftliche Folge] Veröffentlichungen des Verbandes Deutscher Schriftsteller und Literaturfreunde in New York"
+                        ],
+                        "searchCollectionCreator_id_mv": [
+                            "PE00037392",
+                            "PE00062967",
+                            "PE00030955"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Hofmannsthal, Hugo von (1874-1929)␝Korrespondent",
+                            "Wildgans, Anton (1881-1932)␝Korrespondent",
+                            "Bradish, Joseph A. von␝Herausgeber",
+                            "Hofmannsthal, Hugo von (1874-1929)␝Adressat",
+                            "Wildgans, Anton (1881-1932)␝Adressat",
+                            "Steiner, Herbert (1892-1966)␝Bestandsbildner/Vorbesitzer",
+                            "Badenhop, Wilhelm (1902-1961)␝Bestandsbildner/Vorbesitzer",
+                            "Pinthus, Kurt (1886-1975)␝Bestandsbildner/Vorbesitzer"
+                        ],
+                        "dateCataloged": "2007-10-12",
+                        "subjectOther_mv": [
+                            "Hofmannsthal, Hugo von / Briefsammlung"
+                        ],
+                        "filterCollection_mv": [
+                            "G:Steiner, Herbert (Arbeitsbibliothek / Paul-Valéry-Sammlung)",
+                            "G:Badenhop, Wilhelm (Sammlung / Literatur des 20. Jahrhunderts)",
+                            "G:Pinthus, Kurt (Bibliothek des Autors)"
+                        ],
+                        "item_location_mv": [
+                            "Magazin Fellbach",
+                            "Bibliotheksmagazin",
+                            "Bibliotheksmagazin",
+                            "Bibliotheksmagazin"
+                        ],
+                        "searchVariant_mv": [
+                            "Albrecht, Franz",
+                            "Badenhop, Wilhelm Heinrich Friedrich",
+                            "Potter, Paulus",
+                            "Hofmannsthal, Hugo Laurenz August von",
+                            "Hofmannsthal-Schnitzler",
+                            "Hofumansutaru",
+                            "Loris",
+                            "Melikow, Loris",
+                            "Eranos",
+                            "Morren, Theophil",
+                            "Hofmannsthal, Hugo v.",
+                            "Hofmannsthal, Hugo",
+                            "Hofmannsthal, Hugo H. von",
+                            "Hofmannsthal, Hugo von H.",
+                            "Von Hofmannsthal, Hugo",
+                            "Hoffmansthal, Hugo von",
+                            "Hofmansthal, Hugo von",
+                            "Hofmannstal, Hugo von",
+                            "Hofmanstal, Hugo fon",
+                            "Hofmann von Hofmannsthal, Hugo",
+                            "Hofmann von Hofmannsthal, Hugo von",
+                            "Hofmann, Hugo Laurenz August",
+                            "Hoffmann von Hofmannsthal, Hugo",
+                            "Chofmanstal, Chugo von",
+                            "Hofmannsthal, Hugo Hoffmann von",
+                            "Gofmanstal, Gugo fon",
+                            "Hofmannsthal Schnitzler"
+                        ],
+                        "item_personAt_id_mv": [
+                            "PE00037392",
+                            "␣",
+                            "PE00062967",
+                            "PE00030955"
+                        ],
+                        "filterFormContent_mv": [
+                            "Brief"
+                        ],
+                        "searchNameBy_mv": [
+                            "Hofmannsthal, Hugo von",
+                            "Wildgans, Anton",
+                            "Bradish, Joseph A. von"
+                        ],
+                        "categoryMedium_mv": [
+                            "Band"
+                        ],
+                        "parent_id_mv": [
+                            "AK00364084"
+                        ],
+                        "id": "AK00364083",
+                        "country_mv": [
+                            "Deutschland bis 1949"
+                        ],
+                        "publisher_id_mv": [
+                            "KS00111867",
+                            "KS00111867"
+                        ],
+                        "vendor_id_mv": [
+                            "1072707586"
+                        ],
+                        "display": "Der Briefwechsel Hofmannsthal - Wildgans - Erg. und verb. Neudr. : [Brief(e)]",
+                        "dateOriginComment_mv": [
+                            "1935"
+                        ],
+                        "identifier_type_mv": [
+                            "572y"
+                        ],
+                        "categorySubSub": "Druckschrift",
+                        "categorySub": "Einzelne Einheit / Stücktitel, Band",
+                        "item_usageRestriction_mv": [
+                            "eingeschränkt benutzbar",
+                            "benutzbar",
+                            "benutzbar",
+                            "nicht benutzbar"
+                        ],
+                        "item_provenance_mv": [
+                            false,
+                            false,
+                            true,
+                            true
+                        ],
+                        "titleResponsability": "von Joseph A. von Bradish",
+                        "searchEntity_id_mv": [
+                            "PE00037392",
+                            "PE00062967",
+                            "PE00030955",
+                            "PE00000970",
+                            "PE00041238",
+                            "PE00133333",
+                            "KS00111867"
+                        ],
+                        "filterDateRange_mv": [
+                            "1935"
+                        ],
+                        "parentVolumeNormalized_mv": [
+                            "13"
+                        ],
+                        "item_accessionNumber_mv": [
+                            "202403926",
+                            "930.60",
+                            "2896.62",
+                            "202009437"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Der Briefwechsel Hofmannsthal - Wildgans</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Hofmannsthal, Hugo von (1874-1929)</namePart>\n    <nameIdentifier type=\"gnd\">118552759</nameIdentifier>\n    <namePart type=\"date\">1874-02-01 — 1929-07-15</namePart>\n    <role>\n      <roleTerm type=\"text\">Korrespondent</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Wildgans, Anton (1881-1932)</namePart>\n    <nameIdentifier type=\"gnd\">118632841</nameIdentifier>\n    <namePart type=\"date\">1881-04-17 — 1932-05-03</namePart>\n    <role>\n      <roleTerm type=\"text\">Korrespondent</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Bradish, Joseph A. von</namePart>\n    <role>\n      <roleTerm type=\"text\">Herausgeber</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Hofmannsthal, Hugo von (1874-1929)</namePart>\n    <nameIdentifier type=\"gnd\">118552759</nameIdentifier>\n    <namePart type=\"date\">1874-02-01 — 1929-07-15</namePart>\n    <role>\n      <roleTerm type=\"text\">Adressat</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Wildgans, Anton (1881-1932)</namePart>\n    <nameIdentifier type=\"gnd\">118632841</nameIdentifier>\n    <namePart type=\"date\">1881-04-17 — 1932-05-03</namePart>\n    <role>\n      <roleTerm type=\"text\">Adressat</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Steiner, Herbert (1892-1966)</namePart>\n    <nameIdentifier type=\"gnd\">118753207</nameIdentifier>\n    <namePart type=\"date\">1892-08-15 — 1966-02-15</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Badenhop, Wilhelm (1902-1961)</namePart>\n    <nameIdentifier type=\"gnd\">116030550</nameIdentifier>\n    <namePart type=\"date\">1902-09-14 — 1961-01-11</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Pinthus, Kurt (1886-1975)</namePart>\n    <nameIdentifier type=\"gnd\">118742647</nameIdentifier>\n    <namePart type=\"date\">1886-04-29 — 1975-07-11</namePart>\n    <role>\n      <roleTerm type=\"text\">Bestandsbildner/Vorbesitzer</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Buch</typeOfResource>\n  <genre>Brief</genre>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Zürich</placeTerm>\n    </place>\n    <place>\n      <placeTerm type=\"text\">München</placeTerm>\n    </place>\n    <place>\n      <placeTerm type=\"text\">Paris</placeTerm>\n    </place>\n    <publisher>Franklin Press</publisher>\n    <publisher>Franklin Press</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1935</dateIssued>\n    <displayDate>1935</displayDate>\n    <edition>Erg. und verb. Neudr.</edition>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n    <extent>68 Seiten</extent>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">von Joseph A. von Bradish</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>[Veröffentlichungen des Verbandes Deutscher Schriftsteller und Literaturfreunde in New York / Wissenschaftliche Folge] Veröffentlichungen des Verbandes Deutscher Schriftsteller und Literaturfreunde in New York</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00364084</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00019188</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00018880</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00019453</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <identifier type=\"kxp\">1072707586</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>BHS:1</shelfLocator>\n    <shelfLocator>K (Hofmannsthal,Hug.:Briefe)</shelfLocator>\n    <shelfLocator>Slg.Badenhop/B976 (Hofmannsthal,Hug.:Briefe)</shelfLocator>\n    <shelfLocator>BKP4 (Hofmannsthal,Hug.:Briefe)</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2007-10-12</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2013-01-31</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00364083</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "score": 13.70128
+                    }
+                ]
+            }
+        }
+    }
+}

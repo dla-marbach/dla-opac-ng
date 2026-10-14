@@ -1,0 +1,539 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/suggest",
+        "query": {
+            "suggest": "true",
+            "suggest.dictionary": [
+                "mySuggester",
+                "text"
+            ],
+            "suggest.q": "dürr"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0
+            },
+            "suggest": {
+                "mySuggester": {
+                    "dürr": {
+                        "numFound": 50,
+                        "suggestions": [
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990)",
+                                "weight": 2167,
+                                "payload": "PE00000565␝Dürrenmatt, Friedrich (1921-1990)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedr.",
+                                "weight": 2167,
+                                "payload": "PE00000565␝Dürrenmatt, Friedrich (1921-1990)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Fritz",
+                                "weight": 2167,
+                                "payload": "PE00000565␝Dürrenmatt, Friedrich (1921-1990)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Fridericus",
+                                "weight": 2167,
+                                "payload": "PE00000565␝Dürrenmatt, Friedrich (1921-1990)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Fr.",
+                                "weight": 2167,
+                                "payload": "PE00000565␝Dürrenmatt, Friedrich (1921-1990)"
+                            },
+                            {
+                                "term": "Dürrenmatt, F.",
+                                "weight": 2167,
+                                "payload": "PE00000565␝Dürrenmatt, Friedrich (1921-1990)"
+                            },
+                            {
+                                "term": "Dürrenmat, Friederich",
+                                "weight": 2167,
+                                "payload": "PE00000565␝Dürrenmatt, Friedrich (1921-1990)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Fridrix",
+                                "weight": 2167,
+                                "payload": "PE00000565␝Dürrenmatt, Friedrich (1921-1990)"
+                            },
+                            {
+                                "term": "Dürrson, Werner (1932-2008)",
+                                "weight": 577,
+                                "payload": "PE00004642␝Dürrson, Werner (1932-2008)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Návšteva staré dámy",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Az öreg hölgy látogatása",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): A visita da velha senhora",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Besøk av gammel dame",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): La visite de la vieille dame",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Mulaqat-i banau-i salhwurda",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Posetata na starata dama",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): The visit",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Vizita e zonjes plake",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Lao fu huan xiang",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): La visita de la vieja dama",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Wizyta starszej pani",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Den gamle dame besøger byen",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Kunjungan nyonya tua",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): La visita della vecchia signora",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Die Besoek van die ou dame",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Bikur hagebereth haskena",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Hostyna staroi damy",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Poseta stare dame",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Vizit požiloj damy",
+                                "weight": 140,
+                                "payload": "AK00045751␝Dürrenmatt, Friedrich (1921-1990). Der Besuch der alten Dame (Drama : 1955)"
+                            },
+                            {
+                                "term": "Dürr, Hans-Peter",
+                                "weight": 111,
+                                "payload": "PE00319928␝Duerr, Hans Peter (1943-)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)",
+                                "weight": 91,
+                                "payload": "AK00049913␝Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Les physiciens",
+                                "weight": 91,
+                                "payload": "AK00049913␝Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): The Physicists",
+                                "weight": 91,
+                                "payload": "AK00049913␝Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Fizici",
+                                "weight": 91,
+                                "payload": "AK00049913␝Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Fysikerne",
+                                "weight": 91,
+                                "payload": "AK00049913␝Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Füüsikud",
+                                "weight": 91,
+                                "payload": "AK00049913␝Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Fizikai",
+                                "weight": 91,
+                                "payload": "AK00049913␝Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): A fizikusok",
+                                "weight": 91,
+                                "payload": "AK00049913␝Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): I fisiki",
+                                "weight": 91,
+                                "payload": "AK00049913␝Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): De fysici",
+                                "weight": 91,
+                                "payload": "AK00049913␝Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Fyzikové",
+                                "weight": 91,
+                                "payload": "AK00049913␝Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)"
+                            },
+                            {
+                                "term": "Dürrenmatt, Friedrich (1921-1990): Los físicos",
+                                "weight": 91,
+                                "payload": "AK00049913␝Dürrenmatt, Friedrich (1921-1990). Die Physiker (Drama : 1962)"
+                            },
+                            {
+                                "term": "Dürr",
+                                "weight": 80,
+                                "payload": "KS00039784␝Dürr"
+                            },
+                            {
+                                "term": "Verlag der Dürr'schen Buchhandlung",
+                                "weight": 80,
+                                "payload": "KS00039784␝Dürr"
+                            },
+                            {
+                                "term": "Verlag der Dürr'schen Buchhandlung",
+                                "weight": 80,
+                                "payload": "KS00039784␝Dürr"
+                            },
+                            {
+                                "term": "Verl. der Dürr'schen Buchh.",
+                                "weight": 80,
+                                "payload": "KS00039784␝Dürr"
+                            },
+                            {
+                                "term": "Dürr",
+                                "weight": 80,
+                                "payload": "KS00039784␝Dürr"
+                            },
+                            {
+                                "term": "Dürr [teils]",
+                                "weight": 80,
+                                "payload": "KS00039784␝Dürr"
+                            },
+                            {
+                                "term": "Verl. der Dürrschen Buchhandlung",
+                                "weight": 80,
+                                "payload": "KS00039784␝Dürr"
+                            }
+                        ]
+                    }
+                },
+                "text": {
+                    "dürr": {
+                        "numFound": 50,
+                        "suggestions": [
+                            {
+                                "term": "dürrenmatt",
+                                "weight": 491004753694098,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenmatts",
+                                "weight": 76022350483735,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürr",
+                                "weight": 63243664789888,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrson",
+                                "weight": 40068760226470,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürre",
+                                "weight": 26207135067042,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenmatt's",
+                                "weight": 13861625159427,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenberger",
+                                "weight": 4981521541669,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrschmidt",
+                                "weight": 3465406289856,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürren",
+                                "weight": 3032230503624,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenberg",
+                                "weight": 2815642610508,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrsche",
+                                "weight": 1949291038044,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürr'sche",
+                                "weight": 1732703144928,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenfeld",
+                                "weight": 1516115251812,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrmenz",
+                                "weight": 1516115251812,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrbach",
+                                "weight": 1299527358696,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürres",
+                                "weight": 1299527358696,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürring",
+                                "weight": 1299527358696,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrst",
+                                "weight": 1299527358696,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrer",
+                                "weight": 866351572464,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrsons",
+                                "weight": 866351572464,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenwaldstetten",
+                                "weight": 649763679348,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrheimer",
+                                "weight": 649763679348,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrmeier",
+                                "weight": 649763679348,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrs",
+                                "weight": 649763679348,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrwang",
+                                "weight": 649763679348,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürr'schen",
+                                "weight": 433175786232,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrematt",
+                                "weight": 433175786232,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenmatta",
+                                "weight": 433175786232,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenmattovi",
+                                "weight": 433175786232,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenstein",
+                                "weight": 433175786232,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenzimmern",
+                                "weight": 433175786232,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrhammer",
+                                "weight": 433175786232,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrschmid",
+                                "weight": 433175786232,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrschnabel",
+                                "weight": 433175786232,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrsen",
+                                "weight": 433175786232,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrwitz",
+                                "weight": 433175786232,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrwächter",
+                                "weight": 433175786232,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürremnatts",
+                                "weight": 216587893116,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürren'matt",
+                                "weight": 216587893116,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenmant",
+                                "weight": 216587893116,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenmattschen",
+                                "weight": 216587893116,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenmungenau",
+                                "weight": 216587893116,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrenroth",
+                                "weight": 216587893116,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrheim",
+                                "weight": 216587893116,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrich",
+                                "weight": 216587893116,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrinch",
+                                "weight": 216587893116,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrnberg",
+                                "weight": 216587893116,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrnstauden",
+                                "weight": 216587893116,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrrenmatt",
+                                "weight": 216587893116,
+                                "payload": ""
+                            },
+                            {
+                                "term": "dürrscher",
+                                "weight": 216587893116,
+                                "payload": ""
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

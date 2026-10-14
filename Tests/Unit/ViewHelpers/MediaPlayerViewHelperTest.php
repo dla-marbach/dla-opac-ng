@@ -295,7 +295,8 @@ class MediaPlayerViewHelperTest extends UnitTestCase
     public function publicM3uPlaylistIsResolvedIntoTracks(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
-        $viewHelper->playlistContentByUrl['https://example.org/media/playlist.m3u'] = implode("\n", [
+        // öffentliche IP-Adresse statt Hostname: isSafeRemoteUrl() braucht dann keine DNS-Abfrage
+        $viewHelper->playlistContentByUrl['https://93.184.215.14/media/playlist.m3u'] = implode("\n", [
             '#EXTM3U',
             '#EXTINF:10,Track A',
             'https://example.org/media/a.mp3',
@@ -304,7 +305,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         ]);
 
         $result = $viewHelper->buildMediaData(
-            ['https://example.org/media/playlist.m3u'],
+            ['https://93.184.215.14/media/playlist.m3u'],
             ['m3u'],
             ['public'],
             ['Playlist'],
@@ -317,7 +318,168 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertCount(2, $mediaItem['tracks']);
         self::assertSame('Track A', $mediaItem['tracks'][0]['title']);
         self::assertSame(10.0, $mediaItem['tracks'][0]['duration']);
-        self::assertSame('https://example.org/media/tracks/b.mp3', $mediaItem['tracks'][1]['url']);
+        self::assertSame('https://93.184.215.14/media/tracks/b.mp3', $mediaItem['tracks'][1]['url']);
+    }
+
+    /**
+     * @test
+     */
+    public function playlistTracksAreNumberedAndDurationsFormatted(): void
+    {
+        $viewHelper = new TestableMediaPlayerViewHelper();
+        $viewHelper->playlistContentByUrl['https://93.184.215.14/media/numbered.m3u'] = implode("\n", [
+            '#EXTM3U',
+            'https://example.org/media/ohne-metadaten.mp3',
+            '#EXTINF:185,Interpret - Titel',
+            'https://example.org/media/b.mp3',
+            '#EXTINF:4860,Lesung',
+            'https://example.org/media/c.mp3',
+        ]);
+
+        $result = $viewHelper->buildMediaData(
+            ['https://93.184.215.14/media/numbered.m3u'],
+            ['m3u'],
+            ['public'],
+            ['Playlist'],
+            []
+        );
+
+        $mediaItem = $result['mediaplayer'][0];
+        self::assertSame(['01', '02', '03'], array_column($mediaItem['tracks'], 'number'));
+        self::assertSame([null, '3:05', '1:21:00'], array_column($mediaItem['tracks'], 'durationFormatted'));
+        self::assertSame('Interpret', $mediaItem['tracks'][1]['artist']);
+        self::assertTrue($mediaItem['hasArtists']);
+        self::assertTrue($mediaItem['hasDurations']);
+    }
+
+    /**
+     * @test
+     */
+    public function playlistWithoutMetadataHasNoArtistAndDurationColumns(): void
+    {
+        $viewHelper = new TestableMediaPlayerViewHelper();
+        $viewHelper->playlistContentByUrl['https://93.184.215.14/media/plain.m3u'] = "https://example.org/media/a.mp3\nhttps://example.org/media/b.mp3";
+
+        $result = $viewHelper->buildMediaData(
+            ['https://93.184.215.14/media/plain.m3u'],
+            ['m3u'],
+            ['public'],
+            ['Playlist'],
+            []
+        );
+
+        self::assertFalse($result['mediaplayer'][0]['hasArtists']);
+        self::assertFalse($result['mediaplayer'][0]['hasDurations']);
+    }
+
+    /**
+     * @test
+     */
+    public function videoItemCarriesMatchingThumbnailAsPoster(): void
+    {
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/movie.mp4', '␣'],
+            ['mp4', '␣'],
+            ['public', '␣'],
+            ['Videodatei: Zugang', 'movie.mp4'],
+            [],
+            ['https://example.org/media/movie-thumbnail.png', '␣']
+        );
+
+        self::assertSame('https://example.org/media/movie-thumbnail.png', $result['mediaplayer'][0]['thumbnail']);
+    }
+
+    /**
+     * @test
+     */
+    public function teaserIsFirstAccessibleThumbnailWhenFirstObjectIsForbidden(): void
+    {
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/a.jpg', 'https://example.org/media/b.jpg', 'https://example.org/media/c.jpg'],
+            ['jpg', 'jpg', 'jpg'],
+            ['campus', 'public', 'public'],
+            ['Bild A', 'Bild B', 'Bild C'],
+            [],
+            ['https://example.org/media/a_thumb.jpg', 'https://example.org/media/b_thumb.jpg', 'https://example.org/media/c_thumb.jpg']
+        );
+
+        self::assertSame('https://example.org/media/b_thumb.jpg', $result['teaser']['thumbnail']);
+        self::assertTrue($result['teaser']['jump']);
+        self::assertFalse($result['accessDenied']);
+    }
+
+    /**
+     * @test
+     */
+    public function teaserOfCampusObjectIsShownInsideCampusRange(): void
+    {
+        $_SERVER['REMOTE_ADDR'] = '10.1.2.3';
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/a.mp3', 'https://example.org/media/b.mp3'],
+            ['mp3', 'mp3'],
+            ['campus', 'public'],
+            ['Vorderseite', 'Rückseite'],
+            [],
+            ['https://example.org/media/a_thumb.png', 'https://example.org/media/b_thumb.png']
+        );
+
+        self::assertSame('https://example.org/media/a_thumb.png', $result['teaser']['thumbnail']);
+    }
+
+    /**
+     * @test
+     */
+    public function teaserLinksToFileWithoutJumpWhenThereIsNoPlayerOrSlideshow(): void
+    {
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/document.pdf'],
+            ['pdf'],
+            ['public'],
+            ['Digitalisat'],
+            [],
+            ['https://example.org/media/document_thumb.jpg']
+        );
+
+        self::assertSame('https://example.org/media/document.pdf', $result['teaser']['url']);
+        self::assertFalse($result['teaser']['jump']);
+    }
+
+    /**
+     * @test
+     */
+    public function accessDeniedOnlyIfNoDigitalObjectIsAccessible(): void
+    {
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $allForbidden = $viewHelper->buildMediaData(
+            ['https://example.org/media/a.mp3', '␣'],
+            ['mp3', '␣'],
+            ['campus', '␣'],
+            ['Audiodatei', 'a.wav'],
+            [],
+            ['https://example.org/media/a_thumb.png', '␣']
+        );
+        $partlyForbidden = $viewHelper->buildMediaData(
+            ['https://example.org/media/a.mp3', 'https://example.org/media/b.pdf'],
+            ['mp3', 'pdf'],
+            ['campus', 'public'],
+            ['Audiodatei', 'Begleitheft'],
+            [],
+            []
+        );
+
+        self::assertTrue($allForbidden['accessDenied']);
+        self::assertNull($allForbidden['teaser']);
+        self::assertFalse($partlyForbidden['accessDenied']);
+        self::assertNull($partlyForbidden['teaser']);
     }
 
     /**
@@ -409,5 +571,38 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertCount(2, $result['images']);
         self::assertSame('https://example.org/media/a_thumb.jpg', $result['images'][0]['thumbnail']);
         self::assertSame('https://example.org/media/b_thumb.jpg', $result['images'][1]['thumbnail']);
+    }
+
+    /**
+     * @test
+     */
+    public function summaryCountsAccessibleObjectsPerKindInSectionOrder(): void
+    {
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            [
+                'https://example.org/media/a.jpg',
+                'https://example.org/media/heft.pdf',
+                'https://example.org/media/b.jpg',
+                'https://example.org/media/a.mp3',
+                'https://example.org/media/b.mp3',
+                'https://example.org/media/film.mp4',
+                'https://example.org/media/gesperrt.mp3',
+                'https://example.org/media/gesperrt.pdf',
+                '␣',
+            ],
+            ['jpg', 'pdf', 'jpg', 'mp3', 'mp3', 'mp4', 'mp3', 'pdf', '␣'],
+            ['public', 'public', 'public', 'public', 'public', 'public', 'campus', 'campus', '␣'],
+            [],
+            []
+        );
+
+        self::assertSame([
+            ['type' => 'video', 'count' => 1],
+            ['type' => 'audio', 'count' => 2],
+            ['type' => 'image', 'count' => 2],
+            ['type' => 'link', 'count' => 1],
+        ], $result['summary']);
     }
 }

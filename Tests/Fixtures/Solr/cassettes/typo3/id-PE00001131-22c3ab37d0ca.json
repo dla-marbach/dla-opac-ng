@@ -1,0 +1,354 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(PE00001131)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0,
+                "params": {
+                    "q": "id:(PE00001131)",
+                    "rows": "1"
+                }
+            },
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "PE00001131",
+                        "display": "Brecht, Bertolt (1898-1956)",
+                        "categoryEntity_mv": [
+                            "Person"
+                        ],
+                        "categoryIndex_mv": [
+                            "Literarische/r Autor/in im Sinne der Bibliothek",
+                            "Person der Zeitungsausschnittsammlung",
+                            "Bestandsbildner/in im Sinne der Handschriftensammlung"
+                        ],
+                        "classificationNewspaper_comment_mv": [
+                            "Autoren, Kritiker und Übersetzer"
+                        ],
+                        "classificationNewspaper_text_mv": [
+                            "xy"
+                        ],
+                        "country_mv": [
+                            "Deutschland"
+                        ],
+                        "dateCataloged": "1997-06-17",
+                        "dateLifespanEnd": "1956-08-14",
+                        "dateLifespanStart": "1898-02-10",
+                        "dateModified": "2026-10-13",
+                        "dateRetention": "2026",
+                        "displayAddition1": "Schriftsteller, Theaterregisseur, Schauspieler, Dramatiker",
+                        "filterDatePoint_mv": [
+                            "1898-02-10T00:00:00Z",
+                            "1956-08-14T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "[1898-02-10 TO 1956-08-14]"
+                        ],
+                        "filterLocationType_mv": [
+                            "Augsburg␝Geburtsort",
+                            "Berlin␝Sterbeort"
+                        ],
+                        "filterLocation_mv": [
+                            "Augsburg",
+                            "Berlin"
+                        ],
+                        "filterSource": "Personen",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "gender": "männlich",
+                        "gnd_id_mv": [
+                            "118514768"
+                        ],
+                        "gnd_type_mv": [
+                            "GND-Nr."
+                        ],
+                        "linkCommonsImage_file_mv": [
+                            "Bundesarchiv%20Bild%20183-W0409-300%2C%20Bertolt%20Brecht.jpg"
+                        ],
+                        "linkCommonsImage_rights_mv": [
+                            "Kolbe, Jörg | Wikimedia Commons | CC BY-SA 3.0 de"
+                        ],
+                        "linkCommonsSignature_file_mv": [
+                            "Bertolt%20Brecht%20Signature.svg"
+                        ],
+                        "linkCommonsSignature_rights_mv": [
+                            "Bertolt Brecht | Wikimedia Commons | Public domain"
+                        ],
+                        "linkFilmportal_mv": [
+                            "261e2d3a93d54134bf8ab5f21f0b2399"
+                        ],
+                        "linkWikidata": "Q38757",
+                        "linkWikipedia": "Bertolt_Brecht",
+                        "nameAlternative_name_mv": [
+                            "Brecht, Eugen Berthold Friedrich",
+                            "Brecht-Neher, ...",
+                            "Brecht, Bert",
+                            "Brišt, Birt¯uld",
+                            "Brecht, Bertold",
+                            "Brẹṣt, Byeṛtoḷta.",
+                            "Brecht, Eugen Bertolt Friedrich",
+                            "Brecht, Eugen B.",
+                            "Burechito, Berutoruto",
+                            "Brecht Neher, ...",
+                            "Brist, Birtuld"
+                        ],
+                        "nameAlternative_type_mv": [
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "xx",
+                            "xx"
+                        ],
+                        "noteExplanatory_text_mv": [
+                            "Arbeitsstelle Bertolt Brecht am Institut für Literaturwissenschaft der Universität Karlsruhe, Leiter: Prof. Jan Knopf."
+                        ],
+                        "occupation_mv": [
+                            "Schriftsteller",
+                            "Theaterregisseur",
+                            "Schauspieler",
+                            "Dramatiker"
+                        ],
+                        "placeBirth": "Augsburg",
+                        "placeDeath": "Berlin",
+                        "place_mv": [
+                            "Augsburg",
+                            "Berlin"
+                        ],
+                        "reference_text_mv": [
+                            "IBA (Munzinger)",
+                            "HSA, Registratur (K. Leuchtenberger an M. Häfele, 22.3.2006)",
+                            "SWB"
+                        ],
+                        "reference_type_mv": [
+                            "positiv",
+                            "positiv",
+                            "positiv"
+                        ],
+                        "relation_comment_mv": [
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Sohn",
+                            "Tochter",
+                            "Tochter",
+                            "␣",
+                            "2. Ehefrau",
+                            "1. Ehefrau",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Geschwister",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣"
+                        ],
+                        "relation_id_mv": [
+                            "PE00385517",
+                            "PE00056077",
+                            "PE00001085",
+                            "PE00545000",
+                            "PE00544490",
+                            "PE00632338",
+                            "PE00129942",
+                            "PE00645513",
+                            "TH00019095",
+                            "TH00001581",
+                            "TH00255256",
+                            "PE00047222",
+                            "PE00047241",
+                            "PE00632568",
+                            "PE00399560",
+                            "PE00033329",
+                            "PE00568687",
+                            "PE00037263",
+                            "PE00478766",
+                            "PE00115712",
+                            "PE00110409",
+                            "PE00048417",
+                            "PE00505900",
+                            "PE00051002",
+                            "PE00093733",
+                            "PE00644955",
+                            "KS00126313",
+                            "KS00129941",
+                            "KS00160181",
+                            "TH00001621",
+                            "TH00020683",
+                            "KS00136182",
+                            "TH00037098",
+                            "PE00298466",
+                            "KS00150230",
+                            "AK01723123",
+                            "AK01778744",
+                            "AK01797629",
+                            "AK01777706",
+                            "AK01710214",
+                            "KS00017343"
+                        ],
+                        "relation_text_mv": [
+                            "Bentley, Eric (1916-2020)",
+                            "Berlau, Ruth (1906-1974)",
+                            "Fleisser, Marieluise (1901-1974)",
+                            "Goedhart, Gerda (1906-1993)",
+                            "Hoffmann, Ludwig (1932-1997)",
+                            "Hohenester, Max (1897-1956)",
+                            "Lindt, Peter Maximilian (1908-1976)",
+                            "Prestel, Ludwig (1900-)",
+                            "Dramatiker",
+                            "Schauspieler",
+                            "Theaterregisseur",
+                            "Berghaus, Ruth (1927-1996)",
+                            "Besson, Benno (1922-2006)",
+                            "Kasprowiak, Ilse",
+                            "Kilian, Isot (1924-1986)",
+                            "Rülicke, Käthe (1922-1992)",
+                            "Schütz, Elisabeth (1934-)",
+                            "Steffin, Margarete (1908-1941)",
+                            "Banholzer, Paula (1901-1989)",
+                            "Brecht, Stefan (1924-2009)",
+                            "Brecht-Schall, Barbara (1930-2015)",
+                            "Hiob, Hanne (1923-2009)",
+                            "Schall, Jenny",
+                            "Weigel, Helene (1900-1971)",
+                            "Zoff, Marianne (1893-1984)",
+                            "Zoff, Otto Andreas (1866-)",
+                            "Brecht-Festival <2015, Augsburg> (2015-)",
+                            "Brecht-Festival <2016, Augsburg> (2016 : Augsburg) (2016-)",
+                            "Brechtfestival (2021 : Online) (2021-)",
+                            "Schriftsteller",
+                            "Augsburg",
+                            "A Good Example Film Group",
+                            "Bertolt-Brecht-Preis der Stadt Augsburg",
+                            "Brecht, Walter (1900-1986)",
+                            "Brechtfestival (2019 : Augsburg) (2019-)",
+                            "Brüggemann, Heinz (1943-). Literarische Technik und soziale Revolution (1973)",
+                            "Fradkin, Il'ja M. (1914-1993). Bertol't Brecht (1965)",
+                            "Müller, André (1925-2021). Geschichten vom Herrn B. (Zusammenstellung : 1967)",
+                            "Witt, Hubert (1935-2016). Erinnerungen an Brecht (Zusammenstellung : 1964)",
+                            "Wizisla, Erdmut (1958-). Begegnungen mit Brecht (Zusammenstellung : 2009)",
+                            "Berlin"
+                        ],
+                        "relation_type_mv": [
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Beruf/Funktion",
+                            "Beruf/Funktion",
+                            "Beruf/Funktion",
+                            "Beziehung beruflich",
+                            "Beziehung beruflich",
+                            "Beziehung beruflich",
+                            "Beziehung beruflich",
+                            "Beziehung beruflich",
+                            "Beziehung beruflich",
+                            "Beziehung beruflich",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung thematisch",
+                            "Beziehung thematisch",
+                            "Beziehung thematisch",
+                            "Charakt. Beruf",
+                            "Geburtsort",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Relation",
+                            "Sterbeort"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.5,
+                        "searchDate_mv": [
+                            "10.02.1898",
+                            "1898-02-10",
+                            "14.08.1956",
+                            "1956-08-14"
+                        ],
+                        "searchEntityScore": 12949,
+                        "searchEntity_id_mv": [
+                            "PE00001131"
+                        ],
+                        "searchSuggestPayload": "PE00001131␝Brecht, Bertolt (1898-1956)",
+                        "searchSuggestTerm_mv": [
+                            "Brecht, Bertolt (1898-1956)",
+                            "Brecht, Eugen Berthold Friedrich",
+                            "Brecht-Neher, ...",
+                            "Brecht, Bert",
+                            "Brišt, Birt¯uld",
+                            "Brecht, Bertold",
+                            "Brẹṣt, Byeṛtoḷta.",
+                            "Brecht, Eugen Bertolt Friedrich",
+                            "Brecht, Eugen B.",
+                            "Burechito, Berutoruto",
+                            "Brecht Neher, ...",
+                            "Brist, Birtuld"
+                        ],
+                        "source": "PE",
+                        "statusEditing": "individualisiert",
+                        "title": "Brecht, Bertolt",
+                        "url": "https://www.dla-marbach.de/find/opac/id/PE00001131"
+                    }
+                ]
+            }
+        }
+    }
+}

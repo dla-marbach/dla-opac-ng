@@ -1,0 +1,166 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:TH00038793",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 5.480512,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "TH00038793",
+                        "default": [
+                            "TH00038793",
+                            "Schillerpreis der Stadt Marbach am Neckar",
+                            "Deskriptor",
+                            "Sachschlagwort",
+                            "Deutschland Baden-Württemberg",
+                            "2010-05-19",
+                            "2026-10-13",
+                            "1959",
+                            "Deskriptor. - Sachschlagwort",
+                            "1959-01-01T00:00:00Z",
+                            "1959",
+                            "Marbach am Neckar␝nicht bestimmt",
+                            "Marbach am Neckar",
+                            "Orte und Sachbegriffe",
+                            "Normdaten",
+                            "7858283-0",
+                            "Kulturpreis",
+                            "TH00016824",
+                            "kulturpreise.de; Stand: 26.09.2018; http://www.kulturpreise.de/web/preise_info.php?preisd_id=478",
+                            "Wilkipedia; Stand: 26.09.2018; https://de.wikipedia.org/wiki/Schillerpreis_der_Stadt_Marbach_am_Neckar",
+                            "Preis der Stadt Marbach am Neckar für hervorragende Arbeiten zur württembergischen Landeskunde. - Verleihung alle zwei Jahre am 10. November, dem Geburtstag Schillers. - ab 2009 geänderte Verleihungskriterien: Ausgezeichnung von Persönlichkeiten, die in ihrem Leben oder Wirken der Denktradition Friedrich Schillers verpflichtet sind.",
+                            "Quelle",
+                            "Quelle",
+                            "Definition",
+                            "Ort der Verleihung",
+                            "␣",
+                            "Stifter",
+                            "␣",
+                            "TH00019888",
+                            "TH00016824",
+                            "TH00019888",
+                            "PE00034281",
+                            "Marbach am Neckar",
+                            "Kulturpreis",
+                            "Marbach am Neckar",
+                            "Schiller, Friedrich von (1759-1805)",
+                            "Geografikum, allgemein",
+                            "Oberbegriff allgemein",
+                            "Relation",
+                            "gefeierte Person",
+                            "1.0.0",
+                            "0.4",
+                            "1959",
+                            "TH",
+                            "Schillerpreis der Stadt Marbach am Neckar",
+                            "https://www.dla-marbach.de/find/opac/id/TH00038793",
+                            "Marbacher Schillerpreis",
+                            "TH00936680"
+                        ],
+                        "display": "Schillerpreis der Stadt Marbach am Neckar",
+                        "category": "Deskriptor",
+                        "categorySub": "Sachschlagwort",
+                        "country_mv": [
+                            "Deutschland Baden-Württemberg"
+                        ],
+                        "dateCataloged": "2010-05-19",
+                        "dateModified": "2026-10-13",
+                        "dateOriginStart": "1959",
+                        "displayAddition1": "Deskriptor. - Sachschlagwort",
+                        "filterDatePoint_mv": [
+                            "1959-01-01T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "1959"
+                        ],
+                        "filterLocationType_mv": [
+                            "Marbach am Neckar␝nicht bestimmt"
+                        ],
+                        "filterLocation_mv": [
+                            "Marbach am Neckar"
+                        ],
+                        "filterSource": "Orte und Sachbegriffe",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "gnd_id_mv": [
+                            "7858283-0"
+                        ],
+                        "parent_display_mv": [
+                            "Kulturpreis"
+                        ],
+                        "parent_id_mv": [
+                            "TH00016824"
+                        ],
+                        "reference_text_mv": [
+                            "kulturpreise.de; Stand: 26.09.2018; http://www.kulturpreise.de/web/preise_info.php?preisd_id=478",
+                            "Wilkipedia; Stand: 26.09.2018; https://de.wikipedia.org/wiki/Schillerpreis_der_Stadt_Marbach_am_Neckar",
+                            "Preis der Stadt Marbach am Neckar für hervorragende Arbeiten zur württembergischen Landeskunde. - Verleihung alle zwei Jahre am 10. November, dem Geburtstag Schillers. - ab 2009 geänderte Verleihungskriterien: Ausgezeichnung von Persönlichkeiten, die in ihrem Leben oder Wirken der Denktradition Friedrich Schillers verpflichtet sind."
+                        ],
+                        "reference_type_mv": [
+                            "Quelle",
+                            "Quelle",
+                            "Definition"
+                        ],
+                        "relation_comment_mv": [
+                            "Ort der Verleihung",
+                            "␣",
+                            "Stifter",
+                            "␣"
+                        ],
+                        "relation_id_mv": [
+                            "TH00019888",
+                            "TH00016824",
+                            "TH00019888",
+                            "PE00034281"
+                        ],
+                        "relation_text_mv": [
+                            "Marbach am Neckar",
+                            "Kulturpreis",
+                            "Marbach am Neckar",
+                            "Schiller, Friedrich von (1759-1805)"
+                        ],
+                        "relation_type_mv": [
+                            "Geografikum, allgemein",
+                            "Oberbegriff allgemein",
+                            "Relation",
+                            "gefeierte Person"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.4,
+                        "searchDate_mv": [
+                            "1959"
+                        ],
+                        "source": "TH",
+                        "title": "Schillerpreis der Stadt Marbach am Neckar",
+                        "url": "https://www.dla-marbach.de/find/opac/id/TH00038793",
+                        "usedFor_display_mv": [
+                            "Marbacher Schillerpreis"
+                        ],
+                        "usedFor_id_mv": [
+                            "TH00936680"
+                        ],
+                        "score": 5.480512
+                    }
+                ]
+            }
+        }
+    }
+}

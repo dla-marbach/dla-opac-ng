@@ -1,0 +1,270 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:BF00043378",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.70128,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00043378",
+                        "default": [
+                            "BF00043378",
+                            "H:Kracauer, Siegfried/01.01/Klebemappe 1921 - [Geschlossener Bestand der Mediendokumentation, Nachlass]",
+                            "Geschlossener Bestand der Mediendokumentation",
+                            "Nachlass",
+                            "false",
+                            "Aufgeklebte Artikel von Siegfried Kracauer aus der \"Frankfurter Zeitung\" 1921",
+                            "2018-05-18",
+                            "2025-10-21",
+                            "1921",
+                            "1921",
+                            "Mediendokumentation",
+                            "public",
+                            "In: Klebemappe 1921 Nachlass Siegfried Kracauer",
+                            "https://digital.dla-marbach.de/viewer/image/BF00043378/?media_access=public&media_thumbnail=BF000433783_0001.tif",
+                            "MM01536011",
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/BF00043378/files/images/BF000433783_0001.tif/full/!480,480/0/default.jpg",
+                            "1 Mappe",
+                            "Kracauer, Siegfried (1889-1966)",
+                            "01.01/Klebemappe 1921",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>H:Kracauer, Siegfried/01.01/Klebemappe 1921 - [Geschlossener Bestand der Mediendokumentation, Nachlass]</dc:title>\n  <dc:creator>Kracauer, Siegfried (1889-1966)</dc:creator>\n  <dc:type>Nachlass</dc:type>\n  <dc:type>Bestand</dc:type>\n  <dc:date>1921</dc:date>\n  <dc:format>1 Mappe</dc:format>\n  <dc:description>Aufgeklebte Artikel von Siegfried Kracauer aus der &quot;Frankfurter Zeitung&quot; 1921</dc:description>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00000298</dc:source>\n  <dc:identifier>H:Kracauer, Siegfried/01.01/Klebemappe 1921</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/viewer/image/BF00043378/?media_access=public&amp;media_thumbnail=BF000433783_0001.tif</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BF00043378</dc:identifier>\n  <dc:identifier>BF00043378</dc:identifier>\n</oai_dc:dc>",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>H:Kracauer, Siegfried/01.01/Klebemappe 1921 - [Geschlossener Bestand der Mediendokumentation, Nachlass]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Kracauer, Siegfried (1889-1966)</namePart>\n    <nameIdentifier type=\"gnd\">118565877</nameIdentifier>\n    <namePart type=\"date\">1889-02-08 — 1966-11-26</namePart>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <typeOfResource collection=\"yes\">Bestand</typeOfResource>\n  <genre>Nachlass</genre>\n  <originInfo eventType=\"collection\">\n    <dateCreated point=\"start\">1921</dateCreated>\n    <dateCreated point=\"end\">1921</dateCreated>\n  </originInfo>\n  <physicalDescription>\n    <extent>1 Mappe</extent>\n  </physicalDescription>\n  <abstract>Aufgeklebte Artikel von Siegfried Kracauer aus der &quot;Frankfurter Zeitung&quot; 1921</abstract>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00000298</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>H:Kracauer, Siegfried/01.01/Klebemappe 1921</shelfLocator>\n    <url access=\"object in context\">https://digital.dla-marbach.de/viewer/image/BF00043378/?media_access=public&amp;media_thumbnail=BF000433783_0001.tif</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2018-05-18</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2025-10-21</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00043378</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "TY  - GEN\nAU  - Kracauer, Siegfried\nAV  - bedingt benutzbar. Die Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Mediendokumentation.. E-Mail: mediendokumentation@dla-marbach.de\nCN  - BF000433783\nDA  - 1921\nDB  - H:Kracauer, Siegfried/01.01/Klebemappe 1921\nID  - BF00043378\nM3  - Nachlass\nN1  - Umfang: 1 Mappe\nN2  - Aufgeklebte Artikel von Siegfried Kracauer aus der \"Frankfurter Zeitung\" 1921\nRN  - Digitalisat im DLA Viewer:. https://digital.dla-marbach.de/viewer/image/BF00043378/\nTI  - H:Kracauer, Siegfried/01.01/Klebemappe 1921 - [Geschlossener Bestand der Mediendokumentation, Nachlass]\nUR  - https://digital.dla-marbach.de/viewer/image/BF00043378/?media_access=public&media_thumbnail=BF000433783_0001.tif\nUR  - https://www.dla-marbach.de/find/opac/id/BF00043378/\nER  -",
+                            "1 Mappe",
+                            "Kracauer, Siegfried (1889-1966)␝Unter",
+                            "Kracauer, Siegfried (1889-1966)␝Bestandsbildner/Vorbesitzer",
+                            "Kracauer, Siegfried (1889-1966)",
+                            "H:Kracauer, Siegfried/01.01/Klebemappe 1921",
+                            "1921-01-01T00:00:00Z",
+                            "1921",
+                            "true",
+                            "Nachlass",
+                            "true",
+                            "2018-05-18",
+                            "Nachlässe und Spezialsammlungen",
+                            "Gedrucktes",
+                            "BF000433783",
+                            "Digitalisat im DLA Viewer:\nhttps://digital.dla-marbach.de/viewer/image/BF00043378/",
+                            "H:Kracauer, Siegfried - [Geschlossener Bestand der Mediendokumentation, Nachlass]",
+                            "BF00000298",
+                            "Kracauer, Siegfried (1889-1966)",
+                            "PE00003459",
+                            "1.0.0",
+                            "1",
+                            "Kracauer, Siegfried (1889-1966)",
+                            "PE00003459",
+                            "1921",
+                            "PE00003459",
+                            "Kracauer, Siegfried",
+                            "Kracauer, Siegfried",
+                            "Raca",
+                            "Raca.",
+                            "raca.",
+                            "ra.",
+                            "RACA.",
+                            "L.E.K.",
+                            "Kr",
+                            "St.",
+                            "Rac.",
+                            "Krac",
+                            "S. Krac.",
+                            "Dr. Kr.",
+                            "Dr. S. Kr.",
+                            "er",
+                            "X.U.",
+                            "XXX.",
+                            "X.X.X.",
+                            "H.D.",
+                            "rec",
+                            "rc",
+                            "K ... r",
+                            "K-r.",
+                            "sk",
+                            "s.k.",
+                            "Ginster",
+                            "Stergin",
+                            "Peter",
+                            "G. Hellfried",
+                            "Observer",
+                            "Krakauer, Zigfrid",
+                            "Kurakaua, Zyugufurito",
+                            "Kurakaua, Jikufurito",
+                            "Kurakaua, Sikufurito",
+                            "Krakauer, Friedel",
+                            "Kracauer, S.",
+                            "Krakauer",
+                            "K r.",
+                            "BF",
+                            "Am Standort",
+                            "H:Kracauer, Siegfried/01.01/Klebemappe 1921",
+                            "01.01/Klebemappe 1921",
+                            "https://www.dla-marbach.de/find/opac/id/BF00043378",
+                            "nicht benutzbar",
+                            "Originale aus konservatorischen Gründen für die Benutzung gesperrt. Bitte Digitalisat benutzen!",
+                            "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Mediendokumentation.\nE-Mail: mediendokumentation@dla-marbach.de"
+                        ],
+                        "display": "H:Kracauer, Siegfried/01.01/Klebemappe 1921 - [Geschlossener Bestand der Mediendokumentation, Nachlass]",
+                        "category": "Geschlossener Bestand der Mediendokumentation",
+                        "categorySub": "Nachlass",
+                        "confidential": false,
+                        "content": "Aufgeklebte Artikel von Siegfried Kracauer aus der \"Frankfurter Zeitung\" 1921",
+                        "dateCataloged": "2018-05-18",
+                        "dateModified": "2025-10-21",
+                        "dateOriginEnd": "1921",
+                        "dateOriginStart": "1921",
+                        "department": "Mediendokumentation",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "In: Klebemappe 1921 Nachlass Siegfried Kracauer"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/image/BF00043378/?media_access=public&media_thumbnail=BF000433783_0001.tif"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01536011"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/BF00043378/files/images/BF000433783_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "displayAddition1": "1 Mappe",
+                        "displayName": "Kracauer, Siegfried (1889-1966)",
+                        "displayTree": "01.01/Klebemappe 1921",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>H:Kracauer, Siegfried/01.01/Klebemappe 1921 - [Geschlossener Bestand der Mediendokumentation, Nachlass]</dc:title>\n  <dc:creator>Kracauer, Siegfried (1889-1966)</dc:creator>\n  <dc:type>Nachlass</dc:type>\n  <dc:type>Bestand</dc:type>\n  <dc:date>1921</dc:date>\n  <dc:format>1 Mappe</dc:format>\n  <dc:description>Aufgeklebte Artikel von Siegfried Kracauer aus der &quot;Frankfurter Zeitung&quot; 1921</dc:description>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00000298</dc:source>\n  <dc:identifier>H:Kracauer, Siegfried/01.01/Klebemappe 1921</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/viewer/image/BF00043378/?media_access=public&amp;media_thumbnail=BF000433783_0001.tif</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BF00043378</dc:identifier>\n  <dc:identifier>BF00043378</dc:identifier>\n</oai_dc:dc>",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>H:Kracauer, Siegfried/01.01/Klebemappe 1921 - [Geschlossener Bestand der Mediendokumentation, Nachlass]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Kracauer, Siegfried (1889-1966)</namePart>\n    <nameIdentifier type=\"gnd\">118565877</nameIdentifier>\n    <namePart type=\"date\">1889-02-08 — 1966-11-26</namePart>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <typeOfResource collection=\"yes\">Bestand</typeOfResource>\n  <genre>Nachlass</genre>\n  <originInfo eventType=\"collection\">\n    <dateCreated point=\"start\">1921</dateCreated>\n    <dateCreated point=\"end\">1921</dateCreated>\n  </originInfo>\n  <physicalDescription>\n    <extent>1 Mappe</extent>\n  </physicalDescription>\n  <abstract>Aufgeklebte Artikel von Siegfried Kracauer aus der &quot;Frankfurter Zeitung&quot; 1921</abstract>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00000298</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>H:Kracauer, Siegfried/01.01/Klebemappe 1921</shelfLocator>\n    <url access=\"object in context\">https://digital.dla-marbach.de/viewer/image/BF00043378/?media_access=public&amp;media_thumbnail=BF000433783_0001.tif</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2018-05-18</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2025-10-21</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00043378</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "exportRIS": "TY  - GEN\nAU  - Kracauer, Siegfried\nAV  - bedingt benutzbar. Die Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Mediendokumentation.. E-Mail: mediendokumentation@dla-marbach.de\nCN  - BF000433783\nDA  - 1921\nDB  - H:Kracauer, Siegfried/01.01/Klebemappe 1921\nID  - BF00043378\nM3  - Nachlass\nN1  - Umfang: 1 Mappe\nN2  - Aufgeklebte Artikel von Siegfried Kracauer aus der \"Frankfurter Zeitung\" 1921\nRN  - Digitalisat im DLA Viewer:. https://digital.dla-marbach.de/viewer/image/BF00043378/\nTI  - H:Kracauer, Siegfried/01.01/Klebemappe 1921 - [Geschlossener Bestand der Mediendokumentation, Nachlass]\nUR  - https://digital.dla-marbach.de/viewer/image/BF00043378/?media_access=public&media_thumbnail=BF000433783_0001.tif\nUR  - https://www.dla-marbach.de/find/opac/id/BF00043378/\nER  -",
+                        "extent": "1 Mappe",
+                        "filterAuthorityRelation_mv": [
+                            "Kracauer, Siegfried (1889-1966)␝Unter"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Kracauer, Siegfried (1889-1966)␝Bestandsbildner/Vorbesitzer"
+                        ],
+                        "filterAuthority_mv": [
+                            "Kracauer, Siegfried (1889-1966)"
+                        ],
+                        "filterCollection_mv": [
+                            "H:Kracauer, Siegfried/01.01/Klebemappe 1921"
+                        ],
+                        "filterDatePoint_mv": [
+                            "1921-01-01T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "1921"
+                        ],
+                        "filterDigital": true,
+                        "filterFormContent_mv": [
+                            "Nachlass"
+                        ],
+                        "filterMultipart": true,
+                        "filterRecent": "2018-05-18",
+                        "filterSource": "Nachlässe und Spezialsammlungen",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "mediaNumber": "BF000433783",
+                        "note": "Digitalisat im DLA Viewer:\nhttps://digital.dla-marbach.de/viewer/image/BF00043378/",
+                        "parent_display_mv": [
+                            "H:Kracauer, Siegfried - [Geschlossener Bestand der Mediendokumentation, Nachlass]"
+                        ],
+                        "parent_id_mv": [
+                            "BF00000298"
+                        ],
+                        "personAt_display_mv": [
+                            "Kracauer, Siegfried (1889-1966)"
+                        ],
+                        "personAt_id_mv": [
+                            "PE00003459"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 1,
+                        "searchCollectionCreator_display_mv": [
+                            "Kracauer, Siegfried (1889-1966)"
+                        ],
+                        "searchCollectionCreator_id_mv": [
+                            "PE00003459"
+                        ],
+                        "searchDate_mv": [
+                            "1921"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00003459"
+                        ],
+                        "searchNameAt_mv": [
+                            "Kracauer, Siegfried"
+                        ],
+                        "searchName_mv": [
+                            "Kracauer, Siegfried"
+                        ],
+                        "searchVariant_mv": [
+                            "Raca",
+                            "Raca.",
+                            "raca.",
+                            "ra.",
+                            "RACA.",
+                            "L.E.K.",
+                            "Kr",
+                            "St.",
+                            "Rac.",
+                            "Krac",
+                            "S. Krac.",
+                            "Dr. Kr.",
+                            "Dr. S. Kr.",
+                            "er",
+                            "X.U.",
+                            "XXX.",
+                            "X.X.X.",
+                            "H.D.",
+                            "rec",
+                            "rc",
+                            "K ... r",
+                            "K-r.",
+                            "sk",
+                            "s.k.",
+                            "Ginster",
+                            "Stergin",
+                            "Peter",
+                            "G. Hellfried",
+                            "Observer",
+                            "Krakauer, Zigfrid",
+                            "Kurakaua, Zyugufurito",
+                            "Kurakaua, Jikufurito",
+                            "Kurakaua, Sikufurito",
+                            "Krakauer, Friedel",
+                            "Kracauer, S.",
+                            "Krakauer",
+                            "K r."
+                        ],
+                        "source": "BF",
+                        "statusLoan": "Am Standort",
+                        "title": "H:Kracauer, Siegfried/01.01/Klebemappe 1921",
+                        "titleShort": "01.01/Klebemappe 1921",
+                        "url": "https://www.dla-marbach.de/find/opac/id/BF00043378",
+                        "usageRestriction": "nicht benutzbar",
+                        "usageRestrictionComment": "Originale aus konservatorischen Gründen für die Benutzung gesperrt. Bitte Digitalisat benutzen!",
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Mediendokumentation.\nE-Mail: mediendokumentation@dla-marbach.de",
+                        "score": 13.70128
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,166 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:KS00000004",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 6.85064,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "KS00000004",
+                        "default": [
+                            "KS00000004",
+                            "Deutsche Schillergesellschaft (1947-)",
+                            "Sonstige Körperschaft",
+                            "Körperschaft",
+                            "Deutsche Literaturwissenschaft / Einzelne Gesellschaften, Vereine",
+                            "S8.1.7.6",
+                            "false",
+                            "Deutschland",
+                            "1989-04-18",
+                            "1947",
+                            "2026-10-13",
+                            "Körperschaft",
+                            "1947-01-01T00:00:00Z",
+                            "1947",
+                            "Körperschaften",
+                            "Normdaten",
+                            "2007965-5",
+                            "Q1203877",
+                            "https://www.dla-marbach.de/en/informationen/about-us/the-german-schiller-association/",
+                            "https://www.dla-marbach.de/ueber-uns/traegerverein-dsg/",
+                            "Deutsche_Schillergesellschaft",
+                            "Schillergesellschaft <Deutschland, Bundesrepublik>",
+                            "Schillergesellschaft <Deutschland>",
+                            "DSG",
+                            "␣",
+                            "␣",
+                            "Abkürzung",
+                            "Deutsche Schillergesellschaft",
+                            "Schwäbischer Schillerverein (1895-1947)",
+                            "KS00002907",
+                            "Marbach, Rückblick auf ein Jahrhundert : 1895 - 1995. 1996",
+                            "1.0.0",
+                            "0.5",
+                            "1947",
+                            "297",
+                            "KS00000004",
+                            "KS00000004␝Deutsche Schillergesellschaft (1947-)",
+                            "Deutsche Schillergesellschaft (1947-)",
+                            "Schillergesellschaft <Deutschland, Bundesrepublik>",
+                            "Schillergesellschaft <Deutschland>",
+                            "DSG",
+                            "Deutsche Schillergesellschaft",
+                            "KS",
+                            "Deutsche Schillergesellschaft",
+                            "https://www.dla-marbach.de/find/opac/id/KS00000004",
+                            "http://www.dla-marbach.de/dla/dsg/index.html"
+                        ],
+                        "display": "Deutsche Schillergesellschaft (1947-)",
+                        "categoryEntity_mv": [
+                            "Sonstige Körperschaft"
+                        ],
+                        "categoryIndex_mv": [
+                            "Körperschaft"
+                        ],
+                        "classificationOther_comment_mv": [
+                            "Deutsche Literaturwissenschaft / Einzelne Gesellschaften, Vereine"
+                        ],
+                        "classificationOther_text_mv": [
+                            "S8.1.7.6"
+                        ],
+                        "confidential": false,
+                        "country_mv": [
+                            "Deutschland"
+                        ],
+                        "dateCataloged": "1989-04-18",
+                        "dateLifespanStart": "1947",
+                        "dateModified": "2026-10-13",
+                        "displayAddition2": "Körperschaft",
+                        "filterDatePoint_mv": [
+                            "1947-01-01T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "1947"
+                        ],
+                        "filterSource": "Körperschaften",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "gnd_id_mv": [
+                            "2007965-5"
+                        ],
+                        "linkWikidata": "Q1203877",
+                        "linkWikidataWebsite_mv": [
+                            "https://www.dla-marbach.de/en/informationen/about-us/the-german-schiller-association/",
+                            "https://www.dla-marbach.de/ueber-uns/traegerverein-dsg/"
+                        ],
+                        "linkWikipedia": "Deutsche_Schillergesellschaft",
+                        "nameAlternative_name_mv": [
+                            "Schillergesellschaft <Deutschland, Bundesrepublik>",
+                            "Schillergesellschaft <Deutschland>",
+                            "DSG"
+                        ],
+                        "nameAlternative_type_mv": [
+                            "␣",
+                            "␣",
+                            "Abkürzung"
+                        ],
+                        "nameOriginal_mv": [
+                            "Deutsche Schillergesellschaft"
+                        ],
+                        "predecessor_display_mv": [
+                            "Schwäbischer Schillerverein (1895-1947)"
+                        ],
+                        "predecessor_id_mv": [
+                            "KS00002907"
+                        ],
+                        "reference_text_mv": [
+                            "Marbach, Rückblick auf ein Jahrhundert : 1895 - 1995. 1996"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.5,
+                        "searchDate_mv": [
+                            "1947"
+                        ],
+                        "searchEntityScore": 297,
+                        "searchEntity_id_mv": [
+                            "KS00000004"
+                        ],
+                        "searchSuggestPayload": "KS00000004␝Deutsche Schillergesellschaft (1947-)",
+                        "searchSuggestTerm_mv": [
+                            "Deutsche Schillergesellschaft (1947-)",
+                            "Schillergesellschaft <Deutschland, Bundesrepublik>",
+                            "Schillergesellschaft <Deutschland>",
+                            "DSG",
+                            "Deutsche Schillergesellschaft"
+                        ],
+                        "source": "KS",
+                        "title": "Deutsche Schillergesellschaft",
+                        "url": "https://www.dla-marbach.de/find/opac/id/KS00000004",
+                        "website_url_mv": [
+                            "http://www.dla-marbach.de/dla/dsg/index.html"
+                        ],
+                        "score": 6.85064
+                    }
+                ]
+            }
+        }
+    }
+}

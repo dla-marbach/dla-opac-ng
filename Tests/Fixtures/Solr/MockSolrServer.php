@@ -3,6 +3,7 @@
 /**
  * Router-Skript für `php -S`, das aufgezeichnete Solr-Antworten (Tests/Fixtures/Solr/cassettes/*.json)
  * anhand von Pfad + Query-Parametern ausliefert. Damit lassen sich Tests ohne Solr-Zugriff ausführen.
+ * Die lokale TYPO3-Instanz nutzt ihn ebenfalls als Solr (task solr:start, siehe README).
  */
 
 $cassetteDir = __DIR__ . '/cassettes';
@@ -63,10 +64,10 @@ function requestSlug(array $query): string
 
 function findCassette(string $cassetteDir, string $path, array $query): ?array
 {
-    // Von Unterabfragen aus Partials (dla:countFromSolr, dla:fromSolr) automatisch aufgezeichnete Cassetten:
-    // per Hash im Dateinamen direkt auffindbar, ohne alle Dateien einlesen zu müssen.
+    // Automatisch aufgezeichnete Cassetten (Unterabfragen aus Partials in subqueries/, Anfragen der
+    // TYPO3-Instanz in typo3/): per Hash im Dateinamen direkt auffindbar, ohne alle Dateien einlesen zu müssen.
     $hash = requestHash($path, $query);
-    foreach (glob($cassetteDir . '/subqueries/*-' . $hash . '.json') ?: [] as $file) {
+    foreach (glob($cassetteDir . '/*/*-' . $hash . '.json') ?: [] as $file) {
         $cassette = json_decode((string)file_get_contents($file), true);
         if (is_array($cassette)) {
             return $cassette;
@@ -89,18 +90,17 @@ function findCassette(string $cassetteDir, string $path, array $query): ?array
     return null;
 }
 
-/**
- * Aufnahmemodus (nur wenn SOLR_RECORD_BASE gesetzt ist, z.B. http://host.docker.internal:8983):
- * Unbekannte Requests werden an den echten Solr weitergereicht und als Cassette in
- * cassettes/subqueries/ abgelegt. Dadurch werden alle Unterabfragen der Partials (siehe
- * Tests/Unit/Partials/Detail/) beim Ausführen der Tests automatisch mitgeschrieben.
- */
-function recordCassette(string $base, string $cassetteDir, string $path, array $query): ?array
+/** Leitet den aktuellen Request an den echten Solr weiter; liefert [Status, Body] oder null, falls nicht erreichbar. */
+function fetchFromSolr(string $base, string $path): ?array
 {
     $url = rtrim($base, '/') . $path . '?' . ($_SERVER['QUERY_STRING'] ?? '');
-    $body = @file_get_contents($url, false, stream_context_create([
-        'http' => ['method' => 'GET', 'timeout' => 15.0, 'ignore_errors' => true],
-    ]));
+    $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+    $options = ['method' => $method, 'timeout' => 15.0, 'ignore_errors' => true];
+    if ($method === 'POST') {
+        $options['header'] = 'Content-Type: ' . ($_SERVER['CONTENT_TYPE'] ?? 'application/x-www-form-urlencoded');
+        $options['content'] = (string)file_get_contents('php://input');
+    }
+    $body = @file_get_contents($url, false, stream_context_create(['http' => $options]));
     if ($body === false) {
         return null;
     }
@@ -111,6 +111,35 @@ function recordCassette(string $base, string $cassetteDir, string $path, array $
             $status = (int)$matches[1];
         }
     }
+    return [$status, $body];
+}
+
+/** Prüft schnell, ob unter der Basis-URL ein Server lauscht (z.B. der Solr-Tunnel). */
+function isReachable(string $base): bool
+{
+    $host = parse_url($base, PHP_URL_HOST) ?: '127.0.0.1';
+    $port = parse_url($base, PHP_URL_PORT) ?: 80;
+    $socket = @fsockopen($host, $port, $errno, $errstr, 0.3);
+    if ($socket === false) {
+        return false;
+    }
+    fclose($socket);
+    return true;
+}
+
+/**
+ * Aufnahmemodus (nur wenn SOLR_RECORD_BASE gesetzt ist, z.B. http://127.0.0.1:8983):
+ * Unbekannte Requests werden an den echten Solr weitergereicht und als Cassette in
+ * cassettes/subqueries/ (bzw. cassettes/<SOLR_RECORD_DIR>/) abgelegt. Dadurch werden alle Unterabfragen
+ * der Partials (siehe Tests/Unit/Partials/Detail/) beim Ausführen der Tests automatisch mitgeschrieben.
+ */
+function recordCassette(string $base, string $cassetteDir, string $path, array $query): ?array
+{
+    $response = fetchFromSolr($base, $path);
+    if ($response === null) {
+        return null;
+    }
+    [$status, $body] = $response;
 
     $decoded = json_decode($body, true);
     if (json_last_error() !== JSON_ERROR_NONE) {
@@ -122,7 +151,7 @@ function recordCassette(string $base, string $cassetteDir, string $path, array $
         'response' => ['status' => $status, 'body' => $decoded],
     ];
 
-    $directory = $cassetteDir . '/subqueries';
+    $directory = $cassetteDir . '/' . (preg_replace('/[^A-Za-z0-9_-]/', '', (string)getenv('SOLR_RECORD_DIR')) ?: 'subqueries');
     if (!is_dir($directory)) {
         mkdir($directory, 0777, true);
     }
@@ -137,10 +166,27 @@ function recordCassette(string $base, string $cassetteDir, string $path, array $
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?: '/';
 $query = parseRawQueryString($_SERVER['QUERY_STRING'] ?? '');
 
-$cassette = findCassette($cassetteDir, $path, $query);
+// Durchreichmodus (nur wenn SOLR_PROXY_BASE gesetzt ist, z.B. http://127.0.0.1:8983 für die TYPO3-Instanz):
+// Solange dort ein Solr erreichbar ist (Tunnel), werden alle Anfragen unverändert weitergeleitet.
+$proxyBase = getenv('SOLR_PROXY_BASE');
+if ($proxyBase && isReachable($proxyBase)) {
+    $response = fetchFromSolr($proxyBase, $path);
+    if ($response !== null) {
+        header('Content-Type: application/json; charset=UTF-8');
+        header('X-Solr-Mock: proxy');
+        http_response_code($response[0]);
+        echo $response[1];
+        exit;
+    }
+}
+
+// Cassetten werden nur für GET-Anfragen aufgezeichnet und abgespielt (Identität = Pfad + Query-String);
+// andere Methoden werden nur im Durchreichmodus beantwortet.
+$isGet = ($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'GET';
+$cassette = $isGet ? findCassette($cassetteDir, $path, $query) : null;
 
 $recordBase = getenv('SOLR_RECORD_BASE');
-if ($cassette === null && $recordBase) {
+if ($cassette === null && $recordBase && $isGet) {
     $cassette = recordCassette($recordBase, $cassetteDir, $path, $query);
 }
 

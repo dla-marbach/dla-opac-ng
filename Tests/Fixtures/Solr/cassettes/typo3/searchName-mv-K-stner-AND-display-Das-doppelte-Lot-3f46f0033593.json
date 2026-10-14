@@ -1,0 +1,51 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchName_mv:(Kästner) AND ((display:(Das doppelte Lottchen) AND source:(AK OR BI OR BF OR HS OR dbis OR ezb)) OR (work_display_mv:(Das doppelte Lottchen) AND source:(AK OR BI OR HS)) OR titleOther_text_mv:(Das doppelte Lottchen) OR titleMain_comment:(Das doppelte Lottchen) OR titleOther_comment_mv:(Das doppelte Lottchen) OR titleOriginal:(Das doppelte Lottchen)) AND (*:* AND -filterDateRange_mv:*)",
+            "start": "0",
+            "rows": "0",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "score desc",
+            "fq": "NOT source:(AU OR BE OR MM)",
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(Kästner) OR displayAddition1:(Kästner) OR displayAddition2:(Kästner) OR displayName:(Kästner))) OR ((display:(Das doppelte Lottchen) OR displayAddition1:(Das doppelte Lottchen) OR displayAddition2:(Das doppelte Lottchen) OR displayName:(Das doppelte Lottchen))) OR ((display:(*) OR displayAddition1:(*) OR displayAddition2:(*) OR displayName:(*)))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "stats": "true",
+            "stats.field": "filterDatePoint_mv"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 20,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": []
+            },
+            "highlighting": [],
+            "stats": {
+                "stats_fields": {
+                    "filterDatePoint_mv": {
+                        "min": null,
+                        "max": null,
+                        "count": 0,
+                        "missing": 20,
+                        "sum": 0,
+                        "mean": null,
+                        "sumOfSquares": 0,
+                        "stddev": 0
+                    }
+                }
+            }
+        }
+    }
+}

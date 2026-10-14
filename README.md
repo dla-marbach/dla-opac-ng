@@ -2,52 +2,36 @@
 
 TYPO3-Extension für den Katalog des Deutschen Literaturarchivs Marbach https://www.dla-marbach.de/katalog
 
-Die Extension enthält seit Version 6 auch das Such-Plugin der früheren Extension `dla/find`
-(siehe [Herkunft und Credits](#herkunft-und-credits) und [Upgrade auf Version 6](#upgrade-auf-version-6)).
+Das integrierte Such-Plugin basiert auf subugoe/typo3-find (siehe [Herkunft und Credits](#herkunft-und-credits)).
 
 ## Installation
 
-Einmalig nach Erstellen eines Codespaces aufrufen:
+Die Entwicklungsumgebung (Ubuntu 24.04) wird mit [Task](https://taskfile.dev) eingerichtet ([Taskfile.yml](Taskfile.yml)):
+PHP 8.3, Composer, Apache (mit PHP-FPM) und MariaDB (wie im Produktivsystem 11.8, sonst die Version der
+Distribution) werden per `apt` installiert, eine bereits auf Port 3306 laufende Datenbank wird verwendet.
+In einem Codespace geschieht das automatisch ([.devcontainer/startup.sh](.devcontainer/startup.sh)), sonst mit:
 
 ```
 task install
 ```
 
-## Verbindung zum Solr
+| Task | |
+|---|---|
+| `task install` | PHP/Composer/Apache/MariaDB installieren (falls nötig), TYPO3 in `t3example/` aufsetzen, Extension einbinden und starten |
+| `task start` / `task stop` | MariaDB, Solr-Mock-Server, PHP-FPM und Apache starten bzw. Solr-Mock-Server, PHP-FPM und Apache stoppen (MariaDB läuft weiter); im Codespace startet `task start` automatisch |
+| `task cache` | TYPO3-Cache leeren, nötig nach Änderungen z.B. an TypoScript, `Configuration/Services.yaml` oder `ext_localconf.php` |
+| `task reinstall` | TYPO3-Instanz und Datenbank löschen und neu aufsetzen |
 
-Alle Solr-Zugriffe (Such-Plugin, ViewHelper, Ajax-Endpunkte) laufen über
-[Classes/Service/SolrConnection.php](Classes/Service/SolrConnection.php) und werden ausschließlich über
-Umgebungsvariablen konfiguriert:
+Die Extension ist per Composer-Path-Repository eingebunden (`t3example/packages/dla-dla_opac_ng` ist ein Symlink auf
+dieses Repository), Änderungen am Code wirken also direkt. Konfiguration: [.devfiles/apache.conf](.devfiles/apache.conf),
+[.devfiles/php-fpm.conf](.devfiles/php-fpm.conf) und Umgebungsvariablen in [.devfiles/.env](.devfiles/.env)
+(werden mit `task start` übernommen). Logs: `/tmp/typo3-apache-error.log`, `/tmp/typo3-php-error.log`,
+`t3example/var/log/` und `/tmp/solr-mock.log`.
 
-| Variable | Beispiel | |
-|---|---|---|
-| `SOLR_HOST` | `http://host.docker.internal:8983/solr/` | Basis-URL inkl. Solr-Kontext |
-| `SOLR_CORE` | `internformat` | Name des Cores |
-| `SOLR_TIMEOUT` | `10` | optional, Timeout in Sekunden (Standard: 10) |
+Für den Copilot-Agent richtet [.github/workflows/copilot-setup-steps.yml](.github/workflows/copilot-setup-steps.yml)
+dieselbe Umgebung ein.
 
-Für die lokale Umgebung stehen die Werte in [.devfiles/.env](.devfiles/.env) (wird bei `task install` nach
-`t3example/.ddev/.env` kopiert).
-
-Lokal muss GitHub CLI [gh](https://cli.github.com) installiert sein.
-
-### DLA Testsystem
-
-Auf dem lokalen PC mit aktiver VPN-Verbindung:
-
-```
-gh codespace ssh -- -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -R 127.0.0.1:18983:serene.dla-marbach.de:8983
-```
-
-### Entwicklungssystem
-
-1. Codespace mit Repo https://github.com/dla-marbach/dla-opac-transform starten und im Codespace `task solr` ausführen
-
-2. Auf dem lokalen PC:
-
-```
-SOLR="127.0.0.1"
-gh codespace ssh -- -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -R 127.0.0.1:18983:$SOLR:8983
-```
+Anweisungen für KI-Agenten stehen in [AGENTS.md](AGENTS.md).
 
 ## GUIs
 
@@ -60,125 +44,93 @@ TYPO3 Backend: [http://127.0.0.1/typo3](http://127.0.0.1/typo3)
 * admin
 * Dla1337!
 
+## Solr
+
+Alle Solr-Zugriffe (Such-Plugin, ViewHelper, Ajax-Endpunkte) laufen über
+[Classes/Service/SolrConnection.php](Classes/Service/SolrConnection.php) und werden ausschließlich über
+Umgebungsvariablen konfiguriert:
+
+| Variable | Beispiel | |
+|---|---|---|
+| `SOLR_HOST` | `http://127.0.0.1:8984/solr/` | Basis-URL inkl. Solr-Kontext |
+| `SOLR_CORE` | `internformat` | Name des Cores |
+| `SOLR_TIMEOUT` | `10` | optional, Timeout in Sekunden (Standard: 10) |
+
+### Solr-Mock-Server
+
+In der Entwicklungsumgebung und in den PHPUnit-Tests wird statt eines echten Solr der Solr-Mock-Server
+[Tests/Fixtures/Solr/MockSolrServer.php](Tests/Fixtures/Solr/MockSolrServer.php) abgefragt. Er beantwortet Anfragen
+aus aufgezeichneten, echten Solr-Antworten (Cassetten) in [Tests/Fixtures/Solr/cassettes](Tests/Fixtures/Solr/cassettes),
+die dauerhaft im Repository liegen. So funktionieren Instanz und Tests auch ohne Solr-Zugriff (z.B. für Copilot
+und Claude), allerdings nur für bereits aufgezeichnete Anfragen. Unbekannte Anfragen beantwortet er mit HTTP 404
+und protokolliert sie in `Tests/Fixtures/Solr/missing-requests.log`.
+
+Die TYPO3-Instanz nutzt den Mock-Server auf Port 8984 (`task start`). Besteht ein [Tunnel](#tunnel-zum-solr) zum
+echten Solr auf `127.0.0.1:8983`, reicht er alle Anfragen unverändert dorthin durch (Antwort-Header
+`X-Solr-Mock: proxy`), ohne dass umgeschaltet werden muss. Die PHPUnit-Tests starten einen eigenen Mock-Server.
+
+### Cassetten aufnehmen
+
+Neue Cassetten lassen sich nur bei bestehendem Tunnel aufnehmen; anschließend die neuen Dateien committen.
+
+| Befehl | Ablage in `cassettes/` | Inhalt |
+|---|---|---|
+| `php Tests/Fixtures/Solr/recorder.php [szenario ...]` | `*.json` | Szenarien (Pfad + Query-Parameter) aus [recorder.php](Tests/Fixtures/Solr/recorder.php), ohne Argumente alle |
+| `task test:php:record` | `subqueries/` | fehlende Anfragen beim Ausführen der PHPUnit-Tests, v.a. Unterabfragen der Partials (`dla:countFromSolr`, `dla:fromSolr`) |
+| `task solr:record` | `typo3/` | fehlende Anfragen der TYPO3-Instanz beim Aufruf im Browser bzw. mit Playwright; danach mit `task solr:stop solr:start` zurückwechseln |
+
+Hinweise:
+
+* Der Anfang der Datumsfacette in den Trefferlisten hängt vom aktuellen Jahr ab (`NOW/YEAR-…YEARS`): Nach dem
+  Jahreswechsel die Cassetten in `typo3/` neu aufnehmen.
+* Nach Änderungen an den `queryFields` in [Configuration/TypoScript/setup.ts](Configuration/TypoScript/setup.ts) den
+  Ordner `subqueries/` vorher löschen, damit keine veralteten Cassetten zurückbleiben.
+
+### Tunnel zum Solr
+
+Der Tunnel wird vom lokalen PC aus (mit aktiver VPN-Verbindung zum DLA-Testsystem) per GitHub CLI
+[gh](https://cli.github.com) in den Codespace aufgebaut und endet dort auf `127.0.0.1:8983`:
+
+```
+gh codespace ssh -- -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -R 127.0.0.1:8983:serene.dla-marbach.de:8983
+```
+
 ## Tests
 
-Alle Playwright-Tests für den Katalog ausführen:
+### Playwright
+
+End-to-End-Tests aus dem Submodul [dla-opac-tests](dla-opac-tests) gegen die laufende Instanz:
 
 ```
-task test -- "katalog/"
+task test -- "katalog/"                                      # alle Tests für den Katalog
+task test -- -g "robots"                                     # einzelner Test
+BASE_URL=https://www.dla-marbach.de task test -- -g "robots" # Vergleich mit dem Produktivsystem
 ```
 
-Einzelnen Test ausführen:
+### PHPUnit
 
-```
-task test -- -g "robots"
-```
-
-Test zum Vergleich auf Produktivsystem ausführen:
-
-```
-BASE_URL=https://www.dla-marbach.de task test -- -g "robots"
-```
-
-## PHPUnit-Tests mit Solr-Mockdaten
-
-Die PHP-Unit-Tests (`Tests/`, inkl. der Tests des Such-Plugins in [Tests/Find](Tests/Find)) laufen gegen
-einen lokalen Solr-Mock-Server und benötigen dafür **keinen** Solr-Tunnel:
+Die PHPUnit-Tests (`Tests/Unit`, Tests des Such-Plugins in `Tests/Find/Unit`) brauchen weder TYPO3-Instanz noch
+Datenbank oder Solr-Tunnel. Sie laufen mit lokalem PHP gegen den [Solr-Mock-Server](#solr-mock-server), wie in der
+CI ([.github/workflows/phpunit.yml](.github/workflows/phpunit.yml)):
 
 ```
 task test:php
+task test:php -- --filter MediaPlayer   # einzelne Tests
 ```
 
-Der Mock-Server ([Tests/Fixtures/Solr/MockSolrServer.php](Tests/Fixtures/Solr/MockSolrServer.php)) beantwortet
-Anfragen anhand aufgezeichneter, echter Solr-Antworten ([Tests/Fixtures/Solr/cassettes](Tests/Fixtures/Solr/cassettes)),
-die dauerhaft im Repository liegen. Dadurch bleiben die Tests auch dann nutzbar, wenn kein Solr-Zugriff
-mehr besteht.
+[Tests/Unit/Partials](Tests/Unit/Partials) rendert einzelne Fluid-Partials aus
+[Resources/Private/Partials](Resources/Private/Partials) und prüft das erzeugte HTML:
 
-Neue Fixtures aufnehmen (nur möglich, solange der Solr-Tunnel aktiv ist, siehe oben):
-
-```
-php Tests/Fixtures/Solr/recorder.php
-```
-
-Dazu vorher das gewünschte Szenario (Pfad + Query-Parameter) in
-[Tests/Fixtures/Solr/recorder.php](Tests/Fixtures/Solr/recorder.php) ergänzen. Bei unbekannten Anfragen
-antwortet der Mock-Server mit HTTP 404 und protokolliert die fehlende Anfrage in
-`Tests/Fixtures/Solr/missing-requests.log`. Mit Szenarionamen als Argumente
-(`php Tests/Fixtures/Solr/recorder.php detail-person`) werden nur diese Szenarien neu aufgezeichnet.
-
-Unterabfragen, die Partials selbst per `dla:countFromSolr`/`dla:fromSolr` absetzen (z.B. die Zähler in
-`Display/Detail/Normdata/*`), müssen nicht einzeln als Szenario gepflegt werden: Der Task
-
-```
-task test:php:record
-```
-
-führt die Tests mit `SOLR_RECORD_BASE` (Solr-Tunnel nötig) aus. Der Mock-Server leitet dann jede noch
-unbekannte Anfrage an den echten Solr weiter und legt die Antwort als Cassette in
-[Tests/Fixtures/Solr/cassettes/subqueries](Tests/Fixtures/Solr/cassettes/subqueries) ab (Dateiname: Query-Auszug +
-Hash), von wo aus sie der Task in den Workspace kopiert. Nach Änderungen an den `queryFields` in
-[Configuration/TypoScript/setup.ts](Configuration/TypoScript/setup.ts) den Ordner `subqueries` vorher löschen
-(auch unter `t3example/.local-ext/dla-dla_opac_ng/Tests/Fixtures/Solr/cassettes/`), damit keine
-veralteten Cassetten zurückbleiben.
-
-## Fluid-Partial-Rendering-Tests
-
-Zusätzlich zu den Service-/Ajax-Tests gibt es [Tests/Unit/Partials](Tests/Unit/Partials), die einzelne
-Fluid-Partials dieser Extension (aus [Resources/Private/Partials](Resources/Private/Partials)) direkt
-rendern und den erzeugten HTML-Ausschnitt prüfen. Laufen ebenfalls über `task test:php`, ohne DB/Solr-Tunnel.
-
-Basis ist [Tests/Support/FluidPartialTestCase.php](Tests/Support/FluidPartialTestCase.php): baut eine
-minimale Fluid-`RenderingContext` (ohne vollen TYPO3-Functional-Bootstrap) und rendert
-`<f:render partial="..." arguments="{_all}"/>` mit den im Test übergebenen Variablen. Zwei
-Fluid-Kern-ViewHelper sind darin durch schlanke Test-Ersatzimplementierungen ersetzt (siehe
-[Tests/Support/FluidViewHelperOverrides](Tests/Support/FluidViewHelperOverrides)), weil die echten in
-diesem minimalen Bootstrap ohne Weiteres nicht funktionieren:
-
-* `f:translate` – übersetzt immer in die Default-Sprache (keine Sprachauswahl über Request/Backend-User nötig)
-* `f:link.action` – rendert einen Platzhalter-Link (`href="#test-link"`), da echtes TYPO3-Routing einen
-  vollständigen Frontend-Request (Site-Konfiguration, TSFE) voraussetzt
-
-Für Partials, die reale Solr-Dokumente/Trefferlisten benötigen (z.B. `document.fields.*`), stellt
-[Tests/Support/SolrFixture.php](Tests/Support/SolrFixture.php) echte `Solarium\QueryType\Select\Result\Document`-
-bzw. `\Result`-Objekte bereit – erzeugt über einen echten Solarium-Client gegen den Solr-Mock-Server, genauso
-wie `Classes/Find/Service/SolrServiceProvider.php` es in Produktion tut. Die zugehörigen Cassetten
-(`detail-*.json`, `resultlist-*.json`) liegen ebenfalls in
-[Tests/Fixtures/Solr/cassettes](Tests/Fixtures/Solr/cassettes) und werden über dieselbe
-`recorder.php` aufgenommen (siehe die entsprechenden Szenarien am Ende der Datei).
-
-[Tests/Unit/Partials/Detail](Tests/Unit/Partials/Detail) rendert die Detail-Partials (`Display/Detail/Normdata/*`,
-`Library/*`, `Inventory/*`, `Manuscripts/*`, `ImagesAndObjects/*`) mit je einem Dokument pro Quelltyp. Die
-`settings` liefert `SolrFixture::settings()`: die echte TypoScript-Konfiguration (u.a. `queryFields` für
-`dla:solveQuery`). Zusätzlich setzt `SolrFixture` `SOLR_HOST`/`SOLR_CORE` auf den Mock-Server, sodass auch die
-Unterabfragen der Partials gegen Cassetten laufen. `FluidPartialTestCase` lässt Tests fehlschlagen, wenn dabei eine Anfrage ohne Cassette
-ankommt (sonst würde `dla:countFromSolr` still `0` anzeigen). `dla:collection` (Bestandsbaum aus der Datenbank)
-wird durch `FakeCollectionService` ersetzt; Testdaten dafür über `FakeCollectionService::$parents`.
-
-## Weitere Hinweise
-
-Der Code der Extension ist über Symlinks eingebunden. Nach Änderungen am Code wie beispielsweise in [Configuration/TypoScript/setup.ts](Configuration/TypoScript/setup.ts) ist also lediglich ein Löschen des TYPO3-Caches erforderlich:
-
-```
-task cache
-```
-
-Nach einem Neustart des Codespaces ausführen:
-
-```
-task reinstall
-```
-
-## Begrenzung der Suchanfragen (Schutz vor Crawlern)
-
-Tiefes Blättern und beliebig viele Facettenfilter erzeugen sehr teure Solr-Anfragen. Das Such-Plugin begrenzt daher (siehe [Classes/Find/Utility/SearchLimitUtility.php](Classes/Find/Utility/SearchLimitUtility.php)):
-
-| TypoScript-Konstante | Standard | Bedeutung |
-|---|---|---|
-| `plugin.tx_find.settings.limits.maxResultWindow` | `10000` | höchstens erlaubtes `start + rows` |
-| `plugin.tx_find.settings.limits.maxResultWindowEmptyQuery` | `1000` | höchstens erlaubtes `start + rows` bei leerer Suche (ohne Suchbegriff bzw. `*:*`), auch wenn nur Facetten gesetzt sind |
-| `plugin.tx_find.settings.limits.maxActiveFilters` | `10` | höchstens gleichzeitig aktive Facettenfilter/-ausschlüsse |
-
-Der Wert `0` schaltet die jeweilige Grenze ab. Wird eine Grenze überschritten, wird keine Solr-Anfrage abgesetzt, sondern eine schlanke Fehlerseite mit HTTP 400 ausgeliefert. Die Paginierung zeigt keine Seiten jenseits der Grenze an und weist stattdessen darauf hin, die Suche einzugrenzen. Ergebnisseiten mit Filtern oder ab Seite 2 erhalten `<meta name="robots" content="noindex, nofollow">`.
+* [Tests/Support/FluidPartialTestCase.php](Tests/Support/FluidPartialTestCase.php) baut einen minimalen
+  Fluid-`RenderingContext` ohne TYPO3-Bootstrap. `f:translate` (immer Default-Sprache) und `f:link.action`
+  (Platzhalter-Link `#test-link`) sind dafür durch Test-Varianten in
+  [Tests/Support/FluidViewHelperOverrides](Tests/Support/FluidViewHelperOverrides) ersetzt. Tests schlagen fehl,
+  wenn eine Solr-Anfrage ohne Cassette ankommt (sonst würde z.B. `dla:countFromSolr` still `0` anzeigen).
+* [Tests/Support/SolrFixture.php](Tests/Support/SolrFixture.php) liefert echte Solarium-Dokumente bzw.
+  Trefferlisten aus den Cassetten (`detail-*.json`, `resultlist-*.json`), die echte TypoScript-Konfiguration
+  (`SolrFixture::settings()`, u.a. `queryFields`) und setzt `SOLR_HOST`/`SOLR_CORE` auf den Mock-Server.
+* `dla:collection` (Bestandsbaum aus der Datenbank) wird durch `FakeCollectionService` ersetzt, Testdaten über
+  `FakeCollectionService::$parents`.
 
 ## Natürlichsprachige Suche (Proof of Concept)
 
@@ -208,7 +160,7 @@ Bei der Installation (task install) wird ein Datenbank-Dump [.devfiles/init.sql]
 
 3. Menü Page: Neue Seite auf Start ziehen und `Katalog` nennen
 
-  * Start anklicken und "Create new content" auswählen
+  * Katalog anklicken und "Create new content" auswählen
   * Plugin TYPO3 Find auswählen
   * Reiter Plugin im Pulldown "DlaStart" auswählen
   * Speichern
@@ -314,33 +266,8 @@ Bei der Installation (task install) wird ein Datenbank-Dump [.devfiles/init.sql]
 2. init.sql ersetzen:
 
 ```
-ddev export-db t3example --gzip=false > .devfiles/init.sql
+task db:export
 ```
-
-## Upgrade auf Version 6
-
-Mit Version 6 ist die bisher separat installierte Extension `dla/find` (Repo
-[dla-marbach/typo3-find](https://github.com/dla-marbach/typo3-find)) in `dla/dla_opac_ng` aufgegangen.
-`dla/dla_opac_ng` ersetzt das Paket `dla/find` (Composer `replace`), es wird beim Update automatisch entfernt.
-
-Unverändert bleiben bewusst Plugin-Signatur (`find_find`), URL-Parameter (`tx_find_find[...]`),
-TypoScript-Pfad (`plugin.tx_find`) und der PHP-Namespace `Dla\Find\` (jetzt unter [Classes/Find](Classes/Find)).
-Bestehende Inhaltselemente, Links und TypoScript-Anpassungen funktionieren daher weiter.
-
-Schritte in einer bestehenden Installation:
-
-1. `composer require dla/dla_opac_ng:^6` (bzw. `composer update dla/dla_opac_ng dla/find -W`)
-2. Upgrade-Wizard "DLA OPAC: Statisches TypoScript von EXT:find entfernen" ausführen
-   (`vendor/bin/typo3 upgrade:run dlaOpacNg_findStaticTemplate` oder im Install Tool). Er entfernt
-   `EXT:find/Configuration/TypoScript` aus den TypoScript-Datensätzen, die Basiskonfiguration ist jetzt
-   Bestandteil des statischen TypoScripts von `dla_opac_ng`.
-3. Falls in eigenem TypoScript auf Dateien unter `EXT:find/...` verwiesen wird, auf
-   `EXT:dla_opac_ng/...` umstellen.
-4. Solr-Verbindung über die Umgebungsvariablen `SOLR_HOST` und `SOLR_CORE` konfigurieren (siehe
-   [Verbindung zum Solr](#verbindung-zum-solr)). Die TypoScript-Einstellungen
-   `plugin.tx_find.settings.connections.default.options.*` und `plugin.tx_find.settings.connection.*`
-   werden nicht mehr ausgewertet und können entfernt werden.
-5. `vendor/bin/typo3 cache:flush`
 
 ## Herkunft und Credits
 

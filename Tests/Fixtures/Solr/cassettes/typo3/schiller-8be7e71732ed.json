@@ -1,0 +1,1806 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "schiller",
+            "start": "0",
+            "rows": "25",
+            "fl": "id,display,displayAddition1,displayAddition2,displayName,filterType_mv,filterMultipart,filterDigital,digitalObject_thumbnail_mv,filterMedium_mv,usageRestrictionNote,website_url_mv,website_description_mv,digitalObject_id_mv,digitalObject_display_mv,digitalObject_hyperlink_mv,digitalObject_accessLevel_mv,digitalObject_fileExtension_mv,item_provenance_mv",
+            "sort": "score desc",
+            "fq": [
+                "NOT source:(AU OR BE OR MM)",
+                "filterDateRange_mv:[1800 TO 1801]"
+            ],
+            "hl": "true",
+            "hl.fl": "displayAddition1,display,displayAddition2,displayName",
+            "hl.q": "((display:(schiller) OR displayAddition1:(schiller) OR displayAddition2:(schiller) OR displayName:(schiller)))",
+            "hl.fragsize": "100",
+            "hl.simple.pre": "\\ueeee",
+            "hl.simple.post": "\\ueeef",
+            "facet.field": [
+                "{!key=Digital}filterDigital",
+                "{!key=Medientypen}filterType_mv",
+                "{!key=FormUndInhalt}filterFormContent_mv",
+                "{!key=Medium}filterMedium_mv",
+                "{!key=Personen}filterAuthority_mv",
+                "{!key=Thema}filterSubject_mv",
+                "{!key=Sprache}filterLanguage_mv",
+                "{!key=filterLanguageType_mv}filterLanguageType_mv",
+                "{!key=Ort}filterLocation_mv",
+                "{!key=filterLocationType_mv}filterLocationType_mv",
+                "{!key=Sammlung}filterCollection_mv",
+                "{!key=Datenbestand}filterSource",
+                "{!key=Bibliographie}filterBibliography_mv",
+                "{!key=filterAuthorityRole_mv}filterAuthorityRole_mv",
+                "{!key=filterAuthorityRelation_mv}filterAuthorityRelation_mv",
+                "{!key=entities}searchEntity_id_mv"
+            ],
+            "f.filterDigital.facet.sort": "count",
+            "f.filterDigital.facet.limit": "50",
+            "f.filterDigital.facet.mincount": "1",
+            "f.filterType_mv.facet.sort": "count",
+            "f.filterType_mv.facet.limit": "50",
+            "f.filterType_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.sort": "count",
+            "f.filterFormContent_mv.facet.limit": "50",
+            "f.filterFormContent_mv.facet.mincount": "1",
+            "f.filterFormContent_mv.facet.missing": "true",
+            "f.filterMedium_mv.facet.sort": "count",
+            "f.filterMedium_mv.facet.limit": "50",
+            "f.filterMedium_mv.facet.mincount": "1",
+            "f.filterMedium_mv.facet.missing": "true",
+            "f.filterAuthority_mv.facet.sort": "count",
+            "f.filterAuthority_mv.facet.limit": "50",
+            "f.filterAuthority_mv.facet.mincount": "1",
+            "facet.range": "{!key=Zeit}filterDateRange_mv",
+            "f.filterDateRange_mv.facet.range.start": "NOW/YEAR-1850YEARS",
+            "f.filterDateRange_mv.facet.range.end": "NOW/DAY+1YEAR",
+            "f.filterDateRange_mv.facet.range.gap": "+37YEAR",
+            "f.filterSubject_mv.facet.sort": "count",
+            "f.filterSubject_mv.facet.limit": "50",
+            "f.filterSubject_mv.facet.mincount": "1",
+            "f.filterSubject_mv.facet.missing": "true",
+            "facet.query": [
+                "{!key=Woche ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]",
+                "{!key=Monat ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]",
+                "{!key=Quartal ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Halbjahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]",
+                "{!key=Jahr ex=facet-NeuImKatalog}filterRecent:[NOW/DAY-1YEAR TO NOW/DAY+1DAY]"
+            ],
+            "f.filterLanguage_mv.facet.sort": "count",
+            "f.filterLanguage_mv.facet.limit": "50",
+            "f.filterLanguage_mv.facet.mincount": "1",
+            "f.filterLanguageType_mv.facet.sort": "count",
+            "f.filterLanguageType_mv.facet.limit": "50",
+            "f.filterLanguageType_mv.facet.mincount": "1",
+            "f.filterLocation_mv.facet.sort": "count",
+            "f.filterLocation_mv.facet.limit": "50",
+            "f.filterLocation_mv.facet.mincount": "1",
+            "f.filterLocationType_mv.facet.sort": "count",
+            "f.filterLocationType_mv.facet.limit": "50",
+            "f.filterLocationType_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.sort": "count",
+            "f.filterCollection_mv.facet.limit": "50",
+            "f.filterCollection_mv.facet.mincount": "1",
+            "f.filterCollection_mv.facet.missing": "true",
+            "f.filterSource.facet.sort": "count",
+            "f.filterSource.facet.limit": "50",
+            "f.filterSource.facet.mincount": "1",
+            "f.filterSource.facet.missing": "true",
+            "f.filterBibliography_mv.facet.sort": "count",
+            "f.filterBibliography_mv.facet.limit": "50",
+            "f.filterBibliography_mv.facet.mincount": "1",
+            "f.filterBibliography_mv.facet.missing": "true",
+            "f.filterAuthorityRole_mv.facet.sort": "count",
+            "f.filterAuthorityRole_mv.facet.limit": "50",
+            "f.filterAuthorityRole_mv.facet.mincount": "1",
+            "f.filterAuthorityRelation_mv.facet.sort": "count",
+            "f.filterAuthorityRelation_mv.facet.limit": "50",
+            "f.filterAuthorityRelation_mv.facet.mincount": "1",
+            "f.searchEntity_id_mv.facet.sort": "count",
+            "f.searchEntity_id_mv.facet.limit": "2",
+            "f.searchEntity_id_mv.facet.mincount": "1",
+            "facet": "true"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 458,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BI00009390",
+                        "display": "Teetisch aus Schillers Haushalt [Gegenstand]",
+                        "digitalObject_accessLevel_mv": [
+                            "public",
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "D20110617-142",
+                            "D20110617-143"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg",
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-142.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-143.jpg/full/full/0/default.jpg?media_access=public"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01498403",
+                            "MM01498404"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-142.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-143.jpg/full/!480,480/0/default.jpg?media_access=public"
+                        ],
+                        "displayAddition1": "Um 1790",
+                        "displayAddition2": "Inventarnummer: 5080",
+                        "filterDigital": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "nicht benutzbar\nDie Benutzung ist leider nicht möglich. Bei Fragen wenden Sie sich bitte an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "id": "BI00015349",
+                        "display": "Zylindersekretär aus dem Besitz von Charlotte Schiller [Gegenstand]",
+                        "digitalObject_accessLevel_mv": [
+                            "public",
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "D20141008-111",
+                            "D20141008-118"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg",
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20141008%2fD20141008-111.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20141008%2fD20141008-118.jpg/full/full/0/default.jpg?media_access=public"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01513515",
+                            "MM01513516"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20141008%2fD20141008-111.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20141008%2fD20141008-118.jpg/full/!480,480/0/default.jpg?media_access=public"
+                        ],
+                        "displayAddition1": "spätes 18. Jh.",
+                        "displayAddition2": "Inventarnummer: 6464",
+                        "filterDigital": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "id": "BI00011915",
+                        "display": "Kommode (Modell) [Gegenstand]",
+                        "digitalObject_accessLevel_mv": [
+                            "public",
+                            "public",
+                            "public",
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "D20121203-140",
+                            "D20121203-200",
+                            "D20121203-201",
+                            "D20121203-203"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg",
+                            "jpg",
+                            "jpg",
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20121203%2fD20121203-140.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20121203%2fD20121203-200.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20121203%2fD20121203-201.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20121203%2fD20121203-203.jpg/full/full/0/default.jpg?media_access=public"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01499375",
+                            "MM01499389",
+                            "MM01499390",
+                            "MM01499391"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20121203%2fD20121203-140.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20121203%2fD20121203-200.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20121203%2fD20121203-201.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20121203%2fD20121203-203.jpg/full/!480,480/0/default.jpg?media_access=public"
+                        ],
+                        "displayAddition1": "Mitte/späteres 18. Jh.",
+                        "displayAddition2": "Inventarnummer: 6736",
+                        "filterDigital": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "id": "BI00007703",
+                        "display": "Portrait Friedrich Schiller (?) [Elfenbeinmalerei]",
+                        "digitalObject_accessLevel_mv": [
+                            "public",
+                            "public",
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "D20090529-64",
+                            "D20090529-92",
+                            "D20090529-98"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg",
+                            "jpg",
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20090529%2fD20090529-64.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20090529%2fD20090529-92.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20090529%2fD20090529-98.jpg/full/full/0/default.jpg?media_access=public"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01426632",
+                            "MM01426633",
+                            "MM01426631"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20090529%2fD20090529-64.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20090529%2fD20090529-92.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20090529%2fD20090529-98.jpg/full/!480,480/0/default.jpg?media_access=public"
+                        ],
+                        "displayAddition1": "um 1800",
+                        "displayAddition2": "Inventarnummer: 4593",
+                        "filterDigital": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "id": "BI00009385",
+                        "display": "Konsoltisch aus Schillers Haushalt (?) [Gegenstand]",
+                        "digitalObject_accessLevel_mv": [
+                            "public",
+                            "public",
+                            "public",
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "D20110617-119",
+                            "D20110617-120",
+                            "D20110617-157",
+                            "D20110617-158"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg",
+                            "jpg",
+                            "jpg",
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-119.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-120.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-157.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-158.jpg/full/full/0/default.jpg?media_access=public"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01498380",
+                            "MM01498375",
+                            "MM01498382",
+                            "MM01498383"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-119.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-120.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-157.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-158.jpg/full/!480,480/0/default.jpg?media_access=public"
+                        ],
+                        "displayAddition1": "Um 1800",
+                        "displayAddition2": "Inventarnummer: 0485",
+                        "filterDigital": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "nicht benutzbar\nDie Benutzung ist leider nicht möglich. Bei Fragen wenden Sie sich bitte an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "id": "BI00009389",
+                        "display": "Zwei Tische aus Schillers Haushalt [Gegenstand]",
+                        "digitalObject_accessLevel_mv": [
+                            "public",
+                            "public",
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "D20110617-123",
+                            "D20110617-124",
+                            "D20110617-125"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg",
+                            "jpg",
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-123.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-124.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-125.jpg/full/full/0/default.jpg?media_access=public"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01498409",
+                            "MM01498410",
+                            "MM01498411"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-123.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-124.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-125.jpg/full/!480,480/0/default.jpg?media_access=public"
+                        ],
+                        "displayAddition1": "Um 1790",
+                        "displayAddition2": "Inventarnummer: 6377, 6378",
+                        "filterDigital": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "nicht benutzbar\nDie Benutzung ist leider nicht möglich. Bei Fragen wenden Sie sich bitte an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "id": "BI00009482",
+                        "display": "Tisch aus Schillers Haushalt (?) [Gegenstand]",
+                        "digitalObject_accessLevel_mv": [
+                            "public",
+                            "public",
+                            "public",
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "D20110617-180",
+                            "D20110617-181",
+                            "D20110617-182",
+                            "D20110617-189"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg",
+                            "jpg",
+                            "jpg",
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-180.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-181.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-182.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-189.jpg/full/full/0/default.jpg?media_access=public"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01498393",
+                            "MM01498394",
+                            "MM01498395",
+                            "MM01498386"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-180.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-181.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-182.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-189.jpg/full/!480,480/0/default.jpg?media_access=public"
+                        ],
+                        "displayAddition1": "Um 1800",
+                        "displayAddition2": "Inventarnummer: 0673",
+                        "filterDigital": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "nicht benutzbar\nDie Benutzung ist leider nicht möglich. Bei Fragen wenden Sie sich bitte an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "id": "BI00009484",
+                        "display": "Sitzbank aus Schillers Haushalt (?) [Gegenstand]",
+                        "digitalObject_accessLevel_mv": [
+                            "public",
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "D20110617-190",
+                            "D20110617-191"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg",
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-190.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-191.jpg/full/full/0/default.jpg?media_access=public"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01498390",
+                            "MM01498391"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-190.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-191.jpg/full/!480,480/0/default.jpg?media_access=public"
+                        ],
+                        "displayAddition1": "Um 1800",
+                        "displayAddition2": "Inventarnummer: 0663",
+                        "filterDigital": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "nicht benutzbar\nDie Benutzung ist leider nicht möglich. Bei Fragen wenden Sie sich bitte an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "id": "BI00009529",
+                        "display": "Wandspiegel aus Schillers Haushalt [Gegenstand]",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "D20110617-212"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-212.jpg/full/full/0/default.jpg?media_access=public"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01498392"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-212.jpg/full/!480,480/0/default.jpg?media_access=public"
+                        ],
+                        "displayAddition1": "Um 1800",
+                        "displayAddition2": "Inventarnummer: 0670",
+                        "filterDigital": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "id": "BI00018974",
+                        "display": "Sechs Stühle aus Schillers Haushalt (?) [Gegenstand]",
+                        "digitalObject_accessLevel_mv": [
+                            "public",
+                            "public",
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "D20110617-178",
+                            "D20110617-179",
+                            "D20110617-189"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg",
+                            "jpg",
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-178.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-179.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-189.jpg/full/full/0/default.jpg?media_access=public"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01498384",
+                            "MM01498385",
+                            "MM01498386"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-178.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-179.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20110617%2fD20110617-189.jpg/full/!480,480/0/default.jpg?media_access=public"
+                        ],
+                        "displayAddition1": "Um 1800",
+                        "displayAddition2": "Inventarnummer: 0664-0669",
+                        "filterDigital": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "nicht benutzbar\nDie Benutzung ist leider nicht möglich. Bei Fragen wenden Sie sich bitte an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "displayName": "Schiller, Johann Caspar (1723-1796) [Dokumentierte Person]",
+                        "displayAddition2": "A:Schiller, Friedrich von°Schiller, Johann Caspar - [Kryptobestand, Teilnachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "31.10.1749 - 04.02.1837",
+                        "id": "HS00888855",
+                        "display": "Schiller, Johann Caspar: Zubringensinventar [Dokumente]"
+                    },
+                    {
+                        "id": "BI00015655",
+                        "display": "Becherglas aus dem Besitz von Friedrich Schiller [Gegenstand]",
+                        "digitalObject_accessLevel_mv": [
+                            "campus",
+                            "campus",
+                            "campus",
+                            "campus"
+                        ],
+                        "digitalObject_display_mv": [
+                            "D20150107-305",
+                            "D20150107-301",
+                            "D20150107-303",
+                            "D20150107-304"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg",
+                            "jpg",
+                            "jpg",
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20150107%2fD20150107-305.jpg/full/full/0/default.jpg?media_access=campus",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20150107%2fD20150107-301.jpg/full/full/0/default.jpg?media_access=campus",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20150107%2fD20150107-303.jpg/full/full/0/default.jpg?media_access=campus",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20150107%2fD20150107-304.jpg/full/full/0/default.jpg?media_access=campus"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01514336",
+                            "MM01514332",
+                            "MM01514334",
+                            "MM01514335"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20150107%2fD20150107-305.jpg/full/!480,480/0/default.jpg?media_access=campus",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20150107%2fD20150107-301.jpg/full/!480,480/0/default.jpg?media_access=campus",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20150107%2fD20150107-303.jpg/full/!480,480/0/default.jpg?media_access=campus",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20150107%2fD20150107-304.jpg/full/!480,480/0/default.jpg?media_access=campus"
+                        ],
+                        "displayAddition1": "frühestens um 1800",
+                        "displayAddition2": "Inventarnummer: B Dep.65",
+                        "displayName": "Unbekannt",
+                        "filterDigital": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "id": "BI00007702",
+                        "display": "Portrait Friedrich Schiller [Elfenbeinmalerei]",
+                        "digitalObject_accessLevel_mv": [
+                            "public",
+                            "campus"
+                        ],
+                        "digitalObject_display_mv": [
+                            "D20080208-50",
+                            "D20250207-829"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg",
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20080208%2fD20080208-50.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20250207%2fD20250207-829.jpg/full/full/0/default.jpg?media_access=campus"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01411687",
+                            "MM01562767"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2fD20080208%2fD20080208-50.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20250207%2fD20250207-829.jpg/full/!480,480/0/default.jpg?media_access=campus"
+                        ],
+                        "displayAddition1": "1790er Jahre (?)",
+                        "displayAddition2": "Inventarnummer: 3317",
+                        "displayName": "Unbekannt; Michaelis, Mathias (1948-)",
+                        "filterDigital": true,
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Mikroform",
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Leipzig, 1800-1803 - 2 Bd.",
+                        "id": "AK00359214",
+                        "displayName": "Schiller, Friedrich von (1759-1805)",
+                        "display": "Gedichte"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Mikroform",
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Tübingen, 1800 - 2 Bd.",
+                        "id": "AK00359215",
+                        "displayName": "Schiller, Friedrich von (1759-1805)",
+                        "display": "Wallenstein"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Mikroform",
+                            "Buch"
+                        ],
+                        "display": "Maria Stuart",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Tübingen, 1801",
+                        "id": "AK00359218",
+                        "displayName": "Schiller, Friedrich von (1759-1805)"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "displayName": "Schiller, Friedrich von (1759-1805)",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Jena : Schöne, 1800 - X, 134 Seiten",
+                        "id": "AK00278682",
+                        "display": "Einige Briefe über Schillers Maria Stuart und die Aufführung derselben auf dem Weimarischen Hoftheater"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Wien ; Prag : Haas, 1800 - 207 Seiten",
+                        "id": "AK00278894",
+                        "display": "Bianca und Hieronymo : Ein interessantes Seitenstück zu Tschinks Geisterseher (Schillers Geisterseher)"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Grätz, 1800 - 166 Seiten",
+                        "id": "AK00239067",
+                        "displayName": "Schiller, Friedrich von (1759-1805)",
+                        "display": "Die Räuber : ein Trauerspiel - Neue für die Mannheimer Bühne verb. Aufl."
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Frankfurt, Leipzig, 1801 - 204 Seiten",
+                        "id": "AK00263161",
+                        "displayName": "Schiller, Friedrich von (1759-1805)",
+                        "display": "Maria Stuart : ein Trauerspiel - Neueste Ausg."
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Leipzig, 1800 - 225 Seiten",
+                        "id": "AK00263229",
+                        "displayName": "Schiller, Friedrich von (1759-1805)",
+                        "display": "Der Geisterseher : Aus den Memoires des Grafen von O** - 3. verb. Aufl."
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Mannheim : Schwan & Götz, 1801 - 159 Seiten",
+                        "id": "AK00263456",
+                        "displayName": "Schiller, Friedrich von (1759-1805)",
+                        "display": "Die Räuber : ein Trauerspiel - Neue für die Mannheimer Bühne verb. Orig.-Aufl."
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Grätz, 1800 - 190 Seiten",
+                        "id": "AK00264228",
+                        "displayName": "Schiller, Friedrich von (1759-1805)",
+                        "display": "Die Verschwörung des Fiesko zu Genua : ein republikanisches Trauerspiel"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Amsterdam : Mars, 1800 - 184 Seiten",
+                        "id": "AK00264350",
+                        "displayName": "Schiller, Friedrich von (1759-1805)",
+                        "display": "Fiesko, of de Samenzweering te Genua : republikeinsch Treurspel"
+                    },
+                    {
+                        "filterMedium_mv": [
+                            "Buch"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "[S.l.], 1800 - 174 Seiten",
+                        "id": "AK00264504",
+                        "displayName": "Schiller, Friedrich von (1759-1805)",
+                        "display": "Kabale und Liebe : ein bürgerliches Trauerspiel"
+                    }
+                ]
+            },
+            "facet_counts": {
+                "facet_queries": {
+                    "Woche": 0,
+                    "Monat": 0,
+                    "Quartal": 2,
+                    "Halbjahr": 2,
+                    "Jahr": 2
+                },
+                "facet_fields": {
+                    "Digital": [
+                        "true",
+                        114
+                    ],
+                    "Medientypen": [
+                        "Handschriften",
+                        211,
+                        "Gedrucktes",
+                        101,
+                        "Normdaten",
+                        75,
+                        "Bilder und Objekte",
+                        71
+                    ],
+                    "FormUndInhalt": [
+                        "Brief",
+                        196,
+                        "Dramatisches",
+                        43,
+                        "Musikalia",
+                        27,
+                        "Gegenstand",
+                        24,
+                        "Gemälde",
+                        11,
+                        "Zeichnung",
+                        11,
+                        "Lyrik",
+                        8,
+                        "Dokument",
+                        6,
+                        "Elfenbeinmalerei",
+                        5,
+                        "Relief",
+                        5,
+                        "Skulptur",
+                        5,
+                        "Druckgrafik",
+                        4,
+                        "Übersetzung, fremdsprachig",
+                        4,
+                        "Verschiedenes",
+                        3,
+                        "Aquarell",
+                        2,
+                        "Ballade, Musik",
+                        2,
+                        "Kompositionen",
+                        2,
+                        "Lied",
+                        2,
+                        "Scherenschnitt",
+                        2,
+                        "Vertonung",
+                        2,
+                        "Zusammenstellung",
+                        2,
+                        "Aufsatz",
+                        1,
+                        "Ballade",
+                        1,
+                        "Bearbeitung",
+                        1,
+                        "Erzählung",
+                        1,
+                        "Essay",
+                        1,
+                        "Hinterglasmalerei",
+                        1,
+                        "Medaille",
+                        1,
+                        "Prosa",
+                        1,
+                        "Sammlung",
+                        1,
+                        "Werke, Teilausgabe",
+                        1,
+                        "Übersetzung, deutsch",
+                        1,
+                        null,
+                        93
+                    ],
+                    "Medium": [
+                        "Buch",
+                        90,
+                        "Noten",
+                        29,
+                        "Mikroform",
+                        6,
+                        "Zeitschriftenband",
+                        6,
+                        "Zeitschriftenheft",
+                        2,
+                        "Beitrag",
+                        1,
+                        "Mehrteiliges Werk",
+                        1,
+                        null,
+                        356
+                    ],
+                    "Personen": [
+                        "Schiller, Friedrich von (1759-1805)",
+                        321,
+                        "Cotta, Johann Friedrich (1764-1832)",
+                        32,
+                        "Unbekannt",
+                        27,
+                        "Unger, Johann Friedrich Gottlieb (1753-1804)",
+                        24,
+                        "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)",
+                        22,
+                        "Franckh, Louise (1766-1836)",
+                        20,
+                        "Schiller, Charlotte von (1766-1826)",
+                        18,
+                        "Schiller, Elisabetha Dorothea (1732-1802)",
+                        18,
+                        "Cotta",
+                        17,
+                        "Körner, Christian Gottfried (1756-1831)",
+                        16,
+                        "Michaelis, Mathias (1948-)",
+                        13,
+                        "Crusius, Siegfried Leberecht (1738-1824)",
+                        10,
+                        "Zumsteeg, Johann Rudolph (1760-1802)",
+                        9,
+                        "Göschen, Georg Joachim (1752-1828)",
+                        8,
+                        "Schiller <Familie>",
+                        8,
+                        "Dannecker, Johann Heinrich von (1758-1841)",
+                        7,
+                        "Shakespeare, William (1564-1616)",
+                        7,
+                        "Vermehren, Johann Bernhard (1774-1803)",
+                        6,
+                        "Bleeser, Anja (1999-)",
+                        5,
+                        "Gleichen genannt von Rußwurm, Familie : 1732-",
+                        5,
+                        "Gleichen-Russwurm, Alexander von (1865-1947)",
+                        4,
+                        "Korner, Chris (1968-2024)",
+                        4,
+                        "Lengefeld, Louise von (1743-1823)",
+                        4,
+                        "Opitz, Christian Wilhelm (1756-1810)",
+                        4,
+                        "Richter, Johann Paul Friedrich (1763-1825)",
+                        4,
+                        "Schiller, Carl von (1793-1857)",
+                        4,
+                        "Simanowiz, Ludovike (1759-1827)",
+                        4,
+                        "Wilmans, Friedrich (1764-1830)",
+                        4,
+                        "Frank, Bernhard (1770-1836)",
+                        3,
+                        "Gleichen-Russwurm, Emilie von (1804-1872)",
+                        3,
+                        "Großmann, Thekla Karoline Luise (1859-1934)",
+                        3,
+                        "Guthrie, Wilh.",
+                        3,
+                        "Göpferdt, Johann Christian Gottfried (1755-1814)",
+                        3,
+                        "Jury, Wilhelm (1763-1829)",
+                        3,
+                        "Kießling-Krieger, Amalie (1862-1941)",
+                        3,
+                        "Niethammer, Friedrich Immanuel (1766-1848)",
+                        3,
+                        "Schelling, Friedrich Wilhelm Joseph von (1775-1854)",
+                        3,
+                        "Schocken, Salman (1877-1959)",
+                        3,
+                        "Schockenbibliothek",
+                        3,
+                        "Sotzmann, Daniel Friedrich (1754-1840)",
+                        3,
+                        "Stock, Dorothea (1760-1832)",
+                        3,
+                        "Sydow, Josephine von",
+                        3,
+                        "Tremmel, Jens (1966-)",
+                        3,
+                        "Wolfskehl, Karl (1869-1948)",
+                        3,
+                        "Beck, Heinrich (1760-1803)",
+                        2,
+                        "Brachmann, Louise (1777-1822)",
+                        2,
+                        "Caroline Louise, Schwarzburg-Rudolstadt, Fürstin (1771-1854)",
+                        2,
+                        "Fülleborn, Georg Gustav (1769-1803)",
+                        2,
+                        "Humboldt, Caroline von (1766-1829)",
+                        2,
+                        "Hurka, Friedrich Franz (1762-1805)",
+                        2
+                    ],
+                    "Thema": [
+                        "Schiller, Friedrich von (1759-1805)",
+                        35,
+                        "Unbekannt",
+                        7,
+                        "Andere Bearbeitungen / Einzelne Werke",
+                        3,
+                        "Dramatisches / Einzelne Werke",
+                        3,
+                        "Franckh, Louise (1766-1836)",
+                        3,
+                        "Schiller, Friedrich von <1759-1805>. Die Jungfrau von Orleans (Drama : 1802)",
+                        3,
+                        "Tisch",
+                        3,
+                        "Haarlocke",
+                        2,
+                        "Lieder",
+                        2,
+                        "Lorbeerkranz",
+                        2,
+                        "Schiller, Friedrich von <1759-1805>. Die Räuber (Drama : 1781)",
+                        2,
+                        "Schiller, Friedrich von <1759-1805>. Maria Stuart (Drama : 1801)",
+                        2,
+                        "Schiller, Friedrich von <1759-1805>. Wallenstein (Zusammenstellung : 1800)",
+                        2,
+                        "Shakespeare, William (1564-1616)",
+                        2,
+                        "Strumpf",
+                        2,
+                        "Teetisch",
+                        2,
+                        "Abel, Jacob Friedrich von (1751-1829)",
+                        1,
+                        "Balladen (vok.)",
+                        1,
+                        "Bank <Möbel>",
+                        1,
+                        "Bett",
+                        1,
+                        "Bilder",
+                        1,
+                        "Erzählende Prosa / Einzelne Werke",
+                        1,
+                        "Frankreich",
+                        1,
+                        "Gesänge",
+                        1,
+                        "Gontard, Susette (1769-1802)",
+                        1,
+                        "Homer",
+                        1,
+                        "Homer. Odyssea (Epos : v07-)",
+                        1,
+                        "Körner, Anna Maria Jakobine (1762-1843)",
+                        1,
+                        "Körner, Christian Gottfried (1756-1831)",
+                        1,
+                        "Lempp, Albrecht Friedrich (1763-1819)",
+                        1,
+                        "Lengefeld, Louise von (1743-1823)",
+                        1,
+                        "Luise <Sachsen-Weimar-Eisenach, Großherzogin> (1757-1830)",
+                        1,
+                        "Nähtisch",
+                        1,
+                        "Reichenbach, Karl Ludwig (1757-1837)",
+                        1,
+                        "Ring <Schmuck>",
+                        1,
+                        "Schiller, Carl von (1793-1857)",
+                        1,
+                        "Schiller, Charlotte von (1766-1826)",
+                        1,
+                        "Schiller, Elisabetha Dorothea (1732-1802)",
+                        1,
+                        "Schiller, Friedrich Ludwig Ernst von (1826-1877)",
+                        1,
+                        "Schiller, Friedrich von <1759-1805>. Der Geisterseher (Roman : 1787-1789)",
+                        1,
+                        "Schiller, Friedrich von <1759-1805>. Die Piccolomini (Drama : 1800)",
+                        1,
+                        "Schiller, Friedrich von <1759-1805>. Kabale und Liebe (Drama : 1784)",
+                        1,
+                        "Schiller, Friedrich von <1759-1805>. Macbeth (Drama : 1801)",
+                        1,
+                        "Schiller, Friedrich von <1759-1805>. Wallensteins Lager (Drama : 1800)",
+                        1,
+                        "Schiller, Johann Caspar (1723-1796)",
+                        1,
+                        "Schiller, Johann Friedrich (1737-1814)",
+                        1,
+                        "Schreibtisch",
+                        1,
+                        "Sessel",
+                        1,
+                        "Shakespeare, William <1564-1616>. Macbeth (Drama : 1606)",
+                        1,
+                        "Solitude",
+                        1,
+                        null,
+                        378
+                    ],
+                    "Sprache": [
+                        "Deutsch",
+                        319,
+                        "Englisch",
+                        5,
+                        "Französisch",
+                        1,
+                        "Niederländisch",
+                        1
+                    ],
+                    "filterLanguageType_mv": [
+                        "Deutsch␝Original",
+                        317,
+                        "Englisch␝Original",
+                        3,
+                        "Deutsch␝Übersetzung",
+                        2,
+                        "Englisch␝Übersetzung",
+                        2,
+                        "Französisch␝Übersetzung",
+                        1,
+                        "Niederländisch␝Übersetzung",
+                        1
+                    ],
+                    "Ort": [
+                        "Weimar",
+                        62,
+                        "Tübingen",
+                        42,
+                        "Leipzig",
+                        41,
+                        "Berlin",
+                        35,
+                        "Jena",
+                        21,
+                        "Leonberg",
+                        15,
+                        "Hamburg",
+                        9,
+                        "Stuttgart",
+                        8,
+                        "Mannheim",
+                        7,
+                        "Dresden",
+                        6,
+                        "Ludwigsburg",
+                        6,
+                        "Paris",
+                        5,
+                        "Bremen",
+                        4,
+                        "Breslau",
+                        4,
+                        "Frankfurt",
+                        4,
+                        "London",
+                        4,
+                        "Wien",
+                        4,
+                        "Jerusalem",
+                        3,
+                        "Kiechlinsbergen",
+                        3,
+                        "Köln",
+                        3,
+                        "Lorch <Ostalbkreis>",
+                        3,
+                        "Mainz",
+                        3,
+                        "Marbach am Neckar",
+                        3,
+                        "Meiningen",
+                        3,
+                        "Rudolstadt",
+                        3,
+                        "S.l.",
+                        3,
+                        "Amsterdam",
+                        2,
+                        "Bonn",
+                        2,
+                        "Braunschweig",
+                        2,
+                        "Cleversulzbach",
+                        2,
+                        "Grätz",
+                        2,
+                        "Heidelberg",
+                        2,
+                        "Karlsruhe",
+                        2,
+                        "Kreuznach",
+                        2,
+                        "Lübeck",
+                        2,
+                        "Rom",
+                        2,
+                        "Sankt Petersburg",
+                        2,
+                        "Weißenfels",
+                        2,
+                        "s.l.",
+                        2,
+                        "Altshausen",
+                        1,
+                        "Augsburg",
+                        1,
+                        "Bad Kreuznach",
+                        1,
+                        "Bad Lauchstädt",
+                        1,
+                        "Basel",
+                        1,
+                        "Beuel",
+                        1,
+                        "Billigheim",
+                        1,
+                        "Bonn-Vilich",
+                        1,
+                        "Cambrai",
+                        1,
+                        "Deensen",
+                        1,
+                        "Demmin (Pommern)",
+                        1
+                    ],
+                    "filterLocationType_mv": [
+                        "Weimar␝Entstehungsort",
+                        59,
+                        "Tübingen␝Entstehungsort",
+                        32,
+                        "Berlin␝Entstehungsort",
+                        24,
+                        "Leipzig␝Entstehungsort",
+                        23,
+                        "Leipzig␝Erscheinungsort",
+                        17,
+                        "Leonberg␝Entstehungsort",
+                        15,
+                        "Jena␝Entstehungsort",
+                        13,
+                        "Tübingen␝Erscheinungsort",
+                        9,
+                        "Hamburg␝Erscheinungsort",
+                        6,
+                        "Mannheim␝Erscheinungsort",
+                        6,
+                        "Dresden␝Entstehungsort",
+                        5,
+                        "Berlin␝Erscheinungsort",
+                        4,
+                        "Bremen␝Entstehungsort",
+                        4,
+                        "Frankfurt␝Erscheinungsort",
+                        4,
+                        "Jena␝Erscheinungsort",
+                        4,
+                        "London␝Erscheinungsort",
+                        4,
+                        "Berlin␝Provenienzort",
+                        3,
+                        "Berlin␝Sterbeort",
+                        3,
+                        "Jerusalem␝Provenienzort",
+                        3,
+                        "Kiechlinsbergen␝Provenienzort",
+                        3,
+                        "Ludwigsburg␝Geburtsort",
+                        3,
+                        "Marbach am Neckar␝Geburtsort",
+                        3,
+                        "S.l.␝Erscheinungsort",
+                        3,
+                        "Stuttgart␝Entstehungsort",
+                        3,
+                        "Wien␝Erscheinungsort",
+                        3,
+                        "Amsterdam␝Erscheinungsort",
+                        2,
+                        "Berlin␝Wirkungsort",
+                        2,
+                        "Braunschweig␝Erscheinungsort",
+                        2,
+                        "Breslau␝Entstehungsort",
+                        2,
+                        "Breslau␝Erscheinungsort",
+                        2,
+                        "Grätz␝Erscheinungsort",
+                        2,
+                        "Hamburg␝Sterbeort",
+                        2,
+                        "Jena␝Geburtsort",
+                        2,
+                        "Jena␝Sterbeort",
+                        2,
+                        "Kreuznach␝Erscheinungsort",
+                        2,
+                        "Köln␝Wirkungsort",
+                        2,
+                        "Lorch <Ostalbkreis>␝Geburtsort",
+                        2,
+                        "Ludwigsburg␝Entstehungsort",
+                        2,
+                        "Ludwigsburg␝Sterbeort",
+                        2,
+                        "Lübeck␝Entstehungsort",
+                        2,
+                        "Mainz␝Erscheinungsort",
+                        2,
+                        "Meiningen␝Sterbeort",
+                        2,
+                        "Paris␝Wirkungsort",
+                        2,
+                        "Rom␝Entstehungsort",
+                        2,
+                        "Rudolstadt␝Geburtsort",
+                        2,
+                        "Sankt Petersburg␝Wirkungsort",
+                        2,
+                        "Stuttgart␝Sterbeort",
+                        2,
+                        "Stuttgart␝Wirkungsort",
+                        2,
+                        "Weimar␝Wirkungsort",
+                        2,
+                        "Weißenfels␝Entstehungsort",
+                        2
+                    ],
+                    "Sammlung": [
+                        "COTTA:Briefe",
+                        89,
+                        "A:Schiller, Friedrich von",
+                        80,
+                        "COTTA:Cotta-Archiv (Verlagsproduktion / Stiftung der Stuttgarter Zeitung)",
+                        21,
+                        "J:Gleichen-Rußwurm <Familie> (Familienarchiv)",
+                        19,
+                        "A:Schiller, Friedrich von°Franckh, Louise",
+                        16,
+                        "G:Schiller-Bibliothek I / II (Teilbibliothek des Autors und seiner Familie)",
+                        6,
+                        "A:Richter, Johann Paul Friedrich",
+                        4,
+                        "A:Schiller, Friedrich von/Kopien",
+                        4,
+                        "COTTA:Manuskripte",
+                        4,
+                        "A:Schiller, Friedrich von°Schiller, Charlotte von",
+                        3,
+                        "G:Wolfskehl, Karl (Virtuelle Bibliothek Kiechlinsbergen 1937)",
+                        3,
+                        "G:Wolfskehl, Karl (Virtuelle Rekonstruktion des Buchbesitzes)",
+                        3,
+                        "A:Schiller, Friedrich von°Schiller, Carl von",
+                        2,
+                        "A:Schiller, Friedrich von°Schiller, Johann Caspar",
+                        2,
+                        "A:Silcher, Friedrich",
+                        2,
+                        "A:Wolzogen°Wolzogen, Wilhelm von",
+                        2,
+                        "D:Schiller, Friedrich von",
+                        2,
+                        "J:Mörike, Eduard (Sammlung Fritz Kauffmann)",
+                        2,
+                        "A:Schiller, Friedrich von°Lengefeld, Louise von",
+                        1,
+                        "A:Schiller, Friedrich von°Schiller, Elisabetha Dorothea",
+                        1,
+                        "A:Schiller, Friedrich von°Schiller, Friedrich Ludwig Ernst von",
+                        1,
+                        "A:Stammbücher°Trier, Carl Siegfried",
+                        1,
+                        "G:Jean-Paul-Archiv (Bibliothek Eduard Berend)",
+                        1,
+                        "H:Theaterzettel",
+                        1,
+                        "J:Duttenhofer, Luise (Künstlerischer Teilnachlass)",
+                        1,
+                        "J:Kirsch, Sarah",
+                        1,
+                        "J:Mörike, Eduard (Sammlung Hedwig und Richard Mörike)",
+                        1,
+                        null,
+                        192
+                    ],
+                    "Datenbestand": [
+                        "Handschriften Einzelnachweise",
+                        211,
+                        "Bibliotheksmaterialien",
+                        100,
+                        "Bilder und Objekte",
+                        71,
+                        "Personen",
+                        56,
+                        "Werke",
+                        18,
+                        "Nachlässe und Spezialsammlungen",
+                        1,
+                        "Orte und Sachbegriffe",
+                        1,
+                        null,
+                        0
+                    ],
+                    "Bibliographie": [
+                        null,
+                        458
+                    ],
+                    "filterAuthorityRole_mv": [
+                        "Schiller, Friedrich von (1759-1805)␝Verfasser/Urheber",
+                        142,
+                        "Schiller, Friedrich von (1759-1805)␝Adressat",
+                        118,
+                        "Cotta, Johann Friedrich (1764-1832)␝Verfasser/Urheber",
+                        32,
+                        "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)␝Adressat",
+                        21,
+                        "Unbekannt␝Verfasser/Urheber",
+                        21,
+                        "Schiller, Friedrich von (1759-1805)␝Bestandsbildner/Vorbesitzer",
+                        20,
+                        "Unger, Johann Friedrich Gottlieb (1753-1804)␝Verfasser/Urheber",
+                        20,
+                        "Cotta␝Bestandsbildner/Vorbesitzer",
+                        17,
+                        "Schiller, Elisabetha Dorothea (1732-1802)␝Verfasser/Urheber",
+                        16,
+                        "Schiller, Friedrich von (1759-1805)␝Dargestellte Person allein",
+                        16,
+                        "Franckh, Louise (1766-1836)␝Adressat",
+                        15,
+                        "Michaelis, Mathias (1948-)␝Verfasser/Urheber",
+                        13,
+                        "Körner, Christian Gottfried (1756-1831)␝Adressat",
+                        11,
+                        "Schiller, Charlotte von (1766-1826)␝Bestandsbildner/Vorbesitzer",
+                        11,
+                        "Schiller, Friedrich von (1759-1805)␝Behandelte Person/Körperschaft",
+                        10,
+                        "Crusius, Siegfried Leberecht (1738-1824)␝Verfasser/Urheber",
+                        9,
+                        "Schiller <Familie>␝Bestandsbildner/Vorbesitzer",
+                        8,
+                        "Zumsteeg, Johann Rudolph (1760-1802)␝Komponist",
+                        8,
+                        "Dannecker, Johann Heinrich von (1758-1841)␝Verfasser/Urheber",
+                        7,
+                        "Shakespeare, William (1564-1616)␝Verfasser/Urheber",
+                        7,
+                        "Unbekannt␝Dargestellte Person allein",
+                        7,
+                        "Schiller, Friedrich von (1759-1805)␝Mitwirkender",
+                        6,
+                        "Schiller, Friedrich von (1759-1805)␝Übersetzer",
+                        6,
+                        "Vermehren, Johann Bernhard (1774-1803)␝Verfasser/Urheber",
+                        6,
+                        "Bleeser, Anja (1999-)␝Verfasser/Urheber",
+                        5,
+                        "Gleichen genannt von Rußwurm, Familie : 1732-␝Bestandsbildner/Vorbesitzer",
+                        5,
+                        "Göschen, Georg Joachim (1752-1828)␝Verfasser/Urheber",
+                        5,
+                        "Schiller, Friedrich von (1759-1805)␝Werktitel Person/Körperschaft",
+                        5,
+                        "Gleichen-Russwurm, Alexander von (1865-1947)␝Bestandsbildner/Vorbesitzer",
+                        4,
+                        "Korner, Chris (1968-2024)␝Verfasser/Urheber",
+                        4,
+                        "Körner, Christian Gottfried (1756-1831)␝Verfasser/Urheber",
+                        4,
+                        "Opitz, Christian Wilhelm (1756-1810)␝Verfasser/Urheber",
+                        4,
+                        "Richter, Johann Paul Friedrich (1763-1825)␝Verfasser/Urheber",
+                        4,
+                        "Schiller, Charlotte von (1766-1826)␝Adressat",
+                        4,
+                        "Simanowiz, Ludovike (1759-1827)␝Verfasser/Urheber",
+                        4,
+                        "Unbekannt␝Bestandsbildner/Vorbesitzer",
+                        4,
+                        "Unger, Johann Friedrich Gottlieb (1753-1804)␝Adressat",
+                        4,
+                        "Wilmans, Friedrich (1764-1830)␝Verfasser/Urheber",
+                        4,
+                        "Frank, Bernhard (1770-1836)␝Verfasser/Urheber",
+                        3,
+                        "Gleichen-Russwurm, Emilie von (1804-1872)␝Bestandsbildner/Vorbesitzer",
+                        3,
+                        "Großmann, Thekla Karoline Luise (1859-1934)␝Bestandsbildner/Vorbesitzer",
+                        3,
+                        "Guthrie, Wilh.␝Sonstige Person, Familie und Körperschaft",
+                        3,
+                        "Göpferdt, Johann Christian Gottfried (1755-1814)␝Verfasser/Urheber",
+                        3,
+                        "Göschen, Georg Joachim (1752-1828)␝Adressat",
+                        3,
+                        "Jury, Wilhelm (1763-1829)␝Verfasser/Urheber",
+                        3,
+                        "Kießling-Krieger, Amalie (1862-1941)␝Bestandsbildner/Vorbesitzer",
+                        3,
+                        "Niethammer, Friedrich Immanuel (1766-1848)␝Verfasser/Urheber",
+                        3,
+                        "Schiller, Friedrich von (1759-1805)␝Sonstiger Bezug",
+                        3,
+                        "Schocken, Salman (1877-1959)␝Bestandsbildner/Vorbesitzer",
+                        3,
+                        "Schockenbibliothek␝Bestandsbildner/Vorbesitzer",
+                        3
+                    ],
+                    "filterAuthorityRelation_mv": [
+                        "Schiller, Friedrich von (1759-1805)␝Von",
+                        156,
+                        "Schiller, Friedrich von (1759-1805)␝An",
+                        118,
+                        "Schiller, Friedrich von (1759-1805)␝Über",
+                        35,
+                        "Cotta, Johann Friedrich (1764-1832)␝Von",
+                        32,
+                        "Unbekannt␝Von",
+                        22,
+                        "J. G. Cotta'sche Buchhandlung <Tübingen> (1659-1810)␝An",
+                        21,
+                        "Schiller, Friedrich von (1759-1805)␝Unter",
+                        20,
+                        "Unger, Johann Friedrich Gottlieb (1753-1804)␝Von",
+                        20,
+                        "Cotta␝Unter",
+                        17,
+                        "Schiller, Elisabetha Dorothea (1732-1802)␝Von",
+                        16,
+                        "Franckh, Louise (1766-1836)␝An",
+                        15,
+                        "Michaelis, Mathias (1948-)␝Von",
+                        13,
+                        "Körner, Christian Gottfried (1756-1831)␝An",
+                        11,
+                        "Schiller, Charlotte von (1766-1826)␝Unter",
+                        11,
+                        "Crusius, Siegfried Leberecht (1738-1824)␝Von",
+                        9,
+                        "Zumsteeg, Johann Rudolph (1760-1802)␝Von",
+                        9,
+                        "Schiller <Familie>␝Unter",
+                        8,
+                        "Dannecker, Johann Heinrich von (1758-1841)␝Von",
+                        7,
+                        "Shakespeare, William (1564-1616)␝Von",
+                        7,
+                        "Unbekannt␝Über",
+                        7,
+                        "Vermehren, Johann Bernhard (1774-1803)␝Von",
+                        6,
+                        "Bleeser, Anja (1999-)␝Von",
+                        5,
+                        "Gleichen genannt von Rußwurm, Familie : 1732-␝Unter",
+                        5,
+                        "Göschen, Georg Joachim (1752-1828)␝Von",
+                        5,
+                        "Gleichen-Russwurm, Alexander von (1865-1947)␝Unter",
+                        4,
+                        "Korner, Chris (1968-2024)␝Von",
+                        4,
+                        "Körner, Christian Gottfried (1756-1831)␝Von",
+                        4,
+                        "Opitz, Christian Wilhelm (1756-1810)␝Von",
+                        4,
+                        "Richter, Johann Paul Friedrich (1763-1825)␝Von",
+                        4,
+                        "Schiller, Charlotte von (1766-1826)␝An",
+                        4,
+                        "Simanowiz, Ludovike (1759-1827)␝Von",
+                        4,
+                        "Unbekannt␝Unter",
+                        4,
+                        "Unger, Johann Friedrich Gottlieb (1753-1804)␝An",
+                        4,
+                        "Wilmans, Friedrich (1764-1830)␝Von",
+                        4,
+                        "Franckh, Louise (1766-1836)␝Über",
+                        3,
+                        "Frank, Bernhard (1770-1836)␝Von",
+                        3,
+                        "Gleichen-Russwurm, Emilie von (1804-1872)␝Unter",
+                        3,
+                        "Großmann, Thekla Karoline Luise (1859-1934)␝Unter",
+                        3,
+                        "Guthrie, Wilh.␝Von",
+                        3,
+                        "Göpferdt, Johann Christian Gottfried (1755-1814)␝Von",
+                        3,
+                        "Göschen, Georg Joachim (1752-1828)␝An",
+                        3,
+                        "Jury, Wilhelm (1763-1829)␝Von",
+                        3,
+                        "Kießling-Krieger, Amalie (1862-1941)␝Unter",
+                        3,
+                        "Niethammer, Friedrich Immanuel (1766-1848)␝Von",
+                        3,
+                        "Schocken, Salman (1877-1959)␝Unter",
+                        3,
+                        "Schockenbibliothek␝Unter",
+                        3,
+                        "Sotzmann, Daniel Friedrich (1754-1840)␝Von",
+                        3,
+                        "Stock, Dorothea (1760-1832)␝Von",
+                        3,
+                        "Sydow, Josephine von␝An",
+                        3,
+                        "Tremmel, Jens (1966-)␝Von",
+                        3
+                    ],
+                    "entities": [
+                        "PE00034281",
+                        322,
+                        "PE00063004",
+                        32
+                    ]
+                },
+                "facet_ranges": {
+                    "Zeit": {
+                        "counts": [
+                            "0176-01-01T00:00:00Z",
+                            1,
+                            "0213-01-01T00:00:00Z",
+                            1,
+                            "0250-01-01T00:00:00Z",
+                            1,
+                            "0287-01-01T00:00:00Z",
+                            1,
+                            "0324-01-01T00:00:00Z",
+                            1,
+                            "0361-01-01T00:00:00Z",
+                            1,
+                            "0398-01-01T00:00:00Z",
+                            1,
+                            "0435-01-01T00:00:00Z",
+                            1,
+                            "0472-01-01T00:00:00Z",
+                            1,
+                            "0509-01-01T00:00:00Z",
+                            1,
+                            "0546-01-01T00:00:00Z",
+                            1,
+                            "0583-01-01T00:00:00Z",
+                            1,
+                            "0620-01-01T00:00:00Z",
+                            1,
+                            "0657-01-01T00:00:00Z",
+                            1,
+                            "0694-01-01T00:00:00Z",
+                            1,
+                            "0731-01-01T00:00:00Z",
+                            1,
+                            "0768-01-01T00:00:00Z",
+                            1,
+                            "0805-01-01T00:00:00Z",
+                            1,
+                            "0842-01-01T00:00:00Z",
+                            1,
+                            "0879-01-01T00:00:00Z",
+                            1,
+                            "0916-01-01T00:00:00Z",
+                            1,
+                            "0953-01-01T00:00:00Z",
+                            1,
+                            "0990-01-01T00:00:00Z",
+                            1,
+                            "1027-01-01T00:00:00Z",
+                            1,
+                            "1064-01-01T00:00:00Z",
+                            1,
+                            "1101-01-01T00:00:00Z",
+                            1,
+                            "1138-01-01T00:00:00Z",
+                            1,
+                            "1175-01-01T00:00:00Z",
+                            1,
+                            "1212-01-01T00:00:00Z",
+                            1,
+                            "1249-01-01T00:00:00Z",
+                            1,
+                            "1286-01-01T00:00:00Z",
+                            1,
+                            "1323-01-01T00:00:00Z",
+                            1,
+                            "1360-01-01T00:00:00Z",
+                            1,
+                            "1397-01-01T00:00:00Z",
+                            1,
+                            "1434-01-01T00:00:00Z",
+                            1,
+                            "1471-01-01T00:00:00Z",
+                            1,
+                            "1508-01-01T00:00:00Z",
+                            1,
+                            "1545-01-01T00:00:00Z",
+                            1,
+                            "1582-01-01T00:00:00Z",
+                            1,
+                            "1619-01-01T00:00:00Z",
+                            1,
+                            "1656-01-01T00:00:00Z",
+                            1,
+                            "1693-01-01T00:00:00Z",
+                            2,
+                            "1730-01-01T00:00:00Z",
+                            37,
+                            "1767-01-01T00:00:00Z",
+                            458,
+                            "1804-01-01T00:00:00Z",
+                            114,
+                            "1841-01-01T00:00:00Z",
+                            43,
+                            "1878-01-01T00:00:00Z",
+                            16,
+                            "1915-01-01T00:00:00Z",
+                            9,
+                            "1952-01-01T00:00:00Z",
+                            2,
+                            "1989-01-01T00:00:00Z",
+                            2,
+                            "2026-01-01T00:00:00Z",
+                            0
+                        ],
+                        "gap": "+37YEAR",
+                        "start": "0176-01-01T00:00:00Z",
+                        "end": "2063-01-01T00:00:00Z"
+                    }
+                },
+                "facet_intervals": [],
+                "facet_heatmaps": []
+            },
+            "highlighting": {
+                "BI00009390": [],
+                "BI00015349": {
+                    "display": [
+                        "Zylindersekretär aus dem Besitz von Charlotte \\ueeeeSchiller\\ueeef [Gegenstand]"
+                    ]
+                },
+                "BI00011915": [],
+                "BI00007703": {
+                    "display": [
+                        "Portrait Friedrich \\ueeeeSchiller\\ueeef (?) [Elfenbeinmalerei]"
+                    ]
+                },
+                "BI00009385": [],
+                "BI00009389": [],
+                "BI00009482": [],
+                "BI00009484": [],
+                "BI00009529": [],
+                "BI00018974": [],
+                "HS00888855": {
+                    "display": [
+                        "\\ueeeeSchiller\\ueeef, Johann Caspar: Zubringensinventar [Dokumente]"
+                    ],
+                    "displayAddition2": [
+                        "A:Schiller, Friedrich von°\\ueeeeSchiller\\ueeef, Johann Caspar - [Kryptobestand, Teilnachlass]"
+                    ],
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Johann Caspar (1723-1796) [Dokumentierte Person]"
+                    ]
+                },
+                "BI00015655": {
+                    "display": [
+                        "Becherglas aus dem Besitz von Friedrich \\ueeeeSchiller\\ueeef [Gegenstand]"
+                    ]
+                },
+                "BI00007702": {
+                    "display": [
+                        "Portrait Friedrich \\ueeeeSchiller\\ueeef [Elfenbeinmalerei]"
+                    ]
+                },
+                "AK00359214": {
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805)"
+                    ]
+                },
+                "AK00359215": {
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805)"
+                    ]
+                },
+                "AK00359218": {
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805)"
+                    ]
+                },
+                "AK00278682": {
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805)"
+                    ]
+                },
+                "AK00278894": [],
+                "AK00239067": {
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805)"
+                    ]
+                },
+                "AK00263161": {
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805)"
+                    ]
+                },
+                "AK00263229": {
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805)"
+                    ]
+                },
+                "AK00263456": {
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805)"
+                    ]
+                },
+                "AK00264228": {
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805)"
+                    ]
+                },
+                "AK00264350": {
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805)"
+                    ]
+                },
+                "AK00264504": {
+                    "displayName": [
+                        "\\ueeeeSchiller\\ueeef, Friedrich von (1759-1805)"
+                    ]
+                }
+            }
+        }
+    }
+}

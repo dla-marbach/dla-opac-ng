@@ -1,0 +1,316 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(PE00022301)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0,
+                "params": {
+                    "q": "id:(PE00022301)",
+                    "rows": "1"
+                }
+            },
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "PE00022301",
+                        "display": "Kästner, Erich (1899-1974)",
+                        "categoryEntity_mv": [
+                            "Person"
+                        ],
+                        "categoryIndex_mv": [
+                            "Literarische/r Autor/in im Sinne der Bibliothek",
+                            "Person der Zeitungsausschnittsammlung",
+                            "Bestandsbildner/in im Sinne der Handschriftensammlung",
+                            "Bestandsbildner/in im Sinne der Sammlung Bilder und Objekte"
+                        ],
+                        "classificationNewspaper_comment_mv": [
+                            "Autoren, Kritiker und Übersetzer"
+                        ],
+                        "classificationNewspaper_text_mv": [
+                            "xy"
+                        ],
+                        "country_mv": [
+                            "Deutschland"
+                        ],
+                        "dateCataloged": "1997-06-17",
+                        "dateLifespanEnd": "1974-07-29",
+                        "dateLifespanStart": "1899-02-23",
+                        "dateModified": "2026-10-13",
+                        "dateRetention": "2044",
+                        "displayAddition1": "Schriftsteller, Journalist",
+                        "filterDatePoint_mv": [
+                            "1899-02-23T00:00:00Z",
+                            "1974-07-29T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "[1899-02-23 TO 1974-07-29]"
+                        ],
+                        "filterLocationType_mv": [
+                            "Dresden␝Geburtsort",
+                            "München␝Sterbeort"
+                        ],
+                        "filterLocation_mv": [
+                            "Dresden",
+                            "München"
+                        ],
+                        "filterSource": "Personen",
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "gender": "männlich",
+                        "gnd_id_mv": [
+                            "118559206"
+                        ],
+                        "gnd_type_mv": [
+                            "GND-Nr."
+                        ],
+                        "linkCommonsImage_file_mv": [
+                            "Erich%20K%C3%A4stner%201961.jpg"
+                        ],
+                        "linkCommonsImage_rights_mv": [
+                            "Basch, [...] / Opdracht Anefo | Wikimedia Commons | CC0"
+                        ],
+                        "linkCommonsSignature_file_mv": [
+                            "Erich%20K%C3%A4stner%20Unterschrift.svg"
+                        ],
+                        "linkCommonsSignature_rights_mv": [
+                            "Original: Erich Kästner Vector:  MagentaGreen | Wikimedia Commons | Public domain"
+                        ],
+                        "linkDeutscheBiographie_mv": [
+                            "pnd118559206.html#ndbcontent"
+                        ],
+                        "linkFilmportal_mv": [
+                            "19ed432299ef43b9b3dea16ee6de661c"
+                        ],
+                        "linkWikidata": "Q76546",
+                        "linkWikipedia": "Erich_K%C3%A4stner",
+                        "nameAlternative_name_mv": [
+                            "Kurtz, Melchior",
+                            "Neuner, Robert",
+                            "Foerster, Eberhard",
+                            "Bürger, Berthold",
+                            "Brühl, Hans",
+                            "Flint, Peter",
+                            "Hekubus",
+                            "Pejus",
+                            "Eo Pejus",
+                            "Eo Pelus",
+                            "Ep.",
+                            "Khasanova",
+                            "Fabian, Ernst",
+                            "Kersting, Jost",
+                            "Jennewein, Klaus",
+                            "Klaus und Kläre",
+                            "Leghé, Sebastian",
+                            "Flint, Rose",
+                            "Bänkelsänger Urban",
+                            "Seidelbast, Philipp",
+                            "Leghe, Sebastian",
+                            "Leghe, Sebastian"
+                        ],
+                        "nameAlternative_type_mv": [
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "Pseudonym",
+                            "xx"
+                        ],
+                        "noteExplanatory_text_mv": [
+                            "Kästner war Präsident des Deutschen PEN-Zentrums der Bundesrepublik",
+                            "Das Pseudonym Eberhard Foerster hat Kästner z.T. zusammen mit Eberhard Keindorff für gemeinsam erarbeitete Stücke benutzt",
+                            "Eine umfangreiche Belegexemplar-Sammlung der Werke Kästners (4204 Bände) befindet sich seit 1998 im Deutschen Literaturarchiv Marbach."
+                        ],
+                        "occupation_mv": [
+                            "Schriftsteller",
+                            "Journalist"
+                        ],
+                        "placeBirth": "Dresden",
+                        "placeDeath": "München",
+                        "place_mv": [
+                            "Dresden",
+                            "München"
+                        ],
+                        "reference_text_mv": [
+                            "Kosch <3>",
+                            "E. Lutz-Kopp: Erich-Kästner-Verfilmungen, 1993",
+                            "Kussmaul",
+                            "Luiselotte Enderle: Erich Kästner",
+                            "Neuhaus, Stefan: Das verschwiegene Werk. 2000"
+                        ],
+                        "relation_comment_mv": [
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Lebensgefährtin",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Mutter",
+                            "Kind",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Leitender Redakteur des Feuilletons",
+                            "␣",
+                            "␣"
+                        ],
+                        "relation_id_mv": [
+                            "␣",
+                            "PE00143318",
+                            "PE00155689",
+                            "PE00060754",
+                            "PE00286659",
+                            "PE00069137",
+                            "PE00063525",
+                            "PE00078746",
+                            "PE00128241",
+                            "PE00581840",
+                            "PE00052810",
+                            "PE00164350",
+                            "TH00000904",
+                            "PE00078644",
+                            "PE00156003",
+                            "PE00074990",
+                            "PE00082450",
+                            "PE00089569",
+                            "TH00001621",
+                            "TH00000454",
+                            "KS00014649",
+                            "TH00729476",
+                            "TH00002906"
+                        ],
+                        "relation_text_mv": [
+                            "Dr. phil.",
+                            "Beisler, Karl (1900-1972)",
+                            "Buhre, Werner (1901-1980)",
+                            "Enderle, Luiselotte (1908-1991)",
+                            "Finkenstädt, Ruth (1920-2014)",
+                            "Geiger, Peter Paul",
+                            "Klipstein, Christian (1914-1972)",
+                            "Mussakoff, Wladimir",
+                            "Pleyer, Barbara (1918-2002)",
+                            "Schmalfuß, Hannes (1893-1967)",
+                            "Veith, Helga (1925-)",
+                            "Zacharias, Paul (-1961)",
+                            "Journalist",
+                            "Moeller, Paul E.",
+                            "Julius, Ilse (1902-1964)",
+                            "Kästner, Ida (1871-1951)",
+                            "Kästner, Thomas (1957-)",
+                            "Widmann, Hugo",
+                            "Schriftsteller",
+                            "Dresden",
+                            "Die Neue Zeitung <München> (1945-1955)",
+                            "Erich-Kästner-Preis für Literatur",
+                            "München"
+                        ],
+                        "relation_type_mv": [
+                            "Akad. Grad",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Bekanntschaft mit",
+                            "Beruf/Funktion",
+                            "Beziehung beruflich",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Beziehung familiär",
+                            "Charakt. Beruf",
+                            "Geburtsort",
+                            "Relation",
+                            "Relation",
+                            "Sterbeort"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 0.5,
+                        "searchDate_mv": [
+                            "23.02.1899",
+                            "1899-02-23",
+                            "29.07.1974",
+                            "1974-07-29"
+                        ],
+                        "searchEntityScore": 15460,
+                        "searchEntity_id_mv": [
+                            "PE00022301"
+                        ],
+                        "searchSuggestPayload": "PE00022301␝Kästner, Erich (1899-1974)",
+                        "searchSuggestTerm_mv": [
+                            "Kästner, Erich (1899-1974)",
+                            "Kurtz, Melchior",
+                            "Neuner, Robert",
+                            "Foerster, Eberhard",
+                            "Bürger, Berthold",
+                            "Brühl, Hans",
+                            "Flint, Peter",
+                            "Hekubus",
+                            "Pejus",
+                            "Eo Pejus",
+                            "Eo Pelus",
+                            "Ep.",
+                            "Khasanova",
+                            "Fabian, Ernst",
+                            "Kersting, Jost",
+                            "Jennewein, Klaus",
+                            "Klaus und Kläre",
+                            "Leghé, Sebastian",
+                            "Flint, Rose",
+                            "Bänkelsänger Urban",
+                            "Seidelbast, Philipp",
+                            "Leghe, Sebastian",
+                            "Leghe, Sebastian"
+                        ],
+                        "source": "PE",
+                        "statusEditing": "individualisiert",
+                        "title": "Kästner, Erich",
+                        "url": "https://www.dla-marbach.de/find/opac/id/PE00022301"
+                    }
+                ]
+            }
+        }
+    }
+}

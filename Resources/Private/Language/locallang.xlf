@@ -1334,6 +1334,60 @@
             <trans-unit id="mediaplayer.chapters">
                 <source>Chapters</source>
             </trans-unit>
+            <trans-unit id="mediaplayer.tracklist">
+                <source>Track list</source>
+            </trans-unit>
+            <trans-unit id="mediaplayer.track.number">
+                <source>No.</source>
+            </trans-unit>
+            <trans-unit id="mediaplayer.track.artist">
+                <source>Artist</source>
+            </trans-unit>
+            <trans-unit id="mediaplayer.track.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="mediaplayer.track.duration">
+                <source>Duration</source>
+            </trans-unit>
+            <trans-unit id="slideshow.label">
+                <source>Image gallery</source>
+            </trans-unit>
+            <trans-unit id="slideshow.image">
+                <source>Image %s of %s</source>
+            </trans-unit>
+            <trans-unit id="teaser.jump">
+                <source>To the digital object: %s</source>
+            </trans-unit>
+            <trans-unit id="teaser.video.one">
+                <source>Video</source>
+            </trans-unit>
+            <trans-unit id="teaser.video.many">
+                <source>%s videos</source>
+            </trans-unit>
+            <trans-unit id="teaser.audio.one">
+                <source>Audio file</source>
+            </trans-unit>
+            <trans-unit id="teaser.audio.many">
+                <source>%s audio files</source>
+            </trans-unit>
+            <trans-unit id="teaser.playlist.one">
+                <source>Track list</source>
+            </trans-unit>
+            <trans-unit id="teaser.playlist.many">
+                <source>%s track lists</source>
+            </trans-unit>
+            <trans-unit id="teaser.image.one">
+                <source>Image</source>
+            </trans-unit>
+            <trans-unit id="teaser.image.many">
+                <source>%s images</source>
+            </trans-unit>
+            <trans-unit id="teaser.link.one">
+                <source>Link</source>
+            </trans-unit>
+            <trans-unit id="teaser.link.many">
+                <source>%s links</source>
+            </trans-unit>
             <trans-unit id="maxRenderedRelationsNote">
                 <source>For technical reasons, only the first %s relations are shown.</source>
             </trans-unit>

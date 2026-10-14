@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchCollectionCreator_id_mv:PE00000144",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 26995,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00022713",
+                        "display": "A:Koselleck, Reinhart - [Bestand, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BF00026423",
+                        "display": "G:Koselleck, Reinhart (Historisch-politische Teilbibliothek und Sonderdruck-Sammlung) - [Geschlossener Bestand der Bibliothek, Nachlass, Gelehrtenbibliothek]",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ]
+                    },
+                    {
+                        "id": "BF00036846",
+                        "display": "C:Koselleck, Reinhart - [Provenienzbestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BF00036102",
+                        "display": "G:Koselleck, Reinhart (Historisch-politische Teilbibliothek und Sonderdruck-Sammlung)/Teilbestand Foto Marburg - [Standortkonvolut, Nachlass, Gelehrtenbibliothek]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BF00031484",
+                        "display": "A:Koselleck, Reinhart/Geschichtliche Grundbegriffe - [Standortkonvolut, Nachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,312 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "q": "id:(AK01795765)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "responseHeader": {
+                "status": 0,
+                "QTime": 0,
+                "params": {
+                    "q": "id:(AK01795765)",
+                    "rows": "1"
+                }
+            },
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "searchSuggestPayload": "AK01795765␝Kästner, Erich (1899-1974). Das doppelte Lottchen (Kinderbuch : 1949)",
+                        "noteExplanatory_type_mv": [
+                            "Redaktionelle Bemerkung",
+                            "Geschichte des Werks"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "category": "Werktitel",
+                        "website_description_mv": [
+                            "Wikipedia; Stand:17.10.2017"
+                        ],
+                        "filterAuthorityRelation_mv": [
+                            "Kästner, Erich (1899-1974)␝Von"
+                        ],
+                        "linkCommonsImage_file_mv": [
+                            "Book%20cover%20of%20%22Das%20doppelte%20Lottchen%22.jpg"
+                        ],
+                        "creator_id_mv": [
+                            "PE00022301"
+                        ],
+                        "searchSuggestTerm_mv": [
+                            "Kästner, Erich (1899-1974). Das doppelte Lottchen (Kinderbuch : 1949)",
+                            "Kästner, Erich (1899-1974): Lottie and Lisa",
+                            "Kästner, Erich (1899-1974): Dvojnata Lota",
+                            "Kästner, Erich (1899-1974): Binjaket",
+                            "Kästner, Erich (1899-1974): Bliznecy",
+                            "Kästner, Erich (1899-1974): Deux pour une",
+                            "Kästner, Erich (1899-1974): Carlottina e Carlottina",
+                            "Kästner, Erich (1899-1974): Mania czy Ania",
+                            "Kästner, Erich (1899-1974): A két Lotti",
+                            "Kästner, Erich (1899-1974): Dubbel-Lotta",
+                            "Kästner, Erich (1899-1974): Dvostruke Lotte",
+                            "Kästner, Erich (1899-1974): Dvynukes",
+                            "Kästner, Erich (1899-1974): Lise og Lotte, eller omvendt",
+                            "Kästner, Erich (1899-1974): Das doppelte Lottchen : ein Roman für Kinder"
+                        ],
+                        "linkWikidata": "Q468100",
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "searchDate_mv": [
+                            "1949"
+                        ],
+                        "dateOrigin": "1949",
+                        "source": "AK",
+                        "searchName_mv": [
+                            "Kästner, Erich"
+                        ],
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "titleOther_type_mv": [
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n",
+                            "370n",
+                            "tmzu"
+                        ],
+                        "searchEntityScore": 50,
+                        "gnd_id_mv": [
+                            "4707446-2"
+                        ],
+                        "titleOther_text_mv": [
+                            "Lottie and Lisa",
+                            "Dvojnata Lota",
+                            "Binjaket",
+                            "Bliznecy",
+                            "Deux pour une",
+                            "Carlottina e Carlottina",
+                            "Mania czy Ania",
+                            "A két Lotti",
+                            "Dubbel-Lotta",
+                            "Dvostruke Lotte",
+                            "Dvynukes",
+                            "Lise og Lotte, eller omvendt",
+                            "Das doppelte Lottchen : ein Roman für Kinder"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK01795765",
+                        "creator_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "vendor_id_mv": [
+                            "4707446-2"
+                        ],
+                        "usageRestrictionNote": "nicht benutzbar\nnur bibliographischer Nachweis, nicht im Bestand des DLA!",
+                        "searchEntity_id_mv": [
+                            "PE00022301",
+                            "AK01795765"
+                        ],
+                        "filterAuthority_mv": [
+                            "Kästner, Erich (1899-1974)"
+                        ],
+                        "dateModified": "2023-12-12",
+                        "reference_text_mv": [
+                            "Kindler neu"
+                        ],
+                        "reference_type_mv": [
+                            "positiv"
+                        ],
+                        "filterSource": "Werke",
+                        "relation_id_mv": [
+                            "AK00060917",
+                            "AK01588572",
+                            "AK01796087",
+                            "AK00214396",
+                            "AK01796098",
+                            "AK01851393",
+                            "AK01796107",
+                            "AK01794911",
+                            "AK01588571",
+                            "AK01796109",
+                            "AK01794912",
+                            "AK01796086",
+                            "AK01797031",
+                            "AK01797032",
+                            "␣"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Kästner, Erich (1899-1974)␝Verfasser/Urheber"
+                        ],
+                        "searchVariant_mv": [
+                            "Kurtz, Melchior",
+                            "Neuner, Robert",
+                            "Foerster, Eberhard",
+                            "Bürger, Berthold",
+                            "Brühl, Hans",
+                            "Flint, Peter",
+                            "Hekubus",
+                            "Pejus",
+                            "Eo Pejus",
+                            "Eo Pelus",
+                            "Ep.",
+                            "Khasanova",
+                            "Fabian, Ernst",
+                            "Kersting, Jost",
+                            "Jennewein, Klaus",
+                            "Klaus und Kläre",
+                            "Leghé, Sebastian",
+                            "Flint, Rose",
+                            "Bänkelsänger Urban",
+                            "Seidelbast, Philipp",
+                            "Leghe, Sebastian",
+                            "Leghe, Sebastian",
+                            "Lottie and Lisa",
+                            "Dvojnata Lota",
+                            "Binjaket",
+                            "Bliznecy",
+                            "Deux pour une",
+                            "Carlottina e Carlottina",
+                            "Mania czy Ania",
+                            "A két Lotti",
+                            "Dubbel-Lotta",
+                            "Dvostruke Lotte",
+                            "Dvynukes",
+                            "Lise og Lotte, eller omvendt",
+                            "Das doppelte Lottchen : ein Roman für Kinder"
+                        ],
+                        "dateCataloged": "2022-11-30",
+                        "display": "Kästner, Erich (1899-1974). Das doppelte Lottchen (Kinderbuch : 1949)",
+                        "filterDatePoint_mv": [
+                            "1949-01-01T00:00:00Z"
+                        ],
+                        "filterType_mv": [
+                            "Normdaten"
+                        ],
+                        "filterFormContent_mv": [
+                            "Kinderliteratur"
+                        ],
+                        "displayAddition1": "1949",
+                        "searchNameBy_mv": [
+                            "Kästner, Erich"
+                        ],
+                        "relation_text_mv": [
+                            "Baky, Josef von (1902-1966). Das doppelte Lottchen (Film : 1950)",
+                            "Naso, Lancelot von (1976-). Das doppelte Lottchen (Film : 2017)",
+                            "Schaack, Michael (1957-). Das doppelte Lottchen (Film : 2007)",
+                            "Swift, David (1919-2001). The parent trap (Film : 1961)",
+                            "Vilsmaier, Joseph (1939-). Charlie & Louise - das doppelte Lottchen (Film : 1994)",
+                            "Kreitz, Isabel (1967-). Das doppelte Lottchen (Comic : 2016)",
+                            "Gmür, Hans (1927-2004). Das doppelte Lottchen (Hörspiel : 1982)",
+                            "Scheerbarth, Ruth (1927-). Das doppelte Lottchen (Hörspiel : 1974)",
+                            "Windeck, Corinna. Das doppelte Lottchen (Hörspiel : 2017)",
+                            "Gmür, Hans (1927-2004). Das doppelte Lottchen (Hörspielmanuskript : 1982)",
+                            "Scheerbarth, Ruth (1927-). Das doppelte Lottchen (Hörspielmanuskript : 1974)",
+                            "Windeck, Corinna. Das doppelte Lottchen (Hörspielmanuskript : 2017)",
+                            "Schubring, Marc (1968-). Double Trouble (Musical : 2009)",
+                            "Bock, Henning. Das doppelte Lottchen (Drama : 2002)",
+                            "Jugendbuch"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "titleMain_text": "Das doppelte Lottchen",
+                        "personBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "id": "AK01795765",
+                        "noteExplanatory_text_mv": [
+                            "Werktitel als Wissensraum",
+                            "Jugendbuch über die Zwillinge Lotte und Luise, die sich zufällig in einem Ferienlager begegnen und herausfinden, dass sie nach der Geburt getrennt wurden. Mit vertauschten Rollen fahren sie zum jeweiligen Elternteil zurück und schaffen es, die Familie wieder zu vereinen. Der Roman wurde bereits vor der Veröffentlichung als Drehbuch u.d.T. Das große Geheimnis verfasst. Wurde vielfach verfilmt."
+                        ],
+                        "searchBoost": 0.6,
+                        "displayName": "Kästner, Erich (1899-1974)",
+                        "creator_display_mv": [
+                            "Kästner, Erich (1899-1974)"
+                        ],
+                        "vendor_type_mv": [
+                            "GND (Werktitel)"
+                        ],
+                        "personBy_creator_mv": [
+                            "creator"
+                        ],
+                        "filterRecent": "2022-11-30",
+                        "linkCommonsImage_rights_mv": [
+                            "␣"
+                        ],
+                        "genreOther_mv": [
+                            "Kinderbuch"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "website_url_mv": [
+                            "https://de.wikipedia.org/w/index.php?title=Das_doppelte_Lottchen&oldid=207093483"
+                        ],
+                        "categorySub": "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                        "relation_type_mv": [
+                            "Bearbeitet als Film",
+                            "Bearbeitet als Film",
+                            "Bearbeitet als Film",
+                            "Bearbeitet als Film",
+                            "Bearbeitet als Film",
+                            "Bearbeitet als Graphic Novel",
+                            "Bearbeitet als Hörspiel",
+                            "Bearbeitet als Hörspiel",
+                            "Bearbeitet als Hörspiel",
+                            "Bearbeitet als Hörspielmanuskript",
+                            "Bearbeitet als Hörspielmanuskript",
+                            "Bearbeitet als Hörspielmanuskript",
+                            "Bearbeitet als",
+                            "Bühnenbearbeitung als",
+                            "Oberbegriff"
+                        ],
+                        "title": "Kästner, Erich <1899-1974>. Das doppelte Lottchen (Kinderbuch : 1949)",
+                        "titleOther_language_mv": [
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "␣",
+                            "Deutsch"
+                        ],
+                        "classificationSubjectOther_mv": [
+                            "12.2p"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00022301"
+                        ],
+                        "personBy_display_mv": [
+                            "Kästner, Erich (1899-1974)"
+                        ],
+                        "statusCataloging": "f-fehlt,i-fehlt",
+                        "filterDateRange_mv": [
+                            "1949"
+                        ],
+                        "dateOriginComment_mv": [
+                            "1949"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

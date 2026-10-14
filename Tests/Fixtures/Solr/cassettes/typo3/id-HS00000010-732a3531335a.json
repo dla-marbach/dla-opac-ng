@@ -1,0 +1,236 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:HS00000010",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.70128,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Uhland, Emilie an Meyer, Marie</dc:title>\n  <dc:creator>Uhland, Emilie (1799-1881)</dc:creator>\n  <dc:contributor>Meyer, Marie</dc:contributor>\n  <dc:type>Brief</dc:type>\n  <dc:type>Handschrift</dc:type>\n  <dc:date>1865-07-02</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>2 Bl.</dc:format>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00000009</dc:source>\n  <dc:identifier>A:Uhland, Ludwig</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/HS00000010</dc:identifier>\n  <dc:identifier>HS00000010</dc:identifier>\n</oai_dc:dc>",
+                        "default": [
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Uhland, Emilie an Meyer, Marie</dc:title>\n  <dc:creator>Uhland, Emilie (1799-1881)</dc:creator>\n  <dc:contributor>Meyer, Marie</dc:contributor>\n  <dc:type>Brief</dc:type>\n  <dc:type>Handschrift</dc:type>\n  <dc:date>1865-07-02</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>2 Bl.</dc:format>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00000009</dc:source>\n  <dc:identifier>A:Uhland, Ludwig</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/HS00000010</dc:identifier>\n  <dc:identifier>HS00000010</dc:identifier>\n</oai_dc:dc>",
+                            "PE00039120",
+                            "PE00051979",
+                            "[Verfasser/in]",
+                            "HS000000109",
+                            "Uhland, Emilie an Meyer, Marie",
+                            "Uhland, Emilie (1799-1881)␝Von",
+                            "Meyer, Marie␝An",
+                            "MEYER, MARIE",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Uhland, Emilie an Meyer, Marie</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Uhland, Emilie (1799-1881)</namePart>\n    <nameIdentifier type=\"gnd\">117268194</nameIdentifier>\n    <namePart type=\"date\">1799-05-15 — 1881-06-05</namePart>\n    <role>\n      <roleTerm type=\"text\">[Verfasser/in]</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Meyer, Marie</namePart>\n    <role>\n      <roleTerm type=\"text\">[Adressat/in]</roleTerm>\n    </role>\n  </name>\n  <typeOfResource manuscript=\"yes\">Handschrift</typeOfResource>\n  <genre>Brief</genre>\n  <originInfo eventType=\"manufacture\">\n    <place>\n      <placeTerm type=\"text\">Tübingen</placeTerm>\n    </place>\n    <dateCreated point=\"start\" encoding=\"iso8601\">1865-07-02</dateCreated>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <extent>2 Bl.</extent>\n  </physicalDescription>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00000009</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>A:Uhland, Ludwig</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">1998-12-07</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2016-04-05</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS00000010</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Briefe anderer",
+                            "benutzbar",
+                            "HS",
+                            "Deutsch",
+                            "02.07.1865",
+                            "1865-07-02",
+                            "Tübingen",
+                            "A:Uhland, Ludwig",
+                            "Meyer, Marie",
+                            "Deutsch␝Original",
+                            "Am Standort",
+                            "Briefe",
+                            "Uhland, Ludwig (1787-1862)",
+                            "BF00000009",
+                            "https://www.dla-marbach.de/find/opac/id/HS00000010",
+                            "Benutzung nur bedingt möglich!\nNur mit Einverständnis der beteiligten Personen ausleihbar!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                            "PE00051974",
+                            "PE00051979",
+                            "Meyer, Marie",
+                            "Uhland, Emilie (1799-1881) [Verfasser/in]; Meyer, Marie [Adressat/in]",
+                            "Handschriften Einzelnachweise",
+                            "Tübingen",
+                            "false",
+                            "Uhland, Emilie (1799-1881)␝Verfasser/Urheber",
+                            "Meyer, Marie␝Adressat",
+                            "UHLAND, EMILIE",
+                            "1998-12-07",
+                            "A:Uhland, Ludwig - [Bestand, Teilnachlass]",
+                            "1.0.0",
+                            "1865-07-02T00:00:00Z",
+                            "Handschriften",
+                            "Brief",
+                            "02.07.1865",
+                            "Uhland, Emilie",
+                            "Uhland, Emilie (1799-1881)",
+                            "Meyer, Marie",
+                            "Deutsch",
+                            "Tübingen␝Entstehungsort",
+                            "HS00000010",
+                            "HS.1998.0111.00005",
+                            "Vischer, Emilie Auguste",
+                            "Uhland, Emma",
+                            "Vischer, Emilie",
+                            "Uhland, Emilie Auguste",
+                            "1",
+                            "2016-04-05",
+                            "BE00000023",
+                            "Uhland, Emilie an Meyer, Marie [Briefe]",
+                            "1998-12-07",
+                            "Uhland, Emilie",
+                            "Meyer, Marie",
+                            "A:Uhland, Ludwig - [Bestand, Teilnachlass]",
+                            "Handschrift",
+                            "TY  - GEN\nA2  - Meyer, Marie\nAN  - HS.1998.0111.00005\nAU  - Uhland, Emilie\nCN  - HS000000109\nDA  - 1865/07/02\nDB  - A:Uhland, Ludwig\nID  - HS00000010\nLA  - Deutsch\nM3  - Brief\nN1  - Entstehungsort: Tübingen\nN1  - Umfang: 2 Bl.\nST  - Uhland, Emilie an Meyer, Marie\nTI  - Uhland, Emilie an Meyer, Marie [Briefe]\nUR  - https://www.dla-marbach.de/find/opac/id/HS00000010/\nER  -",
+                            "1865-07-02",
+                            "2 Bl.",
+                            "[Adressat/in]",
+                            "PE00051974",
+                            "Uhland, Emilie (1799-1881)",
+                            "1865-07-02",
+                            "BE00000023"
+                        ],
+                        "searchCollectionCreator_id_mv": [
+                            "PE00039120"
+                        ],
+                        "personTo_id_mv": [
+                            "PE00051979"
+                        ],
+                        "personBy_role_mv": [
+                            "[Verfasser/in]"
+                        ],
+                        "mediaNumber": "HS000000109",
+                        "title": "Uhland, Emilie an Meyer, Marie",
+                        "filterAuthorityRelation_mv": [
+                            "Uhland, Emilie (1799-1881)␝Von",
+                            "Meyer, Marie␝An"
+                        ],
+                        "sortingKeySub": "MEYER, MARIE",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Uhland, Emilie an Meyer, Marie</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Uhland, Emilie (1799-1881)</namePart>\n    <nameIdentifier type=\"gnd\">117268194</nameIdentifier>\n    <namePart type=\"date\">1799-05-15 — 1881-06-05</namePart>\n    <role>\n      <roleTerm type=\"text\">[Verfasser/in]</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Meyer, Marie</namePart>\n    <role>\n      <roleTerm type=\"text\">[Adressat/in]</roleTerm>\n    </role>\n  </name>\n  <typeOfResource manuscript=\"yes\">Handschrift</typeOfResource>\n  <genre>Brief</genre>\n  <originInfo eventType=\"manufacture\">\n    <place>\n      <placeTerm type=\"text\">Tübingen</placeTerm>\n    </place>\n    <dateCreated point=\"start\" encoding=\"iso8601\">1865-07-02</dateCreated>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <extent>2 Bl.</extent>\n  </physicalDescription>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00000009</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>A:Uhland, Ludwig</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">1998-12-07</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2016-04-05</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS00000010</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "category": "Briefe anderer",
+                        "usageRestriction": "benutzbar",
+                        "source": "HS",
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "searchDate_mv": [
+                            "02.07.1865",
+                            "1865-07-02"
+                        ],
+                        "filterLocation_mv": [
+                            "Tübingen"
+                        ],
+                        "filterCollection_mv": [
+                            "A:Uhland, Ludwig"
+                        ],
+                        "searchNameTo_mv": [
+                            "Meyer, Marie"
+                        ],
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "statusLoan": "Am Standort",
+                        "genre": "Briefe",
+                        "searchCollectionCreator_display_mv": [
+                            "Uhland, Ludwig (1787-1862)"
+                        ],
+                        "collection_id_mv": [
+                            "BF00000009"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/HS00000010",
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nNur mit Einverständnis der beteiligten Personen ausleihbar!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "searchEntity_id_mv": [
+                            "PE00051974",
+                            "PE00051979"
+                        ],
+                        "personTo_display_mv": [
+                            "Meyer, Marie"
+                        ],
+                        "displayName": "Uhland, Emilie (1799-1881) [Verfasser/in]; Meyer, Marie [Adressat/in]",
+                        "filterSource": "Handschriften Einzelnachweise",
+                        "place_mv": [
+                            "Tübingen"
+                        ],
+                        "confidential": false,
+                        "filterAuthorityRole_mv": [
+                            "Uhland, Emilie (1799-1881)␝Verfasser/Urheber",
+                            "Meyer, Marie␝Adressat"
+                        ],
+                        "sortingKey": "UHLAND, EMILIE",
+                        "dateCataloged": "1998-12-07",
+                        "displayAddition2": "A:Uhland, Ludwig - [Bestand, Teilnachlass]",
+                        "schemaVersion": "1.0.0",
+                        "filterDatePoint_mv": [
+                            "1865-07-02T00:00:00Z"
+                        ],
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "filterFormContent_mv": [
+                            "Brief"
+                        ],
+                        "displayAddition1": "02.07.1865",
+                        "searchNameBy_mv": [
+                            "Uhland, Emilie"
+                        ],
+                        "filterAuthority_mv": [
+                            "Uhland, Emilie (1799-1881)",
+                            "Meyer, Marie"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "filterLocationType_mv": [
+                            "Tübingen␝Entstehungsort"
+                        ],
+                        "id": "HS00000010",
+                        "accessionNumber": "HS.1998.0111.00005",
+                        "searchVariant_mv": [
+                            "Vischer, Emilie Auguste",
+                            "Uhland, Emma",
+                            "Vischer, Emilie",
+                            "Uhland, Emilie Auguste"
+                        ],
+                        "searchBoost": 1,
+                        "dateModified": "2016-04-05",
+                        "accession_id": "BE00000023",
+                        "display": "Uhland, Emilie an Meyer, Marie [Briefe]",
+                        "filterRecent": "1998-12-07",
+                        "searchName_mv": [
+                            "Uhland, Emilie",
+                            "Meyer, Marie"
+                        ],
+                        "collection_display_mv": [
+                            "A:Uhland, Ludwig - [Bestand, Teilnachlass]"
+                        ],
+                        "categorySub": "Handschrift",
+                        "exportRIS": "TY  - GEN\nA2  - Meyer, Marie\nAN  - HS.1998.0111.00005\nAU  - Uhland, Emilie\nCN  - HS000000109\nDA  - 1865/07/02\nDB  - A:Uhland, Ludwig\nID  - HS00000010\nLA  - Deutsch\nM3  - Brief\nN1  - Entstehungsort: Tübingen\nN1  - Umfang: 2 Bl.\nST  - Uhland, Emilie an Meyer, Marie\nTI  - Uhland, Emilie an Meyer, Marie [Briefe]\nUR  - https://www.dla-marbach.de/find/opac/id/HS00000010/\nER  -",
+                        "dateOriginStart": "1865-07-02",
+                        "extent": "2 Bl.",
+                        "personTo_role_mv": [
+                            "[Adressat/in]"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00051974"
+                        ],
+                        "personBy_display_mv": [
+                            "Uhland, Emilie (1799-1881)"
+                        ],
+                        "filterDateRange_mv": [
+                            "1865-07-02"
+                        ],
+                        "accession_display": "BE00000023",
+                        "score": 13.70128
+                    }
+                ]
+            }
+        }
+    }
+}

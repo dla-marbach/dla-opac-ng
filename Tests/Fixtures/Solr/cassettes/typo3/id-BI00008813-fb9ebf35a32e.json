@@ -1,0 +1,278 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:BI00008813",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.70128,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BI00008813",
+                        "default": [
+                            "BI00008813",
+                            "Portrait Franz Böhm [Photographie]",
+                            "HS.2005.0040",
+                            "BE00003539",
+                            "BE00003539",
+                            "Einzelobjekt",
+                            "Photographie",
+                            "false",
+                            "2010-10-01",
+                            "2012-07-26",
+                            "1919-1919",
+                            "Vermutlich 1919",
+                            "campus",
+                            "D20120709-104",
+                            "jpg",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20120709%2fD20120709-104.jpg/full/full/0/default.jpg?media_access=campus",
+                            "MM01496703",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20120709%2fD20120709-104.jpg/full/!480,480/0/default.jpg?media_access=campus",
+                            " 13.6",
+                            "  8.5",
+                            "Vermutlich 1919",
+                            "Inventarnummer: B 2009.0198",
+                            "Miconi-Rocchi, D...; Huch, Ricarda (1864-1947)",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Portrait Franz Böhm [Photographie]</dc:title>\n  <dc:creator>Miconi-Rocchi, D...</dc:creator>\n  <dc:creator>Huch, Ricarda (1864-1947)</dc:creator>\n  <dc:type>Fotografie</dc:type>\n  <dc:date>1919-1919</dc:date>\n  <dc:format> 13.6 x   8.5</dc:format>\n  <dc:format>Photopostkarte (Rückseite mit Postkartenaufdruck)</dc:format>\n  <dc:format>Silberspiegel, insbesondere in unterer Bildhälfte</dc:format>\n  <dc:description>Rückseite mit Stempel des Photographen, ferner mit handschriftlicher Widmung Ricarda Huchs zum neuen Jahr 1920: &quot;Per la &apos;casa Ceconi&apos; coi miglioni auguri per il 1920.&quot;</dc:description>\n  <dc:subject>Böhm, Franz (1895-1977)</dc:subject>\n  <dc:identifier>B 2009.0198</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20120709%2fD20120709-104.jpg/full/full/0/default.jpg?media_access=campus</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BI00008813</dc:identifier>\n  <dc:identifier>BI00008813</dc:identifier>\n</oai_dc:dc>",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Portrait Franz Böhm [Photographie]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Miconi-Rocchi, D...</namePart>\n    <role>\n      <roleTerm type=\"text\">Urheber/in</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Huch, Ricarda (1864-1947)</namePart>\n    <nameIdentifier type=\"gnd\">118554190</nameIdentifier>\n    <namePart type=\"date\">1864-07-18 — 1947-11-17</namePart>\n    <role>\n      <roleTerm type=\"text\">Sonstige/r Urheber/in</roleTerm>\n    </role>\n  </name>\n  <genre>Fotografie</genre>\n  <originInfo eventType=\"production\">\n    <dateCreated>1919-1919</dateCreated>\n  </originInfo>\n  <physicalDescription>\n    <form type=\"format\"> 13.6 x   8.5</form>\n    <form type=\"material\">Photopostkarte (Rückseite mit Postkartenaufdruck)</form>\n    <note type=\"physical description\">Silberspiegel, insbesondere in unterer Bildhälfte</note>\n  </physicalDescription>\n  <note type=\"description\">Rückseite mit Stempel des Photographen, ferner mit handschriftlicher Widmung Ricarda Huchs zum neuen Jahr 1920: &quot;Per la &apos;casa Ceconi&apos; coi miglioni auguri per il 1920.&quot;</note>\n  <subject>\n    <topic>Böhm, Franz (1895-1977)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Böhm, Franz (1895-1977)</namePart>\n    </name>\n  </subject>\n  <identifier type=\"inventory\">B 2009.0198</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <url access=\"object in context\">https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20120709%2fD20120709-104.jpg/full/full/0/default.jpg?media_access=campus</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2010-10-01</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2012-07-26</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BI00008813</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "TY  - GEN\nA2  - Huch, Ricarda\nA2  - Böhm, Franz\nAN  - HS.2005.0040\nAU  - Miconi-Rocchi, D...\nCN  - BI000088135\nDA  - 1919\nID  - BI00008813\nKW  - Böhm, Franz (1895-1977)\nLB  - Rückseite mit Stempel des Photographen, ferner mit handschriftlicher Widmung Ricarda Huchs zum neuen Jahr 1920: \"Per la 'casa Ceconi' coi miglioni auguri per il 1920.\"\nM1  - B 2009.0198\nM3  - Fotografie\nN1  - Technik: Photopostkarte (Rückseite mit Postkartenaufdruck)\nN1  - Maße:  13.6 x   8.5\nN1  - Erhaltungszustand: Silberspiegel, insbesondere in unterer Bildhälfte\nTI  - Portrait Franz Böhm [Photographie]\nUR  - https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20120709%2fD20120709-104.jpg/full/full/0/default.jpg?media_access=campus\nUR  - https://www.dla-marbach.de/find/opac/id/BI00008813/\nER  -",
+                            "Miconi-Rocchi, D...␝Von",
+                            "Huch, Ricarda (1864-1947)␝Von",
+                            "Böhm, Franz (1895-1977)␝Über",
+                            "Miconi-Rocchi, D...␝Verfasser/Urheber",
+                            "Huch, Ricarda (1864-1947)␝Widmungsschreiber",
+                            "Böhm, Franz (1895-1977)␝Dargestellte Person allein",
+                            "Miconi-Rocchi, D...",
+                            "Huch, Ricarda (1864-1947)",
+                            "Böhm, Franz (1895-1977)",
+                            "1919-01-01T00:00:00Z",
+                            "1919",
+                            "true",
+                            "Fotografie",
+                            "2010-10-01",
+                            "Bilder und Objekte",
+                            "Böhm, Franz (1895-1977)",
+                            "Bilder und Objekte",
+                            "Rückseite mit Stempel des Photographen, ferner mit handschriftlicher Widmung Ricarda Huchs zum neuen Jahr 1920: \"Per la 'casa Ceconi' coi miglioni auguri per il 1920.\"",
+                            "B 2009.0198",
+                            "Photographien Portraits Kleinformate",
+                            "Photopostkarte (Rückseite mit Postkartenaufdruck)",
+                            "BI000088135",
+                            "Böhm, Franz (1895-1977)",
+                            "PE00058861",
+                            "Dargestellte Person allein",
+                            "␣",
+                            "Widmung",
+                            "Miconi-Rocchi, D...",
+                            "Huch, Ricarda (1864-1947)",
+                            "PE00415939",
+                            "PE00003793",
+                            "Urheber/in",
+                            "Sonstige/r Urheber/in",
+                            "D20120709-104",
+                            "D20120709-105 (Rs.)",
+                            "1.0.0",
+                            "1",
+                            "1919",
+                            "PE00058861",
+                            "PE00415939",
+                            "PE00003793",
+                            "Böhm, Franz",
+                            "Miconi-Rocchi, D...",
+                            "Huch, Ricarda",
+                            "Miconi-Rocchi, D...",
+                            "Huch, Ricarda",
+                            "Böhm, Franz",
+                            "Miconi Rocchi, D...",
+                            "Hugo, Richard",
+                            "Ceconi, Ricarda",
+                            "Huch, Ricarda Oktavia",
+                            "Zecconi, Ricarda",
+                            "Huch, Ricarda Octavia",
+                            "Chuch, Rikarda",
+                            "Huch, Ricarda O.",
+                            "Ceconi-Huch, Ricarda",
+                            "Ceconi Huch, Ricarda",
+                            "BI",
+                            "Am Standort",
+                            "Silberspiegel, insbesondere in unterer Bildhälfte",
+                            "Portrait Franz Böhm",
+                            "https://www.dla-marbach.de/find/opac/id/BI00008813",
+                            "eingeschränkt benutzbar",
+                            "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                        ],
+                        "display": "Portrait Franz Böhm [Photographie]",
+                        "accessionNumber": "HS.2005.0040",
+                        "accession_display": "BE00003539",
+                        "accession_id": "BE00003539",
+                        "category": "Einzelobjekt",
+                        "categorySub": "Photographie",
+                        "confidential": false,
+                        "dateCataloged": "2010-10-01",
+                        "dateModified": "2012-07-26",
+                        "dateOrigin": "1919-1919",
+                        "dateOriginComment_mv": [
+                            "Vermutlich 1919"
+                        ],
+                        "digitalObject_accessLevel_mv": [
+                            "campus"
+                        ],
+                        "digitalObject_display_mv": [
+                            "D20120709-104"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20120709%2fD20120709-104.jpg/full/full/0/default.jpg?media_access=campus"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01496703"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20120709%2fD20120709-104.jpg/full/!480,480/0/default.jpg?media_access=campus"
+                        ],
+                        "dimension_height_mv": [
+                            " 13.6"
+                        ],
+                        "dimension_width_mv": [
+                            "  8.5"
+                        ],
+                        "displayAddition1": "Vermutlich 1919",
+                        "displayAddition2": "Inventarnummer: B 2009.0198",
+                        "displayName": "Miconi-Rocchi, D...; Huch, Ricarda (1864-1947)",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Portrait Franz Böhm [Photographie]</dc:title>\n  <dc:creator>Miconi-Rocchi, D...</dc:creator>\n  <dc:creator>Huch, Ricarda (1864-1947)</dc:creator>\n  <dc:type>Fotografie</dc:type>\n  <dc:date>1919-1919</dc:date>\n  <dc:format> 13.6 x   8.5</dc:format>\n  <dc:format>Photopostkarte (Rückseite mit Postkartenaufdruck)</dc:format>\n  <dc:format>Silberspiegel, insbesondere in unterer Bildhälfte</dc:format>\n  <dc:description>Rückseite mit Stempel des Photographen, ferner mit handschriftlicher Widmung Ricarda Huchs zum neuen Jahr 1920: &quot;Per la &apos;casa Ceconi&apos; coi miglioni auguri per il 1920.&quot;</dc:description>\n  <dc:subject>Böhm, Franz (1895-1977)</dc:subject>\n  <dc:identifier>B 2009.0198</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20120709%2fD20120709-104.jpg/full/full/0/default.jpg?media_access=campus</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BI00008813</dc:identifier>\n  <dc:identifier>BI00008813</dc:identifier>\n</oai_dc:dc>",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Portrait Franz Böhm [Photographie]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Miconi-Rocchi, D...</namePart>\n    <role>\n      <roleTerm type=\"text\">Urheber/in</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Huch, Ricarda (1864-1947)</namePart>\n    <nameIdentifier type=\"gnd\">118554190</nameIdentifier>\n    <namePart type=\"date\">1864-07-18 — 1947-11-17</namePart>\n    <role>\n      <roleTerm type=\"text\">Sonstige/r Urheber/in</roleTerm>\n    </role>\n  </name>\n  <genre>Fotografie</genre>\n  <originInfo eventType=\"production\">\n    <dateCreated>1919-1919</dateCreated>\n  </originInfo>\n  <physicalDescription>\n    <form type=\"format\"> 13.6 x   8.5</form>\n    <form type=\"material\">Photopostkarte (Rückseite mit Postkartenaufdruck)</form>\n    <note type=\"physical description\">Silberspiegel, insbesondere in unterer Bildhälfte</note>\n  </physicalDescription>\n  <note type=\"description\">Rückseite mit Stempel des Photographen, ferner mit handschriftlicher Widmung Ricarda Huchs zum neuen Jahr 1920: &quot;Per la &apos;casa Ceconi&apos; coi miglioni auguri per il 1920.&quot;</note>\n  <subject>\n    <topic>Böhm, Franz (1895-1977)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Böhm, Franz (1895-1977)</namePart>\n    </name>\n  </subject>\n  <identifier type=\"inventory\">B 2009.0198</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <url access=\"object in context\">https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20120709%2fD20120709-104.jpg/full/full/0/default.jpg?media_access=campus</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2010-10-01</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2012-07-26</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BI00008813</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "exportRIS": "TY  - GEN\nA2  - Huch, Ricarda\nA2  - Böhm, Franz\nAN  - HS.2005.0040\nAU  - Miconi-Rocchi, D...\nCN  - BI000088135\nDA  - 1919\nID  - BI00008813\nKW  - Böhm, Franz (1895-1977)\nLB  - Rückseite mit Stempel des Photographen, ferner mit handschriftlicher Widmung Ricarda Huchs zum neuen Jahr 1920: \"Per la 'casa Ceconi' coi miglioni auguri per il 1920.\"\nM1  - B 2009.0198\nM3  - Fotografie\nN1  - Technik: Photopostkarte (Rückseite mit Postkartenaufdruck)\nN1  - Maße:  13.6 x   8.5\nN1  - Erhaltungszustand: Silberspiegel, insbesondere in unterer Bildhälfte\nTI  - Portrait Franz Böhm [Photographie]\nUR  - https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20120709%2fD20120709-104.jpg/full/full/0/default.jpg?media_access=campus\nUR  - https://www.dla-marbach.de/find/opac/id/BI00008813/\nER  -",
+                        "filterAuthorityRelation_mv": [
+                            "Miconi-Rocchi, D...␝Von",
+                            "Huch, Ricarda (1864-1947)␝Von",
+                            "Böhm, Franz (1895-1977)␝Über"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Miconi-Rocchi, D...␝Verfasser/Urheber",
+                            "Huch, Ricarda (1864-1947)␝Widmungsschreiber",
+                            "Böhm, Franz (1895-1977)␝Dargestellte Person allein"
+                        ],
+                        "filterAuthority_mv": [
+                            "Miconi-Rocchi, D...",
+                            "Huch, Ricarda (1864-1947)",
+                            "Böhm, Franz (1895-1977)"
+                        ],
+                        "filterDatePoint_mv": [
+                            "1919-01-01T00:00:00Z"
+                        ],
+                        "filterDateRange_mv": [
+                            "1919"
+                        ],
+                        "filterDigital": true,
+                        "filterFormContent_mv": [
+                            "Fotografie"
+                        ],
+                        "filterRecent": "2010-10-01",
+                        "filterSource": "Bilder und Objekte",
+                        "filterSubject_mv": [
+                            "Böhm, Franz (1895-1977)"
+                        ],
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "inscription": "Rückseite mit Stempel des Photographen, ferner mit handschriftlicher Widmung Ricarda Huchs zum neuen Jahr 1920: \"Per la 'casa Ceconi' coi miglioni auguri per il 1920.\"",
+                        "inventoryNumber": "B 2009.0198",
+                        "location_mv": [
+                            "Photographien Portraits Kleinformate"
+                        ],
+                        "material": "Photopostkarte (Rückseite mit Postkartenaufdruck)",
+                        "mediaNumber": "BI000088135",
+                        "personAbout_display_mv": [
+                            "Böhm, Franz (1895-1977)"
+                        ],
+                        "personAbout_id_mv": [
+                            "PE00058861"
+                        ],
+                        "personAbout_role_mv": [
+                            "Dargestellte Person allein"
+                        ],
+                        "personBy_comment_mv": [
+                            "␣",
+                            "Widmung"
+                        ],
+                        "personBy_display_mv": [
+                            "Miconi-Rocchi, D...",
+                            "Huch, Ricarda (1864-1947)"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00415939",
+                            "PE00003793"
+                        ],
+                        "personBy_role_mv": [
+                            "Urheber/in",
+                            "Sonstige/r Urheber/in"
+                        ],
+                        "photoNegativeNumber_mv": [
+                            "D20120709-104",
+                            "D20120709-105 (Rs.)"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 1,
+                        "searchDate_mv": [
+                            "1919"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00058861",
+                            "PE00415939",
+                            "PE00003793"
+                        ],
+                        "searchNameAbout_mv": [
+                            "Böhm, Franz"
+                        ],
+                        "searchNameBy_mv": [
+                            "Miconi-Rocchi, D...",
+                            "Huch, Ricarda"
+                        ],
+                        "searchName_mv": [
+                            "Miconi-Rocchi, D...",
+                            "Huch, Ricarda",
+                            "Böhm, Franz"
+                        ],
+                        "searchVariant_mv": [
+                            "Miconi Rocchi, D...",
+                            "Hugo, Richard",
+                            "Ceconi, Ricarda",
+                            "Huch, Ricarda Oktavia",
+                            "Zecconi, Ricarda",
+                            "Huch, Ricarda Octavia",
+                            "Chuch, Rikarda",
+                            "Huch, Ricarda O.",
+                            "Ceconi-Huch, Ricarda",
+                            "Ceconi Huch, Ricarda"
+                        ],
+                        "source": "BI",
+                        "statusLoan": "Am Standort",
+                        "statusPreservation": "Silberspiegel, insbesondere in unterer Bildhälfte",
+                        "title": "Portrait Franz Böhm",
+                        "url": "https://www.dla-marbach.de/find/opac/id/BI00008813",
+                        "usageRestriction": "eingeschränkt benutzbar",
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de",
+                        "score": 13.70128
+                    }
+                ]
+            }
+        }
+    }
+}
