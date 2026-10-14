@@ -2,7 +2,8 @@
 <f:comment>
     Rendert einen einzelnen Video.js-Player für ein "mediaplayer"-Element,
     wie es von der dla:mediaPlayer-ViewHelper erzeugt wird (siehe
-    Classes/ViewHelpers/MediaPlayerViewHelper.php).
+    Classes/ViewHelpers/MediaPlayerViewHelper.php). Initialisiert wird der Player
+    von Resources/Public/JavaScript/dla-mediaplayer.js.
 
     Erwartete Variablen:
     - item: ein Eintrag aus "mediaData.mediaplayer" (nur nicht-gesperrte Objekte!)
@@ -12,99 +13,73 @@
 <v:variable.set value="video-js vjs-default-skin vjs-big-play-centered dla-mediaplayer" name="playerClasses" />
 
 <div class="dla-mediaplayer" data-mediaplayer-type="{item.type}">
-    <f:if condition="{item.type} == 'playlist'">
-        <f:then>
-            <video id="{id}" class="{playerClasses} dla-mediaplayer-audio" controls="controls" controlslist="nodownload" playsinline="playsinline" preload="auto"></video>
-
-            <f:if condition="{item.tracks}">
-                <ol class="dla-mediaplayer-playlist">
-                    <f:for each="{item.tracks}" as="track" iteration="trackIterator">
-                        <li class="dla-mediaplayer-playlist-item{f:if(condition: trackIterator.isFirst, then: ' active')}"
-                            data-src="{track.url}">
-                            <button type="button" class="dla-mediaplayer-playlist-button"
-                                aria-current="{f:if(condition: trackIterator.isFirst, then: 'true', else: 'false')}"
-                                data-title="{track.title}">{track.title}</button>
-                        </li>
-                    </f:for>
-                </ol>
+    <f:if condition="{item.display} && {item.display} != '␣'">
+        <div class="dla-mediaplayer-caption">
+            <span class="dla-mediaplayer-caption-title">{item.display}</span>
+            <f:if condition="{item.type} != 'playlist' && {item.ext} && {item.ext} != '␣'">
+                <span class="dla-mediaplayer-caption-ext">({item.ext})</span>
             </f:if>
-
-            <script>
-                (function () {
-                    var container = document.currentScript.parentNode;
-                    var el = container.querySelector('video');
-                    if (!el || typeof videojs === 'undefined') {
-                        return;
-                    }
-                    var player = videojs(el, {audioOnlyMode: true});
-                    var list = container.querySelector('.dla-mediaplayer-playlist');
-                    if (!list) {
-                        return;
-                    }
-                    var items = list.querySelectorAll('.dla-mediaplayer-playlist-item');
-
-                    function playIndex(index) {
-                        var track = items[index];
-                        if (!track) {
-                            return;
-                        }
-                        items.forEach(function (li) {
-                            li.classList.remove('active');
-                            li.querySelector('button').removeAttribute('aria-current');
-                        });
-                        track.classList.add('active');
-                        track.querySelector('button').setAttribute('aria-current', 'true');
-                        player.src({ src: track.getAttribute('data-src') });
-                        player.play();
-                    }
-
-                    items.forEach(function (li, index) {
-                        li.querySelector('button').addEventListener('click', function () {
-                            playIndex(index);
-                        });
-                    });
-
-                    if (items.length > 0) {
-                        player.src({ src: items[0].getAttribute('data-src') });
-                    }
-                })();
-            </script>
-        </f:then>
-        <f:else>
-            <f:if condition="{item.type} == 'audio'">
-                <f:then>
-                    <audio id="{id}" class="{playerClasses} dla-mediaplayer-audio" controls="controls" controlslist="nodownload" preload="auto">
-                        <source src="{item.url}" />
-                        <f:if condition="{item.chapters}">
-                            <track kind="chapters" src="{item.chapters}" label="{f:translate(key: 'mediaplayer.chapters', extensionName: 'dla_opac_ng', default: 'Chapters')}" default="default" />
-                        </f:if>
-                    </audio>
-                </f:then>
-                <f:else>
-                    <video id="{id}" class="{playerClasses}" controls="controls" controlslist="nodownload" playsinline="playsinline" preload="auto">
-                        <source src="{item.url}" />
-                        <f:if condition="{item.chapters}">
-                            <track kind="chapters" src="{item.chapters}" label="{f:translate(key: 'mediaplayer.chapters', extensionName: 'dla_opac_ng', default: 'Chapters')}" default="default" />
-                        </f:if>
-                    </video>
-                </f:else>
-            </f:if>
-            <script>
-                (function () {
-                    var el = document.currentScript.parentNode.querySelector('video, audio');
-                    if (el && typeof videojs !== 'undefined') {
-                        <f:if condition="{item.type} == 'audio'">
-                            <f:then>
-                                videojs(el, {audioOnlyMode: true});
-                            </f:then>
-                            <f:else>
-                                videojs(el);
-                            </f:else>
-                        </f:if>
-                    }
-                })();
-            </script>
-        </f:else>
+        </div>
     </f:if>
 
+    <f:if condition="{item.type} == 'playlist'">
+        <f:then>
+            <video id="{id}" class="{playerClasses} dla-mediaplayer-audio" controls="controls" controlslist="nodownload" playsinline="playsinline" preload="metadata"></video>
+
+            <f:if condition="{item.tracks}">
+                <table class="dla-mediaplayer-tracklist">
+                    <caption class="dla-visually-hidden">
+                        <f:translate key="mediaplayer.tracklist" extensionName="dla_opac_ng"/>
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="dla-mediaplayer-track-number"><f:translate key="mediaplayer.track.number" extensionName="dla_opac_ng"/></th>
+                            <f:if condition="{item.hasArtists}">
+                                <th scope="col" class="dla-mediaplayer-track-artist"><f:translate key="mediaplayer.track.artist" extensionName="dla_opac_ng"/></th>
+                            </f:if>
+                            <th scope="col" class="dla-mediaplayer-track-title"><f:translate key="mediaplayer.track.title" extensionName="dla_opac_ng"/></th>
+                            <f:if condition="{item.hasDurations}">
+                                <th scope="col" class="dla-mediaplayer-track-duration"><f:translate key="mediaplayer.track.duration" extensionName="dla_opac_ng"/></th>
+                            </f:if>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <f:for each="{item.tracks}" as="track" iteration="trackIterator">
+                            <tr class="dla-mediaplayer-track{f:if(condition: trackIterator.isFirst, then: ' active')}" data-src="{track.url}">
+                                <td class="dla-mediaplayer-track-number">{track.number}</td>
+                                <f:if condition="{item.hasArtists}">
+                                    <td class="dla-mediaplayer-track-artist">{track.artist}</td>
+                                </f:if>
+                                <td class="dla-mediaplayer-track-title">
+                                    <button type="button" class="dla-mediaplayer-track-button" aria-current="{f:if(condition: trackIterator.isFirst, then: 'true', else: 'false')}">{track.title}</button>
+                                    <f:if condition="{track.artist}">
+                                        <span class="dla-mediaplayer-track-artist-inline">{track.artist}</span>
+                                    </f:if>
+                                </td>
+                                <f:if condition="{item.hasDurations}">
+                                    <td class="dla-mediaplayer-track-duration">{track.durationFormatted}</td>
+                                </f:if>
+                            </tr>
+                        </f:for>
+                    </tbody>
+                </table>
+            </f:if>
+        </f:then>
+        <f:else if="{item.type} == 'audio'">
+            <audio id="{id}" class="{playerClasses} dla-mediaplayer-audio" controls="controls" controlslist="nodownload" preload="metadata">
+                <source src="{item.url}" />
+                <f:if condition="{item.chapters}">
+                    <track kind="chapters" src="{item.chapters}" label="{f:translate(key: 'mediaplayer.chapters', extensionName: 'dla_opac_ng', default: 'Chapters')}" default="default" />
+                </f:if>
+            </audio>
+        </f:else>
+        <f:else>
+            <video id="{id}" class="{playerClasses}" controls="controls" controlslist="nodownload" playsinline="playsinline" preload="metadata" poster="{item.thumbnail}">
+                <source src="{item.url}" />
+                <f:if condition="{item.chapters}">
+                    <track kind="chapters" src="{item.chapters}" label="{f:translate(key: 'mediaplayer.chapters', extensionName: 'dla_opac_ng', default: 'Chapters')}" default="default" />
+                </f:if>
+            </video>
+        </f:else>
+    </f:if>
 </div>

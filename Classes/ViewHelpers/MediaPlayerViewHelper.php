@@ -127,8 +127,16 @@ class MediaPlayerViewHelper extends AbstractViewHelper
      * @param array $access
      * @param array $display
      * @param array $chapters
+     * Additionally "teaser" holds the first thumbnail the user may access (see
+     * Resources/Private/Partials/MediaAccess/Thumbnail.html), "jump" signals that the
+     * teaser should link to the player/slideshow instead of the file itself, and
+     * "accessDenied" is set if there are digital objects but none of them is accessible.
+     * "summary" lists the number of accessible objects per kind in the order of the
+     * section "Digitales Objekt" (video, audio, playlist, image, link; kinds without
+     * objects are omitted) for the badge on the teaser (MediaAccess/TeaserBadge.html).
+     *
      * @param array $thumbnails
-     * @return array{links: array, mediaplayer: array, images: array}
+     * @return array{links: array, mediaplayer: array, images: array, teaser: ?array, accessDenied: bool, summary: array}
      */
     public function buildMediaData(array $urls, array $ext, array $access, array $display, array $chapters, array $thumbnails = []): array
     {
@@ -157,7 +165,9 @@ class MediaPlayerViewHelper extends AbstractViewHelper
 //        $restrictionGroups = ['op_admin', 'op_campus', 'op_sandbox', 'op_staff'];
 //        $userRestrictionGroup = 'public';
 
-        $resultValue = ['links' => [], 'mediaplayer' => [], 'images' => []];
+        $resultValue = ['links' => [], 'mediaplayer' => [], 'images' => [], 'teaser' => null, 'accessDenied' => false, 'summary' => []];
+        $hasAccessibleObject = false;
+        $hasForbiddenObject = false;
 
 //        $context = GeneralUtility::makeInstance(Context::class);
 //        $userAspect = $context->getAspect('frontend.user');
@@ -194,6 +204,22 @@ class MediaPlayerViewHelper extends AbstractViewHelper
                 $urlAccess['forbidden'] = 0;
             }
 
+            $currentThumbnail = $this->isPlaceholder($thumbnails[$i] ?? null) ? null : $thumbnails[$i];
+            if (!$this->isPlaceholder($urlAccess['url'])) {
+                if ($urlAccess['forbidden'] === 0) {
+                    $hasAccessibleObject = true;
+                    if ($resultValue['teaser'] === null && $currentThumbnail !== null) {
+                        $resultValue['teaser'] = [
+                            'url' => $urlAccess['url'],
+                            'thumbnail' => $currentThumbnail,
+                            'jump' => false,
+                        ];
+                    }
+                } elseif (!$this->isPlaceholder($value)) {
+                    $hasForbiddenObject = true;
+                }
+            }
+
             $mediaType = $this->mediaTypeForExtension($normalizedExt);
             if ($mediaType !== null && !empty($urlAccess['url']) && $urlAccess['forbidden'] === 0) {
                 // Gesperrte Audio-/Video-/Playlist-Dateien bewusst NICHT hier einsortieren:
@@ -202,8 +228,11 @@ class MediaPlayerViewHelper extends AbstractViewHelper
                 $mediaItem = $urlAccess;
                 $mediaItem['type'] = $mediaType;
                 $mediaItem['chapters'] = $chapters[$i] ?? null;
+                $mediaItem['thumbnail'] = $currentThumbnail;
                 if ($mediaType === 'playlist') {
-                    $mediaItem['tracks'] = $this->fetchPlaylistTracks($urlAccess['url']);
+                    $mediaItem['tracks'] = $this->prepareTracksForDisplay($this->fetchPlaylistTracks($urlAccess['url']));
+                    $mediaItem['hasArtists'] = array_filter(array_column($mediaItem['tracks'], 'artist')) !== [];
+                    $mediaItem['hasDurations'] = array_filter(array_column($mediaItem['tracks'], 'durationFormatted')) !== [];
                 }
 
                 $resultValue['mediaplayer'][] = $mediaItem;
@@ -221,7 +250,82 @@ class MediaPlayerViewHelper extends AbstractViewHelper
             $i++;
         }
 
+        if ($resultValue['teaser'] !== null) {
+            // Gibt es einen Player oder eine Bildergalerie, springt das Vorschaubild dorthin
+            $resultValue['teaser']['jump'] = $resultValue['mediaplayer'] !== [] || $resultValue['images'] !== [];
+        }
+        $resultValue['accessDenied'] = $hasForbiddenObject && !$hasAccessibleObject;
+        $resultValue['summary'] = $this->buildSummary($resultValue);
+
         return $resultValue;
+    }
+
+    /**
+     * @return array<int, array{type: string, count: int}>
+     */
+    protected function buildSummary(array $resultValue): array
+    {
+        $counts = ['video' => 0, 'audio' => 0, 'playlist' => 0, 'image' => count($resultValue['images']), 'link' => 0];
+        foreach ($resultValue['mediaplayer'] as $mediaItem) {
+            $counts[$mediaItem['type']]++;
+        }
+        foreach ($resultValue['links'] as $link) {
+            if ($link['forbidden'] === 0 && !$this->isPlaceholder($link['url'])) {
+                $counts['link']++;
+            }
+        }
+
+        $summary = [];
+        foreach ($counts as $type => $count) {
+            if ($count > 0) {
+                $summary[] = ['type' => $type, 'count' => $count];
+            }
+        }
+
+        return $summary;
+    }
+
+    /**
+     * Empty values and the placeholder "␣" (no value in this position of a multi-valued
+     * Solr field) do not count as data.
+     */
+    protected function isPlaceholder($value): bool
+    {
+        return $value === null || $value === '' || $value === '␣';
+    }
+
+    /**
+     * Adds a zero-padded track number ("01", "02", ...) and a formatted duration
+     * ("3:05", "1:21:00") for the track list of a playlist.
+     *
+     * @param array<int, array{url: string, artist: ?string, title: string, duration: ?float}> $tracks
+     * @return array<int, array<string, mixed>>
+     */
+    protected function prepareTracksForDisplay(array $tracks): array
+    {
+        $digits = max(2, strlen((string)count($tracks)));
+        foreach ($tracks as $index => $track) {
+            $tracks[$index]['number'] = str_pad((string)($index + 1), $digits, '0', STR_PAD_LEFT);
+            $tracks[$index]['durationFormatted'] = $this->formatDuration($track['duration'] ?? null);
+        }
+
+        return $tracks;
+    }
+
+    protected function formatDuration(?float $duration): ?string
+    {
+        if ($duration === null) {
+            return null;
+        }
+
+        $seconds = (int)round($duration);
+        $hours = intdiv($seconds, 3600);
+        $minutes = intdiv($seconds % 3600, 60);
+        $seconds %= 60;
+
+        return $hours > 0
+            ? sprintf('%d:%02d:%02d', $hours, $minutes, $seconds)
+            : sprintf('%d:%02d', $minutes, $seconds);
     }
 
     /**
@@ -254,7 +358,7 @@ class MediaPlayerViewHelper extends AbstractViewHelper
      * Loads an M3U/M3U8 playlist file and parses it into a plain track list.
      * Returns an empty array if the playlist cannot be retrieved.
      *
-     * @return array<int, array{url: string, title: string, duration: ?float}>
+     * @return array<int, array{url: string, artist: ?string, title: string, duration: ?float}>
      */
     protected function fetchPlaylistTracks(string $url): array
     {

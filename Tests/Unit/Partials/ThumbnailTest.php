@@ -80,12 +80,14 @@ class ThumbnailTest extends FluidPartialTestCase
      * @param array<int, string> $accessLevels
      * @param array<int, string> $hyperlinks
      * @param array<int, string>|null $thumbnails
+     * @param array<int, string> $extensions
      */
-    private function renderThumbnail(array $accessLevels, array $hyperlinks, ?array $thumbnails): string
+    private function renderThumbnail(array $accessLevels, array $hyperlinks, ?array $thumbnails, array $extensions = []): string
     {
         $fields = [
             'digitalObject_accessLevel_mv' => $accessLevels,
             'digitalObject_hyperlink_mv' => $hyperlinks,
+            'digitalObject_fileExtension_mv' => $extensions,
         ];
         if ($thumbnails !== null) {
             $fields['digitalObject_thumbnail_mv'] = $thumbnails;
@@ -170,5 +172,101 @@ class ThumbnailTest extends FluidPartialTestCase
 
         self::assertStringNotContainsString('access-denied', $html);
         self::assertStringNotContainsString('<img', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showsFirstAccessibleThumbnailWhenFirstObjectIsForbidden(): void
+    {
+        $html = $this->renderThumbnail(
+            ['campus', 'public'],
+            ['https://example.org/media/front.pdf', 'https://example.org/media/back.pdf'],
+            ['https://example.org/media/front_thumb.jpg', 'https://example.org/media/back_thumb.jpg'],
+            ['pdf', 'pdf']
+        );
+
+        self::assertStringNotContainsString('access-denied', $html);
+        self::assertStringNotContainsString('front_thumb.jpg', $html);
+        self::assertStringContainsString('src="https://example.org/media/back_thumb.jpg"', $html);
+        self::assertStringContainsString('href="https://example.org/media/back.pdf"', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function thumbnailJumpsToDigitalObjectSectionWhenMediaFileIsPresent(): void
+    {
+        $html = $this->renderThumbnail(
+            ['campus', 'public', '␣'],
+            ['https://example.org/media/a.mp3', 'https://example.org/media/b.mp3', '␣'],
+            ['https://example.org/media/a_thumb.png', 'https://example.org/media/b_thumb.png', '␣'],
+            ['mp3', 'mp3', '␣']
+        );
+
+        self::assertStringNotContainsString('access-denied', $html);
+        self::assertStringContainsString('href="#digitales-objekt"', $html);
+        self::assertStringContainsString('src="https://example.org/media/b_thumb.png"', $html);
+        self::assertStringNotContainsString('target="_blank"', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function resultListShowsFirstAccessibleThumbnailWhenFirstObjectIsForbidden(): void
+    {
+        $html = $this->renderPartial('MediaAccess/ThumbnailResult', [
+            'document' => [
+                'id' => 'AK00317796',
+                'fields' => [
+                    'digitalObject_accessLevel_mv' => ['campus', 'public', '␣'],
+                    'digitalObject_hyperlink_mv' => ['https://example.org/media/a.mp3', 'https://example.org/media/b.mp3', '␣'],
+                    'digitalObject_thumbnail_mv' => ['https://example.org/media/a_thumb.png', 'https://example.org/media/b_thumb.png', '␣'],
+                ],
+            ],
+        ]);
+
+        self::assertStringNotContainsString('a_thumb.png', $html);
+        self::assertStringContainsString('src="https://example.org/media/b_thumb.png"', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function resultListShowsNoThumbnailWithoutAccessibleObject(): void
+    {
+        $html = $this->renderPartial('MediaAccess/ThumbnailResult', [
+            'document' => [
+                'id' => 'BI00019570',
+                'fields' => [
+                    'digitalObject_accessLevel_mv' => ['campus'],
+                    'digitalObject_hyperlink_mv' => ['https://example.org/media/a.jpg'],
+                    'digitalObject_thumbnail_mv' => ['https://example.org/media/a_thumb.jpg'],
+                ],
+            ],
+        ]);
+
+        self::assertStringNotContainsString('<img', $html);
+        self::assertStringNotContainsString('ctg-ri-image', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function resultListShowsLaterThumbnailWhenFirstThumbnailIsPlaceholder(): void
+    {
+        $html = $this->renderPartial('MediaAccess/ThumbnailResult', [
+            'document' => [
+                'id' => 'AK01661671',
+                'fields' => [
+                    'digitalObject_accessLevel_mv' => ['␣', 'public', '␣'],
+                    'digitalObject_hyperlink_mv' => ['␣', 'https://example.org/media/b.pdf', '␣'],
+                    'digitalObject_thumbnail_mv' => ['␣', 'https://example.org/media/b_thumb.jpg', '␣'],
+                ],
+            ],
+        ]);
+
+        self::assertStringContainsString('<div class="ctg-ri-image">', $html);
+        self::assertStringContainsString('src="https://example.org/media/b_thumb.jpg"', $html);
     }
 }

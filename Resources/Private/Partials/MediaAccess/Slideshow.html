@@ -8,13 +8,19 @@
     weiterhin ausschließlich über den bestehenden Link-/Rechtehinweis dargestellt
     (siehe MediaAccess/RenderLinks.html bzw. MediaAccess/RenderItemLinks.html).
 
+    Bedienung: Pfeil-Buttons, Punkte, Wischen sowie Cursortasten links/rechts, sobald die
+    Galerie den Fokus hat (siehe Resources/Public/JavaScript/dla-slideshow.js).
+
     Erwartete Variablen:
     - images: mediaData.images (nur nicht gesperrte Bilder)
     - id:     eindeutige DOM-ID für diese Slideshow-Instanz auf der Seite
 </f:comment>
 
 <f:if condition="{images}">
-    <div id="{id}" class="dla-slideshow" data-dla-slideshow>
+    <div id="{id}" class="dla-slideshow" data-dla-slideshow
+        role="region" aria-roledescription="carousel" tabindex="0"
+        aria-label="{f:translate(key:'slideshow.label', extensionName:'dla_opac_ng')}"
+        data-label-image="{f:translate(key:'slideshow.image', extensionName:'dla_opac_ng')}">
         <div class="dla-slideshow-track">
             <f:for each="{images}" as="image" iteration="iterator">
                 <div class="dla-slideshow-slide" aria-hidden="{f:if(condition: iterator.isFirst, then: 'false', else: 'true')}">

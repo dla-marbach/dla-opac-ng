@@ -1757,6 +1757,78 @@
                 <source>Chapters</source>
                 <target>Kapitel</target>
             </trans-unit>
+            <trans-unit id="mediaplayer.tracklist">
+                <source>Track list</source>
+                <target>Titelliste</target>
+            </trans-unit>
+            <trans-unit id="mediaplayer.track.number">
+                <source>No.</source>
+                <target>Nr.</target>
+            </trans-unit>
+            <trans-unit id="mediaplayer.track.artist">
+                <source>Artist</source>
+                <target>Interpret</target>
+            </trans-unit>
+            <trans-unit id="mediaplayer.track.title">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="mediaplayer.track.duration">
+                <source>Duration</source>
+                <target>Dauer</target>
+            </trans-unit>
+            <trans-unit id="slideshow.label">
+                <source>Image gallery</source>
+                <target>Bildergalerie</target>
+            </trans-unit>
+            <trans-unit id="slideshow.image">
+                <source>Image %s of %s</source>
+                <target>Bild %s von %s</target>
+            </trans-unit>
+            <trans-unit id="teaser.jump">
+                <source>To the digital object: %s</source>
+                <target>Zum digitalen Objekt: %s</target>
+            </trans-unit>
+            <trans-unit id="teaser.video.one">
+                <source>Video</source>
+                <target>Video</target>
+            </trans-unit>
+            <trans-unit id="teaser.video.many">
+                <source>%s videos</source>
+                <target>%s Videos</target>
+            </trans-unit>
+            <trans-unit id="teaser.audio.one">
+                <source>Audio file</source>
+                <target>Audiodatei</target>
+            </trans-unit>
+            <trans-unit id="teaser.audio.many">
+                <source>%s audio files</source>
+                <target>%s Audiodateien</target>
+            </trans-unit>
+            <trans-unit id="teaser.playlist.one">
+                <source>Track list</source>
+                <target>Titelliste</target>
+            </trans-unit>
+            <trans-unit id="teaser.playlist.many">
+                <source>%s track lists</source>
+                <target>%s Titellisten</target>
+            </trans-unit>
+            <trans-unit id="teaser.image.one">
+                <source>Image</source>
+                <target>Bild</target>
+            </trans-unit>
+            <trans-unit id="teaser.image.many">
+                <source>%s images</source>
+                <target>%s Bilder</target>
+            </trans-unit>
+            <trans-unit id="teaser.link.one">
+                <source>Link</source>
+                <target>Link</target>
+            </trans-unit>
+            <trans-unit id="teaser.link.many">
+                <source>%s links</source>
+                <target>%s Links</target>
+            </trans-unit>
             <trans-unit id="maxRenderedRelationsNote">
                 <source>For technical reasons, only the first %s relations are shown.</source>
                 <target>Aus technischen Gründen werden nur die ersten %s Verknüpfungen angezeigt.</target>

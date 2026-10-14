@@ -1,0 +1,46 @@
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+<f:comment>
+    Vorschaubild, das zum Abschnitt "Digitales Objekt" springt (siehe MediaAccess/Thumbnail.html).
+    Das Schild unten rechts fasst zusammen, was der Abschnitt enthält: bei nur einer Art
+    Icon und Text (z.B. "4 Bilder"), bei mehreren Arten Icon und Anzahl je Art. Der
+    vollständige Text steht im Tooltip und im Alternativtext.
+
+    Erwartete Variablen:
+    - teaser:  mediaData.teaser
+    - summary: mediaData.summary (Anzahl zugänglicher Objekte je Art, siehe MediaPlayerViewHelper)
+</f:comment>
+
+<v:variable.set value="" name="summaryLabel" />
+<f:for each="{summary}" as="entry" iteration="iterator">
+    <f:if condition="{entry.count} == 1">
+        <f:then>
+            <v:variable.set value="{f:translate(key: 'teaser.{entry.type}.one', extensionName: 'dla_opac_ng')}" name="entryLabel" />
+        </f:then>
+        <f:else>
+            <v:variable.set value="{f:translate(key: 'teaser.{entry.type}.many', extensionName: 'dla_opac_ng', arguments: {0: entry.count})}" name="entryLabel" />
+        </f:else>
+    </f:if>
+    <v:variable.set value="{summaryLabel}{f:if(condition: iterator.isFirst, else: ', ')}{entryLabel}" name="summaryLabel" />
+</f:for>
+<v:variable.set value="{f:translate(key: 'teaser.jump', extensionName: 'dla_opac_ng', arguments: {0: summaryLabel})}" name="jumpLabel" />
+
+<a href="#digitales-objekt" class="dla-teaser-jump" title="{jumpLabel}">
+    <img src="{teaser.thumbnail}" alt="{jumpLabel}" />
+    <span class="dla-teaser-badge" aria-hidden="true">
+        <f:for each="{summary}" as="entry">
+            <span class="dla-teaser-badge-entry">
+                <f:switch expression="{entry.type}">
+                    <f:case value="video"><span class="icon bel-film"></span></f:case>
+                    <f:case value="audio"><span class="icon bel-ton"></span></f:case>
+                    <f:case value="playlist"><span class="icon bel-notekom01"></span></f:case>
+                    <f:case value="image"><span class="icon bel-kacheln"></span></f:case>
+                    <f:defaultCase><span class="icon bel-link02"></span></f:defaultCase>
+                </f:switch>
+                <f:if condition="{f:count(subject: summary)} == 1">
+                    <f:then>{summaryLabel}</f:then>
+                    <f:else>{entry.count}</f:else>
+                </f:if>
+            </span>
+        </f:for>
+    </span>
+</a>

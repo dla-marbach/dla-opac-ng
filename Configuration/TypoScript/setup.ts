@@ -25,6 +25,7 @@ page.includeJSFooter.tokeninput = EXT:dla_opac_ng/Resources/Public/JavaScript/jq
 page.includeJSFooter.jscookie = EXT:dla_opac_ng/Resources/Public/JavaScript/js.cookie.min.js
 page.includeJSFooter.jspdf = EXT:dla_opac_ng/Resources/Public/JavaScript/jspdf.min.js
 page.includeJSFooter.dla_slideshow = EXT:dla_opac_ng/Resources/Public/JavaScript/dla-slideshow.js
+page.includeJSFooter.dla_mediaplayer = EXT:dla_opac_ng/Resources/Public/JavaScript/dla-mediaplayer.js
 
 # Projektspezifisches JavaScript ebenfalls im Footer
 page.includeJSFooter.autocomplete = EXT:dla_opac_ng/Resources/Public/JavaScript/autocomplete.js
