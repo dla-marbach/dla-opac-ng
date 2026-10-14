@@ -22,7 +22,7 @@ Ausführliche Beschreibung der Abläufe: [README.md](README.md).
 
 ## Umgebung und Befehle
 
-Die Umgebung ist beim Start bereits eingerichtet (`.github/workflows/copilot-setup-steps.yml`): TYPO3 läuft unter http://127.0.0.1/ (Backend `/typo3`, admin / `Dla1337!`). PHP-Befehle mit PHP 8.3 ausführen (`php8.3`, falls `php` eine andere Version ist).
+In der GitHub-Copilot-Umgebung wird TYPO3 beim Start durch `.github/workflows/copilot-setup-steps.yml` eingerichtet und läuft unter http://127.0.0.1/ (Backend `/typo3`, admin / `Dla1337!`). Für andere Umgebungen siehe `task install` in der README. PHP-Befehle mit PHP 8.3 ausführen (`php8.3`, falls `php` eine andere Version ist).
 
 - `task start` – MariaDB, Solr-Mock-Server, PHP-FPM und Apache starten (idempotent), falls http://127.0.0.1/ nicht antwortet
 - `task cache` – TYPO3-Cache leeren; Code wirkt direkt (Symlink `t3example/packages/dla-dla_opac_ng`), aber nach Änderungen an TypoScript, `Services.yaml`, `ext_localconf.php` u.ä. nötig

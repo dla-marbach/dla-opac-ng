@@ -2,7 +2,7 @@
 
 TYPO3-Extension für den Katalog des Deutschen Literaturarchivs Marbach https://www.dla-marbach.de/katalog
 
-Die Extension basiert auf subugoe/typo3-find (siehe [Herkunft und Credits](#herkunft-und-credits)).
+Das integrierte Such-Plugin basiert auf subugoe/typo3-find (siehe [Herkunft und Credits](#herkunft-und-credits)).
 
 ## Installation
 
