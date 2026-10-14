@@ -405,19 +405,21 @@ class SolrServiceProvider extends AbstractServiceProvider
 
                                     $nowDate = new \DateTime('now');
 
-                                    $years = date_diff($date, $nowDate);
+                                    // Differenz der Jahreszahlen statt date_diff(): ändert sich nur zum Jahreswechsel,
+                                    // nicht am Jahrestag des ältesten Datums (stabile Solr-Anfragen über das Jahr)
+                                    $years = (int)$nowDate->format('Y') - (int)$date->format('Y');
 
-                                    if ($years->y < 50) {
+                                    if ($years < 50) {
                                         $gap = 1;
                                     } else {
-                                        $gap = round($years->y / 50);
+                                        $gap = round($years / 50);
                                     }
 
                                     // calculate start date so the gap divide evenly
-                                    $mod = $years->y % $gap;
+                                    $mod = $years % $gap;
                                     $adding = $gap - $mod;
 
-                                    $startTimeYears = $years->y + $adding;
+                                    $startTimeYears = $years + $adding;
 
                                     $start = 'NOW/YEAR-' . $startTimeYears . 'YEARS';
 
