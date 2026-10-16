@@ -81,6 +81,29 @@ class MediaPlayerViewHelper extends AbstractViewHelper
     }
 
     /**
+     * Zerlegt eine kommaseparierte Liste von IP-Bereichen aus einer Umgebungsvariable;
+     * Leerzeichen und Anführungszeichen (je nach .env-/SetEnv-Syntax) werden entfernt.
+     *
+     * @return string[]
+     */
+    protected function parseIpRanges(string|false $rawValue): array
+    {
+        if ($rawValue === false) {
+            return [];
+        }
+
+        $ranges = [];
+        foreach (explode(',', $rawValue) as $range) {
+            $normalized = trim($range, " \t\n\r\0\x0B\"'");
+            if ($normalized !== '') {
+                $ranges[] = $normalized;
+            }
+        }
+
+        return $ranges;
+    }
+
+    /**
      * @return boolean
      */
     public function render()
@@ -140,15 +163,11 @@ class MediaPlayerViewHelper extends AbstractViewHelper
      */
     public function buildMediaData(array $urls, array $ext, array $access, array $display, array $chapters, array $thumbnails = []): array
     {
-        $campusRanges = explode(',', getenv('campusRanges'));
-        $sandboxRanges = explode(',', getenv('sandboxRanges'));
-        $staffRanges = explode(',', getenv('staffRanges'));
-
         // ip-adress ranges
         $ipRanges = [
-            'staff' => $staffRanges,
-            'sandbox' => $sandboxRanges,
-            'campus' => $campusRanges
+            'staff' => $this->parseIpRanges(getenv('staffRanges')),
+            'sandbox' => $this->parseIpRanges(getenv('sandboxRanges')),
+            'campus' => $this->parseIpRanges(getenv('campusRanges')),
         ];
 
         $clientIp = ClientIpUtility::resolveClientIp(
@@ -157,9 +176,13 @@ class MediaPlayerViewHelper extends AbstractViewHelper
         );
         $currentGroup = [];
         foreach ($ipRanges as $group => $range) {
-            if (IpUtils::checkIp($clientIp, $range)) {
+            if ($range !== [] && IpUtils::checkIp($clientIp, $range)) {
                 $currentGroup[$group] = 1;
             }
+        }
+        // Sandbox-Rechner dürfen zusätzlich alles, was am Campus zugänglich ist.
+        if (isset($currentGroup['sandbox'])) {
+            $currentGroup['campus'] = 1;
         }
 
 //        $restrictionGroups = ['op_admin', 'op_campus', 'op_sandbox', 'op_staff'];
