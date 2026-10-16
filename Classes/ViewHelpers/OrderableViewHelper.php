@@ -26,28 +26,12 @@ class OrderableViewHelper extends AbstractViewHelper
         $resolver = new OrderabilityResolver();
 
         // Ist der Datensatz selbst nicht bestellbar oder hat keine Eltern, spart das die Solr-Abfrage.
-        $orderable = $resolver->isOrderable($fields, []);
-        $parentIds = $this->parentIds($fields);
-        if (!$orderable || $parentIds === []) {
-            return $orderable;
+        $parentIds = $resolver->parentIds($fields);
+        if ($parentIds === [] || $resolver->isNotOrderableItself($fields)) {
+            return $resolver->isOrderable($fields, []);
         }
 
         return $resolver->isOrderable($fields, $this->loadParents($parentIds));
-    }
-
-    /**
-     * @return list<string>
-     */
-    private function parentIds(array $fields): array
-    {
-        $ids = [];
-        foreach ((array)($fields['parent_id_mv'] ?? []) as $id) {
-            if (preg_match('/^[A-Z]{2}\d+$/', (string)$id)) {
-                $ids[] = (string)$id;
-            }
-        }
-
-        return array_values(array_unique($ids));
     }
 
     /**

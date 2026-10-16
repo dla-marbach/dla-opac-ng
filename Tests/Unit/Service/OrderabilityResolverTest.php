@@ -119,7 +119,7 @@ class OrderabilityResolverTest extends TestCase
     {
         $parent = ['filterMedium_mv' => ['Buch'], 'item_id_mv' => ['AU1'], 'item_usageRestriction_mv' => ['nicht benutzbar']];
 
-        self::assertFalse($this->resolver->isOrderable(self::ARTICLE, [$parent]));
+        self::assertFalse($this->orderableInParent($parent));
     }
 
     /**
@@ -127,7 +127,7 @@ class OrderabilityResolverTest extends TestCase
      */
     public function articleWithoutItemsInParentIsNotOrderable(): void
     {
-        self::assertFalse($this->resolver->isOrderable(self::ARTICLE, [['filterMedium_mv' => ['Buch']]]));
+        self::assertFalse($this->orderableInParent(['filterMedium_mv' => ['Buch']]));
     }
 
     /**
@@ -142,7 +142,7 @@ class OrderabilityResolverTest extends TestCase
             'item_location_mv' => ['Magazin', 'Magazin'],
         ];
 
-        self::assertTrue($this->resolver->isOrderable(self::ARTICLE, [$parent]));
+        self::assertTrue($this->orderableInParent($parent));
     }
 
     /**
@@ -151,7 +151,7 @@ class OrderabilityResolverTest extends TestCase
      */
     public function retroArticleInJournalNewspaperOrSeriesIsOrderable(string $medium): void
     {
-        self::assertTrue($this->resolver->isOrderable(self::ARTICLE, [['filterMedium_mv' => [$medium]]]));
+        self::assertTrue($this->orderableInParent(['filterMedium_mv' => [$medium]]));
     }
 
     public static function continuingResourceMedia(): array
@@ -166,7 +166,7 @@ class OrderabilityResolverTest extends TestCase
     {
         $parent = ['filterMedium_mv' => ['Zeitschrift'], 'digitalObject_hyperlink_mv' => ['https://digital.dla-marbach.de/viewer/image/MM01846400/']];
 
-        self::assertFalse($this->resolver->isOrderable(self::ARTICLE, [$parent]));
+        self::assertFalse($this->orderableInParent($parent));
     }
 
     /**
@@ -176,6 +176,35 @@ class OrderabilityResolverTest extends TestCase
     {
         $parent = ['filterMedium_mv' => ['Zeitschrift'], 'filterSource' => 'Elektronische Zeitschriftenbibliothek'];
 
-        self::assertFalse($this->resolver->isOrderable(self::ARTICLE, [$parent]));
+        self::assertFalse($this->orderableInParent($parent));
+    }
+
+    /**
+     * @test
+     */
+    public function articleIsNotOrderableWhenParentCouldNotBeLoaded(): void
+    {
+        $fields = self::ARTICLE + ['parent_id_mv' => ['AK01823691']];
+
+        self::assertFalse($this->resolver->isOrderable($fields, []));
+    }
+
+    /**
+     * @test
+     */
+    public function articleIsNotOrderableWhenOnlySomeParentsWereLoaded(): void
+    {
+        $fields = self::ARTICLE + ['parent_id_mv' => ['AK1', 'AK2']];
+        $loaded = [['id' => 'AK2', 'filterMedium_mv' => ['Zeitschrift']]];
+
+        self::assertFalse($this->resolver->isOrderable($fields, $loaded));
+    }
+
+    /**
+     * @param array<string,mixed> $parent
+     */
+    private function orderableInParent(array $parent): bool
+    {
+        return $this->resolver->isOrderable(self::ARTICLE + ['parent_id_mv' => ['AK1']], [['id' => 'AK1'] + $parent]);
     }
 }

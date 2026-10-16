@@ -22,7 +22,7 @@ class OrderabilityResolver
 
     /**
      * @param array<string,mixed> $fields
-     * @param list<array<string,mixed>> $parents Felder der Elternsätze (parent_id_mv)
+     * @param list<array<string,mixed>> $parents Geladene Elternsätze (Feld "id" und Kriterien), erwartet werden alle aus parentIds()
      */
     public function isOrderable(array $fields, array $parents): bool
     {
@@ -30,8 +30,15 @@ class OrderabilityResolver
             return false;
         }
 
-        if ($parents === []) {
+        $parentIds = $this->parentIds($fields);
+        if ($parentIds === []) {
             return true;
+        }
+
+        // Fehlende Elternsätze (Solr-Fehler, nicht gefunden) dürfen den Bestellbutton nicht freigeben.
+        $loadedIds = array_map(static fn (array $parent): string => (string)($parent['id'] ?? ''), $parents);
+        if (array_diff($parentIds, $loadedIds) !== []) {
+            return false;
         }
 
         foreach ($parents as $parent) {
@@ -58,8 +65,24 @@ class OrderabilityResolver
 
     /**
      * @param array<string,mixed> $fields
+     * @return list<string> Ids der Überordnungen aus parent_id_mv
      */
-    private function isNotOrderableItself(array $fields): bool
+    public function parentIds(array $fields): array
+    {
+        $ids = [];
+        foreach (self::values($fields, 'parent_id_mv') as $id) {
+            if (preg_match('/^[A-Z]{2}\d+$/', $id)) {
+                $ids[] = $id;
+            }
+        }
+
+        return array_values(array_unique($ids));
+    }
+
+    /**
+     * @param array<string,mixed> $fields
+     */
+    public function isNotOrderableItself(array $fields): bool
     {
         // Die Signatur kommt auch als "Kein Bestand", "[kein Bestand]" oder "HNicht im Bestand des DLA" vor.
         $notInHoldings = false;
