@@ -5,14 +5,30 @@
     <v:variable.set value="{index: '0'}" name="iterator" />
 </f:if>
 
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_manifestation_id_mv')}" name="item_manifestation_id_mv" />
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'location_mv')}" name="location_mv" />
+<v:variable.set value="0" name="inLibraryItem" />
+<f:if condition="{item_manifestation_id_mv}">
+    <f:for each="{location_mv}" as="location">
+        <f:if condition="{location}=='Bibliothek'">
+            <v:variable.set value="1" name="inLibraryItem" />
+        </f:if>
+    </f:for>
+</f:if>
+
 <div class="ctg-dtvt-row row-{item_id_mv.{iterator.index}} aukey-row-info">
-    <f:if condition="{filterType_mv.0}=='Daten'">
+    <f:if condition="{filterType_mv.0}=='Daten' || {inLibraryItem}">
         <f:then>
             <div style="padding: 0.5rem 0; margin-bottom: 10px;">
                 <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">
                     <f:translate key="Nicht bestellbar" extensionName="dla_opac_ng"/>
                 </span>
                 <span class="icon bel-kreis02" style="color:#cf2a0e;margin-left: 3px;"></span>
+                <f:if condition="{inLibraryItem}">
+                    <p style="margin-top: 10px;">
+                        <f:translate key="Handschrift im Bibliotheksexemplar" extensionName="dla_opac_ng"/>
+                    </p>
+                </f:if>
             </div>
         </f:then>
         <f:else>

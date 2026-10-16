@@ -112,6 +112,7 @@ $detailDocuments = [
     // Zusätzliche Varianten mit umfangreicheren Daten für die Unterabfragen der Partials:
     'detail-corporation-cotta' => 'KS00011400', // Körperschaft mit vielen Treffern (Cotta-Verlag, source=KS)
     'detail-library-items' => 'AK00983699',     // Gedrucktes mit 3 Exemplaren (Provenienz, Digitalisat), source=AK
+    'detail-manuscript-library-item' => 'HS00000091', // Handschrift in Bibliotheksexemplar (location_mv=Bibliothek, Verknüpfung AK00261435/AU00651865)
 ];
 foreach ($detailDocuments as $name => $id) {
     $scenarios[$name] = [
