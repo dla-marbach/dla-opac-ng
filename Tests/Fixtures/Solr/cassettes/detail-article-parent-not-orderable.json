@@ -1,0 +1,247 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(AK01823692)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.701421,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "titleMain_text": "[Testaufnahme]",
+                        "default": [
+                            "[Testaufnahme]",
+                            "Tonbandspule",
+                            "Tonband",
+                            "Audiodatei",
+                            "Tonträger",
+                            "Voigt, Gertrud Maria Gisela von",
+                            "1953",
+                            "Claudius, Hermann (1878-1980)",
+                            "Claudius, Gisela (1915-2010)",
+                            "AK01823692",
+                            "1.0.0",
+                            "Claudius, Hermann",
+                            "Claudius, Gisela",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>[Testaufnahme]</dc:title>\n  <dc:contributor>Claudius, Hermann (1878-1980)</dc:contributor>\n  <dc:contributor>Claudius, Gisela (1915-2010)</dc:contributor>\n  <dc:type>Tonband</dc:type>\n  <dc:type>Audiodatei</dc:type>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Tonbandspule</dc:type>\n  <dc:date>1953</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK01823691</dc:source>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01823692</dc:identifier>\n  <dc:identifier>AK01823692</dc:identifier>\n</oai_dc:dc>",
+                            "gesprochenes Wort",
+                            "[Testaufnahme]",
+                            "PE00012868",
+                            "PE00087240",
+                            "1953",
+                            "Claudius, Hermann (1878-1980); Claudius, Gisela (1915-2010)",
+                            "contributor",
+                            "contributor",
+                            "Tonband",
+                            "1953",
+                            "f-fertig, i-fertig",
+                            "2024-02-15",
+                            "TY  - GEN\nA2  - Claudius, Hermann\nA2  - Claudius, Gisela\nDA  - 1953\nID  - AK01823692\nLA  - Deutsch\nM2  - Tonband\nM2  - Audiodatei\nM2  - Beitrag\nM3  - Aufsatz\nNV  - (1953)\nPY  - 1953\nTI  - [Testaufnahme]\nT3  - [Lesung verschiedener Texte] : [Lesung]\nUR  - https://www.dla-marbach.de/find/opac/id/AK01823692/\nER  -",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>[Testaufnahme]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Claudius, Hermann (1878-1980)</namePart>\n    <nameIdentifier type=\"gnd\">118676334</nameIdentifier>\n    <namePart type=\"date\">1878-10-19 — 1980-09-08</namePart>\n    <role>\n      <roleTerm type=\"text\">Sprecher</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Claudius, Gisela (1915-2010)</namePart>\n    <nameIdentifier type=\"gnd\">1016806035</nameIdentifier>\n    <namePart type=\"date\">1915-05-29 — 2010</namePart>\n    <role>\n      <roleTerm type=\"text\">Sprecher</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Tonband</typeOfResource>\n  <typeOfResource>Audiodatei</typeOfResource>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Aufsatz</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1953</dateIssued>\n    <displayDate>1953</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Tonbandspule</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">[von Hermann und Gisela Claudius]</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>[Lesung verschiedener Texte] : [Lesung]</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01823691</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2024-02-15</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2024-02-15</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01823692</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Audio",
+                            "Erschienen in: [Lesung verschiedener Texte] : [Lesung]. \\ [Hermann Claudius]. - [Deutschland], [nach 1953] - 1 Tonband (32:43 min)",
+                            "1",
+                            "Deutsch␝Original",
+                            "Sprecher",
+                            "Sprecher",
+                            "1953",
+                            "AK01823691",
+                            "false",
+                            "[Deutschland], [nach 1953] - 1 Tonband (32:43 min)",
+                            "[Lesung verschiedener Texte] : [Lesung]",
+                            "Claudius, Hermann (1878-1980)",
+                            "Claudius, Gisela (1915-2010)",
+                            "Deutsch",
+                            "AK",
+                            "Claudius, Hermann",
+                            "Claudius, Gisela",
+                            "PE00012868",
+                            "PE00087240",
+                            "[Hermann Claudius]",
+                            "2024-02-15",
+                            "1953-01-01T00:00:00Z",
+                            "(1953)",
+                            "Sprecher",
+                            "Sprecher",
+                            "Bibliotheksmaterialien",
+                            "Teil einer monografischen Zusammenstellung, unselbständiges Stück",
+                            "[von Hermann und Gisela Claudius]",
+                            "Claudius, Hermann (1878-1980)",
+                            "Claudius, Gisela (1915-2010)",
+                            "2024-02-15",
+                            "PE00012868",
+                            "PE00087240",
+                            "Ton- und Bildträger",
+                            "Abgeschlossen",
+                            "Aufsatz",
+                            "Claudius, Hermann (1878-1980)␝Von",
+                            "Claudius, Gisela (1915-2010)␝Von",
+                            "Einzelbestandteil / unselbständiges Werk",
+                            "Claudius, Hermann (1878-1980)␝Sprecher",
+                            "Claudius, Gisela (1915-2010)␝Sprecher",
+                            "[Testaufnahme]",
+                            "Tonband",
+                            "Audiodatei",
+                            "Beitrag",
+                            "Deutsch",
+                            "https://www.dla-marbach.de/find/opac/id/AK01823692"
+                        ],
+                        "categoryMedium_mv": [
+                            "Tonbandspule"
+                        ],
+                        "categoryMedia_mv": [
+                            "Tonband",
+                            "Audiodatei",
+                            "Tonträger"
+                        ],
+                        "searchVariant_mv": [
+                            "Voigt, Gertrud Maria Gisela von"
+                        ],
+                        "dateOriginComment_mv": [
+                            "1953"
+                        ],
+                        "personBy_display_mv": [
+                            "Claudius, Hermann (1878-1980)",
+                            "Claudius, Gisela (1915-2010)"
+                        ],
+                        "id": "AK01823692",
+                        "schemaVersion": "1.0.0",
+                        "searchNameBy_mv": [
+                            "Claudius, Hermann",
+                            "Claudius, Gisela"
+                        ],
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>[Testaufnahme]</dc:title>\n  <dc:contributor>Claudius, Hermann (1878-1980)</dc:contributor>\n  <dc:contributor>Claudius, Gisela (1915-2010)</dc:contributor>\n  <dc:type>Tonband</dc:type>\n  <dc:type>Audiodatei</dc:type>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Tonbandspule</dc:type>\n  <dc:date>1953</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK01823691</dc:source>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01823692</dc:identifier>\n  <dc:identifier>AK01823692</dc:identifier>\n</oai_dc:dc>",
+                        "categoryContent_mv": [
+                            "gesprochenes Wort"
+                        ],
+                        "display": "[Testaufnahme]",
+                        "contributor_id_mv": [
+                            "PE00012868",
+                            "PE00087240"
+                        ],
+                        "dateOrigin": "1953",
+                        "displayName": "Claudius, Hermann (1878-1980); Claudius, Gisela (1915-2010)",
+                        "personBy_creator_mv": [
+                            "contributor",
+                            "contributor"
+                        ],
+                        "categorySubSub": "Tonband",
+                        "filterDateRange_mv": [
+                            "1953"
+                        ],
+                        "statusCataloging": "f-fertig, i-fertig",
+                        "dateCataloged": "2024-02-15",
+                        "exportRIS": "TY  - GEN\nA2  - Claudius, Hermann\nA2  - Claudius, Gisela\nDA  - 1953\nID  - AK01823692\nLA  - Deutsch\nM2  - Tonband\nM2  - Audiodatei\nM2  - Beitrag\nM3  - Aufsatz\nNV  - (1953)\nPY  - 1953\nTI  - [Testaufnahme]\nT3  - [Lesung verschiedener Texte] : [Lesung]\nUR  - https://www.dla-marbach.de/find/opac/id/AK01823692/\nER  -",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>[Testaufnahme]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Claudius, Hermann (1878-1980)</namePart>\n    <nameIdentifier type=\"gnd\">118676334</nameIdentifier>\n    <namePart type=\"date\">1878-10-19 — 1980-09-08</namePart>\n    <role>\n      <roleTerm type=\"text\">Sprecher</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Claudius, Gisela (1915-2010)</namePart>\n    <nameIdentifier type=\"gnd\">1016806035</nameIdentifier>\n    <namePart type=\"date\">1915-05-29 — 2010</namePart>\n    <role>\n      <roleTerm type=\"text\">Sprecher</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Tonband</typeOfResource>\n  <typeOfResource>Audiodatei</typeOfResource>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Aufsatz</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1953</dateIssued>\n    <displayDate>1953</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Tonbandspule</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">[von Hermann und Gisela Claudius]</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>[Lesung verschiedener Texte] : [Lesung]</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01823691</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2024-02-15</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2024-02-15</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01823692</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "displayAddition1": "Erschienen in: [Lesung verschiedener Texte] : [Lesung]. \\ [Hermann Claudius]. - [Deutschland], [nach 1953] - 1 Tonband (32:43 min)",
+                        "searchBoost": 1,
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "personBy_role_mv": [
+                            "Sprecher",
+                            "Sprecher"
+                        ],
+                        "searchDate_mv": [
+                            "1953"
+                        ],
+                        "parent_id_mv": [
+                            "AK01823691"
+                        ],
+                        "confidential": false,
+                        "parent_displayAddition1_mv": [
+                            "[Deutschland], [nach 1953] - 1 Tonband (32:43 min)"
+                        ],
+                        "parent_display_mv": [
+                            "[Lesung verschiedener Texte] : [Lesung]"
+                        ],
+                        "contributor_display_mv": [
+                            "Claudius, Hermann (1878-1980)",
+                            "Claudius, Gisela (1915-2010)"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "source": "AK",
+                        "searchName_mv": [
+                            "Claudius, Hermann",
+                            "Claudius, Gisela"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00012868",
+                            "PE00087240"
+                        ],
+                        "parent_titleResponsability_mv": [
+                            "[Hermann Claudius]"
+                        ],
+                        "filterRecent": "2024-02-15",
+                        "filterDatePoint_mv": [
+                            "1953-01-01T00:00:00Z"
+                        ],
+                        "parentVolumeTotal": "(1953)",
+                        "contributor_role_mv": [
+                            "Sprecher",
+                            "Sprecher"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "parent_type_mv": [
+                            "Teil einer monografischen Zusammenstellung, unselbständiges Stück"
+                        ],
+                        "titleResponsability": "[von Hermann und Gisela Claudius]",
+                        "filterAuthority_mv": [
+                            "Claudius, Hermann (1878-1980)",
+                            "Claudius, Gisela (1915-2010)"
+                        ],
+                        "dateModified": "2024-02-15",
+                        "searchEntity_id_mv": [
+                            "PE00012868",
+                            "PE00087240"
+                        ],
+                        "category": "Ton- und Bildträger",
+                        "statusEditing": "Abgeschlossen",
+                        "filterFormContent_mv": [
+                            "Aufsatz"
+                        ],
+                        "filterAuthorityRelation_mv": [
+                            "Claudius, Hermann (1878-1980)␝Von",
+                            "Claudius, Gisela (1915-2010)␝Von"
+                        ],
+                        "categorySub": "Einzelbestandteil / unselbständiges Werk",
+                        "filterAuthorityRole_mv": [
+                            "Claudius, Hermann (1878-1980)␝Sprecher",
+                            "Claudius, Gisela (1915-2010)␝Sprecher"
+                        ],
+                        "title": "[Testaufnahme]",
+                        "filterMedium_mv": [
+                            "Tonband",
+                            "Audiodatei",
+                            "Beitrag"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK01823692",
+                        "score": 13.701421
+                    }
+                ]
+            }
+        }
+    }
+}

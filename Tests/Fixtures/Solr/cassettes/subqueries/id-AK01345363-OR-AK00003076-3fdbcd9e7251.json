@@ -1,0 +1,59 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:(AK01345363 OR AK00003076)",
+            "start": "0",
+            "rows": "2",
+            "fl": "id,filterMedium_mv,filterSource,filterType_mv,digitalObject_hyperlink_mv,item_id_mv,item_usageRestriction_mv,item_location_mv,item_digitalObject_hyperlink_mv"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 2,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "AK01345363",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "item_id_mv": [
+                            "AU01105561",
+                            "AU00580027"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "filterMedium_mv": [
+                            "Zeitschriftenheft"
+                        ],
+                        "item_usageRestriction_mv": [
+                            "benutzbar",
+                            "benutzbar"
+                        ],
+                        "item_location_mv": [
+                            "Bibliotheksmagazin",
+                            "Bibliotheksmagazin"
+                        ]
+                    },
+                    {
+                        "id": "AK00003076",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "filterMedium_mv": [
+                            "Zeitschrift"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

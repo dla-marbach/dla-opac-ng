@@ -1,0 +1,235 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(AK01846433)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.701421,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "titleMain_text": "auf der suche nach dem letzten schimmel",
+                        "default": [
+                            "auf der suche nach dem letzten schimmel",
+                            "Online-Ressource",
+                            "f-fertig, i-fertig",
+                            "E-Book",
+                            "Stolterfoht, Ulf (1963-)",
+                            "2019",
+                            "2019",
+                            "Stolterfoth, Ulf",
+                            "Brueterich",
+                            "Štol'terfot, Ul'f",
+                            "Stolterfoht, Urs",
+                            "Stolterfot, Ulf",
+                            "AK01846433",
+                            "1.0.0",
+                            "Stolterfoht, Ulf",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>auf der suche nach dem letzten schimmel : [E-Book]</dc:title>\n  <dc:creator>Stolterfoht, Ulf (1963-)</dc:creator>\n  <dc:type>E-Book</dc:type>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Lyrik</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Online-Ressource</dc:type>\n  <dc:date>2019</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK01838281</dc:source>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01846433</dc:identifier>\n  <dc:identifier>AK01846433</dc:identifier>\n</oai_dc:dc>",
+                            "Text",
+                            "auf der suche nach dem letzten schimmel : [E-Book]",
+                            "2019",
+                            "Stolterfoht, Ulf (1963-)",
+                            "AK",
+                            "creator",
+                            "E-Book",
+                            "Lyrik",
+                            "Einzelbestandteil / unselbständiges Werk",
+                            "2025-02-27",
+                            "Die 32 Schimmelarten des Joseph Brodsky : 23 Gedichte : [Textsammlung (Anthologie u.a.m.)]",
+                            "Abgeschlossen",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>auf der suche nach dem letzten schimmel</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Stolterfoht, Ulf (1963-)</namePart>\n    <nameIdentifier type=\"gnd\">120651335</nameIdentifier>\n    <namePart type=\"date\">1963-06-08</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>E-Book</typeOfResource>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Lyrik</genre>\n  <genre>Aufsatz</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">2019</dateIssued>\n    <displayDate>2019</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Online-Ressource</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Ulf Stolterfoht</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Die 32 Schimmelarten des Joseph Brodsky : 23 Gedichte : [Textsammlung (Anthologie u.a.m.)]</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01838281</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2025-02-27</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2025-12-17</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01846433</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Gedrucktes",
+                            "Erschienen in: Die 32 Schimmelarten des Joseph Brodsky : 23 Gedichte : [Textsammlung (Anthologie u.a.m.)]. \\ Alexandru Bulucz (Hg.) ; mit Gedichten von Patrick Wilden [u.a.]. - Berlin : mikrotext, © 2019 - 1 Online-Ressource; Seite 10",
+                            "Deutsch␝Original",
+                            "Verfasser/Urheber",
+                            "2019",
+                            "AK01838281",
+                            "false",
+                            "TY  - GEN\nAU  - Stolterfoht, Ulf\nDA  - 2019\nID  - AK01846433\nLA  - Deutsch\nM2  - E-Book\nM2  - Beitrag\nM3  - Lyrik\nM3  - Aufsatz\nNV  - (2019), Seite 10\nPY  - 2019\nSP  - Seite 10\nTI  - auf der suche nach dem letzten schimmel : [E-Book]\nT3  - Die 32 Schimmelarten des Joseph Brodsky : 23 Gedichte : [Textsammlung (Anthologie u.a.m.)]\nUR  - https://www.dla-marbach.de/find/opac/id/AK01846433/\nER  -",
+                            "1",
+                            "Deutsch",
+                            "2019-01-01T00:00:00Z",
+                            "Stolterfoht, Ulf",
+                            "PE00037752",
+                            "Stolterfoht, Ulf (1963-)␝Verfasser/Urheber",
+                            "2025-02-27",
+                            "Seite 10",
+                            "Verfasser/Urheber",
+                            "(2019), Seite 10",
+                            "PE00037752",
+                            "Bibliotheksmaterialien",
+                            "Teil einer monografischen Zusammenstellung, unselbständiges Stück",
+                            "Ulf Stolterfoht",
+                            "Stolterfoht, Ulf (1963-)",
+                            "2025-12-17",
+                            "PE00037752",
+                            "Bibliotheksdokumente",
+                            "Stolterfoht, Ulf (1963-)",
+                            "Lyrik",
+                            "Aufsatz",
+                            "Stolterfoht, Ulf (1963-)␝Von",
+                            "Berlin : mikrotext, © 2019 - 1 Online-Ressource",
+                            "E-Book",
+                            "Alexandru Bulucz (Hg.) ; mit Gedichten von Patrick Wilden [u.a.]",
+                            "auf der suche nach dem letzten schimmel",
+                            "E-Book",
+                            "Beitrag",
+                            "Deutsch",
+                            "https://www.dla-marbach.de/find/opac/id/AK01846433"
+                        ],
+                        "categoryMedium_mv": [
+                            "Online-Ressource"
+                        ],
+                        "statusCataloging": "f-fertig, i-fertig",
+                        "categoryMedia_mv": [
+                            "E-Book"
+                        ],
+                        "personBy_display_mv": [
+                            "Stolterfoht, Ulf (1963-)"
+                        ],
+                        "dateOriginComment_mv": [
+                            "2019"
+                        ],
+                        "dateOrigin": "2019",
+                        "searchVariant_mv": [
+                            "Stolterfoth, Ulf",
+                            "Brueterich",
+                            "Štol'terfot, Ul'f",
+                            "Stolterfoht, Urs",
+                            "Stolterfot, Ulf"
+                        ],
+                        "id": "AK01846433",
+                        "schemaVersion": "1.0.0",
+                        "searchNameBy_mv": [
+                            "Stolterfoht, Ulf"
+                        ],
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>auf der suche nach dem letzten schimmel : [E-Book]</dc:title>\n  <dc:creator>Stolterfoht, Ulf (1963-)</dc:creator>\n  <dc:type>E-Book</dc:type>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Lyrik</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Online-Ressource</dc:type>\n  <dc:date>2019</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK01838281</dc:source>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01846433</dc:identifier>\n  <dc:identifier>AK01846433</dc:identifier>\n</oai_dc:dc>",
+                        "categoryContent_mv": [
+                            "Text"
+                        ],
+                        "display": "auf der suche nach dem letzten schimmel : [E-Book]",
+                        "filterDateRange_mv": [
+                            "2019"
+                        ],
+                        "displayName": "Stolterfoht, Ulf (1963-)",
+                        "source": "AK",
+                        "personBy_creator_mv": [
+                            "creator"
+                        ],
+                        "categorySubSub": "E-Book",
+                        "genreOther_mv": [
+                            "Lyrik"
+                        ],
+                        "categorySub": "Einzelbestandteil / unselbständiges Werk",
+                        "dateCataloged": "2025-02-27",
+                        "parent_display_mv": [
+                            "Die 32 Schimmelarten des Joseph Brodsky : 23 Gedichte : [Textsammlung (Anthologie u.a.m.)]"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>auf der suche nach dem letzten schimmel</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Stolterfoht, Ulf (1963-)</namePart>\n    <nameIdentifier type=\"gnd\">120651335</nameIdentifier>\n    <namePart type=\"date\">1963-06-08</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>E-Book</typeOfResource>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Lyrik</genre>\n  <genre>Aufsatz</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">2019</dateIssued>\n    <displayDate>2019</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Online-Ressource</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Ulf Stolterfoht</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Die 32 Schimmelarten des Joseph Brodsky : 23 Gedichte : [Textsammlung (Anthologie u.a.m.)]</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01838281</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2025-02-27</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2025-12-17</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01846433</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Erschienen in: Die 32 Schimmelarten des Joseph Brodsky : 23 Gedichte : [Textsammlung (Anthologie u.a.m.)]. \\ Alexandru Bulucz (Hg.) ; mit Gedichten von Patrick Wilden [u.a.]. - Berlin : mikrotext, © 2019 - 1 Online-Ressource; Seite 10",
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "creator_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "searchDate_mv": [
+                            "2019"
+                        ],
+                        "parent_id_mv": [
+                            "AK01838281"
+                        ],
+                        "confidential": false,
+                        "exportRIS": "TY  - GEN\nAU  - Stolterfoht, Ulf\nDA  - 2019\nID  - AK01846433\nLA  - Deutsch\nM2  - E-Book\nM2  - Beitrag\nM3  - Lyrik\nM3  - Aufsatz\nNV  - (2019), Seite 10\nPY  - 2019\nSP  - Seite 10\nTI  - auf der suche nach dem letzten schimmel : [E-Book]\nT3  - Die 32 Schimmelarten des Joseph Brodsky : 23 Gedichte : [Textsammlung (Anthologie u.a.m.)]\nUR  - https://www.dla-marbach.de/find/opac/id/AK01846433/\nER  -",
+                        "searchBoost": 1,
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "filterDatePoint_mv": [
+                            "2019-01-01T00:00:00Z"
+                        ],
+                        "searchName_mv": [
+                            "Stolterfoht, Ulf"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00037752"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Stolterfoht, Ulf (1963-)␝Verfasser/Urheber"
+                        ],
+                        "filterRecent": "2025-02-27",
+                        "parentIssuePage": "Seite 10",
+                        "personBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "parentVolumeTotal": "(2019), Seite 10",
+                        "creator_id_mv": [
+                            "PE00037752"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "parent_type_mv": [
+                            "Teil einer monografischen Zusammenstellung, unselbständiges Stück"
+                        ],
+                        "titleResponsability": "Ulf Stolterfoht",
+                        "filterAuthority_mv": [
+                            "Stolterfoht, Ulf (1963-)"
+                        ],
+                        "dateModified": "2025-12-17",
+                        "searchEntity_id_mv": [
+                            "PE00037752"
+                        ],
+                        "category": "Bibliotheksdokumente",
+                        "creator_display_mv": [
+                            "Stolterfoht, Ulf (1963-)"
+                        ],
+                        "filterFormContent_mv": [
+                            "Lyrik",
+                            "Aufsatz"
+                        ],
+                        "filterAuthorityRelation_mv": [
+                            "Stolterfoht, Ulf (1963-)␝Von"
+                        ],
+                        "parent_displayAddition1_mv": [
+                            "Berlin : mikrotext, © 2019 - 1 Online-Ressource"
+                        ],
+                        "categoryPublication_mv": [
+                            "E-Book"
+                        ],
+                        "parent_titleResponsability_mv": [
+                            "Alexandru Bulucz (Hg.) ; mit Gedichten von Patrick Wilden [u.a.]"
+                        ],
+                        "title": "auf der suche nach dem letzten schimmel",
+                        "filterMedium_mv": [
+                            "E-Book",
+                            "Beitrag"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK01846433",
+                        "score": 13.701421
+                    }
+                ]
+            }
+        }
+    }
+}

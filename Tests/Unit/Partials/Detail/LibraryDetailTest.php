@@ -3,6 +3,8 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Partials\Detail;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
+use Dla\DlaOpacNg\Tests\Support\SolrFixture;
+use Solarium\QueryType\Select\Result\Document;
 
 /**
  * Display/Detail/Library/Details, Access und RightColumn: ein Aufsatz ohne Exemplare (AK01600951) und
@@ -67,6 +69,48 @@ class LibraryDetailTest extends FluidPartialTestCase
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Library/Access', self::ARTICLE));
 
         self::assertSame('Order now', $text);
+    }
+
+    /**
+     * Fälle A1-A4 und B1-B2 des Bestellbuttons bei Beiträgen (Cassetten detail-article-*, detail-ebook-article-*).
+     *
+     * @test
+     * @dataProvider articleOrderButtons
+     */
+    public function accessOfArticleShowsOrderButtonOnlyWhenOrderable(string $id, bool $orderable): void
+    {
+        $text = self::visibleText($this->renderDetailPartial('Display/Detail/Library/Access', $id));
+
+        self::assertSame($orderable, str_contains($text, 'Order now'), $text);
+        self::assertSame(!$orderable, str_contains($text, 'Not orderable'), $text);
+    }
+
+    public static function articleOrderButtons(): array
+    {
+        return [
+            'A1 Überordnung nicht ausleihbar' => ['AK01823692', false],
+            'A2 ohne Überordnung' => ['AK01726262', true],
+            'A3 kein Bestand' => ['AK00423511', false],
+            'A4 Retro-Beitrag, Überordnung Zeitschrift' => ['AK00944927', true],
+            'B1 E-Beitrag, Überordnung mit Digitalem Objekt' => ['AK01846433', false],
+            'B1 Beitrag, Überordnung Zeitschrift und digitalisiertes Heft' => ['AK01827413', false],
+            'B1 E-Beitrag mit MM-Satz' => ['AK01846411', false],
+            'B2 E-Beitrag ohne Überordnung mit MM-Satz' => ['AK01890275', false],
+        ];
+    }
+
+    /**
+     * @test
+     */
+    public function accessOfArticleWithConditionalUsageNoteShowsOrangeIndicator(): void
+    {
+        $variables = SolrFixture::detailVariables('AK01726262');
+        $variables['document'] = new Document(array_merge($variables['document']->getFields(), ['usageRestrictionNote' => 'bedingt benutzbar']));
+        $html = $this->renderPartial('Display/Detail/Library/Access', $variables);
+
+        self::assertStringContainsString('Order now', self::visibleText($html));
+        self::assertStringContainsString('#df661e', $html);
+        self::assertStringNotContainsString('#00df27', $html);
     }
 
     /**

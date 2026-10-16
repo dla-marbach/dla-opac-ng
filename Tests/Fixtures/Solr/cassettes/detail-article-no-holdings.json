@@ -1,0 +1,381 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(AK00423511)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.701421,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "titleMain_text": "Übersetzungen aus Horaz",
+                        "default": [
+                            "Übersetzungen aus Horaz",
+                            "Band",
+                            "Retrokonversion",
+                            "Druckschrift",
+                            "Gorat͡sĭ̄",
+                            "Khorat͡siĭ",
+                            "Khorat͡siĭ Flak, Kvint",
+                            "Horatius",
+                            "Horatius",
+                            "Horace",
+                            "Orazio",
+                            "Horace",
+                            "Gorat̸s̶ĭ̄",
+                            "Khorat̸s̶iĭ Flak, Kvint",
+                            "Khorat̸s̶iĭ",
+                            "Horacyusz",
+                            "Quintus Horacius Flakus",
+                            "Horatz",
+                            "Oracio",
+                            "Oratio",
+                            "Ho-la-tz'ŭ",
+                            "Horacio Flaco, Quinto",
+                            "Horacius Flakus, Quintus",
+                            "Horazius Flakkus, Quintus",
+                            "Horatius F., Q.",
+                            "Horatius Flaccus, Quinctus",
+                            "Horazius Flakus, Quintus",
+                            "Goraz Flakk, Kvint",
+                            "Orazjus Flaccus, Quintus",
+                            "Flaccus, Qu. Horatius",
+                            "Flacco, Quinto Orazio",
+                            "Flaccus, Horatius",
+                            "Oracius Flaccus",
+                            "Horacij",
+                            "Flaccus, Quintus H.",
+                            "Horatius Flaccus",
+                            "Horatius, Quintus",
+                            "Horatius Flaccus, Q.",
+                            "Horatio Flacco, Quinto",
+                            "Horazius Flaccus, Quintus",
+                            "Orazio Flacco, Quinto",
+                            "Horacjusz Flakkus, Kwintus",
+                            "Horacy",
+                            "Flaccus, Quintus Horatius",
+                            "Horatius",
+                            "Orazio",
+                            "Horace",
+                            "Horaz",
+                            "Horacio",
+                            "Quintus Horatius Flaccus",
+                            "Flacus, Quintus Horatius",
+                            "Quinto Orazio Flacco",
+                            "Horatios",
+                            "Choracij",
+                            "Horatius <Poeta>",
+                            "Horatius <Flaccus>",
+                            "Horatius Quintus Flaccus",
+                            "Gorat͡sī",
+                            "Khorat͡sii",
+                            "Khorat͡sii Flak, Kvint",
+                            "Gorat̸s̶ī",
+                            "Khorat̸s̶ii Flak, Kvint",
+                            "Khorat̸s̶ii",
+                            "Ho la tzu",
+                            "Horatius Poeta",
+                            "Schroeder, Rudolf Alexander",
+                            "Schröder, R. Alexander",
+                            "Schröder, R. A.",
+                            "Schröder, Rudolf Alex.",
+                            "Schröder, Rud. Alex.",
+                            "kein Bestand",
+                            "Horatius Flaccus, Quintus (-0065--0008)",
+                            "Schröder, Rudolf Alexander (1878-1962)",
+                            "AK00423511",
+                            "1.0.0",
+                            "GEMEL. 20090818",
+                            "Horatius Flaccus, Quintus",
+                            "Schröder, Rudolf Alexander",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Übersetzungen aus Horaz : Carmen Saeculare. Erstes Buch, 31.Ode. Drittes Buch, 23.Ode. [Übers.] von Rudolf Alexander Schröder</dc:title>\n  <dc:creator>Horatius Flaccus, Quintus (-0065--0008)</dc:creator>\n  <dc:contributor>Schröder, Rudolf Alexander (1878-1962)</dc:contributor>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:date>1935</dc:date>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00006090</dc:source>\n  <dc:identifier>kein Bestand</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00423511</dc:identifier>\n  <dc:identifier>AK00423511</dc:identifier>\n</oai_dc:dc>",
+                            "Text",
+                            "Übersetzungen aus Horaz : Carmen Saeculare. Erstes Buch, 31.Ode. Drittes Buch, 23.Ode. [Übers.] von Rudolf Alexander Schröder",
+                            "PE00035369",
+                            "1935",
+                            "Horatius Flaccus, Quintus (-0065--0008); Schröder, Rudolf Alexander (1878-1962)",
+                            "creator",
+                            "contributor",
+                            "Carmen Saeculare. Erstes Buch, 31.Ode. Drittes Buch, 23.Ode. [Übers.] von Rudolf Alexander Schröder",
+                            "Druckschrift",
+                            "1935",
+                            "Einzelbestandteil / unselbständiges Werk",
+                            "PE00055623",
+                            "2008-07-20",
+                            "0041_0277_1.tif",
+                            "0617_0753_1.tif",
+                            "Eckart : Blätter für evangelische Geisteskultur",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Übersetzungen aus Horaz</title>\n    <subTitle>Carmen Saeculare. Erstes Buch, 31.Ode. Drittes Buch, 23.Ode. [Übers.] von Rudolf Alexander Schröder</subTitle>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Horatius Flaccus, Quintus (-0065--0008)</namePart>\n    <nameIdentifier type=\"gnd\">118553569</nameIdentifier>\n    <namePart type=\"date\">-0065-12-08 — -0008-11-27</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Schröder, Rudolf Alexander (1878-1962)</namePart>\n    <nameIdentifier type=\"gnd\">118610880</nameIdentifier>\n    <namePart type=\"date\">1878-01-26 — 1962-08-22</namePart>\n    <role>\n      <roleTerm type=\"text\">Übersetzer</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Aufsatz</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1935</dateIssued>\n  </originInfo>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Quintus Horatius Flaccus ; Rudolf Alexander Schröder [Übersetzer]</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Eckart : Blätter für evangelische Geisteskultur</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00006090</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>kein Bestand</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2008-07-20</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2008-07-20</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00423511</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Gedrucktes",
+                            "Erschienen in: Eckart : Blätter für evangelische Geisteskultur. - 11 (1935), Seite 339-341",
+                            "Verfasser/Urheber",
+                            "1935",
+                            "BDG",
+                            "AK00006090",
+                            "false",
+                            "TY  - GEN\nA2  - Schröder, Rudolf Alexander\nAU  - Horatius Flaccus, Quintus\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nDA  - 1935\nID  - AK00423511\nM2  - Beitrag\nM3  - Aufsatz\nNV  - 11 (1935), Seite 339-341\nPY  - 1935\nTI  - Übersetzungen aus Horaz : Carmen Saeculare. Erstes Buch, 31.Ode. Drittes Buch, 23.Ode. [Übers.] von Rudolf Alexander Schröder\nT3  - Eckart : Blätter für evangelische Geisteskultur\nUR  - https://www.dla-marbach.de/find/opac/id/AK00423511/\nER  -",
+                            "1",
+                            "AK",
+                            "Horatius Flaccus, Quintus",
+                            "Schröder, Rudolf Alexander",
+                            "PE00055623",
+                            "PE00035369",
+                            "nicht benutzbar\nnur bibliographischer Nachweis, nicht im Bestand des DLA!",
+                            "572y",
+                            "572y",
+                            "Schröder, Rudolf Alexander (1878-1962)",
+                            "2008-07-20",
+                            "1935-01-01T00:00:00Z",
+                            "Verfasser/Urheber",
+                            "Übersetzer",
+                            "11 (1935), Seite 339-341",
+                            "Übersetzer",
+                            "Bibliotheksmaterialien",
+                            "Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)",
+                            "Quintus Horatius Flaccus ; Rudolf Alexander Schröder [Übersetzer]",
+                            "Horatius Flaccus, Quintus (-0065--0008)",
+                            "Schröder, Rudolf Alexander (1878-1962)",
+                            "2008-07-20",
+                            "PE00055623",
+                            "PE00035369",
+                            "Bibliotheksdokumente",
+                            "Horatius Flaccus, Quintus (-0065--0008)",
+                            "Aufsatz",
+                            "Horatius Flaccus, Quintus (-0065--0008)␝Von",
+                            "Schröder, Rudolf Alexander (1878-1962)␝Von",
+                            "Witten ; Berlin : Eckart-Verl., 1.1924/25 - 19.1943,Febr./März; 20.1951,Okt./Nov. - 29.1960,4.",
+                            "Horatius Flaccus, Quintus (-0065--0008)␝Verfasser/Urheber",
+                            "Schröder, Rudolf Alexander (1878-1962)␝Übersetzer",
+                            "Übersetzungen aus Horaz : Carmen Saeculare. Erstes Buch, 31.Ode. Drittes Buch, 23.Ode. [Übers.] von Rudolf Alexander Schröder",
+                            "Beitrag",
+                            "https://www.dla-marbach.de/find/opac/id/AK00423511"
+                        ],
+                        "categoryMedium_mv": [
+                            "Band"
+                        ],
+                        "statusEditing": "Retrokonversion",
+                        "categoryMedia_mv": [
+                            "Druckschrift"
+                        ],
+                        "searchVariant_mv": [
+                            "Gorat͡sĭ̄",
+                            "Khorat͡siĭ",
+                            "Khorat͡siĭ Flak, Kvint",
+                            "Horatius",
+                            "Horatius",
+                            "Horace",
+                            "Orazio",
+                            "Horace",
+                            "Gorat̸s̶ĭ̄",
+                            "Khorat̸s̶iĭ Flak, Kvint",
+                            "Khorat̸s̶iĭ",
+                            "Horacyusz",
+                            "Quintus Horacius Flakus",
+                            "Horatz",
+                            "Oracio",
+                            "Oratio",
+                            "Ho-la-tz'ŭ",
+                            "Horacio Flaco, Quinto",
+                            "Horacius Flakus, Quintus",
+                            "Horazius Flakkus, Quintus",
+                            "Horatius F., Q.",
+                            "Horatius Flaccus, Quinctus",
+                            "Horazius Flakus, Quintus",
+                            "Goraz Flakk, Kvint",
+                            "Orazjus Flaccus, Quintus",
+                            "Flaccus, Qu. Horatius",
+                            "Flacco, Quinto Orazio",
+                            "Flaccus, Horatius",
+                            "Oracius Flaccus",
+                            "Horacij",
+                            "Flaccus, Quintus H.",
+                            "Horatius Flaccus",
+                            "Horatius, Quintus",
+                            "Horatius Flaccus, Q.",
+                            "Horatio Flacco, Quinto",
+                            "Horazius Flaccus, Quintus",
+                            "Orazio Flacco, Quinto",
+                            "Horacjusz Flakkus, Kwintus",
+                            "Horacy",
+                            "Flaccus, Quintus Horatius",
+                            "Horatius",
+                            "Orazio",
+                            "Horace",
+                            "Horaz",
+                            "Horacio",
+                            "Quintus Horatius Flaccus",
+                            "Flacus, Quintus Horatius",
+                            "Quinto Orazio Flacco",
+                            "Horatios",
+                            "Choracij",
+                            "Horatius <Poeta>",
+                            "Horatius <Flaccus>",
+                            "Horatius Quintus Flaccus",
+                            "Gorat͡sī",
+                            "Khorat͡sii",
+                            "Khorat͡sii Flak, Kvint",
+                            "Gorat̸s̶ī",
+                            "Khorat̸s̶ii Flak, Kvint",
+                            "Khorat̸s̶ii",
+                            "Ho la tzu",
+                            "Horatius Poeta",
+                            "Schroeder, Rudolf Alexander",
+                            "Schröder, R. Alexander",
+                            "Schröder, R. A.",
+                            "Schröder, Rudolf Alex.",
+                            "Schröder, Rud. Alex."
+                        ],
+                        "callNumberBibliographic_mv": [
+                            "kein Bestand"
+                        ],
+                        "personBy_display_mv": [
+                            "Horatius Flaccus, Quintus (-0065--0008)",
+                            "Schröder, Rudolf Alexander (1878-1962)"
+                        ],
+                        "id": "AK00423511",
+                        "schemaVersion": "1.0.0",
+                        "vendor_id_mv": [
+                            "GEMEL. 20090818"
+                        ],
+                        "searchNameBy_mv": [
+                            "Horatius Flaccus, Quintus",
+                            "Schröder, Rudolf Alexander"
+                        ],
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Übersetzungen aus Horaz : Carmen Saeculare. Erstes Buch, 31.Ode. Drittes Buch, 23.Ode. [Übers.] von Rudolf Alexander Schröder</dc:title>\n  <dc:creator>Horatius Flaccus, Quintus (-0065--0008)</dc:creator>\n  <dc:contributor>Schröder, Rudolf Alexander (1878-1962)</dc:contributor>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:date>1935</dc:date>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00006090</dc:source>\n  <dc:identifier>kein Bestand</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00423511</dc:identifier>\n  <dc:identifier>AK00423511</dc:identifier>\n</oai_dc:dc>",
+                        "categoryContent_mv": [
+                            "Text"
+                        ],
+                        "display": "Übersetzungen aus Horaz : Carmen Saeculare. Erstes Buch, 31.Ode. Drittes Buch, 23.Ode. [Übers.] von Rudolf Alexander Schröder",
+                        "contributor_id_mv": [
+                            "PE00035369"
+                        ],
+                        "dateOrigin": "1935",
+                        "displayName": "Horatius Flaccus, Quintus (-0065--0008); Schröder, Rudolf Alexander (1878-1962)",
+                        "personBy_creator_mv": [
+                            "creator",
+                            "contributor"
+                        ],
+                        "titleSuffix": "Carmen Saeculare. Erstes Buch, 31.Ode. Drittes Buch, 23.Ode. [Übers.] von Rudolf Alexander Schröder",
+                        "categorySubSub": "Druckschrift",
+                        "filterDateRange_mv": [
+                            "1935"
+                        ],
+                        "categorySub": "Einzelbestandteil / unselbständiges Werk",
+                        "creator_id_mv": [
+                            "PE00055623"
+                        ],
+                        "dateCataloged": "2008-07-20",
+                        "identifier_id_mv": [
+                            "0041_0277_1.tif",
+                            "0617_0753_1.tif"
+                        ],
+                        "parent_display_mv": [
+                            "Eckart : Blätter für evangelische Geisteskultur"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Übersetzungen aus Horaz</title>\n    <subTitle>Carmen Saeculare. Erstes Buch, 31.Ode. Drittes Buch, 23.Ode. [Übers.] von Rudolf Alexander Schröder</subTitle>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Horatius Flaccus, Quintus (-0065--0008)</namePart>\n    <nameIdentifier type=\"gnd\">118553569</nameIdentifier>\n    <namePart type=\"date\">-0065-12-08 — -0008-11-27</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Schröder, Rudolf Alexander (1878-1962)</namePart>\n    <nameIdentifier type=\"gnd\">118610880</nameIdentifier>\n    <namePart type=\"date\">1878-01-26 — 1962-08-22</namePart>\n    <role>\n      <roleTerm type=\"text\">Übersetzer</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Aufsatz</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1935</dateIssued>\n  </originInfo>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Quintus Horatius Flaccus ; Rudolf Alexander Schröder [Übersetzer]</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Eckart : Blätter für evangelische Geisteskultur</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00006090</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>kein Bestand</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2008-07-20</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2008-07-20</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00423511</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Erschienen in: Eckart : Blätter für evangelische Geisteskultur. - 11 (1935), Seite 339-341",
+                        "creator_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "searchDate_mv": [
+                            "1935"
+                        ],
+                        "vendor_type_mv": [
+                            "BDG"
+                        ],
+                        "parent_id_mv": [
+                            "AK00006090"
+                        ],
+                        "confidential": false,
+                        "exportRIS": "TY  - GEN\nA2  - Schröder, Rudolf Alexander\nAU  - Horatius Flaccus, Quintus\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nDA  - 1935\nID  - AK00423511\nM2  - Beitrag\nM3  - Aufsatz\nNV  - 11 (1935), Seite 339-341\nPY  - 1935\nTI  - Übersetzungen aus Horaz : Carmen Saeculare. Erstes Buch, 31.Ode. Drittes Buch, 23.Ode. [Übers.] von Rudolf Alexander Schröder\nT3  - Eckart : Blätter für evangelische Geisteskultur\nUR  - https://www.dla-marbach.de/find/opac/id/AK00423511/\nER  -",
+                        "searchBoost": 1,
+                        "source": "AK",
+                        "searchName_mv": [
+                            "Horatius Flaccus, Quintus",
+                            "Schröder, Rudolf Alexander"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00055623",
+                            "PE00035369"
+                        ],
+                        "usageRestrictionNote": "nicht benutzbar\nnur bibliographischer Nachweis, nicht im Bestand des DLA!",
+                        "identifier_type_mv": [
+                            "572y",
+                            "572y"
+                        ],
+                        "contributor_display_mv": [
+                            "Schröder, Rudolf Alexander (1878-1962)"
+                        ],
+                        "filterRecent": "2008-07-20",
+                        "filterDatePoint_mv": [
+                            "1935-01-01T00:00:00Z"
+                        ],
+                        "personBy_role_mv": [
+                            "Verfasser/Urheber",
+                            "Übersetzer"
+                        ],
+                        "parentVolumeTotal": "11 (1935), Seite 339-341",
+                        "contributor_role_mv": [
+                            "Übersetzer"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "parent_type_mv": [
+                            "Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)"
+                        ],
+                        "titleResponsability": "Quintus Horatius Flaccus ; Rudolf Alexander Schröder [Übersetzer]",
+                        "filterAuthority_mv": [
+                            "Horatius Flaccus, Quintus (-0065--0008)",
+                            "Schröder, Rudolf Alexander (1878-1962)"
+                        ],
+                        "dateModified": "2008-07-20",
+                        "searchEntity_id_mv": [
+                            "PE00055623",
+                            "PE00035369"
+                        ],
+                        "category": "Bibliotheksdokumente",
+                        "creator_display_mv": [
+                            "Horatius Flaccus, Quintus (-0065--0008)"
+                        ],
+                        "filterFormContent_mv": [
+                            "Aufsatz"
+                        ],
+                        "filterAuthorityRelation_mv": [
+                            "Horatius Flaccus, Quintus (-0065--0008)␝Von",
+                            "Schröder, Rudolf Alexander (1878-1962)␝Von"
+                        ],
+                        "parent_displayAddition1_mv": [
+                            "Witten ; Berlin : Eckart-Verl., 1.1924/25 - 19.1943,Febr./März; 20.1951,Okt./Nov. - 29.1960,4."
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Horatius Flaccus, Quintus (-0065--0008)␝Verfasser/Urheber",
+                            "Schröder, Rudolf Alexander (1878-1962)␝Übersetzer"
+                        ],
+                        "title": "Übersetzungen aus Horaz : Carmen Saeculare. Erstes Buch, 31.Ode. Drittes Buch, 23.Ode. [Übers.] von Rudolf Alexander Schröder",
+                        "filterMedium_mv": [
+                            "Beitrag"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK00423511",
+                        "score": 13.701421
+                    }
+                ]
+            }
+        }
+    }
+}

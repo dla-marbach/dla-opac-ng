@@ -113,6 +113,15 @@ $detailDocuments = [
     'detail-corporation-cotta' => 'KS00011400', // Körperschaft mit vielen Treffern (Cotta-Verlag, source=KS)
     'detail-library-items' => 'AK00983699',     // Gedrucktes mit 3 Exemplaren (Provenienz, Digitalisat), source=AK
     'detail-manuscript-library-item' => 'HS00000091', // Handschrift in Bibliotheksexemplar (location_mv=Bibliothek, Verknüpfung AK00261435/AU00651865)
+    // Beiträge für den Bestellbutton (Library/Access, Fälle A1-A4, B1-B2):
+    'detail-article-parent-not-orderable' => 'AK01823692', // A1: Überordnung ohne bestellbares Exemplar
+    'detail-article-without-parent' => 'AK01726262',       // A2: ohne Überordnung
+    'detail-article-no-holdings' => 'AK00423511',          // A3: callNumberBibliographic_mv = kein Bestand
+    'detail-article-retro' => 'AK00944927',                // A4: Überordnung ist eine Zeitschrift
+    'detail-ebook-article-parent' => 'AK01846433',         // B1: E-Beitrag, Überordnung mit Digitalem Objekt
+    'detail-ebook-article-parent-issue' => 'AK01827413',   // B1: Beitrag, Überordnung Zeitschrift + digitalisiertes Heft
+    'detail-ebook-article-digital-object' => 'AK01846411', // B1: E-Beitrag mit MM-Satz
+    'detail-ebook-article-standalone' => 'AK01890275',     // B2: E-Beitrag ohne Überordnung mit MM-Satz
 ];
 foreach ($detailDocuments as $name => $id) {
     $scenarios[$name] = [

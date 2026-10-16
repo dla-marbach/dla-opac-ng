@@ -1,0 +1,271 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(AK00944927)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.701421,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "titleMain_text": "Über den sittlichen und geistigen Führer",
+                        "default": [
+                            "Über den sittlichen und geistigen Führer",
+                            "Band",
+                            "Retrokonversion",
+                            "Druckschrift",
+                            "Bloch, Ernst Simon",
+                            "Knerz, Jakob",
+                            "Jahraus, Karl",
+                            "エルンス�・ブロッホ",
+                            "בלוך, ארנסט",
+                            "ブロッホ, エルンス�",
+                            "Aberle, Ferdinand",
+                            "F. A.",
+                            "Bengler, Jakob",
+                            "J. B.",
+                            "Kneß, Karl",
+                            "Reich, Eugen",
+                            "May, Fritz",
+                            "Schönfeld, Josef",
+                            "Burohho, Erunsuto",
+                            "Pŭllohŭ, Erŭnsŭt'ŭ",
+                            "E. B.",
+                            "Burotuho, Erunsuto",
+                            "Bloch, Ernest",
+                            "Marcion",
+                            "Pullohu, Erunsutu",
+                            "XHm",
+                            "Bloch, Ernst (1885-1977)",
+                            "AK00944927",
+                            "1.0.0",
+                            "GEMEL. 20090818",
+                            "p:32581[70]",
+                            "http://db.saur.de/LEX/documentView.jsf?documentId=AT034963&view=html&user=marbach",
+                            "Bloch, Ernst",
+                            "Volltext Expressionismus Online (De Gruyter)",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Über den sittlichen und geistigen Führer</dc:title>\n  <dc:creator>Bloch, Ernst (1885-1977)</dc:creator>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:date>1921</dc:date>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00005298</dc:source>\n  <dc:identifier>XHm</dc:identifier>\n  <dc:identifier>http://db.saur.de/LEX/documentView.jsf?documentId=AT034963&amp;view=html&amp;user=marbach</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00944927</dc:identifier>\n  <dc:identifier>AK00944927</dc:identifier>\n</oai_dc:dc>",
+                            "Text",
+                            "Über den sittlichen und geistigen Führer",
+                            "1921",
+                            "1921",
+                            "Bloch, Ernst (1885-1977)",
+                            "creator",
+                            "Druckschrift",
+                            "Ernst Bloch",
+                            "Einzelbestandteil / unselbständiges Werk",
+                            "2009-05-17",
+                            "1211_0527_1.tif",
+                            "Die weissen Blätter : soziologische Probleme d. Gegenwart",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Über den sittlichen und geistigen Führer</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Bloch, Ernst (1885-1977)</namePart>\n    <nameIdentifier type=\"gnd\">118511742</nameIdentifier>\n    <namePart type=\"date\">1885-07-08 — 1977-08-04</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Aufsatz</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1921</dateIssued>\n  </originInfo>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Ernst Bloch</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Die weissen Blätter : soziologische Probleme d. Gegenwart</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00005298</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>XHm</shelfLocator>\n    <url access=\"object in context\">http://db.saur.de/LEX/documentView.jsf?documentId=AT034963&amp;view=html&amp;user=marbach</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2009-05-17</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2009-05-17</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00944927</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Gedrucktes",
+                            "Erschienen in: Die weissen Blätter : soziologische Probleme d. Gegenwart. - N. Seite 1 (1921), S.8-15",
+                            "1",
+                            "Verfasser/Urheber",
+                            "1921",
+                            "BDG",
+                            "Expr.Online",
+                            "AK00005298",
+                            "false",
+                            "TY  - GEN\nAU  - Bloch, Ernst\nDA  - 1921\nID  - AK00944927\nM2  - Beitrag\nM3  - Aufsatz\nNV  - N. Seite 1 (1921), S.8-15\nPY  - 1921\nTI  - Über den sittlichen und geistigen Führer\nT3  - Die weissen Blätter : soziologische Probleme d. Gegenwart\nUR  - http://db.saur.de/LEX/documentView.jsf?documentId=AT034963&view=html&user=marbach\nUR  - https://www.dla-marbach.de/find/opac/id/AK00944927/\nER  -",
+                            "true",
+                            "AK",
+                            "Bloch, Ernst",
+                            "Volltext Expressionismus Online (De Gruyter)",
+                            "PE00003006",
+                            "572y",
+                            "Bloch, Ernst (1885-1977)␝Verfasser/Urheber",
+                            "2009-05-17",
+                            "1921-01-01T00:00:00Z",
+                            "Verfasser/Urheber",
+                            "N. Seite 1 (1921), S.8-15",
+                            "PE00003006",
+                            "Bibliotheksmaterialien",
+                            "Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)",
+                            "Bloch, Ernst (1885-1977)",
+                            "2009-05-17",
+                            "PE00003006",
+                            "Bibliotheksdokumente",
+                            "Bloch, Ernst (1885-1977)",
+                            "Aufsatz",
+                            "Bloch, Ernst (1885-1977)␝Von",
+                            "Berlin : Cassirer, 1.1913/14,1(Sept.)-11/12(Juli/Aug.); 2.1915 - 4.1917,7(Juli); 5.1918,1(Juli) - 7.1920; N.F. 1.1921; damit Ersch. eingest..",
+                            "Red. von Erik Ernst Schwabach [Jg 2ff: Hrsg. und red. von René Schickele]",
+                            "Über den sittlichen und geistigen Führer",
+                            "Beitrag",
+                            "https://www.dla-marbach.de/find/opac/id/AK00944927"
+                        ],
+                        "categoryMedium_mv": [
+                            "Band"
+                        ],
+                        "statusEditing": "Retrokonversion",
+                        "categoryMedia_mv": [
+                            "Druckschrift"
+                        ],
+                        "searchVariant_mv": [
+                            "Bloch, Ernst Simon",
+                            "Knerz, Jakob",
+                            "Jahraus, Karl",
+                            "エルンス�・ブロッホ",
+                            "בלוך, ארנסט",
+                            "ブロッホ, エルンス�",
+                            "Aberle, Ferdinand",
+                            "F. A.",
+                            "Bengler, Jakob",
+                            "J. B.",
+                            "Kneß, Karl",
+                            "Reich, Eugen",
+                            "May, Fritz",
+                            "Schönfeld, Josef",
+                            "Burohho, Erunsuto",
+                            "Pŭllohŭ, Erŭnsŭt'ŭ",
+                            "E. B.",
+                            "Burotuho, Erunsuto",
+                            "Bloch, Ernest",
+                            "Marcion",
+                            "Pullohu, Erunsutu"
+                        ],
+                        "callNumberBibliographic_mv": [
+                            "XHm"
+                        ],
+                        "personBy_display_mv": [
+                            "Bloch, Ernst (1885-1977)"
+                        ],
+                        "id": "AK00944927",
+                        "schemaVersion": "1.0.0",
+                        "vendor_id_mv": [
+                            "GEMEL. 20090818",
+                            "p:32581[70]"
+                        ],
+                        "website_url_mv": [
+                            "http://db.saur.de/LEX/documentView.jsf?documentId=AT034963&view=html&user=marbach"
+                        ],
+                        "searchNameBy_mv": [
+                            "Bloch, Ernst"
+                        ],
+                        "displayAddition2": "Volltext Expressionismus Online (De Gruyter)",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Über den sittlichen und geistigen Führer</dc:title>\n  <dc:creator>Bloch, Ernst (1885-1977)</dc:creator>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:date>1921</dc:date>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00005298</dc:source>\n  <dc:identifier>XHm</dc:identifier>\n  <dc:identifier>http://db.saur.de/LEX/documentView.jsf?documentId=AT034963&amp;view=html&amp;user=marbach</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00944927</dc:identifier>\n  <dc:identifier>AK00944927</dc:identifier>\n</oai_dc:dc>",
+                        "categoryContent_mv": [
+                            "Text"
+                        ],
+                        "display": "Über den sittlichen und geistigen Führer",
+                        "filterDateRange_mv": [
+                            "1921"
+                        ],
+                        "dateOrigin": "1921",
+                        "displayName": "Bloch, Ernst (1885-1977)",
+                        "personBy_creator_mv": [
+                            "creator"
+                        ],
+                        "categorySubSub": "Druckschrift",
+                        "titleResponsability": "Ernst Bloch",
+                        "categorySub": "Einzelbestandteil / unselbständiges Werk",
+                        "dateCataloged": "2009-05-17",
+                        "identifier_id_mv": [
+                            "1211_0527_1.tif"
+                        ],
+                        "parent_display_mv": [
+                            "Die weissen Blätter : soziologische Probleme d. Gegenwart"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Über den sittlichen und geistigen Führer</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Bloch, Ernst (1885-1977)</namePart>\n    <nameIdentifier type=\"gnd\">118511742</nameIdentifier>\n    <namePart type=\"date\">1885-07-08 — 1977-08-04</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Aufsatz</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1921</dateIssued>\n  </originInfo>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Ernst Bloch</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Die weissen Blätter : soziologische Probleme d. Gegenwart</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00005298</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>XHm</shelfLocator>\n    <url access=\"object in context\">http://db.saur.de/LEX/documentView.jsf?documentId=AT034963&amp;view=html&amp;user=marbach</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2009-05-17</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2009-05-17</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00944927</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Erschienen in: Die weissen Blätter : soziologische Probleme d. Gegenwart. - N. Seite 1 (1921), S.8-15",
+                        "searchBoost": 1,
+                        "creator_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "searchDate_mv": [
+                            "1921"
+                        ],
+                        "vendor_type_mv": [
+                            "BDG",
+                            "Expr.Online"
+                        ],
+                        "parent_id_mv": [
+                            "AK00005298"
+                        ],
+                        "confidential": false,
+                        "exportRIS": "TY  - GEN\nAU  - Bloch, Ernst\nDA  - 1921\nID  - AK00944927\nM2  - Beitrag\nM3  - Aufsatz\nNV  - N. Seite 1 (1921), S.8-15\nPY  - 1921\nTI  - Über den sittlichen und geistigen Führer\nT3  - Die weissen Blätter : soziologische Probleme d. Gegenwart\nUR  - http://db.saur.de/LEX/documentView.jsf?documentId=AT034963&view=html&user=marbach\nUR  - https://www.dla-marbach.de/find/opac/id/AK00944927/\nER  -",
+                        "filterDigital": true,
+                        "source": "AK",
+                        "searchName_mv": [
+                            "Bloch, Ernst"
+                        ],
+                        "website_description_mv": [
+                            "Volltext Expressionismus Online (De Gruyter)"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00003006"
+                        ],
+                        "identifier_type_mv": [
+                            "572y"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Bloch, Ernst (1885-1977)␝Verfasser/Urheber"
+                        ],
+                        "filterRecent": "2009-05-17",
+                        "filterDatePoint_mv": [
+                            "1921-01-01T00:00:00Z"
+                        ],
+                        "personBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "parentVolumeTotal": "N. Seite 1 (1921), S.8-15",
+                        "creator_id_mv": [
+                            "PE00003006"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "parent_type_mv": [
+                            "Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)"
+                        ],
+                        "filterAuthority_mv": [
+                            "Bloch, Ernst (1885-1977)"
+                        ],
+                        "dateModified": "2009-05-17",
+                        "searchEntity_id_mv": [
+                            "PE00003006"
+                        ],
+                        "category": "Bibliotheksdokumente",
+                        "creator_display_mv": [
+                            "Bloch, Ernst (1885-1977)"
+                        ],
+                        "filterFormContent_mv": [
+                            "Aufsatz"
+                        ],
+                        "filterAuthorityRelation_mv": [
+                            "Bloch, Ernst (1885-1977)␝Von"
+                        ],
+                        "parent_displayAddition1_mv": [
+                            "Berlin : Cassirer, 1.1913/14,1(Sept.)-11/12(Juli/Aug.); 2.1915 - 4.1917,7(Juli); 5.1918,1(Juli) - 7.1920; N.F. 1.1921; damit Ersch. eingest.."
+                        ],
+                        "parent_titleResponsability_mv": [
+                            "Red. von Erik Ernst Schwabach [Jg 2ff: Hrsg. und red. von René Schickele]"
+                        ],
+                        "title": "Über den sittlichen und geistigen Führer",
+                        "filterMedium_mv": [
+                            "Beitrag"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK00944927",
+                        "score": 13.701421
+                    }
+                ]
+            }
+        }
+    }
+}
