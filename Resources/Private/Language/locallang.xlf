@@ -1219,6 +1219,9 @@
             <trans-unit id="Nicht bestellbar">
                 <source>Not orderable</source>
             </trans-unit>
+            <trans-unit id="Handschrift im Bibliotheksexemplar">
+                <source>This manuscript is located in or on a library copy. Please use the link to the library in the "Details" tab and order the corresponding copy here.</source>
+            </trans-unit>
             <trans-unit id="Details und Benutzung">
                 <source>Details &amp; Use</source>
             </trans-unit>

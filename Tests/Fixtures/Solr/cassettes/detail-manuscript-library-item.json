@@ -1,0 +1,255 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(HS00000091)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.701421,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "location_mv": [
+                            "Bibliothek"
+                        ],
+                        "default": [
+                            "Bibliothek",
+                            "Für Elisabeth Borchers",
+                            "Karlsdottir, Maria",
+                            "Nowak, Helga-Maria",
+                            "Schmidt, Helga Maria",
+                            "Karlsdottir, Anna Maria",
+                            "Vigfusson, Helga",
+                            "Novak, H.-M.",
+                            "Novak, Helga",
+                            "Novak, Helga Maria",
+                            "Borchers-Carlé, Elisabeth",
+                            "Borchers-Maiorana",
+                            "Borchers, E.",
+                            "Borchers, Elizabet",
+                            "Borchers-Maiorana, ...",
+                            "Borchers Carle, Elisabeth",
+                            "Borchers Maiorana",
+                            "Borchers Maiorana, ...",
+                            "Novak, Helga M. (1935-2013)",
+                            "benutzbar",
+                            "HS00000091",
+                            "1.0.0",
+                            "Aus Wut : Gedichte - Einmalige Ausg. : [Pressendruck]",
+                            "Novak, Helga M.",
+                            "Am Standort",
+                            "NOVAK, HELGA M.",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Novak, Helga M.: Für Elisabeth Borchers [Verschiedenes. Widmungen] in: Aus Wut : Gedichte / Helga M. Novak. Mit Lithogr. von Dieter Goltzsche. - Einmalige Ausg.. - 2005 (Bibliotheksmagazin)</dc:title>\n  <dc:title>Für Elisabeth Borchers</dc:title>\n  <dc:creator>Novak, Helga M. (1935-2013)</dc:creator>\n  <dc:contributor>Borchers, Elisabeth (1926-2013)</dc:contributor>\n  <dc:type>Verschiedenes</dc:type>\n  <dc:type>Widmung</dc:type>\n  <dc:type>Handschrift</dc:type>\n  <dc:date>2006-05</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/HS00000091</dc:identifier>\n  <dc:identifier>HS00000091</dc:identifier>\n</oai_dc:dc>",
+                            "Novak, Helga M.: Für Elisabeth Borchers [Verschiedenes. Widmungen] in: Aus Wut : Gedichte / Helga M. Novak. Mit Lithogr. von Dieter Goltzsche. - Einmalige Ausg.. - 2005 (Bibliotheksmagazin)",
+                            "2006-05",
+                            "Borchers, Elisabeth",
+                            "Novak, Helga M. (1935-2013) [Widmungsschreiber/in]",
+                            "HS",
+                            "1",
+                            "Legbąd␝Entstehungsort",
+                            "2019-07-25",
+                            "Titel von Bearbeiter/in",
+                            "Novak, Helga M. (1935-2013)␝Von",
+                            "Borchers, Elisabeth (1926-2013)␝An",
+                            "HS000000913",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Novak, Helga M.: Für Elisabeth Borchers [Verschiedenes. Widmungen] in: Aus Wut : Gedichte / Helga M. Novak. Mit Lithogr. von Dieter Goltzsche. - Einmalige Ausg.. - 2005 (Bibliotheksmagazin)</title>\n  </titleInfo>\n  <titleInfo type=\"abbreviated\">\n    <title>Für Elisabeth Borchers</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Novak, Helga M. (1935-2013)</namePart>\n    <nameIdentifier type=\"gnd\">11883147X</nameIdentifier>\n    <namePart type=\"date\">1935-09-08 — 2013-12-24</namePart>\n    <role>\n      <roleTerm type=\"text\">[Widmungsschreiber/in]</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Borchers, Elisabeth (1926-2013)</namePart>\n    <nameIdentifier type=\"gnd\">119368102</nameIdentifier>\n    <namePart type=\"date\">1926-02-27 — 2013-09-25</namePart>\n    <role>\n      <roleTerm type=\"text\">[Widmungsempfänger/in]</roleTerm>\n    </role>\n  </name>\n  <typeOfResource manuscript=\"yes\">Handschrift</typeOfResource>\n  <genre>Verschiedenes</genre>\n  <genre>Widmung</genre>\n  <originInfo eventType=\"manufacture\">\n    <place>\n      <placeTerm type=\"text\">Legbąd</placeTerm>\n    </place>\n    <dateCreated point=\"start\" encoding=\"iso8601\">2006-05</dateCreated>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2019-07-25</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2019-07-25</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS00000091</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Handschriften",
+                            "05.2006",
+                            "2006-05",
+                            "Deutsch␝Original",
+                            "[Widmungsschreiber/in]",
+                            "05.2006",
+                            "2006-05",
+                            "[Widmungsempfänger/in]",
+                            "Novak, Helga M.: Für Elisabeth Borchers [Verschiedenes. Widmungen] in: Aus Wut : Gedichte / Helga M. Novak. Mit Lithogr. von Dieter Goltzsche. - Einmalige Ausg.. - 2005 (Bibliotheksmagazin)",
+                            "false",
+                            "Verschiedenes",
+                            "TY  - GEN\nA2  - Novak, Helga M.\nA2  - Borchers, Elisabeth\nCN  - HS000000913\nDA  - 2006/05\nID  - HS00000091\nLA  - Deutsch\nM3  - Verschiedenes\nM3  - Widmung\nN1  - Entstehungsort: Legbąd\nST  - Novak, Helga M.: Für Elisabeth Borchers [Verschiedenes. Widmungen] in: Aus Wut : Gedichte / Helga M. Novak. Mit Lithogr. von Dieter Goltzsche. - Einmalige Ausg.. - 2005 (Bibliotheksmagazin)\nTI  - Novak, Helga M.: Für Elisabeth Borchers [Verschiedenes. Widmungen] in: Aus Wut : Gedichte / Helga M. Novak. Mit Lithogr. von Dieter Goltzsche. - Einmalige Ausg.. - 2005 (Bibliotheksmagazin)\nUR  - https://www.dla-marbach.de/find/opac/id/HS00000091/\nER  -",
+                            "Legbąd",
+                            "Deutsch",
+                            "Legbąd",
+                            "PE00003266",
+                            "Novak, Helga M.",
+                            "Borchers, Elisabeth",
+                            "PE00000575",
+                            "AU00651865",
+                            "M:Quart. 201505617. Aus Wut : Gedichte - Einmalige Ausg. : [Pressendruck]",
+                            "Novak, Helga M. (1935-2013)␝Widmungsschreiber",
+                            "Borchers, Elisabeth (1926-2013)␝Widmungsempfänger",
+                            "2019-07-25",
+                            "2006-05-01T00:00:00Z",
+                            "Widmungen",
+                            "Handschriften Einzelnachweise",
+                            "Novak, Helga M. (1935-2013)",
+                            "Borchers, Elisabeth (1926-2013)",
+                            "2019-07-25",
+                            "PE00000575",
+                            "PE00003266",
+                            "Manuskripte",
+                            "AK00261435",
+                            "Verschiedenes",
+                            "Widmung",
+                            "Handschrift auf Druckschrift",
+                            "FUER ELISABETH BORCHERS",
+                            "Borchers, Elisabeth (1926-2013)",
+                            "Deutsch",
+                            "https://www.dla-marbach.de/find/opac/id/HS00000091"
+                        ],
+                        "titleMain_text": "Für Elisabeth Borchers",
+                        "searchVariant_mv": [
+                            "Karlsdottir, Maria",
+                            "Nowak, Helga-Maria",
+                            "Schmidt, Helga Maria",
+                            "Karlsdottir, Anna Maria",
+                            "Vigfusson, Helga",
+                            "Novak, H.-M.",
+                            "Novak, Helga",
+                            "Novak, Helga Maria",
+                            "Borchers-Carlé, Elisabeth",
+                            "Borchers-Maiorana",
+                            "Borchers, E.",
+                            "Borchers, Elizabet",
+                            "Borchers-Maiorana, ...",
+                            "Borchers Carle, Elisabeth",
+                            "Borchers Maiorana",
+                            "Borchers Maiorana, ..."
+                        ],
+                        "personBy_display_mv": [
+                            "Novak, Helga M. (1935-2013)"
+                        ],
+                        "usageRestriction": "benutzbar",
+                        "id": "HS00000091",
+                        "schemaVersion": "1.0.0",
+                        "item_manifestation_display_mv": [
+                            "Aus Wut : Gedichte - Einmalige Ausg. : [Pressendruck]"
+                        ],
+                        "searchNameBy_mv": [
+                            "Novak, Helga M."
+                        ],
+                        "statusLoan": "Am Standort",
+                        "sortingKey": "NOVAK, HELGA M.",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Novak, Helga M.: Für Elisabeth Borchers [Verschiedenes. Widmungen] in: Aus Wut : Gedichte / Helga M. Novak. Mit Lithogr. von Dieter Goltzsche. - Einmalige Ausg.. - 2005 (Bibliotheksmagazin)</dc:title>\n  <dc:title>Für Elisabeth Borchers</dc:title>\n  <dc:creator>Novak, Helga M. (1935-2013)</dc:creator>\n  <dc:contributor>Borchers, Elisabeth (1926-2013)</dc:contributor>\n  <dc:type>Verschiedenes</dc:type>\n  <dc:type>Widmung</dc:type>\n  <dc:type>Handschrift</dc:type>\n  <dc:date>2006-05</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/HS00000091</dc:identifier>\n  <dc:identifier>HS00000091</dc:identifier>\n</oai_dc:dc>",
+                        "display": "Novak, Helga M.: Für Elisabeth Borchers [Verschiedenes. Widmungen] in: Aus Wut : Gedichte / Helga M. Novak. Mit Lithogr. von Dieter Goltzsche. - Einmalige Ausg.. - 2005 (Bibliotheksmagazin)",
+                        "filterDateRange_mv": [
+                            "2006-05"
+                        ],
+                        "searchNameTo_mv": [
+                            "Borchers, Elisabeth"
+                        ],
+                        "displayName": "Novak, Helga M. (1935-2013) [Widmungsschreiber/in]",
+                        "source": "HS",
+                        "searchBoost": 1,
+                        "filterLocationType_mv": [
+                            "Legbąd␝Entstehungsort"
+                        ],
+                        "dateCataloged": "2019-07-25",
+                        "titleMain_type": "Titel von Bearbeiter/in",
+                        "filterAuthorityRelation_mv": [
+                            "Novak, Helga M. (1935-2013)␝Von",
+                            "Borchers, Elisabeth (1926-2013)␝An"
+                        ],
+                        "mediaNumber": "HS000000913",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Novak, Helga M.: Für Elisabeth Borchers [Verschiedenes. Widmungen] in: Aus Wut : Gedichte / Helga M. Novak. Mit Lithogr. von Dieter Goltzsche. - Einmalige Ausg.. - 2005 (Bibliotheksmagazin)</title>\n  </titleInfo>\n  <titleInfo type=\"abbreviated\">\n    <title>Für Elisabeth Borchers</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Novak, Helga M. (1935-2013)</namePart>\n    <nameIdentifier type=\"gnd\">11883147X</nameIdentifier>\n    <namePart type=\"date\">1935-09-08 — 2013-12-24</namePart>\n    <role>\n      <roleTerm type=\"text\">[Widmungsschreiber/in]</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Borchers, Elisabeth (1926-2013)</namePart>\n    <nameIdentifier type=\"gnd\">119368102</nameIdentifier>\n    <namePart type=\"date\">1926-02-27 — 2013-09-25</namePart>\n    <role>\n      <roleTerm type=\"text\">[Widmungsempfänger/in]</roleTerm>\n    </role>\n  </name>\n  <typeOfResource manuscript=\"yes\">Handschrift</typeOfResource>\n  <genre>Verschiedenes</genre>\n  <genre>Widmung</genre>\n  <originInfo eventType=\"manufacture\">\n    <place>\n      <placeTerm type=\"text\">Legbąd</placeTerm>\n    </place>\n    <dateCreated point=\"start\" encoding=\"iso8601\">2006-05</dateCreated>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2019-07-25</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2019-07-25</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS00000091</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "displayAddition1": "05.2006",
+                        "dateOriginStart": "2006-05",
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "personBy_role_mv": [
+                            "[Widmungsschreiber/in]"
+                        ],
+                        "searchDate_mv": [
+                            "05.2006",
+                            "2006-05"
+                        ],
+                        "personTo_role_mv": [
+                            "[Widmungsempfänger/in]"
+                        ],
+                        "title": "Novak, Helga M.: Für Elisabeth Borchers [Verschiedenes. Widmungen] in: Aus Wut : Gedichte / Helga M. Novak. Mit Lithogr. von Dieter Goltzsche. - Einmalige Ausg.. - 2005 (Bibliotheksmagazin)",
+                        "confidential": false,
+                        "genre": "Verschiedenes",
+                        "exportRIS": "TY  - GEN\nA2  - Novak, Helga M.\nA2  - Borchers, Elisabeth\nCN  - HS000000913\nDA  - 2006/05\nID  - HS00000091\nLA  - Deutsch\nM3  - Verschiedenes\nM3  - Widmung\nN1  - Entstehungsort: Legbąd\nST  - Novak, Helga M.: Für Elisabeth Borchers [Verschiedenes. Widmungen] in: Aus Wut : Gedichte / Helga M. Novak. Mit Lithogr. von Dieter Goltzsche. - Einmalige Ausg.. - 2005 (Bibliotheksmagazin)\nTI  - Novak, Helga M.: Für Elisabeth Borchers [Verschiedenes. Widmungen] in: Aus Wut : Gedichte / Helga M. Novak. Mit Lithogr. von Dieter Goltzsche. - Einmalige Ausg.. - 2005 (Bibliotheksmagazin)\nUR  - https://www.dla-marbach.de/find/opac/id/HS00000091/\nER  -",
+                        "place_mv": [
+                            "Legbąd"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "filterLocation_mv": [
+                            "Legbąd"
+                        ],
+                        "personTo_id_mv": [
+                            "PE00003266"
+                        ],
+                        "searchName_mv": [
+                            "Novak, Helga M.",
+                            "Borchers, Elisabeth"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00000575"
+                        ],
+                        "item_id_mv": [
+                            "AU00651865"
+                        ],
+                        "item_display_mv": [
+                            "M:Quart. 201505617. Aus Wut : Gedichte - Einmalige Ausg. : [Pressendruck]"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Novak, Helga M. (1935-2013)␝Widmungsschreiber",
+                            "Borchers, Elisabeth (1926-2013)␝Widmungsempfänger"
+                        ],
+                        "filterRecent": "2019-07-25",
+                        "filterDatePoint_mv": [
+                            "2006-05-01T00:00:00Z"
+                        ],
+                        "genreSub": "Widmungen",
+                        "filterSource": "Handschriften Einzelnachweise",
+                        "filterAuthority_mv": [
+                            "Novak, Helga M. (1935-2013)",
+                            "Borchers, Elisabeth (1926-2013)"
+                        ],
+                        "dateModified": "2019-07-25",
+                        "searchEntity_id_mv": [
+                            "PE00000575",
+                            "PE00003266"
+                        ],
+                        "category": "Manuskripte",
+                        "item_manifestation_id_mv": [
+                            "AK00261435"
+                        ],
+                        "filterFormContent_mv": [
+                            "Verschiedenes",
+                            "Widmung"
+                        ],
+                        "categorySub": "Handschrift auf Druckschrift",
+                        "sortingTitleMain": "FUER ELISABETH BORCHERS",
+                        "personTo_display_mv": [
+                            "Borchers, Elisabeth (1926-2013)"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/HS00000091",
+                        "score": 13.701421
+                    }
+                ]
+            }
+        }
+    }
+}

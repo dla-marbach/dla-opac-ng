@@ -41,6 +41,9 @@ class ActionViewHelper extends AbstractTagBasedViewHelper
     public function render(): string
     {
         $this->tag->addAttribute('href', '#test-link');
+        // Ziel-Argumente und Anker für Assertions, da keine echte URL erzeugt wird.
+        $this->tag->addAttribute('data-arguments', (string)json_encode($this->arguments['arguments'] ?? []));
+        $this->tag->addAttribute('data-section', (string)($this->arguments['section'] ?? ''));
         $this->tag->setContent($this->renderChildren());
         $this->tag->forceClosingTag(true);
 

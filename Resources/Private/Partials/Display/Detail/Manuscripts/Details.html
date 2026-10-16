@@ -756,6 +756,7 @@
 
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_manifestation_id_mv')}" name="item_manifestation_id_mv" />
         <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_manifestation_display_mv')}" name="item_manifestation_display_mv" />
+        <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_id_mv')}" name="item_id_mv" />
         <f:if condition="{item_manifestation_id_mv}">
             <f:then>
                 <div class="ctg-dtvt-row">
@@ -763,18 +764,29 @@
                         <f:translate key='Bibliothek' extensionName='dla_opac_ng'/>
                     </div>
                     <div class="ctg-dtvt-content">
-
-                                                <f:render
-                                                                partial="Display/Detail/LookupLink"
-                                                                arguments="{
-                                                        document:document,
-                                                        results:results,
-                                                        field:'item_manifestation_id_mv',
-                                                        fieldToDisplay: 'item_manifestation_display_mv',
-                                                        fieldNames: '{0:\'item_manifestation_display_mv\'}',
-                                                        fieldWraps: '{0:\'%s\'}'
-                                                    }"
-                                                />
+                        <f:for each="{item_manifestation_id_mv}" as="manifestationId" iteration="manifestationIterator">
+                            <f:if condition="{manifestationId}">
+                                <f:if condition="{item_id_mv.{manifestationIterator.index}}">
+                                    <f:then>
+                                        <f:link.action action="detail" arguments="{id:manifestationId, au:'{item_id_mv.{manifestationIterator.index}}'}" class="internal" section="tabaccess">
+                                            <f:if condition="{item_manifestation_display_mv.{manifestationIterator.index}}">
+                                                <f:then>{item_manifestation_display_mv.{manifestationIterator.index}}</f:then>
+                                                <f:else>{manifestationId}</f:else>
+                                            </f:if>
+                                        </f:link.action>
+                                    </f:then>
+                                    <f:else>
+                                        <f:link.action action="detail" arguments="{id:manifestationId}" class="internal">
+                                            <f:if condition="{item_manifestation_display_mv.{manifestationIterator.index}}">
+                                                <f:then>{item_manifestation_display_mv.{manifestationIterator.index}}</f:then>
+                                                <f:else>{manifestationId}</f:else>
+                                            </f:if>
+                                        </f:link.action>
+                                    </f:else>
+                                </f:if>
+                                <f:if condition="!{manifestationIterator.isLast}"><br/></f:if>
+                            </f:if>
+                        </f:for>
                     </div>
                 </div>
             </f:then>
