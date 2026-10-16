@@ -586,7 +586,7 @@
             <trans-unit id="Schlagwort">
                 <source>Keyword</source>
             </trans-unit>
-            <trans-unit id="Person Ãœber">
+            <trans-unit id="Person Über">
                 <source>About the Person</source>
             </trans-unit>
             <trans-unit id="Körperschaft Über">
@@ -905,9 +905,9 @@
                 <source>Manuscripts Information Service</source>
             </trans-unit>
             <trans-unit
-                    id="Telefon &lt;a href='tel:+497144848425'&gt;+49 (0) 7144 / 848-425&lt;/a&gt;&lt;br/&gt;&lt;a href='mailto:auskhss@dla-marbach.de'&gt;auskhss@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 18:00h">
+                    id="Telefon &lt;a href='tel:+497144848425'&gt;+49 (0) 7144 / 848-425&lt;/a&gt;&lt;br/&gt;&lt;a href='mailto:auskunft-handschriften@dla-marbach.de'&gt;auskunft-handschriften@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 18:00h">
                 <source>Telephone &lt;a href="tel:+497144848425"&gt;+49 (0) 7144 / 848-425&lt;/a&gt;&lt;br/&gt;&lt;a
-                    href="mailto:auskhss@dla-marbach.de"&gt;auskhss@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Monday - Friday,
+                    href="mailto:auskunft-handschriften@dla-marbach.de"&gt;auskunft-handschriften@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Monday - Friday,
                     8:30 to 18:00
                 </source>
             </trans-unit>
@@ -915,9 +915,9 @@
                 <source>Library Information Service</source>
             </trans-unit>
             <trans-unit
-                    id="Telefon &lt;a href='tel:+497144848318'&gt;+49 (0) 7144 / 848-318&lt;/a&gt;&lt;br/&gt;&lt;a href='bibliothek@dla-marbach.de'&gt;bibliothek@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 17:30h">
+                    id="Telefon &lt;a href='tel:+497144848318'&gt;+49 (0) 7144 / 848-318&lt;/a&gt;&lt;br/&gt;&lt;a href='mailto:bibliothek@dla-marbach.de'&gt;bibliothek@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 17:30h">
                 <source>Telefon &lt;a href="tel:+497144848318"&gt;+49 (0) 7144 / 848-318&lt;/a&gt;&lt;br/&gt;&lt;a
-                    href="bibliothek@dla-marbach.de"&gt;bibliothek@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag,
+                    href="mailto:bibliothek@dla-marbach.de"&gt;bibliothek@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag,
                     8:30h bis 17:30h
                 </source>
             </trans-unit>
@@ -927,7 +927,7 @@
             <trans-unit id="Telefon Auskunftsdienst Bilder und Objekte">
                 <source>Telefon &lt;a href="tel:+497144848500"&gt;+49 (0) 7144 / 848-500&lt;/a&gt;&lt;br/&gt;Telefax
                     &lt;a href="tel:+497144848490"&gt;+49 (0) 7144 / 848-490&lt;/a&gt;&lt;br/&gt;&lt;a
-                    href="bilder-und-objekte@dla-marbach.de"&gt;bilder-und-objekte@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag
+                    href="mailto:bilder-und-objekte@dla-marbach.de"&gt;bilder-und-objekte@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag
                     - Freitag, 8:30h bis 18:00h
                 </source>
             </trans-unit>
@@ -951,7 +951,7 @@
                 <source>Person/Corporation An</source>
             </trans-unit>
             <trans-unit id="search.fieldselector.author_ueber">
-                <source>Person/Corporation Ãœber</source>
+                <source>Person/Corporation Über</source>
             </trans-unit>
             <trans-unit id="search.fieldselector.author_unter">
                 <source>Person/Corporation Unter</source>
@@ -960,7 +960,7 @@
                 <source>Title</source>
             </trans-unit>
             <trans-unit id="search.fieldselector.title_ueber">
-                <source>Title Ãœber</source>
+                <source>Title Über</source>
             </trans-unit>
             <trans-unit id="search.fieldselector.date">
                 <source>Year/Date</source>
@@ -1101,21 +1101,18 @@
                 <source>Classification</source>
             </trans-unit>
             <trans-unit id="Personennormsätzen">
-                <source>Personennormsätzen??</source>
+                <source>Personennormsätzen</source>
             </trans-unit>
             <trans-unit id="Körperschaftsnormsätzen">
-                <source>Körperschaftsnormsätzen??</source>
+                <source>Körperschaftsnormsätzen</source>
             </trans-unit>
             <trans-unit id="Autorenschemaketten">
-                <source>Autorenschemaketten??</source>
+                <source>Autorenschemaketten</source>
             </trans-unit>
             <trans-unit id="Bibliographieketten">
-                <source>Bibliographieketten??</source>
+                <source>Bibliographieketten</source>
             </trans-unit>
 
-            <trans-unit id="normdata.wrong_category">
-                <source>Not the right category?</source>
-            </trans-unit>
             <trans-unit id="normdata.all_from_keyword">
                 <source>Everything about this keyword</source>
             </trans-unit>
@@ -1173,9 +1170,6 @@
                 <source>Place of death</source>
             </trans-unit>
 
-            <trans-unit id="Andere Namen">
-                <source>Other names</source>
-            </trans-unit>
             <trans-unit id="Vorgänger">
                 <source>Predecessor</source>
             </trans-unit>
@@ -1184,6 +1178,9 @@
             </trans-unit>
             <trans-unit id="Sitz, Ort">
                 <source>Seat, place</source>
+            </trans-unit>
+            <trans-unit id="Siehe auch">
+                <source>See also</source>
             </trans-unit>
 
             <trans-unit id="Vom selben Verfasser / Urheber">
@@ -1292,22 +1289,19 @@
                 <source>you can find tips for searching or you can contact us.</source>
             </trans-unit>
             <trans-unit id="Fernleihe">
-                <source>Interlibray Loan</source>
+                <source>Interlibrary Loan</source>
             </trans-unit>
             <trans-unit id="Primäre Quellen von">
                 <source>Primary Sources from</source>
             </trans-unit>
             <trans-unit id="Sekundäre Quellen über">
-                <source>Secondary Sources from</source>
+                <source>Secondary Sources about</source>
             </trans-unit>
             <trans-unit id="Übersetzungen von">
                 <source>Translations from</source>
             </trans-unit>
             <trans-unit id="Rezensionen zu">
                 <source>Reviews of</source>
-            </trans-unit>
-            <trans-unit id="Schlagwort">
-                <source>Subject</source>
             </trans-unit>
             <trans-unit id="dataservice.download_hint">
                 <source>You can download these %d records in the following formats.</source>
