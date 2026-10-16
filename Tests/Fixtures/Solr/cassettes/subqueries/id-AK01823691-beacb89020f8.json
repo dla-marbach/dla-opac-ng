@@ -1,0 +1,47 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:(AK01823691)",
+            "start": "0",
+            "rows": "1",
+            "fl": "id,filterMedium_mv,filterSource,filterType_mv,digitalObject_hyperlink_mv,item_id_mv,item_usageRestriction_mv,item_location_mv,item_digitalObject_hyperlink_mv"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "item_id_mv": [
+                            "AU01063223"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "item_usageRestriction_mv": [
+                            "nicht benutzbar"
+                        ],
+                        "item_location_mv": [
+                            "Mediendokumentation"
+                        ],
+                        "id": "AK01823691",
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "filterMedium_mv": [
+                            "Tonband",
+                            "Audiodatei"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

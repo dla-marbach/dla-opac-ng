@@ -1,0 +1,251 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(AK01846411)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.701421,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "titleMain_text": "Variationen auf Schimmelpilz",
+                        "default": [
+                            "Variationen auf Schimmelpilz",
+                            "Online-Ressource",
+                            "f-fertig, i-fertig",
+                            "E-Book",
+                            "2019",
+                            "2019",
+                            "MM01560916",
+                            "AK01846411",
+                            "1.0.0",
+                            "https://digital.dla-marbach.de/files/ebook/campus/bulucz-32_schimmelarten_joseph_brodsky/bulucz-32_schimmelarten_joseph_brodsky-thumbnail.png",
+                            "Wilden, Patrick",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Variationen auf Schimmelpilz : [E-Book]</dc:title>\n  <dc:creator>Wilden, Patrick (1973-)</dc:creator>\n  <dc:type>E-Book</dc:type>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Lyrik</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Online-Ressource</dc:type>\n  <dc:date>2019</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK01838281</dc:source>\n  <dc:identifier>https://digital.dla-marbach.de/files/ebook/campus/bulucz-32_schimmelarten_joseph_brodsky/bulucz-32_schimmelarten_joseph_brodsky.epub?media_access=campus&amp;media_thumbnail=bulucz-32_schimmelarten_joseph_brodsky-thumbnail.png</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01846411</dc:identifier>\n  <dc:identifier>AK01846411</dc:identifier>\n</oai_dc:dc>",
+                            "Text",
+                            "Variationen auf Schimmelpilz : [E-Book]",
+                            "2019",
+                            "Wilden, Patrick (1973-)",
+                            "AK",
+                            "creator",
+                            "E-Book",
+                            "Lyrik",
+                            "Wilden, Patrick (1973-)",
+                            "2025-02-27",
+                            "Wilden, Patrick (1973-)␝Von",
+                            "Abgeschlossen",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Variationen auf Schimmelpilz</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Wilden, Patrick (1973-)</namePart>\n    <nameIdentifier type=\"gnd\">1049414411</nameIdentifier>\n    <namePart type=\"date\">1973</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>E-Book</typeOfResource>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Lyrik</genre>\n  <genre>Aufsatz</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">2019</dateIssued>\n    <displayDate>2019</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Online-Ressource</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Patrick Wilden</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Die 32 Schimmelarten des Joseph Brodsky : 23 Gedichte : [Textsammlung (Anthologie u.a.m.)]</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01838281</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <url access=\"object in context\">https://digital.dla-marbach.de/files/ebook/campus/bulucz-32_schimmelarten_joseph_brodsky/bulucz-32_schimmelarten_joseph_brodsky.epub?media_access=campus&amp;media_thumbnail=bulucz-32_schimmelarten_joseph_brodsky-thumbnail.png</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2025-02-27</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2026-08-17</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01846411</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Gedrucktes",
+                            "Erschienen in: Die 32 Schimmelarten des Joseph Brodsky : 23 Gedichte : [Textsammlung (Anthologie u.a.m.)]. \\ Alexandru Bulucz (Hg.) ; mit Gedichten von Patrick Wilden [u.a.]. - Berlin : mikrotext, © 2019 - 1 Online-Ressource; Seite 9",
+                            "1",
+                            "Deutsch␝Original",
+                            "Verfasser/Urheber",
+                            "2019",
+                            "PE00129128",
+                            "epub",
+                            "false",
+                            "Berlin : mikrotext, © 2019 - 1 Online-Ressource",
+                            "TY  - GEN\nAU  - Wilden, Patrick\nDA  - 2019\nID  - AK01846411\nLA  - Deutsch\nM2  - E-Book\nM2  - Beitrag\nM3  - Lyrik\nM3  - Aufsatz\nNV  - (2019), Seite 9\nPY  - 2019\nSP  - Seite 9\nTI  - Variationen auf Schimmelpilz : [E-Book]\nT3  - Die 32 Schimmelarten des Joseph Brodsky : 23 Gedichte : [Textsammlung (Anthologie u.a.m.)]\nUR  - https://digital.dla-marbach.de/files/ebook/campus/bulucz-32_schimmelarten_joseph_brodsky/bulucz-32_schimmelarten_joseph_brodsky.epub?media_access=campus&media_thumbnail=bulucz-32_schimmelarten_joseph_brodsky-thumbnail.png\nUR  - https://www.dla-marbach.de/find/opac/id/AK01846411/\nER  -",
+                            "true",
+                            "Deutsch",
+                            "Seite 9",
+                            "Wilden, Patrick",
+                            "PE00129128",
+                            "Variationen auf Schimmelpilz",
+                            "https://digital.dla-marbach.de/files/ebook/campus/bulucz-32_schimmelarten_joseph_brodsky/bulucz-32_schimmelarten_joseph_brodsky.epub?media_access=campus&media_thumbnail=bulucz-32_schimmelarten_joseph_brodsky-thumbnail.png",
+                            "Die 32 Schimmelarten des Joseph Brodsky : 23 Gedichte : [Textsammlung (Anthologie u.a.m.)]",
+                            "Alexandru Bulucz (Hg.) ; mit Gedichten von Patrick Wilden [u.a.]",
+                            "2025-02-27",
+                            "campus",
+                            "2019-01-01T00:00:00Z",
+                            "Verfasser/Urheber",
+                            "(2019), Seite 9",
+                            "Elektronische Ressource: Zugang",
+                            "Bibliotheksmaterialien",
+                            "Teil einer monografischen Zusammenstellung, unselbständiges Stück",
+                            "Patrick Wilden",
+                            "Wilden, Patrick (1973-)",
+                            "Bitte verwenden Sie den Link zum Digitalen Objekt.",
+                            "2026-08-17",
+                            "PE00129128",
+                            "Bibliotheksdokumente",
+                            "Wilden, Patrick (1973-)",
+                            "Lyrik",
+                            "Aufsatz",
+                            "Einzelbestandteil / unselbständiges Werk",
+                            "E-Book",
+                            "Wilden, Patrick (1973-)␝Verfasser/Urheber",
+                            "AK01838281",
+                            "E-Book",
+                            "Beitrag",
+                            "Deutsch",
+                            "https://www.dla-marbach.de/find/opac/id/AK01846411"
+                        ],
+                        "categoryMedium_mv": [
+                            "Online-Ressource"
+                        ],
+                        "statusCataloging": "f-fertig, i-fertig",
+                        "categoryMedia_mv": [
+                            "E-Book"
+                        ],
+                        "dateOriginComment_mv": [
+                            "2019"
+                        ],
+                        "dateOrigin": "2019",
+                        "digitalObject_id_mv": [
+                            "MM01560916"
+                        ],
+                        "id": "AK01846411",
+                        "schemaVersion": "1.0.0",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/files/ebook/campus/bulucz-32_schimmelarten_joseph_brodsky/bulucz-32_schimmelarten_joseph_brodsky-thumbnail.png"
+                        ],
+                        "searchNameBy_mv": [
+                            "Wilden, Patrick"
+                        ],
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Variationen auf Schimmelpilz : [E-Book]</dc:title>\n  <dc:creator>Wilden, Patrick (1973-)</dc:creator>\n  <dc:type>E-Book</dc:type>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Lyrik</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Online-Ressource</dc:type>\n  <dc:date>2019</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK01838281</dc:source>\n  <dc:identifier>https://digital.dla-marbach.de/files/ebook/campus/bulucz-32_schimmelarten_joseph_brodsky/bulucz-32_schimmelarten_joseph_brodsky.epub?media_access=campus&amp;media_thumbnail=bulucz-32_schimmelarten_joseph_brodsky-thumbnail.png</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01846411</dc:identifier>\n  <dc:identifier>AK01846411</dc:identifier>\n</oai_dc:dc>",
+                        "categoryContent_mv": [
+                            "Text"
+                        ],
+                        "display": "Variationen auf Schimmelpilz : [E-Book]",
+                        "filterDateRange_mv": [
+                            "2019"
+                        ],
+                        "displayName": "Wilden, Patrick (1973-)",
+                        "source": "AK",
+                        "personBy_creator_mv": [
+                            "creator"
+                        ],
+                        "categorySubSub": "E-Book",
+                        "genreOther_mv": [
+                            "Lyrik"
+                        ],
+                        "personBy_display_mv": [
+                            "Wilden, Patrick (1973-)"
+                        ],
+                        "dateCataloged": "2025-02-27",
+                        "filterAuthorityRelation_mv": [
+                            "Wilden, Patrick (1973-)␝Von"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Variationen auf Schimmelpilz</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Wilden, Patrick (1973-)</namePart>\n    <nameIdentifier type=\"gnd\">1049414411</nameIdentifier>\n    <namePart type=\"date\">1973</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>E-Book</typeOfResource>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Lyrik</genre>\n  <genre>Aufsatz</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">2019</dateIssued>\n    <displayDate>2019</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Online-Ressource</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Patrick Wilden</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Die 32 Schimmelarten des Joseph Brodsky : 23 Gedichte : [Textsammlung (Anthologie u.a.m.)]</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01838281</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <url access=\"object in context\">https://digital.dla-marbach.de/files/ebook/campus/bulucz-32_schimmelarten_joseph_brodsky/bulucz-32_schimmelarten_joseph_brodsky.epub?media_access=campus&amp;media_thumbnail=bulucz-32_schimmelarten_joseph_brodsky-thumbnail.png</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2025-02-27</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2026-08-17</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01846411</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Erschienen in: Die 32 Schimmelarten des Joseph Brodsky : 23 Gedichte : [Textsammlung (Anthologie u.a.m.)]. \\ Alexandru Bulucz (Hg.) ; mit Gedichten von Patrick Wilden [u.a.]. - Berlin : mikrotext, © 2019 - 1 Online-Ressource; Seite 9",
+                        "searchBoost": 1,
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "creator_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "searchDate_mv": [
+                            "2019"
+                        ],
+                        "creator_id_mv": [
+                            "PE00129128"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "epub"
+                        ],
+                        "confidential": false,
+                        "parent_displayAddition1_mv": [
+                            "Berlin : mikrotext, © 2019 - 1 Online-Ressource"
+                        ],
+                        "exportRIS": "TY  - GEN\nAU  - Wilden, Patrick\nDA  - 2019\nID  - AK01846411\nLA  - Deutsch\nM2  - E-Book\nM2  - Beitrag\nM3  - Lyrik\nM3  - Aufsatz\nNV  - (2019), Seite 9\nPY  - 2019\nSP  - Seite 9\nTI  - Variationen auf Schimmelpilz : [E-Book]\nT3  - Die 32 Schimmelarten des Joseph Brodsky : 23 Gedichte : [Textsammlung (Anthologie u.a.m.)]\nUR  - https://digital.dla-marbach.de/files/ebook/campus/bulucz-32_schimmelarten_joseph_brodsky/bulucz-32_schimmelarten_joseph_brodsky.epub?media_access=campus&media_thumbnail=bulucz-32_schimmelarten_joseph_brodsky-thumbnail.png\nUR  - https://www.dla-marbach.de/find/opac/id/AK01846411/\nER  -",
+                        "filterDigital": true,
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "parentIssuePage": "Seite 9",
+                        "searchName_mv": [
+                            "Wilden, Patrick"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00129128"
+                        ],
+                        "title": "Variationen auf Schimmelpilz",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/files/ebook/campus/bulucz-32_schimmelarten_joseph_brodsky/bulucz-32_schimmelarten_joseph_brodsky.epub?media_access=campus&media_thumbnail=bulucz-32_schimmelarten_joseph_brodsky-thumbnail.png"
+                        ],
+                        "parent_display_mv": [
+                            "Die 32 Schimmelarten des Joseph Brodsky : 23 Gedichte : [Textsammlung (Anthologie u.a.m.)]"
+                        ],
+                        "parent_titleResponsability_mv": [
+                            "Alexandru Bulucz (Hg.) ; mit Gedichten von Patrick Wilden [u.a.]"
+                        ],
+                        "filterRecent": "2025-02-27",
+                        "digitalObject_accessLevel_mv": [
+                            "campus"
+                        ],
+                        "filterDatePoint_mv": [
+                            "2019-01-01T00:00:00Z"
+                        ],
+                        "personBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "parentVolumeTotal": "(2019), Seite 9",
+                        "digitalObject_display_mv": [
+                            "Elektronische Ressource: Zugang"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "parent_type_mv": [
+                            "Teil einer monografischen Zusammenstellung, unselbständiges Stück"
+                        ],
+                        "titleResponsability": "Patrick Wilden",
+                        "filterAuthority_mv": [
+                            "Wilden, Patrick (1973-)"
+                        ],
+                        "usageRestrictionNote": "Bitte verwenden Sie den Link zum Digitalen Objekt.",
+                        "dateModified": "2026-08-17",
+                        "searchEntity_id_mv": [
+                            "PE00129128"
+                        ],
+                        "category": "Bibliotheksdokumente",
+                        "creator_display_mv": [
+                            "Wilden, Patrick (1973-)"
+                        ],
+                        "filterFormContent_mv": [
+                            "Lyrik",
+                            "Aufsatz"
+                        ],
+                        "categorySub": "Einzelbestandteil / unselbständiges Werk",
+                        "categoryPublication_mv": [
+                            "E-Book"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Wilden, Patrick (1973-)␝Verfasser/Urheber"
+                        ],
+                        "parent_id_mv": [
+                            "AK01838281"
+                        ],
+                        "filterMedium_mv": [
+                            "E-Book",
+                            "Beitrag"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK01846411",
+                        "score": 13.701421
+                    }
+                ]
+            }
+        }
+    }
+}

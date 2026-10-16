@@ -1,0 +1,255 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(AK01827413)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.701421,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "titleMain_text": "Le cimetière marin",
+                        "default": [
+                            "Le cimetière marin",
+                            "Band",
+                            "f-fertig, i-fertig",
+                            "Druckschrift",
+                            "Valéry, Paul (1871-1945)",
+                            "1920",
+                            "Frankreich",
+                            "Valéry, Paul Ambroise",
+                            "Valéry, Ambroise Paul Toussaint Jules",
+                            "Valery, Paul Ambroise",
+                            "Valery, Ambroise Paul Toussaint Jules",
+                            "Der Friedhof am Meer",
+                            "Kirchhof am Meer",
+                            "Mare nostrum",
+                            "81",
+                            "AK01827413",
+                            "1.0.0",
+                            "Valéry, Paul",
+                            "N.S. 7",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Le cimetière marin</dc:title>\n  <dc:creator>Valéry, Paul (1871-1945)</dc:creator>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Lyrik</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:date>1920</dc:date>\n  <dc:language>Französisch</dc:language>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK01826971</dc:source>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00004891</dc:source>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01827413</dc:identifier>\n  <dc:identifier>AK01827413</dc:identifier>\n</oai_dc:dc>",
+                            "Text",
+                            "Le cimetière marin",
+                            "1920",
+                            "1920",
+                            "Valéry, Paul (1871-1945). Le cimetière marin (Lyrik : 1920)",
+                            "Valéry, Paul (1871-1945)",
+                            "creator",
+                            "Druckschrift",
+                            "Lyrik",
+                            "Einzelbestandteil / unselbständiges Werk",
+                            "2024-04-22",
+                            "NRF : revue de littérature et de critique. - N.S. 7 (1920), 81",
+                            "NRF : revue de littérature et de critique",
+                            "Abgeschlossen",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Le cimetière marin</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Valéry, Paul (1871-1945)</namePart>\n    <nameIdentifier type=\"gnd\">118625985</nameIdentifier>\n    <namePart type=\"date\">1871-10-30 — 1945-07-20</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Lyrik</genre>\n  <genre>Aufsatz</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1920</dateIssued>\n    <displayDate>1920</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Französisch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Paul Valéry</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>NRF : revue de littérature et de critique. - N.S. 7 (1920), 81</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01826971</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>NRF : revue de littérature et de critique</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00004891</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2024-04-22</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2024-04-22</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01827413</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Gedrucktes",
+                            "Erschienen in: NRF : revue de littérature et de critique. - N.S. 7 (1920), 81. - Seite 781-787",
+                            "Französisch␝Original",
+                            "Verfasser/Urheber",
+                            "1920",
+                            "AK01826971",
+                            "AK00004891",
+                            "false",
+                            "TY  - GEN\nAU  - Valéry, Paul\nDA  - 1920\nID  - AK01827413\nIS  - 81\nLA  - Französisch\nM2  - Beitrag\nM3  - Lyrik\nM3  - Aufsatz\nNV  - Seite 781-787\nOP  - Valéry, Paul (1871-1945). Le cimetière marin (Lyrik : 1920)\nPY  - 1920\nSP  - Seite 781-787\nTI  - Le cimetière marin\nT3  - NRF : revue de littérature et de critique. - N.S. 7 (1920), 81; NRF : revue de littérature et de critique\nUR  - https://www.dla-marbach.de/find/opac/id/AK01827413/\nER  -",
+                            "1",
+                            "Französisch",
+                            "1920-01-01T00:00:00Z",
+                            "Valéry, Paul",
+                            "PE00001073",
+                            "AK00229720",
+                            "AK",
+                            "2024-04-22",
+                            "Seite 781-787",
+                            "Verfasser/Urheber",
+                            "Seite 781-787",
+                            "PE00001073",
+                            "Bibliotheksmaterialien",
+                            "Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)",
+                            "␣",
+                            "Paul Valéry",
+                            "Valéry, Paul (1871-1945)",
+                            "2024-04-22",
+                            "PE00001073",
+                            "AK00229720",
+                            "Bibliotheksdokumente",
+                            "Valéry, Paul (1871-1945)",
+                            "Lyrik",
+                            "Aufsatz",
+                            "Valéry, Paul (1871-1945)␝Von",
+                            "1920 - Seite 781-940",
+                            "Paris : NRF, Nr. 1.1908; T. 1.1909 - 54.1940,Juni = Année 1-28 = Nr. 1-321; T. 54.1940/41,Dez. - 57.1943 = Année 29-31 = Nr. 322-352; 1951,Nov.; 1952,Sept.; [N.F.] T. 13.1959,2 - 36.1970 = Année 7-18 = Nr. 74-216; 37.1971 - 80.1992 = Nr. 217-479; [81.]1993 - [83.]1994 = Nr. 480-497; 84.1994 - 102.2004 = Nr. 498-570; [103.]2004/05 - [105.]2005/06 = Nr. 571-576; 106.2006 - 110.2008 = Nr. 577-586; Nr. 587.2008; 111.2009 - 114.2010 = Nr. 588-595; Nr. 596.2011 -.",
+                            "Valéry, Paul (1871-1945)␝Verfasser/Urheber",
+                            "Le cimetière marin",
+                            "Beitrag",
+                            "Französisch",
+                            "https://www.dla-marbach.de/find/opac/id/AK01827413"
+                        ],
+                        "categoryMedium_mv": [
+                            "Band"
+                        ],
+                        "statusCataloging": "f-fertig, i-fertig",
+                        "categoryMedia_mv": [
+                            "Druckschrift"
+                        ],
+                        "personBy_display_mv": [
+                            "Valéry, Paul (1871-1945)"
+                        ],
+                        "dateOriginComment_mv": [
+                            "1920"
+                        ],
+                        "country_mv": [
+                            "Frankreich"
+                        ],
+                        "searchVariant_mv": [
+                            "Valéry, Paul Ambroise",
+                            "Valéry, Ambroise Paul Toussaint Jules",
+                            "Valery, Paul Ambroise",
+                            "Valery, Ambroise Paul Toussaint Jules",
+                            "Der Friedhof am Meer",
+                            "Kirchhof am Meer",
+                            "Mare nostrum"
+                        ],
+                        "parentIssueNumber": "81",
+                        "id": "AK01827413",
+                        "schemaVersion": "1.0.0",
+                        "searchNameBy_mv": [
+                            "Valéry, Paul"
+                        ],
+                        "parentIssueYearVolume": "N.S. 7",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Le cimetière marin</dc:title>\n  <dc:creator>Valéry, Paul (1871-1945)</dc:creator>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Lyrik</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:date>1920</dc:date>\n  <dc:language>Französisch</dc:language>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK01826971</dc:source>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00004891</dc:source>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01827413</dc:identifier>\n  <dc:identifier>AK01827413</dc:identifier>\n</oai_dc:dc>",
+                        "categoryContent_mv": [
+                            "Text"
+                        ],
+                        "display": "Le cimetière marin",
+                        "filterDateRange_mv": [
+                            "1920"
+                        ],
+                        "dateOrigin": "1920",
+                        "work_display_mv": [
+                            "Valéry, Paul (1871-1945). Le cimetière marin (Lyrik : 1920)"
+                        ],
+                        "displayName": "Valéry, Paul (1871-1945)",
+                        "personBy_creator_mv": [
+                            "creator"
+                        ],
+                        "categorySubSub": "Druckschrift",
+                        "genreOther_mv": [
+                            "Lyrik"
+                        ],
+                        "categorySub": "Einzelbestandteil / unselbständiges Werk",
+                        "dateCataloged": "2024-04-22",
+                        "parent_display_mv": [
+                            "NRF : revue de littérature et de critique. - N.S. 7 (1920), 81",
+                            "NRF : revue de littérature et de critique"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Le cimetière marin</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Valéry, Paul (1871-1945)</namePart>\n    <nameIdentifier type=\"gnd\">118625985</nameIdentifier>\n    <namePart type=\"date\">1871-10-30 — 1945-07-20</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Lyrik</genre>\n  <genre>Aufsatz</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1920</dateIssued>\n    <displayDate>1920</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Französisch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Paul Valéry</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>NRF : revue de littérature et de critique. - N.S. 7 (1920), 81</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01826971</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>NRF : revue de littérature et de critique</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00004891</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2024-04-22</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2024-04-22</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01827413</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Erschienen in: NRF : revue de littérature et de critique. - N.S. 7 (1920), 81. - Seite 781-787",
+                        "filterLanguageType_mv": [
+                            "Französisch␝Original"
+                        ],
+                        "creator_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "searchDate_mv": [
+                            "1920"
+                        ],
+                        "parent_id_mv": [
+                            "AK01826971",
+                            "AK00004891"
+                        ],
+                        "confidential": false,
+                        "exportRIS": "TY  - GEN\nAU  - Valéry, Paul\nDA  - 1920\nID  - AK01827413\nIS  - 81\nLA  - Französisch\nM2  - Beitrag\nM3  - Lyrik\nM3  - Aufsatz\nNV  - Seite 781-787\nOP  - Valéry, Paul (1871-1945). Le cimetière marin (Lyrik : 1920)\nPY  - 1920\nSP  - Seite 781-787\nTI  - Le cimetière marin\nT3  - NRF : revue de littérature et de critique. - N.S. 7 (1920), 81; NRF : revue de littérature et de critique\nUR  - https://www.dla-marbach.de/find/opac/id/AK01827413/\nER  -",
+                        "searchBoost": 1,
+                        "filterLanguage_mv": [
+                            "Französisch"
+                        ],
+                        "filterDatePoint_mv": [
+                            "1920-01-01T00:00:00Z"
+                        ],
+                        "searchName_mv": [
+                            "Valéry, Paul"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00001073"
+                        ],
+                        "work_id_mv": [
+                            "AK00229720"
+                        ],
+                        "source": "AK",
+                        "filterRecent": "2024-04-22",
+                        "parentIssuePage": "Seite 781-787",
+                        "personBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "parentVolumeTotal": "Seite 781-787",
+                        "creator_id_mv": [
+                            "PE00001073"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "parent_type_mv": [
+                            "Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)",
+                            "␣"
+                        ],
+                        "titleResponsability": "Paul Valéry",
+                        "filterAuthority_mv": [
+                            "Valéry, Paul (1871-1945)"
+                        ],
+                        "dateModified": "2024-04-22",
+                        "searchEntity_id_mv": [
+                            "PE00001073",
+                            "AK00229720"
+                        ],
+                        "category": "Bibliotheksdokumente",
+                        "creator_display_mv": [
+                            "Valéry, Paul (1871-1945)"
+                        ],
+                        "filterFormContent_mv": [
+                            "Lyrik",
+                            "Aufsatz"
+                        ],
+                        "filterAuthorityRelation_mv": [
+                            "Valéry, Paul (1871-1945)␝Von"
+                        ],
+                        "parent_displayAddition1_mv": [
+                            "1920 - Seite 781-940",
+                            "Paris : NRF, Nr. 1.1908; T. 1.1909 - 54.1940,Juni = Année 1-28 = Nr. 1-321; T. 54.1940/41,Dez. - 57.1943 = Année 29-31 = Nr. 322-352; 1951,Nov.; 1952,Sept.; [N.F.] T. 13.1959,2 - 36.1970 = Année 7-18 = Nr. 74-216; 37.1971 - 80.1992 = Nr. 217-479; [81.]1993 - [83.]1994 = Nr. 480-497; 84.1994 - 102.2004 = Nr. 498-570; [103.]2004/05 - [105.]2005/06 = Nr. 571-576; 106.2006 - 110.2008 = Nr. 577-586; Nr. 587.2008; 111.2009 - 114.2010 = Nr. 588-595; Nr. 596.2011 -."
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Valéry, Paul (1871-1945)␝Verfasser/Urheber"
+                        ],
+                        "title": "Le cimetière marin",
+                        "filterMedium_mv": [
+                            "Beitrag"
+                        ],
+                        "language_mv": [
+                            "Französisch"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK01827413",
+                        "score": 13.701421
+                    }
+                ]
+            }
+        }
+    }
+}

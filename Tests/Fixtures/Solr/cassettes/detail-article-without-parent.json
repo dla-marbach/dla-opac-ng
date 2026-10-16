@@ -1,0 +1,397 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(AK01726262)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.701421,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "titleMain_text": "Pariser Filmbrief",
+                        "default": [
+                            "Pariser Filmbrief",
+                            "Band",
+                            "f-fertig,i-offen",
+                            "Druckschrift",
+                            "Raca",
+                            "Raca.",
+                            "raca.",
+                            "ra.",
+                            "RACA.",
+                            "L.E.K.",
+                            "Kr",
+                            "St.",
+                            "Rac.",
+                            "Krac",
+                            "S. Krac.",
+                            "Dr. Kr.",
+                            "Dr. S. Kr.",
+                            "er",
+                            "X.U.",
+                            "XXX.",
+                            "X.X.X.",
+                            "H.D.",
+                            "rec",
+                            "rc",
+                            "K ... r",
+                            "K-r.",
+                            "sk",
+                            "s.k.",
+                            "Ginster",
+                            "Stergin",
+                            "Peter",
+                            "G. Hellfried",
+                            "Observer",
+                            "Krakauer, Zigfrid",
+                            "Kurakaua, Zyugufurito",
+                            "Kurakaua, Jikufurito",
+                            "Kurakaua, Sikufurito",
+                            "Krakauer, Friedel",
+                            "Kracauer, S.",
+                            "Krakauer",
+                            "K r.",
+                            "Rezension von: Adrienne Lecouvreur",
+                            "Rezension von: Katia",
+                            "Rezension von: Prison de femmes",
+                            "Rezension von: Entreé des artistes",
+                            "Rezension von: Education de prince",
+                            "Rezension von: Casier judiciaire",
+                            "Rezension von: Always good bye",
+                            "Rezension von: Test pilot",
+                            "Rezension von: Son of the sheik",
+                            "Rezension von: Vigée le Brun",
+                            "H:Kracauer, Siegfried/04.03/chronologische Mappe 1938",
+                            "1938",
+                            "Schweiz",
+                            "MM01537442",
+                            "AK01726262",
+                            "1.0.0",
+                            "Levin (Nr. 1981)",
+                            "Kracauer, Siegfried: Kleine Schriften zum Film, Band 6.3. - 2004",
+                            "Abendblatt; Filmbeilage, S. 1",
+                            "Marcel L'Herbier, Adrienne Lecouvreur. FR, 1938. Maurice Tourneur, Katia. FR, 1938. Roger Richebé, Prison de femmes. FR, 1937. Marc Allégret, Entreé des artistes. 1938. Education de prince, 1938 (weitere Angaben nicht zu ermitteln). Fritz Lang, Casier judiciaire / You and me. USA, 1938. Sidney Landfield, Always good bye. USA, 1938. Victor Fleming, Test pilot. USA, 1937/38. George Fitzmaurice, Son of the sheik. USA, 1926. Horace Shepherd, Famous paintors. Vigée le Brun (Teil 1). GB, 1937",
+                            "Kracauer, Siegfried (1889-1966)",
+                            "Rezension von: Adrienne Lecouvreur\nRezension von: Katia\nRezension von: Prison de femmes\nRezension von: Entreé des artistes\nRezension von: Education de prince\nRezension von: Casier judiciaire\nRezension von: Always good bye\nRezension von: Test pilot\nRezension von: Son of the sheik\nRezension von: Vigée le Brun",
+                            "Bibliographie-Kette",
+                            "Kracauer-Bibliographie",
+                            "Kracauer, Siegfried (1889-1966). Pariser Filmbrief (Filmkritik : 1938)",
+                            "96",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Pariser Filmbrief</dc:title>\n  <dc:title>Basler National-Zeitung : NZ</dc:title>\n  <dc:creator>Kracauer, Siegfried (1889-1966)</dc:creator>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:date>1938</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:subject>Primärliteratur / Beiträge in Zeitschriften, Zeitungen, Sammelwerken</dc:subject>\n  <dc:subject>Kracauer, Siegfried (1889-1966)</dc:subject>\n  <dc:subject>Kracauer, Siegfried &lt;1889-1966&gt;. Pariser Filmbrief (1938 November 15)</dc:subject>\n  <dc:subject>Kracauer, Siegfried / CA.03 Primärliteratur / Beiträge in Zeitschriften, Zeitungen, Sammelwerken / Kracauer, Siegfried &lt;1889-1966&gt;. Pariser Filmbrief (1938 November 15)</dc:subject>\n  <dc:identifier>H:Kracauer, Siegfried/04.03/chronologische Mappe 1938</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01726262</dc:identifier>\n  <dc:identifier>AK01726262</dc:identifier>\n</oai_dc:dc>",
+                            "Text",
+                            "PE00003459",
+                            "Pariser Filmbrief",
+                            "1938",
+                            "Kracauer-Bibliographie",
+                            "false",
+                            "Kracauer, Siegfried (1889-1966). Pariser Filmbrief (Filmkritik : 1938)",
+                            "Kracauer, Siegfried (1889-1966)",
+                            "creator",
+                            "1938-11-15",
+                            "Druckschrift",
+                            "Kr.",
+                            "Kracauer, Siegfried (1889-1966)",
+                            "2020-02-19",
+                            "Kracauer, Siegfried (1889-1966)␝Von",
+                            "Abgeschlossen",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Pariser Filmbrief</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Kracauer, Siegfried (1889-1966)</namePart>\n    <nameIdentifier type=\"gnd\">118565877</nameIdentifier>\n    <namePart type=\"date\">1889-02-08 — 1966-11-26</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Aufsatz</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1938</dateIssued>\n    <displayDate>1938</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Kr.</note>\n  <subject>\n    <topic>Primärliteratur / Beiträge in Zeitschriften, Zeitungen, Sammelwerken</topic>\n  </subject>\n  <subject>\n    <topic>Kracauer, Siegfried (1889-1966)</topic>\n  </subject>\n  <subject>\n    <topic>Kracauer, Siegfried &lt;1889-1966&gt;. Pariser Filmbrief (1938 November 15)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Kracauer, Siegfried (1889-1966)</namePart>\n    </name>\n  </subject>\n  <classification authority=\"DE-Mar1\">Kracauer, Siegfried / CA.03 Primärliteratur / Beiträge in Zeitschriften, Zeitungen, Sammelwerken / Kracauer, Siegfried &lt;1889-1966&gt;. Pariser Filmbrief (1938 November 15)</classification>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Basler National-Zeitung : NZ</title>\n    </titleInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>H:Kracauer, Siegfried/04.03/chronologische Mappe 1938</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2020-02-19</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2020-02-19</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01726262</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Gedrucktes",
+                            "Erschienen in: Basler National-Zeitung : NZ. - 96 (1938), 533 vom 15.11.1938, Seite 1",
+                            "1",
+                            "Deutsch␝Original",
+                            "Verfasser/Urheber",
+                            "Verfasser/Urheber",
+                            "1938",
+                            "533",
+                            "Einzelbestandteil / unselbständiges Werk",
+                            "https://www.dla-marbach.de/find/opac/id/AK01726262",
+                            "Kracauer-Bibliographie",
+                            "TY  - GEN\nAU  - Kracauer, Siegfried\nDA  - 1938\nID  - AK01726262\nIS  - 533\nKW  - Primärliteratur / Beiträge in Zeitschriften, Zeitungen, Sammelwerken\nKW  - Kracauer, Siegfried (1889-1966)\nKW  - Kracauer, Siegfried <1889-1966>. Pariser Filmbrief (1938 November 15)\nLA  - Deutsch\nM2  - Beitrag\nM3  - Aufsatz\nNV  - 96 (1938), 533 vom 15.11.1938, Seite 1\nOP  - Kracauer, Siegfried (1889-1966). Pariser Filmbrief (Filmkritik : 1938)\nPY  - 1938\nRN  - Bibliografischer Nachweis: Levin (Nr. 1981)\nRN  - Bibliografischer Nachweis: Kracauer, Siegfried: Kleine Schriften zum Film, Band 6.3. - 2004\nRN  - Zeitungsteil: Abendblatt; Filmbeilage, S. 1\nRN  - Filmkritik von: Marcel L'Herbier, Adrienne Lecouvreur. FR, 1938. Maurice Tourneur, Katia. FR, 1938. Roger Richebé, Prison de femmes. FR, 1937. Marc Allégret, Entreé des artistes. 1938. Education de prince, 1938 (weitere Angaben nicht zu ermitteln). Fritz Lang, Casier judiciaire / You and me. USA, 1938. Sidney Landfield, Always good bye. USA, 1938. Victor Fleming, Test pilot. USA, 1937/38. George Fitzmaurice, Son of the sheik. USA, 1926. Horace Shepherd, Famous paintors. Vigée le Brun (Teil 1). GB, 1937\nSP  - Seite 1\nTI  - Pariser Filmbrief\nUR  - https://www.dla-marbach.de/find/opac/id/AK01726262/\nER  -",
+                            "Seite 1",
+                            "Deutsch",
+                            "Deutsch",
+                            "Kracauer, Siegfried",
+                            "PE00003459",
+                            "Bibliografischer Nachweis",
+                            "Bibliografischer Nachweis",
+                            "Zeitungsteil",
+                            "Filmkritik von",
+                            "Pariser Filmbrief",
+                            "AK01726261",
+                            "AK01726261",
+                            "AK",
+                            "2020-02-19",
+                            "1938-01-01T00:00:00Z",
+                            "1938",
+                            "96 (1938), 533 vom 15.11.1938, Seite 1",
+                            "In: Chronologische Mappe 1938 Nachlass Siegfried Kracauer",
+                            "Kracauer, Siegfried",
+                            "Bibliotheksmaterialien",
+                            "Kracauer, Siegfried / CA.03 Primärliteratur / Beiträge in Zeitschriften, Zeitungen, Sammelwerken / Kracauer, Siegfried <1889-1966>. Pariser Filmbrief (1938 November 15)",
+                            "Kracauer, Siegfried (1889-1966)",
+                            "2020-02-19",
+                            "PE00003459",
+                            "AK01726261",
+                            "Bibliotheksdokumente",
+                            "Kracauer, Siegfried (1889-1966)",
+                            "Aufsatz",
+                            "PE00003459",
+                            "SE00257899",
+                            "Kracauer, Siegfried (1889-1966)␝Verfasser/Urheber",
+                            "Basler National-Zeitung : NZ",
+                            "Beitrag",
+                            "SE00257899",
+                            "Primärliteratur / Beiträge in Zeitschriften, Zeitungen, Sammelwerken",
+                            "Kracauer, Siegfried (1889-1966)",
+                            "Kracauer, Siegfried <1889-1966>. Pariser Filmbrief (1938 November 15)"
+                        ],
+                        "categoryMedium_mv": [
+                            "Band"
+                        ],
+                        "statusCataloging": "f-fertig,i-offen",
+                        "categoryMedia_mv": [
+                            "Druckschrift"
+                        ],
+                        "searchVariant_mv": [
+                            "Raca",
+                            "Raca.",
+                            "raca.",
+                            "ra.",
+                            "RACA.",
+                            "L.E.K.",
+                            "Kr",
+                            "St.",
+                            "Rac.",
+                            "Krac",
+                            "S. Krac.",
+                            "Dr. Kr.",
+                            "Dr. S. Kr.",
+                            "er",
+                            "X.U.",
+                            "XXX.",
+                            "X.X.X.",
+                            "H.D.",
+                            "rec",
+                            "rc",
+                            "K ... r",
+                            "K-r.",
+                            "sk",
+                            "s.k.",
+                            "Ginster",
+                            "Stergin",
+                            "Peter",
+                            "G. Hellfried",
+                            "Observer",
+                            "Krakauer, Zigfrid",
+                            "Kurakaua, Zyugufurito",
+                            "Kurakaua, Jikufurito",
+                            "Kurakaua, Sikufurito",
+                            "Krakauer, Friedel",
+                            "Kracauer, S.",
+                            "Krakauer",
+                            "K r.",
+                            "Rezension von: Adrienne Lecouvreur",
+                            "Rezension von: Katia",
+                            "Rezension von: Prison de femmes",
+                            "Rezension von: Entreé des artistes",
+                            "Rezension von: Education de prince",
+                            "Rezension von: Casier judiciaire",
+                            "Rezension von: Always good bye",
+                            "Rezension von: Test pilot",
+                            "Rezension von: Son of the sheik",
+                            "Rezension von: Vigée le Brun"
+                        ],
+                        "callNumberBibliographic_mv": [
+                            "H:Kracauer, Siegfried/04.03/chronologische Mappe 1938"
+                        ],
+                        "dateOriginComment_mv": [
+                            "1938"
+                        ],
+                        "country_mv": [
+                            "Schweiz"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01537442"
+                        ],
+                        "id": "AK01726262",
+                        "schemaVersion": "1.0.0",
+                        "noteRemark_text_mv": [
+                            "Levin (Nr. 1981)",
+                            "Kracauer, Siegfried: Kleine Schriften zum Film, Band 6.3. - 2004",
+                            "Abendblatt; Filmbeilage, S. 1",
+                            "Marcel L'Herbier, Adrienne Lecouvreur. FR, 1938. Maurice Tourneur, Katia. FR, 1938. Roger Richebé, Prison de femmes. FR, 1937. Marc Allégret, Entreé des artistes. 1938. Education de prince, 1938 (weitere Angaben nicht zu ermitteln). Fritz Lang, Casier judiciaire / You and me. USA, 1938. Sidney Landfield, Always good bye. USA, 1938. Victor Fleming, Test pilot. USA, 1937/38. George Fitzmaurice, Son of the sheik. USA, 1926. Horace Shepherd, Famous paintors. Vigée le Brun (Teil 1). GB, 1937"
+                        ],
+                        "personAbout_display_mv": [
+                            "Kracauer, Siegfried (1889-1966)"
+                        ],
+                        "workAbout_titleOther_text_mv": [
+                            "Rezension von: Adrienne Lecouvreur\nRezension von: Katia\nRezension von: Prison de femmes\nRezension von: Entreé des artistes\nRezension von: Education de prince\nRezension von: Casier judiciaire\nRezension von: Always good bye\nRezension von: Test pilot\nRezension von: Son of the sheik\nRezension von: Vigée le Brun"
+                        ],
+                        "classification_category_mv": [
+                            "Bibliographie-Kette"
+                        ],
+                        "displayAddition2": "Kracauer-Bibliographie",
+                        "workAbout_display_mv": [
+                            "Kracauer, Siegfried (1889-1966). Pariser Filmbrief (Filmkritik : 1938)"
+                        ],
+                        "parentIssueYearVolume": "96",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Pariser Filmbrief</dc:title>\n  <dc:title>Basler National-Zeitung : NZ</dc:title>\n  <dc:creator>Kracauer, Siegfried (1889-1966)</dc:creator>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:date>1938</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:subject>Primärliteratur / Beiträge in Zeitschriften, Zeitungen, Sammelwerken</dc:subject>\n  <dc:subject>Kracauer, Siegfried (1889-1966)</dc:subject>\n  <dc:subject>Kracauer, Siegfried &lt;1889-1966&gt;. Pariser Filmbrief (1938 November 15)</dc:subject>\n  <dc:subject>Kracauer, Siegfried / CA.03 Primärliteratur / Beiträge in Zeitschriften, Zeitungen, Sammelwerken / Kracauer, Siegfried &lt;1889-1966&gt;. Pariser Filmbrief (1938 November 15)</dc:subject>\n  <dc:identifier>H:Kracauer, Siegfried/04.03/chronologische Mappe 1938</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01726262</dc:identifier>\n  <dc:identifier>AK01726262</dc:identifier>\n</oai_dc:dc>",
+                        "categoryContent_mv": [
+                            "Text"
+                        ],
+                        "personAbout_id_mv": [
+                            "PE00003459"
+                        ],
+                        "display": "Pariser Filmbrief",
+                        "filterDateRange_mv": [
+                            "1938"
+                        ],
+                        "noteBibliography_mv": [
+                            "Kracauer-Bibliographie"
+                        ],
+                        "confidential": false,
+                        "work_display_mv": [
+                            "Kracauer, Siegfried (1889-1966). Pariser Filmbrief (Filmkritik : 1938)"
+                        ],
+                        "displayName": "Kracauer, Siegfried (1889-1966)",
+                        "personBy_creator_mv": [
+                            "creator"
+                        ],
+                        "parentIssueDate": "1938-11-15",
+                        "categorySubSub": "Druckschrift",
+                        "titleResponsability": "Kr.",
+                        "personBy_display_mv": [
+                            "Kracauer, Siegfried (1889-1966)"
+                        ],
+                        "dateCataloged": "2020-02-19",
+                        "filterAuthorityRelation_mv": [
+                            "Kracauer, Siegfried (1889-1966)␝Von"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Pariser Filmbrief</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Kracauer, Siegfried (1889-1966)</namePart>\n    <nameIdentifier type=\"gnd\">118565877</nameIdentifier>\n    <namePart type=\"date\">1889-02-08 — 1966-11-26</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Aufsatz</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1938</dateIssued>\n    <displayDate>1938</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Kr.</note>\n  <subject>\n    <topic>Primärliteratur / Beiträge in Zeitschriften, Zeitungen, Sammelwerken</topic>\n  </subject>\n  <subject>\n    <topic>Kracauer, Siegfried (1889-1966)</topic>\n  </subject>\n  <subject>\n    <topic>Kracauer, Siegfried &lt;1889-1966&gt;. Pariser Filmbrief (1938 November 15)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Kracauer, Siegfried (1889-1966)</namePart>\n    </name>\n  </subject>\n  <classification authority=\"DE-Mar1\">Kracauer, Siegfried / CA.03 Primärliteratur / Beiträge in Zeitschriften, Zeitungen, Sammelwerken / Kracauer, Siegfried &lt;1889-1966&gt;. Pariser Filmbrief (1938 November 15)</classification>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Basler National-Zeitung : NZ</title>\n    </titleInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>H:Kracauer, Siegfried/04.03/chronologische Mappe 1938</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2020-02-19</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2020-02-19</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01726262</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "displayAddition1": "Erschienen in: Basler National-Zeitung : NZ. - 96 (1938), 533 vom 15.11.1938, Seite 1",
+                        "searchBoost": 1,
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "personBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "creator_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "searchDate_mv": [
+                            "1938"
+                        ],
+                        "parentIssueNumber": "533",
+                        "categorySub": "Einzelbestandteil / unselbständiges Werk",
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK01726262",
+                        "filterBibliography_mv": [
+                            "Kracauer-Bibliographie"
+                        ],
+                        "exportRIS": "TY  - GEN\nAU  - Kracauer, Siegfried\nDA  - 1938\nID  - AK01726262\nIS  - 533\nKW  - Primärliteratur / Beiträge in Zeitschriften, Zeitungen, Sammelwerken\nKW  - Kracauer, Siegfried (1889-1966)\nKW  - Kracauer, Siegfried <1889-1966>. Pariser Filmbrief (1938 November 15)\nLA  - Deutsch\nM2  - Beitrag\nM3  - Aufsatz\nNV  - 96 (1938), 533 vom 15.11.1938, Seite 1\nOP  - Kracauer, Siegfried (1889-1966). Pariser Filmbrief (Filmkritik : 1938)\nPY  - 1938\nRN  - Bibliografischer Nachweis: Levin (Nr. 1981)\nRN  - Bibliografischer Nachweis: Kracauer, Siegfried: Kleine Schriften zum Film, Band 6.3. - 2004\nRN  - Zeitungsteil: Abendblatt; Filmbeilage, S. 1\nRN  - Filmkritik von: Marcel L'Herbier, Adrienne Lecouvreur. FR, 1938. Maurice Tourneur, Katia. FR, 1938. Roger Richebé, Prison de femmes. FR, 1937. Marc Allégret, Entreé des artistes. 1938. Education de prince, 1938 (weitere Angaben nicht zu ermitteln). Fritz Lang, Casier judiciaire / You and me. USA, 1938. Sidney Landfield, Always good bye. USA, 1938. Victor Fleming, Test pilot. USA, 1937/38. George Fitzmaurice, Son of the sheik. USA, 1926. Horace Shepherd, Famous paintors. Vigée le Brun (Teil 1). GB, 1937\nSP  - Seite 1\nTI  - Pariser Filmbrief\nUR  - https://www.dla-marbach.de/find/opac/id/AK01726262/\nER  -",
+                        "parentIssuePage": "Seite 1",
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "searchName_mv": [
+                            "Kracauer, Siegfried"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00003459"
+                        ],
+                        "noteRemark_type_mv": [
+                            "Bibliografischer Nachweis",
+                            "Bibliografischer Nachweis",
+                            "Zeitungsteil",
+                            "Filmkritik von"
+                        ],
+                        "title": "Pariser Filmbrief",
+                        "work_id_mv": [
+                            "AK01726261"
+                        ],
+                        "workAbout_id_mv": [
+                            "AK01726261"
+                        ],
+                        "source": "AK",
+                        "filterRecent": "2020-02-19",
+                        "filterDatePoint_mv": [
+                            "1938-01-01T00:00:00Z"
+                        ],
+                        "dateOrigin": "1938",
+                        "parentVolumeTotal": "96 (1938), 533 vom 15.11.1938, Seite 1",
+                        "digitalObject_display_mv": [
+                            "In: Chronologische Mappe 1938 Nachlass Siegfried Kracauer"
+                        ],
+                        "searchNameBy_mv": [
+                            "Kracauer, Siegfried"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "classification_display_mv": [
+                            "Kracauer, Siegfried / CA.03 Primärliteratur / Beiträge in Zeitschriften, Zeitungen, Sammelwerken / Kracauer, Siegfried <1889-1966>. Pariser Filmbrief (1938 November 15)"
+                        ],
+                        "filterAuthority_mv": [
+                            "Kracauer, Siegfried (1889-1966)"
+                        ],
+                        "dateModified": "2020-02-19",
+                        "searchEntity_id_mv": [
+                            "PE00003459",
+                            "AK01726261"
+                        ],
+                        "category": "Bibliotheksdokumente",
+                        "creator_display_mv": [
+                            "Kracauer, Siegfried (1889-1966)"
+                        ],
+                        "filterFormContent_mv": [
+                            "Aufsatz"
+                        ],
+                        "creator_id_mv": [
+                            "PE00003459"
+                        ],
+                        "searchClassification_id_mv": [
+                            "SE00257899"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Kracauer, Siegfried (1889-1966)␝Verfasser/Urheber"
+                        ],
+                        "parentTitleOriginal_mv": [
+                            "Basler National-Zeitung : NZ"
+                        ],
+                        "filterMedium_mv": [
+                            "Beitrag"
+                        ],
+                        "classification_id_mv": [
+                            "SE00257899"
+                        ],
+                        "filterSubject_mv": [
+                            "Primärliteratur / Beiträge in Zeitschriften, Zeitungen, Sammelwerken",
+                            "Kracauer, Siegfried (1889-1966)",
+                            "Kracauer, Siegfried <1889-1966>. Pariser Filmbrief (1938 November 15)"
+                        ],
+                        "score": 13.701421
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -193,23 +193,7 @@
     </f:then>
     <f:else>
         <div class="ctg-dtvt-row">
-            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'item_id_mv')}" name="item_id_mv" />
-            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'category')}" name="category" />
-            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'categorySub')}" name="categorySub" />
-            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'callNumberBibliographic_mv')}" name="callNumberBibliographic_mv" />
-            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'filterType_mv')}" name="filterType_mv" />
-            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'filterSource')}" name="filterSource" />
-            <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_hyperlink_mv')}" name="digitalObject_hyperlink_mv" />
-
-            <f:if condition="
-            {categorySub}!='Einzelbestandteil / unselbständiges Werk'
-            || {category}=='Zeitschriftenheft'
-            || {callNumberBibliographic_mv}=='Nicht im Bestand des DLA'
-            || {callNumberBibliographic_mv}=='kein Bestand'
-            || {filterSource}=='Digitale Nachschlagewerke'
-            || {filterSource}=='Elektronische Zeitschriftenbibliothek'
-            || {filterType_mv.0}=='Daten'
-            || {dla:stringContains(input: digitalObject_hyperlink_mv, search: 'https://digital.dla-marbach.de/viewer')}">
+            <f:if condition="!{dla:orderable(fields: document.fields)}">
                 <f:then>
                     <div style="padding: 0.5rem 0; margin-top: 10px; margin-bottom: 10px; width: 200px;">
                         <span class="ctg-button" style="background-color: #dadada;color: #747474;padding-bottom: 10px;padding-left: 6px;padding-right: 6px;padding-top:10px;">
@@ -219,10 +203,9 @@
                     </div>
                 </f:then>
                 <f:else>
-                    <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'usageRestrictionNote_mv')}" name="usageRestrictionNote_mv" />
-                    <f:if condition="{usageRestrictionNote_mv}">
+                    <f:if condition="{usageRestrictionNote}">
                         <f:then>
-                            <dla:replaceBreaks text="{usageRestrictionNote_mv.{iterator.index}}" as="restriction"/>
+                            <dla:replaceBreaks text="{usageRestrictionNote}" as="restriction"/>
                             <f:if condition="{v:format.substring(content: '{restriction}', start: 0, length: 17)}=='bedingt benutzbar'">
                                 <f:then>
                                     <div style="padding: 0.5rem 0; margin-top: 10px; margin-bottom: 10px; width: 200px;">
