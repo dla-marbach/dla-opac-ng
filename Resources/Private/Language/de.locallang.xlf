@@ -1197,7 +1197,7 @@
             </trans-unit>
             <trans-unit
                     id="Telefon &lt;a href='tel:+497144848425'&gt;+49 (0) 7144 / 848-425&lt;/a&gt;&lt;br/&gt;&lt;a href='mailto:auskunft-handschriften@dla-marbach.de'&gt;auskunft-handschriften@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 18:00h">
-                <target>Telefon &lt;a href="tel:+497144848425"&gt;+49 (0) 7144 / 848-425&lt;/a&gt;&lt;br/&gt;&lt;a href="mailto:auskhss@dla-marbach.de"&gt;auskhss@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 18:00h</target>
+                <target>Telefon &lt;a href="tel:+497144848425"&gt;+49 (0) 7144 / 848-425&lt;/a&gt;&lt;br/&gt;&lt;a href="mailto:auskunft-handschriften@dla-marbach.de"&gt;auskunft-handschriften@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 18:00h</target>
                 <source>Telephone &lt;a href="tel:+497144848425"&gt;+49 (0) 7144 / 848-425&lt;/a&gt;&lt;br/&gt;&lt;a
                     href="mailto:auskunft-handschriften@dla-marbach.de"&gt;auskunft-handschriften@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag,
                     8:30h bis 18:00h
@@ -1208,10 +1208,10 @@
                 <source>Library Information Service</source>
             </trans-unit>
             <trans-unit
-                    id="Telefon &lt;a href='tel:+497144848318'&gt;+49 (0) 7144 / 848-318&lt;/a&gt;&lt;br/&gt;&lt;a href='bibliothek@dla-marbach.de'&gt;bibliothek@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 17:30h">
-                <target>Telefon &lt;a href="tel:+497144848318"&gt;+49 (0) 7144 / 848-318&lt;/a&gt;&lt;br/&gt;&lt;a href="bibliothek@dla-marbach.de"&gt;bibliothek@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 17:30h</target>
+                    id="Telefon &lt;a href='tel:+497144848318'&gt;+49 (0) 7144 / 848-318&lt;/a&gt;&lt;br/&gt;&lt;a href='mailto:bibliothek@dla-marbach.de'&gt;bibliothek@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 17:30h">
+                <target>Telefon &lt;a href="tel:+497144848318"&gt;+49 (0) 7144 / 848-318&lt;/a&gt;&lt;br/&gt;&lt;a href="mailto:bibliothek@dla-marbach.de"&gt;bibliothek@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 17:30h</target>
                 <source>Telefon &lt;a href="tel:+497144848318"&gt;+49 (0) 7144 / 848-318&lt;/a&gt;&lt;br/&gt;&lt;a
-                    href="bibliothek@dla-marbach.de"&gt;bibliothek@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag,
+                    href="mailto:bibliothek@dla-marbach.de"&gt;bibliothek@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag,
                     8:30h bis 17:30h
                 </source>
             </trans-unit>
@@ -1220,10 +1220,10 @@
                 <target>Auskunftsdienst Bilder und Objekte</target>
             </trans-unit>
             <trans-unit id="Telefon Auskunftsdienst Bilder und Objekte">
-                <target>Telefon &lt;a href="tel:+497144848500"&gt;+49 (0) 7144 / 848-500&lt;/a&gt;&lt;br/&gt;Telefax &lt;a href="tel:+497144848490"&gt;+49 (0) 7144 / 848-490&lt;/a&gt;&lt;br/&gt;&lt;a href="bilder-und-objekte@dla-marbach.de"&gt;bilder-und-objekte@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 18:00h</target>
+                <target>Telefon &lt;a href="tel:+497144848500"&gt;+49 (0) 7144 / 848-500&lt;/a&gt;&lt;br/&gt;Telefax &lt;a href="tel:+497144848490"&gt;+49 (0) 7144 / 848-490&lt;/a&gt;&lt;br/&gt;&lt;a href="mailto:bilder-und-objekte@dla-marbach.de"&gt;bilder-und-objekte@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag - Freitag, 8:30h bis 18:00h</target>
                 <source>Telefon &lt;a href="tel:+497144848500"&gt;+49 (0) 7144 / 848-500&lt;/a&gt;&lt;br/&gt;Telefax
                     &lt;a href="tel:+497144848490"&gt;+49 (0) 7144 / 848-490&lt;/a&gt;&lt;br/&gt;&lt;a
-                    href="bilder-und-objekte@dla-marbach.de"&gt;bilder-und-objekte@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag
+                    href="mailto:bilder-und-objekte@dla-marbach.de"&gt;bilder-und-objekte@dla-marbach.de&lt;/a&gt;&lt;br/&gt;Montag
                     - Freitag, 8:30h bis 18:00h
                 </source>
             </trans-unit>
@@ -1255,7 +1255,7 @@
                 <source>Person/Corporation An</source>
             </trans-unit>
             <trans-unit id="search.fieldselector.author_ueber">
-                <source>Person/Corporation Ãœber</source>
+                <source>Person/Corporation Über</source>
                 <target>Person/Körperschaft Über</target>
             </trans-unit>
             <trans-unit id="search.fieldselector.author_unter">
@@ -1267,7 +1267,7 @@
                 <target>Titel</target>
             </trans-unit>
             <trans-unit id="search.fieldselector.title_ueber">
-                <source>Title Ãœber</source>
+                <source>Title Über</source>
                 <target>Titel Über</target>
             </trans-unit>
             <trans-unit id="search.fieldselector.date">
@@ -1407,6 +1407,7 @@
 
             <trans-unit id="info.telephone">
                 <source>Tel.</source>
+                <target>Tel.</target>
             </trans-unit>
             <trans-unit id="info.mo_fr_9_17">
                 <source>Monday - Friday, 9:00h - 17:00h</source>
@@ -1414,6 +1415,7 @@
             </trans-unit>
             <trans-unit id="info.telefax">
                 <source>Telefax</source>
+                <target>Telefax</target>
             </trans-unit>
             <trans-unit id="info.mo_do_9_17">
                 <source>Monday - Thursday, 9:00h - 17:00h</source>
@@ -1434,14 +1436,16 @@
             </trans-unit>
             <trans-unit id="Provenienzexemplare">
                 <source>Provenance Copies</source>
+                <target>Provenienzexemplare</target>
             </trans-unit>
 
             <trans-unit id="normdata.wrong_category">
                 <source>Not the right category?</source>
-                <target>Provenienzexemplare</target>
+                <target>Nicht die richtige Kategorie dabei?</target>
             </trans-unit>
             <trans-unit id="normdata.all_from">
                 <source>All from this %s</source>
+                <target>Alles zu diesem %s</target>
             </trans-unit>
 
             <trans-unit id="Systematikketten">
@@ -1449,26 +1453,22 @@
                 <target>Systematikketten</target>
             </trans-unit>
             <trans-unit id="Personennormsätzen">
-                <source>Personennormsätzen??</source>
+                <source>Personennormsätzen</source>
                 <target>Personennormsätzen</target>
             </trans-unit>
             <trans-unit id="Körperschaftsnormsätzen">
-                <source>Körperschaftsnormsätzen??</source>
+                <source>Körperschaftsnormsätzen</source>
                 <target>Körperschaftsnormsätzen</target>
             </trans-unit>
             <trans-unit id="Autorenschemaketten">
-                <source>Autorenschemaketten??</source>
+                <source>Autorenschemaketten</source>
                 <target>Autorenschemaketten</target>
             </trans-unit>
             <trans-unit id="Bibliographieketten">
-                <source>Bibliographieketten??</source>
+                <source>Bibliographieketten</source>
                 <target>Bibliographieketten</target>
             </trans-unit>
 
-            <trans-unit id="normdata.wrong_category">
-                <source>Not the right category?</source>
-                <target>Nicht die richtige Kategorie dabei?</target>
-            </trans-unit>
             <trans-unit id="normdata.all_from_keyword">
                 <source>Everything about this keyword</source>
                 <target>Alles zu diesem Schlagwort</target>
@@ -1544,10 +1544,6 @@
                 <target>Sterbeort</target>
             </trans-unit>
 
-            <trans-unit id="Andere Namen">
-                <source>Other names</source>
-                <target>Andere Namen</target>
-            </trans-unit>
             <trans-unit id="Vorgänger">
                 <source>Predecessor</source>
                 <target>Vorgänger</target>
@@ -1557,11 +1553,12 @@
                 <target>Nachfolger</target>
             </trans-unit>
             <trans-unit id="Sitz, Ort">
+                <source>Seat, place</source>
                 <target>Sitz, Ort</target>
             </trans-unit>
             <trans-unit id="Siehe auch">
+                <source>See also</source>
                 <target>Siehe auch</target>
-                <source>Seat, place</source>
             </trans-unit>
 
             <trans-unit id="Vom selben Verfasser / Urheber">
@@ -1701,7 +1698,7 @@
                 <target>finden Sie Tipps zur Suche. Oder Sie wenden sich direkt an uns.</target>
             </trans-unit>
             <trans-unit id="Fernleihe">
-                <source>Interlibray Loan</source>
+                <source>Interlibrary Loan</source>
                 <target>Fernleihe</target>
             </trans-unit>
             <trans-unit id="Primäre Quellen von">
@@ -1709,7 +1706,7 @@
                 <target>Primäre Quellen von</target>
             </trans-unit>
             <trans-unit id="Sekundäre Quellen über">
-                <source>Secondary Sources from</source>
+                <source>Secondary Sources about</source>
                 <target>Sekundäre Quellen über</target>
             </trans-unit>
             <trans-unit id="Übersetzungen von">
@@ -1719,10 +1716,6 @@
             <trans-unit id="Rezensionen zu">
                 <source>Reviews of</source>
                 <target>Rezensionen zu</target>
-            </trans-unit>
-            <trans-unit id="Schlagwort">
-                <source>Subject</source>
-                <target>Schlagwort</target>
             </trans-unit>
             <trans-unit id="dataservice.download_hint">
                 <source>You can download these %d records in the following formats.</source>

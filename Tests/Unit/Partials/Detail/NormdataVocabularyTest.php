@@ -43,7 +43,7 @@ class NormdataVocabularyTest extends FluidPartialTestCase
         self::assertStringContainsString('A1. Forschung Autorenschema', $text);
         self::assertStringContainsString('Übergeordnete Systemstelle A. Literatur ÜBER Person', $text);
         self::assertStringContainsString('Untergeordnete Systemstelle A1.1. Bibliographien, Hilfsmittel', $text);
-        self::assertStringContainsString('Autorenschemaketten?? (117)', $text);
+        self::assertStringContainsString('Autorenschemaketten (117)', $text);
         self::assertStringContainsString('Everything about this classification (0)', $text);
     }
 
