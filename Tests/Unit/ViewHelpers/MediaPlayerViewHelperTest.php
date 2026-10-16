@@ -148,6 +148,66 @@ class MediaPlayerViewHelperTest extends UnitTestCase
     /**
      * @test
      */
+    public function sandboxClientMayAccessSandboxAndCampusMedia(): void
+    {
+        $_SERVER['REMOTE_ADDR'] = '192.168.55.201';
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/sandbox.pdf', 'https://example.org/campus.pdf'],
+            ['pdf', 'pdf'],
+            ['sandbox', 'campus'],
+            ['Sandbox', 'Campus'],
+            []
+        );
+
+        self::assertCount(2, $result['links']);
+        self::assertSame(0, $result['links'][0]['forbidden']);
+        self::assertSame(0, $result['links'][1]['forbidden']);
+    }
+
+    /**
+     * @test
+     */
+    public function campusClientMayNotAccessSandboxMedia(): void
+    {
+        $_SERVER['REMOTE_ADDR'] = '10.23.45.67';
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/sandbox.pdf'],
+            ['pdf'],
+            ['sandbox'],
+            ['Sandbox'],
+            []
+        );
+
+        self::assertSame(1, $result['links'][0]['forbidden']);
+    }
+
+    /**
+     * @test
+     */
+    public function rangesWithQuotesAndWhitespaceAreRecognized(): void
+    {
+        $this->setEnvironmentVariable('sandboxRanges', '"192.168.55.200/29, 192.168.55.208/28"');
+        $_SERVER['REMOTE_ADDR'] = '192.168.55.210';
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/sandbox.pdf'],
+            ['pdf'],
+            ['sandbox'],
+            ['Sandbox'],
+            []
+        );
+
+        self::assertSame(0, $result['links'][0]['forbidden']);
+    }
+
+    /**
+     * @test
+     */
     public function firstForwardedForAddressIsUsedWhenMultipleAddressesArePresent(): void
     {
         $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
