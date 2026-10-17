@@ -1,0 +1,81 @@
+{namespace s=Dla\Find\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
+<f:comment>
+    Natürlichsprachige Suche (Proof of Concept), siehe Classes/Middleware/NaturalLanguageSearchMiddleware.php
+
+    * Checkbox "Filter automatisch erkennen": nur sichtbar, wenn die Umgebungsvariable LLM_BASE_URL gesetzt ist.
+      Sie schickt tx_find_find[nl]=1 mit; die Middleware zerlegt dann die Eingabe des Standardsuchfelds.
+    * Hinweis nach der Weiterleitung: zeigt die ursprüngliche Eingabe (nlq) und den Status (nlstatus):
+      ok (Interpretationszeile, bei 0 Treffern mit Hinweis), unrecognized (nichts erkannt, normale Suche)
+      oder fallback (automatische Erkennung nicht verfügbar, normale Suche).
+    * Interpretationszeile: erkannte Bestandteile der Eingabe, die in der Suche noch aktiv sind (siehe InterpretationParts).
+      Filter werden wie bei den aktiven Filtern über s:find.facetLinkArguments entfernt (die Box „Aktive Filter“
+      zeigt sie unverändert ebenfalls an); Suchbegriffe werden aus dem Suchfeld entfernt.
+</f:comment>
+<f:if condition="{dla:naturalLanguageSearchEnabled()}">
+    <div class="dla-nl-toggle {f:if(condition: '{arguments.extended}==1', then: 'hidden')}">
+        <label>
+            <input type="checkbox" name="tx_find_find[nl]" value="1"/>
+            <f:translate key="nl.toggle" extensionName="dla_opac_ng"/>
+        </label>
+    </div>
+</f:if>
+<f:if condition="{arguments.nlq}">
+    <div class="dla-nl-notice dla-nl-notice-{arguments.nlstatus}" role="status">
+        <f:switch expression="{arguments.nlstatus}">
+            <f:case value="fallback">
+                <p><f:translate key="nl.status.fallback" extensionName="dla_opac_ng" arguments="{0: arguments.nlq}"/></p>
+            </f:case>
+            <f:case value="unrecognized">
+                <p><f:translate key="nl.status.unrecognized" extensionName="dla_opac_ng" arguments="{0: arguments.nlq}"/></p>
+            </f:case>
+            <f:defaultCase>
+                <f:alias map="{parts: '{dla:naturalLanguage.parts(arguments: arguments)}'}">
+                    <p><f:translate key="nl.status.ok" extensionName="dla_opac_ng" arguments="{0: arguments.nlq}"/></p>
+                    <f:if condition="{parts}">
+                        <f:then>
+                            <ul class="dla-nl-parts">
+                                <f:for each="{parts}" as="part">
+                                    <li class="dla-nl-part dla-nl-part-{part.role}">
+                                        <f:if condition="{part.type} == 'facet'">
+                                            <f:then>
+                                                <f:link.action
+                                                        addQueryString="untrusted"
+                                                        argumentsToBeExcludedFromQueryString="{s:find.facetLinkArguments(facetID:part.facetId, facetTerm:part.term, activeFacets:config.activeFacets, mode:'remove')}"
+                                                        section="{settings.jumpToID}"
+                                                        title="{f:translate(key:'remove filter %s', extensionName:'dla_opac_ng', arguments:{0:part.label})}"
+                                                        additionalAttributes="{rel: 'nofollow'}">
+                                                    <span class="icon bel-ende01"></span>
+                                                    <f:translate key="nl.part.{part.role}" extensionName="dla_opac_ng" arguments="{0: part.label}"/>
+                                                </f:link.action>
+                                            </f:then>
+                                            <f:else>
+                                                <f:comment>Leerer Rest entfernt das Suchfeld (leere Argumente verwirft das Such-Plugin).</f:comment>
+                                                <f:link.action
+                                                        addQueryString="untrusted"
+                                                        arguments="{q: {default: part.remainingQuery}}"
+                                                        argumentsToBeExcludedFromQueryString="{1: 'tx_find_find[page]', 2: 'cHash', 3: 'tx_find_find[controller]', 4: 'tx_find_find[action]'}"
+                                                        section="{settings.jumpToID}"
+                                                        title="{f:translate(key:'nl.part.remove', extensionName:'dla_opac_ng', arguments:{0:part.label})}"
+                                                        additionalAttributes="{rel: 'nofollow'}">
+                                                    <span class="icon bel-ende01"></span>
+                                                    <f:translate key="nl.part.{part.role}" extensionName="dla_opac_ng" arguments="{0: part.label}"/>
+                                                </f:link.action>
+                                            </f:else>
+                                        </f:if>
+                                    </li>
+                                </f:for>
+                            </ul>
+                        </f:then>
+                        <f:else>
+                            <p class="dla-nl-parts-empty"><f:translate key="nl.parts.empty" extensionName="dla_opac_ng"/></p>
+                        </f:else>
+                    </f:if>
+                    <f:if condition="{parts} && {results} && {results.numfound} == 0">
+                        <p class="dla-nl-no-results"><f:translate key="nl.parts.noResults" extensionName="dla_opac_ng"/></p>
+                    </f:if>
+                </f:alias>
+            </f:defaultCase>
+        </f:switch>
+    </div>
+</f:if>

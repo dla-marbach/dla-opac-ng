@@ -1853,6 +1853,94 @@
 
 
 
+            <trans-unit id="nl.toggle">
+                <source>Detect filters automatically (AI, beta)</source>
+                <target>Filter automatisch erkennen (KI, Beta)</target>
+            </trans-unit>
+            <trans-unit id="nl.status.ok">
+                <source>Recognized in your search »%s«:</source>
+                <target>In Ihrer Suche »%s« erkannt:</target>
+            </trans-unit>
+            <trans-unit id="nl.status.unrecognized">
+                <source>No filters were recognized in »%s«; a normal search was performed.</source>
+                <target>In »%s« wurden keine Filter erkannt; es wurde normal gesucht.</target>
+            </trans-unit>
+            <trans-unit id="nl.status.fallback">
+                <source>Automatic detection is currently unavailable; a normal search was performed for »%s«.</source>
+                <target>Die automatische Erkennung ist gerade nicht verfügbar; es wurde normal nach »%s« gesucht.</target>
+            </trans-unit>
+            <trans-unit id="nl.parts.empty">
+                <source>All recognized parts have been removed.</source>
+                <target>Alle erkannten Bestandteile wurden entfernt.</target>
+            </trans-unit>
+            <trans-unit id="nl.part.remove">
+                <source>remove %s from the search</source>
+                <target>%s aus der Suche entfernen</target>
+            </trans-unit>
+            <trans-unit id="nl.part.mediaType">
+                <source>%s</source>
+                <target>%s</target>
+            </trans-unit>
+            <trans-unit id="nl.part.formContent">
+                <source>%s</source>
+                <target>%s</target>
+            </trans-unit>
+            <trans-unit id="nl.part.person">
+                <source>person: %s</source>
+                <target>Person: %s</target>
+            </trans-unit>
+            <trans-unit id="nl.part.relationVon">
+                <source>by %s</source>
+                <target>von %s</target>
+            </trans-unit>
+            <trans-unit id="nl.part.relationAn">
+                <source>to %s</source>
+                <target>an %s</target>
+            </trans-unit>
+            <trans-unit id="nl.part.relationUeber">
+                <source>about %s</source>
+                <target>über %s</target>
+            </trans-unit>
+            <trans-unit id="nl.part.relationUnter">
+                <source>held by %s</source>
+                <target>unter %s</target>
+            </trans-unit>
+            <trans-unit id="nl.part.place">
+                <source>place: %s</source>
+                <target>Ort: %s</target>
+            </trans-unit>
+            <trans-unit id="nl.part.language">
+                <source>language: %s</source>
+                <target>Sprache: %s</target>
+            </trans-unit>
+            <trans-unit id="nl.part.date">
+                <source>%s</source>
+                <target>%s</target>
+            </trans-unit>
+            <trans-unit id="nl.part.digital">
+                <source>digital only</source>
+                <target>nur digital</target>
+            </trans-unit>
+            <trans-unit id="nl.part.text">
+                <source>search terms: %s</source>
+                <target>Suchbegriffe: %s</target>
+            </trans-unit>
+            <trans-unit id="nl.part.topic">
+                <source>keyword: %s</source>
+                <target>Stichwort: %s</target>
+            </trans-unit>
+            <trans-unit id="nl.part.excluded">
+                <source>without: %s</source>
+                <target>ohne: %s</target>
+            </trans-unit>
+            <trans-unit id="nl.part.unresolved">
+                <source>search term: %s</source>
+                <target>Suchbegriff: %s</target>
+            </trans-unit>
+            <trans-unit id="nl.parts.noResults">
+                <source>No results. Remove individual recognized parts above to broaden the search.</source>
+                <target>Keine Treffer. Entfernen Sie oben einzelne erkannte Bestandteile, um die Suche zu erweitern.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

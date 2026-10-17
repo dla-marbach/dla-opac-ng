@@ -71,8 +71,9 @@ class SolrConnection
      * die dekodierte JSON-Antwort oder null bei fehlender Konfiguration, Verbindungs- oder Parse-Fehlern.
      *
      * @param array<string,string|int|list<string>> $params Mehrfach vorkommende Parameter als Liste übergeben.
+     * @param float $timeout Timeout in Sekunden (Standard: 1 Sekunde für die schnellen Ajax-Anfragen)
      */
-    public function request(string $handler, array $params): ?array
+    public function request(string $handler, array $params, float $timeout = self::REQUEST_TIMEOUT): ?array
     {
         try {
             $url = $this->getCoreUrl() . $handler;
@@ -94,7 +95,7 @@ class SolrConnection
                 'http' => [
                     'method' => 'GET',
                     'follow_location' => 0,
-                    'timeout' => self::REQUEST_TIMEOUT,
+                    'timeout' => $timeout,
                 ],
             ])
         );

@@ -1,0 +1,150 @@
+[
+    {
+        "question": "Briefe von Hesse an Thomas Mann aus den 1930er Jahren über das Exil",
+        "answer": {
+            "persons": [
+                {"name": "Hesse", "fullName": "Hermann Hesse", "relation": "Von"},
+                {"name": "Thomas Mann", "relation": "An"}
+            ],
+            "topics": [
+                {"term": "Exil", "variants": ["Exil*", "Emigration", "Emigrant*"]}
+            ],
+            "mediaTypes": ["Handschriften"],
+            "formContent": ["Brief"],
+            "dateFrom": 1930,
+            "dateTo": 1939
+        }
+    },
+    {
+        "question": "Gibt es Tonaufnahmen von Lesungen Ingeborg Bachmanns?",
+        "answer": {
+            "persons": [
+                {"name": "Ingeborg Bachmann", "relation": "Von"}
+            ],
+            "mediaTypes": ["Audio"],
+            "formContent": ["Lesung"]
+        }
+    },
+    {
+        "question": "Werke von Christa Wolf über die DDR, aber keine Übersetzungen",
+        "answer": {
+            "persons": [
+                {"name": "Christa Wolf", "relation": "Von"}
+            ],
+            "topics": [
+                {"term": "DDR", "variants": ["Deutsche Demokratische Republik", "Ostdeutschland"]}
+            ],
+            "exclude": {"formContent": ["Übersetzung, deutsch", "Übersetzung, fremdsprachig"]}
+        }
+    },
+    {
+        "question": "Manuskripte von Max Frisch, aber keine Briefe",
+        "answer": {
+            "persons": [
+                {"name": "Max Frisch", "relation": "Von"}
+            ],
+            "mediaTypes": ["Handschriften"],
+            "exclude": {"formContent": ["Brief"]}
+        }
+    },
+    {
+        "question": "Aufsätze über Hölderlin ohne Diotima",
+        "answer": {
+            "persons": [
+                {"name": "Hölderlin", "fullName": "Friedrich Hölderlin", "relation": "Über"}
+            ],
+            "mediaTypes": ["Gedrucktes"],
+            "formContent": ["Aufsatz"],
+            "exclude": {"terms": ["Diotima"]}
+        }
+    },
+    {
+        "question": "Bücher über Ernst Jünger, keine Rezensionen",
+        "answer": {
+            "persons": [
+                {"name": "Ernst Jünger", "relation": "Über"}
+            ],
+            "mediaTypes": ["Gedrucktes"],
+            "exclude": {"formContent": ["Rezension"]}
+        }
+    },
+    {
+        "question": "Briefe an Gottfried Benn, aber nicht von Oelze",
+        "answer": {
+            "persons": [
+                {"name": "Gottfried Benn", "relation": "An"}
+            ],
+            "mediaTypes": ["Handschriften"],
+            "formContent": ["Brief"],
+            "exclude": {"terms": ["Oelze"]}
+        }
+    },
+    {
+        "question": "Sekundärliteratur über Paul Celan nach 1970",
+        "answer": {
+            "persons": [
+                {"name": "Paul Celan", "relation": "Über"}
+            ],
+            "mediaTypes": ["Gedrucktes"],
+            "dateFrom": 1970
+        }
+    },
+    {
+        "question": "digitalisierte Fotos aus Marbach",
+        "answer": {
+            "mediaTypes": ["Bilder und Objekte"],
+            "places": ["Marbach"],
+            "digitalOnly": true
+        }
+    },
+    {
+        "question": "englische Übersetzungen von Kafkas Der Process",
+        "answer": {
+            "text": "Der Process",
+            "persons": [
+                {"name": "Kafka", "fullName": "Franz Kafka", "relation": "Von"}
+            ],
+            "formContent": ["Übersetzung, fremdsprachig"],
+            "languages": ["Englisch"],
+            "knownItem": true
+        }
+    },
+    {
+        "question": "Die Blechtrommel",
+        "answer": {
+            "text": "Die Blechtrommel",
+            "knownItem": true
+        }
+    },
+    {
+        "question": "Goethes Wahlverwandtschaften",
+        "answer": {
+            "text": "Wahlverwandtschaften",
+            "persons": [
+                {"name": "Goethe", "fullName": "Johann Wolfgang von Goethe", "relation": "Von"}
+            ],
+            "knownItem": true
+        }
+    },
+    {
+        "question": "Bücher aus der Bibliothek von Siegfried Kracauer zum Thema Film",
+        "answer": {
+            "persons": [
+                {"name": "Siegfried Kracauer", "relation": "Unter"}
+            ],
+            "topics": [
+                {"term": "Film", "variants": ["Film*", "Kino"]}
+            ],
+            "mediaTypes": ["Gedrucktes"]
+        }
+    },
+    {
+        "question": "Exilliteratur 1933–1945",
+        "answer": {
+            "topics": [
+                {"term": "Exil", "variants": ["Exil*", "Emigration", "Emigrant*"]}
+            ],
+            "mediaTypes": ["Gedrucktes"]
+        }
+    }
+]
