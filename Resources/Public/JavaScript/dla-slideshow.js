@@ -1,7 +1,7 @@
 /**
  * Generisches, abhaengigkeitsfreies Slideshow-/Carousel-Widget fuer die Bildergalerie
  * eines digitalen Objekts (siehe Resources/Private/Partials/MediaAccess/Slideshow.html).
- * Enthaelt ausschliesslich Bilder, auf die der aktuelle Nutzer bereits Zugriff hat -
+ * Enthaelt ausschliesslich Bilder bzw. Objekte mit Vorschaubild, auf die der aktuelle Nutzer bereits Zugriff hat -
  * gesperrte Bilder werden serverseitig nicht in die Slideshow aufgenommen (siehe
  * Classes/ViewHelpers/MediaPlayerViewHelper.php), sondern weiterhin ueber den
  * bestehenden Link-/Rechtehinweis dargestellt.
@@ -34,9 +34,10 @@
             for (var s = 0; s < slides.length; s++) {
                 var isActive = s === currentIndex;
                 slides[s].setAttribute('aria-hidden', isActive ? 'false' : 'true');
-                var slideLink = slides[s].querySelector('a');
-                if (slideLink) {
-                    slideLink.setAttribute('tabindex', isActive ? '0' : '-1');
+                // Bild-Links mit eigener Aktionszeile bleiben immer ausgeblendet (Slideshow.html)
+                var slideLinks = slides[s].querySelectorAll('a:not([data-dla-slideshow-skip])');
+                for (var l = 0; l < slideLinks.length; l++) {
+                    slideLinks[l].setAttribute('tabindex', isActive ? '0' : '-1');
                 }
             }
 

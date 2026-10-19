@@ -495,21 +495,120 @@ class MediaPlayerViewHelperTest extends UnitTestCase
     /**
      * @test
      */
-    public function teaserLinksToFileWithoutJumpWhenThereIsNoPlayerOrSlideshow(): void
+    public function fileWithThumbnailIsExposedAsImagesEntryAndTeaserJumps(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
 
         $result = $viewHelper->buildMediaData(
-            ['https://example.org/media/document.pdf'],
-            ['pdf'],
+            ['https://example.org/media/book.epub'],
+            ['epub'],
             ['public'],
-            ['Digitalisat'],
+            ['Elektronische Ressource: Zugang'],
             [],
-            ['https://example.org/media/document_thumb.jpg']
+            ['https://example.org/media/book-thumbnail.png']
         );
 
-        self::assertSame('https://example.org/media/document.pdf', $result['teaser']['url']);
-        self::assertFalse($result['teaser']['jump']);
+        self::assertCount(0, $result['links']);
+        self::assertCount(1, $result['images']);
+        self::assertSame('file', $result['images'][0]['kind']);
+        self::assertSame('https://example.org/media/book.epub', $result['images'][0]['url']);
+        self::assertSame('https://example.org/media/book-thumbnail.png', $result['images'][0]['thumbnail']);
+        self::assertSame('https://example.org/media/book.epub', $result['teaser']['url']);
+        self::assertTrue($result['teaser']['jump']);
+        self::assertSame([['type' => 'link', 'count' => 1]], $result['summary']);
+    }
+
+    /**
+     * @test
+     */
+    public function viewerLinkWithoutExtensionButWithThumbnailIsExposedAsViewerImage(): void
+    {
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        // wie bei Handschriften: Digitalisat im Viewer, ohne Dateiendung
+        $result = $viewHelper->buildMediaData(
+            ['https://digital.example.org/viewer/fullscreen/HS00242238/?media_access=public'],
+            [],
+            ['public'],
+            ['HS00242238'],
+            [],
+            ['https://digital.example.org/viewer/api/v1/records/HS00242238/files/images/HS_00242238_0001.tif/full/!480,480/0/default.jpg']
+        );
+
+        self::assertCount(0, $result['links']);
+        self::assertCount(1, $result['images']);
+        self::assertSame('viewer', $result['images'][0]['kind']);
+        self::assertSame('HS00242238', $result['images'][0]['display']);
+        self::assertTrue($result['teaser']['jump']);
+        self::assertSame([['type' => 'digitalisat', 'count' => 1]], $result['summary']);
+    }
+
+    /**
+     * @test
+     */
+    public function objectWithoutThumbnailAndImageExtensionStaysInLinks(): void
+    {
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://digital.example.org/viewer/image/AU01067549/', 'https://example.org/media/document.pdf'],
+            ['␣', 'pdf'],
+            ['public', 'public'],
+            ['Digitalisat: Zugang', 'Inhaltsverzeichnis'],
+            [],
+            ['␣', '␣']
+        );
+
+        self::assertCount(0, $result['images']);
+        self::assertCount(2, $result['links']);
+        self::assertNull($result['teaser']);
+    }
+
+    /**
+     * @test
+     */
+    public function forbiddenViewerLinkWithThumbnailStaysInLinks(): void
+    {
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://digital.example.org/viewer/fullscreen/HS00242238/?media_access=campus'],
+            [],
+            ['campus'],
+            ['HS00242238'],
+            [],
+            ['https://digital.example.org/viewer/api/v1/records/HS00242238/files/images/HS_00242238_0001.tif/full/!480,480/0/default.jpg']
+        );
+
+        self::assertCount(0, $result['images']);
+        self::assertCount(1, $result['links']);
+        self::assertSame(1, $result['links'][0]['forbidden']);
+        self::assertNull($result['teaser']);
+        self::assertTrue($result['accessDenied']);
+    }
+
+    /**
+     * @test
+     */
+    public function imagesAndViewerLinksShareOneSlideshowInOriginalOrder(): void
+    {
+        $viewHelper = new TestableMediaPlayerViewHelper();
+
+        $result = $viewHelper->buildMediaData(
+            ['https://example.org/media/a.jpg', 'https://digital.example.org/viewer/fullscreen/HS01/', 'https://example.org/media/b.jpg'],
+            ['jpg', '␣', 'jpg'],
+            ['public', 'public', 'public'],
+            ['Bild A', 'HS01', 'Bild B'],
+            [],
+            ['https://example.org/media/a_thumb.jpg', 'https://digital.example.org/viewer/api/HS01.jpg', 'https://example.org/media/b_thumb.jpg']
+        );
+
+        self::assertCount(0, $result['links']);
+        self::assertSame(['image', 'viewer', 'image'], array_column($result['images'], 'kind'));
+        self::assertSame([
+            ['type' => 'image', 'count' => 2],
+            ['type' => 'digitalisat', 'count' => 1],
+        ], $result['summary']);
     }
 
     /**
@@ -587,6 +686,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         $imageItem = $result['images'][0];
         self::assertSame('https://example.org/media/picture.jpg', $imageItem['url']);
         self::assertSame('https://example.org/media/picture_thumb.jpg', $imageItem['thumbnail']);
+        self::assertSame('image', $imageItem['kind']);
         self::assertSame(0, $imageItem['forbidden']);
     }
 

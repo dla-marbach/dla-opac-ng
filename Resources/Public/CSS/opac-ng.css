@@ -981,7 +981,7 @@ span.icon.bel-link01 {
     box-sizing: border-box;
 }
 
-.dla-slideshow-slide a {
+.dla-slideshow-slide > a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -994,6 +994,16 @@ span.icon.bel-link01 {
     padding: 0.5em 50px;
     text-align: center;
     overflow-wrap: anywhere;
+}
+
+/* Aktionszeile bei Digitalisaten im Viewer und Dateien mit Vorschaubild ("Im Viewer öffnen") */
+.dla-slideshow-action {
+    padding: 0 50px 0.75em;
+    text-align: center;
+}
+
+.dla-slideshow-action .icon {
+    margin-left: 0.25em;
 }
 
 .dla-slideshow-slide img {

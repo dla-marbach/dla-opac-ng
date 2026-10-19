@@ -30,9 +30,16 @@ class MediaPlayerViewHelper extends AbstractViewHelper
     /**
      * Datei-Endungen, die (sofern nicht gesperrt) als Bild in der Slideshow
      * (Resources/Private/Partials/MediaAccess/Slideshow.html) statt als einfacher
-     * Link angezeigt werden.
+     * Link angezeigt werden - auch ohne Vorschaubild. Andere Objekte kommen nur mit
+     * Vorschaubild in die Slideshow.
      */
     protected const IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'tif', 'tiff', 'bmp', 'webp'];
+
+    /**
+     * Zählung der Slideshow-Einträge je Art im Schild des Vorschaubilds
+     * (MediaAccess/TeaserJump.html): Dateien mit Vorschaubild zählen als Link.
+     */
+    protected const SUMMARY_TYPE_BY_IMAGE_KIND = ['image' => 'image', 'viewer' => 'digitalisat', 'file' => 'link'];
 
     /**
      * Register arguments.
@@ -131,8 +138,9 @@ class MediaPlayerViewHelper extends AbstractViewHelper
      * Builds the "links" (all digital objects not otherwise categorized, incl. every
      * forbidden object regardless of its type), "mediaplayer" (playable audio/video/
      * playlist objects that are NOT forbidden - a Player is only ever rendered for these,
-     * see Resources/Private/Partials/MediaAccess/Player.html) and "images" (viewable
-     * images that are NOT forbidden - a Slideshow is only ever rendered for these, see
+     * see Resources/Private/Partials/MediaAccess/Player.html) and "images" (images and
+     * all other objects with a thumbnail that are NOT forbidden, with "kind" image/viewer/
+     * file - a Slideshow is only ever rendered for these, see
      * Resources/Private/Partials/MediaAccess/Slideshow.html) result structures from
      * already normalized, index-aligned input arrays.
      *
@@ -155,7 +163,7 @@ class MediaPlayerViewHelper extends AbstractViewHelper
      * teaser should link to the player/slideshow instead of the file itself, and
      * "accessDenied" is set if there are digital objects but none of them is accessible.
      * "summary" lists the number of accessible objects per kind in the order of the
-     * section "Digitales Objekt" (video, audio, playlist, image, link; kinds without
+     * section "Digitales Objekt" (video, audio, playlist, image, digitalisat, link; kinds without
      * objects are omitted) for the badge on the teaser (MediaAccess/TeaserJump.html).
      *
      * @param array $thumbnails
@@ -259,12 +267,16 @@ class MediaPlayerViewHelper extends AbstractViewHelper
                 }
 
                 $resultValue['mediaplayer'][] = $mediaItem;
-            } elseif ($normalizedExt !== null && in_array($normalizedExt, static::IMAGE_EXTENSIONS, true) && !empty($urlAccess['url']) && $urlAccess['forbidden'] === 0) {
-                // Gesperrte Bilder bewusst NICHT hier einsortieren: sie bleiben in "links",
+            } elseif (!$this->isPlaceholder($urlAccess['url']) && $urlAccess['forbidden'] === 0
+                && ($this->isImageExtension($normalizedExt) || $currentThumbnail !== null)) {
+                // Bilder sowie alle anderen Objekte mit Vorschaubild (z.B. Digitalisate im
+                // Viewer, E-Books mit Cover) erscheinen einheitlich in der Slideshow.
+                // Gesperrte Objekte bewusst NICHT hier einsortieren: sie bleiben in "links",
                 // damit sie weiterhin nur über den bestehenden Rechtehinweis sichtbar werden
                 // (keine Platzhalter-Kacheln in der Slideshow).
                 $imageItem = $urlAccess;
                 $imageItem['thumbnail'] = $thumbnails[$i] ?? null;
+                $imageItem['kind'] = $this->imageKind($urlAccess['url'], $normalizedExt);
                 $resultValue['images'][] = $imageItem;
             } else {
                 $resultValue['links'][] = $urlAccess;
@@ -288,9 +300,12 @@ class MediaPlayerViewHelper extends AbstractViewHelper
      */
     protected function buildSummary(array $resultValue): array
     {
-        $counts = ['video' => 0, 'audio' => 0, 'playlist' => 0, 'image' => count($resultValue['images']), 'link' => 0];
+        $counts = ['video' => 0, 'audio' => 0, 'playlist' => 0, 'image' => 0, 'digitalisat' => 0, 'link' => 0];
         foreach ($resultValue['mediaplayer'] as $mediaItem) {
             $counts[$mediaItem['type']]++;
+        }
+        foreach ($resultValue['images'] as $imageItem) {
+            $counts[static::SUMMARY_TYPE_BY_IMAGE_KIND[$imageItem['kind']]]++;
         }
         foreach ($resultValue['links'] as $link) {
             if ($link['forbidden'] === 0 && !$this->isPlaceholder($link['url'])) {
@@ -306,6 +321,26 @@ class MediaPlayerViewHelper extends AbstractViewHelper
         }
 
         return $summary;
+    }
+
+    protected function isImageExtension(?string $normalizedExt): bool
+    {
+        return $normalizedExt !== null && in_array($normalizedExt, static::IMAGE_EXTENSIONS, true);
+    }
+
+    /**
+     * Art eines Slideshow-Eintrags; bestimmt die Aktionszeile unter dem Bild
+     * (MediaAccess/Slideshow.html) und die Zählung im Schild des Vorschaubilds.
+     *
+     * @return string "image" (Bilddatei), "viewer" (Digitalisat im Viewer) oder "file" (sonstige Datei)
+     */
+    protected function imageKind(string $url, ?string $normalizedExt): string
+    {
+        if ($this->isImageExtension($normalizedExt)) {
+            return 'image';
+        }
+
+        return str_contains((string)parse_url($url, PHP_URL_PATH), '/viewer/') ? 'viewer' : 'file';
     }
 
     /**
