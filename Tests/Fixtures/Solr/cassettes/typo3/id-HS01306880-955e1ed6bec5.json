@@ -1,0 +1,476 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:HS01306880",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.701481,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "default": [
+                            "Handschriften",
+                            "D20240226-818",
+                            "HS01306880",
+                            "Prado <Madrid>",
+                            "National Museum of Paintings and Sculpture <Madrid>",
+                            "Museum of Paintings and Sculpture <Madrid>",
+                            "Musée du Prado <Madrid>",
+                            "Museo Nacional de Pintura y Escultura <Madrid>",
+                            "Prado-Museum <Madrid>",
+                            "Real Museo Nacional de Pinturas y Esculturas <Madrid>",
+                            "Ril'ke, Rajner M.",
+                            "Rilke, René Karl Wilhelm Johann Josef Maria",
+                            "Rilke, Rainer-Maria",
+                            "Rilke, Rajner Marija",
+                            "Rilke, Rainer M.",
+                            "Rilke R. M.",
+                            "Rilke",
+                            "Rilke, René",
+                            "Rilke, Rajner M.",
+                            "Rilke, Rene Karl Wilhelm Johann Josef Maria",
+                            "Rilke, Rainer Maria",
+                            "Rilke, Rene",
+                            "Les élégies de Duino",
+                            "Devinske elegije",
+                            "Duino elegies",
+                            "Elegías de Duino",
+                            "Elegiile duineze",
+                            "De elegieën van Duino",
+                            "Elegie z Duina",
+                            "Duinon elegioita",
+                            "Duinski elegii",
+                            "Helegeies tu Ntuino",
+                            "Marbhnaí Duino",
+                            "Oi elegeíes tou Ntouíno",
+                            "Elegie duinejskie",
+                            "Duinói elégiák",
+                            "Duino-elegiane",
+                            "Marati Dwinu",
+                            "Duinoelegierna",
+                            "Elegyôt Dûînô",
+                            "Duino elegier",
+                            "Elegji Duinase",
+                            "Elegie Duinesi",
+                            "Elegias de Duíno",
+                            "Duinon elegiat",
+                            "Douino erejî",
+                            "Duino hika",
+                            "Duinské elégie",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Rilke, Rainer Maria: Notizbuch T16 [Verschiedenes]</title>\n  </titleInfo>\n  <titleInfo type=\"abbreviated\">\n    <title>Notizbuch T16</title>\n  </titleInfo>\n  <titleInfo type=\"alternative\">\n    <title>Taschenbuch 16</title>\n  </titleInfo>\n  <titleInfo type=\"uniform\">\n    <title>Rilke, Rainer Maria (1875-1926). Duineser Elegien (Zusammenstellung : 1923)</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Rilke, Rainer Maria (1875-1926)</namePart>\n    <nameIdentifier type=\"gnd\">118601024</nameIdentifier>\n    <namePart type=\"date\">1875-12-04 — 1926-12-29</namePart>\n    <role>\n      <roleTerm type=\"text\">[Verfasser/in]</roleTerm>\n    </role>\n  </name>\n  <typeOfResource manuscript=\"yes\">Handschrift</typeOfResource>\n  <genre>Verschiedenes</genre>\n  <genre>Zeichnung</genre>\n  <originInfo eventType=\"manufacture\">\n    <dateCreated point=\"start\" encoding=\"iso8601\">1911</dateCreated>\n    <dateCreated point=\"end\" encoding=\"iso8601\">1916</dateCreated>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <language>\n    <languageTerm type=\"text\">Französisch</languageTerm>\n  </language>\n  <physicalDescription>\n    <extent>1 Band (204 paginierte Seiten) mit 101 Blatt Einlagen und 1 gepressten Pflanze</extent>\n  </physicalDescription>\n  <tableOfContents>u.a. Exzerpte, Briefentwürfe, Gedichtentwürfe</tableOfContents>\n  <subject>\n    <topic>Spanien</topic>\n  </subject>\n  <subject>\n    <topic>Ronda</topic>\n  </subject>\n  <subject>\n    <topic>Duino</topic>\n  </subject>\n  <subject>\n    <topic>Museo del Prado &lt;Madrid&gt;</topic>\n  </subject>\n  <subject>\n    <topic>Rilke, Rainer Maria &lt;1875-1926&gt;. Duineser Elegien (Zusammenstellung : 1923)</topic>\n  </subject>\n  <subject>\n    <geographic>Spanien</geographic>\n  </subject>\n  <subject>\n    <geographic>Ronda</geographic>\n  </subject>\n  <subject>\n    <geographic>Duino</geographic>\n  </subject>\n  <subject>\n    <name type=\"corporate\">\n      <namePart>Museo del Prado &lt;Madrid&gt;</namePart>\n    </name>\n  </subject>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00048063</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>A:Rilke-Archiv Gernsbach/Notizbücher T1-T45</shelfLocator>\n    <url access=\"object in context\">https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20240226%2fD20240226-818.jpg/full/full/0/default.jpg?media_access=campus</url>\n    <url access=\"object in context\">https://digital.dla-marbach.de/viewer/image/HS01306880/?media_access=campus</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2023-02-17</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2026-06-23</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS01306880</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Rilke, Rainer Maria: Notizbuch T16 [Verschiedenes]",
+                            "1911",
+                            "1916",
+                            "Deutsch",
+                            "Französisch",
+                            "Spanien",
+                            "Ronda",
+                            "Duino",
+                            "Museo del Prado <Madrid>",
+                            "Rilke, Rainer Maria <1875-1926>. Duineser Elegien (Zusammenstellung : 1923)",
+                            "Deutsch",
+                            "Französisch",
+                            "TY  - GEN\nA2  - Museo del Prado <Madrid>\nAN  - HS.2022.0081\nAU  - Rilke, Rainer Maria\nAV  - Benutzung nur bedingt möglich!. Für nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:. Telefon: +49 7144 848 425. E-Mail: auskunft-handschriften@dla-marbach.de\nCN  - HS01306880X\nDA  - 1911\nDA  - 1916\nDB  - A:Rilke-Archiv Gernsbach/Notizbücher T1-T45\nID  - HS01306880\nKW  - Spanien\nKW  - Ronda\nKW  - Duino\nKW  - Museo del Prado <Madrid>\nKW  - Rilke, Rainer Maria <1875-1926>. Duineser Elegien (Zusammenstellung : 1923)\nLA  - Deutsch\nLA  - Französisch\nLB  - T16\nM3  - Verschiedenes\nM3  - Zeichnung\nN1  - Schlagwort: Spanien\nN1  - Schlagwort: Ronda\nN1  - Schlagwort: Duino\nN1  - Umfang: 1 Band (204 paginierte Seiten) mit 101 Blatt Einlagen und 1 gepressten Pflanze\nN1  - Repro: D20230221-100 bis 290\nN2  - u.a. Exzerpte, Briefentwürfe, Gedichtentwürfe\nOP  - Rilke, Rainer Maria (1875-1926). Duineser Elegien (Zusammenstellung : 1923)\nST  - Rilke, Rainer Maria: Notizbuch T16 [Verschiedenes]\nTI  - Rilke, Rainer Maria: Notizbuch T16 [Verschiedenes]\nT2  - Taschenbuch 16 (Titel von Bearbeiter/in)\nUR  - https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20240226%2fD20240226-818.jpg/full/full/0/default.jpg?media_access=campus\nUR  - https://digital.dla-marbach.de/viewer/image/HS01306880/?media_access=campus\nUR  - https://www.dla-marbach.de/find/opac/id/HS01306880/\nER  -",
+                            "PE00001397",
+                            "TASCHENBUCH 16",
+                            "D20230221-100 bis 290",
+                            "Rilke, Rainer Maria (1875-1926) [Verfasser/in]",
+                            "[1911 TO 1916]",
+                            "Rilke, Rainer Maria",
+                            "Museo del Prado <Madrid>",
+                            "TH00001689",
+                            "TH00036067",
+                            "TH00022582",
+                            "A:Rilke-Archiv Gernsbach/Notizbücher T1-T45",
+                            "NOTIZBUCH T16",
+                            "MM01557301",
+                            "MM01559058",
+                            "Verschiedenes",
+                            "Notizbuch T16",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20240226%2fD20240226-818.jpg/full/full/0/default.jpg?media_access=campus",
+                            "https://digital.dla-marbach.de/viewer/image/HS01306880/?media_access=campus",
+                            "2026-06-23",
+                            "1911 - 1916",
+                            "eingeschränkt benutzbar",
+                            "2023-02-17",
+                            "jpg",
+                            "␣",
+                            "Rilke, Rainer Maria (1875-1926)␝Von",
+                            "Museo del Prado <Madrid>␝Über",
+                            "HS01306880",
+                            "Titel von Bearbeiter/in",
+                            "1911-01-01T00:00:00Z",
+                            "1916-01-01T00:00:00Z",
+                            "PE00001397",
+                            "Rilke, Rainer Maria (1875-1926)",
+                            "[Verfasser/in]",
+                            "Spanien",
+                            "Ronda",
+                            "Duino",
+                            "Rilke, Rainer Maria: Notizbuch T16 [Verschiedenes]",
+                            "BF00048063",
+                            "KS00021383",
+                            "false",
+                            "AK00033914",
+                            "Rilke, Rainer Maria (1875-1926)",
+                            "überlieferter Titel",
+                            "Museo del Prado <Madrid>",
+                            "Deutsch␝Original",
+                            "Französisch␝Original",
+                            "1916",
+                            "HS01306880X",
+                            "BI00032076",
+                            "Rilke, Rainer Maria",
+                            "https://www.dla-marbach.de/find/opac/id/HS01306880",
+                            "campus",
+                            "campus",
+                            "HS",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20240226%2fD20240226-818.jpg/full/!480,480/0/default.jpg?media_access=campus",
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS01306880/files/images/HS01306880_0001.tif/full/!480,480/0/default.jpg",
+                            "Rilke, Rainer Maria (1875-1926)␝Verfasser/Urheber",
+                            "Museo del Prado <Madrid>␝Behandelte Person/Körperschaft",
+                            "1 Band (204 paginierte Seiten) mit 101 Blatt Einlagen und 1 gepressten Pflanze",
+                            "u.a. Exzerpte, Briefentwürfe, Gedichtentwürfe",
+                            "[Behandelte Körperschaft]",
+                            "Museo del Prado <Madrid>",
+                            "Handschrift",
+                            "true",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Rilke, Rainer Maria: Notizbuch T16 [Verschiedenes]</dc:title>\n  <dc:title>Notizbuch T16</dc:title>\n  <dc:title>Taschenbuch 16</dc:title>\n  <dc:title>Rilke, Rainer Maria (1875-1926). Duineser Elegien (Zusammenstellung : 1923)</dc:title>\n  <dc:creator>Rilke, Rainer Maria (1875-1926)</dc:creator>\n  <dc:type>Verschiedenes</dc:type>\n  <dc:type>Zeichnung</dc:type>\n  <dc:type>Handschrift</dc:type>\n  <dc:date>1911</dc:date>\n  <dc:date>1916</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:language>Französisch</dc:language>\n  <dc:format>1 Band (204 paginierte Seiten) mit 101 Blatt Einlagen und 1 gepressten Pflanze</dc:format>\n  <dc:description>u.a. Exzerpte, Briefentwürfe, Gedichtentwürfe</dc:description>\n  <dc:subject>Spanien</dc:subject>\n  <dc:subject>Ronda</dc:subject>\n  <dc:subject>Duino</dc:subject>\n  <dc:subject>Museo del Prado &lt;Madrid&gt;</dc:subject>\n  <dc:subject>Rilke, Rainer Maria &lt;1875-1926&gt;. Duineser Elegien (Zusammenstellung : 1923)</dc:subject>\n  <dc:coverage>Spanien</dc:coverage>\n  <dc:coverage>Ronda</dc:coverage>\n  <dc:coverage>Duino</dc:coverage>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00048063</dc:source>\n  <dc:identifier>A:Rilke-Archiv Gernsbach/Notizbücher T1-T45</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20240226%2fD20240226-818.jpg/full/full/0/default.jpg?media_access=campus</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/viewer/image/HS01306880/?media_access=campus</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/HS01306880</dc:identifier>\n  <dc:identifier>HS01306880</dc:identifier>\n</oai_dc:dc>",
+                            "Spanien",
+                            "Ronda",
+                            "Duino",
+                            "Zeichnungen",
+                            "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                            "Rilke, Rainer Maria (1875-1926)",
+                            "Museo del Prado <Madrid>",
+                            "1.0.0",
+                            "2023-02-17",
+                            "T16",
+                            "1",
+                            "RILKE, RAINER MARIA",
+                            "Nur Digitalisat oder Mikroform benutzbar",
+                            "A:Rilke-Archiv Gernsbach/Notizbücher T1-T45 - [Standortkonvolut]",
+                            "Am Standort",
+                            "Rilke, Rainer Maria (1875-1926). Duineser Elegien (Zusammenstellung : 1923)",
+                            "Spain",
+                            "Espagne",
+                            "Estado Español",
+                            "IsbÄĄniyÄĄ",
+                            "España",
+                            "Arunda",
+                            "Acinipum",
+                            "Acinippo",
+                            "Devin",
+                            "Tübein",
+                            "Tybein",
+                            "Handschriften Einzelnachweise",
+                            "KS00021383",
+                            "PE00001397",
+                            "AK00033914",
+                            "Spanien␝Schlagwort",
+                            "Ronda␝Schlagwort",
+                            "Duino␝Schlagwort",
+                            "Manuskripte",
+                            "HS.2022.0081",
+                            "Verschiedenes",
+                            "Zeichnung",
+                            "3 Skizzen in: Rainer Maria Rilke Notizbuch T16 [Zeichnung]",
+                            "BE00008465",
+                            "A:Rilke-Archiv Gernsbach/Notizbücher T1-T45 - [Standortkonvolut]",
+                            "Taschenbuch 16",
+                            "1911",
+                            "T 16",
+                            "Titel von Bearbeiter/in",
+                            "BE00008465"
+                        ],
+                        "digitalObject_display_mv": [
+                            "D20240226-818",
+                            "HS01306880"
+                        ],
+                        "searchVariant_mv": [
+                            "Prado <Madrid>",
+                            "National Museum of Paintings and Sculpture <Madrid>",
+                            "Museum of Paintings and Sculpture <Madrid>",
+                            "Musée du Prado <Madrid>",
+                            "Museo Nacional de Pintura y Escultura <Madrid>",
+                            "Prado-Museum <Madrid>",
+                            "Real Museo Nacional de Pinturas y Esculturas <Madrid>",
+                            "Ril'ke, Rajner M.",
+                            "Rilke, René Karl Wilhelm Johann Josef Maria",
+                            "Rilke, Rainer-Maria",
+                            "Rilke, Rajner Marija",
+                            "Rilke, Rainer M.",
+                            "Rilke R. M.",
+                            "Rilke",
+                            "Rilke, René",
+                            "Rilke, Rajner M.",
+                            "Rilke, Rene Karl Wilhelm Johann Josef Maria",
+                            "Rilke, Rainer Maria",
+                            "Rilke, Rene",
+                            "Les élégies de Duino",
+                            "Devinske elegije",
+                            "Duino elegies",
+                            "Elegías de Duino",
+                            "Elegiile duineze",
+                            "De elegieën van Duino",
+                            "Elegie z Duina",
+                            "Duinon elegioita",
+                            "Duinski elegii",
+                            "Helegeies tu Ntuino",
+                            "Marbhnaí Duino",
+                            "Oi elegeíes tou Ntouíno",
+                            "Elegie duinejskie",
+                            "Duinói elégiák",
+                            "Duino-elegiane",
+                            "Marati Dwinu",
+                            "Duinoelegierna",
+                            "Elegyôt Dûînô",
+                            "Duino elegier",
+                            "Elegji Duinase",
+                            "Elegie Duinesi",
+                            "Elegias de Duíno",
+                            "Duinon elegiat",
+                            "Douino erejî",
+                            "Duino hika",
+                            "Duinské elégie"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Rilke, Rainer Maria: Notizbuch T16 [Verschiedenes]</title>\n  </titleInfo>\n  <titleInfo type=\"abbreviated\">\n    <title>Notizbuch T16</title>\n  </titleInfo>\n  <titleInfo type=\"alternative\">\n    <title>Taschenbuch 16</title>\n  </titleInfo>\n  <titleInfo type=\"uniform\">\n    <title>Rilke, Rainer Maria (1875-1926). Duineser Elegien (Zusammenstellung : 1923)</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Rilke, Rainer Maria (1875-1926)</namePart>\n    <nameIdentifier type=\"gnd\">118601024</nameIdentifier>\n    <namePart type=\"date\">1875-12-04 — 1926-12-29</namePart>\n    <role>\n      <roleTerm type=\"text\">[Verfasser/in]</roleTerm>\n    </role>\n  </name>\n  <typeOfResource manuscript=\"yes\">Handschrift</typeOfResource>\n  <genre>Verschiedenes</genre>\n  <genre>Zeichnung</genre>\n  <originInfo eventType=\"manufacture\">\n    <dateCreated point=\"start\" encoding=\"iso8601\">1911</dateCreated>\n    <dateCreated point=\"end\" encoding=\"iso8601\">1916</dateCreated>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <language>\n    <languageTerm type=\"text\">Französisch</languageTerm>\n  </language>\n  <physicalDescription>\n    <extent>1 Band (204 paginierte Seiten) mit 101 Blatt Einlagen und 1 gepressten Pflanze</extent>\n  </physicalDescription>\n  <tableOfContents>u.a. Exzerpte, Briefentwürfe, Gedichtentwürfe</tableOfContents>\n  <subject>\n    <topic>Spanien</topic>\n  </subject>\n  <subject>\n    <topic>Ronda</topic>\n  </subject>\n  <subject>\n    <topic>Duino</topic>\n  </subject>\n  <subject>\n    <topic>Museo del Prado &lt;Madrid&gt;</topic>\n  </subject>\n  <subject>\n    <topic>Rilke, Rainer Maria &lt;1875-1926&gt;. Duineser Elegien (Zusammenstellung : 1923)</topic>\n  </subject>\n  <subject>\n    <geographic>Spanien</geographic>\n  </subject>\n  <subject>\n    <geographic>Ronda</geographic>\n  </subject>\n  <subject>\n    <geographic>Duino</geographic>\n  </subject>\n  <subject>\n    <name type=\"corporate\">\n      <namePart>Museo del Prado &lt;Madrid&gt;</namePart>\n    </name>\n  </subject>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00048063</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>A:Rilke-Archiv Gernsbach/Notizbücher T1-T45</shelfLocator>\n    <url access=\"object in context\">https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20240226%2fD20240226-818.jpg/full/full/0/default.jpg?media_access=campus</url>\n    <url access=\"object in context\">https://digital.dla-marbach.de/viewer/image/HS01306880/?media_access=campus</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2023-02-17</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2026-06-23</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS01306880</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "display": "Rilke, Rainer Maria: Notizbuch T16 [Verschiedenes]",
+                        "searchDate_mv": [
+                            "1911",
+                            "1916"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch",
+                            "Französisch"
+                        ],
+                        "filterSubject_mv": [
+                            "Spanien",
+                            "Ronda",
+                            "Duino",
+                            "Museo del Prado <Madrid>",
+                            "Rilke, Rainer Maria <1875-1926>. Duineser Elegien (Zusammenstellung : 1923)"
+                        ],
+                        "language_mv": [
+                            "Deutsch",
+                            "Französisch"
+                        ],
+                        "exportRIS": "TY  - GEN\nA2  - Museo del Prado <Madrid>\nAN  - HS.2022.0081\nAU  - Rilke, Rainer Maria\nAV  - Benutzung nur bedingt möglich!. Für nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:. Telefon: +49 7144 848 425. E-Mail: auskunft-handschriften@dla-marbach.de\nCN  - HS01306880X\nDA  - 1911\nDA  - 1916\nDB  - A:Rilke-Archiv Gernsbach/Notizbücher T1-T45\nID  - HS01306880\nKW  - Spanien\nKW  - Ronda\nKW  - Duino\nKW  - Museo del Prado <Madrid>\nKW  - Rilke, Rainer Maria <1875-1926>. Duineser Elegien (Zusammenstellung : 1923)\nLA  - Deutsch\nLA  - Französisch\nLB  - T16\nM3  - Verschiedenes\nM3  - Zeichnung\nN1  - Schlagwort: Spanien\nN1  - Schlagwort: Ronda\nN1  - Schlagwort: Duino\nN1  - Umfang: 1 Band (204 paginierte Seiten) mit 101 Blatt Einlagen und 1 gepressten Pflanze\nN1  - Repro: D20230221-100 bis 290\nN2  - u.a. Exzerpte, Briefentwürfe, Gedichtentwürfe\nOP  - Rilke, Rainer Maria (1875-1926). Duineser Elegien (Zusammenstellung : 1923)\nST  - Rilke, Rainer Maria: Notizbuch T16 [Verschiedenes]\nTI  - Rilke, Rainer Maria: Notizbuch T16 [Verschiedenes]\nT2  - Taschenbuch 16 (Titel von Bearbeiter/in)\nUR  - https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20240226%2fD20240226-818.jpg/full/full/0/default.jpg?media_access=campus\nUR  - https://digital.dla-marbach.de/viewer/image/HS01306880/?media_access=campus\nUR  - https://www.dla-marbach.de/find/opac/id/HS01306880/\nER  -",
+                        "searchCollectionCreator_id_mv": [
+                            "PE00001397"
+                        ],
+                        "sortingTitleOther": "TASCHENBUCH 16",
+                        "photoNegativeNumber_mv": [
+                            "D20230221-100 bis 290"
+                        ],
+                        "displayName": "Rilke, Rainer Maria (1875-1926) [Verfasser/in]",
+                        "filterDateRange_mv": [
+                            "[1911 TO 1916]"
+                        ],
+                        "searchName_mv": [
+                            "Rilke, Rainer Maria",
+                            "Museo del Prado <Madrid>"
+                        ],
+                        "subject_id_mv": [
+                            "TH00001689",
+                            "TH00036067",
+                            "TH00022582"
+                        ],
+                        "filterCollection_mv": [
+                            "A:Rilke-Archiv Gernsbach/Notizbücher T1-T45"
+                        ],
+                        "sortingTitleMain": "NOTIZBUCH T16",
+                        "digitalObject_id_mv": [
+                            "MM01557301",
+                            "MM01559058"
+                        ],
+                        "genre": "Verschiedenes",
+                        "titleMain_text": "Notizbuch T16",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20240226%2fD20240226-818.jpg/full/full/0/default.jpg?media_access=campus",
+                            "https://digital.dla-marbach.de/viewer/image/HS01306880/?media_access=campus"
+                        ],
+                        "dateModified": "2026-06-23",
+                        "displayAddition1": "1911 - 1916",
+                        "usageRestriction": "eingeschränkt benutzbar",
+                        "dateCataloged": "2023-02-17",
+                        "digitalObject_fileExtension_mv": [
+                            "jpg",
+                            "␣"
+                        ],
+                        "filterAuthorityRelation_mv": [
+                            "Rilke, Rainer Maria (1875-1926)␝Von",
+                            "Museo del Prado <Madrid>␝Über"
+                        ],
+                        "id": "HS01306880",
+                        "titleOther_type_mv": [
+                            "Titel von Bearbeiter/in"
+                        ],
+                        "filterDatePoint_mv": [
+                            "1911-01-01T00:00:00Z",
+                            "1916-01-01T00:00:00Z"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00001397"
+                        ],
+                        "personBy_display_mv": [
+                            "Rilke, Rainer Maria (1875-1926)"
+                        ],
+                        "personBy_role_mv": [
+                            "[Verfasser/in]"
+                        ],
+                        "filterLocation_mv": [
+                            "Spanien",
+                            "Ronda",
+                            "Duino"
+                        ],
+                        "title": "Rilke, Rainer Maria: Notizbuch T16 [Verschiedenes]",
+                        "collection_id_mv": [
+                            "BF00048063"
+                        ],
+                        "corporationAbout_id_mv": [
+                            "KS00021383"
+                        ],
+                        "confidential": false,
+                        "work_id_mv": [
+                            "AK00033914"
+                        ],
+                        "searchCollectionCreator_display_mv": [
+                            "Rilke, Rainer Maria (1875-1926)"
+                        ],
+                        "titleOther_comment_mv": [
+                            "überlieferter Titel"
+                        ],
+                        "corporationAbout_display_mv": [
+                            "Museo del Prado <Madrid>"
+                        ],
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original",
+                            "Französisch␝Original"
+                        ],
+                        "dateOriginEnd": "1916",
+                        "mediaNumber": "HS01306880X",
+                        "object_id": "BI00032076",
+                        "searchNameBy_mv": [
+                            "Rilke, Rainer Maria"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/HS01306880",
+                        "digitalObject_accessLevel_mv": [
+                            "campus",
+                            "campus"
+                        ],
+                        "source": "HS",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20240226%2fD20240226-818.jpg/full/!480,480/0/default.jpg?media_access=campus",
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS01306880/files/images/HS01306880_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Rilke, Rainer Maria (1875-1926)␝Verfasser/Urheber",
+                            "Museo del Prado <Madrid>␝Behandelte Person/Körperschaft"
+                        ],
+                        "extent": "1 Band (204 paginierte Seiten) mit 101 Blatt Einlagen und 1 gepressten Pflanze",
+                        "content": "u.a. Exzerpte, Briefentwürfe, Gedichtentwürfe",
+                        "corporationAbout_role_mv": [
+                            "[Behandelte Körperschaft]"
+                        ],
+                        "searchNameAbout_mv": [
+                            "Museo del Prado <Madrid>"
+                        ],
+                        "categorySub": "Handschrift",
+                        "filterDigital": true,
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Rilke, Rainer Maria: Notizbuch T16 [Verschiedenes]</dc:title>\n  <dc:title>Notizbuch T16</dc:title>\n  <dc:title>Taschenbuch 16</dc:title>\n  <dc:title>Rilke, Rainer Maria (1875-1926). Duineser Elegien (Zusammenstellung : 1923)</dc:title>\n  <dc:creator>Rilke, Rainer Maria (1875-1926)</dc:creator>\n  <dc:type>Verschiedenes</dc:type>\n  <dc:type>Zeichnung</dc:type>\n  <dc:type>Handschrift</dc:type>\n  <dc:date>1911</dc:date>\n  <dc:date>1916</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:language>Französisch</dc:language>\n  <dc:format>1 Band (204 paginierte Seiten) mit 101 Blatt Einlagen und 1 gepressten Pflanze</dc:format>\n  <dc:description>u.a. Exzerpte, Briefentwürfe, Gedichtentwürfe</dc:description>\n  <dc:subject>Spanien</dc:subject>\n  <dc:subject>Ronda</dc:subject>\n  <dc:subject>Duino</dc:subject>\n  <dc:subject>Museo del Prado &lt;Madrid&gt;</dc:subject>\n  <dc:subject>Rilke, Rainer Maria &lt;1875-1926&gt;. Duineser Elegien (Zusammenstellung : 1923)</dc:subject>\n  <dc:coverage>Spanien</dc:coverage>\n  <dc:coverage>Ronda</dc:coverage>\n  <dc:coverage>Duino</dc:coverage>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00048063</dc:source>\n  <dc:identifier>A:Rilke-Archiv Gernsbach/Notizbücher T1-T45</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/iiif/2/0%2f1%2fD20240226%2fD20240226-818.jpg/full/full/0/default.jpg?media_access=campus</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/viewer/image/HS01306880/?media_access=campus</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/HS01306880</dc:identifier>\n  <dc:identifier>HS01306880</dc:identifier>\n</oai_dc:dc>",
+                        "subject_display_mv": [
+                            "Spanien",
+                            "Ronda",
+                            "Duino"
+                        ],
+                        "genreOther_mv": [
+                            "Zeichnungen"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "filterAuthority_mv": [
+                            "Rilke, Rainer Maria (1875-1926)",
+                            "Museo del Prado <Madrid>"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "filterRecent": "2023-02-17",
+                        "acronym_mv": [
+                            "T16"
+                        ],
+                        "searchBoost": 1,
+                        "sortingKey": "RILKE, RAINER MARIA",
+                        "usageRestrictionComment": "Nur Digitalisat oder Mikroform benutzbar",
+                        "displayAddition2": "A:Rilke-Archiv Gernsbach/Notizbücher T1-T45 - [Standortkonvolut]",
+                        "statusLoan": "Am Standort",
+                        "work_display_mv": [
+                            "Rilke, Rainer Maria (1875-1926). Duineser Elegien (Zusammenstellung : 1923)"
+                        ],
+                        "subject_usedFor_mv": [
+                            "Spain",
+                            "Espagne",
+                            "Estado Español",
+                            "IsbÄĄniyÄĄ",
+                            "España",
+                            "Arunda",
+                            "Acinipum",
+                            "Acinippo",
+                            "Devin",
+                            "Tübein",
+                            "Tybein"
+                        ],
+                        "filterSource": "Handschriften Einzelnachweise",
+                        "searchEntity_id_mv": [
+                            "KS00021383",
+                            "PE00001397",
+                            "AK00033914"
+                        ],
+                        "filterLocationType_mv": [
+                            "Spanien␝Schlagwort",
+                            "Ronda␝Schlagwort",
+                            "Duino␝Schlagwort"
+                        ],
+                        "category": "Manuskripte",
+                        "accessionNumber": "HS.2022.0081",
+                        "filterFormContent_mv": [
+                            "Verschiedenes",
+                            "Zeichnung"
+                        ],
+                        "object_display": "3 Skizzen in: Rainer Maria Rilke Notizbuch T16 [Zeichnung]",
+                        "accession_display": "BE00008465",
+                        "collection_display_mv": [
+                            "A:Rilke-Archiv Gernsbach/Notizbücher T1-T45 - [Standortkonvolut]"
+                        ],
+                        "titleOther_text_mv": [
+                            "Taschenbuch 16"
+                        ],
+                        "dateOriginStart": "1911",
+                        "subjectOther_mv": [
+                            "T 16"
+                        ],
+                        "titleMain_type": "Titel von Bearbeiter/in",
+                        "accession_id": "BE00008465",
+                        "score": 13.701481
+                    }
+                ]
+            }
+        }
+    }
+}

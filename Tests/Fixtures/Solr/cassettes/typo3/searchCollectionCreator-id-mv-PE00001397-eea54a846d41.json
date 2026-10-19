@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchCollectionCreator_id_mv:PE00001397",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 16934,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00046384",
+                        "display": "A:Rilke-Archiv Gernsbach - [Bestand, Teilnachlass]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BF00048061",
+                        "display": "A:Rilke-Archiv Gernsbach/Manuskripte 001-559 - [Standortkonvolut]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BF00000732",
+                        "display": "A:Rilke, Rainer Maria - [Bestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BF00048060",
+                        "display": "A:Rilke-Archiv Gernsbach/Manuskripte I-XXIX - [Standortkonvolut]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BF00047307",
+                        "display": "A:Rilke-Archiv Gernsbach/Kopien und Abschriften - [Standortkonvolut]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

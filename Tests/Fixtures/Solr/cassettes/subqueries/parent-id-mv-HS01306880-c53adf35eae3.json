@@ -1,0 +1,632 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "parent_id_mv:\"HS01306880\"",
+            "start": "0",
+            "rows": "500",
+            "fl": "id,display",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 151,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "display": "Rilke, Rainer Maria: Die erste Elegie [Gedichte]",
+                        "id": "HS01376338"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Fragment einer Elegie> [Gedichte]",
+                        "id": "HS01376339"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Die zweite Elegie [Gedichte]",
+                        "id": "HS01376340"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Die dritte Elegie [Gedichte]",
+                        "id": "HS01376342"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Die zehnte Elegie [Gedichte]",
+                        "id": "HS01376345"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Die vierte Elegie [Gedichte]",
+                        "id": "HS01376346"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Die sechste Elegie [Gedichte]",
+                        "id": "HS01376350"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Die neunte Elegie [Gedichte]",
+                        "id": "HS01376358"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: aus Figurines pour un ballet [Dramatisches]",
+                        "id": "HS01390458"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Der Hund der die Alraune zog / vom Schrei ... [Gedichte]",
+                        "id": "HS01390460"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <An Lou Andreas-Salomé> [Gedichte]",
+                        "id": "HS01390476"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: ..... und keiner weiß, wozu [Gedichte]",
+                        "id": "HS01390479"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Pietà in der Cathedrale zu Aquileja [Gedichte]",
+                        "id": "HS01390480"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Fühlend Götter, die sich nahe rühren [Gedichte]",
+                        "id": "HS01390482"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Verse auf den Tod der jungen Polyxena Thurn [Übersetzungen]",
+                        "id": "HS01390484"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: und schwenktest / Taubenflüge wie Tücher [Gedichte]",
+                        "id": "HS01390596"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Soll ich noch einmal Frühling haben, noch einmal [Gedichte]",
+                        "id": "HS01390601"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Tout épris d'avenir, je contemple les cieux [Gedichte]",
+                        "id": "HS01390602"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Erscheinung [Gedichte]",
+                        "id": "HS01390603"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Ach wie du ausholst, Vogel [Gedichte]",
+                        "id": "HS01390605"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Wen aber des Leidens je der Eifer ergriff, wie wenig [Gedichte]",
+                        "id": "HS01390609"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: L'Infinito [Übersetzungen]",
+                        "id": "HS01390612"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Perlen entrollen. Weh, riß eine der Schnüre? [Gedichte]",
+                        "id": "HS01392722"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Ach, da wir Hülfe von Menschen erharrten : stiegen [Gedichte]",
+                        "id": "HS01392723"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: O die Kurven meiner Sehnsucht durch das Weltall [Gedichte]",
+                        "id": "HS01392724"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Das Kind /auf zu großem Gesicht [Gedichte]",
+                        "id": "HS01392725"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: und das offne Glück [Gedichte]",
+                        "id": "HS01392726"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: aus Sammlung Die vierundzwanzig Sonette der Louïze Labé [Übersetzungen]",
+                        "id": "HS01393094"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Ich Wissender : oh der ich eingeweiht [Gedichte]",
+                        "id": "HS01393095"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Mandelbäume in Blüte> [Gedichte]",
+                        "id": "HS01393096"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Die spanische Trilogie [Gedichte]",
+                        "id": "HS01393097"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: (Auftrieb) [Gedichte]",
+                        "id": "HS01393098"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Himmelfahrt Mariae [Gedichte]",
+                        "id": "HS01393099"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: An den Engel [Gedichte]",
+                        "id": "HS01393100"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Auferweckung des Lazarus [Gedichte]",
+                        "id": "HS01393304"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Dass ich, entartet meinem Tod, zuletzt [Gedichte]",
+                        "id": "HS01393305"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Pylonen. Fass ichs [Gedichte]",
+                        "id": "HS01393306"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Der Geist Ariel (Nach der Lesung von Shakespeares Sturm) [Gedichte]",
+                        "id": "HS01393307"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Wird mir nicht Nächstes? Soll ich nur noch verweilen? [Gedichte]",
+                        "id": "HS01393308"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Die weißen Häuser hin ein Überfließen [Gedichte]",
+                        "id": "HS01393309"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Da rauscht der Bach und dich, (der du ihn hörst) [Gedichte]",
+                        "id": "HS01393310"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Wir wissen nicht, was wir verbringen: siehe [Gedichte]",
+                        "id": "HS01393833"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: So angestrengt wider die starke Nacht [Gedichte]",
+                        "id": "HS01393834"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Lange mußt du leiden, kennend nicht was [Gedichte]",
+                        "id": "HS01393837"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Wer verzichtet, jenen Gram zu kennen [Gedichte]",
+                        "id": "HS01393839"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Unwissend vor dem Himmel meines Lebens [Gedichte]",
+                        "id": "HS01393842"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Was könnte dein Lächeln mir was mir die Nacht nicht [Gedichte]",
+                        "id": "HS01393845"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Überfließende Himmel verschwendeter Sterne [Gedichte]",
+                        "id": "HS01393847"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Wehe ein Sterblicher, weh, in Sehnsucht und Hast [Gedichte]",
+                        "id": "HS01393849"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Weißt du nicht, wird der Rotdorn bald [Gedichte]",
+                        "id": "HS01393850"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: aus Sammlung Die vierundzwanzig Sonette der Louïze Labé [Übersetzungen]",
+                        "id": "HS01393853"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Aus einem Frühling [Gedichte]",
+                        "id": "HS01393855"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Emmaus [Gedichte]",
+                        "id": "HS01393856"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Narziss [Gedichte]",
+                        "id": "HS01393857"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Narziss [Gedichte]",
+                        "id": "HS01393858"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Christi Höllenfahrt [Gedichte]",
+                        "id": "HS01393859"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Sankt Christofferus [Gedichte]",
+                        "id": "HS01393869"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Die Tauben [Gedichte]",
+                        "id": "HS01393870"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: aus Staune, siehe, wie keines [Gedichte]",
+                        "id": "HS01393874"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Die ich als Lehrling verließ, die versuchten Saiten [Gedichte]",
+                        "id": "HS01393922"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Bestürz mich, Musik, mit rhythmischem Zürnen! [Gedichte]",
+                        "id": "HS01393924"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Nun wachen wir mit den Erinnerungen [Gedichte]",
+                        "id": "HS01393926"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: J'ai bu toute la nuit le vin de l'amour, Bien-aimée, tel [Gedichte]",
+                        "id": "HS01393928"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Dich aufdenkend wird mein Wesen erglühter [Gedichte]",
+                        "id": "HS01393929"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Was, Geliebte, bist du nicht eine[r] unter den Sternen? [Gedichte]",
+                        "id": "HS01393930"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Das Bestiarium 201-214> [Übersetzungen]",
+                        "id": "HS01393932"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Ich bins, Nachtigall, ich, den du singst [Gedichte]",
+                        "id": "HS01393934"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Dass du mir schöne, Dunkles spiegelnde Quelle [Gedichte]",
+                        "id": "HS01393935"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Kopf Amenophis IV in Berlin> [Gedichte]",
+                        "id": "HS01394200"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Wie das Gestirn, der Mond, erhaben, voll Anlaß [Gedichte]",
+                        "id": "HS01394202"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Wer sagt, daß, wenn ich an ein Fenster träte [Gedichte]",
+                        "id": "HS01394203"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Hingestellte, wo die starke Fahrt [Gedichte]",
+                        "id": "HS01394205"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Verständigt mit abnehmender Natur [Gedichte]",
+                        "id": "HS01394206"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: O Herz, vom Leben langsam abgeschnürt [Gedichte]",
+                        "id": "HS01394208"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Witwe [Gedichte]",
+                        "id": "HS01394211"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Daß nicht dieses länger vor mir sei [Gedichte]",
+                        "id": "HS01394214"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Wer den Geist der fernsten Freuden hatte [Gedichte]",
+                        "id": "HS01394215"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Öfter, fühlend wie (die) unerschöpften [Gedichte]",
+                        "id": "HS01394217"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Das Elend hat ja nie auf mir bestanden [Gedichte]",
+                        "id": "HS01394219"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: O dass ich doch, wenn du das Aug erhobst [Gedichte]",
+                        "id": "HS01394222"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Aus den Gedichten an die Nacht> [Gedichte]",
+                        "id": "HS01394223"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Ist Schmerz, sobald an eine neue Schicht [Gedichte]",
+                        "id": "HS01394268"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Tränen, Tränen, die aus mir brechen [Gedichte]",
+                        "id": "HS01394270"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Ob ich damals war oder bin : du schreitest [Gedichte]",
+                        "id": "HS01394272"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Aus den Gedichten an die Nacht> [Gedichte]",
+                        "id": "HS01394273"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Gedanken der Nacht, aus geahnter Erfahrung gehoben [Gedichte]",
+                        "id": "HS01394274"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Der du mich mit diesen überhöhtest [Gedichte]",
+                        "id": "HS01394276"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Die Geschwister [Gedichte]",
+                        "id": "HS01394279"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Siehe, Engel fühlen durch den Raum [Gedichte]",
+                        "id": "HS01394280"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Aus den Gedichten an die Nacht> [Gedichte]",
+                        "id": "HS01394282"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Atmete ich nicht aus Mitternächten [Gedichte]",
+                        "id": "HS01394283"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: So, nun wird es doch der Engel sein [Gedichte]",
+                        "id": "HS01394501"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Hinweg, die ich bat, endlich mein Lächeln zu kosten [Gedichte]",
+                        "id": "HS01394502"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Für Chlotilde von Derp> [Gedichte]",
+                        "id": "HS01394503"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Aus den Gedichten an die Nacht> [Gedichte]",
+                        "id": "HS01394505"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Aus den Gedichten an die Nacht> [Gedichte]",
+                        "id": "HS01394507"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Einmal nahm ich zwischen meine Hände [Gedichte]",
+                        "id": "HS01394508"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: O von Gesicht zu Gesicht [Gedichte]",
+                        "id": "HS01394509"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Wenn ich so an deinem Antlitz zehre [Gedichte]",
+                        "id": "HS01394510"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Die große Nacht [Gedichte]",
+                        "id": "HS01394554"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Aus den Gedichten an die Nacht> [Gedichte]",
+                        "id": "HS01394567"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Hinhalten will ich mich. Wirke. Geh über [Gedichte]",
+                        "id": "HS01394571"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Zu der Zeichnung, John Keats im Tode darstellend [Gedichte]",
+                        "id": "HS01394576"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Zu der Zeichnung, John Keats im Tode darstellend> [Gedichte]",
+                        "id": "HS01394577"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Ach aus eines Engels Fühlung falle [Gedichte]",
+                        "id": "HS01394581"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Hebend die Blicke vom Buch, von den nahen zählbaren Zeilen [Gedichte]",
+                        "id": "HS01394672"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Regenbogen [Gedichte]",
+                        "id": "HS01394673"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Dich zu fühlen bin ich aus den leichten [Gedichte]",
+                        "id": "HS01394674"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Hassend nach dem Augenmaß [Gedichte]",
+                        "id": "HS01394675"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Aus unvordenklichem Greis [Gedichte]",
+                        "id": "HS01394676"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Siehe das leichte Insekt, wie es spielt, nie entriet es [Gedichte]",
+                        "id": "HS01394679"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Heute will ich dir zu Liebe Rosen [Gedichte]",
+                        "id": "HS01394741"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Wo wir uns hier, in einander drängend, nicht [Gedichte]",
+                        "id": "HS01394743"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Fünf Gesänge [Gedichte]",
+                        "id": "HS01394747"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: So lernen wir am Hiesigen Gefühle [Gedichte]",
+                        "id": "HS01394752"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Es winkt zu Fühlung fast aus allen Dingen [Gedichte]",
+                        "id": "HS01394754"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Und wenn wir uns einander zuempfanden [Gedichte]",
+                        "id": "HS01394763"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Sehet ein Ding, das vielfach umwundene [Gedichte]",
+                        "id": "HS01394764"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Der Gartenweg [Gedichte]",
+                        "id": "HS01394771"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Fast wie am Jüngsten Tag die Toten sich reißen [Gedichte]",
+                        "id": "HS01394782"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Gedichte für Lulu Albert-Lazard> [Gedichte]",
+                        "id": "HS01394790"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Gedichte für Lulu Albert-Lazard> [Gedichte]",
+                        "id": "HS01394792"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Wie der Wasser Oberflächen schweigend [Gedichte]",
+                        "id": "HS01394796"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Wo die Wurzeln ihrer Liebe ringen [Gedichte]",
+                        "id": "HS01394806"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Gedichte für Lulu Albert-Lazard> [Gedichte]",
+                        "id": "HS01394810"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Strophen zu einer Fest-Musik [Gedichte]",
+                        "id": "HS01394863"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: .... bewältigt den melodischen Instinkt [Gedichte]",
+                        "id": "HS01394864"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Liebesanfang [Gedichte]",
+                        "id": "HS01394867"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: À M..... [Gedichte]",
+                        "id": "HS01394868"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Ode an Bellman [Gedichte]",
+                        "id": "HS01394869"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Ach wehe, meine Mutter reißt mich ein [Gedichte]",
+                        "id": "HS01394871"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Sieben Gedichte> [Gedichte]",
+                        "id": "HS01394890"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Reden will ich, nicht mehr wie ein banger [Gedichte]",
+                        "id": "HS01394908"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Sieben Gedichte> [Gedichte]",
+                        "id": "HS01394914"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Der Tod [Gedichte]",
+                        "id": "HS01395372"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Frage an den Gott [Gedichte]",
+                        "id": "HS01395373"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Des Gottes Antwort [Gedichte]",
+                        "id": "HS01395375"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Vent orphelin sur la place vide [Gedichte]",
+                        "id": "HS01395377"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Ach was hülft es, daß ich mirs versage [Gedichte]",
+                        "id": "HS01395378"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Kreuzweg des Leibes. Und sind doch die himmlischen [Gedichte]",
+                        "id": "HS01395381"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Da wird der Hirsch zum Erdteil. Hebt und trägt [Gedichte]",
+                        "id": "HS01395384"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Tout cela s'en va, ce sera de nouveau [Gedichte]",
+                        "id": "HS01395385"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Das Tauf-Gedicht [Gedichte]",
+                        "id": "HS01395388"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Für Margarethe von Maydell> [Gedichte]",
+                        "id": "HS01395391"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Für Ruth Rilke> [Gedichte]",
+                        "id": "HS01395393"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Aufzeichnung> [Prosa]",
+                        "id": "HS01413626"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Erlebnis [Prosa]",
+                        "id": "HS01413848"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Sandwiches-Männer> [Prosa]",
+                        "id": "HS01413951"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: Erinnerung [Prosa]",
+                        "id": "HS01413952"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Aufzeichnung> [Prosa]",
+                        "id": "HS01414007"
+                    },
+                    {
+                        "display": "Rilke, Rainer Maria: <Wir haben eine Erscheinung> [Prosa]",
+                        "id": "HS01414009"
+                    }
+                ]
+            }
+        }
+    }
+}
