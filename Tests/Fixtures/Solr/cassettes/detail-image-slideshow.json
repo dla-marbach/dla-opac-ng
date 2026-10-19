@@ -1,0 +1,331 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(BI00005210)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.701481,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BI00005210",
+                        "default": [
+                            "BI00005210",
+                            "Portrait Wilhelm Hauff [Skulptur]",
+                            "Einzelobjekt",
+                            "Skulptur",
+                            "false",
+                            "2005-09-16",
+                            "2007-04-03",
+                            "public",
+                            "public",
+                            "public",
+                            "public",
+                            "7270-2",
+                            "7270-4",
+                            "7270-6",
+                            "7270-8",
+                            "jpg",
+                            "jpg",
+                            "jpg",
+                            "jpg",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-2.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-4.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-6.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-8.jpg/full/full/0/default.jpg?media_access=public",
+                            "MM00035166",
+                            "MM00035167",
+                            "MM00035168",
+                            "MM00035169",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-2.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-4.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-6.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-8.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "/Gesamthöhe)",
+                            " 58.0",
+                            "Inventarnummer: 4080",
+                            "Pelargus, Wilhelm (1820-1901); Michaelis, Mathias (1948-)",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Portrait Wilhelm Hauff [Skulptur]</dc:title>\n  <dc:creator>Pelargus, Wilhelm (1820-1901)</dc:creator>\n  <dc:creator>Michaelis, Mathias (1948-)</dc:creator>\n  <dc:type>Skulptur</dc:type>\n  <dc:format> 58.0</dc:format>\n  <dc:format>Herme, Gips</dc:format>\n  <dc:subject>Hauff, Wilhelm (1802-1827)</dc:subject>\n  <dc:identifier>4080</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-2.jpg/full/full/0/default.jpg?media_access=public</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-4.jpg/full/full/0/default.jpg?media_access=public</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-6.jpg/full/full/0/default.jpg?media_access=public</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-8.jpg/full/full/0/default.jpg?media_access=public</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BI00005210</dc:identifier>\n  <dc:identifier>BI00005210</dc:identifier>\n</oai_dc:dc>",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Portrait Wilhelm Hauff [Skulptur]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Pelargus, Wilhelm (1820-1901)</namePart>\n    <nameIdentifier type=\"gnd\">1012292940</nameIdentifier>\n    <namePart type=\"date\">1820-09-23 — 1901-10-27</namePart>\n    <role>\n      <roleTerm type=\"text\">Urheber/in</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Michaelis, Mathias (1948-)</namePart>\n    <nameIdentifier type=\"gnd\">1012782956</nameIdentifier>\n    <namePart type=\"date\">1948-10-07</namePart>\n    <role>\n      <roleTerm type=\"text\">Sonstige/r Urheber/in</roleTerm>\n    </role>\n  </name>\n  <genre>Skulptur</genre>\n  <physicalDescription>\n    <form type=\"format\"> 58.0</form>\n    <form type=\"material\">Herme, Gips</form>\n  </physicalDescription>\n  <subject>\n    <topic>Hauff, Wilhelm (1802-1827)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Hauff, Wilhelm (1802-1827)</namePart>\n    </name>\n  </subject>\n  <identifier type=\"inventory\">4080</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <url access=\"object in context\">https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-2.jpg/full/full/0/default.jpg?media_access=public</url>\n    <url access=\"object in context\">https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-4.jpg/full/full/0/default.jpg?media_access=public</url>\n    <url access=\"object in context\">https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-6.jpg/full/full/0/default.jpg?media_access=public</url>\n    <url access=\"object in context\">https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-8.jpg/full/full/0/default.jpg?media_access=public</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2005-09-16</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2007-04-03</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BI00005210</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "TY  - GEN\nA2  - Hauff, Wilhelm\nAU  - Pelargus, Wilhelm\nAU  - Michaelis, Mathias\nAV  - bedingt benutzbar. Die Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.. E-Mail: bilder-und-objekte@dla-marbach.de\nCN  - BI000052105\nID  - BI00005210\nKW  - Hauff, Wilhelm (1802-1827)\nM1  - 4080\nM3  - Skulptur\nN1  - Technik: Herme, Gips\nN1  - Maße:  58.0 (/Gesamthöhe)\nRN  - Photos: Mathias Michaelis\nTI  - Portrait Wilhelm Hauff [Skulptur]\nUR  - https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-2.jpg/full/full/0/default.jpg?media_access=public\nUR  - https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-4.jpg/full/full/0/default.jpg?media_access=public\nUR  - https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-6.jpg/full/full/0/default.jpg?media_access=public\nUR  - https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-8.jpg/full/full/0/default.jpg?media_access=public\nUR  - https://www.dla-marbach.de/find/opac/id/BI00005210/\nER  -",
+                            "Pelargus, Wilhelm (1820-1901)␝Von",
+                            "Michaelis, Mathias (1948-)␝Von",
+                            "Hauff, Wilhelm (1802-1827)␝Über",
+                            "Pelargus, Wilhelm (1820-1901)␝Verfasser/Urheber",
+                            "Michaelis, Mathias (1948-)␝Verfasser/Urheber",
+                            "Hauff, Wilhelm (1802-1827)␝Dargestellte Person allein",
+                            "Pelargus, Wilhelm (1820-1901)",
+                            "Michaelis, Mathias (1948-)",
+                            "Hauff, Wilhelm (1802-1827)",
+                            "true",
+                            "Skulptur",
+                            "2005-09-16",
+                            "Bilder und Objekte",
+                            "Hauff, Wilhelm (1802-1827)",
+                            "Bilder und Objekte",
+                            "4080",
+                            "Skulpturen",
+                            "Herme, Gips",
+                            "BI000052105",
+                            "Photos: Mathias Michaelis",
+                            "Hauff, Wilhelm (1802-1827)",
+                            "PE00005105",
+                            "Dargestellte Person allein",
+                            "␣",
+                            "Fotografie",
+                            "Pelargus, Wilhelm (1820-1901)",
+                            "Michaelis, Mathias (1948-)",
+                            "PE00177689",
+                            "PE00049466",
+                            "Urheber/in",
+                            "Sonstige/r Urheber/in",
+                            "7270/2",
+                            "7270/4",
+                            "7270/6",
+                            "7270/8",
+                            "7270-2",
+                            "7270-4",
+                            "7270-6",
+                            "7270-8",
+                            "1.0.0",
+                            "1",
+                            "PE00005105",
+                            "PE00177689",
+                            "PE00049466",
+                            "Hauff, Wilhelm",
+                            "Pelargus, Wilhelm",
+                            "Michaelis, Mathias",
+                            "Pelargus, Wilhelm",
+                            "Michaelis, Mathias",
+                            "Hauff, Wilhelm",
+                            "Clauren, H.",
+                            "Clauren, Heinrich",
+                            "Hauff, W.",
+                            "Gauf, V.",
+                            "Gauf, Vil'gel'm",
+                            "Chauf, Vilchelm",
+                            "Chauf, V.",
+                            "Hauff, Vilém",
+                            "Haufs, Vilhelms",
+                            "Haufas, Vilhelmas",
+                            "Hauf, Vilhilm",
+                            "Haufas, V.",
+                            "Haofu, ...",
+                            "Haufu, Viruherumu",
+                            "Haufu, ...",
+                            "Hauf, Wîlhelm",
+                            "Hauff, Guillaume",
+                            "Haupu, Pilhelum",
+                            "Haupi, Vilhelm",
+                            "Hauf, Vil'hel'm",
+                            "Hauff, Guilherme",
+                            "Hauphi, Wilhelm",
+                            "Hauff, Guglielmo",
+                            "Gauf, Vi'lgel'm",
+                            "HffW.",
+                            "Bemper",
+                            "Müller, Mathias",
+                            "BI",
+                            "Am Standort",
+                            "Portrait Wilhelm Hauff",
+                            "https://www.dla-marbach.de/find/opac/id/BI00005210",
+                            "eingeschränkt benutzbar",
+                            "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de"
+                        ],
+                        "display": "Portrait Wilhelm Hauff [Skulptur]",
+                        "category": "Einzelobjekt",
+                        "categorySub": "Skulptur",
+                        "confidential": false,
+                        "dateCataloged": "2005-09-16",
+                        "dateModified": "2007-04-03",
+                        "digitalObject_accessLevel_mv": [
+                            "public",
+                            "public",
+                            "public",
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "7270-2",
+                            "7270-4",
+                            "7270-6",
+                            "7270-8"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "jpg",
+                            "jpg",
+                            "jpg",
+                            "jpg"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-2.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-4.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-6.jpg/full/full/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-8.jpg/full/full/0/default.jpg?media_access=public"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM00035166",
+                            "MM00035167",
+                            "MM00035168",
+                            "MM00035169"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-2.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-4.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-6.jpg/full/!480,480/0/default.jpg?media_access=public",
+                            "https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-8.jpg/full/!480,480/0/default.jpg?media_access=public"
+                        ],
+                        "dimension_comment_mv": [
+                            "/Gesamthöhe)"
+                        ],
+                        "dimension_height_mv": [
+                            " 58.0"
+                        ],
+                        "displayAddition2": "Inventarnummer: 4080",
+                        "displayName": "Pelargus, Wilhelm (1820-1901); Michaelis, Mathias (1948-)",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Portrait Wilhelm Hauff [Skulptur]</dc:title>\n  <dc:creator>Pelargus, Wilhelm (1820-1901)</dc:creator>\n  <dc:creator>Michaelis, Mathias (1948-)</dc:creator>\n  <dc:type>Skulptur</dc:type>\n  <dc:format> 58.0</dc:format>\n  <dc:format>Herme, Gips</dc:format>\n  <dc:subject>Hauff, Wilhelm (1802-1827)</dc:subject>\n  <dc:identifier>4080</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-2.jpg/full/full/0/default.jpg?media_access=public</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-4.jpg/full/full/0/default.jpg?media_access=public</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-6.jpg/full/full/0/default.jpg?media_access=public</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-8.jpg/full/full/0/default.jpg?media_access=public</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BI00005210</dc:identifier>\n  <dc:identifier>BI00005210</dc:identifier>\n</oai_dc:dc>",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Portrait Wilhelm Hauff [Skulptur]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Pelargus, Wilhelm (1820-1901)</namePart>\n    <nameIdentifier type=\"gnd\">1012292940</nameIdentifier>\n    <namePart type=\"date\">1820-09-23 — 1901-10-27</namePart>\n    <role>\n      <roleTerm type=\"text\">Urheber/in</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Michaelis, Mathias (1948-)</namePart>\n    <nameIdentifier type=\"gnd\">1012782956</nameIdentifier>\n    <namePart type=\"date\">1948-10-07</namePart>\n    <role>\n      <roleTerm type=\"text\">Sonstige/r Urheber/in</roleTerm>\n    </role>\n  </name>\n  <genre>Skulptur</genre>\n  <physicalDescription>\n    <form type=\"format\"> 58.0</form>\n    <form type=\"material\">Herme, Gips</form>\n  </physicalDescription>\n  <subject>\n    <topic>Hauff, Wilhelm (1802-1827)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Hauff, Wilhelm (1802-1827)</namePart>\n    </name>\n  </subject>\n  <identifier type=\"inventory\">4080</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <url access=\"object in context\">https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-2.jpg/full/full/0/default.jpg?media_access=public</url>\n    <url access=\"object in context\">https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-4.jpg/full/full/0/default.jpg?media_access=public</url>\n    <url access=\"object in context\">https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-6.jpg/full/full/0/default.jpg?media_access=public</url>\n    <url access=\"object in context\">https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-8.jpg/full/full/0/default.jpg?media_access=public</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2005-09-16</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2007-04-03</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BI00005210</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "exportRIS": "TY  - GEN\nA2  - Hauff, Wilhelm\nAU  - Pelargus, Wilhelm\nAU  - Michaelis, Mathias\nAV  - bedingt benutzbar. Die Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.. E-Mail: bilder-und-objekte@dla-marbach.de\nCN  - BI000052105\nID  - BI00005210\nKW  - Hauff, Wilhelm (1802-1827)\nM1  - 4080\nM3  - Skulptur\nN1  - Technik: Herme, Gips\nN1  - Maße:  58.0 (/Gesamthöhe)\nRN  - Photos: Mathias Michaelis\nTI  - Portrait Wilhelm Hauff [Skulptur]\nUR  - https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-2.jpg/full/full/0/default.jpg?media_access=public\nUR  - https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-4.jpg/full/full/0/default.jpg?media_access=public\nUR  - https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-6.jpg/full/full/0/default.jpg?media_access=public\nUR  - https://digital.dla-marbach.de/iiif/2/0%2f2%2f7270%2f7270-8.jpg/full/full/0/default.jpg?media_access=public\nUR  - https://www.dla-marbach.de/find/opac/id/BI00005210/\nER  -",
+                        "filterAuthorityRelation_mv": [
+                            "Pelargus, Wilhelm (1820-1901)␝Von",
+                            "Michaelis, Mathias (1948-)␝Von",
+                            "Hauff, Wilhelm (1802-1827)␝Über"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Pelargus, Wilhelm (1820-1901)␝Verfasser/Urheber",
+                            "Michaelis, Mathias (1948-)␝Verfasser/Urheber",
+                            "Hauff, Wilhelm (1802-1827)␝Dargestellte Person allein"
+                        ],
+                        "filterAuthority_mv": [
+                            "Pelargus, Wilhelm (1820-1901)",
+                            "Michaelis, Mathias (1948-)",
+                            "Hauff, Wilhelm (1802-1827)"
+                        ],
+                        "filterDigital": true,
+                        "filterFormContent_mv": [
+                            "Skulptur"
+                        ],
+                        "filterRecent": "2005-09-16",
+                        "filterSource": "Bilder und Objekte",
+                        "filterSubject_mv": [
+                            "Hauff, Wilhelm (1802-1827)"
+                        ],
+                        "filterType_mv": [
+                            "Bilder und Objekte"
+                        ],
+                        "inventoryNumber": "4080",
+                        "location_mv": [
+                            "Skulpturen"
+                        ],
+                        "material": "Herme, Gips",
+                        "mediaNumber": "BI000052105",
+                        "noteDimension": "Photos: Mathias Michaelis",
+                        "personAbout_display_mv": [
+                            "Hauff, Wilhelm (1802-1827)"
+                        ],
+                        "personAbout_id_mv": [
+                            "PE00005105"
+                        ],
+                        "personAbout_role_mv": [
+                            "Dargestellte Person allein"
+                        ],
+                        "personBy_comment_mv": [
+                            "␣",
+                            "Fotografie"
+                        ],
+                        "personBy_display_mv": [
+                            "Pelargus, Wilhelm (1820-1901)",
+                            "Michaelis, Mathias (1948-)"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00177689",
+                            "PE00049466"
+                        ],
+                        "personBy_role_mv": [
+                            "Urheber/in",
+                            "Sonstige/r Urheber/in"
+                        ],
+                        "photoNegativeNumber_mv": [
+                            "7270/2",
+                            "7270/4",
+                            "7270/6",
+                            "7270/8",
+                            "7270-2",
+                            "7270-4",
+                            "7270-6",
+                            "7270-8"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 1,
+                        "searchEntity_id_mv": [
+                            "PE00005105",
+                            "PE00177689",
+                            "PE00049466"
+                        ],
+                        "searchNameAbout_mv": [
+                            "Hauff, Wilhelm"
+                        ],
+                        "searchNameBy_mv": [
+                            "Pelargus, Wilhelm",
+                            "Michaelis, Mathias"
+                        ],
+                        "searchName_mv": [
+                            "Pelargus, Wilhelm",
+                            "Michaelis, Mathias",
+                            "Hauff, Wilhelm"
+                        ],
+                        "searchVariant_mv": [
+                            "Clauren, H.",
+                            "Clauren, Heinrich",
+                            "Hauff, W.",
+                            "Gauf, V.",
+                            "Gauf, Vil'gel'm",
+                            "Chauf, Vilchelm",
+                            "Chauf, V.",
+                            "Hauff, Vilém",
+                            "Haufs, Vilhelms",
+                            "Haufas, Vilhelmas",
+                            "Hauf, Vilhilm",
+                            "Haufas, V.",
+                            "Haofu, ...",
+                            "Haufu, Viruherumu",
+                            "Haufu, ...",
+                            "Hauf, Wîlhelm",
+                            "Hauff, Guillaume",
+                            "Haupu, Pilhelum",
+                            "Haupi, Vilhelm",
+                            "Hauf, Vil'hel'm",
+                            "Hauff, Guilherme",
+                            "Hauphi, Wilhelm",
+                            "Hauff, Guglielmo",
+                            "Gauf, Vi'lgel'm",
+                            "HffW.",
+                            "Bemper",
+                            "Müller, Mathias"
+                        ],
+                        "source": "BI",
+                        "statusLoan": "Am Standort",
+                        "title": "Portrait Wilhelm Hauff",
+                        "url": "https://www.dla-marbach.de/find/opac/id/BI00005210",
+                        "usageRestriction": "eingeschränkt benutzbar",
+                        "usageRestrictionNote": "bedingt benutzbar\nDie Benutzung ist nach vorheriger Terminabsprache bedingt möglich. Bitte wenden Sie sich nach der Bestellung an das Referat Bilder und Objekte.\nE-Mail: bilder-und-objekte@dla-marbach.de",
+                        "score": 13.701481
+                    }
+                ]
+            }
+        }
+    }
+}

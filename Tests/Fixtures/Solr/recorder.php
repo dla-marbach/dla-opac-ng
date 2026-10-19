@@ -123,6 +123,7 @@ $detailDocuments = [
     'detail-ebook-article-parent-issue' => 'AK01827413',   // B1: Beitrag, Überordnung Zeitschrift + digitalisiertes Heft
     'detail-ebook-article-digital-object' => 'AK01846411', // B1: E-Beitrag mit MM-Satz
     'detail-ebook-article-standalone' => 'AK01890275',     // B2: E-Beitrag ohne Überordnung mit MM-Satz
+    'detail-image-slideshow' => 'BI00005210',              // Bildergalerie mit Bildtiteln (digitalObject_display_mv)
 ];
 foreach ($detailDocuments as $name => $id) {
     $scenarios[$name] = [

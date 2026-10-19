@@ -6,6 +6,14 @@
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_fileExtension_mv')}" name="digitalObject_fileExtension_mv" />
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_thumbnail_mv')}" name="digitalObject_thumbnail_mv" />
 
+<f:comment>
+    DOM-IDs für Player und Slideshow: eindeutig je Dokument (Trefferliste) und je Reiter der
+    Detailansicht - die Reiter "Details" und "Zugang" binden dieses Partial beide ein, der
+    Reiter "Zugang" übergibt dafür idPrefix="renderlinks-access" (siehe Display/Detail/*/Access.html).
+</f:comment>
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="mediaDocumentId" />
+<v:variable.set value="{f:if(condition: idPrefix, then: idPrefix, else: 'renderlinks')}-{mediaDocumentId}" name="mediaIdBase" />
+
 <dla:mediaPlayer
     urls="{digitalObject_hyperlink_mv}"
     display="{digitalObject_display_mv}"
@@ -16,10 +24,10 @@
 />
 
 <f:for each="{mediaData.mediaplayer}" as="item" iteration="mediaIterator">
-    <f:render partial="MediaAccess/Player" arguments="{item: item, id: 'renderlinks-player-{mediaIterator.index}'}" />
+    <f:render partial="MediaAccess/Player" arguments="{item: item, id: '{mediaIdBase}-player-{mediaIterator.index}'}" />
 </f:for>
 
-<f:render partial="MediaAccess/Slideshow" arguments="{images: mediaData.images, id: 'renderlinks-slideshow'}" />
+<f:render partial="MediaAccess/Slideshow" arguments="{images: mediaData.images, id: '{mediaIdBase}-slideshow'}" />
 
 <f:for each="{mediaData.links}" as="item" iteration="iterator">
     <v:variable.set value="" name="fileExt" />

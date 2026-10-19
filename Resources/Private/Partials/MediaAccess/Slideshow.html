@@ -11,6 +11,9 @@
     Bedienung: Pfeil-Buttons, Punkte, Wischen sowie Cursortasten links/rechts, sobald die
     Galerie den Fokus hat (siehe Resources/Public/JavaScript/dla-slideshow.js).
 
+    Unter jedem Bild steht als Bildunterschrift dessen Titel aus digitalObject_display_mv
+    (gleiche Position wie die URL in digitalObject_hyperlink_mv), sofern vorhanden.
+
     Erwartete Variablen:
     - images: mediaData.images (nur nicht gesperrte Bilder)
     - id:     eindeutige DOM-ID für diese Slideshow-Instanz auf der Seite
@@ -34,6 +37,9 @@
                             </f:else>
                         </f:if>
                     </a>
+                    <f:if condition="{image.display} && {image.display} != '␣'">
+                        <div class="dla-slideshow-caption">{image.display}</div>
+                    </f:if>
                 </div>
             </f:for>
         </div>
