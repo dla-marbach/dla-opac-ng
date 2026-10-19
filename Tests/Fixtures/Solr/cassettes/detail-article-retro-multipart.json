@@ -1,0 +1,231 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(AK00550783)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.701481,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "creator_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "default": [
+                            "Verfasser/Urheber",
+                            "Gedrucktes",
+                            "Hugo, Richard",
+                            "Ceconi, Ricarda",
+                            "Huch, Ricarda Oktavia",
+                            "Zecconi, Ricarda",
+                            "Huch, Ricarda Octavia",
+                            "Chuch, Rikarda",
+                            "Huch, Ricarda O.",
+                            "Ceconi-Huch, Ricarda",
+                            "Ceconi Huch, Ricarda",
+                            "Huch, Ricarda",
+                            "GEMEL. 20090818",
+                            "Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)",
+                            "[Beitrag]",
+                            "Druckschrift",
+                            "1933-01-01T00:00:00Z",
+                            "PE00003793",
+                            "Führende Frauen Europas : in ... Selbstschilderungen : [Aufsatzsammlung]",
+                            "AK00270124",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>[Beitrag]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Huch, Ricarda (1864-1947)</namePart>\n    <nameIdentifier type=\"gnd\">118554190</nameIdentifier>\n    <namePart type=\"date\">1864-07-18 — 1947-11-17</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Aufsatz</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1933</dateIssued>\n  </originInfo>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Ricarda Huch</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Führende Frauen Europas : in ... Selbstschilderungen : [Aufsatzsammlung]</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00270124</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>C2</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2008-09-21</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2008-09-21</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00550783</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "https://www.dla-marbach.de/find/opac/id/AK00550783",
+                            "AK",
+                            "Huch, Ricarda (1864-1947)␝Verfasser/Urheber",
+                            "TY  - GEN\nAU  - Huch, Ricarda\nDA  - 1933\nID  - AK00550783\nM2  - Beitrag\nM3  - Aufsatz\nNV  - (1933), Seite 11-13\nPY  - 1933\nTI  - [Beitrag]\nT3  - Führende Frauen Europas : in ... Selbstschilderungen : [Aufsatzsammlung]\nUR  - https://www.dla-marbach.de/find/opac/id/AK00550783/\nER  -",
+                            "1933",
+                            "Huch, Ricarda",
+                            "Beitrag",
+                            "BDG",
+                            "Einzelbestandteil / unselbständiges Werk",
+                            "false",
+                            "Huch, Ricarda (1864-1947)␝Von",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>[Beitrag]</dc:title>\n  <dc:creator>Huch, Ricarda (1864-1947)</dc:creator>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:date>1933</dc:date>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00270124</dc:source>\n  <dc:identifier>C2</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00550783</dc:identifier>\n  <dc:identifier>AK00550783</dc:identifier>\n</oai_dc:dc>",
+                            "Retrokonversion",
+                            "0538_0372_1.tif",
+                            "[Beitrag]",
+                            "Huch, Ricarda (1864-1947)",
+                            "2008-09-21",
+                            "Erschienen in: Führende Frauen Europas : in ... Selbstschilderungen : [Aufsatzsammlung]. - (1933), Seite 11-13",
+                            "Ricarda Huch",
+                            "1.0.0",
+                            "2008-09-21",
+                            "2008-09-21",
+                            "Verfasser/Urheber",
+                            "Band",
+                            "C2",
+                            "AK00550783",
+                            "Druckschrift",
+                            "(1933), Seite 11-13",
+                            "Huch, Ricarda (1864-1947)",
+                            "PE00003793",
+                            "hrsg. und eingel. von Elga Kern",
+                            "Huch, Ricarda (1864-1947)",
+                            "creator",
+                            "Text",
+                            "Bibliotheksmaterialien",
+                            "[Beitrag]",
+                            "PE00003793",
+                            "572y",
+                            "Bibliotheksdokumente",
+                            "Aufsatz",
+                            "1933",
+                            "München : Reinhardt",
+                            "1",
+                            "Huch, Ricarda (1864-1947)",
+                            "1933"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "searchVariant_mv": [
+                            "Hugo, Richard",
+                            "Ceconi, Ricarda",
+                            "Huch, Ricarda Oktavia",
+                            "Zecconi, Ricarda",
+                            "Huch, Ricarda Octavia",
+                            "Chuch, Rikarda",
+                            "Huch, Ricarda O.",
+                            "Ceconi-Huch, Ricarda",
+                            "Ceconi Huch, Ricarda"
+                        ],
+                        "searchNameBy_mv": [
+                            "Huch, Ricarda"
+                        ],
+                        "vendor_id_mv": [
+                            "GEMEL. 20090818"
+                        ],
+                        "parent_type_mv": [
+                            "Teil einer fortlaufenden Zusammenstellung, Aufsatz (z.B. Zeitschrift)"
+                        ],
+                        "display": "[Beitrag]",
+                        "categoryMedia_mv": [
+                            "Druckschrift"
+                        ],
+                        "filterDatePoint_mv": [
+                            "1933-01-01T00:00:00Z"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00003793"
+                        ],
+                        "parent_display_mv": [
+                            "Führende Frauen Europas : in ... Selbstschilderungen : [Aufsatzsammlung]"
+                        ],
+                        "parent_id_mv": [
+                            "AK00270124"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>[Beitrag]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Huch, Ricarda (1864-1947)</namePart>\n    <nameIdentifier type=\"gnd\">118554190</nameIdentifier>\n    <namePart type=\"date\">1864-07-18 — 1947-11-17</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser/Urheber</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Beitrag</typeOfResource>\n  <genre>Aufsatz</genre>\n  <originInfo eventType=\"publication\">\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">1933</dateIssued>\n  </originInfo>\n  <physicalDescription>\n    <form type=\"media\">Band</form>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Ricarda Huch</note>\n  <relatedItem type=\"host\">\n    <titleInfo>\n      <title>Führende Frauen Europas : in ... Selbstschilderungen : [Aufsatzsammlung]</title>\n    </titleInfo>\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00270124</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>C2</shelfLocator>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2008-09-21</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2008-09-21</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00550783</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK00550783",
+                        "source": "AK",
+                        "filterAuthorityRole_mv": [
+                            "Huch, Ricarda (1864-1947)␝Verfasser/Urheber"
+                        ],
+                        "exportRIS": "TY  - GEN\nAU  - Huch, Ricarda\nDA  - 1933\nID  - AK00550783\nM2  - Beitrag\nM3  - Aufsatz\nNV  - (1933), Seite 11-13\nPY  - 1933\nTI  - [Beitrag]\nT3  - Führende Frauen Europas : in ... Selbstschilderungen : [Aufsatzsammlung]\nUR  - https://www.dla-marbach.de/find/opac/id/AK00550783/\nER  -",
+                        "filterDateRange_mv": [
+                            "1933"
+                        ],
+                        "searchName_mv": [
+                            "Huch, Ricarda"
+                        ],
+                        "filterMedium_mv": [
+                            "Beitrag"
+                        ],
+                        "vendor_type_mv": [
+                            "BDG"
+                        ],
+                        "categorySub": "Einzelbestandteil / unselbständiges Werk",
+                        "confidential": false,
+                        "filterAuthorityRelation_mv": [
+                            "Huch, Ricarda (1864-1947)␝Von"
+                        ],
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>[Beitrag]</dc:title>\n  <dc:creator>Huch, Ricarda (1864-1947)</dc:creator>\n  <dc:type>Beitrag</dc:type>\n  <dc:type>Aufsatz</dc:type>\n  <dc:type>Band</dc:type>\n  <dc:date>1933</dc:date>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/AK00270124</dc:source>\n  <dc:identifier>C2</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00550783</dc:identifier>\n  <dc:identifier>AK00550783</dc:identifier>\n</oai_dc:dc>",
+                        "statusEditing": "Retrokonversion",
+                        "identifier_id_mv": [
+                            "0538_0372_1.tif"
+                        ],
+                        "titleMain_text": "[Beitrag]",
+                        "filterAuthority_mv": [
+                            "Huch, Ricarda (1864-1947)"
+                        ],
+                        "dateModified": "2008-09-21",
+                        "displayAddition1": "Erschienen in: Führende Frauen Europas : in ... Selbstschilderungen : [Aufsatzsammlung]. - (1933), Seite 11-13",
+                        "titleResponsability": "Ricarda Huch",
+                        "schemaVersion": "1.0.0",
+                        "dateCataloged": "2008-09-21",
+                        "filterRecent": "2008-09-21",
+                        "personBy_role_mv": [
+                            "Verfasser/Urheber"
+                        ],
+                        "categoryMedium_mv": [
+                            "Band"
+                        ],
+                        "callNumberBibliographic_mv": [
+                            "C2"
+                        ],
+                        "id": "AK00550783",
+                        "categorySubSub": "Druckschrift",
+                        "parentVolumeTotal": "(1933), Seite 11-13",
+                        "creator_display_mv": [
+                            "Huch, Ricarda (1864-1947)"
+                        ],
+                        "creator_id_mv": [
+                            "PE00003793"
+                        ],
+                        "parent_titleResponsability_mv": [
+                            "hrsg. und eingel. von Elga Kern"
+                        ],
+                        "personBy_display_mv": [
+                            "Huch, Ricarda (1864-1947)"
+                        ],
+                        "personBy_creator_mv": [
+                            "creator"
+                        ],
+                        "categoryContent_mv": [
+                            "Text"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "title": "[Beitrag]",
+                        "searchEntity_id_mv": [
+                            "PE00003793"
+                        ],
+                        "identifier_type_mv": [
+                            "572y"
+                        ],
+                        "category": "Bibliotheksdokumente",
+                        "filterFormContent_mv": [
+                            "Aufsatz"
+                        ],
+                        "searchDate_mv": [
+                            "1933"
+                        ],
+                        "parent_displayAddition1_mv": [
+                            "München : Reinhardt"
+                        ],
+                        "searchBoost": 1,
+                        "displayName": "Huch, Ricarda (1864-1947)",
+                        "dateOrigin": "1933",
+                        "score": 13.701481
+                    }
+                ]
+            }
+        }
+    }
+}

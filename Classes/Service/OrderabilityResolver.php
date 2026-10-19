@@ -16,7 +16,7 @@ class OrderabilityResolver
 
     private const ELECTRONIC_MEDIA = ['Online-Ressource', 'Elektronisches Dokument', 'E-Book', 'Datenbank'];
 
-    private const CONTINUING_MEDIA = ['Zeitschrift', 'Zeitung', 'Reihe'];
+    private const CONTINUING_MEDIA = ['Zeitschrift', 'Zeitung', 'Reihe', 'Mehrteiliges Werk'];
 
     private const VIEWER_URL = 'https://digital.dla-marbach.de/viewer';
 
@@ -47,7 +47,7 @@ class OrderabilityResolver
             }
         }
 
-        // Retro-Beiträge: Heftbestellung läuft über die Zeitschrift/Zeitung/Reihe, die selbst nicht ausleihbar ist.
+        // Retro-Beiträge: Heft- bzw. Bandbestellung läuft über die Zeitschrift/Zeitung/Reihe bzw. das mehrteilige Werk, die selbst nicht ausleihbar sind.
         foreach ($parents as $parent) {
             if (array_intersect(self::CONTINUING_MEDIA, self::values($parent, 'filterMedium_mv')) !== []) {
                 return true;

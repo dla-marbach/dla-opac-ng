@@ -118,6 +118,7 @@ $detailDocuments = [
     'detail-article-without-parent' => 'AK01726262',       // A2: ohne Überordnung
     'detail-article-no-holdings' => 'AK00423511',          // A3: callNumberBibliographic_mv = kein Bestand
     'detail-article-retro' => 'AK00944927',                // A4: Überordnung ist eine Zeitschrift
+    'detail-article-retro-multipart' => 'AK00550783',      // A4: Überordnung ist ein mehrteiliges Werk
     'detail-ebook-article-parent' => 'AK01846433',         // B1: E-Beitrag, Überordnung mit Digitalem Objekt
     'detail-ebook-article-parent-issue' => 'AK01827413',   // B1: Beitrag, Überordnung Zeitschrift + digitalisiertes Heft
     'detail-ebook-article-digital-object' => 'AK01846411', // B1: E-Beitrag mit MM-Satz
