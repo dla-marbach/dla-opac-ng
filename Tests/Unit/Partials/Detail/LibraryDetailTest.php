@@ -103,14 +103,14 @@ class LibraryDetailTest extends FluidPartialTestCase
     /**
      * @test
      */
-    public function accessOfArticleWithConditionalUsageNoteShowsOrangeIndicator(): void
+    public function accessOfArticleWithConditionalUsageNoteShowsYellowIndicator(): void
     {
         $variables = SolrFixture::detailVariables('AK01726262');
         $variables['document'] = new Document(array_merge($variables['document']->getFields(), ['usageRestrictionNote' => 'bedingt benutzbar']));
         $html = $this->renderPartial('Display/Detail/Library/Access', $variables);
 
         self::assertStringContainsString('Order now', self::visibleText($html));
-        self::assertStringContainsString('#df661e', $html);
+        self::assertStringContainsString('#ffcc00', $html);
         self::assertStringNotContainsString('#00df27', $html);
     }
 
