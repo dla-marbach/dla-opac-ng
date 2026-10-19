@@ -98,6 +98,34 @@ class M3uPlaylistParserTest extends UnitTestCase
     /**
      * @test
      */
+    public function ignoresUtf8ByteOrderMark(): void
+    {
+        $content = "\xEF\xBB\xBF#EXTM3U\r\n#EXTINF:61,Ingeborg Bachmann - Böhmen liegt am Meer\r\nhttps://example.org/media/boehmen.mp3\r\n";
+
+        $tracks = (new M3uPlaylistParser())->parse($content);
+
+        self::assertCount(1, $tracks);
+        self::assertSame('Ingeborg Bachmann', $tracks[0]['artist']);
+        self::assertSame('Böhmen liegt am Meer', $tracks[0]['title']);
+        self::assertSame(61.0, $tracks[0]['duration']);
+    }
+
+    /**
+     * @test
+     */
+    public function ignoresUtf8ByteOrderMarkInPlainM3u(): void
+    {
+        $content = "\xEF\xBB\xBFhttps://example.org/media/track1.mp3\n";
+
+        $tracks = (new M3uPlaylistParser())->parse($content);
+
+        self::assertSame('https://example.org/media/track1.mp3', $tracks[0]['url']);
+        self::assertSame('track1', $tracks[0]['title']);
+    }
+
+    /**
+     * @test
+     */
     public function returnsEmptyArrayForEmptyContent(): void
     {
         self::assertSame([], (new M3uPlaylistParser())->parse(''));
