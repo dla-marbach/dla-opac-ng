@@ -1,0 +1,63 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "searchCollectionCreator_id_mv:PE00034281",
+            "start": "0",
+            "rows": "5",
+            "fl": "id,display,filterType_mv",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1855,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00012726",
+                        "display": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "filterType_mv": [
+                            "Handschriften"
+                        ]
+                    },
+                    {
+                        "id": "BF00019269",
+                        "display": "G:Schiller-Bibliothek I / II (Teilbibliothek des Autors und seiner Familie) - [Geschlossener Bestand der Bibliothek, Teilnachlass, Spezialsammlung]",
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ]
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "display": "Plat¯onos symposion = Platons Gastmahl : ein Dialog",
+                        "id": "AK01016757"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "display": "Französische Sprachlehre : in einer neuen und faßlichen Darstellung der auf die einfachsten Grundsätze zurückgeführten Regeln, durch viele Beispiele erläutert, und sowohl für Anfänger als für solche, welche schon Fortschritte in der französischen Sprache gemacht haben, und sich darin vervollkommnen wollen - 8. Ausg.",
+                        "id": "AK01018686"
+                    },
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "display": "Considérations sur la doctrine et l'esprit de l'Église orthodoxe",
+                        "id": "AK01029558"
+                    }
+                ]
+            }
+        }
+    }
+}

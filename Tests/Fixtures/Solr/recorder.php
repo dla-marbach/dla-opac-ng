@@ -124,6 +124,9 @@ $detailDocuments = [
     'detail-ebook-article-digital-object' => 'AK01846411', // B1: E-Beitrag mit MM-Satz
     'detail-ebook-article-standalone' => 'AK01890275',     // B2: E-Beitrag ohne Überordnung mit MM-Satz
     'detail-image-slideshow' => 'BI00005210',              // Bildergalerie mit Bildtiteln (digitalObject_display_mv)
+    // Digitales Objekt bei Handschriften (Viewer-Links ohne Dateiendung, mit Vorschaubild):
+    'detail-manuscript-viewer' => 'HS00242238',            // Digitalisat im Viewer, öffentlich
+    'detail-manuscript-mixed' => 'HS01306880',             // IIIF-Bild und Digitalisat im Viewer, nur Campus
 ];
 foreach ($detailDocuments as $name => $id) {
     $scenarios[$name] = [

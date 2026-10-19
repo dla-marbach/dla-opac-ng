@@ -142,4 +142,67 @@ class SlideshowTest extends FluidPartialTestCase
 
         self::assertStringContainsString('src="https://example.org/media/picture.jpg"', $html);
     }
+
+    /**
+     * @test
+     */
+    public function viewerDigitisationShowsSignatureAsCaptionAndOpenInViewerAction(): void
+    {
+        $html = $this->renderPartial('MediaAccess/Slideshow', [
+            'id' => 'slideshow-7',
+            'images' => [
+                [
+                    'url' => 'https://digital.example.org/viewer/fullscreen/HS00242238/',
+                    'thumbnail' => 'https://digital.example.org/viewer/api/HS00242238.jpg',
+                    'display' => 'HS00242238',
+                    'ext' => null,
+                    'kind' => 'viewer',
+                ],
+            ],
+        ]);
+
+        self::assertStringContainsString('<div class="dla-slideshow-caption">HS00242238</div>', $html);
+        self::assertStringContainsString('class="dla-slideshow-action"', $html);
+        self::assertMatchesRegularExpression('#<div class="dla-slideshow-action">\s*<a href="https://digital\.example\.org/viewer/fullscreen/HS00242238/" target="_blank" tabindex="0">\s*Open in viewer#', $html);
+        self::assertStringContainsString('(opens in a new window)', $html);
+        // Bild-Link mit gleichem Ziel ist für Tastatur und Screenreader ausgeblendet
+        self::assertMatchesRegularExpression('#<a href="https://digital\.example\.org/viewer/fullscreen/HS00242238/" target="_blank" tabindex="-1" aria-hidden="true" data-dla-slideshow-skip>\s*<img#', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function fileWithThumbnailShowsOpenFileActionWithExtension(): void
+    {
+        $html = $this->renderPartial('MediaAccess/Slideshow', [
+            'id' => 'slideshow-8',
+            'images' => [
+                [
+                    'url' => 'https://example.org/media/book.epub',
+                    'thumbnail' => 'https://example.org/media/book-thumbnail.png',
+                    'display' => 'Elektronische Ressource: Zugang',
+                    'ext' => 'epub',
+                    'kind' => 'file',
+                ],
+            ],
+        ]);
+
+        self::assertStringContainsString('Open file (EPUB)', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function imageFileHasNoActionLine(): void
+    {
+        $html = $this->renderPartial('MediaAccess/Slideshow', [
+            'id' => 'slideshow-9',
+            'images' => [
+                ['url' => 'https://example.org/media/a.jpg', 'thumbnail' => 'https://example.org/media/a_thumb.jpg', 'display' => 'Bild A', 'ext' => 'jpg', 'kind' => 'image'],
+            ],
+        ]);
+
+        self::assertStringNotContainsString('dla-slideshow-action', $html);
+        self::assertStringNotContainsString('data-dla-slideshow-skip', $html);
+    }
 }

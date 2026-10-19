@@ -15,6 +15,8 @@ class ArchiveDetailTest extends FluidPartialTestCase
     private const MANUSCRIPT = 'HS00067821';
     private const IMAGE = 'BI00028331';
     private const IMAGE_SLIDESHOW = 'BI00005210';
+    private const MANUSCRIPT_VIEWER = 'HS00242238';
+    private const MANUSCRIPT_MIXED = 'HS01306880';
 
     /**
      * @test
@@ -128,5 +130,69 @@ class ArchiveDetailTest extends FluidPartialTestCase
         preg_match_all('/\sid="([^"]+)"/', $html, $matches);
         $duplicates = array_keys(array_filter(array_count_values($matches[1]), static fn (int $count): bool => $count > 1));
         self::assertSame([], array_values(array_filter($duplicates, static fn (string $id): bool => str_starts_with($id, 'renderlinks'))));
+    }
+
+    /**
+     * @test
+     */
+    public function manuscriptViewerDigitisationShowsImageWithSignatureAndViewerAction(): void
+    {
+        $html = $this->renderDetailPartial('Display/Detail/Manuscripts/Details', self::MANUSCRIPT_VIEWER);
+
+        // Vorschaubild oben springt zum Abschnitt "Digitales Objekt"
+        self::assertStringContainsString('href="#digitales-objekt"', $html);
+        self::assertStringContainsString('alt="To the digital object: Digitised copy"', $html);
+        self::assertStringContainsString('id="digitales-objekt"', $html);
+        // Reiter "Details" und "Zugang" zeigen das Digitalisat als Bild statt als Textlink
+        self::assertSame(2, substr_count($html, 'class="dla-slideshow"'));
+        self::assertSame(2, substr_count($html, '<div class="dla-slideshow-caption">' . self::MANUSCRIPT_VIEWER . '</div>'));
+        self::assertSame(2, substr_count($html, 'class="dla-slideshow-action"'));
+        self::assertStringContainsString('Open in viewer', $html);
+        self::assertStringContainsString('src="https://digital.dla-marbach.de/viewer/api/v1/records/HS00242238/files/images/HS_00242238_0001.tif/full/!480,480/0/default.jpg"', $html);
+        self::assertStringNotContainsString('access-denied-link', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function manuscriptWithImageAndViewerDigitisationOutsideCampusShowsOnlyRestrictionNotice(): void
+    {
+        $html = $this->renderDetailPartial('Display/Detail/Manuscripts/Details', self::MANUSCRIPT_MIXED);
+
+        self::assertStringNotContainsString('data-dla-slideshow', $html);
+        self::assertStringNotContainsString('href="#digitales-objekt"', $html);
+        self::assertStringContainsString('class="access-denied"', $html);
+        self::assertStringContainsString("<span class='access-denied-link'>D20240226-818 (jpg)</span>", $html);
+        self::assertStringContainsString("<span class='access-denied-link'>HS01306880 </span>", $html);
+    }
+
+    /**
+     * @test
+     */
+    public function manuscriptWithImageAndViewerDigitisationInsideCampusSharesOneSlideshow(): void
+    {
+        $previousRanges = getenv('campusRanges');
+        $previousRemoteAddr = $_SERVER['REMOTE_ADDR'] ?? null;
+        putenv('campusRanges=10.0.0.0/8');
+        $_SERVER['REMOTE_ADDR'] = '10.1.2.3';
+        try {
+            $html = $this->renderDetailPartial('Display/Detail/Manuscripts/Details', self::MANUSCRIPT_MIXED);
+        } finally {
+            putenv($previousRanges === false ? 'campusRanges' : 'campusRanges=' . $previousRanges);
+            if ($previousRemoteAddr === null) {
+                unset($_SERVER['REMOTE_ADDR']);
+            } else {
+                $_SERVER['REMOTE_ADDR'] = $previousRemoteAddr;
+            }
+        }
+
+        self::assertStringContainsString('alt="To the digital object: Image, Digitised copy"', $html);
+        self::assertSame(2, substr_count($html, 'class="dla-slideshow"'));
+        // je Reiter zwei Slides, nur das Digitalisat im Viewer hat eine Aktionszeile
+        self::assertSame(4, substr_count($html, 'class="dla-slideshow-slide"'));
+        self::assertSame(2, substr_count($html, 'class="dla-slideshow-action"'));
+        self::assertStringContainsString('<div class="dla-slideshow-caption">D20240226-818</div>', $html);
+        self::assertStringContainsString('<div class="dla-slideshow-caption">HS01306880</div>', $html);
+        self::assertStringNotContainsString('access-denied', $html);
     }
 }

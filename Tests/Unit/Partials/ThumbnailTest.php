@@ -157,7 +157,25 @@ class ThumbnailTest extends FluidPartialTestCase
 
         self::assertStringNotContainsString('access-denied', $html);
         self::assertStringContainsString('src="https://example.org/media/document_thumb.jpg"', $html);
-        self::assertStringContainsString('href="https://example.org/media/document.pdf"', $html);
+        // Objekte mit Vorschaubild stehen im Abschnitt "Digitales Objekt", das Vorschaubild springt dorthin
+        self::assertStringContainsString('href="#digitales-objekt"', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function viewerDigitisationWithThumbnailJumpsToDigitalObjectSection(): void
+    {
+        // z.B. Handschriften: Link in den Viewer ohne Dateiendung
+        $html = $this->renderThumbnail(
+            ['public'],
+            ['https://digital.example.org/viewer/fullscreen/HS00242238/?media_access=public'],
+            ['https://digital.example.org/viewer/api/v1/records/HS00242238/files/images/HS_00242238_0001.tif/full/!480,480/0/default.jpg']
+        );
+
+        self::assertStringContainsString('href="#digitales-objekt"', $html);
+        self::assertStringContainsString('alt="To the digital object: Digitised copy"', $html);
+        self::assertStringContainsString('bel-papiere', $html);
     }
 
     /**
@@ -190,7 +208,6 @@ class ThumbnailTest extends FluidPartialTestCase
         self::assertStringNotContainsString('access-denied', $html);
         self::assertStringNotContainsString('front_thumb.jpg', $html);
         self::assertStringContainsString('src="https://example.org/media/back_thumb.jpg"', $html);
-        self::assertStringContainsString('href="https://example.org/media/back.pdf"', $html);
     }
 
     /**

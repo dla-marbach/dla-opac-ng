@@ -1782,6 +1782,22 @@
                 <source>Image %s of %s</source>
                 <target>Bild %s von %s</target>
             </trans-unit>
+            <trans-unit id="slideshow.openViewer">
+                <source>Open in viewer</source>
+                <target>Im Viewer öffnen</target>
+            </trans-unit>
+            <trans-unit id="slideshow.openFile">
+                <source>Open file</source>
+                <target>Datei öffnen</target>
+            </trans-unit>
+            <trans-unit id="slideshow.openFileExt">
+                <source>Open file (%s)</source>
+                <target>Datei öffnen (%s)</target>
+            </trans-unit>
+            <trans-unit id="slideshow.newWindow">
+                <source>(opens in a new window)</source>
+                <target>(öffnet in neuem Fenster)</target>
+            </trans-unit>
             <trans-unit id="teaser.jump">
                 <source>To the digital object: %s</source>
                 <target>Zum digitalen Objekt: %s</target>
@@ -1817,6 +1833,14 @@
             <trans-unit id="teaser.image.many">
                 <source>%s images</source>
                 <target>%s Bilder</target>
+            </trans-unit>
+            <trans-unit id="teaser.digitalisat.one">
+                <source>Digitised copy</source>
+                <target>Digitalisat</target>
+            </trans-unit>
+            <trans-unit id="teaser.digitalisat.many">
+                <source>%s digitised copies</source>
+                <target>%s Digitalisate</target>
             </trans-unit>
             <trans-unit id="teaser.link.one">
                 <source>Link</source>

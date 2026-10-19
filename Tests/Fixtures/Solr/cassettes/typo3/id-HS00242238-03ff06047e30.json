@@ -1,0 +1,302 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:HS00242238",
+            "start": "0",
+            "rows": "10",
+            "fl": "*,score",
+            "fq": "NOT source:(AU OR BE OR MM)"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.701481,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterType_mv": [
+                            "Handschriften"
+                        ],
+                        "default": [
+                            "Handschriften",
+                            "HS00242238",
+                            "PE00034281",
+                            "PE00053469",
+                            "PE00063259",
+                            "Deutsch␝Original",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Schiller, Friedrich von an Schiller, Elisabetha Dorothea</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Schiller, Friedrich von (1759-1805)</namePart>\n    <nameIdentifier type=\"gnd\">118607626</nameIdentifier>\n    <namePart type=\"date\">1759-11-10 — 1805-05-09</namePart>\n    <role>\n      <roleTerm type=\"text\">[Verfasser/in]</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Schiller, Elisabetha Dorothea (1732-1802)</namePart>\n    <nameIdentifier type=\"gnd\">11879499X</nameIdentifier>\n    <namePart type=\"date\">1732-12-13 — 1802-04-29</namePart>\n    <role>\n      <roleTerm type=\"text\">[Adressat/in]</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Schiller, Johann Caspar (1723-1796)</namePart>\n    <nameIdentifier type=\"gnd\">119072769</nameIdentifier>\n    <namePart type=\"date\">1723 — 1796</namePart>\n    <role>\n      <roleTerm type=\"text\">[Adressat/in]</roleTerm>\n    </role>\n  </name>\n  <typeOfResource manuscript=\"yes\">Handschrift</typeOfResource>\n  <genre>Brief</genre>\n  <originInfo eventType=\"manufacture\">\n    <place>\n      <placeTerm type=\"text\">Jena</placeTerm>\n    </place>\n    <dateCreated point=\"start\" encoding=\"iso8601\">1796-01-08</dateCreated>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <extent>2 Bl.</extent>\n  </physicalDescription>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00012726</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>A:Schiller, Friedrich von</shelfLocator>\n    <url access=\"object in context\">https://digital.dla-marbach.de/viewer/fullscreen/HS00242238/?media_access=public&amp;media_license=CC0&amp;media_thumbnail=HS_00242238_0001.tif</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2007-10-20</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2008-09-30</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS00242238</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]",
+                            "1796-01-08T00:00:00Z",
+                            "HS002422386",
+                            "08.01.1796",
+                            "1796-01-08",
+                            "Jena",
+                            "Schiller, Elisabetha Dorothea",
+                            "Schiller, Johann Caspar",
+                            "https://www.dla-marbach.de/find/opac/id/HS00242238",
+                            "public",
+                            "Deutsch",
+                            "BF00012726",
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242238/files/images/HS_00242238_0001.tif/full/!480,480/0/default.jpg",
+                            "Schiller, Friedrich von (1759-1805)␝Verfasser/Urheber",
+                            "Schiller, Elisabetha Dorothea (1732-1802)␝Adressat",
+                            "Schiller, Johann Caspar (1723-1796)␝Adressat",
+                            "TY  - GEN\nA2  - Schiller, Elisabetha Dorothea\nA2  - Schiller, Johann Caspar\nAN  - 48565\nAU  - Schiller, Friedrich von\nAV  - Benutzung nur bedingt möglich!. Für nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:. Telefon: +49 7144 848 425. E-Mail: auskunft-handschriften@dla-marbach.de\nCN  - HS002422386\nDA  - 1796/01/08\nDB  - A:Schiller, Friedrich von\nID  - HS00242238\nLA  - Deutsch\nM3  - Brief\nN1  - Entstehungsort: Jena\nN1  - Umfang: 2 Bl.\nN1  - Mikrofiche: 9258\nST  - Schiller, Friedrich von an Schiller, Elisabetha Dorothea\nTI  - Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]\nUR  - https://digital.dla-marbach.de/viewer/fullscreen/HS00242238/?media_access=public&media_license=CC0&media_thumbnail=HS_00242238_0001.tif\nUR  - https://www.dla-marbach.de/find/opac/id/HS00242238/\nER  -",
+                            "PE00034281",
+                            "9258",
+                            "2 Bl.",
+                            "1796-01-08",
+                            "Schiller, Friedrich von",
+                            "Schiller, Elisabetha Dorothea",
+                            "Schiller, Johann Caspar",
+                            "true",
+                            "A:Schiller, Friedrich von",
+                            "Schiller, Elisabetha Dorothea (1732-1802)",
+                            "Schiller, Johann Caspar (1723-1796)",
+                            "Tresor",
+                            "false",
+                            "Schiller, Friedrich von (1759-1805)␝Von",
+                            "Schiller, Elisabetha Dorothea (1732-1802)␝An",
+                            "Schiller, Johann Caspar (1723-1796)␝An",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Schiller, Friedrich von an Schiller, Elisabetha Dorothea</dc:title>\n  <dc:creator>Schiller, Friedrich von (1759-1805)</dc:creator>\n  <dc:contributor>Schiller, Elisabetha Dorothea (1732-1802)</dc:contributor>\n  <dc:contributor>Schiller, Johann Caspar (1723-1796)</dc:contributor>\n  <dc:type>Brief</dc:type>\n  <dc:type>Handschrift</dc:type>\n  <dc:date>1796-01-08</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>2 Bl.</dc:format>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00012726</dc:source>\n  <dc:identifier>A:Schiller, Friedrich von</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/viewer/fullscreen/HS00242238/?media_access=public&amp;media_license=CC0&amp;media_thumbnail=HS_00242238_0001.tif</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/HS00242238</dc:identifier>\n  <dc:identifier>HS00242238</dc:identifier>\n</oai_dc:dc>",
+                            "Briefe",
+                            "Schiller, Friedrich von (1759-1805)",
+                            "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242238/?media_access=public&media_license=CC0&media_thumbnail=HS_00242238_0001.tif",
+                            "Schiller, Friedrich von (1759-1805)",
+                            "Schiller, Elisabetha Dorothea (1732-1802)",
+                            "Schiller, Johann Caspar (1723-1796)",
+                            "2008-09-30",
+                            "Hogarth",
+                            "Schiller, Fridrich",
+                            "Schiller, Johann Christoph Friedrich",
+                            "Schiller, Johann Christoph Friedrich von",
+                            "Schiller, Friedrich",
+                            "Kodweiss, Elisabetha Dorothea",
+                            "Kodweiss, Elisabeth Dorothea",
+                            "Kodweiß, Elisabetha Dorothea",
+                            "Schiller, Elisabeth Dorothea",
+                            "Schiller, Johann K.",
+                            "Schiller, Kaspar",
+                            "Schiller, Johann C.",
+                            "Schiller, Johann Kaspar",
+                            "08.01.1796",
+                            "Am Standort",
+                            "PE00053469",
+                            "PE00063259",
+                            "48565",
+                            "eingeschränkt benutzbar",
+                            "2007-10-20",
+                            "2007-10-20",
+                            "[Verfasser/in]",
+                            "1",
+                            "SCHILLER, FRIEDRICH VON",
+                            "Nur Digitalisat oder Mikroform benutzbar",
+                            "MM01569285",
+                            "HS00242238",
+                            "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                            "Deutsch",
+                            "1.0.0",
+                            "[Adressat/in]",
+                            "[Adressat/in]",
+                            "PE00034281",
+                            "Schiller, Friedrich von (1759-1805)",
+                            "HS",
+                            "SCHILLER, ELISABETHA DOROTHEA",
+                            "Handschriften Einzelnachweise",
+                            "Schiller, Friedrich von an Schiller, Elisabetha Dorothea",
+                            "Jena",
+                            "Jena␝Entstehungsort",
+                            "Briefe von",
+                            "CC0",
+                            "Brief",
+                            "Schiller, Friedrich von",
+                            "1796-01-08",
+                            "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Elisabetha Dorothea (1732-1802) [Adressat/in]",
+                            "A:Schiller, Friedrich von - [Bestand, Sammlung]"
+                        ],
+                        "digitalObject_display_mv": [
+                            "HS00242238"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00034281",
+                            "PE00053469",
+                            "PE00063259"
+                        ],
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Schiller, Friedrich von an Schiller, Elisabetha Dorothea</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Schiller, Friedrich von (1759-1805)</namePart>\n    <nameIdentifier type=\"gnd\">118607626</nameIdentifier>\n    <namePart type=\"date\">1759-11-10 — 1805-05-09</namePart>\n    <role>\n      <roleTerm type=\"text\">[Verfasser/in]</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Schiller, Elisabetha Dorothea (1732-1802)</namePart>\n    <nameIdentifier type=\"gnd\">11879499X</nameIdentifier>\n    <namePart type=\"date\">1732-12-13 — 1802-04-29</namePart>\n    <role>\n      <roleTerm type=\"text\">[Adressat/in]</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Schiller, Johann Caspar (1723-1796)</namePart>\n    <nameIdentifier type=\"gnd\">119072769</nameIdentifier>\n    <namePart type=\"date\">1723 — 1796</namePart>\n    <role>\n      <roleTerm type=\"text\">[Adressat/in]</roleTerm>\n    </role>\n  </name>\n  <typeOfResource manuscript=\"yes\">Handschrift</typeOfResource>\n  <genre>Brief</genre>\n  <originInfo eventType=\"manufacture\">\n    <place>\n      <placeTerm type=\"text\">Jena</placeTerm>\n    </place>\n    <dateCreated point=\"start\" encoding=\"iso8601\">1796-01-08</dateCreated>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <extent>2 Bl.</extent>\n  </physicalDescription>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00012726</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>A:Schiller, Friedrich von</shelfLocator>\n    <url access=\"object in context\">https://digital.dla-marbach.de/viewer/fullscreen/HS00242238/?media_access=public&amp;media_license=CC0&amp;media_thumbnail=HS_00242238_0001.tif</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-2498</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2007-10-20</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2008-09-30</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">HS00242238</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "display": "Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]",
+                        "filterDatePoint_mv": [
+                            "1796-01-08T00:00:00Z"
+                        ],
+                        "mediaNumber": "HS002422386",
+                        "searchDate_mv": [
+                            "08.01.1796",
+                            "1796-01-08"
+                        ],
+                        "place_mv": [
+                            "Jena"
+                        ],
+                        "searchNameTo_mv": [
+                            "Schiller, Elisabetha Dorothea",
+                            "Schiller, Johann Caspar"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/HS00242238",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "collection_id_mv": [
+                            "BF00012726"
+                        ],
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/viewer/api/v1/records/HS00242238/files/images/HS_00242238_0001.tif/full/!480,480/0/default.jpg"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Schiller, Friedrich von (1759-1805)␝Verfasser/Urheber",
+                            "Schiller, Elisabetha Dorothea (1732-1802)␝Adressat",
+                            "Schiller, Johann Caspar (1723-1796)␝Adressat"
+                        ],
+                        "exportRIS": "TY  - GEN\nA2  - Schiller, Elisabetha Dorothea\nA2  - Schiller, Johann Caspar\nAN  - 48565\nAU  - Schiller, Friedrich von\nAV  - Benutzung nur bedingt möglich!. Für nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:. Telefon: +49 7144 848 425. E-Mail: auskunft-handschriften@dla-marbach.de\nCN  - HS002422386\nDA  - 1796/01/08\nDB  - A:Schiller, Friedrich von\nID  - HS00242238\nLA  - Deutsch\nM3  - Brief\nN1  - Entstehungsort: Jena\nN1  - Umfang: 2 Bl.\nN1  - Mikrofiche: 9258\nST  - Schiller, Friedrich von an Schiller, Elisabetha Dorothea\nTI  - Schiller, Friedrich von an Schiller, Elisabetha Dorothea [Briefe]\nUR  - https://digital.dla-marbach.de/viewer/fullscreen/HS00242238/?media_access=public&media_license=CC0&media_thumbnail=HS_00242238_0001.tif\nUR  - https://www.dla-marbach.de/find/opac/id/HS00242238/\nER  -",
+                        "searchCollectionCreator_id_mv": [
+                            "PE00034281"
+                        ],
+                        "microform_mv": [
+                            "9258"
+                        ],
+                        "extent": "2 Bl.",
+                        "filterDateRange_mv": [
+                            "1796-01-08"
+                        ],
+                        "searchName_mv": [
+                            "Schiller, Friedrich von",
+                            "Schiller, Elisabetha Dorothea",
+                            "Schiller, Johann Caspar"
+                        ],
+                        "filterDigital": true,
+                        "filterCollection_mv": [
+                            "A:Schiller, Friedrich von"
+                        ],
+                        "personTo_display_mv": [
+                            "Schiller, Elisabetha Dorothea (1732-1802)",
+                            "Schiller, Johann Caspar (1723-1796)"
+                        ],
+                        "location_mv": [
+                            "Tresor"
+                        ],
+                        "confidential": false,
+                        "filterAuthorityRelation_mv": [
+                            "Schiller, Friedrich von (1759-1805)␝Von",
+                            "Schiller, Elisabetha Dorothea (1732-1802)␝An",
+                            "Schiller, Johann Caspar (1723-1796)␝An"
+                        ],
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Schiller, Friedrich von an Schiller, Elisabetha Dorothea</dc:title>\n  <dc:creator>Schiller, Friedrich von (1759-1805)</dc:creator>\n  <dc:contributor>Schiller, Elisabetha Dorothea (1732-1802)</dc:contributor>\n  <dc:contributor>Schiller, Johann Caspar (1723-1796)</dc:contributor>\n  <dc:type>Brief</dc:type>\n  <dc:type>Handschrift</dc:type>\n  <dc:date>1796-01-08</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>2 Bl.</dc:format>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00012726</dc:source>\n  <dc:identifier>A:Schiller, Friedrich von</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/viewer/fullscreen/HS00242238/?media_access=public&amp;media_license=CC0&amp;media_thumbnail=HS_00242238_0001.tif</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/HS00242238</dc:identifier>\n  <dc:identifier>HS00242238</dc:identifier>\n</oai_dc:dc>",
+                        "genre": "Briefe",
+                        "searchCollectionCreator_display_mv": [
+                            "Schiller, Friedrich von (1759-1805)"
+                        ],
+                        "usageRestrictionNote": "Benutzung nur bedingt möglich!\nFür nähere Angaben wenden Sie sich bitte an die Auskunft des Deutschen Literaturarchivs Marbach:\nTelefon: +49 7144 848 425\nE-Mail: auskunft-handschriften@dla-marbach.de",
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/viewer/fullscreen/HS00242238/?media_access=public&media_license=CC0&media_thumbnail=HS_00242238_0001.tif"
+                        ],
+                        "filterAuthority_mv": [
+                            "Schiller, Friedrich von (1759-1805)",
+                            "Schiller, Elisabetha Dorothea (1732-1802)",
+                            "Schiller, Johann Caspar (1723-1796)"
+                        ],
+                        "dateModified": "2008-09-30",
+                        "searchVariant_mv": [
+                            "Hogarth",
+                            "Schiller, Fridrich",
+                            "Schiller, Johann Christoph Friedrich",
+                            "Schiller, Johann Christoph Friedrich von",
+                            "Schiller, Friedrich",
+                            "Kodweiss, Elisabetha Dorothea",
+                            "Kodweiss, Elisabeth Dorothea",
+                            "Kodweiß, Elisabetha Dorothea",
+                            "Schiller, Elisabeth Dorothea",
+                            "Schiller, Johann K.",
+                            "Schiller, Kaspar",
+                            "Schiller, Johann C.",
+                            "Schiller, Johann Kaspar"
+                        ],
+                        "displayAddition1": "08.01.1796",
+                        "statusLoan": "Am Standort",
+                        "personTo_id_mv": [
+                            "PE00053469",
+                            "PE00063259"
+                        ],
+                        "accessionNumber": "48565",
+                        "usageRestriction": "eingeschränkt benutzbar",
+                        "dateCataloged": "2007-10-20",
+                        "filterRecent": "2007-10-20",
+                        "personBy_role_mv": [
+                            "[Verfasser/in]"
+                        ],
+                        "searchBoost": 1,
+                        "sortingKey": "SCHILLER, FRIEDRICH VON",
+                        "usageRestrictionComment": "Nur Digitalisat oder Mikroform benutzbar",
+                        "digitalObject_id_mv": [
+                            "MM01569285"
+                        ],
+                        "id": "HS00242238",
+                        "displayAddition2": "A:Schiller, Friedrich von - [Bestand, Sammlung]",
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "personTo_role_mv": [
+                            "[Adressat/in]",
+                            "[Adressat/in]"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00034281"
+                        ],
+                        "personBy_display_mv": [
+                            "Schiller, Friedrich von (1759-1805)"
+                        ],
+                        "source": "HS",
+                        "sortingKeySub": "SCHILLER, ELISABETHA DOROTHEA",
+                        "filterSource": "Handschriften Einzelnachweise",
+                        "title": "Schiller, Friedrich von an Schiller, Elisabetha Dorothea",
+                        "filterLocation_mv": [
+                            "Jena"
+                        ],
+                        "filterLocationType_mv": [
+                            "Jena␝Entstehungsort"
+                        ],
+                        "category": "Briefe von",
+                        "digitalObject_license_mv": [
+                            "CC0"
+                        ],
+                        "filterFormContent_mv": [
+                            "Brief"
+                        ],
+                        "searchNameBy_mv": [
+                            "Schiller, Friedrich von"
+                        ],
+                        "dateOriginStart": "1796-01-08",
+                        "displayName": "Schiller, Friedrich von (1759-1805) [Verfasser/in]; Schiller, Elisabetha Dorothea (1732-1802) [Adressat/in]",
+                        "collection_display_mv": [
+                            "A:Schiller, Friedrich von - [Bestand, Sammlung]"
+                        ],
+                        "score": 13.701481
+                    }
+                ]
+            }
+        }
+    }
+}

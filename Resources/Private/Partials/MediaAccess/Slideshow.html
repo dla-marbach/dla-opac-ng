@@ -14,6 +14,11 @@
     Unter jedem Bild steht als Bildunterschrift dessen Titel aus digitalObject_display_mv
     (gleiche Position wie die URL in digitalObject_hyperlink_mv), sofern vorhanden.
 
+    Neben Bilddateien enthält die Slideshow alle anderen Objekte mit Vorschaubild
+    (image.kind "viewer" bzw. "file"). Bei diesen nennt eine Aktionszeile unter der
+    Bildunterschrift, was sich öffnet ("Im Viewer öffnen", "Datei öffnen (EPUB)"); sie
+    ist dann der einzige fokussierbare Link der Slide, der Bild-Link ist ausgeblendet.
+
     Erwartete Variablen:
     - images: mediaData.images (nur nicht gesperrte Bilder)
     - id:     eindeutige DOM-ID für diese Slideshow-Instanz auf der Seite
@@ -27,18 +32,34 @@
         <div class="dla-slideshow-track">
             <f:for each="{images}" as="image" iteration="iterator">
                 <div class="dla-slideshow-slide" aria-hidden="{f:if(condition: iterator.isFirst, then: 'false', else: 'true')}">
-                    <a href="{image.url}" target="_blank" tabindex="{f:if(condition: iterator.isFirst, then: '0', else: '-1')}">
-                        <f:if condition="{image.thumbnail} && {image.thumbnail} != '␣'">
-                            <f:then>
-                                <img src="{image.thumbnail}" alt="{image.display}" />
-                            </f:then>
-                            <f:else>
-                                <img src="{image.url}" alt="{image.display}" />
-                            </f:else>
-                        </f:if>
-                    </a>
+                    <f:if condition="{image.kind} && {image.kind} != 'image'">
+                        <f:then>
+                            <f:comment>Gleiches Ziel wie die Aktionszeile: nur ein Link für Tastatur und Screenreader</f:comment>
+                            <a href="{image.url}" target="_blank" tabindex="-1" aria-hidden="true" data-dla-slideshow-skip>
+                                <f:render section="image" arguments="{image: image}" />
+                            </a>
+                        </f:then>
+                        <f:else>
+                            <a href="{image.url}" target="_blank" tabindex="{f:if(condition: iterator.isFirst, then: '0', else: '-1')}">
+                                <f:render section="image" arguments="{image: image}" />
+                            </a>
+                        </f:else>
+                    </f:if>
                     <f:if condition="{image.display} && {image.display} != '␣'">
                         <div class="dla-slideshow-caption">{image.display}</div>
+                    </f:if>
+                    <f:if condition="{image.kind} && {image.kind} != 'image'">
+                        <div class="dla-slideshow-action">
+                            <a href="{image.url}" target="_blank" tabindex="{f:if(condition: iterator.isFirst, then: '0', else: '-1')}">
+                                <f:if condition="{image.kind} == 'viewer'">
+                                    <f:then><f:translate key="slideshow.openViewer" extensionName="dla_opac_ng"/></f:then>
+                                    <f:else if="{image.ext} && {image.ext} != '␣'"><f:translate key="slideshow.openFileExt" extensionName="dla_opac_ng" arguments="{0: '{image.ext -> f:format.case(mode: \'upper\')}'}"/></f:else>
+                                    <f:else><f:translate key="slideshow.openFile" extensionName="dla_opac_ng"/></f:else>
+                                </f:if>
+                                <span class="icon bel-link03" aria-hidden="true"></span>
+                                <span class="dla-visually-hidden"><f:translate key="slideshow.newWindow" extensionName="dla_opac_ng"/></span>
+                            </a>
+                        </div>
                     </f:if>
                 </div>
             </f:for>
@@ -54,3 +75,14 @@
         </f:if>
     </div>
 </f:if>
+
+<f:section name="image">
+    <f:if condition="{image.thumbnail} && {image.thumbnail} != '␣'">
+        <f:then>
+            <img src="{image.thumbnail}" alt="{image.display}" />
+        </f:then>
+        <f:else>
+            <img src="{image.url}" alt="{image.display}" />
+        </f:else>
+    </f:if>
+</f:section>
