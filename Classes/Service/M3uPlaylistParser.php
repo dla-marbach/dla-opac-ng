@@ -20,6 +20,9 @@ namespace Dla\DlaOpacNg\Service;
  * Plain M3U files without "#EXTINF" metadata (just a list of URLs, one per
  * line) are supported as well; in that case "title" falls back to the file
  * name and "artist" and "duration" are null.
+ *
+ * A leading UTF-8 byte order mark (BOM), as written by some text editors when
+ * saving as "UTF-8 mit BOM", is ignored.
  */
 class M3uPlaylistParser
 {
@@ -28,6 +31,10 @@ class M3uPlaylistParser
      */
     public function parse(string $content, ?string $playlistUrl = null): array
     {
+        if (str_starts_with($content, "\xEF\xBB\xBF")) {
+            $content = substr($content, 3);
+        }
+
         $lines = preg_split('/\R/', $content) ?: [];
         $tracks = [];
         $pendingTitle = null;
