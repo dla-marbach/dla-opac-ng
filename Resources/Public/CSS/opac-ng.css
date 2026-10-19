@@ -971,11 +971,9 @@ span.icon.bel-link01 {
 
 .dla-slideshow-slide {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     flex: 0 0 100%;
     max-width: 100%;
-    height: min(480px, 75vw);
     box-sizing: border-box;
 }
 
@@ -984,7 +982,14 @@ span.icon.bel-link01 {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    height: min(480px, 75vw);
+}
+
+/* Bildunterschrift (Titel aus digitalObject_display_mv) unterhalb des Bilds */
+.dla-slideshow-caption {
+    padding: 0.5em 50px;
+    text-align: center;
+    overflow-wrap: anywhere;
 }
 
 .dla-slideshow-slide img {
@@ -996,7 +1001,8 @@ span.icon.bel-link01 {
 .dla-slideshow-prev,
 .dla-slideshow-next {
     position: absolute;
-    top: 50%;
+    /* mittig zum Bildbereich (Höhe wie .dla-slideshow-slide a), nicht zur ganzen Galerie */
+    top: calc(min(480px, 75vw) / 2);
     transform: translateY(-50%);
     z-index: 2;
     display: flex;
@@ -1042,13 +1048,10 @@ span.icon.bel-link01 {
     right: 12px;
 }
 
+/* unterhalb von Bild und Bildunterschrift, damit die Punkte den Titel nicht überdecken */
 .dla-slideshow-dots {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
+    padding: 0 0 10px;
     text-align: center;
-    z-index: 2;
 }
 
 .dla-slideshow-dot {

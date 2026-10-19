@@ -96,6 +96,41 @@ class SlideshowTest extends FluidPartialTestCase
     /**
      * @test
      */
+    public function rendersTitleFromDisplayAsCaptionBelowEachImage(): void
+    {
+        $html = $this->renderPartial('MediaAccess/Slideshow', [
+            'id' => 'slideshow-5',
+            'images' => [
+                ['url' => 'https://example.org/media/a.jpg', 'thumbnail' => 'https://example.org/media/a_thumb.jpg', 'display' => 'Bild A'],
+                ['url' => 'https://example.org/media/b.jpg', 'thumbnail' => 'https://example.org/media/b_thumb.jpg', 'display' => 'Bild B'],
+            ],
+        ]);
+
+        self::assertStringContainsString('<div class="dla-slideshow-caption">Bild A</div>', $html);
+        self::assertStringContainsString('<div class="dla-slideshow-caption">Bild B</div>', $html);
+        // Bildunterschrift steht innerhalb der Slide, nach dem Bild-Link
+        self::assertMatchesRegularExpression('#a\.jpg"[^>]*>.*?</a>\s*<div class="dla-slideshow-caption">Bild A</div>#s', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function rendersNoCaptionWhenDisplayIsMissingOrPlaceholder(): void
+    {
+        $html = $this->renderPartial('MediaAccess/Slideshow', [
+            'id' => 'slideshow-6',
+            'images' => [
+                ['url' => 'https://example.org/media/a.jpg', 'thumbnail' => null, 'display' => '␣'],
+                ['url' => 'https://example.org/media/b.jpg', 'thumbnail' => null, 'display' => null],
+            ],
+        ]);
+
+        self::assertStringNotContainsString('dla-slideshow-caption', $html);
+    }
+
+    /**
+     * @test
+     */
     public function fallsBackToFullImageWhenNoThumbnailIsAvailable(): void
     {
         $html = $this->renderPartial('MediaAccess/Slideshow', [
