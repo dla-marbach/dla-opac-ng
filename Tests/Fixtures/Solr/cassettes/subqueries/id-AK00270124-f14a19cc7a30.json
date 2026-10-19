@@ -1,0 +1,37 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "q": "id:(AK00270124)",
+            "start": "0",
+            "rows": "1",
+            "fl": "id,filterMedium_mv,filterSource,filterType_mv,digitalObject_hyperlink_mv,item_id_mv,item_usageRestriction_mv,item_location_mv,item_digitalObject_hyperlink_mv"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "filterMedium_mv": [
+                            "Mehrteiliges Werk"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "id": "AK00270124"
+                    }
+                ]
+            }
+        }
+    }
+}

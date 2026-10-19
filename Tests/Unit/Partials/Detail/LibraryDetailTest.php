@@ -92,6 +92,7 @@ class LibraryDetailTest extends FluidPartialTestCase
             'A2 ohne Überordnung' => ['AK01726262', true],
             'A3 kein Bestand' => ['AK00423511', false],
             'A4 Retro-Beitrag, Überordnung Zeitschrift' => ['AK00944927', true],
+            'A4 Retro-Beitrag, Überordnung mehrteiliges Werk' => ['AK00550783', true],
             'B1 E-Beitrag, Überordnung mit Digitalem Objekt' => ['AK01846433', false],
             'B1 Beitrag, Überordnung Zeitschrift und digitalisiertes Heft' => ['AK01827413', false],
             'B1 E-Beitrag mit MM-Satz' => ['AK01846411', false],

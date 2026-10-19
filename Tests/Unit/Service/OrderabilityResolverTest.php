@@ -149,14 +149,14 @@ class OrderabilityResolverTest extends TestCase
      * @test
      * @dataProvider continuingResourceMedia
      */
-    public function retroArticleInJournalNewspaperOrSeriesIsOrderable(string $medium): void
+    public function retroArticleInJournalNewspaperSeriesOrMultipartWorkIsOrderable(string $medium): void
     {
         self::assertTrue($this->orderableInParent(['filterMedium_mv' => [$medium]]));
     }
 
     public static function continuingResourceMedia(): array
     {
-        return ['Zeitschrift' => ['Zeitschrift'], 'Zeitung' => ['Zeitung'], 'Reihe' => ['Reihe']];
+        return ['Zeitschrift' => ['Zeitschrift'], 'Zeitung' => ['Zeitung'], 'Reihe' => ['Reihe'], 'Mehrteiliges Werk' => ['Mehrteiliges Werk']];
     }
 
     /**
