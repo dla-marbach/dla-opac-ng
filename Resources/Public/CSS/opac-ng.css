@@ -951,10 +951,14 @@ span.icon.bel-link01 {
 
 /* Bildergalerie (MediaAccess/Slideshow.html), angelehnt an die Galerie auf
    www.dla-marbach.de/bilder-und-objekte/ */
+/* contain: inline-size - die Breite richtet sich nur nach dem verfügbaren Platz, nicht nach den
+   Bildern; sonst dehnen diese die als Tabelle gesetzte .ctg-dtvt-row mobil über den Rand hinaus */
 .dla-slideshow {
     position: relative;
     overflow: hidden;
+    width: 100%;
     max-width: 640px;
+    contain: inline-size;
     margin-bottom: 1.5em;
     background: #f5f5f5;
 }

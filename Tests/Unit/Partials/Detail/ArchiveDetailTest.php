@@ -14,6 +14,7 @@ class ArchiveDetailTest extends FluidPartialTestCase
     private const INVENTORY = 'BF00025111';
     private const MANUSCRIPT = 'HS00067821';
     private const IMAGE = 'BI00028331';
+    private const IMAGE_SLIDESHOW = 'BI00005210';
 
     /**
      * @test
@@ -109,5 +110,23 @@ class ArchiveDetailTest extends FluidPartialTestCase
         self::assertStringContainsString('User Advice bedingt benutzbar', $access);
         self::assertStringContainsString('From the same artist Proklamation des preußischen…', $rightColumn);
         self::assertStringContainsString('Similar motives No hits found', $rightColumn);
+    }
+
+    /**
+     * @test
+     */
+    public function imageDetailsRenderSlideshowWithUniqueIdInBothTabs(): void
+    {
+        // Details enthält über Order/Main auch den Reiter "Zugang" - beide zeigen das digitale Objekt
+        $html = $this->renderDetailPartial('Display/Detail/ImagesAndObjects/Details', self::IMAGE_SLIDESHOW);
+
+        self::assertSame(2, substr_count($html, 'data-dla-slideshow'));
+        self::assertStringContainsString('id="renderlinks-' . self::IMAGE_SLIDESHOW . '-slideshow"', $html);
+        self::assertStringContainsString('id="renderlinks-access-' . self::IMAGE_SLIDESHOW . '-slideshow"', $html);
+        self::assertStringContainsString('<div class="dla-slideshow-caption">7270-2</div>', $html);
+
+        preg_match_all('/\sid="([^"]+)"/', $html, $matches);
+        $duplicates = array_keys(array_filter(array_count_values($matches[1]), static fn (int $count): bool => $count > 1));
+        self::assertSame([], array_values(array_filter($duplicates, static fn (string $id): bool => str_starts_with($id, 'renderlinks'))));
     }
 }

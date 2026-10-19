@@ -82,6 +82,7 @@
                     </div>
                     <div class="ctg-dtvt-content">
 
+                        <v:variable.set value="renderlinks-access" name="idPrefix" />
                         <f:render partial="MediaAccess/RenderLinks" arguments="{_all}"/>
 
                         <f:for each="{website_description_mv_filtered}" as="item" iteration="website_iterator">
