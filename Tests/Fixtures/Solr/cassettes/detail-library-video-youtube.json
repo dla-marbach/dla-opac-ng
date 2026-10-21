@@ -1,0 +1,481 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(AK01824645)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.701641,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "searchEntity_id_mv": [
+                            "PE00435659",
+                            "PE00681944",
+                            "PE00683391",
+                            "PE00077161",
+                            "KS00009035"
+                        ],
+                        "default": [
+                            "PE00435659",
+                            "PE00681944",
+                            "PE00683391",
+                            "PE00077161",
+                            "KS00009035",
+                            "zweidimensionales bewegtes Bild",
+                            "f-fertig, i-fertig",
+                            "Hahn, Frederik (1971-)",
+                            "Bayaz, Danyal (1983-)",
+                            "Richter, Sandra (1973-)",
+                            "Röder, Eva",
+                            "2026-10-20",
+                            "Videodatei",
+                            "2024",
+                            "Veranstaltung auf \"YouTube\" ansehen",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Blauer Samt. Rap als Lyrik der Moderne : [Gespräch, Interview]</dc:title>\n  <dc:creator>Hahn, Frederik (1971-)</dc:creator>\n  <dc:creator>Bayaz, Danyal (1983-)</dc:creator>\n  <dc:creator>Richter, Sandra (1973-)</dc:creator>\n  <dc:contributor>Röder, Eva</dc:contributor>\n  <dc:type>Videodatei</dc:type>\n  <dc:type>Gespräch / Interview</dc:type>\n  <dc:type>Online-Ressource</dc:type>\n  <dc:publisher>Deutsches Literaturarchiv</dc:publisher>\n  <dc:date>2024</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>1 Online-Ressource (Videodatei, 90 min)</dc:format>\n  <dc:format>farbig</dc:format>\n  <dc:subject>Rap</dc:subject>\n  <dc:subject>Deutsche Literatur 1945-1989 / Lyrik / Einzelne Formen</dc:subject>\n  <dc:subject>Deutsche Literatur 1990- / Lyrik / Einzelne Formen</dc:subject>\n  <dc:subject>Die Stimme des Autors</dc:subject>\n  <dc:subject>Richter, Sandra (1973-)</dc:subject>\n  <dc:subject>Richter, Sandra / A3.6.5 Die Stimme des Autors</dc:subject>\n  <dc:subject>S10.9.1.7.2.5 Deutsche Literatur 1945-1989 / Lyrik / Einzelne Formen / Rap</dc:subject>\n  <dc:subject>S10.10.1.7.2.5 Deutsche Literatur 1990- / Lyrik / Einzelne Formen / Rap</dc:subject>\n  <dc:identifier>1882482549</dc:identifier>\n  <dc:identifier>BTS:FR 91</dc:identifier>\n  <dc:identifier>https://www.youtube.com/watch?v=ywWlkEJ8jLo</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/files/accesscopy/video/public/bts-fr-0001-1000/bts-fr-001-100/bts-fr-91-m01-s01-t01-v01.mp4?media_access=public&amp;media_thumbnail=bts-fr-91-m01-s01-t01-v01-thumbnail.png&amp;media_license=reserved</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01824645</dc:identifier>\n  <dc:identifier>AK01824645</dc:identifier>\n</oai_dc:dc>",
+                            "2024",
+                            "Abgeschlossen",
+                            "Blauer Samt. Rap als Lyrik der Moderne : [Gespräch, Interview]",
+                            "public",
+                            "␣",
+                            "Hahn, Frederik (1971-)",
+                            "Bayaz, Danyal (1983-)",
+                            "Richter, Sandra (1973-)",
+                            "2024-03-05",
+                            "Interviewter",
+                            "Interviewter",
+                            "Interviewter",
+                            "Moderator",
+                            "https://www.dla-marbach.de/find/opac/id/AK01824645",
+                            "Hahn, Frederik (1971-); Bayaz, Danyal (1983-); Richter, Sandra (1973-); Röder, Eva",
+                            "2024-03-05",
+                            "DLA",
+                            "reserved",
+                            "␣",
+                            "https://digital.dla-marbach.de/files/accesscopy/video/public/bts-fr-0001-1000/bts-fr-001-100/bts-fr-91-m01-s01-t01-v01.mp4?media_access=public&media_thumbnail=bts-fr-91-m01-s01-t01-v01-thumbnail.png&media_license=reserved",
+                            "␣",
+                            "Rap",
+                            "Deutsche Literatur 1945-1989 / Lyrik / Einzelne Formen",
+                            "Deutsche Literatur 1990- / Lyrik / Einzelne Formen",
+                            "Die Stimme des Autors",
+                            "Richter, Sandra (1973-)",
+                            "TH00022969",
+                            "Interviewter",
+                            "Interviewter",
+                            "Interviewter",
+                            "BTS:FR 91",
+                            "https://www.youtube.com/watch?v=ywWlkEJ8jLo",
+                            "Ton- und Bildträger",
+                            "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                            "2024-01-01T00:00:00Z",
+                            "2024-02-26T00:00:00Z",
+                            "Form, Gattung, Gattungen",
+                            "SE00188624",
+                            "SE00279933",
+                            "SE00021228",
+                            "Blauer Samt. Rap als Lyrik der Moderne",
+                            "Blauer Samt. Rap als Lyrik der Moderne",
+                            "Hahn, Frederik (1971-)␝Von",
+                            "Bayaz, Danyal (1983-)␝Von",
+                            "Richter, Sandra (1973-)␝Von",
+                            "Röder, Eva␝Von",
+                            "1",
+                            "KS00009035",
+                            "TY  - GEN\nA2  - Hahn, Frederik\nA2  - Bayaz, Danyal\nA2  - Richter, Sandra\nA2  - Röder, Eva\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Marbach am Neckar\nDA  - 2024\nDA  - 2024/02/26\nID  - AK01824645\nKW  - Rap\nKW  - Deutsche Literatur 1945-1989 / Lyrik / Einzelne Formen\nKW  - Deutsche Literatur 1990- / Lyrik / Einzelne Formen\nKW  - Die Stimme des Autors\nKW  - Richter, Sandra (1973-)\nLA  - Deutsch\nM2  - Videodatei\nM3  - Gespräch / Interview\nN1  - Umfang: 1 Online-Ressource (Videodatei, 90 min)\nN1  - Erscheinungsort: Marbach am Neckar\nPB  - Deutsches Literaturarchiv\nPY  - 2024\nTI  - Blauer Samt. Rap als Lyrik der Moderne : [Gespräch, Interview]\nUR  - https://www.youtube.com/watch?v=ywWlkEJ8jLo\nUR  - https://digital.dla-marbach.de/files/accesscopy/video/public/bts-fr-0001-1000/bts-fr-001-100/bts-fr-91-m01-s01-t01-v01.mp4?media_access=public&media_thumbnail=bts-fr-91-m01-s01-t01-v01-thumbnail.png&media_license=reserved\nUR  - https://www.dla-marbach.de/find/opac/id/AK01824645/\nER  -",
+                            "Videodatei",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Blauer Samt. Rap als Lyrik der Moderne</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Hahn, Frederik (1971-)</namePart>\n    <nameIdentifier type=\"gnd\">1261571258</nameIdentifier>\n    <namePart type=\"date\">1971</namePart>\n    <role>\n      <roleTerm type=\"text\">Interviewter</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Bayaz, Danyal (1983-)</namePart>\n    <nameIdentifier type=\"gnd\">104508901X</nameIdentifier>\n    <namePart type=\"date\">1983</namePart>\n    <role>\n      <roleTerm type=\"text\">Interviewter</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Richter, Sandra (1973-)</namePart>\n    <nameIdentifier type=\"gnd\">139611177</nameIdentifier>\n    <namePart type=\"date\">1973-09-18</namePart>\n    <role>\n      <roleTerm type=\"text\">Interviewter</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Röder, Eva</namePart>\n    <role>\n      <roleTerm type=\"text\">Moderator</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Videodatei</typeOfResource>\n  <genre>Gespräch / Interview</genre>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Marbach am Neckar</placeTerm>\n    </place>\n    <publisher>Deutsches Literaturarchiv</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">2024</dateIssued>\n    <displayDate>2024</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Online-Ressource</form>\n    <extent>1 Online-Ressource (Videodatei, 90 min)</extent>\n    <note type=\"physical description\">farbig</note>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">mit Torch, Danyal Bayaz und Sandra Richter ; Moderation: Eva Röder</note>\n  <subject>\n    <topic>Rap</topic>\n  </subject>\n  <subject>\n    <topic>Deutsche Literatur 1945-1989 / Lyrik / Einzelne Formen</topic>\n  </subject>\n  <subject>\n    <topic>Deutsche Literatur 1990- / Lyrik / Einzelne Formen</topic>\n  </subject>\n  <subject>\n    <topic>Die Stimme des Autors</topic>\n  </subject>\n  <subject>\n    <topic>Richter, Sandra (1973-)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Richter, Sandra (1973-)</namePart>\n    </name>\n  </subject>\n  <classification authority=\"DE-Mar1\">Richter, Sandra / A3.6.5 Die Stimme des Autors</classification>\n  <classification authority=\"DE-Mar1\">S10.9.1.7.2.5 Deutsche Literatur 1945-1989 / Lyrik / Einzelne Formen / Rap</classification>\n  <classification authority=\"DE-Mar1\">S10.10.1.7.2.5 Deutsche Literatur 1990- / Lyrik / Einzelne Formen / Rap</classification>\n  <identifier type=\"kxp\">1882482549</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>BTS:FR 91</shelfLocator>\n    <url access=\"object in context\">https://www.youtube.com/watch?v=ywWlkEJ8jLo</url>\n    <url access=\"object in context\">https://digital.dla-marbach.de/files/accesscopy/video/public/bts-fr-0001-1000/bts-fr-001-100/bts-fr-91-m01-s01-t01-v01.mp4?media_access=public&amp;media_thumbnail=bts-fr-91-m01-s01-t01-v01-thumbnail.png&amp;media_license=reserved</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2024-03-05</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2026-10-20</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01824645</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "MM01567351",
+                            "MM01557326",
+                            "Marbach am Neckar",
+                            "AU01064194",
+                            "Moderator",
+                            "false",
+                            "true",
+                            "Richter, Sandra (1973-)",
+                            "Gespräch / Interview",
+                            "Deutsch",
+                            "Röder, Eva",
+                            "2024",
+                            "26.02.2024",
+                            "2024-02-26",
+                            "AK",
+                            "Marbach am Neckar",
+                            "mit Torch, Danyal Bayaz und Sandra Richter ; Moderation: Eva Röder",
+                            "Hahn, Frederik",
+                            "Bayaz, Danyal",
+                            "Richter, Sandra",
+                            "Röder, Eva",
+                            "Online-Ressource",
+                            "BTS:FR 91. 202403674. Blauer Samt. Rap als Lyrik der Moderne : [Gespräch, Interview]",
+                            "Bildtonträger",
+                            "Videodatei",
+                            "Hahn, Frederik (1971-)",
+                            "Bayaz, Danyal (1983-)",
+                            "Richter, Sandra (1973-)",
+                            "Röder, Eva",
+                            "Kette Bibliothek",
+                            "Kette Bibliothek",
+                            "Kette Bibliothek",
+                            "mp4",
+                            "␣",
+                            "Video",
+                            "Rap",
+                            "PE00077161",
+                            "Hahn, Frederik (1971-)␝Interviewter",
+                            "Bayaz, Danyal (1983-)␝Interviewter",
+                            "Richter, Sandra (1973-)␝Interviewter",
+                            "Röder, Eva␝Moderator",
+                            "Richter, Sandra (1973-)␝Sprecher",
+                            "Bibliotheksmaterialien",
+                            "Videodatei: Blauer Samt. Rap als Lyrik der Moderne",
+                            "bts-fr-91-m01-s01-t01-v01.mp4",
+                            "AK01824645",
+                            "Marbach am Neckar␝Erscheinungsort",
+                            "Deutsch",
+                            "1882482549",
+                            "Richter, Sandra / A3.6.5 Die Stimme des Autors",
+                            "S10.9.1.7.2.5 Deutsche Literatur 1945-1989 / Lyrik / Einzelne Formen / Rap",
+                            "S10.10.1.7.2.5 Deutsche Literatur 1990- / Lyrik / Einzelne Formen / Rap",
+                            "SE00188624",
+                            "SE00279933",
+                            "SE00021228",
+                            "creator",
+                            "creator",
+                            "creator",
+                            "contributor",
+                            "1 Online-Ressource (Videodatei, 90 min)",
+                            "2024",
+                            "2024-02-26",
+                            "farbig",
+                            "1.0.0",
+                            "https://digital.dla-marbach.de/files/accesscopy/video/public/bts-fr-0001-1000/bts-fr-001-100/bts-fr-91-m01-s01-t01-v01-thumbnail.png",
+                            "␣",
+                            "Pott, Sandra",
+                            "Torch",
+                            "Dt. Literaturarchiv",
+                            "202403674",
+                            "benutzbar",
+                            "Deutsch␝Original",
+                            "PE00681944",
+                            "PE00683391",
+                            "PE00435659",
+                            "PE00077161",
+                            "K10Plus-PPN",
+                            "Deutsches Literaturarchiv",
+                            "2024-02-26",
+                            "Gespräch, Interview",
+                            "Marbach am Neckar : Deutsches Literaturarchiv, 2024 - 1 Online-Ressource (Videodatei, 90 min)",
+                            "Hahn, Frederik",
+                            "Bayaz, Danyal",
+                            "Richter, Sandra",
+                            "Röder, Eva",
+                            "Mediendokumentation",
+                            "PE00681944",
+                            "PE00683391",
+                            "PE00435659",
+                            "PE00435659"
+                        ],
+                        "categoryContent_mv": [
+                            "zweidimensionales bewegtes Bild"
+                        ],
+                        "statusCataloging": "f-fertig, i-fertig",
+                        "filterAuthority_mv": [
+                            "Hahn, Frederik (1971-)",
+                            "Bayaz, Danyal (1983-)",
+                            "Richter, Sandra (1973-)",
+                            "Röder, Eva"
+                        ],
+                        "dateModified": "2026-10-20",
+                        "categorySubSub": "Videodatei",
+                        "dateOrigin": "2024",
+                        "website_description_mv": [
+                            "Veranstaltung auf \"YouTube\" ansehen"
+                        ],
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>Blauer Samt. Rap als Lyrik der Moderne : [Gespräch, Interview]</dc:title>\n  <dc:creator>Hahn, Frederik (1971-)</dc:creator>\n  <dc:creator>Bayaz, Danyal (1983-)</dc:creator>\n  <dc:creator>Richter, Sandra (1973-)</dc:creator>\n  <dc:contributor>Röder, Eva</dc:contributor>\n  <dc:type>Videodatei</dc:type>\n  <dc:type>Gespräch / Interview</dc:type>\n  <dc:type>Online-Ressource</dc:type>\n  <dc:publisher>Deutsches Literaturarchiv</dc:publisher>\n  <dc:date>2024</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>1 Online-Ressource (Videodatei, 90 min)</dc:format>\n  <dc:format>farbig</dc:format>\n  <dc:subject>Rap</dc:subject>\n  <dc:subject>Deutsche Literatur 1945-1989 / Lyrik / Einzelne Formen</dc:subject>\n  <dc:subject>Deutsche Literatur 1990- / Lyrik / Einzelne Formen</dc:subject>\n  <dc:subject>Die Stimme des Autors</dc:subject>\n  <dc:subject>Richter, Sandra (1973-)</dc:subject>\n  <dc:subject>Richter, Sandra / A3.6.5 Die Stimme des Autors</dc:subject>\n  <dc:subject>S10.9.1.7.2.5 Deutsche Literatur 1945-1989 / Lyrik / Einzelne Formen / Rap</dc:subject>\n  <dc:subject>S10.10.1.7.2.5 Deutsche Literatur 1990- / Lyrik / Einzelne Formen / Rap</dc:subject>\n  <dc:identifier>1882482549</dc:identifier>\n  <dc:identifier>BTS:FR 91</dc:identifier>\n  <dc:identifier>https://www.youtube.com/watch?v=ywWlkEJ8jLo</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/files/accesscopy/video/public/bts-fr-0001-1000/bts-fr-001-100/bts-fr-91-m01-s01-t01-v01.mp4?media_access=public&amp;media_thumbnail=bts-fr-91-m01-s01-t01-v01-thumbnail.png&amp;media_license=reserved</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK01824645</dc:identifier>\n  <dc:identifier>AK01824645</dc:identifier>\n</oai_dc:dc>",
+                        "dateOriginComment_mv": [
+                            "2024"
+                        ],
+                        "statusEditing": "Abgeschlossen",
+                        "display": "Blauer Samt. Rap als Lyrik der Moderne : [Gespräch, Interview]",
+                        "digitalObject_accessLevel_mv": [
+                            "public",
+                            "␣"
+                        ],
+                        "creator_display_mv": [
+                            "Hahn, Frederik (1971-)",
+                            "Bayaz, Danyal (1983-)",
+                            "Richter, Sandra (1973-)"
+                        ],
+                        "dateCataloged": "2024-03-05",
+                        "personBy_role_mv": [
+                            "Interviewter",
+                            "Interviewter",
+                            "Interviewter",
+                            "Moderator"
+                        ],
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK01824645",
+                        "displayName": "Hahn, Frederik (1971-); Bayaz, Danyal (1983-); Richter, Sandra (1973-); Röder, Eva",
+                        "filterRecent": "2024-03-05",
+                        "item_broadcastStation_mv": [
+                            "DLA"
+                        ],
+                        "digitalObject_license_mv": [
+                            "reserved",
+                            "␣"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/files/accesscopy/video/public/bts-fr-0001-1000/bts-fr-001-100/bts-fr-91-m01-s01-t01-v01.mp4?media_access=public&media_thumbnail=bts-fr-91-m01-s01-t01-v01-thumbnail.png&media_license=reserved",
+                            "␣"
+                        ],
+                        "filterSubject_mv": [
+                            "Rap",
+                            "Deutsche Literatur 1945-1989 / Lyrik / Einzelne Formen",
+                            "Deutsche Literatur 1990- / Lyrik / Einzelne Formen",
+                            "Die Stimme des Autors",
+                            "Richter, Sandra (1973-)"
+                        ],
+                        "subject_id_mv": [
+                            "TH00022969"
+                        ],
+                        "creator_role_mv": [
+                            "Interviewter",
+                            "Interviewter",
+                            "Interviewter"
+                        ],
+                        "item_callNumberItem_mv": [
+                            "BTS:FR 91"
+                        ],
+                        "website_url_mv": [
+                            "https://www.youtube.com/watch?v=ywWlkEJ8jLo"
+                        ],
+                        "category": "Ton- und Bildträger",
+                        "categorySub": "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                        "filterDatePoint_mv": [
+                            "2024-01-01T00:00:00Z",
+                            "2024-02-26T00:00:00Z"
+                        ],
+                        "classificationSubjectOther_mv": [
+                            "Form, Gattung, Gattungen"
+                        ],
+                        "classification_id_mv": [
+                            "SE00188624",
+                            "SE00279933",
+                            "SE00021228"
+                        ],
+                        "titleMain_text": "Blauer Samt. Rap als Lyrik der Moderne",
+                        "title": "Blauer Samt. Rap als Lyrik der Moderne",
+                        "filterAuthorityRelation_mv": [
+                            "Hahn, Frederik (1971-)␝Von",
+                            "Bayaz, Danyal (1983-)␝Von",
+                            "Richter, Sandra (1973-)␝Von",
+                            "Röder, Eva␝Von"
+                        ],
+                        "searchBoost": 1,
+                        "publisher_id_mv": [
+                            "KS00009035"
+                        ],
+                        "exportRIS": "TY  - GEN\nA2  - Hahn, Frederik\nA2  - Bayaz, Danyal\nA2  - Richter, Sandra\nA2  - Röder, Eva\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - Marbach am Neckar\nDA  - 2024\nDA  - 2024/02/26\nID  - AK01824645\nKW  - Rap\nKW  - Deutsche Literatur 1945-1989 / Lyrik / Einzelne Formen\nKW  - Deutsche Literatur 1990- / Lyrik / Einzelne Formen\nKW  - Die Stimme des Autors\nKW  - Richter, Sandra (1973-)\nLA  - Deutsch\nM2  - Videodatei\nM3  - Gespräch / Interview\nN1  - Umfang: 1 Online-Ressource (Videodatei, 90 min)\nN1  - Erscheinungsort: Marbach am Neckar\nPB  - Deutsches Literaturarchiv\nPY  - 2024\nTI  - Blauer Samt. Rap als Lyrik der Moderne : [Gespräch, Interview]\nUR  - https://www.youtube.com/watch?v=ywWlkEJ8jLo\nUR  - https://digital.dla-marbach.de/files/accesscopy/video/public/bts-fr-0001-1000/bts-fr-001-100/bts-fr-91-m01-s01-t01-v01.mp4?media_access=public&media_thumbnail=bts-fr-91-m01-s01-t01-v01-thumbnail.png&media_license=reserved\nUR  - https://www.dla-marbach.de/find/opac/id/AK01824645/\nER  -",
+                        "filterMedium_mv": [
+                            "Videodatei"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>Blauer Samt. Rap als Lyrik der Moderne</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Hahn, Frederik (1971-)</namePart>\n    <nameIdentifier type=\"gnd\">1261571258</nameIdentifier>\n    <namePart type=\"date\">1971</namePart>\n    <role>\n      <roleTerm type=\"text\">Interviewter</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Bayaz, Danyal (1983-)</namePart>\n    <nameIdentifier type=\"gnd\">104508901X</nameIdentifier>\n    <namePart type=\"date\">1983</namePart>\n    <role>\n      <roleTerm type=\"text\">Interviewter</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Richter, Sandra (1973-)</namePart>\n    <nameIdentifier type=\"gnd\">139611177</nameIdentifier>\n    <namePart type=\"date\">1973-09-18</namePart>\n    <role>\n      <roleTerm type=\"text\">Interviewter</roleTerm>\n    </role>\n  </name>\n  <name type=\"personal\">\n    <namePart>Röder, Eva</namePart>\n    <role>\n      <roleTerm type=\"text\">Moderator</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Videodatei</typeOfResource>\n  <genre>Gespräch / Interview</genre>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">Marbach am Neckar</placeTerm>\n    </place>\n    <publisher>Deutsches Literaturarchiv</publisher>\n    <dateIssued encoding=\"iso8601\" keyDate=\"yes\">2024</dateIssued>\n    <displayDate>2024</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Online-Ressource</form>\n    <extent>1 Online-Ressource (Videodatei, 90 min)</extent>\n    <note type=\"physical description\">farbig</note>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">mit Torch, Danyal Bayaz und Sandra Richter ; Moderation: Eva Röder</note>\n  <subject>\n    <topic>Rap</topic>\n  </subject>\n  <subject>\n    <topic>Deutsche Literatur 1945-1989 / Lyrik / Einzelne Formen</topic>\n  </subject>\n  <subject>\n    <topic>Deutsche Literatur 1990- / Lyrik / Einzelne Formen</topic>\n  </subject>\n  <subject>\n    <topic>Die Stimme des Autors</topic>\n  </subject>\n  <subject>\n    <topic>Richter, Sandra (1973-)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Richter, Sandra (1973-)</namePart>\n    </name>\n  </subject>\n  <classification authority=\"DE-Mar1\">Richter, Sandra / A3.6.5 Die Stimme des Autors</classification>\n  <classification authority=\"DE-Mar1\">S10.9.1.7.2.5 Deutsche Literatur 1945-1989 / Lyrik / Einzelne Formen / Rap</classification>\n  <classification authority=\"DE-Mar1\">S10.10.1.7.2.5 Deutsche Literatur 1990- / Lyrik / Einzelne Formen / Rap</classification>\n  <identifier type=\"kxp\">1882482549</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>BTS:FR 91</shelfLocator>\n    <url access=\"object in context\">https://www.youtube.com/watch?v=ywWlkEJ8jLo</url>\n    <url access=\"object in context\">https://digital.dla-marbach.de/files/accesscopy/video/public/bts-fr-0001-1000/bts-fr-001-100/bts-fr-91-m01-s01-t01-v01.mp4?media_access=public&amp;media_thumbnail=bts-fr-91-m01-s01-t01-v01-thumbnail.png&amp;media_license=reserved</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2024-03-05</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2026-10-20</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK01824645</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "digitalObject_id_mv": [
+                            "MM01567351",
+                            "MM01557326"
+                        ],
+                        "filterLocation_mv": [
+                            "Marbach am Neckar"
+                        ],
+                        "item_id_mv": [
+                            "AU01064194"
+                        ],
+                        "contributor_role_mv": [
+                            "Moderator"
+                        ],
+                        "confidential": false,
+                        "filterDigital": true,
+                        "personAbout_display_mv": [
+                            "Richter, Sandra (1973-)"
+                        ],
+                        "filterFormContent_mv": [
+                            "Gespräch / Interview"
+                        ],
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "contributor_display_mv": [
+                            "Röder, Eva"
+                        ],
+                        "searchDate_mv": [
+                            "2024",
+                            "26.02.2024",
+                            "2024-02-26"
+                        ],
+                        "source": "AK",
+                        "publisherOriginalLocation_mv": [
+                            "Marbach am Neckar"
+                        ],
+                        "titleResponsability": "mit Torch, Danyal Bayaz und Sandra Richter ; Moderation: Eva Röder",
+                        "searchNameBy_mv": [
+                            "Hahn, Frederik",
+                            "Bayaz, Danyal",
+                            "Richter, Sandra",
+                            "Röder, Eva"
+                        ],
+                        "categoryMedium_mv": [
+                            "Online-Ressource"
+                        ],
+                        "item_display_mv": [
+                            "BTS:FR 91. 202403674. Blauer Samt. Rap als Lyrik der Moderne : [Gespräch, Interview]"
+                        ],
+                        "categoryMedia_mv": [
+                            "Bildtonträger",
+                            "Videodatei"
+                        ],
+                        "personBy_display_mv": [
+                            "Hahn, Frederik (1971-)",
+                            "Bayaz, Danyal (1983-)",
+                            "Richter, Sandra (1973-)",
+                            "Röder, Eva"
+                        ],
+                        "classification_category_mv": [
+                            "Kette Bibliothek",
+                            "Kette Bibliothek",
+                            "Kette Bibliothek"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "mp4",
+                            "␣"
+                        ],
+                        "filterType_mv": [
+                            "Video"
+                        ],
+                        "subject_display_mv": [
+                            "Rap"
+                        ],
+                        "contributor_id_mv": [
+                            "PE00077161"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Hahn, Frederik (1971-)␝Interviewter",
+                            "Bayaz, Danyal (1983-)␝Interviewter",
+                            "Richter, Sandra (1973-)␝Interviewter",
+                            "Röder, Eva␝Moderator",
+                            "Richter, Sandra (1973-)␝Sprecher"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "digitalObject_display_mv": [
+                            "Videodatei: Blauer Samt. Rap als Lyrik der Moderne",
+                            "bts-fr-91-m01-s01-t01-v01.mp4"
+                        ],
+                        "id": "AK01824645",
+                        "filterLocationType_mv": [
+                            "Marbach am Neckar␝Erscheinungsort"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "vendor_id_mv": [
+                            "1882482549"
+                        ],
+                        "classification_display_mv": [
+                            "Richter, Sandra / A3.6.5 Die Stimme des Autors",
+                            "S10.9.1.7.2.5 Deutsche Literatur 1945-1989 / Lyrik / Einzelne Formen / Rap",
+                            "S10.10.1.7.2.5 Deutsche Literatur 1990- / Lyrik / Einzelne Formen / Rap"
+                        ],
+                        "searchClassification_id_mv": [
+                            "SE00188624",
+                            "SE00279933",
+                            "SE00021228"
+                        ],
+                        "personBy_creator_mv": [
+                            "creator",
+                            "creator",
+                            "creator",
+                            "contributor"
+                        ],
+                        "extent": "1 Online-Ressource (Videodatei, 90 min)",
+                        "filterDateRange_mv": [
+                            "2024",
+                            "2024-02-26"
+                        ],
+                        "description_text_mv": [
+                            "farbig"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "digitalObject_thumbnail_mv": [
+                            "https://digital.dla-marbach.de/files/accesscopy/video/public/bts-fr-0001-1000/bts-fr-001-100/bts-fr-91-m01-s01-t01-v01-thumbnail.png",
+                            "␣"
+                        ],
+                        "searchVariant_mv": [
+                            "Pott, Sandra",
+                            "Torch"
+                        ],
+                        "publisher_display_mv": [
+                            "Dt. Literaturarchiv"
+                        ],
+                        "item_accessionNumber_mv": [
+                            "202403674"
+                        ],
+                        "item_usageRestriction_mv": [
+                            "benutzbar"
+                        ],
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00681944",
+                            "PE00683391",
+                            "PE00435659",
+                            "PE00077161"
+                        ],
+                        "vendor_type_mv": [
+                            "K10Plus-PPN"
+                        ],
+                        "publisherOriginalText_mv": [
+                            "Deutsches Literaturarchiv"
+                        ],
+                        "item_broadcastDate_mv": [
+                            "2024-02-26"
+                        ],
+                        "categoryPublication_mv": [
+                            "Gespräch, Interview"
+                        ],
+                        "displayAddition1": "Marbach am Neckar : Deutsches Literaturarchiv, 2024 - 1 Online-Ressource (Videodatei, 90 min)",
+                        "searchName_mv": [
+                            "Hahn, Frederik",
+                            "Bayaz, Danyal",
+                            "Richter, Sandra",
+                            "Röder, Eva"
+                        ],
+                        "item_location_mv": [
+                            "Mediendokumentation"
+                        ],
+                        "creator_id_mv": [
+                            "PE00681944",
+                            "PE00683391",
+                            "PE00435659"
+                        ],
+                        "personAbout_id_mv": [
+                            "PE00435659"
+                        ],
+                        "score": 13.701641
+                    }
+                ]
+            }
+        }
+    }
+}

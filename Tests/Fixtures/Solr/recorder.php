@@ -128,6 +128,9 @@ $detailDocuments = [
     'detail-manuscript-viewer' => 'HS00242238',            // Digitalisat im Viewer, öffentlich
     'detail-manuscript-mixed' => 'HS01306880',             // IIIF-Bild und Digitalisat im Viewer, nur Campus
     'detail-inventory-digital-object' => 'BF00019441',     // Bestand mit PDF, Schlagwort und Person Über
+    // Website-Links (website_url_mv) im Abschnitt "Digitales Objekt" bei Bibliothek:
+    'detail-library-video-youtube' => 'AK01824645',        // Video mit MM-Satz und Link "Veranstaltung auf "YouTube" ansehen"
+    'detail-library-audio-dichterlesen' => 'AK00415993',   // Link "Tondokument bei "Dichterlesen.net" nachhören"
 ];
 foreach ($detailDocuments as $name => $id) {
     $scenarios[$name] = [

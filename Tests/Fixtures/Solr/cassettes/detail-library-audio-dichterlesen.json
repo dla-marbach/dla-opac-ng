@@ -1,0 +1,337 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(AK00415993)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 13.701641,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "contributor_role_mv": [
+                            "Verfasser"
+                        ],
+                        "default": [
+                            "Verfasser",
+                            "H:Domin, Hilde/Bild- und Tonträger",
+                            "PE00013872",
+                            "false",
+                            "true",
+                            "TTS:BXN Domin 3",
+                            "Domin, Hilde (1909-2006)",
+                            "Rede / Vortrag",
+                            "Domin, Hilde (1909-2006)",
+                            "2024-06-03",
+                            "SE00000837",
+                            "Domin, Hilde (1909-2006)",
+                            "AU00283510",
+                            "Tondokument bei \"Dichterlesen.net\" nachhören",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>[Hilde Domin] : [Vortrag, Rede]</dc:title>\n  <dc:contributor>Domin, Hilde (1909-2006)</dc:contributor>\n  <dc:type>Tonband</dc:type>\n  <dc:type>Audiodatei</dc:type>\n  <dc:type>Rede / Vortrag</dc:type>\n  <dc:type>Tonbandspule</dc:type>\n  <dc:date>[o. J.]</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>1 Tonband</dc:format>\n  <dc:description>Hilde Domin spricht über das Exil</dc:description>\n  <dc:subject>Die Stimme des Autors</dc:subject>\n  <dc:subject>Domin, Hilde (1909-2006)</dc:subject>\n  <dc:subject>Domin, Hilde / A3.6.5 Die Stimme des Autors</dc:subject>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00025083</dc:source>\n  <dc:identifier>1385656735</dc:identifier>\n  <dc:identifier>TTS:BXN Domin 3</dc:identifier>\n  <dc:identifier>https://www.dichterlesen.net/veranstaltungen/detail/vortrag-rede-3058/</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00415993</dc:identifier>\n  <dc:identifier>AK00415993</dc:identifier>\n</oai_dc:dc>",
+                            "[o. J.]",
+                            "AK",
+                            "Abgeschlossen",
+                            "Tonbandspule",
+                            "Hilde Domin spricht über das Exil",
+                            "Mediendokumentation",
+                            "Domin, Hilde (1909-2006)",
+                            "Hilde Domin",
+                            "1385656735",
+                            "1",
+                            "2008-06-26",
+                            "Verfasser",
+                            "[Hilde Domin] : [Vortrag, Rede]",
+                            "H:Domin, Hilde/Bild- und Tonträger",
+                            "BF00025083",
+                            "PE00013872",
+                            "Tonträger",
+                            "Tonband",
+                            "Audiodatei",
+                            "Domin, Hilde (1909-2006)",
+                            "2008-06-26",
+                            "Kette Bibliothek",
+                            "[Hilde Domin]",
+                            "Audio",
+                            "PE00013872",
+                            "Domin, Hilde (1909-2006)␝Verfasser/Urheber",
+                            "Domin, Hilde (1909-2006)␝Sprecher",
+                            "[S.l.]",
+                            "Die Stimme des Autors",
+                            "Domin, Hilde (1909-2006)",
+                            "AK00415993",
+                            "S.l.␝Erscheinungsort",
+                            "Deutsch",
+                            "[Hilde Domin]",
+                            "[S.l.], [o. J.] - 1 Tonband",
+                            "https://www.dla-marbach.de/find/opac/id/AK00415993",
+                            "1 Tonband",
+                            "contributor",
+                            "TTS:BXN Domin 3. 200805048. [Hilde Domin] : [Vortrag, Rede]",
+                            "Ton- und Bildträger",
+                            "PE00013872",
+                            "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                            "1.0.0",
+                            "Palm, Hilde",
+                            "Löwenstein, Hildegard Dina",
+                            "Brühl, Denise",
+                            "Isla, Denise",
+                            "Palm-Domin, Hilde",
+                            "Domin, Hilde Palm-",
+                            "Palm Domin, Hilde",
+                            "Domin, Hilde Palm",
+                            "SE00000837",
+                            "Schlechte Tonqualität",
+                            "f-fertig, i-fertig",
+                            "Deutsch",
+                            "200805048",
+                            "Bibliotheksmaterialien",
+                            "benutzbar",
+                            "Domin, Hilde (1909-2006)␝Von",
+                            "Domin, Hilde",
+                            "Deutsch␝Original",
+                            "PE00013872",
+                            "K10Plus-PPN",
+                            "MM01543797",
+                            "MM01543798",
+                            "MM01543802",
+                            "https://www.dichterlesen.net/veranstaltungen/detail/vortrag-rede-3058/",
+                            "H:Domin, Hilde/Bild- und Tonträger - [Geschlossener Bestand der Mediendokumentation, Nachlass]",
+                            "tts-bxnd-domin_hilde-3-m01-s01-t01-v01.wav",
+                            "tts-bxnd-domin_hilde-3-m01-s01-t02-v01.wav",
+                            "tts-bxnd-domin_hilde-3-m01-s02-t01-v01.wav",
+                            "Vortrag, Rede",
+                            "Domin, Hilde",
+                            "TY  - GEN\nA2  - Domin, Hilde\nAU  - Domin, Hilde\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - [S.l.]\nDB  - H:Domin, Hilde/Bild- und Tonträger\nID  - AK00415993\nKW  - Die Stimme des Autors\nKW  - Domin, Hilde (1909-2006)\nLA  - Deutsch\nM2  - Tonband\nM2  - Audiodatei\nM3  - Rede / Vortrag\nN1  - Umfang: 1 Tonband\nN1  - Erscheinungsort: S.l.\nN1  - Hilde Domin spricht über das Exil\nTI  - [Hilde Domin] : [Vortrag, Rede]\nUR  - https://www.dichterlesen.net/veranstaltungen/detail/vortrag-rede-3058/\nUR  - https://www.dla-marbach.de/find/opac/id/AK00415993/\nER  -",
+                            "Tonband",
+                            "517n",
+                            "Tonband",
+                            "Audiodatei",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>[Hilde Domin]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Domin, Hilde (1909-2006)</namePart>\n    <nameIdentifier type=\"gnd\">118526634</nameIdentifier>\n    <namePart type=\"date\">1909-07-27 — 2006-02-22</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Tonband</typeOfResource>\n  <typeOfResource>Audiodatei</typeOfResource>\n  <genre>Rede / Vortrag</genre>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">S.l.</placeTerm>\n    </place>\n    <displayDate>[o. J.]</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Tonbandspule</form>\n    <extent>1 Tonband</extent>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Hilde Domin</note>\n  <note type=\"footnotes\">Hilde Domin spricht über das Exil</note>\n  <subject>\n    <topic>Die Stimme des Autors</topic>\n  </subject>\n  <subject>\n    <topic>Domin, Hilde (1909-2006)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Domin, Hilde (1909-2006)</namePart>\n    </name>\n  </subject>\n  <classification authority=\"DE-Mar1\">Domin, Hilde / A3.6.5 Die Stimme des Autors</classification>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00025083</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <identifier type=\"kxp\">1385656735</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>TTS:BXN Domin 3</shelfLocator>\n    <url access=\"object in context\">https://www.dichterlesen.net/veranstaltungen/detail/vortrag-rede-3058/</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2008-06-26</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2024-06-03</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00415993</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "Domin, Hilde (1909-2006)",
+                            "S.l.",
+                            "Domin, Hilde / A3.6.5 Die Stimme des Autors"
+                        ],
+                        "item_callNumberCollection_mv": [
+                            "H:Domin, Hilde/Bild- und Tonträger"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00013872"
+                        ],
+                        "confidential": false,
+                        "filterDigital": true,
+                        "item_callNumberItem_mv": [
+                            "TTS:BXN Domin 3"
+                        ],
+                        "personAbout_display_mv": [
+                            "Domin, Hilde (1909-2006)"
+                        ],
+                        "filterFormContent_mv": [
+                            "Rede / Vortrag"
+                        ],
+                        "filterAuthority_mv": [
+                            "Domin, Hilde (1909-2006)"
+                        ],
+                        "dateModified": "2024-06-03",
+                        "searchClassification_id_mv": [
+                            "SE00000837"
+                        ],
+                        "contributor_display_mv": [
+                            "Domin, Hilde (1909-2006)"
+                        ],
+                        "item_id_mv": [
+                            "AU00283510"
+                        ],
+                        "website_description_mv": [
+                            "Tondokument bei \"Dichterlesen.net\" nachhören"
+                        ],
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>[Hilde Domin] : [Vortrag, Rede]</dc:title>\n  <dc:contributor>Domin, Hilde (1909-2006)</dc:contributor>\n  <dc:type>Tonband</dc:type>\n  <dc:type>Audiodatei</dc:type>\n  <dc:type>Rede / Vortrag</dc:type>\n  <dc:type>Tonbandspule</dc:type>\n  <dc:date>[o. J.]</dc:date>\n  <dc:language>Deutsch</dc:language>\n  <dc:format>1 Tonband</dc:format>\n  <dc:description>Hilde Domin spricht über das Exil</dc:description>\n  <dc:subject>Die Stimme des Autors</dc:subject>\n  <dc:subject>Domin, Hilde (1909-2006)</dc:subject>\n  <dc:subject>Domin, Hilde / A3.6.5 Die Stimme des Autors</dc:subject>\n  <dc:source>https://www.dla-marbach.de/find/opac/id/BF00025083</dc:source>\n  <dc:identifier>1385656735</dc:identifier>\n  <dc:identifier>TTS:BXN Domin 3</dc:identifier>\n  <dc:identifier>https://www.dichterlesen.net/veranstaltungen/detail/vortrag-rede-3058/</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/AK00415993</dc:identifier>\n  <dc:identifier>AK00415993</dc:identifier>\n</oai_dc:dc>",
+                        "dateOriginComment_mv": [
+                            "[o. J.]"
+                        ],
+                        "source": "AK",
+                        "statusEditing": "Abgeschlossen",
+                        "categoryMedium_mv": [
+                            "Tonbandspule"
+                        ],
+                        "noteFootnote_text_mv": [
+                            "Hilde Domin spricht über das Exil"
+                        ],
+                        "item_location_mv": [
+                            "Mediendokumentation"
+                        ],
+                        "searchCollectionCreator_display_mv": [
+                            "Domin, Hilde (1909-2006)"
+                        ],
+                        "titleResponsability": "Hilde Domin",
+                        "vendor_id_mv": [
+                            "1385656735"
+                        ],
+                        "searchBoost": 1,
+                        "dateCataloged": "2008-06-26",
+                        "personBy_role_mv": [
+                            "Verfasser"
+                        ],
+                        "display": "[Hilde Domin] : [Vortrag, Rede]",
+                        "filterCollection_mv": [
+                            "H:Domin, Hilde/Bild- und Tonträger"
+                        ],
+                        "item_collection_id_mv": [
+                            "BF00025083"
+                        ],
+                        "searchCollectionCreator_id_mv": [
+                            "PE00013872"
+                        ],
+                        "categoryMedia_mv": [
+                            "Tonträger",
+                            "Tonband",
+                            "Audiodatei"
+                        ],
+                        "personBy_display_mv": [
+                            "Domin, Hilde (1909-2006)"
+                        ],
+                        "filterRecent": "2008-06-26",
+                        "classification_category_mv": [
+                            "Kette Bibliothek"
+                        ],
+                        "title": "[Hilde Domin]",
+                        "filterType_mv": [
+                            "Audio"
+                        ],
+                        "contributor_id_mv": [
+                            "PE00013872"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Domin, Hilde (1909-2006)␝Verfasser/Urheber",
+                            "Domin, Hilde (1909-2006)␝Sprecher"
+                        ],
+                        "publisherOriginalLocation_mv": [
+                            "[S.l.]"
+                        ],
+                        "filterSubject_mv": [
+                            "Die Stimme des Autors",
+                            "Domin, Hilde (1909-2006)"
+                        ],
+                        "id": "AK00415993",
+                        "filterLocationType_mv": [
+                            "S.l.␝Erscheinungsort"
+                        ],
+                        "language_mv": [
+                            "Deutsch"
+                        ],
+                        "titleMain_text": "[Hilde Domin]",
+                        "displayAddition1": "[S.l.], [o. J.] - 1 Tonband",
+                        "url": "https://www.dla-marbach.de/find/opac/id/AK00415993",
+                        "extent": "1 Tonband",
+                        "personBy_creator_mv": [
+                            "contributor"
+                        ],
+                        "item_display_mv": [
+                            "TTS:BXN Domin 3. 200805048. [Hilde Domin] : [Vortrag, Rede]"
+                        ],
+                        "category": "Ton- und Bildträger",
+                        "personAbout_id_mv": [
+                            "PE00013872"
+                        ],
+                        "categorySub": "Einzelne Einheit / nicht Teil eines Gesamtwerks",
+                        "schemaVersion": "1.0.0",
+                        "searchVariant_mv": [
+                            "Palm, Hilde",
+                            "Löwenstein, Hildegard Dina",
+                            "Brühl, Denise",
+                            "Isla, Denise",
+                            "Palm-Domin, Hilde",
+                            "Domin, Hilde Palm-",
+                            "Palm Domin, Hilde",
+                            "Domin, Hilde Palm"
+                        ],
+                        "classification_id_mv": [
+                            "SE00000837"
+                        ],
+                        "item_note_mv": [
+                            "Schlechte Tonqualität"
+                        ],
+                        "statusCataloging": "f-fertig, i-fertig",
+                        "filterLanguage_mv": [
+                            "Deutsch"
+                        ],
+                        "item_accessionNumber_mv": [
+                            "200805048"
+                        ],
+                        "filterSource": "Bibliotheksmaterialien",
+                        "item_usageRestriction_mv": [
+                            "benutzbar"
+                        ],
+                        "filterAuthorityRelation_mv": [
+                            "Domin, Hilde (1909-2006)␝Von"
+                        ],
+                        "searchName_mv": [
+                            "Domin, Hilde"
+                        ],
+                        "filterLanguageType_mv": [
+                            "Deutsch␝Original"
+                        ],
+                        "personBy_id_mv": [
+                            "PE00013872"
+                        ],
+                        "vendor_type_mv": [
+                            "K10Plus-PPN"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01543797",
+                            "MM01543798",
+                            "MM01543802"
+                        ],
+                        "website_url_mv": [
+                            "https://www.dichterlesen.net/veranstaltungen/detail/vortrag-rede-3058/"
+                        ],
+                        "item_collection_display_mv": [
+                            "H:Domin, Hilde/Bild- und Tonträger - [Geschlossener Bestand der Mediendokumentation, Nachlass]"
+                        ],
+                        "digitalObject_display_mv": [
+                            "tts-bxnd-domin_hilde-3-m01-s01-t01-v01.wav",
+                            "tts-bxnd-domin_hilde-3-m01-s01-t02-v01.wav",
+                            "tts-bxnd-domin_hilde-3-m01-s02-t01-v01.wav"
+                        ],
+                        "categoryPublication_mv": [
+                            "Vortrag, Rede"
+                        ],
+                        "searchNameBy_mv": [
+                            "Domin, Hilde"
+                        ],
+                        "exportRIS": "TY  - GEN\nA2  - Domin, Hilde\nAU  - Domin, Hilde\nAV  - nur bibliographischer Nachweis, nicht im Bestand des DLA\nCY  - [S.l.]\nDB  - H:Domin, Hilde/Bild- und Tonträger\nID  - AK00415993\nKW  - Die Stimme des Autors\nKW  - Domin, Hilde (1909-2006)\nLA  - Deutsch\nM2  - Tonband\nM2  - Audiodatei\nM3  - Rede / Vortrag\nN1  - Umfang: 1 Tonband\nN1  - Erscheinungsort: S.l.\nN1  - Hilde Domin spricht über das Exil\nTI  - [Hilde Domin] : [Vortrag, Rede]\nUR  - https://www.dichterlesen.net/veranstaltungen/detail/vortrag-rede-3058/\nUR  - https://www.dla-marbach.de/find/opac/id/AK00415993/\nER  -",
+                        "categorySubSub": "Tonband",
+                        "noteFootnote_type_mv": [
+                            "517n"
+                        ],
+                        "filterMedium_mv": [
+                            "Tonband",
+                            "Audiodatei"
+                        ],
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>[Hilde Domin]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Domin, Hilde (1909-2006)</namePart>\n    <nameIdentifier type=\"gnd\">118526634</nameIdentifier>\n    <namePart type=\"date\">1909-07-27 — 2006-02-22</namePart>\n    <role>\n      <roleTerm type=\"text\">Verfasser</roleTerm>\n    </role>\n  </name>\n  <typeOfResource>Tonband</typeOfResource>\n  <typeOfResource>Audiodatei</typeOfResource>\n  <genre>Rede / Vortrag</genre>\n  <originInfo eventType=\"publication\">\n    <place>\n      <placeTerm type=\"text\">S.l.</placeTerm>\n    </place>\n    <displayDate>[o. J.]</displayDate>\n  </originInfo>\n  <language>\n    <languageTerm type=\"text\">Deutsch</languageTerm>\n  </language>\n  <physicalDescription>\n    <form type=\"media\">Tonbandspule</form>\n    <extent>1 Tonband</extent>\n  </physicalDescription>\n  <note type=\"statement of responsibility\">Hilde Domin</note>\n  <note type=\"footnotes\">Hilde Domin spricht über das Exil</note>\n  <subject>\n    <topic>Die Stimme des Autors</topic>\n  </subject>\n  <subject>\n    <topic>Domin, Hilde (1909-2006)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Domin, Hilde (1909-2006)</namePart>\n    </name>\n  </subject>\n  <classification authority=\"DE-Mar1\">Domin, Hilde / A3.6.5 Die Stimme des Autors</classification>\n  <relatedItem type=\"host\">\n    <recordInfo>\n      <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00025083</recordIdentifier>\n    </recordInfo>\n  </relatedItem>\n  <identifier type=\"kxp\">1385656735</identifier>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>TTS:BXN Domin 3</shelfLocator>\n    <url access=\"object in context\">https://www.dichterlesen.net/veranstaltungen/detail/vortrag-rede-3058/</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2008-06-26</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2024-06-03</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">AK00415993</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "displayName": "Domin, Hilde (1909-2006)",
+                        "filterLocation_mv": [
+                            "S.l."
+                        ],
+                        "classification_display_mv": [
+                            "Domin, Hilde / A3.6.5 Die Stimme des Autors"
+                        ],
+                        "score": 13.701641
+                    }
+                ]
+            }
+        }
+    }
+}
