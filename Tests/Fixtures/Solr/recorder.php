@@ -127,6 +127,7 @@ $detailDocuments = [
     // Digitales Objekt bei Handschriften (Viewer-Links ohne Dateiendung, mit Vorschaubild):
     'detail-manuscript-viewer' => 'HS00242238',            // Digitalisat im Viewer, öffentlich
     'detail-manuscript-mixed' => 'HS01306880',             // IIIF-Bild und Digitalisat im Viewer, nur Campus
+    'detail-inventory-digital-object' => 'BF00019441',     // Bestand mit PDF, Schlagwort und Person Über
 ];
 foreach ($detailDocuments as $name => $id) {
     $scenarios[$name] = [

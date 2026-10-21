@@ -1,0 +1,47 @@
+<?php
+
+namespace Dla\DlaOpacNg\Tests\Unit\Partials\Detail;
+
+use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
+
+/**
+ * Display/Detail/*\/Details: der Abschnitt "Digitales Objekt" (id="digitales-objekt") ist in allen
+ * Datenbeständen der letzte Abschnitt im Reiter "Details", damit Player und Bildergalerie die
+ * Metadaten nicht unterbrechen.
+ */
+class DigitalObjectPositionTest extends FluidPartialTestCase
+{
+    /**
+     * @test
+     * @dataProvider detailsWithDigitalObject
+     */
+    public function digitalObjectIsLastSectionOfDetailsTab(string $partial, string $id): void
+    {
+        $this->assertDigitalObjectIsLastSection($this->renderDetailPartial($partial, $id));
+    }
+
+    public static function detailsWithDigitalObject(): array
+    {
+        return [
+            'Bibliothek' => ['Display/Detail/Library/Details', 'AK00983699'],
+            'Bilder und Objekte' => ['Display/Detail/ImagesAndObjects/Details', 'BI00005210'],
+            'Bestände' => ['Display/Detail/Inventory/Details', 'BF00019441'],
+            'Handschriften' => ['Display/Detail/Manuscripts/Details', 'HS00242238'],
+        ];
+    }
+
+    private function assertDigitalObjectIsLastSection(string $html): void
+    {
+        $detailStart = strpos($html, '<div id="detail"');
+        self::assertNotFalse($detailStart, 'Reiter "Details" fehlt');
+        $detail = substr($html, $detailStart);
+
+        $parts = explode('id="digitales-objekt"', $detail);
+        self::assertCount(2, $parts, 'Abschnitt "Digitales Objekt" fehlt im Reiter "Details"');
+        self::assertStringContainsString('class="ctg-dtvt-label"', $parts[0]);
+
+        // Nach dem Abschnitt folgen keine weiteren Felder (Zeilen mit Label bzw. dt/dd-Paare)
+        self::assertSame(1, substr_count($parts[1], 'class="ctg-dtvt-label"'));
+        self::assertStringNotContainsString('<dt', $parts[1]);
+    }
+}
