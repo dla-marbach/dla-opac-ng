@@ -3,8 +3,6 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Partials\Detail;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
-use Dla\DlaOpacNg\Tests\Support\SolrFixture;
-use Solarium\QueryType\Select\Result\Document;
 
 /**
  * Display/Detail/*\/Details: der Abschnitt "Digitales Objekt" (id="digitales-objekt") ist in allen
@@ -27,25 +25,9 @@ class DigitalObjectPositionTest extends FluidPartialTestCase
         return [
             'Bibliothek' => ['Display/Detail/Library/Details', 'AK00983699'],
             'Bilder und Objekte' => ['Display/Detail/ImagesAndObjects/Details', 'BI00005210'],
+            'Bestände' => ['Display/Detail/Inventory/Details', 'BF00019441'],
             'Handschriften' => ['Display/Detail/Manuscripts/Details', 'HS00242238'],
         ];
-    }
-
-    /**
-     * @test
-     */
-    public function digitalObjectIsLastSectionOfInventoryDetailsTab(): void
-    {
-        // Keine Bestands-Fixture mit Digitalisat vorhanden: Bestand BF00025111 um ein PDF ergänzen
-        $variables = SolrFixture::detailVariables('BF00025111');
-        $variables['document'] = new Document(array_merge($variables['document']->getFields(), [
-            'digitalObject_hyperlink_mv' => ['https://digital.dla-marbach.de/files/test/public/test.pdf'],
-            'digitalObject_display_mv' => ['Findbuch'],
-            'digitalObject_fileExtension_mv' => ['pdf'],
-            'digitalObject_accessLevel_mv' => ['public'],
-        ]));
-
-        $this->assertDigitalObjectIsLastSection($this->renderPartial('Display/Detail/Inventory/Details', $variables));
     }
 
     private function assertDigitalObjectIsLastSection(string $html): void

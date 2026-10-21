@@ -1,0 +1,271 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/solr/internformat/select",
+        "query": {
+            "omitHeader": "true",
+            "wt": "json",
+            "json.nl": "flat",
+            "start": "0",
+            "fl": "*,score",
+            "q": "id:(BF00019441)",
+            "rows": "1"
+        }
+    },
+    "response": {
+        "status": 200,
+        "body": {
+            "response": {
+                "numFound": 1,
+                "start": 0,
+                "maxScore": 18.115507,
+                "numFoundExact": true,
+                "docs": [
+                    {
+                        "id": "BF00019441",
+                        "default": [
+                            "BF00019441",
+                            "G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices) - [Geschlossener Bestand der Bibliothek, Nachlass, Gelehrtenbibliothek]",
+                            "BB.1960.0001",
+                            "BE00003718",
+                            "BE00003718",
+                            "Geschlossener Bestand der Bibliothek",
+                            "Nachlass",
+                            "Gelehrtenbibliothek",
+                            "false",
+                            "Zugangsjahr: 1960.\nZum Nachlaß von Ludwig Klages (1872-1956) gehört auch eine etwa 5.000 Bände umfassende Arbeitsbibliothek mit überwiegend psychologischen, philosophischen, kulturgeschichtlichen, literarischen und anthropologischen Werken. Sie wurde nach der Übernahme zunächst in zwei Räumen (Gedenkzimmer) des Schiller-Nationalmuseums so aufgestellt, wie sie Klages seinerzeit in Kilchberg am Zürichsee um sich arrangiert hatte. Nach dem Umbau des Nationalmuseums und vor allem aus konservatorischen Gründen wurde die Bibliothek im klimatierten Magazinbereich untergebracht. Ein umfangreicher Zeitschriftenbestand zur Graphologie und Anthropologie ergänzt das weit gefächerte wissenschaftliche Spektrum. Bei der Katalogisierung wurden fünf Hauptgruppen geschaffen. Die meisten Bücher haben bei der Katalogisierung eine fortlaufende Nummer erhalten.\nZur Bibliothek gehört ausserdem eine umfangreiche Sonderdruck-Sammlung. Sonderdruck-Bestände dokumentieren Freundschaften und kollegiale Beziehungen in den Netzwerken von Literaturwissenschaft und Geistesgeschichte. Für fachgeschichtliche und biographische Forschungen bilden sie ein wertvolles Quellenmaterial. Unter diesem Aspekt wird auf die Sammlungen von Richard Brinkmann (1.621 SD), Hans-Georg Gadamer (833 SD), Reinhart Koselleck (2.401 SD), Fritz Martini (4.833 SD), Paul Raabe (991 SD), Dolf Sternberger (1.467 SD), Erich Trunz (574 SD), Wilhelm Voßkamp (1.516 SD) und Bernhard Zeller (2.735 SD) hingewiesen. Der Bestand umfasst mehr als 15.000 Separata.",
+                            "2005-07-07",
+                            "2026-06-23",
+                            "Bibliothek",
+                            "public",
+                            "Klages (Sonderdruck-Sammlung Ludwig Klages)_Alphabetische Autorenliste",
+                            "pdf",
+                            "https://digital.dla-marbach.de/files/dbst02/public/2021/20211029/20211029-0012.pdf?media_access=public",
+                            "MM01442470",
+                            "5.045 Bände (davon 1.273 Zss.) zzgl. 1.005 Sonderdrucke",
+                            "Klages, Ludwig (1872-1956)",
+                            "Nachlass, Bibliothek [G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices)]",
+                            "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices) - [Geschlossener Bestand der Bibliothek, Nachlass, Gelehrtenbibliothek]</dc:title>\n  <dc:creator>Klages, Ludwig (1872-1956)</dc:creator>\n  <dc:type>Nachlass</dc:type>\n  <dc:type>Bestand</dc:type>\n  <dc:format>5.045 Bände (davon 1.273 Zss.) zzgl. 1.005 Sonderdrucke</dc:format>\n  <dc:description>Zugangsjahr: 1960.\nZum Nachlaß von Ludwig Klages (1872-1956) gehört auch eine etwa 5.000 Bände umfassende Arbeitsbibliothek mit überwiegend psychologischen, philosophischen, kulturgeschichtlichen, literarischen und anthropologischen Werken. Sie wurde nach der Übernahme zunächst in zwei Räumen (Gedenkzimmer) des Schiller-Nationalmuseums so aufgestellt, wie sie Klages seinerzeit in Kilchberg am Zürichsee um sich arrangiert hatte. Nach dem Umbau des Nationalmuseums und vor allem aus konservatorischen Gründen wurde die Bibliothek im klimatierten Magazinbereich untergebracht. Ein umfangreicher Zeitschriftenbestand zur Graphologie und Anthropologie ergänzt das weit gefächerte wissenschaftliche Spektrum. Bei der Katalogisierung wurden fünf Hauptgruppen geschaffen. Die meisten Bücher haben bei der Katalogisierung eine fortlaufende Nummer erhalten.\nZur Bibliothek gehört ausserdem eine umfangreiche Sonderdruck-Sammlung. Sonderdruck-Bestände dokumentieren Freundschaften und kollegiale Beziehungen in den Netzwerken von Literaturwissenschaft und Geistesgeschichte. Für fachgeschichtliche und biographische Forschungen bilden sie ein wertvolles Quellenmaterial. Unter diesem Aspekt wird auf die Sammlungen von Richard Brinkmann (1.621 SD), Hans-Georg Gadamer (833 SD), Reinhart Koselleck (2.401 SD), Fritz Martini (4.833 SD), Paul Raabe (991 SD), Dolf Sternberger (1.467 SD), Erich Trunz (574 SD), Wilhelm Voßkamp (1.516 SD) und Bernhard Zeller (2.735 SD) hingewiesen. Der Bestand umfasst mehr als 15.000 Separata.</dc:description>\n  <dc:subject>Grafologie</dc:subject>\n  <dc:subject>Psychologische Anthropologie</dc:subject>\n  <dc:subject>Klages, Ludwig (1872-1956)</dc:subject>\n  <dc:identifier>G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices)</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/files/dbst02/public/2021/20211029/20211029-0012.pdf?media_access=public</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BF00019441</dc:identifier>\n  <dc:identifier>BF00019441</dc:identifier>\n</oai_dc:dc>",
+                            "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices) - [Geschlossener Bestand der Bibliothek, Nachlass, Gelehrtenbibliothek]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Klages, Ludwig (1872-1956)</namePart>\n    <nameIdentifier type=\"gnd\">11856269X</nameIdentifier>\n    <namePart type=\"date\">1872-12-10 — 1956-07-29</namePart>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <typeOfResource collection=\"yes\">Bestand</typeOfResource>\n  <genre>Nachlass</genre>\n  <physicalDescription>\n    <extent>5.045 Bände (davon 1.273 Zss.) zzgl. 1.005 Sonderdrucke</extent>\n  </physicalDescription>\n  <abstract>Zugangsjahr: 1960.\nZum Nachlaß von Ludwig Klages (1872-1956) gehört auch eine etwa 5.000 Bände umfassende Arbeitsbibliothek mit überwiegend psychologischen, philosophischen, kulturgeschichtlichen, literarischen und anthropologischen Werken. Sie wurde nach der Übernahme zunächst in zwei Räumen (Gedenkzimmer) des Schiller-Nationalmuseums so aufgestellt, wie sie Klages seinerzeit in Kilchberg am Zürichsee um sich arrangiert hatte. Nach dem Umbau des Nationalmuseums und vor allem aus konservatorischen Gründen wurde die Bibliothek im klimatierten Magazinbereich untergebracht. Ein umfangreicher Zeitschriftenbestand zur Graphologie und Anthropologie ergänzt das weit gefächerte wissenschaftliche Spektrum. Bei der Katalogisierung wurden fünf Hauptgruppen geschaffen. Die meisten Bücher haben bei der Katalogisierung eine fortlaufende Nummer erhalten.\nZur Bibliothek gehört ausserdem eine umfangreiche Sonderdruck-Sammlung. Sonderdruck-Bestände dokumentieren Freundschaften und kollegiale Beziehungen in den Netzwerken von Literaturwissenschaft und Geistesgeschichte. Für fachgeschichtliche und biographische Forschungen bilden sie ein wertvolles Quellenmaterial. Unter diesem Aspekt wird auf die Sammlungen von Richard Brinkmann (1.621 SD), Hans-Georg Gadamer (833 SD), Reinhart Koselleck (2.401 SD), Fritz Martini (4.833 SD), Paul Raabe (991 SD), Dolf Sternberger (1.467 SD), Erich Trunz (574 SD), Wilhelm Voßkamp (1.516 SD) und Bernhard Zeller (2.735 SD) hingewiesen. Der Bestand umfasst mehr als 15.000 Separata.</abstract>\n  <subject>\n    <topic>Grafologie</topic>\n  </subject>\n  <subject>\n    <topic>Psychologische Anthropologie</topic>\n  </subject>\n  <subject>\n    <topic>Klages, Ludwig (1872-1956)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Klages, Ludwig (1872-1956)</namePart>\n    </name>\n  </subject>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices)</shelfLocator>\n    <url access=\"object in context\">https://digital.dla-marbach.de/files/dbst02/public/2021/20211029/20211029-0012.pdf?media_access=public</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2005-07-07</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2026-06-23</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00019441</recordIdentifier>\n  </recordInfo>\n</mods>",
+                            "TY  - GEN\nA2  - Klages, Ludwig\nAN  - BB.1960.0001\nAU  - Klages, Ludwig\nAV  - bedingt benutzbar. Benutzung bedingt möglich nach vorheriger Terminabsprache. Bitte nehmen Sie Kontakt zu uns auf.. E-Mail: bibliothek@dla-marbach.de. Telefon: +49 7144 848 317\nCN  - BF000194414\nDB  - G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices)\nID  - BF00019441\nKW  - Grafologie\nKW  - Psychologische Anthropologie\nKW  - Klages, Ludwig (1872-1956)\nM3  - Nachlass\nN1  - Umfang: 5.045 Bände (davon 1.273 Zss.) zzgl. 1.005 Sonderdrucke\nN1  - katalogisiert: 1.664 Bände\nN1  - nicht verzeichnet: 4386 Bände\nN1  - Ordnung übernommen: 6050 Bände\nN1  - Ordnung übernommen: 30 Kästen\nN2  - Zugangsjahr: 1960.. Zum Nachlaß von Ludwig Klages (1872-1956) gehört auch eine etwa 5.000 Bände umfassende Arbeitsbibliothek mit überwiegend psychologischen, philosophischen, kulturgeschichtlichen, literarischen und anthropologischen Werken. Sie wurde nach der Übernahme zunächst in zwei Räumen (Gedenkzimmer) des Schiller-Nationalmuseums so aufgestellt, wie sie Klages seinerzeit in Kilchberg am Zürichsee um sich arrangiert hatte. Nach dem Umbau des Nationalmuseums und vor allem aus konservatorischen Gründen wurde die Bibliothek im klimatierten Magazinbereich untergebracht. Ein umfangreicher Zeitschriftenbestand zur Graphologie und Anthropologie ergänzt das weit gefächerte wissenschaftliche Spektrum. Bei der Katalogisierung wurden fünf Hauptgruppen geschaffen. Die meisten Bücher haben bei der Katalogisierung eine fortlaufende Nummer erhalten.. Zur Bibliothek gehört ausserdem eine umfangreiche Sonderdruck-Sammlung. Sonderdruck-Bestände dokumentieren Freundschaften und kollegiale Beziehungen in den Netzwerken von Literaturwissenschaft und Geistesgeschichte. Für fachgeschichtliche und biographische Forschungen bilden sie ein wertvolles Quellenmaterial. Unter diesem Aspekt wird auf die Sammlungen von Richard Brinkmann (1.621 SD), Hans-Georg Gadamer (833 SD), Reinhart Koselleck (2.401 SD), Fritz Martini (4.833 SD), Paul Raabe (991 SD), Dolf Sternberger (1.467 SD), Erich Trunz (574 SD), Wilhelm Voßkamp (1.516 SD) und Bernhard Zeller (2.735 SD) hingewiesen. Der Bestand umfasst mehr als 15.000 Separata.\nRN  - Grundsignatur: Klages-A.\nTI  - G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices) - [Geschlossener Bestand der Bibliothek, Nachlass, Gelehrtenbibliothek]\nUR  - https://digital.dla-marbach.de/files/dbst02/public/2021/20211029/20211029-0012.pdf?media_access=public\nUR  - https://www.dla-marbach.de/find/opac/id/BF00019441/\nER  -",
+                            "5.045 Bände (davon 1.273 Zss.) zzgl. 1.005 Sonderdrucke",
+                            "Klages, Ludwig (1872-1956)␝Über",
+                            "Klages, Ludwig (1872-1956)␝Unter",
+                            "Klages, Ludwig (1872-1956)␝Behandelte Person/Körperschaft",
+                            "Klages, Ludwig (1872-1956)␝Bestandsbildner/Vorbesitzer",
+                            "Klages, Ludwig (1872-1956)",
+                            "G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices)",
+                            "Nachlass",
+                            "true",
+                            "2005-07-07",
+                            "Nachlässe und Spezialsammlungen",
+                            "Grafologie",
+                            "Psychologische Anthropologie",
+                            "Klages, Ludwig (1872-1956)",
+                            "Gedrucktes",
+                            "1.664",
+                            "4386",
+                            "katalogisiert",
+                            "nicht verzeichnet",
+                            "Bände",
+                            "Bände",
+                            "Bibliotheksmagazin 5 (Block II: Achse 21b-22a; Quartformate: Achse 16)",
+                            "BF000194414",
+                            "Grundsignatur: Klages-A.",
+                            "6050",
+                            "30",
+                            "Ordnung übernommen",
+                            "Ordnung übernommen",
+                            "Bände",
+                            "Kästen",
+                            "Klages, Ludwig (1872-1956)",
+                            "PE00023223",
+                            "Klages, Ludwig (1872-1956)",
+                            "PE00023223",
+                            "1.0.0",
+                            "1.3221414237842337",
+                            "Klages, Ludwig (1872-1956)",
+                            "PE00023223",
+                            "PE00023223",
+                            "Klages, Ludwig",
+                            "Klages, Ludwig",
+                            "Klages, Ludwig",
+                            "Axel, Dr. Erwin",
+                            "Klages, Friedrich Konrad Eduard Wilhelm Ludwig",
+                            "BF",
+                            "Am Standort",
+                            "Grafologie",
+                            "Psychologische Anthropologie",
+                            "TH00019860",
+                            "TH00019949",
+                            "Graphologie",
+                            "Handschriftendeutung",
+                            "Schriftpsychologie",
+                            "Graphologische Diagnostik",
+                            "Grafologische Diagnostik",
+                            "Anthropologische Psychologie",
+                            "G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices)",
+                            "Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices)",
+                            "https://www.dla-marbach.de/find/opac/id/BF00019441",
+                            "eingeschränkt benutzbar",
+                            "Rara-Bestand",
+                            "bedingt benutzbar\nBenutzung bedingt möglich nach vorheriger Terminabsprache. Bitte nehmen Sie Kontakt zu uns auf.\nE-Mail: bibliothek@dla-marbach.de\nTelefon: +49 7144 848 317"
+                        ],
+                        "display": "G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices) - [Geschlossener Bestand der Bibliothek, Nachlass, Gelehrtenbibliothek]",
+                        "accessionNumber": "BB.1960.0001",
+                        "accession_display": "BE00003718",
+                        "accession_id": "BE00003718",
+                        "category": "Geschlossener Bestand der Bibliothek",
+                        "categorySub": "Nachlass",
+                        "categorySubSub": "Gelehrtenbibliothek",
+                        "confidential": false,
+                        "content": "Zugangsjahr: 1960.\nZum Nachlaß von Ludwig Klages (1872-1956) gehört auch eine etwa 5.000 Bände umfassende Arbeitsbibliothek mit überwiegend psychologischen, philosophischen, kulturgeschichtlichen, literarischen und anthropologischen Werken. Sie wurde nach der Übernahme zunächst in zwei Räumen (Gedenkzimmer) des Schiller-Nationalmuseums so aufgestellt, wie sie Klages seinerzeit in Kilchberg am Zürichsee um sich arrangiert hatte. Nach dem Umbau des Nationalmuseums und vor allem aus konservatorischen Gründen wurde die Bibliothek im klimatierten Magazinbereich untergebracht. Ein umfangreicher Zeitschriftenbestand zur Graphologie und Anthropologie ergänzt das weit gefächerte wissenschaftliche Spektrum. Bei der Katalogisierung wurden fünf Hauptgruppen geschaffen. Die meisten Bücher haben bei der Katalogisierung eine fortlaufende Nummer erhalten.\nZur Bibliothek gehört ausserdem eine umfangreiche Sonderdruck-Sammlung. Sonderdruck-Bestände dokumentieren Freundschaften und kollegiale Beziehungen in den Netzwerken von Literaturwissenschaft und Geistesgeschichte. Für fachgeschichtliche und biographische Forschungen bilden sie ein wertvolles Quellenmaterial. Unter diesem Aspekt wird auf die Sammlungen von Richard Brinkmann (1.621 SD), Hans-Georg Gadamer (833 SD), Reinhart Koselleck (2.401 SD), Fritz Martini (4.833 SD), Paul Raabe (991 SD), Dolf Sternberger (1.467 SD), Erich Trunz (574 SD), Wilhelm Voßkamp (1.516 SD) und Bernhard Zeller (2.735 SD) hingewiesen. Der Bestand umfasst mehr als 15.000 Separata.",
+                        "dateCataloged": "2005-07-07",
+                        "dateModified": "2026-06-23",
+                        "department": "Bibliothek",
+                        "digitalObject_accessLevel_mv": [
+                            "public"
+                        ],
+                        "digitalObject_display_mv": [
+                            "Klages (Sonderdruck-Sammlung Ludwig Klages)_Alphabetische Autorenliste"
+                        ],
+                        "digitalObject_fileExtension_mv": [
+                            "pdf"
+                        ],
+                        "digitalObject_hyperlink_mv": [
+                            "https://digital.dla-marbach.de/files/dbst02/public/2021/20211029/20211029-0012.pdf?media_access=public"
+                        ],
+                        "digitalObject_id_mv": [
+                            "MM01442470"
+                        ],
+                        "displayAddition1": "5.045 Bände (davon 1.273 Zss.) zzgl. 1.005 Sonderdrucke",
+                        "displayName": "Klages, Ludwig (1872-1956)",
+                        "displayTree": "Nachlass, Bibliothek [G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices)]",
+                        "exportDC": "<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n  <dc:title>G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices) - [Geschlossener Bestand der Bibliothek, Nachlass, Gelehrtenbibliothek]</dc:title>\n  <dc:creator>Klages, Ludwig (1872-1956)</dc:creator>\n  <dc:type>Nachlass</dc:type>\n  <dc:type>Bestand</dc:type>\n  <dc:format>5.045 Bände (davon 1.273 Zss.) zzgl. 1.005 Sonderdrucke</dc:format>\n  <dc:description>Zugangsjahr: 1960.\nZum Nachlaß von Ludwig Klages (1872-1956) gehört auch eine etwa 5.000 Bände umfassende Arbeitsbibliothek mit überwiegend psychologischen, philosophischen, kulturgeschichtlichen, literarischen und anthropologischen Werken. Sie wurde nach der Übernahme zunächst in zwei Räumen (Gedenkzimmer) des Schiller-Nationalmuseums so aufgestellt, wie sie Klages seinerzeit in Kilchberg am Zürichsee um sich arrangiert hatte. Nach dem Umbau des Nationalmuseums und vor allem aus konservatorischen Gründen wurde die Bibliothek im klimatierten Magazinbereich untergebracht. Ein umfangreicher Zeitschriftenbestand zur Graphologie und Anthropologie ergänzt das weit gefächerte wissenschaftliche Spektrum. Bei der Katalogisierung wurden fünf Hauptgruppen geschaffen. Die meisten Bücher haben bei der Katalogisierung eine fortlaufende Nummer erhalten.\nZur Bibliothek gehört ausserdem eine umfangreiche Sonderdruck-Sammlung. Sonderdruck-Bestände dokumentieren Freundschaften und kollegiale Beziehungen in den Netzwerken von Literaturwissenschaft und Geistesgeschichte. Für fachgeschichtliche und biographische Forschungen bilden sie ein wertvolles Quellenmaterial. Unter diesem Aspekt wird auf die Sammlungen von Richard Brinkmann (1.621 SD), Hans-Georg Gadamer (833 SD), Reinhart Koselleck (2.401 SD), Fritz Martini (4.833 SD), Paul Raabe (991 SD), Dolf Sternberger (1.467 SD), Erich Trunz (574 SD), Wilhelm Voßkamp (1.516 SD) und Bernhard Zeller (2.735 SD) hingewiesen. Der Bestand umfasst mehr als 15.000 Separata.</dc:description>\n  <dc:subject>Grafologie</dc:subject>\n  <dc:subject>Psychologische Anthropologie</dc:subject>\n  <dc:subject>Klages, Ludwig (1872-1956)</dc:subject>\n  <dc:identifier>G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices)</dc:identifier>\n  <dc:identifier>https://digital.dla-marbach.de/files/dbst02/public/2021/20211029/20211029-0012.pdf?media_access=public</dc:identifier>\n  <dc:identifier>https://www.dla-marbach.de/find/opac/id/BF00019441</dc:identifier>\n  <dc:identifier>BF00019441</dc:identifier>\n</oai_dc:dc>",
+                        "exportMODS": "<mods xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/mods/v3\" version=\"3.8\" xsi:schemaLocation=\"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-8.xsd\">\n  <titleInfo>\n    <title>G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices) - [Geschlossener Bestand der Bibliothek, Nachlass, Gelehrtenbibliothek]</title>\n  </titleInfo>\n  <name type=\"personal\">\n    <namePart>Klages, Ludwig (1872-1956)</namePart>\n    <nameIdentifier type=\"gnd\">11856269X</nameIdentifier>\n    <namePart type=\"date\">1872-12-10 — 1956-07-29</namePart>\n    <role>\n      <roleTerm type=\"code\" authority=\"marcrelator\">cre</roleTerm>\n    </role>\n  </name>\n  <typeOfResource collection=\"yes\">Bestand</typeOfResource>\n  <genre>Nachlass</genre>\n  <physicalDescription>\n    <extent>5.045 Bände (davon 1.273 Zss.) zzgl. 1.005 Sonderdrucke</extent>\n  </physicalDescription>\n  <abstract>Zugangsjahr: 1960.\nZum Nachlaß von Ludwig Klages (1872-1956) gehört auch eine etwa 5.000 Bände umfassende Arbeitsbibliothek mit überwiegend psychologischen, philosophischen, kulturgeschichtlichen, literarischen und anthropologischen Werken. Sie wurde nach der Übernahme zunächst in zwei Räumen (Gedenkzimmer) des Schiller-Nationalmuseums so aufgestellt, wie sie Klages seinerzeit in Kilchberg am Zürichsee um sich arrangiert hatte. Nach dem Umbau des Nationalmuseums und vor allem aus konservatorischen Gründen wurde die Bibliothek im klimatierten Magazinbereich untergebracht. Ein umfangreicher Zeitschriftenbestand zur Graphologie und Anthropologie ergänzt das weit gefächerte wissenschaftliche Spektrum. Bei der Katalogisierung wurden fünf Hauptgruppen geschaffen. Die meisten Bücher haben bei der Katalogisierung eine fortlaufende Nummer erhalten.\nZur Bibliothek gehört ausserdem eine umfangreiche Sonderdruck-Sammlung. Sonderdruck-Bestände dokumentieren Freundschaften und kollegiale Beziehungen in den Netzwerken von Literaturwissenschaft und Geistesgeschichte. Für fachgeschichtliche und biographische Forschungen bilden sie ein wertvolles Quellenmaterial. Unter diesem Aspekt wird auf die Sammlungen von Richard Brinkmann (1.621 SD), Hans-Georg Gadamer (833 SD), Reinhart Koselleck (2.401 SD), Fritz Martini (4.833 SD), Paul Raabe (991 SD), Dolf Sternberger (1.467 SD), Erich Trunz (574 SD), Wilhelm Voßkamp (1.516 SD) und Bernhard Zeller (2.735 SD) hingewiesen. Der Bestand umfasst mehr als 15.000 Separata.</abstract>\n  <subject>\n    <topic>Grafologie</topic>\n  </subject>\n  <subject>\n    <topic>Psychologische Anthropologie</topic>\n  </subject>\n  <subject>\n    <topic>Klages, Ludwig (1872-1956)</topic>\n  </subject>\n  <subject>\n    <name type=\"personal\">\n      <namePart>Klages, Ludwig (1872-1956)</namePart>\n    </name>\n  </subject>\n  <location>\n    <physicalLocation>Deutsches Literaturarchiv Marbach</physicalLocation>\n    <shelfLocator>G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices)</shelfLocator>\n    <url access=\"object in context\">https://digital.dla-marbach.de/files/dbst02/public/2021/20211029/20211029-0012.pdf?media_access=public</url>\n  </location>\n  <recordInfo>\n    <recordContentSource>Deutsches Literaturarchiv Marbach</recordContentSource>\n    <recordContentSource authority=\"marcorg\">DE-Mar1</recordContentSource>\n    <recordCreationDate encoding=\"iso8601\">2005-07-07</recordCreationDate>\n    <recordChangeDate encoding=\"iso8601\">2026-06-23</recordChangeDate>\n    <recordIdentifier source=\"https://www.dla-marbach.de/find/opac/id/\">BF00019441</recordIdentifier>\n  </recordInfo>\n</mods>",
+                        "exportRIS": "TY  - GEN\nA2  - Klages, Ludwig\nAN  - BB.1960.0001\nAU  - Klages, Ludwig\nAV  - bedingt benutzbar. Benutzung bedingt möglich nach vorheriger Terminabsprache. Bitte nehmen Sie Kontakt zu uns auf.. E-Mail: bibliothek@dla-marbach.de. Telefon: +49 7144 848 317\nCN  - BF000194414\nDB  - G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices)\nID  - BF00019441\nKW  - Grafologie\nKW  - Psychologische Anthropologie\nKW  - Klages, Ludwig (1872-1956)\nM3  - Nachlass\nN1  - Umfang: 5.045 Bände (davon 1.273 Zss.) zzgl. 1.005 Sonderdrucke\nN1  - katalogisiert: 1.664 Bände\nN1  - nicht verzeichnet: 4386 Bände\nN1  - Ordnung übernommen: 6050 Bände\nN1  - Ordnung übernommen: 30 Kästen\nN2  - Zugangsjahr: 1960.. Zum Nachlaß von Ludwig Klages (1872-1956) gehört auch eine etwa 5.000 Bände umfassende Arbeitsbibliothek mit überwiegend psychologischen, philosophischen, kulturgeschichtlichen, literarischen und anthropologischen Werken. Sie wurde nach der Übernahme zunächst in zwei Räumen (Gedenkzimmer) des Schiller-Nationalmuseums so aufgestellt, wie sie Klages seinerzeit in Kilchberg am Zürichsee um sich arrangiert hatte. Nach dem Umbau des Nationalmuseums und vor allem aus konservatorischen Gründen wurde die Bibliothek im klimatierten Magazinbereich untergebracht. Ein umfangreicher Zeitschriftenbestand zur Graphologie und Anthropologie ergänzt das weit gefächerte wissenschaftliche Spektrum. Bei der Katalogisierung wurden fünf Hauptgruppen geschaffen. Die meisten Bücher haben bei der Katalogisierung eine fortlaufende Nummer erhalten.. Zur Bibliothek gehört ausserdem eine umfangreiche Sonderdruck-Sammlung. Sonderdruck-Bestände dokumentieren Freundschaften und kollegiale Beziehungen in den Netzwerken von Literaturwissenschaft und Geistesgeschichte. Für fachgeschichtliche und biographische Forschungen bilden sie ein wertvolles Quellenmaterial. Unter diesem Aspekt wird auf die Sammlungen von Richard Brinkmann (1.621 SD), Hans-Georg Gadamer (833 SD), Reinhart Koselleck (2.401 SD), Fritz Martini (4.833 SD), Paul Raabe (991 SD), Dolf Sternberger (1.467 SD), Erich Trunz (574 SD), Wilhelm Voßkamp (1.516 SD) und Bernhard Zeller (2.735 SD) hingewiesen. Der Bestand umfasst mehr als 15.000 Separata.\nRN  - Grundsignatur: Klages-A.\nTI  - G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices) - [Geschlossener Bestand der Bibliothek, Nachlass, Gelehrtenbibliothek]\nUR  - https://digital.dla-marbach.de/files/dbst02/public/2021/20211029/20211029-0012.pdf?media_access=public\nUR  - https://www.dla-marbach.de/find/opac/id/BF00019441/\nER  -",
+                        "extent": "5.045 Bände (davon 1.273 Zss.) zzgl. 1.005 Sonderdrucke",
+                        "filterAuthorityRelation_mv": [
+                            "Klages, Ludwig (1872-1956)␝Über",
+                            "Klages, Ludwig (1872-1956)␝Unter"
+                        ],
+                        "filterAuthorityRole_mv": [
+                            "Klages, Ludwig (1872-1956)␝Behandelte Person/Körperschaft",
+                            "Klages, Ludwig (1872-1956)␝Bestandsbildner/Vorbesitzer"
+                        ],
+                        "filterAuthority_mv": [
+                            "Klages, Ludwig (1872-1956)"
+                        ],
+                        "filterCollection_mv": [
+                            "G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices)"
+                        ],
+                        "filterFormContent_mv": [
+                            "Nachlass"
+                        ],
+                        "filterMultipart": true,
+                        "filterRecent": "2005-07-07",
+                        "filterSource": "Nachlässe und Spezialsammlungen",
+                        "filterSubject_mv": [
+                            "Grafologie",
+                            "Psychologische Anthropologie",
+                            "Klages, Ludwig (1872-1956)"
+                        ],
+                        "filterType_mv": [
+                            "Gedrucktes"
+                        ],
+                        "itemization_extent_mv": [
+                            "1.664",
+                            "4386"
+                        ],
+                        "itemization_status_mv": [
+                            "katalogisiert",
+                            "nicht verzeichnet"
+                        ],
+                        "itemization_unit_mv": [
+                            "Bände",
+                            "Bände"
+                        ],
+                        "location_mv": [
+                            "Bibliotheksmagazin 5 (Block II: Achse 21b-22a; Quartformate: Achse 16)"
+                        ],
+                        "mediaNumber": "BF000194414",
+                        "note": "Grundsignatur: Klages-A.",
+                        "order_extent_mv": [
+                            "6050",
+                            "30"
+                        ],
+                        "order_status_mv": [
+                            "Ordnung übernommen",
+                            "Ordnung übernommen"
+                        ],
+                        "order_unit_mv": [
+                            "Bände",
+                            "Kästen"
+                        ],
+                        "personAbout_display_mv": [
+                            "Klages, Ludwig (1872-1956)"
+                        ],
+                        "personAbout_id_mv": [
+                            "PE00023223"
+                        ],
+                        "personAt_display_mv": [
+                            "Klages, Ludwig (1872-1956)"
+                        ],
+                        "personAt_id_mv": [
+                            "PE00023223"
+                        ],
+                        "schemaVersion": "1.0.0",
+                        "searchBoost": 1.3221414,
+                        "searchCollectionCreator_display_mv": [
+                            "Klages, Ludwig (1872-1956)"
+                        ],
+                        "searchCollectionCreator_id_mv": [
+                            "PE00023223"
+                        ],
+                        "searchEntity_id_mv": [
+                            "PE00023223"
+                        ],
+                        "searchNameAbout_mv": [
+                            "Klages, Ludwig"
+                        ],
+                        "searchNameAt_mv": [
+                            "Klages, Ludwig"
+                        ],
+                        "searchName_mv": [
+                            "Klages, Ludwig"
+                        ],
+                        "searchVariant_mv": [
+                            "Axel, Dr. Erwin",
+                            "Klages, Friedrich Konrad Eduard Wilhelm Ludwig"
+                        ],
+                        "source": "BF",
+                        "statusLoan": "Am Standort",
+                        "subject_display_mv": [
+                            "Grafologie",
+                            "Psychologische Anthropologie"
+                        ],
+                        "subject_id_mv": [
+                            "TH00019860",
+                            "TH00019949"
+                        ],
+                        "subject_usedFor_mv": [
+                            "Graphologie",
+                            "Handschriftendeutung",
+                            "Schriftpsychologie",
+                            "Graphologische Diagnostik",
+                            "Grafologische Diagnostik",
+                            "Anthropologische Psychologie"
+                        ],
+                        "title": "G:Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices)",
+                        "titleShort": "Klages-Archiv (Wissenschaftliche Arbeitsbibliothek mit Appendices)",
+                        "url": "https://www.dla-marbach.de/find/opac/id/BF00019441",
+                        "usageRestriction": "eingeschränkt benutzbar",
+                        "usageRestrictionComment": "Rara-Bestand",
+                        "usageRestrictionNote": "bedingt benutzbar\nBenutzung bedingt möglich nach vorheriger Terminabsprache. Bitte nehmen Sie Kontakt zu uns auf.\nE-Mail: bibliothek@dla-marbach.de\nTelefon: +49 7144 848 317",
+                        "score": 18.115507
+                    }
+                ]
+            }
+        }
+    }
+}
