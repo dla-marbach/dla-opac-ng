@@ -212,9 +212,9 @@ tasks:
         # über bash starten, damit der Server nach dem Ende von task weiterläuft
         bash -c 'setsid nohup "$0" -S 127.0.0.1:{{.SOLR_MOCK_PORT}} -t Tests/Fixtures/Solr Tests/Fixtures/Solr/MockSolrServer.php \
           > /tmp/solr-mock.log 2>&1 < /dev/null &' {{.PHP}}
-        for i in $(seq 20); do
+        for i in $(seq 240); do
           bash -c '</dev/tcp/127.0.0.1/{{.SOLR_MOCK_PORT}}' 2>/dev/null && break
-          [ "$i" -lt 20 ] || { echo "Solr-Mock-Server startet nicht:"; cat /tmp/solr-mock.log; exit 1; }
+          [ "$i" -lt 240 ] || { echo "Solr-Mock-Server startet nicht:"; cat /tmp/solr-mock.log; exit 1; }
           sleep 0.25
         done
         echo "Solr-Mock-Server ({{.MODE}}) läuft auf Port {{.SOLR_MOCK_PORT}} (Log: /tmp/solr-mock.log)"
