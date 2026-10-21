@@ -477,25 +477,6 @@
 </f:if>
 
 
-<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_hyperlink_mv')}" name="digitalObject_hyperlink_mv" />
-<f:if condition="{digitalObject_hyperlink_mv}">
-    <div class="ctg-dtvt-row" id="digitales-objekt">
-        <div class="ctg-dtvt-label">
-            <f:if condition="{dla:stringContains(input: digitalObject_hyperlink_mv, search: 'dbst02')}">
-                <f:then>
-                    <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
-                </f:then>
-                <f:else>
-                    <f:translate key='Digitales Objekt' extensionName='dla_opac_ng'/>
-                </f:else>
-            </f:if>
-        </div>
-        <div class="ctg-dtvt-content">
-            <f:render partial="MediaAccess/RenderLinks" arguments="{_all}"/>
-        </div>
-    </div>
-</f:if>
-
 <v:variable.set value="{s:data.valueForKey(array:document.fields, key:'id')}" name="id" />
 <dla:collection record="{id}" as="data"/>
 <f:if condition="{data}">
@@ -694,6 +675,26 @@
         </div>
         <div class="ctg-dtvt-content">
             unklar!
+        </div>
+    </div>
+</f:if>
+
+<f:comment>Digitales Objekt: letzter Abschnitt im Reiter "Details", damit Player und Bildergalerie die Metadaten nicht unterbrechen</f:comment>
+<v:variable.set value="{s:data.valueForKey(array:document.fields, key:'digitalObject_hyperlink_mv')}" name="digitalObject_hyperlink_mv" />
+<f:if condition="{digitalObject_hyperlink_mv}">
+    <div class="ctg-dtvt-row" id="digitales-objekt">
+        <div class="ctg-dtvt-label">
+            <f:if condition="{dla:stringContains(input: digitalObject_hyperlink_mv, search: 'dbst02')}">
+                <f:then>
+                    <f:translate key='Inhalt' extensionName='dla_opac_ng'/>
+                </f:then>
+                <f:else>
+                    <f:translate key='Digitales Objekt' extensionName='dla_opac_ng'/>
+                </f:else>
+            </f:if>
+        </div>
+        <div class="ctg-dtvt-content">
+            <f:render partial="MediaAccess/RenderLinks" arguments="{_all}"/>
         </div>
     </div>
 </f:if>
