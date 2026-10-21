@@ -116,6 +116,32 @@ class LibraryDetailTest extends FluidPartialTestCase
 
     /**
      * @test
+     * @dataProvider mediaWebsiteLinks
+     */
+    public function digitalObjectShowsMediaWebsiteLinks(string $partial, string $id, string $url, string $text): void
+    {
+        $html = $this->renderDetailPartial($partial, $id);
+
+        self::assertStringContainsString('<a href="' . $url . '" target="_blank">', $html);
+        self::assertStringContainsString('Digital object', self::visibleText($html));
+        self::assertStringContainsString($text, self::visibleText($html));
+    }
+
+    public static function mediaWebsiteLinks(): array
+    {
+        $youtube = ['AK01824645', 'https://www.youtube.com/watch?v=ywWlkEJ8jLo', 'Veranstaltung auf "YouTube" ansehen'];
+        $dichterlesen = ['AK00415993', 'https://www.dichterlesen.net/veranstaltungen/detail/vortrag-rede-3058/', 'Tondokument bei "Dichterlesen.net" nachhören'];
+
+        return [
+            'YouTube, Details' => ['Display/Detail/Library/Details', ...$youtube],
+            'YouTube, Zugang' => ['Display/Detail/Library/Access', ...$youtube],
+            'Dichterlesen.net, Details' => ['Display/Detail/Library/Details', ...$dichterlesen],
+            'Dichterlesen.net, Zugang' => ['Display/Detail/Library/Access', ...$dichterlesen],
+        ];
+    }
+
+    /**
+     * @test
      */
     public function rightColumnListsRelatedRecordsFromSameAuthorAndInventory(): void
     {
