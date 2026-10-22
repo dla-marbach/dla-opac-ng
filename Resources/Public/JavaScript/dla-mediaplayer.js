@@ -7,6 +7,7 @@
  * - Audio und Playlist: kompakte Steuerleiste ohne Videoflaeche (audioOnlyMode).
  * - Playlist: Klick bzw. Tippen auf einen Titel spielt ihn ab, am Ende eines
  *   Titels folgt automatisch der naechste.
+ * - Das Kontextmenue des Browsers ist auf dem Player deaktiviert.
  */
 (function () {
     'use strict';
@@ -64,6 +65,10 @@
             options.audioOnlyMode = true;
         }
         var player = videojs(el, options);
+
+        player.on('contextmenu', function (e) {
+            e.preventDefault();
+        });
 
         if (type === 'playlist') {
             initPlaylist(container, player);
