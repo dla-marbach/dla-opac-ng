@@ -27,3 +27,9 @@ services:
       - name: console.command
         command: 'dla_opac_ng:import'
         description: 'Import new collection hierarchy into database.'
+
+  Dla\DlaOpacNg\Cli\StatisticsAggregate:
+    tags:
+      - name: console.command
+        command: 'dla_opac_ng:stats:aggregate'
+        description: 'Aggregate raw catalogue usage statistics into daily and monthly JSON files.'

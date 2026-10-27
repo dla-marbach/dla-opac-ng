@@ -30,6 +30,7 @@ namespace Dla\Find\Controller;
  * ************************************************************* */
 
 use Psr\Http\Message\ResponseInterface;
+use Dla\DlaOpacNg\Statistics\StatisticsCollector;
 use Dla\Find\Service\ServiceProviderInterface;
 use Dla\Find\Utility\ArrayUtility;
 use Dla\Find\Utility\FrontendUtility;
@@ -66,6 +67,13 @@ class SearchController extends ActionController
     {
         $arguments = $this->searchProvider->getRequestArguments();
         $detail = $this->searchProvider->getDocumentById($id);
+
+        GeneralUtility::makeInstance(StatisticsCollector::class)->recordDetail(
+            $id,
+            isset($detail['document']),
+            isset($this->requestArguments['underlyingQuery']),
+            isset($this->request->getQueryParams()['tx_web2pdf'])
+        );
 
         if (isset($this->requestArguments['underlyingQuery']) && is_array($this->requestArguments['underlyingQuery'])) {
             $underlyingQueryInfo = $this->requestArguments['underlyingQuery'];
@@ -137,6 +145,13 @@ class SearchController extends ActionController
             $this->addStandardAssignments();
             $defaultQuery = $this->searchProvider->getDefaultQuery();
             $defaultResultSet = $defaultQuery['results'] ?? null;
+
+            GeneralUtility::makeInstance(StatisticsCollector::class)->recordSearch(
+                $this->requestArguments,
+                $this->settings,
+                $defaultResultSet?->getNumFound(),
+                (bool)$this->searchProvider->isExtendedSearch()
+            );
 
             // redirect to detail if only one item found and search is configured to redirect
             if ($defaultResultSet !== null && $defaultResultSet->getNumFound() === 1) {

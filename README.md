@@ -95,6 +95,105 @@ Der Tunnel wird vom lokalen PC aus (mit aktiver VPN-Verbindung zum DLA-Testsyste
 gh codespace ssh -- -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -R 127.0.0.1:8983:serene.dla-marbach.de:8983
 ```
 
+## Nutzungsstatistik
+
+Die Extension erfasst eine datensparsame Nutzungsstatistik des Katalogs. Angezeigt wird sie im Backend-Modul
+**Web > Katalog-Statistik**.
+
+Was erfasst wird:
+
+* Trefferlisten: Suchfelder, Facetten und Facettenwerte (auch Ausschlüsse), Trefferzahl (auch 0 Treffer),
+  Ergebnisseite, Sortierung, Treffer pro Seite, einfache/erweiterte Suche, Sucheinstieg (Seiten-ID) sowie
+  normalisierte Suchbegriffe
+* Detailseiten (`/find/opac/id/…`): Datensatz-ID (nur bei vorhandenen Datensätzen), Aufruf aus einer Trefferliste
+  oder direkt, PDF-Ausgabe
+* Startseite, Bestandsübersicht und Systematik: Einstieg, Datensatz, Knoten oder Suche
+* AJAX-Endpunkte: Autovervollständigung, Entscheidungsbaum, Normdaten, Merklisten-Export und Baumaktionen
+  (nur der Endpunkt, keine Eingaben)
+* Für alle Aufrufe: Stunde, Sprache, Herkunft als Kategorie (eigene Website, andere Website, ohne) sowie die
+  Zuordnung extern, intern oder Bot
+* Proof-of-Work: ausgestellte und gelöste Challenges pro Tag
+
+Datenschutz:
+
+* IP-Adressen, User-Agents, Cookies und URLs werden nicht gespeichert.
+* Ob ein Zugriff intern ist (`campusRanges`, `sandboxRanges`, `staffRanges`) oder von einem Bot stammt
+  (User-Agent), wird nur während des Requests ausgewertet.
+* Requests, die von der Proof-of-Work-Middleware mit der Challenge-Seite beantwortet werden, erreichen die
+  Statistik nicht und zählen nicht als Zugriffe. Sie erscheinen nur in den Zählern für ausgestellte Challenges.
+* Suchbegriffe erscheinen im Backend-Modul und in den Monatsdateien erst ab einer Mindesthäufigkeit. In den
+  Tagesdateien werden sie nach Ablauf der Aufbewahrungsdauer gelöscht.
+* Da keine personenbezogenen Daten verarbeitet werden, ist keine Einwilligung nötig. Ein kurzer Hinweis auf die
+  anonyme, aggregierte Nutzungsstatistik in der Datenschutzerklärung ist trotzdem sinnvoll.
+
+Ablauf:
+
+1. Die Controller der Plugins melden, was ein Request getan hat
+   ([Classes/Statistics/StatisticsCollector.php](Classes/Statistics/StatisticsCollector.php)).
+2. Die [StatisticsMiddleware](Classes/Middleware/StatisticsMiddleware.php) liegt innerhalb der Proof-of-Work-Middleware.
+   Nach erfolgreicher Antwort (Status < 400, GET/POST, kein Prefetch) hängt sie eine Zeile an die Rohdatei der
+   aktuellen Stunde an: `var/opac-stats/raw/YYYYMMDDHH-<host>.ndjson`. Datenbankzugriffe gibt es dabei nicht.
+3. Der Befehl `dla_opac_ng:stats:aggregate` fasst abgeschlossene Stunden zu `var/opac-stats/days/YYYY-MM-DD.json`
+   und `var/opac-stats/months/YYYY-MM.json` zusammen und löscht danach die Rohdateien. Die Zahlen sind additiv,
+   eine Rohdatei wird auch bei einem abgebrochenen Lauf nur einmal gezählt (sie wird vor der Verarbeitung in eine
+   eindeutige Generation umbenannt und erst nach dem Schreiben von Tages- und Monatsdatei gelöscht). Sobald ein
+   Tag abgeschlossen ist, bleiben pro Merkmal höchstens die 500 häufigsten Werte erhalten, der Rest wird unter
+   `_other` summiert; bis dahin sind die Tageszähler exakt.
+4. Das Backend-Modul (HTML, CSS, Vanilla-JS) lädt die JSON-Daten für den gewählten Zeitraum. Bis 92 Tage zeigt es
+   Tageswerte, darüber Monatswerte.
+
+### Einrichtung im Hauptprojekt (dla-t3-www)
+
+Umgebungsvariablen (z.B. in der `.env` der TYPO3-Instanz, wie `opacPowEnabled`):
+
+| Variable | Standard | |
+|---|---|---|
+| `opacStatsEnabled` | – | Erfassung einschalten (`1`). Ohne diese Variable wird nichts erfasst; vorhandene Daten bleiben im Backend-Modul sichtbar. |
+| `opacStatsPath` | `var/opac-stats` der Instanz | optional, anderes Verzeichnis für die Statistikdaten, z.B. ein gemeinsames Verzeichnis mehrerer Webserver. Es darf nicht im Webroot liegen. |
+| `opacStatsTermsMinCount` | `5` | optional, Mindesthäufigkeit von Suchbegriffen im Backend-Modul (bezogen auf den gewählten Zeitraum) und in den Monatsdateien |
+| `opacStatsTermsRetentionDays` | `90` | optional, Aufbewahrungsdauer der Suchbegriffe in den Tagesdateien (Tage); gelöscht wird frühestens nach Ende des jeweiligen Monats, damit die Monatsdatei vollständig bleibt |
+
+Aggregation regelmäßig ausführen, z.B. alle 15 Minuten per Crontab des Webserver-Benutzers:
+
+```
+*/15 * * * * cd /pfad/zur/instanz && vendor/bin/typo3 dla_opac_ng:stats:aggregate --quiet
+```
+
+Alternativ geht ein Scheduler-Task „Execute console commands“ mit `dla_opac_ng:stats:aggregate`. Bei mehreren
+Webservern läuft der Befehl nur auf einem Knoten, und alle Knoten schreiben in ein gemeinsames `opacStatsPath`.
+Parallele Läufe verhindert eine Sperrdatei.
+
+Weitere Schritte:
+
+* Den Redaktionsgruppen, die die Statistik sehen sollen, in der Backend-Benutzergruppe das Modul
+  „Katalog-Statistik“ freigeben (Zugriffsrechte > Module). Administratoren sehen es immer.
+* Nach dem Update auf die Extension-Version mit Nutzungsstatistik den TYPO3-Cache leeren
+  (Middleware, Backend-Modul und JavaScript-Importmap werden neu eingelesen).
+* Plattenplatz: Die Rohdateien wachsen vor allem durch die Zähler für ausgestellte Challenges (etwa 20 Byte pro
+  Challenge). Bei 15-minütiger Aggregation liegen davon nur wenige MB vor. Die Tagesdateien sind meist kleiner
+  als 1 MB.
+
+Hinweise zur Auswertung:
+
+* Detailseiten (`/find/opac/id/…`) sind nicht durch die Proof-of-Work-Challenge geschützt und in `robots.txt`
+  für Crawler freigegeben. Bots werden dort nur erkannt, wenn sie sich per User-Agent zu erkennen geben.
+* Bots, die die Challenge lösen, werden mitgezählt.
+* Besucherzahlen gibt es nicht. Die Zahl der gelösten Challenges dient als Ersatz für neue Browser-Sitzungen
+  (externe Zugriffe, das Cookie gilt 24 Stunden).
+* Seiten, die ein Reverse-Proxy vor TYPO3 aus dem Cache ausliefert, werden nicht gezählt.
+
+### Lokal testen
+
+In [.devfiles/.env](.devfiles/.env) ist `opacStatsEnabled=1` gesetzt. Nach einigen Aufrufen im Katalog liegen
+Rohdaten in `t3example/var/opac-stats/raw/`. Mit der Option `--include-current-hour` wird auch die laufende
+Stunde zusammengefasst:
+
+```
+t3example/vendor/bin/typo3 dla_opac_ng:stats:aggregate --include-current-hour
+```
+
+Danach zeigt das Backend-Modul die Daten an.
+
 ## Tests
 
 ### Playwright

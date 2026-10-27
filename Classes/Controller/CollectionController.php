@@ -1,6 +1,8 @@
 <?php
 namespace Dla\DlaOpacNg\Controller;
 
+use Dla\DlaOpacNg\Statistics\StatisticsCollector;
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class CollectionController extends ActionController
@@ -14,6 +16,9 @@ class CollectionController extends ActionController
      */
     public function indexAction(string $record = '', string $uid = '', string $search = '')
     {
+        GeneralUtility::makeInstance(StatisticsCollector::class)
+            ->recordTree(StatisticsCollector::AREA_COLLECTION, $record, $uid, $search);
+
         $settings = $this->configurationManager->getConfiguration(
             \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT,
             'find',

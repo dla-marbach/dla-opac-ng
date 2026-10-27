@@ -12,8 +12,8 @@ Ausführliche Beschreibung der Abläufe: [README.md](README.md).
 
 ## Wo liegt was
 
-- `Classes/` – `Ajax/` (eID-Endpunkte), `Cli/` (Konsolenbefehl `dla_opac_ng:import`), `Controller/` (Plugins DlaStart, DlaCollection, DlaClassification), `Middleware/`, `Service/`, `Updates/` (Upgrade-Wizards), `Utility/`, `ViewHelpers/` (Prefix `dla:`), `Find/` (Such-Plugin)
-- `Configuration/` – `TypoScript/setup.ts` und `constants.ts` (DLA-spezifisch, u.a. `queryFields`; importieren die Basiskonfiguration aus `TypoScript/Find/`), `Services.yaml`, `RequestMiddlewares.php`, `Commands.php`, `TCA/`
+- `Classes/` – `Ajax/` (eID-Endpunkte), `Cli/` (Konsolenbefehle `dla_opac_ng:import`, `dla_opac_ng:stats:aggregate`), `Controller/` (Plugins DlaStart, DlaCollection, DlaClassification; `Backend/` Modul Katalog-Statistik), `Middleware/`, `Service/`, `Statistics/` (Nutzungsstatistik, siehe README), `Updates/` (Upgrade-Wizards), `Utility/`, `ViewHelpers/` (Prefix `dla:`), `Find/` (Such-Plugin)
+- `Configuration/` – `TypoScript/setup.ts` und `constants.ts` (DLA-spezifisch, u.a. `queryFields`; importieren die Basiskonfiguration aus `TypoScript/Find/`), `Services.yaml`, `RequestMiddlewares.php`, `Commands.php`, `Backend/Modules.php`, `TCA/`
 - `Resources/Private/` – Fluid-Templates, -Layouts, -Partials; Sprachdateien in `Language/` (XLIFF)
 - `Tests/` – PHPUnit-Tests in `Unit/` und `Find/Unit/`, Test-Hilfen in `Support/`, Solr-Mock-Server und Cassetten in `Fixtures/Solr/`
 - `dla-opac-tests/` – Submodul mit Playwright-End-to-End-Tests

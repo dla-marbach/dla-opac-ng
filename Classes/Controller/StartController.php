@@ -1,6 +1,8 @@
 <?php
 namespace Dla\DlaOpacNg\Controller;
 
+use Dla\DlaOpacNg\Statistics\StatisticsCollector;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 class StartController extends \Dla\Find\Controller\SearchController
@@ -22,6 +24,8 @@ class StartController extends \Dla\Find\Controller\SearchController
      */
     public function startAction()
     {
+        GeneralUtility::makeInstance(StatisticsCollector::class)->record(StatisticsCollector::AREA_START);
+
         $queryParams = $this->request->getQueryParams();
         $findParams = $queryParams['tx_find_find'] ?? [];
         $formFacets = is_array($findParams) ? ($findParams['facet'] ?? []) : [];
