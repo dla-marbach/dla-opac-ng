@@ -1425,6 +1425,72 @@
 
 
 
+            <trans-unit id="nl.toggle">
+                <source>Detect filters automatically (AI, beta)</source>
+            </trans-unit>
+            <trans-unit id="nl.status.ok">
+                <source>Recognized in your search »%s«:</source>
+            </trans-unit>
+            <trans-unit id="nl.status.unrecognized">
+                <source>No filters were recognized in »%s«; a normal search was performed.</source>
+            </trans-unit>
+            <trans-unit id="nl.status.fallback">
+                <source>Automatic detection is currently unavailable; a normal search was performed for »%s«.</source>
+            </trans-unit>
+            <trans-unit id="nl.parts.empty">
+                <source>All recognized parts have been removed.</source>
+            </trans-unit>
+            <trans-unit id="nl.part.remove">
+                <source>remove %s from the search</source>
+            </trans-unit>
+            <trans-unit id="nl.part.mediaType">
+                <source>%s</source>
+            </trans-unit>
+            <trans-unit id="nl.part.formContent">
+                <source>%s</source>
+            </trans-unit>
+            <trans-unit id="nl.part.person">
+                <source>person: %s</source>
+            </trans-unit>
+            <trans-unit id="nl.part.relationVon">
+                <source>by %s</source>
+            </trans-unit>
+            <trans-unit id="nl.part.relationAn">
+                <source>to %s</source>
+            </trans-unit>
+            <trans-unit id="nl.part.relationUeber">
+                <source>about %s</source>
+            </trans-unit>
+            <trans-unit id="nl.part.relationUnter">
+                <source>held by %s</source>
+            </trans-unit>
+            <trans-unit id="nl.part.place">
+                <source>place: %s</source>
+            </trans-unit>
+            <trans-unit id="nl.part.language">
+                <source>language: %s</source>
+            </trans-unit>
+            <trans-unit id="nl.part.date">
+                <source>%s</source>
+            </trans-unit>
+            <trans-unit id="nl.part.digital">
+                <source>digital only</source>
+            </trans-unit>
+            <trans-unit id="nl.part.text">
+                <source>search terms: %s</source>
+            </trans-unit>
+            <trans-unit id="nl.part.topic">
+                <source>keyword: %s</source>
+            </trans-unit>
+            <trans-unit id="nl.part.excluded">
+                <source>without: %s</source>
+            </trans-unit>
+            <trans-unit id="nl.part.unresolved">
+                <source>search term: %s</source>
+            </trans-unit>
+            <trans-unit id="nl.parts.noResults">
+                <source>No results. Remove individual recognized parts above to broaden the search.</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

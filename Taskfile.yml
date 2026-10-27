@@ -231,6 +231,72 @@ tasks:
     cmds:
       - pkill -f "^[^ ]*php[^ ]* -S 127.0.0.1:{{.SOLR_MOCK_PORT}} " || true
 
+  llm:
+    desc: lokalen LLM-Dienst (Ollama in Docker) für die natürlichsprachige Suche starten und Modell laden
+    vars:
+      MODEL: '{{default "qwen3:4b-instruct-2507-q4_K_M" .MODEL}}'
+    cmds:
+      - |
+        if docker container inspect ollama >/dev/null 2>&1; then
+          docker start ollama >/dev/null
+        else
+          docker run -d --name ollama --restart unless-stopped \
+            -p 127.0.0.1:11434:11434 \
+            -v ollama:/root/.ollama \
+            -e OLLAMA_KEEP_ALIVE=24h \
+            -e OLLAMA_NUM_PARALLEL=2 \
+            -e OLLAMA_MAX_QUEUE=4 \
+            -e OLLAMA_CONTEXT_LENGTH=8192 \
+            ollama/ollama
+        fi
+      - |
+        for i in $(seq 1 60); do
+          curl -sf http://127.0.0.1:11434/api/version >/dev/null && break
+          sleep 1
+        done
+        curl -sf http://127.0.0.1:11434/api/version
+      - docker exec ollama ollama pull {{.MODEL}}
+      - echo "LLM-Dienst läuft. Test mit 'task llm:test', dann im Katalog 'Filter automatisch erkennen' ausprobieren."
+
+  llm:test:
+    desc: natürlichsprachige Suche gegen den lokalen LLM-Dienst testen (strukturierte JSON-Ausgabe)
+    vars:
+      MODEL: '{{default "qwen3:4b-instruct-2507-q4_K_M" .MODEL}}'
+      QUESTION: '{{default "Briefe von Hesse an Thomas Mann aus den 1930er Jahren über das Exil" .QUESTION}}'
+    env:
+      MODEL: '{{.MODEL}}'
+      QUESTION: '{{.QUESTION}}'
+    cmds:
+      # Anfrage wie im Katalog (Systemprompt mit aktuellem Jahr, Beispiele, JSON-Schema), aber ohne Vokabular aus Solr
+      - |
+        php -r '
+          spl_autoload_register(static function (string $class): void {
+            $prefix = "Dla\\DlaOpacNg\\";
+            if (str_starts_with($class, $prefix)) {
+              require getcwd() . "/Classes/" . str_replace("\\", "/", substr($class, strlen($prefix))) . ".php";
+            }
+          });
+          $prompt = new \Dla\DlaOpacNg\Service\QueryUnderstanding\QueryPrompt();
+          echo json_encode([
+            "model" => getenv("MODEL"),
+            "temperature" => 0,
+            "messages" => $prompt->buildMessages(getenv("QUESTION")),
+            "response_format" => ["type" => "json_schema", "json_schema" => [
+              "name" => "catalog_query", "strict" => true, "schema" => $prompt::getJsonSchema(),
+            ]],
+          ], JSON_UNESCAPED_UNICODE);
+        ' \
+        | curl -sS http://127.0.0.1:11434/v1/chat/completions -H 'Content-Type: application/json' -d @- \
+        | jq '(.choices[0].message.content | fromjson), {usage}'
+    preconditions:
+      - command -v jq
+      - command -v php
+
+  llm:stop:
+    desc: lokalen LLM-Dienst stoppen
+    cmds:
+      - docker stop ollama
+
   cache:
     desc: lösche den TYPO3-Cache (z.B. nach Änderungen an TypoScript, Services.yaml oder ext_localconf.php)
     dir: t3example

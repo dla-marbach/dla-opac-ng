@@ -132,6 +132,17 @@ task test:php -- --filter MediaPlayer   # einzelne Tests
 * `dla:collection` (Bestandsbaum aus der Datenbank) wird durch `FakeCollectionService` ersetzt, Testdaten über
   `FakeCollectionService::$parents`.
 
+## Natürlichsprachige Suche (Proof of Concept)
+
+Mit „Filter automatisch erkennen (KI, Beta)“ zerlegt ein lokal betriebenes Sprachmodell eine Suchanfrage in natürlicher Sprache wie „Briefe von Hesse an Thomas Mann aus den 1930er Jahren“ in Suchbegriffe und Facettenfilter. Die Funktion ist nur aktiv, wenn die Umgebungsvariable `LLM_BASE_URL` gesetzt ist.
+
+```
+task llm        # LLM-Dienst (Ollama) lokal in Docker starten und Modell laden
+task llm:test   # strukturierte Ausgabe des Modells testen
+```
+
+Funktionsweise, Installation des LLM-Dienstes auf einem Server, Konfiguration und Fehlerbehebung: [docs/natuerlichsprachige-suche.md](docs/natuerlichsprachige-suche.md)
+
 ## Datenbankdump für TYPO3-Grundkonfiguration
 
 Bei der Installation (task install) wird ein Datenbank-Dump [.devfiles/init.sql](.devfiles/init.sql) eingespielt. Bei einer neuen TYPO3-Version muss dieser Dump ggf. manuell neu erstellt werden.

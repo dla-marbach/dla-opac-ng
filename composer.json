@@ -40,7 +40,8 @@
         "typo3/cms-frontend": "^12",
         "typo3/cms-install": "^12",
         "fluidtypo3/vhs": "^6.0.1 || ^7",
-        "solarium/solarium": "^6.3"
+        "solarium/solarium": "^6.3",
+        "symfony/rate-limiter": "^6.4 || ^7.0"
     },
     "suggest": {
         "typo3/cms-tstemplate": "Backend-Modul TypoScript, um das statische TypoScript dieser Extension in einem sys_template-Datensatz einzubinden"

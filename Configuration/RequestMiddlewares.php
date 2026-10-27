@@ -11,6 +11,15 @@ return [
                 'typo3/cms-frontend/site-resolver',
             ],
         ],
+        'Dla/dla_opac_ng/natural-language-search' => [
+            'target' => \Dla\DlaOpacNg\Middleware\NaturalLanguageSearchMiddleware::class,
+            'before' => [
+                'typo3/cms-frontend/page-resolver',
+            ],
+            'after' => [
+                'Dla/dla_opac_ng/proof-of-work',
+            ],
+        ],
         'Dla/dla_opac_ng/ajax/getentity' => [
             'target' => \Dla\DlaOpacNg\Ajax\GetEntity::class,
             'after' => [
