@@ -57,6 +57,8 @@ const SECTIONS = [
 
 const state = {
   data: null,
+  request: 0,
+  controller: null,
   audiences: new Set(['ext', 'int']),
   facet: null,
 };
@@ -291,7 +293,9 @@ function sortRows(rows, ordered) {
 }
 
 function downloadCsv(name, rows) {
-  const escape = (value) => `"${String(value).replaceAll('"', '""')}"`;
+  // Zellen, die eine Tabellenkalkulation als Formel auswerten würde, als Text kennzeichnen (Suchbegriffe sind Nutzereingaben).
+  const neutralize = (value) => (/^[=+\-@\t\r]/.test(value) ? `'${value}` : value);
+  const escape = (value) => `"${neutralize(String(value)).replaceAll('"', '""')}"`;
   const lines = [[t('column.value'), t('column.count')].map(escape).join(';')]
     .concat(rows.map(([label, count]) => [escape(label), count].join(';')));
   const blob = new Blob(['﻿' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
@@ -414,21 +418,33 @@ function render() {
 }
 
 async function load(from, to) {
+  // Nur die Antwort der zuletzt gestarteten Anfrage übernehmen; ältere werden abgebrochen bzw. verworfen.
+  const request = ++state.request;
+  state.controller?.abort();
+  const controller = new AbortController();
+  state.controller = controller;
+
   const status = root.querySelector('[data-status]');
   status.textContent = t('status.loading');
   const url = new URL(root.dataset.url, window.location.href);
   url.searchParams.set('from', from);
   url.searchParams.set('to', to);
   try {
-    const response = await fetch(url, { credentials: 'same-origin', headers: { Accept: 'application/json' } });
+    const response = await fetch(url, { credentials: 'same-origin', headers: { Accept: 'application/json' }, signal: controller.signal });
     if (!response.ok) {
       throw new Error(String(response.status));
     }
-    state.data = await response.json();
+    const data = await response.json();
+    if (request !== state.request) {
+      return;
+    }
+    state.data = data;
     status.textContent = '';
     render();
   } catch (error) {
-    status.textContent = `${t('status.error')} (${error.message})`;
+    if (request === state.request && error.name !== 'AbortError') {
+      status.textContent = `${t('status.error')} (${error.message})`;
+    }
   }
 }
 

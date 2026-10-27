@@ -102,20 +102,76 @@ class StatisticsAggregatorTest extends UnitTestCase
     /**
      * @test
      */
-    public function rawFilesAlreadyContainedInTheDayAreNotCountedTwice(): void
+    public function abortedRunKeepsRawFilesAndIsCompletedWithoutCountingTwice(): void
     {
         $record = ['a' => 'start', 'in' => 0, 'bot' => 0];
         $this->writeRaw('2026102710-web1', [$record]);
-        $this->createAggregator()->aggregate($this->now('2026-10-27 16:00:00'));
 
-        // Lauf abgebrochen, bevor die Rohdatei gelöscht wurde: dieselbe Datei liegt erneut vor.
-        $this->writeRaw('2026102710-web1', [$record]);
+        $failing = new class ($this->directory, 90, 5) extends StatisticsAggregator {
+            public function rebuildMonth(string $month): void
+            {
+                throw new \RuntimeException('Abbruch', 1793000099);
+            }
+        };
+        try {
+            $failing->aggregate($this->now('2026-10-27 16:00:00'));
+            self::fail('Exception expected');
+        } catch (\RuntimeException) {
+        }
+        self::assertCount(1, glob($this->directory . '/raw/*'));
+        self::assertFileDoesNotExist($this->directory . '/months/2026-10.json');
+
         $this->writeRaw('2026102711-web1', [$record]);
         $this->createAggregator()->aggregate($this->now('2026-10-27 16:00:00'));
 
-        $day = $this->readJson('days/2026-10-27.json');
-        self::assertSame(2, $day['audiences']['ext']['start']['hits']);
+        self::assertSame(2, $this->readJson('days/2026-10-27.json')['audiences']['ext']['start']['hits']);
+        self::assertSame(2, $this->readJson('months/2026-10.json')['audiences']['ext']['start']['hits']);
         self::assertSame([], glob($this->directory . '/raw/*'));
+    }
+
+    /**
+     * @test
+     */
+    public function currentHourCanBeAggregatedRepeatedly(): void
+    {
+        $record = ['a' => 'start', 'in' => 0, 'bot' => 0];
+        $this->writeRaw('2026102716-web1', [$record]);
+        $this->createAggregator()->aggregate($this->now('2026-10-27 16:30:00'), true);
+
+        // Weitere Requests derselben Stunde schreiben wieder in eine Datei mit demselben Namen.
+        $this->writeRaw('2026102716-web1', [$record, $record]);
+        $this->createAggregator()->aggregate($this->now('2026-10-27 16:45:00'), true);
+
+        self::assertSame(3, $this->readJson('days/2026-10-27.json')['audiences']['ext']['start']['hits']);
+        self::assertSame([], glob($this->directory . '/raw/*'));
+    }
+
+    /**
+     * @test
+     */
+    public function runningDaysKeepExactCountsAndAreCappedWhenComplete(): void
+    {
+        $records = [];
+        for ($i = 0; $i < StatisticsAggregator::TOP_N + 20; $i++) {
+            $records[] = ['a' => 'detail', 'in' => 0, 'bot' => 0, 'd' => ['id' => 'ID-' . $i]];
+        }
+        $this->writeRaw('2026102710-web1', $records);
+        $this->createAggregator()->aggregate($this->now('2026-10-27 16:00:00'));
+
+        $this->writeRaw('2026102714-web1', [['a' => 'detail', 'in' => 0, 'bot' => 0, 'd' => ['id' => 'ID-' . (StatisticsAggregator::TOP_N + 10)]]]);
+        $this->createAggregator()->aggregate($this->now('2026-10-27 16:00:00'));
+
+        $ids = $this->readJson('days/2026-10-27.json')['audiences']['ext']['detail']['records'];
+        self::assertCount(StatisticsAggregator::TOP_N + 20, $ids);
+        self::assertSame(2, $ids['ID-' . (StatisticsAggregator::TOP_N + 10)]);
+
+        $this->writeRaw('2026102723-web1', [['a' => 'start', 'in' => 0, 'bot' => 0]]);
+        $this->createAggregator()->aggregate($this->now('2026-10-28 00:05:00'));
+
+        $ids = $this->readJson('days/2026-10-27.json')['audiences']['ext']['detail']['records'];
+        self::assertCount(StatisticsAggregator::TOP_N + 1, $ids);
+        self::assertSame(2, $ids['ID-' . (StatisticsAggregator::TOP_N + 10)]);
+        self::assertSame(20, $ids[StatisticsAggregator::OTHER_KEY]);
     }
 
     /**
@@ -130,7 +186,7 @@ class StatisticsAggregatorTest extends UnitTestCase
         $records[] = ['a' => 'detail', 'in' => 0, 'bot' => 0, 'd' => ['id' => 'ID-7']];
         $this->writeRaw('2026102710-web1', $records);
 
-        $this->createAggregator()->aggregate($this->now('2026-10-27 16:00:00'));
+        $this->createAggregator()->aggregate($this->now('2026-10-28 08:00:00'));
 
         $ids = $this->readJson('days/2026-10-27.json')['audiences']['ext']['detail']['records'];
         self::assertCount(StatisticsAggregator::TOP_N + 1, $ids);
@@ -175,6 +231,27 @@ class StatisticsAggregatorTest extends UnitTestCase
         self::assertArrayNotHasKey('terms', $day['audiences']['ext']['search']);
         self::assertArrayNotHasKey('zeroTerms', $day['audiences']['ext']['search']);
         self::assertSame(1, $day['audiences']['ext']['search']['hits']);
+    }
+
+    /**
+     * @test
+     */
+    public function termsOfTheRunningMonthAreKeptDespiteShortRetention(): void
+    {
+        $records = array_fill(0, 5, ['a' => 'search', 'in' => 0, 'bot' => 0, 'd' => ['e' => 0, 't' => 'goethe', 'p' => 1, 'n' => 3]]);
+        $this->writeRaw('2026100210-web1', $records);
+        $aggregator = new StatisticsAggregator($this->directory, 7, 5);
+        $aggregator->aggregate($this->now('2026-10-03 12:00:00'));
+
+        $this->writeRaw('2026102710-web1', [['a' => 'start', 'in' => 0, 'bot' => 0]]);
+        $aggregator->aggregate($this->now('2026-10-27 12:00:00'));
+
+        self::assertSame(['goethe' => 5], $this->readJson('days/2026-10-02.json')['audiences']['ext']['search']['terms']);
+        self::assertSame(['goethe' => 5], $this->readJson('months/2026-10.json')['audiences']['ext']['search']['terms']);
+
+        $aggregator->aggregate($this->now('2026-11-01 12:00:00'));
+        self::assertArrayNotHasKey('terms', $this->readJson('days/2026-10-02.json')['audiences']['ext']['search']);
+        self::assertSame(['goethe' => 5], $this->readJson('months/2026-10.json')['audiences']['ext']['search']['terms']);
     }
 
     private function createAggregator(): StatisticsAggregator

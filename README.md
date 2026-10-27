@@ -135,8 +135,10 @@ Ablauf:
    aktuellen Stunde an: `var/opac-stats/raw/YYYYMMDDHH-<host>.ndjson`. Datenbankzugriffe gibt es dabei nicht.
 3. Der Befehl `dla_opac_ng:stats:aggregate` fasst abgeschlossene Stunden zu `var/opac-stats/days/YYYY-MM-DD.json`
    und `var/opac-stats/months/YYYY-MM.json` zusammen und löscht danach die Rohdateien. Die Zahlen sind additiv,
-   eine Rohdatei wird auch bei einem abgebrochenen Lauf nur einmal gezählt. Pro Merkmal bleiben höchstens die
-   500 häufigsten Werte erhalten, der Rest wird unter `_other` summiert.
+   eine Rohdatei wird auch bei einem abgebrochenen Lauf nur einmal gezählt (sie wird vor der Verarbeitung in eine
+   eindeutige Generation umbenannt und erst nach dem Schreiben von Tages- und Monatsdatei gelöscht). Sobald ein
+   Tag abgeschlossen ist, bleiben pro Merkmal höchstens die 500 häufigsten Werte erhalten, der Rest wird unter
+   `_other` summiert; bis dahin sind die Tageszähler exakt.
 4. Das Backend-Modul (HTML, CSS, Vanilla-JS) lädt die JSON-Daten für den gewählten Zeitraum. Bis 92 Tage zeigt es
    Tageswerte, darüber Monatswerte.
 
@@ -149,7 +151,7 @@ Umgebungsvariablen (z.B. in der `.env` der TYPO3-Instanz, wie `opacPowEnabled`):
 | `opacStatsEnabled` | – | Erfassung einschalten (`1`). Ohne diese Variable wird nichts erfasst; vorhandene Daten bleiben im Backend-Modul sichtbar. |
 | `opacStatsPath` | `var/opac-stats` der Instanz | optional, anderes Verzeichnis für die Statistikdaten, z.B. ein gemeinsames Verzeichnis mehrerer Webserver. Es darf nicht im Webroot liegen. |
 | `opacStatsTermsMinCount` | `5` | optional, Mindesthäufigkeit von Suchbegriffen im Backend-Modul (bezogen auf den gewählten Zeitraum) und in den Monatsdateien |
-| `opacStatsTermsRetentionDays` | `90` | optional, Aufbewahrungsdauer der Suchbegriffe in den Tagesdateien (Tage) |
+| `opacStatsTermsRetentionDays` | `90` | optional, Aufbewahrungsdauer der Suchbegriffe in den Tagesdateien (Tage); gelöscht wird frühestens nach Ende des jeweiligen Monats, damit die Monatsdatei vollständig bleibt |
 
 Aggregation regelmäßig ausführen, z.B. alle 15 Minuten per Crontab des Webserver-Benutzers:
 

@@ -64,6 +64,19 @@ class StatisticsCollectorTest extends UnitTestCase
     /**
      * @test
      */
+    public function effectiveResultsPerPageIsRecorded(): void
+    {
+        $collector = new StatisticsCollector();
+        $collector->recordSearch(['q' => ['default' => 'x'], 'count' => '1000'], self::SETTINGS, 5, false);
+        self::assertSame(100, $collector->pull()['search']['c']);
+
+        $collector->recordSearch(['q' => ['default' => 'x']], self::SETTINGS, 5, false);
+        self::assertSame(20, $collector->pull()['search']['c']);
+    }
+
+    /**
+     * @test
+     */
     public function longValuesAreTruncated(): void
     {
         $collector = new StatisticsCollector();

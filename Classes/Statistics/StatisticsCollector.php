@@ -94,9 +94,8 @@ class StatisticsCollector implements SingletonInterface
         if (isset($arguments['sort']) && is_scalar($arguments['sort']) && (string)$arguments['sort'] !== '') {
             $data['s'] = self::truncate((string)$arguments['sort']);
         }
-        if (isset($arguments['count']) && is_scalar($arguments['count'])) {
-            $data['c'] = (int)$arguments['count'];
-        }
+        // Tatsächlich verwendete Anzahl (Standard bzw. durch paging.maximumPerPage begrenzt).
+        $data['c'] = $count;
         if ($numFound !== null) {
             $data['n'] = $numFound;
         }

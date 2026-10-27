@@ -47,7 +47,11 @@ class StatisticsAggregator
      */
     private const GRACE_PERIOD = 120;
 
-    private const RAW_FILE_PATTERN = '/^(\d{4})(\d{2})(\d{2})(\d{2})-[A-Za-z0-9._-]+\.ndjson$/';
+    /**
+     * Rohdatei »YYYYMMDDHH-<host>.ndjson« bzw. die zur Verarbeitung umbenannte Generation
+     * »YYYYMMDDHH-<host>+<generation>.ndjson« (»+« kommt in Hostnamen nicht vor, siehe RawLogWriter).
+     */
+    private const RAW_FILE_PATTERN = '/^(\d{4})(\d{2})(\d{2})(\d{2})-[A-Za-z0-9._-]+(\+[0-9a-f]+)?\.ndjson$/';
 
     /**
      * Alle Maps als JSON-Objekte schreiben, auch wenn die Schlüssel zufällig 0, 1, 2 … lauten.
@@ -77,15 +81,20 @@ class StatisticsAggregator
         $now ??= new \DateTimeImmutable();
         $result = ['files' => 0, 'records' => 0, 'days' => [], 'months' => []];
 
+        $today = $now->setTimezone(StatisticsConfiguration::getTimezone())->format('Y-m-d');
+
         $filesByDay = [];
         foreach ($this->findRawFiles($now, $includeCurrentHour) as $file => $hourInfo) {
-            $filesByDay[$hourInfo['day']][$file] = $hourInfo['hour'];
+            $file = $this->claimRawFile($file);
+            if ($file !== null) {
+                $filesByDay[$hourInfo['day']][$file] = $hourInfo['hour'];
+            }
         }
         ksort($filesByDay);
 
+        $processed = [];
         foreach ($filesByDay as $day => $files) {
             $dayData = $this->readJson($this->getDayFile($day)) ?? $this->createDay($day);
-            $processed = [];
             foreach ($files as $file => $hour) {
                 $source = basename($file, '.ndjson');
                 if (!in_array($source, $dayData['sources'], true)) {
@@ -95,13 +104,13 @@ class StatisticsAggregator
                 $processed[] = $file;
             }
 
-            self::capDimensions($dayData['audiences']);
-            $this->writeJson($this->getDayFile($day), $dayData);
-            foreach ($processed as $file) {
-                @unlink($file);
+            // Erst abgeschlossene Tage kappen: Bis dahin bleiben die Zähler exakt, sonst hinge die Rangliste
+            // davon ab, wann aggregiert wurde.
+            if ($day < $today) {
+                self::capDimensions($dayData['audiences']);
             }
+            $this->writeJson($this->getDayFile($day), $dayData);
 
-            $result['files'] += count($processed);
             $result['days'][] = $day;
             $result['months'][substr($day, 0, 7)] = substr($day, 0, 7);
         }
@@ -110,6 +119,13 @@ class StatisticsAggregator
             $this->rebuildMonth($month);
         }
         $result['months'] = array_values($result['months']);
+
+        // Rohdateien erst löschen, wenn Tages- und Monatsdateien geschrieben sind. Bricht ein Lauf vorher ab,
+        // zählt der nächste die Dateien nicht erneut (»sources«), baut aber die Monate neu auf.
+        foreach ($processed as $file) {
+            @unlink($file);
+        }
+        $result['files'] = count($processed);
 
         $this->pruneTerms($now);
 
@@ -389,8 +405,8 @@ class StatisticsAggregator
     }
 
     /**
-     * Entfernt Suchbegriffe aus Tagesdateien, die älter als die Aufbewahrungsdauer sind.
-     * Die Monatsdateien behalten die Begriffe ab der Mindesthäufigkeit.
+     * Entfernt Suchbegriffe aus Tagesdateien, die älter als die Aufbewahrungsdauer sind und zu einem
+     * abgeschlossenen Monat gehören. Die Monatsdateien behalten die Begriffe ab der Mindesthäufigkeit.
      */
     private function pruneTerms(\DateTimeImmutable $now): void
     {
@@ -398,8 +414,12 @@ class StatisticsAggregator
             ->modify('-' . $this->termsRetentionDays . ' days')
             ->format('Y-m-d');
 
+        $currentMonth = $now->setTimezone(StatisticsConfiguration::getTimezone())->format('Y-m');
+
         foreach (glob($this->directory . '/days/*.json') ?: [] as $dayFile) {
-            if (basename($dayFile, '.json') >= $limit) {
+            $day = basename($dayFile, '.json');
+            // Nur Tage abgeschlossener Monate bereinigen, sonst fehlten die Begriffe beim nächsten Monatsaufbau.
+            if ($day >= $limit || substr($day, 0, 7) >= $currentMonth) {
                 continue;
             }
             $dayData = $this->readJson($dayFile);
@@ -418,6 +438,32 @@ class StatisticsAggregator
             $dayData['termsPruned'] = true;
             $this->writeJson($dayFile, $dayData);
         }
+    }
+
+    /**
+     * Benennt eine Rohdatei vor der Verarbeitung in eine eindeutige Generation um. Requests, die danach in
+     * dieselbe Stunde schreiben, legen wieder eine neue Datei an, die ein späterer Lauf verarbeitet.
+     * Bereits umbenannte Dateien (aus abgebrochenen Läufen) werden unverändert übernommen.
+     */
+    private function claimRawFile(string $file): ?string
+    {
+        if (str_contains(basename($file), '+')) {
+            return $file;
+        }
+
+        $claimed = substr($file, 0, -strlen('.ndjson')) . '+' . dechex(time()) . bin2hex(random_bytes(4)) . '.ndjson';
+        if (!@rename($file, $claimed)) {
+            return null;
+        }
+
+        // Auf einen gerade laufenden Schreibzugriff warten (RawLogWriter schreibt unter LOCK_EX).
+        $handle = @fopen($claimed, 'rb');
+        if ($handle !== false) {
+            flock($handle, LOCK_SH);
+            fclose($handle);
+        }
+
+        return $claimed;
     }
 
     /**
