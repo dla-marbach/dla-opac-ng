@@ -5,8 +5,14 @@ declare(strict_types=1);
 namespace Dla\DlaOpacNg\Tests\Unit\Middleware;
 
 use Dla\DlaOpacNg\Middleware\ProofOfWorkMiddleware;
+use Dla\DlaOpacNg\Statistics\RawLogWriter;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use TYPO3\CMS\Core\Http\ServerRequest;
+use TYPO3\CMS\Core\Package\PackageInterface;
+use TYPO3\CMS\Core\Package\PackageManager;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class ProofOfWorkMiddlewareTest extends UnitTestCase
@@ -17,7 +23,7 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        foreach (['campusRanges', 'sandboxRanges', 'staffRanges'] as $envName) {
+        foreach (['campusRanges', 'sandboxRanges', 'staffRanges', 'opacPowEnabled', 'opacStatsEnabled'] as $envName) {
             $this->previousEnv[$envName] = getenv($envName);
         }
         $this->setEnvironmentVariable('campusRanges', '10.0.0.0/8');
@@ -111,6 +117,42 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
         ]);
 
         self::assertFalse($this->invokeIsWhitelistedIp($request));
+    }
+
+    /**
+     * @test
+     */
+    public function challengeIsCountedOnlyAsPowEventAndNotAsAccess(): void
+    {
+        $this->setEnvironmentVariable('opacPowEnabled', '1');
+        $this->setEnvironmentVariable('opacStatsEnabled', '1');
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['encryptionKey'] = 'test-key';
+
+        $package = $this->createMock(PackageInterface::class);
+        $package->method('getPackagePath')->willReturn(dirname(__DIR__, 3) . '/');
+        $packageManager = $this->createMock(PackageManager::class);
+        $packageManager->method('isPackageActive')->willReturn(true);
+        $packageManager->method('getPackage')->willReturn($package);
+        ExtensionManagementUtility::setPackageManager($packageManager);
+
+        $directory = sys_get_temp_dir() . '/dla-opac-stats-pow-' . bin2hex(random_bytes(4));
+        $handler = $this->createMock(RequestHandlerInterface::class);
+        $handler->expects(self::never())->method('handle');
+        $request = new ServerRequest('https://www.example.org/find/?tx_find_find[q][default]=x', 'GET', 'php://input', [], [
+            'REMOTE_ADDR' => '203.0.113.7',
+        ]);
+        $request = $request->withQueryParams(['tx_find_find' => ['q' => ['default' => 'x']]]);
+
+        $response = (new ProofOfWorkMiddleware(new RawLogWriter($directory)))->process($request, $handler);
+
+        $files = glob($directory . '/raw/*.ndjson') ?: [];
+        $lines = array_merge(...array_map(static fn(string $file): array => file($file, FILE_IGNORE_NEW_LINES), $files));
+        array_map('unlink', $files);
+        @rmdir($directory . '/raw');
+        @rmdir($directory);
+
+        self::assertSame(200, $response->getStatusCode());
+        self::assertSame(['{"a":"pow:issued"}'], $lines);
     }
 
     private function createRequestWithServerParams(array $serverParams): ServerRequestInterface&MockObject

@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Dla\DlaOpacNg\Middleware;
 
+use Dla\DlaOpacNg\Statistics\RawLogWriter;
+use Dla\DlaOpacNg\Statistics\StatisticsConfiguration;
 use Dla\DlaOpacNg\Utility\ClientIpUtility;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Symfony\Component\HttpFoundation\IpUtils;
 use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Http\RedirectResponse;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
@@ -46,6 +47,11 @@ class ProofOfWorkMiddleware implements MiddlewareInterface
      * Maximum time allowed to solve a challenge (seconds).
      */
     private const CHALLENGE_LIFETIME = 300;
+
+    public function __construct(
+        private readonly RawLogWriter $rawLogWriter = new RawLogWriter()
+    ) {
+    }
 
     public function process(
         ServerRequestInterface $request,
@@ -103,51 +109,12 @@ class ProofOfWorkMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Skip PoW checks for trusted network ranges configured via environment.
+     * Skip PoW checks for trusted network ranges configured via environment
+     * (campusRanges, sandboxRanges, staffRanges).
      */
     private function isWhitelistedIp(ServerRequestInterface $request): bool
     {
-        $ranges = $this->getWhitelistedIpRanges();
-        if ($ranges === []) {
-            return false;
-        }
-
-        $clientIp = ClientIpUtility::resolveClientIp(
-            $request->getServerParams()
-        );
-        if ($clientIp === '') {
-            return false;
-        }
-
-        return IpUtils::checkIp($clientIp, $ranges);
-    }
-
-    /**
-     * Read whitelist CIDR ranges from environment variables.
-     * Expected variables: campusRanges, sandboxRanges, staffRanges
-     *
-     * @return string[]
-     */
-    private function getWhitelistedIpRanges(): array
-    {
-        $rangeVars = ['campusRanges', 'sandboxRanges', 'staffRanges'];
-        $ranges = [];
-
-        foreach ($rangeVars as $rangeVar) {
-            $rawValue = getenv($rangeVar);
-            if ($rawValue === false || $rawValue === '') {
-                continue;
-            }
-
-            foreach (explode(',', $rawValue) as $range) {
-                $normalized = trim($range, " \t\n\r\0\x0B\"");
-                if ($normalized !== '') {
-                    $ranges[] = $normalized;
-                }
-            }
-        }
-
-        return array_values(array_unique($ranges));
+        return ClientIpUtility::isWhitelisted($request->getServerParams());
     }
 
     /**
@@ -215,6 +182,8 @@ class ProofOfWorkMiddleware implements MiddlewareInterface
      */
     private function createSuccessResponse(ServerRequestInterface $request): ResponseInterface
     {
+        $this->recordStatistics('pow:solved');
+
         $expiry  = time() + self::COOKIE_LIFETIME;
         $payload = base64_encode((string)$expiry);
         $mac     = hash_hmac('sha256', $payload, $this->getSecretKey());
@@ -246,6 +215,8 @@ class ProofOfWorkMiddleware implements MiddlewareInterface
      */
     private function createChallengePage(ServerRequestInterface $request): ResponseInterface
     {
+        $this->recordStatistics('pow:issued');
+
         $challenge = base64_encode(time() . ':' . bin2hex(random_bytes(16)));
         $mac       = hash_hmac('sha256', $challenge, $this->getSecretKey());
 
@@ -327,6 +298,17 @@ class ProofOfWorkMiddleware implements MiddlewareInterface
         }
 
         return 'en';
+    }
+
+    /**
+     * Zählt ausgestellte bzw. gelöste Challenges für die Nutzungsstatistik (ohne Angaben zum Client).
+     * Abgewiesene Requests zählen dort nicht als Zugriffe.
+     */
+    private function recordStatistics(string $event): void
+    {
+        if (StatisticsConfiguration::isEnabled()) {
+            $this->rawLogWriter->append(['a' => $event]);
+        }
     }
 
     private function getSecretKey(): string

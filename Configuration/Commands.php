@@ -12,5 +12,8 @@ return [
     ],
     'dla_opac_ng:sitemap' => [
         'class' => Dla\DlaOpacNg\Cli\Sitemap::class
+    ],
+    'dla_opac_ng:stats:aggregate' => [
+        'class' => Dla\DlaOpacNg\Cli\StatisticsAggregate::class
     ]
 ];

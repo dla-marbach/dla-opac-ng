@@ -1,0 +1,63 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:layout name="Module" />
+
+<f:section name="Content">
+    <h1><f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:mlang_tabs_tab" /></h1>
+
+    <f:if condition="!{enabled}">
+        <f:be.infobox state="1" title="{f:translate(key: 'LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:disabled.title')}">
+            <f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:disabled.message" />
+        </f:be.infobox>
+    </f:if>
+
+    <div id="dla-opac-stats" class="dla-stats" data-url="{dataUrl}">
+        <form class="dla-stats-controls" data-controls>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default" data-preset="7d"><f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:preset.7d" /></button>
+                <button type="button" class="btn btn-default" data-preset="30d"><f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:preset.30d" /></button>
+                <button type="button" class="btn btn-default" data-preset="90d"><f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:preset.90d" /></button>
+                <button type="button" class="btn btn-default" data-preset="12m"><f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:preset.12m" /></button>
+                <button type="button" class="btn btn-default" data-preset="year"><f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:preset.year" /></button>
+            </div>
+            <label>
+                <f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:range.from" />
+                <input type="date" name="from" class="form-control form-control-sm" required>
+            </label>
+            <label>
+                <f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:range.to" />
+                <input type="date" name="to" class="form-control form-control-sm" required>
+            </label>
+            <button type="submit" class="btn btn-primary btn-sm"><f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:action.load" /></button>
+            <fieldset class="dla-stats-audiences">
+                <legend><f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:audience.legend" /></legend>
+                <label><input type="checkbox" name="audience" value="ext" checked> <f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:audience.ext" /></label>
+                <label><input type="checkbox" name="audience" value="int" checked> <f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:audience.int" /></label>
+                <label><input type="checkbox" name="audience" value="bot"> <f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:audience.bot" /></label>
+            </fieldset>
+        </form>
+
+        <p class="dla-stats-range"><span data-range-info></span> <span class="dla-stats-status" data-status role="status"></span></p>
+
+        <div class="dla-stats-tiles" data-tiles></div>
+
+        <div class="dla-stats-grid-cards dla-stats-grid-wide">
+            <section class="dla-stats-card">
+                <h3><f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:chart.series" /></h3>
+                <div data-series></div>
+            </section>
+            <section class="dla-stats-card">
+                <h3><f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:chart.hours" /></h3>
+                <div data-hours></div>
+            </section>
+        </div>
+
+        <div data-sections></div>
+
+        <p class="dla-stats-note">
+            <f:translate key="LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf:privacy" arguments="{0: termsMinCount}" />
+        </p>
+    </div>
+</f:section>
+
+</html>

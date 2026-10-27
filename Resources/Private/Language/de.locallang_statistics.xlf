@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" target-language="de" datatype="plaintext" original="EXT:dla_opac_ng/Resources/Private/Language/locallang_statistics.xlf" date="2026-10-27T00:00:00Z" product-name="dla_opac_ng">
+		<header/>
+		<body>
+			<trans-unit id="mlang_tabs_tab" resname="mlang_tabs_tab">
+				<source>Catalogue statistics</source>
+				<target>Katalog-Statistik</target>
+			</trans-unit>
+			<trans-unit id="mlang_labels_tablabel" resname="mlang_labels_tablabel">
+				<source>Catalogue statistics</source>
+				<target>Katalog-Statistik</target>
+			</trans-unit>
+			<trans-unit id="mlang_labels_tabdescr" resname="mlang_labels_tabdescr">
+				<source>Anonymous, aggregated usage statistics of the catalogue (OPAC)</source>
+				<target>Anonyme, aggregierte Nutzungsstatistik des Katalogs (OPAC)</target>
+			</trans-unit>
+			<trans-unit id="disabled.title" resname="disabled.title">
+				<source>Recording is disabled</source>
+				<target>Erfassung ist ausgeschaltet</target>
+			</trans-unit>
+			<trans-unit id="disabled.message" resname="disabled.message">
+				<source>New accesses are only recorded if the environment variable opacStatsEnabled is set to 1. Existing data is still shown.</source>
+				<target>Neue Zugriffe werden nur erfasst, wenn die Umgebungsvariable opacStatsEnabled auf 1 gesetzt ist. Vorhandene Daten werden weiterhin angezeigt.</target>
+			</trans-unit>
+			<trans-unit id="preset.7d" resname="preset.7d">
+				<source>7 days</source>
+				<target>7 Tage</target>
+			</trans-unit>
+			<trans-unit id="preset.30d" resname="preset.30d">
+				<source>30 days</source>
+				<target>30 Tage</target>
+			</trans-unit>
+			<trans-unit id="preset.90d" resname="preset.90d">
+				<source>90 days</source>
+				<target>90 Tage</target>
+			</trans-unit>
+			<trans-unit id="preset.12m" resname="preset.12m">
+				<source>12 months</source>
+				<target>12 Monate</target>
+			</trans-unit>
+			<trans-unit id="preset.year" resname="preset.year">
+				<source>This year</source>
+				<target>Dieses Jahr</target>
+			</trans-unit>
+			<trans-unit id="range.from" resname="range.from">
+				<source>From</source>
+				<target>Von</target>
+			</trans-unit>
+			<trans-unit id="range.to" resname="range.to">
+				<source>To</source>
+				<target>Bis</target>
+			</trans-unit>
+			<trans-unit id="action.load" resname="action.load">
+				<source>Show</source>
+				<target>Anzeigen</target>
+			</trans-unit>
+			<trans-unit id="audience.legend" resname="audience.legend">
+				<source>Accesses:</source>
+				<target>Zugriffe:</target>
+			</trans-unit>
+			<trans-unit id="audience.ext" resname="audience.ext">
+				<source>external</source>
+				<target>extern</target>
+			</trans-unit>
+			<trans-unit id="audience.int" resname="audience.int">
+				<source>internal (campus/staff networks)</source>
+				<target>intern (Campus-/Mitarbeiternetze)</target>
+			</trans-unit>
+			<trans-unit id="audience.bot" resname="audience.bot">
+				<source>bots (by user agent)</source>
+				<target>Bots (laut User-Agent)</target>
+			</trans-unit>
+			<trans-unit id="chart.series" resname="chart.series">
+				<source>Page views over time</source>
+				<target>Seitenaufrufe im Verlauf</target>
+			</trans-unit>
+			<trans-unit id="chart.hours" resname="chart.hours">
+				<source>Page views by hour of day</source>
+				<target>Seitenaufrufe nach Tageszeit</target>
+			</trans-unit>
+			<trans-unit id="privacy" resname="privacy">
+				<source>No IP addresses, user agents or cookies are stored. Accesses rejected by the proof-of-work challenge are not counted. Search terms are only shown if they occur at least %d times in the selected period.</source>
+				<target>Es werden keine IP-Adressen, User-Agents oder Cookies gespeichert. Von der Proof-of-Work-Challenge abgewiesene Zugriffe werden nicht gezählt. Suchbegriffe erscheinen erst, wenn sie im gewählten Zeitraum mindestens %d-mal vorkommen.</target>
+			</trans-unit>
+			<trans-unit id="js.status.loading" resname="js.status.loading">
+				<source>Loading …</source>
+				<target>Wird geladen …</target>
+			</trans-unit>
+			<trans-unit id="js.status.error" resname="js.status.error">
+				<source>Data could not be loaded</source>
+				<target>Daten konnten nicht geladen werden</target>
+			</trans-unit>
+			<trans-unit id="js.note.monthly" resname="js.note.monthly">
+				<source>Monthly values, period extended to whole months: %s – %s</source>
+				<target>Monatswerte, Zeitraum auf ganze Monate erweitert: %s – %s</target>
+			</trans-unit>
+			<trans-unit id="js.note.hoursDailyOnly" resname="js.note.hoursDailyOnly">
+				<source>Only available for periods of up to 92 days.</source>
+				<target>Nur für Zeiträume bis 92 Tage verfügbar.</target>
+			</trans-unit>
+			<trans-unit id="js.note.termsThreshold" resname="js.note.termsThreshold">
+				<source>Only terms with at least %d occurrences in the period.</source>
+				<target>Nur Begriffe mit mindestens %d Vorkommen im Zeitraum.</target>
+			</trans-unit>
+			<trans-unit id="js.note.noData" resname="js.note.noData">
+				<source>No data</source>
+				<target>Keine Daten</target>
+			</trans-unit>
+			<trans-unit id="js.action.csv" resname="js.action.csv">
+				<source>Download table as CSV</source>
+				<target>Tabelle als CSV herunterladen</target>
+			</trans-unit>
+			<trans-unit id="js.action.showAll" resname="js.action.showAll">
+				<source>Show all %d rows</source>
+				<target>Alle %d Zeilen anzeigen</target>
+			</trans-unit>
+			<trans-unit id="js.column.value" resname="js.column.value">
+				<source>Value</source>
+				<target>Wert</target>
+			</trans-unit>
+			<trans-unit id="js.column.count" resname="js.column.count">
+				<source>Count</source>
+				<target>Anzahl</target>
+			</trans-unit>
+			<trans-unit id="js.column.share" resname="js.column.share">
+				<source>Share</source>
+				<target>Anteil</target>
+			</trans-unit>
+			<trans-unit id="js.tile.pageViews" resname="js.tile.pageViews">
+				<source>Page views</source>
+				<target>Seitenaufrufe</target>
+			</trans-unit>
+			<trans-unit id="js.tile.searches" resname="js.tile.searches">
+				<source>Result lists</source>
+				<target>Trefferlisten</target>
+			</trans-unit>
+			<trans-unit id="js.tile.newSearches" resname="js.tile.newSearches">
+				<source>New searches (page 1)</source>
+				<target>Neue Suchen (Seite 1)</target>
+			</trans-unit>
+			<trans-unit id="js.tile.zeroResults" resname="js.tile.zeroResults">
+				<source>Searches without results</source>
+				<target>Suchen ohne Treffer</target>
+			</trans-unit>
+			<trans-unit id="js.tile.details" resname="js.tile.details">
+				<source>Detail pages</source>
+				<target>Detailseiten</target>
+			</trans-unit>
+			<trans-unit id="js.tile.collection" resname="js.tile.collection">
+				<source>Holdings overview</source>
+				<target>Bestandsübersicht</target>
+			</trans-unit>
+			<trans-unit id="js.tile.classification" resname="js.tile.classification">
+				<source>Classification</source>
+				<target>Systematik</target>
+			</trans-unit>
+			<trans-unit id="js.tile.powSolved" resname="js.tile.powSolved">
+				<source>Challenges solved (≈ new browser sessions)</source>
+				<target>Gelöste Challenges (≈ neue Browser-Sitzungen)</target>
+			</trans-unit>
+			<trans-unit id="js.tile.powIssued" resname="js.tile.powIssued">
+				<source>Challenges issued (incl. rejected bots)</source>
+				<target>Ausgestellte Challenges (inkl. abgewiesener Bots)</target>
+			</trans-unit>
+			<trans-unit id="js.chart.series" resname="js.chart.series">
+				<source>Page views over time</source>
+				<target>Seitenaufrufe im Verlauf</target>
+			</trans-unit>
+			<trans-unit id="js.section.overview" resname="js.section.overview">
+				<source>Overview</source>
+				<target>Überblick</target>
+			</trans-unit>
+			<trans-unit id="js.section.search" resname="js.section.search">
+				<source>Search and result lists</source>
+				<target>Suche und Trefferlisten</target>
+			</trans-unit>
+			<trans-unit id="js.section.detail" resname="js.section.detail">
+				<source>Detail pages</source>
+				<target>Detailseiten</target>
+			</trans-unit>
+			<trans-unit id="js.section.collection" resname="js.section.collection">
+				<source>Holdings overview</source>
+				<target>Bestandsübersicht</target>
+			</trans-unit>
+			<trans-unit id="js.section.classification" resname="js.section.classification">
+				<source>Classification</source>
+				<target>Systematik</target>
+			</trans-unit>
+			<trans-unit id="js.section.ajax" resname="js.section.ajax">
+				<source>Dynamic requests (AJAX)</source>
+				<target>Dynamische Abfragen (AJAX)</target>
+			</trans-unit>
+			<trans-unit id="js.table.areas" resname="js.table.areas">
+				<source>Areas</source>
+				<target>Bereiche</target>
+			</trans-unit>
+			<trans-unit id="js.table.lang" resname="js.table.lang">
+				<source>Language</source>
+				<target>Sprache</target>
+			</trans-unit>
+			<trans-unit id="js.table.ref" resname="js.table.ref">
+				<source>Origin</source>
+				<target>Herkunft</target>
+			</trans-unit>
+			<trans-unit id="js.table.fields" resname="js.table.fields">
+				<source>Search fields</source>
+				<target>Suchfelder</target>
+			</trans-unit>
+			<trans-unit id="js.table.facets" resname="js.table.facets">
+				<source>Facets used</source>
+				<target>Genutzte Facetten</target>
+			</trans-unit>
+			<trans-unit id="js.table.facetValues" resname="js.table.facetValues">
+				<source>Facet values</source>
+				<target>Facettenwerte</target>
+			</trans-unit>
+			<trans-unit id="js.table.results" resname="js.table.results">
+				<source>Number of results</source>
+				<target>Trefferzahl</target>
+			</trans-unit>
+			<trans-unit id="js.table.pages" resname="js.table.pages">
+				<source>Result page</source>
+				<target>Ergebnisseite</target>
+			</trans-unit>
+			<trans-unit id="js.table.filters" resname="js.table.filters">
+				<source>Active filters</source>
+				<target>Aktive Filter</target>
+			</trans-unit>
+			<trans-unit id="js.table.mode" resname="js.table.mode">
+				<source>Type of use</source>
+				<target>Art der Nutzung</target>
+			</trans-unit>
+			<trans-unit id="js.table.form" resname="js.table.form">
+				<source>Search form</source>
+				<target>Suchformular</target>
+			</trans-unit>
+			<trans-unit id="js.table.sort" resname="js.table.sort">
+				<source>Sorting</source>
+				<target>Sortierung</target>
+			</trans-unit>
+			<trans-unit id="js.table.count" resname="js.table.count">
+				<source>Results per page</source>
+				<target>Treffer pro Seite</target>
+			</trans-unit>
+			<trans-unit id="js.table.entry" resname="js.table.entry">
+				<source>Page (entry point)</source>
+				<target>Seite (Einstieg)</target>
+			</trans-unit>
+			<trans-unit id="js.table.terms" resname="js.table.terms">
+				<source>Search terms</source>
+				<target>Suchbegriffe</target>
+			</trans-unit>
+			<trans-unit id="js.table.zeroTerms" resname="js.table.zeroTerms">
+				<source>Search terms without results</source>
+				<target>Suchbegriffe ohne Treffer</target>
+			</trans-unit>
+			<trans-unit id="js.table.source" resname="js.table.source">
+				<source>Opened from</source>
+				<target>Aufgerufen über</target>
+			</trans-unit>
+			<trans-unit id="js.table.found" resname="js.table.found">
+				<source>Record found</source>
+				<target>Datensatz gefunden</target>
+			</trans-unit>
+			<trans-unit id="js.value.found.yes" resname="js.value.found.yes">
+				<source>yes</source>
+				<target>ja</target>
+			</trans-unit>
+			<trans-unit id="js.value.found.no" resname="js.value.found.no">
+				<source>no (unknown ID)</source>
+				<target>nein (unbekannte ID)</target>
+			</trans-unit>
+			<trans-unit id="js.table.format" resname="js.table.format">
+				<source>Format</source>
+				<target>Format</target>
+			</trans-unit>
+			<trans-unit id="js.table.records" resname="js.table.records">
+				<source>Most viewed records</source>
+				<target>Meistaufgerufene Datensätze</target>
+			</trans-unit>
+			<trans-unit id="js.table.ajaxAreas" resname="js.table.ajaxAreas">
+				<source>Endpoints</source>
+				<target>Endpunkte</target>
+			</trans-unit>
+			<trans-unit id="js.table.ajaxCollection" resname="js.table.ajaxCollection">
+				<source>Holdings overview: tree actions</source>
+				<target>Bestandsübersicht: Baumaktionen</target>
+			</trans-unit>
+			<trans-unit id="js.table.ajaxClassification" resname="js.table.ajaxClassification">
+				<source>Classification: tree actions</source>
+				<target>Systematik: Baumaktionen</target>
+			</trans-unit>
+			<trans-unit id="js.area.start" resname="js.area.start">
+				<source>Start page</source>
+				<target>Startseite</target>
+			</trans-unit>
+			<trans-unit id="js.area.search" resname="js.area.search">
+				<source>Result lists</source>
+				<target>Trefferlisten</target>
+			</trans-unit>
+			<trans-unit id="js.area.detail" resname="js.area.detail">
+				<source>Detail pages</source>
+				<target>Detailseiten</target>
+			</trans-unit>
+			<trans-unit id="js.area.collection" resname="js.area.collection">
+				<source>Holdings overview</source>
+				<target>Bestandsübersicht</target>
+			</trans-unit>
+			<trans-unit id="js.area.classification" resname="js.area.classification">
+				<source>Classification</source>
+				<target>Systematik</target>
+			</trans-unit>
+			<trans-unit id="js.area.ajax:autocomplete" resname="js.area.ajax:autocomplete">
+				<source>Autocomplete</source>
+				<target>Autovervollständigung</target>
+			</trans-unit>
+			<trans-unit id="js.area.ajax:decisiontree" resname="js.area.ajax:decisiontree">
+				<source>Facet search (decision tree)</source>
+				<target>Facettensuche (Entscheidungsbaum)</target>
+			</trans-unit>
+			<trans-unit id="js.area.ajax:entity" resname="js.area.ajax:entity">
+				<source>Authority record (single)</source>
+				<target>Normdatensatz (einzeln)</target>
+			</trans-unit>
+			<trans-unit id="js.area.ajax:entities" resname="js.area.ajax:entities">
+				<source>Authority records (list)</source>
+				<target>Normdatensätze (Liste)</target>
+			</trans-unit>
+			<trans-unit id="js.area.ajax:export" resname="js.area.ajax:export">
+				<source>Watchlist CSV export</source>
+				<target>Merkliste: CSV-Export</target>
+			</trans-unit>
+			<trans-unit id="js.area.ajax:collection" resname="js.area.ajax:collection">
+				<source>Holdings overview tree</source>
+				<target>Bestandsübersicht: Baum</target>
+			</trans-unit>
+			<trans-unit id="js.area.ajax:classification" resname="js.area.ajax:classification">
+				<source>Classification tree</source>
+				<target>Systematik: Baum</target>
+			</trans-unit>
+			<trans-unit id="js.value._other" resname="js.value._other">
+				<source>Other</source>
+				<target>Sonstige</target>
+			</trans-unit>
+			<trans-unit id="js.value.page" resname="js.value.page">
+				<source>Page</source>
+				<target>Seite</target>
+			</trans-unit>
+			<trans-unit id="js.value.not" resname="js.value.not">
+				<source>not</source>
+				<target>nicht</target>
+			</trans-unit>
+			<trans-unit id="js.value.mode.text" resname="js.value.mode.text">
+				<source>With search term</source>
+				<target>Mit Suchbegriff</target>
+			</trans-unit>
+			<trans-unit id="js.value.mode.browse" resname="js.value.mode.browse">
+				<source>Without search term (facets only)</source>
+				<target>Ohne Suchbegriff (nur Facetten)</target>
+			</trans-unit>
+			<trans-unit id="js.value.mode.search" resname="js.value.mode.search">
+				<source>Search</source>
+				<target>Suche</target>
+			</trans-unit>
+			<trans-unit id="js.value.mode.record" resname="js.value.mode.record">
+				<source>Record</source>
+				<target>Datensatz</target>
+			</trans-unit>
+			<trans-unit id="js.value.mode.node" resname="js.value.mode.node">
+				<source>Node</source>
+				<target>Knoten</target>
+			</trans-unit>
+			<trans-unit id="js.value.mode.entry" resname="js.value.mode.entry">
+				<source>Entry page</source>
+				<target>Einstieg</target>
+			</trans-unit>
+			<trans-unit id="js.value.form.simple" resname="js.value.form.simple">
+				<source>Simple search</source>
+				<target>Einfache Suche</target>
+			</trans-unit>
+			<trans-unit id="js.value.form.extended" resname="js.value.form.extended">
+				<source>Advanced search</source>
+				<target>Erweiterte Suche</target>
+			</trans-unit>
+			<trans-unit id="js.value.ref.int" resname="js.value.ref.int">
+				<source>Own website</source>
+				<target>Eigene Website</target>
+			</trans-unit>
+			<trans-unit id="js.value.ref.ext" resname="js.value.ref.ext">
+				<source>Other website</source>
+				<target>Andere Website</target>
+			</trans-unit>
+			<trans-unit id="js.value.ref.none" resname="js.value.ref.none">
+				<source>No referrer (direct, bookmark)</source>
+				<target>Ohne Herkunft (direkt, Lesezeichen)</target>
+			</trans-unit>
+			<trans-unit id="js.value.source.results" resname="js.value.source.results">
+				<source>Result list</source>
+				<target>Trefferliste</target>
+			</trans-unit>
+			<trans-unit id="js.value.source.direct" resname="js.value.source.direct">
+				<source>Direct (link, search engine)</source>
+				<target>Direkt (Link, Suchmaschine)</target>
+			</trans-unit>
+			<trans-unit id="js.value.format.html" resname="js.value.format.html">
+				<source>Web page</source>
+				<target>Webseite</target>
+			</trans-unit>
+			<trans-unit id="js.value.format.pdf" resname="js.value.format.pdf">
+				<source>PDF</source>
+				<target>PDF</target>
+			</trans-unit>
+			<trans-unit id="js.value.sort.default" resname="js.value.sort.default">
+				<source>Default (relevance)</source>
+				<target>Standard (Relevanz)</target>
+			</trans-unit>
+			<trans-unit id="js.value.lang.de" resname="js.value.lang.de">
+				<source>German</source>
+				<target>Deutsch</target>
+			</trans-unit>
+			<trans-unit id="js.value.lang.en" resname="js.value.lang.en">
+				<source>English</source>
+				<target>Englisch</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
