@@ -11,6 +11,23 @@ return [
                 'typo3/cms-frontend/site-resolver',
             ],
         ],
+        // Nutzungsstatistik: innerhalb der PoW (abgewiesene Requests zählen nicht), vor den AJAX-Endpunkten,
+        // damit auch deren Aufrufe gezählt werden.
+        'Dla/dla_opac_ng/statistics' => [
+            'target' => \Dla\DlaOpacNg\Middleware\StatisticsMiddleware::class,
+            'after' => [
+                'typo3/cms-frontend/page-resolver',
+                'Dla/dla_opac_ng/proof-of-work',
+            ],
+            'before' => [
+                'Dla/dla_opac_ng/ajax/getentity',
+                'Dla/dla_opac_ng/ajax/getentities',
+                'Dla/dla_opac_ng/ajax/watchlistexportcsv',
+                'Dla/dla_opac_ng/ajax/autocomplete',
+                'Dla/dla_opac_ng/ajax/decisiontree',
+                'Dla/dla_opac_ng/ajax/collection',
+            ],
+        ],
         'Dla/dla_opac_ng/ajax/getentity' => [
             'target' => \Dla\DlaOpacNg\Ajax\GetEntity::class,
             'after' => [

@@ -27,3 +27,9 @@ services:
       - name: console.command
         command: 'dla_opac_ng:import'
         description: 'Import new collection hierarchy into database.'
+
+  Dla\DlaOpacNg\Cli\StatisticsMatomoPush:
+    tags:
+      - name: console.command
+        command: 'dla_opac_ng:stats:matomo-push'
+        description: 'Send raw catalogue usage statistics to Matomo (Bulk Tracking API).'
