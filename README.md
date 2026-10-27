@@ -95,6 +95,130 @@ Der Tunnel wird vom lokalen PC aus (mit aktiver VPN-Verbindung zum DLA-Testsyste
 gh codespace ssh -- -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -R 127.0.0.1:8983:serene.dla-marbach.de:8983
 ```
 
+## Nutzungsstatistik mit Matomo
+
+Die Extension erfasst eine datensparsame Nutzungsstatistik des Katalogs und sendet sie serverseitig an Matomo
+(Bulk-Tracking-API). Im Browser läuft kein Tracking-JavaScript, es werden keine Cookies gesetzt, und Matomo erhält
+weder IP-Adressen noch User-Agents der Besucher.
+
+Ablauf:
+
+1. Die Controller der Plugins melden, was ein Request getan hat
+   ([Classes/Statistics/StatisticsCollector.php](Classes/Statistics/StatisticsCollector.php)).
+2. Die [StatisticsMiddleware](Classes/Middleware/StatisticsMiddleware.php) liegt innerhalb der Proof-of-Work-Middleware:
+   Requests, die mit der Challenge-Seite beantwortet werden, erreichen sie nicht und zählen nicht als Zugriffe. Nach
+   erfolgreicher Antwort (Status < 400, GET/POST, kein Prefetch) hängt sie eine Zeile an die Rohdatei der aktuellen
+   Minute an: `var/opac-stats/raw/YYYYMMDDHHii-<host>.ndjson` (UTC). Im Request gibt es dabei weder Netzwerk- noch
+   Datenbankzugriffe; ist Matomo nicht erreichbar, merkt der Katalog davon nichts.
+3. Der Befehl `dla_opac_ng:stats:matomo-push` sendet abgeschlossene Minuten in Paketen von 500 Requests an
+   `matomo.php` und löscht die Rohdateien danach. Der Zeitpunkt des Zugriffs geht als `cdt` mit. Der Fortschritt
+   wird pro Datei vermerkt, sodass ein abgebrochener Lauf ohne Doppelzählungen fortgesetzt wird.
+
+Was an Matomo geht ([Classes/Statistics/MatomoRequestBuilder.php](Classes/Statistics/MatomoRequestBuilder.php)):
+
+| Katalog | Matomo (Website »Katalog«, `opacMatomoSiteId`) |
+|---|---|
+| Startseite, Trefferliste, Detailseite, Bestandsübersicht, Systematik | Seitenaufruf mit `url` (ohne Query-Parameter) und `action_name` `Katalog/<Bereich>` |
+| Suchbegriff (Trefferliste, Suche in Bestandsübersicht/Systematik) | Site Search: `search` (normalisiert), `search_cat` (`Katalog (einfach)`, `Katalog (erweitert)`, `Bestandsübersicht`, `Systematik`), `search_count` (Trefferzahl) |
+| Facettenfilter | je Filter ein Event: Kategorie `Facette` bzw. `Facette (ausgeschlossen)`, Aktion = Facette, Name = Wert |
+| Herkunft von anderen Websites | `urlref` nur mit dem Hostnamen (`https://<host>/`) |
+| Merkmale | Custom Dimensions (Scope »Aktion«), siehe `opacMatomoDimensions` |
+
+| Katalog | Matomo (Website »Katalog – Zähler«, `opacMatomoAuxSiteId`, optional) |
+|---|---|
+| Proof-of-Work: ausgestellte und gelöste Challenges | Event `Proof-of-Work` / `Challenge ausgestellt` bzw. `Challenge gelöst` |
+| Zugriffe von Bots (per User-Agent erkannt) | Event `Bot` / `<Bereich>` |
+| AJAX-Endpunkte (nur der Endpunkt, keine Eingaben) | Event `AJAX` / `<Endpunkt>` / `extern` bzw. `intern` |
+
+Die Zähler werden pro Stunde zusammengefasst, die Anzahl steht im **Ereigniswert** (Bericht »Ereignisse«, Spalte
+»Summe Ereigniswert«). Ohne `opacMatomoAuxSiteId` werden sie verworfen; Bots fehlen dann in der Statistik.
+
+Datenschutz:
+
+* Jede Katalogseite ist in Matomo ein eigener Besuch mit zufälliger Besucher-ID, fester IP-Adresse (`0.0.0.0`) und
+  festem User-Agent. Matomo zählt damit Aktionen, keine Besucher: »Besuche« entspricht den Seitenaufrufen.
+* Ob ein Zugriff intern ist (`campusRanges`, `sandboxRanges`, `staffRanges`) oder von einem Bot stammt, wird nur
+  während des Requests in TYPO3 ausgewertet. Die Rohdateien enthalten keine IP-Adressen, User-Agents, Cookies oder
+  Query-Parameter.
+* Matomo kennt keine Mindesthäufigkeit für Suchbegriffe: Auch einmalig gesuchte Begriffe bleiben in den
+  archivierten Berichten (siehe Einstellungen zum Löschen alter Berichte in Matomo).
+* Ein kurzer Hinweis auf die anonyme, serverseitige Nutzungsstatistik in der Datenschutzerklärung ist sinnvoll.
+
+### Einrichtung im Hauptprojekt (dla-t3-www)
+
+Umgebungsvariablen (z.B. in der `.env` der TYPO3-Instanz, wie `opacPowEnabled`):
+
+| Variable | Standard | |
+|---|---|---|
+| `opacStatsEnabled` | – | Erfassung einschalten (`1`) |
+| `opacStatsPath` | `var/opac-stats` der Instanz | optional, anderes Verzeichnis für die Rohdateien, z.B. ein gemeinsames Verzeichnis mehrerer Webserver; nicht im Webroot |
+| `opacMatomoUrl` | – | Basis-URL der Matomo-Installation (ohne `matomo.php`) |
+| `opacMatomoToken` | – | `token_auth` eines Matomo-Benutzers mit Schreibrecht auf beide Websites (nötig für `cip` und `cdt`) |
+| `opacMatomoSiteId` | – | ID der Website »Katalog« |
+| `opacMatomoAuxSiteId` | – | optional, ID der Website »Katalog – Zähler« |
+| `opacMatomoDimensions` | – | optional, Zuordnung der Merkmale zu den IDs der Custom Dimensions, z.B. `area:1,audience:2,mode:3,facets:4,hits:5` |
+
+Merkmale für `opacMatomoDimensions` (nicht zugeordnete Merkmale werden nicht gesendet):
+
+| Schlüssel | Werte |
+|---|---|
+| `area` | Bereich: `Startseite`, `Trefferliste`, `Detailseite`, `Bestandsübersicht`, `Systematik` |
+| `audience` | `extern`, `intern` |
+| `language` | Sprache der Seite (`de`, `en`) |
+| `referrer` | `eigene Website`, `andere Website`, `ohne` |
+| `mode` | Trefferliste: `einfach`, `erweitert`, `ohne Suchbegriff`; Detailseite: `aus Trefferliste`, `direkt`, `PDF`, `nicht gefunden`; Bestandsübersicht/Systematik: `Einstieg`, `Datensatz`, `Knoten`, `Suche` |
+| `fields` | genutzte Suchfelder (Kombination, sortiert) |
+| `facets` | genutzte Facetten (Kombination der IDs, sortiert) |
+| `sort` | Sortierung (`Standard`, wenn nicht gewählt) |
+| `page` | Ergebnisseite |
+| `perPage` | Treffer pro Seite |
+| `hits` | Trefferzahl in Größenklassen (`0`, `1`, `2-10`, `11-100`, `101-1000`, `1001-10000`, `>10000`) |
+
+Push regelmäßig ausführen, z.B. jede Minute per Crontab des Webserver-Benutzers:
+
+```
+* * * * * cd /pfad/zur/instanz && vendor/bin/typo3 dla_opac_ng:stats:matomo-push --quiet
+```
+
+Bei mehreren Webservern läuft der Befehl nur auf einem Knoten, und alle Knoten schreiben in ein gemeinsames
+`opacStatsPath`. Parallele Läufe verhindert eine Sperrdatei. Solange der Push nicht läuft (oder Matomo nicht
+erreichbar ist), sammeln sich die Rohdateien an; sie werden beim nächsten erfolgreichen Lauf nachgeliefert. Liegen
+Zugriffe dabei mehr als einen Tag zurück, müssen die Berichte der betroffenen Tage in Matomo neu archiviert werden
+(`./console core:invalidate-report-data`).
+
+### Einrichtung in Matomo
+
+1. Websites anlegen: »Katalog« (Zeitzone Europe/Berlin, Site Search aktiviert) und optional »Katalog – Zähler«.
+2. Technischen Benutzer anlegen mit Schreibrecht nur auf diese Websites und dafür einen `token_auth` erzeugen.
+3. Custom Dimensions mit Scope »Aktion« für die gewünschten Merkmale anlegen und die IDs in `opacMatomoDimensions`
+   eintragen. Matomo stellt pro Scope standardmäßig 5 Plätze bereit, weitere mit
+   `./console customdimensions:add-custom-dimension --scope=action --count=6`.
+4. In `config/config.ini.php` unter `[General]` die Archivierung per Cron einrichten und die Zeilenlimits der
+   Berichte erhöhen, da Facettenwerte, Suchbegriffe und Datensatz-IDs sonst schnell unter »Andere« landen:
+   ```ini
+   enable_browser_archiving_triggering = 0   ; Cron: ./console core:archive (stündlich)
+   datatable_archiving_maximum_rows_events = 5000
+   datatable_archiving_maximum_rows_subtable_events = 2000
+   datatable_archiving_maximum_rows_site_search = 5000
+   datatable_archiving_maximum_rows_actions = 2000
+   datatable_archiving_maximum_rows_subtable_actions = 5000
+   datatable_archiving_maximum_rows_custom_dimensions = 1000
+   ```
+5. Datenschutz: Besucher-Log und Besucherprofil deaktivieren, Geolokalisierung abschalten, alte Rohdaten nach
+   z.B. 90 Tagen löschen. Ausgeschlossene IP-Bereiche in Matomo greifen nicht (Matomo sieht keine echten IPs);
+   interne Zugriffe über das Merkmal `audience` filtern.
+6. Segmente anlegen, z.B. »Extern« (`audience` = `extern`).
+
+### Lokal testen
+
+In [.devfiles/.env](.devfiles/.env) ist `opacStatsEnabled=1` gesetzt. Nach einigen Aufrufen im Katalog liegen
+Rohdaten in `t3example/var/opac-stats/raw/`. Ohne Matomo zeigt `--dry-run` die Requests, die gesendet würden
+(nichts wird gelöscht); mit `--include-current-minute` auch die laufende Minute:
+
+```
+t3example/vendor/bin/typo3 dla_opac_ng:stats:matomo-push --dry-run --include-current-minute
+```
+
 ## Tests
 
 ### Playwright
