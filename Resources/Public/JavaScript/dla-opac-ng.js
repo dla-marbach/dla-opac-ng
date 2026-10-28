@@ -139,14 +139,14 @@ $(document).ready(function(){
             $('.order-overlay .error').show();
         } else {
 
-            var orderurl = $(this).data('orderurl');
-            orderurl = orderurl.replace("%name%", escape(nameValue));
-            orderurl = orderurl.replace("%pw%", pwValue);
+            var order = buildOrderRequest($(this).data('orderurl'), nameValue, pwValue);
 
             $('.order-overlay-button').prop('disabled', true);
             $('#loading').addClass('lb-cancel');
             $.ajax({
-                url: orderurl,
+                url: order.url,
+                type: 'POST',
+                data: encodeOrderParams(order.params),
             })
             .done(function( data ) {
                 $('.order-overlay .login-form').hide();
@@ -200,7 +200,7 @@ $(document).ready(function(){
 
             })
             .fail(function() {
-                sendOrderAsPopup(orderurl);
+                sendOrderAsPopup(order);
                 $('.order-overlay-button').prop('disabled', false);
             });
 
@@ -308,11 +308,69 @@ function downloadContentAsFile(content, type, filename) {
 
 }
 
-function sendOrderAsPopup(orderurl) {
-    // if ajax failed
-    var win = window.open(orderurl, '_blank');
+/**
+ * Zerlegt den Bestelllink (data-orderurl) in Adresse und Parameter und setzt
+ * Name und Passwort für die Platzhalter %name% und %pw% ein. Die Bestellung wird
+ * per POST abgeschickt, damit Name und Passwort nicht in der URL und damit nicht
+ * in Server-Logs und im Browserverlauf landen.
+ */
+function buildOrderRequest(orderurl, nameValue, pwValue) {
+    var separator = orderurl.indexOf('?');
+    var query = separator === -1 ? '' : orderurl.substring(separator + 1);
+    var params = [];
+
+    query.split('&').forEach(function (pair) {
+        if (pair === '') {
+            return;
+        }
+        var position = pair.indexOf('=');
+        var key = decodeURIComponent(position === -1 ? pair : pair.substring(0, position));
+        var value = position === -1 ? '' : pair.substring(position + 1);
+        if (value === '%name%') {
+            value = nameValue;
+        } else if (value === '%pw%') {
+            value = pwValue;
+        } else {
+            value = decodeURIComponent(value);
+        }
+        params.push([key, value]);
+    });
+
+    return {
+        url: separator === -1 ? orderurl : orderurl.substring(0, separator),
+        params: params
+    };
+}
+
+/**
+ * Kodiert die Bestellparameter wie bisher den Namen mit escape() (ISO-8859-1),
+ * zusätzlich "+", das im Formular-Body sonst als Leerzeichen gelesen würde.
+ */
+function encodeOrderParams(params) {
+    return params.map(function (param) {
+        return param.map(function (part) {
+            return escape(part).replace(/\+/g, '%2B');
+        }).join('=');
+    }).join('&');
+}
+
+function sendOrderAsPopup(order) {
+    // if ajax failed: Bestellung per POST-Formular in einem neuen Fenster abschicken
+    var win = window.open('', 'dla-opac-order');
     if (win) {
         //Browser has allowed it to be opened
+        var form = $('<form>', {
+            method: 'post',
+            action: order.url,
+            target: 'dla-opac-order',
+            'accept-charset': 'ISO-8859-1'
+        }).hide();
+        order.params.forEach(function (param) {
+            form.append($('<input>', {type: 'hidden', name: param[0], value: param[1]}));
+        });
+        form.appendTo('body');
+        form[0].submit();
+        form.remove();
         win.focus();
     } else {
         //Browser has blocked it

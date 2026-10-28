@@ -49,7 +49,7 @@ $( document ).ready(function() {
                     items.each(function (index) {
                         if (index%2 == 0) {
                             if (typeof data !== "undefined") {
-                                output = this.split('␝');
+                                var output = this.split('␝');
 
                                 var active = false;
                                 var url = new URL(window.location.href);
@@ -98,23 +98,23 @@ $( document ).ready(function() {
                                     }
                                 }
 
+                                // Facettenwerte stammen aus Solr und werden nur als Text bzw. Attributwert
+                                // eingefügt, nie als HTML
+                                var linkAttributes = {
+                                    href: String(active ? url : linkUrl),
+                                    'data-completefacet': String(this),
+                                    rel: 'nofollow'
+                                };
+                                var iconLink = $('<a>', linkAttributes)
+                                    .append($('<span>').addClass(active ? 'icon bel-ok01' : 'icon bel-kreis01'));
+                                var textLink = $('<a>', linkAttributes)
+                                    .append(document.createTextNode(output[1]))
+                                    .append($('<em>').text('(' + items[index+1] + ')'));
                                 if (active) {
-                                    listElement.append('<li>' +
-                                        '<a href="' + url + '" data-completefacet="' + this + '" class="activeFacet" rel="nofollow">' +
-                                        '<span class="icon bel-ok01"></span>' +
-                                        '</a>' +
-                                        '<a href="' + url + '" data-completefacet="' + this + '" class="activeFacet" rel="nofollow">' +
-                                        '' + output[1] + '<em>(' + items[index+1] + ')</em>' +
-                                        '</a></li>');
-                                } else {
-                                    listElement.append('<li>' +
-                                        '<a href="' + linkUrl + '" data-completefacet="' + this + '" rel="nofollow">' +
-                                        '<span class="icon bel-kreis01"></span>' +
-                                        '</a>' +
-                                        '<a href="' + linkUrl + '" data-completefacet="' + this + '" rel="nofollow">' +
-                                        '' + output[1] + '<em>(' + items[index+1] + ')</em>' +
-                                        '</a></li>');
+                                    iconLink.addClass('activeFacet');
+                                    textLink.addClass('activeFacet');
                                 }
+                                listElement.append($('<li>').append(iconLink, textLink));
 
                             }
                         } else {
