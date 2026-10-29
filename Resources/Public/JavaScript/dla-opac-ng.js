@@ -146,7 +146,11 @@ $(document).ready(function(){
             $.ajax({
                 url: order.url,
                 type: 'POST',
-                data: encodeOrderParams(order.params),
+                // Body ist mit escape() in ISO-8859-1 kodiert. Als Blob übergeben, weil der
+                // Browser bei einem String-Body den Zeichensatz im Content-Type auf UTF-8 setzt.
+                contentType: 'application/x-www-form-urlencoded; charset=ISO-8859-1',
+                processData: false,
+                data: new Blob([encodeOrderParams(order.params)]),
             })
             .done(function( data ) {
                 $('.order-overlay .login-form').hide();
