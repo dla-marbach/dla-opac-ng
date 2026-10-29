@@ -15,9 +15,14 @@ page.includeCSS.videojs = EXT:dla_opac_ng/Resources/Public/CSS/video.js/video-js
 page.includeJS.jquery = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-3.6.0.js
 page.includeJS.videojs = EXT:dla_opac_ng/Resources/Public/JavaScript/video.js/video.min.js
 page.includeJS.jquery-ui = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-ui.min.js
+page.includeJS.jquery-save = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-save.js
 page.includeJS.nouislider = EXT:dla_opac_ng/Resources/Public/JavaScript/nouislider.js
 page.includeJS.chart = EXT:dla_opac_ng/Resources/Public/JavaScript/Chart-2.7.2.min.js
 page.includeJS.find = EXT:dla_opac_ng/Resources/Public/JavaScript/find.js
+
+# Eigene jQuery-Instanz wiederherstellen, falls die Website im Footer ein anderes jQuery lädt
+page.includeJSFooter.jquery-restore = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery-restore.js
+page.includeJSFooter.jquery-restore.forceOnTop = 1
 
 # Weitere JavaScript-Bibliotheken im Footer laden
 page.includeJSFooter.datetimepicker = EXT:dla_opac_ng/Resources/Public/JavaScript/jquery.datetimepicker.min.js
