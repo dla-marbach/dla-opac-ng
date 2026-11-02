@@ -1,0 +1,64 @@
+# Dependabot: Version und Security Updates, gruppiert je Ecosystem.
+# Alerts und Security Updates zusätzlich unter Settings → Advanced Security aktivieren,
+# "Grouped security updates" dort aus lassen (Gruppierung steht hier).
+# cooldown: neue Versionen erst nach 7 Tagen vorschlagen (Schutz vor
+# kompromittierten Releases). Security Updates sind davon nicht betroffen.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    groups:
+      github-actions:
+        patterns: ["*"]
+      github-actions-security:
+        applies-to: security-updates
+        patterns: ["*"]
+
+  # Base Image des Devcontainers
+  - package-ecosystem: docker
+    directory: /.devcontainer
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    groups:
+      docker:
+        patterns: ["*"]
+      docker-security:
+        applies-to: security-updates
+        patterns: ["*"]
+
+  # Features in .devcontainer/devcontainer.json
+  - package-ecosystem: devcontainers
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    groups:
+      devcontainers:
+        patterns: ["*"]
+
+  # Die Extension hat kein composer.lock (die Versionen legt die TYPO3-Installation fest).
+  # Dependabot passt daher nur die Versionsbereiche in composer.json an, wenn eine neue
+  # Version nicht mehr hineinpasst. Ein Wechsel der TYPO3-Hauptversion ist ein eigenes
+  # Projekt und kommt nicht über Dependabot.
+  - package-ecosystem: composer
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    ignore:
+      - dependency-name: "typo3/*"
+        update-types: ["version-update:semver-major"]
+    groups:
+      composer:
+        patterns: ["*"]
+      composer-security:
+        applies-to: security-updates
+        patterns: ["*"]

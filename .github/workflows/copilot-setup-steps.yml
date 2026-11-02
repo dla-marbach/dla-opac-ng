@@ -18,7 +18,7 @@ on:
 
 jobs:
   copilot-setup-steps:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     permissions:
       contents: read
@@ -42,13 +42,13 @@ jobs:
 
     steps:
       - name: Checkout dla-opac-ng
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           # Submodul dla-opac-tests (Playwright-End-to-End-Tests)
           submodules: true
 
       - name: Set up Task
-        uses: arduino/setup-task@v2
+        uses: arduino/setup-task@b91d5d2c96a56797b48ac1e0e89220bf64044611 # v2.0.0
         with:
           # Authentifizierte Anfrage vermeidet das GitHub-API-Rate-Limit beim Ermitteln der Task-Version
           repo-token: ${{ secrets.GITHUB_TOKEN }}
@@ -56,7 +56,7 @@ jobs:
       # PHP-Version wie im Produktivsystem; setup-php hinterlegt das GITHUB_TOKEN auch für Composer,
       # PHP-FPM und Apache installiert task install per apt
       - name: Set up PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
           php-version: '8.3'
           extensions: intl, mysqli, pdo_mysql
@@ -70,9 +70,9 @@ jobs:
         run: task install
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: 'lts/*'
+          node-version: '22'
 
       # Playwright-Abhängigkeiten und Chromium, damit `task test` ohne Netzwerkzugriff läuft
       - name: Install Playwright
