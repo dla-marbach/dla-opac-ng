@@ -11,9 +11,17 @@ permissions:
 
 jobs:
   phpunit:
-    name: PHPUnit tests
+    name: PHPUnit tests (${{ matrix.dependency-versions }} dependencies)
     runs-on: ubuntu-latest
     timeout-minutes: 15
+
+    # Ohne composer.lock (Extension) gegen beide Enden der Constraints in composer.json testen:
+    # highest = neueste passende Versionen (wie bei einem Update im Projekt),
+    # lowest = niedrigste erlaubte Versionen (prüft die Untergrenzen, z.B. typo3/cms-core ^12.4.9)
+    strategy:
+      fail-fast: false
+      matrix:
+        dependency-versions: [highest, lowest]
 
     steps:
       - name: Checkout dla-opac-ng
@@ -30,6 +38,8 @@ jobs:
 
       - name: Install dependencies (mit Composer-Cache)
         uses: ramsey/composer-install@v3
+        with:
+          dependency-versions: ${{ matrix.dependency-versions }}
         env:
           COMPOSER_NO_SECURITY_BLOCKING: 1
 
