@@ -116,7 +116,14 @@ CI ([.github/workflows/phpunit.yml](.github/workflows/phpunit.yml)):
 ```
 task test:php
 task test:php -- --filter MediaPlayer   # einzelne Tests
+task test:php:lowest                    # mit den niedrigsten erlaubten Versionen der Abhängigkeiten
 ```
+
+Die Extension hat kein `composer.lock` (in Projekten wie dla-t3-www bestimmt ohnehin deren eigenes Lock-File die
+Versionen). Die CI testet daher gegen beide Enden der Constraints in [composer.json](composer.json): einmal mit den
+neuesten passenden Versionen (`highest`) und einmal mit `--prefer-lowest` (`lowest`). Schlägt nur `lowest` fehl,
+braucht der Code eine neuere Version einer Abhängigkeit als in `composer.json` angegeben, dann die Untergrenze
+anheben.
 
 [Tests/Unit/Partials](Tests/Unit/Partials) rendert einzelne Fluid-Partials aus
 [Resources/Private/Partials](Resources/Private/Partials) und prüft das erzeugte HTML:

@@ -269,6 +269,14 @@ tasks:
       - task: test:php:install
       - '{{.PHP}} vendor/bin/phpunit -c Tests/phpunit.xml {{.CLI_ARGS}}'
 
+  test:php:lowest:
+    desc: PHPUnit-Tests mit den niedrigsten erlaubten Versionen der Abhängigkeiten (wie der CI-Job "lowest")
+    cmds:
+      - '{{.COMPOSER}} update --prefer-lowest --prefer-stable --no-interaction --no-progress'
+      - '{{.PHP}} vendor/bin/phpunit -c Tests/phpunit.xml {{.CLI_ARGS}}'
+      # danach wieder die neuesten Versionen installieren, damit task test:php und die Instanz wie gewohnt laufen
+      - '{{.COMPOSER}} update --no-interaction --no-progress'
+
   test:php:record:
     desc: PHPUnit-Tests gegen den echten Solr ausführen und fehlende Solr-Cassetten aufzeichnen (Solr-Tunnel nötig)
     cmds:

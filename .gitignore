@@ -6,5 +6,6 @@ vendor/
 Tests/Fixtures/Solr/missing-requests.log
 /composer.lock
 /public/
+/var/
 .phpunit.result.cache
 /Resources/Public/Fonts/
