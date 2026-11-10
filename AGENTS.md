@@ -20,11 +20,14 @@ Regeln für KI-Agenten in diesem Repository. Zweck, Aufbau und Befehle des Proje
 - Updates von Abhängigkeiten, GitHub Actions und Base Images übernimmt Dependabot. Ändere Versionen nur, wenn die Aufgabe es erfordert.
 - Füge neue Abhängigkeiten nur hinzu, wenn die Aufgabe es erfordert. Begründe sie im PR. Die Extension hat kein Lockfile; Versionsbereiche stehen in `composer.json`.
 - Base Image in `.devcontainer/Dockerfile` immer mit festem Versionstag, nie `latest`.
+- Fremdbibliotheken, auch JavaScript und CSS, nur über den Paketmanager einbinden, nie als kopierte Datei ins Repo. Die bereits kopierten Bibliotheken unter `Resources/Public/` werden per Ticket abgelöst; füge keine weiteren hinzu und aktualisiere sie nicht durch erneutes Kopieren.
 
 ## Betrieb
 - Die Anwendung ist eine TYPO3-Extension und läuft nicht als Container. Sie wird per Composer in einer TYPO3-Installation eingebunden; Ablauf siehe `CONTRIBUTING.md`.
 - Konfiguration der Umgebung ausschließlich über Umgebungsvariablen (z. B. `SOLR_HOST`, `SOLR_CORE`). Neue Variablen im README und in `.devfiles/.env` eintragen.
 - Datenbankänderungen nur über `ext_tables.sql` und Upgrade-Wizards (`Classes/Updates/`), die im Deployment ausgeführt werden.
+- Code und Abhängigkeiten kommen nur per Composer in die TYPO3-Installation, nie über das Dateisystem der Installation (z. B. `fileadmin/`).
+- IP-Adressen nur anonymisiert loggen (IPv4 ohne letztes Oktett, IPv6 nur die ersten 48 Bit).
 - Versionen folgen SemVer (`X.Y.Z`, ohne „v“). Tags und Releases legen nur Menschen an.
 
 ## No-Gos
