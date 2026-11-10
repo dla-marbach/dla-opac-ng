@@ -9,7 +9,8 @@ Das integrierte Such-Plugin basiert auf subugoe/typo3-find (siehe [Herkunft und 
 Die Entwicklungsumgebung (Ubuntu 24.04) wird mit [Task](https://taskfile.dev) eingerichtet ([Taskfile.yml](Taskfile.yml)):
 PHP 8.3, Composer, Apache (mit PHP-FPM) und MariaDB (wie im Produktivsystem 11.8, sonst die Version der
 Distribution) werden per `apt` installiert, eine bereits auf Port 3306 laufende Datenbank wird verwendet.
-In einem Codespace geschieht das automatisch ([.devcontainer/startup.sh](.devcontainer/startup.sh)), sonst mit:
+Im Devcontainer (Codespace oder lokal mit VS Code und Podman) geschieht das automatisch
+([.devcontainer/startup.sh](.devcontainer/startup.sh)), sonst mit:
 
 ```
 task install
@@ -31,7 +32,8 @@ dieses Repository), Änderungen am Code wirken also direkt. Konfiguration: [.dev
 Für den Copilot-Agent richtet [.github/workflows/copilot-setup-steps.yml](.github/workflows/copilot-setup-steps.yml)
 dieselbe Umgebung ein.
 
-Anweisungen für KI-Agenten stehen in [AGENTS.md](AGENTS.md).
+Anweisungen für KI-Agenten stehen in [AGENTS.md](AGENTS.md), der Ablauf für Entwicklung, Release und Deployment in
+[CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## GUIs
 
@@ -111,7 +113,7 @@ BASE_URL=https://www.dla-marbach.de task test -- -g "robots" # Vergleich mit dem
 
 Die PHPUnit-Tests (`Tests/Unit`, Tests des Such-Plugins in `Tests/Find/Unit`) brauchen weder TYPO3-Instanz noch
 Datenbank oder Solr-Tunnel. Sie laufen mit lokalem PHP gegen den [Solr-Mock-Server](#solr-mock-server), wie in der
-CI ([.github/workflows/phpunit.yml](.github/workflows/phpunit.yml)):
+CI ([.github/workflows/ci.yml](.github/workflows/ci.yml)):
 
 ```
 task test:php

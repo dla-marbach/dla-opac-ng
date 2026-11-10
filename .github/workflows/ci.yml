@@ -1,0 +1,112 @@
+# Läuft bei jedem Pull Request nach main und nach jedem Merge auf main.
+# Im PR müssen alle Jobs vor dem Merge grün sein. Ein roter Lauf auf main
+# wird umgehend per Ticket und Fix-PR behoben, vor jedem Release muss er grün sein.
+# Actions sind per Commit-SHA gepinnt (Tags lassen sich verschieben, SHAs nicht),
+# Dependabot aktualisiert SHA und Kommentar.
+# Projekt ohne Container-Betrieb (TYPO3-Extension): kein Image-Build, kein
+# Image-Scan, kein Smoketest (siehe „Projekte ohne Container-Betrieb“ in der
+# DevOps-Vorlage).
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+env:
+  # Composer bricht sonst bei bekannten Sicherheitslücken ab; gemeldet werden sie von Trivy.
+  COMPOSER_NO_SECURITY_BLOCKING: "1"
+
+jobs:
+  test:
+    name: PHPUnit
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # Die Unit-Tests brauchen weder TYPO3-Instanz noch Datenbank oder Solr (Solr-Mock-Server, siehe README).
+      # PHP 8.3 (wie im Produktivsystem) und Composer bringt das Runner-Image ubuntu-24.04 mit.
+      - name: PHP-Version prüfen
+        run: |
+          php -r 'exit(PHP_MAJOR_VERSION . "." . PHP_MINOR_VERSION === "8.3" ? 0 : 1);'
+          php -v
+          composer --version
+      - name: Abhängigkeiten installieren
+        run: composer install --no-interaction --no-progress
+      - name: PHPUnit
+        run: vendor/bin/phpunit -c Tests/phpunit.xml
+      # shellcheck bringt das Runner-Image mit.
+      - name: Shell-Skripte prüfen
+        run: shellcheck .devcontainer/startup.sh
+
+  psalm:
+    name: Psalm (Taint-Analyse)
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # Gleiches Image wie in .github/workflows/copilot-setup-steps.yml und AGENTS.md, Konfiguration psalm.xml.
+      - name: Psalm
+        uses: docker://ghcr.io/psalm/psalm-github-actions:6.16.1
+        with:
+          security_analysis: true
+          report_file: results.sarif
+          composer_require_dev: true
+          composer_ignore_platform_reqs: true
+      - name: Ergebnisse nach GitHub hochladen
+        if: always()
+        uses: github/codeql-action/upload-sarif@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4.39.1
+        with:
+          sarif_file: results.sarif
+
+  trivy-repo:
+    name: Trivy (Repo)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # Als Extension hat das Repo kein composer.lock. Damit Trivy die Composer-Abhängigkeiten
+      # prüfen kann, wird es hier erzeugt, mit den Versionen, die eine Neuinstallation jetzt bekäme.
+      - name: composer.lock erzeugen
+        run: composer update --no-install --no-interaction --no-progress
+      # Erst alle Schweregrade ausgeben (ohne Fehlschlag, auch in der Job-Zusammenfassung),
+      # dann nur HIGH und CRITICAL prüfen. Der zweite Lauf nutzt Trivy und Datenbank aus dem ersten.
+      # Ohne ignore-unfixed: Funde in App-Abhängigkeiten werden immer gemeldet.
+      # Ohne version: Die Action bringt eine feste Trivy-Version mit, Dependabot aktualisiert beides.
+      - name: Repo scannen, alle Schweregrade (Abhängigkeiten, Secrets, Konfiguration)
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          scanners: vuln,secret,misconfig
+          output: ${{ runner.temp }}/trivy-repo.txt
+      - name: Ergebnis ausgeben
+        run: |
+          cat "$RUNNER_TEMP/trivy-repo.txt"
+          {
+            echo "### Trivy (Repo): alle Schweregrade"
+            echo '```'
+            cat "$RUNNER_TEMP/trivy-repo.txt"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Repo prüfen (HIGH, CRITICAL)
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          scanners: vuln,secret,misconfig
+          severity: HIGH,CRITICAL
+          exit-code: "1"
+          skip-setup-trivy: true
+          cache: false

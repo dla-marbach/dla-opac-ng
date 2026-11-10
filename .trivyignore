@@ -1,0 +1,11 @@
+# Ausnahmen für Sicherheitsfunde (siehe DevOps-Vorlage, „Prüfungen“).
+# Nur von Menschen angelegt, mit Begründung und Ablaufdatum.
+
+# typo3/cms-core 12.4.45: Die CI erzeugt composer.lock mit der letzten öffentlichen
+# TYPO3-12-Version. Behoben ab 12.4.46, das es nur über ELTS gibt; die Produktion
+# nutzt TYPO3 12 mit ELTS (siehe CONTRIBUTING.md, „Projektspezifisch“).
+# Freigegeben ohne Ticketnummer.
+CVE-2026-11607 exp:2027-03-31
+CVE-2026-47343 exp:2027-03-31
+CVE-2026-47346 exp:2027-03-31
+CVE-2026-49742 exp:2027-03-31
