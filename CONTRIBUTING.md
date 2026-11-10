@@ -30,32 +30,41 @@ Releases und Tags legen nur Menschen an.
 Zuerst in der Testumgebung, danach mit derselben Version in der Produktion. Die TYPO3-Installation verweist per Composer-Constraint auf eine feste Version (z. B. `"dla/dla_opac_ng": "6.0.7"`), nie auf `dev-main`. Auf dem Server im Verzeichnis der TYPO3-Installation (mit deren `composer.json`):
 
 1. **Vorbereiten:** Release Notes aller Versionen seit der installierten lesen.
-2. **Sichern:** `composer.json` und `composer.lock` der Installation sowie die TYPO3-Datenbank (logische Sicherung per Dump) in das Sicherungsverzeichnis kopieren:
+2. **Wartungsphase beginnen:** `vendor/bin/typo3 backend:lock`, damit während des Updates niemand im Backend Daten ändert; das Frontend bleibt erreichbar. Kündigen die Release Notes Schemaänderungen an, die mit der alten Version nicht zusammenpassen, zusätzlich am Webserver eine Wartungsseite schalten und dort erst nach Schritt 6 wieder abschalten.
+3. **Sichern:** `composer.json` und `composer.lock` der Installation sowie die TYPO3-Datenbank (logische Sicherung per Dump) in das Sicherungsverzeichnis kopieren. `pipefail`, damit ein Fehler von `mariadb-dump` nicht hinter dem erfolgreichen `gzip` verschwindet; nur weitermachen, wenn „Sicherung OK“ erscheint:
 
    ```sh
+   set -o pipefail
    BACKUP=<sicherungsverzeichnis>/dla_opac_ng-$(date +%F_%H%M)
-   mkdir -p "$BACKUP"
-   cp -a composer.json composer.lock "$BACKUP"/
-   mariadb-dump --single-transaction <datenbank> | gzip > "$BACKUP"/db.sql.gz
+   mkdir -p "$BACKUP" \
+     && cp -a composer.json composer.lock "$BACKUP"/ \
+     && mariadb-dump --single-transaction <datenbank> | gzip > "$BACKUP"/db.sql.gz \
+     && gzip -t "$BACKUP"/db.sql.gz \
+     && echo "Sicherung OK"
    ```
 
-3. **Version setzen:** `composer require "dla/dla_opac_ng:6.0.7" --no-interaction`
-4. **Datenbank und Upgrade-Wizards:** `vendor/bin/typo3 extension:setup` (Tabellen und Felder aus `ext_tables.sql`), anschließend `vendor/bin/typo3 upgrade:list` und ausstehende Wizards mit `vendor/bin/typo3 upgrade:run` ausführen. Manuelle Upgrade-Schritte aus den Release Notes ausführen, falls vorhanden.
-5. **Cache leeren und prüfen:** `vendor/bin/typo3 cache:flush`. Katalog, Trefferliste, Detailansicht, Bestandsübersicht und Systematik im Browser testen und das TYPO3-Log (`var/log/`) prüfen. In der Testumgebung zusätzlich die Playwright-Tests gegen die Instanz ausführen: `BASE_URL=<url-der-testumgebung> task test -- "katalog/"`
-6. **Produktion:** Läuft das Release in der Testumgebung fehlerfrei, die Schritte 1–5 auf dem Produktionsserver mit derselben Version wiederholen. Sonst die Testumgebung zurückrollen und den Fix als neues Patch-Release ausliefern.
+4. **Version setzen:** `composer require "dla/dla_opac_ng:6.0.7" --no-interaction`
+5. **Datenbank und Upgrade-Wizards:** `vendor/bin/typo3 extension:setup` (Tabellen und Felder aus `ext_tables.sql`), anschließend `vendor/bin/typo3 upgrade:list` und ausstehende Wizards mit `vendor/bin/typo3 upgrade:run` ausführen. Manuelle Upgrade-Schritte aus den Release Notes ausführen, falls vorhanden.
+6. **Cache leeren und Wartungsphase beenden:** `vendor/bin/typo3 cache:flush`, dann `vendor/bin/typo3 backend:unlock` und ggf. die Wartungsseite abschalten.
+7. **Prüfen:** Katalog, Trefferliste, Detailansicht, Bestandsübersicht und Systematik im Browser testen und das TYPO3-Log (`var/log/`) prüfen. In der Testumgebung zusätzlich die Playwright-Tests gegen die Instanz ausführen, und zwar aus der Entwicklungsumgebung (Devcontainer) im Verzeichnis `dla-opac-tests/`: `BASE_URL=<url-der-testumgebung> npx playwright test "katalog/"`. Direkt mit `npx`, damit sicher die angegebene URL gilt und nicht die Vorgabe `BASE_URL` für die lokale Instanz aus dem `Taskfile.yml`.
+8. **Produktion:** Läuft das Release in der Testumgebung fehlerfrei, die Schritte 1–7 auf dem Produktionsserver mit derselben Version wiederholen. Sonst die Testumgebung zurückrollen und den Fix als neues Patch-Release ausliefern.
 
 ## Rollback
 
 Die alte Version darf nie gegen ein Datenbankschema laufen, das sie nicht kennt.
 
-1. **Alte Version wiederherstellen:** `composer.json` und `composer.lock` aus der Sicherung zurückkopieren, dann `composer install --no-interaction`.
-2. **Datenbank zurückspielen**, falls das neue Release das Schema geändert oder Upgrade-Wizards ausgeführt hat. Änderungen seit dem Update (z. B. im Backend) gehen dabei verloren.
+1. **Wartungsphase beginnen** wie beim Deployment: `vendor/bin/typo3 backend:lock`. Hat das neue Release das Schema geändert oder Upgrade-Wizards ausgeführt, zusätzlich die Wartungsseite am Webserver schalten, damit bis zum Ende von Schritt 4 keine Anfragen auf eine Mischung aus alter und neuer Version treffen.
+2. **Alte Version wiederherstellen:** `composer.json` und `composer.lock` aus der Sicherung zurückkopieren, dann `composer install --no-interaction`.
+3. **Datenbank zurückspielen**, falls das neue Release das Schema geändert oder Upgrade-Wizards ausgeführt hat. Änderungen seit dem Update (z. B. im Backend) gehen dabei verloren. Nur weitermachen, wenn „Rücksicherung OK“ erscheint:
 
    ```sh
-   gunzip -c <sicherungsverzeichnis>/dla_opac_ng-<zeitstempel>/db.sql.gz | mariadb <datenbank>
+   set -o pipefail
+   gunzip -c <sicherungsverzeichnis>/dla_opac_ng-<zeitstempel>/db.sql.gz | mariadb <datenbank> \
+     && echo "Rücksicherung OK"
    ```
 
-3. **Cache leeren und prüfen:** `vendor/bin/typo3 cache:flush`, prüfen wie beim Deployment.
+4. **Cache leeren und Wartungsphase beenden:** `vendor/bin/typo3 cache:flush`, `vendor/bin/typo3 backend:unlock`, ggf. Wartungsseite abschalten.
+5. **Prüfen** wie beim Deployment.
 
 ## Projektspezifisch
 
