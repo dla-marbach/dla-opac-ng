@@ -13,7 +13,6 @@
         <directory name="Configuration"/>
         <file name="Resources/Public/Resolver/resolver.php"/>
         <file name="ext_localconf.php"/>
-        <file name="ext_tables.php"/>
         <ignoreFiles>
             <directory name="vendor"/>
         </ignoreFiles>

@@ -1,20 +1,11 @@
 <?php
 
-return [
+$tca = [
     'ctrl' => [
         'title'     => 'LLL:EXT:dla_opac_ng/Resources/Private/Language/TCA.xml:tx_dlaopacng_collection',
         'label'     => 'displayTree',
         'default_sortby' => 'ORDER BY uid',
         'rootLevel' => 0,
-        'searchFields' => 'record_id,displayTree,display,displayName,displayAddition1,displayAddition2',
-    ],
-    'feInterface' => [
-        'fe_admin_fieldList' => '',
-    ],
-    'interface' => [
-        'showRecordFieldList' => 'displayTree,record_id',
-        'maxDBListItems' => 25,
-        'maxSingleDBListItems' => 50,
     ],
     'columns' => [
         'record_id' => [
@@ -24,7 +15,8 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 100,
-                'eval' => 'nospace,required',
+                'eval' => 'nospace',
+                'required' => true,
                 'default' => '',
             ],
         ],
@@ -35,8 +27,10 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 100,
-                'eval' => 'nospace,required',
+                'eval' => 'nospace',
+                'required' => true,
                 'default' => '',
+                'searchable' => false,
             ],
         ],
         'displayTree' => [
@@ -46,7 +40,8 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 1024,
-                'eval' => 'required,trim',
+                'eval' => 'trim',
+                'required' => true,
                 'default' => '',
             ],
         ],
@@ -101,8 +96,10 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 1024,
-                'eval' => 'required,trim',
+                'eval' => 'trim',
+                'required' => true,
                 'default' => '',
+                'searchable' => false,
             ],
         ],
         'hasChild' => [
@@ -118,3 +115,15 @@ return [
         '0' => ['showitem' => 'record_id,parent_id,displayTree,display,displayName,displayAddition1,displayAddition2,facet_value,hasChild'],
     ]
 ];
+
+// Bis TYPO3 v13: durchsuchbare Felder und Zeilenzahl der Listenansicht. TYPO3 v14 wertet beides nicht mehr aus,
+// dort sind Eingabefelder durchsuchbar, sofern sie nicht mit 'searchable' => false ausgenommen sind.
+if ((new \TYPO3\CMS\Core\Information\Typo3Version())->getMajorVersion() < 14) {
+    $tca['ctrl']['searchFields'] = 'record_id,displayTree,display,displayName,displayAddition1,displayAddition2';
+    $tca['interface'] = [
+        'maxDBListItems' => 25,
+        'maxSingleDBListItems' => 50,
+    ];
+}
+
+return $tca;
