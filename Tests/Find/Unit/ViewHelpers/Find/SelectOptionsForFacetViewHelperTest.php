@@ -26,6 +26,7 @@ namespace Dla\Find\Tests\Unit\ViewHelpers\Find;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use Dla\Find\Tests\Unit\ViewHelpers\ViewHelperTestTrait;
 use Dla\Find\ViewHelpers\Find\SelectOptionsForFacetViewHelper;
@@ -50,9 +51,7 @@ class SelectOptionsForFacetViewHelperTest extends UnitTestCase
         $this->injectDependenciesIntoViewHelper($this->fixture);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function leadingBlankAddsEmptyOption()
     {
         $this->setArgumentsWithDefaults($this->fixture, ['leadingBlank' => true]);
@@ -60,9 +59,7 @@ class SelectOptionsForFacetViewHelperTest extends UnitTestCase
         self::assertSame(['' => ''], $this->fixture->initializeArgumentsAndRender());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function noValuesYieldEmptyOptions()
     {
         $this->setArgumentsWithDefaults($this->fixture, []);

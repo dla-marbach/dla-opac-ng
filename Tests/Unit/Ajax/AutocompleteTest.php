@@ -4,6 +4,7 @@ namespace Dla\DlaOpacNg\Tests\Unit\Ajax;
 
 use Dla\DlaOpacNg\Ajax\Autocomplete;
 use Dla\DlaOpacNg\Tests\Support\MockSolrServerProcess;
+use PHPUnit\Framework\Attributes\Test;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
@@ -41,9 +42,7 @@ class AutocompleteTest extends UnitTestCase
         return json_decode((string)$response->getBody(), true);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function knownQueryReturnsTextAndNormdataSuggestions(): void
     {
         $suggestions = $this->processRequest('goethe');
@@ -65,17 +64,13 @@ class AutocompleteTest extends UnitTestCase
         self::assertSame('0', $normdataSuggestion['autocomplete']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function queryWithoutResultsReturnsEmptyArray(): void
     {
         self::assertSame([], $this->processRequest('zzznoresultzzz'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function blankQueryReturnsEmptyArrayWithoutCallingSolr(): void
     {
         self::assertSame([], $this->processRequest(''));

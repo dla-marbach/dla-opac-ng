@@ -4,6 +4,7 @@ namespace Dla\DlaOpacNg\Tests\Unit\Partials\Detail;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
 use Dla\DlaOpacNg\Tests\Support\SolrFixture;
+use PHPUnit\Framework\Attributes\Test;
 use Solarium\QueryType\Select\Result\Document;
 
 /**
@@ -15,9 +16,7 @@ class ManuscriptInLibraryItemTest extends FluidPartialTestCase
 {
     private const MANUSCRIPT = 'HS00000091';
 
-    /**
-     * @test
-     */
+    #[Test]
     public function accessDisablesOrderingAndShowsHint(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Manuscripts/Access', self::MANUSCRIPT));
@@ -27,9 +26,7 @@ class ManuscriptInLibraryItemTest extends FluidPartialTestCase
         self::assertStringNotContainsString('Order now', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function accessKeepsOrderingForOtherLocation(): void
     {
         $text = self::visibleText($this->renderModified('Display/Detail/Manuscripts/Access', ['location_mv' => ['Magazin']]));
@@ -38,9 +35,7 @@ class ManuscriptInLibraryItemTest extends FluidPartialTestCase
         self::assertStringNotContainsString('library copy', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function accessKeepsOrderingWithoutLibraryLink(): void
     {
         $text = self::visibleText($this->renderModified('Display/Detail/Manuscripts/Access', ['item_manifestation_id_mv' => null]));
@@ -49,9 +44,7 @@ class ManuscriptInLibraryItemTest extends FluidPartialTestCase
         self::assertStringNotContainsString('library copy', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function detailsLinkToLibraryItemPermalink(): void
     {
         $html = $this->renderDetailPartial('Display/Detail/Manuscripts/Details', self::MANUSCRIPT);

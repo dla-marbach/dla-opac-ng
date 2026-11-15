@@ -4,6 +4,7 @@ namespace Dla\DlaOpacNg\Tests\Unit\Partials;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
 use Dla\DlaOpacNg\Tests\Support\SolrFixture;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Rendert Resources/Private/Partials/Pager/ListPager.html mit einem echten Solr-Trefferset
@@ -11,9 +12,7 @@ use Dla\DlaOpacNg\Tests\Support\SolrFixture;
  */
 class ListPagerTest extends FluidPartialTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersPageLinksAroundCurrentPage(): void
     {
         $results = SolrFixture::select('goethe', 5);
@@ -30,9 +29,7 @@ class ListPagerTest extends FluidPartialTestCase
         self::assertStringNotContainsString('ctg-bu-disable', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function disablesPreviousLinkOnFirstPage(): void
     {
         $results = SolrFixture::select('goethe', 5);
@@ -46,9 +43,7 @@ class ListPagerTest extends FluidPartialTestCase
         self::assertStringContainsString('ctg-bu-disable', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function doesNotLinkLastPageBeyondPageTen(): void
     {
         $results = SolrFixture::select('goethe', 5);
@@ -64,9 +59,7 @@ class ListPagerTest extends FluidPartialTestCase
         self::assertStringContainsString('<a class="ctg-button">' . $lastPage . '</a>', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function linksLastPageUpToPageTen(): void
     {
         $results = SolrFixture::select('goethe', 5);
@@ -82,9 +75,7 @@ class ListPagerTest extends FluidPartialTestCase
         self::assertStringNotContainsString('<a class="ctg-button">7</a>', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function doesNotLinkPagesBeyondMaxResultWindow(): void
     {
         $results = SolrFixture::select('goethe', 5);
@@ -104,9 +95,7 @@ class ListPagerTest extends FluidPartialTestCase
         self::assertDoesNotMatchRegularExpression('#>\s*6\s*</a>#', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function lastAllowedPageHasNoNextLink(): void
     {
         $results = SolrFixture::select('goethe', 5);
@@ -121,9 +110,7 @@ class ListPagerTest extends FluidPartialTestCase
         self::assertStringContainsString('<a class="ctg-button ctg-bu-disable"><span class="icon bel-pfeil-l01"></span></a>', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function usesEffectiveCountForPageCalculation(): void
     {
         $results = SolrFixture::select('goethe', 5);
@@ -140,9 +127,7 @@ class ListPagerTest extends FluidPartialTestCase
         self::assertDoesNotMatchRegularExpression('#>\s*11\s*</a>#', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function showsNoHintWithoutLimit(): void
     {
         $results = SolrFixture::select('goethe', 5);

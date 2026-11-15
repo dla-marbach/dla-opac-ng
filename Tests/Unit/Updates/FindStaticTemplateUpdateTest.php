@@ -3,6 +3,8 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Updates;
 
 use Dla\DlaOpacNg\Updates\FindStaticTemplateUpdate;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class FindStaticTemplateUpdateTest extends UnitTestCase
@@ -29,10 +31,8 @@ class FindStaticTemplateUpdateTest extends UnitTestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider includeStaticFileProvider
-     */
+    #[Test]
+    #[DataProvider('includeStaticFileProvider')]
     public function includeStaticFileIsMigrated(string $input, string $expected): void
     {
         self::assertSame($expected, FindStaticTemplateUpdate::migrateIncludeStaticFile($input));

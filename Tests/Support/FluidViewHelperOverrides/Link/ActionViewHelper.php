@@ -18,8 +18,8 @@ class ActionViewHelper extends AbstractTagBasedViewHelper
     public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerUniversalTagAttributes();
-        $this->registerTagAttribute('target', 'string', 'Specifies where to open the linked document');
+        // Tag-Attribute (class, title, target, ...) müssen nicht registriert werden: Fluid reicht
+        // nicht registrierte Argumente eines Tag-ViewHelpers als Attribute durch.
         $this->registerArgument('action', 'string', 'Target action');
         $this->registerArgument('controller', 'string', 'Target controller');
         $this->registerArgument('extensionName', 'string', 'Target extension name');

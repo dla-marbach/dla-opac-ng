@@ -4,6 +4,8 @@ namespace Dla\DlaOpacNg\Tests\Unit\Partials\Detail;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
 use Dla\DlaOpacNg\Tests\Support\SolrFixture;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Solarium\QueryType\Select\Result\Document;
 
 /**
@@ -16,9 +18,7 @@ class LibraryDetailTest extends FluidPartialTestCase
     private const ARTICLE = 'AK01600951';
     private const BOOK_WITH_ITEMS = 'AK00983699';
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersArticleDetailsWithoutItems(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Library/Details', self::ARTICLE));
@@ -29,9 +29,7 @@ class LibraryDetailTest extends FluidPartialTestCase
         self::assertStringNotContainsString('Exemplar Provenienz', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersBookDetailsWithWorkAndDigitalObject(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Library/Details', self::BOOK_WITH_ITEMS));
@@ -42,9 +40,7 @@ class LibraryDetailTest extends FluidPartialTestCase
         self::assertStringContainsString('Digital object Digitalisat: Zugang', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function accessListsItemsWithoutProvenanceBeforeProvenanceItems(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Library/Access', self::BOOK_WITH_ITEMS));
@@ -61,9 +57,7 @@ class LibraryDetailTest extends FluidPartialTestCase
         self::assertLessThan($schiller, $withoutProvenance);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function accessOfArticleOffersOnlyOrdering(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Library/Access', self::ARTICLE));
@@ -73,10 +67,9 @@ class LibraryDetailTest extends FluidPartialTestCase
 
     /**
      * Fälle A1-A4 und B1-B2 des Bestellbuttons bei Beiträgen (Cassetten detail-article-*, detail-ebook-article-*).
-     *
-     * @test
-     * @dataProvider articleOrderButtons
      */
+    #[Test]
+    #[DataProvider('articleOrderButtons')]
     public function accessOfArticleShowsOrderButtonOnlyWhenOrderable(string $id, bool $orderable): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Library/Access', $id));
@@ -100,9 +93,7 @@ class LibraryDetailTest extends FluidPartialTestCase
         ];
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function accessOfArticleWithConditionalUsageNoteShowsYellowIndicator(): void
     {
         $variables = SolrFixture::detailVariables('AK01726262');
@@ -114,10 +105,8 @@ class LibraryDetailTest extends FluidPartialTestCase
         self::assertStringNotContainsString('#00df27', $html);
     }
 
-    /**
-     * @test
-     * @dataProvider mediaWebsiteLinks
-     */
+    #[Test]
+    #[DataProvider('mediaWebsiteLinks')]
     public function digitalObjectShowsMediaWebsiteLinks(string $partial, string $id, string $url, string $text): void
     {
         $html = $this->renderDetailPartial($partial, $id);
@@ -140,9 +129,7 @@ class LibraryDetailTest extends FluidPartialTestCase
         ];
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rightColumnListsRelatedRecordsFromSameAuthorAndInventory(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Library/RightColumn', self::BOOK_WITH_ITEMS));

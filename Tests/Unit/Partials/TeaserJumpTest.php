@@ -3,6 +3,7 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Partials;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Rendert Resources/Private/Partials/MediaAccess/TeaserJump.html: Vorschaubild mit
@@ -12,9 +13,7 @@ class TeaserJumpTest extends FluidPartialTestCase
 {
     private const TEASER = ['url' => 'https://example.org/media/a.jpg', 'thumbnail' => 'https://example.org/media/a_thumb.jpg', 'jump' => true];
 
-    /**
-     * @test
-     */
+    #[Test]
     public function singleKindShowsIconAndText(): void
     {
         $html = $this->renderPartial('MediaAccess/TeaserJump', [
@@ -30,9 +29,7 @@ class TeaserJumpTest extends FluidPartialTestCase
         self::assertMatchesRegularExpression('#</span>\s*4 images\s*</span>#', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function mixedKindsShowIconAndCountPerKindAndFullTextAsAlternative(): void
     {
         $html = $this->renderPartial('MediaAccess/TeaserJump', [

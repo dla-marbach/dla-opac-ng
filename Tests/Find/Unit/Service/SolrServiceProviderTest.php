@@ -27,6 +27,8 @@ namespace Dla\Find\Tests\Unit\Service;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use Dla\Find\Service\SolrServiceProvider;
 use Solarium\QueryType\Select\Query\Query;
@@ -50,9 +52,7 @@ class SolrServiceProviderTest extends UnitTestCase
             ->getMock();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setConfigurationAddsTheValueToConfigurationArray()
     {
         $key = 'foo';
@@ -62,9 +62,7 @@ class SolrServiceProviderTest extends UnitTestCase
         self::assertArrayHasKey($key, $this->fixture->getConfiguration());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setConfigurationAddsAKeyValuePairToAnExistingConfiguration()
     {
         $key = 'foo';
@@ -83,9 +81,8 @@ class SolrServiceProviderTest extends UnitTestCase
      * The request parameter »data-fields« must no longer influence the Solr field
      * list (»fl«). Otherwise a caller could expose internal fields or inject
      * expensive Solr pseudo-fields such as [explain] or [docid].
-     *
-     * @test
      */
+    #[Test]
     public function setFieldsIgnoresDataFieldsRequestParameter()
     {
         $query = $this->createMock(Query::class);
@@ -104,9 +101,8 @@ class SolrServiceProviderTest extends UnitTestCase
 
     /**
      * The configured default field list is still applied.
-     *
-     * @test
      */
+    #[Test]
     public function setFieldsUsesConfiguredDefaultFields()
     {
         $query = $this->createMock(Query::class);
@@ -136,10 +132,8 @@ class SolrServiceProviderTest extends UnitTestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider dateRangeFacetBoundsProvider
-     */
+    #[Test]
+    #[DataProvider('dateRangeFacetBoundsProvider')]
     public function getDateRangeFacetBoundsUsesSolrDateMathRelativeToNow(string $minValue, string $now, string $expectedStart, int $expectedGap)
     {
         [$start, $end, $gap] = $this->invokeProtected($this->fixture, 'getDateRangeFacetBounds', [
@@ -152,9 +146,7 @@ class SolrServiceProviderTest extends UnitTestCase
         self::assertSame($expectedGap, $gap);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getDateRangeFacetBoundsOnlyChangeAtNewYear()
     {
         $start = fn (string $now) => $this->invokeProtected($this->fixture, 'getDateRangeFacetBounds', [

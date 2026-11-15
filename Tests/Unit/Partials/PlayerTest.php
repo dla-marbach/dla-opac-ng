@@ -3,6 +3,7 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Partials;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Rendert Resources/Private/Partials/MediaAccess/Player.html für Audio-, Video- und
@@ -10,9 +11,7 @@ use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
  */
 class PlayerTest extends FluidPartialTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersVideoElementWithSourceChaptersAndPoster(): void
     {
         $html = $this->renderPartial('MediaAccess/Player', [
@@ -39,9 +38,7 @@ class PlayerTest extends FluidPartialTestCase
         self::assertStringNotContainsString('<script', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersAudioElementWithoutChapters(): void
     {
         $html = $this->renderPartial('MediaAccess/Player', [
@@ -62,9 +59,7 @@ class PlayerTest extends FluidPartialTestCase
         self::assertStringNotContainsString('{id}', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersCaptionWithDisplayLabelAndFileExtensionForAudio(): void
     {
         $html = $this->renderPartial('MediaAccess/Player', [
@@ -81,9 +76,7 @@ class PlayerTest extends FluidPartialTestCase
         self::assertStringContainsString('<span class="dla-mediaplayer-caption-ext">(mp3)</span>', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function omitsCaptionForPlaceholderDisplayLabel(): void
     {
         $html = $this->renderPartial('MediaAccess/Player', [
@@ -99,9 +92,7 @@ class PlayerTest extends FluidPartialTestCase
         self::assertStringNotContainsString('dla-mediaplayer-caption', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersPlaylistAsNumberedTracklistWithHeading(): void
     {
         $html = $this->renderPartial('MediaAccess/Player', [
@@ -136,9 +127,7 @@ class PlayerTest extends FluidPartialTestCase
         self::assertStringNotContainsString('{id}', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function omitsArtistAndDurationColumnsWithoutPlaylistMetadata(): void
     {
         $html = $this->renderPartial('MediaAccess/Player', [

@@ -4,6 +4,7 @@ namespace Dla\DlaOpacNg\Tests\Unit\Partials;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
 use Dla\DlaOpacNg\Tests\Support\SolrFixture;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Rendert Resources/Private/Partials/Display/Result.html (Trefferlisten-Eintrag) mit einem
@@ -20,9 +21,7 @@ class ResultTest extends FluidPartialTestCase
         'displayAddition2' => 'displayAddition2',
     ];
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersPersonResultWithTitleAndDetailLink(): void
     {
         $document = SolrFixture::document('PE00000863');

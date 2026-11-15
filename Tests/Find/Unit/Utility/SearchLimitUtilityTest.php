@@ -3,6 +3,7 @@
 namespace Dla\Find\Tests\Unit\Utility;
 
 use Dla\Find\Utility\SearchLimitUtility;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -31,9 +32,7 @@ class SearchLimitUtilityTest extends UnitTestCase
         return array_merge(['q' => ['default' => $term]], $arguments);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function firstPagesOfNormalSearchAreAllowed(): void
     {
         self::assertNull(SearchLimitUtility::getViolation(self::withQuery([]), $this->settings()));
@@ -41,9 +40,7 @@ class SearchLimitUtilityTest extends UnitTestCase
         self::assertNull(SearchLimitUtility::getViolation(['q' => ['default' => 'goethe'], 'facet' => ['Medium' => ['Buch' => 1]]], $this->settings()));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function searchWithTermIsAllowedExactlyAtTheLimit(): void
     {
         // Seite 400 à 25 Treffer: start 9975 + rows 25 = 10000
@@ -52,9 +49,7 @@ class SearchLimitUtilityTest extends UnitTestCase
         self::assertNull(SearchLimitUtility::getViolation(self::withQuery(['start' => 9900, 'count' => 100]), $this->settings()));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function searchWithTermIsRejectedJustAboveTheLimit(): void
     {
         self::assertSame(
@@ -71,9 +66,7 @@ class SearchLimitUtilityTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function emptySearchHasStricterLimit(): void
     {
         // Seite 40 à 25 Treffer: start 975 + rows 25 = 1000
@@ -86,9 +79,7 @@ class SearchLimitUtilityTest extends UnitTestCase
         self::assertSame(SearchLimitUtility::VIOLATION_RESULT_WINDOW, SearchLimitUtility::getViolation(['start' => 4079300], $this->settings()));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function wildcardAndHiddenFieldsCountAsEmptySearch(): void
     {
         $settings = $this->settings();
@@ -109,9 +100,7 @@ class SearchLimitUtilityTest extends UnitTestCase
         self::assertSame(10000, SearchLimitUtility::getMaxResultWindow(['q' => ['default' => 'goethe']], $settings));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function activeFilterLimitAllowsTenAndRejectsEleven(): void
     {
         $facets = [];
@@ -128,9 +117,7 @@ class SearchLimitUtilityTest extends UnitTestCase
         self::assertSame(SearchLimitUtility::VIOLATION_ACTIVE_FILTERS, SearchLimitUtility::getViolation($arguments, $this->settings()));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function limitsAreConfigurableAndZeroDisablesThem(): void
     {
         $settings = $this->settings(['maxResultWindow' => 500, 'maxResultWindowEmptyQuery' => 0, 'maxActiveFilters' => '2']);
@@ -144,9 +131,7 @@ class SearchLimitUtilityTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function countIsCappedByMaximumPerPage(): void
     {
         self::assertSame(25, SearchLimitUtility::getCount([], $this->settings()));
@@ -155,9 +140,7 @@ class SearchLimitUtilityTest extends UnitTestCase
         self::assertNull(SearchLimitUtility::getViolation(self::withQuery(['page' => 100, 'count' => 5000]), $this->settings()));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function underlyingQueryOfDetailPageIsCheckedAgainstTheLimits(): void
     {
         $settings = $this->settings();

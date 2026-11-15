@@ -26,9 +26,12 @@ namespace Dla\Find\Tests\Unit\ViewHelpers\Data;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use Dla\Find\Tests\Unit\ViewHelpers\ViewHelperTestTrait;
 use Dla\Find\ViewHelpers\Data\IsArrayViewHelper;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContext;
+use TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperInvoker;
 
 /**
  * Test for IsArray ViewHelper.
@@ -51,18 +54,14 @@ class IsArrayViewHelperTest extends UnitTestCase
         $this->fixture->method('buildRenderChildrenClosure')->willReturn(static fn () => null);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function arrayIsInterpretedAsArray()
     {
         $this->fixture->setArguments(['subject' => ['hrdr']]);
         self::assertTrue($this->fixture->initializeArgumentsAndRender());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function intIsNotInterpretedAsArray()
     {
         $this->fixture->setArguments(['subject' => 667]);
@@ -70,27 +69,24 @@ class IsArrayViewHelperTest extends UnitTestCase
     }
 
     /**
-     * @test
+     * Objekte passen nicht zum Argumenttyp »array|string|int« und werden von Fluid abgewiesen.
+     * Die Argumente prüft bis Fluid 4 der ViewHelper selbst, ab Fluid 5 (TYPO3 v14) der ViewHelperInvoker.
      */
+    #[Test]
     public function objectsAreNotInterpretedAsArray()
     {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->fixture->setArguments(['subject' => $this->fixture]);
-        self::assertFalse($this->fixture->initializeArgumentsAndRender());
+        $this->expectException(\Exception::class);
+        (new ViewHelperInvoker())->invoke(new IsArrayViewHelper(), ['subject' => new \stdClass()], new RenderingContext());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function stringsAreNotInterpretedAsArray()
     {
         $this->fixture->setArguments(['subject' => 'hrdr']);
         self::assertFalse($this->fixture->initializeArgumentsAndRender());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function nullIsNotInterpretedAsArray()
     {
         $this->fixture->setArguments(['subject' => null]);

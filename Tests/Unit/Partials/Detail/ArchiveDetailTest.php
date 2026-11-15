@@ -4,6 +4,7 @@ namespace Dla\DlaOpacNg\Tests\Unit\Partials\Detail;
 
 use Dla\DlaOpacNg\Tests\Support\FakeCollectionService;
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Display/Detail/Inventory/*, Manuscripts/* und ImagesAndObjects/* (Bestände, Handschriften, Bilder und
@@ -18,9 +19,7 @@ class ArchiveDetailTest extends FluidPartialTestCase
     private const MANUSCRIPT_VIEWER = 'HS00242238';
     private const MANUSCRIPT_MIXED = 'HS01306880';
 
-    /**
-     * @test
-     */
+    #[Test]
     public function inventoryDetailsShowMasterDataAndSubinventoryCount(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Inventory/Details', self::INVENTORY));
@@ -32,9 +31,7 @@ class ArchiveDetailTest extends FluidPartialTestCase
         self::assertStringNotContainsString('Unterbestände', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function inventoryDetailsShowCollectionBreadcrumbWhenAssigned(): void
     {
         FakeCollectionService::$parents[self::INVENTORY] = [[
@@ -49,9 +46,7 @@ class ArchiveDetailTest extends FluidPartialTestCase
         self::assertStringContainsString('Handschriften -> COTTA:Briefe', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function inventoryAccessAndRightColumn(): void
     {
         $access = self::visibleText($this->renderDetailPartial('Display/Detail/Inventory/Access', self::INVENTORY));
@@ -62,9 +57,7 @@ class ArchiveDetailTest extends FluidPartialTestCase
         self::assertStringContainsString('From the same inventor COTTA:Verträge - [Besta…', $rightColumn);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function manuscriptDetailsShowLetterMetadataAndHoldings(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Manuscripts/Details', self::MANUSCRIPT));
@@ -75,9 +68,7 @@ class ArchiveDetailTest extends FluidPartialTestCase
         self::assertStringContainsString('Holdings Call Number A:Zuckmayer, Carl Access Number HS.1995.0001', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function manuscriptAccessAndRightColumn(): void
     {
         $access = self::visibleText($this->renderDetailPartial('Display/Detail/Manuscripts/Access', self::MANUSCRIPT));
@@ -88,9 +79,7 @@ class ArchiveDetailTest extends FluidPartialTestCase
         self::assertStringContainsString('From the same inventor A:Zuckmayer, Carl - [Be…', $rightColumn);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function imageDetailsShowObjectMetadataAndRelatedManuscript(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/ImagesAndObjects/Details', self::IMAGE));
@@ -101,9 +90,7 @@ class ArchiveDetailTest extends FluidPartialTestCase
         self::assertStringContainsString('Manuscripts Haaser, Emma an Wagner, Christian [Briefe]', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function imageAccessAndRightColumn(): void
     {
         $access = self::visibleText($this->renderDetailPartial('Display/Detail/ImagesAndObjects/Access', self::IMAGE));
@@ -114,9 +101,7 @@ class ArchiveDetailTest extends FluidPartialTestCase
         self::assertStringContainsString('Similar motives No hits found', $rightColumn);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function imageDetailsRenderSlideshowWithUniqueIdInBothTabs(): void
     {
         // Details enthält über Order/Main auch den Reiter "Zugang" - beide zeigen das digitale Objekt
@@ -132,9 +117,7 @@ class ArchiveDetailTest extends FluidPartialTestCase
         self::assertSame([], array_values(array_filter($duplicates, static fn (string $id): bool => str_starts_with($id, 'renderlinks'))));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function manuscriptViewerDigitisationShowsImageWithSignatureAndViewerAction(): void
     {
         $html = $this->renderDetailPartial('Display/Detail/Manuscripts/Details', self::MANUSCRIPT_VIEWER);
@@ -152,9 +135,7 @@ class ArchiveDetailTest extends FluidPartialTestCase
         self::assertStringNotContainsString('access-denied-link', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function manuscriptWithImageAndViewerDigitisationOutsideCampusShowsOnlyRestrictionNotice(): void
     {
         $html = $this->renderDetailPartial('Display/Detail/Manuscripts/Details', self::MANUSCRIPT_MIXED);
@@ -166,9 +147,7 @@ class ArchiveDetailTest extends FluidPartialTestCase
         self::assertStringContainsString("<span class='access-denied-link'>HS01306880 </span>", $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function manuscriptWithImageAndViewerDigitisationInsideCampusSharesOneSlideshow(): void
     {
         $previousRanges = getenv('campusRanges');

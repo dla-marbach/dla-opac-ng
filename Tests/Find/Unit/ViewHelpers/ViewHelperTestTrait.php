@@ -30,6 +30,7 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\Variables\StandardVariableProvider;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperResolver;
 
 /**
  * Replacement for the removed Nimut\TestingFramework\TestCase\ViewHelperBaseTestcase::injectDependenciesIntoViewHelper()
@@ -50,6 +51,8 @@ trait ViewHelperTestTrait
                 ->getMock();
             $this->renderingContext = $this->getMockBuilder(RenderingContextInterface::class)->getMock();
             $this->renderingContext->method('getVariableProvider')->willReturn($this->variableProvider);
+            // Fluid 4 (TYPO3 v13) liest die Argument-Definitionen beim Validieren über den ViewHelperResolver.
+            $this->renderingContext->method('getViewHelperResolver')->willReturn(new ViewHelperResolver());
         }
         $viewHelper->setRenderingContext($this->renderingContext);
         $viewHelper->setArguments([]);

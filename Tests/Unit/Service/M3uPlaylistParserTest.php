@@ -3,13 +3,12 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Service;
 
 use Dla\DlaOpacNg\Service\M3uPlaylistParser;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class M3uPlaylistParserTest extends UnitTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function parsesExtendedM3uWithTitleAndDuration(): void
     {
         $content = <<<M3U
@@ -37,9 +36,7 @@ class M3uPlaylistParserTest extends UnitTestCase
         ], $tracks[1]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function parsesPlainM3uWithoutMetadata(): void
     {
         $content = "https://example.org/media/track1.mp3\nhttps://example.org/media/track2.mp3\n";
@@ -53,9 +50,7 @@ class M3uPlaylistParserTest extends UnitTestCase
         self::assertSame('https://example.org/media/track2.mp3', $tracks[1]['url']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function ignoresBlankLinesAndUnknownDirectives(): void
     {
         $content = <<<M3U
@@ -74,9 +69,7 @@ class M3uPlaylistParserTest extends UnitTestCase
         self::assertSame(42.0, $tracks[0]['duration']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function splitsArtistAndTitleOnlyAtFirstSeparator(): void
     {
         $content = <<<M3U
@@ -95,9 +88,7 @@ class M3uPlaylistParserTest extends UnitTestCase
         self::assertSame('- Ohne Interpret', $tracks[1]['title']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function ignoresUtf8ByteOrderMark(): void
     {
         $content = "\xEF\xBB\xBF#EXTM3U\r\n#EXTINF:61,Ingeborg Bachmann - Böhmen liegt am Meer\r\nhttps://example.org/media/boehmen.mp3\r\n";
@@ -110,9 +101,7 @@ class M3uPlaylistParserTest extends UnitTestCase
         self::assertSame(61.0, $tracks[0]['duration']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function ignoresUtf8ByteOrderMarkInPlainM3u(): void
     {
         $content = "\xEF\xBB\xBFhttps://example.org/media/track1.mp3\n";
@@ -123,9 +112,7 @@ class M3uPlaylistParserTest extends UnitTestCase
         self::assertSame('track1', $tracks[0]['title']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function returnsEmptyArrayForEmptyContent(): void
     {
         self::assertSame([], (new M3uPlaylistParser())->parse(''));

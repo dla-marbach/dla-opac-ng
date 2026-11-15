@@ -3,6 +3,7 @@
 namespace Dla\DlaOpacNg\Tests\Unit\ViewHelpers;
 
 use Dla\DlaOpacNg\ViewHelpers\MediaPlayerViewHelper;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -80,9 +81,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         $_SERVER[$envName] = $value;
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function publicAudioFileIsExposedAsMediaplayerEntry(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -104,9 +103,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame(0, $mediaItem['forbidden']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function forbiddenVideoFileStaysInLinksAndIsNotExposedAsMediaplayerEntry(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -124,9 +121,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame(1, $result['links'][0]['forbidden']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function singleForwardedForAddressMatchingCampusRangeAllowsCampusMedia(): void
     {
         $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
@@ -145,9 +140,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame(0, $result['mediaplayer'][0]['forbidden']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function sandboxClientMayAccessSandboxAndCampusMedia(): void
     {
         $_SERVER['REMOTE_ADDR'] = '192.168.55.201';
@@ -166,9 +159,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame(0, $result['links'][1]['forbidden']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function campusClientMayNotAccessSandboxMedia(): void
     {
         $_SERVER['REMOTE_ADDR'] = '10.23.45.67';
@@ -185,9 +176,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame(1, $result['links'][0]['forbidden']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rangesWithQuotesAndWhitespaceAreRecognized(): void
     {
         $this->setEnvironmentVariable('sandboxRanges', '"192.168.55.200/29, 192.168.55.208/28"');
@@ -205,9 +194,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame(0, $result['links'][0]['forbidden']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function firstForwardedForAddressIsUsedWhenMultipleAddressesArePresent(): void
     {
         $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
@@ -226,9 +213,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame(0, $result['mediaplayer'][0]['forbidden']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function remoteAddrIsUsedWhenForwardedForHeaderIsEmpty(): void
     {
         $_SERVER['REMOTE_ADDR'] = '10.23.45.67';
@@ -247,9 +232,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame(0, $result['mediaplayer'][0]['forbidden']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function remoteAddrIsUsedWhenForwardedForHeaderIsAbsent(): void
     {
         $_SERVER['REMOTE_ADDR'] = '10.23.45.67';
@@ -268,9 +251,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame(0, $result['mediaplayer'][0]['forbidden']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function forwardedForHeaderIsIgnoredForDirectPublicRequests(): void
     {
         $_SERVER['REMOTE_ADDR'] = '203.0.113.1';
@@ -290,9 +271,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame(1, $result['links'][0]['forbidden']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function invalidForwardedForEntryFallsBackToRemoteAddr(): void
     {
         $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
@@ -312,9 +291,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame(1, $result['links'][0]['forbidden']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function nonMediaExtensionIsOnlyExposedAsLink(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -331,9 +308,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertCount(0, $result['mediaplayer']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function chaptersUrlIsAttachedToMatchingMediaItem(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -349,9 +324,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame('https://example.org/media/talk.vtt', $result['mediaplayer'][0]['chapters']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function publicM3uPlaylistIsResolvedIntoTracks(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -381,9 +354,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame('https://93.184.215.14/media/tracks/b.mp3', $mediaItem['tracks'][1]['url']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function playlistTracksAreNumberedAndDurationsFormatted(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -412,9 +383,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertTrue($mediaItem['hasDurations']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function playlistWithoutMetadataHasNoArtistAndDurationColumns(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -432,9 +401,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertFalse($result['mediaplayer'][0]['hasDurations']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function videoItemCarriesMatchingThumbnailAsPoster(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -451,9 +418,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame('https://example.org/media/movie-thumbnail.png', $result['mediaplayer'][0]['thumbnail']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function teaserIsFirstAccessibleThumbnailWhenFirstObjectIsForbidden(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -472,9 +437,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertFalse($result['accessDenied']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function teaserOfCampusObjectIsShownInsideCampusRange(): void
     {
         $_SERVER['REMOTE_ADDR'] = '10.1.2.3';
@@ -492,9 +455,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame('https://example.org/media/a_thumb.png', $result['teaser']['thumbnail']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function fileWithThumbnailIsExposedAsImagesEntryAndTeaserJumps(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -518,9 +479,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame([['type' => 'link', 'count' => 1]], $result['summary']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function viewerLinkWithoutExtensionButWithThumbnailIsExposedAsViewerImage(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -543,9 +502,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame([['type' => 'digitalisat', 'count' => 1]], $result['summary']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function objectWithoutThumbnailAndImageExtensionStaysInLinks(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -564,9 +521,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertNull($result['teaser']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function forbiddenViewerLinkWithThumbnailStaysInLinks(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -587,9 +542,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertTrue($result['accessDenied']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function imagesAndViewerLinksShareOneSlideshowInOriginalOrder(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -611,9 +564,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         ], $result['summary']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function accessDeniedOnlyIfNoDigitalObjectIsAccessible(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -641,9 +592,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertNull($partlyForbidden['teaser']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function forbiddenM3uPlaylistIsNotFetchedAndStaysInLinks(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -664,9 +613,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertArrayNotHasKey('tracks', $result['links'][0]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function publicImageIsExposedAsImagesEntryWithThumbnail(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -690,9 +637,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame(0, $imageItem['forbidden']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function forbiddenImageStaysInLinksAndIsNotExposedAsImagesEntry(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -712,9 +657,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame(1, $result['links'][0]['forbidden']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function multipleImagesArePairedWithMatchingThumbnailsByIndex(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();
@@ -733,9 +676,7 @@ class MediaPlayerViewHelperTest extends UnitTestCase
         self::assertSame('https://example.org/media/b_thumb.jpg', $result['images'][1]['thumbnail']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function summaryCountsAccessibleObjectsPerKindInSectionOrder(): void
     {
         $viewHelper = new TestableMediaPlayerViewHelper();

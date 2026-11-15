@@ -3,6 +3,7 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Partials\Detail;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Display/Detail/Normdata/Sachbegriffe, SachbegriffeRightColumn, Fachsystematik und Ketten: je ein
@@ -10,9 +11,7 @@ use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
  */
 class NormdataVocabularyTest extends FluidPartialTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function sachbegriffShowsHeadingAndCounts(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Normdata/Sachbegriffe', 'TH00000031'));
@@ -23,9 +22,7 @@ class NormdataVocabularyTest extends FluidPartialTestCase
         self::assertStringContainsString('Everything about this keyword (93)', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function sachbegriffRightColumnLinksGnd(): void
     {
         $html = $this->renderDetailPartial('Display/Detail/Normdata/SachbegriffeRightColumn', 'TH00000031');
@@ -33,9 +30,7 @@ class NormdataVocabularyTest extends FluidPartialTestCase
         self::assertStringContainsString('href="http://d-nb.info/gnd/', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function fachsystematikShowsHierarchyAndCounts(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Normdata/Fachsystematik', 'SY00000015'));
@@ -47,9 +42,7 @@ class NormdataVocabularyTest extends FluidPartialTestCase
         self::assertStringContainsString('Everything about this classification (0)', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function kettenShowsComponentsAndCounts(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Normdata/Ketten', 'SE00000121'));

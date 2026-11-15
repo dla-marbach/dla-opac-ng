@@ -3,6 +3,8 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Partials\Detail;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Display/Detail/*\/Details: der Abschnitt "Digitales Objekt" (id="digitales-objekt") ist in allen
@@ -11,10 +13,8 @@ use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
  */
 class DigitalObjectPositionTest extends FluidPartialTestCase
 {
-    /**
-     * @test
-     * @dataProvider detailsWithDigitalObject
-     */
+    #[Test]
+    #[DataProvider('detailsWithDigitalObject')]
     public function digitalObjectIsLastSectionOfDetailsTab(string $partial, string $id): void
     {
         $this->assertDigitalObjectIsLastSection($this->renderDetailPartial($partial, $id));

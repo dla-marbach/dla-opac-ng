@@ -3,12 +3,11 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Partials;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class ResultCountTest extends FluidPartialTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersSingleResultCount(): void
     {
         $html = $this->renderPartial('Components/ResultCount', [

@@ -3,6 +3,7 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Partials;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Rendert Resources/Private/Partials/Facets/Facet/List.html (und transitiv .../List/Item.html)
@@ -17,9 +18,7 @@ class FacetListTest extends FluidPartialTestCase
         'facetDefaults' => ['displayDefault' => 10],
     ];
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersInactiveFacetTermsAsSelectableLinks(): void
     {
         $html = $this->renderPartial('Facets/Facet/List', [
@@ -34,9 +33,7 @@ class FacetListTest extends FluidPartialTestCase
         self::assertStringNotContainsString('facetActive', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function marksSelectedFacetTermAsActive(): void
     {
         $html = $this->renderPartial('Facets/Facet/List', [

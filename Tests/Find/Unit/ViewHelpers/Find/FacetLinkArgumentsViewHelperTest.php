@@ -26,6 +26,7 @@ namespace Dla\Find\Tests\Unit\ViewHelpers\Find;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use Dla\Find\Tests\Unit\ViewHelpers\ViewHelperTestTrait;
 use Dla\Find\Tests\Unit\ViewHelpers\MockRenderingContextTrait;
@@ -53,9 +54,7 @@ class FacetLinkArgumentsViewHelperTest extends UnitTestCase
         $this->injectDependenciesIntoViewHelper($this->fixture);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function filterIsCorrectlyRemovedOnTextQueries()
     {
         $this->setArgumentsWithDefaults($this->fixture, [
@@ -69,9 +68,7 @@ class FacetLinkArgumentsViewHelperTest extends UnitTestCase
         self::assertEquals('tx_find_find[facet][title]', $result[0]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function filterIsCorrectlyAddedOnTextQueries()
     {
         $this->setArgumentsWithDefaults($this->fixture, [
