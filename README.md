@@ -267,9 +267,10 @@ task db:export
 
 ## TYPO3-Versionen
 
-Die Extension läuft mit TYPO3 12.4, 13.4 und 14.3 (PHP ab 8.2, für TYPO3 12.4 ab 8.1). Entwicklungsinstanz und
-PHPUnit-Tests verwenden ohne weitere Angabe TYPO3 12, mit `TYPO3_VERSION=13` bzw. `TYPO3_VERSION=14` eine andere
-Version (siehe [Installation](#installation) und [PHPUnit](#phpunit)).
+Die Extension läuft mit TYPO3 12.4, 13.4 und 14.3. Entwickelt und getestet wird mit PHP 8.3; TYPO3 14.3 setzt PHP 8.3
+voraus, weil erst `fluidtypo3/vhs` 8 TYPO3 v14 unterstützt. Entwicklungsinstanz und PHPUnit-Tests verwenden ohne weitere
+Angabe TYPO3 12, mit `TYPO3_VERSION=13` bzw. `TYPO3_VERSION=14` eine andere Version (siehe
+[Installation](#installation) und [PHPUnit](#phpunit)).
 
 ### Plugins als Inhaltselemente (Upgrade-Wizard)
 
