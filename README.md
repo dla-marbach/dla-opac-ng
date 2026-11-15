@@ -4,6 +4,9 @@ TYPO3-Extension für den Katalog des Deutschen Literaturarchivs Marbach https://
 
 Das integrierte Such-Plugin basiert auf subugoe/typo3-find (siehe [Herkunft und Credits](#herkunft-und-credits)).
 
+Unterstützt werden TYPO3 12.4, 13.4 und 14.3 (siehe [TYPO3-Versionen](#typo3-versionen)); das Produktivsystem läuft mit
+TYPO3 12.4.
+
 ## Installation
 
 Die Entwicklungsumgebung (Ubuntu 24.04) wird mit [Task](https://taskfile.dev) eingerichtet ([Taskfile.yml](Taskfile.yml)):
@@ -17,10 +20,10 @@ task install
 
 | Task | |
 |---|---|
-| `task install` | PHP/Composer/Apache/MariaDB installieren (falls nötig), TYPO3 in `t3example/` aufsetzen, Extension einbinden und starten |
+| `task install` | PHP/Composer/Apache/MariaDB installieren (falls nötig), TYPO3 in `t3example/` aufsetzen, Extension einbinden und starten; andere TYPO3-Version als 12 mit `task install TYPO3_VERSION=13` bzw. `TYPO3_VERSION=14` |
 | `task start` / `task stop` | MariaDB, Solr-Mock-Server, PHP-FPM und Apache starten bzw. Solr-Mock-Server, PHP-FPM und Apache stoppen (MariaDB läuft weiter); im Codespace startet `task start` automatisch |
 | `task cache` | TYPO3-Cache leeren, nötig nach Änderungen z.B. an TypoScript, `Configuration/Services.yaml` oder `ext_localconf.php` |
-| `task reinstall` | TYPO3-Instanz und Datenbank löschen und neu aufsetzen |
+| `task reinstall` | TYPO3-Instanz und Datenbank löschen und neu aufsetzen, z.B. `task reinstall TYPO3_VERSION=14` für eine andere TYPO3-Version |
 
 Die Extension ist per Composer-Path-Repository eingebunden (`t3example/packages/dla-dla_opac_ng` ist ein Symlink auf
 dieses Repository), Änderungen am Code wirken also direkt. Konfiguration: [.devfiles/apache.conf](.devfiles/apache.conf),
@@ -116,16 +119,20 @@ CI ([.github/workflows/phpunit.yml](.github/workflows/phpunit.yml)):
 ```
 task test:php
 task test:php -- --filter MediaPlayer   # einzelne Tests
+task test:php TYPO3_VERSION=14          # mit einer anderen TYPO3-Version als 12 (installiert vendor/ neu)
 ```
+
+Die CI führt die Tests mit allen unterstützten TYPO3-Versionen jeweils unter PHP 8.3 und 8.4 aus.
 
 [Tests/Unit/Partials](Tests/Unit/Partials) rendert einzelne Fluid-Partials aus
 [Resources/Private/Partials](Resources/Private/Partials) und prüft das erzeugte HTML:
 
 * [Tests/Support/FluidPartialTestCase.php](Tests/Support/FluidPartialTestCase.php) baut einen minimalen
-  Fluid-`RenderingContext` ohne TYPO3-Bootstrap. `f:translate` (immer Default-Sprache) und `f:link.action`
-  (Platzhalter-Link `#test-link`) sind dafür durch Test-Varianten in
+  Fluid-`RenderingContext` ohne TYPO3-Bootstrap. `f:translate` (immer Default-Sprache, direkt aus den XLIFF-Dateien)
+  und `f:link.action` (Platzhalter-Link `#test-link`) sind dafür durch Test-Varianten in
   [Tests/Support/FluidViewHelperOverrides](Tests/Support/FluidViewHelperOverrides) ersetzt. Tests schlagen fehl,
   wenn eine Solr-Anfrage ohne Cassette ankommt (sonst würde z.B. `dla:countFromSolr` still `0` anzeigen).
+  Mit TYPO3 v14 prüft Fluid dabei wie im Betrieb die Typen der ViewHelper-Argumente strikt.
 * [Tests/Support/SolrFixture.php](Tests/Support/SolrFixture.php) liefert echte Solarium-Dokumente bzw.
   Trefferlisten aus den Cassetten (`detail-*.json`, `resultlist-*.json`), die echte TypoScript-Konfiguration
   (`SolrFixture::settings()`, u.a. `queryFields`) und setzt `SOLR_HOST`/`SOLR_CORE` auf den Mock-Server.
@@ -134,7 +141,10 @@ task test:php -- --filter MediaPlayer   # einzelne Tests
 
 ## Datenbankdump für TYPO3-Grundkonfiguration
 
-Bei der Installation (task install) wird ein Datenbank-Dump [.devfiles/init.sql](.devfiles/init.sql) eingespielt. Bei einer neuen TYPO3-Version muss dieser Dump ggf. manuell neu erstellt werden.
+Bei der Installation (task install) wird ein Datenbank-Dump [.devfiles/init.sql](.devfiles/init.sql) eingespielt. Der Dump
+stammt aus TYPO3 v12; `task install` passt die Tabellen anschließend an die installierte TYPO3-Version an
+([.devfiles/update-schema.php](.devfiles/update-schema.php)) und führt die Upgrade-Wizards aus (`typo3 upgrade:run`).
+Für eine TYPO3-Version, bei der das nicht mehr genügt, muss der Dump manuell neu erstellt werden.
 
 ### TYPO3-Grundkonfiguration ohne Datenbankdump
 
@@ -150,15 +160,14 @@ Bei der Installation (task install) wird ein Datenbank-Dump [.devfiles/init.sql]
 3. Menü Page: Neue Seite auf Start ziehen und `Katalog` nennen
 
   * Katalog anklicken und "Create new content" auswählen
-  * Plugin TYPO3 Find auswählen
-  * Reiter Plugin im Pulldown "DlaStart" auswählen
+  * Reiter Plugins: "DlaStart" auswählen
   * Speichern
   * Kontextmenü im Seitenbaum für diese Seite aufrufen und Enable auswählen
 
 4. Menü Page: Neue Unterseite von Katalog und `Find` nennen
 
   * find anklicken und "Create new content" auswählen
-  * Plugin TYPO3 Find auswählen
+  * Reiter Plugins: "TYPO3 Find" auswählen
   * Speichern
   * Edit page properties > URL Segment /katalog entfernen
   * Kontextmenü im Seitenbaum für diese Seite aufrufen und Enable auswählen
@@ -166,8 +175,7 @@ Bei der Installation (task install) wird ein Datenbank-Dump [.devfiles/init.sql]
 5. Menü Page: Neue Unterseite von Katalog und `Bestandsübersicht` nennen
 
   * Bestandsuebersicht anklicken und "Create new content" auswählen
-  * Plugin TYPO3 Find auswählen
-  * Reiter Plugin im Pulldown "DlaCollection" auswählen
+  * Reiter Plugins: "DlaCollection" auswählen
   * Speichern
   * Edit page properties > URL Segment /katalog entfernen
   * Kontextmenü im Seitenbaum für diese Seite aufrufen und Enable auswählen
@@ -175,8 +183,7 @@ Bei der Installation (task install) wird ein Datenbank-Dump [.devfiles/init.sql]
 6. Menü Page: Neue Unterseite von Katalog und `Systematik` nennen
 
   * Systematik anklicken und "Create new content" auswählen
-  * Plugin TYPO3 Find auswählen
-  * Reiter Plugin im Pulldown "DlaClassification" auswählen
+  * Reiter Plugins: "DlaClassification" auswählen
   * Speichern
   * Edit page properties > URL Segment /katalog entfernen
   * Kontextmenü im Seitenbaum für diese Seite aufrufen und Enable auswählen
@@ -257,6 +264,33 @@ Bei der Installation (task install) wird ein Datenbank-Dump [.devfiles/init.sql]
 ```
 task db:export
 ```
+
+## TYPO3-Versionen
+
+Die Extension läuft mit TYPO3 12.4, 13.4 und 14.3. Entwickelt und getestet wird mit PHP 8.3, die CI prüft zusätzlich
+PHP 8.4. TYPO3 14.3 setzt PHP 8.3 voraus, weil erst `fluidtypo3/vhs` 8 TYPO3 v14 unterstützt. Entwicklungsinstanz und
+PHPUnit-Tests verwenden ohne weitere Angabe TYPO3 12, mit `TYPO3_VERSION=13` bzw. `TYPO3_VERSION=14` eine andere
+Version (siehe [Installation](#installation) und [PHPUnit](#phpunit)).
+
+### Plugins als Inhaltselemente (Upgrade-Wizard)
+
+TYPO3 v14 kennt das Inhaltselement "Plugin" (CType `list` mit `list_type`) nicht mehr. Die vier Plugins der Extension
+(`find_find`, `dlaopacng_dlastart`, `dlaopacng_dlacollection`, `dlaopacng_dlaclassification`) sind deshalb in allen
+TYPO3-Versionen eigene Inhaltselemente (CType = Plugin-Signatur). Vorhandene Inhaltselemente und die Berechtigungen der
+Backend-Benutzergruppen stellt ein Upgrade-Wizard um:
+
+```
+vendor/bin/typo3 upgrade:run dlaOpacNg_pluginListTypeToCType
+```
+
+* Unter TYPO3 v12 und v13 werden noch nicht umgestellte Inhaltselemente weiterhin ausgegeben; der Wizard kann also
+  nach dem Update der Extension in Ruhe ausgeführt werden. Im Backend lassen sich solche Elemente erst nach der
+  Umstellung wieder sinnvoll bearbeiten.
+* **Vor dem Upgrade auf TYPO3 v14 muss der Wizard gelaufen sein** (spätestens unter v14 vor der Datenbankanalyse, die
+  das Feld `list_type` entfernt).
+* Im HTML ändert sich dadurch nur die Klasse des umgebenden Elements von `frame-type-list` in
+  `frame-type-<Plugin-Signatur>`. Eigenes TypoScript, das `tt_content.list.20.find_find` verwendet, muss auf
+  `tt_content.find_find.20` umgestellt werden.
 
 ## Herkunft und Credits
 

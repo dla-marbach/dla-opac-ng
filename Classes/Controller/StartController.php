@@ -6,7 +6,7 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 class StartController extends \Dla\Find\Controller\SearchController
 {
 
-    public function initializeAction()
+    public function initializeAction(): void
     {
         $settings = $this->configurationManager->getConfiguration(
             \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT,

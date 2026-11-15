@@ -27,6 +27,7 @@ namespace Dla\Find\Tests\Unit\ViewHelpers;
  * ************************************************************* */
 
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperResolver;
 
 /**
  * Convenience trait to retrieve a RenderingContext.
@@ -41,5 +42,7 @@ trait MockRenderingContextTrait
     protected function createRenderingContextMock(): void
     {
         $this->renderingContextMock = $this->getMockBuilder(RenderingContextInterface::class)->getMock();
+        // Fluid 4 (TYPO3 v13) liest die Argument-Definitionen beim Validieren über den ViewHelperResolver.
+        $this->renderingContextMock->method('getViewHelperResolver')->willReturn(new ViewHelperResolver());
     }
 }

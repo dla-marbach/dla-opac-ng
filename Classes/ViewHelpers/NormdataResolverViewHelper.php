@@ -13,11 +13,11 @@ class NormdataResolverViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('id', 'string', 'Normdata ID', true, "");
-        $this->registerArgument('valueAs', 'string', 'name of the value result variable', true, "output");
+        $this->registerArgument('id', 'string', 'Normdata ID', false, "");
+        $this->registerArgument('valueAs', 'string', 'name of the value result variable', false, "output");
 
     }
 

@@ -26,6 +26,7 @@ namespace Dla\Find\Tests\Unit\ViewHelpers\Find;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use Dla\Find\Tests\Unit\ViewHelpers\ViewHelperTestTrait;
 use Dla\Find\Tests\Unit\ViewHelpers\MockRenderingContextTrait;
@@ -56,9 +57,7 @@ class PageNumberForResultNumberViewHelperTest extends UnitTestCase
         $this->inject($this->fixture, 'renderingContext', $this->renderingContextMock);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function pageNumberIsCorrectlyCalculated()
     {
         $resultNumber = 55;
@@ -73,9 +72,7 @@ class PageNumberForResultNumberViewHelperTest extends UnitTestCase
         self::assertSame($expected, $this->fixture->initializeArgumentsAndRender());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function pageNumerWhenResultIsZero()
     {
         $resultNumber = 0;
@@ -91,9 +88,7 @@ class PageNumberForResultNumberViewHelperTest extends UnitTestCase
         self::assertSame($expected, $this->fixture->initializeArgumentsAndRender());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function divisionByZeroIsCaught()
     {
         $resultNumber = 0;

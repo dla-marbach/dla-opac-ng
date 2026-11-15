@@ -3,6 +3,7 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Partials;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Rendert Resources/Private/Partials/MediaAccess/Slideshow.html für nicht gesperrte
@@ -12,9 +13,7 @@ use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
  */
 class SlideshowTest extends FluidPartialTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersNothingWhenNoImagesArePresent(): void
     {
         $html = $this->renderPartial('MediaAccess/Slideshow', [
@@ -25,9 +24,7 @@ class SlideshowTest extends FluidPartialTestCase
         self::assertStringNotContainsString('dla-slideshow', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersSingleImageWithoutNavigationControls(): void
     {
         $html = $this->renderPartial('MediaAccess/Slideshow', [
@@ -55,9 +52,7 @@ class SlideshowTest extends FluidPartialTestCase
         self::assertStringNotContainsString('dla-slideshow-dots', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersMultipleImagesWithNavigationControls(): void
     {
         $html = $this->renderPartial('MediaAccess/Slideshow', [
@@ -74,9 +69,7 @@ class SlideshowTest extends FluidPartialTestCase
         self::assertStringContainsString('dla-slideshow-dots', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function onlyFirstSlideIsInitiallyVisibleToAssistiveTechnologyAndTabOrder(): void
     {
         $html = $this->renderPartial('MediaAccess/Slideshow', [
@@ -93,9 +86,7 @@ class SlideshowTest extends FluidPartialTestCase
         self::assertStringContainsString('tabindex="-1"', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersTitleFromDisplayAsCaptionBelowEachImage(): void
     {
         $html = $this->renderPartial('MediaAccess/Slideshow', [
@@ -112,9 +103,7 @@ class SlideshowTest extends FluidPartialTestCase
         self::assertMatchesRegularExpression('#a\.jpg"[^>]*>.*?</a>\s*<div class="dla-slideshow-caption">Bild A</div>#s', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersNoCaptionWhenDisplayIsMissingOrPlaceholder(): void
     {
         $html = $this->renderPartial('MediaAccess/Slideshow', [
@@ -128,9 +117,7 @@ class SlideshowTest extends FluidPartialTestCase
         self::assertStringNotContainsString('dla-slideshow-caption', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function fallsBackToFullImageWhenNoThumbnailIsAvailable(): void
     {
         $html = $this->renderPartial('MediaAccess/Slideshow', [
@@ -143,9 +130,7 @@ class SlideshowTest extends FluidPartialTestCase
         self::assertStringContainsString('src="https://example.org/media/picture.jpg"', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function viewerDigitisationShowsSignatureAsCaptionAndOpenInViewerAction(): void
     {
         $html = $this->renderPartial('MediaAccess/Slideshow', [
@@ -169,9 +154,7 @@ class SlideshowTest extends FluidPartialTestCase
         self::assertMatchesRegularExpression('#<a href="https://digital\.example\.org/viewer/fullscreen/HS00242238/" target="_blank" tabindex="-1" aria-hidden="true" data-dla-slideshow-skip>\s*<img#', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function fileWithThumbnailShowsOpenFileActionWithExtension(): void
     {
         $html = $this->renderPartial('MediaAccess/Slideshow', [
@@ -190,9 +173,7 @@ class SlideshowTest extends FluidPartialTestCase
         self::assertStringContainsString('Open file (EPUB)', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function imageFileHasNoActionLine(): void
     {
         $html = $this->renderPartial('MediaAccess/Slideshow', [

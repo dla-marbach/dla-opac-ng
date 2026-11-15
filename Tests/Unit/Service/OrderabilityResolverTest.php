@@ -3,6 +3,8 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Service;
 
 use Dla\DlaOpacNg\Service\OrderabilityResolver;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -24,17 +26,13 @@ class OrderabilityResolverTest extends TestCase
         $this->resolver = new OrderabilityResolver();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function articleWithoutParentIsOrderable(): void
     {
         self::assertTrue($this->resolver->isOrderable(self::ARTICLE, []));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function articleNotInHoldingsIsNotOrderable(): void
     {
         $fields = self::ARTICLE + ['callNumberBibliographic_mv' => ['kein Bestand']];
@@ -42,10 +40,8 @@ class OrderabilityResolverTest extends TestCase
         self::assertFalse($this->resolver->isOrderable($fields, []));
     }
 
-    /**
-     * @test
-     * @dataProvider notInHoldingsSignatures
-     */
+    #[Test]
+    #[DataProvider('notInHoldingsSignatures')]
     public function articleNotInHoldingsIsNotOrderableForAllSignatureVariants(string $callNumber): void
     {
         $fields = self::ARTICLE + ['callNumberBibliographic_mv' => [$callNumber]];
@@ -64,9 +60,7 @@ class OrderabilityResolverTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function articleWithNotUsableNoteIsNotOrderable(): void
     {
         $fields = self::ARTICLE + ['usageRestrictionNote' => "nicht benutzbar\nnur bibliographischer Nachweis, nicht im Bestand des DLA!"];
@@ -74,17 +68,13 @@ class OrderabilityResolverTest extends TestCase
         self::assertFalse($this->resolver->isOrderable($fields, []));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function recordWithoutItemsThatIsNoArticleIsNotOrderable(): void
     {
         self::assertFalse($this->resolver->isOrderable(['categorySub' => 'Einzelne Einheit / nicht Teil eines Gesamtwerks'], []));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function articleWithViewerLinkIsNotOrderable(): void
     {
         $fields = self::ARTICLE + ['digitalObject_hyperlink_mv' => ['https://digital.dla-marbach.de/viewer/image/AU01067549/']];
@@ -92,9 +82,7 @@ class OrderabilityResolverTest extends TestCase
         self::assertFalse($this->resolver->isOrderable($fields, []));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function articleWithOtherDigitalObjectLinkIsOrderable(): void
     {
         $fields = self::ARTICLE + ['digitalObject_hyperlink_mv' => ['https://doi.org/10.5209/rpub.103407']];
@@ -102,9 +90,7 @@ class OrderabilityResolverTest extends TestCase
         self::assertTrue($this->resolver->isOrderable($fields, []));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function electronicMediumArticleIsNotOrderable(): void
     {
         $fields = self::ARTICLE + ['filterMedium_mv' => ['E-Book', 'Beitrag']];
@@ -112,9 +98,7 @@ class OrderabilityResolverTest extends TestCase
         self::assertFalse($this->resolver->isOrderable($fields, []));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function articleWithNotOrderableParentIsNotOrderable(): void
     {
         $parent = ['filterMedium_mv' => ['Buch'], 'item_id_mv' => ['AU1'], 'item_usageRestriction_mv' => ['nicht benutzbar']];
@@ -122,17 +106,13 @@ class OrderabilityResolverTest extends TestCase
         self::assertFalse($this->orderableInParent($parent));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function articleWithoutItemsInParentIsNotOrderable(): void
     {
         self::assertFalse($this->orderableInParent(['filterMedium_mv' => ['Buch']]));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function articleInOrderableParentIsOrderable(): void
     {
         $parent = [
@@ -145,10 +125,8 @@ class OrderabilityResolverTest extends TestCase
         self::assertTrue($this->orderableInParent($parent));
     }
 
-    /**
-     * @test
-     * @dataProvider continuingResourceMedia
-     */
+    #[Test]
+    #[DataProvider('continuingResourceMedia')]
     public function retroArticleInJournalNewspaperSeriesOrMultipartWorkIsOrderable(string $medium): void
     {
         self::assertTrue($this->orderableInParent(['filterMedium_mv' => [$medium]]));
@@ -159,9 +137,7 @@ class OrderabilityResolverTest extends TestCase
         return ['Zeitschrift' => ['Zeitschrift'], 'Zeitung' => ['Zeitung'], 'Reihe' => ['Reihe'], 'Mehrteiliges Werk' => ['Mehrteiliges Werk']];
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function articleInElectronicJournalIsNotOrderable(): void
     {
         $parent = ['filterMedium_mv' => ['Zeitschrift'], 'digitalObject_hyperlink_mv' => ['https://digital.dla-marbach.de/viewer/image/MM01846400/']];
@@ -169,9 +145,7 @@ class OrderabilityResolverTest extends TestCase
         self::assertFalse($this->orderableInParent($parent));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function articleInElectronicJournalLibraryIsNotOrderable(): void
     {
         $parent = ['filterMedium_mv' => ['Zeitschrift'], 'filterSource' => 'Elektronische Zeitschriftenbibliothek'];
@@ -179,9 +153,7 @@ class OrderabilityResolverTest extends TestCase
         self::assertFalse($this->orderableInParent($parent));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function articleIsNotOrderableWhenParentCouldNotBeLoaded(): void
     {
         $fields = self::ARTICLE + ['parent_id_mv' => ['AK01823691']];
@@ -189,9 +161,7 @@ class OrderabilityResolverTest extends TestCase
         self::assertFalse($this->resolver->isOrderable($fields, []));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function articleIsNotOrderableWhenOnlySomeParentsWereLoaded(): void
     {
         $fields = self::ARTICLE + ['parent_id_mv' => ['AK1', 'AK2']];

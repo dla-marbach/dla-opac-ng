@@ -1,3 +1,5 @@
+{namespace s=Dla\Find\ViewHelpers}
+{namespace dla=Dla\DlaOpacNg\ViewHelpers}
 <f:if condition="{arguments.facet} || {arguments.q} && {dla:isNull(variable:'{arguments.q.default}')}">
     <section class="ctg-facet active-facets">
         <h3>

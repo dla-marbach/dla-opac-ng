@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Dla\DlaOpacNg\Tests\Unit\Middleware;
 
 use Dla\DlaOpacNg\Middleware\ProofOfWorkMiddleware;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
@@ -34,9 +35,7 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
         parent::tearDown();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function singleForwardedForAddressMatchingCampusRangeIsWhitelisted(): void
     {
         $request = $this->createRequestWithServerParams([
@@ -47,9 +46,7 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
         self::assertTrue($this->invokeIsWhitelistedIp($request));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function firstForwardedForAddressIsUsedWhenMultipleAddressesArePresent(): void
     {
         $this->setEnvironmentVariable('sandboxRanges', '');
@@ -62,9 +59,7 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
         self::assertTrue($this->invokeIsWhitelistedIp($request));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function remoteAddrIsUsedWhenForwardedForHeaderIsAbsent(): void
     {
         $request = $this->createRequestWithServerParams([
@@ -74,9 +69,7 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
         self::assertTrue($this->invokeIsWhitelistedIp($request));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function remoteAddrIsUsedWhenForwardedForHeaderIsEmpty(): void
     {
         $request = $this->createRequestWithServerParams([
@@ -87,9 +80,7 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
         self::assertTrue($this->invokeIsWhitelistedIp($request));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function forwardedForHeaderIsIgnoredForDirectPublicRequests(): void
     {
         $request = $this->createRequestWithServerParams([
@@ -100,9 +91,7 @@ class ProofOfWorkMiddlewareTest extends UnitTestCase
         self::assertFalse($this->invokeIsWhitelistedIp($request));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function invalidForwardedForEntryFallsBackToRemoteAddr(): void
     {
         $request = $this->createRequestWithServerParams([

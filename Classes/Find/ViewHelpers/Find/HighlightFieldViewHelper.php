@@ -26,7 +26,6 @@ namespace Dla\Find\ViewHelpers\Find;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  ******************************************************************************/
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -48,7 +47,7 @@ class HighlightFieldViewHelper extends AbstractViewHelper
     /**
      * Registers own arguments.
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('results', \Solarium\QueryType\Select\Result\Result::class, 'Query results', true);
@@ -70,23 +69,20 @@ class HighlightFieldViewHelper extends AbstractViewHelper
     /**
      * @return string
      */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext
-    ) {
-        if ($arguments['document']) {
-            $fields = $arguments['document']->getFields();
-            $fieldContent = $fields[$arguments['field']];
-            if (null !== $arguments['index']) {
-                if (is_array($fieldContent) && count($fieldContent) > $arguments['index']) {
-                    $fieldContent = $fieldContent[$arguments['index']];
+    public function render()
+    {
+        if ($this->arguments['document']) {
+            $fields = $this->arguments['document']->getFields();
+            $fieldContent = $fields[$this->arguments['field']];
+            if (null !== $this->arguments['index']) {
+                if (is_array($fieldContent) && count($fieldContent) > $this->arguments['index']) {
+                    $fieldContent = $fieldContent[$this->arguments['index']];
                 } else {
                     // TODO: error message
                 }
             }
 
-            return self::highlightField($fieldContent, $arguments);
+            return self::highlightField($fieldContent, $this->arguments);
         }
 
         return '';

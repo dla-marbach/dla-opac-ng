@@ -26,6 +26,7 @@ namespace Dla\Find\Tests\Unit\ViewHelpers\Find;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use Dla\Find\Tests\Unit\ViewHelpers\ViewHelperTestTrait;
 use Dla\Find\ViewHelpers\Find\HighlightFieldViewHelper;
@@ -57,9 +58,7 @@ class HighlightFieldViewHelperTest extends UnitTestCase
         $this->injectDependenciesIntoViewHelper($this->fixture);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function fieldWithoutHighlightingIsEscaped()
     {
         $this->setArgumentsWithDefaults($this->fixture, [
@@ -71,9 +70,7 @@ class HighlightFieldViewHelperTest extends UnitTestCase
         self::assertSame('a &amp; b', $this->fixture->initializeArgumentsAndRender());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function fieldIsCorrectlyHighlighted()
     {
         $results = $this->createMock(Result::class);

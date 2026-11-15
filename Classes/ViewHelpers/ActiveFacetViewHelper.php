@@ -12,12 +12,12 @@ class ActiveFacetViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('text', 'string', 'Text', false, null);
         $this->registerArgument('function', 'string', 'Text', false, null);
-        $this->registerArgument('as', 'string', 'name of the label result variable', true, 'string');
+        $this->registerArgument('as', 'string', 'name of the label result variable', true);
     }
 
     /**

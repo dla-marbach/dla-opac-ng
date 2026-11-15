@@ -12,11 +12,11 @@ class ImplodeViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('array', 'array', 'The array to be joined', true, array());
-        $this->registerArgument('glue', 'string', '', true, '');
+        $this->registerArgument('array', 'array', 'The array to be joined', false, array());
+        $this->registerArgument('glue', 'string', '', true);
         $this->registerArgument('as', 'string', 'name of the result', true, NULL);
     }
 

@@ -3,6 +3,7 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Partials\Detail;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Display/Detail/Normdata/Werk und WerkRightColumn mit einem Werk-Normdatensatz (Habilitationsschrift).
@@ -11,9 +12,7 @@ class NormdataWerkTest extends FluidPartialTestCase
 {
     private const WERK = 'AK01600972';
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersMasterDataFromDocument(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Normdata/Werk', self::WERK));
@@ -23,9 +22,7 @@ class NormdataWerkTest extends FluidPartialTestCase
         self::assertStringContainsString('Form of the Work Habilitationsschrift Time 1971 Language Deutsch', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function showsCountsOfEveryRelationBlock(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Normdata/Werk', self::WERK));
@@ -37,9 +34,7 @@ class NormdataWerkTest extends FluidPartialTestCase
         self::assertStringContainsString('Not the right category? (1)', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rightColumnLinksGnd(): void
     {
         $html = $this->renderDetailPartial('Display/Detail/Normdata/WerkRightColumn', self::WERK);

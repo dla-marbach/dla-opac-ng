@@ -24,10 +24,7 @@ namespace Dla\Find\ViewHelpers\Page;
  ******************************************************************************/
 
 use TYPO3\CMS\Core\Page\PageRenderer;
-use TYPO3\CMS\Core\TypoScript\TemplateService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Utility\VersionNumberUtility;
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -45,15 +42,7 @@ class ScriptViewHelper extends AbstractViewHelper
         return GeneralUtility::makeInstance(PageRenderer::class);
     }
 
-    /**
-     * @return TemplateService
-     */
-    protected static function getTypoScriptTemplateService()
-    {
-        return $GLOBALS['TSFE']->tmpl;
-    }
-
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument('file', 'string', 'File to append as script');
         $this->registerArgument('name', 'string', 'Name to use', true);
@@ -62,40 +51,19 @@ class ScriptViewHelper extends AbstractViewHelper
     /**
      * @return string
      */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext
-    ) {
-        $name = $arguments['name'];
+    public function render()
+    {
+        $name = $this->arguments['name'];
         $pageRenderer = self::getPageRenderer();
 
-        $typo3VersionConstraint = version_compare(VersionNumberUtility::getNumericTypo3Version(), '9.5.0', '<');
-
-        if ($typo3VersionConstraint) {
-            $scriptPath = static::getTypoScriptTemplateService()->getFileName($arguments['file']);
-
-            if ($scriptPath) {
-                $pageRenderer->addJsFooterLibrary($name, $scriptPath);
-
-                return '';
-            }
-
-            $content = $renderChildrenClosure();
-            $pageRenderer->addJsFooterInlineCode($name, $content);
-
-            return '';
+        // Der PageRenderer löst auch »EXT:«-Pfade auf.
+        if ($this->arguments['file']) {
+            $pageRenderer->addJsFooterLibrary($name, $this->arguments['file']);
         } else {
-            $fileNameFromArguments = $arguments['file'];
-            if ($fileNameFromArguments) {
-                $scriptPath = GeneralUtility::makeInstance(\TYPO3\CMS\Frontend\Resource\FilePathSanitizer::class)->sanitize($fileNameFromArguments);
-                $pageRenderer->addJsFooterLibrary($name, $scriptPath);
-            } else {
-                $content = $renderChildrenClosure();
-                $pageRenderer->addJsFooterInlineCode($name, $content);
-            }
-
-            return '';
+            $content = $this->renderChildren();
+            $pageRenderer->addJsFooterInlineCode($name, $content);
         }
+
+        return '';
     }
 }

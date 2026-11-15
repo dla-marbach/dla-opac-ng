@@ -29,7 +29,6 @@ namespace Dla\Find\ViewHelpers\Find;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -40,7 +39,7 @@ class FacetIsActiveViewHelper extends AbstractViewHelper
     /**
      * Register arguments.
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('facetID', 'string', 'ID of the facet to determine the selection status of', true);
@@ -58,15 +57,12 @@ class FacetIsActiveViewHelper extends AbstractViewHelper
     /**
      * @return string|int|bool|array
      */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext
-    ) {
-        foreach ($arguments['activeFacets'] as $facets) {
+    public function render()
+    {
+        foreach ($this->arguments['activeFacets'] as $facets) {
             foreach ($facets as $facetInfo) {
-                if ($facetInfo['id'] === $arguments['facetID']
-                    && ($facetInfo['term'] === $arguments['facetTerm'] || null === $arguments['facetTerm'])
+                if ($facetInfo['id'] === $this->arguments['facetID']
+                    && ($facetInfo['term'] === $this->arguments['facetTerm'] || null === $this->arguments['facetTerm'])
                 ) {
                     return true;
                 }

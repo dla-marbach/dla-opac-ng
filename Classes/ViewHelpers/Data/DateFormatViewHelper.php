@@ -12,12 +12,12 @@ class DateFormatViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('dateValue', 'integer', 'DateValue', true, array());
+        $this->registerArgument('dateValue', 'array', 'DateValue', false, array());
         $this->registerArgument('desiredFormat', 'string', 'format', false, 'd.m.Y');
-        $this->registerArgument('as', 'string', 'name of the result array', true, array());
+        $this->registerArgument('as', 'string', 'name of the result array', true);
     }
 
     /**

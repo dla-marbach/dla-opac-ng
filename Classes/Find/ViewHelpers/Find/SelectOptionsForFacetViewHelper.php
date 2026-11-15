@@ -27,7 +27,6 @@ namespace Dla\Find\ViewHelpers\Find;
  * THE SOFTWARE.
  ******************************************************************************/
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -39,7 +38,7 @@ class SelectOptionsForFacetViewHelper extends AbstractViewHelper
     /**
      * Registers own arguments.
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('values', 'array', 'values array for a facet', false, []);
@@ -56,22 +55,19 @@ class SelectOptionsForFacetViewHelper extends AbstractViewHelper
     /**
      * @return array
      */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext
-    ) {
+    public function render()
+    {
         $result = [];
 
         // Start the select with a blank element?
-        if ($arguments['leadingBlank']) {
+        if ($this->arguments['leadingBlank']) {
             $result[''] = '';
         }
 
-        if (!empty($arguments['values'])) {
-            foreach ($arguments['values'] as $item => $count) {
+        if (!empty($this->arguments['values'])) {
+            foreach ($this->arguments['values'] as $item => $count) {
                 // Localise item name.
-                $localisationKey = $arguments['localisationPrefix'].$item;
+                $localisationKey = $this->arguments['localisationPrefix'].$item;
 
                 $localisedItem = LocalizationUtility::translate($localisationKey, 'find');
                 if (!$localisedItem) {
@@ -79,20 +75,20 @@ class SelectOptionsForFacetViewHelper extends AbstractViewHelper
                 }
 
                 // Append count to item name?
-                $result[$item] = $localisedItem.($arguments['showCount'] ? ' ('.$count.')' : '');
+                $result[$item] = $localisedItem.($this->arguments['showCount'] ? ' ('.$count.')' : '');
             }
         }
 
         // Sort the array?
-        if ($arguments['sortByName']) {
+        if ($this->arguments['sortByName']) {
             ksort($result);
         }
 
         // Strip sort prefixes.
-        if ($arguments['sortPrefixSeparator']) {
+        if ($this->arguments['sortPrefixSeparator']) {
             $strippedResult = [];
             foreach ($result as $key => $value) {
-                $valueParts = explode($arguments['sortPrefixSeparator'], $value, 2);
+                $valueParts = explode($this->arguments['sortPrefixSeparator'], $value, 2);
                 $strippedResult[$key] = $valueParts[count($valueParts) - 1];
             }
 

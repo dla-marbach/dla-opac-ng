@@ -42,7 +42,7 @@ class CountFromSolrViewHelper extends AbstractViewHelper {
      */
     protected $solr;
 
-    public function initialize() {
+    public function initialize(): void {
         $this->solr = GeneralUtility::makeInstance(SolrConnection::class)->getClient();
     }
 
@@ -50,9 +50,9 @@ class CountFromSolrViewHelper extends AbstractViewHelper {
      * Register arguments.
      * @return void
      */
-    public function initializeArguments() {
+    public function initializeArguments(): void {
         parent::initializeArguments();
-        $this->registerArgument('query', 'string|array', 'Solr querystring or array of query fields and their query values.', TRUE);
+        $this->registerArgument('query', 'mixed', 'Solr querystring or array of query fields and their query values.', TRUE);
         $this->registerArgument('activeFacets',  'array', 'Array with active facets', FALSE);
     }
 

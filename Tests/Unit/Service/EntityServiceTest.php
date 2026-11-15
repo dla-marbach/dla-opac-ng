@@ -4,6 +4,7 @@ namespace Dla\DlaOpacNg\Tests\Unit\Service;
 
 use Dla\DlaOpacNg\Service\EntityService;
 use Dla\DlaOpacNg\Tests\Support\MockSolrServerProcess;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -27,9 +28,7 @@ class EntityServiceTest extends UnitTestCase
         putenv('SOLR_CORE=internformat');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getEntityReturnsEscapedFieldsForKnownId(): void
     {
         $entity = (new EntityService())->getEntity('PE00000863');
@@ -40,9 +39,7 @@ class EntityServiceTest extends UnitTestCase
         self::assertSame('Schriftsteller, Politiker, Naturwissenschaftler', $entity['displayAddition1']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getEntityReturnsEmptyishResultForUnknownId(): void
     {
         // The production code does not guard against an empty Solr result set (docs[0] missing);
@@ -57,9 +54,7 @@ class EntityServiceTest extends UnitTestCase
         self::assertSame('', $entity['id']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getEntitiesReturnsAllRequestedEntitiesWithComposedTitle(): void
     {
         $entities = (new EntityService())->getEntities('PE00000863,BF00025111');
@@ -82,9 +77,7 @@ class EntityServiceTest extends UnitTestCase
         self::assertStringContainsString('Cotta', $byId['BF00025111']['title']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getEntitiesReturnsEmptyArrayForBlankQuery(): void
     {
         self::assertSame([], (new EntityService())->getEntities('   '));

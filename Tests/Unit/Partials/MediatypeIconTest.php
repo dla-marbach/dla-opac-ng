@@ -3,6 +3,7 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Partials;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Rendert Resources/Private/Partials/Display/Detail/MediatypeIcon.html für die wichtigsten
@@ -10,9 +11,7 @@ use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
  */
 class MediatypeIconTest extends FluidPartialTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersDigitalImageIcon(): void
     {
         $html = $this->renderPartial('Display/Detail/MediatypeIcon', [
@@ -24,9 +23,7 @@ class MediatypeIconTest extends FluidPartialTestCase
         self::assertStringContainsString('bel-pcbild', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersNonDigitalManuscriptIcon(): void
     {
         $html = $this->renderPartial('Display/Detail/MediatypeIcon', [
@@ -38,9 +35,7 @@ class MediatypeIconTest extends FluidPartialTestCase
         self::assertStringContainsString('Manuscripts', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersMultipartMarkerForPrintedMaterial(): void
     {
         $html = $this->renderPartial('Display/Detail/MediatypeIcon', [

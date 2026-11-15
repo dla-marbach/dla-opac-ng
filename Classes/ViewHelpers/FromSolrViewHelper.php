@@ -41,7 +41,7 @@ class FromSolrViewHelper extends AbstractViewHelper {
      */
     protected $solr;
 
-    public function initialize() {
+    public function initialize(): void {
         $this->solr = GeneralUtility::makeInstance(SolrConnection::class)->getClient();
     }
 
@@ -49,9 +49,9 @@ class FromSolrViewHelper extends AbstractViewHelper {
      * Register arguments.
      * @return void
      */
-    public function initializeArguments() {
+    public function initializeArguments(): void {
         parent::initializeArguments();
-        $this->registerArgument('query', 'string|array', 'Solr querystring or array of query fields and their query values.', TRUE);
+        $this->registerArgument('query', 'mixed', 'Solr querystring or array of query fields and their query values.', TRUE);
         $this->registerArgument('operator', 'string', 'Solr query operator.', FALSE, 'AND');
         $this->registerArgument('sortField', 'string', 'Sort field.', FALSE);
         $this->registerArgument('sortOrder', 'string', 'Sort order ("asc" or "desc").', FALSE, 'asc');

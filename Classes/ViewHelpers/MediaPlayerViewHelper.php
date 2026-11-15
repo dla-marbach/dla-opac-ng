@@ -45,16 +45,16 @@ class MediaPlayerViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('urls', 'mixed', 'urls', true, []);
+        $this->registerArgument('urls', 'mixed', 'urls', false, []);
         $this->registerArgument('ext', 'mixed', 'ext', false, []);
-        $this->registerArgument('access', 'mixed', 'access', true, []);
+        $this->registerArgument('access', 'mixed', 'access', false, []);
         $this->registerArgument('display', 'mixed', 'display labels', false, []);
         $this->registerArgument('chapters', 'mixed', 'WebVTT-Kapitelmarken-URLs je Objekt', false, []);
         $this->registerArgument('thumbnails', 'mixed', 'Vorschaubild-URLs je Objekt (für Bilder in der Slideshow)', false, []);
-        $this->registerArgument('as', 'string', 'name of the label result variable', true, 'string');
+        $this->registerArgument('as', 'string', 'name of the label result variable', true);
     }
 
     /**

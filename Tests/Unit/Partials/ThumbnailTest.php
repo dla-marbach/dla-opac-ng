@@ -3,6 +3,7 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Partials;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Rendert Resources/Private/Partials/MediaAccess/Thumbnail.html, das auf Detailseiten
@@ -99,9 +100,7 @@ class ThumbnailTest extends FluidPartialTestCase
         ] + $additionalArguments);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function showsGreenboxForForbiddenCampusAccessEvenWithoutThumbnailField(): void
     {
         $html = $this->renderThumbnail(
@@ -114,9 +113,7 @@ class ThumbnailTest extends FluidPartialTestCase
         self::assertStringNotContainsString('<img', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function showsGreenboxForForbiddenSandboxAccessEvenWithoutThumbnailField(): void
     {
         $html = $this->renderThumbnail(
@@ -129,9 +126,7 @@ class ThumbnailTest extends FluidPartialTestCase
         self::assertStringNotContainsString('<img', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function showsGreenboxForForbiddenAccessInsteadOfThumbnailWhenThumbnailFieldIsSet(): void
     {
         $html = $this->renderThumbnail(
@@ -144,9 +139,7 @@ class ThumbnailTest extends FluidPartialTestCase
         self::assertStringNotContainsString('src="https://example.org/media/document_thumb.jpg"', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function showsThumbnailImageForPublicAccessWhenThumbnailFieldIsSet(): void
     {
         $html = $this->renderThumbnail(
@@ -161,9 +154,7 @@ class ThumbnailTest extends FluidPartialTestCase
         self::assertStringContainsString('href="#digitales-objekt"', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function viewerDigitisationWithThumbnailJumpsToDigitalObjectSection(): void
     {
         // z.B. Handschriften: Link in den Viewer ohne Dateiendung
@@ -178,9 +169,7 @@ class ThumbnailTest extends FluidPartialTestCase
         self::assertStringContainsString('bel-papiere', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersNothingForPublicAccessWithoutThumbnailField(): void
     {
         $html = $this->renderThumbnail(
@@ -193,9 +182,7 @@ class ThumbnailTest extends FluidPartialTestCase
         self::assertStringNotContainsString('<img', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function showsFirstAccessibleThumbnailWhenFirstObjectIsForbidden(): void
     {
         $html = $this->renderThumbnail(
@@ -210,9 +197,7 @@ class ThumbnailTest extends FluidPartialTestCase
         self::assertStringContainsString('src="https://example.org/media/back_thumb.jpg"', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function thumbnailJumpsToDigitalObjectSectionWhenMediaFileIsPresent(): void
     {
         $html = $this->renderThumbnail(
@@ -228,9 +213,7 @@ class ThumbnailTest extends FluidPartialTestCase
         self::assertStringNotContainsString('target="_blank"', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function resultListShowsFirstAccessibleThumbnailWhenFirstObjectIsForbidden(): void
     {
         $html = $this->renderPartial('MediaAccess/ThumbnailResult', [
@@ -248,9 +231,7 @@ class ThumbnailTest extends FluidPartialTestCase
         self::assertStringContainsString('src="https://example.org/media/b_thumb.png"', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function resultListShowsNoThumbnailWithoutAccessibleObject(): void
     {
         $html = $this->renderPartial('MediaAccess/ThumbnailResult', [
@@ -268,9 +249,7 @@ class ThumbnailTest extends FluidPartialTestCase
         self::assertStringNotContainsString('ctg-ri-image', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function resultListShowsLaterThumbnailWhenFirstThumbnailIsPlaceholder(): void
     {
         $html = $this->renderPartial('MediaAccess/ThumbnailResult', [
@@ -288,9 +267,7 @@ class ThumbnailTest extends FluidPartialTestCase
         self::assertStringContainsString('src="https://example.org/media/b_thumb.jpg"', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function thumbnailOpensFileWhenCallerHasNoDigitalObjectSection(): void
     {
         // z.B. Display/Detail/Normdata/Werk.html

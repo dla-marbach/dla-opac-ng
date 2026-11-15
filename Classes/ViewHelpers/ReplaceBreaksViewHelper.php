@@ -12,11 +12,11 @@ class ReplaceBreaksViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('text', 'string', 'Text', true, '');
-        $this->registerArgument('as', 'string', 'name of the label result variable', true, 'string');
+        $this->registerArgument('text', 'mixed', 'Text', false, '');
+        $this->registerArgument('as', 'string', 'name of the label result variable', true);
     }
 
     /**

@@ -12,7 +12,7 @@ class IsNullViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('variable', 'mixed', 'Text', false, null);

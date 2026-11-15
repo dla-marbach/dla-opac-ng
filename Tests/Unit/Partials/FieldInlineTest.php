@@ -4,6 +4,7 @@ namespace Dla\DlaOpacNg\Tests\Unit\Partials;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
 use Dla\DlaOpacNg\Tests\Support\SolrFixture;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Rendert Resources/Private/Partials/Display/Field/Inline.html (und darüber transitiv
@@ -12,9 +13,7 @@ use Dla\DlaOpacNg\Tests\Support\SolrFixture;
  */
 class FieldInlineTest extends FluidPartialTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersSingleValuedFieldWithoutLink(): void
     {
         $document = SolrFixture::document('PE00000863');
@@ -35,9 +34,7 @@ class FieldInlineTest extends FluidPartialTestCase
         self::assertStringContainsString('field-display', $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersMultiValuedFieldAsGroupedSpans(): void
     {
         $document = SolrFixture::document('PE00000863');

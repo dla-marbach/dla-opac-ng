@@ -12,12 +12,12 @@ class SolveQueryViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('array', 'array', 'Array', true, null);
         $this->registerArgument('settings', 'array', 'Array', true, null);
-        $this->registerArgument('as', 'string', 'name of the label result variable', true, 'string');
+        $this->registerArgument('as', 'string', 'name of the label result variable', true);
     }
 
     /**

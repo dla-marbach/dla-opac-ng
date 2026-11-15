@@ -29,6 +29,7 @@ namespace Dla\Find\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+use Dla\DlaOpacNg\Utility\PageRecordUtility;
 use Psr\Http\Message\ResponseInterface;
 use Dla\Find\Service\ServiceProviderInterface;
 use Dla\Find\Utility\ArrayUtility;
@@ -175,7 +176,7 @@ class SearchController extends ActionController
     /**
      * Initialisation and setup.
      */
-    protected function initializeAction()
+    protected function initializeAction(): void
     {
         // Nicht unterstützte Ausgabeformate abweisen, bevor Argumente ausgewertet oder Solr angefragt wird.
         $this->rejectUnsupportedFormat();
@@ -325,10 +326,10 @@ class SearchController extends ActionController
         $this->searchProvider->setConfigurationValue('extendedSearch', $this->searchProvider->isExtendedSearch());
         $this->searchProvider->setConfigurationValue(
             'uid',
-            $this->configurationManager->getContentObject()->data['uid']
+            $this->request->getAttribute('currentContentObject')->data['uid']
         );
         $this->searchProvider->setConfigurationValue('prefixID', 'tx_find_find');
-        $this->searchProvider->setConfigurationValue('pageTitle', $GLOBALS['TSFE']->page['title']);
+        $this->searchProvider->setConfigurationValue('pageTitle', PageRecordUtility::fromRequest($this->request)['title'] ?? '');
     }
 
     /**

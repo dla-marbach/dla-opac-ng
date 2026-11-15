@@ -3,6 +3,7 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Partials\Detail;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Display/Detail/Normdata/Corporation und KSRightColumn: ein Datensatz mit vielen Treffern (Cotta)
@@ -13,9 +14,7 @@ class NormdataCorporationTest extends FluidPartialTestCase
     private const COTTA = 'KS00011400';
     private const KUNSTHALLE = 'KS00113059';
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersMasterDataAndCountsForCorporationWithManyHits(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Normdata/Corporation', self::COTTA));
@@ -31,9 +30,7 @@ class NormdataCorporationTest extends FluidPartialTestCase
         self::assertStringContainsString('Everything about this corporation (85857)', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersZeroCountsForCorporationWithoutHits(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Normdata/Corporation', self::KUNSTHALLE));
@@ -43,9 +40,7 @@ class NormdataCorporationTest extends FluidPartialTestCase
         self::assertStringContainsString('Everything about this corporation (0)', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rightColumnOmitsWorkLinkWithoutWorksAndLinksGnd(): void
     {
         $html = $this->renderDetailPartial('Display/Detail/Normdata/KSRightColumn', self::COTTA);

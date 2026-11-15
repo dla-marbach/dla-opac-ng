@@ -12,12 +12,12 @@ class ReplaceNullValueViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('text', 'string', 'Text', false, null);
+        $this->registerArgument('text', 'mixed', 'Text', false, null);
         $this->registerArgument('array', 'array', 'Array', false, null);
-        $this->registerArgument('as', 'string', 'name of the label result variable', true, 'string');
+        $this->registerArgument('as', 'string', 'name of the label result variable', true);
     }
 
     /**

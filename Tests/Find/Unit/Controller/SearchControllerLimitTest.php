@@ -3,6 +3,8 @@
 namespace Dla\Find\Tests\Unit\Controller;
 
 use Dla\Find\Controller\SearchController;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
 use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Core\Log\LogManagerInterface;
@@ -104,18 +106,14 @@ class SearchControllerLimitTest extends UnitTestCase
         self::fail('Expected the request to be rejected.');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function requestExactlyAtLimitIsPassedToSolr(): void
     {
         $this->initialize($this->createController(['q' => ['default' => 'goethe'], 'page' => '400'], 'index', 'html', true));
         $this->initialize($this->createController(['page' => '40'], 'index', 'html', true));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function requestJustAboveLimitIsRejectedWithoutSolrConnection(): void
     {
         $response = $this->initializeExpectingRejection(
@@ -131,9 +129,7 @@ class SearchControllerLimitTest extends UnitTestCase
         self::assertStringNotContainsString('<a ', $body);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function emptySearchCrawlerRequestIsRejected(): void
     {
         $response = $this->initializeExpectingRejection(
@@ -147,10 +143,9 @@ class SearchControllerLimitTest extends UnitTestCase
     /**
      * Das frühere »format=data« der Trefferliste und der Detailseite (Templates Index.data/Detail.data)
      * existiert nicht mehr und wird ohne Solr-Anfrage mit 404 beantwortet.
-     *
-     * @test
-     * @dataProvider unsupportedFormatProvider
      */
+    #[Test]
+    #[DataProvider('unsupportedFormatProvider')]
     public function unsupportedFormatIsRejectedWithoutSolr(string $action, string $format): void
     {
         $arguments = 'detail' === $action ? ['id' => 'HS00001'] : ['q' => ['default' => 'goethe']];
@@ -176,17 +171,14 @@ class SearchControllerLimitTest extends UnitTestCase
 
     /**
      * Die Autocomplete-Aktion nutzt weiterhin »format=data« (Template Suggest.data).
-     *
-     * @test
      */
+    #[Test]
     public function suggestWithDataFormatIsPassedToSolr(): void
     {
         $this->initialize($this->createController(['q' => 'goe'], 'suggest', 'data', true));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function tooManyActiveFiltersAreRejected(): void
     {
         $facets = [];
@@ -202,9 +194,7 @@ class SearchControllerLimitTest extends UnitTestCase
         self::assertStringContainsString('searchLimit.activeFilters:10', (string)$response->getBody());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function detailPageDropsUnderlyingQueryBeyondLimitInsteadOfFailing(): void
     {
         $controller = $this->createController(
@@ -219,9 +209,7 @@ class SearchControllerLimitTest extends UnitTestCase
         self::assertArrayNotHasKey('underlyingQuery', $this->getProperty($controller, 'searchProvider')->requestArguments);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function detailPageKeepsUnderlyingQueryWithinLimit(): void
     {
         $controller = $this->createController(

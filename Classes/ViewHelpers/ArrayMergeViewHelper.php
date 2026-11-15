@@ -12,13 +12,13 @@ class ArrayMergeViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('array1', 'array', 'List of fields', true, array());
-        $this->registerArgument('array2', 'array', 'List of fields', true, array());
+        $this->registerArgument('array1', 'array', 'List of fields', false, array());
+        $this->registerArgument('array2', 'array', 'List of fields', false, array());
         $this->registerArgument('array3', 'array', 'List of fields', false, array());
-        $this->registerArgument('as', 'string', 'name of the label result variable', true, array());
+        $this->registerArgument('as', 'string', 'name of the label result variable', true);
     }
 
     /**

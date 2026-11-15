@@ -4,6 +4,7 @@ namespace Dla\DlaOpacNg\Tests\Unit\Service;
 
 use Dla\DlaOpacNg\Service\SolrConnection;
 use Dla\DlaOpacNg\Tests\Support\MockSolrServerProcess;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -12,9 +13,7 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  */
 class SolrConnectionTest extends UnitTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function getCoreUrlCombinesHostAndCore(): void
     {
         putenv('SOLR_HOST=http://solr.example.org:8983/solr');
@@ -23,9 +22,7 @@ class SolrConnectionTest extends UnitTestCase
         self::assertSame('http://solr.example.org:8983/solr/internformat/', (new SolrConnection())->getCoreUrl());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getCoreUrlThrowsWithoutConfiguration(): void
     {
         putenv('SOLR_HOST');
@@ -35,9 +32,7 @@ class SolrConnectionTest extends UnitTestCase
         (new SolrConnection())->getCoreUrl();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function requestReturnsNullWithoutConfiguration(): void
     {
         putenv('SOLR_HOST');
@@ -46,9 +41,7 @@ class SolrConnectionTest extends UnitTestCase
         self::assertNull((new SolrConnection())->request('select', ['q' => '*:*']));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function clientUsesSameCoreUrlAsRawRequests(): void
     {
         putenv('SOLR_HOST=https://solr.example.org/sub/path/solr/');
@@ -59,9 +52,7 @@ class SolrConnectionTest extends UnitTestCase
         self::assertSame('https://solr.example.org:443/sub/path/solr/internformat/', $endpoint->getCoreBaseUri());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function clientAndRawRequestReachMockSolr(): void
     {
         putenv('SOLR_HOST=' . MockSolrServerProcess::start()->getBaseUrl());

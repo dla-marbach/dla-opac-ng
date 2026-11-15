@@ -4,6 +4,7 @@ namespace Dla\DlaOpacNg\Tests\Unit\Ajax;
 
 use Dla\DlaOpacNg\Ajax\Decisiontree;
 use Dla\DlaOpacNg\Tests\Support\MockSolrServerProcess;
+use PHPUnit\Framework\Attributes\Test;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
@@ -41,9 +42,7 @@ class DecisiontreeTest extends UnitTestCase
         return json_decode((string)$response->getBody(), true);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function singleRelationFieldReturnsItsFacetCounts(): void
     {
         $output = $this->processRequest([
@@ -57,9 +56,7 @@ class DecisiontreeTest extends UnitTestCase
         self::assertContains('Goethe, Johann Wolfgang von (1749-1832)␝Über', $output[0]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function twoRelationFieldsReturnBothFacetCounts(): void
     {
         $output = $this->processRequest([

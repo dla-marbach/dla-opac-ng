@@ -3,23 +3,26 @@
 namespace Dla\DlaOpacNg\Tests\Support;
 
 use Dla\DlaOpacNg\ViewHelpers\CollectionViewHelper;
+use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 use TYPO3\CMS\Core\Cache\Backend\NullBackend;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\DependencyInjection\FailsafeContainer;
 use TYPO3\CMS\Core\Http\ServerRequest;
-use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
-use TYPO3\CMS\Core\Localization\LanguageStore;
-use TYPO3\CMS\Core\Localization\Locales;
-use TYPO3\CMS\Core\Localization\LocalizationFactory;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\ExtbaseRequestParameters;
 use TYPO3\CMS\Extbase\Mvc\Request as ExtbaseRequest;
 use TYPO3\CMS\Fluid\Core\Cache\FluidTemplateCache;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContextFactory;
-use TYPO3\CMS\Fluid\Core\ViewHelper\ViewHelperResolverFactory;
-use TYPO3\CMS\Fluid\View\StandaloneView;
+use TYPO3\CMS\Fluid\Core\ViewHelper\ViewHelperResolver;
+use TYPO3\CMS\Fluid\Core\ViewHelper\ViewHelperResolverFactoryInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperInterface;
+use TYPO3Fluid\Fluid\View\TemplateView;
 
 /**
  * Basisklasse für Rendering-Tests einzelner Fluid-Partials dieser Extension,
@@ -33,7 +36,7 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  */
 abstract class FluidPartialTestCase extends UnitTestCase
 {
-    // LocalizationUtility::translate() registriert intern u.a. einen LogManager als Singleton.
+    // CacheManager und PackageManager werden als Singleton hinterlegt (siehe getRenderingContextFactory()).
     protected bool $resetSingletonInstances = true;
 
     private static ?RenderingContextFactory $renderingContextFactory = null;
@@ -57,22 +60,24 @@ abstract class FluidPartialTestCase extends UnitTestCase
             // in umgekehrter Reihenfolge (array_pop), unser TranslateViewHelper hat also Vorrang
             // vor TYPO3\CMS\Fluid\ViewHelpers\TranslateViewHelper, alle anderen f:*-ViewHelper
             // bleiben unverändert (Klasse existiert dort nicht, resolver fällt zurück).
-            $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['f'][] = 'Dla\\DlaOpacNg\\Tests\\Support\\FluidViewHelperOverrides';
+            // Der Namespace "f" wird vollständig angegeben, weil er ab TYPO3 v14 nicht mehr in
+            // $GLOBALS['TYPO3_CONF_VARS'] steht, sondern über den DI-Container registriert wird.
+            $namespaces = $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces'] ?? [];
+            $namespaces['f'] = [
+                'TYPO3Fluid\\Fluid\\ViewHelpers',
+                'TYPO3\\CMS\\Fluid\\ViewHelpers',
+                'Dla\\DlaOpacNg\\Tests\\Support\\FluidViewHelperOverrides',
+            ];
+            // EXT:vhs registriert seinen Namespace global (ext_localconf.php), viele Partials verlassen sich darauf.
+            $namespaces['v'] = ['FluidTYPO3\\Vhs\\ViewHelpers'];
 
             // Über die globale CacheManager-Singleton-Instanz laufen (statt "new CacheManager()"),
             // damit auch Core-Code, der später GeneralUtility::makeInstance(CacheManager::class)
-            // aufruft (z.B. LocalizationUtility::translate() fürs "runtime"-Cache), dieselbe,
-            // hier konfigurierte Instanz erhält.
+            // aufruft, dieselbe, hier konfigurierte Instanz erhält.
             $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
             $cacheManager->setCacheConfigurations([
                 'fluid_template' => [
                     'frontend' => FluidTemplateCache::class,
-                    'backend' => NullBackend::class,
-                    'options' => [],
-                    'groups' => ['all'],
-                ],
-                'l10n' => [
-                    'frontend' => \TYPO3\CMS\Core\Cache\Frontend\VariableFrontend::class,
                     'backend' => NullBackend::class,
                     'options' => [],
                     'groups' => ['all'],
@@ -85,11 +90,6 @@ abstract class FluidPartialTestCase extends UnitTestCase
                 ],
             ]);
 
-            // LocalizationUtility::translate() baut sich über GeneralUtility::makeInstance()
-            // eine LanguageServiceFactory, deren Konstruktor volle DI-Injektion erwartet
-            // (nicht per Reflection auflösbar im Unit-Test-Bootstrap). Deshalb hier manuell
-            // bauen und als Singleton hinterlegen, damit der Core diese Instanz wiederverwendet.
-            //
             // Der Unit-Test-Bootstrap (UnitTestsBootstrap.php) registriert am Ende
             // GeneralUtility::purgeInstances(), was auch die dort gesetzte PackageManager-Singleton
             // wieder entfernt - deshalb hier erneut aufbauen. Wichtig: die reguläre PackageManager-Klasse
@@ -104,29 +104,60 @@ abstract class FluidPartialTestCase extends UnitTestCase
             GeneralUtility::setSingletonInstance(PackageManager::class, $packageManager);
             \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::setPackageManager($packageManager);
 
-            $languageStore = new LanguageStore($packageManager);
-            $languageServiceFactory = new LanguageServiceFactory(
-                GeneralUtility::makeInstance(Locales::class),
-                new LocalizationFactory($languageStore, $cacheManager),
-                $cacheManager->getCache('runtime')
-            );
-            // LanguageServiceFactory implementiert kein SingletonInterface, daher funktioniert
-            // GeneralUtility::setSingletonInstance() hier nicht (strikte Typprüfung) - per Reflection
-            // direkt in die interne Singleton-Registry eintragen.
-            $singletonInstancesProperty = new \ReflectionProperty(GeneralUtility::class, 'singletonInstances');
-            $singletonInstances = $singletonInstancesProperty->getValue();
-            $singletonInstances[LanguageServiceFactory::class] = $languageServiceFactory;
-            $singletonInstancesProperty->setValue(null, $singletonInstances);
-
+            // Eigene Factory statt TYPO3\CMS\Fluid\Core\ViewHelper\ViewHelperResolverFactory, deren
+            // Konstruktor sich zwischen den TYPO3-Versionen unterscheidet. Der Resolver erzeugt die
+            // ViewHelper über createInstance() statt über den (hier leeren) DI-Container.
             $container = new FailsafeContainer();
-            self::$renderingContextFactory = new RenderingContextFactory(
-                $container,
-                $cacheManager,
-                new ViewHelperResolverFactory($container)
-            );
+            $viewHelperResolverFactory = new class ($container, $namespaces) implements ViewHelperResolverFactoryInterface {
+                public function __construct(
+                    private readonly ContainerInterface $container,
+                    private readonly array $namespaces
+                ) {
+                }
+
+                public function create(): ViewHelperResolver
+                {
+                    return new class ($this->container, $this->namespaces) extends ViewHelperResolver {
+                        public function createViewHelperInstanceFromClassName($viewHelperClassName): ViewHelperInterface
+                        {
+                            return FluidPartialTestCase::createInstance($viewHelperClassName);
+                        }
+                    };
+                }
+            };
+
+            $arguments = [$container, $cacheManager, $viewHelperResolverFactory];
+            if ((new \ReflectionMethod(RenderingContextFactory::class, '__construct'))->getNumberOfParameters() > 3) {
+                // Ab TYPO3 v14 (Fluid 5) prüft Fluid die Typen der ViewHelper-Argumente strikt.
+                $arguments[] = new \TYPO3Fluid\Fluid\Core\ViewHelper\StrictArgumentProcessor();
+            }
+            self::$renderingContextFactory = new RenderingContextFactory(...$arguments);
         }
 
         return self::$renderingContextFactory;
+    }
+
+    /**
+     * Ersatz für den DI-Container: berücksichtigt XCLASS-Einträge (siehe renderPartial()) und löst
+     * Konstruktor-Abhängigkeiten rekursiv auf (ab TYPO3 v14 haben einige ViewHelper des Core welche,
+     * z.B. f:format.crop).
+     *
+     * @internal nur für den ViewHelperResolver in getRenderingContextFactory()
+     */
+    public static function createInstance(string $className): object
+    {
+        $className = $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][$className]['className'] ?? $className;
+        $arguments = [];
+        foreach ((new \ReflectionClass($className))->getConstructor()?->getParameters() ?? [] as $parameter) {
+            if ($parameter->isOptional()) {
+                break;
+            }
+            $type = $parameter->getType();
+            $typeName = $type instanceof \ReflectionNamedType ? $type->getName() : '';
+            $arguments[] = $typeName === LoggerInterface::class ? new NullLogger() : self::createInstance($typeName);
+        }
+
+        return new $className(...$arguments);
     }
 
     protected function renderPartial(string $partial, array $variables): string
@@ -141,20 +172,24 @@ abstract class FluidPartialTestCase extends UnitTestCase
             'layoutRootPaths' => [$extensionPath . 'Layouts/'],
         ]);
 
-        // f:translate löst kurze Keys (ohne "LLL:EXT:...") nur über einen Extbase-Request auf,
-        // der die zu verwendende Extension kennt (siehe TranslateViewHelper::renderStatic()).
+        // Extbase-Request für ViewHelper des Core, die den Request aus dem RenderingContext lesen.
         $extbaseParameters = new ExtbaseRequestParameters();
         $extbaseParameters->setControllerExtensionName('DlaOpacNg');
         $request = (new ServerRequest())->withAttribute('extbase', $extbaseParameters);
-        $renderingContext->setRequest(new ExtbaseRequest($request));
+        if ((new Typo3Version())->getMajorVersion() < 13) {
+            $renderingContext->setRequest(new ExtbaseRequest($request));
+        } else {
+            $renderingContext->setAttribute(ServerRequestInterface::class, new ExtbaseRequest($request));
+        }
 
-        $view = new StandaloneView($renderingContext);
+        // TemplateView von Fluid statt StandaloneView (in TYPO3 v14 entfernt).
+        $view = new TemplateView($renderingContext);
         // Alle Partials werden in Produktion innerhalb eines Top-Level-Templates gerendert, das diese
         // Namespaces einmal deklariert (siehe z.B. Resources/Private/Templates/Search/Index.html) -
         // Fluid merkt sich deklarierte Namespaces für die gesamte Rendering-Context-Lebensdauer, auch
         // über f:render-Partial-Grenzen hinweg. Einzelne Partials deklarieren "dla"/"v" daher oft
         // nicht erneut selbst und würden hier isoliert sonst mit "Unknown Namespace" scheitern.
-        $view->setTemplateSource(
+        $renderingContext->getTemplatePaths()->setTemplateSource(
             '{namespace s=Dla\Find\ViewHelpers}'
             . '{namespace dla=Dla\DlaOpacNg\ViewHelpers}'
             . '{namespace v=FluidTYPO3\Vhs\ViewHelpers}'

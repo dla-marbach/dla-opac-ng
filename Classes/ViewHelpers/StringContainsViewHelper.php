@@ -15,10 +15,10 @@ class StringContainsViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('input', 'string || array', 'string or array with texts', true);
+        $this->registerArgument('input', 'mixed', 'string or array with texts', true);
 
         $this->registerArgument('search', 'string', 'search', true);
         $this->registerArgument('as', 'string', 'name of the label result variable', false, null);

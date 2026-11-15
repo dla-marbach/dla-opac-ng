@@ -3,7 +3,6 @@
 namespace Dla\DlaOpacNg\ViewHelpers;
 
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
 class HistogramValueViewHelper extends AbstractViewHelper
 {
@@ -12,10 +11,10 @@ class HistogramValueViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('array', 'array', 'List of fields', true, array());
+        $this->registerArgument('array', 'array', 'List of fields', false, array());
         $this->registerArgument('firstValueAs', 'string', 'name of the value result variable', false, "firstValue");
         $this->registerArgument('lastValueAs', 'string', 'name of the value result variable', false, "lastValue");
         $this->registerArgument('dateFormat', 'string', 'returns date in the given format default is Y', false, "Y");
@@ -24,19 +23,16 @@ class HistogramValueViewHelper extends AbstractViewHelper
     /**
      * @return array
      */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext
-    ) {
+    public function render()
+    {
 
-        $array = $arguments['array'];
-        $minTimeValue = date($arguments['dateFormat'], strtotime(min(array_keys($array))));
+        $array = $this->arguments['array'];
+        $minTimeValue = date($this->arguments['dateFormat'], strtotime(min(array_keys($array))));
 
         foreach ($array as $key => $value) {
             $timeArray[] = $key;
         }
-        $maxTimeValue = date($arguments['dateFormat'], strtotime(max($timeArray)));
+        $maxTimeValue = date($this->arguments['dateFormat'], strtotime(max($timeArray)));
 
         return [
             'lastDate' => $maxTimeValue,

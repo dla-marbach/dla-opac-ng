@@ -3,6 +3,10 @@
 version: '3'
 
 vars:
+  # TYPO3-Hauptversion der Instanz (12, 13 oder 14), Standard wie im Produktivsystem: task install TYPO3_VERSION=14
+  TYPO3_VERSION: '{{.TYPO3_VERSION | default "12"}}'
+  # Composer-Constraint für typo3/cms-core passend zu TYPO3_VERSION (Teilmenge von composer.json, wie in der CI)
+  TYPO3_CONSTRAINT: '{{if eq .TYPO3_VERSION "14"}}^14.3{{else if eq .TYPO3_VERSION "13"}}^13.4{{else}}^12.4{{end}}'
   PHP_VERSION: '8.3'
   MARIADB_VERSION: '11.8'
   # PHP in der Version des Produktivsystems, auch wenn eine andere Version zuerst im PATH liegt (z.B. im Codespace)
@@ -25,7 +29,7 @@ tasks:
     cmds:
       - task: install_packages
       # neuer Task-Prozess, damit das eben installierte PHP {{.PHP_VERSION}} verwendet wird
-      - '{{.TASK_EXE}} install_typo3'
+      - '{{.TASK_EXE}} install_typo3 TYPO3_VERSION={{.TYPO3_VERSION}}'
 
   install_packages:
     desc: installiere PHP, Composer, Apache und MariaDB per apt, falls noch nicht vorhanden
@@ -59,7 +63,9 @@ tasks:
   install_typo3:
     cmds:
       - task: db:start
-      - '{{.COMPOSER}} create-project "typo3/cms-base-distribution:^12" t3example --no-interaction --no-progress'
+      # Nicht im Repository-Verzeichnis ausführen: Composer würde sonst dessen Plugins laden (vendor/ der PHPUnit-Tests,
+      # ggf. für eine andere TYPO3-Version) und damit die neue Instanz einrichten
+      - 'cd .devfiles && {{.COMPOSER}} create-project "typo3/cms-base-distribution:^{{.TYPO3_VERSION}}" ../t3example --no-interaction --no-progress'
       - task: install_typo3_config
       - task: install_ext
       - task: start
@@ -85,6 +91,9 @@ tasks:
         --admin-email="info@example.com" \
         --project-name="DLA OPAC" \
         --force
+      # Die Base-Distribution legt als Composer-Plattform die PHP-Mindestversion von TYPO3 fest (v14: PHP 8.2),
+      # vhs und flux setzen für TYPO3 v14 aber PHP 8.3 voraus
+      - '[ "{{.TYPO3_VERSION}}" -lt 14 ] || {{.COMPOSER}} config platform.php {{.PHP_VERSION}}.0'
       - '{{.COMPOSER}} require fluidtypo3/flux --no-interaction --no-progress'
       - $(command -v mariadb || command -v mysql) -h127.0.0.1 -udb -pdb db < ../.devfiles/init.sql
       - cp ../.devfiles/additional.php config/system/additional.php
@@ -97,6 +106,10 @@ tasks:
     cmds:
       - task: link_ext
       - '{{.COMPOSER}} require "dla/dla_opac_ng:@dev" --no-interaction --no-progress'
+      # Der Datenbank-Dump stammt aus TYPO3 v12: Tabellen an die installierte TYPO3-Version anpassen und
+      # Upgrade-Wizards ausführen (u.a. Plugins von list_type auf CType umstellen)
+      - '{{.PHP}} ../.devfiles/update-schema.php'
+      - '{{.PHP}} vendor/bin/typo3 upgrade:run --no-interaction'
       - cp -f ../.devfiles/systematik.tsv systematik.tsv
       - cp -f ../.devfiles/tektonik.tsv tektonik.tsv
       - '{{.PHP}} vendor/bin/typo3 dla_opac_ng:import -t classification -f systematik.tsv -p 6'
@@ -259,12 +272,19 @@ tasks:
       - rm -rf t3example
 
   test:php:install:
-    desc: Composer-Abhängigkeiten für die PHPUnit-Tests im Repository installieren
+    desc: Composer-Abhängigkeiten für die PHPUnit-Tests im Repository installieren (TYPO3 in der Version TYPO3_VERSION)
     cmds:
-      - '{{.COMPOSER}} install --no-interaction --no-progress'
+      - |
+        # composer.lock ist nicht versioniert: beim ersten Aufruf und nach einem Wechsel von TYPO3_VERSION neu
+        # auflösen, sonst (auch ohne Netzwerkzugriff) den vorhandenen Stand installieren
+        if grep -A1 '"name": "typo3/cms-core"' composer.lock 2>/dev/null | grep -q '"version": "v{{.TYPO3_VERSION}}\.'; then
+          {{.COMPOSER}} install --no-interaction --no-progress
+        else
+          {{.COMPOSER}} update --with "typo3/cms-core:{{.TYPO3_CONSTRAINT}}" --no-interaction --no-progress
+        fi
 
   test:php:
-    desc: PHPUnit-Tests mit Solr-Mockdaten ausführen (ohne TYPO3-Instanz, wie in der CI), kein Solr-Tunnel nötig
+    desc: PHPUnit-Tests mit Solr-Mockdaten ausführen (ohne TYPO3-Instanz, wie in der CI), kein Solr-Tunnel nötig; andere TYPO3-Version mit TYPO3_VERSION=13
     cmds:
       - task: test:php:install
       - '{{.PHP}} vendor/bin/phpunit -c Tests/phpunit.xml {{.CLI_ARGS}}'

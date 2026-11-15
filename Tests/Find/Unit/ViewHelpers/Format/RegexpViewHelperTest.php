@@ -27,6 +27,8 @@ namespace Dla\Find\Tests\Unit\ViewHelpers\Format;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use Dla\Find\Tests\Unit\ViewHelpers\ViewHelperTestTrait;
 use Dla\Find\ViewHelpers\Format\RegexpViewHelper;
@@ -76,10 +78,8 @@ class RegexpViewHelperTest extends UnitTestCase
         $this->injectDependenciesIntoViewHelper($this->fixture);
     }
 
-    /**
-     * @test
-     * @dataProvider regexProvider
-     */
+    #[Test]
+    #[DataProvider('regexProvider')]
     public function stringIsReplaced($string, $match, $replace, $useMBEreg, $expected): void
     {
         $this->fixture->setArguments([

@@ -20,15 +20,37 @@ mod.web_layout.BackendLayouts {
     }
 }
 
+# Ab TYPO3 v13 entstehen die Einträge automatisch aus den Inhaltstypen (Configuration/TCA/Overrides/tt_content.php),
+# TYPO3 v12 braucht sie hier. Die Schlüssel entsprechen den Inhaltstypen, damit nichts doppelt erscheint.
 mod.wizards.newContentElement.wizardItems.plugins {
     elements {
-        find {
+        find_find {
             iconIdentifier = content-plugin
             title = LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_be.xlf:ce.title
             description = LLL:EXT:dla_opac_ng/Resources/Private/Language/locallang_be.xlf:ce.description
             tt_content_defValues {
-                CType = list
-                list_type = find_find
+                CType = find_find
+            }
+        }
+        dlaopacng_dlastart {
+            iconIdentifier = content-plugin
+            title = DlaStart
+            tt_content_defValues {
+                CType = dlaopacng_dlastart
+            }
+        }
+        dlaopacng_dlacollection {
+            iconIdentifier = content-plugin
+            title = DlaCollection
+            tt_content_defValues {
+                CType = dlaopacng_dlacollection
+            }
+        }
+        dlaopacng_dlaclassification {
+            iconIdentifier = content-plugin
+            title = DlaClassification
+            tt_content_defValues {
+                CType = dlaopacng_dlaclassification
             }
         }
     }

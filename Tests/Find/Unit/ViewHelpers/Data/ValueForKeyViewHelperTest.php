@@ -26,6 +26,7 @@ namespace Dla\Find\Tests\Unit\ViewHelpers\Data;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use Dla\Find\Tests\Unit\ViewHelpers\ViewHelperTestTrait;
 use Dla\Find\Tests\Unit\ViewHelpers\MockRenderingContextTrait;
@@ -54,9 +55,7 @@ class ValueForKeyViewHelperTest extends UnitTestCase
         $this->inject($this->fixture, 'renderingContext', $this->renderingContextMock);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function keyPicksTheRightValueFromTheArray()
     {
         $array = [
@@ -73,9 +72,7 @@ class ValueForKeyViewHelperTest extends UnitTestCase
         self::assertSame('b', $this->fixture->initializeArgumentsAndRender());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function resultIsCorrectlyInterpretedAsJsonFromASimpleValue()
     {
         $array = [
@@ -93,9 +90,7 @@ class ValueForKeyViewHelperTest extends UnitTestCase
         self::assertSame('b', $this->fixture->initializeArgumentsAndRender());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function resultIsCorrectlyInterpretedAsTextFromASimpleValue()
     {
         $array = [
@@ -113,9 +108,7 @@ class ValueForKeyViewHelperTest extends UnitTestCase
         self::assertSame('b', $this->fixture->initializeArgumentsAndRender());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function providingANonexistingKeyReturnsNull()
     {
         $array = [

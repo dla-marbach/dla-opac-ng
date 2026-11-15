@@ -10,10 +10,10 @@ class FormatDateViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('date', 'string', 'Datum', true, '');
+        $this->registerArgument('date', 'mixed', 'Datum', false, '');
         $this->registerArgument('format', 'string', 'Output format', false, '');
         $this->registerArgument('as', 'string', 'name of the label result variable', false, null);
     }

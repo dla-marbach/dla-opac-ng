@@ -26,6 +26,7 @@ namespace Dla\Find\Tests\Unit\ViewHelpers\Data;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 use Dla\Find\Tests\Unit\ViewHelpers\ViewHelperTestTrait;
 use Dla\Find\ViewHelpers\Data\NewArrayViewHelper;
@@ -50,9 +51,7 @@ class NewArrayViewHelperTest extends UnitTestCase
         $this->injectDependenciesIntoViewHelper($this->fixture);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function aNewArrayFromArgumentsIsCorrectlyCreated(): void
     {
         $arguments = [
@@ -72,9 +71,7 @@ class NewArrayViewHelperTest extends UnitTestCase
         self::assertSame($expected, $this->fixture->initializeArgumentsAndRender());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function aNewArrayWithoutAnExistingOneIsCreated(): void
     {
         $arguments = [
@@ -92,9 +89,7 @@ class NewArrayViewHelperTest extends UnitTestCase
         self::assertSame($expected, $this->fixture->initializeArgumentsAndRender());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function aNewArrayWithMultipleEntriesIsCreated(): void
     {
         $arguments = [
@@ -113,9 +108,7 @@ class NewArrayViewHelperTest extends UnitTestCase
         self::assertSame($expected, $this->fixture->initializeArgumentsAndRender());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function emptyStringsAsArrayKeysAreConsideredAsKeysAndValues(): void
     {
         $arguments = [

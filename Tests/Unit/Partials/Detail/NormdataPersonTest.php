@@ -3,6 +3,7 @@
 namespace Dla\DlaOpacNg\Tests\Unit\Partials\Detail;
 
 use Dla\DlaOpacNg\Tests\Support\FluidPartialTestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Display/Detail/Normdata/Person und PersonRightColumn mit dem Goethe-Normdatensatz. Die Zähler der
@@ -13,9 +14,7 @@ class NormdataPersonTest extends FluidPartialTestCase
 {
     private const GOETHE = 'PE00000863';
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersHeadAndMasterDataFromDocument(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Normdata/Person', self::GOETHE));
@@ -26,9 +25,7 @@ class NormdataPersonTest extends FluidPartialTestCase
         self::assertStringContainsString('Place of death Weimar', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function showsCountsOfEveryRelationBlock(): void
     {
         $text = self::visibleText($this->renderDetailPartial('Display/Detail/Normdata/Person', self::GOETHE));
@@ -42,9 +39,7 @@ class NormdataPersonTest extends FluidPartialTestCase
         self::assertStringContainsString('Everything about this person (31172)', $text);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rightColumnShowsWorkCountAndExternalLinks(): void
     {
         $html = $this->renderDetailPartial('Display/Detail/Normdata/PersonRightColumn', self::GOETHE);
