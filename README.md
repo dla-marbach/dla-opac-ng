@@ -122,7 +122,7 @@ task test:php -- --filter MediaPlayer   # einzelne Tests
 task test:php TYPO3_VERSION=14          # mit einer anderen TYPO3-Version als 12 (installiert vendor/ neu)
 ```
 
-Die CI führt die Tests mit allen unterstützten TYPO3-Versionen aus.
+Die CI führt die Tests mit allen unterstützten TYPO3-Versionen jeweils unter PHP 8.3 und 8.4 aus.
 
 [Tests/Unit/Partials](Tests/Unit/Partials) rendert einzelne Fluid-Partials aus
 [Resources/Private/Partials](Resources/Private/Partials) und prüft das erzeugte HTML:
@@ -267,10 +267,10 @@ task db:export
 
 ## TYPO3-Versionen
 
-Die Extension läuft mit TYPO3 12.4, 13.4 und 14.3. Entwickelt und getestet wird mit PHP 8.3; TYPO3 14.3 setzt PHP 8.3
-voraus, weil erst `fluidtypo3/vhs` 8 TYPO3 v14 unterstützt. Entwicklungsinstanz und PHPUnit-Tests verwenden ohne weitere
-Angabe TYPO3 12, mit `TYPO3_VERSION=13` bzw. `TYPO3_VERSION=14` eine andere Version (siehe
-[Installation](#installation) und [PHPUnit](#phpunit)).
+Die Extension läuft mit TYPO3 12.4, 13.4 und 14.3. Entwickelt und getestet wird mit PHP 8.3, die CI prüft zusätzlich
+PHP 8.4. TYPO3 14.3 setzt PHP 8.3 voraus, weil erst `fluidtypo3/vhs` 8 TYPO3 v14 unterstützt. Entwicklungsinstanz und
+PHPUnit-Tests verwenden ohne weitere Angabe TYPO3 12, mit `TYPO3_VERSION=13` bzw. `TYPO3_VERSION=14` eine andere
+Version (siehe [Installation](#installation) und [PHPUnit](#phpunit)).
 
 ### Plugins als Inhaltselemente (Upgrade-Wizard)
 
