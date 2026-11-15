@@ -5,6 +5,8 @@ version: '3'
 vars:
   # TYPO3-Hauptversion der Instanz (12, 13 oder 14), Standard wie im Produktivsystem: task install TYPO3_VERSION=14
   TYPO3_VERSION: '{{.TYPO3_VERSION | default "12"}}'
+  # Composer-Constraint für typo3/cms-core passend zu TYPO3_VERSION (Teilmenge von composer.json, wie in der CI)
+  TYPO3_CONSTRAINT: '{{if eq .TYPO3_VERSION "14"}}^14.3{{else if eq .TYPO3_VERSION "13"}}^13.4{{else}}^12.4{{end}}'
   PHP_VERSION: '8.3'
   MARIADB_VERSION: '11.8'
   # PHP in der Version des Produktivsystems, auch wenn eine andere Version zuerst im PATH liegt (z.B. im Codespace)
@@ -278,7 +280,7 @@ tasks:
         if grep -A1 '"name": "typo3/cms-core"' composer.lock 2>/dev/null | grep -q '"version": "v{{.TYPO3_VERSION}}\.'; then
           {{.COMPOSER}} install --no-interaction --no-progress
         else
-          {{.COMPOSER}} update --with "typo3/cms-core:^{{.TYPO3_VERSION}}" --no-interaction --no-progress
+          {{.COMPOSER}} update --with "typo3/cms-core:{{.TYPO3_CONSTRAINT}}" --no-interaction --no-progress
         fi
 
   test:php:
