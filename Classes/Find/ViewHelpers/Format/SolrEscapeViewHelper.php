@@ -26,7 +26,6 @@ namespace Dla\Find\ViewHelpers\Format;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  ******************************************************************************/
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -39,7 +38,7 @@ class SolrEscapeViewHelper extends AbstractViewHelper
     /**
      * Registers own arguments.
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('string', 'string', 'the string to escape for Solr', false, null);
@@ -49,18 +48,15 @@ class SolrEscapeViewHelper extends AbstractViewHelper
     /**
      * @return string
      */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext
-    ) {
-        $string = $arguments['string'];
+    public function render()
+    {
+        $string = $this->arguments['string'];
         if (null === $string) {
-            $string = $renderChildrenClosure();
+            $string = $this->renderChildren();
         }
 
         $solariumHelper = new \Solarium\Core\Query\Helper();
 
-        return $arguments['phrase'] ? $solariumHelper->escapePhrase($string) : $solariumHelper->escapeTerm($string);
+        return $this->arguments['phrase'] ? $solariumHelper->escapePhrase($string) : $solariumHelper->escapeTerm($string);
     }
 }

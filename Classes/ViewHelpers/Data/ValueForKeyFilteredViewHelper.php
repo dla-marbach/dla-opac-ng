@@ -12,16 +12,16 @@ class ValueForKeyFilteredViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('key', 'string', 'field name', true, array());
-        $this->registerArgument('filterKey', 'string', 'name of the corrosponding field which is used for the filtering', true, array());
-        $this->registerArgument('filterValues', 'array', 'values to be filtered', true, array());
+        $this->registerArgument('key', 'string', 'field name', true);
+        $this->registerArgument('filterKey', 'string', 'name of the corrosponding field which is used for the filtering', true);
+        $this->registerArgument('filterValues', 'array', 'values to be filtered', false, array());
         $this->registerArgument('mustMatch', 'boolean', 'Specifies whether the filterValue must match or only needs to be included', false, true);
         $this->registerArgument('negateFilter', 'boolean', 'Specifies whether the values not matching the filterValue are returned', false, false);
-        $this->registerArgument('fields', 'array', 'The field array', true, array());
-        $this->registerArgument('as', 'string', 'name of the result array', true, array());
+        $this->registerArgument('fields', 'array', 'The field array', false, array());
+        $this->registerArgument('as', 'string', 'name of the result array', true);
     }
 
     /**

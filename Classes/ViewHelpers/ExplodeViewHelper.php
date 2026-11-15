@@ -12,11 +12,11 @@ class ExplodeViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('string', 'string', 'List of fields', true, '');
-        $this->registerArgument('delimiter', 'string', 'List of fields', true, '');
+        $this->registerArgument('string', 'mixed', 'List of fields', false, '');
+        $this->registerArgument('delimiter', 'string', 'List of fields', true);
     }
 
     /**

@@ -12,14 +12,14 @@ class RemoveFromArrayViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('array', 'array', 'Array', true, null);
         $this->registerArgument('array2', 'array', 'Array', false, null);
 
-        $this->registerArgument('as', 'string', 'name of the label result variable', true, 'string');
-        $this->registerArgument('as2', 'string', 'name of the label result variable', true, 'string');
+        $this->registerArgument('as', 'string', 'name of the label result variable', true);
+        $this->registerArgument('as2', 'string', 'name of the label result variable', true);
     }
 
     /**

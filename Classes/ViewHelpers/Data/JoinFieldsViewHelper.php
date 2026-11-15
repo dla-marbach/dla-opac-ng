@@ -30,13 +30,13 @@ class JoinFieldsViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('fieldNames', 'array', 'Comma separated field name list', true, array());
-        $this->registerArgument('fieldWraps', 'array', 'Comma separated list of wraps for the fields', true, array());
-        $this->registerArgument('fields', 'array', 'The field array', true, array());
-        $this->registerArgument('as', 'string', 'name of the result array', true, array());
+        $this->registerArgument('fieldNames', 'array', 'Comma separated field name list', false, array());
+        $this->registerArgument('fieldWraps', 'array', 'Comma separated list of wraps for the fields', false, array());
+        $this->registerArgument('fields', 'array', 'The field array', false, array());
+        $this->registerArgument('as', 'string', 'name of the result array', true);
     }
 
     /**

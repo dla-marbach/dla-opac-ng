@@ -28,7 +28,6 @@ namespace Dla\Find\ViewHelpers\Find;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -48,7 +47,7 @@ class FacetLinkArgumentsViewHelper extends AbstractViewHelper
     /**
      * Register arguments.
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('facetID', 'string', 'ID of the facet to determine the selection status of', true);
@@ -68,18 +67,15 @@ class FacetLinkArgumentsViewHelper extends AbstractViewHelper
      *
      * @return array
      */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext
-    ) {
+    public function render()
+    {
         $result = [];
 
-        $facetID = $arguments['facetID'];
-        $facetTerm = $arguments['facetTerm'];
-        $activeFacets = $arguments['activeFacets'];
-        $mode = $arguments['mode'];
-        $modifier = $arguments['modifier'];
+        $facetID = $this->arguments['facetID'];
+        $facetTerm = $this->arguments['facetTerm'];
+        $activeFacets = $this->arguments['activeFacets'];
+        $mode = $this->arguments['mode'];
+        $modifier = $this->arguments['modifier'];
         if ('remove' === $mode && $activeFacets) {
             if (array_key_exists($facetID, $activeFacets)) {
                 $itemToRemove = 'tx_find_find[facet]['.$facetID.']';
@@ -99,7 +95,7 @@ class FacetLinkArgumentsViewHelper extends AbstractViewHelper
                 $facetID => [$facetTerm => 1],
             ];
             if ($modifier) {
-                $result['facet'][$arguments['facetID']][str_replace('&', '%26', $arguments['facetTerm'])] = $arguments['modifier'];
+                $result['facet'][$this->arguments['facetID']][str_replace('&', '%26', $this->arguments['facetTerm'])] = $this->arguments['modifier'];
             }
         }
 

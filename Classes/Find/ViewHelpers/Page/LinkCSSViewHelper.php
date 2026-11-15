@@ -29,8 +29,6 @@ namespace Dla\Find\ViewHelpers\Page;
 
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Utility\VersionNumberUtility;
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -40,34 +38,17 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  */
 class LinkCSSViewHelper extends AbstractViewHelper
 {
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('file', 'string', 'File to add a CSS header for');
     }
 
-    /**
-     * @return string
-     */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext
-    ) {
-        $typo3VersionConstraint = version_compare(VersionNumberUtility::getNumericTypo3Version(), '9.5.0', '<');
-
-        if ($typo3VersionConstraint) {
-            $CSSFileName = $GLOBALS['TSFE']->tmpl->getFileName($arguments['file']);
-        } else {
-            $fileNameFromArguments = $arguments['file'];
-            if ($fileNameFromArguments) {
-                $CSSFileName = GeneralUtility::makeInstance(\TYPO3\CMS\Frontend\Resource\FilePathSanitizer::class)->sanitize($fileNameFromArguments);
-            }
-        }
-
-        if ($CSSFileName) {
-            $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-            $pageRenderer->addCSSFile($CSSFileName);
+    public function render()
+    {
+        // Der PageRenderer löst auch »EXT:«-Pfade auf.
+        if ($this->arguments['file']) {
+            GeneralUtility::makeInstance(PageRenderer::class)->addCssFile($this->arguments['file']);
         }
     }
 }

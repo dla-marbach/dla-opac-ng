@@ -12,7 +12,7 @@ class DimensionViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('height', 'array', 'Array', false, null);
@@ -21,7 +21,7 @@ class DimensionViewHelper extends AbstractViewHelper
         $this->registerArgument('diameter', 'array', 'Array', false, null);
         $this->registerArgument('description', 'array', 'Array', false, null);
 
-        $this->registerArgument('as', 'string', 'name of the label result variable', true, 'string');
+        $this->registerArgument('as', 'string', 'name of the label result variable', true);
     }
 
     /**

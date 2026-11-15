@@ -26,7 +26,6 @@ namespace Dla\Find\ViewHelpers\Find;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  ******************************************************************************/
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -37,10 +36,10 @@ class PageListViewHelper extends AbstractViewHelper
     /**
      * Registers own arguments.
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('currentPage', 'int', 'number of the current page', false, 1);
+        $this->registerArgument('currentPage', 'mixed', 'number of the current page', false, 1);
         $this->registerArgument('resultCount', 'int', 'total number of results', true);
         $this->registerArgument('perPage', 'int', 'number of results per page', false, 10);
         $this->registerArgument('adjacentPages', 'int', 'number of neighbours of the current page to show', false, 3);
@@ -51,27 +50,24 @@ class PageListViewHelper extends AbstractViewHelper
     /**
      * @return array
      */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext
-    ) {
-        $currentPage = ($arguments['currentPage'] ? (int) $arguments['currentPage'] : 1);
-        $numberOfPages = (int) ceil($arguments['resultCount'] / $arguments['perPage']);
+    public function render()
+    {
+        $currentPage = ($this->arguments['currentPage'] ? (int) $this->arguments['currentPage'] : 1);
+        $numberOfPages = (int) ceil($this->arguments['resultCount'] / $this->arguments['perPage']);
         $truncated = false;
-        $maxResultWindow = (int) ($arguments['maxResultWindow'] ?? 0);
+        $maxResultWindow = (int) ($this->arguments['maxResultWindow'] ?? 0);
         if ($maxResultWindow > 0) {
             // Keine Seiten jenseits des erlaubten Trefferfensters (start + rows <= maxResultWindow) anbieten.
-            $maxPages = max(1, intdiv($maxResultWindow, (int) $arguments['perPage']));
+            $maxPages = max(1, intdiv($maxResultWindow, (int) $this->arguments['perPage']));
             if ($numberOfPages > $maxPages) {
                 $numberOfPages = $maxPages;
                 $truncated = true;
             }
         }
-        $adjacentPages = (int) $arguments['adjacentPages'];
+        $adjacentPages = (int) $this->arguments['adjacentPages'];
         $adjacentFirst = max($currentPage - $adjacentPages, 1);
         $adjacentLast = min($currentPage + $adjacentPages, $numberOfPages);
-        $minimumGapSize = (int) $arguments['minimumGapSize'];
+        $minimumGapSize = (int) $this->arguments['minimumGapSize'];
         $pages = [];
 
         $pageIndex = 1;

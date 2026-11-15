@@ -12,11 +12,11 @@ class ArrayRemoveNullViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('array', 'array', 'List of fields', true, array());
-        $this->registerArgument('as', 'string', 'name of the label result variable', true, array());
+        $this->registerArgument('array', 'array', 'List of fields', false, array());
+        $this->registerArgument('as', 'string', 'name of the label result variable', true);
     }
 
     /**

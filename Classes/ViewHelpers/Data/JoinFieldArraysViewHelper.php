@@ -12,12 +12,12 @@ class JoinFieldArraysViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('arrays', 'array', 'The arrays to be joined as columns', true, array());
-        $this->registerArgument('fieldWraps', 'array', 'Comma separated list of wraps for the fields', true, array());
-        $this->registerArgument('as', 'string', 'name of the result array', true, array());
+        $this->registerArgument('arrays', 'array', 'The arrays to be joined as columns', false, array());
+        $this->registerArgument('fieldWraps', 'array', 'Comma separated list of wraps for the fields', false, array());
+        $this->registerArgument('as', 'string', 'name of the result array', true);
     }
 
     /**

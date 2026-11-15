@@ -12,14 +12,14 @@ class ChartValueViewHelper extends AbstractViewHelper
      * Register arguments.
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('array', 'array', 'List of fields', true, array());
-        $this->registerArgument('valueAs', 'string', 'name of the value result variable', true, array());
-        $this->registerArgument('labelAs', 'string', 'name of the label result variable', true, array());
-        $this->registerArgument('countAs', 'string', 'name of the label result variable', true, array());
-        $this->registerArgument('itemCount', 'integer', 'number of facet item', true, array());
+        $this->registerArgument('array', 'array', 'List of fields', false, array());
+        $this->registerArgument('valueAs', 'string', 'name of the value result variable', true);
+        $this->registerArgument('labelAs', 'string', 'name of the label result variable', true);
+        $this->registerArgument('countAs', 'string', 'name of the label result variable', true);
+        $this->registerArgument('itemCount', 'integer', 'number of facet item', true);
     }
 
     /**

@@ -26,7 +26,6 @@ namespace Dla\Find\ViewHelpers\Format;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  ******************************************************************************/
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -39,7 +38,7 @@ class RegexpViewHelper extends AbstractViewHelper
     /**
      * Registers own arguments.
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('string', 'string',
@@ -53,23 +52,20 @@ class RegexpViewHelper extends AbstractViewHelper
     /**
      * @return string
      */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext
-    ) {
-        $input = $arguments['string'];
+    public function render()
+    {
+        $input = $this->arguments['string'];
         if (null === $input) {
-            $input = $renderChildrenClosure();
+            $input = $this->renderChildren();
         }
 
         $result = null;
-        if (null === $arguments['replace']) {
-            $result = preg_match($arguments['match'], $input);
-        } elseif (!$arguments['useMBEreg']) {
-            $result = preg_replace($arguments['match'], $arguments['replace'], $input);
+        if (null === $this->arguments['replace']) {
+            $result = preg_match($this->arguments['match'], $input);
+        } elseif (!$this->arguments['useMBEreg']) {
+            $result = preg_replace($this->arguments['match'], $this->arguments['replace'], $input);
         } else {
-            $result = mb_ereg_replace($arguments['match'], $arguments['replace'], $input);
+            $result = mb_ereg_replace($this->arguments['match'], $this->arguments['replace'], $input);
         }
 
         return $result;

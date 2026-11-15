@@ -27,7 +27,6 @@ namespace Dla\Find\ViewHelpers\Find;
  * THE SOFTWARE.
  ******************************************************************************/
 
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -47,7 +46,7 @@ class PageNumberForResultNumberViewHelper extends AbstractViewHelper
     /**
      * Registers own arguments.
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('resultNumber', 'int', 'number of the result to determine the page number for', true);
@@ -57,15 +56,12 @@ class PageNumberForResultNumberViewHelper extends AbstractViewHelper
     /**
      * @return int
      */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext
-    ) {
-        if (0 === $arguments['resultsPerPage']) {
-            $arguments['resultsPerPage'] = self::DEFAULT_RESULTS_PER_PAGE;
+    public function render()
+    {
+        if (0 === $this->arguments['resultsPerPage']) {
+            $this->arguments['resultsPerPage'] = self::DEFAULT_RESULTS_PER_PAGE;
         }
 
-        return (int) ceil($arguments['resultNumber'] / $arguments['resultsPerPage']);
+        return (int) ceil($this->arguments['resultNumber'] / $this->arguments['resultsPerPage']);
     }
 }
