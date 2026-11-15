@@ -1,6 +1,7 @@
 <?php
 namespace Dla\DlaOpacNg\Controller;
 
+use Dla\DlaOpacNg\Utility\PageRecordUtility;
 use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class CollectionController extends ActionController
@@ -24,6 +25,7 @@ class CollectionController extends ActionController
         $extSettings = $settings['plugin.']['tx_find.']['settings.'];
 
         $this->view->assign('settings', $extSettings);
+        $this->view->assign('page', PageRecordUtility::fromRequest($this->request));
         $this->view->assign('record', $record);
         $this->view->assign('uid', $uid);
         $this->view->assign('search', $search);
